@@ -451,16 +451,26 @@ public partial class App
         };
         MainWindow.Show();
 
-        if (FloatingGadget == null) return;
+        if (FloatingGadget != null)
+        {
+            FloatingGadget.Hide();
+            FloatingGadget.Close();
+            FloatingGadget = null;
+        }
 
-        FloatingGadget.Hide();
-        FloatingGadget.Close();
+        var settingsStore = IoCContainer.Resolve<ApplicationSettings>().Store;
 
-        FloatingGadget = IoCContainer.Resolve<ApplicationSettings>().Store.SelectedStyleIndex switch
+        if (!settingsStore.ShowFloatingGadgets)
+        {
+            return;
+        }
+
+        FloatingGadget = settingsStore.SelectedStyleIndex switch
         {
             1 => new FloatingGadgetUpper(),
             _ => new FloatingGadget()
         };
+
         FloatingGadget.Show();
     }
 
@@ -862,7 +872,6 @@ public partial class App
 
                 EnsureGadgetCreated(shouldBeUpper);
                 FloatingGadget?.Show();
-                // FloatingGadget?.BringToForeground();
                 break;
             }
             case FloatingGadgetState.Toggle when FloatingGadget is { IsVisible: true }:
