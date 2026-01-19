@@ -1,19 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using LenovoLegionToolkit.Lib;
+﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Overclocking.Amd;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
-using LenovoLegionToolkit.WPF.Utils;
+using LenovoLegionToolkit.WPF.Windows.Utils;
 using Microsoft.Win32;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 using Wpf.Ui.Controls;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace LenovoLegionToolkit.WPF.Windows.Overclocking.Amd;
 
@@ -27,9 +27,24 @@ public partial class AmdOverclocking : UiWindow
     public AmdOverclocking()
     {
         InitializeComponent();
+
+        IsVisibleChanged += AmdOverclocking_IsVisibleChanged;
+        Loaded += AmdOverclocking_Loaded;
+    }
+
+    private async void AmdOverclocking_Loaded(object sender, RoutedEventArgs e)
+    {
+        await InitAndRefreshAsync();
+    }
+
+    private async void AmdOverclocking_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+    {
         _initCoreArray();
-        IsVisibleChanged += async (s, e) => { if ((bool)e.NewValue && _isInitialized) await RefreshAsync(); };
-        Loaded += async (s, e) => await InitAndRefreshAsync();
+
+        if (_isInitialized)
+        {
+            await RefreshAsync();
+        }
     }
 
     private void _initCoreArray() => _coreBoxes = [_core0, _core1, _core2, _core3, _core4, _core5, _core6, _core7, _core8, _core9, _core10, _core11, _core12, _core13, _core14, _core15];
@@ -69,7 +84,8 @@ public partial class AmdOverclocking : UiWindow
 
     public void UpdateUi()
     {
-        Dispatcher.Invoke(() => {
+        Dispatcher.Invoke(() =>
+        {
             UpdateUiFromProfile(_controller.LoadProfile());
             _ = RefreshAsync();
         });

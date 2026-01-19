@@ -113,6 +113,11 @@ public partial class DeviceInformationWindow
             {
                 _count = 0;
 
+                if (!PawnIOHelper.IsPawnIOInnstalled())
+                {
+                    PawnIOHelper.ShowPawnIONotify();
+                }
+
                 if (_amdOverclockingWindow is not { IsLoaded: true })
                 {
                     _amdOverclockingWindow = new AmdOverclocking();

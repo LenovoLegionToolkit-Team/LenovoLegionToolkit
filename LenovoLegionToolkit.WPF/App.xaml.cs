@@ -32,7 +32,6 @@ using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.CLI;
 using LenovoLegionToolkit.WPF.Extensions;
-using LenovoLegionToolkit.WPF.Pages;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows;
@@ -175,6 +174,8 @@ public partial class App
             IoCContainer.Resolve<ThemeManager>().Apply();
             InitSetLogIndicator();
 
+            _ = new DialogWindow();
+
             await InitAMDOverclocking();
 
             if (_flags.Minimized)
@@ -188,7 +189,7 @@ public partial class App
                 mainWindow.Show();
                 if (_showPawnIONotify)
                 {
-                    ShowPawnIONotify();
+                    PawnIOHelper.ShowPawnIONotify();
                 }
             }
 
@@ -889,25 +890,6 @@ public partial class App
 
         FloatingGadget = isUpper ? new FloatingGadgetUpper() : new FloatingGadget();
         FloatingGadget.Closed += (s, e) => FloatingGadget = null;
-    }
-
-    private void ShowPawnIONotify()
-    {
-        var dialog = new DialogWindow
-        {
-            Title = Resource.MainWindow_PawnIO_Warning_Title,
-            Content = Resource.MainWindow_PawnIO_Warning_Message,
-            Owner = Application.Current.MainWindow
-        };
-
-        if (dialog.ShowDialog() == true && dialog.Result.Item1)
-        {
-            Process.Start(new ProcessStartInfo
-            {
-                FileName = "https://pawnio.eu/",
-                UseShellExecute = true
-            });
-        }
     }
 
     #endregion

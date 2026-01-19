@@ -480,12 +480,12 @@
             <StackPanel Orientation="Horizontal">
                 <wpfui:NumberBox
                     x:Name="_floatingGadgetsInterval"
-                    Width="100"
+                    Width="60"
                     Margin="5,0,8,0"
                     VerticalAlignment="Center"
                     Maximum="5"
                     Minimum="1"
-                    SpinButtonPlacementMode="Inline"
+                    SpinButtonPlacementMode="Compact"
                     ToolTip="{x:Static resources:Resource.SettingsPage_FloatingGadgets_Tooltip}"
                     ValueChanged="FloatingGadgetsInput_ValueChanged"
                     Visibility="Hidden"

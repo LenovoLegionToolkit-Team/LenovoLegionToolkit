@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Input;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Extensions;
@@ -275,9 +274,7 @@ public partial class GodModeSettingsWindow
             _overclockingToggle.IsChecked = preset.EnableOverclocking;
             _coreCurveToggle.IsChecked = preset.EnableAllCoreCurveOptimizer;
 
-            if (preset.EnableOverclocking.HasValue)
-                await UpdateOverclockingVisibilityAsync();
-
+            await UpdateOverclockingVisibilityAsync();
         }
         finally
         {

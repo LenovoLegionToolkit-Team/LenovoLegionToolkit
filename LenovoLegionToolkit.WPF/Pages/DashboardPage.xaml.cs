@@ -1,16 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using LenovoLegionToolkit.Lib;
+﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls.Dashboard;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Settings;
 using LenovoLegionToolkit.WPF.Windows.Dashboard;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using LenovoLegionToolkit.WPF.Utils;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 
@@ -32,9 +33,14 @@ public partial class DashboardPage
         {
             sensorControl = new SensorsControl();
         }
-        else
+        else if (PawnIOHelper.IsPawnIOInnstalled())
         {
             sensorControl = new SensorsControlV2();
+        }
+        else
+        {
+            PawnIOHelper.ShowPawnIONotify();
+            sensorControl = new SensorsControl();
         }
 
         int contentIndex = _panel.Children.IndexOf(_content);

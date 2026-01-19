@@ -1,19 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using Windows.Win32;
-using Windows.Win32.System.Threading;
-using LenovoLegionToolkit.Lib;
+﻿using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
@@ -26,6 +11,22 @@ using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Utils;
 using Microsoft.Xaml.Behaviors.Core;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Windows.Win32;
+using Windows.Win32.System.Threading;
 using Wpf.Ui.Controls;
 #if !DEBUG
 using System.Reflection;
@@ -65,14 +66,19 @@ public partial class MainWindow
         SourceInitialized += MainWindow_SourceInitialized;
         StateChanged += MainWindow_StateChanged;
 
+        var version = Assembly.GetEntryAssembly()?.GetName().Version;
 #if DEBUG
         _title.Text += Debugger.IsAttached ? " [DEBUGGER ATTACHED]" : " [DEBUG]";
 #else
-        var version = Assembly.GetEntryAssembly()?.GetName().Version;
         if (version is not null && version.IsBeta())
+        {
             _title.Text += " [BETA]";
+        }
+        else
+        {
+            _title.Text += $" {version}";
+        }
 #endif
-
         Focusable = false;
         if (Log.Instance.IsTraceEnabled)
         {

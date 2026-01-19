@@ -369,7 +369,7 @@ public partial class SettingsPage
 
         var feature = IoCContainer.Resolve<SensorsGroupController>();
 
-        if (state.Value && !feature.IsPawnIOInnstalled())
+        if (state.Value && !PawnIOHelper.IsPawnIOInnstalled())
         {
             var dialog = new DialogWindow
             {
@@ -410,7 +410,6 @@ public partial class SettingsPage
         }
     }
 
-    // 注意：事件处理程序需要改为 async void
     private async void EnableLoggingToggle_Click(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing)
@@ -888,8 +887,7 @@ public partial class SettingsPage
 
             if (state.Value)
             {
-                var feature = IoCContainer.Resolve<SensorsGroupController>();
-                if (!feature.IsPawnIOInnstalled())
+                if (!PawnIOHelper.IsPawnIOInnstalled())
                 {
                     var dialog = new DialogWindow
                     {

@@ -1,4 +1,10 @@
-﻿using System.Windows;
+﻿using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Messaging;
+using LenovoLegionToolkit.Lib.Messaging.Messages;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Windows;
+using LenovoLegionToolkit.WPF.Resources;
 
 namespace LenovoLegionToolkit.WPF.Windows.Utils;
 
@@ -28,6 +34,33 @@ public partial class DialogWindow
     {
         InitializeComponent();
         DataContext = this;
+
+        MessagingCenter.Subscribe<PawnIOStateMessage>(this, (message) =>
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (message.State != PawnIOState.NotInstalled)
+                {
+                    return;
+                }
+
+                var dialog = new DialogWindow
+                {
+                    Title = Resource.MainWindow_PawnIO_Warning_Title,
+                    Content = Resource.MainWindow_PawnIO_Warning_Message,
+                    Owner = Application.Current.MainWindow
+                };
+
+                if (dialog.ShowDialog() == true && dialog.Result.Item1)
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = "https://pawnio.eu/",
+                        UseShellExecute = true
+                    });
+                }
+            });
+        });
     }
 
     private void YesButton_Click(object sender, RoutedEventArgs e)

@@ -457,6 +457,12 @@ public enum PanelLogoBacklightState
     On
 }
 
+public enum PawnIOState
+{
+    NotInstalled,
+    Installed,
+}
+
 public enum PortsBacklightState
 {
     [Display(ResourceType = typeof(Resource), Name = "PortsBacklightState_Off")]
