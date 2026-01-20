@@ -13,7 +13,12 @@ using UniversalFanControl.Lib;
 public class FanCurveManager : IDisposable
 {
     public ObservableCollection<FanCurveEntry> Curves { get; } = new();
+    public bool IsLegionMode { get; set; }
+    public float LegionLowTempThreshold { get; set; } = 40f;
+    public int AccelerationDcrReduction { get; set; } = 1;
+    public int DecelerationDcrReduction { get; set; } = 2;
     public int LogicInterval { get; set; } = 500;
+    public int UiUpdateInterval { get; set; } = 500;
 
     private readonly SensorsGroupController _sensors;
     private readonly FanControl _fanHardware;
@@ -30,6 +35,14 @@ public class FanCurveManager : IDisposable
         }
 
         StartControlLoop();
+    }
+
+    public void RegisterViewModel(FanType type, FanControlViewModel vm)
+    {
+        lock (_activeViewModels)
+        {
+            _activeViewModels[type] = vm;
+        }
     }
 
     public void UnregisterViewModel(FanType type)
