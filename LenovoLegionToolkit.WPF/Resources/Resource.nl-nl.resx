@@ -2785,4 +2785,64 @@ Ga niet verder tenzij u over de nodige technische expertise beschikt.</value>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_WhiteThreshold" xml:space="preserve">
     <value>White Threshold</value>
   </data>
+  <data name="CustomFanCurveControl_Fan_CPU" xml:space="preserve">
+    <value>CPU Fan</value>
+  </data>
+  <data name="CustomFanCurveControl_Fan_GPU" xml:space="preserve">
+    <value>GPU Fan</value>
+  </data>
+  <data name="CustomFanCurveControl_Fan_System" xml:space="preserve">
+    <value>System Fan</value>
+  </data>
+  <data name="CustomFanCurve_Add_Point" xml:space="preserve">
+    <value>Add curve point</value>
+  </data>
+  <data name="CustomFanCurve_Fan_Speed" xml:space="preserve">
+    <value>Fan Speed %</value>
+  </data>
+  <data name="CustomFanCurve_Temperature" xml:space="preserve">
+    <value>Temperature °C </value>
+  </data>
+  <data name="CustomFanCurve_Title" xml:space="preserve">
+    <value>Real-Time Monitoring</value>
+  </data>
+  <data name="CustomFanCurve_PWM_Value" xml:space="preserve">
+    <value>PWM Value</value>
+  </data>
+  <data name="CustomFanCurve_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="CustomFanCurve_Critical_Temp" xml:space="preserve">
+    <value>Critical Temp</value>
+  </data>
+  <data name="CustomFanCurve_Legion_Mode" xml:space="preserve">
+    <value>Legion Mode</value>
+  </data>
+  <data name="CustomFanCurve_Low_Temp_Threshold" xml:space="preserve">
+    <value>Low Temp Threshold</value>
+  </data>
+  <data name="CustomFanCurve_Accelerate" xml:space="preserve">
+    <value>Accelerate</value>
+  </data>
+  <data name="CustomFanCurve_Deceleration" xml:space="preserve">
+    <value>Deceleration</value>
+  </data>
+  <data name="CustomFanCurve_Accelerate_Tooltip" xml:space="preserve">
+    <value>Accelerate control's how much PWM is added to the current PWM Value.</value>
+  </data>
+  <data name="CustomFanCurve_Deceleration_Tooltip" xml:space="preserve">
+    <value>Deceleration control's how much PWM is decreased to the current PWM Value.</value>
+  </data>
+  <data name="CustomFanCurve_Legion_Mode_Tooltip" xml:space="preserve">
+    <value>Some Legion laptops cannot easily reduce the speed to 0 under low load, and forcing the fan curve to lower will cause conflicts with the EC. Turn on this option to resolve this issue.</value>
+  </data>
+  <data name="CustomFanCurve_Low_Temp_Threshold_Tooltip" xml:space="preserve">
+    <value>Below this temperature EC controls the fan.</value>
+  </data>
+  <data name="CustomFanCurve_Critical_Temp_Tooltip" xml:space="preserve">
+    <value>Force the maximum speed when the temperature is greater than or equal to this temperature to prevent burning out.</value>
+  </data>
+  <data name="ArgumentWindow_Flag_Enable_Custom_Fan_Curve" xml:space="preserve">
+    <value>Enable Custom Fan Curve</value>
+  </data>
 </root>
