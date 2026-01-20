@@ -180,9 +180,6 @@ public class UpdateChecker
                     _updateCheckSettings.SynchronizeStore();
                 }
             }
-
-            Status = UpdateCheckStatus.Error;
-            return null;
         }
     }
 

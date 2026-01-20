@@ -104,6 +104,14 @@ public enum DriverKey
     FnSpace = 4096,
 }
 
+public enum FanType
+{
+    Cpu = 0,
+    Gpu = 1,
+    System = 2,
+}
+
+
 public enum FanTableType
 {
     Unknown,

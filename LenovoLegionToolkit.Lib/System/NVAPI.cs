@@ -17,20 +17,13 @@ internal static class NVAPI
     {
         try
         {
-            if (!IsInitialized)
+            if (IsInitialized)
             {
-                NVIDIA.Initialize();
-                IsInitialized = true;
+                return;
             }
-            else
-            {
-                if (GetGPU() == null)
-                {
-                    Log.Instance.Trace($"GetGPU() returns null. NVIDIA.Initialize().");
-                    NVIDIA.Initialize();
-                    IsInitialized = true;
-                }
-            }
+
+            NVIDIA.Initialize();
+            IsInitialized = true;
         }
         catch (Exception ex)
         {
@@ -44,13 +37,29 @@ internal static class NVAPI
     {
         try
         {
-            return PhysicalGPU.GetPhysicalGPUs().FirstOrDefault(gpu => gpu.SystemType == SystemType.Laptop);
+            var gpu = PhysicalGPU.GetPhysicalGPUs().FirstOrDefault(gpu => gpu.SystemType == SystemType.Laptop);
+
+            if (gpu != null)
+            {
+                return gpu;
+            }
+
+            return null;
         }
-        catch (NVIDIAApiException)
+        catch (NVIDIAApiException ex)
+        {
+            Log.Instance.Trace($"NVIDIAApiException in GetGPU. Attempting to recover.", ex);
+
+            IsInitialized = false;
+
+            return null;
+        }
+        catch (Exception)
         {
             return null;
         }
     }
+
 
     public static bool IsDisplayConnected(PhysicalGPU gpu)
     {

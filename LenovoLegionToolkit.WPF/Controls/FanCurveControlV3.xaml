@@ -1,0 +1,367 @@
+﻿<UserControl
+    x:Class="LenovoLegionToolkit.WPF.Controls.FanCurveControlV3"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:resources="clr-namespace:LenovoLegionToolkit.WPF.Resources"
+    FlowDirection="LeftToRight">
+    <Grid Margin="0,8,0,8">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0"
+            Margin="0,0,8,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="0"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="100%"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Label
+                Grid.Row="2"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="80%"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Label
+                Grid.Row="4"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="60%"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Label
+                Grid.Row="6"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="40%"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Label
+                Grid.Row="8"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="20%"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            <Label
+                Grid.Row="10"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="{x:Static resources:Resource.FanCurveControl_FanSpeed}"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+        </Grid>
+
+        <Border
+            Grid.Row="0"
+            Grid.Column="1"
+            BorderBrush="{DynamicResource TextFillColorDisabledBrush}"
+            BorderThickness="1,0,0,1" />
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="1"
+            MinHeight="200">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Button
+                Grid.Row="0"
+                Width="35"
+                Height="35"
+                Margin="0,-35,0,0"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Top"
+                Panel.ZIndex="10"
+                Command="{Binding AddPointCommand}"
+                Content="+"
+                FontSize="15"
+                FontWeight="Bold"
+                ToolTip="Add curve point" />
+
+            <ScrollViewer
+                x:Name="_scrollViewer"
+                Grid.Row="0"
+                Focusable="False"
+                HorizontalScrollBarVisibility="Auto"
+                ScrollChanged="ScrollViewer_ScrollChanged"
+                VerticalScrollBarVisibility="Disabled">
+                <Grid>
+                    <Grid
+                        Margin="0,32,0,80"
+                        HorizontalAlignment="Stretch"
+                        VerticalAlignment="Stretch">
+                        <Canvas
+                            x:Name="_canvas"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch"
+                            ClipToBounds="True" />
+                    </Grid>
+
+                    <ItemsControl x:Name="_itemsControl" ItemsSource="{Binding CurveNodes}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal" />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid MinWidth="70" Margin="10,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="32" />
+                                        <RowDefinition Height="*" MinHeight="250" />
+                                        <RowDefinition Height="40" />
+                                        <RowDefinition Height="40" />
+                                    </Grid.RowDefinitions>
+
+                                    <Button
+                                        Grid.Row="0"
+                                        Width="24"
+                                        Height="24"
+                                        Margin="0,0,0,8"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Command="{Binding DataContext.RemovePointCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}"
+                                        Content="✕"
+                                        Cursor="Hand"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
+                                        <Button.Style>
+                                            <Style TargetType="Button">
+                                                <Setter Property="Background" Value="Transparent" />
+                                                <Setter Property="BorderThickness" Value="0" />
+                                                <Style.Triggers>
+                                                    <Trigger Property="IsMouseOver" Value="True">
+                                                        <Setter Property="Foreground" Value="Red" />
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Button.Style>
+                                    </Button>
+
+                                    <Slider
+                                        x:Name="_slider"
+                                        Grid.Row="1"
+                                        Width="50"
+                                        Margin="0,5"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Stretch"
+                                        IsSnapToTickEnabled="True"
+                                        Maximum="100"
+                                        Minimum="0"
+                                        Orientation="Vertical"
+                                        TickFrequency="1"
+                                        Value="{Binding TargetPercent}" />
+
+                                    <TextBox
+                                        Grid.Row="2"
+                                        Width="70"
+                                        Height="32"
+                                        Margin="0,8,0,0"
+                                        HorizontalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        Text="{Binding TargetPercent, UpdateSourceTrigger=PropertyChanged}"
+                                        ToolTip="{x:Static resources:Resource.CustomFanCurve_Fan_Speed}" />
+
+                                    <TextBox
+                                        Grid.Row="3"
+                                        Width="70"
+                                        Height="32"
+                                        Margin="0,8,0,0"
+                                        HorizontalAlignment="Center"
+                                        HorizontalContentAlignment="Center"
+                                        VerticalContentAlignment="Center"
+                                        Text="{Binding Temperature, StringFormat=N0, UpdateSourceTrigger=PropertyChanged}"
+                                        ToolTip="{x:Static resources:Resource.CustomFanCurve_Temperature}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid
+            Grid.Row="0"
+            Grid.Column="2"
+            Width="250"
+            Margin="16,0,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="16" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Grid.Row="0"
+                Padding="12"
+                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="4">
+                <StackPanel>
+                    <TextBlock
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                        Text="{x:Static resources:Resource.CustomFanCurve_Title}" />
+                    <Separator Margin="0,8" />
+
+                    <Grid Margin="0,4">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Temperature" />
+                        <TextBlock
+                            HorizontalAlignment="Right"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                            Text="{Binding DisplayTemp}" />
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Fan Speed" />
+                        <TextBlock
+                            HorizontalAlignment="Right"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource AccentTextFillColorPrimaryBrush}"
+                            Text="{Binding ActualRpmDisplay}" />
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="PWM Value" />
+                        <TextBlock
+                            HorizontalAlignment="Right"
+                            FontWeight="SemiBold"
+                            Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                            Text="{Binding CurrentPwmDisplay}" />
+                    </Grid>
+
+                    <ProgressBar
+                        Height="6"
+                        Margin="0,8,0,0"
+                        Maximum="255"
+                        Value="{Binding CurrentPwmByte}" />
+                </StackPanel>
+            </Border>
+
+            <Border
+                Grid.Row="2"
+                Padding="12"
+                Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                BorderBrush="{DynamicResource CardStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="4">
+                <StackPanel>
+                    <TextBlock
+                        FontSize="14"
+                        FontWeight="SemiBold"
+                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                        Text="{x:Static resources:Resource.CustomFanCurve_Settings}" />
+                    <Separator Margin="0,8" />
+
+                    <Grid Margin="0,4">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="{x:Static resources:Resource.CustomFanCurve_Critical_Temp}"
+                            ToolTip="{x:Static resources:Resource.CustomFanCurve_Critical_Temp_Tooltip}" />
+                        <TextBox
+                            Width="70"
+                            Height="32"
+                            HorizontalAlignment="Right"
+                            VerticalContentAlignment="Center"
+                            Text="{Binding CriticalTemp, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="{x:Static resources:Resource.CustomFanCurve_Legion_Mode}"
+                            ToolTip="{x:Static resources:Resource.CustomFanCurve_Legion_Mode_Tooltip}" />
+                        <CheckBox HorizontalAlignment="Right" IsChecked="{Binding IsLegion}" />
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="{x:Static resources:Resource.CustomFanCurve_Low_Temp_Threshold}"
+                            ToolTip="{x:Static resources:Resource.CustomFanCurve_Low_Temp_Threshold_Tooltip}" />
+                        <TextBox
+                            Width="70"
+                            Height="32"
+                            HorizontalAlignment="Right"
+                            VerticalContentAlignment="Center"
+                            IsEnabled="{Binding IsLegion}"
+                            Text="{Binding LegionLowTempThreshold, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="{x:Static resources:Resource.CustomFanCurve_Accelerate}"
+                            ToolTip="{x:Static resources:Resource.CustomFanCurve_Accelerate_Tooltip}" />
+                        <TextBox
+                            Width="70"
+                            Height="32"
+                            HorizontalAlignment="Right"
+                            VerticalContentAlignment="Center"
+                            Text="{Binding AccelerationDcrReduction, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+
+                    <Grid Margin="0,4">
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="{x:Static resources:Resource.CustomFanCurve_Deceleration}"
+                            ToolTip="{x:Static resources:Resource.CustomFanCurve_Deceleration_Tooltip}" />
+                        <TextBox
+                            Width="70"
+                            Height="32"
+                            HorizontalAlignment="Right"
+                            VerticalContentAlignment="Center"
+                            Text="{Binding DecelerationDcrReduction, UpdateSourceTrigger=PropertyChanged}" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="0,8,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Label
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                VerticalContentAlignment="Center"
+                Content="100 °C"
+                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+        </Grid>
+    </Grid>
+</UserControl>

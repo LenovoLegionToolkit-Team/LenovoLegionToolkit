@@ -53,6 +53,10 @@ public partial class ArgumentWindow
             nameof(Flags.ExperimentalGPUWorkingMode),
             new("--experimental-gpu-working-mode", Resource.ArgumentWindow_Category_Hardware_Automation, SymbolRegular.Desktop24, Resource.ArgumentWindow_Flag_ExpGpuMode)
         },
+        {
+            nameof(Flags.EnableCustomFanCurve),
+            new("--enable-custom-fan-curve", Resource.ArgumentWindow_Category_Hardware_Automation, SymbolRegular.BezierCurveSquare12, Resource.ArgumentWindow_Flag_Enable_Custom_Fan_Curve)
+        },
 
         // Category: Lighting
         {

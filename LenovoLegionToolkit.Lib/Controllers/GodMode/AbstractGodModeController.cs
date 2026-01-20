@@ -96,6 +96,12 @@ public abstract class AbstractGodModeController(GodModeSettings settings)
                 AllCoreCurveOptimizer = preset.AllCoreCurveOptimizer,
                 EnableAllCoreCurveOptimizer = preset.EnableAllCoreCurveOptimizer,
                 EnableOverclocking = preset.EnableOverclocking,
+                CriticalTemp = preset.CriticalTemp,
+                IsLegion = preset.IsLegion,
+                LegionLowTempThreshold = preset.LegionLowTempThreshold,
+                AccelerationDcrReduction = preset.AccelerationDcrReduction,
+                DecelerationDcrReduction = preset.DecelerationDcrReduction,
+                FanCurveJson = preset.FanCurveJson,
             });
         }
 
@@ -217,6 +223,12 @@ public abstract class AbstractGodModeController(GodModeSettings settings)
                 AllCoreCurveOptimizer = (isAmdDevice && allCoreCurve is null) ? curve : preset.AllCoreCurveOptimizer,
                 EnableAllCoreCurveOptimizer = (isAmdDevice && enableOverclocking is null) ? false : preset.EnableAllCoreCurveOptimizer,
                 EnableOverclocking = (isAmdDevice && enableOverclocking is null) ? false : preset.EnableOverclocking,
+                CriticalTemp = preset.CriticalTemp,
+                IsLegion = preset.IsLegion,
+                LegionLowTempThreshold = preset.LegionLowTempThreshold,
+                AccelerationDcrReduction = preset.AccelerationDcrReduction,
+                DecelerationDcrReduction = preset.DecelerationDcrReduction,
+                FanCurveJson = preset.FanCurveJson,
             });
         }
 

@@ -18,7 +18,7 @@ public class Flags
     public bool ForceDisableSpectrumKeyboardSupport { get; }
     public bool ForceDisableLenovoLighting { get; }
     public bool ExperimentalGPUWorkingMode { get; }
-    public bool EnableHybridModeAutomation { get; }
+    public bool EnableCustomFanCurve { get; }
     public Uri? ProxyUrl { get; }
     public string? ProxyUsername { get; }
     public string? ProxyPassword { get; }
@@ -57,6 +57,7 @@ public class Flags
         ForceDisableRgbKeyboardSupport = BoolValue(args, "--force-disable-rgbkb");
         ForceDisableSpectrumKeyboardSupport = BoolValue(args, "--force-disable-spectrumkb");
         ForceDisableLenovoLighting = BoolValue(args, "--force-disable-lenovolighting");
+        EnableCustomFanCurve = BoolValue(args, "--enable-custom-fan-curve");
         ExperimentalGPUWorkingMode = BoolValue(args, "--experimental-gpu-working-mode");
         ProxyUrl = Uri.TryCreate(StringValue(args, "--proxy-url"), UriKind.Absolute, out var uri) ? uri : null;
         ProxyUsername = StringValue(args, "--proxy-username");
@@ -98,7 +99,7 @@ public class Flags
         $" {nameof(ForceDisableSpectrumKeyboardSupport)}: {ForceDisableSpectrumKeyboardSupport}," +
         $" {nameof(ForceDisableLenovoLighting)}: {ForceDisableLenovoLighting}," +
         $" {nameof(ExperimentalGPUWorkingMode)}: {ExperimentalGPUWorkingMode}," +
-        $" {nameof(EnableHybridModeAutomation)}: {EnableHybridModeAutomation}," +
+        $" {nameof(EnableCustomFanCurve)}: {EnableCustomFanCurve}," +
         $" {nameof(ProxyUrl)}: {ProxyUrl}," +
         $" {nameof(ProxyUsername)}: {ProxyUsername}," +
         $" {nameof(ProxyPassword)}: {ProxyPassword}," +

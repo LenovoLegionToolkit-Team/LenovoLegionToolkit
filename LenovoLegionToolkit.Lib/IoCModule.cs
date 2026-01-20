@@ -21,6 +21,8 @@ using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.Lib.Utils.Warranty;
+using LenovoLegionToolkit.Lib.View;
+using UniversalFanControl.Lib.Generic.Api;
 
 namespace LenovoLegionToolkit.Lib;
 
@@ -148,5 +150,9 @@ public class IoCModule : Module
         builder.Register<BatteryDischargeRateMonitorService>();
 
         builder.Register<AmdOverclockingController>();
+
+        builder.RegisterType<FanCurveManager>().SingleInstance();
+        builder.RegisterType<FanControlViewModel>();
+        builder.RegisterType<FanCurveController>();
     }
 }

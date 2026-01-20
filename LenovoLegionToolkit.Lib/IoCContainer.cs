@@ -25,6 +25,16 @@ public static class IoCContainer
         }
     }
 
+    public static T Resolve<T>(params Autofac.Core.Parameter[] parameters)
+    {
+        lock (Lock)
+        {
+            if (_container is null)
+                throw new InvalidOperationException($"IoCContainer must be initialized first [type={nameof(T)}]");
+            return _container.Resolve<T>(parameters);
+        }
+    }
+
     public static T Resolve<T>() where T : notnull
     {
         lock (Lock)

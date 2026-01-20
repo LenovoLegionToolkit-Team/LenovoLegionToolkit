@@ -1,4 +1,7 @@
-﻿namespace LenovoLegionToolkit.WPF;
+﻿using System.ComponentModel.DataAnnotations;
+using LenovoLegionToolkit.WPF.Resources;
+
+namespace LenovoLegionToolkit.WPF;
 
 public enum DashboardGroupType
 {
@@ -68,6 +71,16 @@ public enum SensorItem
     MemoryTemperature,
     Disk1Temperature,
     Disk2Temperature
+}
+
+public enum FanType
+{
+    [Display(ResourceType = typeof(Resource), Name = "CustomFanCurveControl_Fan_CPU")]
+    Cpu = 0,
+    [Display(ResourceType = typeof(Resource), Name = "CustomFanCurveControl_Fan_GPU")]
+    Gpu = 1,
+    [Display(ResourceType = typeof(Resource), Name = "CustomFanCurveControl_Fan_System")]
+    System = 2,
 }
 
 public enum SnackbarType

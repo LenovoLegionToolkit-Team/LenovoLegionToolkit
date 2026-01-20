@@ -515,7 +515,18 @@ public class SensorsGroupController : IDisposable
     public void NeedRefreshHardware(string hardwareId)
     {
         if (!IsLibreHardwareMonitorInitialized() || _computer == null || hardwareId != HARDWARE_ID_NVIDIA_GPU) return;
-        lock (_hardwareLock) { ResetSensors(); try { NVAPI.Initialize(); } catch { } _needRefreshGpuHardware = true; }
+        lock (_hardwareLock)
+        { 
+            ResetSensors();
+
+            try
+            {
+                NVAPI.Initialize(); 
+            } 
+            catch { /* Ignore */ }
+
+            _needRefreshGpuHardware = true;
+        }
     }
 
     public async Task UpdateAsync()

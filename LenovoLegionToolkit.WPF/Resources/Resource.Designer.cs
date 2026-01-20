@@ -538,6 +538,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 Enable Custom Fan Curve 的本地化字符串。
+        /// </summary>
+        public static string ArgumentWindow_Flag_Enable_Custom_Fan_Curve {
+            get {
+                return ResourceManager.GetString("ArgumentWindow_Flag_Enable_Custom_Fan_Curve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似  Experimental GPU Working Mode 的本地化字符串。
         /// </summary>
         public static string ArgumentWindow_Flag_ExpGpuMode {
@@ -1709,6 +1718,177 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string CreateAutomationPipelineWindow_Title {
             get {
                 return ResourceManager.GetString("CreateAutomationPipelineWindow_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Accelerate 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Accelerate {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Accelerate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Accelerate control&apos;s how much PWM is added to the current PWM Value. 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Accelerate_Tooltip {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Accelerate_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Add curve point 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Add_Point {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Add_Point", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Critical Temp 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Critical_Temp {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Critical_Temp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Force the maximum speed when the temperature is greater than or equal to this temperature to prevent burning out. 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Critical_Temp_Tooltip {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Critical_Temp_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Deceleration 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Deceleration {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Deceleration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Deceleration control&apos;s how much PWM is decreased to the current PWM Value. 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Deceleration_Tooltip {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Deceleration_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Fan Speed % 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Fan_Speed {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Fan_Speed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Legion Mode 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Legion_Mode {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Legion_Mode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Some Legion laptops cannot easily reduce the speed to 0 under low load, and forcing the fan curve to lower will cause conflicts with the EC. Turn on this option to resolve this issue. 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Legion_Mode_Tooltip {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Legion_Mode_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Low Temp Threshold 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Low_Temp_Threshold {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Low_Temp_Threshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Below this temperature EC controls the fan. 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Low_Temp_Threshold_Tooltip {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Low_Temp_Threshold_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PWM Value 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_PWM_Value {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_PWM_Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Settings 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Settings {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Temperature °C  的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Temperature {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Temperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Real-Time Monitoring 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurve_Title {
+            get {
+                return ResourceManager.GetString("CustomFanCurve_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 CPU Fan 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurveControl_Fan_CPU {
+            get {
+                return ResourceManager.GetString("CustomFanCurveControl_Fan_CPU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 GPU Fan 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurveControl_Fan_GPU {
+            get {
+                return ResourceManager.GetString("CustomFanCurveControl_Fan_GPU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 System Fan 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurveControl_Fan_System {
+            get {
+                return ResourceManager.GetString("CustomFanCurveControl_Fan_System", resourceCulture);
             }
         }
         

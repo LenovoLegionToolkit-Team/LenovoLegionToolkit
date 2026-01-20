@@ -68,11 +68,11 @@ public partial class App
 
     private Mutex? _singleInstanceMutex;
     private EventWaitHandle? _singleInstanceWaitHandle;
-    private Flags? _flags;
     private bool _showPawnIONotify;
 
     public new static App Current => (App)Application.Current;
     public static MainWindow? MainWindowInstance;
+    public static Flags? Flags;
 
     #endregion
 
@@ -91,21 +91,21 @@ public partial class App
                     .ForEach(p => { p.Kill(); p.WaitForExit(); });
             }
 #endif
-            _flags = new Flags(e.Args);
+            Flags = new Flags(e.Args);
             SetupExceptionHandling();
 
-            if (_flags.Debug)
+            if (Flags.Debug)
             {
                 InitializeDebugConsole();
-                Console.WriteLine(@$"[Startup] Parsing Flags complete. TraceEnabled: {_flags.IsTraceEnabled}");
+                Console.WriteLine(@$"[Startup] Parsing Flags complete. TraceEnabled: {Flags.IsTraceEnabled}");
             }
 
-            Log.Instance.IsTraceEnabled = _flags.IsTraceEnabled;
+            Log.Instance.IsTraceEnabled = Flags.IsTraceEnabled;
 
-            if (_flags.Debug) Console.WriteLine(@"[Startup] Ensuring Single Instance...");
+            if (Flags.Debug) Console.WriteLine(@"[Startup] Ensuring Single Instance...");
             EnsureSingleInstance();
 
-            if (_flags.Debug) Console.WriteLine(@"[Startup] Initializing IoC Container...");
+            if (Flags.Debug) Console.WriteLine(@"[Startup] Initializing IoC Container...");
             IoCContainer.Initialize(
                 new Lib.IoCModule(),
                 new Lib.Automation.IoCModule(),
@@ -113,21 +113,21 @@ public partial class App
                 new IoCModule()
             );
 
-            if (_flags.Debug) Console.WriteLine(@"[Startup] Setting Language and Checking Compatibility...");
+            if (Flags.Debug) Console.WriteLine(@"[Startup] Setting Language and Checking Compatibility...");
             await Task.WhenAll(
                 LocalizationHelper.SetLanguageAsync(true),
-                CheckCompatibilityAsyncWrapper(_flags)
+                CheckCompatibilityAsyncWrapper(Flags)
             );
 
             Log.Instance.Trace($"Starting... [version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTimeString()}, os={Environment.OSVersion}, dotnet={Environment.Version}]");
 
-            if (_flags.Debug) Console.WriteLine(@"[Startup] Configuring Render Options...");
+            if (Flags.Debug) Console.WriteLine(@"[Startup] Configuring Render Options...");
             WinFormsApp.SetHighDpiMode(WinFormsHighDpiMode.PerMonitorV2);
             RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
 
             ConfigureFeatureFlags();
 
-            if (_flags.Debug) Console.WriteLine(@"[Startup] Initializing Features...");
+            if (Flags.Debug) Console.WriteLine(@"[Startup] Initializing Features...");
             var initTasks = new[]
             {
                 InitSensorsGroupControllerFeatureAsync(),
@@ -144,12 +144,12 @@ public partial class App
 
             await Task.WhenAll(initTasks);
 
-            if (_flags.Debug) Console.WriteLine(@"[Startup] Starting MacroController...");
+            if (Flags.Debug) Console.WriteLine(@"[Startup] Starting MacroController...");
             IoCContainer.Resolve<MacroController>().Start();
 
             var deferredInitTask = Task.Run(async () =>
             {
-                if (_flags.Debug) Console.WriteLine(@"[AsyncWorker] Starting AI/HWiNFO/IPC...");
+                if (Flags.Debug) Console.WriteLine(@"[AsyncWorker] Starting AI/HWiNFO/IPC...");
                 await IoCContainer.Resolve<AIController>().StartIfNeededAsync();
                 await IoCContainer.Resolve<HWiNFOIntegration>().StartStopIfNeededAsync();
                 await IoCContainer.Resolve<IpcServer>().StartStopIfNeededAsync();
@@ -160,12 +160,12 @@ public partial class App
 #if !DEBUG
             Autorun.Validate();
 #endif
-            if (_flags.Debug) Console.WriteLine(@"[Startup] Creating MainWindow...");
+            if (Flags.Debug) Console.WriteLine(@"[Startup] Creating MainWindow...");
             var mainWindow = new MainWindow
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen,
-                TrayTooltipEnabled = !_flags.DisableTrayTooltip,
-                DisableConflictingSoftwareWarning = _flags.DisableConflictingSoftwareWarning
+                TrayTooltipEnabled = !Flags.DisableTrayTooltip,
+                DisableConflictingSoftwareWarning = Flags.DisableConflictingSoftwareWarning
             };
 
             MainWindow = mainWindow;
@@ -178,7 +178,7 @@ public partial class App
 
             await InitAMDOverclocking();
 
-            if (_flags.Minimized)
+            if (Flags.Minimized)
             {
                 mainWindow.WindowState = WindowState.Minimized;
                 mainWindow.Show();
@@ -204,7 +204,7 @@ public partial class App
 
                 Compatibility.PrintControllerVersionAsync().ConfigureAwait(false);
                 InitFloatingGadget();
-                if (_flags.Debug)
+                if (Flags.Debug)
                 {
                     Console.WriteLine(@"[Startup] Startup Complete.");
                 }
@@ -212,7 +212,7 @@ public partial class App
         }
         catch (Exception ex)
         {
-            if (_flags?.Debug == true)
+            if (Flags?.Debug == true)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(@$"CRITICAL EXCEPTION: {ex}");
@@ -232,23 +232,23 @@ public partial class App
 
     private void ConfigureFeatureFlags()
     {
-        IoCContainer.Resolve<HttpClientFactory>().SetProxy(_flags!.ProxyUrl, _flags.ProxyUsername, _flags.ProxyPassword, _flags.ProxyAllowAllCerts);
-        IoCContainer.Resolve<PowerModeFeature>().AllowAllPowerModesOnBattery = _flags.AllowAllPowerModesOnBattery;
-        IoCContainer.Resolve<RGBKeyboardBacklightController>().ForceDisable = _flags.ForceDisableRgbKeyboardSupport;
-        IoCContainer.Resolve<SpectrumKeyboardBacklightController>().ForceDisable = _flags.ForceDisableSpectrumKeyboardSupport;
-        IoCContainer.Resolve<WhiteKeyboardLenovoLightingBacklightFeature>().ForceDisable = _flags.ForceDisableLenovoLighting;
-        IoCContainer.Resolve<PanelLogoLenovoLightingBacklightFeature>().ForceDisable = _flags.ForceDisableLenovoLighting;
-        IoCContainer.Resolve<PortsBacklightFeature>().ForceDisable = _flags.ForceDisableLenovoLighting;
-        IoCContainer.Resolve<IGPUModeFeature>().ExperimentalGPUWorkingMode = _flags.ExperimentalGPUWorkingMode;
-        IoCContainer.Resolve<DGPUNotify>().ExperimentalGPUWorkingMode = _flags.ExperimentalGPUWorkingMode;
-        IoCContainer.Resolve<UpdateChecker>().Disable = _flags.DisableUpdateChecker;
+        IoCContainer.Resolve<HttpClientFactory>().SetProxy(Flags!.ProxyUrl, Flags.ProxyUsername, Flags.ProxyPassword, Flags.ProxyAllowAllCerts);
+        IoCContainer.Resolve<PowerModeFeature>().AllowAllPowerModesOnBattery = Flags.AllowAllPowerModesOnBattery;
+        IoCContainer.Resolve<RGBKeyboardBacklightController>().ForceDisable = Flags.ForceDisableRgbKeyboardSupport;
+        IoCContainer.Resolve<SpectrumKeyboardBacklightController>().ForceDisable = Flags.ForceDisableSpectrumKeyboardSupport;
+        IoCContainer.Resolve<WhiteKeyboardLenovoLightingBacklightFeature>().ForceDisable = Flags.ForceDisableLenovoLighting;
+        IoCContainer.Resolve<PanelLogoLenovoLightingBacklightFeature>().ForceDisable = Flags.ForceDisableLenovoLighting;
+        IoCContainer.Resolve<PortsBacklightFeature>().ForceDisable = Flags.ForceDisableLenovoLighting;
+        IoCContainer.Resolve<IGPUModeFeature>().ExperimentalGPUWorkingMode = Flags.ExperimentalGPUWorkingMode;
+        IoCContainer.Resolve<DGPUNotify>().ExperimentalGPUWorkingMode = Flags.ExperimentalGPUWorkingMode;
+        IoCContainer.Resolve<UpdateChecker>().Disable = Flags.DisableUpdateChecker;
     }
 
     private void HandleCriticalStartupError(Exception ex)
     {
         var errorMsg = $"CRITICAL STARTUP ERROR:\n{ex}";
 
-        if (_flags is { Debug: true })
+        if (Flags is { Debug: true })
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(@$"\n{new string('=', 30)}\n{errorMsg}\n{new string('=', 30)}");
@@ -257,7 +257,7 @@ public partial class App
             try
             {
                 Console.ReadLine();
-            } 
+            }
             catch { /* Ignore */ }
         }
         else
@@ -513,7 +513,7 @@ public partial class App
             return;
         }
 
-        if (_flags is { Debug: true })
+        if (Flags is { Debug: true })
         {
             Console.WriteLine(@$"[UnhandledException] {exception}");
         }
@@ -861,20 +861,20 @@ public partial class App
                 return;
             case FloatingGadgetState.Show:
             case FloatingGadgetState.Toggle when FloatingGadget is not { IsVisible: true }:
-            {
-                var settings = IoCContainer.Resolve<ApplicationSettings>();
-                bool shouldBeUpper = settings.Store.SelectedStyleIndex == 1;
-
-                if (FloatingGadget != null && (FloatingGadget is FloatingGadgetUpper) != shouldBeUpper)
                 {
-                    FloatingGadget.Close();
-                    FloatingGadget = null;
-                }
+                    var settings = IoCContainer.Resolve<ApplicationSettings>();
+                    bool shouldBeUpper = settings.Store.SelectedStyleIndex == 1;
 
-                EnsureGadgetCreated(shouldBeUpper);
-                FloatingGadget?.Show();
-                break;
-            }
+                    if (FloatingGadget != null && (FloatingGadget is FloatingGadgetUpper) != shouldBeUpper)
+                    {
+                        FloatingGadget.Close();
+                        FloatingGadget = null;
+                    }
+
+                    EnsureGadgetCreated(shouldBeUpper);
+                    FloatingGadget?.Show();
+                    break;
+                }
             case FloatingGadgetState.Toggle when FloatingGadget is { IsVisible: true }:
                 FloatingGadget.Hide();
                 break;

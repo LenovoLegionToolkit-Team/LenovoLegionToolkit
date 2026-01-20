@@ -10,6 +10,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using UniversalFanControl.Lib.Generic.Api;
+using UniversalFanControl.Lib.Generic.Utils;
 
 namespace LenovoLegionToolkit.Lib;
 
@@ -406,6 +408,12 @@ public readonly struct GodModePreset
     public bool? FanFullSpeed { get; init; }
     public int? MinValueOffset { get; init; }
     public int? MaxValueOffset { get; init; }
+    public int? CriticalTemp { get; init; }
+    public bool? IsLegion { get; init; }
+    public float? LegionLowTempThreshold { get; init; }
+    public int? AccelerationDcrReduction { get; init; }
+    public int? DecelerationDcrReduction { get; init; }
+    public string? FanCurveJson { get; init; }
 
     public override string ToString() =>
         $"{nameof(Name)}: {Name}," +
@@ -424,7 +432,12 @@ public readonly struct GodModePreset
         $" {nameof(FanTableInfo)}: {FanTableInfo}," +
         $" {nameof(FanFullSpeed)}: {FanFullSpeed}," +
         $" {nameof(MinValueOffset)}: {MinValueOffset}," +
-        $" {nameof(MaxValueOffset)}: {MaxValueOffset}";
+        $" {nameof(MaxValueOffset)}: {MaxValueOffset}," +
+        $" {nameof(CriticalTemp)}: {CriticalTemp}," +
+        $" {nameof(IsLegion)}: {IsLegion}," +
+        $" {nameof(LegionLowTempThreshold)}: {LegionLowTempThreshold}," +
+        $" {nameof(AccelerationDcrReduction)}: {AccelerationDcrReduction}," +
+        $" {nameof(DecelerationDcrReduction)}: {DecelerationDcrReduction}";
 }
 
 public readonly struct GPUStatus(GPUState state, string? performanceState, List<Process> processes)
