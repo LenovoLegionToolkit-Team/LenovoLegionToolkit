@@ -14,7 +14,7 @@ public class FanControlViewModel : INotifyPropertyChanged
 {
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    private FanCurveController? _fanController;
+    private readonly FanCurveManager _manager;
     private readonly FanCurveEntry _curveEntry;
 
     public FanType FanType { get; set; }
@@ -32,6 +32,7 @@ public class FanControlViewModel : INotifyPropertyChanged
                 _curveEntry.CriticalTemp = value;
                 OnPropertyChanged();
                 UpdateController();
+                _manager.UpdateGlobalSettings(_curveEntry);
             }
         }
     }
@@ -46,6 +47,7 @@ public class FanControlViewModel : INotifyPropertyChanged
                 _curveEntry.AccelerationDcrReduction = value;
                 OnPropertyChanged();
                 UpdateController();
+                _manager.UpdateGlobalSettings(_curveEntry);
             }
         }
     }
@@ -60,6 +62,7 @@ public class FanControlViewModel : INotifyPropertyChanged
                 _curveEntry.DecelerationDcrReduction = value;
                 OnPropertyChanged();
                 UpdateController();
+                _manager.UpdateGlobalSettings(_curveEntry);
             }
         }
     }
@@ -74,6 +77,7 @@ public class FanControlViewModel : INotifyPropertyChanged
                 _curveEntry.IsLegion = value;
                 OnPropertyChanged();
                 UpdateController();
+                _manager.UpdateGlobalSettings(_curveEntry);
             }
         }
     }
@@ -88,34 +92,7 @@ public class FanControlViewModel : INotifyPropertyChanged
                 _curveEntry.LegionLowTempThreshold = value;
                 OnPropertyChanged();
                 UpdateController();
-            }
-        }
-    }
-
-    private int _updateInterval = 500;
-    public int UpdateInterval
-    {
-        get => _updateInterval;
-        set
-        {
-            if (_updateInterval != value)
-            {
-                _updateInterval = Math.Max(50, value);
-                OnPropertyChanged();
-            }
-        }
-    }
-
-    private int _uiUpdateInterval = 500;
-    public int UiUpdateInterval
-    {
-        get => _uiUpdateInterval;
-        set
-        {
-            if (_uiUpdateInterval != value)
-            {
-                _uiUpdateInterval = Math.Max(50, value);
-                OnPropertyChanged();
+                _manager.UpdateGlobalSettings(_curveEntry);
             }
         }
     }
@@ -129,8 +106,13 @@ public class FanControlViewModel : INotifyPropertyChanged
             if (Math.Abs(_maxPwm - value) > 0.01)
             {
                 _maxPwm = value;
+                // Also update entry
+                _curveEntry.MaxPwm = value;
                 OnPropertyChanged();
                 UpdateController();
+                // Not syncing MaxPwm globally as it might be fan specific?
+                // User asked for: Legion Mode / Critical Temp / Acc / Dec / Low Temp
+                // So MaxPwm is not included in the sync list.
             }
         }
     }
@@ -204,14 +186,17 @@ public class FanControlViewModel : INotifyPropertyChanged
 
     #endregion
 
-    public int CalculatedIndex => _fanController?.CalculatedIndex ?? 0;
+    public int CalculatedIndex => 0; // _fanController?.CalculatedIndex ?? 0;
 
-    public FanControlViewModel(ushort fanType, FanCurveEntry curveEntry, Func<FanCurveConfig, FanCurveController> controllerFactory, FanCurveManager manager)
+    public FanControlViewModel(ushort fanType, FanCurveEntry curveEntry, FanCurveManager manager)
     {
         FanType = (FanType)fanType;
         _curveEntry = curveEntry;
+        _manager = manager;
 
-        _fanController = controllerFactory(CreateConfig());
+        // Initialize MaxPwm from entry
+        _maxPwm = _curveEntry.MaxPwm;
+
         manager.RegisterViewModel(FanType, this);
 
         AddPointCommand = new RelayCommand(_ => AddPoint(), _ => true);
@@ -294,28 +279,7 @@ public class FanControlViewModel : INotifyPropertyChanged
 
     private void UpdateController()
     {
-        _fanController?.UpdateConfig(CreateConfig());
-    }
-
-    private FanCurveConfig CreateConfig()
-    {
-        return new FanCurveConfig
-        {
-            CriticalTemp = CriticalTemp,
-            MaxPwm = MaxPwm,
-            KickstartPwm = 50.0,
-            AccelerationDcrReduction = AccelerationDcrReduction,
-            DecelerationDcrReduction = DecelerationDcrReduction,
-            IsLegion = IsLegion,
-            LegionLowTempThreshold = LegionLowTempThreshold,
-            RampUpThresholds = _curveEntry.RampUpThresholds,
-            RampDownThresholds = _curveEntry.RampDownThresholds
-        };
-    }
-
-    public byte? CalculateTargetPWM(float temperature, int forcedMinIndex = 0)
-    {
-        return _fanController?.Update(temperature, _curveEntry.CurveNodes, forcedMinIndex);
+        _manager.UpdateConfig(FanType, _curveEntry);
     }
 
     public void UpdateMonitoring(float temperature, int rpm, byte pwmByte)
@@ -330,6 +294,42 @@ public class FanControlViewModel : INotifyPropertyChanged
     {
         _curveEntry.Type = FanType;
         return _curveEntry;
+    }
+
+    public void NotifyGlobalSettingsChanged()
+    {
+        OnPropertyChanged(nameof(IsLegion));
+        OnPropertyChanged(nameof(CriticalTemp));
+        OnPropertyChanged(nameof(LegionLowTempThreshold));
+        OnPropertyChanged(nameof(AccelerationDcrReduction));
+        OnPropertyChanged(nameof(DecelerationDcrReduction));
+    }
+
+    public void ResetToDefault(FanTableInfo defaultInfo)
+    {
+        var defaultEntry = FanCurveEntry.FromFanTableInfo(defaultInfo, (ushort)FanType);
+        
+        // Reset properties
+        _curveEntry.IsLegion = defaultEntry.IsLegion;
+        _curveEntry.CriticalTemp = defaultEntry.CriticalTemp;
+        _curveEntry.LegionLowTempThreshold = defaultEntry.LegionLowTempThreshold;
+        _curveEntry.AccelerationDcrReduction = defaultEntry.AccelerationDcrReduction;
+        _curveEntry.DecelerationDcrReduction = defaultEntry.DecelerationDcrReduction;
+        // MaxPwm is usually specific and maybe shouldn't be reset to 255 if user tuned it, but "Default" usually implies full reset. 
+        // defaultEntry.MaxPwm is initialized to 255.0 in constructor.
+        _curveEntry.MaxPwm = defaultEntry.MaxPwm;
+
+        // Reset nodes
+        _curveEntry.CurveNodes.Clear();
+        foreach (var node in defaultEntry.CurveNodes)
+        {
+            _curveEntry.CurveNodes.Add(node);
+        }
+
+        NotifyGlobalSettingsChanged();
+        OnPropertyChanged(nameof(MaxPwm));
+        UpdateController();
+        _manager.UpdateGlobalSettings(_curveEntry);
     }
 
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)

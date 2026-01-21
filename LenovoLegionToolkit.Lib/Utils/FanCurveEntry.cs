@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using UniversalFanControl.Lib.Generic.Utils;
+using UniversalFanControl.Lib.Generic.Api;
 
 namespace LenovoLegionToolkit.Lib.Utils;
 
@@ -63,6 +64,7 @@ public class FanCurveEntry : INotifyPropertyChanged
     public float LegionLowTempThreshold { get; set; } = 40f;
     public int AccelerationDcrReduction { get; set; } = 1;
     public int DecelerationDcrReduction { get; set; } = 2;
+    public double MaxPwm { get; set; } = 255.0;
 
     public FanCurveEntry()
     {
@@ -156,7 +158,8 @@ public class FanCurveEntry : INotifyPropertyChanged
             IsLegion,
             LegionLowTempThreshold,
             AccelerationDcrReduction,
-            DecelerationDcrReduction
+            DecelerationDcrReduction,
+            MaxPwm
         };
 
         return JsonConvert.SerializeObject(exportData, Formatting.Indented);
@@ -197,8 +200,25 @@ public class FanCurveEntry : INotifyPropertyChanged
         if (data.LegionLowTempThreshold != null) entry.LegionLowTempThreshold = data.LegionLowTempThreshold;
         if (data.AccelerationDcrReduction != null) entry.AccelerationDcrReduction = data.AccelerationDcrReduction;
         if (data.DecelerationDcrReduction != null) entry.DecelerationDcrReduction = data.DecelerationDcrReduction;
+        if (data.MaxPwm != null) entry.MaxPwm = data.MaxPwm;
 
         return entry;
+    }
+
+    public FanCurveConfig ToConfig()
+    {
+        return new FanCurveConfig
+        {
+            CriticalTemp = CriticalTemp,
+            MaxPwm = MaxPwm,
+            KickstartPwm = 50.0,
+            AccelerationDcrReduction = AccelerationDcrReduction,
+            DecelerationDcrReduction = DecelerationDcrReduction,
+            IsLegion = IsLegion,
+            LegionLowTempThreshold = LegionLowTempThreshold,
+            RampUpThresholds = RampUpThresholds,
+            RampDownThresholds = RampDownThresholds
+        };
     }
 
     private double CalculateTargetPercent(float temp, List<CurveNode> sortedNodes)

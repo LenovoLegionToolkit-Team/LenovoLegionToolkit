@@ -22,8 +22,6 @@ public partial class FanCurveControlV3
 {
     private FanControlViewModel? _viewModel;
     private FanTableData[]? _tableData;
-    private FanType _fanType = FanType.Cpu;
-    private int _fanId = 0;
 
     private static T? FindVisualChild<T>(DependencyObject parent) where T : DependencyObject
     {
@@ -75,7 +73,7 @@ public partial class FanCurveControlV3
         }), DispatcherPriority.ApplicationIdle);
     }
 
-    public int FanId => _fanId;
+    public int FanId => 0;
 
     private async void OnLoaded(object sender, RoutedEventArgs e)
     {
@@ -108,10 +106,18 @@ public partial class FanCurveControlV3
 
     public void SetFanTableInfo(FanTableInfo fanTableInfo, FanTable minimumFanTable, FanType fanType = FanType.Cpu, int fanId = 0, FanCurveEntry? savedEntry = null)
     {
-        var curveEntry = savedEntry ?? FanCurveEntry.FromFanTableInfo(fanTableInfo, (ushort)fanType);
+        var manager = IoCContainer.Resolve<FanCurveManager>();
+        var existingEntry = manager.GetEntry((Lib.FanType)fanType);
+
+        var curveEntry = existingEntry ?? savedEntry ?? FanCurveEntry.FromFanTableInfo(fanTableInfo, (ushort)fanType);
+
+        if (existingEntry == null)
+        {
+            manager.AddEntry(curveEntry);
+        }
 
         _viewModel = IoCContainer.Resolve<FanControlViewModel>(
-            new NamedParameter("fanType", fanType),
+            new NamedParameter("fanType", (ushort)fanType),
             new TypedParameter(typeof(FanCurveEntry), curveEntry)
         );
 
@@ -163,6 +169,11 @@ public partial class FanCurveControlV3
         {
             return null;
         }
+    }
+
+    public void ResetToDefault(FanTableInfo defaultInfo)
+    {
+        _viewModel?.ResetToDefault(defaultInfo);
     }
 
     public FanControlViewModel? GetViewModel() => _viewModel;

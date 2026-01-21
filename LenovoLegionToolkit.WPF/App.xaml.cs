@@ -140,6 +140,7 @@ public partial class App
                 InitGpuOverclockControllerAsync(),
                 InitHybridModeAsync(),
                 InitAutomationProcessorAsync(),
+                InitFanCurveManagerAsync(),
             };
 
             await Task.WhenAll(initTasks);
@@ -642,6 +643,20 @@ public partial class App
         catch (Exception ex)
         {
             Log.Instance.Trace($"Couldn't initialize automation processor.", ex);
+        }
+    }
+
+    private static async Task InitFanCurveManagerAsync()
+    {
+        try
+        {
+            // Resolve to start the manager (and its loop)
+            IoCContainer.Resolve<FanCurveManager>();
+            await Task.CompletedTask;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Couldn't initialize FanCurveManager.", ex);
         }
     }
 

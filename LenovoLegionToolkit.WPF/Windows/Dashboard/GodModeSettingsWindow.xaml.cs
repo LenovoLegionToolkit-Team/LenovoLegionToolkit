@@ -588,10 +588,7 @@ public partial class GodModeSettingsWindow
         {
             foreach (var ctrl in _fanCurveControls)
             {
-                if (ctrl.GetViewModel() is { } vm)
-                {
-                    ctrl.SetFanTableInfo(defaultInfo, minimum, (FanType)vm.FanType);
-                }
+                ctrl.ResetToDefault(defaultInfo);
             }
         }
         else
