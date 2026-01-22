@@ -26,6 +26,7 @@ public partial class GodModeSettingsWindow
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
     private readonly LegionSpaceDisabler _legionSpaceDisabler = IoCContainer.Resolve<LegionSpaceDisabler>();
     private readonly LegionZoneDisabler _legionZoneDisabler = IoCContainer.Resolve<LegionZoneDisabler>();
+    private readonly FanCurveManager _fanCurveManager = IoCContainer.Resolve<FanCurveManager>();
 
     private GodModeState? _state;
     private Dictionary<PowerModeState, GodModeDefaults>? _defaults;
@@ -154,6 +155,12 @@ public partial class GodModeSettingsWindow
                 CPUPeakPowerLimit = preset.CPUPeakPowerLimit?.WithValue(_cpuPeakPowerLimitControl.Value),
                 CPUCrossLoadingPowerLimit = preset.CPUCrossLoadingPowerLimit?.WithValue(_cpuCrossLoadingLimitControl.Value),
                 CPUPL1Tau = preset.CPUPL1Tau?.WithValue(_cpuPL1TauControl.Value),
+                APUsPPTPowerLimit = preset.APUsPPTPowerLimit?.WithValue(_apuSPPTPowerLimitControl.Value),
+                CPUTemperatureLimit = preset.CPUTemperatureLimit?.WithValue(_cpuTemperatureLimitControl.Value),
+                GPUPowerBoost = preset.GPUPowerBoost?.WithValue(_gpuPowerBoostControl.Value),
+                GPUConfigurableTGP = preset.GPUConfigurableTGP?.WithValue(_gpuConfigurableTGPControl.Value),
+                GPUTemperatureLimit = preset.GPUTemperatureLimit?.WithValue(_gpuTemperatureLimitControl.Value),
+                GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline?.WithValue(_gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Value),
                 GPUToCPUDynamicBoost = preset.GPUToCPUDynamicBoost?.WithValue(_gpuToCpuDynamicBoostControl.Value),
                 FanFullSpeed = preset.FanFullSpeed is not null ? _fanFullSpeedToggle.IsChecked : null,
                 MaxValueOffset = preset.MaxValueOffset is not null ? (int?)_maxValueOffsetNumberBox.Value : null,
@@ -165,12 +172,6 @@ public partial class GodModeSettingsWindow
                 EnableOverclocking = _toggleOcCard.Visibility == Visibility.Visible ? _overclockingToggle.IsChecked : preset.EnableOverclocking,
 
                 FanTableInfo = fanInfo,
-                CriticalTemp = App.Flags.EnableCustomFanCurve ? (_fanCurveControls.Count > 0 ? _fanCurveControls[0].GetViewModel()?.CriticalTemp : preset.CriticalTemp) : preset.CriticalTemp,
-                IsLegion = App.Flags.EnableCustomFanCurve ? (_fanCurveControls.Count > 0 ? _fanCurveControls[0].GetViewModel()?.IsLegion : preset.IsLegion) : preset.IsLegion,
-                LegionLowTempThreshold = App.Flags.EnableCustomFanCurve ? (_fanCurveControls.Count > 0 ? _fanCurveControls[0].GetViewModel()?.LegionLowTempThreshold : preset.LegionLowTempThreshold) : preset.LegionLowTempThreshold,
-                AccelerationDcrReduction = App.Flags.EnableCustomFanCurve ? (_fanCurveControls.Count > 0 ? _fanCurveControls[0].GetViewModel()?.AccelerationDcrReduction : preset.AccelerationDcrReduction) : preset.AccelerationDcrReduction,
-                DecelerationDcrReduction = App.Flags.EnableCustomFanCurve ? (_fanCurveControls.Count > 0 ? _fanCurveControls[0].GetViewModel()?.DecelerationDcrReduction : preset.DecelerationDcrReduction) : preset.DecelerationDcrReduction,
-                FanCurveJson = App.Flags.EnableCustomFanCurve ? (_fanCurveControls.Count > 0 ? Newtonsoft.Json.JsonConvert.SerializeObject(_fanCurveControls.Select(c => c.GetViewModel()?.GetCurveEntry()).ToList()) : preset.FanCurveJson) : preset.FanCurveJson,
             };
 
             var newPresets = new Dictionary<Guid, GodModePreset>(_state.Value.Presets)
@@ -242,20 +243,7 @@ public partial class GodModeSettingsWindow
                     }
                     _fanCurveControls.Clear();
                     _fanSelector.Items.Clear();
-
-                    List<FanCurveEntry>? savedEntries = null;
-                    if (!string.IsNullOrEmpty(preset.FanCurveJson))
-                    {
-                        try
-                        {
-                            savedEntries = Newtonsoft.Json.JsonConvert.DeserializeObject<List<FanCurveEntry>>(preset.FanCurveJson);
-                        }
-                        catch
-                        {
-                            Log.Instance.Trace($"Exception when deserializing FanCurveJson: {preset.FanCurveJson}");
-                        }
-                    }
-
+                    
                     int insertIndex = _fanCurveControlStackPanel.Children.IndexOf(_fanSelector) + 1;
                     foreach (var data in preset.FanTableInfo.Value.Data)
                     {
@@ -264,7 +252,7 @@ public partial class GodModeSettingsWindow
                             continue;
                         }
 
-                        var ctrl = CreateFanControl(data, preset, preset.FanTableInfo.Value, minimum, savedEntries);
+                        var ctrl = CreateFanControl(data, preset, preset.FanTableInfo.Value, minimum);
                         _fanCurveControls.Add(ctrl);
                         _fanCurveControlStackPanel.Children.Insert(insertIndex++, ctrl);
                         _fanSelector.Items.Add(ctrl.Tag);
@@ -354,14 +342,21 @@ public partial class GodModeSettingsWindow
         }
     }
 
-    private Controls.FanCurveControlV3 CreateFanControl(FanTableData data, GodModePreset preset, FanTableInfo info, FanTable minimum, List<FanCurveEntry>? savedEntries)
+    private Controls.FanCurveControlV3 CreateFanControl(FanTableData data, GodModePreset preset, FanTableInfo info, FanTable minimum)
     {
         var fanType = data.Type switch
         {
-            FanTableType.CPU => FanType.Cpu,
-            FanTableType.GPU => FanType.Gpu,
-            _ => FanType.System
+            FanTableType.CPU => LenovoLegionToolkit.Lib.FanType.Cpu,
+            FanTableType.GPU => LenovoLegionToolkit.Lib.FanType.Gpu,
+            _ => LenovoLegionToolkit.Lib.FanType.System
         };
+
+        var entry = _fanCurveManager.GetEntry(fanType);
+        if (entry == null)
+        {
+            entry = FanCurveEntry.FromFanTableInfo(info, (ushort)fanType);
+            _fanCurveManager.AddEntry(entry);
+        }
 
         var ctrl = new Controls.FanCurveControlV3
         {
@@ -369,33 +364,19 @@ public partial class GodModeSettingsWindow
             Tag = fanType.GetDisplayName()
         };
 
-        FanCurveEntry? savedEntry = savedEntries?.FirstOrDefault(e => e.Type == (Lib.FanType)fanType);
-        if (savedEntry != null)
-        {
-            if (preset.CriticalTemp.HasValue) savedEntry.CriticalTemp = preset.CriticalTemp.Value;
-            if (preset.IsLegion.HasValue) savedEntry.IsLegion = preset.IsLegion.Value;
-            if (preset.LegionLowTempThreshold.HasValue) savedEntry.LegionLowTempThreshold = preset.LegionLowTempThreshold.Value;
-            if (preset.AccelerationDcrReduction.HasValue) savedEntry.AccelerationDcrReduction = preset.AccelerationDcrReduction.Value;
-            if (preset.DecelerationDcrReduction.HasValue) savedEntry.DecelerationDcrReduction = preset.DecelerationDcrReduction.Value;
-        }
-
-        ctrl.SetFanTableInfo(info, minimum, fanType, data.FanId, savedEntry);
+        ctrl.Initialize(entry, info.Data, fanType, data.FanId);
         ctrl.Visibility = _fanCurveControls.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
-        ctrl.OnFanSettingsSyncRequired += (s, _) =>
+        
+        ctrl.SettingsChanged += (s, e) =>
         {
-            var sourceVm = (s as Controls.FanCurveControlV3)?.GetViewModel();
-            if (sourceVm == null)
-            {
-                return;
-            }
-            foreach (var other in _fanCurveControls)
-            {
-                if (other != s)
-                {
-                    other.SyncFanSettings(sourceVm);
-                }
-            }
+             _fanCurveManager.UpdateConfig(fanType, entry);
+             _fanCurveManager.UpdateGlobalSettings(entry);
         };
+
+        _fanCurveManager.RegisterViewModel(fanType, ctrl);
+
+        ctrl.Unloaded += (s, e) => _fanCurveManager.UnregisterViewModel(fanType, ctrl);
+
         return ctrl;
     }
 
@@ -462,13 +443,14 @@ public partial class GodModeSettingsWindow
                         }
 
                         var fanTypeStr = ctrl.Tag?.ToString() ?? string.Empty;
-                        FanType fanType = FanType.System;
-                        foreach (FanType ft in Enum.GetValues(typeof(FanType)))
+                        LenovoLegionToolkit.Lib.FanType fanType = LenovoLegionToolkit.Lib.FanType.System;
+                        foreach (LenovoLegionToolkit.Lib.FanType ft in Enum.GetValues(typeof(LenovoLegionToolkit.Lib.FanType)))
                         {
                             if (ft.GetDisplayName() == fanTypeStr) { fanType = ft; break; }
                         }
 
-                        ctrl.SetFanTableInfo(defaultTableInfo, minimum, fanType, fanData.FanId);
+                        var defaultEntry = FanCurveEntry.FromFanTableInfo(defaultTableInfo, (ushort)fanType);
+                        ctrl.Reset(defaultEntry);
                     }
                 }
                 else
@@ -588,7 +570,8 @@ public partial class GodModeSettingsWindow
         {
             foreach (var ctrl in _fanCurveControls)
             {
-                ctrl.ResetToDefault(defaultInfo);
+                var entry = FanCurveEntry.FromFanTableInfo(defaultInfo, (ushort)ctrl.FanType);
+                ctrl.Reset(entry);
             }
         }
         else

@@ -34,12 +34,6 @@ public class GodModeSettings() : AbstractSettings<GodModeSettings.GodModeSetting
             public bool? FanFullSpeed { get; init; }
             public int? MinValueOffset { get; init; }
             public int? MaxValueOffset { get; init; }
-            public int? CriticalTemp { get; init; }
-            public bool? IsLegion { get; init; }
-            public float? LegionLowTempThreshold { get; init; }
-            public int? AccelerationDcrReduction { get; init; }
-            public int? DecelerationDcrReduction { get; init; }
-            public string? FanCurveJson { get; init; }
         }
 
         public Guid ActivePresetId { get; set; }

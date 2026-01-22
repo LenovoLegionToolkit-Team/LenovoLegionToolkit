@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
-using UniversalFanControl.Lib.Generic.Utils;
 using UniversalFanControl.Lib.Generic.Api;
 
 namespace LenovoLegionToolkit.Lib.Utils;
@@ -205,7 +204,7 @@ public class FanCurveEntry : INotifyPropertyChanged
         return entry;
     }
 
-    public FanCurveConfig ToConfig()
+    internal FanCurveConfig ToConfig()
     {
         return new FanCurveConfig
         {

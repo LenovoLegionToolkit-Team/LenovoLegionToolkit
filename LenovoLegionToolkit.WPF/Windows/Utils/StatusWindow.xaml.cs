@@ -100,7 +100,7 @@ public partial class StatusWindow
     {
         if (!_machineInfo.HasValue) return;
 
-        var isModernLegion = (int)_machineInfo.Value.LegionSeries <= 7;
+        var isModernLegion = (int)_machineInfo.Value.LegionSeries <= (int)LegionSeries.LOQ;
         var useSensors = _settings.Store.UseNewSensorDashboard && isModernLegion;
         var sensorVis = useSensors ? Visibility.Visible : Visibility.Collapsed;
 
@@ -160,7 +160,7 @@ public partial class StatusWindow
     private async Task<StatusWindowData> GetStatusWindowDataAsync(CancellationToken token, bool skipRetry = false)
     {
         _machineInfo ??= await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-        var isModern = (int)_machineInfo.Value.LegionSeries <= 7;
+        var isModern = (int)_machineInfo.Value.LegionSeries <= (int)LegionSeries.LOQ;
         var tasks = new List<Task>();
 
         PowerModeState? state = null; ITSMode? mode = null; string? godModePresetName = null;
@@ -249,7 +249,7 @@ public partial class StatusWindow
         UpdateUiLayout(data.GPUStatus);
         RefreshPowerMode(data.PowerModeState, data.ITSMode, data.GodModePresetName);
 
-        var isModern = _machineInfo.HasValue && (int)_machineInfo.Value.LegionSeries <= 7;
+        var isModern = _machineInfo.HasValue && (int)_machineInfo.Value.LegionSeries <= (int)LegionSeries.LOQ;
         var useSensors = _settings.Store.UseNewSensorDashboard && isModern;
 
         if (useSensors)

@@ -1,28 +1,26 @@
-﻿using LenovoLegionToolkit.Lib;
-using LenovoLegionToolkit.Lib.Controllers.Sensors;
+﻿using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Utils;
-using UniversalFanControl.Lib;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Features;
+using UniversalFanControl.Lib;
+using UniversalFanControl.Lib.Generic.Utils;
 using UniversalFanControl.Lib.Generic.Api;
 
 namespace LenovoLegionToolkit.Lib.Utils;
-
+    
 public class FanCurveManager : IDisposable
 {
     private readonly SensorsGroupController _sensors;
     private readonly FanCurveSettings _settings;
     private readonly PowerModeFeature _powerModeFeature;
-    private readonly Func<FanCurveConfig, FanCurveController> _controllerFactory;
     
     private readonly FanControl _fanHardware;
-    private readonly Dictionary<FanType, FanControlViewModel> _activeViewModels = new();
+    private readonly Dictionary<FanType, IFanControlView> _activeViewModels = new();
     private readonly Dictionary<FanType, FanCurveController> _activeControllers = new();
     
     private CancellationTokenSource? _cts;
@@ -32,13 +30,11 @@ public class FanCurveManager : IDisposable
     public FanCurveManager(
         SensorsGroupController sensors,
         FanCurveSettings settings,
-        PowerModeFeature powerModeFeature,
-        Func<FanCurveConfig, FanCurveController> controllerFactory)
+        PowerModeFeature powerModeFeature)
     {
         _sensors = sensors;
         _settings = settings;
         _powerModeFeature = powerModeFeature;
-        _controllerFactory = controllerFactory;
 
         _fanHardware = new FanControl();
         if (!_fanHardware.InitiliazeFanControl())
@@ -49,7 +45,7 @@ public class FanCurveManager : IDisposable
         StartControlLoop();
     }
 
-    public void RegisterViewModel(FanType type, FanControlViewModel vm)
+    public void RegisterViewModel(FanType type, IFanControlView vm)
     {
         lock (_activeViewModels)
         {
@@ -57,11 +53,14 @@ public class FanCurveManager : IDisposable
         }
     }
 
-    public void UnregisterViewModel(FanType type)
+    public void UnregisterViewModel(FanType type, IFanControlView vm)
     {
         lock (_activeViewModels)
         {
-            _activeViewModels.Remove(type);
+            if (_activeViewModels.TryGetValue(type, out var current) && current == vm)
+            {
+                _activeViewModels.Remove(type);
+            }
         }
     }
 
@@ -118,7 +117,6 @@ public class FanCurveManager : IDisposable
             {
                 UpdateConfig(entry.Type, entry);
                 
-                // Update ViewModel if exists
                 lock (_activeViewModels)
                 {
                     if (_activeViewModels.TryGetValue(entry.Type, out var vm))
@@ -138,10 +136,13 @@ public class FanCurveManager : IDisposable
             if (_activeControllers.TryGetValue(type, out var controller))
             {
                 controller.UpdateConfig(entry.ToConfig());
+                controller.SetCurve(entry.CurveNodes.Select(n => new UniversalFanControl.Lib.Generic.Utils.CurveNode { Temperature = n.Temperature, TargetPercent = n.TargetPercent }));
             }
             else
             {
-                _activeControllers[type] = _controllerFactory(entry.ToConfig());
+                var newController = new FanCurveController(entry.ToConfig(), msg => Log.Instance.Trace($"{msg}"));
+                newController.SetCurve(entry.CurveNodes.Select(n => new UniversalFanControl.Lib.Generic.Utils.CurveNode { Temperature = n.Temperature, TargetPercent = n.TargetPercent }));
+                _activeControllers[type] = newController;
             }
         }
         _settings.Save();
@@ -168,18 +169,16 @@ public class FanCurveManager : IDisposable
                     float cpuTemp = await _sensors.GetCpuTemperatureAsync().ConfigureAwait(false);
                     float gpuTemp = await _sensors.GetGpuTemperatureAsync().ConfigureAwait(false);
 
-                    // Iterate over settings entries instead of ViewModels
                     var entries = _settings.Store.Entries.ToList();
 
                     foreach (var entry in entries)
                     {
-                         // Ensure controller exists
                          FanCurveController? controller;
                          lock (_activeControllers)
                          {
                              if (!_activeControllers.TryGetValue(entry.Type, out controller))
                              {
-                                 controller = _controllerFactory(entry.ToConfig());
+                                 controller = new FanCurveController(entry.ToConfig(), msg => Log.Instance.Trace($"{msg}"));
                                  _activeControllers[entry.Type] = controller;
                              }
                          }
@@ -189,8 +188,8 @@ public class FanCurveManager : IDisposable
                          float temp = entry.Type == FanType.Gpu ? gpuTemp : cpuTemp;
                          if (temp < 0) temp = 0;
 
-                         // Calculate PWM
-                         byte? pwm = controller.Update(temp, entry.CurveNodes);
+                         controller.SetCurve(entry.CurveNodes.Select(n => new UniversalFanControl.Lib.Generic.Utils.CurveNode { Temperature = n.Temperature, TargetPercent = n.TargetPercent }));
+                         byte? pwm = controller.Update(temp);
                          
                          int rpm = 0;
                          if (pwm.HasValue && _fanHardware != null)
@@ -200,7 +199,6 @@ public class FanCurveManager : IDisposable
                              rpm = _fanHardware.GetFanRpm(regs.rpmLow, regs.rpmHigh);
                          }
 
-                         // Update ViewModel if present
                          lock (_activeViewModels)
                          {
                              if (_activeViewModels.TryGetValue(entry.Type, out var vm))
