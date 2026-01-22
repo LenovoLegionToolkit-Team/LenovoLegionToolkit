@@ -16,13 +16,14 @@ public static partial class WMI
     {
         public static class ProcessStartTrace
         {
-            public static IDisposable Listen(Action<int, string> handler) => WMI.Listen("root\\CIMV2",
+            public static IDisposable Listen(Action<int, int, string> handler) => WMI.Listen("root\\CIMV2",
                 $"SELECT * FROM Win32_ProcessStartTrace",
                 pdc =>
                 {
                     var processId = Convert.ToInt32(pdc["ProcessID"].Value);
+                    var parentProcessId = Convert.ToInt32(pdc["ParentProcessID"].Value);
                     var processName = (string)pdc["ProcessName"].Value;
-                    handler(processId, Path.GetFileNameWithoutExtension(processName));
+                    handler(processId, parentProcessId, Path.GetFileNameWithoutExtension(processName));
                 });
         }
 

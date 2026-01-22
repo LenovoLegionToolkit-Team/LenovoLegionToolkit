@@ -1,9 +1,9 @@
-﻿using LenovoLegionToolkit.Lib.Messaging;
-using Microsoft.Win32;
-using System;
+﻿using System;
 using System.IO;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
+using Microsoft.Win32;
 
 namespace LenovoLegionToolkit.WPF.Utils;
 
