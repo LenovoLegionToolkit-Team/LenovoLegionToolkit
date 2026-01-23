@@ -252,7 +252,7 @@ public partial class GodModeSettingsWindow
                             continue;
                         }
 
-                        var ctrl = CreateFanControl(data, preset, preset.FanTableInfo.Value, minimum);
+                        var ctrl = CreateFanControl(data, preset.FanTableInfo.Value);
                         _fanCurveControls.Add(ctrl);
                         _fanCurveControlStackPanel.Children.Insert(insertIndex++, ctrl);
                         _fanSelector.Items.Add(ctrl.Tag);
@@ -342,13 +342,13 @@ public partial class GodModeSettingsWindow
         }
     }
 
-    private Controls.FanCurveControlV3 CreateFanControl(FanTableData data, GodModePreset preset, FanTableInfo info, FanTable minimum)
+    private Controls.FanCurveControlV3 CreateFanControl(FanTableData data, FanTableInfo info)
     {
         var fanType = data.Type switch
         {
-            FanTableType.CPU => LenovoLegionToolkit.Lib.FanType.Cpu,
-            FanTableType.GPU => LenovoLegionToolkit.Lib.FanType.Gpu,
-            _ => LenovoLegionToolkit.Lib.FanType.System
+            FanTableType.CPU => FanType.Cpu,
+            FanTableType.GPU => FanType.Gpu,
+            _ => FanType.System
         };
 
         var entry = _fanCurveManager.GetEntry(fanType);
@@ -443,8 +443,8 @@ public partial class GodModeSettingsWindow
                         }
 
                         var fanTypeStr = ctrl.Tag?.ToString() ?? string.Empty;
-                        LenovoLegionToolkit.Lib.FanType fanType = LenovoLegionToolkit.Lib.FanType.System;
-                        foreach (LenovoLegionToolkit.Lib.FanType ft in Enum.GetValues(typeof(LenovoLegionToolkit.Lib.FanType)))
+                        FanType fanType = FanType.System;
+                        foreach (FanType ft in Enum.GetValues(typeof(FanType)))
                         {
                             if (ft.GetDisplayName() == fanTypeStr) { fanType = ft; break; }
                         }

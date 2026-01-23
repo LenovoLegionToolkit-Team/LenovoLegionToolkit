@@ -111,7 +111,7 @@ public static partial class Compatibility
 
         { "83LT", LegionSeries.Legion_Pro_5 }, { "83F3", LegionSeries.Legion_Pro_5 }, { "83DF", LegionSeries.Legion_Pro_5 },
         { "83F2", LegionSeries.Legion_Pro_5 }, { "83LU", LegionSeries.Legion_Pro_5 }, { "82WM", LegionSeries.Legion_Pro_5 },
-        { "83NN", LegionSeries.Legion_Pro_5 }, { "82WK", LegionSeries.Legion_Pro_5 },
+        { "83NN", LegionSeries.Legion_Pro_5 }, { "82WK", LegionSeries.Legion_Pro_5 }, { "82JQ", LegionSeries.Legion_Pro_5},
 
         { "83KY", LegionSeries.Legion_7 }, { "83FD", LegionSeries.Legion_7 }, { "82UH", LegionSeries.Legion_7 },
         { "82TD", LegionSeries.Legion_7 }, { "82N6", LegionSeries.Legion_7 },

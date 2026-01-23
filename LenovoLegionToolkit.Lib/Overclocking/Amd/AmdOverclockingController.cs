@@ -163,7 +163,9 @@ public sealed class AmdOverclockingController : IDisposable
             EnableOCMode(profile.ProchotEnabled);
 
             if (profile.FMax is { } fmax)
+            {
                 _cpu.SetFMax(fmax);
+            }
 
             if (_cpu.smu.Rsmu.SMU_MSG_SetDldoPsmMargin != 0)
             {
@@ -181,7 +183,9 @@ public sealed class AmdOverclockingController : IDisposable
     public async Task ApplyInternalProfileAsync()
     {
         if (LoadProfile() is { } profile)
+        {
             await ApplyProfileAsync(profile).ConfigureAwait(false);
+        }
     }
 
     public bool EnableOCMode(bool prochotEnabled = true)
@@ -268,6 +272,37 @@ public sealed class AmdOverclockingController : IDisposable
             _commandList = [];
             _cachedDowncoreCmd = null;
         }
+    }
+
+    public async Task ResetAllActiveCoresCoAsync()
+    {
+        EnsureInitialized();
+
+        if (_cpu.smu.Rsmu.SMU_MSG_SetDldoPsmMargin == 0)
+        {
+            Log.Instance.Trace($"Current CPU does not support SMU_MSG_SetDldoPsmMargin.");
+            return;
+        }
+
+        await Task.Run(() =>
+        {
+            for (var i = 0; i < 16; i++)
+            {
+                if (IsCoreActive(i))
+                {
+                    try
+                    {
+                        uint bitmask = EncodeCoreMarginBitmask(i);
+                        _cpu.SetPsmMarginSingleCore(bitmask, 0);
+                        Log.Instance.Trace($"Reset CO for Core {i} (Bitmask: 0x{bitmask:X}) to 0.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Instance.Trace($"Failed to reset CO for Core {i}: {ex.Message}");
+                    }
+                }
+            }
+        }).ConfigureAwait(false);
     }
 
     public bool SwitchProfile(CpuProfileMode mode)

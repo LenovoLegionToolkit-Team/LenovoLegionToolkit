@@ -101,7 +101,6 @@ public class FanCurveEntry : INotifyPropertyChanged
             var temp = temps[i];
             var targetPercent = CalculateTargetPercent(temp, sortedNodes);
             
-            // Convert percentage to fan speed index
             var speedIndex = (int)Math.Round((targetPercent / 100.0) * (fanSpeeds.Length - 1));
             speedIndex = Math.Clamp(speedIndex, 0, fanSpeeds.Length - 1);
             

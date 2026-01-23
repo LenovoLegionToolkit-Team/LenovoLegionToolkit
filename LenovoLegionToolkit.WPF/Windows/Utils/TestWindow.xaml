@@ -1,0 +1,13 @@
+﻿<Window
+    x:Class="LenovoLegionToolkit.WPF.Windows.Utils.TestWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Fan Curve Test (Real Data)"
+    Width="800"
+    Height="600"
+    Background="White"
+    WindowStartupLocation="CenterScreen">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel x:Name="_fanControlStackPanel" Margin="20" />
+    </ScrollViewer>
+</Window>

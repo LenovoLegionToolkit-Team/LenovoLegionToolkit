@@ -5,6 +5,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Features;
+using LenovoLegionToolkit.Lib.Messaging;
+using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.View;
 using UniversalFanControl.Lib;
@@ -41,6 +43,18 @@ public class FanCurveManager : IDisposable
         {
             Log.Instance.Trace($"FanCurveManager: Failed to initialize hardware.");
         }
+
+        MessagingCenter.Subscribe<FanStateMessage>(this, message =>
+        {
+            if (message.State == FanState.Auto)
+            {
+                SetRegister().ConfigureAwait(false);
+            }
+            else
+            {
+                SetRegister(true).ConfigureAwait(false);
+            }
+        });
 
         SetRegister(true).ConfigureAwait(false);
 
@@ -165,7 +179,7 @@ public class FanCurveManager : IDisposable
             }
             else
             {
-                var newController = new FanCurveController(entry.ToConfig(), msg => Log.Instance.Trace($"{msg}"));
+                var newController = new FanCurveController(entry.ToConfig());
                 newController.SetCurve(entry.CurveNodes.Select(n => new UniversalFanControl.Lib.Generic.Utils.CurveNode { Temperature = n.Temperature, TargetPercent = n.TargetPercent }));
                 _activeControllers[type] = newController;
             }
@@ -204,7 +218,7 @@ public class FanCurveManager : IDisposable
                         {
                             if (!_activeControllers.TryGetValue(entry.Type, out controller))
                             {
-                                controller = new FanCurveController(entry.ToConfig(), msg => Log.Instance.Trace($"{msg}"));
+                                controller = new FanCurveController(entry.ToConfig());
                                 _activeControllers[entry.Type] = controller;
                             }
                         }
@@ -249,8 +263,11 @@ public class FanCurveManager : IDisposable
     {
         var mapping = new (LegionSeries? Series, int MinGen, int MaxGen, bool IsCtrl, FanType? Type, ushort var1, ushort var2, ushort? var3)[]
         {
+            (LegionSeries.Legion_Pro_7, 8, 8, true, null, 0xDFDD, 0x01, null),
             (LegionSeries.Legion_Pro_7, 10, 10, true, null, 0xDFF7, 0x01, null),
+            (LegionSeries.Legion_Pro_5, 6, 6, true, null, 0xC4AD, 0xFF, null),
             (LegionSeries.Legion_Pro_5, 10, 10, true, null, 0xDFF7, 0x01, null),
+            (LegionSeries.ThinkBook, 10, 10, true, null, 0xDFDD, 0x01, null),
             (null, 0, int.MaxValue, true, null, 0x00, 0x00, 0x00),
 
             // ================================================================================
@@ -262,12 +279,16 @@ public class FanCurveManager : IDisposable
             (LegionSeries.Legion_Pro_7, 10, 10, false, FanType.Gpu, 0x1806, 0x1820, 0x1821),
             (LegionSeries.Legion_Pro_7, 10, 10, false, FanType.System, 0x1808, 0x1845, 0x1846),
 
+            (LegionSeries.Legion_Pro_5, 6, 6, false, FanType.Cpu, 0x1807, 0x181E, 0x181F),
+            (LegionSeries.Legion_Pro_5, 6, 6, false, FanType.Gpu, 0x1806, 0x1820, 0x1821),
+
             (LegionSeries.Legion_Pro_5, 10, 10, false, FanType.Cpu, 0x1807, 0x181E, 0x181F),
             (LegionSeries.Legion_Pro_5, 10, 10, false, FanType.Gpu, 0x1806, 0x1820, 0x1821),
 
-            (LegionSeries.ThinkBook, 8, 9, false, FanType.Cpu, 0x1806, 0x1820, 0x1821),
-            (LegionSeries.ThinkBook, 8, 9, false, FanType.Gpu, 0x1808, 0x1845, 0x1846),
-            (LegionSeries.ThinkBook, 8, 9, false, FanType.System, 0x1807, 0x181E, 0x181F),
+            (LegionSeries.ThinkBook, 10, 10, false, FanType.Cpu, 0x1805, 0x181E, 0x181F),
+            (LegionSeries.ThinkBook, 10, 10, false, FanType.Gpu, 0x1804, 0x1820, 0x1821),
+
+            // ================================================================================
 
             (null, 0, int.MaxValue, false, FanType.Gpu,    0x1806, 0x1820, 0x1821),
             (null, 0, int.MaxValue, false, FanType.System, 0x1808, 0x1845, 0x1846),

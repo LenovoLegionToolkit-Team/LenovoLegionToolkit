@@ -28,7 +28,7 @@ public partial class FanCurveControlV3 : UserControl, INotifyPropertyChanged, IF
     private bool _drawRequested;
     private double _maxPwm = 255;
 
-    public LenovoLegionToolkit.Lib.FanType FanType { get; private set; }
+    public FanType FanType { get; private set; }
     public int FanId { get; private set; }
 
     public ObservableCollection<CurveNode>? CurveNodes => _curveEntry?.CurveNodes;

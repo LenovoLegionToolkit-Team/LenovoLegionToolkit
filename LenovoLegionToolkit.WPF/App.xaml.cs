@@ -650,9 +650,11 @@ public partial class App
     {
         try
         {
-            // Resolve to start the manager (and its loop)
-            IoCContainer.Resolve<FanCurveManager>();
-            await Task.CompletedTask;
+            if (Flags!.EnableCustomFanCurve)
+            {
+                IoCContainer.Resolve<FanCurveManager>();
+                await Task.CompletedTask;
+            }
         }
         catch (Exception ex)
         {

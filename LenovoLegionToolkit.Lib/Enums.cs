@@ -104,10 +104,19 @@ public enum DriverKey
     FnSpace = 4096,
 }
 
+public enum FanState
+{
+    Auto,
+    Manual,
+}
+
 public enum FanType
 {
+    [Display(ResourceType = typeof(Resource), Name = "CustomFanCurveControl_Fan_CPU")]
     Cpu = 0,
+    [Display(ResourceType = typeof(Resource), Name = "CustomFanCurveControl_Fan_GPU")]
     Gpu = 1,
+    [Display(ResourceType = typeof(Resource), Name = "CustomFanCurveControl_Fan_System")]
     System = 2,
 }
 

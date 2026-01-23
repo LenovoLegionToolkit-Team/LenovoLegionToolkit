@@ -205,6 +205,33 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   查找类似 CPU Fan 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurveControl_Fan_CPU {
+            get {
+                return ResourceManager.GetString("CustomFanCurveControl_Fan_CPU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 GPU Fan 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurveControl_Fan_GPU {
+            get {
+                return ResourceManager.GetString("CustomFanCurveControl_Fan_GPU", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 System Fan 的本地化字符串。
+        /// </summary>
+        public static string CustomFanCurveControl_Fan_System {
+            get {
+                return ResourceManager.GetString("CustomFanCurveControl_Fan_System", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Off 的本地化字符串。
         /// </summary>
         public static string FlipToStartState_Off {

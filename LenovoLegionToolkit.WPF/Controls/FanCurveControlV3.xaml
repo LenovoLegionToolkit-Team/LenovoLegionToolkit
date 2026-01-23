@@ -182,8 +182,7 @@
                                         HorizontalAlignment="Center"
                                         HorizontalContentAlignment="Center"
                                         VerticalContentAlignment="Center"
-                                        Text="{Binding TargetPercent, UpdateSourceTrigger=PropertyChanged}"
-                                        ToolTip="{x:Static resources:Resource.CustomFanCurve_Fan_Speed}" />
+                                        Text="{Binding TargetPercent, UpdateSourceTrigger=PropertyChanged}" />
 
                                     <TextBox
                                         Grid.Row="3"
@@ -193,8 +192,7 @@
                                         HorizontalAlignment="Center"
                                         HorizontalContentAlignment="Center"
                                         VerticalContentAlignment="Center"
-                                        Text="{Binding Temperature, StringFormat=N0, UpdateSourceTrigger=PropertyChanged}"
-                                        ToolTip="{x:Static resources:Resource.CustomFanCurve_Temperature}" />
+                                        Text="{Binding Temperature, StringFormat=N0, UpdateSourceTrigger=PropertyChanged}" />
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -230,7 +228,7 @@
                     <Separator Margin="0,8" />
 
                     <Grid Margin="0,4">
-                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Temperature" />
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{x:Static resources:Resource.CustomFanCurve_Temperature}" />
                         <TextBlock
                             HorizontalAlignment="Right"
                             FontWeight="SemiBold"
@@ -239,7 +237,7 @@
                     </Grid>
 
                     <Grid Margin="0,4">
-                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="Fan Speed" />
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{x:Static resources:Resource.CustomFanCurve_Fan_Speed}" />
                         <TextBlock
                             HorizontalAlignment="Right"
                             FontWeight="SemiBold"
@@ -248,7 +246,7 @@
                     </Grid>
 
                     <Grid Margin="0,4">
-                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="PWM Value" />
+                        <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" Text="{x:Static resources:Resource.CustomFanCurve_PWM_Value}" />
                         <TextBlock
                             HorizontalAlignment="Right"
                             FontWeight="SemiBold"

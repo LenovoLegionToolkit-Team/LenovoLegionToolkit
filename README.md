@@ -376,6 +376,7 @@ Special thanks to:
 * [SmokelessCPU](https://github.com/SmokelessCPU), for help with 4-zone RGB and Sprectrum keyboard support
 * [Mario Bălănică](https://github.com/mariobalanica), for all contributions
 * [Ace-Radom](https://github.com/Ace-Radom), for all contributions
+* [fan](https://github.com/Undervoltologist), for ec reverse.
 
 Translations provided by:
 * Bulgarian - [Ekscentricitet](https://github.com/Ekscentricitet)

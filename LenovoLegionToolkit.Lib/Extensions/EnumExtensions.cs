@@ -11,18 +11,14 @@ public static class EnumExtensions
     {
         var displayAttribute = enumValue.GetType()
             .GetMember(enumValue.ToString())
-            .First()
-            .GetCustomAttributes(false)
-            .OfType<DisplayAttribute>()
-            .FirstOrDefault();
-
-        if (displayAttribute?.Name is null)
+            .FirstOrDefault()?
+            .GetCustomAttribute<DisplayAttribute>();
+        if (displayAttribute == null)
+        {
             return enumValue.ToString();
+        }
 
-        if (displayAttribute.ResourceType?.GetProperty(displayAttribute.Name, BindingFlags.Static | BindingFlags.Public)?.GetValue(null) is string str)
-            return str;
-
-        return displayAttribute.Name;
+        return displayAttribute.GetName() ?? enumValue.ToString();
     }
 
     public static string GetFlagsDisplayName(this Enum enumValue, Enum? excluding = null)
