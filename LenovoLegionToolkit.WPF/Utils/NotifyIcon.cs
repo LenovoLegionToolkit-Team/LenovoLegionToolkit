@@ -174,7 +174,7 @@ public class NotifyIcon : NativeWindow, IDisposable
 
         _showToolTipCancellationTokenSource?.Cancel();
 
-        _currentToolTipWindow?.Hide();
+        _currentToolTipWindow?.Close();
         _currentToolTipWindow = null;
     }
 

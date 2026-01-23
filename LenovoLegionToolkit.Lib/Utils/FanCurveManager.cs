@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Controllers.Sensors;
+﻿using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.View;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using UniversalFanControl.Lib;
 using UniversalFanControl.Lib.Generic.Api;
-using UniversalFanControl.Lib.Generic.Utils;
 
 namespace LenovoLegionToolkit.Lib.Utils;
 
@@ -21,13 +20,15 @@ public class FanCurveManager : IDisposable
     private readonly FanCurveSettings _settings;
     private readonly PowerModeFeature _powerModeFeature;
 
-    private readonly FanControl _fanHardware;
+    private readonly FanControl _fanHardware = new();
     private readonly Dictionary<FanType, IFanControlView> _activeViewModels = new();
     private readonly Dictionary<FanType, FanCurveController> _activeControllers = new();
 
     private CancellationTokenSource? _cts;
 
     public int LogicInterval { get; set; } = 500;
+
+    private bool _isEnabled;
 
     public FanCurveManager(
         SensorsGroupController sensors,
@@ -37,13 +38,17 @@ public class FanCurveManager : IDisposable
         _sensors = sensors;
         _settings = settings;
         _powerModeFeature = powerModeFeature;
+    }
 
-        _fanHardware = new FanControl();
-        if (!_fanHardware.InitiliazeFanControl())
-        {
-            Log.Instance.Trace($"FanCurveManager: Failed to initialize hardware.");
-        }
+    public void Initialize(bool enabled)
+    {
+        if (_isEnabled) return;
+        _isEnabled = enabled;
 
+        if (!_isEnabled) return;
+
+        _fanHardware.InitiliazeFanControl();
+        
         MessagingCenter.Subscribe<FanStateMessage>(this, message =>
         {
             if (message.State == FanState.Auto)
@@ -63,6 +68,7 @@ public class FanCurveManager : IDisposable
 
     public void RegisterViewModel(FanType type, IFanControlView vm)
     {
+        if (!_isEnabled) return;
         lock (_activeViewModels)
         {
             _activeViewModels[type] = vm;
@@ -71,6 +77,7 @@ public class FanCurveManager : IDisposable
 
     public void UnregisterViewModel(FanType type, IFanControlView vm)
     {
+        if (!_isEnabled) return;
         lock (_activeViewModels)
         {
             if (_activeViewModels.TryGetValue(type, out var current) && current == vm)
@@ -82,6 +89,7 @@ public class FanCurveManager : IDisposable
 
     public async Task SetRegister(bool flag = false)
     {
+        if (!_isEnabled) return;
         if (_fanHardware == null)
         {
             return;
@@ -120,6 +128,7 @@ public class FanCurveManager : IDisposable
 
     public void UpdateGlobalSettings(FanCurveEntry sourceEntry)
     {
+        if (!_isEnabled) return;
         foreach (var entry in _settings.Store.Entries)
         {
             if (entry == sourceEntry) continue;
@@ -170,6 +179,7 @@ public class FanCurveManager : IDisposable
 
     public void UpdateConfig(FanType type, FanCurveEntry entry)
     {
+        if (!_isEnabled) return;
         lock (_activeControllers)
         {
             if (_activeControllers.TryGetValue(type, out var controller))
@@ -201,7 +211,7 @@ public class FanCurveManager : IDisposable
                     var powerState = await _powerModeFeature.GetStateAsync().ConfigureAwait(false);
                     if (powerState != PowerModeState.GodMode)
                     {
-                        await Task.Delay(1000, _cts.Token);
+                        await Task.Delay(1000, _cts.Token).ConfigureAwait(false);
                         continue;
                     }
 
@@ -251,7 +261,7 @@ public class FanCurveManager : IDisposable
                         }
                     }
 
-                    await Task.Delay(LogicInterval, _cts.Token);
+                    await Task.Delay(LogicInterval, _cts.Token).ConfigureAwait(false);
                 }
                 catch (OperationCanceledException) { break; }
                 catch (Exception ex) { Log.Instance.Trace($"Manager Loop Error: {ex.Message}"); }

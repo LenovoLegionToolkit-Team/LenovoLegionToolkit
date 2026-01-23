@@ -69,7 +69,24 @@ public partial class StatusWindow
         public double GpuPower { get; } = gpuPower;
     }
 
-    public static Task<StatusWindow> CreateAsync() => Task.FromResult(new StatusWindow());
+    public static async Task<StatusWindow> CreateAsync()
+    {
+        var window = new StatusWindow();
+        await window.InitializeAsync();
+        return window;
+    }
+
+    private async Task InitializeAsync()
+    {
+        _machineInfo ??= await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        var token = _cancellationTokenSource.Token;
+        try
+        {
+            var initialData = await GetStatusWindowDataAsync(token, skipRetry: true);
+            ApplyDataToUI(initialData);
+        }
+        catch { }
+    }
 
     public StatusWindow()
     {
@@ -100,8 +117,7 @@ public partial class StatusWindow
     {
         if (!_machineInfo.HasValue) return;
 
-        var isModernLegion = (int)_machineInfo.Value.LegionSeries <= (int)LegionSeries.LOQ;
-        var useSensors = _settings.Store.UseNewSensorDashboard && isModernLegion;
+        var useSensors = _settings.Store.UseNewSensorDashboard;
         var sensorVis = useSensors ? Visibility.Visible : Visibility.Collapsed;
 
         _cpuGrid.Visibility = sensorVis;
@@ -138,17 +154,8 @@ public partial class StatusWindow
     {
         MoveBottomRightEdgeOfWindowToMousePosition();
         _machineInfo ??= await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-        UpdateUiLayout(null);
 
         var token = _cancellationTokenSource.Token;
-        try
-        {
-            var initialData = await GetStatusWindowDataAsync(token, skipRetry: true);
-            ApplyDataToUI(initialData);
-            MoveBottomRightEdgeOfWindowToMousePosition();
-        }
-        catch { }
-
         if (_settings.Store.UseNewSensorDashboard) _ = Task.Run(async () => await TheRing(token), token);
     }
 
@@ -160,7 +167,7 @@ public partial class StatusWindow
     private async Task<StatusWindowData> GetStatusWindowDataAsync(CancellationToken token, bool skipRetry = false)
     {
         _machineInfo ??= await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-        var isModern = (int)_machineInfo.Value.LegionSeries <= (int)LegionSeries.LOQ;
+
         var tasks = new List<Task>();
 
         PowerModeState? state = null; ITSMode? mode = null; string? godModePresetName = null;
@@ -170,17 +177,17 @@ public partial class StatusWindow
         tasks.Add(Task.Run(async () => {
             try
             {
-                if (!isModern)
-                {
-                    if (await _itsModeFeature.IsSupportedAsync().WaitAsync(token)) mode = await _itsModeFeature.GetStateAsync().WaitAsync(token);
-                }
-                else if (await _powerModeFeature.IsSupportedAsync().WaitAsync(token))
+                if (await _powerModeFeature.IsSupportedAsync().WaitAsync(token))
                 {
                     state = await _powerModeFeature.GetStateAsync().WaitAsync(token);
                     if (state == PowerModeState.GodMode) godModePresetName = await _godModeController.GetActivePresetNameAsync().WaitAsync(token);
                 }
+                else if (await _itsModeFeature.IsSupportedAsync().WaitAsync(token))
+                {
+                     mode = await _itsModeFeature.GetStateAsync().WaitAsync(token);
+                }
             }
-            catch { }
+            catch { /* Ignore */ }
         }, token));
 
         tasks.Add(Task.Run(async () => { try { if (_gpuController.IsSupported()) gpuStatus = await _gpuController.RefreshNowAsync().WaitAsync(token); } catch { } }, token));
@@ -190,7 +197,7 @@ public partial class StatusWindow
 
         await Task.WhenAll(tasks).ConfigureAwait(false);
 
-        if (!_settings.Store.UseNewSensorDashboard || !isModern) return new(state, mode, godModePresetName, gpuStatus, batteryInfo, batteryState, hasUpdate, sensorsData, cpuPower, gpuPower);
+        if (!_settings.Store.UseNewSensorDashboard) return new(state, mode, godModePresetName, gpuStatus, batteryInfo, batteryState, hasUpdate, sensorsData, cpuPower, gpuPower);
 
         try
         {
@@ -213,7 +220,7 @@ public partial class StatusWindow
                 }
             }
         }
-        catch { }
+        catch { /* Ignore */ }
 
         return new(state, mode, godModePresetName, gpuStatus, batteryInfo, batteryState, hasUpdate, sensorsData, cpuPower, gpuPower);
     }
@@ -249,8 +256,7 @@ public partial class StatusWindow
         UpdateUiLayout(data.GPUStatus);
         RefreshPowerMode(data.PowerModeState, data.ITSMode, data.GodModePresetName);
 
-        var isModern = _machineInfo.HasValue && (int)_machineInfo.Value.LegionSeries <= (int)LegionSeries.LOQ;
-        var useSensors = _settings.Store.UseNewSensorDashboard && isModern;
+        var useSensors = _settings.Store.UseNewSensorDashboard;
 
         if (useSensors)
         {

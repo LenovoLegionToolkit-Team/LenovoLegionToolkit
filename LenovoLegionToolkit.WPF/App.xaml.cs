@@ -652,7 +652,7 @@ public partial class App
         {
             if (Flags!.EnableCustomFanCurve)
             {
-                IoCContainer.Resolve<FanCurveManager>();
+                IoCContainer.Resolve<FanCurveManager>().Initialize(true);
                 await Task.CompletedTask;
             }
         }
