@@ -210,7 +210,7 @@ public class NotifyIcon : NativeWindow, IDisposable
                 uID = _id,
                 uCallbackMessage = TRAY_MESSAGE_ID,
                 uFlags = NOTIFY_ICON_DATA_FLAGS.NIF_MESSAGE | NOTIFY_ICON_DATA_FLAGS.NIF_TIP,
-                szTip = " "
+                szTip = ""
             };
 
             if (_visible && Handle == IntPtr.Zero)
