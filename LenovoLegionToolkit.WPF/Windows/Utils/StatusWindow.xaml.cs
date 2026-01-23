@@ -44,6 +44,7 @@ public partial class StatusWindow
     private readonly SensorsGroupController _sensorsGroupController = IoCContainer.Resolve<SensorsGroupController>();
 
     private MachineInformation? _machineInfo;
+    private Type? _cachedControllerType;
 
     private readonly struct StatusWindowData(
         PowerModeState? powerModeState,
@@ -126,8 +127,9 @@ public partial class StatusWindow
         _cpuFanAndPowerDesc.Visibility = sensorVis;
         _cpuFanAndPowerLabel.Visibility = sensorVis;
 
-        var isV4V5 = _sensorsController.GetControllerAsync().Result?.GetType() == typeof(SensorsControllerV4) ||
-                     _sensorsController.GetControllerAsync().Result?.GetType() == typeof(SensorsControllerV5);
+        // Use cached controller type to avoid blocking UI thread
+        var isV4V5 = _cachedControllerType == typeof(SensorsControllerV4) ||
+                     _cachedControllerType == typeof(SensorsControllerV5);
         _systemFanGrid.Visibility = (useSensors && isV4V5) ? Visibility.Visible : Visibility.Collapsed;
 
         if (gpuStatus.HasValue)
@@ -201,7 +203,14 @@ public partial class StatusWindow
 
         try
         {
-            if (await _sensorsController.IsSupportedAsync().WaitAsync(token)) sensorsData = await _sensorsController.GetDataAsync().WaitAsync(token);
+            if (await _sensorsController.IsSupportedAsync().WaitAsync(token))
+            {
+                // Cache the controller type for synchronous UI access
+                var controller = await _sensorsController.GetControllerAsync().WaitAsync(token);
+                _cachedControllerType = controller?.GetType();
+                
+                sensorsData = await _sensorsController.GetDataAsync().WaitAsync(token);
+            }
             if (await _sensorsGroupController.IsSupportedAsync().WaitAsync(token) is LibreHardwareMonitorInitialState.Success or LibreHardwareMonitorInitialState.Initialized)
             {
                 await _sensorsGroupController.UpdateAsync().WaitAsync(token);
@@ -262,9 +271,9 @@ public partial class StatusWindow
         {
             UpdateFreqAndTemp(_cpuFreqAndTempLabel, data.SensorsData?.CPU.CoreClock ?? -1, data.SensorsData?.CPU.Temperature ?? -1);
             UpdateFanAndPower(_cpuFanAndPowerLabel, data.SensorsData?.CPU.FanSpeed ?? -1, data.CpuPower);
-            var type = _sensorsController.GetControllerAsync().Result?.GetType();
-            if (type == typeof(SensorsControllerV4) ||
-                type == typeof(SensorsControllerV5))
+            // Use cached controller type to avoid blocking UI thread
+            if (_cachedControllerType == typeof(SensorsControllerV4) ||
+                _cachedControllerType == typeof(SensorsControllerV5))
             {
                 UpdateSystemFan(_systemFanLabel, data.SensorsData?.PCH.FanSpeed ?? -1);
             }
