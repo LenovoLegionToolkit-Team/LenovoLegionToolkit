@@ -140,13 +140,10 @@ public partial class App
                 InitGpuOverclockControllerAsync(),
                 InitHybridModeAsync(),
                 InitAutomationProcessorAsync(),
+                InitFanManagerExtension(),
             };
 
             await Task.WhenAll(initTasks);
-
-            Log.Instance.Trace($"Resolving and initializing FanCurveManager...");
-            var fanManager = IoCContainer.Resolve<FanCurveManager>();
-            fanManager.Initialize();
 
             if (AppFlags.Instance.Debug) Console.WriteLine(@"[Startup] Starting MacroController...");
             IoCContainer.Resolve<MacroController>().Start();
@@ -828,6 +825,31 @@ public partial class App
                 }
 
                 Log.Instance.Trace($"AMD Overclocking Controller initialization task finished.");
+            }
+        }
+        catch (InvalidOperationException)
+        {
+            Log.Instance.Trace($"Profile apply has been canceled due to AC issue.");
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to apply profile on startup: {ex.Message}", ex);
+        }
+    }
+
+    private static async Task InitFanManagerExtension()
+    {
+        try
+        {
+            Log.Instance.Trace($"Resolving and initializing FanCurveManager...");
+            var fanManager = IoCContainer.Resolve<FanCurveManager>();
+            fanManager.Initialize();
+
+            var fanSettings = IoCContainer.Resolve<FanCurveSettings>();
+            if (fanSettings.Store.Entries.Count > 0)
+            {
+                Log.Instance.Trace($"Applying {fanSettings.Store.Entries.Count} fan curves from settings...");
+                await fanManager.LoadAndApply(fanSettings.Store.Entries).ConfigureAwait(false);
             }
         }
         catch (InvalidOperationException)

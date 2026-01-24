@@ -151,6 +151,6 @@ public class IoCModule : Module
 
         builder.Register<AmdOverclockingController>();
 
-        builder.Register<FanCurveManager>().SingleInstance();
+        builder.Register<FanCurveManager>(c => new FanCurveManager(c.Resolve<SensorsGroupController>())).SingleInstance();
     }
 }

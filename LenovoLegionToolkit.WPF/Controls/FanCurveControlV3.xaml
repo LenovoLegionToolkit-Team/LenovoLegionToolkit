@@ -182,7 +182,9 @@
                                         HorizontalAlignment="Center"
                                         HorizontalContentAlignment="Center"
                                         VerticalContentAlignment="Center"
-                                        Text="{Binding TargetPercent, UpdateSourceTrigger=PropertyChanged}" />
+                                        DataObject.Pasting="NumericTextBox_Pasting"
+                                        PreviewTextInput="NumericTextBox_PreviewTextInput"
+                                        Text="{Binding TargetPercent}" />
 
                                     <TextBox
                                         Grid.Row="3"
@@ -192,7 +194,9 @@
                                         HorizontalAlignment="Center"
                                         HorizontalContentAlignment="Center"
                                         VerticalContentAlignment="Center"
-                                        Text="{Binding Temperature, StringFormat=N0, UpdateSourceTrigger=PropertyChanged}" />
+                                        DataObject.Pasting="NumericTextBox_Pasting"
+                                        PreviewTextInput="TemperatureTextBox_PreviewTextInput"
+                                        Text="{Binding Temperature, StringFormat=N0}" />
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
@@ -288,31 +292,9 @@
                             Height="32"
                             HorizontalAlignment="Right"
                             VerticalContentAlignment="Center"
-                            Text="{Binding CriticalTemp, UpdateSourceTrigger=PropertyChanged}" />
-                    </Grid>
-
-                    <Grid Margin="0,4">
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                            Text="{x:Static resources:Resource.CustomFanCurve_Legion_Mode}"
-                            ToolTip="{x:Static resources:Resource.CustomFanCurve_Legion_Mode_Tooltip}" />
-                        <CheckBox HorizontalAlignment="Right" IsChecked="{Binding IsLegion}" />
-                    </Grid>
-
-                    <Grid Margin="0,4">
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                            Text="{x:Static resources:Resource.CustomFanCurve_Low_Temp_Threshold}"
-                            ToolTip="{x:Static resources:Resource.CustomFanCurve_Low_Temp_Threshold_Tooltip}" />
-                        <TextBox
-                            Width="70"
-                            Height="32"
-                            HorizontalAlignment="Right"
-                            VerticalContentAlignment="Center"
-                            IsEnabled="{Binding IsLegion}"
-                            Text="{Binding LegionLowTempThreshold, UpdateSourceTrigger=PropertyChanged}" />
+                            DataObject.Pasting="NumericTextBox_Pasting"
+                            PreviewTextInput="NumericTextBox_PreviewTextInput"
+                            Text="{Binding CriticalTemp}" />
                     </Grid>
 
                     <Grid Margin="0,4">
@@ -326,7 +308,9 @@
                             Height="32"
                             HorizontalAlignment="Right"
                             VerticalContentAlignment="Center"
-                            Text="{Binding AccelerationDcrReduction, UpdateSourceTrigger=PropertyChanged}" />
+                            DataObject.Pasting="NumericTextBox_Pasting"
+                            PreviewTextInput="NumericTextBox_PreviewTextInput"
+                            Text="{Binding AccelerationDcrReduction}" />
                     </Grid>
 
                     <Grid Margin="0,4">
@@ -340,7 +324,9 @@
                             Height="32"
                             HorizontalAlignment="Right"
                             VerticalContentAlignment="Center"
-                            Text="{Binding DecelerationDcrReduction, UpdateSourceTrigger=PropertyChanged}" />
+                            DataObject.Pasting="NumericTextBox_Pasting"
+                            PreviewTextInput="NumericTextBox_PreviewTextInput"
+                            Text="{Binding DecelerationDcrReduction}" />
                     </Grid>
                 </StackPanel>
             </Border>

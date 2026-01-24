@@ -59,8 +59,6 @@ public class FanCurveEntry : INotifyPropertyChanged
     }
 
     public int CriticalTemp { get; set; } = 90;
-    public bool IsLegion { get; set; } = false;
-    public float LegionLowTempThreshold { get; set; } = 40f;
     public int AccelerationDcrReduction { get; set; } = 1;
     public int DecelerationDcrReduction { get; set; } = 2;
     public double MaxPwm { get; set; } = 255.0;
@@ -153,8 +151,6 @@ public class FanCurveEntry : INotifyPropertyChanged
             RampUpThresholds,
             RampDownThresholds,
             CriticalTemp,
-            IsLegion,
-            LegionLowTempThreshold,
             AccelerationDcrReduction,
             DecelerationDcrReduction,
             MaxPwm
@@ -194,8 +190,6 @@ public class FanCurveEntry : INotifyPropertyChanged
             entry.RampDownThresholds = data.RampDownThresholds.ToObject<int[]>();
 
         if (data.CriticalTemp != null) entry.CriticalTemp = data.CriticalTemp;
-        if (data.IsLegion != null) entry.IsLegion = data.IsLegion;
-        if (data.LegionLowTempThreshold != null) entry.LegionLowTempThreshold = data.LegionLowTempThreshold;
         if (data.AccelerationDcrReduction != null) entry.AccelerationDcrReduction = data.AccelerationDcrReduction;
         if (data.DecelerationDcrReduction != null) entry.DecelerationDcrReduction = data.DecelerationDcrReduction;
         if (data.MaxPwm != null) entry.MaxPwm = data.MaxPwm;
@@ -212,8 +206,6 @@ public class FanCurveEntry : INotifyPropertyChanged
             KickstartPwm = 50.0,
             AccelerationDcrReduction = AccelerationDcrReduction,
             DecelerationDcrReduction = DecelerationDcrReduction,
-            IsLegion = IsLegion,
-            LegionLowTempThreshold = LegionLowTempThreshold,
             RampUpThresholds = RampUpThresholds,
             RampDownThresholds = RampDownThresholds
         };

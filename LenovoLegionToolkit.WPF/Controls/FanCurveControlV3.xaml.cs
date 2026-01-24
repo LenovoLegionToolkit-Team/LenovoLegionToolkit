@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.Text.RegularExpressions;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.Lib.View;
@@ -42,34 +43,6 @@ public partial class FanCurveControlV3 : UserControl, INotifyPropertyChanged, IF
             if (_curveEntry != null && _curveEntry.CriticalTemp != value)
             {
                 _curveEntry.CriticalTemp = value;
-                OnPropertyChanged();
-                NotifySettingsChanged();
-            }
-        }
-    }
-
-    public bool IsLegion
-    {
-        get => _curveEntry?.IsLegion ?? false;
-        set
-        {
-            if (_curveEntry != null && _curveEntry.IsLegion != value)
-            {
-                _curveEntry.IsLegion = value;
-                OnPropertyChanged();
-                NotifySettingsChanged();
-            }
-        }
-    }
-
-    public float LegionLowTempThreshold
-    {
-        get => _curveEntry?.LegionLowTempThreshold ?? 0f;
-        set
-        {
-            if (_curveEntry != null && Math.Abs(_curveEntry.LegionLowTempThreshold - value) > 0.01f)
-            {
-                _curveEntry.LegionLowTempThreshold = value;
                 OnPropertyChanged();
                 NotifySettingsChanged();
             }
@@ -252,6 +225,32 @@ public partial class FanCurveControlV3 : UserControl, INotifyPropertyChanged, IF
         if (node.TargetPercent > max) node.TargetPercent = max;
     }
 
+    private void NumericTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+    {
+        e.Handled = !Regex.IsMatch(e.Text, "^[0-9]+$");
+    }
+
+    private void TemperatureTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+    {
+        e.Handled = !Regex.IsMatch(e.Text, "^[0-9]+$");
+    }
+
+    private void NumericTextBox_Pasting(object sender, DataObjectPastingEventArgs e)
+    {
+        if (e.DataObject.GetDataPresent(DataFormats.Text))
+        {
+            var text = (string)e.DataObject.GetData(DataFormats.Text);
+            if (!Regex.IsMatch(text, "^[0-9]+$"))
+            {
+                e.CancelCommand();
+            }
+        }
+        else
+        {
+            e.CancelCommand();
+        }
+    }
+
     private void AddPoint()
     {
         if (_curveEntry?.CurveNodes == null) return;
@@ -282,9 +281,7 @@ public partial class FanCurveControlV3 : UserControl, INotifyPropertyChanged, IF
 
     private void NotifyAllPropertiesChanged()
     {
-        OnPropertyChanged(nameof(IsLegion));
         OnPropertyChanged(nameof(CriticalTemp));
-        OnPropertyChanged(nameof(LegionLowTempThreshold));
         OnPropertyChanged(nameof(AccelerationDcrReduction));
         OnPropertyChanged(nameof(DecelerationDcrReduction));
         OnPropertyChanged(nameof(MaxPwm));
@@ -319,9 +316,7 @@ public partial class FanCurveControlV3 : UserControl, INotifyPropertyChanged, IF
     {
         if (_curveEntry == null) return;
         
-        IsLegion = defaultEntry.IsLegion;
         CriticalTemp = defaultEntry.CriticalTemp;
-        LegionLowTempThreshold = defaultEntry.LegionLowTempThreshold;
         AccelerationDcrReduction = defaultEntry.AccelerationDcrReduction;
         DecelerationDcrReduction = defaultEntry.DecelerationDcrReduction;
         MaxPwm = defaultEntry.MaxPwm;

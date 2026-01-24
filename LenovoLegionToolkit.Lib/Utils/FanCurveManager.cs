@@ -15,31 +15,20 @@ namespace LenovoLegionToolkit.Lib.Utils;
 public class FanCurveManager : IDisposable
 {
     public SensorsGroupController Sensors { get; }
-    private readonly FanCurveSettings _settings;
-    private readonly PowerModeFeature _powerModeFeature;
-    private readonly PowerModeListener _powerModeListener;
 
     private IExtensionProvider? _extension;
     private bool _pluginLoaded;
 
-    private PowerModeState _cachedPowerState = PowerModeState.Balance;
     private readonly Dictionary<FanType, IFanControlView> _activeViewModels = new();
 
     public int LogicInterval { get; set; } = 500;
 
     public bool IsEnabled { get; private set; }
 
-    public FanCurveManager(
-        SensorsGroupController sensors,
-        FanCurveSettings settings,
-        PowerModeFeature powerModeFeature,
-        PowerModeListener powerModeListener)
+    public FanCurveManager(SensorsGroupController sensors)
     {
         Log.Instance.Trace($"FanCurveManager instance created.");
         Sensors = sensors;
-        _settings = settings;
-        _powerModeFeature = powerModeFeature;
-        _powerModeListener = powerModeListener;
     }
 
     public void Initialize()
@@ -120,11 +109,6 @@ public class FanCurveManager : IDisposable
         return false;
     }
 
-    private void OnPowerModeChanged(object? sender, PowerModeListener.ChangedEventArgs e)
-    {
-        _cachedPowerState = e.State;
-    }
-
     public void RegisterViewModel(FanType type, IFanControlView vm)
     {
         if (!IsEnabled) return;
@@ -152,6 +136,17 @@ public class FanCurveManager : IDisposable
                 vm.UpdateMonitoring(temp, rpm, (byte)pwm);
             }
         }
+    }
+
+    public async Task LoadAndApply(List<FanCurveEntry> entries)
+    {
+        if (!IsEnabled || _extension == null) return;
+        foreach (var entry in entries)
+        {
+            AddEntry(entry);
+            UpdateConfig(entry.Type, entry);
+        }
+        await SetRegister(true).ConfigureAwait(false);
     }
 
     public async Task SetRegister(bool flag = false)
