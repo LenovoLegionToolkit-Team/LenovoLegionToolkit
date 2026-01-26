@@ -24,16 +24,6 @@ public class SpectrumKeyboardBacklightController
         void CaptureScreen(ref RGBColor[,] buffer, int width, int height, CancellationToken token);
     }
 
-    private readonly struct KeyMap(int width, int height, ushort[,] keyCodes, ushort[] additionalKeyCodes)
-    {
-        public static readonly KeyMap Empty = new(0, 0, new ushort[0, 0], []);
-
-        public readonly int Width = width;
-        public readonly int Height = height;
-        public readonly ushort[,] KeyCodes = keyCodes;
-        public readonly ushort[] AdditionalKeyCodes = additionalKeyCodes;
-    }
-
     private readonly TimeSpan _auroraRefreshInterval = TimeSpan.FromMilliseconds(60);
 
     private readonly SpecialKeyListener _listener;

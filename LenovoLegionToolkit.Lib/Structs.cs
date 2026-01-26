@@ -480,6 +480,16 @@ public readonly struct HidDeviceConfig(
     public ushort DescriptorLength { get; } = descriptorLength;
 }
 
+public readonly struct KeyMap(int width, int height, ushort[,] keyCodes, ushort[] additionalKeyCodes)
+{
+    public static readonly KeyMap Empty = new(0, 0, new ushort[0, 0], []);
+
+    public readonly int Width = width;
+    public readonly int Height = height;
+    public readonly ushort[,] KeyCodes = keyCodes;
+    public readonly ushort[] AdditionalKeyCodes = additionalKeyCodes;
+}
+
 public readonly struct MachineInformation
 {
     public readonly struct FeatureData(FeatureData.SourceType sourceType, IEnumerable<CapabilityID> capabilities)

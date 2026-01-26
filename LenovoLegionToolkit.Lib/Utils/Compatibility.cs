@@ -534,16 +534,26 @@ public static partial class Compatibility
         return lower.Contains("IdeaPad".ToLowerInvariant()) || lower.Contains("ThinkBook".ToLowerInvariant()) || lower.Contains("Lenovo Slim".ToLowerInvariant());
     }
 
-
-
     private static int GetMachineGeneration(string model)
     {
-        var genMatch = Regex.Match(model, @"g(?<gen>\d+)$", RegexOptions.IgnoreCase);
-        if (genMatch.Success)
-            return int.Parse(genMatch.Groups["gen"].Value);
+        var platformMatch = Regex.Match(model, @"(?<=[A-Z]{3})(?<gen>\d{1,2})", RegexOptions.IgnoreCase);
+        if (platformMatch.Success)
+        {
+            return int.Parse(platformMatch.Groups["gen"].Value);
+        }
 
-        var match = Regex.Match(model, @"\d+(?=[A-Z]?H?$)");
-        return match.Success ? int.Parse(match.Value) : 0;
+        var gMatch = Regex.Match(model, @"g(?<gen>\d+)", RegexOptions.IgnoreCase);
+        if (gMatch.Success) return int.Parse(gMatch.Groups["gen"].Value);
+
+        var matches = Regex.Matches(model, @"(?<!\d)\d{1,2}(?!\d)");
+        foreach (Match m in matches)
+        {
+            int val = int.Parse(m.Value);
+            if (val >= 14 && val <= 18) continue;
+            return val;
+        }
+
+        return 0;
     }
 
     private static LegionSeries GetLegionSeries(string model, string machineType)
