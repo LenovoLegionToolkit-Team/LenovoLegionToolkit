@@ -242,4 +242,22 @@
   <data name="FloatingGadgetState_Toggle" xml:space="preserve">
     <value>Toggle</value>
   </data>
+  <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
+    <value>Warning: Power Mode resets Brightness and Refresh Rate. Run the Power Mode step first.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
+    <value>Warning: Power Mode resets Fan Speed. Run the Power Mode step first.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
+    <value>Warning: Changing Hybrid Mode to dGPU Mode forces a system reboot. This must be the last step.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
+    <value>Warning: Cannot overclock a deactivated GPU. The Overclock step will fail.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
+    <value>Warning: Windows HDR locks screen brightness. Brightness settings applied after HDR are ignored.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
+    <value>Warning: Changing Resolution resets Refresh Rate. Run the Resolution step first.</value>
+  </data>
 </root>
