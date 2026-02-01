@@ -87,7 +87,7 @@ public partial class DiscreteGPUControl
                 foreach (var p in e.Processes.OrderBy(p => p.ProcessName))
                 {
                     try { processesStringBuilder.AppendLine().Append(" · ").Append(p.ProcessName); }
-                    catch {  /* Ignored. */ }
+                    catch {  /* Ignore */ }
                 }
             }
             else

@@ -1,6 +1,6 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.System.Management;
 using System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 
@@ -21,7 +21,9 @@ public class InstanceStartedEventAutoAutoListener : AbstractAutoListener<Instanc
     {
         try
         {
-            _watcher = new ManagementEventWatcher(new WqlEventQuery("SELECT * FROM __InstanceCreationEvent WITHIN 1 WHERE TargetInstance ISA 'Win32_Process'"));
+            var query = new WqlEventQuery("SELECT * FROM Win32_ProcessStartTrace");
+
+            _watcher = new ManagementEventWatcher(query);
             _watcher.EventArrived += Watcher_EventArrived;
             _watcher.Start();
         }
@@ -53,17 +55,17 @@ public class InstanceStartedEventAutoAutoListener : AbstractAutoListener<Instanc
     {
         try
         {
-            var targetInstance = (ManagementBaseObject)e.NewEvent["TargetInstance"];
-            var processId = Convert.ToInt32(targetInstance["ProcessId"]);
-            var parentProcessId = Convert.ToInt32(targetInstance["ParentProcessId"]);
-            var processName = (string)targetInstance["Name"];
+            var processId = Convert.ToInt32(e.NewEvent["ProcessID"]);
+            var parentProcessId = Convert.ToInt32(e.NewEvent["ParentProcessID"]);
+            var processName = (string)e.NewEvent["ProcessName"];
 
-            var nameWithoutExt = global::System.IO.Path.GetFileNameWithoutExtension(processName);
-            
+            var nameWithoutExt = Path.GetFileNameWithoutExtension(processName);
+
             RaiseChanged(new ChangedEventArgs(processId, parentProcessId, nameWithoutExt));
         }
-        catch (Exception)
+        catch (Exception ex)
         {
+            Log.Instance.Trace($"Error processing process start event.", ex);
         }
     }
 }

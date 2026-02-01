@@ -278,7 +278,7 @@ public static partial class Compatibility
             var capabilities = await WMI.LenovoCapabilityData00.ReadAsync().ConfigureAwait(false);
             return new(MachineInformation.FeatureData.SourceType.CapabilityData, capabilities);
         }
-        catch { /* Ignored. */ }
+        catch { /* Ignore */ }
 
         try
         {
@@ -296,7 +296,7 @@ public static partial class Compatibility
                 [CapabilityID.OverDrive] = true
             };
         }
-        catch { /* Ignored. */ }
+        catch { /* Ignore */ }
 
         return MachineInformation.FeatureData.Unknown;
     }
@@ -328,7 +328,7 @@ public static partial class Compatibility
 
             return powerModes;
         }
-        catch { /* Ignored. */ }
+        catch { /* Ignore */ }
 
         try
         {
@@ -355,7 +355,7 @@ public static partial class Compatibility
 
             return powerModes;
         }
-        catch { /* Ignored. */ }
+        catch { /* Ignore */ }
 
         return [];
     }
@@ -366,7 +366,7 @@ public static partial class Compatibility
         {
             return await WMI.LenovoGameZoneData.IsSupportSmartFanAsync().ConfigureAwait(false);
         }
-        catch { /* Ignored. */ }
+        catch { /* Ignore */ }
 
         return -1;
     }
@@ -377,13 +377,13 @@ public static partial class Compatibility
         {
             return await WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.LegionZoneSupportVersion).ConfigureAwait(false);
         }
-        catch { /* Ignored. */ }
+        catch { /* Ignore */ }
 
         try
         {
             return await WMI.LenovoOtherMethod.GetSupportLegionZoneVersionAsync().ConfigureAwait(false);
         }
-        catch { /* Ignored. */ }
+        catch { /* Ignore */ }
 
         return -1;
     }

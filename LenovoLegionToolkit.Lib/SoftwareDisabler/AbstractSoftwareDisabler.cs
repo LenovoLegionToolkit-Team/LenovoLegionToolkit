@@ -113,7 +113,7 @@ public abstract class AbstractSoftwareDisabler
                     if (!name.StartsWith(processName, StringComparison.InvariantCultureIgnoreCase))
                         continue;
                 }
-                catch {  /* Ignored. */ }
+                catch {  /* Ignore */ }
 
                 if (!string.IsNullOrEmpty(name))
                     yield return name;

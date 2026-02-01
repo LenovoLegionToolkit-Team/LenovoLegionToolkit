@@ -628,6 +628,20 @@ public readonly struct WindowsPowerPlan(Guid guid, string name, bool isActive)
     #endregion
 }
 
+public class ProcessEqualityComparer : IEqualityComparer<Process>
+{
+    public bool Equals(Process? x, Process? y)
+    {
+        if (ReferenceEquals(x, y)) return true;
+        if (x is null) return false;
+        if (y is null) return false;
+        if (x.GetType() != y.GetType()) return false;
+        return x.Id == y.Id;
+    }
+
+    public int GetHashCode(Process obj) => obj.Id;
+}
+
 [method: JsonConstructor]
 public readonly struct ProcessInfo(string name, string? executablePath) : IComparable
 {

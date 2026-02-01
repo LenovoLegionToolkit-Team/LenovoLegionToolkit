@@ -214,6 +214,8 @@ public partial class FloatingGadget
 
         _fpsController.FpsDataUpdated -= OnFpsDataUpdated;
         _fpsController.Dispose();
+
+        App.Current.FloatingGadget = null;
     }
 
     private void SetWindowPosition()

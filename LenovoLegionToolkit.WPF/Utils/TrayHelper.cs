@@ -133,7 +133,7 @@ public class TrayHelper : IDisposable
                 {
                     await _automationProcessor.RunNowAsync(pipeline);
                 }
-                catch {  /* Ignored. */ }
+                catch {  /* Ignore */ }
             };
 
             _contextMenu.Items.Insert(0, item);

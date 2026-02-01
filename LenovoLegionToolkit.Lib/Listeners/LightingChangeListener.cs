@@ -65,6 +65,6 @@ public class LightingChangeListener(
                     }
             }
         }
-        catch { /* Ignored. */ }
+        catch { /* Ignore */ }
     }
 }

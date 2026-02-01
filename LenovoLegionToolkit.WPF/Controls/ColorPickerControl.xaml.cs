@@ -128,7 +128,7 @@ public partial class ColorPickerControl
                 ColorChangedDelayed?.Invoke(this, EventArgs.Empty);
             }
         }
-        catch {  /* Ignored. */ }
+        catch {  /* Ignore */ }
 
         _isEditing = false;
     }
