@@ -22,7 +22,6 @@ using LenovoLegionToolkit.WPF.Windows.Automation;
 using Wpf.Ui.Common;
 using System.Windows.Documents;
 using System.Windows.Media;
-using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
 using CardExpander = LenovoLegionToolkit.WPF.Controls.Custom.CardExpander;
 using MenuItem = Wpf.Ui.Controls.MenuItem;
@@ -222,12 +221,9 @@ public class AutomationPipelineControl : UserControl
 
         Content = _cardExpander;
         
-        // Enable Pipeline Dragging
         _cardHeaderControl.MouseLeftButtonDown += (_, e) =>
         {
              if (e.ClickCount > 1) return;
-             // Ensure we are not dragging a step (steps are inside the expander content)
-             // The header is safe.
              try
              {
                  DragDrop.DoDragDrop(this, new DataObject("AutomationPipeline", this), DragDropEffects.Move);
@@ -238,11 +234,10 @@ public class AutomationPipelineControl : UserControl
              }
         };
 
-        // Enable Drop on the Pipeline Control itself (for reordering pipelines or dropping steps)
         AllowDrop = true;
         Drop += HandlePipelineDrop;
-        PreviewDragOver += Control_PreviewDragOver; // Reuse existing preview logic (might need adjustment for pipeline type)
-        DragLeave += (_, _) => CleanupAdorner(); // Cleanup if leaving the control
+        PreviewDragOver += Control_PreviewDragOver;
+        DragLeave += (_, _) => CleanupAdorner();
 
         _initializedTaskCompletionSource.TrySetResult();
     }
@@ -251,49 +246,54 @@ public class AutomationPipelineControl : UserControl
     {
         CleanupAdorner();
         
-        // Handle Step Drop onto Pipeline (e.g. empty pipeline or header)
         if (e.Data.GetDataPresent("AutomationStep"))
         {
-            var sourceStep = e.Data.GetData("AutomationStep") as AbstractAutomationStepControl;
-            if (sourceStep != null && !_stepsStackPanel.Children.Contains(sourceStep))
+            if (e.Data.GetData("AutomationStep") is not AbstractAutomationStepControl sourceStep ||
+                _stepsStackPanel.Children.Contains(sourceStep))
             {
-                 var sourceParent = FindParentAutomationPipelineControl(sourceStep);
-                 if (sourceParent != null)
-                 {
-                     sourceParent.DetachStep(sourceStep);
-                     _stepsStackPanel.Children.Add(sourceStep);
-                     OnChanged?.Invoke(this, EventArgs.Empty);
-                 }
+                return;
             }
+
+            var sourceParent = FindParentAutomationPipelineControl(sourceStep);
+            if (sourceParent == null)
+            {
+                return;
+            }
+
+            sourceParent.DetachStep(sourceStep);
+            _stepsStackPanel.Children.Add(sourceStep);
+            OnChanged?.Invoke(this, EventArgs.Empty);
             return;
         }
 
-        // Handle Pipeline Reorder
-        if (e.Data.GetDataPresent("AutomationPipeline"))
+        if (!e.Data.GetDataPresent("AutomationPipeline"))
         {
-             var sourcePipeline = e.Data.GetData("AutomationPipeline") as AutomationPipelineControl;
-             if (sourcePipeline == null || sourcePipeline == this) return;
-
-             var parentPanel = VisualTreeHelper.GetParent(this) as Panel;
-             if (parentPanel != null && parentPanel.Children.Contains(sourcePipeline))
-             {
-                 int oldIndex = parentPanel.Children.IndexOf(sourcePipeline);
-                 int newIndex = parentPanel.Children.IndexOf(this);
-
-                 if (oldIndex != -1 && newIndex != -1)
-                 {
-                     parentPanel.Children.RemoveAt(oldIndex);
-                     parentPanel.Children.Insert(newIndex, sourcePipeline);
-                     // Notify parent page? The page listens to OnChanged/OnDelete but not Reorder?
-                     // Verify if Page needs notification. AutomationPage subscribes to OnChanged.
-                     // But moving children in StackPanel doesn't trigger OnChanged on the child.
-                     // We might need to trigger a save or update the "Pipelines" list.
-                     // Actually, AutomationPage.Save calculates from Children order. So just visually moving is enough.
-                     // But we should probably invoke a change event to show "Save/Revert" buttons.
-                     OnChanged?.Invoke(this, EventArgs.Empty); 
-                 }
-             }
+            return;
         }
+
+        if (e.Data.GetData("AutomationPipeline") is not AutomationPipelineControl sourcePipeline ||
+            sourcePipeline == this)
+        {
+            return;
+        }
+
+        if (VisualTreeHelper.GetParent(this) is not Panel parentPanel ||
+            !parentPanel.Children.Contains(sourcePipeline))
+        {
+            return;
+        }
+
+        var oldIndex = parentPanel.Children.IndexOf(sourcePipeline);
+        var newIndex = parentPanel.Children.IndexOf(this);
+
+        if (oldIndex == -1 || newIndex == -1)
+        {
+            return;
+        }
+
+        parentPanel.Children.RemoveAt(oldIndex);
+        parentPanel.Children.Insert(newIndex, sourcePipeline);
+        OnChanged?.Invoke(this, EventArgs.Empty);
     }
 
     private async Task RunAsync()
@@ -334,10 +334,7 @@ public class AutomationPipelineControl : UserControl
         if (!string.IsNullOrWhiteSpace(AutomationPipeline.Name))
             return AutomationPipeline.Name;
 
-        if (AutomationPipeline.Trigger is not null)
-            return AutomationPipeline.Trigger.DisplayName;
-
-        return Resource.AutomationPipelineControl_Unnamed;
+        return AutomationPipeline.Trigger is not null ? AutomationPipeline.Trigger.DisplayName : Resource.AutomationPipelineControl_Unnamed;
     }
 
     private string GenerateSubtitle()
@@ -527,33 +524,35 @@ public class AutomationPipelineControl : UserControl
 
     private void Control_PreviewDragOver(object sender, DragEventArgs e)
     {
-        if (e.Data.GetDataPresent("AutomationStep") || e.Data.GetDataPresent("AutomationPipeline"))
+        if (!e.Data.GetDataPresent("AutomationStep") && !e.Data.GetDataPresent("AutomationPipeline"))
         {
-            e.Effects = DragDropEffects.Move;
-            e.Handled = true;
+            return;
+        }
 
-            var position = e.GetPosition(this);
-            if (_adorner == null)
+        e.Effects = DragDropEffects.Move;
+        e.Handled = true;
+
+        var position = e.GetPosition(this);
+        if (_adorner == null)
+        {
+            UIElement? source = null;
+            if (e.Data.GetDataPresent("AutomationStep"))
+                source = e.Data.GetData("AutomationStep") as UIElement;
+            else if (e.Data.GetDataPresent("AutomationPipeline"))
+                source = e.Data.GetData("AutomationPipeline") as UIElement;
+
+            if (source != null)
             {
-                UIElement? source = null;
-                if (e.Data.GetDataPresent("AutomationStep"))
-                    source = e.Data.GetData("AutomationStep") as UIElement;
-                else if (e.Data.GetDataPresent("AutomationPipeline"))
-                    source = e.Data.GetData("AutomationPipeline") as UIElement;
-
-                if (source != null)
+                var adornerLayer = AdornerLayer.GetAdornerLayer(this);
+                if (adornerLayer != null)
                 {
-                    var adornerLayer = AdornerLayer.GetAdornerLayer(this);
-                    if (adornerLayer != null)
-                    {
-                        var offset = new Point(10, 10); 
-                        _adorner = new DragAdorner(this, source, offset);
-                        adornerLayer.Add(_adorner);
-                    }
+                    var offset = new Point(10, 10); 
+                    _adorner = new DragAdorner(this, source, offset);
+                    adornerLayer.Add(_adorner);
                 }
             }
-            _adorner?.UpdatePosition(position);
         }
+        _adorner?.UpdatePosition(position);
     }
 
     private void Control_GiveFeedback(object sender, GiveFeedbackEventArgs e)
@@ -562,23 +561,25 @@ public class AutomationPipelineControl : UserControl
         {
             Mouse.SetCursor(Cursors.SizeAll);
             e.UseDefaultCursors = false;
-            e.Handled = true;
         }
         else
         {
             e.UseDefaultCursors = true;
-            e.Handled = true;
         }
+
+        e.Handled = true;
     }
     
     private void CleanupAdorner()
     {
-         if (_adorner != null)
-         {
-             var adornerLayer = AdornerLayer.GetAdornerLayer(this);
-             adornerLayer?.Remove(_adorner);
-             _adorner = null;
-         }
+        if (_adorner == null)
+        {
+            return;
+        }
+
+        var adornerLayer = AdornerLayer.GetAdornerLayer(this);
+        adornerLayer?.Remove(_adorner);
+        _adorner = null;
     }
 
     private void HandleDrop(object sender, DragEventArgs e)
@@ -597,32 +598,34 @@ public class AutomationPipelineControl : UserControl
 
         if (!_stepsStackPanel.Children.Contains(sourceControl))
         {
-            // Cross-region drop
             var sourceParent = FindParentAutomationPipelineControl(sourceControl);
-            if (sourceParent != null)
+            if (sourceParent == null)
             {
-                sourceParent.DetachStep(sourceControl);
-                int newIndex = _stepsStackPanel.Children.IndexOf(targetControl);
-                if (newIndex != -1)
-                    _stepsStackPanel.Children.Insert(newIndex, sourceControl);
-                else
-                    _stepsStackPanel.Children.Add(sourceControl);
-                
-                OnChanged?.Invoke(this, EventArgs.Empty);
+                return;
             }
+
+            sourceParent.DetachStep(sourceControl);
+            var newIndex = _stepsStackPanel.Children.IndexOf(targetControl);
+            if (newIndex != -1)
+                _stepsStackPanel.Children.Insert(newIndex, sourceControl);
+            else
+                _stepsStackPanel.Children.Add(sourceControl);
+                
+            OnChanged?.Invoke(this, EventArgs.Empty);
         }
         else
         {
-            // Same region reorder
-            int oldIndex = _stepsStackPanel.Children.IndexOf(sourceControl);
-            int newIndex = _stepsStackPanel.Children.IndexOf(targetControl);
+            var oldIndex = _stepsStackPanel.Children.IndexOf(sourceControl);
+            var newIndex = _stepsStackPanel.Children.IndexOf(targetControl);
 
-            if (oldIndex != -1 && newIndex != -1)
+            if (oldIndex == -1 || newIndex == -1)
             {
-                _stepsStackPanel.Children.RemoveAt(oldIndex);
-                _stepsStackPanel.Children.Insert(newIndex, sourceControl);
-                OnChanged?.Invoke(this, EventArgs.Empty);
+                return;
             }
+
+            _stepsStackPanel.Children.RemoveAt(oldIndex);
+            _stepsStackPanel.Children.Insert(newIndex, sourceControl);
+            OnChanged?.Invoke(this, EventArgs.Empty);
         }
     }
 
