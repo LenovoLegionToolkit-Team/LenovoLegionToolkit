@@ -4,7 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Threading;
 using Humanizer;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation;
@@ -20,8 +23,6 @@ using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Automation;
 using Wpf.Ui.Common;
-using System.Windows.Documents;
-using System.Windows.Media;
 using Button = Wpf.Ui.Controls.Button;
 using CardExpander = LenovoLegionToolkit.WPF.Controls.Custom.CardExpander;
 using MenuItem = Wpf.Ui.Controls.MenuItem;
@@ -94,12 +95,22 @@ public class AutomationPipelineControl : UserControl
     public event EventHandler? OnChanged;
     public event EventHandler? OnDelete;
 
+    private readonly DispatcherTimer _longPressTimer;
+    private bool _isDragActive;
+
     public Task InitializedTask => _initializedTaskCompletionSource.Task;
 
     public AutomationPipelineControl(AutomationPipeline automationPipeline, IAutomationStep[] supportedAutomationSteps)
     {
         AutomationPipeline = automationPipeline;
         _supportedAutomationSteps = supportedAutomationSteps;
+
+        _longPressTimer = new DispatcherTimer
+        {
+            Interval = TimeSpan.FromMilliseconds(300)
+        };
+
+        _longPressTimer.Tick += LongPressTimer_Tick;
 
         Initialized += AutomationPipelineControl_Initialized;
         OnChanged += (_, _) => RefreshValidationWarnings();
@@ -209,7 +220,7 @@ public class AutomationPipelineControl : UserControl
         _stackPanel.Children.Add(_stepsStackPanel);
         _stackPanel.Children.Add(_validationWarningTextBlock);
         _stackPanel.Children.Add(_buttonsStackPanel);
-        
+
         RefreshValidationWarnings();
 
         _cardExpander.Icon = GenerateIcon();
@@ -220,18 +231,23 @@ public class AutomationPipelineControl : UserControl
         _cardExpander.Content = _stackPanel;
 
         Content = _cardExpander;
-        
-        _cardHeaderControl.MouseLeftButtonDown += (_, e) =>
+
+        _cardHeaderControl.PreviewMouseLeftButtonDown += (s, e) =>
         {
-             if (e.ClickCount > 1) return;
-             try
-             {
-                 DragDrop.DoDragDrop(this, new DataObject("AutomationPipeline", this), DragDropEffects.Move);
-             }
-             finally
-             {
-                 CleanupAdorner();
-             }
+            _isDragActive = false;
+            _longPressTimer.Start();
+        };
+
+        _cardHeaderControl.PreviewMouseLeftButtonUp += (s, e) =>
+        {
+            if (_longPressTimer.IsEnabled)
+            {
+                _longPressTimer.Stop();
+                if (!_cardExpander.IsExpanded)
+                    _cardExpander.IsExpanded = true;
+                else
+                    _cardExpander.IsExpanded = false;
+            }
         };
 
         AllowDrop = true;
@@ -242,10 +258,26 @@ public class AutomationPipelineControl : UserControl
         _initializedTaskCompletionSource.TrySetResult();
     }
 
+    private void LongPressTimer_Tick(object? sender, EventArgs e)
+    {
+        _longPressTimer.Stop();
+        _isDragActive = true;
+
+        try
+        {
+            DragDrop.DoDragDrop(_cardHeaderControl, new DataObject("AutomationPipeline", this), DragDropEffects.Move);
+        }
+        finally
+        {
+            CleanupAdorner();
+            _isDragActive = false;
+        }
+    }
+
     private void HandlePipelineDrop(object sender, DragEventArgs e)
     {
         CleanupAdorner();
-        
+
         if (e.Data.GetDataPresent("AutomationStep"))
         {
             if (e.Data.GetData("AutomationStep") is not AbstractAutomationStepControl sourceStep ||
@@ -546,7 +578,7 @@ public class AutomationPipelineControl : UserControl
                 var adornerLayer = AdornerLayer.GetAdornerLayer(this);
                 if (adornerLayer != null)
                 {
-                    var offset = new Point(10, 10); 
+                    var offset = new Point(10, 10);
                     _adorner = new DragAdorner(this, source, offset);
                     adornerLayer.Add(_adorner);
                 }
@@ -569,7 +601,7 @@ public class AutomationPipelineControl : UserControl
 
         e.Handled = true;
     }
-    
+
     private void CleanupAdorner()
     {
         if (_adorner == null)
@@ -610,7 +642,7 @@ public class AutomationPipelineControl : UserControl
                 _stepsStackPanel.Children.Insert(newIndex, sourceControl);
             else
                 _stepsStackPanel.Children.Add(sourceControl);
-                
+
             OnChanged?.Invoke(this, EventArgs.Empty);
         }
         else

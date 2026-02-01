@@ -1,11 +1,11 @@
-﻿using LenovoLegionToolkit.Lib;
-using LenovoLegionToolkit.Lib.Extensions;
-using LenovoLegionToolkit.Lib.Utils;
-using LenovoLegionToolkit.WPF.Controls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows;
+using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Utils;
+using LenovoLegionToolkit.WPF.Controls;
 using Wpf.Ui.Controls;
 using MessageBox = System.Windows.MessageBox;
 

@@ -1,13 +1,13 @@
-﻿using LenovoLegionToolkit.Lib.Controllers.Sensors;
-using LenovoLegionToolkit.Lib.Features;
-using LenovoLegionToolkit.Lib.Listeners;
-using LenovoLegionToolkit.Lib.View;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Controllers.Sensors;
+using LenovoLegionToolkit.Lib.Features;
+using LenovoLegionToolkit.Lib.Listeners;
+using LenovoLegionToolkit.Lib.View;
 
 namespace LenovoLegionToolkit.Lib.Utils;
 
