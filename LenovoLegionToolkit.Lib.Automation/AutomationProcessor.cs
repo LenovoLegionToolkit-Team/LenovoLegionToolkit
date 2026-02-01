@@ -320,6 +320,11 @@ public class AutomationProcessor(
     private async Task UpdateListenersAsync()
     {
         Log.Instance.Trace($"Stopping listeners...");
+        var wasRunning = gameAutoListener.AreGamesRunning();
+        Log.Instance.Trace($"Current Game Listener State: Running={wasRunning}");
+
+        if (wasRunning)
+            gameAutoListener.PreserveStateOnRestart();
 
         await gameAutoListener.UnsubscribeChangedAsync(GameAutoListener_Changed).ConfigureAwait(false);
         await processAutoListener.UnsubscribeChangedAsync(ProcessAutoListener_Changed).ConfigureAwait(false);

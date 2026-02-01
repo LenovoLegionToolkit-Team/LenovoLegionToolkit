@@ -13,6 +13,8 @@ internal unsafe class EffectiveGameModeDetector
     private IntPtr _handle;
     private bool? _lastState;
 
+    public bool IsActive => _lastState == true;
+
     public event EventHandler<bool>? Changed;
 
     public EffectiveGameModeDetector()

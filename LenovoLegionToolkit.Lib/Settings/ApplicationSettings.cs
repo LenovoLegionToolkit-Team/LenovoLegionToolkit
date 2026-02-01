@@ -80,7 +80,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettings.Applicat
     }
 }
 
-internal class LegacyPowerPlanInstanceIdToGuidConverter : JsonConverter // Introduced in 2.12.0
+internal class LegacyPowerPlanInstanceIdToGuidConverter : JsonConverter
 {
     public override bool CanWrite => false;
 

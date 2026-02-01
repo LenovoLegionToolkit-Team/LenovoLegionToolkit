@@ -45,6 +45,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
     private readonly HashSet<Process> _processCache = new(new ProcessEqualityComparer());
 
     private bool _lastState;
+    private bool _preserveStateOnNextStart;
 
     public GameAutoListener(InstanceStartedEventAutoAutoListener instanceStartedEventAutoAutoListener, GPUController gpuController, ApplicationSettings settings)
     {
@@ -62,6 +63,16 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     protected override async Task StartAsync()
     {
+        lock (Lock)
+        {
+            if (_preserveStateOnNextStart)
+            {
+                _lastState = true;
+                _preserveStateOnNextStart = false;
+                Log.Instance.Trace($"Preserving game running state during restart.");
+            }
+        }
+
         lock (Lock)
         {
             if (_settings.Store.GameDetection.UseGameConfigStore)
@@ -86,7 +97,10 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                              RaiseChangedIfNeeded(true);
                          }
                      }
-                     catch { }
+                     catch (Exception ex)
+                     {
+                         Log.Instance.Trace($"Failed to check process {process.Id}.", ex);
+                     }
                  }
             }
         }
@@ -95,13 +109,61 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         {
             await _gpuController.StartAsync().ConfigureAwait(false);
             _gpuController.Refreshed += GpuController_Refreshed;
+            
+            try
+            {
+                var status = await _gpuController.RefreshNowAsync().ConfigureAwait(false);
+                lock (Lock)
+                {
+                    foreach (var process in status.Processes)
+                    {
+                        try
+                        {
+                            if (process.HasExited)
+                                continue;
+
+                            var processName = process.ProcessName;
+                            
+                            if (IsBlacklisted(processName))
+                                continue;
+
+                            if (!_processCache.Contains(process))
+                            {
+                                Log.Instance.Trace($"Found already running GPU-accelerated process: {processName} ({process.Id})");
+                                Attach(process);
+                                _processCache.Add(process);
+                                RaiseChangedIfNeeded(true);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Instance.Trace($"Failed to check GPU process {process.Id}.", ex);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to check for already running GPU processes.", ex);
+            }
         }
 
         if (_settings.Store.GameDetection.UseGameConfigStore)
             await _gameConfigStoreDetector.StartAsync().ConfigureAwait(false);
 
         if (_settings.Store.GameDetection.UseEffectiveGameMode)
+        {
             await _effectiveGameModeDetector.StartAsync().ConfigureAwait(false);
+            
+            lock (Lock)
+            {
+                if (_effectiveGameModeDetector.IsActive)
+                {
+                    Log.Instance.Trace($"Game Mode already active on startup, checking foreground process...");
+                    TryPinForegroundProcess();
+                }
+            }
+        }
 
         await _instanceStartedEventAutoAutoListener.SubscribeChangedAsync(InstanceStartedEventAutoAutoListener_Changed).ConfigureAwait(false);
     }
@@ -117,15 +179,23 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
         lock (Lock)
         {
-            foreach (var process in _processCache)
-                Detach(process);
-
-            _processCache.Clear();
-            _detectedGamePathsCache.Clear();
-            if (_lastState)
+            if (!_preserveStateOnNextStart)
             {
-                _lastState = false;
-                RaiseChanged(new ChangedEventArgs(false));
+                foreach (var process in _processCache)
+                    Detach(process);
+
+                _processCache.Clear();
+                _detectedGamePathsCache.Clear();
+                if (_lastState)
+                {
+                    _lastState = false;
+                    RaiseChanged(new ChangedEventArgs(false));
+                }
+            }
+            else
+            {
+                _detectedGamePathsCache.Clear();
+                Log.Instance.Trace($"Preserving process cache during mode switch: {_processCache.Count} process(es)");
             }
         }
     }
@@ -135,6 +205,15 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         lock (Lock)
         {
             return _lastState;
+        }
+    }
+
+    public void PreserveStateOnRestart()
+    {
+        lock (Lock)
+        {
+            _preserveStateOnNextStart = _lastState;
+            Log.Instance.Trace($"Will preserve state on next start: {_preserveStateOnNextStart}");
         }
     }
 
@@ -284,9 +363,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     private void InstanceStartedEventAutoAutoListener_Changed(object? sender, InstanceStartedEventAutoAutoListener.ChangedEventArgs e)
     {
-        if (!_settings.Store.GameDetection.UseGameConfigStore)
-            return;
-
         lock (Lock)
         {
             if (e.ProcessId < 0)
@@ -317,6 +393,9 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             {
                 Log.Instance.Trace($"Failed to check parent process for {e.ProcessName} ({e.ProcessId}).", ex);
             }
+
+            if (!_settings.Store.GameDetection.UseGameConfigStore)
+                return;
 
             if (!_detectedGamePathsCache.Any(p => e.ProcessName.Equals(p.Name, StringComparison.CurrentCultureIgnoreCase)))
                 return;
