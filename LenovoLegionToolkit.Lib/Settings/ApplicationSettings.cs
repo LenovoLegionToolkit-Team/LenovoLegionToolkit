@@ -60,9 +60,18 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettings.Applicat
         public double Opacity { get; set; } = 1.0f;
         public int SelectedStyleIndex { get; set; } = 0;
         public List<FloatingGadgetItem> FloatingGadgetItems { get; set; } = [];
+
         public List<string> ExcludedProcesses { get; set; } = [];
+        public GameDetectionSettings GameDetection { get; set; } = new();
         public bool DynamicLightingWarningDontShowAgain { get; set; }
         public bool CustomModeWarningDontShowAgain { get; set; }
+    }
+
+    public class GameDetectionSettings
+    {
+        public bool UseDiscreteGPU { get; set; } = true;
+        public bool UseGameConfigStore { get; set; } = true;
+        public bool UseEffectiveGameMode { get; set; } = true;
     }
 
     public ApplicationSettings() : base("settings.json")

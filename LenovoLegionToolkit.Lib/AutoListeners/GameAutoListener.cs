@@ -62,18 +62,46 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     protected override async Task StartAsync()
     {
-
         lock (Lock)
         {
-            foreach (var gamePath in GameConfigStoreDetector.GetDetectedGamePaths())
-                _detectedGamePathsCache.Add(gamePath);
+            if (_settings.Store.GameDetection.UseGameConfigStore)
+            {
+                foreach (var gamePath in GameConfigStoreDetector.GetDetectedGamePaths())
+                    _detectedGamePathsCache.Add(gamePath);
+
+                 foreach (var process in Process.GetProcesses())
+                 {
+                     try
+                     {
+                         var processPath = process.GetFileName();
+                         if (string.IsNullOrEmpty(processPath))
+                             continue;
+
+                         var processInfo = ProcessInfo.FromPath(processPath);
+                         if (_detectedGamePathsCache.Contains(processInfo))
+                         {
+                             Log.Instance.Trace($"Found already running game: {processInfo.Name} ({process.Id})");
+                             Attach(process);
+                             _processCache.Add(process);
+                             RaiseChangedIfNeeded(true);
+                         }
+                     }
+                     catch { }
+                 }
+            }
         }
 
-        await _gpuController.StartAsync().ConfigureAwait(false);
-        _gpuController.Refreshed += GpuController_Refreshed;
+        if (_settings.Store.GameDetection.UseDiscreteGPU)
+        {
+            await _gpuController.StartAsync().ConfigureAwait(false);
+            _gpuController.Refreshed += GpuController_Refreshed;
+        }
 
-        await _gameConfigStoreDetector.StartAsync().ConfigureAwait(false);
-        await _effectiveGameModeDetector.StartAsync().ConfigureAwait(false);
+        if (_settings.Store.GameDetection.UseGameConfigStore)
+            await _gameConfigStoreDetector.StartAsync().ConfigureAwait(false);
+
+        if (_settings.Store.GameDetection.UseEffectiveGameMode)
+            await _effectiveGameModeDetector.StartAsync().ConfigureAwait(false);
 
         await _instanceStartedEventAutoAutoListener.SubscribeChangedAsync(InstanceStartedEventAutoAutoListener_Changed).ConfigureAwait(false);
     }
@@ -94,7 +122,11 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
             _processCache.Clear();
             _detectedGamePathsCache.Clear();
-            _lastState = false;
+            if (_lastState)
+            {
+                _lastState = false;
+                RaiseChanged(new ChangedEventArgs(false));
+            }
         }
     }
 
@@ -152,8 +184,9 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 {
                     try
                     {
-                        var processPath = process.MainModule?.FileName;
-                        if (game.ExecutablePath is null || !game.ExecutablePath.Equals(processPath, StringComparison.CurrentCultureIgnoreCase))
+                        var processPath = process.GetFileName();
+
+                        if (processPath is not null && game.ExecutablePath is not null && !game.ExecutablePath.Equals(processPath, StringComparison.CurrentCultureIgnoreCase))
                             continue;
 
                         if (!_processCache.Contains(process))
@@ -251,6 +284,9 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     private void InstanceStartedEventAutoAutoListener_Changed(object? sender, InstanceStartedEventAutoAutoListener.ChangedEventArgs e)
     {
+        if (!_settings.Store.GameDetection.UseGameConfigStore)
+            return;
+
         lock (Lock)
         {
             if (e.ProcessId < 0)

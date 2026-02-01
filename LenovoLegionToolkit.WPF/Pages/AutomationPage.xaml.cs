@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Automation.Pipeline;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
@@ -25,6 +26,7 @@ namespace LenovoLegionToolkit.WPF.Pages;
 public partial class AutomationPage
 {
     private readonly AutomationProcessor _automationProcessor = IoCContainer.Resolve<AutomationProcessor>();
+    private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
 
     private IAutomationStep[] _supportedAutomationSteps = [];
 
@@ -113,6 +115,43 @@ public partial class AutomationPage
         await SnackbarHelper.ShowAsync(Resource.AutomationPage_Reverted_Title, Resource.AutomationPage_Reverted_Message);
     }
 
+
+
+    private void DetectionModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_detectionModeComboBox.SelectedItem is not ComboBoxItem item || item.Tag is not string tag)
+            return;
+
+        var useGpu = false;
+        var useStore = false;
+        var useGameMode = false;
+
+        switch (tag)
+        {
+            case "Auto":
+                useGpu = true;
+                useStore = true;
+                useGameMode = true;
+                break;
+            case "Gpu":
+                useGpu = true;
+                break;
+            case "Store":
+                useStore = true;
+                break;
+            case "GameMode":
+                useGameMode = true;
+                break;
+        }
+
+        _settings.Store.GameDetection.UseDiscreteGPU = useGpu;
+        _settings.Store.GameDetection.UseGameConfigStore = useStore;
+        _settings.Store.GameDetection.UseEffectiveGameMode = useGameMode;
+        _settings.SynchronizeStore();
+
+        _ = _automationProcessor.RestartListenersAsync();
+    }
+
     private async Task RefreshAsync()
     {
         _scrollViewer.ScrollToTop();
@@ -123,6 +162,24 @@ public partial class AutomationPage
         var initializedTasks = new List<Task> { Task.Delay(TimeSpan.FromSeconds(1)) };
 
         _enableAutomaticPipelinesToggle.IsChecked = _automationProcessor.IsEnabled;
+
+        ComboBoxItem? selectedItem;
+        var useGpu = _settings.Store.GameDetection.UseDiscreteGPU;
+        var useStore = _settings.Store.GameDetection.UseGameConfigStore;
+        var useGameMode = _settings.Store.GameDetection.UseEffectiveGameMode;
+
+        if (useGpu && useStore && useGameMode)
+            selectedItem = _detectionModeComboBox.Items[0] as ComboBoxItem;
+        else if (useGpu && !useStore && !useGameMode)
+            selectedItem = _detectionModeComboBox.Items[1] as ComboBoxItem;
+        else if (!useGpu && useStore && !useGameMode)
+            selectedItem = _detectionModeComboBox.Items[2] as ComboBoxItem;
+        else if (!useGpu && !useStore && useGameMode)
+            selectedItem = _detectionModeComboBox.Items[3] as ComboBoxItem;
+        else
+            selectedItem = _detectionModeComboBox.Items[0] as ComboBoxItem;
+
+        _detectionModeComboBox.SelectedItem = selectedItem;
 
         _automaticPipelinesStackPanel.Children.Clear();
         _manualPipelinesStackPanel.Children.Clear();

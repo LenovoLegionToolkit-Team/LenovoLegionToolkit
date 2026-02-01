@@ -97,6 +97,14 @@ public class AutomationProcessor(
             return _pipelines.Select(p => p.DeepCopy()).ToList();
     }
 
+    public async Task RestartListenersAsync()
+    {
+        using (await _ioLock.LockAsync().ConfigureAwait(false))
+        {
+             await UpdateListenersAsync().ConfigureAwait(false);
+        }
+    }
+
     #endregion
 
     #region Run
