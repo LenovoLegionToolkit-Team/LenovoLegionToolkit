@@ -336,16 +336,16 @@ Csak az aktuális állapotnak megfelelő műveletek fognak futni.</value>
     <value>Merülési ráta</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Message" xml:space="preserve">
-    <value>Minimum rate at which battery is charged (+), or discharged (-).</value>
+    <value>Minimális akkumulátor töltési (+) vagy kisülési (-) érték.</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Title" xml:space="preserve">
-    <value>Minimum discharge rate</value>
+    <value>Legkisebb kisülési érték</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Message" xml:space="preserve">
-    <value>Maximum rate at which battery is charged (+), or discharged (-).</value>
+    <value>Maximális akkumulátor töltési (+) vagy kisülési (-) érték.</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Title" xml:space="preserve">
-    <value>Maximum discharge rate</value>
+    <value>Maximális töltési érték</value>
   </data>
   <data name="BatteryPage_EstimatedBatteryLifeRemaining" xml:space="preserve">
     <value>Becsült hátralévő idő: {0}</value>
@@ -366,10 +366,10 @@ Csak az aktuális állapotnak megfelelő műveletek fognak futni.</value>
     <value>Teljes töltöttségi szint</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Message" xml:space="preserve">
-    <value>Battery maximum charge capacity.</value>
+    <value>Maximális akkumulátor kapacitás.</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Title" xml:space="preserve">
-    <value>Battery health</value>
+    <value>Akkumulátor állapot</value>
   </data>
   <data name="BatteryPage_LowWattageChargerConnected" xml:space="preserve">
     <value>Alacsony teljesítményű töltő csatlakoztatva</value>
@@ -1233,7 +1233,7 @@ Az opció módosítása után ajánlott az újraindítás.</value>
     <value>Értesítések</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
-    <value>Update Method</value>
+    <value>Frissítési Metódus</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
     <value>Windows Energiasémák</value>
@@ -1387,7 +1387,7 @@ Az opció módosítása után ajánlott az újraindítás.</value>
     <value>Próbálja meg újra</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Unexpected exception occurred:</value>
+    <value>Váratlan kivétel történt:</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Névtelen</value>
@@ -1692,10 +1692,10 @@ Ez a beállítás csak akkor lép hatályba, ha az Egyéni üzemmód engedélyez
     <value>Merülési ráta</value>
   </data>
   <data name="StatusTrayPopup_MinDischargeRate" xml:space="preserve">
-    <value>Min discharge rate</value>
+    <value>Min kisülési érték</value>
   </data>
   <data name="StatusTrayPopup_MaxDischargeRate" xml:space="preserve">
-    <value>Max discharge rate</value>
+    <value>Max kisülési érték</value>
   </data>
   <data name="StatusTrayPopup_UpdateAvailable" xml:space="preserve">
     <value>Frissítés érhető el!</value>
@@ -1794,10 +1794,10 @@ FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha nem áll rendelkez
     <value>Kapcsolja be vagy ki a laptop fedelén lévő háttérvilágítást.</value>
   </data>
   <data name="GHz" xml:space="preserve">
-    <value>GHz</value>
+    <value>Ghz</value>
   </data>
   <data name="MHz" xml:space="preserve">
-    <value>MHz</value>
+    <value>Mhz</value>
   </data>
   <data name="SensorsControl_Maximum" xml:space="preserve">
     <value>Maximum: {0}</value>
@@ -1827,13 +1827,13 @@ FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha nem áll rendelkez
     <value>Frissítési gyakoriság</value>
   </data>
   <data name="InstantBootControl_Title" xml:space="preserve">
-    <value>Instant Boot</value>
+    <value>Azonnali Bootolás</value>
   </data>
   <data name="InstantBootControl_Message" xml:space="preserve">
     <value>Kapcsolja be a laptopot, ha a töltő csatlakoztatva van.</value>
   </data>
   <data name="InstantBootAutomationStepControl_Title" xml:space="preserve">
-    <value>Instant Boot</value>
+    <value>Azonnali Bootolás</value>
   </data>
   <data name="InstantBootAutomationStepControl_Message" xml:space="preserve">
     <value>Kapcsolja be a laptopot, ha a töltő csatlakoztatva van.</value>
@@ -2281,52 +2281,52 @@ A támogatott formátumok a következők: {1}.</value>
 Nincs hatással a többi teljes képernyős ablakokra, de nem lehet kattintani az értesítésekre.</value>
   </data>
   <data name="SensorsControl_VrTemperature_Title" xml:space="preserve">
-    <value>VR Temperature</value>
+    <value>VR Hőmérséklet</value>
   </data>
   <data name="SensorsControl_GpuMemoryTemperature_Title" xml:space="preserve">
-    <value>Vram</value>
+    <value>VRAM</value>
   </data>
   <data name="SensorsControl_PchTemperature_Title" xml:space="preserve">
-    <value>PCH Temperature</value>
+    <value>PCH Hőmérséklet</value>
   </data>
   <data name="SensorsControl_Motherboard_Title" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>Alaplap</value>
   </data>
   <data name="SensorsControl_GpuCore_Title" xml:space="preserve">
     <value>Core</value>
   </data>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
-    <value>Memory</value>
+    <value>Memória</value>
   </data>
   <data name="SensorsControl_Disk_Title" xml:space="preserve">
-    <value>Disk</value>
+    <value>Diszk</value>
   </data>
   <data name="SensorsControl_Battery_Title" xml:space="preserve">
-    <value>Battery</value>
+    <value>Akkumulátor</value>
   </data>
   <data name="SensorsControl_State_Title" xml:space="preserve">
-    <value>State</value>
+    <value>Állapot</value>
   </data>
   <data name="SensorsControl_BatteryLevel_Title" xml:space="preserve">
-    <value>Battery Level</value>
+    <value>Akkumulátor Szint</value>
   </data>
   <data name="BatteryPage_ACAdapterNotConnected" xml:space="preserve">
-    <value>No AC</value>
+    <value>Nincs AC</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
-    <value>AC Connected</value>
+    <value>AC Csatlakoztatva</value>
   </data>
   <data name="DashboardBattery_AcDisconnected" xml:space="preserve">
-    <value>AC Disconnected</value>
+    <value>AC Lecsatlakoztatva</value>
   </data>
   <data name="AboutPage_Log" xml:space="preserve">
     <value>Log</value>
   </data>
   <data name="SensorsControl_CPU_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Teljesítmény</value>
   </data>
   <data name="SensorsControl_GPU_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Teljesítmény</value>
   </data>
   <data name="SensorsControl_Disk_1_Temperature" xml:space="preserve">
     <value>Disk 1 Temperature</value>
@@ -2398,7 +2398,8 @@ Nincs hatással a többi teljes képernyős ablakokra, de nem lehet kattintani a
     <value>Use New Sensor Dashboard</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Message" xml:space="preserve">
-    <value>Use new sensor dashboard instead of the old one. </value>
+    <value>Use new sensor dashboard instead of the old one. 
+Note: Using the new sensor dashboard may cause some antivirus programmes to display a warning pop-up. For more information, see: LibreHardwareMonitor/LibreHardwareMonitor#984</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Lock Window Size</value>
