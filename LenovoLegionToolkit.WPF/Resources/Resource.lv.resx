@@ -872,8 +872,8 @@ BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies p
     <value>Burtslēgs un Num Bloķēšana</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
-    <value>Disables notification for Fn keys actions like microphone mute.
-Enable this option if you have conflicts with full screen applications.</value>
+    <value>Atspējo paziņojumu par Fn taustiņu darbībām, piemēram, mikrofona izslēgšanu
+Iespējojiet šo opciju, ja rodas konflikti ar pilnekrāna lietojumprogrammām.</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
     <value>Nerādīt paziņojumus</value>
@@ -1388,7 +1388,8 @@ Nepieciešama restartēšana.</value>
     <value>Mēģiniet vēlreiz</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Unexpected exception occurred:</value>
+    <value>Unexpected exception occurred:
+{0}</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Bez nosaukuma</value>
@@ -1875,10 +1876,10 @@ If dGPU does not respond at all, please restart your laptop.</value>
     <value>Pielāgotā Režīma iestatījumi netiks pielietoti pareizi kamēr Legion Zone un tā servisi ir ieslēgti.</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
-    <value>dGPU connected</value>
+    <value>DGPU pieslēdzies</value>
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
-    <value>dGPU disconnected</value>
+    <value>DGPU atslēdzies</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Darbošanās režīms</value>
@@ -2399,7 +2400,8 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Use New Sensor Dashboard</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Message" xml:space="preserve">
-    <value>Use new sensor dashboard instead of the old one. </value>
+    <value>Use new sensor dashboard instead of the old one. 
+Note: Using the new sensor dashboard may cause some antivirus programmes to display a warning pop-up. For more information, see: LibreHardwareMonitor/LibreHardwareMonitor#984</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Lock Window Size</value>
