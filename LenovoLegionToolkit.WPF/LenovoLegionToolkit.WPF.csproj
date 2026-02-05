@@ -18,6 +18,7 @@
 		<PublishUrl>publish\</PublishUrl>
 		<IncludeAllContentForSelfExtract>false</IncludeAllContentForSelfExtract>
 		<RollForward>Major</RollForward>
+		<CETCompat>false</CETCompat>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
 		<SourceRevisionId>build$([System.DateTime]::UtcNow.ToString("yyyyMMddHHmmss"))</SourceRevisionId>

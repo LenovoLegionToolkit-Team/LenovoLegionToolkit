@@ -89,6 +89,9 @@ public class PowerModeFeature(
                 case PowerModeState.Performance:
                     await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
                     break;
+                case PowerModeState.Extreme:
+                    await base.SetStateAsync(PowerModeState.Extreme).ConfigureAwait(false);
+                    break;
             }
 
             await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
