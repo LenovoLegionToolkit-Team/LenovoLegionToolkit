@@ -13,8 +13,13 @@ public class ExternalDisplayConnectedAutomationPipelineTrigger : INativeWindowsM
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.ExternalMonitorConnected } or StartupAutomationEvent;
-        return Task.FromResult(result);
+        if (automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.ExternalMonitorConnected })
+            return Task.FromResult(true);
+
+        if (automationEvent is StartupAutomationEvent)
+            return IsMatchingState();
+
+        return Task.FromResult(false);
     }
 
     public async Task<bool> IsMatchingState()

@@ -56,6 +56,7 @@ public class AutomationProcessor(
             RaisePipelinesChanged();
 
             await UpdateListenersAsync().ConfigureAwait(false);
+            await nativeWindowsMessageListener.EnsureInitializedAsync().ConfigureAwait(false);
         }
     }
 

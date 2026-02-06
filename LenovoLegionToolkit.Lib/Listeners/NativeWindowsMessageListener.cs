@@ -83,7 +83,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         _lidSwitchStateChangeNotificationHandle = RegisterPowerNotification(PInvoke.GUID_LIDSWITCH_STATE_CHANGE);
         _powerSavingStateChangeNotificationHandle = RegisterPowerNotification(PInvoke.GUID_POWER_SAVING_STATUS);
 
-        return WaitForInit();
+        return EnsureInitializedAsync();
     });
 
     public Task StopAsync() => _mainThreadDispatcher.DispatchAsync(() =>
@@ -202,7 +202,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         base.WndProc(ref m);
     }
 
-    private async Task WaitForInit()
+    public async Task EnsureInitializedAsync()
     {
         var delayTask = Task.Delay(TimeSpan.FromSeconds(3));
         var task = Task.WhenAll(

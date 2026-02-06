@@ -13,8 +13,13 @@ public class SessionUnlockAutomationPipelineTrigger : ISessionUnlockPipelineTrig
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is SessionLockUnlockAutomationEvent { Locked: false } or StartupAutomationEvent;
-        return Task.FromResult(result);
+        if (automationEvent is SessionLockUnlockAutomationEvent { Locked: false })
+            return Task.FromResult(true);
+
+        if (automationEvent is StartupAutomationEvent)
+            return IsMatchingState();
+
+        return Task.FromResult(false);
     }
 
     public Task<bool> IsMatchingState()

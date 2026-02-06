@@ -13,8 +13,13 @@ public class LidOpenedAutomationPipelineTrigger : INativeWindowsMessagePipelineT
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.LidOpened } or StartupAutomationEvent;
-        return Task.FromResult(result);
+        if (automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.LidOpened })
+            return Task.FromResult(true);
+
+        if (automationEvent is StartupAutomationEvent)
+            return IsMatchingState();
+
+        return Task.FromResult(false);
     }
 
     public Task<bool> IsMatchingState()

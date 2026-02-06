@@ -221,19 +221,13 @@ public class AutomationPipelineControl : UserControl
             _runOnStartupCheckBox.Visibility = Visibility.Hidden;
         }
 
-        if (AutomationPipeline.Trigger is ACAdapterDisconnectedAutomationPipelineTrigger
-            or GamesStopAutomationPipelineTrigger
+        if (AutomationPipeline.Trigger is GamesAreRunningAutomationPipelineTrigger
             or ProcessesStopRunningAutomationPipelineTrigger
-            or WiFiDisconnectedAutomationPipelineTrigger
-            or ExternalDisplayDisconnectedAutomationPipelineTrigger
-            or DisplayOffAutomationPipelineTrigger
-            or HDROffAutomationPipelineTrigger
-            or LidClosedAutomationPipelineTrigger
-            or DeviceDisconnectedAutomationPipelineTrigger
             or SessionLockAutomationPipelineTrigger
             or OnResumeAutomationPipelineTrigger
             or OnStartupAutomationPipelineTrigger
-            or PeriodicAutomationPipelineTrigger)
+            or PeriodicAutomationPipelineTrigger
+            or TimeAutomationPipelineTrigger)
         {
             _runOnStartupCheckBox.Visibility = Visibility.Collapsed;
         }

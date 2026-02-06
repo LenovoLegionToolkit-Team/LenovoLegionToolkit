@@ -12,8 +12,13 @@ public class ExternalDisplayDisconnectedAutomationPipelineTrigger : INativeWindo
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.ExternalMonitorDisconnected };
-        return Task.FromResult(result);
+        if (automationEvent is not (NativeWindowsMessageEvent { Message: NativeWindowsMessage.ExternalMonitorDisconnected } or StartupAutomationEvent))
+            return Task.FromResult(false);
+
+        if (automationEvent is StartupAutomationEvent)
+            return IsMatchingState();
+
+        return Task.FromResult(true);
     }
 
     public async Task<bool> IsMatchingState()

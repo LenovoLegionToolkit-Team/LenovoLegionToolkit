@@ -13,8 +13,13 @@ public class DisplayOnAutomationPipelineTrigger : INativeWindowsMessagePipelineT
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.MonitorOn } or StartupAutomationEvent;
-        return Task.FromResult(result);
+        if (automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.MonitorOn })
+            return Task.FromResult(true);
+
+        if (automationEvent is StartupAutomationEvent)
+            return IsMatchingState();
+
+        return Task.FromResult(false);
     }
 
     public Task<bool> IsMatchingState()

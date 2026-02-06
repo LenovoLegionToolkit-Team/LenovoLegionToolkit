@@ -18,9 +18,13 @@ public class DeviceDisconnectedAutomationPipelineTrigger(string[]? instanceIds) 
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        if (automationEvent is not NativeWindowsMessageEvent { Message: NativeWindowsMessage.DeviceDisconnected, Data: string deviceInstanceId })
+        if (automationEvent is not (NativeWindowsMessageEvent { Message: NativeWindowsMessage.DeviceDisconnected, Data: string } or StartupAutomationEvent))
             return Task.FromResult(false);
 
+        if (automationEvent is StartupAutomationEvent)
+            return IsMatchingState();
+
+        var deviceInstanceId = (string)((NativeWindowsMessageEvent)automationEvent).Data!;
         return Task.FromResult(InstanceIds.Contains(deviceInstanceId));
     }
 

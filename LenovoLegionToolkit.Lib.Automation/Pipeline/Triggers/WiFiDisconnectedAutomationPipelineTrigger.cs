@@ -11,8 +11,13 @@ public class WiFiDisconnectedAutomationPipelineTrigger : IWiFiDisconnectedPipeli
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is WiFiAutomationEvent { IsConnected: false };
-        return Task.FromResult(result);
+        if (automationEvent is not (WiFiAutomationEvent { IsConnected: false } or StartupAutomationEvent))
+            return Task.FromResult(false);
+
+        if (automationEvent is StartupAutomationEvent)
+            return IsMatchingState();
+
+        return Task.FromResult(true);
     }
 
     public Task<bool> IsMatchingState()

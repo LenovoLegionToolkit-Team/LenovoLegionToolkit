@@ -13,8 +13,13 @@ public class DisplayOffAutomationPipelineTrigger : INativeWindowsMessagePipeline
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
-        var result = automationEvent is NativeWindowsMessageEvent { Message: NativeWindowsMessage.MonitorOff };
-        return Task.FromResult(result);
+        if (automationEvent is not (NativeWindowsMessageEvent { Message: NativeWindowsMessage.MonitorOff } or StartupAutomationEvent))
+            return Task.FromResult(false);
+
+        if (automationEvent is StartupAutomationEvent)
+            return IsMatchingState();
+
+        return Task.FromResult(true);
     }
 
     public Task<bool> IsMatchingState()
