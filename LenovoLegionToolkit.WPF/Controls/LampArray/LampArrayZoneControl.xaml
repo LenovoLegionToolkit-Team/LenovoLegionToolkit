@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="32" d:DesignWidth="32">
+    
     <UserControl.Resources>
         <Style TargetType="{x:Type ToggleButton}">
             <Setter Property="Template">
@@ -40,8 +41,6 @@
     </UserControl.Resources>
     
     <Grid>
-        <Border Background="#2D2D2D" BorderBrush="#555555" BorderThickness="1" CornerRadius="4" />
-        
         <Border x:Name="_background" CornerRadius="4" Opacity="0.8" />
         
         <ToggleButton x:Name="_button" 
@@ -49,11 +48,22 @@
                       BorderBrush="Transparent" 
                       BorderThickness="0"
                       ToolTip="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=ToolTip}"
-                      Content="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=Label}"
-                      Foreground="#FFFFFFFF"
-                      FontSize="10"
-                      FontWeight="SemiBold"
-                      HorizontalContentAlignment="Center"
-                      VerticalContentAlignment="Center" />
+                      HorizontalContentAlignment="Stretch"
+                      VerticalContentAlignment="Stretch">
+            
+            <Grid>
+                <TextBlock Text="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=Label}"
+                           Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                           FontSize="10"
+                           FontWeight="SemiBold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+
+                <ContentPresenter Content="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=Tag}" 
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch"/>
+            </Grid>
+            
+        </ToggleButton>
     </Grid>
 </UserControl>
