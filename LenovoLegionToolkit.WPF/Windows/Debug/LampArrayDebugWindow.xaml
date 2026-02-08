@@ -1,0 +1,140 @@
+<Window
+    x:Class="LenovoLegionToolkit.WPF.Windows.Debug.LampArrayDebugWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:LenovoLegionToolkit.WPF.Controls.LampArray"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="LampArray Hardware Debugger"
+    Width="1200"
+    Height="750"
+    Background="#1E1E1E"
+    Foreground="White"
+    mc:Ignorable="d">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+
+        <Border
+            Grid.Row="0"
+            Margin="0,0,0,10"
+            Padding="10"
+            Background="#2D2D2D"
+            CornerRadius="4">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock
+                        Margin="0,0,0,5"
+                        FontWeight="Bold"
+                        Text="Effect" />
+                    <ComboBox
+                        x:Name="EffectSelect"
+                        Width="150"
+                        SelectionChanged="EffectSelect_SelectionChanged">
+                        <ComboBoxItem Content="Static" />
+                        <ComboBoxItem Content="Breathe" />
+                        <ComboBoxItem Content="Wave" />
+                        <ComboBoxItem Content="Rainbow" />
+                        <ComboBoxItem Content="Meteor" />
+                        <ComboBoxItem Content="Ripple" />
+                        <ComboBoxItem Content="Sparkle" />
+                        <ComboBoxItem Content="Gradient" />
+                        <ComboBoxItem Content="Custom (Spatial)" />
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock
+                        x:Name="BrightnessValue"
+                        Margin="0,0,0,5"
+                        FontWeight="Bold"
+                        Text="Brightness: 100%" />
+                    <Slider
+                        x:Name="BrightnessSlider"
+                        Width="120"
+                        Maximum="100"
+                        Minimum="0"
+                        ValueChanged="BrightnessSlider_ValueChanged"
+                        Value="100" />
+                </StackPanel>
+
+                <StackPanel Margin="0,0,20,0">
+                    <TextBlock
+                        x:Name="SpeedValue"
+                        Margin="0,0,0,5"
+                        FontWeight="Bold"
+                        Text="Speed: 100%" />
+                    <Slider
+                        x:Name="SpeedSlider"
+                        Width="120"
+                        Maximum="500"
+                        Minimum="10"
+                        ValueChanged="SpeedSlider_ValueChanged"
+                        Value="100" />
+                </StackPanel>
+
+                <CheckBox
+                    x:Name="SmoothTransitionCheckBox"
+                    Margin="0,0,20,5"
+                    VerticalAlignment="Bottom"
+                    Checked="SmoothTransition_Changed"
+                    Content="Smooth Transition"
+                    IsChecked="True"
+                    Unchecked="SmoothTransition_Changed" />
+
+                <StackPanel
+                    x:Name="CustomModePanel"
+                    Orientation="Horizontal"
+                    Visibility="Collapsed">
+                    <Button
+                        Margin="5,0"
+                        Click="ColorRed_Click"
+                        Content="All Red" />
+                    <Button
+                        Margin="5,0"
+                        Click="ColorWhite_Click"
+                        Content="All White" />
+                    <Button
+                        Margin="5,0"
+                        Click="ClearCustomColors_Click"
+                        Content="Clear All" />
+                </StackPanel>
+
+                <Button
+                    Margin="10,0,0,5"
+                    Padding="10,2"
+                    VerticalAlignment="Bottom"
+                    Click="DumpLamps_Click"
+                    Content="Dump Hardware Map" />
+                <Button
+                    Width="180"
+                    Margin="5,0,0,0"
+                    Click="ProbeLamps_Click"
+                    Content="Probe Indices (One by One)" />
+            </StackPanel>
+        </Border>
+
+        <ScrollViewer
+            Grid.Row="1"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto">
+            <controls:LampArrayKeyboardControl
+                x:Name="VisualKeyboard"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center" />
+        </ScrollViewer>
+
+        <TextBox
+            x:Name="LogOutput"
+            Grid.Row="2"
+            Background="Black"
+            FontFamily="Consolas"
+            Foreground="#00FF00"
+            IsReadOnly="True"
+            VerticalScrollBarVisibility="Auto" />
+    </Grid>
+</Window>
