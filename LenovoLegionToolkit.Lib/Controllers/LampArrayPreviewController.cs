@@ -1,16 +1,16 @@
-﻿using LenovoLegionToolkit.Lib.Extensions;
-using LenovoLegionToolkit.Lib.Utils;
-using LenovoLegionToolkit.Lib.Utils.LampEffects;
-using NeoSmart.AsyncLock;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Lights;
 using Windows.System;
 using Windows.UI;
+using LenovoLegionToolkit.Lib.Utils;
+using LenovoLegionToolkit.Lib.Utils.LampEffects;
+using NeoSmart.AsyncLock;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
 
@@ -24,9 +24,9 @@ public class LampArrayPreviewController : IDisposable
         public LampArrayDevice(LampArray device)
         {
             Device = device;
-            Log.Instance.Trace($"[LampArray] Initializing device: {device.DeviceId}, Lamp count: {device.LampCount}");
+            Log.Instance.Trace($"Initializing device: {device.DeviceId}, Lamp count: {device.LampCount}");
 
-            Log.Instance.Trace($"[LampArray] --- Exporting hardware VirtualKey mapping table ---");
+            Log.Instance.Trace($"--- Exporting hardware VirtualKey mapping table ---");
             var mappedKeys = 0;
             for (var vk = 1; vk <= 255; vk++)
             {
@@ -38,7 +38,8 @@ public class LampArrayPreviewController : IDisposable
                     {
                         VirtualKeyToIndex[key] = indices.ToList();
                         mappedKeys++;
-                        Log.Instance.Trace($"[LampArray] Hardware Export: {key}(0x{vk:X2}) -> Lamp Indices [{string.Join(", ", indices)}]");
+                        Log.Instance.Trace(
+                            $"Hardware Export: {key}(0x{vk:X2}) -> Lamp Indices [{string.Join(", ", indices)}]");
                     }
                 }
                 catch
@@ -46,16 +47,11 @@ public class LampArrayPreviewController : IDisposable
                 }
             }
 
-            Log.Instance.Trace($"[LampArray] --- Export complete: Found {mappedKeys} valid key bindings ---");
+            Log.Instance.Trace($"--- Export complete: Found {mappedKeys} valid key bindings ---");
         }
 
         public void SetLayout(int width, int height, IEnumerable<(ushort Code, int X, int Y)> keys)
         {
-        }
-
-        private double GetDistance(double x1, double y1, double x2, double y2)
-        {
-            return Math.Pow(x1 - x2, 2) + Math.Pow(y1 - y2, 2);
         }
     }
 
@@ -322,7 +318,7 @@ public class LampArrayPreviewController : IDisposable
         }
     }
 
-    public IEnumerable<(string DeviceId, int Index, double X, double Y, double Z, string Purposes)> GetLamps()
+    public IEnumerable<(string DeviceId, LampInfo Info)> GetLamps()
     {
         lock (_lampArrays)
         {
@@ -331,21 +327,42 @@ public class LampArrayPreviewController : IDisposable
                 var device = kvp.Value.Device;
                 if (!device.IsAvailable) continue;
 
-                for (var i = 0; i < device.LampCount; i++)
-                {
-                    var info = device.GetLampInfo(i);
-                    yield return (device.DeviceId, info.Index, info.Position.X, info.Position.Y, info.Position.Z,
-                        info.Purposes.ToString());
-                }
+                for (var i = 0; i < device.LampCount; i++) yield return (device.DeviceId, device.GetLampInfo(i));
             }
         }
+    }
+
+    public List<string> GetDeviceDetails()
+    {
+        var details = new List<string>();
+        lock (_lampArrays)
+        {
+            foreach (var kvp in _lampArrays)
+            {
+                var d = kvp.Value.Device;
+                var sb = new StringBuilder();
+                sb.AppendLine($"Device ID: {d.DeviceId}");
+                sb.AppendLine($"  IsAvailable: {d.IsAvailable}");
+                sb.AppendLine($"  LampCount: {d.LampCount}");
+                sb.AppendLine($"  HardwareVendorId: {d.HardwareVendorId:X4}");
+                sb.AppendLine($"  HardwareProductId: {d.HardwareProductId:X4}");
+                sb.AppendLine($"  HardwareVersion: {d.HardwareVersion:X4}");
+                sb.AppendLine($"  LampArrayKind: {d.LampArrayKind}");
+                sb.AppendLine($"  MinUpdateInterval: {d.MinUpdateInterval}");
+                sb.AppendLine($"  SupportsVirtualKeys: {d.SupportsVirtualKeys}");
+
+                details.Add(sb.ToString());
+            }
+        }
+
+        return details;
     }
 
     public void SetColorForScanCodes(IDictionary<ushort, Color> scanCodeColors)
     {
         if (!IsAvailable)
         {
-            Log.Instance.Trace($"[LampArray] SetColorForScanCodes failed: Controller not available.");
+            Log.Instance.Trace($"SetColorForScanCodes failed: Controller not available.");
             return;
         }
 
@@ -354,7 +371,7 @@ public class LampArrayPreviewController : IDisposable
             foreach (var kvp in _lampArrays)
                 if (!kvp.Value.Device.IsAvailable)
                 {
-                    Log.Instance.Trace($"[LampArray] Device {kvp.Key} not available for scan codes.");
+                    Log.Instance.Trace($"Device {kvp.Key} not available for scan codes.");
                     continue;
                 }
         }
@@ -373,29 +390,29 @@ public class LampArrayPreviewController : IDisposable
     {
         if (!IsAvailable)
         {
-            Log.Instance.Trace($"[LampArray] SetAllLampsColor failed: Controller not available.");
+            Log.Instance.Trace($"SetAllLampsColor failed: Controller not available.");
             return;
         }
 
         lock (_lampArrays)
         {
-            Log.Instance.Trace($"[LampArray] SetAllLampsColor: RGB({color.R},{color.G},{color.B}) on {_lampArrays.Count} devices.");
+            Log.Instance.Trace($"SetAllLampsColor: RGB({color.R},{color.G},{color.B}) on {_lampArrays.Count} devices.");
             foreach (var kvp in _lampArrays)
             {
                 if (!kvp.Value.Device.IsAvailable)
                 {
-                    Log.Instance.Trace($"[LampArray] Device {kvp.Key} is not available.");
+                    Log.Instance.Trace($"Device {kvp.Key} is not available.");
                     continue;
                 }
 
                 try
                 {
-                    Log.Instance.Trace($"[LampArray] Setting all {kvp.Value.Device.LampCount} lamps on {kvp.Key} to color.");
+                    Log.Instance.Trace($"Setting all {kvp.Value.Device.LampCount} lamps on {kvp.Key} to color.");
                     kvp.Value.Device.SetColor(color);
                 }
                 catch (Exception ex)
                 {
-                    Log.Instance.Trace($"[LampArray] Failed to set all lamps color on {kvp.Key}: {ex.Message}");
+                    Log.Instance.Trace($"Failed to set all lamps color on {kvp.Key}: {ex.Message}");
                 }
             }
         }
@@ -405,7 +422,7 @@ public class LampArrayPreviewController : IDisposable
     {
         if (!IsAvailable)
         {
-            Log.Instance.Trace($"[LampArray] SetLampColors failed: Controller not available.");
+            Log.Instance.Trace($"SetLampColors failed: Controller not available.");
             return;
         }
 
@@ -413,7 +430,7 @@ public class LampArrayPreviewController : IDisposable
 
         lock (_lampArrays)
         {
-            Log.Instance.Trace($"[LampArray] SetLampColors: Setting {lampColors.Count} lamp colors.");
+            Log.Instance.Trace($"SetLampColors: Setting {lampColors.Count} lamp colors.");
             foreach (var kvp in _lampArrays)
             {
                 if (!kvp.Value.Device.IsAvailable) continue;
@@ -422,12 +439,12 @@ public class LampArrayPreviewController : IDisposable
                 {
                     var indices = lampColors.Keys.ToArray();
                     var colors = lampColors.Values.ToArray();
-                    Log.Instance.Trace($"[LampArray] Applying {indices.Length} colors to {kvp.Key}.");
+                    Log.Instance.Trace($"Applying {indices.Length} colors to {kvp.Key}.");
                     kvp.Value.Device.SetColorsForIndices(colors, indices);
                 }
                 catch (Exception ex)
                 {
-                    Log.Instance.Trace($"[LampArray] Failed to set lamp colors on {kvp.Key}: {ex.Message}");
+                    Log.Instance.Trace($"Failed to set lamp colors on {kvp.Key}: {ex.Message}");
                 }
             }
         }
@@ -451,7 +468,7 @@ public class LampArrayPreviewController : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    Log.Instance.Trace($"[LampArray] SetColorsForKeys failed: {ex.Message}");
+                    Log.Instance.Trace($"SetColorsForKeys failed: {ex.Message}");
                 }
             }
         }
@@ -461,14 +478,14 @@ public class LampArrayPreviewController : IDisposable
     {
         if (!IsAvailable)
         {
-            Log.Instance.Trace($"[LampArray] SetColorsForAllLamps Stopped: Controller not initialized.");
+            Log.Instance.Trace($"SetColorsForAllLamps Stopped: Controller not initialized.");
             return;
         }
 
         if (scanCodeColors == null)
             return;
 
-        Log.Instance.Trace($"[LampArray] Update for all lamps: Dictionary size {scanCodeColors?.Count ?? 0}");
+        Log.Instance.Trace($"Update for all lamps: Dictionary size {scanCodeColors?.Count ?? 0}");
 
         lock (_lampArrays)
         {
@@ -476,7 +493,7 @@ public class LampArrayPreviewController : IDisposable
             {
                 if (!kvp.Value.Device.IsAvailable)
                 {
-                    Log.Instance.Trace($"[LampArray] Device {kvp.Key} Unavailable, skipping");
+                    Log.Instance.Trace($"Device {kvp.Key} Unavailable, skipping");
                     continue;
                 }
 
@@ -485,7 +502,7 @@ public class LampArrayPreviewController : IDisposable
                 var fullColors = new Color[lampCount];
                 var indices = new int[lampCount];
 
-                Log.Instance.Trace($"[LampArray] Preparing buffer for {kvp.Key} with size {lampCount}");
+                Log.Instance.Trace($"Preparing buffer for {kvp.Key} with size {lampCount}");
 
                 for (var i = 0; i < lampCount; i++)
                 {
@@ -511,29 +528,31 @@ public class LampArrayPreviewController : IDisposable
                             }
                             else
                             {
-                                Log.Instance.Trace($"[LampArray] Warning: Index out of bounds {idx} Max {lampCount}");
+                                Log.Instance.Trace($"Warning: Index out of bounds {idx} Max {lampCount}");
                             }
                     }
                     else
                     {
                         keyFailCount++;
                         if (keyFailCount < 5)
-                            Log.Instance.Trace($"[LampArray] Compatibility skip: Key {vk}(0x{kvp2.Key:X2}) no response from hardware");
+                            Log.Instance.Trace(
+                                $"Compatibility skip: Key {vk}(0x{kvp2.Key:X2}) no response from hardware");
                     }
                 }
 
-                Log.Instance.Trace($"[LampArray] Sync Result: Hardware hit {keyMatchCount} physical keys, skipped {keyFailCount} unknown keys. Total lit {mappedCount}/{lampCount} lamps.");
-                Log.Instance.Trace($"[LampArray] Sending SetColorsForIndices command...");
+                Log.Instance.Trace(
+                    $"Sync Result: Hardware hit {keyMatchCount} physical keys, skipped {keyFailCount} unknown keys. Total lit {mappedCount}/{lampCount} lamps.");
+                Log.Instance.Trace($"Sending SetColorsForIndices command...");
 
                 try
                 {
                     device.Device.SetColorsForIndices(fullColors, indices);
-                    Log.Instance.Trace($"[LampArray] Hardware command sent successfully: {kvp.Key}");
+                    Log.Instance.Trace($"Hardware command sent successfully: {kvp.Key}");
                 }
                 catch (Exception ex)
                 {
-                    Log.Instance.Trace($"[LampArray] !!! Hardware command failed ({kvp.Key}): {ex.Message}");
-                    Log.Instance.Trace($"[LampArray] StackTrace: {ex.StackTrace}");
+                    Log.Instance.Trace($"!!! Hardware command failed ({kvp.Key}): {ex.Message}");
+                    Log.Instance.Trace($"StackTrace: {ex.StackTrace}");
                 }
             }
         }
@@ -577,7 +596,7 @@ public class LampArrayPreviewController : IDisposable
                 _currentEffect = _targetEffect;
                 _targetEffect = null;
                 _currentEffect.Reset();
-                Log.Instance.Trace($"[LampArray] Transition complete to {_currentEffect.Name}.");
+                Log.Instance.Trace($"Transition complete to {_currentEffect.Name}.");
             }
         }
 
@@ -615,7 +634,7 @@ public class LampArrayPreviewController : IDisposable
                 }
                 catch (Exception ex)
                 {
-                    Log.Instance.Trace($"[LampArray] Error updating lights on {kvp.Key}: {ex.Message}");
+                    Log.Instance.Trace($"Error updating lights on {kvp.Key}: {ex.Message}");
                 }
             }
         }
@@ -669,10 +688,13 @@ public class LampArrayPreviewController : IDisposable
                 lampArray.AvailabilityChanged += LampArray_AvailabilityChanged;
             }
 
-            Log.Instance.Trace($"LampArray device registered: DeviceId={args.Id}, LampCount={lampArray.LampCount}, IsAvailable={lampArray.IsAvailable}");
+            Log.Instance.Trace(
+                $"LampArray device registered: DeviceId={args.Id}, LampCount={lampArray.LampCount}, IsAvailable={lampArray.IsAvailable}");
 
             if (lampArray.IsAvailable)
-                _ = Task.Run(() => AvailabilityChanged?.Invoke(this, new LampArrayAvailabilityChangedEventArgs(true, lampArray.LampCount)));
+                _ = Task.Run(() =>
+                    AvailabilityChanged?.Invoke(this,
+                        new LampArrayAvailabilityChangedEventArgs(true, lampArray.LampCount)));
         }
         catch (Exception ex)
         {
@@ -743,18 +765,6 @@ public class LampArrayPreviewController : IDisposable
         }
 
         GC.SuppressFinalize(this);
-    }
-}
-
-public class LampArrayAvailabilityChangedEventArgs : EventArgs
-{
-    public bool IsAvailable { get; }
-    public int LampCount { get; }
-
-    public LampArrayAvailabilityChangedEventArgs(bool isAvailable, int lampCount)
-    {
-        IsAvailable = isAvailable;
-        LampCount = lampCount;
     }
 }
 

@@ -32,7 +32,7 @@
                         FontWeight="Bold"
                         Text="Effect" />
                     <ComboBox
-                        x:Name="EffectSelect"
+                        x:Name="_effectSelect"
                         Width="150"
                         SelectionChanged="EffectSelect_SelectionChanged">
                         <ComboBoxItem Content="Static" />
@@ -49,12 +49,12 @@
 
                 <StackPanel Margin="0,0,20,0">
                     <TextBlock
-                        x:Name="BrightnessValue"
+                        x:Name="_brightnessValue"
                         Margin="0,0,0,5"
                         FontWeight="Bold"
                         Text="Brightness: 100%" />
                     <Slider
-                        x:Name="BrightnessSlider"
+                        x:Name="_brightnessSlider"
                         Width="120"
                         Maximum="100"
                         Minimum="0"
@@ -64,12 +64,12 @@
 
                 <StackPanel Margin="0,0,20,0">
                     <TextBlock
-                        x:Name="SpeedValue"
+                        x:Name="_speedValue"
                         Margin="0,0,0,5"
                         FontWeight="Bold"
                         Text="Speed: 100%" />
                     <Slider
-                        x:Name="SpeedSlider"
+                        x:Name="_speedSlider"
                         Width="120"
                         Maximum="500"
                         Minimum="10"
@@ -78,7 +78,7 @@
                 </StackPanel>
 
                 <CheckBox
-                    x:Name="SmoothTransitionCheckBox"
+                    x:Name="_smoothTransitionCheckBox"
                     Margin="0,0,20,5"
                     VerticalAlignment="Bottom"
                     Checked="SmoothTransition_Changed"
@@ -87,7 +87,7 @@
                     Unchecked="SmoothTransition_Changed" />
 
                 <StackPanel
-                    x:Name="CustomModePanel"
+                    x:Name="_customModePanel"
                     Orientation="Horizontal"
                     Visibility="Collapsed">
                     <Button
@@ -123,13 +123,13 @@
             HorizontalScrollBarVisibility="Auto"
             VerticalScrollBarVisibility="Auto">
             <controls:LampArrayKeyboardControl
-                x:Name="VisualKeyboard"
+                x:Name="_visualKeyboard"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center" />
         </ScrollViewer>
 
         <TextBox
-            x:Name="LogOutput"
+            x:Name="_logOutput"
             Grid.Row="2"
             Background="Black"
             FontFamily="Consolas"
