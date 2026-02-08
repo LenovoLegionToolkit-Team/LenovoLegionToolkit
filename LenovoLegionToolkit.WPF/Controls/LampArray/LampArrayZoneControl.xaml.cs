@@ -10,11 +10,20 @@ public partial class LampArrayZoneControl : UserControl
     public static readonly DependencyProperty KeyCodeProperty = DependencyProperty.Register(
         nameof(KeyCode), typeof(ushort), typeof(LampArrayZoneControl), new PropertyMetadata(default(ushort)));
 
-        public ushort KeyCode
-        {
-            get => (ushort)GetValue(KeyCodeProperty);
-            set => SetValue(KeyCodeProperty, value);
-        }
+    public static readonly DependencyProperty LabelProperty = DependencyProperty.Register(
+        nameof(Label), typeof(string), typeof(LampArrayZoneControl), new PropertyMetadata(default(string)));
+
+    public ushort KeyCode
+    {
+        get => (ushort)GetValue(KeyCodeProperty);
+        set => SetValue(KeyCodeProperty, value);
+    }
+
+    public string Label
+    {
+        get => (string)GetValue(LabelProperty);
+        set => SetValue(LabelProperty, value);
+    }
 
     public Color? Color
     {

@@ -465,6 +465,9 @@ public class LampArrayPreviewController : IDisposable
             return;
         }
 
+        if (scanCodeColors == null)
+            return;
+
         Log.Instance.Trace($"[LampArray] Update for all lamps: Dictionary size {scanCodeColors?.Count ?? 0}");
 
         lock (_lampArrays)

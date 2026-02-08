@@ -15,7 +15,7 @@
                                 BorderBrush="{TemplateBinding BorderBrush}" 
                                 BorderThickness="{TemplateBinding BorderThickness}" 
                                 SnapsToDevicePixels="true"
-                                CornerRadius="2">
+                                CornerRadius="4">
                             <ContentPresenter x:Name="contentPresenter" 
                                               Focusable="False" 
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
@@ -40,17 +40,20 @@
     </UserControl.Resources>
     
     <Grid>
-        <!-- Base Keycap (Always visible) -->
-        <Border Background="#2D2D2D" BorderBrush="#555555" BorderThickness="1" CornerRadius="2" />
+        <Border Background="#2D2D2D" BorderBrush="#555555" BorderThickness="1" CornerRadius="4" />
         
-        <!-- Backlight Layer -->
-        <Border x:Name="_background" CornerRadius="2" Opacity="0.8" />
+        <Border x:Name="_background" CornerRadius="4" Opacity="0.8" />
         
-        <!-- Interaction Layer -->
         <ToggleButton x:Name="_button" 
                       Background="Transparent" 
                       BorderBrush="Transparent" 
                       BorderThickness="0"
-                      ToolTip="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=ToolTip}" />
+                      ToolTip="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=ToolTip}"
+                      Content="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=Label}"
+                      Foreground="#FFFFFFFF"
+                      FontSize="10"
+                      FontWeight="SemiBold"
+                      HorizontalContentAlignment="Center"
+                      VerticalContentAlignment="Center" />
     </Grid>
 </UserControl>
