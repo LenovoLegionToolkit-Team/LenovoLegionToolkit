@@ -3,7 +3,7 @@
   
   # Lenovo Legion Toolkit (Unofficial Fork)
 
-  [![Build Status](https://img.shields.io/github/actions/workflow/status/XKaguya/LenovoLegionToolkit/build.yml?branch=master)](https://github.com/XKaguya/LenovoLegionToolkit/actions)
+  [![Build Status](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
   [![Translation Status](https://badges.crowdin.net/lenovolegiontoolkit-unofficial/localized.svg)](https://crowdin.com/project/lenovolegiontoolkit-unofficial)
   [![Discord Community](https://img.shields.io/discord/761178912230473768?label=Legion%20Series%20Discord)](https://discord.com/invite/legionseries)
 </div>
@@ -60,7 +60,7 @@ Please be patient and read through this readme carefully - it contains important
 
 You can download the program by the following ways:
 
-- From the [Releases page](https://github.com/XKaguya/LenovoLegionToolkit/releases/latest)
+- From the [Releases page](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases/latest)
   
 > [!TIP]
 > If you are looking for a Vantage alternative for Linux, check [LenovoLegionLinux](https://github.com/johnfanv2/LenovoLegionLinux) project out.
