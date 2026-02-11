@@ -3,15 +3,16 @@
   
   # Lenovo Legion Toolkit (Unofficial Fork)
 
-  [![Build Status](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
+  [![Build Status](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
   [![Translation Status](https://badges.crowdin.net/lenovolegiontoolkit-unofficial/localized.svg)](https://crowdin.com/project/lenovolegiontoolkit-unofficial)
-  [![Discord Community](https://img.shields.io/discord/761178912230473768?label=Legion%20Series%20Discord)](https://discord.com/invite/legionseries)
+  [![Discord Community](https://img.shields.io/badge/Discord-Legion%20Series-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/legionseries)
+  [![Discord Community](https://img.shields.io/badge/Discord-LOQ%20Series-5865F2?logo=discord&logoColor=white)](https://discord.gg/3GKzQtwdNf)
 </div>
 
 ## 🚨 Project Status Notice
 
 > [!IMPORTANT]
-> + This is a personal maintenance fork of the original project
+> + This is a maintenance fork of the original project
 > + Source repository [BartoszCichecki/LenovoLegionToolkit](https://github.com/BartoszCichecki/LenovoLegionToolkit) is archived
 > - Not officially affiliated with Lenovo or original author
 
@@ -23,11 +24,12 @@
 
 <br />
 
-Lenovo Legion Toolkit (LLT) is a utility created for Lenovo Legion (and similar) series laptops, that allows changing a couple of features that are only available in Lenovo Vantage or Legion Zone.
+Lenovo Legion Toolkit (LLT) is a Windows desktop utility created for Lenovo gaming laptops that replaces Lenovo Vantage / Legion Zone / Legion Space.
 
 It runs no background services, uses less memory, uses virtually no CPU, and contains no telemetry. Just like Lenovo Vantage, this application is Windows only.
 
-_Join the Legion Series Discord: https://discord.com/invite/legionseries!_
+_Join the Legion Series Discord: https://discord.com/invite/legionseries_<br>
+_Join the LOQ Series Discord: https://discord.gg/3GKzQtwdNf_
 
 <img src="https://github.com/user-attachments/assets/9261f768-191c-4dcb-a603-8fa2d144b049" width="700" />
 
@@ -115,14 +117,14 @@ If you are getting an incompatible message on startup, you can check the *Contri
 
 ### Lenovo's software
 
-Overall the recommendation is to disable or uninstall Vantage, Hotkeys and Legion Zone while using LLT. There are some functions that cause conflicts or may not work properly when LLT is working along side other Lenovo apps.
+Overall the recommendation is to disable or uninstall Vantage, Hotkeys and Legion Zone while using LLT. There are some functions that cause conflicts or may not work properly when LLT is working alongside other Lenovo apps.
 
 > [!TIP]
 > Using the disable option in LLT is often the easiest option.
 
 ### Other remarks
 
-LLT currently does not support installation for multiple users, so if you need to have multiple users on you laptop you might encounter issues. Same goes for accounts without Administrator rights - LLT needs an account with Administrator rights. If you install LLT on an account without such rights, LLT will not work properly.
+LLT currently does not support installation for multiple users, so if you need to have multiple users on your laptop you might encounter issues. Same goes for accounts without Administrator rights - LLT needs an account with Administrator rights. If you install LLT on an account without such rights, LLT will not work properly.
 
 ## Features
 
@@ -131,7 +133,7 @@ The app allows to:
 - Change settings like power mode, battery charging mode, etc. that are available only through Vantage.
 - Spectrum RGB, 4-zone RGB and White backlight keyboards support.
 - Monitor dGPU activity (NVIDIA only).
-- Define Actions that will run when the laptop is i.e. connected to AC power.
+- Define Actions that will run when the laptop is e.g. connected to AC power.
 - View battery statistics.
 - Control laptop features from command line
 - Check for driver and software updates.
@@ -154,7 +156,7 @@ Make sure to update it to at least minimum version mentioned above for Custom Mo
 
 ### RGB and lighting
 
-Both Spectrum per-key RGB and 4-zone RGB backlight is supported. Vantage and it's services need to be disabled to avoid conflicts when communicating with hardware. If you use other RGB apps that might conflict with LLT, check [FAQ](#faq) for solutions.
+Both Spectrum per-key RGB and 4-zone RGB backlight is supported. Vantage and its services need to be disabled to avoid conflicts when communicating with hardware. If you use other RGB apps that might conflict with LLT, check [FAQ](#faq) for solutions.
 
 Other lighting features like both 1 and 3 level white keyboard backlight, panel logo and rear ports backlight are also supported, however there are some constraints:
 
@@ -171,10 +173,11 @@ Lighting that required Corsair iCue is not supported by LLT.
 > [!NOTE]
 > Hybrid Mode/GPU Working Mode options _are not_ Advanced Optimus and work separately from it.
 
-There are two main way you can use your dGPU:
+There are two main ways you can use your dGPU:
 
 1. Hybrid mode on - internal laptop display is connected to integrated GPU, discrete GPU will work when needed and power off when not in use, giving better battery life
-2. Hybrid mode off (aka dGPU) - internal laptop display is conenected directly to discreted GPU, giving best performance but also worst battery life
+2. Hybrid mode off (aka dGPU) - internal laptop display is connected directly to discrete GPU, giving best performance but also worst battery life
+3. Hybrid iGPU-only - in this mode dGPU will be disconnected (think of it like ejecting USB drive), so there is no risk of it using power when you want to achieve best battery life
 
 Switching between two modes requires restart.
 
@@ -185,9 +188,9 @@ On Gen 7 and 8 laptops, there are additional 2 settings for Hybrid mode:
 
 Discrete GPU may not disconnect, and in most cases will not disconnect, when it is used. That includes apps using dGPU, external monitor connected and probably some other cases that aren't specified by Lenovo. If you use the "Deactivate GPU" option in LLT, make sure that it reports dGPU Powered Off and no external screens are connected, before switching between Hybrid Modes in case you encounter problems.
 
-All above settings are using built in functions of the EC and how well they work relies on Lenovo's firmware implementation. From my observations, they are reliable, unless you start switching them frequently. Be patient, because changes to this methods are not instantanous. LLT also attempts to mitigate these issues, by disallowing frequent Hybrid Mode switching and additional attempts to wake dGPU if EC failed to do so. It may take up to 10 seconds for dGPU to reappear when switching to Hybrid Mode, in case EC failed to wake it.
+All above settings are using built in functions of the EC and how well they work relies on Lenovo's firmware implementation. From my observations, they are reliable, unless you start switching them frequently. Be patient, because changes to these methods are not instantaneous. LLT also attempts to mitigate these issues, by disallowing frequent Hybrid Mode switching and additional attempts to wake dGPU if EC failed to do so. It may take up to 10 seconds for dGPU to reappear when switching to Hybrid Mode, in case EC failed to wake it.
 
-If you encounter issues, you might try to try alternative, experimental method of handling GPU Working Mode - see [Arguments](#arguments) section for more details.
+If you encounter issues, you might try an alternative, experimental method of handling GPU Working Mode - see [Arguments](#arguments) section for more details.
 
 > [!WARNING]
 > Disabling dGPU via Device Manager DOES NOT disconnect the device and will cause high power consumption!
@@ -249,7 +252,7 @@ _Restart laptop_
  - Executable path: `shutdown`
  - Arguments: `/r`
 
-_Runing a program_
+_Running a program_
  - Executable path: `C:\path\to\the\program.exe` (if the program is on your PATH variable, you can use the name only)
  - Arguments: ` ` (optional, for list of supported argument check the program's readme, website etc.)
 
@@ -314,8 +317,8 @@ LLT automatically adds some variables to the process environment that can be acc
 - At specified time
 	- `LLT_IS_SUNSET=<value>`, where `value` is `TRUE` or `FALSE`, depending on configuration of the trigger
 	- `LLT_IS_SUNRISE=<value>`, where `value` is `TRUE` or `FALSE`, depending on configuration of the trigger
-	- `LLT_TIME"`, where `value` is `HH:mm`, depending on configuration of the trigger
-	- `LLT_DAYS"`, where `value` is comma separated list of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, depending on configuration of the trigger
+	- `LLT_TIME`, where `value` is `HH:mm`, depending on configuration of the trigger
+	- `LLT_DAYS`, where `value` is comma separated list of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, depending on configuration of the trigger
 - Periodic action
 	- `LLT_PERIOD=<value>`, where `value` is the interval in seconds
 - On startup
@@ -335,7 +338,7 @@ It is possible to control some features of LLT directly from the command line. T
 
 For CLI to work properly, LLT needs to run in the background and CLI option needs to be enabled in LLT settings. You can also chose to add `llt.exe` to your PATH variable for easier access.
 
-CLI does not need to be ran as Administrator.
+CLI does not need to be run as Administrator.
 
 <details>
 <summary>Features</summary>
@@ -364,7 +367,7 @@ If you enjoy using the Lenovo Legion Toolkit, consider donating.
 <img src="LenovoLegionToolkit.WPF/Assets/Donate/paypal_qr.png" width="200" alt="PayPal QR code" />
 
 > [!NOTE]
-> Though the original author were archived, But i will not delete this part.
+> Although the original repository was archived, I will not delete this section. If you still want to donate, please go to the respective maintainer profiles and donate.
 
 ## Credits
 
@@ -373,7 +376,7 @@ Special thanks to:
 * [ViRb3](https://github.com/ViRb3), for creating [Lenovo Controller](https://github.com/ViRb3/LenovoController), which was used as a base for this tool
 * [falahati](https://github.com/falahati), for creating [NvAPIWrapper](https://github.com/falahati/NvAPIWrapper) and [WindowsDisplayAPI](https://github.com/falahati/WindowsDisplayAPI)
 * [tebjan](https://github.com/tebjan/NvAPIWrapper), for upgrading the NVAPIWrapper to newest NVAPI.
-* [SmokelessCPU](https://github.com/SmokelessCPU), for help with 4-zone RGB and Sprectrum keyboard support
+* [SmokelessCPU](https://github.com/SmokelessCPU), for help with 4-zone RGB and Spectrum keyboard support
 * [Mario Bălănică](https://github.com/mariobalanica), for all contributions
 * [Ace-Radom](https://github.com/Ace-Radom), for all contributions
 * [fan](https://github.com/Undervoltologist), for ec reverse.
@@ -394,7 +397,7 @@ Translations provided by:
 * Slovak - Mitschud, Newbie414
 * Spanish - M.A.G.
 * Polish - Mariusz Dziemianowicz
-* Portugese - dvsilva
+* Portuguese - dvsilva
 * Portuguese (Brasil) - Vernon
 * Russian - [Edward Johan](https://github.com/younyokel)
 * Turkish - Undervolt
@@ -405,9 +408,10 @@ Many thanks to everyone else, who monitors and corrects translations!
 
 ## FAQ
 
-- [About](#about)
-- [Lenovo Legion Toolkit](#lenovo-legion-toolkit)
+- [Lenovo Legion Toolkit (Unofficial Fork)](#lenovo-legion-toolkit-unofficial-fork)
+	- [🚨 Project Status Notice](#-project-status-notice)
 			- [Other language versions of this README file:](#other-language-versions-of-this-readme-file)
+- [Localization](#localization)
 - [Table of Contents](#table-of-contents)
 	- [Disclaimer](#disclaimer)
 	- [Download](#download)
@@ -468,7 +472,7 @@ Starting from version 2.14.0, LLT is much more strict about detecting leftover p
 2. Lenovo Vantage Service
 3. System Interface Foundation V2 Device
 
-The easiest solution is to go into LLT settings and select options to disable Lenovo Vantage, LegionZone and Hotkeys (only still installed ones are shown).
+The easiest solution is to go into LLT settings and select options to disable Lenovo Vantage, Legion Zone and Hotkeys (only still installed ones are shown).
 
 If you want to remove them instead, make sure that you uninstall all 3, otherwise some options in LLT will not be available. You can check Task Manager for any processes containing `Vantage` or `ImController`. You can also check this guide for more info: [Uninstalling System Interface Foundation V2 Device](https://support.lenovo.com/us/en/solutions/HT506070), if you have troubles getting rid of `ImController` processes.
 
@@ -476,7 +480,7 @@ If you want to remove them instead, make sure that you uninstall all 3, otherwis
 
 LLT makes use of many low-level Windows APIs that can be falsely flagged by antiviruses as suspicious, resulting in a false-positive. LLT is open source and can easily be audited by anyone who has any doubts as to what this software does. All installers are built directly on GitHub with GitHub Actions, so that there is no doubt what they contain. This problem could be solved by signing all code, but I can't afford spending hundreds of dollars per year for an Extended Validation certificate.
 
-If you downloaded the installer from this projects website, you shouldn't worry - the warning is a false-positive. That said, if you can help with resolving this issue, let's get in touch.
+If you downloaded the installer from this project's website, you shouldn't worry - the warning is a false-positive. That said, if you can help with resolving this issue, let's get in touch.
 
 #### Can I customize hotkeys?
 
@@ -497,7 +501,7 @@ Starting with version 2.11.0, LLT's behavior was aligned with Vantage and Legion
 If for whatever reason you want to use these modes on battery anyway, you can use `--allow-all-power-modes-on-battery` argument. Check [Arguments](#arguments) section for more details.
 
 > [!WARNING]
-> Power limits and other settings are not applied correctly on most devices when laptop is not connected to full power AC adapter and unpredictable and weird behavior is expected. Therefore, no support is provided for issues related to using this argument.*
+> Power limits and other settings are not applied correctly on most devices when laptop is not connected to full power AC adapter and unpredictable and weird behavior is expected. Therefore, no support is provided for issues related to using this argument.
 
 #### Why does switching to Performance mode seem buggy, when AI Engine is enabled?
 
@@ -531,7 +535,7 @@ Fan control is available on Gen 7 and later models. Older models will not be sup
 
 #### Why don't I see the custom tooltip when I hover LLT icon in tray?
 
-In Windows 10 and 11, Microsoft did plenty of changes to the tray, breaking a lot of things on the way. As a results custom tooltips not always work properly. Solution? Update your Windows and keep fingers crossed.
+In Windows 10 and 11, Microsoft did plenty of changes to the tray, breaking a lot of things on the way. As a result, custom tooltips do not always work properly. Solution? Update your Windows and keep fingers crossed.
 
 #### How can I OC/UV my CPU?
 
@@ -541,12 +545,12 @@ There are very good tools like [Intel XTU](https://www.intel.com/content/www/us/
 
 If you end up in a situation where your GPU is not stable and you can't boot into Windows, there are two things you can do:
 
-1. Go into BIOS and try to find and option similar to "Enabled GPU Overclocking" and disable it, start Windows, and toggle the BIOS option again to Enabled.
+1. Go into BIOS and try to find an option similar to "Enabled GPU Overclocking" and disable it, start Windows, and toggle the BIOS option again to Enabled.
 2. Start Windows in Safe Mode, and delete `gpu_oc.json` file under LLT settings, which are located in `"%LOCALAPPDATA%\LenovoLegionToolkit`.
 
 #### Why is my Boot Logo not applied?
 
-When you change the Boot Logo, LLT verifies that it is in the format that is correct format and correct resolution. If LLT shows that boot logo is applied, it means that the setting was correctly saved to UEFI. If you don't see the custom boot logo, it means that even though UEFI is configured and custom image is saved to UEFI partition, your UEFI for some reason does not render it. In this case the best idea is to try a different image, maybe in different format, edited with different image editor etc. If the boot logo is not shown after all these steps, it's probably a problem with your BIOS version.
+When you change the Boot Logo, LLT verifies that it is in the correct format and correct resolution. If LLT shows that boot logo is applied, it means that the setting was correctly saved to UEFI. If you don't see the custom boot logo, it means that even though UEFI is configured and custom image is saved to UEFI partition, your UEFI for some reason does not render it. In this case the best idea is to try a different image, maybe in different format, edited with different image editor etc. If the boot logo is not shown after all these steps, it's probably a problem with your BIOS version.
 
 #### Why do I see stuttering when using Smart Fn Lock?
 
@@ -554,7 +558,7 @@ On some BIOS versions, toggling Fn Lock causes a brief stutter and since Smart F
 
 #### Why don't I see warranty infos in device information?
 
-In latest version LLT removes this feature for Chinese models due to increasing unreliability. If you got warranty infos before it should be displayed normally, but after manually refreshing or deleting stored datas the infos will disappear. This change only affects users with a Chinese Legion laptop.
+In latest version LLT removes this feature for Chinese models due to increasing unreliability. If you got warranty infos before it should be displayed normally, but after manually refreshing or deleting stored data the infos will disappear. This change only affects users with a Chinese Legion laptop.
 
 #### Which generation is my laptop?
 
@@ -567,7 +571,7 @@ Some, less frequently needed, features or options can be enabled by using additi
 * `--trace` - enables logging to `%LOCALAPPDATA%\LenovoLegionToolkit\log`
 * `--minimized` - starts LLT minimized to tray
 * `--skip-compat-check` - disables compatibility check on startup _(No support is provided when this argument is used)_
-* `--disable-tray-tooltip` - disables tray tooltip that is shown when you hover the cursors over tray icon
+* `--disable-tray-tooltip` - disables tray tooltip that is shown when you hover the cursor over tray icon
 * `--allow-all-power-modes-on-battery` - allows using all Power Modes without AC adapter _(No support is provided when this argument is used)_
 * `--enable-hybrid-mode-automation` - allows changing Hybrid Mode/GPU Working Mode with actions _(No support is provided when this argument is used)_
 * `--force-disable-rgbkb` - disables all lighting features for 4-zone RGB keyboards
@@ -601,7 +605,7 @@ To collect logs:
 4. Reproduce the issue you have (i.e. try to use the option that causes issues)
 5. Close LLT (also make sure it's gone from tray area)
 6. Again, in `Run` (Win+R) type `"%LOCALAPPDATA%\LenovoLegionToolkit\log"`
-7. You should see at least one file. Theses are the logs you should attach to the issue.
+7. You should see at least one file. These are the logs you should attach to the issue.
 
 ## Contribution
 
@@ -615,7 +619,7 @@ Pull Requests are also welcome, but make sure to check out [CONTRIBUTING.md](CON
 
 It would be great to expand the list of compatible devices, but to do it your help is needed!
 
-If you are willing to check if this app works correctly on your device that is currently unsupported, click _Continue_ on the popup you saw on startup. Lenovo Legion Toolkit will start logging automatically so you can submit them if anything goes wrong.
+If you are willing to check if this app works correctly on your device that is currently unsupported, click _Continue_ on the popup you saw on startup. Lenovo Legion Toolkit will start logging automatically so you can submit the logs if anything goes wrong.
 
 *Remember that some functions may not function properly.*
 
@@ -623,7 +627,7 @@ I would appreciate it, if you create an issue here on GitHub with the results of
 
 Make sure to include the following information in your issue:
 
-1. Full model name (i.e. Legion 5 Pro 16ACH6H)
+1. Full model name (e.g. Legion 5 Pro 16ACH6H)
 2. List of features that are working as expected.
 3. List of features that seem to not work.
 4. List of features that crash the app.
