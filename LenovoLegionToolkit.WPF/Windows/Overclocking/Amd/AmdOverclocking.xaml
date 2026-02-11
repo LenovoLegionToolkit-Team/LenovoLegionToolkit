@@ -14,6 +14,7 @@
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
     <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <Style
             x:Key="ModernNumberBox"
             BasedOn="{StaticResource {x:Type ui:NumberBox}}"
@@ -191,6 +192,7 @@
             </Setter>
         </Style>
     </Window.Resources>
+
 
     <Grid Background="{DynamicResource ApplicationPageBackgroundBrush}">
         <Grid.RowDefinitions>
@@ -386,7 +388,10 @@
                                     </ItemsControl.ItemsPanel>
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid Height="44" Margin="4,2">
+                                            <Grid
+                                                Height="44"
+                                                Margin="4,2"
+                                                Visibility="{Binding IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="Auto" />
@@ -411,6 +416,7 @@
                                                     Grid.Column="1"
                                                     Margin="0,0,15,0"
                                                     HorizontalAlignment="Right"
+                                                    IsEnabled="{Binding IsActive}"
                                                     Style="{StaticResource ModernNumberBox}"
                                                     Value="{Binding OffsetValue, Mode=TwoWay}" />
                                             </Grid>

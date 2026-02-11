@@ -81,6 +81,7 @@ public static class Autorun
 
         var ts = TaskService.Instance;
         var td = ts.NewTask();
+        td.Settings.Compatibility = TaskCompatibility.V2_1;
         td.Data = fileVersion;
         td.Principal.UserId = currentUser;
         td.Principal.RunLevel = TaskRunLevel.Highest;

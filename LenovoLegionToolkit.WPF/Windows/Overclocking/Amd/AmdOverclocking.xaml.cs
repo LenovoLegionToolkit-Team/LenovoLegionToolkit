@@ -114,8 +114,9 @@ public partial class AmdOverclocking : UiWindow
                 group.Cores.Add(new AmdCoreItem
                 {
                     Index = i,
-                    DisplayName = string.Format(Resource.AmdOverclocking_Core_Title, i),
-                    OffsetValue = 0
+                    DisplayName = $"{Resource.AmdOverclocking_Core_Title} {i}",
+                    OffsetValue = 0,
+                    IsActive = true
                 });
             }
             CcdList.Add(group);
@@ -132,12 +133,14 @@ public partial class AmdOverclocking : UiWindow
                 var fmax = cpu.GetFMax();
 
                 var coreReadings = new Dictionary<int, double>();
+                var activeCores = new HashSet<int>();
                 var allCores = CcdList.SelectMany(x => x.Cores).ToList();
 
                 foreach (var core in allCores)
                 {
                     if (_controller.IsCoreActive(core.Index))
                     {
+                        activeCores.Add(core.Index);
                         uint? margin = cpu.GetPsmMarginSingleCore(_controller.EncodeCoreMarginBitmask(core.Index));
                         if (margin.HasValue)
                         {
@@ -165,7 +168,7 @@ public partial class AmdOverclocking : UiWindow
                     }
                 }
 
-                return new { FMax = fmax, Readings = coreReadings, IsX3dMode = isX3dModeActive };
+                return new { FMax = fmax, Readings = coreReadings, IsX3dMode = isX3dModeActive, ActiveCores = activeCores };
             });
 
             _fMaxNumberBox.Value = result.FMax;
@@ -181,6 +184,7 @@ public partial class AmdOverclocking : UiWindow
             {
                 foreach (var core in ccd.Cores)
                 {
+                    core.IsActive = result.ActiveCores.Contains(core.Index);
                     if (result.Readings.TryGetValue(core.Index, out var reading))
                     {
                         core.OffsetValue = reading;
