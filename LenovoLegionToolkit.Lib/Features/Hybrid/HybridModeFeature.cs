@@ -2,6 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Features.Hybrid.Notify;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Features.Hybrid;
@@ -118,10 +119,21 @@ public class HybridModeFeature(GSyncFeature gSyncFeature, IGPUModeFeature igpuMo
                         break;
                     }
 
-                    if (await igpuModeFeature.GetStateAsync().ConfigureAwait(false) != IGPUModeState.IGPUOnly)
+                    var currentMode = await igpuModeFeature.GetStateAsync().ConfigureAwait(false);
+
+                    if (currentMode != IGPUModeState.IGPUOnly && currentMode != IGPUModeState.Auto)
                     {
-                        Log.Instance.Trace($"Not in iGPU-only mode, aborting...");
+                        Log.Instance.Trace($"Not in iGPU-only or Auto mode, aborting... [mode={currentMode}]");
                         break;
+                    }
+
+                    if (currentMode == IGPUModeState.Auto)
+                    {
+                        if (await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) == PowerAdapterStatus.Connected)
+                        {
+                            Log.Instance.Trace($"Auto mode with AC connected, no eject needed.");
+                            break;
+                        }
                     }
 
                     if (!await dgpuNotify.IsDGPUAvailableAsync().ConfigureAwait(false))
