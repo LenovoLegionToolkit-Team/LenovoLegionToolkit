@@ -391,7 +391,8 @@
                                             <Grid
                                                 Height="44"
                                                 Margin="4,2"
-                                                Visibility="{Binding IsActive, Converter={StaticResource BooleanToVisibilityConverter}}">
+                                                IsEnabled="{Binding IsEnabled}">
+
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="Auto" />
@@ -416,7 +417,6 @@
                                                     Grid.Column="1"
                                                     Margin="0,0,15,0"
                                                     HorizontalAlignment="Right"
-                                                    IsEnabled="{Binding IsActive}"
                                                     Style="{StaticResource ModernNumberBox}"
                                                     Value="{Binding OffsetValue, Mode=TwoWay}" />
                                             </Grid>

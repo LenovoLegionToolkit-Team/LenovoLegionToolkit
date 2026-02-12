@@ -41,7 +41,7 @@ public partial class AmdOverclocking : UiWindow
 
     private async void AmdOverclocking_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
-        if (_isInitialized)
+        if (_isInitialized && IsVisible)
         {
             await LoadFromHardwareAsync();
 
@@ -94,32 +94,35 @@ public partial class AmdOverclocking : UiWindow
         CcdList.Clear();
         var cpu = _controller.GetCpu();
 
-        int coresPerCcd = 8;
         int totalCores = (int)cpu.info.topology.physicalCores;
-        int ccdCount = (int)Math.Ceiling((double)totalCores / coresPerCcd);
 
-        for (int ccdIndex = 0; ccdIndex < ccdCount; ccdIndex++)
+        // Assume CCX = CCD = 1
+        int coresPerCcd = (int)cpu.info.topology.coresPerCcx;
+
+        for (int coreIndex = 0; coreIndex < totalCores; coreIndex++)
         {
-            var group = new AmdCcdGroup
-            {
-                HeaderTitle = $"CCD {ccdIndex}",
-                IsExpanded = true
-            };
+            int currentCcdIndex = coreIndex / coresPerCcd;
 
-            int startCore = ccdIndex * coresPerCcd;
-            int endCore = Math.Min(startCore + coresPerCcd, totalCores);
-
-            for (int i = startCore; i < endCore; i++)
+            if (CcdList.Count <= currentCcdIndex)
             {
-                group.Cores.Add(new AmdCoreItem
+                var newGroup = new AmdCcdGroup
                 {
-                    Index = i,
-                    DisplayName = $"{Resource.AmdOverclocking_Core_Title} {i}",
-                    OffsetValue = 0,
-                    IsActive = true
-                });
+                    HeaderTitle = $"CCD {currentCcdIndex}",
+                    IsExpanded = true
+                };
+                CcdList.Add(newGroup);
             }
-            CcdList.Add(group);
+
+            var currentGroup = CcdList[currentCcdIndex];
+
+            currentGroup.Cores.Add(new AmdCoreItem
+            {
+                Index = coreIndex,
+                DisplayName = $"{Resource.AmdOverclocking_Core_Title} {coreIndex}",
+                OffsetValue = 0,
+                IsActive = false,
+                IsEnabled = false
+            });
         }
     }
 
@@ -134,34 +137,30 @@ public partial class AmdOverclocking : UiWindow
 
                 var coreReadings = new Dictionary<int, double>();
                 var activeCores = new HashSet<int>();
-                var allCores = CcdList.SelectMany(x => x.Cores).ToList();
 
-                foreach (var core in allCores)
+                int totalCores = (int)cpu.info.topology.physicalCores;
+
+                for (int i = 0; i < totalCores; i++)
                 {
-                    if (_controller.IsCoreActive(core.Index))
+                    if (_controller.IsCoreActive(i))
                     {
-                        activeCores.Add(core.Index);
-                        uint? margin = cpu.GetPsmMarginSingleCore(_controller.EncodeCoreMarginBitmask(core.Index));
-                        if (margin.HasValue)
+                        try
                         {
-                            coreReadings[core.Index] = (double)(int)margin.Value;
+                            uint? margin = cpu.GetPsmMarginSingleCore(_controller.EncodeCoreMarginBitmask(i));
+                            if (margin.HasValue)
+                            {
+                                coreReadings[i] = (double)(int)margin.Value;
+                                activeCores.Add(i);
+                            }
                         }
+                        catch { /* Ignore */ }
                     }
                 }
 
                 bool isX3dModeActive = false;
-                if (cpu.info.topology.physicalCores == 16)
+                if (totalCores == 16)
                 {
-                    bool hasDataForCcd1 = false;
-                    for (int i = 8; i < 16; i++)
-                    {
-                        if (coreReadings.ContainsKey(i))
-                        {
-                            hasDataForCcd1 = true;
-                            break;
-                        }
-                    }
-
+                    bool hasDataForCcd1 = activeCores.Any(id => id >= 8);
                     if (!hasDataForCcd1)
                     {
                         isX3dModeActive = true;
@@ -184,22 +183,27 @@ public partial class AmdOverclocking : UiWindow
             {
                 foreach (var core in ccd.Cores)
                 {
-                    core.IsActive = result.ActiveCores.Contains(core.Index);
-                    if (result.Readings.TryGetValue(core.Index, out var reading))
+                    bool isActive = result.ActiveCores.Contains(core.Index);
+
+                    core.IsActive = isActive;
+                    core.IsEnabled = isActive;
+
+                    if (isActive && result.Readings.TryGetValue(core.Index, out var reading))
                     {
                         core.OffsetValue = reading;
                     }
-                    else
-                    {
-                        core.OffsetValue = 0;
-                    }
                 }
-                ccd.IsExpanded = true;
+
+                ccd.IsExpanded = ccd.Cores.Any(x => x.IsActive);
             }
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Hardware Read Failed: {ex.Message}");
+        }
+        finally
+        {
+            _isUpdatingUi = false;
         }
     }
 
@@ -226,11 +230,6 @@ public partial class AmdOverclocking : UiWindow
                     coreItem.OffsetValue = savedVal.Value;
                 }
             }
-        }
-
-        foreach (var ccd in CcdList)
-        {
-            ccd.IsExpanded = true;
         }
     }
 
@@ -296,7 +295,10 @@ public partial class AmdOverclocking : UiWindow
         {
             foreach (var core in ccd.Cores)
             {
-                core.OffsetValue = 0;
+                if (core.IsEnabled)
+                {
+                    core.OffsetValue = 0;
+                }
             }
         }
         _fMaxNumberBox.Value = 0;
@@ -309,7 +311,10 @@ public partial class AmdOverclocking : UiWindow
         {
             foreach (var core in ccd.Cores)
             {
-                core.OffsetValue -= 1;
+                if (core.IsEnabled)
+                {
+                    core.OffsetValue -= 1;
+                }
             }
         }
     }
@@ -320,7 +325,10 @@ public partial class AmdOverclocking : UiWindow
         {
             foreach (var core in ccd.Cores)
             {
-                core.OffsetValue += 1;
+                if (core.IsEnabled)
+                {
+                    core.OffsetValue += 1;
+                }
             }
         }
     }

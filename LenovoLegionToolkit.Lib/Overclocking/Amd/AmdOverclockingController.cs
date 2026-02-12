@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -6,6 +7,7 @@ using System.Management;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Resources;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
@@ -199,13 +201,17 @@ public sealed class AmdOverclockingController : IDisposable
     public bool IsCoreActive(int coreIndex)
     {
         EnsureInitialized();
-        var mapIndex = coreIndex < 8 ? 0 : 1;
+
+        // I have no idea why this was failed on me.
+        // var mapIndex = coreIndex < 8 ? 0 : 1;
 
         // Bounds check: if the mapIndex is out of range, the core is not active
-        if (mapIndex >= _cpu.info.topology.coreDisableMap.Length)
-            return false;
+        // if (mapIndex >= _cpu.info.topology.coreDisableMap.Length)
+        // return false;
 
-        return ((~_cpu.info.topology.coreDisableMap[mapIndex] >> (coreIndex % 8)) & 1) == 1;
+        // return ((~_cpu.info.topology.coreDisableMap[mapIndex] >> (coreIndex % 8)) & 1) == 1;
+
+        return _cpu.GetPsmMarginSingleCore(EncodeCoreMarginBitmask(coreIndex)) != null;
     }
 
     public static uint[] MakeCmdArgs(uint arg = 0, uint maxArgs = 6)
