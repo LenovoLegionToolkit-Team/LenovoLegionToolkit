@@ -443,7 +443,10 @@ public class SensorsGroupController : IDisposable
                     {
                         if (h == null) continue;
 
-                        if (gpuInactive && h.HardwareType == HardwareType.GpuNvidia) continue;
+                        if (gpuInactive && h.HardwareType == HardwareType.GpuNvidia)
+                        {
+                            continue;
+                        }
 
                         h.Update();
                     }
