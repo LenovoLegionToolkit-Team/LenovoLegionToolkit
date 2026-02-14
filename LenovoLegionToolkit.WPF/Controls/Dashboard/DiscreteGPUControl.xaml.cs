@@ -30,11 +30,11 @@ public partial class DiscreteGPUControl
 
     protected override async Task OnRefreshAsync()
     {
+        if (!IsVisible || Window.GetWindow(this)?.WindowState == WindowState.Minimized)
+            return;
+
         if (!_gpuController.IsSupported())
             throw new InvalidOperationException("Unsupported operation");
-
-        if (!IsVisible)
-            return;
 
         await _gpuController.StartAsync();
     }
@@ -42,6 +42,9 @@ public partial class DiscreteGPUControl
     private async void NativeWindowsMessageListener_Changed(object? sender, NativeWindowsMessageListener.ChangedEventArgs e)
     {
         if (e.Message != NativeWindowsMessage.OnDisplayDeviceArrival)
+            return;
+
+        if (Window.GetWindow(this)?.WindowState == WindowState.Minimized)
             return;
 
         Visibility = Visibility.Visible;

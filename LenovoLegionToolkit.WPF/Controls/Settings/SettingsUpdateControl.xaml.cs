@@ -34,15 +34,15 @@ public partial class SettingsUpdateControl
         {
             _checkUpdatesCard.Visibility = Visibility.Collapsed;
             _updateCheckFrequencyCard.Visibility = Visibility.Collapsed;
-            _updateMethodCard.Visibility = Visibility.Collapsed;
+            _updateChannelCard.Visibility = Visibility.Collapsed;
         }
         else
         {
             _checkUpdatesButton.Visibility = Visibility.Visible;
             _updateCheckFrequencyComboBox.Visibility = Visibility.Visible;
             _updateCheckFrequencyComboBox.SetItems(Enum.GetValues<UpdateCheckFrequency>(), _updateCheckSettings.Store.UpdateCheckFrequency, t => t.GetDisplayName());
-            __updateMethodComboBox.Visibility = Visibility.Visible;
-            __updateMethodComboBox.SetItems(Enum.GetValues<UpdateMethod>(), _settings.Store.UpdateMethod, t => t.GetDisplayName());
+            __updateChannelComboBox.Visibility = Visibility.Visible;
+            __updateChannelComboBox.SetItems(Enum.GetValues<UpdateChannel>(), _settings.Store.UpdateChannel, t => t.GetDisplayName());
         }
 
         _isRefreshing = false;
@@ -62,15 +62,15 @@ public partial class SettingsUpdateControl
         await SnackbarHelper.ShowAsync(Resource.SettingsPage_CheckUpdates_Started_Title, type: SnackbarType.Info);
     }
 
-    private void UpdateMethodComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    private void UpdateChannelComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (_isRefreshing)
             return;
 
-        if (!__updateMethodComboBox.TryGetSelectedItem(out UpdateMethod updateMethod))
+        if (!__updateChannelComboBox.TryGetSelectedItem(out UpdateChannel updateChannel))
             return;
 
-        _settings.Store.UpdateMethod = updateMethod;
+        _settings.Store.UpdateChannel = updateChannel;
         _settings.SynchronizeStore();
     }
 

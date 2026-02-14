@@ -9,6 +9,7 @@
 		<NeutralLanguage>en</NeutralLanguage>
 		<UseWindowsForms>true</UseWindowsForms>
 	</PropertyGroup>
+
 	<ItemGroup>
 		<PackageReference Include="Autofac" Version="8.2.0" />
 		<PackageReference Include="Ben.Demystifier" Version="0.4.1" />
@@ -25,7 +26,7 @@
 		<PackageReference Include="RAMSPDToolkit-NDD" Version="1.4.2" />
 		<PackageReference Include="System.Management" Version="10.0.0" />
 		<PackageReference Include="System.ServiceProcess.ServiceController" Version="9.0.2" />
-		<PackageReference Include="NeoSmart.AsyncLock" Version="3.2.1" />	
+		<PackageReference Include="NeoSmart.AsyncLock" Version="3.2.1" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="Octokit" Version="14.0.0" />
 		<PackageReference Include="TaskScheduler" Version="2.12.1" />
@@ -36,17 +37,26 @@
 		<PackageReference Include="LibreHardwareMonitorLib" Version="0.9.5-pre572" />
 		<PackageReference Include="ZenStates-Core" Version="1.0.0" />
 	</ItemGroup>
+
 	<ItemGroup>
 		<Compile Update="Resources\Resource.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Resource.resx</DependentUpon>
 		</Compile>
+		<Compile Update="Assets\AssetResources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>AssetResources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
+
 	<ItemGroup>
 		<EmbeddedResource Update="Resources\Resource.resx">
 			<Generator>PublicResXFileCodeGenerator</Generator>
 			<LastGenOutput>Resource.Designer.cs</LastGenOutput>
 		</EmbeddedResource>
+
+		<EmbeddedResource Update="Resources\Resource.*.resx" />
 	</ItemGroup>
 </Project>

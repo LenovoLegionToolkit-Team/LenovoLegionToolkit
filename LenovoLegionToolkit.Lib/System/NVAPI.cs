@@ -16,6 +16,8 @@ internal static class NVAPI
     public static bool IsInitialized { get; set; }
     private static bool? _hasNvidiaCache = null;
 
+    public static void SetCache(bool? value) => _hasNvidiaCache = value;
+
     public static void Initialize()
     {
         if (IsInitialized)
@@ -23,20 +25,19 @@ internal static class NVAPI
             return;
         }
 
-        bool hasCard = HasActiveNvidiaGpu();
-
         switch (_hasNvidiaCache)
         {
             case false:
                 return;
             case null:
             {
-                if (!hasCard)
+                var hasActive = HasActiveNvidiaGpu();
+                if (hasActive == false)
                 {
                     _hasNvidiaCache = false;
                     return;
                 }
-                _hasNvidiaCache = true;
+
                 break;
             }
         }
@@ -45,25 +46,33 @@ internal static class NVAPI
         {
             NVIDIA.Initialize();
             IsInitialized = true;
+            _hasNvidiaCache = true;
         }
         catch (NVIDIAApiException ex)
         {
-            Log.Instance.Trace($"Exception in Initialize", ex);
+            _hasNvidiaCache = false;
+
+            if ((int)ex.Status != -101 && (int)ex.Status != -6)
+            {
+                Log.Instance.Trace($"Exception in Initialize. Status: {(int)ex.Status}", ex);
+            }
         }
     }
 
     public static void Unload() => NVIDIA.Unload();
 
-    public static bool HasActiveNvidiaGpu()
+    public static bool? HasActiveNvidiaGpu()
     {
         try
         {
             using var searcher = new ManagementObjectSearcher("SELECT * FROM Win32_VideoController");
             using var collection = searcher.Get();
 
+            bool foundButNotActive = false;
+
             foreach (var item in collection)
             {
-                var pnpId = item["PNPDeviceID"]?.ToString().ToUpper();
+                var pnpId = item["PNPDeviceID"]?.ToString()?.ToUpper();
                 if (string.IsNullOrEmpty(pnpId) || !pnpId.Contains("VEN_10DE"))
                 {
                     continue;
@@ -76,6 +85,7 @@ internal static class NVAPI
                     if (errorCode != 0)
                     {
                         Log.Instance.Trace($"NVIDIA GPU found but not active. ErrorCode: {errorCode}");
+                        foundButNotActive = true;
                         continue;
                     }
                 }
@@ -84,15 +94,20 @@ internal static class NVAPI
                 if (status != "OK")
                 {
                     Log.Instance.Trace($"NVIDIA GPU found but Status is: {status}");
+                    foundButNotActive = true;
                     continue;
                 }
 
                 return true;
             }
+
+            if (foundButNotActive)
+                return null;
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Error checking for active NVIDIA GPU via WMI", ex);
+            return null;
         }
 
         return false;
@@ -102,21 +117,26 @@ internal static class NVAPI
     {
         try
         {
-            bool hasCard = HasActiveNvidiaGpu();
-
             switch (_hasNvidiaCache)
             {
                 case false:
                     return null;
                 case null:
                 {
-                    if (!hasCard)
+                    var hasActive = HasActiveNvidiaGpu();
+                    if (hasActive == false)
                     {
                         _hasNvidiaCache = false;
                         return null;
                     }
-                    _hasNvidiaCache = true;
-                    break;
+
+                    if (hasActive == true)
+                    {
+                        _hasNvidiaCache = true;
+                        break;
+                    }
+                    
+                    return null;
                 }
             }
 

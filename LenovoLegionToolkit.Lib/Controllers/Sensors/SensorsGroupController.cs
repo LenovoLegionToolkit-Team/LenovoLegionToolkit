@@ -349,20 +349,11 @@ public class SensorsGroupController : IDisposable
         lock (_dataLock) return Task.FromResult(_snapshotCpuEClock);
     }
 
-    // Previously, GPU activity was inferred from cached power values.
-    // This caused incorrect hiding/showing of sensors on power-gated systems.
-    // GPU state is now determined explicitly via GPUController.
-    //
-    // GPU power readings are only meaningful when the discrete GPU is actually active.
-    // When the GPU is power-gated, some drivers still expose stale or zero values.
-    // We intentionally hide power readings in inactive states to avoid misleading data.
     public Task<float> GetGpuPowerAsync()
     {
         lock (_dataLock) return Task.FromResult(_snapshotGpuPower);
     }
 
-    // VRAM (memory junction) temperature is only reported reliably when the dGPU is active.
-    // If the GPU is inactive, exposed values may be stale or undefined.
     public Task<float> GetGpuVramTemperatureAsync()
     {
         lock (_dataLock) return Task.FromResult(_snapshotGpuVramTemp);
@@ -576,7 +567,6 @@ public class SensorsGroupController : IDisposable
             return;
         }
 
-        // If loop is running, cancel it to pick up new interval or just restart
         StopProducerLoop();
 
         _producerCts = new CancellationTokenSource();
@@ -617,7 +607,6 @@ public class SensorsGroupController : IDisposable
             catch (Exception ex)
             {
                 Log.Instance.Trace($"ProducerLoop error: {ex}");
-                // Basic backoff
                 await Task.Delay(1000, token).ConfigureAwait(false);
             }
         }

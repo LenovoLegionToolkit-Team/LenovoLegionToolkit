@@ -6,9 +6,18 @@ on:
       version:
         description: 'Release version (e.g., 1.0.0)'
         required: true
+      channel:
+        description: 'Release channel'
+        required: true
+        default: stable
+        type: choice
+        options:
+          - stable
+          - beta
+          - dev
   push:
     tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
+      - "v*"
 
 jobs:
   build-and-release:
@@ -25,23 +34,69 @@ jobs:
         cache: true
         cache-dependency-path: '**/*.csproj'
         
-    - name: Set version
-      id: set_version
+    - name: Resolve release metadata
+      id: release_meta
       run: |
+        $channel = "stable"
+        $prerelease = "false"
+        $targetCommitish = "master"
+
         if ("${{ github.event_name }}" -eq "workflow_dispatch") {
             $version = "${{ github.event.inputs.version }}"
+            $channel = "${{ github.event.inputs.channel }}"
+
+          if ($version -notmatch '^\d+\.\d+\.\d+(\.\d+)?$') {
+            Write-Error "Invalid version '$version'. Expected format: X.Y.Z or X.Y.Z.W"
+            exit 1
+          }
         } else {
             $tag = "${{ github.ref_name }}"
             $version = $tag -replace '^v', ''
+
+            if ($tag -match '-beta\.') {
+                $channel = "beta"
+            } elseif ($tag -match '-dev\.') {
+                $channel = "dev"
+            }
         }
+
+        switch ($channel) {
+            "stable" {
+                $prerelease = "false"
+                $targetCommitish = "master"
+            }
+            "beta" {
+                $prerelease = "true"
+                $targetCommitish = "master"
+            }
+            "dev" {
+                $prerelease = "false"
+                $targetCommitish = "dev"
+            }
+            default {
+                Write-Error "Unsupported channel: $channel"
+                exit 1
+            }
+        }
+
+        if ("${{ github.event_name }}" -eq "workflow_dispatch") {
+            $tagName = "v$version"
+        } else {
+            $tagName = "${{ github.ref_name }}"
+        }
+
         Write-Output "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        Write-Output "channel=$channel" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        Write-Output "prerelease=$prerelease" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        Write-Output "target_commitish=$targetCommitish" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        Write-Output "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
       shell: powershell
 
     - name: Restore
       run: dotnet restore
       
     - name: Build
-      run: .\make_action.bat ${{ steps.set_version.outputs.version }}
+      run: .\make_action.bat ${{ steps.release_meta.outputs.version }}
       
     - name: Verify installer
       run: |
@@ -56,16 +111,19 @@ jobs:
       uses: softprops/action-gh-release@v2.0.8
       with:
         draft: true
-        tag_name: ${{ steps.set_version.outputs.version }}
-        name: LenovoLegionToolkit [${{ steps.set_version.outputs.version }}]
+        tag_name: ${{ steps.release_meta.outputs.tag_name }}
+        target_commitish: ${{ steps.release_meta.outputs.target_commitish }}
+        prerelease: ${{ steps.release_meta.outputs.prerelease }}
+        name: LenovoLegionToolkit [${{ steps.release_meta.outputs.version }}] (${{ steps.release_meta.outputs.channel }})
         body: |
           ## Release Notes
-          Version ${{ steps.set_version.outputs.version }}
+          Version ${{ steps.release_meta.outputs.version }}
+          Channel: ${{ steps.release_meta.outputs.channel }}
         files: build_installer/LenovoLegionToolkitSetup.exe
         token: ${{ secrets.GITHUB_TOKEN }}
         
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
-        name: installer-v${{ steps.set_version.outputs.version }}
+        name: installer-v${{ steps.release_meta.outputs.version }}-${{ steps.release_meta.outputs.channel }}
         path: build_installer/LenovoLegionToolkitSetup.exe

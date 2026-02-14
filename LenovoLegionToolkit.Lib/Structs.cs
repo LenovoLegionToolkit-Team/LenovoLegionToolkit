@@ -992,7 +992,7 @@ public readonly struct Time(int hour, int minute)
 
 public readonly struct Update(Release release)
 {
-    public Version Version { get; } = Version.Parse(release.TagName.TrimStart('v'));
+    public Version Version { get; } = ParseVersion(release.TagName);
     public string Title { get; } = release.Name;
     public string Description { get; } = release.Body;
     public DateTimeOffset Date { get; } = release.PublishedAt ?? release.CreatedAt;
@@ -1012,15 +1012,23 @@ public readonly struct Update(Release release)
     public static bool operator !=(Update left, Update right) => !left.Equals(right);
 
     #endregion
-}
 
-public readonly struct UpdateFromServer(ProjectInfo projectInfo, string patchNote)
-{
-    public Version Version { get; } = Version.Parse(projectInfo.ProjectNewVersion);
-    public string Title { get; } = "LenovoLegionToolkit Updates available.";
-    public string Description { get; } = patchNote;
-    public DateTimeOffset Date { get; } = DateTimeOffset.Now;
-    public string? Url { get; } = "http://kaguya.net.cn:9999/LenovoLegionToolkit/LenovoLegionToolkitSetup.exe";
+    private static Version ParseVersion(string tagName)
+    {
+        var normalized = tagName.TrimStart('v', 'V');
+        if (Version.TryParse(normalized, out var version))
+            return version;
+
+        var numericPart = new string(normalized
+            .TakeWhile(c => char.IsDigit(c) || c == '.')
+            .ToArray())
+            .Trim('.');
+
+        if (Version.TryParse(numericPart, out version))
+            return version;
+
+        throw new FormatException($"Invalid release tag format: {tagName}");
+    }
 }
 
 public readonly struct WarrantyInfo(DateTime? start, DateTime? end, Uri? link)
@@ -1034,32 +1042,4 @@ public readonly struct WindowSize(double width, double height)
 {
     public double Width { get; } = width;
     public double Height { get; } = height;
-}
-
-public struct ProjectEntry()
-{
-    public bool MaintenanceMode { get; set; } = false;
-    public string ProjectName { get; set; } = string.Empty;
-    public string ProjectCurrentVersion { get; set; } = string.Empty;
-    public string ProjectVersion { get; set; } = string.Empty;
-    public bool ProjectForceUpdate { get; set; } = false;
-
-    public bool IsValid()
-    {
-        return !string.IsNullOrWhiteSpace(ProjectName) &&
-               !string.IsNullOrWhiteSpace(ProjectCurrentVersion) &&
-               !string.IsNullOrWhiteSpace(ProjectVersion);
-    }
-}
-
-public struct ProjectInfo
-{
-    public ProjectInfo() { }
-    public string ProjectName { get; set; } = String.Empty;
-    public string ProjectExeName { get; set; } = String.Empty;
-    public string ProjectAuthor { get; set; } = String.Empty;
-    public string ProjectCurrentVersion { get; set; } = String.Empty;
-    public string ProjectCurrentExePath { get; set; } = String.Empty;
-    public string ProjectNewExePath { get; set; } = String.Empty;
-    public string ProjectNewVersion { get; set; } = String.Empty;
 }

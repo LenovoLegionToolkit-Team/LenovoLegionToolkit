@@ -28,11 +28,7 @@ public partial class UpdateWindow : IProgress<float>
     {
         var updates = await _updateChecker.GetUpdatesAsync();
 
-        if (updates.Length == 0)
-        {
-            _markdownViewer.Markdown = _updateChecker.UpdateFromServer.Description;
-        }
-        else
+        if (updates.Length > 0)
         {
             var stringBuilder = new StringBuilder();
             foreach (var update in updates)
@@ -44,6 +40,10 @@ public partial class UpdateWindow : IProgress<float>
             }
 
             _markdownViewer.Markdown = stringBuilder.ToString();
+        }
+        else
+        {
+            _markdownViewer.Markdown = string.Empty;
         }
 
         _downloadButton.IsEnabled = true;

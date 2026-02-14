@@ -767,14 +767,6 @@ public enum SpectrumLayout
     FullAlternative
 }
 
-public enum StatusCode
-{
-    Update = 0,
-    NoUpdate = 1,
-    ForceUpdate = 2,
-    Null = 255,
-}
-
 public enum Theme
 {
     [Display(ResourceType = typeof(Resource), Name = "Theme_System")]
@@ -842,12 +834,14 @@ public enum UpdateCheckStatus
     Error
 }
 
-public enum UpdateMethod
+public enum UpdateChannel
 {
-    [Display(ResourceType = typeof(Resource), Name = "UpdateMethod_Github")]
-    Github,
-    [Display(ResourceType = typeof(Resource), Name = "UpdateMethod_Server")]
-    Server,
+    [Display(ResourceType = typeof(Resource), Name = "UpdateChannel_Stable")]
+    Stable,
+    [Display(ResourceType = typeof(Resource), Name = "UpdateChannel_Beta")]
+    Beta,
+    [Display(ResourceType = typeof(Resource), Name = "UpdateChannel_Dev")]
+    Dev,
 }
 
 public enum WhiteKeyboardBacklightState

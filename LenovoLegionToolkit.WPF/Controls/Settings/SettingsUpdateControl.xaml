@@ -25,19 +25,19 @@
                     Visibility="Hidden" />
             </custom:CardControl>
             <custom:CardControl
-                x:Name="_updateMethodCard"
+                x:Name="_updateChannelCard"
                 Margin="0,0,0,8"
-                Icon="ArrowDownload24">
+                Icon="ArrowSort24">
                 <custom:CardControl.Header>
-                    <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_UpdateMethod_Title}" />
+                    <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_UpdateChannel_Title}" />
                 </custom:CardControl.Header>
                 <ComboBox
-                    x:Name="__updateMethodComboBox"
+                    x:Name="__updateChannelComboBox"
                     MinWidth="160"
                     Margin="0,0,0,8"
-                    AutomationProperties.Name="{x:Static resources:Resource.SettingsPage_UpdateMethod_Title}"
+                    AutomationProperties.Name="{x:Static resources:Resource.SettingsPage_UpdateChannel_Title}"
                     MaxDropDownHeight="Auto"
-                    SelectionChanged="UpdateMethodComboBox_SelectionChanged"
+                    SelectionChanged="UpdateChannelComboBox_SelectionChanged"
                     Visibility="Hidden" />
             </custom:CardControl>
             <custom:CardControl

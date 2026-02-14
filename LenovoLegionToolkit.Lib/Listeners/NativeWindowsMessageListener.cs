@@ -291,6 +291,14 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
     private void OnDeviceConnected(string name)
     {
+        if (!string.IsNullOrEmpty(name) && 
+            name.Contains("VEN_10DE", StringComparison.OrdinalIgnoreCase))
+        {
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"NVIDIA GPU device arrival detected. Resetting NVAPI cache. [device={name}]");
+            NVAPI.SetCache(null);
+        }
+
         RaiseChanged(NativeWindowsMessage.DeviceConnected, ConvertDeviceNameToDeviceInstanceId(name));
     }
 
@@ -382,8 +390,11 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         return PInvoke.RegisterPowerSettingNotification(new HANDLE(Handle), &guid, 0);
     }
 
-    private static string? ConvertDeviceNameToDeviceInstanceId(string name)
+    private static string? ConvertDeviceNameToDeviceInstanceId(string? name)
     {
+        if (string.IsNullOrEmpty(name))
+            return null;
+
         var parts = name.Split('#');
         if (parts.Length < 3)
             return null;
