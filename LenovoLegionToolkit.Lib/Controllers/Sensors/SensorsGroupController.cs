@@ -607,7 +607,6 @@ public class SensorsGroupController : IDisposable
             catch (Exception ex)
             {
                 Log.Instance.Trace($"ProducerLoop error: {ex}");
-                // Basic backoff
                 await Task.Delay(1000, token).ConfigureAwait(false);
             }
         }
