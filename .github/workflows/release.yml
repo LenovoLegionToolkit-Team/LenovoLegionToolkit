@@ -64,25 +64,50 @@ jobs:
                 $channel = "Dev"
             }
 
-            # Check GitHub API for authoritative channel determination
-            try {
+            # Check GitHub API for authoritative channel determination (non-terminating error handling)
+            # Retry up to 5 times to handle API propagation delays
+            $oldErrorActionPreference = $ErrorActionPreference
+            $ErrorActionPreference = 'Continue'
+            
+            $maxRetries = 5
+            $retryCount = 0
+            $ghExitCode = 1
+            $releaseInfo = $null
+
+            while ($retryCount -lt $maxRetries) {
                 $releaseInfo = gh release view "$tag" --json prerelease,targetCommitish 2>$null
-                if ($LASTEXITCODE -eq 0) {
+                $ghExitCode = $LASTEXITCODE
+                
+                if ($ghExitCode -eq 0) {
+                    break
+                }
+                
+                $retryCount++
+                Write-Output "Release not found, retrying... (attempt $retryCount/$maxRetries). Sleeping 3s..."
+                Start-Sleep -Seconds 3
+            }
+            
+            $ErrorActionPreference = $oldErrorActionPreference
+
+            if ($ghExitCode -eq 0 -and $releaseInfo) {
+                try {
                     $json = $releaseInfo | ConvertFrom-Json
                     
                     if ($json.targetCommitish -eq 'dev') {
                         $channel = "Dev"
-                        Write-Output "Detected target 'dev': Forcing channel to Dev"
+                        Write-Output "Detected target 'dev': Channel set to Dev."
                     } elseif ($json.prerelease) {
                         $channel = "Beta"
-                        Write-Output "Detected Pre-release on master: Forcing channel to Beta"
+                        Write-Output "Detected Pre-release on master: Channel set to Beta."
                     } else {
                         $channel = "Stable"
-                        Write-Output "Detected Release on master: Forcing channel to Stable"
+                        Write-Output "Detected Release on master: Channel set to Stable."
                     }
+                } catch {
+                     Write-Output "Failed to parse release JSON. Fallback to tag name logic."
                 }
-            } catch {
-                Write-Output "Could not fetch release info. Falling back to tag name logic."
+            } else {
+                Write-Output "Could not retrieve release information; release might not exist yet. Fallback to tag name logic."
             }
         }
 
