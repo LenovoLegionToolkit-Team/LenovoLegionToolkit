@@ -135,9 +135,8 @@ public partial class StatusWindow
         _cpuFanAndPowerLabel.Visibility = sensorVis;
 
         // Use cached controller type to avoid blocking UI thread
-        var isV4V5 = _cachedControllerType == typeof(SensorsControllerV4) ||
-                     _cachedControllerType == typeof(SensorsControllerV5);
-        _systemFanGrid.Visibility = (useSensors && isV4V5) ? Visibility.Visible : Visibility.Collapsed;
+        var isV5 = _cachedControllerType == typeof(SensorsControllerV5);
+        _systemFanGrid.Visibility = (useSensors && isV5) ? Visibility.Visible : Visibility.Collapsed;
 
         if (gpuStatus.HasValue)
         {
