@@ -15,9 +15,8 @@ on:
           - Stable
           - Beta
           - Dev
-  push:
-    tags:
-      - "v*"
+  release:
+    types: [published]
 
 permissions:
   contents: write
@@ -41,76 +40,45 @@ jobs:
       id: release_meta
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        INPUT_VERSION: ${{ github.event.inputs.version }}
+        INPUT_CHANNEL: ${{ github.event.inputs.channel }}
+        REF_NAME: ${{ github.ref_name }}
+        EVENT_NAME: ${{ github.event_name }}
       run: |
         $channel = "Stable"
         $prerelease = "false"
         $targetCommitish = "master"
 
-        if ("${{ github.event_name }}" -eq "workflow_dispatch") {
-            $version = "${{ github.event.inputs.version }}"
-            $channel = "${{ github.event.inputs.channel }}"
+        # 1. Determine Channel and Version
+        if ($env:EVENT_NAME -eq "workflow_dispatch") {
+            $version = $env:INPUT_VERSION
+            $channel = $env:INPUT_CHANNEL
 
             if ($version -notmatch '^\d+\.\d+\.\d+(\.\d+)?$') {
                 Write-Error "Invalid version '$version'. Expected format: X.Y.Z or X.Y.Z.W"
                 exit 1
             }
+            $tagName = "v$version"
+            $tagName = "v$version"
         } else {
-            $tag = "${{ github.ref_name }}"
-            $version = $tag -replace '^v', ''
+            # Release publish trigger
+            $tagName = "${{ github.event.release.tag_name }}"
+            $version = $tagName -replace '^v', ''
+            
+            # Trust the release event payload directly
+            $isPrerelease = "${{ github.event.release.prerelease }}"
+            $targetCommitish = "${{ github.event.release.target_commitish }}"
 
-            if ($tag -match '-beta\.') {
-                $channel = "Beta"
-            } elseif ($tag -match '-dev\.') {
+            if ($targetCommitish -eq "dev") {
                 $channel = "Dev"
-            }
-
-            # Check GitHub API for authoritative channel determination (non-terminating error handling)
-            # Retry up to 5 times to handle API propagation delays
-            $oldErrorActionPreference = $ErrorActionPreference
-            $ErrorActionPreference = 'Continue'
-            
-            $maxRetries = 5
-            $retryCount = 0
-            $ghExitCode = 1
-            $releaseInfo = $null
-
-            while ($retryCount -lt $maxRetries) {
-                $releaseInfo = gh release view "$tag" --json prerelease,targetCommitish 2>$null
-                $ghExitCode = $LASTEXITCODE
-                
-                if ($ghExitCode -eq 0) {
-                    break
-                }
-                
-                $retryCount++
-                Write-Output "Release not found, retrying... (attempt $retryCount/$maxRetries). Sleeping 3s..."
-                Start-Sleep -Seconds 3
-            }
-            
-            $ErrorActionPreference = $oldErrorActionPreference
-
-            if ($ghExitCode -eq 0 -and $releaseInfo) {
-                try {
-                    $json = $releaseInfo | ConvertFrom-Json
-                    
-                    if ($json.targetCommitish -eq 'dev') {
-                        $channel = "Dev"
-                        Write-Output "Detected target 'dev': Channel set to Dev."
-                    } elseif ($json.prerelease) {
-                        $channel = "Beta"
-                        Write-Output "Detected Pre-release on master: Channel set to Beta."
-                    } else {
-                        $channel = "Stable"
-                        Write-Output "Detected Release on master: Channel set to Stable."
-                    }
-                } catch {
-                     Write-Output "Failed to parse release JSON. Fallback to tag name logic."
-                }
+            } elseif ($isPrerelease -eq "true") {
+                $channel = "Beta"
             } else {
-                Write-Output "Could not retrieve release information; release might not exist yet. Fallback to tag name logic."
+                $channel = "Stable"
             }
         }
 
+        # 2. Apply your exact branch/release rules
         switch ($channel) {
             "Stable" {
                 $prerelease = "false"
@@ -130,17 +98,12 @@ jobs:
             }
         }
 
-        if ("${{ github.event_name }}" -eq "workflow_dispatch") {
-            $tagName = "v$version"
-        } else {
-            $tagName = "${{ github.ref_name }}"
-        }
-
-        Write-Output "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
-        Write-Output "channel=$channel" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
-        Write-Output "prerelease=$prerelease" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
-        Write-Output "target_commitish=$targetCommitish" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
-        Write-Output "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        # 3. Output for the Release step
+        "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        "channel=$channel" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        "prerelease=$prerelease" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        "target_commitish=$targetCommitish" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
       shell: powershell
 
     - name: Restore
@@ -151,7 +114,15 @@ jobs:
 
     - name: Rename installer
       run: |
-        Rename-Item -Path "build_installer\LenovoLegionToolkitSetup.exe" -NewName "LenovoLegionToolkitSetup-v${{ steps.release_meta.outputs.version }}.exe"
+        $oldPath = "build_installer\LenovoLegionToolkitSetup.exe"
+        $newPath = "build_installer\LenovoLegionToolkitSetup-v${{ steps.release_meta.outputs.version }}.exe"
+        
+        if (Test-Path $oldPath) {
+            Rename-Item -Path $oldPath -NewName (Split-Path $newPath -Leaf)
+        } else {
+            Write-Error "Build artifact not found at $oldPath"
+            exit 1
+        }
       shell: powershell
       
     - name: Verify installer
