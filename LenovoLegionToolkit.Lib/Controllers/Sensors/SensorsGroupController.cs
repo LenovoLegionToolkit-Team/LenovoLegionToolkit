@@ -472,14 +472,13 @@ public class SensorsGroupController : IDisposable
                             }
                         }
 
-                        _snapshotGpuUsage = _gpuUsageSensor?.Value ?? INVALID_VALUE_FLOAT;
-                        _snapshotGpuTemp = _gpuTempSensor?.Value ?? INVALID_VALUE_FLOAT;
-                        _snapshotGpuClock = _gpuClockSensor?.Value ?? INVALID_VALUE_FLOAT;
-
                         if (gpuInactive)
                         {
                             _snapshotGpuPower = INVALID_VALUE_FLOAT;
                             _snapshotGpuVramTemp = INVALID_VALUE_FLOAT;
+                            _snapshotGpuUsage = INVALID_VALUE_FLOAT;
+                            _snapshotGpuTemp = INVALID_VALUE_FLOAT;
+                            _snapshotGpuClock = INVALID_VALUE_FLOAT;
                         }
                         else
                         {
@@ -487,6 +486,9 @@ public class SensorsGroupController : IDisposable
                             _lastGpuPower = gPower;
                             _snapshotGpuPower = _lastGpuPower > MIN_ACTIVE_GPU_POWER ? _lastGpuPower : INVALID_VALUE_FLOAT;
                             _snapshotGpuVramTemp = _gpuHotspotSensor?.Value ?? INVALID_VALUE_FLOAT;
+                            _snapshotGpuUsage = _gpuUsageSensor?.Value ?? INVALID_VALUE_FLOAT;
+                            _snapshotGpuTemp = _gpuTempSensor?.Value ?? INVALID_VALUE_FLOAT;
+                            _snapshotGpuClock = _gpuClockSensor?.Value ?? INVALID_VALUE_FLOAT;
                         }
 
                         _snapshotMemUsage = _memoryLoadSensor?.Value ?? INVALID_VALUE_FLOAT;
