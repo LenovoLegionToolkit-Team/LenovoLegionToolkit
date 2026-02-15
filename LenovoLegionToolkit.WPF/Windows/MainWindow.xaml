@@ -89,7 +89,6 @@
                 x:Name="_navigationStore"
                 Grid.Column="0"
                 Margin="0,0,12,12"
-                Cursor=""
                 Frame="{Binding ElementName=_rootFrame}"
                 Navigated="NavigationStore_Navigated"
                 SelectedPageIndex="0">
@@ -112,11 +111,11 @@
                         PageTag="battery"
                         PageType="{x:Type pages:BatteryPage}" />
                     <custom:NavigationItem
-                        x:Name="_fanItem"   
-                        Content="{x:Static resources:Resource.MainWindow_NavigationItem_FanCurve}"
+                        x:Name="_ryzenAdjItem"
+                        Content="RyzenAdj"
                         Icon="Gauge24"
-                        PageTag="fanCurve"
-                        PageType="{x:Type pages:StandaloneFanCurvePage}" />
+                        PageTag="ryzenadjpage"
+                        PageType="{x:Type pages:RyzenAdjPage}" />
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Actions}"
                         Icon="Rocket24"
@@ -140,11 +139,13 @@
                         Icon="Settings24"
                         PageTag="settings"
                         PageType="{x:Type pages:SettingsPage}" />
+                    <!-- Donate hidden
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Donate}"
                         Icon="Money24"
                         PageTag="donate"
                         PageType="{x:Type pages:DonatePage}" />
+                    -->
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_About}"
                         Icon="Info24"
@@ -155,7 +156,11 @@
             </wpfui:NavigationStore>
 
             <Border Grid.Column="1" Background="{DynamicResource ControlFillColorDefaultBrush}">
-                <Frame Name="_rootFrame" Margin="24,0,0,0" />
+                <Frame 
+                    Name="_rootFrame" 
+                    Margin="24,0,0,0"
+                    NavigationUIVisibility="Hidden"
+                    JournalOwnership="OwnsJournal" />
             </Border>
 
             <wpfui:Snackbar

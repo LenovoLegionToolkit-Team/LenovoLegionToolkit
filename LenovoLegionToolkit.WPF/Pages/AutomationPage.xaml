@@ -44,34 +44,6 @@
                     Grid.Row="1"
                     ContentVisibilityWhileLoading="Collapsed">
                     <StackPanel>
-                        <custom:CardControl Margin="0,0,0,24">
-                            <custom:CardControl.Header>
-                                <controls:CardHeaderControl Title="{x:Static resources:Resource.AutomationPage_Game_Detection_Title}" Subtitle="{x:Static resources:Resource.AutomationPage_Game_Detection_Sub_Title}" />
-                            </custom:CardControl.Header>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <StackPanel Grid.Column="0" Margin="0,0,16,0">
-                                    <ComboBox x:Name="_detectionModeComboBox" SelectionChanged="DetectionModeComboBox_SelectionChanged">
-                                        <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_Auto}" Tag="Auto" />
-                                        <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_Discrete_GPU}" Tag="Gpu" />
-                                        <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_List}" Tag="Store" />
-                                        <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_Game_Mode}" Tag="GameMode" />
-                                    </ComboBox>
-                                </StackPanel>
-
-                                <wpfui:Button
-                                    Grid.Column="1"
-                                    VerticalAlignment="Center"
-                                    AutomationProperties.Name="{x:Static resources:Resource.SettingsPage_ExcludeProcesses_Title}"
-                                    Click="ExcludeProcesses_Click"
-                                    FontSize="20"
-                                    Icon="Settings24"
-                                    ToolTip="{x:Static resources:Resource.SettingsPage_ExcludeProcesses_Title}" />
-                            </Grid>
-                        </custom:CardControl>
 
                         <custom:CardControl Margin="0,0,0,24">
                             <custom:CardControl.Header>
@@ -95,7 +67,17 @@
 
                         <StackPanel x:Name="_automaticPipelinesStackPanel" />
 
-                        <StackPanel Margin="0,8,0,0" HorizontalAlignment="Right">
+                        <StackPanel Margin="0,8,0,0" HorizontalAlignment="Right" Orientation="Horizontal">
+                            <!-- Quick Templates Button -->
+                            <wpfui:Button
+                                x:Name="_quickTemplatesButton"
+                                MinWidth="180"
+                                Margin="0,0,8,0"
+                                Click="QuickTemplatesButton_Click"
+                                Content="⚡ Quick Templates"
+                                Icon="ChevronDown24" />
+                            
+                            <!-- Add New button -->
                             <wpfui:Button
                                 x:Name="_newAutomaticPipelineButton"
                                 MinWidth="120"

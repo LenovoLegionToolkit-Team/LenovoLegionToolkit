@@ -46,13 +46,35 @@ public static partial class WMI
             var queryFormatted = query.ToString(WMIPropertyValueFormatter.Instance);
             var mos = new ManagementObjectSearcher(scope, queryFormatted);
             var managementObjects = await mos.GetAsync().ConfigureAwait(false);
-            var result = managementObjects.Select(mo => mo.Properties).Select(converter);
+            // IMPORTANT: Materialize immediately to avoid lazy evaluation issues with caching
+            var result = managementObjects.Select(mo => mo.Properties).Select(converter).ToList();
             return result;
         }
         catch (ManagementException ex)
         {
+            Log.Instance.Trace($"Read failed: {ex.Message} [scope={scope}, query={query}]", ex);
             throw new ManagementException($"Read failed: {ex.Message} [scope={scope}, query={query}]", ex);
         }
+    }
+
+    /// <summary>
+    /// Reads WMI data with caching. Use for static hardware info only!
+    /// Do NOT use for real-time data like temperatures or power states.
+    /// </summary>
+    private static async Task<IEnumerable<T>> ReadCachedAsync<T>(
+        string scope, 
+        FormattableString query, 
+        Func<PropertyDataCollection, T> converter,
+        TimeSpan? ttl = null)
+    {
+        var queryFormatted = query.ToString(WMIPropertyValueFormatter.Instance);
+        var cacheKey = $"WMI:{scope}:{queryFormatted}";
+
+        return await WmiCache.GetOrCreateAsync(
+            cacheKey,
+            () => ReadAsync(scope, query, converter),
+            ttl
+        ).ConfigureAwait(false);
     }
 
     private static async Task CallAsync(string scope, FormattableString query, string methodName, Dictionary<string, object> methodParams)
@@ -73,8 +95,8 @@ public static partial class WMI
         }
         catch (ManagementException ex)
         {
-            var methodParamsStr = string.Join(", ", methodParams.Select(kv => $"{kv.Key}={kv.Value}"));
-            throw new ManagementException($"Call failed: {ex.Message}. [scope={scope}, query={query}, methodName={methodName}, methodParams={{{methodParamsStr}}}]", ex);
+            Log.Instance.Trace($"Call failed: {ex.Message}. [scope={scope}, query={query}, methodName={methodName}]", ex);
+            throw new ManagementException($"Call failed: {ex.Message}. [scope={scope}, query={query}, methodName={methodName}]", ex);
         }
     }
 
@@ -99,8 +121,8 @@ public static partial class WMI
         }
         catch (ManagementException ex)
         {
-            var methodParamsStr = string.Join(", ", methodParams.Select(kv => $"{kv.Key}={kv.Value}"));
-            throw new ManagementException($"Call failed: {ex.Message}. [scope={scope}, query={query}, methodName={methodName}, methodParams={{{methodParamsStr}}}]", ex);
+            Log.Instance.Trace($"Call failed: {ex.Message}. [scope={scope}, query={query}, methodName={methodName}]", ex);
+            throw new ManagementException($"Call failed: {ex.Message}. [scope={scope}, query={query}, methodName={methodName}]", ex);
         }
     }
 

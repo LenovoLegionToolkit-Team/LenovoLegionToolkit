@@ -9,16 +9,14 @@ using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using NeoSmart.AsyncLock;
-using NvAPIWrapper;
 using NvAPIWrapper.GPU;
-using NvAPIWrapper.Native.Exceptions;
-using Resource = LenovoLegionToolkit.Lib.Resources.Resource;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
 
 public class GPUController
 {
     private readonly AsyncLock _lock = new();
+    private readonly GPUWatcherService? _watcherService;
 
     private Task? _refreshTask;
     private CancellationTokenSource? _refreshCancellationTokenSource;
@@ -30,16 +28,23 @@ public class GPUController
 
     public event EventHandler<GPUStatus>? Refreshed;
     public bool IsStarted { get => _refreshTask != null; }
+    
+    /// <summary>
+    /// Access to GPU process watcher service for notifications and history
+    /// </summary>
+    public GPUWatcherService? WatcherService => _watcherService;
+    
+    public GPUController() { }
+    
+    public GPUController(GPUWatcherService watcherService)
+    {
+        _watcherService = watcherService;
+    }
 
     public bool IsSupported()
     {
         try
         {
-            if (AppFlags.Instance.Debug)
-            {
-                return true;
-            }
-
             NVAPI.Initialize();
             PhysicalGPU? gpu = NVAPI.GetGPU();
             return gpu is not null;
@@ -174,6 +179,10 @@ public class GPUController
                 using (await _lock.LockAsync(token).ConfigureAwait(false))
                 {
                     await RefreshStateAsync().ConfigureAwait(false);
+                    
+                    // Notify watcher service of process changes for notifications/history
+                    _watcherService?.UpdateProcessList(_processes);
+                    
                     Refreshed?.Invoke(this, new GPUStatus(_state, _performanceState, _processes));
                 }
 
@@ -203,6 +212,8 @@ public class GPUController
         {
             _state = GPUState.NvidiaGpuNotFound;
 
+            Log.Instance.Trace($"GPU present [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
+
             return;
         }
 
@@ -213,12 +224,12 @@ public class GPUController
             if (!string.IsNullOrWhiteSpace(stateId))
                 _performanceState += $", {stateId}";
         }
-        catch (NVIDIAApiException ex) when ((int)ex.Status == -105 || (int)ex.Status == -220)
+        catch (Exception ex) when (ex.Message == "NVAPI_GPU_NOT_POWERED")
         {
             _state = GPUState.PoweredOff;
             _performanceState = Resource.GPUController_PoweredOff;
 
-            Log.Instance.Trace($"Powered off [status={(int)ex.Status}, state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
+            Log.Instance.Trace($"Powered off [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
 
             return;
         }

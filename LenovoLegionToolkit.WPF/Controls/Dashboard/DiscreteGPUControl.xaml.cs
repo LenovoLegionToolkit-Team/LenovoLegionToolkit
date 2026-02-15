@@ -8,6 +8,7 @@ using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.WPF.Resources;
+using LenovoLegionToolkit.WPF.Utils;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
@@ -22,8 +23,26 @@ public partial class DiscreteGPUControl
 
         _gpuController.Refreshed += GpuController_Refreshed;
         _nativeWindowsMessageListener.Changed += NativeWindowsMessageListener_Changed;
+        
+        // Subscribe to GPU Watcher notifications
+        if (_gpuController.WatcherService is not null)
+        {
+            _gpuController.WatcherService.ProcessStarted += GpuWatcher_ProcessStarted;
+        }
 
         IsVisibleChanged += DiscreteGPUControl_IsVisibleChanged;
+    }
+    
+    private void GpuWatcher_ProcessStarted(object? sender, GpuProcessChangedEventArgs e)
+    {
+        Dispatcher.Invoke(() =>
+        {
+            SnackbarHelper.Show(
+                Resource.DiscreteGPUControl_Processes,
+                $"{e.ProcessName} {Resource.Active.ToLower()}",
+                SnackbarType.Info
+            );
+        });
     }
 
     protected override void OnFinishedLoading() { }
@@ -90,7 +109,7 @@ public partial class DiscreteGPUControl
                 foreach (var p in e.Processes.OrderBy(p => p.ProcessName))
                 {
                     try { processesStringBuilder.AppendLine().Append(" · ").Append(p.ProcessName); }
-                    catch {  /* Ignore */ }
+                    catch {  /* Ignored. */ }
                 }
             }
             else
@@ -162,5 +181,14 @@ public partial class DiscreteGPUControl
     {
         _deactivateGPUButton.IsEnabled = false;
         await _gpuController.RestartGPUAsync();
+    }
+    
+    private void HistoryButton_Click(object sender, RoutedEventArgs e)
+    {
+        var window = new Windows.Dashboard.GPUWatcherWindow
+        {
+            Owner = Window.GetWindow(this)
+        };
+        window.Show();
     }
 }

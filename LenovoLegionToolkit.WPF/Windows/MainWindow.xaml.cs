@@ -1,23 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using Windows.Win32;
-using Windows.Win32.System.Threading;
-using LenovoLegionToolkit.Lib;
+﻿using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
+using LenovoLegionToolkit.Lib.Services;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
@@ -27,8 +13,24 @@ using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Utils;
 using Microsoft.Xaml.Behaviors.Core;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using Windows.Win32;
+using Windows.Win32.System.Threading;
 using Wpf.Ui.Controls;
 #if !DEBUG
+using System.Reflection;
 using LenovoLegionToolkit.Lib.Extensions;
 #endif
 
@@ -65,19 +67,14 @@ public partial class MainWindow
         SourceInitialized += MainWindow_SourceInitialized;
         StateChanged += MainWindow_StateChanged;
 
-        var version = Assembly.GetEntryAssembly()?.GetName().Version;
 #if DEBUG
         _title.Text += Debugger.IsAttached ? " [DEBUGGER ATTACHED]" : " [DEBUG]";
 #else
+        var version = Assembly.GetEntryAssembly()?.GetName().Version;
         if (version is not null && version.IsBeta())
-        {
             _title.Text += " [BETA]";
-        }
-        else
-        {
-            _title.Text += $" {version}";
-        }
 #endif
+
         Focusable = false;
         if (Log.Instance.IsTraceEnabled)
         {
@@ -95,14 +92,16 @@ public partial class MainWindow
         _contentGrid.Visibility = Visibility.Hidden;
 
         if (!await KeyboardBacklightPage.IsSupportedAsync())
-        {
             _navigationStore.Items.Remove(_keyboardItem);
-        }
 
-        if (!await StandaloneFanCurvePage.IsSupportedAsync())
+        // Hide RyzenAdj for non-AMD CPUs
+        try
         {
-            _navigationStore.Items.Remove(_fanItem);
+            var ryzenAdjController = IoCContainer.Resolve<RyzenAdjController>();
+            if (!ryzenAdjController.IsAmdCpu)
+                _navigationStore.Items.Remove(_ryzenAdjItem);
         }
+        catch { /* RyzenAdj not available */ }
 
         SmartKeyHelper.Instance.BringToForeground = () => Dispatcher.Invoke(BringToForeground);
 
@@ -129,6 +128,20 @@ public partial class MainWindow
         await trayHelper.InitializeAsync();
         trayHelper.MakeVisible();
         _trayHelper = trayHelper;
+        
+        // Auto-start keyboard backlight timeout service if configured
+        if (_applicationSettings.Store.KeyboardBacklightTimeoutSeconds > 0)
+        {
+            try
+            {
+                var backlightTimeoutService = IoCContainer.Resolve<KeyboardBacklightTimeoutService>();
+                backlightTimeoutService.Start();
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"[BacklightTimeout] Auto-start failed: {ex.Message}");
+            }
+        }
     }
 
     private async void MainWindow_Closing(object? sender, CancelEventArgs e)
@@ -462,7 +475,7 @@ public partial class MainWindow
         }
     }
 
-    private IEnumerable<T> FindVisualChildren<T>(DependencyObject? parent) where T : DependencyObject
+    private IEnumerable<T> FindVisualChildren<T>(DependencyObject parent) where T : DependencyObject
     {
         if (parent == null) yield break;
 

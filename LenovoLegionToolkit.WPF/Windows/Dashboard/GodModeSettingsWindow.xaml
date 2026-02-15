@@ -56,7 +56,7 @@
             Grid.Row="1"
             Margin="12,0,0,0"
             IndicatorVerticalAlignment="Center">
-            <wpfui:DynamicScrollViewer Focusable="False">
+            <wpfui:DynamicScrollViewer>
                 <StackPanel Margin="0,0,16,0">
 
                     <custom:InfoBar
@@ -287,17 +287,15 @@
                         <custom:CardControl.Header>
                             <StackPanel x:Name="_fanCurveControlStackPanel">
                                 <controls:CardHeaderControl Title="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Title}" Subtitle="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Message}" />
-
-                                <ComboBox
-                                    x:Name="_fanSelector"
-                                    Margin="0,10,0,0"
-                                    SelectionChanged="FanSelector_SelectionChanged"
-                                    Visibility="Collapsed" />
-
+                                <!--
+                                <controls:FanCurveControl
+                                    x:Name="_fanCurveControl"
+                                    MaxWidth="700"
+                                    Margin="0,32,0,0" />
+                                -->
                                 <wpfui:Button
                                     x:Name="_fanCurveButton"
                                     MinWidth="120"
-                                    Margin="0,16,0,0"
                                     HorizontalAlignment="Right"
                                     Click="DefaultFanCurve_Click"
                                     Content="{x:Static resources:Resource.Default}"
@@ -384,6 +382,17 @@
                 MinWidth="120"
                 Click="LoadButton_Click"
                 Content="{x:Static resources:Resource.Load}"
+                Icon="ChevronDown24" />
+
+            <!-- Quick Templates for recommended power profiles -->
+            <wpfui:Button
+                x:Name="_quickTemplatesButton"
+                Grid.Column="1"
+                MinWidth="160"
+                Margin="8,0,0,0"
+                HorizontalAlignment="Left"
+                Click="QuickTemplatesButton_Click"
+                Content="⚡ Quick Templates"
                 Icon="ChevronDown24" />
 
             <wpfui:Button

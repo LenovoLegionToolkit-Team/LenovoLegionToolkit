@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management;
-using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Extensions;
+﻿using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management;
+using System.Threading.Tasks;
 
 namespace LenovoLegionToolkit.Lib.Controllers.GodMode;
 
@@ -202,8 +202,22 @@ public class GodModeControllerV3(
         {
             Log.Instance.Trace($"Getting defaults in other power modes...");
             var result = new Dictionary<PowerModeState, GodModeDefaults>();
-            var allCapabilityData = await WMI.LenovoCapabilityData01.ReadAsync().ConfigureAwait(false);
-            allCapabilityData = allCapabilityData.ToArray();
+            
+            // Retry WMI calls up to 5 times with 2s delay (handles post-reboot timing issues)
+            RangeCapability[] allCapabilityData = [];
+            for (int attempt = 1; attempt <= 5; attempt++)
+            {
+                try
+                {
+                    allCapabilityData = (await WMI.LenovoCapabilityData01.ReadAsync().ConfigureAwait(false)).ToArray();
+                    break; // Success
+                }
+                catch (ManagementException ex) when (attempt < 5)
+                {
+                    Log.Instance.Trace($"WMI read attempt {attempt} failed, retrying in 2s...", ex);
+                    await Task.Delay(2000).ConfigureAwait(false);
+                }
+            }
 
             foreach (var powerMode in new[] { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance, PowerModeState.Extreme })
             {
@@ -252,15 +266,28 @@ public class GodModeControllerV3(
         var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
         var isAmdDevice = mi.Properties.IsAmdDevice;
 
-        var allCapabilityData = await WMI.LenovoCapabilityData01.ReadAsync().ConfigureAwait(false);
-        allCapabilityData = allCapabilityData.ToArray();
+        // Retry WMI calls up to 5 times with 2s delay (handles post-reboot timing issues)
+        RangeCapability[] allCapabilityData = [];
+        DiscreteCapability[] allDiscreteData = [];
+        
+        for (int attempt = 1; attempt <= 5; attempt++)
+        {
+            try
+            {
+                allCapabilityData = (await WMI.LenovoCapabilityData01.ReadAsync().ConfigureAwait(false)).ToArray();
+                allDiscreteData = (await WMI.LenovoDiscreteData.ReadAsync().ConfigureAwait(false)).ToArray();
+                break; // Success
+            }
+            catch (ManagementException ex) when (attempt < 5)
+            {
+                Log.Instance.Trace($"WMI read attempt {attempt} failed, retrying in 2s...", ex);
+                await Task.Delay(2000).ConfigureAwait(false);
+            }
+        }
 
         var capabilityData = allCapabilityData
             .Where(d => Enum.IsDefined(d.Id))
             .ToArray();
-
-        var allDiscreteData = await WMI.LenovoDiscreteData.ReadAsync().ConfigureAwait(false);
-        allDiscreteData = allDiscreteData.ToArray();
 
         var discreteData = allDiscreteData
             .Where(d => Enum.IsDefined(d.Id))

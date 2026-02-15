@@ -11,7 +11,10 @@ public static partial class WMI
 {
     public static class LenovoCapabilityData01
     {
-        public static Task<IEnumerable<RangeCapability>> ReadAsync() => WMI.ReadAsync("root\\WMI",
+        /// <summary>
+        /// Returns static range capabilities (min/max/step). Cached because hardware capabilities never change.
+        /// </summary>
+        public static Task<IEnumerable<RangeCapability>> ReadAsync() => WMI.ReadCachedAsync("root\\WMI",
             $"SELECT * FROM LENOVO_CAPABILITY_DATA_01",
             pdc =>
             {

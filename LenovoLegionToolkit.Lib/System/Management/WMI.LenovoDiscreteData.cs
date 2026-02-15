@@ -11,7 +11,10 @@ public static partial class WMI
 {
     public static class LenovoDiscreteData
     {
-        public static Task<IEnumerable<DiscreteCapability>> ReadAsync() => WMI.ReadAsync("root\\WMI",
+        /// <summary>
+        /// Returns static discrete capabilities. Cached because hardware capabilities never change.
+        /// </summary>
+        public static Task<IEnumerable<DiscreteCapability>> ReadAsync() => WMI.ReadCachedAsync("root\\WMI",
             $"SELECT * FROM LENOVO_DISCRETE_DATA",
             pdc =>
             {

@@ -18,7 +18,8 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
                 <Ellipse
@@ -61,6 +62,15 @@
                     FontSize="20"
                     Icon="QuestionCircle24"
                     ToolTipService.InitialShowDelay="0" />
+                <wpfui:Button
+                    x:Name="_historyButton"
+                    Grid.Column="3"
+                    Margin="4,0,0,0"
+                    AutomationProperties.Name="GPU History"
+                    Click="HistoryButton_Click"
+                    FontSize="20"
+                    Icon="History24"
+                    ToolTip="GPU process history" />
             </Grid>
             <wpfui:Button
                 x:Name="_deactivateGPUButton"

@@ -21,6 +21,10 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettings.Applicat
         public bool SmartKey { get; set; }
         public bool AutomationNotification { get; set; } = true;
         public bool ITSMode { get; set; } = true;
+        /// <summary>
+        /// Show notifications when a new process starts using the discrete GPU.
+        /// </summary>
+        public bool GpuProcesses { get; set; } = true;
     }
 
     public class ApplicationSettingsStore
@@ -28,7 +32,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettings.Applicat
         public Theme Theme { get; set; }
         public RGBColor? AccentColor { get; set; }
         public AccentColorSource AccentColorSource { get; set; }
-        public PowerModeMappingMode PowerModeMappingMode { get; set; } = PowerModeMappingMode.Disabled;
+        public PowerModeMappingMode PowerModeMappingMode { get; set; } = PowerModeMappingMode.WindowsPowerMode;
         public Dictionary<PowerModeState, Guid> PowerPlans { get; set; } = [];
         public Dictionary<PowerModeState, WindowsPowerMode> PowerModes { get; set; } = [];
         public bool MinimizeToTray { get; set; } = true;
@@ -60,18 +64,21 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettings.Applicat
         public double Opacity { get; set; } = 1.0f;
         public int SelectedStyleIndex { get; set; } = 0;
         public List<FloatingGadgetItem> FloatingGadgetItems { get; set; } = [];
-
-        public List<string> ExcludedProcesses { get; set; } = [];
-        public GameDetectionSettings GameDetection { get; set; } = new();
+        
+        /// <summary>
+        /// Enable high performance UI rendering (hardware acceleration + high frame rate).
+        /// When enabled: Uses GPU acceleration and matches screen refresh rate.
+        /// When disabled: Uses software rendering for battery savings.
+        /// </summary>
+        public bool HighPerformanceUI { get; set; } = true;
+        
+        /// <summary>
+        /// Keyboard backlight auto-off timeout in seconds. 0 = disabled.
+        /// </summary>
+        public int KeyboardBacklightTimeoutSeconds { get; set; } = 0;
+        
         public bool DynamicLightingWarningDontShowAgain { get; set; }
         public bool CustomModeWarningDontShowAgain { get; set; }
-    }
-
-    public class GameDetectionSettings
-    {
-        public bool UseDiscreteGPU { get; set; } = true;
-        public bool UseGameConfigStore { get; set; } = true;
-        public bool UseEffectiveGameMode { get; set; } = true;
     }
 
     public ApplicationSettings() : base("settings.json")
@@ -80,7 +87,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettings.Applicat
     }
 }
 
-internal class LegacyPowerPlanInstanceIdToGuidConverter : JsonConverter
+internal class LegacyPowerPlanInstanceIdToGuidConverter : JsonConverter // Introduced in 2.12.0
 {
     public override bool CanWrite => false;
 

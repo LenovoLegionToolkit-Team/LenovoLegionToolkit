@@ -14,14 +14,12 @@ using LenovoLegionToolkit.Lib.Features.PanelLogo;
 using LenovoLegionToolkit.Lib.Features.WhiteKeyboardBacklight;
 using LenovoLegionToolkit.Lib.Integrations;
 using LenovoLegionToolkit.Lib.Listeners;
-using LenovoLegionToolkit.Lib.Overclocking.Amd;
 using LenovoLegionToolkit.Lib.PackageDownloader;
 using LenovoLegionToolkit.Lib.Services;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.Lib.Utils.Warranty;
-using UniversalFanControl.Lib.Generic.Api;
 
 namespace LenovoLegionToolkit.Lib;
 
@@ -43,10 +41,10 @@ public class IoCModule : Module
         builder.Register<IntegrationsSettings>();
         builder.Register<PackageDownloaderSettings>();
         builder.Register<RGBKeyboardSettings>();
+        builder.Register<RyzenAdjSettings>();
         builder.Register<SpectrumKeyboardSettings>();
         builder.Register<SunriseSunsetSettings>();
         builder.Register<UpdateCheckSettings>();
-        builder.Register<FanCurveSettings>().SingleInstance();
 
         builder.Register<AlwaysOnUSBFeature>();
         builder.Register<BatteryFeature>();
@@ -121,6 +119,9 @@ public class IoCModule : Module
         builder.Register<GodModeControllerV3>(true);
         builder.Register<GodModeControllerV4>(true);
         builder.Register<GPUController>();
+        builder.Register<GPUWatcherService>();
+        builder.Register<ProfileSyncService>();
+        builder.Register<KeyboardBacklightTimeoutService>();
         builder.Register<GPUOverclockController>();
         builder.Register<RGBKeyboardBacklightController>();
         builder.Register<SensorsController>();
@@ -134,6 +135,7 @@ public class IoCModule : Module
         builder.Register<SpectrumKeyboardBacklightController>();
         builder.Register<WindowsPowerModeController>();
         builder.Register<WindowsPowerPlanController>();
+        builder.Register<RyzenAdjController>();
         builder.Register<FpsSensorController>();
 
         builder.Register<UpdateChecker>();
@@ -148,12 +150,5 @@ public class IoCModule : Module
         builder.Register<SunriseSunset>();
 
         builder.Register<BatteryDischargeRateMonitorService>();
-
-        builder.Register<AmdOverclockingController>();
-
-        builder.Register<FanCurveManager>(c => new FanCurveManager(
-            c.Resolve<SensorsGroupController>(),
-            c.Resolve<PowerModeListener>(),
-            c.Resolve<PowerModeFeature>())).SingleInstance();
     }
 }
