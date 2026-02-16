@@ -1,10 +1,9 @@
 ﻿using LenovoLegionToolkit.Lib;
-using LenovoLegionToolkit.Lib.Messaging;
-using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Overclocking.Amd;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
+using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Utils;
 using Microsoft.Win32;
 using System;
@@ -356,53 +355,49 @@ public partial class AmdOverclocking : UiWindow
         }
     }
 
-    private void X3DGamingModeEnabled_OnClick(object sender, RoutedEventArgs e)
+    private async void X3DGamingModeEnabled_OnClick(object sender, RoutedEventArgs e)
     {
         if (_isUpdatingUi)
+        {
+            return;
+        }
+
+        var result = await MessageBoxHelper.ShowAsync(
+            this,
+            Resource.RestartRequired_Title,
+            Resource.RestartRequired_Message,
+            Resource.RestartNow,
+            Resource.RestartLater).ConfigureAwait(false);
+
+        if (!result)
         {
             return;
         }
 
         _controller.SwitchProfile(CpuProfileMode.X3DGaming);
-
-        var dialog = new DialogWindow
-        {
-            Title = Resource.Warning,
-            Content = Resource.SettingsPage_UseNewDashboard_Restart_Message,
-            Owner = this,
-        };
-
-        var (shouldRestart, _) = dialog.Result;
-        if (shouldRestart)
-        {
-            Power.RestartAsync().ConfigureAwait(false);
-        }
-
-        dialog.Show();
+        await Power.RestartAsync().ConfigureAwait(false);
     }
 
-    private void X3DGamingModeDisabled_OnClick(object sender, RoutedEventArgs e)
+    private async void X3DGamingModeDisabled_OnClick(object sender, RoutedEventArgs e)
     {
         if (_isUpdatingUi)
         {
             return;
         }
 
-        _controller.SwitchProfile(CpuProfileMode.Productivity);
-        
-        var dialog = new DialogWindow
-        {
-            Title = Resource.Warning,
-            Content = Resource.SettingsPage_UseNewDashboard_Restart_Message,
-            Owner = this,
-        };
+        var result = await MessageBoxHelper.ShowAsync(
+            this,
+            Resource.RestartRequired_Title,
+            Resource.RestartRequired_Message,
+            Resource.RestartNow,
+            Resource.RestartLater).ConfigureAwait(false);
 
-        var (shouldRestart, _) = dialog.Result;
-        if (shouldRestart)
+        if (!result)
         {
-            Power.RestartAsync().ConfigureAwait(false);
+            return;
         }
 
-        dialog.Show();
+        _controller.SwitchProfile(CpuProfileMode.Productivity);
+        await Power.RestartAsync().ConfigureAwait(false);
     }
 }

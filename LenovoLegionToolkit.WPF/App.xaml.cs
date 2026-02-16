@@ -186,7 +186,7 @@ public partial class App
             IoCContainer.Resolve<ThemeManager>().Apply();
             InitSetLogIndicator();
 
-            _ = new DialogWindow();
+            PawnIOHelper.RequestShowDialogAsync = async () => await MessageBoxHelper.ShowAsync(Current.MainWindow!, Resource.MainWindow_PawnIO_Warning_Title, Resource.MainWindow_PawnIO_Warning_Message, Resource.Yes, Resource.No);
 
             await InitAMDOverclocking();
 

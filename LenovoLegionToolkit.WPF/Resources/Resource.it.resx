@@ -2443,7 +2443,7 @@ It won't affect other full screen windows, but you will not be able to click on 
 This feature might prevent LLT to control the keyboard.
 Click Yes to disable and No to ignore.</value>
   </data>
-  <data name="DialogWindow_DontShowAgain" xml:space="preserve">
+  <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Don't show again.</value>
   </data>
   <data name="ITSModeControl_Dialog_Title" xml:space="preserve">
@@ -2613,13 +2613,6 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="FloatingGadget_Custom_Title" xml:space="preserve">
     <value>Customize Gadget Elements</value>
-  </data>
-  <data name="KeyboardBacklightPage_CustomMode_Warning" xml:space="preserve">
-    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
-
-Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
-
-Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Minutes" xml:space="preserve">
     <value>Minutes</value>
@@ -2881,6 +2874,19 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value />
   </data>
   <data name="AmdOverclocking_Global_Dim" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="RestartRequired_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
+    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+
+Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+
+Do not proceed unless you possess the necessary technical expertise.</value>
+  </data>
+  <data name="RestartRequired_Message" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">

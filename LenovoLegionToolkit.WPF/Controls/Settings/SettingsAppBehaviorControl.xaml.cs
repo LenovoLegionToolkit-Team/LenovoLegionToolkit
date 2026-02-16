@@ -172,7 +172,7 @@ public partial class SettingsAppBehaviorControl
         mainWindow._openLogIndicator.Visibility = Utils.BooleanToVisibilityConverter.Convert(_settings.Store.EnableLogging);
     }
 
-    private void UseNewSensorDashboard_Toggle(object sender, RoutedEventArgs e)
+    private async void UseNewSensorDashboard_Toggle(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing)
             return;
@@ -181,44 +181,30 @@ public partial class SettingsAppBehaviorControl
         if (state is null)
             return;
 
-        var feature = IoCContainer.Resolve<SensorsGroupController>();
-
         if (state.Value && !PawnIOHelper.IsPawnIOInnstalled())
         {
-            var dialog = new DialogWindow
-            {
-                Title = Resource.MainWindow_PawnIO_Warning_Title,
-                Content = Resource.MainWindow_PawnIO_Warning_Message,
-                Owner = Application.Current.MainWindow
-            };
+            var result = await MessageBoxHelper.ShowAsync(
+                this,
+                Resource.MainWindow_PawnIO_Warning_Title,
+                Resource.MainWindow_PawnIO_Warning_Message,
+                Resource.Yes,
+                Resource.No);
 
-            dialog.ShowDialog();
-
-            if (dialog.Result.Item1)
+            if (result)
             {
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = "https://pawnio.eu/",
                     UseShellExecute = true
                 });
-                SnackbarHelper.Show(Resource.SettingsPage_UseNewDashboard_Switch_Title,
-                                  Resource.SettingsPage_UseNewDashboard_Restart_Message,
-                                  SnackbarType.Success);
-                _settings.Store.UseNewSensorDashboard = state.Value;
-                _settings.SynchronizeStore();
             }
-            else
-            {
-                _useNewSensorDashboardToggle.IsChecked = false;
-                _settings.Store.UseNewSensorDashboard = false;
-                _settings.SynchronizeStore();
-            }
+
+            _useNewSensorDashboardToggle.IsChecked = false;
         }
         else
         {
-            SnackbarHelper.Show(Resource.SettingsPage_UseNewDashboard_Switch_Title,
-                                  Resource.SettingsPage_UseNewDashboard_Restart_Message,
-                                  SnackbarType.Success);
+            await SnackbarHelper.ShowAsync(Resource.SettingsPage_UseNewDashboard_Switch_Title,
+                Resource.SettingsPage_UseNewDashboard_Restart_Message);
             _settings.Store.UseNewSensorDashboard = state.Value;
             _settings.SynchronizeStore();
         }

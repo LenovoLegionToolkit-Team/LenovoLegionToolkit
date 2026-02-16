@@ -2451,7 +2451,7 @@ No afectará a otras ventanas a pantalla completa, pero no podrá hacer clic en 
 Esta función puede impedir que LLT controle el teclado.
 Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   </data>
-  <data name="DialogWindow_DontShowAgain" xml:space="preserve">
+  <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>No mostrar de nuevo.</value>
   </data>
   <data name="ITSModeControl_Dialog_Title" xml:space="preserve">
@@ -2621,13 +2621,6 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   </data>
   <data name="FloatingGadget_Custom_Title" xml:space="preserve">
     <value>Personalizar elementos del gadget</value>
-  </data>
-  <data name="KeyboardBacklightPage_CustomMode_Warning" xml:space="preserve">
-    <value>El modo personalizado permite el acceso a parámetros críticos del sistema tales como límites de energía y curvas de ventiladores. 
-
-Una mala configuración puede llevar a una grave inestabilidad del sistema, a estrangulamiento térmico o a un daño permanente de hardware. Las modificaciones realizadas aquí pueden anular la garantía del fabricante. 
-
-No proceda a menos que posea la experiencia técnica necesaria.</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Minutes" xml:space="preserve">
     <value>Minutos</value>
@@ -2889,6 +2882,19 @@ No proceda a menos que posea la experiencia técnica necesaria.</value>
     <value />
   </data>
   <data name="AmdOverclocking_Global_Dim" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="RestartRequired_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
+    <value>El modo personalizado permite el acceso a parámetros críticos del sistema tales como límites de energía y curvas de ventiladores. 
+
+Una mala configuración puede llevar a una grave inestabilidad del sistema, a estrangulamiento térmico o a un daño permanente de hardware. Las modificaciones realizadas aquí pueden anular la garantía del fabricante. 
+
+No proceda a menos que posea la experiencia técnica necesaria.</value>
+  </data>
+  <data name="RestartRequired_Message" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">

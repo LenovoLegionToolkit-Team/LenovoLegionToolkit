@@ -76,14 +76,11 @@ public class ITSModeControl : AbstractComboBoxFeatureCardControl<ITSMode>
             }
             catch (DllNotFoundException)
             {
-                var dialog = new DialogWindow
-                {
-                    Title = Resource.ITSModeControl_Dialog_Title,
-                    Content = Resource.ITSModeControl_Dialog_Message,
-                    Owner = App.Current.MainWindow
-                };
-
-                dialog.ShowDialog();
+                await MessageBoxHelper.ShowAsync(
+                    this,
+                    Resource.ITSModeControl_Dialog_Title,
+                    Resource.ITSModeControl_Dialog_Message,
+                    Resource.OK).ConfigureAwait(false);
             }
         }
 

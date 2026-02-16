@@ -13,7 +13,6 @@ using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Dashboard;
-using LenovoLegionToolkit.WPF.Windows.Utils;
 using Wpf.Ui.Common;
 using Button = Wpf.Ui.Controls.Button;
 
@@ -192,24 +191,17 @@ public class PowerModeControl : AbstractComboBoxFeatureCardControl<PowerModeStat
 
     private async Task<(bool Yes, bool DontShowAgain)> ShowDialogAsync()
     {
-        return await Application.Current.Dispatcher.InvokeAsync(() =>
+        return await await Application.Current.Dispatcher.InvokeAsync(async () =>
         {
-            var dialog = new DialogWindow
-            {
-                Title = Resource.Warning,
-                Content = Resource.KeyboardBacklightPage_CustomMode_Warning,
-                Owner = App.Current.MainWindow,
-                Width = 600,
-                Height = 350,
-                DontShowAgainCheckBox =
-                {
-                    Visibility = Visibility.Visible
-                }
-            };
+            var result = await MessageBoxHelper.ShowAsync(
+                this,
+                Resource.Warning,
+                Resource.GodModeSettingsWindow_CustomMode_Warning,
+                true,
+                Resource.Yes,
+                Resource.No);
 
-            dialog.ShowDialog();
-
-            return dialog.Result;
+            return (result.Result, result.DontShowAgain);
         });
     }
 }

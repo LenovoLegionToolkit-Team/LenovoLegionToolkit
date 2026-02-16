@@ -2454,7 +2454,7 @@
     <value>Windows 动态光效功能已启用，此功能可能会阻止 LLT 控制键盘灯效。
 点击 Yes 禁用功能， No 忽略。</value>
   </data>
-  <data name="DialogWindow_DontShowAgain" xml:space="preserve">
+  <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>不再显示</value>
   </data>
   <data name="ITSModeControl_Dialog_Title" xml:space="preserve">
@@ -2624,14 +2624,6 @@
   </data>
   <data name="FloatingGadget_Custom_Title" xml:space="preserve">
     <value>自定义悬浮层元素</value>
-  </data>
-  <data name="KeyboardBacklightPage_CustomMode_Warning" xml:space="preserve">
-    <value>自定义模式允许访问关键系统参数，例如功耗限制和风扇曲线。
-
-配置错误可能会导致严重的系统不稳定、过热降频或永久硬件损坏。
-此处所做的修改可能会使您的保修无效。
-
-除非您拥有必要的技术专业知识，否则请勿继续。</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Minutes" xml:space="preserve">
     <value>分钟</value>
@@ -2893,6 +2885,20 @@
     <value />
   </data>
   <data name="AmdOverclocking_Global_Dim" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="RestartRequired_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
+    <value>自定义模式允许访问关键系统参数，例如功耗限制和风扇曲线。
+
+配置错误可能会导致严重的系统不稳定、过热降频或永久硬件损坏。
+此处所做的修改可能会使您的保修无效。
+
+除非您拥有必要的技术专业知识，否则请勿继续。</value>
+  </data>
+  <data name="RestartRequired_Message" type="System.Resources.ResXNullRef, System.Windows.Forms">
     <value />
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
