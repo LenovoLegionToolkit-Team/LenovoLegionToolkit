@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
@@ -7,7 +6,6 @@ using System.Management;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Resources;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
@@ -17,7 +15,6 @@ namespace LenovoLegionToolkit.Lib.Overclocking.Amd;
 
 public sealed class AmdOverclockingController : IDisposable
 {
-    private const uint PROCHOT_DISABLED_BIT = 0x1000000;
     private const int THRESHOLD = 3;
     private const uint DOWNCORE_CMD_DEFAULT = 0x8000;
     private const uint DOWNCORE_CCD1_DISABLE_ALL = 0x81FF;

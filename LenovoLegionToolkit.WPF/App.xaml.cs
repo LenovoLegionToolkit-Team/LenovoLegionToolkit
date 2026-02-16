@@ -336,6 +336,25 @@ public partial class App
 
     private void Application_Exit(object sender, ExitEventArgs e)
     {
+        try
+        {
+            var controller = IoCContainer.TryResolve<AmdOverclockingController>();
+
+            if (controller != null && controller.IsActive())
+            {
+                var cleanInfo = new ShutdownInfo
+                {
+                    Status = "Normal",
+                    AbnormalCount = 0
+                };
+                controller.SaveShutdownInfo(cleanInfo);
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Application_Exit save status failed: {ex.Message}");
+        }
+
         _singleInstanceMutex?.Close();
     }
 
