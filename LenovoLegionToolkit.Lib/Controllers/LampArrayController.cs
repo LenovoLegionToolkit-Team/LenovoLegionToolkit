@@ -220,7 +220,11 @@ public class LampArrayController : IDisposable
             found = true;
         }
 
-        if (!found) return;
+        if (!found)
+        {
+            _auroraActive = false;
+            return;
+        }
 
         double width = maxX - minX;
         double height = maxY - minY;

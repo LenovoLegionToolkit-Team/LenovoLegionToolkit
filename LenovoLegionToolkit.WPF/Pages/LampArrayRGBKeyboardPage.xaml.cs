@@ -722,12 +722,18 @@ public partial class LampArrayRGBKeyboardPage : UiPage
     private void RestoreEffectsFromSettings()
     {
         var store = _settings.Store;
+        bool hasAurora = false;
 
         if (store.DefaultEffect is { } defCfg)
         {
             var defEffect = LampArrayController.EffectFromConfig(defCfg);
             if (defEffect != null)
             {
+                if (defEffect is AuroraSyncEffect)
+                {
+                    defEffect = _globalAuroraEffect;
+                    hasAurora = true;
+                }
                 foreach (var idx in _controlMap.Keys.ToList())
                     _lampEffectMap[idx] = defEffect;
                 _controller.SetEffectForIndices(_controlMap.Keys.ToList(), defEffect);
@@ -739,9 +745,19 @@ public partial class LampArrayRGBKeyboardPage : UiPage
             var effect = LampArrayController.EffectFromConfig(kvp.Value);
             if (effect != null)
             {
+                if (effect is AuroraSyncEffect)
+                {
+                    effect = _globalAuroraEffect;
+                    hasAurora = true;
+                }
                 _lampEffectMap[kvp.Key] = effect;
                 _controller.SetEffectForIndices([kvp.Key], effect);
             }
+        }
+
+        if (hasAurora)
+        {
+            StartScreenCapture();
         }
     }
 
