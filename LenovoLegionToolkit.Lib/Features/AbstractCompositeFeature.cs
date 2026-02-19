@@ -1,7 +1,7 @@
-﻿using LenovoLegionToolkit.Lib.Utils;
-using NeoSmart.AsyncLock;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Utils;
+using NeoSmart.AsyncLock;
 
 namespace LenovoLegionToolkit.Lib.Features;
 

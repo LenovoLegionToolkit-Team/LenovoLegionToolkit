@@ -1,7 +1,7 @@
-﻿using LenovoLegionToolkit.Lib.Controllers;
-using LenovoLegionToolkit.Lib.Utils;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Features.PanelLogo;
 

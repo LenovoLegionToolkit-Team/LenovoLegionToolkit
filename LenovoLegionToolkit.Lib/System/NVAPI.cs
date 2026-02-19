@@ -1,13 +1,13 @@
-﻿using LenovoLegionToolkit.Lib.Utils;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management;
+using LenovoLegionToolkit.Lib.Utils;
 using NvAPIWrapper;
 using NvAPIWrapper.Display;
 using NvAPIWrapper.GPU;
 using NvAPIWrapper.Native.Exceptions;
 using NvAPIWrapper.Native.GPU;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management;
 
 namespace LenovoLegionToolkit.Lib.System;
 
