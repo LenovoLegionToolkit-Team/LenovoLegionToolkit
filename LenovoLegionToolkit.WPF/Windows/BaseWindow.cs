@@ -1,6 +1,9 @@
 ﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Settings;
+using LenovoLegionToolkit.WPF.Utils;
 using Wpf.Ui.Appearance;
 using Wpf.Ui.Controls;
 
@@ -13,7 +16,8 @@ public class BaseWindow : UiWindow
         SnapsToDevicePixels = true;
         ExtendsContentIntoTitleBar = true;
 
-        WindowBackdropType = BackgroundType.Mica;
+        var settings = IoCContainer.Resolve<ApplicationSettings>();
+        WindowBackdropType = ThemeManager.GetBackgroundType(settings.Store.BackdropType);
 
         DpiChanged += BaseWindow_DpiChanged;
 

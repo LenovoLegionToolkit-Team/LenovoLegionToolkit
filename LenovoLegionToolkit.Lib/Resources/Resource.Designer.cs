@@ -1510,6 +1510,42 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Acrylic.
+        /// </summary>
+        public static string WindowBackdropType_Acrylic {
+            get {
+                return ResourceManager.GetString("WindowBackdropType_Acrylic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mica.
+        /// </summary>
+        public static string WindowBackdropType_Mica {
+            get {
+                return ResourceManager.GetString("WindowBackdropType_Mica", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to None.
+        /// </summary>
+        public static string WindowBackdropType_None {
+            get {
+                return ResourceManager.GetString("WindowBackdropType_None", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tabbed.
+        /// </summary>
+        public static string WindowBackdropType_Tabbed {
+            get {
+                return ResourceManager.GetString("WindowBackdropType_Tabbed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Off.
         /// </summary>
         public static string WinKeyState_Off {

@@ -85,7 +85,18 @@ public class ThemeManager
     private void SetTheme()
     {
         var theme = IsDarkMode() ? Wpf.Ui.Appearance.ThemeType.Dark : Wpf.Ui.Appearance.ThemeType.Light;
-        Wpf.Ui.Appearance.Theme.Apply(theme, Wpf.Ui.Appearance.BackgroundType.Mica, false);
+        Wpf.Ui.Appearance.Theme.Apply(theme, GetBackgroundType(_settings.Store.BackdropType), false);
+    }
+
+    public static Wpf.Ui.Appearance.BackgroundType GetBackgroundType(WindowBackdropType backdropType)
+    {
+        return backdropType switch
+        {
+            WindowBackdropType.Mica => Wpf.Ui.Appearance.BackgroundType.Mica,
+            WindowBackdropType.Acrylic => Wpf.Ui.Appearance.BackgroundType.Acrylic,
+            WindowBackdropType.Tabbed => Wpf.Ui.Appearance.BackgroundType.Tabbed,
+            _ => Wpf.Ui.Appearance.BackgroundType.None
+        };
     }
 
     private void SetColor()

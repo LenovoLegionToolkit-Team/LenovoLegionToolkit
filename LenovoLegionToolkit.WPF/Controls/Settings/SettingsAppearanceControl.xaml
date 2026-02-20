@@ -100,6 +100,32 @@
                         SelectionChanged="AccentColorSourceComboBox_SelectionChanged" />
                 </StackPanel>
             </custom:CardControl>
+            <custom:CardControl Margin="0,0,0,8" Icon="WindowApps24">
+                <custom:CardControl.Header>
+                    <controls:CardHeaderControl
+                        Title="{x:Static resources:Resource.SettingsAppearancePage_WindowBackdropType_Title}"
+                        Subtitle="{x:Static resources:Resource.SettingsAppearancePage_WindowBackdropType_Message}" />
+                </custom:CardControl.Header>
+                <ComboBox
+                    x:Name="_backdropTypeComboBox"
+                    MinWidth="160"
+                    Margin="0,0,0,8"
+                    AutomationProperties.Name="{x:Static resources:Resource.SettingsAppearancePage_WindowBackdropType_Title}"
+                    MaxDropDownHeight="Auto"
+                    SelectionChanged="BackdropTypeComboBox_SelectionChanged" />
+            </custom:CardControl>
+            <custom:CardControl Margin="0,0,0,8" Icon="Flash24">
+                <custom:CardControl.Header>
+                    <controls:CardHeaderControl
+                        Title="{x:Static resources:Resource.SettingsAppearancePage_HardwareAcceleration_Title}"
+                        Subtitle="{x:Static resources:Resource.SettingsAppearancePage_HardwareAcceleration_Message}"
+                        Warning="{x:Static resources:Resource.SettingsAppearancePage_HardwareAcceleration_Warning}" />
+                </custom:CardControl.Header>
+                <wpfui:ToggleSwitch
+                    x:Name="_hardwareAccelerationToggle"
+                    Checked="HardwareAccelerationToggle_Checked"
+                    Unchecked="HardwareAccelerationToggle_Unchecked" />
+            </custom:CardControl>
         </StackPanel>
     </ScrollViewer>
 </UserControl>

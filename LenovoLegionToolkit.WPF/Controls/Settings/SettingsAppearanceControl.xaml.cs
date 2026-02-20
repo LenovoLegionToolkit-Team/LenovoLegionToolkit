@@ -69,6 +69,8 @@ public partial class SettingsAppearanceControl
         _selectBackgroundImageButton.Visibility = Visibility.Visible;
         _clearBackgroundImageButton.Visibility = Visibility.Visible;
         _backgroundImageOpacitySlider.Visibility = Visibility.Visible;
+        _backdropTypeComboBox.SetItems(Enum.GetValues<WindowBackdropType>(), _settings.Store.BackdropType, t => t.GetDisplayName());
+        _hardwareAccelerationToggle.IsChecked = _settings.Store.EnableHardwareAcceleration;
 
         _isRefreshing = false;
     }
@@ -196,5 +198,41 @@ public partial class SettingsAppearanceControl
 
         _settings.Store.BackGroundImageFilePath = string.Empty;
         _settings.SynchronizeStore();
+    }
+
+    private void HardwareAccelerationToggle_Checked(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        _settings.Store.EnableHardwareAcceleration = true;
+        _settings.SynchronizeStore();
+
+        SnackbarHelper.Show(Resource.SettingsAppearancePage_HardwareAcceleration_Title, Resource.SettingsPage_UseNewDashboard_Restart_Message, SnackbarType.Success);
+    }
+
+    private void HardwareAccelerationToggle_Unchecked(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        _settings.Store.EnableHardwareAcceleration = false;
+        _settings.SynchronizeStore();
+
+        SnackbarHelper.Show(Resource.SettingsAppearancePage_HardwareAcceleration_Title, Resource.SettingsPage_UseNewDashboard_Restart_Message, SnackbarType.Success);
+    }
+
+    private void BackdropTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        if (!_backdropTypeComboBox.TryGetSelectedItem(out WindowBackdropType state))
+            return;
+
+        _settings.Store.BackdropType = state;
+        _settings.SynchronizeStore();
+
+        SnackbarHelper.Show(Resource.SettingsAppearancePage_WindowBackdropType_Title, Resource.SettingsPage_UseNewDashboard_Restart_Message, SnackbarType.Success);
     }
 }

@@ -777,6 +777,18 @@ public enum Theme
     Dark
 }
 
+public enum WindowBackdropType
+{
+    [Display(ResourceType = typeof(Resource), Name = "WindowBackdropType_None")]
+    None,
+    [Display(ResourceType = typeof(Resource), Name = "WindowBackdropType_Mica")]
+    Mica,
+    [Display(ResourceType = typeof(Resource), Name = "WindowBackdropType_Acrylic")]
+    Acrylic,
+    [Display(ResourceType = typeof(Resource), Name = "WindowBackdropType_Tabbed")]
+    Tabbed
+}
+
 public enum AccentColorSource
 {
     [Display(ResourceType = typeof(Resource), Name = "AccentColorSource_System")]

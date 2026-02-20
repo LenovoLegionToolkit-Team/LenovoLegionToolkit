@@ -74,7 +74,8 @@ public partial class FloatingGadget
     {
         InitializeComponent();
 
-        RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
+        if (!AppFlags.Instance.EnableHardwareAcceleration && !_settings.Store.EnableHardwareAcceleration)
+            RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
 
         if (_floatingGadgetSettings.Store.Items.Count == 0)
         {

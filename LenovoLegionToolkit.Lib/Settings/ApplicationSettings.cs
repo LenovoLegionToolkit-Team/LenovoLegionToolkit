@@ -60,6 +60,8 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public GameDetectionSettings GameDetection { get; set; } = new();
         public bool DynamicLightingWarningDontShowAgain { get; set; }
         public bool CustomModeWarningDontShowAgain { get; set; }
+        public bool EnableHardwareAcceleration { get; set; }
+        public WindowBackdropType BackdropType { get; set; } = WindowBackdropType.Mica;
     }
 
     public class GameDetectionSettings

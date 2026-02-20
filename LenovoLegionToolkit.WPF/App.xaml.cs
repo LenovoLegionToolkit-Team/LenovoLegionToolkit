@@ -128,7 +128,10 @@ public partial class App
 
             if (AppFlags.Instance.Debug) Console.WriteLine(@"[Startup] Configuring Render Options...");
             WinFormsApp.SetHighDpiMode(WinFormsHighDpiMode.PerMonitorV2);
-            RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
+
+            var settings = IoCContainer.Resolve<ApplicationSettings>();
+            if (!AppFlags.Instance.EnableHardwareAcceleration && !settings.Store.EnableHardwareAcceleration)
+                RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
 
             MigrateSettingsToNew();
 

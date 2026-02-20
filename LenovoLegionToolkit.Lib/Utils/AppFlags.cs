@@ -122,6 +122,13 @@ public class AppFlags
         set { _disableConflictingSoftwareWarning = value; Save(); }
     }
 
+    private bool _enableHardwareAcceleration;
+    public bool EnableHardwareAcceleration
+    {
+        get => _enableHardwareAcceleration;
+        set { _enableHardwareAcceleration = value; Save(); }
+    }
+
     public static void Initialize(IEnumerable<string>? startupArgs)
     {
         _instance = new AppFlags(startupArgs);
@@ -165,6 +172,7 @@ public class AppFlags
         _proxyAllowAllCerts = BoolValue(args, "--proxy-allow-all-certs");
         _disableUpdateChecker = BoolValue(args, "--disable-update-checker");
         _disableConflictingSoftwareWarning = BoolValue(args, "--disable-conflicting-software-warning");
+        _enableHardwareAcceleration = BoolValue(args, "--enable-hw-accel");
     }
 
     private void Save()
@@ -188,6 +196,7 @@ public class AppFlags
             if (ProxyAllowAllCerts) args.Add("--proxy-allow-all-certs");
             if (DisableUpdateChecker) args.Add("--disable-update-checker");
             if (DisableConflictingSoftwareWarning) args.Add("--disable-conflicting-software-warning");
+            if (EnableHardwareAcceleration) args.Add("--enable-hw-accel");
 
             var argsFile = Path.Combine(Folders.AppData, "args.txt");
             File.WriteAllLines(argsFile, args);
@@ -234,6 +243,7 @@ public class AppFlags
         $" {nameof(ProxyUsername)}: {ProxyUsername}," +
         $" {nameof(ProxyPassword)}: {ProxyPassword}," +
         $" {nameof(ProxyAllowAllCerts)}: {ProxyAllowAllCerts}," +
-        $" {nameof(DisableUpdateChecker)}: {DisableUpdateChecker}, " +
-        $" {nameof(DisableConflictingSoftwareWarning)}: {DisableConflictingSoftwareWarning}";
+        $"{nameof(DisableUpdateChecker)}: {DisableUpdateChecker}, " +
+        $" {nameof(DisableConflictingSoftwareWarning)}: {DisableConflictingSoftwareWarning}, " +
+        $" {nameof(EnableHardwareAcceleration)}: {EnableHardwareAcceleration}";
 }

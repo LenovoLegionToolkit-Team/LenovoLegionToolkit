@@ -113,7 +113,8 @@ public partial class FloatingGadgetUpper
     {
         InitializeComponent();
 
-        RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
+        if (!AppFlags.Instance.EnableHardwareAcceleration && !_settings.Store.EnableHardwareAcceleration)
+            RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
 
         _activeItems = new HashSet<FloatingGadgetItem>(_floatingGadgetSettings.Store.Items);
 
