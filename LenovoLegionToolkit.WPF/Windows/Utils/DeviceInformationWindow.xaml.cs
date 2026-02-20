@@ -98,7 +98,7 @@ public partial class DeviceInformationWindow
 
     private async void RefreshWarrantyButton_OnClick(object sender, RoutedEventArgs e) => await RefreshAsync(true);
 
-    private async Task DeviceCardControl_Click(object sender, RoutedEventArgs e)
+    private async void DeviceCardControl_Click(object sender, RoutedEventArgs e)
     {
         if (sender is not CardControl card || (card.Content as TextBlock)?.Text is not { } str)
         {
