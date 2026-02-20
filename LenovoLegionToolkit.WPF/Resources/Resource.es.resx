@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -1235,6 +1235,9 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
     <value>Notificaciones</value>
+  </data>
+  <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
+    <value>Update Channel</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
     <value>Planes de energía de Windows</value>
@@ -2452,7 +2455,7 @@ Esta función puede impedir que LLT controle el teclado.
 Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
-    <value>No mostrar de nuevo.</value>
+    <value>Don't show again.</value>
   </data>
   <data name="ITSModeControl_Dialog_Title" xml:space="preserve">
     <value>Componente faltante</value>
@@ -2596,7 +2599,7 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
     <value>Multiplicador de precisión de Boost Overdrive.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency</value>
+    <value>Frecuencia de impulso de Precision Boost Overdrive</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Precision Boost Overdrive Boost Frequency.</value>
@@ -2779,125 +2782,148 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
     <value>Umbral blanco</value>
   </data>
   <data name="CustomFanCurve_Add_Point" xml:space="preserve">
-    <value>Add curve point</value>
+    <value>Añadir punto de curva</value>
   </data>
   <data name="CustomFanCurve_Fan_Speed" xml:space="preserve">
-    <value>Fan Speed %</value>
+    <value>Velocidad del ventilador %</value>
   </data>
   <data name="CustomFanCurve_Temperature" xml:space="preserve">
-    <value>Temperature °C </value>
+    <value>Temperatura °C </value>
   </data>
   <data name="CustomFanCurve_Title" xml:space="preserve">
-    <value>Real-Time Monitoring</value>
+    <value>Monitorización en tiempo real</value>
   </data>
   <data name="CustomFanCurve_PWM_Value" xml:space="preserve">
-    <value>PWM Value</value>
+    <value>Valor del PWM</value>
   </data>
   <data name="CustomFanCurve_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ajustes</value>
   </data>
   <data name="CustomFanCurve_Critical_Temp" xml:space="preserve">
-    <value>Critical Temp</value>
+    <value>Temperatura Crítica</value>
   </data>
   <data name="CustomFanCurve_Accelerate" xml:space="preserve">
-    <value>Accelerate</value>
+    <value>Acelerar</value>
   </data>
   <data name="CustomFanCurve_Deceleration" xml:space="preserve">
-    <value>Deceleration</value>
+    <value>Desaceleración</value>
   </data>
   <data name="CustomFanCurve_Accelerate_Tooltip" xml:space="preserve">
-    <value>Accelerate control's how much PWM is added to the current PWM Value.</value>
+    <value>El control de aceleración determina cuánto PWM se añade al valor PWM actual.</value>
   </data>
   <data name="CustomFanCurve_Deceleration_Tooltip" xml:space="preserve">
-    <value>Deceleration control's how much PWM is decreased to the current PWM Value.</value>
+    <value>El control de desaceleración es la cantidad en que se reduce el PWM hasta el valor PWM actual.</value>
   </data>
   <data name="CustomFanCurve_Critical_Temp_Tooltip" xml:space="preserve">
-    <value>Force the maximum speed when the temperature is greater than or equal to this temperature to prevent burning out.</value>
+    <value>Forzar la velocidad máxima cuando la temperatura es mayor o igual a esta temperatura para evitar que se queme.</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Title" xml:space="preserve">
-    <value>Fan Max Speed</value>
+    <value>Velocidad máxima del ventilador</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
-    <value>Set fan to maximum speed.</value>
+    <value>Establecer el ventilador a la velocidad máxima.</value>
   </data>
   <data name="MainWindow_NavigationItem_FanCurve" xml:space="preserve">
-    <value>Fan Curve</value>
+    <value>Curva del ventilador</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
-    <value>Logic</value>
+    <value>Lógica</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_And" xml:space="preserve">
-    <value>Match All (And)</value>
+    <value>Coincidir Todos (Y)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
-    <value>Match Any (Or)</value>
+    <value>Coincidir Cualquier (O)</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ExcludeProcessesWindow_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
+    <value>Procesos excluidos</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
+    <value>Process Name (e.g. discord)</value>
   </data>
-  <data name="ExcludeProcessesWindow_Description" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
+    <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
   </data>
-  <data name="SettingsPage_ExcludeProcesses_Message" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SettingsPage_ExcludeProcesses_Message" xml:space="preserve">
+    <value>Administrar procesos que son ignorados por la Detección de Juegos.</value>
   </data>
-  <data name="SettingsPage_ExcludeProcesses_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
+    <value>Procesos excluidos</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
+    <value>Detección de juegos</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Sub_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
+    <value>Configurar métodos de detección y exclusiones</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Method_Auto" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
+    <value>Automático (Todos los métodos)</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
+    <value>Actividad de la GPU dedicada</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Method_List" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Method_List" xml:space="preserve">
+    <value>Lista de juegos conocida</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Method_Game_Mode" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Method_Game_Mode" xml:space="preserve">
+    <value>Modo de juego de Windows</value>
   </data>
-  <data name="AutomationPipelineControl_RunOnStartup" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
+    <value>Ejecutar al iniciar</value>
   </data>
-  <data name="AutomationPipelineControl_RunOnStartup_Tooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPipelineControl_RunOnStartup_Tooltip" xml:space="preserve">
+    <value>Cuando está habilitado, esta automatización se comprobará y aplicará cuando la aplicación se inicie</value>
   </data>
-  <data name="AmdOverclocking_Per_Core_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AmdOverclocking_Per_Core_Title" xml:space="preserve">
+    <value>Optimización por núcleo</value>
   </data>
-  <data name="AmdOverclocking_Global_Offset" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AmdOverclocking_Global_Offset" xml:space="preserve">
+    <value>Desplazamiento global:</value>
   </data>
-  <data name="AmdOverclocking_Global_Plus" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AmdOverclocking_Global_Plus" xml:space="preserve">
+    <value>+1 Todos</value>
   </data>
-  <data name="AmdOverclocking_Global_Dim" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AmdOverclocking_Global_Dim" xml:space="preserve">
+    <value>-1 Todos</value>
   </data>
-  <data name="RestartRequired_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SettingsPage_Category_Appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
+    <value>App Behavior</value>
+  </data>
+  <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
+    <value>Software Control</value>
+  </data>
+  <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
+    <value>Smart Keys</value>
+  </data>
+  <data name="SettingsPage_Category_Display" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="SettingsPage_Category_Updates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="SettingsPage_Category_Power" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="SettingsPage_Category_Integrations" xml:space="preserve">
+    <value>Integrations</value>
+  </data>
+  <data name="RestartRequired_Title" xml:space="preserve">
+    <value>Restart required</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>El modo personalizado permite el acceso a parámetros críticos del sistema tales como límites de energía y curvas de ventiladores. 
+    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
 
-Una mala configuración puede llevar a una grave inestabilidad del sistema, a estrangulamiento térmico o a un daño permanente de hardware. Las modificaciones realizadas aquí pueden anular la garantía del fabricante. 
+Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
 
-No proceda a menos que posea la experiencia técnica necesaria.</value>
+Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
-  <data name="RestartRequired_Message" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="RestartRequired_Message" xml:space="preserve">
+    <value>Changing this requires restart. Do you want to restart now?</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
-    <value>Modo de actualización</value>
+    <value>Update Method</value>
   </data>
 </root>
