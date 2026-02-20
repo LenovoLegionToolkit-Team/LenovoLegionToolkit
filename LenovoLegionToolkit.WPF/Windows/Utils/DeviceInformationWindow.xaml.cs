@@ -19,6 +19,8 @@ public partial class DeviceInformationWindow
 
     private int _count = 0;
     private AmdOverclocking? _amdOverclockingWindow;
+    private string _actualSerialNumber = string.Empty;
+    private bool _isSerialNumberRevealed = false;
 
     public DeviceInformationWindow()
     {
@@ -54,7 +56,11 @@ public partial class DeviceInformationWindow
         _manufacturerLabel.Text = vendor;
         _modelLabel.Text = model;
         _mtmLabel.Text = machineType;
-        _serialNumberLabel.Text = serialNumber;
+
+        _actualSerialNumber = serialNumber;
+        _isSerialNumberRevealed = false;
+        _serialNumberLabel.Text = new string('*', serialNumber.Length);
+
         _biosLabel.Text = biosVersion;
 
         try
@@ -100,7 +106,29 @@ public partial class DeviceInformationWindow
 
     private async void DeviceCardControl_Click(object sender, RoutedEventArgs e)
     {
-        if (sender is not CardControl card || (card.Content as TextBlock)?.Text is not { } str)
+        if (sender is not CardControl card)
+        {
+            return;
+        }
+
+        string? str = null;
+        if (card.Content is TextBlock tb)
+        {
+            str = tb.Text;
+        }
+        else if (card.Content is StackPanel sp)
+        {
+            foreach (var child in sp.Children)
+            {
+                if (child == _serialNumberLabel)
+                {
+                    str = _actualSerialNumber;
+                    break;
+                }
+            }
+        }
+
+        if (string.IsNullOrEmpty(str))
         {
             return;
         }
@@ -159,5 +187,12 @@ public partial class DeviceInformationWindow
     {
         var link = _warrantyLinkCardAction.Tag as Uri;
         link?.Open();
+    }
+
+    private void ToggleSerialNumberButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        _isSerialNumberRevealed = !_isSerialNumberRevealed;
+        _serialNumberLabel.Text = _isSerialNumberRevealed ? _actualSerialNumber : new string('*', _actualSerialNumber.Length);
+        _toggleSerialNumberButton.Icon = _isSerialNumberRevealed ? Wpf.Ui.Common.SymbolRegular.EyeOff24 : Wpf.Ui.Common.SymbolRegular.Eye24;
     }
 }

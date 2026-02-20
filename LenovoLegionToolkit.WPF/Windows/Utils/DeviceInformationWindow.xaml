@@ -83,7 +83,19 @@
                     <custom:CardControl.Header>
                         <controls:CardHeaderControl Title="{x:Static resources:Resource.DeviceInformationWindow_SerialNumber_Title}" />
                     </custom:CardControl.Header>
-                    <TextBlock x:Name="_serialNumberLabel" Focusable="True" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            x:Name="_serialNumberLabel"
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            Focusable="True" />
+                        <wpfui:Button
+                            x:Name="_toggleSerialNumberButton"
+                            Padding="4"
+                            Appearance="Transparent"
+                            Click="ToggleSerialNumberButton_OnClick"
+                            Icon="Eye24" />
+                    </StackPanel>
                 </custom:CardControl>
 
                 <custom:CardControl
