@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -1231,6 +1231,9 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
   </data>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
     <value>Benachrichtigungen</value>
+  </data>
+  <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
+    <value>Update Channel</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
     <value>Energiesparpläne</value>
@@ -2449,7 +2452,7 @@ Diese Funktion kann verhindern, dass LLT die Tastatur kontrolliert.
 Klicken Sie auf Ja zum Deaktivieren und Nein zum Ignorieren.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
-    <value>Nicht wieder anzeigen.</value>
+    <value>Don't show again.</value>
   </data>
   <data name="ITSModeControl_Dialog_Title" xml:space="preserve">
     <value>Fehlende Komponente</value>
@@ -2737,7 +2740,7 @@ Klicken Sie auf Ja zum Deaktivieren und Nein zum Ignorieren.</value>
     <value> Proxy URL</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUsername" xml:space="preserve">
-    <value>Proxy Username</value>
+    <value>Proxy Benutzername</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyPassword" xml:space="preserve">
     <value>Proxy Password</value>
@@ -2829,60 +2832,83 @@ Klicken Sie auf Ja zum Deaktivieren und Nein zum Ignorieren.</value>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
     <value>Match Any (Or)</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="ExcludeProcessesWindow_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
+    <value>Excluded Processes</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
+    <value>Process Name (e.g. discord)</value>
   </data>
-  <data name="ExcludeProcessesWindow_Description" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
+    <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
   </data>
-  <data name="SettingsPage_ExcludeProcesses_Message" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SettingsPage_ExcludeProcesses_Message" xml:space="preserve">
+    <value>Manage processes that are ignored by Game Detection.</value>
   </data>
-  <data name="SettingsPage_ExcludeProcesses_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
+    <value>Excluded Processes</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
+    <value>Game Detection</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Sub_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
+    <value>Configure detection methods and exclusions</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Method_Auto" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
+    <value>Automatic (All Methods)</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
+    <value>Discrete GPU Activity</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Method_List" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Method_List" xml:space="preserve">
+    <value>Known Game List</value>
   </data>
-  <data name="AutomationPage_Game_Detection_Method_Game_Mode" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPage_Game_Detection_Method_Game_Mode" xml:space="preserve">
+    <value>Windows Game Mode</value>
   </data>
-  <data name="AutomationPipelineControl_RunOnStartup" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
+    <value>Run on startup</value>
   </data>
-  <data name="AutomationPipelineControl_RunOnStartup_Tooltip" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AutomationPipelineControl_RunOnStartup_Tooltip" xml:space="preserve">
+    <value>When enabled, this automation will check and apply when the app starts</value>
   </data>
-  <data name="AmdOverclocking_Per_Core_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AmdOverclocking_Per_Core_Title" xml:space="preserve">
+    <value>Per-Core Optimization</value>
   </data>
-  <data name="AmdOverclocking_Global_Offset" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AmdOverclocking_Global_Offset" xml:space="preserve">
+    <value>Global Offset:</value>
   </data>
-  <data name="AmdOverclocking_Global_Plus" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AmdOverclocking_Global_Plus" xml:space="preserve">
+    <value>+1 All</value>
   </data>
-  <data name="AmdOverclocking_Global_Dim" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="AmdOverclocking_Global_Dim" xml:space="preserve">
+    <value>-1 Alle</value>
   </data>
-  <data name="RestartRequired_Title" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="SettingsPage_Category_Appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
+    <value>App Behavior</value>
+  </data>
+  <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
+    <value>Software Control</value>
+  </data>
+  <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
+    <value>Smart Keys</value>
+  </data>
+  <data name="SettingsPage_Category_Display" xml:space="preserve">
+    <value>Display</value>
+  </data>
+  <data name="SettingsPage_Category_Updates" xml:space="preserve">
+    <value>Updates</value>
+  </data>
+  <data name="SettingsPage_Category_Power" xml:space="preserve">
+    <value>Power</value>
+  </data>
+  <data name="SettingsPage_Category_Integrations" xml:space="preserve">
+    <value>Integrations</value>
+  </data>
+  <data name="RestartRequired_Title" xml:space="preserve">
+    <value>Restart required</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
     <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
@@ -2891,10 +2917,10 @@ Misconfiguration can lead to severe system instability, thermal throttling, or p
 
 Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
-  <data name="RestartRequired_Message" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="RestartRequired_Message" xml:space="preserve">
+    <value>Changing this requires restart. Do you want to restart now?</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
-    <value>Update-Methode</value>
+    <value>Update Method</value>
   </data>
 </root>

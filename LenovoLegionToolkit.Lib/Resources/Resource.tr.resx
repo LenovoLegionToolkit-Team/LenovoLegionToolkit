@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -392,6 +392,15 @@
     <value>Açık</value>
     <comment>Informs the user that Touchpad Lock is or will be turned on.</comment>
   </data>
+  <data name="UpdateChannel_Stable" xml:space="preserve">
+    <value>Stable</value>
+  </data>
+  <data name="UpdateChannel_Beta" xml:space="preserve">
+    <value>Beta</value>
+  </data>
+  <data name="UpdateChannel_Dev" xml:space="preserve">
+    <value>Dev</value>
+  </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>Yüksek</value>
   </data>
@@ -575,37 +584,42 @@
     <value>AC adaptörü (tam watt) takılı olmadan profil uygulanmayacak.</value>
   </data>
   <data name="FloatingGadgetItem_Disk1Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>Disk 1 Sıcaklığı</value>
   </data>
   <data name="FloatingGadgetItem_Disk2Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>Disk 2 Sıcaklığı</value>
   </data>
   <data name="CustomFanCurveControl_Fan_CPU" xml:space="preserve">
-    <value>CPU Fan</value>
+    <value>CPU Fanı</value>
   </data>
   <data name="CustomFanCurveControl_Fan_GPU" xml:space="preserve">
-    <value>GPU Fan</value>
+    <value>GPU Fanı</value>
   </data>
   <data name="CustomFanCurveControl_Fan_System" xml:space="preserve">
-    <value>System Fan</value>
+    <value>Sistem Fanı</value>
   </data>
   <data name="FanMaxSpeedState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Kapalı</value>
   </data>
   <data name="FanMaxSpeedState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Açık</value>
   </data>
   <data name="FanMaxSpeedState_Toggle" xml:space="preserve">
-    <value>Toggle</value>
+    <value>Aç/Kapat</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Automation_Warning_Startup" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
+  <data name="Automation_Warning_Startup" xml:space="preserve">
+    <value>Uyarı: Güvenlik nedeniyle, başlangıçta şu adımlar atlanacaktır: {0}. Diğer tüm adımlar normal şekilde yürütülecektir.</value>
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
     <value>Sunucu</value>
   </data>
   <data name="UpdateMethod_Github" xml:space="preserve">
     <value>Github</value>
+  </data>
+  <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
+    <value>Invalid signature thumbprint {0}</value>
+  </data>
+  <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
+    <value>The downloaded update is not signed by the trusted server certificate {0}</value>
   </data>
 </root>
