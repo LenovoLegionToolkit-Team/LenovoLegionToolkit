@@ -155,7 +155,6 @@ public class NotificationWindow : UiWindow, INotificationWindow
     {
         WindowStartupLocation = WindowStartupLocation.Manual;
         ResizeMode = ResizeMode.NoResize;
-        WindowBackdropType = BackgroundType.None;
 
         Focusable = false;
         Topmost = true;

@@ -105,7 +105,6 @@ public partial class StatusWindow
         IsVisibleChanged += StatusWindow_IsVisibleChanged;
         WindowStyle = WindowStyle.None;
         WindowStartupLocation = WindowStartupLocation.Manual;
-        WindowBackdropType = BackgroundType.None;
         ResizeMode = ResizeMode.NoResize;
         SizeToContent = SizeToContent.WidthAndHeight;
         Focusable = false;

@@ -6394,6 +6394,69 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Average Frequency.
+        /// </summary>
+        public static string SensorSettingsPage_Average_Frequency_Title {
+            get {
+                return ResourceManager.GetString("SensorSettingsPage_Average_Frequency_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Determine the type of CPU frequency displayed on the Dashboard and FloatingGadget..
+        /// </summary>
+        public static string SensorSettingsPage_CPU_Frequency_Message {
+            get {
+                return ResourceManager.GetString("SensorSettingsPage_CPU_Frequency_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CPU Frequency.
+        /// </summary>
+        public static string SensorSettingsPage_CPU_Frequency_Title {
+            get {
+                return ResourceManager.GetString("SensorSettingsPage_CPU_Frequency_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Frequency.
+        /// </summary>
+        public static string SensorSettingsPage_Max_Frequency_Title {
+            get {
+                return ResourceManager.GetString("SensorSettingsPage_Max_Frequency_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When multiple graphics cards are present, the primary device displayed is preferred.
+        /// </summary>
+        public static string SensorSettingsPage_Preferred_GPU_Message {
+            get {
+                return ResourceManager.GetString("SensorSettingsPage_Preferred_GPU_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preferred GPU.
+        /// </summary>
+        public static string SensorSettingsPage_Preferred_GPU_Title {
+            get {
+                return ResourceManager.GetString("SensorSettingsPage_Preferred_GPU_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sensor Settings.
+        /// </summary>
+        public static string SensorSettingsPage_Title {
+            get {
+                return ResourceManager.GetString("SensorSettingsPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Settings.
         /// </summary>
         public static string Settings {
@@ -7327,6 +7390,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_Select_BackgroundImage_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_Select_BackgroundImage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit sensor data acquisition and display settings..
+        /// </summary>
+        public static string SettingsPage_SensorSettings_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_SensorSettings_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sensor Settings.
+        /// </summary>
+        public static string SettingsPage_SensorSettings_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_SensorSettings_Title", resourceCulture);
             }
         }
         
