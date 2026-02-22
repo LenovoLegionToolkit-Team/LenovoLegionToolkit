@@ -38,6 +38,7 @@ public partial class SensorsControlV2
     public SensorsControlV2()
     {
         InitializeComponent();
+        InitializeContextMenu();
         IsVisibleChanged += SensorsControl_IsVisibleChanged;
 
         _sensorsGroupControllers.SelectedGpuIsIgpu = _sensorsControlSettings.Store.SelectedGpuIsIgpu;
