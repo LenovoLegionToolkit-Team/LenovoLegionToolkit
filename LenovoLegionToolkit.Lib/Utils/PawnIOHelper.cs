@@ -22,7 +22,16 @@ public static class PawnIOHelper
 
     public static Func<Task<bool>>? RequestShowDialogAsync;
 
-    public static async Task TryShowPawnIONotFoundDialogAsync()
+    public static void OpenPawnIODownloadPage()
+    {
+        Process.Start(new ProcessStartInfo
+        {
+            FileName = "https://pawnio.eu/",
+            UseShellExecute = true
+        });
+    }
+
+    public static async Task TryShowPawnIONotFoundDialogAsync(bool disableHardwareSensors = true)
     {
         if (RequestShowDialogAsync != null)
         {
@@ -30,18 +39,16 @@ public static class PawnIOHelper
 
             if (userClickedYes)
             {
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = "https://pawnio.eu/",
-                    UseShellExecute = true
-                });
-
+                OpenPawnIODownloadPage();
                 return;
             }
 
-            ApplicationSettings.Store.EnableHardwareSensors = false;
-            ApplicationSettings.Store.UseNewSensorDashboard = false;
-            ApplicationSettings.SynchronizeStore();
+            if (disableHardwareSensors)
+            {
+                ApplicationSettings.Store.EnableHardwareSensors = false;
+                ApplicationSettings.Store.UseNewSensorDashboard = false;
+                ApplicationSettings.SynchronizeStore();
+            }
         }
     }
 

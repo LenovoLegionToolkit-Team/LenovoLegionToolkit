@@ -227,21 +227,7 @@ public partial class SettingsAppBehaviorControl
         {
             if (!PawnIOHelper.IsPawnIOInnstalled())
             {
-                var result = await MessageBoxHelper.ShowAsync(
-                    this,
-                    Resource.MainWindow_PawnIO_Warning_Title,
-                    Resource.MainWindow_PawnIO_Warning_Message,
-                    Resource.Yes,
-                    Resource.No);
-
-                if (result)
-                {
-                    Process.Start(new ProcessStartInfo
-                    {
-                        FileName = "https://pawnio.eu/",
-                        UseShellExecute = true
-                    });
-                }
+                await PawnIOHelper.TryShowPawnIONotFoundDialogAsync().ConfigureAwait(false);
 
                 _hardwareSensorsToggle.IsChecked = false;
                 return;
