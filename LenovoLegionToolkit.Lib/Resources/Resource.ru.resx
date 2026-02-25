@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,7 +124,7 @@
     <value>Система</value>
   </data>
   <data name="AlwaysOnUSBState_Off" xml:space="preserve">
-    <value>Выкл</value>
+    <value>Выкл.</value>
   </data>
   <data name="AlwaysOnUSBState_OnAlways" xml:space="preserve">
     <value>Вкл. всегда</value>
@@ -154,10 +154,10 @@
     <value>Включено с задержкой</value>
   </data>
   <data name="BatteryNightChargeState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
   </data>
   <data name="BatteryNightChargeState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
   </data>
   <data name="BatteryState_Conservation" xml:space="preserve">
     <value>Консервация</value>
@@ -187,11 +187,11 @@
     <value>Toggle</value>
   </data>
   <data name="FlipToStartState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
     <comment>Informs the user that Flip to Start is or will be turned off.</comment>
   </data>
   <data name="FlipToStartState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
     <comment>Informs the user that Flip to Start is or will be turned on.</comment>
   </data>
   <data name="FloatingGadgetItem_Disk1Temperature" xml:space="preserve">
@@ -249,11 +249,11 @@
     <value>Toggle</value>
   </data>
   <data name="FnLockState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
     <comment>Informs the user that Fn Lock is or will be turned off.</comment>
   </data>
   <data name="FnLockState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
     <comment>Informs the user that Fn Lock is or will be turned on.</comment>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
@@ -263,11 +263,11 @@
     <value>Задействован</value>
   </data>
   <data name="HDRState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
     <comment>Informs the user that HDR is or will be turned off.</comment>
   </data>
   <data name="HDRState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
     <comment>Informs the user that HDR is or will be turned on.</comment>
   </data>
   <data name="HybridModeState_Off" xml:space="preserve">
@@ -292,7 +292,7 @@
     <value>Сетевой адаптер и питание по USB</value>
   </data>
   <data name="InstantBootState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
   </data>
   <data name="InstantBootState_UsbPowerDelivery" xml:space="preserve">
     <value>Питание от USB</value>
@@ -310,11 +310,11 @@
     <value>Geek</value>
   </data>
   <data name="MicrophoneState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
     <comment>Informs the user that the microphone is or will be turned off.</comment>
   </data>
   <data name="MicrophoneState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
     <comment>Informs the user that the microphone is or will be turned on.</comment>
   </data>
   <data name="ModifierKey_Alt" xml:space="preserve">
@@ -363,32 +363,32 @@
     <value>Вверху справа</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned off.</comment>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned on.</comment>
   </data>
   <data name="OverdriveState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
     <comment>Informs the user that Overdrive is or will be turned off.</comment>
   </data>
   <data name="OverdriveState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
     <comment>Informs the user that Overdrive is or will be turned on.</comment>
   </data>
   <data name="PanelLogoBacklightState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
   </data>
   <data name="PanelLogoBacklightState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
   </data>
   <data name="PortsBacklightState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
   </data>
   <data name="PortsBacklightState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
   </data>
   <data name="PowerModeMappingMode_Disabled" xml:space="preserve">
     <value>Отключен</value>
@@ -439,7 +439,7 @@
     <value>Пресет 4</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_One" xml:space="preserve">
     <value>Пресет 1</value>
@@ -478,7 +478,7 @@
     <value>Средняя</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_BottomToTop" xml:space="preserve">
     <value>Снизу вверх</value>
@@ -556,11 +556,11 @@
     <value>Системная тема</value>
   </data>
   <data name="TouchpadLockState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
     <comment>Informs the user that Touchpad Lock is or will be turned off.</comment>
   </data>
   <data name="TouchpadLockState_On" xml:space="preserve">
-    <value>Вкл</value>
+    <value>Вкл.</value>
     <comment>Informs the user that Touchpad Lock is or will be turned on.</comment>
   </data>
   <data name="UpdateChannel_Beta" xml:space="preserve">
@@ -612,7 +612,15 @@
     <value>Низкая</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>Откл</value>
+    <value>Откл.</value>
+  </data>
+  <data name="WinKeyState_Off" xml:space="preserve">
+    <value>Откл.</value>
+    <comment>Informs the user that WinLock is or will be turned on.</comment>
+  </data>
+  <data name="WinKeyState_On" xml:space="preserve">
+    <value>Вкл.</value>
+    <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
   <data name="WindowBackdropType_Acrylic" xml:space="preserve">
     <value>Acrylic</value>
@@ -625,13 +633,5 @@
   </data>
   <data name="WindowBackdropType_Tabbed" xml:space="preserve">
     <value>Tabbed</value>
-  </data>
-  <data name="WinKeyState_Off" xml:space="preserve">
-    <value>Откл</value>
-    <comment>Informs the user that WinLock is or will be turned on.</comment>
-  </data>
-  <data name="WinKeyState_On" xml:space="preserve">
-    <value>Вкл</value>
-    <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
 </root>

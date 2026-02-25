@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -123,33 +123,11 @@
   <data name="ACAdapterDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>当电源适配器断开时</value>
   </data>
-  <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
-    <value>警告：独显未激活时无法进行超频。</value>
-  </data>
-  <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
-    <value>警告：HDR 功能会锁定屏幕亮度，在 HDR 动作之后的亮度调整会失效。</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
-    <value>警告：从独显直连切换至混合模式要求重新启动笔记本电脑，必须作为最后一步动作。</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
-    <value>警告：电源模式会重置风扇转速，请将电源模式置于风扇转速动作前。</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
-    <value>警告：电源模式会重置亮度与刷新率，请将电源模式置于亮度与刷新率动作前。</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
-    <value>警告：分辨率切换会重置刷新率。请将分辨率动作置为前列。</value>
-  </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
     <value>强制关闭应用</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_RestartGPU" xml:space="preserve">
     <value>重启显卡</value>
-  </data>
-  <data name="DeactivateGpuQuickAction_Title" xml:space="preserve">
-    <value>强制休眠独显</value>
-    <comment>The display name of the default Quick Action that is presented to the user upon first installation.</comment>
   </data>
   <data name="Delay_Second" xml:space="preserve">
     <value>{0} 秒</value>
@@ -157,78 +135,11 @@
   <data name="Delay_Second_Many" xml:space="preserve">
     <value>{0} 秒</value>
   </data>
-  <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当与设备连接时</value>
-  </data>
-  <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当与设备断开连接时</value>
-  </data>
-  <data name="DisplayOffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当显示器关闭时</value>
-  </data>
-  <data name="DisplayOnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当显示器打开时</value>
-  </data>
-  <data name="ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当连接了外置屏幕后</value>
-  </data>
-  <data name="ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当断开了外置屏幕后</value>
-  </data>
-  <data name="FloatingGadgetState_Toggle" xml:space="preserve">
-    <value>切换</value>
-  </data>
-  <data name="GamesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当打开游戏时</value>
-  </data>
-  <data name="GamesStopAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当关闭游戏后</value>
-  </data>
-  <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当自定义模式预设切换时</value>
-  </data>
-  <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当 HDR 关闭时</value>
-  </data>
-  <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当 HDR 开启时</value>
-  </data>
-  <data name="HybridModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>混合模式</value>
-  </data>
-  <data name="ITSModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当性能模式发生变化时</value>
-  </data>
-  <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>合上盖子时</value>
-  </data>
-  <data name="LidOpenedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>打开盖子时</value>
-  </data>
   <data name="LowWattageACAdapterConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>当较低功率电源适配器插入时</value>
   </data>
-  <data name="MacroAutomationStepState_Off" xml:space="preserve">
-    <value>关</value>
-  </data>
-  <data name="MacroAutomationStepState_On" xml:space="preserve">
-    <value>开</value>
-  </data>
-  <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当唤醒时</value>
-  </data>
   <data name="OnStartupAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>当程序启动时</value>
-  </data>
-  <data name="OverclockDiscreteGPUAutomationStepState_Off" xml:space="preserve">
-    <value>关</value>
-  </data>
-  <data name="OverclockDiscreteGPUAutomationStepState_On" xml:space="preserve">
-    <value>开</value>
-  </data>
-  <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>循环自动化</value>
-    <comment>The display name of the periodic automation action.</comment>
   </data>
   <data name="PowerModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>当性能模式改变时</value>
@@ -239,25 +150,114 @@
   <data name="ProcessesStopRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>当指定的应用关闭时</value>
   </data>
-  <data name="SessionLockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当锁定时</value>
-  </data>
-  <data name="SessionUnlockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>当解锁时</value>
-  </data>
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>在特定的时间</value>
+  </data>
+  <data name="ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当连接了外置屏幕后</value>
+  </data>
+  <data name="ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当断开了外置屏幕后</value>
+  </data>
+  <data name="DisplayOnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当显示器打开时</value>
+  </data>
+  <data name="DisplayOffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当显示器关闭时</value>
+  </data>
+  <data name="LidOpenedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>打开盖子时</value>
+  </data>
+  <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>合上盖子时</value>
+  </data>
+  <data name="GamesStopAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当关闭游戏后</value>
+  </data>
+  <data name="GamesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当打开游戏时</value>
+  </data>
+  <data name="UserInactivityAutomationPipelineTrigger_DisplayName_Zero" xml:space="preserve">
+    <value>当用户重新开始操作电脑后</value>
   </data>
   <data name="UserInactivityAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>当用户长时间未操作电脑后</value>
   </data>
-  <data name="UserInactivityAutomationPipelineTrigger_DisplayName_Zero" xml:space="preserve">
-    <value>当用户重新开始操作电脑后</value>
+  <data name="DeactivateGpuQuickAction_Title" xml:space="preserve">
+    <value>强制休眠独显</value>
+    <comment>The display name of the default Quick Action that is presented to the user upon first installation.</comment>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepState_Off" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepState_On" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当自定义模式预设切换时</value>
+  </data>
+  <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>循环自动化</value>
+    <comment>The display name of the periodic automation action.</comment>
   </data>
   <data name="WiFiConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>当与 Wi-Fi 连接时</value>
   </data>
   <data name="WiFiDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>当与 Wi-Fi 断开连接时</value>
+  </data>
+  <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当唤醒时</value>
+  </data>
+  <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当 HDR 关闭时</value>
+  </data>
+  <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当 HDR 开启时</value>
+  </data>
+  <data name="MacroAutomationStepState_Off" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="MacroAutomationStepState_On" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当与设备断开连接时</value>
+  </data>
+  <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当与设备连接时</value>
+  </data>
+  <data name="SessionLockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当锁定时</value>
+  </data>
+  <data name="SessionUnlockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当解锁时</value>
+  </data>
+  <data name="ITSModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>当性能模式发生变化时</value>
+  </data>
+  <data name="HybridModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>混合模式</value>
+  </data>
+  <data name="FloatingGadgetState_Toggle" xml:space="preserve">
+    <value>切换</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
+    <value>警告：电源模式会重置亮度与刷新率，请将电源模式置于亮度与刷新率动作前。</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
+    <value>警告：电源模式会重置风扇转速，请将电源模式置于风扇转速动作前。</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
+    <value>警告：从独显直连切换至混合模式要求重新启动笔记本电脑，必须作为最后一步动作。</value>
+  </data>
+  <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
+    <value>警告：独显未激活时无法进行超频。</value>
+  </data>
+  <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
+    <value>警告：HDR 功能会锁定屏幕亮度，在 HDR 动作之后的亮度调整会失效。</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
+    <value>警告：分辨率切换会重置刷新率。请将分辨率动作置为前列。</value>
   </data>
 </root>

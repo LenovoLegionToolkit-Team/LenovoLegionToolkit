@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -121,7 +121,7 @@
     <value>应用数据文件夹</value>
   </data>
   <data name="AboutPage_AppName" xml:space="preserve">
-    <value>Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit (Unofficial Fork)</value>
   </data>
   <data name="AboutPage_Build" xml:space="preserve">
     <value>构建版本</value>
@@ -1512,7 +1512,7 @@
     <value>设置</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>需要先安装 PawnIO 来获取高级传感器数据！</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
     <value>警告</value>
@@ -2239,58 +2239,58 @@
     <value>利用率</value>
   </data>
   <data name="SensorSettingsPage_Average_Frequency_Title" xml:space="preserve">
-    <value>Average Frequency</value>
+    <value>平均频率</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and FloatingGadget.</value>
+    <value>决定了主页和悬浮层显示的 CPU 频率类型。</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>CPU 频率</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
-    <value>dGPU</value>
+    <value>独立显卡</value>
   </data>
   <data name="SensorSettingsPage_IGPU_Title" xml:space="preserve">
-    <value>iGPU</value>
+    <value>核心显卡</value>
   </data>
   <data name="SensorSettingsPage_Max_Frequency_Title" xml:space="preserve">
-    <value>Max Frequency</value>
+    <value>最高频率</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Message" xml:space="preserve">
-    <value>When multiple graphics cards are present, the primary device displayed is preferred</value>
+    <value>当设备同时拥有多个显卡时优先显示的设备。</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
-    <value>Preferred GPU</value>
+    <value>首选显卡</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>设置</value>
   </data>
   <data name="SettingsBackupWindow_Backup" xml:space="preserve">
-    <value>Back Up</value>
+    <value>备份</value>
   </data>
   <data name="SettingsBackupWindow_BackupSuccess" xml:space="preserve">
-    <value>Backup completed successfully.</value>
+    <value>备份成功</value>
   </data>
   <data name="SettingsBackupWindow_NoFilesSelected" xml:space="preserve">
-    <value>No files selected.</value>
+    <value>没有选中任何文件</value>
   </data>
   <data name="SettingsBackupWindow_NoMatchingFiles" xml:space="preserve">
-    <value>No matching files found in selected folder.</value>
+    <value>选中的文件夹没有符合条件的文件</value>
   </data>
   <data name="SettingsBackupWindow_Restore" xml:space="preserve">
-    <value>Restore</value>
+    <value>还原</value>
   </data>
   <data name="SettingsBackupWindow_RestoreConfirm" xml:space="preserve">
-    <value>Restoring settings will overwrite your current configuration and restart the application. Do you want to continue?</value>
+    <value>恢复设置将会覆盖当前的设置并重启应用，确定要继续吗？</value>
   </data>
   <data name="SettingsBackupWindow_RestoreSuccess" xml:space="preserve">
-    <value>Restore completed successfully. The application will restart.</value>
+    <value>恢复成功，应用即将重启</value>
   </data>
   <data name="SettingsBackupWindow_SelectAll" xml:space="preserve">
-    <value>Select All</value>
+    <value>全选</value>
   </data>
   <data name="SettingsBackupWindow_Title" xml:space="preserve">
-    <value>Backup Settings</value>
+    <value>备份设置</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
     <value>改变应用的主题色。</value>
@@ -2306,13 +2306,13 @@
     <value>开机启动</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
-    <value>Back up or restore application settings.</value>
+    <value>备份或恢复应用设置</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
-    <value>Back Up Settings</value>
+    <value>备份设置</value>
   </data>
   <data name="SettingsPage_BootLogo_EFIInfo" xml:space="preserve">
-    <value>This feature modifies the EFI partition. Use with caution.</value>
+    <value>此功能修改 EFI 分区，请谨慎使用。</value>
   </data>
   <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
     <value>自定义在启动阶段所展示的图案。</value>
@@ -2372,7 +2372,7 @@
     <value>命令行界面</value>
   </data>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
-    <value>Restart is recommended after changing this option.</value>
+    <value>修改此项后需要重启电脑。</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
     <value>自定义背景图片</value>
@@ -2482,37 +2482,37 @@
     <value>此项控制性能悬浮窗的数据刷新时间</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
+    <value>为 UI 界面启用硬件加速，可以使 UI 更流畅。</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
-    <value>Hardware Acceleration</value>
+    <value>硬件加速</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off.</value>
+    <value>启用硬件加速可能会在某些混合图形系统上导致闪烁或黑色闪烁，并可能会阻止独立显卡休眠。</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
-    <value>Enable advanced hardware polling to monitor detailed temperatures, frequencies, and power limits.</value>
+    <value>启用高级硬件传感器以监控详细的温度、频率和功耗。</value>
   </data>
   <data name="SettingsPage_HardwareSensors_PawnIOWarning" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>需要先安装 PawnIO 来获取高级传感器数据！</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>硬件传感器</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
-    <value>Auto (Let Windows decide)</value>
+    <value>自动（Windows 决定）</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
-    <value>High performance (dGPU)</value>
+    <value>高性能 （独立显卡）</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_PowerSaving" xml:space="preserve">
-    <value>Power saving (iGPU)</value>
+    <value>省电 （核心显卡）</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
     <value>将风扇速度，电池温度等数据和 HWiNFO64 共享。切换此选项后也许需要重启 HWiNFO64。</value>
   </data>
   <data name="SettingsPage_HWiNFO_RestartInfo" xml:space="preserve">
-    <value>You may need to restart HWiNFO64 after changing this option.</value>
+    <value>需要重启 HWiNFO 来查看新内容。</value>
   </data>
   <data name="SettingsPage_HWiNFO_Title" xml:space="preserve">
     <value>HWiNFO64</value>
@@ -2569,7 +2569,7 @@
     <value>背景图片</value>
   </data>
   <data name="SettingsPage_SensorSettings_Title" xml:space="preserve">
-    <value>Sensor Settings</value>
+    <value>传感器设置</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
     <value>按下 Alt、Ctrl 或 Shift 键时，Fn 将会暂时解除锁定。</value>
@@ -2632,13 +2632,13 @@
     <value>使用新的状态面板</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
-    <value>If you experience visual artifacts on Snackbars in HDR or ACM mode, set this to "None".</value>
+    <value>如果在 HDR 或自动颜色管理开启时在提示窗口上遇到视觉伪影，请将其设置为无。</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Message" xml:space="preserve">
-    <value>The effect used for the background of the application window.</value>
+    <value>用于应用程序窗口背景的效果。</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Title" xml:space="preserve">
-    <value>Window Backdrop</value>
+    <value>窗口背景</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
     <value>选择在电源模式改变时应用的 Windows 电源计划。</value>

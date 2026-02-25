@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -136,7 +136,7 @@
     <value>Посилання</value>
   </data>
   <data name="AboutPage_Log" xml:space="preserve">
-    <value>Log</value>
+    <value>Журнал подій</value>
   </data>
   <data name="AboutPage_ProjectWebsiteOnGitHub" xml:space="preserve">
     <value>Сторінка проєкту на GitHub</value>
@@ -185,52 +185,52 @@
     <value>Завжди увімкнені USB</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
-    <value>Apply Changes</value>
+    <value>Застосувати зміни</value>
   </data>
   <data name="AmdOverclocking_Caution_Message" xml:space="preserve">
-    <value>Changing these settings may impact system stability. Proceed with caution.</value>
+    <value>Зміна цих параметрів може вплинути на стабільність системи. Дійте обережно.</value>
   </data>
   <data name="AmdOverclocking_Caution_Title" xml:space="preserve">
-    <value>Caution</value>
+    <value>Обережно</value>
   </data>
   <data name="AmdOverclocking_Core_Title" xml:space="preserve">
-    <value>Core</value>
+    <value>Ядро</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
-    <value>Profile apply has been canceled due to abnormal restart.</value>
+    <value>Застосування профілю скасовано через ненормальний перезапуск.</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz)</value>
+    <value>Перевизначення максимальної частоти прискорення процесора (МГц)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
-    <value>FMax Frequency</value>
+    <value>Частота FMax</value>
   </data>
   <data name="AmdOverclocking_Global_Dim" xml:space="preserve">
-    <value>-1 All</value>
+    <value>-1 Всі</value>
   </data>
   <data name="AmdOverclocking_Global_Offset" xml:space="preserve">
-    <value>Global Offset:</value>
+    <value>Глобальний зсув:</value>
   </data>
   <data name="AmdOverclocking_Global_Plus" xml:space="preserve">
-    <value>+1 All</value>
+    <value>+1 Всі</value>
   </data>
   <data name="AmdOverclocking_Per_Core_Title" xml:space="preserve">
-    <value>Per-Core Optimization</value>
+    <value>Оптимізація по ядрах</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
-    <value>Status</value>
+    <value>Стан</value>
   </data>
   <data name="AmdOverclocking_Success_Message" xml:space="preserve">
-    <value>Settings applied successfully.</value>
+    <value>Налаштування успішно застосовано.</value>
   </data>
   <data name="AmdOverclocking_Success_Title" xml:space="preserve">
-    <value>Success</value>
+    <value>Успішно</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures</value>
+    <value>Вимкніть CCD 1, щоб отримати стабільність FPS і температур</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
-    <value>X3D Gaming Mode</value>
+    <value>Ігровий режим X3D</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Застосувати</value>
@@ -242,79 +242,79 @@
     <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="ArgumentWindow_Category_Debugging" xml:space="preserve">
-    <value>Debugging</value>
+    <value>Налагодження</value>
   </data>
   <data name="ArgumentWindow_Category_General" xml:space="preserve">
-    <value>General</value>
+    <value>Основне</value>
   </data>
   <data name="ArgumentWindow_Category_Hardware_Automation" xml:space="preserve">
-    <value>Hardware &amp; Automation</value>
+    <value>Обладнання та автоматизація</value>
   </data>
   <data name="ArgumentWindow_Category_Lighting" xml:space="preserve">
-    <value>Lighting</value>
+    <value>Освітлення</value>
   </data>
   <data name="ArgumentWindow_Category_Network_Proxy" xml:space="preserve">
-    <value>Network Proxy</value>
+    <value>Мережевий проксі</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Open an argument window for convenient modification of arguments.</value>
+    <value>Відкрийте вікно аргументів для зручної зміни аргументів.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Edit Arguments</value>
+    <value>Змінити аргументи</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
-    <value>Allow All Certificates</value>
+    <value>Дозволити всі сертифікати</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowPowerModesBattery" xml:space="preserve">
-    <value>Allow All Power Modes on Battery</value>
+    <value>Дозволити всі режими живлення від батареї</value>
   </data>
   <data name="ArgumentWindow_Flag_DebugMode" xml:space="preserve">
-    <value>Debug Mode</value>
+    <value>Режим налагодження</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableConflictWarning" xml:space="preserve">
-    <value>Disable Conflict Warning</value>
+    <value>Вимкнути попередження про конфлікти</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableLenovoLighting" xml:space="preserve">
-    <value>Disable Lenovo Lighting</value>
+    <value>Вимкнути освітлення Lenovo</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableRgbKb" xml:space="preserve">
-    <value>Disable RGB Keyboard</value>
+    <value>Вимкнути RGB-підсвітку клавіатури</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableSpectrumKb" xml:space="preserve">
-    <value>Disable Spectrum Keyboard</value>
+    <value>Вимкнути клавіатуру Spectrum</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableTrayTooltip" xml:space="preserve">
-    <value>Disable Tray Tooltip</value>
+    <value>Вимкнути підказки лотка</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableUpdateChecker" xml:space="preserve">
-    <value>Disable Update Checker</value>
+    <value>Вимкнути перевірку оновлень</value>
   </data>
   <data name="ArgumentWindow_Flag_ExpGpuMode" xml:space="preserve">
-    <value>Experimental GPU Working Mode</value>
+    <value>Експериментальний режим роботи ГП</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyPassword" xml:space="preserve">
-    <value>Proxy Password</value>
+    <value>Пароль проксі</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUrl" xml:space="preserve">
-    <value>Proxy URL</value>
+    <value>Адреса проксі</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUsername" xml:space="preserve">
-    <value>Proxy Username</value>
+    <value>Ім’я користувача проксі</value>
   </data>
   <data name="ArgumentWindow_Flag_SkipCompatCheck" xml:space="preserve">
-    <value>Skip Compatibility Check</value>
+    <value>Пропустити перевірку сумісності</value>
   </data>
   <data name="ArgumentWindow_Flag_StartMinimized" xml:space="preserve">
-    <value>Start Minimized</value>
+    <value>Запустити в згорнутому режимі</value>
   </data>
   <data name="ArgumentWindow_Flag_TraceEnabled" xml:space="preserve">
-    <value>Enable Trace Logging</value>
+    <value>Увімкнути журнал трасування</value>
   </data>
   <data name="ArgumentWindow_NotSet" xml:space="preserve">
-    <value>Not Set</value>
+    <value>Не задано</value>
   </data>
   <data name="ArgumentWindow_Title" xml:space="preserve">
-    <value>Argument Window</value>
+    <value>Вікно аргументів</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>Увімкнути</value>
@@ -341,22 +341,22 @@
     <value>Змінити образець</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
-    <value>Automatic (All Methods)</value>
+    <value>Автоматично (Всі методи)</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
-    <value>Discrete GPU Activity</value>
+    <value>Активність дискретного ГП</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Game_Mode" xml:space="preserve">
-    <value>Windows Game Mode</value>
+    <value>Ігровий режим Windows</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_List" xml:space="preserve">
-    <value>Known Game List</value>
+    <value>Відомий список ігор</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configure detection methods and exclusions.</value>
+    <value>Налаштуйте методи виявлення та виключення.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
-    <value>Game Detection</value>
+    <value>Виявлення гри</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
     <value>Жодної швидкої дії не визначено. Натисніть "Додати" щоб створити швидку дію.</value>
@@ -419,10 +419,10 @@
     <value>Виконати зараз</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
-    <value>Run on startup</value>
+    <value>Виконувати під час запуску</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup_Tooltip" xml:space="preserve">
-    <value>When enabled, this automation will check and apply when the app starts</value>
+    <value>Якщо ввімкнено, ця автоматизація перевірятиме та застосовуватиметься під час запуску програми</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
     <value>{0} крок</value>
@@ -497,10 +497,10 @@
     <value>Під'єднано, не заряджається</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Message" xml:space="preserve">
-    <value>Battery maximum charge capacity.</value>
+    <value>Максимальна місткість акумулятора.</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Title" xml:space="preserve">
-    <value>Battery health</value>
+    <value>Стан батареї</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Message" xml:space="preserve">
     <value>Поточна температура батареї.</value>
@@ -563,16 +563,16 @@
     <value>Дата виготовлення</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Message" xml:space="preserve">
-    <value>Maximum rate at which battery is charged (+), or discharged (-).</value>
+    <value>Максимальний рівень, при якому батарея заряджається (+) або розряджається (-).</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Title" xml:space="preserve">
-    <value>Maximum discharge rate</value>
+    <value>Максимальний рівень розрядки</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Message" xml:space="preserve">
-    <value>Minimum rate at which battery is charged (+), or discharged (-).</value>
+    <value>Мінімальний рівень, при якому батарея заряджається (+) або розряджається (-).</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Title" xml:space="preserve">
-    <value>Minimum discharge rate</value>
+    <value>Мінімальний рівень розрядки</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
     <value>Час, з моменту якого ноутбук востаннє був під'єднаний до мережі.
@@ -643,10 +643,10 @@
     <value>Закрити</value>
   </data>
   <data name="CloseAutomationStepControl_Message" xml:space="preserve">
-    <value>Close the Lenovo Legion Toolkit</value>
+    <value>Закрити Lenovo Legion Toolkit</value>
   </data>
   <data name="CloseAutomationStepControl_Title" xml:space="preserve">
-    <value>Close</value>
+    <value>Закрити</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Синя</value>
@@ -699,43 +699,43 @@
     <value>Створити дію</value>
   </data>
   <data name="CustomFanCurve_Accelerate" xml:space="preserve">
-    <value>Accelerate</value>
+    <value>Прискорення</value>
   </data>
   <data name="CustomFanCurve_Accelerate_Tooltip" xml:space="preserve">
-    <value>Accelerate control's how much PWM is added to the current PWM Value.</value>
+    <value>Прискорення керує тим, скільки ШІМ додається до поточного значення ШІМ.</value>
   </data>
   <data name="CustomFanCurve_Critical_Temp" xml:space="preserve">
-    <value>Critical Temp</value>
+    <value>Критична температура</value>
   </data>
   <data name="CustomFanCurve_Critical_Temp_Tooltip" xml:space="preserve">
-    <value>Force the maximum speed when the temperature is greater than or equal to this temperature to prevent burning out.</value>
+    <value>Увімкніть максимальну швидкість, коли температура вище або дорівнює цій температурі, щоб запобігти вигоранню.</value>
   </data>
   <data name="CustomFanCurve_Deceleration" xml:space="preserve">
-    <value>Deceleration</value>
+    <value>Уповільнення</value>
   </data>
   <data name="CustomFanCurve_Deceleration_Tooltip" xml:space="preserve">
-    <value>Deceleration control's how much PWM is decreased to the current PWM Value.</value>
+    <value>Уповільнення контролює, наскільки ШІМ зменшується до поточного значення ШІМ.</value>
   </data>
   <data name="CustomFanCurve_Fan_Speed" xml:space="preserve">
-    <value>Fan Speed %</value>
+    <value>Швидкість вентилятора %</value>
   </data>
   <data name="CustomFanCurve_PWM_Value" xml:space="preserve">
-    <value>PWM Value</value>
+    <value>Значення ШІМ</value>
   </data>
   <data name="CustomFanCurve_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Налаштування</value>
   </data>
   <data name="CustomFanCurve_Temperature" xml:space="preserve">
-    <value>Temperature °C </value>
+    <value>Температура °C </value>
   </data>
   <data name="CustomFanCurve_Title" xml:space="preserve">
-    <value>Real-Time Monitoring</value>
+    <value>Моніторинг у реальному часі</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
-    <value>AC Connected</value>
+    <value>Живлення під’єднано</value>
   </data>
   <data name="DashboardBattery_AcDisconnected" xml:space="preserve">
-    <value>AC Disconnected</value>
+    <value>Живлення відключено</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>Налаштувати</value>
@@ -918,19 +918,19 @@
     <value>Налаштування панелі керування</value>
   </data>
   <data name="EditSensorWindow_Title" xml:space="preserve">
-    <value>Edit Sensor</value>
+    <value>Редагувати датчик</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Помилка</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
+    <value>Процеси з цього списку будуть ігноруватися тригерами запуску/зупинки гри ШІ/Інтелектуальним режимом Lenovo. Введіть назву процесу без шляху (наприклад, «discord» або «blender»).</value>
   </data>
   <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Process Name (e.g. discord)</value>
+    <value>Назва процесу (наприклад, discord)</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>Виключені процеси</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Зніміть позначку з частот оновлення, які ви не хочете використовувати при натисканні Fn+R.</value>
@@ -1005,10 +1005,10 @@
     <value>PCH</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
-    <value>Set fan to maximum speed.</value>
+    <value>Встановити вентилятор на максимальну швидкість.</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Title" xml:space="preserve">
-    <value>Fan Max Speed</value>
+    <value>Максимальна швидкість вентилятора</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Фільтр...</value>
@@ -1026,67 +1026,67 @@
     <value>Розгорнути для запуску</value>
   </data>
   <data name="FloatingGadgetAutomationStepControl_Message" xml:space="preserve">
-    <value>Show or Hide the Floating Gadget</value>
+    <value>Показати або приховати плаваючий ґаджет</value>
   </data>
   <data name="FloatingGadgetAutomationStepControl_Title" xml:space="preserve">
-    <value>Floating Gadget</value>
+    <value>Плаваючий ґаджет</value>
   </data>
   <data name="FloatingGadgets_Chipset" xml:space="preserve">
-    <value>Chipset</value>
+    <value>Чіпсет</value>
   </data>
   <data name="FloatingGadgets_Cpu" xml:space="preserve">
-    <value>CPU</value>
+    <value>ЦП</value>
   </data>
   <data name="FloatingGadgets_CPU_Fan" xml:space="preserve">
-    <value>CPU Fan</value>
+    <value>Вентилятор ЦП</value>
   </data>
   <data name="FloatingGadgets_Disk_0_Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>Температура диску 1</value>
   </data>
   <data name="FloatingGadgets_Disk_1_Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>Температура диску 2</value>
   </data>
   <data name="FloatingGadgets_Fps" xml:space="preserve">
     <value>FPS</value>
   </data>
   <data name="FloatingGadgets_Frame_Time" xml:space="preserve">
-    <value>Frame Time</value>
+    <value>Час кадру</value>
   </data>
   <data name="FloatingGadgets_Gpu" xml:space="preserve">
-    <value>GPU</value>
+    <value>ГП</value>
   </data>
   <data name="FloatingGadgets_GPU_Fan" xml:space="preserve">
-    <value>GPU Fan</value>
+    <value>Вентилятор ГП</value>
   </data>
   <data name="FloatingGadgets_Low_Fps" xml:space="preserve">
-    <value>1% Low</value>
+    <value>Менше 1%</value>
   </data>
   <data name="FloatingGadgets_Memory_Temperature" xml:space="preserve">
-    <value>Memory Temperature</value>
+    <value>Температура пам'яті</value>
   </data>
   <data name="FloatingGadgets_Memory_Utilization" xml:space="preserve">
-    <value>Memory Utilization</value>
+    <value>Використання пам'яті</value>
   </data>
   <data name="FloatingGadgets_PCH_Fan" xml:space="preserve">
-    <value>PCH Fan</value>
+    <value>Вентилятор PCH</value>
   </data>
   <data name="FloatingGadget_Custom_Chipset" xml:space="preserve">
-    <value>Chipset</value>
+    <value>Чіпсет</value>
   </data>
   <data name="FloatingGadget_Custom_CPU" xml:space="preserve">
-    <value>CPU</value>
+    <value>ЦП</value>
   </data>
   <data name="FloatingGadget_Custom_Game" xml:space="preserve">
-    <value>Game</value>
+    <value>Гра</value>
   </data>
   <data name="FloatingGadget_Custom_GPU" xml:space="preserve">
-    <value>GPU</value>
+    <value>ГП</value>
   </data>
   <data name="FloatingGadget_Custom_Title" xml:space="preserve">
-    <value>Customize Gadget Elements</value>
+    <value>Налаштування елементів ґаджету</value>
   </data>
   <data name="FloatingGadget_Style_Simple" xml:space="preserve">
-    <value>Simple</value>
+    <value>Простий</value>
   </data>
   <data name="FnLockAutomationStepControl_Message" xml:space="preserve">
     <value>Використовувати додаткові функції на клавішах F1-F12 без затискання клавіші Fn.</value>
@@ -1134,10 +1134,10 @@
     <value>Розширені</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>All Core Curve Optimizer.</value>
+    <value>Оптимізатор всіх основних кривих.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
-    <value>All Core Curve Optimizer</value>
+    <value>Оптимізатор всіх основних кривих</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL" xml:space="preserve">
     <value>Обмеження потужності APU sPPT</value>
@@ -1185,11 +1185,11 @@
     <value>ЦП</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+    <value>Користувацький режим надає доступ до критично важливих системних параметрів, таких як обмеження потужності та криві вентиляторів.
 
-Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+Неправильна конфігурація може призвести до серйозної нестабільності системи, теплового тротлінгу або пезповоротного пошкодження обладнання. Зміни, внесені тут, можуть анулювати гарантію виробника.
 
-Do not proceed unless you possess the necessary technical expertise.</value>
+Не продовжуйте, якщо ви не маєте необхідних технічних знань.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
     <value>Назва</value>
@@ -1254,37 +1254,37 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Точка з якої ЦП запускає динамічне регулювання енергоспоживання ГП.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Legion Space or its services are running.</value>
+    <value>Користувацький режим налаштувань не застосується належним чином, коли запущено Legion Space або його служби.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>Налаштування користувальницького режиму не буде застосовано правильно, коли запущено Legion Zone або його служби.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency.</value>
+    <value>Частота прискорення Precision Boost Overdrive.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency</value>
+    <value>Частота прискорення PBO</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Scaler.</value>
+    <value>Множник Precision Boost Overdrive Scaler.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
-    <value>Precision Boost Overdrive Scaler</value>
+    <value>Множник PBO</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
     <value>Користувальницькі режими налаштувань</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Enable / Disable Core Curve Adjustment.</value>
+    <value>Увімкнути / Вимкнути регулювання основної кривої.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
-    <value>Core Curve Adjustment</value>
+    <value>Регулювання основної кривої</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Enable / Disable Advanced Overclocking options.</value>
+    <value>Увімкнути / Вимкнути розширені параметри розгону.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Advanced Overclocking Options</value>
+    <value>Розширені параметри розгону</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>Налаштування користувальницького режиму не застосовуватимуться правильно, коли запущено Lenovo Vantage або його служби.</value>
@@ -1356,27 +1356,27 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Миттєве ввімкнення</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change IdeaPad Power Mode</value>
+    <value>Зміна режиму живлення IdeaPad</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>IdeaPad Power Mode</value>
+    <value>Режим живлення IdeaPad</value>
   </data>
   <data name="ITSModeControl_Dialog_Message" xml:space="preserve">
-    <value>PowerBattery.dll is missing. Please place it manually to use ITSMode feature.</value>
+    <value>PowerBattery.dll відсутній. Будь ласка, додайте його вручну для використання функції ITSMode.</value>
   </data>
   <data name="ITSModeControl_Dialog_Title" xml:space="preserve">
-    <value>Missing Compoment</value>
+    <value>Відсутній компонент</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Change IdeaPad Power Mode</value>
+    <value>Зміна режиму живлення IdeaPad</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>IdeaPad Power Mode</value>
+    <value>Режим живлення IdeaPad</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
-    <value>Windows Dynamic lighting is enabled.
-This feature might prevent LLT to control the keyboard.
-Click Yes to disable and No to ignore.</value>
+    <value>Динамічне підсвічування Windows увімкнено.
+Ця функція може перешкоджати LLT керувати клавіатурою.
+Натисніть «Так», щоб вимкнути, та «Ні», щоб ігнорувати.</value>
   </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
     <value>Не знайдено сумісних клавіатур</value>
@@ -1466,7 +1466,7 @@ Click Yes to disable and No to ignore.</value>
     <value>Оновлення не знайдено</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
-    <value>Legion Space is running in the background.</value>
+    <value>Legion Space працює у фоні.</value>
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
     <value>Legion Zone працює у фоні.</value>
@@ -1487,7 +1487,7 @@ Click Yes to disable and No to ignore.</value>
     <value>Пожертування</value>
   </data>
   <data name="MainWindow_NavigationItem_FanCurve" xml:space="preserve">
-    <value>Fan Curve</value>
+    <value>Крива вентилятора</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
     <value>Клавіатура</value>
@@ -1502,10 +1502,10 @@ Click Yes to disable and No to ignore.</value>
     <value>Налаштування</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>Для того, щоб скористатися новою панеллю приладів, вам спочатку необхідно встановити PawnIO!</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>Warning</value>
+    <value>Попередження</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
     <value>Доступне обновлення!</value>
@@ -1514,7 +1514,7 @@ Click Yes to disable and No to ignore.</value>
     <value>Доступне {0} обновлення!</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
-    <value>Don't show again.</value>
+    <value>Не показувати знову.</value>
   </data>
   <data name="MHz" xml:space="preserve">
     <value>МГц</value>
@@ -1542,13 +1542,13 @@ Click Yes to disable and No to ignore.</value>
     <comment>Allows the user to merge multiple triggers for the execution of selected actions.</comment>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_And" xml:space="preserve">
-    <value>Match All (And)</value>
+    <value>Збіг всіх (і)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
-    <value>Match Any (Or)</value>
+    <value>Збіг будь-якого (або)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
-    <value>Logic</value>
+    <value>Логіка</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Ні</value>
@@ -1588,11 +1588,11 @@ Click Yes to disable and No to ignore.</value>
     <value>Мікрофон</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Message" xml:space="preserve">
-    <value>Always put notification at the top.
-It won't affect other full screen windows, but you will not be able to click on the notifications.</value>
+    <value>Завжди розміщувати сповіщення поверх всіх вікон.
+Не впливає на інші повноекранні вікна, але на сповіщення не можна натиснути.</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Title" xml:space="preserve">
-    <value>Notification always on top</value>
+    <value>Сповіщення завжди поверх всіх вікон</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
     <value>Тривалість</value>
@@ -1885,14 +1885,14 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Вставити</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Minutes" xml:space="preserve">
-    <value>Minutes</value>
+    <value>Хвилини</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Period" xml:space="preserve">
     <value>Період (хвилини)</value>
     <comment>A prompt that is used both to ask the user to input an integer, representing the number of minutes between two periodic actions are triggered, and to inform the user what have they set once they are done configuring the action.</comment>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Seconds" xml:space="preserve">
-    <value>Seconds</value>
+    <value>Секунди</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
     <value>Підтримуються такі поширені звукові формати, як wav або mp3.</value>
@@ -1974,7 +1974,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Перейменувати</value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value>Reset</value>
+    <value>Скинути</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
     <value>Змінити роздільну здатність вбудованого дисплея.
@@ -1997,13 +1997,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Перезавантажити зараз</value>
   </data>
   <data name="RestartRequired_Message" xml:space="preserve">
-    <value>Changing this requires restart. Do you want to restart now?</value>
+    <value>Зміна цього вимагає перезавантаження. Перезавантажити зараз?</value>
   </data>
   <data name="RestartRequired_Title" xml:space="preserve">
-    <value>Restart required</value>
+    <value>Необхідне перезавантаження</value>
   </data>
   <data name="RestoreDefaults" xml:space="preserve">
-    <value>Restore Defaults</value>
+    <value>Відновити стандартні налаштування</value>
   </data>
   <data name="Revert" xml:space="preserve">
     <value>Скасувати зміни</value>
@@ -2067,10 +2067,10 @@ It won't affect other full screen windows, but you will not be able to click on 
 В першу чергу перевірте, чи всі скрипти виконуються правильно.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
-    <value>Check Instance</value>
+    <value>Перевірити екземпляр</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance_Description" xml:space="preserve">
-    <value>Check if process already started.</value>
+    <value>Перевірити, чи процес вже запущений.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently" xml:space="preserve">
     <value>Тихий запуск</value>
@@ -2106,91 +2106,91 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Показати цей застосунок</value>
   </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
-    <value>Battery Level</value>
+    <value>Заряд батареї</value>
   </data>
   <data name="SensorItem_BatteryState" xml:space="preserve">
-    <value>Battery State</value>
+    <value>Стан батареї</value>
   </data>
   <data name="SensorItem_CpuFanSpeed" xml:space="preserve">
-    <value>CPU Fan Speed</value>
+    <value>Швидкість вентилятора ЦП</value>
   </data>
   <data name="SensorItem_CpuFrequency" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>Частота ЦП</value>
   </data>
   <data name="SensorItem_CpuPower" xml:space="preserve">
-    <value>CPU Power</value>
+    <value>Потужність ЦП</value>
   </data>
   <data name="SensorItem_CpuTemperature" xml:space="preserve">
-    <value>CPU Temperature</value>
+    <value>Температура ЦП</value>
   </data>
   <data name="SensorItem_CpuUtilitzation" xml:space="preserve">
-    <value>CPU Utilitazion</value>
+    <value>Використання ЦП</value>
   </data>
   <data name="SensorItem_Disk1Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>Температура диску 1</value>
   </data>
   <data name="SensorItem_Disk2Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>Температура диску 2</value>
   </data>
   <data name="SensorItem_GpuFanSpeed" xml:space="preserve">
-    <value>GPU Fan Speed</value>
+    <value>Швидкість вентилятора ГП</value>
   </data>
   <data name="SensorItem_GpuFrequency" xml:space="preserve">
-    <value>GPU Frequency</value>
+    <value>Частота ГП</value>
   </data>
   <data name="SensorItem_GpuTemperatures" xml:space="preserve">
-    <value>GPU Temperature</value>
+    <value>Температура ГП</value>
   </data>
   <data name="SensorItem_GpuUtilization" xml:space="preserve">
-    <value>GPU Utilization</value>
+    <value>Використання ГП</value>
   </data>
   <data name="SensorItem_MemoryTemperature" xml:space="preserve">
-    <value>Memory Temperature</value>
+    <value>Температура пам'яті</value>
   </data>
   <data name="SensorItem_MemoryUtilization" xml:space="preserve">
-    <value>Memory Utilization</value>
+    <value>Використання пам'яті</value>
   </data>
   <data name="SensorItem_PchFanSpeed" xml:space="preserve">
-    <value>PCH Fan Speed</value>
+    <value>Швидкість вентилятора PCH</value>
   </data>
   <data name="SensorItem_PchTemperature" xml:space="preserve">
-    <value>PCH Temperature</value>
+    <value>Температура PCH</value>
   </data>
   <data name="SensorsControl_BatteryLevel_Title" xml:space="preserve">
-    <value>Battery Level</value>
+    <value>Заряд батареї</value>
   </data>
   <data name="SensorsControl_Battery_Title" xml:space="preserve">
-    <value>Battery</value>
+    <value>Батарея</value>
   </data>
   <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
     <value>Частота ядра</value>
   </data>
   <data name="SensorsControl_CPU_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Потужність</value>
   </data>
   <data name="SensorsControl_CPU_Title" xml:space="preserve">
     <value>Процесор</value>
   </data>
   <data name="SensorsControl_Disk_1_Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>Температура диску 1</value>
   </data>
   <data name="SensorsControl_Disk_2_Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>Температура диску 2</value>
   </data>
   <data name="SensorsControl_Disk_Title" xml:space="preserve">
-    <value>Disk</value>
+    <value>Диск</value>
   </data>
   <data name="SensorsControl_Fan_Title" xml:space="preserve">
     <value>Вентилятор</value>
   </data>
   <data name="SensorsControl_GpuCore_Title" xml:space="preserve">
-    <value>Core</value>
+    <value>Ядро</value>
   </data>
   <data name="SensorsControl_GpuMemoryTemperature_Title" xml:space="preserve">
-    <value>Vram</value>
+    <value>Відеопам'ять</value>
   </data>
   <data name="SensorsControl_GPU_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Потужність</value>
   </data>
   <data name="SensorsControl_GPU_Title" xml:space="preserve">
     <value>Графічний процесор</value>
@@ -2202,22 +2202,22 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Частота пам'яті</value>
   </data>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
-    <value>Memory</value>
+    <value>Пам'ять</value>
   </data>
   <data name="SensorsControl_Motherboard_Temperature" xml:space="preserve">
-    <value>Board Temperature</value>
+    <value>Температура материнської плати</value>
   </data>
   <data name="SensorsControl_Motherboard_Title" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>Материнська плата</value>
   </data>
   <data name="SensorsControl_PchTemperature_Title" xml:space="preserve">
-    <value>PCH Temperature</value>
+    <value>Температура PCH</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
     <value>Інтервал оновлення</value>
   </data>
   <data name="SensorsControl_State_Title" xml:space="preserve">
-    <value>State</value>
+    <value>Стан</value>
   </data>
   <data name="SensorsControl_Temperature_Title" xml:space="preserve">
     <value>Температура</value>
@@ -2226,58 +2226,58 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Використання</value>
   </data>
   <data name="SensorSettingsPage_Average_Frequency_Title" xml:space="preserve">
-    <value>Average Frequency</value>
+    <value>Середня частота</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and FloatingGadget.</value>
+    <value>Визначте тип частоти ЦП, що показується на панелі інструментів та плаваючому гаджеті.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>Частота ЦП</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
-    <value>dGPU</value>
+    <value>Дискр. ГП</value>
   </data>
   <data name="SensorSettingsPage_IGPU_Title" xml:space="preserve">
-    <value>iGPU</value>
+    <value>Інтегр. ГП</value>
   </data>
   <data name="SensorSettingsPage_Max_Frequency_Title" xml:space="preserve">
-    <value>Max Frequency</value>
+    <value>Максимальна частота</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Message" xml:space="preserve">
-    <value>When multiple graphics cards are present, the primary device displayed is preferred</value>
+    <value>Коли присутні кілька відеокарт, перевага надається головному пристрою, що показується</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
-    <value>Preferred GPU</value>
+    <value>Бажаний ГП</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Налаштування</value>
   </data>
   <data name="SettingsBackupWindow_Backup" xml:space="preserve">
-    <value>Back Up</value>
+    <value>Зробити резервну копію</value>
   </data>
   <data name="SettingsBackupWindow_BackupSuccess" xml:space="preserve">
-    <value>Backup completed successfully.</value>
+    <value>Резервне копіювання успішно завершено.</value>
   </data>
   <data name="SettingsBackupWindow_NoFilesSelected" xml:space="preserve">
-    <value>No files selected.</value>
+    <value>Не вибрано жодного файлу.</value>
   </data>
   <data name="SettingsBackupWindow_NoMatchingFiles" xml:space="preserve">
-    <value>No matching files found in selected folder.</value>
+    <value>У вибраній папці не знайдено відповідних файлів.</value>
   </data>
   <data name="SettingsBackupWindow_Restore" xml:space="preserve">
-    <value>Restore</value>
+    <value>Відновити</value>
   </data>
   <data name="SettingsBackupWindow_RestoreConfirm" xml:space="preserve">
-    <value>Restoring settings will overwrite your current configuration and restart the application. Do you want to continue?</value>
+    <value>Відновлення налаштувань перезапише вашу поточну конфігурацію та перезапустить програму. Ви хочете продовжити?</value>
   </data>
   <data name="SettingsBackupWindow_RestoreSuccess" xml:space="preserve">
-    <value>Restore completed successfully. The application will restart.</value>
+    <value>Відновлення успішно завершено. Програма перезапуститься.</value>
   </data>
   <data name="SettingsBackupWindow_SelectAll" xml:space="preserve">
-    <value>Select All</value>
+    <value>Вибрати все</value>
   </data>
   <data name="SettingsBackupWindow_Title" xml:space="preserve">
-    <value>Backup Settings</value>
+    <value>Параметри резервних копій</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
     <value>Змінити колір акценту застосунку.</value>
@@ -2292,13 +2292,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Автозапуск</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
-    <value>Back up or restore application settings.</value>
+    <value>Резервне копіювання або відновлення налаштувань додатку.</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
-    <value>Back Up Settings</value>
+    <value>Параметри резервних копій</value>
   </data>
   <data name="SettingsPage_BootLogo_EFIInfo" xml:space="preserve">
-    <value>This feature modifies the EFI partition. Use with caution.</value>
+    <value>Ця функція змінює розділ EFI. Будьте обережні.</value>
   </data>
   <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
     <value>Персоналізувати світлину познаки завантаження, видиму при запуску системи.</value>
@@ -2307,28 +2307,28 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Познака завантаження</value>
   </data>
   <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
-    <value>App Behavior</value>
+    <value>Поведінка програми</value>
   </data>
   <data name="SettingsPage_Category_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Зовнішній вигляд</value>
   </data>
   <data name="SettingsPage_Category_Display" xml:space="preserve">
-    <value>Display</value>
+    <value>Дисплей</value>
   </data>
   <data name="SettingsPage_Category_Integrations" xml:space="preserve">
-    <value>Integrations</value>
+    <value>Інтеграції</value>
   </data>
   <data name="SettingsPage_Category_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Потужність</value>
   </data>
   <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>Розумна клавіша</value>
   </data>
   <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
-    <value>Software Control</value>
+    <value>Керування програмою</value>
   </data>
   <data name="SettingsPage_Category_Updates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Оновлення</value>
   </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Перевірити</value>
@@ -2340,10 +2340,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Перевірити наявність оновлень</value>
   </data>
   <data name="SettingsPage_ClearBackgroundImage_Title" xml:space="preserve">
-    <value>Image Cleared</value>
+    <value>Зображення видалено</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
-    <value>Clear Image</value>
+    <value>Очистити зображення</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Message" xml:space="preserve">
     <value>Додати оболонку вказівного рядка до змінної шляху користувача.</value>
@@ -2358,26 +2358,26 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Оболонка вказівного рядка</value>
   </data>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
-    <value>Restart is recommended after changing this option.</value>
+    <value>Рекомендується перезапуск після зміни цього параметру.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Custom Background Image</value>
+    <value>Власне фонове зображення</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Custom Background Image</value>
+    <value>Власне фонове зображення</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space may have not been disabled correctly</value>
+    <value>Legion Space, можливо, не був відключений правильно</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
-    <value>Couldn't disable Legion Space</value>
+    <value>Не вдалося вимкнути Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Message" xml:space="preserve">
     <value>Вимкнути Legion Zone та його служби без деінсталяції.
 Перезавантаження рекомендоване після зміни цієї опції.</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Title" xml:space="preserve">
-    <value>Disable Legion Space</value>
+    <value>Вимкнути Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
     <value>Зони Legion могли бути вимкнені неправильно</value>
@@ -2420,10 +2420,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Вимкнути Lenovo Vantage та ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space may have not been enabled correctly</value>
+    <value>Legion Space, можливо, не був включений правильно</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Legion Space</value>
+    <value>Не вдалося увімкнути Legion Space</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
     <value>Зони Legion могли бути увімкнені неправильно</value>
@@ -2438,10 +2438,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Не вдалося увімкнути гарячі клавіші Lenovo</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
-    <value>Enable logging for debug.</value>
+    <value>Увімкнути ведення журналу для налагодження.</value>
   </data>
   <data name="SettingsPage_EnableLogging_Title" xml:space="preserve">
-    <value>Enable Logging</value>
+    <value>Увімкнути ведення журналу</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
     <value>Можливо, Lenovo Vantage та/або ImController було увімкнено неправильно</value>
@@ -2450,7 +2450,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Неможливо увімкнути Lenovo Vantage та/або ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>Виключені процеси</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Ви можете виключити частоту оновлення, щоб зробити комбінацію клавіш Fn+R більш корисною.</value>
@@ -2459,46 +2459,46 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Виключити частоти оновлення</value>
   </data>
   <data name="SettingsPage_FloatingGadgets_Message" xml:space="preserve">
-    <value>Floating Gadgets​​ is a floating window that displays real-time sensor information in an overlay style.</value>
+    <value>Плаваючі ґаджети – це плаваюче вікно, яке відображає інформацію з датчиків у режимі реального часу у вигляді накладання.</value>
   </data>
   <data name="SettingsPage_FloatingGadgets_Title" xml:space="preserve">
-    <value>Enable Floating Gadget</value>
+    <value>Увімкнути плаваючий ґаджет</value>
   </data>
   <data name="SettingsPage_FloatingGadgets_Tooltip" xml:space="preserve">
-    <value>Controls sensor refresh interval.</value>
+    <value>Інтервал оновлення датчика.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
+    <value>Використовуйте апаратне прискорення для інтерфейсу користувача. Це може підвищити продуктивність та плавність.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
-    <value>Hardware Acceleration</value>
+    <value>Апаратне прискорення</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off.</value>
+    <value>Увімкнення апаратного прискорення може спричинити мерехтіння або чорні спалахи на деяких гібридних графічних системах, а також може перешкоджати вимкненню дискретного ГП.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
-    <value>Enable advanced hardware polling to monitor detailed temperatures, frequencies, and power limits.</value>
+    <value>Увімкніть розширене опитування обладнання для детального моніторингу температур, частот та обмежень потужності.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_PawnIOWarning" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>Для того, щоб скористатися новою панеллю приладів, вам спочатку необхідно встановити PawnIO!</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>Апаратні Сенсори</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
-    <value>Auto (Let Windows decide)</value>
+    <value>Авто (дозволити Windows вирішувати)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
-    <value>High performance (dGPU)</value>
+    <value>Висока продуктивність (дискр. ГП)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_PowerSaving" xml:space="preserve">
-    <value>Power saving (iGPU)</value>
+    <value>Економія живлення (інтегр. ГП)</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
     <value>Поділитися швидкістю вентилятора, температурою тощо з HWiNFO64. Вам, можливо, доведеться перезапустити HWiNFO64 після зміни цього налаштування.</value>
   </data>
   <data name="SettingsPage_HWiNFO_RestartInfo" xml:space="preserve">
-    <value>You may need to restart HWiNFO64 after changing this option.</value>
+    <value>Можливо, після зміни цього параметру необхідно перезапустити HWiNFO64.</value>
   </data>
   <data name="SettingsPage_HWiNFO_Title" xml:space="preserve">
     <value>HWiNFO64</value>
@@ -2510,10 +2510,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Мова</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Lock LLT's window size. To prevent something change it.</value>
+    <value>Заблокувати розмір вікна LLT. Щоб запобігти його зміні чимось.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
-    <value>Lock Window Size</value>
+    <value>Заблокувати розмір вікна</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
     <value>Завжди згортати у лоток. Закривайте натисканням правою кнопкою миші на образець у лотку.</value>
@@ -2546,16 +2546,16 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Синхронізація режиму живлення</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>Всі файли</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_Content" xml:space="preserve">
-    <value>Select Image</value>
+    <value>Обрати зображення</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_ImageFile" xml:space="preserve">
-    <value>Image File</value>
+    <value>Файл зображення</value>
   </data>
   <data name="SettingsPage_SensorSettings_Title" xml:space="preserve">
-    <value>Sensor Settings</value>
+    <value>Налаштування датчика</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
     <value>Fn Lock буде тимчасово вимкнено при натисканні клавіш Alt, Ctrl або Shift.</value>
@@ -2597,34 +2597,34 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Налаштування</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
-    <value>Update Channel</value>
+    <value>Канал оновлень</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>Автоматично перевіряти наявність оновлень</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
-    <value>Update Method</value>
+    <value>Метод оновлення</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Restart to apply changes.</value>
   </data>
   <data name="SettingsPage_UseNewDashboard_Switch_Title" xml:space="preserve">
-    <value>Dashboard changed</value>
+    <value>Панель приладів змінена</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Message" xml:space="preserve">
     <value>Використовувати нову панель сенсора, а не стару. </value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>Use New Sensor Dashboard</value>
+    <value>Використовувати нову панель сенсорів</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
-    <value>If you experience visual artifacts on Snackbars in HDR or ACM mode, set this to "None".</value>
+    <value>Якщо у режимі HDR або ACM виникають візуальні артефакти, встановіть для цього параметра значення «Немає».</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Message" xml:space="preserve">
-    <value>The effect used for the background of the application window.</value>
+    <value>Ефект використовується для фону вікна програми.</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Title" xml:space="preserve">
-    <value>Window Backdrop</value>
+    <value>Фон вікна</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
     <value>Оберіть план живлення Windows, який буде застосовано при зміні режиму живлення.</value>
@@ -2654,10 +2654,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Гучник</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change the speaker's volume.</value>
+    <value>Змінити гучність динаміка.</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Title" xml:space="preserve">
-    <value>Speaker Volume</value>
+    <value>Гучність Динаміка</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>Відрегулюйте підсвітку клавіатури.</value>
@@ -2741,22 +2741,22 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Редагувати ефект</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostBrightnessFactor" xml:space="preserve">
-    <value>Boost Brightness Factor</value>
+    <value>Коефіцієнт підвищення яскравості</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostFloor" xml:space="preserve">
-    <value>Boost Floor</value>
+    <value>Нижня межа підвищення</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostTarget" xml:space="preserve">
-    <value>Boost Target</value>
+    <value>Цільове значення підвищення</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_Title" xml:space="preserve">
-    <value>Color Boost Settings</value>
+    <value>Параметри посилення кольору</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_WhiteThreshold" xml:space="preserve">
-    <value>White Threshold</value>
+    <value>Поріг білого кольору</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoost_Title" xml:space="preserve">
-    <value>Vantage Color Boost</value>
+    <value>Посилення кольору Vantage</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
     <value>Імпортувати та застосувати конфігурації підсвічування до поточного профілю.</value>
@@ -2789,10 +2789,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Дискретний ГП</value>
   </data>
   <data name="StatusTrayPopup_MaxDischargeRate" xml:space="preserve">
-    <value>Max discharge rate</value>
+    <value>Максимальний рівень розрядки</value>
   </data>
   <data name="StatusTrayPopup_MinDischargeRate" xml:space="preserve">
-    <value>Min discharge rate</value>
+    <value>Мінімальний рівень розрядки</value>
   </data>
   <data name="StatusTrayPopup_Mode" xml:space="preserve">
     <value>Режим</value>
@@ -2810,13 +2810,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Доступне оновлення!</value>
   </data>
   <data name="StatusWindow_Fan_And_Power" xml:space="preserve">
-    <value>Fan / Power</value>
+    <value>Вентилятор / Потужність</value>
   </data>
   <data name="StatusWindow_Frequency_And_Temperature" xml:space="preserve">
-    <value>Frequency / Temperature</value>
+    <value>Частота / Температура</value>
   </data>
   <data name="StatusWindow_System_Fan" xml:space="preserve">
-    <value>System Fan</value>
+    <value>Системний вентилятор</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Вибрати образець</value>
@@ -2927,7 +2927,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Що нового?</value>
   </data>
   <data name="Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>Попередження</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>Налаштуйте підсвітку клавіатури.</value>

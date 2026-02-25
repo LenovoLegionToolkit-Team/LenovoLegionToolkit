@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -133,16 +133,16 @@
     <value>Під час сну</value>
   </data>
   <data name="AmdOverclocking_Ac_Message" xml:space="preserve">
-    <value>Profile will not apply without AC adapter (Full wattage) connected.</value>
+    <value>Профіль не застосовуватиметься без підключеного живлення (повної потужності).</value>
   </data>
   <data name="AmdOverclocking_Not_Initialized_Message" xml:space="preserve">
-    <value>Not initialized.</value>
+    <value>Не ініціалізовано.</value>
   </data>
   <data name="AmdOverclocking_Not_Supported" xml:space="preserve">
-    <value>Not supported.</value>
+    <value>Не підтримується.</value>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
-    <value>Warning: For safety, these steps will be skipped on startup: {0}. All other steps will execute normally.</value>
+    <value>Попередження: З міркувань безпеки, ці кроки будуть пропущені під час запуску: {0}. Усі інші кроки виконаються у звичайному режимі.</value>
   </data>
   <data name="AutorunState_Disabled" xml:space="preserve">
     <value>Вимкнено</value>
@@ -169,22 +169,22 @@
     <value>Швидка зарядка</value>
   </data>
   <data name="CustomFanCurveControl_Fan_CPU" xml:space="preserve">
-    <value>CPU Fan</value>
+    <value>Вентилятор ЦП</value>
   </data>
   <data name="CustomFanCurveControl_Fan_GPU" xml:space="preserve">
-    <value>GPU Fan</value>
+    <value>Вентилятор ГП</value>
   </data>
   <data name="CustomFanCurveControl_Fan_System" xml:space="preserve">
-    <value>System Fan</value>
+    <value>Системний вентилятор</value>
   </data>
   <data name="FanMaxSpeedState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Викл</value>
   </data>
   <data name="FanMaxSpeedState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Вкл</value>
   </data>
   <data name="FanMaxSpeedState_Toggle" xml:space="preserve">
-    <value>Toggle</value>
+    <value>Перемикач</value>
   </data>
   <data name="FlipToStartState_Off" xml:space="preserve">
     <value>Вимкнено</value>
@@ -195,58 +195,58 @@
     <comment>Informs the user that Flip to Start is or will be turned on.</comment>
   </data>
   <data name="FloatingGadgetItem_Disk1Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>Температура диску 1</value>
   </data>
   <data name="FloatingGadgetItem_Disk2Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>Температура диску 2</value>
   </data>
   <data name="FloatingGadgetItem_E_Core_Frequency" xml:space="preserve">
-    <value>E Core Frequency</value>
+    <value>Частота Е-ядра</value>
   </data>
   <data name="FloatingGadgetItem_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>Вентилятор</value>
   </data>
   <data name="FloatingGadgetItem_Fps" xml:space="preserve">
     <value>FPS</value>
   </data>
   <data name="FloatingGadgetItem_FrameTime" xml:space="preserve">
-    <value>Frame Time</value>
+    <value>Час кадру</value>
   </data>
   <data name="FloatingGadgetItem_Frequency" xml:space="preserve">
-    <value>Frequency</value>
+    <value>Частота</value>
   </data>
   <data name="FloatingGadgetItem_LowFps" xml:space="preserve">
-    <value>1% Low</value>
+    <value>Менше 1%</value>
   </data>
   <data name="FloatingGadgetItem_MemoryTemperature" xml:space="preserve">
-    <value>Memory Temperature</value>
+    <value>Температура пам'яті</value>
   </data>
   <data name="FloatingGadgetItem_MotherboardTemperature" xml:space="preserve">
-    <value>Motherboard Temperature</value>
+    <value>Температура матеріальної плати</value>
   </data>
   <data name="FloatingGadgetItem_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Потужність</value>
   </data>
   <data name="FloatingGadgetItem_P_Core_Frequency" xml:space="preserve">
-    <value>P Core Frequency</value>
+    <value>Частота P-ядра</value>
   </data>
   <data name="FloatingGadgetItem_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Температура</value>
   </data>
   <data name="FloatingGadgetItem_Utilization" xml:space="preserve">
-    <value>Utilization</value>
+    <value>Використання</value>
   </data>
   <data name="FloatingGadgetItem_VramTemperature" xml:space="preserve">
-    <value>Vram Temperature</value>
+    <value>Температура VR</value>
   </data>
   <data name="FloatingGadgetState_Hidden" xml:space="preserve">
-    <value>Hidden</value>
+    <value>Сховати</value>
   </data>
   <data name="FloatingGadgetState_Show" xml:space="preserve">
-    <value>Show</value>
+    <value>Показувати</value>
   </data>
   <data name="FloatingGadgetState_Toggle" xml:space="preserve">
-    <value>Toggle</value>
+    <value>Перемикач</value>
   </data>
   <data name="FnLockState_Off" xml:space="preserve">
     <value>Вимкнено</value>
@@ -298,16 +298,16 @@
     <value>Від USB Power Delivery</value>
   </data>
   <data name="ITSMode_Intelligent_Battery_Saving" xml:space="preserve">
-    <value>Battery Saving</value>
+    <value>Економія батареї</value>
   </data>
   <data name="ITSMode_Intelligent_Cooling" xml:space="preserve">
-    <value>Intelligent Cooling</value>
+    <value>Інтелектуальне охолодження</value>
   </data>
   <data name="ITSMode_Intelligent_Extreme_Performance" xml:space="preserve">
-    <value>Extreme Performance</value>
+    <value>Максимальна продуктивність</value>
   </data>
   <data name="ITSMode_Intelligent_Geek" xml:space="preserve">
-    <value>Geek</value>
+    <value>Для гуру</value>
   </data>
   <data name="MicrophoneState_Off" xml:space="preserve">
     <value>Вимкнений</value>
@@ -403,7 +403,7 @@
     <value>Збалансований</value>
   </data>
   <data name="PowerModeState_Extreme" xml:space="preserve">
-    <value>Extreme</value>
+    <value>Екстремальний</value>
   </data>
   <data name="PowerModeState_GodMode" xml:space="preserve">
     <value>Користувальницький</value>
@@ -564,22 +564,22 @@
     <comment>Informs the user that Touchpad Lock is or will be turned on.</comment>
   </data>
   <data name="UpdateChannel_Beta" xml:space="preserve">
-    <value>Beta</value>
+    <value>Бета</value>
   </data>
   <data name="UpdateChannel_Dev" xml:space="preserve">
-    <value>Dev</value>
+    <value>Для розробника</value>
   </data>
   <data name="UpdateChannel_Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>Стабільний</value>
   </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
-    <value>The downloaded update is not signed by the trusted server certificate {0}</value>
+    <value>Завантажене оновлення не підписано сертифікатом довіреного сервера {0}</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
-    <value>Invalid signature thumbprint {0}</value>
+    <value>Недійсний відбиток підпису {0}</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
-    <value>Never</value>
+    <value>Ніколи</value>
   </data>
   <data name="UpdateCheckFrequency_PerDay" xml:space="preserve">
     <value>Щоденно</value>
@@ -603,7 +603,7 @@
     <value>GitHub</value>
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
-    <value>Server</value>
+    <value>Сервер</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>Яскрава</value>
@@ -614,18 +614,6 @@
   <data name="WhiteKeyboardBacklightState_Off" xml:space="preserve">
     <value>Вимк.</value>
   </data>
-  <data name="WindowBackdropType_Acrylic" xml:space="preserve">
-    <value>Acrylic</value>
-  </data>
-  <data name="WindowBackdropType_Mica" xml:space="preserve">
-    <value>Mica</value>
-  </data>
-  <data name="WindowBackdropType_None" xml:space="preserve">
-    <value>None</value>
-  </data>
-  <data name="WindowBackdropType_Tabbed" xml:space="preserve">
-    <value>Tabbed</value>
-  </data>
   <data name="WinKeyState_Off" xml:space="preserve">
     <value>Вимкнена</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
@@ -633,5 +621,17 @@
   <data name="WinKeyState_On" xml:space="preserve">
     <value>Увімкнена</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
+  </data>
+  <data name="WindowBackdropType_Acrylic" xml:space="preserve">
+    <value>Акрил</value>
+  </data>
+  <data name="WindowBackdropType_Mica" xml:space="preserve">
+    <value>Слюда</value>
+  </data>
+  <data name="WindowBackdropType_None" xml:space="preserve">
+    <value>Нічого</value>
+  </data>
+  <data name="WindowBackdropType_Tabbed" xml:space="preserve">
+    <value>Вкладка</value>
   </data>
 </root>

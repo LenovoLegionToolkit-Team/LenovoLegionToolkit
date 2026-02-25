@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -926,10 +926,10 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
     <value>Error</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
+    <value>Los procesos en esta lista serán ignorados por los activadores de inicio/parada del juego y el Modo IA/Inteligente de Lenovo. Introduzca el nombre del proceso sin la ruta (por ej., "discord" o "blender").</value>
   </data>
   <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Process Name (e.g. discord)</value>
+    <value>Nombre del proceso (ej. discord)</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Procesos excluidos</value>
@@ -1189,11 +1189,11 @@ Algunos portátiles pueden aceptar valores más bajos de los indicados, pero ten
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+    <value>El modo personalizado permite el acceso a parámetros críticos del sistema tales como límites de energía y curvas de ventiladores.
 
-Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+Una mala configuración puede llevar a una grave inestabilidad del sistema, limitaciones térmicas o a un daño permanente en el equipo. Las modificaciones realizadas aquí pueden anular la garantía del fabricante.
 
-Do not proceed unless you possess the necessary technical expertise.</value>
+No proceda a menos que posea los conocimientos técnicos necesarios.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
     <value>Nombre</value>
@@ -1264,7 +1264,7 @@ En serio, ¡tenga cuidado con esta opción!</value>
     <value>Los ajustes del modo personalizado no se aplicarán correctamente, si Legion Zone o sus servicios se están ejecutando.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency.</value>
+    <value>Incremento de frecuencia para Precision Boost Overdrive.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
     <value>Frecuencia de impulso de Precision Boost Overdrive</value>
@@ -1506,7 +1506,7 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
     <value>Ajustes</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>¡Necesitas instalar primero PawnIO para poder usar el nuevo panel de control!</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
     <value>Aviso</value>
@@ -1518,7 +1518,7 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
     <value>¡Actualización {0} disponible!</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
-    <value>Don't show again.</value>
+    <value>No mostrar de nuevo.</value>
   </data>
   <data name="MHz" xml:space="preserve">
     <value>MHz</value>
@@ -2002,10 +2002,10 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
     <value>Reiniciar ahora</value>
   </data>
   <data name="RestartRequired_Message" xml:space="preserve">
-    <value>Changing this requires restart. Do you want to restart now?</value>
+    <value>Para cambiar esto es necesario reiniciar. ¿Desea reiniciar ahora?</value>
   </data>
   <data name="RestartRequired_Title" xml:space="preserve">
-    <value>Restart required</value>
+    <value>Es necesario reiniciar</value>
   </data>
   <data name="RestoreDefaults" xml:space="preserve">
     <value>Restaurar valores por defecto</value>
@@ -2231,13 +2231,13 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>Uso</value>
   </data>
   <data name="SensorSettingsPage_Average_Frequency_Title" xml:space="preserve">
-    <value>Average Frequency</value>
+    <value>Frecuencia Media</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and FloatingGadget.</value>
+    <value>Determina el tipo de frecuencia de CPU mostrada en el panel de control y ventana flotante.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>Frecuencia de la CPU</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2246,43 +2246,43 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>iGPU</value>
   </data>
   <data name="SensorSettingsPage_Max_Frequency_Title" xml:space="preserve">
-    <value>Max Frequency</value>
+    <value>Frecuencia máxima</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Message" xml:space="preserve">
-    <value>When multiple graphics cards are present, the primary device displayed is preferred</value>
+    <value>Cuando hay varias tarjetas gráficas, se da preferencia al dispositivo principal que se muestra</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
-    <value>Preferred GPU</value>
+    <value>GPU preferida</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Ajustes</value>
   </data>
   <data name="SettingsBackupWindow_Backup" xml:space="preserve">
-    <value>Back Up</value>
+    <value>Respaldar</value>
   </data>
   <data name="SettingsBackupWindow_BackupSuccess" xml:space="preserve">
-    <value>Backup completed successfully.</value>
+    <value>Copia de seguridad completada con éxito.</value>
   </data>
   <data name="SettingsBackupWindow_NoFilesSelected" xml:space="preserve">
-    <value>No files selected.</value>
+    <value>No se han seleccionado archivos.</value>
   </data>
   <data name="SettingsBackupWindow_NoMatchingFiles" xml:space="preserve">
-    <value>No matching files found in selected folder.</value>
+    <value>No se han encontrado archivos coincidentes en la carpeta seleccionada.</value>
   </data>
   <data name="SettingsBackupWindow_Restore" xml:space="preserve">
-    <value>Restore</value>
+    <value>Restaurar</value>
   </data>
   <data name="SettingsBackupWindow_RestoreConfirm" xml:space="preserve">
-    <value>Restoring settings will overwrite your current configuration and restart the application. Do you want to continue?</value>
+    <value>Al restaurar la configuración, se sobrescribirá la configuración actual y se reiniciará la aplicación. ¿Desea continuar?</value>
   </data>
   <data name="SettingsBackupWindow_RestoreSuccess" xml:space="preserve">
-    <value>Restore completed successfully. The application will restart.</value>
+    <value>La restauración se ha completado correctamente. La aplicación se va a reiniciar.</value>
   </data>
   <data name="SettingsBackupWindow_SelectAll" xml:space="preserve">
-    <value>Select All</value>
+    <value>Seleccionar todo</value>
   </data>
   <data name="SettingsBackupWindow_Title" xml:space="preserve">
-    <value>Backup Settings</value>
+    <value>Configuración de la copia de seguridad</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
     <value>Cambiar el color característico de la aplicación.</value>
@@ -2297,13 +2297,13 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>Ejecución automática</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
-    <value>Back up or restore application settings.</value>
+    <value>Hacer una copia de seguridad o restaurar la configuración de la aplicación.</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
-    <value>Back Up Settings</value>
+    <value>Hacer una copia de seguridad de la configuración</value>
   </data>
   <data name="SettingsPage_BootLogo_EFIInfo" xml:space="preserve">
-    <value>This feature modifies the EFI partition. Use with caution.</value>
+    <value>Esta función modifica la partición EFI. Úsela con precaución.</value>
   </data>
   <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
     <value>Personalizar la imagen del logo de arranque, visible durante el inicio del sistema.</value>
@@ -2312,28 +2312,28 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>Logo de arranque</value>
   </data>
   <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
-    <value>App Behavior</value>
+    <value>Comportamiento</value>
   </data>
   <data name="SettingsPage_Category_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Apariencia</value>
   </data>
   <data name="SettingsPage_Category_Display" xml:space="preserve">
-    <value>Display</value>
+    <value>Pantalla</value>
   </data>
   <data name="SettingsPage_Category_Integrations" xml:space="preserve">
-    <value>Integrations</value>
+    <value>Integraciones</value>
   </data>
   <data name="SettingsPage_Category_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Energía</value>
   </data>
   <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>Teclas Inteligentes</value>
   </data>
   <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
-    <value>Software Control</value>
+    <value>Control de software</value>
   </data>
   <data name="SettingsPage_Category_Updates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Actualizaciones</value>
   </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Comprobar</value>
@@ -2363,7 +2363,7 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>Interfaz de línea de comandos (CLI)</value>
   </data>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
-    <value>Restart is recommended after changing this option.</value>
+    <value>Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
     <value>Imagen de fondo personalizada</value>
@@ -2473,37 +2473,37 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Controla el intervalo de actualización del sensor.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
+    <value>Utiliza la aceleración por hardware para la interfaz de usuario. Esto puede mejorar el rendimiento y la fluidez.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
-    <value>Hardware Acceleration</value>
+    <value>Aceleración por hardware</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off.</value>
+    <value>Habilitar la aceleración por hardware puede provocar parpadeos o destellos negros en algunos sistemas gráficos híbridos y puede impedir que se apague la GPU discreta.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
-    <value>Enable advanced hardware polling to monitor detailed temperatures, frequencies, and power limits.</value>
+    <value>Habilita el sondeo avanzado del equipo para supervisar temperaturas, frecuencias y límites de potencia detallados.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_PawnIOWarning" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>¡Necesitas instalar primero PawnIO para poder usar los sensores del equipo!</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>Sensores del equipo</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
-    <value>Auto (Let Windows decide)</value>
+    <value>Automático (dejar que Windows decida)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
-    <value>High performance (dGPU)</value>
+    <value>Alto rendimiento (dGPU)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_PowerSaving" xml:space="preserve">
-    <value>Power saving (iGPU)</value>
+    <value>Ahorro de energía (iGPU)</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
     <value>Compartir la velocidad del ventilador, la temperatura de la batería, etc... con HWiNFO64. Puede que tenga que reiniciar HWiNFO64 después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_HWiNFO_RestartInfo" xml:space="preserve">
-    <value>You may need to restart HWiNFO64 after changing this option.</value>
+    <value>Es posible que tenga que reiniciar HWiNFO64 después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_HWiNFO_Title" xml:space="preserve">
     <value>HWiNFO64</value>
@@ -2561,7 +2561,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Fichero de imagen</value>
   </data>
   <data name="SettingsPage_SensorSettings_Title" xml:space="preserve">
-    <value>Sensor Settings</value>
+    <value>Configuración de los sensores</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
     <value>El bloqueo Fn se desactivará temporalmente al pulsar las teclas Mayús, Ctrl o Alt.</value>
@@ -2603,13 +2603,13 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Ajustes</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
-    <value>Update Channel</value>
+    <value>Canal de actualización</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>Buscar actualizaciones automáticamente</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
-    <value>Update Method</value>
+    <value>Método de actualización</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Reinicie para aplicar los cambios.</value>
@@ -2624,13 +2624,13 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Utiliza el nuevo panel de control</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
-    <value>If you experience visual artifacts on Snackbars in HDR or ACM mode, set this to "None".</value>
+    <value>Si experimenta artefactos visuales en los Snackbars en modo HDR o ACM, establezca esto en "ninguno".</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Message" xml:space="preserve">
-    <value>The effect used for the background of the application window.</value>
+    <value>El efecto usado para el fondo de la ventana de la aplicación.</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Title" xml:space="preserve">
-    <value>Window Backdrop</value>
+    <value>Fondo de ventana</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
     <value>Seleccionar el modo de energía de Windows para aplicarlo al cambiar el modo de energía.</value>
