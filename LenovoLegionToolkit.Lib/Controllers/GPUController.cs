@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Resources;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
@@ -236,15 +237,19 @@ public class GPUController
 
         var gpuInstanceId = await WMI.Win32.PnpEntity.GetDeviceIDAsync(pnpDeviceIdPart).ConfigureAwait(false);
         var processNames = NVAPIExtensions.GetActiveProcesses(gpu);
+        var feature = IoCContainer.Resolve<HybridModeFeature>();
 
-        if (NVAPI.IsDisplayConnected(gpu))
+        if (await feature.GetStateAsync().ConfigureAwait(false) != HybridModeState.Off)
         {
-            _processes = processNames;
-            _state = GPUState.MonitorConnected;
+            if (NVAPI.IsDisplayConnected(gpu))
+            {
+                _processes = processNames;
+                _state = GPUState.MonitorConnected;
 
-            // Comment due to annoying.
-            //if (Log.Instance.IsTraceEnabled)
-            //    Log.Instance.Trace($"Monitor connected [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
+                // Comment due to annoying.
+                //if (Log.Instance.IsTraceEnabled)
+                //    Log.Instance.Trace($"Monitor connected [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
+            }
         }
         else if (processNames.Count != 0)
         {
