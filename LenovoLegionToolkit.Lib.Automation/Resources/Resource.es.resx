@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -123,33 +123,11 @@
   <data name="ACAdapterDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Cuando el adaptador de corriente alterna está desconectado</value>
   </data>
-  <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
-    <value>Advertencia: No se puede overclockear una GPU desactivada. El paso de overclocking fallará.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
-    <value>Advertencia: El HDR de Windows bloquea el brillo de la pantalla. Los ajustes de brillo aplicados después del HDR se ignoran.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
-    <value>Advertencia: Cambiar el modo híbrido a modo de GPU dedicada fuerza un reinicio del sistema. Este debe ser el último paso.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
-    <value>Advertencia: El modo de energía restablece la velocidad del ventilador. Ejecute primero el paso del modo de energía.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
-    <value>Advertencia: El modo de energía restablece el brillo y la frecuencia de actualización. Ejecute primero el paso del modo de energía.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
-    <value>Advertencia: Al cambiar la resolución se restablece la frecuencia de actualización. Ejecute primero el paso de resolución.</value>
-  </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
     <value>Terminar aplicaciones</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_RestartGPU" xml:space="preserve">
     <value>Reiniciar la GPU</value>
-  </data>
-  <data name="DeactivateGpuQuickAction_Title" xml:space="preserve">
-    <value>Desactivar la GPU</value>
-    <comment>The display name of the default Quick Action that is presented to the user upon first installation.</comment>
   </data>
   <data name="Delay_Second" xml:space="preserve">
     <value>{0} segundo</value>
@@ -157,78 +135,11 @@
   <data name="Delay_Second_Many" xml:space="preserve">
     <value>{0} segundos</value>
   </data>
-  <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cuando el dispositivo está conectado</value>
-  </data>
-  <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cuando el dispositivo está desconectado</value>
-  </data>
-  <data name="DisplayOffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Al apagar las pantallas</value>
-  </data>
-  <data name="DisplayOnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Al encender las pantallas</value>
-  </data>
-  <data name="ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cuando se conecta una pantalla externa</value>
-  </data>
-  <data name="ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cuando se desconecta una pantalla externa</value>
-  </data>
-  <data name="FloatingGadgetState_Toggle" xml:space="preserve">
-    <value>Cambiar</value>
-  </data>
-  <data name="GamesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cuando el juego está en marcha</value>
-  </data>
-  <data name="GamesStopAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Al cerrar el juego</value>
-  </data>
-  <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Al cambiar el predefinido del modo personalizado</value>
-  </data>
-  <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cuando se apaga HDR</value>
-  </data>
-  <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cuando se enciende HDR</value>
-  </data>
-  <data name="HybridModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Modo híbrido</value>
-  </data>
-  <data name="ITSModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cuando se cambia el modo de energía del IdeaPad</value>
-  </data>
-  <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Tapa cerrada</value>
-  </data>
-  <data name="LidOpenedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Tapa abierta</value>
-  </data>
   <data name="LowWattageACAdapterConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Al conectar el adaptador de corriente alterna a baja potencia</value>
   </data>
-  <data name="MacroAutomationStepState_Off" xml:space="preserve">
-    <value>Apagado</value>
-  </data>
-  <data name="MacroAutomationStepState_On" xml:space="preserve">
-    <value>Encendido</value>
-  </data>
-  <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Al reanudar</value>
-  </data>
   <data name="OnStartupAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Al iniciar</value>
-  </data>
-  <data name="OverclockDiscreteGPUAutomationStepState_Off" xml:space="preserve">
-    <value>Apagado</value>
-  </data>
-  <data name="OverclockDiscreteGPUAutomationStepState_On" xml:space="preserve">
-    <value>Encendido</value>
-  </data>
-  <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Acción periódica</value>
-    <comment>The display name of the periodic automation action.</comment>
   </data>
   <data name="PowerModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Al cambiar el modo de alimentación</value>
@@ -239,25 +150,114 @@
   <data name="ProcessesStopRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Al cerrar la aplicación</value>
   </data>
-  <data name="SessionLockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Sesión bloqueada</value>
-  </data>
-  <data name="SessionUnlockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Sesión desbloqueada</value>
-  </data>
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>A la hora indicada</value>
+  </data>
+  <data name="ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cuando se conecta una pantalla externa</value>
+  </data>
+  <data name="ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cuando se desconecta una pantalla externa</value>
+  </data>
+  <data name="DisplayOnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Al encender las pantallas</value>
+  </data>
+  <data name="DisplayOffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Al apagar las pantallas</value>
+  </data>
+  <data name="LidOpenedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Tapa abierta</value>
+  </data>
+  <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Tapa cerrada</value>
+  </data>
+  <data name="GamesStopAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Al cerrar el juego</value>
+  </data>
+  <data name="GamesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cuando el juego está en marcha</value>
+  </data>
+  <data name="UserInactivityAutomationPipelineTrigger_DisplayName_Zero" xml:space="preserve">
+    <value>Cuando el usuario está activo</value>
   </data>
   <data name="UserInactivityAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Cuando el usuario está inactivo</value>
   </data>
-  <data name="UserInactivityAutomationPipelineTrigger_DisplayName_Zero" xml:space="preserve">
-    <value>Cuando el usuario está activo</value>
+  <data name="DeactivateGpuQuickAction_Title" xml:space="preserve">
+    <value>Desactivar la GPU</value>
+    <comment>The display name of the default Quick Action that is presented to the user upon first installation.</comment>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepState_Off" xml:space="preserve">
+    <value>Apagado</value>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepState_On" xml:space="preserve">
+    <value>Encendido</value>
+  </data>
+  <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Al cambiar el predefinido del modo personalizado</value>
+  </data>
+  <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Acción periódica</value>
+    <comment>The display name of the periodic automation action.</comment>
   </data>
   <data name="WiFiConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Si el Wi-Fi está conectado</value>
   </data>
   <data name="WiFiDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Si el Wi-Fi está desconectado</value>
+  </data>
+  <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Al reanudar</value>
+  </data>
+  <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cuando se apaga HDR</value>
+  </data>
+  <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cuando se enciende HDR</value>
+  </data>
+  <data name="MacroAutomationStepState_Off" xml:space="preserve">
+    <value>Apagado</value>
+  </data>
+  <data name="MacroAutomationStepState_On" xml:space="preserve">
+    <value>Encendido</value>
+  </data>
+  <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cuando el dispositivo está desconectado</value>
+  </data>
+  <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cuando el dispositivo está conectado</value>
+  </data>
+  <data name="SessionLockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Sesión bloqueada</value>
+  </data>
+  <data name="SessionUnlockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Sesión desbloqueada</value>
+  </data>
+  <data name="ITSModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cuando se cambia el modo de energía del IdeaPad</value>
+  </data>
+  <data name="HybridModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Modo híbrido</value>
+  </data>
+  <data name="FloatingGadgetState_Toggle" xml:space="preserve">
+    <value>Cambiar</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
+    <value>Advertencia: El modo de energía restablece el brillo y la frecuencia de actualización. Ejecute primero el paso del modo de energía.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
+    <value>Advertencia: El modo de energía restablece la velocidad del ventilador. Ejecute primero el paso del modo de energía.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
+    <value>Advertencia: Cambiar el modo híbrido a modo de GPU dedicada fuerza un reinicio del sistema. Este debe ser el último paso.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
+    <value>Advertencia: No se puede overclockear una GPU desactivada. El paso de overclocking fallará.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
+    <value>Advertencia: El HDR de Windows bloquea el brillo de la pantalla. Los ajustes de brillo aplicados después del HDR se ignoran.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
+    <value>Advertencia: Al cambiar la resolución se restablece la frecuencia de actualización. Ejecute primero el paso de resolución.</value>
   </data>
 </root>
