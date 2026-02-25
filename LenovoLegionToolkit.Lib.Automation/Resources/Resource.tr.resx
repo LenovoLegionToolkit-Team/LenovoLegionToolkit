@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -123,33 +123,11 @@
   <data name="ACAdapterDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>AC güç adaptörü çıkarılınca</value>
   </data>
-  <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
-    <value>Uyarı: Devre dışı bırakılmış bir GPU overclock edilemez. Overclock adımı başarısız olacaktır.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
-    <value>Uyarı: Windows HDR, ekran parlaklığını kilitler. HDR uygulandıktan sonra yapılan parlaklık ayarları dikkate alınmaz.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
-    <value>Uyarı: Hibrit Modu'nu dGPU Modu'na değiştirmek sistemin yeniden başlatılmasını gerektirir. Bu, son adım olmalıdır.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
-    <value>Uyarı: Güç Modu, Fan Hızını sıfırlar. Önce Güç Modu adımını çalıştırın.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
-    <value>Uyarı: Güç Modu, Parlaklık ve Yenileme Hızını sıfırlar. Önce Güç Modu adımını çalıştırın.</value>
-  </data>
-  <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
-    <value>Uyarı: Çözünürlüğü değiştirmek Yenileme Hızını sıfırlar. Önce Çözünürlük adımını çalıştırın.</value>
-  </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
     <value>Uygulamaları kapat</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_RestartGPU" xml:space="preserve">
     <value>GPU'yu yeniden başlat</value>
-  </data>
-  <data name="DeactivateGpuQuickAction_Title" xml:space="preserve">
-    <value>GPU Pasifleştir</value>
-    <comment>The display name of the default Quick Action that is presented to the user upon first installation.</comment>
   </data>
   <data name="Delay_Second" xml:space="preserve">
     <value>{0} saniye</value>
@@ -157,78 +135,11 @@
   <data name="Delay_Second_Many" xml:space="preserve">
     <value>{0} saniye</value>
   </data>
-  <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cihaz bağlandığında</value>
-  </data>
-  <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Cihaz bağlantısı kesildiğinde</value>
-  </data>
-  <data name="DisplayOffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Ekranlar kapandığında</value>
-  </data>
-  <data name="DisplayOnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Ekranlar açıldığında</value>
-  </data>
-  <data name="ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Harici ekran bağlandığında</value>
-  </data>
-  <data name="ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Harici ekran bağlantısı kesildiğinde</value>
-  </data>
-  <data name="FloatingGadgetState_Toggle" xml:space="preserve">
-    <value>Aç/Kapat</value>
-  </data>
-  <data name="GamesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Oyun çalıştığında</value>
-  </data>
-  <data name="GamesStopAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Oyun kapandığında</value>
-  </data>
-  <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Özel mod ön ayarı değiştiğinde</value>
-  </data>
-  <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>HDR kapatıldığında</value>
-  </data>
-  <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>HDR açıldığında</value>
-  </data>
-  <data name="HybridModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Hibrit Mod</value>
-  </data>
-  <data name="ITSModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>IdeaPad Güç Modu değiştirildiğinde</value>
-  </data>
-  <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Kapak kapatıldığında</value>
-  </data>
-  <data name="LidOpenedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Kapak açıldığında</value>
-  </data>
   <data name="LowWattageACAdapterConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Düşük voltajlı AC güç adaptörü bağlandığında</value>
   </data>
-  <data name="MacroAutomationStepState_Off" xml:space="preserve">
-    <value>Kapalı</value>
-  </data>
-  <data name="MacroAutomationStepState_On" xml:space="preserve">
-    <value>Açık</value>
-  </data>
-  <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Özgeçmişte</value>
-  </data>
   <data name="OnStartupAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Başlangıçta</value>
-  </data>
-  <data name="OverclockDiscreteGPUAutomationStepState_Off" xml:space="preserve">
-    <value>Kapalı</value>
-  </data>
-  <data name="OverclockDiscreteGPUAutomationStepState_On" xml:space="preserve">
-    <value>Açık</value>
-  </data>
-  <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Süreli eylem</value>
-    <comment>The display name of the periodic automation action.</comment>
   </data>
   <data name="PowerModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Güç Modu değiştirildiğinde</value>
@@ -239,25 +150,114 @@
   <data name="ProcessesStopRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Uygulama kapandığında</value>
   </data>
-  <data name="SessionLockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Oturum kilitlendi</value>
-  </data>
-  <data name="SessionUnlockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Oturum kilidi açıldı</value>
-  </data>
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Belirli bir zamanda</value>
+  </data>
+  <data name="ExternalDisplayConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Harici ekran bağlandığında</value>
+  </data>
+  <data name="ExternalDisplayDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Harici ekran bağlantısı kesildiğinde</value>
+  </data>
+  <data name="DisplayOnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Ekranlar açıldığında</value>
+  </data>
+  <data name="DisplayOffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Ekranlar kapandığında</value>
+  </data>
+  <data name="LidOpenedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Kapak açıldığında</value>
+  </data>
+  <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Kapak kapatıldığında</value>
+  </data>
+  <data name="GamesStopAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Oyun kapandığında</value>
+  </data>
+  <data name="GamesAreRunningAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Oyun çalıştığında</value>
+  </data>
+  <data name="UserInactivityAutomationPipelineTrigger_DisplayName_Zero" xml:space="preserve">
+    <value>Kullanıcı aktif olduğunda</value>
   </data>
   <data name="UserInactivityAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Kullanıcı etkin olmadığında</value>
   </data>
-  <data name="UserInactivityAutomationPipelineTrigger_DisplayName_Zero" xml:space="preserve">
-    <value>Kullanıcı aktif olduğunda</value>
+  <data name="DeactivateGpuQuickAction_Title" xml:space="preserve">
+    <value>GPU Pasifleştir</value>
+    <comment>The display name of the default Quick Action that is presented to the user upon first installation.</comment>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepState_Off" xml:space="preserve">
+    <value>Kapalı</value>
+  </data>
+  <data name="OverclockDiscreteGPUAutomationStepState_On" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Özel mod ön ayarı değiştiğinde</value>
+  </data>
+  <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Süreli eylem</value>
+    <comment>The display name of the periodic automation action.</comment>
   </data>
   <data name="WiFiConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Wi-Fi bağlandığında</value>
   </data>
   <data name="WiFiDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Wi-Fi bağlantısı kesildiğinde</value>
+  </data>
+  <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Özgeçmişte</value>
+  </data>
+  <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>HDR kapatıldığında</value>
+  </data>
+  <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>HDR açıldığında</value>
+  </data>
+  <data name="MacroAutomationStepState_Off" xml:space="preserve">
+    <value>Kapalı</value>
+  </data>
+  <data name="MacroAutomationStepState_On" xml:space="preserve">
+    <value>Açık</value>
+  </data>
+  <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cihaz bağlantısı kesildiğinde</value>
+  </data>
+  <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Cihaz bağlandığında</value>
+  </data>
+  <data name="SessionLockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Oturum kilitlendi</value>
+  </data>
+  <data name="SessionUnlockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Oturum kilidi açıldı</value>
+  </data>
+  <data name="ITSModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>IdeaPad Güç Modu değiştirildiğinde</value>
+  </data>
+  <data name="HybridModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
+    <value>Hibrit Mod</value>
+  </data>
+  <data name="FloatingGadgetState_Toggle" xml:space="preserve">
+    <value>Aç/Kapat</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
+    <value>Uyarı: Güç Modu, Parlaklık ve Yenileme Hızını sıfırlar. Önce Güç Modu adımını çalıştırın.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
+    <value>Uyarı: Güç Modu, Fan Hızını sıfırlar. Önce Güç Modu adımını çalıştırın.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
+    <value>Uyarı: Hibrit Modu'nu dGPU Modu'na değiştirmek sistemin yeniden başlatılmasını gerektirir. Bu, son adım olmalıdır.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
+    <value>Uyarı: Devre dışı bırakılmış bir GPU overclock edilemez. Overclock adımı başarısız olacaktır.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
+    <value>Uyarı: Windows HDR, ekran parlaklığını kilitler. HDR uygulandıktan sonra yapılan parlaklık ayarları dikkate alınmaz.</value>
+  </data>
+  <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
+    <value>Uyarı: Çözünürlüğü değiştirmek Yenileme Hızını sıfırlar. Önce Çözünürlük adımını çalıştırın.</value>
   </data>
 </root>
