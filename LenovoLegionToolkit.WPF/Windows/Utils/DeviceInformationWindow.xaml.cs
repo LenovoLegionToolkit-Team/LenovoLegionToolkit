@@ -141,7 +141,7 @@ public partial class DeviceInformationWindow
             {
                 _count = 0;
 
-                if (!PawnIOHelper.IsPawnIOInnstalled())
+                if (!PawnIOHelper.IsPawnIOInstalled())
                 {
                     PawnIOHelper.ShowPawnIONotify();
                 }

@@ -39,6 +39,8 @@
             </Style>
             <Style TargetType="{x:Type ComboBox}" BasedOn="{StaticResource DefaultComboBoxStyle}">
                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />
+                <Setter Property="MaxDropDownHeight" Value="320" />
+                <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
             </Style>
             <Style TargetType="{x:Type ComboBoxItem}" BasedOn="{StaticResource DefaultComboBoxItemStyle}">
                 <Setter Property="FocusVisualStyle" Value="{x:Null}" />

@@ -195,7 +195,7 @@ public class SensorsGroupController : IDisposable
         lock (_hardwareLock)
         {
             if (_hardwareInitialized) return;
-            if (!PawnIOHelper.IsPawnIOInnstalled()) return;
+            if (!PawnIOHelper.IsPawnIOInstalled()) return;
 
             try
             {
@@ -487,6 +487,7 @@ public class SensorsGroupController : IDisposable
     private void HandleInitException(string reason)
     {
         var settings = IoCContainer.Resolve<ApplicationSettings>();
+        settings.Store.EnableHardwareSensors = false;
         settings.Store.UseNewSensorDashboard = false;
         settings.SynchronizeStore();
         InitialState = LibreHardwareMonitorInitialState.Fail;

@@ -57,7 +57,7 @@ public static class PawnIOHelper
         TryShowPawnIONotFoundDialogAsync().ConfigureAwait(false);
     }
 
-    public static bool IsPawnIOInnstalled()
+    public static bool IsPawnIOInstalled()
     {
         string? path = Registry.GetValue(REG_KEY_PAWN_IO, REG_VAL_INSTALL_LOC, null) as string
                        ?? Registry.GetValue(REG_KEY_PAWN_IO_WOW64, REG_VAL_INSTALL_DIR, null) as string

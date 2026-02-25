@@ -8,6 +8,8 @@ using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Messaging;
+using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
@@ -93,7 +95,7 @@ public partial class SettingsAppBehaviorControl
             _floatingGadgetsCardControl.Visibility = Visibility.Collapsed;
         }
 
-        if (PawnIOHelper.IsPawnIOInnstalled())
+        if (PawnIOHelper.IsPawnIOInstalled())
         {
             _hardwareSensorsCardHeader.Warning = string.Empty;
         }
@@ -225,7 +227,7 @@ public partial class SettingsAppBehaviorControl
 
         if (state.Value)
         {
-            if (!PawnIOHelper.IsPawnIOInnstalled())
+            if (!PawnIOHelper.IsPawnIOInstalled())
             {
                 await PawnIOHelper.TryShowPawnIONotFoundDialogAsync().ConfigureAwait(false);
 
@@ -258,6 +260,8 @@ public partial class SettingsAppBehaviorControl
         
         _useNewSensorDashboardCardControl.Visibility = state.Value ? Visibility.Visible : Visibility.Collapsed;
         _floatingGadgetsCardControl.Visibility = state.Value ? Visibility.Visible : Visibility.Collapsed;
+        
+        MessagingCenter.Publish(new SensorDashboardSwappedMessage());
     }
 
     private async void UseNewSensorDashboard_Toggle(object sender, RoutedEventArgs e)
@@ -271,11 +275,10 @@ public partial class SettingsAppBehaviorControl
         if (state is null)
             return;
 
-        await SnackbarHelper.ShowAsync(Resource.SettingsPage_UseNewDashboard_Switch_Title,
-            Resource.SettingsPage_UseNewDashboard_Restart_Message);
-            
         _settings.Store.UseNewSensorDashboard = state.Value;
         _settings.SynchronizeStore();
+        
+        MessagingCenter.Publish(new SensorDashboardSwappedMessage());
     }
 
     private void DashboardCustomButton_Click(object sender, RoutedEventArgs e)

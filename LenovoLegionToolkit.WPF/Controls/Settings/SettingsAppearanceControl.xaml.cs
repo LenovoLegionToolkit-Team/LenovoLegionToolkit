@@ -212,7 +212,7 @@ public partial class SettingsAppearanceControl
         if (_isRefreshing)
             return;
 
-        SnackbarHelper.Show(Resource.SettingsPage_ClearBackgroundImage_Title, Resource.SettingsPage_UseNewDashboard_Restart_Message, SnackbarType.Success);
+        SnackbarHelper.Show(Resource.SettingsPage_ClearBackgroundImage_Title, Resource.SettingsPage_RestartRequired_Message, SnackbarType.Success);
 
         _settings.Store.BackGroundImageFilePath = string.Empty;
         _settings.SynchronizeStore();
@@ -226,7 +226,7 @@ public partial class SettingsAppearanceControl
         _settings.Store.EnableHardwareAcceleration = true;
         _settings.SynchronizeStore();
 
-        SnackbarHelper.Show(Resource.SettingsPage_HardwareAcceleration_Title, Resource.SettingsPage_UseNewDashboard_Restart_Message, SnackbarType.Success);
+        SnackbarHelper.Show(Resource.SettingsPage_HardwareAcceleration_Title, Resource.SettingsPage_RestartRequired_Message, SnackbarType.Success);
     }
 
     private void HardwareAccelerationToggle_Unchecked(object sender, RoutedEventArgs e)
@@ -237,7 +237,7 @@ public partial class SettingsAppearanceControl
         _settings.Store.EnableHardwareAcceleration = false;
         _settings.SynchronizeStore();
 
-        SnackbarHelper.Show(Resource.SettingsPage_HardwareAcceleration_Title, Resource.SettingsPage_UseNewDashboard_Restart_Message, SnackbarType.Success);
+        SnackbarHelper.Show(Resource.SettingsPage_HardwareAcceleration_Title, Resource.SettingsPage_RestartRequired_Message, SnackbarType.Success);
     }
 
     private void BackdropTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -251,7 +251,7 @@ public partial class SettingsAppearanceControl
         _settings.Store.BackdropType = state;
         _settings.SynchronizeStore();
 
-        SnackbarHelper.Show(Resource.SettingsPage_WindowBackdropType_Title, Resource.SettingsPage_UseNewDashboard_Restart_Message, SnackbarType.Success);
+        SnackbarHelper.Show(Resource.SettingsPage_WindowBackdropType_Title, Resource.SettingsPage_RestartRequired_Message, SnackbarType.Success);
     }
 
     private void GpuPreferenceComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -284,6 +284,7 @@ public partial class SettingsAppearanceControl
             }
         }
 
-        SnackbarHelper.Show(Resource.SettingsPage_HardwareAcceleration_Title, Resource.SettingsPage_UseNewDashboard_Restart_Message, SnackbarType.Success);
+        SnackbarHelper.Show(Resource.SettingsPage_HardwareAcceleration_Title, Resource.SettingsPage_RestartRequired_Message, SnackbarType.Success);
     }
 }
+

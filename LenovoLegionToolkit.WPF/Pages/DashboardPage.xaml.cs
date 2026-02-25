@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Messaging;
+using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls.Dashboard;
@@ -23,17 +25,32 @@ public partial class DashboardPage
     private readonly DashboardSettings _dashboardSettings = IoCContainer.Resolve<DashboardSettings>();
 
     private readonly List<DashboardGroupControl> _dashboardGroupControls = [];
-    private FrameworkElement sensorControl;
+    private FrameworkElement sensorControl = null!;
 
     public DashboardPage()
     {
         InitializeComponent();
 
+        RefreshSensorControl();
+
+        MessagingCenter.Subscribe<SensorDashboardSwappedMessage>(this, _ =>
+        {
+            Dispatcher.Invoke(RefreshSensorControl);
+        });
+    }
+
+    private void RefreshSensorControl()
+    {
+        if (sensorControl != null)
+        {
+            _panel.Children.Remove(sensorControl);
+        }
+
         if (!_settings.Store.EnableHardwareSensors || !_settings.Store.UseNewSensorDashboard)
         {
             sensorControl = new SensorsControl();
         }
-        else if (PawnIOHelper.IsPawnIOInnstalled())
+        else if (PawnIOHelper.IsPawnIOInstalled())
         {
             sensorControl = new SensorsControlV2();
         }
@@ -44,8 +61,17 @@ public partial class DashboardPage
         }
 
         int contentIndex = _panel.Children.IndexOf(_content);
+        if (contentIndex == -1) contentIndex = 0;
+        
         sensorControl.Margin = new Thickness(0, 16, 16, 0);
         _panel.Children.Insert(contentIndex, sensorControl);
+
+        if (_dashboardSettings != null && _loader != null && !_loader.IsLoading)
+        {
+            sensorControl.Visibility = _dashboardSettings.Store.ShowSensors
+                ? Visibility.Visible
+                : Visibility.Collapsed;
+        }
     }
 
     private async void DashboardPage_Initialized(object? sender, EventArgs e)
