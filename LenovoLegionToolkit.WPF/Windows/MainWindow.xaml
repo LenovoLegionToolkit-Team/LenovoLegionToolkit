@@ -107,18 +107,12 @@
                         PageTag="keyboardBacklight"
                         PageType="{x:Type pages:KeyboardBacklightPage}" />
                     <custom:NavigationItem
-                        x:Name="_lampArrayKeyboardItem"
-                        Content="{x:Static resources:Resource.MainWindow_NavigationItem_Keyboard}"
-                        Icon="Keyboard24"
-                        PageTag="lampArrayKeyboardBacklight"
-                        PageType="{x:Type pages:LampArrayRGBKeyboardPage}" />
-                    <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Battery}"
                         Icon="BatteryCheckmark24"
                         PageTag="battery"
                         PageType="{x:Type pages:BatteryPage}" />
                     <custom:NavigationItem
-                        x:Name="_fanItem"
+                        x:Name="_fanItem"   
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_FanCurve}"
                         Icon="Gauge24"
                         PageTag="fanCurve"
@@ -161,7 +155,7 @@
             </wpfui:NavigationStore>
 
             <Border Grid.Column="1" Background="{DynamicResource ControlFillColorDefaultBrush}" CornerRadius="4" Margin="0,0,12,12" ClipToBounds="True">
-                <Frame Name="_rootFrame" Margin="24,0,0,0" />
+                <Frame Name="_rootFrame" Margin="24,0,0,0" JournalOwnership="OwnsJournal" />
             </Border>
 
             <wpfui:Snackbar

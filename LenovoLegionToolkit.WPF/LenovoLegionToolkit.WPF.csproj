@@ -1,9 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
+		<TargetFramework>net9.0-windows7.0</TargetFramework>
+		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<Platforms>x64</Platforms>
 		<OutputType>WinExe</OutputType>
 		<ApplicationIcon>Assets/icon.ico</ApplicationIcon>
 		<AssemblyName>Lenovo Legion Toolkit</AssemblyName>
-
+		<Copyright>© 2026 Bartosz Cichecki, Kaguya, and Dr. Skinner</Copyright>
+		<FileVersion>0.0.1</FileVersion>
+		<Version>0.0.1</Version>
+		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
 		<UseWindowsForms>true</UseWindowsForms>
 		<SelfContained>false</SelfContained>
@@ -13,6 +19,8 @@
 		<IncludeAllContentForSelfExtract>false</IncludeAllContentForSelfExtract>
 		<RollForward>Major</RollForward>
 		<CETCompat>false</CETCompat>
+		<TieredCompilation>true</TieredCompilation>
+		<TieredCompilationQuickJit>true</TieredCompilationQuickJit>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -22,6 +30,7 @@
 	<PropertyGroup>
 		<ApplicationManifest>app.manifest</ApplicationManifest>
 		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<NeutralLanguage>en</NeutralLanguage>
 		<SatelliteResourceLanguages>ar;bg;cs;de;en;el;es;fr;hu;it;ja;lv;nl;nl-nl;pl;pt;pt-br;ro;ru;sk;uk;tr;vi;zh;zh-hans;zh-hant</SatelliteResourceLanguages>
 	</PropertyGroup>
 

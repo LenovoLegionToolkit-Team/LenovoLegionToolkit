@@ -95,6 +95,43 @@
                 Icon="Save24">
                 <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_BackupSettings_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_BackupSettings_Message}" />
             </custom:CardAction>
+            <custom:CardControl Margin="0,0,0,8" Icon="TopSpeed24">
+                <custom:CardControl.Header>
+                    <controls:CardHeaderControl Title="High Performance UI" Subtitle="Enable hardware acceleration and smooth animations (144 FPS). Disable for battery savings. Requires restart." />
+                </custom:CardControl.Header>
+                <wpfui:ToggleSwitch
+                    x:Name="_highPerformanceUIToggle"
+                    Margin="0,0,0,8"
+                    AutomationProperties.Name="High Performance UI"
+                    Click="HighPerformanceUIToggle_Click"
+                    Visibility="Hidden" />
+            </custom:CardControl>
+            <custom:CardControl Margin="0,0,0,8" Icon="Keyboard24">
+                <custom:CardControl.Header>
+                    <controls:CardHeaderControl 
+                        Title="Keyboard Backlight Timeout" 
+                        Subtitle="Automatically turn off keyboard backlight after inactivity (seconds). 0 = disabled." />
+                </custom:CardControl.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Slider
+                        x:Name="_keyboardBacklightTimeoutSlider"
+                        Width="200"
+                        Margin="0,5,0,0"
+                        IsSnapToTickEnabled="True"
+                        LargeChange="30"
+                        Maximum="300"
+                        Minimum="0"
+                        SmallChange="10"
+                        TickFrequency="30"
+                        ValueChanged="KeyboardBacklightTimeoutSlider_ValueChanged"
+                        Visibility="Hidden" />
+                    <TextBlock
+                        x:Name="_keyboardBacklightTimeoutText"
+                        Margin="10,5,0,0"
+                        VerticalAlignment="Center"
+                        Text="0 (Off)" />
+                </StackPanel>
+            </custom:CardControl>
             <custom:CardControl Margin="0,0,0,8" Icon="Bug24">
                 <custom:CardControl.Header>
                     <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_EnableLogging_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_EnableLogging_Message}" />
