@@ -163,4 +163,13 @@ public partial class DiscreteGPUControl
         _deactivateGPUButton.IsEnabled = false;
         await _gpuController.RestartGPUAsync();
     }
+    
+    private void HistoryButton_Click(object sender, RoutedEventArgs e)
+    {
+        var window = new Windows.Dashboard.GPUWatcherWindow
+        {
+            Owner = Window.GetWindow(this)
+        };
+        window.Show();
+    }
 }

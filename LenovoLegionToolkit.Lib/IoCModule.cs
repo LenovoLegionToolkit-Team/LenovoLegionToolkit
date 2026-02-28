@@ -46,8 +46,7 @@ public class IoCModule : Module
         builder.Register<SpectrumKeyboardSettings>();
         builder.Register<SunriseSunsetSettings>();
         builder.Register<UpdateSettings>();
-        builder.Register<LampArraySettings>();
-        builder.Register<FanCurveSettings>().SingleInstance();
+        builder.Register<FanCurveSettings>();
 
         builder.Register<AlwaysOnUSBFeature>();
         builder.Register<BatteryFeature>();
@@ -123,8 +122,10 @@ public class IoCModule : Module
         builder.Register<GodModeControllerV4>(true);
         builder.Register<GPUController>();
         builder.Register<GPUOverclockController>();
+        builder.Register<GPUWatcherService>();
+        builder.Register<KeyboardBacklightTimeoutService>();
+        builder.Register<ProfileSyncService>();
         builder.Register<RGBKeyboardBacklightController>();
-        builder.Register<LampArrayController>();
         builder.Register<SensorsController>();
         builder.Register<SensorsControllerV1>(true);
         builder.Register<SensorsControllerV2>(true);
