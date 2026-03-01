@@ -1320,3 +1320,24 @@ public struct UpdateFromServer(ProjectInfo projectInfo, string patchNote)
     public DateTimeOffset Date { get; set; } = DateTimeOffset.Now;
     public string? Url = projectInfo.ProjectNewExePath;
 }
+
+[StructLayout(LayoutKind.Sequential)]
+public struct LASTINPUTINFO
+{
+    public uint cbSize;
+    public uint dwTime;
+}
+
+public readonly struct GpuProcessHistoryEntry
+{
+    public string ProcessName { get; init; }
+    public DateTime StartTime { get; init; }
+    public DateTime? EndTime { get; init; }
+    public bool IsActive => EndTime is null;
+}
+
+public class GpuProcessChangedEventArgs : EventArgs
+{
+    public string ProcessName { get; init; } = string.Empty;
+    public bool Started { get; init; }
+}

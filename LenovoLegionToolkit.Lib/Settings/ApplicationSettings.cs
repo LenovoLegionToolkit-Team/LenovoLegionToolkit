@@ -22,6 +22,10 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public bool SmartKey { get; set; }
         public bool AutomationNotification { get; set; } = true;
         public bool ITSMode { get; set; } = true;
+        /// <summary>
+        /// Show notifications when a new process starts using the discrete GPU.
+        /// </summary>
+        public bool GpuProcesses { get; set; } = true;
     }
 
     public class ApplicationSettingsStore
@@ -63,6 +67,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public bool CustomModeWarningDontShowAgain { get; set; }
         public bool EnableHardwareAcceleration { get; set; }
         public WindowBackdropType BackdropType { get; set; } = WindowBackdropType.Mica;
+        public int KeyboardBacklightTimeout { get; set; }
     }
 
     public class GameDetectionSettings

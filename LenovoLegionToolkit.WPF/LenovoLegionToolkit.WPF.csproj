@@ -13,6 +13,8 @@
 		<IncludeAllContentForSelfExtract>false</IncludeAllContentForSelfExtract>
 		<RollForward>Major</RollForward>
 		<CETCompat>false</CETCompat>
+		<TieredCompilation>true</TieredCompilation>
+		<TieredCompilationQuickJit>true</TieredCompilationQuickJit>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">

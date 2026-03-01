@@ -50,6 +50,8 @@ public partial class SettingsAppBehaviorControl
         _useNewSensorDashboardToggle.IsChecked = _settings.Store.UseNewSensorDashboard;
         _lockWindowSizeToggle.IsChecked = _settings.Store.LockWindowSize;
         _enableLoggingToggle.IsChecked = _settings.Store.EnableLogging;
+        _keyboardBacklightTimeoutSlider.Value = _settings.Store.KeyboardBacklightTimeout;
+        UpdateKeyboardTimeoutText(_settings.Store.KeyboardBacklightTimeout);
 
         // Game Detection
         var useGpu = _settings.Store.GameDetection.UseDiscreteGPU;
@@ -81,6 +83,7 @@ public partial class SettingsAppBehaviorControl
         _hardwareSensorsToggle.Visibility = Visibility.Visible;
         _lockWindowSizeToggle.Visibility = Visibility.Visible;
         _floatingGadgetsToggle.Visibility = Visibility.Visible;
+        _keyboardBacklightTimeoutSlider.Visibility = Visibility.Visible;
 
         _hardwareSensorsToggle.IsChecked = _settings.Store.EnableHardwareSensors;
 
@@ -229,7 +232,21 @@ public partial class SettingsAppBehaviorControl
         {
             if (!PawnIOHelper.IsPawnIOInstalled())
             {
-                await PawnIOHelper.TryShowPawnIONotFoundDialogAsync().ConfigureAwait(false);
+                var result = await MessageBoxHelper.ShowAsync(
+                    this,
+                    Resource.MainWindow_PawnIO_Warning_Title,
+                    Resource.MainWindow_PawnIO_Warning_Message,
+                    Resource.Yes,
+                    Resource.No);
+
+                if (result)
+                {
+                    Process.Start(new ProcessStartInfo
+                    {
+                        FileName = "https://pawnio.eu/",
+                        UseShellExecute = true
+                    });
+                }
 
                 _hardwareSensorsToggle.IsChecked = false;
                 return;
@@ -451,5 +468,22 @@ public partial class SettingsAppBehaviorControl
 
         var window = new SensorSettingsWindow { Owner = Window.GetWindow(this) };
         window.ShowDialog();
+    }
+
+
+    private void KeyboardBacklightTimeoutSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        if (_isRefreshing || !IsLoaded)
+            return;
+
+        var value = (int)e.NewValue;
+        _settings.Store.KeyboardBacklightTimeout = value;
+        _settings.SynchronizeStore();
+        UpdateKeyboardTimeoutText(value);
+    }
+
+    private void UpdateKeyboardTimeoutText(int seconds)
+    {
+        _keyboardBacklightTimeoutText.Text = seconds == 0 ? "0 (Off)" : $"{seconds}s";
     }
 }

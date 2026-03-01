@@ -189,7 +189,15 @@ public partial class App
 
         var settings = IoCContainer.Resolve<ApplicationSettings>();
 
-        if (!AppFlags.Instance.EnableHardwareAcceleration && !settings.Store.EnableHardwareAcceleration)
+        if (AppFlags.Instance.EnableHardwareAcceleration || settings.Store.EnableHardwareAcceleration)
+        {
+            // High frame rate for smooth UI when hardware acceleration is enabled
+            System.Windows.Media.Animation.Timeline.DesiredFrameRateProperty.OverrideMetadata(
+                typeof(System.Windows.Media.Animation.Timeline),
+                new FrameworkPropertyMetadata { DefaultValue = 144 }
+            );
+        }
+        else
         {
             RenderOptions.ProcessRenderMode = RenderMode.SoftwareOnly;
         }
@@ -219,7 +227,6 @@ public partial class App
             SafeInitAsync(InitRgbKeyboardControllerAsync, "RGB Keyboard"),
             SafeInitAsync(InitSpectrumKeyboardControllerAsync, "Spectrum Keyboard"),
             SafeInitAsync(InitGpuOverclockControllerAsync, "GPU Overclock"),
-            SafeInitAsync(InitLampArrayControllerAsync, "LampArray"),
             SafeInitAsync(InitHybridModeAsync, "Hybrid Mode"),
             SafeInitAsync(InitFanManagerExtension, "Fan Manager"),
             SafeInitAsync(InitAutomationLocalization, "Automation Localization"),
@@ -1115,21 +1122,6 @@ public partial class App
         {
             FloatingGadget = null;
         };
-    }
-
-    private static async Task InitLampArrayControllerAsync()
-    {
-        try
-        {
-            var controller = IoCContainer.Resolve<LampArrayController>();
-            var settings = IoCContainer.Resolve<LampArraySettings>();
-            controller.SetScreenCaptureProvider(new SpectrumScreenCapture());
-            await controller.InitializeAsync(settings).ConfigureAwait(false);
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"InitLampArrayControllerAsync failed.", ex);
-        }
     }
 
     private async Task SafeInitAsync(Func<Task> action, string taskName)

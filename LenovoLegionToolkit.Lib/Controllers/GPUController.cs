@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
-using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Resources;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
@@ -19,6 +18,8 @@ namespace LenovoLegionToolkit.Lib.Controllers;
 
 public class GPUController
 {
+    private readonly GPUWatcherService? _watcherService;
+
     private readonly AsyncLock _lock = new();
 
     private Task? _refreshTask;
@@ -31,6 +32,18 @@ public class GPUController
 
     public event EventHandler<GPUStatus>? Refreshed;
     public bool IsStarted { get => _refreshTask != null; }
+    
+    /// <summary>
+    /// Access to GPU process watcher service for notifications and history
+    /// </summary>
+    public GPUWatcherService? WatcherService => _watcherService;
+    
+    public GPUController() { }
+    
+    public GPUController(GPUWatcherService watcherService)
+    {
+        _watcherService = watcherService;
+    }
 
     public bool IsSupported()
     {
@@ -237,25 +250,23 @@ public class GPUController
 
         var gpuInstanceId = await WMI.Win32.PnpEntity.GetDeviceIDAsync(pnpDeviceIdPart).ConfigureAwait(false);
         var processNames = NVAPIExtensions.GetActiveProcesses(gpu);
-        var feature = IoCContainer.Resolve<HybridModeFeature>();
 
-        if (await feature.GetStateAsync().ConfigureAwait(false) == HybridModeState.Off)
+        if (NVAPI.IsDisplayConnected(gpu))
         {
-            if (NVAPI.IsDisplayConnected(gpu))
-            {
-                _processes = processNames;
-                _state = GPUState.MonitorConnected;
+            _processes = processNames;
+            _state = GPUState.MonitorConnected;
+            _watcherService?.UpdateProcessList(_processes);
 
-                // Comment due to annoying.
-                //if (Log.Instance.IsTraceEnabled)
-                //    Log.Instance.Trace($"Monitor connected [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
-            }
+            // Comment due to annoying.
+            //if (Log.Instance.IsTraceEnabled)
+            //    Log.Instance.Trace($"Monitor connected [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
         }
         else if (processNames.Count != 0)
         {
             _processes = processNames;
             _state = GPUState.Active;
             _gpuInstanceId = gpuInstanceId;
+            _watcherService?.UpdateProcessList(_processes);
 
             Log.Instance.Trace($"Active [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}, pnpDeviceIdPart={pnpDeviceIdPart}]");
         }
@@ -263,6 +274,7 @@ public class GPUController
         {
             _state = GPUState.Inactive;
             _gpuInstanceId = gpuInstanceId;
+            _watcherService?.UpdateProcessList(Array.Empty<Process>());
 
             Log.Instance.Trace($"Inactive [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
         }
