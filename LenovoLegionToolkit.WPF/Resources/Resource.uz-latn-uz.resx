@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,71 +118,71 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutPage_ApplicationFolders" xml:space="preserve">
-    <value>Baǵdarlama papkaları</value>
+    <value>Application Folders</value>
   </data>
   <data name="AboutPage_AppName" xml:space="preserve">
     <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="AboutPage_Build" xml:space="preserve">
-    <value>Qurıw</value>
+    <value>Build</value>
   </data>
   <data name="AboutPage_Data" xml:space="preserve">
-    <value>Maǵlıwmatlar</value>
+    <value>Data</value>
   </data>
   <data name="AboutPage_LatestReleaseOnGitHub" xml:space="preserve">
-    <value>GitHubdaǵı sońǵı versiya</value>
+    <value>Latest release on GitHub</value>
   </data>
   <data name="AboutPage_Links" xml:space="preserve">
-    <value>Siltemeler</value>
+    <value>Links</value>
   </data>
   <data name="AboutPage_Log" xml:space="preserve">
     <value>Log</value>
   </data>
   <data name="AboutPage_ProjectWebsiteOnGitHub" xml:space="preserve">
-    <value>GitHubtaǵı jobanıń veb-saytı</value>
+    <value>Project website on GitHub</value>
   </data>
   <data name="AboutPage_Temp" xml:space="preserve">
-    <value>Waqtınshalıq fayllar</value>
+    <value>Temp</value>
   </data>
   <data name="AboutPage_ThirdPartyLibraries" xml:space="preserve">
-    <value>Sırtqı kitapxanalar</value>
+    <value>Third-party libraries</value>
   </data>
   <data name="AboutPage_Title" xml:space="preserve">
-    <value>Baǵdarlama haqqında</value>
+    <value>About</value>
   </data>
   <data name="AboutPage_TranslationCredit" xml:space="preserve">
-    <value>Awdarmalar birlespe tárepinen támiyinlendi.</value>
+    <value>Translations provided by community.</value>
     <comment>Please replace this text with something like "Translated into &lt;language&gt; by &lt;your name&gt;."</comment>
   </data>
   <data name="AboutPage_Version" xml:space="preserve">
-    <value>Versiya</value>
+    <value>Version</value>
   </data>
   <data name="AbstractAutomationStepControl_Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
   <data name="Active" xml:space="preserve">
-    <value>Aktiv</value>
+    <value>Active</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Qosıw</value>
+    <value>Add</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
-    <value>Adım qosıw</value>
+    <value>Add step</value>
   </data>
   <data name="AddNew" xml:space="preserve">
-    <value>Jańadan qosıw</value>
+    <value>Add new</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Kompyuter óshirilgen, gibernaciya yamasa uyqı rejiminde bolǵanda qurılmalardı USB arqalı zaryadlaw.</value>
+    <value>Charge USB devices, when the laptop is off, sleeping or hibernated.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
-    <value>Hámiyshe USBden quwatlanıw</value>
+    <value>Always on USB</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Kompyuter óshirilgen, gibernaciya yamasa uyqı rejiminde bolǵanda qurılmalardı USB arqalı zaryadlaw.</value>
+    <value>Charge USB devices, when the laptop is off, sleeping or hibernated.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
-    <value>Hámiyshe USBden quwatlanıw</value>
+    <value>Always on USB</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
     <value>Apply Changes</value>
@@ -233,10 +233,10 @@
     <value>X3D Gaming Mode</value>
   </data>
   <data name="Apply" xml:space="preserve">
-    <value>Qollanıw</value>
+    <value>Apply</value>
   </data>
   <data name="ApplyAndClose" xml:space="preserve">
-    <value>Qollanıw hám jabıw</value>
+    <value>Apply &amp; Close</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>Lenovo Legion Toolkit</value>
@@ -320,29 +320,29 @@
     <value>Argument Window</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
-    <value>Iske túsiriw</value>
+    <value>Enable</value>
   </data>
   <data name="AutomationPage_ActionsEnable_Message" xml:space="preserve">
-    <value>Avtomatikalıq háreketlerdiń orınlanıwı ushın Lenovo Legion Toolkit iske túsirilgen bolıwı kerek.</value>
+    <value>Lenovo Legion Toolkit must be running for automatic actions to work.</value>
   </data>
   <data name="AutomationPage_Actions_Empty" xml:space="preserve">
-    <value>Háreketler anıqlanbaǵan. Jańa háreket jaratıw ushın "Jańadan qosıw" túymesin basıń.</value>
+    <value>No Actions defined. Click "Add new" to create new Action.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>Eger qosılǵan bolsa, bul háreketler avtomatikalıq ámelge asırıladı. Jaǵday ózgergende, barlıq háreketler joqarıdan tómenge qaray bahalanadı.
-Tek ámeldegi jaǵdayǵa sáykes keletuǵın háreketler orınlanadı.</value>
+    <value>If enabled, these action will run automatically. Whenever state changes, all actions will be evaluated from top to bottom.
+Only actions that match current state will run.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
-    <value>Háreketler</value>
+    <value>Actions</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Placeholder" xml:space="preserve">
-    <value>Ataması...</value>
+    <value>Name...</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Title" xml:space="preserve">
-    <value>Jańasın qosıw</value>
+    <value>Add new</value>
   </data>
   <data name="AutomationPage_ChangeIcon" xml:space="preserve">
-    <value>Tańbanı ózgertiw</value>
+    <value>Change icon</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
     <value>Automatic (All Methods)</value>
@@ -363,64 +363,64 @@ Tek ámeldegi jaǵdayǵa sáykes keletuǵın háreketler orınlanadı.</value>
     <value>Game Detection</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
-    <value>Tez háreketler anıqlanbaǵan. Jańa operativ háreket jaratıw ushın "Jańasın qosıw" túymesin basıń.</value>
+    <value>No Quick Actions defined. Click "Add new" to create new Quick Action.</value>
   </data>
   <data name="AutomationPage_QuickActions_Message" xml:space="preserve">
-    <value>Tez háreketler xabarlamalar maydanındaǵı tıshqanshanıń oń túymesi belgisi menyuinde bar.</value>
+    <value>Quick actions are available in the right click menu of the tray icon.</value>
   </data>
   <data name="AutomationPage_QuickActions_Title" xml:space="preserve">
-    <value>Tez háreketler</value>
+    <value>Quick Actions</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Placeholder" xml:space="preserve">
-    <value>Ataması...</value>
+    <value>Name...</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Title" xml:space="preserve">
-    <value>Qayta ataw</value>
+    <value>Rename</value>
   </data>
   <data name="AutomationPage_Reverted_Message" xml:space="preserve">
-    <value>Barlıq ózgerisler biykarlandı!</value>
+    <value>All changes reverted!</value>
   </data>
   <data name="AutomationPage_Reverted_Title" xml:space="preserve">
-    <value>Izge qaytarıldı</value>
+    <value>Reverted</value>
   </data>
   <data name="AutomationPage_Saved_Message" xml:space="preserve">
-    <value>Ózgerisler tabıslı saqlandı!</value>
+    <value>Changes were saved successfully!</value>
   </data>
   <data name="AutomationPage_Saved_Title" xml:space="preserve">
-    <value>Saqlandı</value>
+    <value>Saved</value>
   </data>
   <data name="AutomationPage_Title" xml:space="preserve">
-    <value>Avtomatizaciya</value>
+    <value>Automation</value>
   </data>
   <data name="AutomationPipelineControl_AddStep" xml:space="preserve">
-    <value>Adım qosıw</value>
+    <value>Add step</value>
   </data>
   <data name="AutomationPipelineControl_Configure" xml:space="preserve">
-    <value>Sazlaw</value>
+    <value>Configure</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive" xml:space="preserve">
-    <value>Esaptan tısqarı</value>
+    <value>Exclusive</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>Usı háreket baslanǵanda, basqa ámellerdi orınlamań.</value>
+    <value>Do not execute further actions when this action runs.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
-    <value>Orınlanbaqta...</value>
+    <value>Running...</value>
   </data>
   <data name="AutomationPipelineControl_RunNow" xml:space="preserve">
-    <value>Házir orınlaw</value>
+    <value>Run now</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Message" xml:space="preserve">
-    <value>Qátelikler menen juwmaqlandı.</value>
+    <value>Completed with errors.</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Title" xml:space="preserve">
-    <value>Házir orınlaw</value>
+    <value>Run now</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Message" xml:space="preserve">
-    <value>Tabıslı juwmaqlandı!</value>
+    <value>Completed successfully!</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Title" xml:space="preserve">
-    <value>Házir orınlaw</value>
+    <value>Run now</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
     <value>Run on startup</value>
@@ -429,76 +429,76 @@ Tek ámeldegi jaǵdayǵa sáykes keletuǵın háreketler orınlanadı.</value>
     <value>When enabled, this automation will check and apply when the app starts</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
-    <value>{0} adım</value>
+    <value>{0} step</value>
   </data>
   <data name="AutomationPipelineControl_Step_Many" xml:space="preserve">
-    <value>{0} adım</value>
+    <value>{0} steps</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_After" xml:space="preserve">
-    <value>Arqalı {0}</value>
+    <value>After {0}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Apps" xml:space="preserve">
-    <value>Baǵdarlamalar</value>
+    <value>Apps</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunrise" xml:space="preserve">
-    <value>Tań atqanda</value>
+    <value>At sunrise</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunset" xml:space="preserve">
-    <value>Kún batqanda</value>
+    <value>At sunset</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
-    <value>{0:D2}:{1:D2}:{2:D2}</value>
+    <value>At {0:D2}:{1:D2}:{2:D2}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
-    <value>Quwatlılıq rejimi</value>
+    <value>Power Mode</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Preset" xml:space="preserve">
-    <value>Aldınnan ornatıw</value>
+    <value>Preset</value>
   </data>
   <data name="AutomationPipelineControl_Unnamed" xml:space="preserve">
-    <value>Atı atalmaǵan</value>
+    <value>Unnamed</value>
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
-    <value>Sazlaw</value>
+    <value>Configure</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
-    <value>Belgili oyınlar iske túskenin avtomatikalıq anıqlaydı, CPU hám GPU iskerligin ózgertedi. Temperatura hám samallatqısh shawqımı artıwı múmkin.</value>
+    <value>Automatically detects when certain games are running and tweaks CPU and GPU performance. Temperatures and fan noise might increase.</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Title" xml:space="preserve">
-    <value>AI Enginedı qosıw</value>
+    <value>Enable AI Engine</value>
   </data>
   <data name="BalanceModeSettingsWindow_Title" xml:space="preserve">
-    <value>Teńlesiw rejimi sazlawları</value>
+    <value>Balance Mode Settings</value>
   </data>
   <data name="BatteryAutomationStepControl_Message" xml:space="preserve">
-    <value>Batareyanı zaryadlaw usılın tańlaw.</value>
+    <value>Choose how the battery is charged.</value>
   </data>
   <data name="BatteryAutomationStepControl_Title" xml:space="preserve">
-    <value>Batareya rejimi</value>
+    <value>Battery Mode</value>
   </data>
   <data name="BatteryModeControl_Message" xml:space="preserve">
-    <value>Batareyanı zaryadlaw usılın tańlaw.</value>
+    <value>Choose how the battery is charged.</value>
   </data>
   <data name="BatteryModeControl_Title" xml:space="preserve">
-    <value>Batareya rejimi</value>
+    <value>Battery Mode</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Message" xml:space="preserve">
-    <value>Eger qosılǵan bolsa, bul qurılma túnde rozetkaǵa jalǵanǵanda 80% quwatlanadı hám azanda bul qurılmadan paydalanǵanda 100% quwatlanadı.</value>
+    <value>When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning.</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Title" xml:space="preserve">
-    <value>Batareyanı túnde zaryadlaw</value>
+    <value>Overnight Battery Charging</value>
   </data>
   <data name="BatteryNightChargeModeControl_Message" xml:space="preserve">
-    <value>Eger qosılǵan bolsa, bul qurılma túnde toqqa jalǵanǵanda 80% quwatlanadı hám azanda bul qurılmadan paydalanǵanda 100% quwatlanadı.</value>
+    <value>When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning.</value>
   </data>
   <data name="BatteryNightChargeModeControl_Title" xml:space="preserve">
-    <value>Batareykanı túnde zaryadlaw</value>
+    <value>Overnight Battery Charging</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedAndCharging" xml:space="preserve">
-    <value>Jalǵanǵan, zaryadlanbaqta...</value>
+    <value>Connected, charging...</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedNotCharging" xml:space="preserve">
-    <value>Jalǵanǵan, zaryadlanbay atır</value>
+    <value>Connected, not charging</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Message" xml:space="preserve">
     <value>Battery maximum charge capacity.</value>
@@ -507,64 +507,64 @@ Tek ámeldegi jaǵdayǵa sáykes keletuǵın háreketler orınlanadı.</value>
     <value>Battery health</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Message" xml:space="preserve">
-    <value>Batareyanıń házirgi temperaturası.</value>
+    <value>Current temperature of the battery.</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Title" xml:space="preserve">
-    <value>Batareya temperaturası</value>
+    <value>Battery temperature</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Message" xml:space="preserve">
-    <value>Házirgi batareya quwatlıǵı.</value>
+    <value>Current battery capacity.</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Title" xml:space="preserve">
-    <value>Házirgi quwatlılıq</value>
+    <value>Current capacity</value>
   </data>
   <data name="BatteryPage_CycleCount_Message" xml:space="preserve">
-    <value>Zaryadlanıw/zaryadsızlanıw cikl sanı.</value>
+    <value>Number of charge/discharge cycles.</value>
   </data>
   <data name="BatteryPage_CycleCount_Title" xml:space="preserve">
-    <value>Cikl sanı</value>
+    <value>Cycle count</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Message" xml:space="preserve">
-    <value>Batareyanıń dáslepki quwatlıǵı.</value>
+    <value>Battery capacity as designed.</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Title" xml:space="preserve">
-    <value>Shamalıq quwat</value>
+    <value>Design capacity</value>
   </data>
   <data name="BatteryPage_DischargeRate_Message" xml:space="preserve">
-    <value>Batareyanıń zaryadlanıw (+) hám zaryadsızlanıw (-) tezligi.</value>
+    <value>Rate at which battery is charged (+), or discharged (-).</value>
   </data>
   <data name="BatteryPage_DischargeRate_Title" xml:space="preserve">
-    <value>Zaryadsızlanıw tezligi</value>
+    <value>Discharge rate</value>
   </data>
   <data name="BatteryPage_EstimatedBatteryLifeRemaining" xml:space="preserve">
-    <value>Shama menen qalǵan waqıt: {0}</value>
+    <value>Estimated time remaining: {0}</value>
   </data>
   <data name="BatteryPage_EstimatingBatteryLife" xml:space="preserve">
-    <value>Waqıt esaplanbaqta...</value>
+    <value>Estimating time...</value>
   </data>
   <data name="BatteryPage_FirstUseDate_Title" xml:space="preserve">
-    <value>Birinshi paydalanıw sánesi</value>
+    <value>First use date</value>
   </data>
   <data name="BatteryPage_FirstUse_Message" xml:space="preserve">
-    <value>Batareya birinshi isletilgen waqıt.</value>
+    <value>When was the battery first used.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Message" xml:space="preserve">
-    <value>Tolıq zaryadlanǵanda batareya quwatlıǵı.</value>
+    <value>Battery capacity when fully charged.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Title" xml:space="preserve">
-    <value>Tolıq zaryadlaw quwatlıǵı</value>
+    <value>Full charge capacity</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
-    <value>Batareyanıń quwatlılıq dárejesi tómen</value>
+    <value>Battery level low</value>
   </data>
   <data name="BatteryPage_LowWattageChargerConnected" xml:space="preserve">
-    <value>Kem quwatlı zaryadlawshı jalǵanǵan</value>
+    <value>Low wattage charger connected</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Message" xml:space="preserve">
-    <value>Batareya islep shıǵarılǵan waqıt.</value>
+    <value>When was the battery manufactured.</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Title" xml:space="preserve">
-    <value>Islep shıǵarılǵan sáne</value>
+    <value>Manufacture date</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Message" xml:space="preserve">
     <value>Maximum rate at which battery is charged (+), or discharged (-).</value>
@@ -579,27 +579,27 @@ Tek ámeldegi jaǵdayǵa sáykes keletuǵın háreketler orınlanadı.</value>
     <value>Minimum discharge rate</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Noutbuk aqırǵı márte tarmaqqa jalǵanǵannan beri waqıt.
-Eger noutbuk uyqı rejiminde yamasa óshirilgen waqıtta zaryadlanǵan bolsa, bul waqıt anıq bolmawı múmkin.</value>
+    <value>Time since laptop was last connected to AC power.
+This time might not be accurate, if laptop was charged when sleeping or off.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
-    <value>Batareyada</value>
+    <value>On battery since</value>
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
-    <value>Batareya</value>
+    <value>Battery</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
-    <value>Sazlań</value>
+    <value>Customize</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>Arnawlı júklew logotipi ornatıldı</value>
+    <value>Custom Boot Logo is set</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>Júklew logotipin únsizlik boyınsha ornatıń</value>
+    <value>Default Boot Logo is set</value>
   </data>
   <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Arnawlı júklew logotipi áyne {0} piksel úlken bolıwı kerek.
-Qollap - quwatlanatuǵın formatlar: {1}.</value>
+    <value>Custom boot logo must be exactly {0} pixels large.
+Supported formats are: {1}.</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>Custom logo could not be set: {0}</value>
@@ -629,13 +629,13 @@ Qollap - quwatlanatuǵın formatlar: {1}.</value>
     <value>Not enough free space on EFI partition.</value>
   </data>
   <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>Jaǵday</value>
+    <value>Status</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
-    <value>Logotip júklenip atır</value>
+    <value>Boot Logo</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Biykarlaw</value>
+    <value>Cancel</value>
   </data>
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
@@ -644,7 +644,7 @@ Qollap - quwatlanatuǵın formatlar: {1}.</value>
     <value>Clear</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Jabıw</value>
+    <value>Close</value>
   </data>
   <data name="CloseAutomationStepControl_Message" xml:space="preserve">
     <value>Close the Lenovo Legion Toolkit</value>
@@ -653,53 +653,54 @@ Qollap - quwatlanatuǵın formatlar: {1}.</value>
     <value>Close</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
-    <value>Kók</value>
+    <value>Blue</value>
   </data>
   <data name="Color_Green" xml:space="preserve">
-    <value>Jasıl</value>
+    <value>Green</value>
   </data>
   <data name="Color_Red" xml:space="preserve">
-    <value>Qızıl</value>
+    <value>Red</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Kompyuterińizden qanday paydalanıwıńızǵa hám quwat sharayatlarına qaray video kartanıń islew rejimin saylań.
- Rejimlerdi almastırıw ushın qayta iske túsiriw talap etiliwi múmkin.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.
+Switching modes may require restart.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Video kartanıń rejimi</value>
+    <value>GPU Working Mode</value>
   </data>
   <data name="ComboBoxHybridModeControl_Message" xml:space="preserve">
-    <value>Kompyuterińizden qalay paydalanıw hám quwatlılıq jaǵdayına qarap videokartanıń is rejimin tańlań. Rejimlerdi almastırıw ushın qayta iske túsiriw talap qılınıwı múmkin.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.
+Switching modes may require restart.</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>{0}ǵa ózgertiw ushın qayta iske túsiriw kerek. Házir qayta iske túsiriwdi qáleysiz be?</value>
+    <value>Changing to {0} requires restart. Do you want to restart now?</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>Qayta iske túsiriw talap etiledi</value>
+    <value>Restart required</value>
   </data>
   <data name="ComboBoxHybridModeControl_Title" xml:space="preserve">
-    <value>Videokartanıń jumıs rejimi</value>
+    <value>GPU Working Mode</value>
   </data>
   <data name="CompatibilityCheckError_Message" xml:space="preserve">
     <value>Error occured when reading device information.</value>
   </data>
   <data name="Continue" xml:space="preserve">
-    <value>Dawam etiw</value>
+    <value>Continue</value>
   </data>
   <data name="CopiedToClipboard_Message_WithParam" xml:space="preserve">
-    <value>{0} almasıw buferine kóshirip alındı.</value>
+    <value>"{0}" copied to clipboard.</value>
   </data>
   <data name="CopiedToClipboard_Title" xml:space="preserve">
-    <value>Kóshirip alındı!</value>
+    <value>Copied!</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
-    <value>Barlıǵın kóshirip alıw</value>
+    <value>Copy all</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Jaratıw</value>
+    <value>Create</value>
   </data>
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
-    <value>Xáreket jaratıw</value>
+    <value>Create Action</value>
   </data>
   <data name="CustomFanCurve_Accelerate" xml:space="preserve">
     <value>Accelerate</value>
@@ -741,42 +742,42 @@ Qollap - quwatlanatuǵın formatlar: {1}.</value>
     <value>AC Disconnected</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
-    <value>Sazlaw</value>
+    <value>Customize</value>
   </data>
   <data name="DashboardPage_Display_Title" xml:space="preserve">
-    <value>Displey</value>
+    <value>Display</value>
   </data>
   <data name="DashboardPage_Graphics_Title" xml:space="preserve">
-    <value>Grafika</value>
+    <value>Graphics</value>
   </data>
   <data name="DashboardPage_Other_Title" xml:space="preserve">
-    <value>Basqa</value>
+    <value>Other</value>
   </data>
   <data name="DashboardPage_Power_Title" xml:space="preserve">
-    <value>Quwatlılıq</value>
+    <value>Power</value>
   </data>
   <data name="DashboardPage_Title" xml:space="preserve">
-    <value>Bas bet</value>
+    <value>Home</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Eger bólekli grafikalıq processor zarúr bolmasa da qosılǵan bolsa, onı óshiriw
+    <value>Disable discrete GPU if it is active unnecessarily.
 
-DIQQAT: Eger ishki displey óshirilgen yamasa gibrid rejim aktiv emes bolsa, bul háreket durıs orınlanbaydı.</value>
+WARNING: This action will not run correctly, if internal display is off or Hybrid mode is not active.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
-    <value>Grafikalıq processordı óshiriw</value>
+    <value>Deactivate GPU</value>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>Aldınnan ornatılǵan</value>
+    <value>Default</value>
   </data>
   <data name="DelayAutomationStepControl_Message" xml:space="preserve">
-    <value>Keyingi qádemdi orınlawdan aldın iskilisti qosıw.</value>
+    <value>Add delay before running next step.</value>
   </data>
   <data name="DelayAutomationStepControl_Title" xml:space="preserve">
-    <value>Irkilis</value>
+    <value>Delay</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Óshiriw</value>
+    <value>Delete</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
     <value>Show connected devices only</value>
@@ -788,19 +789,19 @@ DIQQAT: Eger ishki displey óshirilgen yamasa gibrid rejim aktiv emes bolsa, bul
     <value>Show selected devices only</value>
   </data>
   <data name="DeviceInformationWindow_BiosVersion_Title" xml:space="preserve">
-    <value>BIOS versiyası</value>
+    <value>BIOS version</value>
   </data>
   <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
-    <value>Qurılma</value>
+    <value>Device</value>
   </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
-    <value>Lenovo qollap-quwatlaw xizmeti</value>
+    <value>Lenovo Support</value>
   </data>
   <data name="DeviceInformationWindow_MachineType_Title" xml:space="preserve">
-    <value>Qurılma modeliniń túri</value>
+    <value>Machine Type</value>
   </data>
   <data name="DeviceInformationWindow_Manufacturer_Title" xml:space="preserve">
-    <value>Islep shıǵarıwshı</value>
+    <value>Manufacturer</value>
   </data>
   <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
     <value>Model</value>
@@ -809,118 +810,117 @@ DIQQAT: Eger ishki displey óshirilgen yamasa gibrid rejim aktiv emes bolsa, bul
     <value>Refresh</value>
   </data>
   <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
-    <value>Seriyalı nomer</value>
+    <value>Serial number</value>
   </data>
   <data name="DeviceInformationWindow_Title" xml:space="preserve">
-    <value>Qurılmańız haqqında</value>
+    <value>About your device</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyEndDate_Title" xml:space="preserve">
-    <value>Kepillik tawsılıw sánesi</value>
+    <value>End date</value>
   </data>
   <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
-    <value>Kepillik baslanıw sánesi</value>
+    <value>Start date</value>
   </data>
   <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
-    <value>Kepillik</value>
+    <value>Warranty</value>
   </data>
   <data name="DevicePipelineTriggerTabItemContent_Devices" xml:space="preserve">
     <value>Devices</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
-    <value>Grafika protsessor jaǵıwlı</value>
+    <value>dGPU connected</value>
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
-    <value>Grafika protsessor óshirilgen</value>
+    <value>dGPU disconnected</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
-    <value>Óshiriw</value>
+    <value>Deactivate</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
-    <value>Proceslerdi juwmaqlaw</value>
+    <value>Kill apps</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Eger bólekli grafikalıq processor zarúr bolmasa da qosılǵan bolsa, onı óshiriw.</value>
+    <value>Disable discrete GPU, if it is active unnecessarily.</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
-    <value>Monitor nVidia grafikalıq processorına jalǵanǵan.</value>
+    <value>A monitor is connected to nVidia GPU.</value>
   </data>
   <data name="DiscreteGPUControl_NoProcesses" xml:space="preserve">
-    <value>Processler joq</value>
+    <value>No processes</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState" xml:space="preserve">
-    <value>Ónimdarlıq jaǵdayı</value>
+    <value>Performance state</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState_Unknown" xml:space="preserve">
-    <value>Belgisiz</value>
+    <value>Unknown</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
-    <value>Processler</value>
+    <value>Processes</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
-    <value>Grafikalıq processordı qayta iske qosıw</value>
+    <value>Restart GPU</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
-    <value>Bólekli grafikalıq processor</value>
+    <value>Discrete GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displeydiń jarıqlıǵın ózgertiń. 
-Ayırım qurılmalarda quwatlıq rejimleri jarıqlıqtı ózgertedi. Eger bir nárse kerekli dárejede durıs islemese, bul qádem aqırǵısı ekenine isenim kámil etiń.
+    <value>Change display brightness of the built-in display.
 
-ESLETPE: Eger ishki displey óshirilgen bolsa, bul háreket durıs islemeydi.</value>
+WARNING: This action will not run correctly, if internal display is off.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
-    <value>Displey jarıqlıǵı</value>
+    <value>Display brightness</value>
   </data>
   <data name="DonatePage_DonateWith" xml:space="preserve">
-    <value>Járdeminde qollap-quwatlaw</value>
+    <value>Donate with</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
-    <value>Lenovo Legion Toolkitti rawajlandırıw hám turaqlı islewin támiyinlew ushın kóp waqıt ketedi. Eger sizge bul baǵdarlamanı qollanıw unasa, siz qálegen summańız benen onıń keleshegin qollap-quwatlawıńız múmkin.
+    <value>Development and maintenance of Lenovo Legion Toolkit takes a lot of time. If you like using this software you can support its future by donating an amount of your choice.
 
-PayPal arqalı qollap-quwatlaw ushın PayPal logotibine basıń yamasa tómendegi QR-kodtı tekseriń.
+Click the PayPal logo below or scan the QR code to donate with PayPal.
 
-Aldınnan raxmet!</value>
+Thanks in advance!</value>
   </data>
   <data name="DonatePage_Title" xml:space="preserve">
-    <value>Qollap-quwatlaw</value>
+    <value>Donate</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displey kólemin ózgertiw.
+    <value>Change scaling of the built-in display.
 
-ESLETPE: Eger ishki displey óshirilgen bolsa, bul ámel durıs orınlanbaydı.</value>
+WARNING: This action will not run correctly, if internal display is off.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
   </data>
   <data name="DpiScaleControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displeydiń kólemin ózgertiw.</value>
+    <value>Change scale of the built-in display.</value>
   </data>
   <data name="DpiScaleControl_Title" xml:space="preserve">
     <value>DPI</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Ózgertiw</value>
+    <value>Edit</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Message" xml:space="preserve">
-    <value>Ataması</value>
+    <value>Name</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Title" xml:space="preserve">
-    <value>Topar atamasın ózgertiw</value>
+    <value>Edit group name</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Message" xml:space="preserve">
-    <value>Ataması</value>
+    <value>Name</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
-    <value>Topar jaratıw</value>
+    <value>Create group</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Qurılmańız halatı hám sazlawlarına qarap ayırım funkciyalar Ásbaplar panelinde kórinbewi múmkin.</value>
+    <value>Some features may not appear on the Dashboard depending on state and configuration of your laptop.</value>
   </data>
   <data name="EditDashboardWindow_Sensors" xml:space="preserve">
-    <value>Sensor</value>
+    <value>Sensors</value>
   </data>
   <data name="EditDashboardWindow_Title" xml:space="preserve">
-    <value>Bas betti sazlaw</value>
+    <value>Customize Dashboard</value>
   </data>
   <data name="EditSensorWindow_Title" xml:space="preserve">
     <value>Edit Sensor</value>
@@ -938,70 +938,70 @@ ESLETPE: Eger ishki displey óshirilgen bolsa, bul ámel durıs orınlanbaydı.<
     <value>Excluded Processes</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
-    <value>Fn+R túymelerin qollanǵanda, esapqa alıw kerek emes bolǵan jańalanıw tezliklerinen belgini alıp taslań.</value>
+    <value>Uncheck refresh rates that you do not want to use when Fn+R shortcut is used.</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Message" xml:space="preserve">
-    <value>Noutbuk displeyi qosılǵanına isenim kámil etiń. Lenova Legion Toolkit qosılmaǵan displey ushın jańalanıw tezligin júkley almaydı.</value>
+    <value>Make sure that laptop display is on. Lenovo Legion Toolkit can't load refresh rates for a display that is not on.</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Title" xml:space="preserve">
-    <value>Jańalanıw tezligi anıqlanbadı</value>
+    <value>No Refresh Rates found</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Title" xml:space="preserve">
-    <value>Jańalanıw tezligin esaptan tısqarı qılıw</value>
+    <value>Exclude Refresh Rates</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>Shıǵıw</value>
+    <value>Exit</value>
   </data>
   <data name="Export" xml:space="preserve">
-    <value>Eksportlaw</value>
+    <value>Export</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
-    <value>Batareyada islegende tek biriktirilgen videokartanı qollanıw hám quwatlaw adapteri jalǵanǵanda ornatılǵan hám bólekli videokartanı qollanıw. Standart emes quwatlaw adapterin qollanǵanda, sistema biriktirilgen videokartanı qollanıp gibrid rejimge ózgeredi (Hybrid-iGPU Only Mode).</value>
+    <value>Use only integrated GPU when on battery and both integrated and discrete GPU when AC adapter is connected. When a non-standard adapter is connected, system switches to Hybrid-iGPU Only Mode.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Title" xml:space="preserve">
-    <value>Gibrid-Avto rejim</value>
+    <value>Hybrid-Auto Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Disclaimer" xml:space="preserve">
-    <value>Bul rejimdi almastırıw qayta iske túsiriwdi talap etedi.</value>
+    <value>Switching to and from this mode requires restart.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Message" xml:space="preserve">
-    <value>Tek ǵana bólekli grafikalıq processordı paydalanıw. Bul rejim eń jaqsı ónimdarlıqtı beredi, biraq zaryadsızlanıwdı kúsheytedi.</value>
+    <value>Use only discrete GPU. This mode provides best graphics performance, but increases power consumption.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
-    <value>Bólekli videokarta rejimi</value>
+    <value>dGPU Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>Ornatılǵan hám bólekli videokarta qosıladı. Sistema olardıń arasında zárúrlikke qarap avtomatikalıq ózgerip turadı.</value>
+    <value>Both integrated and discrete GPU are enabled. System will automatically switch between them based on its needs.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
-    <value>Gibrid rejimi</value>
+    <value>Hybrid Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Disclaimer" xml:space="preserve">
-    <value>Bul rejim tek ǵana bólekli videokarta islemey turǵanda iske túsiriledi.</value>
+    <value>This mode only takes effect when discrete GPU is not working.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Message" xml:space="preserve">
-    <value>Tek ornatılǵan videokartanı paydalanıw. Bul rejim zaryadsızlanıwdı hám shawqımdı azaytadı.</value>
+    <value>Only use integrated GPU. This mode minimizes power consumption and noise.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Title" xml:space="preserve">
-    <value>Gibrid rejimi biriktirilgen videokartanı qollanıp</value>
+    <value>Hybrid-iGPU Only Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Title" xml:space="preserve">
-    <value>Grafikalıq processordıń islew rejimleri haqqında</value>
+    <value>About GPU Working Modes</value>
   </data>
   <data name="Fahrenheit" xml:space="preserve">
     <value>°F</value>
   </data>
   <data name="FanCurveControl_CPU" xml:space="preserve">
-    <value>Oraylıq processor</value>
+    <value>CPU</value>
   </data>
   <data name="FanCurveControl_CPUSensor" xml:space="preserve">
-    <value>OP sensorı</value>
+    <value>CPU Sensor</value>
   </data>
   <data name="FanCurveControl_FanSpeed" xml:space="preserve">
-    <value>Samallatqıshtıń tezligi</value>
+    <value>Fan Speed</value>
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
-    <value>Grafikalıq processor</value>
+    <value>GPU</value>
   </data>
   <data name="FanCurveControl_GPU2" xml:space="preserve">
     <value>GPU #2</value>
@@ -1016,28 +1016,28 @@ ESLETPE: Eger ishki displey óshirilgen bolsa, bul ámel durıs orınlanbaydı.<
     <value>Fan Max Speed</value>
   </data>
   <data name="Filter" xml:space="preserve">
-    <value>Filtr...</value>
+    <value>Filter...</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
-    <value>Qaqpaqtı ashqanda noutbuktı qosıw.</value>
+    <value>Turn on the laptop when you open the lid.</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Title" xml:space="preserve">
-    <value>Baslaw ushın aylandırıń</value>
+    <value>Flip To Start</value>
   </data>
   <data name="FlipToStartControl_Message" xml:space="preserve">
-    <value>Qaqpaqtı ashqanda noutbuktı qosıw.</value>
+    <value>Turn on the laptop when you open the lid.</value>
   </data>
   <data name="FlipToStartControl_Title" xml:space="preserve">
-    <value>Baslaw ushın aylandırıń</value>
+    <value>Flip To Start</value>
   </data>
   <data name="FnLockAutomationStepControl_Message" xml:space="preserve">
-    <value>Fn túymesin uslap turmay F1-F12 túymeleriniń ekilemshi funkciyalarınan paydalanıw.</value>
+    <value>Use secondary functions of F1-F12 keys without holding Fn key.</value>
   </data>
   <data name="FnLockAutomationStepControl_Title" xml:space="preserve">
     <value>Fn Lock</value>
   </data>
   <data name="FnLockControl_Message" xml:space="preserve">
-    <value>Fn túymesin uslap turmay F1-F12 túymeleriniń ekilemshi funkciyalarınan paydalanıw.</value>
+    <value>Use secondary functions of F1-F12 keys without holding Fn key.</value>
   </data>
   <data name="FnLockControl_Title" xml:space="preserve">
     <value>Fn Lock</value>
@@ -1046,37 +1046,37 @@ ESLETPE: Eger ishki displey óshirilgen bolsa, bul ámel durıs orınlanbaydı.<
     <value>GB</value>
   </data>
   <data name="GHz" xml:space="preserve">
-    <value>GGs</value>
+    <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Arnawlı sazlawlar jıyındısı rejimin aktivlestiredi.
-Bul sazlaw tek arnawlı rejim qosılǵanda nátiyje beredi.</value>
+    <value>Activate Custom Mode preset.
+This settings takes effect only when Custom Mode is enabled.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Arnawlı sazlawlar jıyındısı rejimi</value>
+    <value>Custom Mode preset</value>
   </data>
   <data name="GodModeSettingsWindow_ActivePreset_Title" xml:space="preserve">
-    <value>Aktiv sazlawlar jıyındısı</value>
+    <value>Active preset</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>DIQQAT!
-Ayrım noutbukler o'zleri ko'rsetken quwatlılıqtan to'menlewin qabıllawı mu'mkin, biraq abaylı bolın'. Bul tan'law ku'tilmegen na'tiyje beriwi mu'mkin, sonlıqtan eger ne islep atırg'anın'ızdı bilmesen'iz, bunı 0 de qaldırın'.</value>
+    <value>WARNING!
+Some laptops may accept higher values than they indicate, but be careful. This option may result in unpredictable behavior. If you are not sure what are you doing, leave this at 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
-    <value>Maksimal ofset</value>
+    <value>Maximum offset</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>Eger ne islep atırǵanıńızdı bilmeseńiz, tómendegi variantlardı ózgertpeń.</value>
+    <value>Do not change options below unless you really know what you are doing.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>DIQQAT!
-Ayrim noutbuklar o'zleri ko'rsetken quwatliliqtan to'menlewin qabillawi mu'mkin, biraq abayli bolin'. Bul tan'law ku'tilmegen na'tiyje beriwi mu'mkin, sonliqtan eger ne islep atirg'anin'izdi bilmesen'iz, buni 0 de qaldirin'.</value>
+    <value>WARNING!
+Some laptops may accept lower values than they indicate, but be careful. This option may result in unpredictable behavior. If you are not sure what are you doing, leave this at 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
-    <value>Eń kishi ofset</value>
+    <value>Minimum offset</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
-    <value>Qosımsha sazlawlar</value>
+    <value>Advanced</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
     <value>All Core Curve Optimizer.</value>
@@ -1085,49 +1085,49 @@ Ayrim noutbuklar o'zleri ko'rsetken quwatliliqtan to'menlewin qabillawi mu'mkin,
     <value>All Core Curve Optimizer</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL" xml:space="preserve">
-    <value>APU sPPT quwatlılıq shegi</value>
+    <value>APU sPPT Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>Azǵana irkilis penen processor tárepinen paydalanıw múmkin bolǵan eń joqarı quwatlılıq.</value>
+    <value>The peak power consumption that can be reached by the CPU with a minor delay.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
-    <value>Uzaq múddetli quwatlılıq shegi (ján-jaqqa júklew)</value>
+    <value>Long Term Power Limit (Cross Loading)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>CPU hám GPUdı tolıq qollanǵanda, CPU tárepinen jetiwi múmkin bolǵan quwatlılıqtan paydalanıwdıń eń joqarı dárejesi.</value>
+    <value>The maximum power consumption that can be reached by the CPU when both CPU and GPU are fully utilized.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
-    <value>Uzaq múddetli quwatlılıq shegi</value>
+    <value>Long Term Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>Processor tárepinen úzliksiz paydalanıw múmkin bolǵan quwatlılıq.</value>
+    <value>The continuous power consumption that can be reached by the CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
-    <value>Quwatlılıqtıń eń joqarǵı shegi</value>
+    <value>Peak Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>Processor tárepinen jetiwi múmkin bolǵan quwatlılıqtan paydalanıwdıń eń joqarı dárejesi.</value>
+    <value>The maximum instantaneous power consumption that can be reached by the CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau" xml:space="preserve">
-    <value>Qısqa múddetli quwatlılıq sheginiń dawamlılıǵı</value>
+    <value>Short Term Power Limit Duration</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau_Description" xml:space="preserve">
-    <value>Processorǵa qısqa múddetli quwatlılıqtı sheklew hám kóbeytiw ushın ruqsat berilgen waqıt muǵdarı. Taw múddeti ótkennen keyin, uzaq múddetli quwatlılıqtı sheklew qollanıladı.</value>
+    <value>The amount of time the CPU is allowed to boost and use Short Term Power Limit for. When Tau expires, Long Term Power Limit is used.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
-    <value>Qısqa múddetli quwatlılıq shegi</value>
+    <value>Short Term Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>Qısqa waqıt ishinde processor tárepinen paydalanıw múmkin bolǵan eń joqarı quwatlılıq.</value>
+    <value>The peak power consumption that can be reached by the CPU within a short amount time.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
-    <value>Oraylıq processor temperaturasınıń shegi</value>
+    <value>CPU Temperature Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>Quwatlılıq hám tezlik páseyiwi aldınan, processor tárepinen jetiwi múmkin bolǵan eń joqarı temperatura.</value>
+    <value>The maximum temperature that can be reached by the CPU before frequency and power is reduced.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
-    <value>Oraylıq processor</value>
+    <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
     <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
@@ -1137,54 +1137,54 @@ Misconfiguration can lead to severe system instability, thermal throttling, or p
 Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
-    <value>Ataması</value>
+    <value>Name</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Title" xml:space="preserve">
-    <value>Sazlawlar jıyındısınıń ataması</value>
+    <value>Preset name</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Apply_Title" xml:space="preserve">
-    <value>Sazlawlardı qollanıw ámelge aspadı</value>
+    <value>Couldn't apply settings</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
-    <value>Sazlawlardı júklew ámelge aspadı.</value>
+    <value>Couldn't load setting.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Samallatqıshtıń aylanıw tezligi bir ǵana temperatura sensorı járdeminde anıqlanbaydı. Ol CPU, GPU hám radiator arasındaǵı eń joqarı sensorǵa qarap tezlikti kóbeytedi yamasa azaytadı. Hár bir qádemge tısqanshanıń kórsetkishin alıp barǵanıńızda anıq múǵdarlar kórsetiledi.</value>
+    <value>Fan speed is not strictly determined by one temperature sensor. It will raise or lower speed per the highest sensor between CPU, GPU and Heatsink temperature. Exact values will appear when you hover mouse over each step.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
-    <value>Samallatqıshtıń qıysıqlıǵı</value>
+    <value>Fan curve</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>DIQQAT!
-Bul varianttı kóp waqıt qollanıw samallatqısh iskerliginiń tómenlewine alıp keledi hám onıń xızmet kórsetiw waqtın azaytadı.
-Rasında da, bul variant penen abaylı bolıń!</value>
+    <value>WARNING!
+Prolonged usage of this option will degrade fans decreasing their longevity.
+Seriously, be careful with this option!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
-    <value>Samallatqıshtıń maksimal tezligi</value>
+    <value>Maximum fan speed</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
-    <value>Samallatqıshlar</value>
+    <value>Fans</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP" xml:space="preserve">
-    <value>Sazlanatuǵın TGP</value>
+    <value>Configurable TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>GPU ushın tiykarǵı quwatlılıqtan tısqarı ajratıw múmkin bolǵan qosımsha quwatlılıq muǵdarı.</value>
+    <value>The additional amount of power that can be allocated to the GPU on top of base power consumption.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>Dynamic Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>CPUdıń quwatlılıqtan paydalanıwı tiykarında GPUǵa ajıratıw múmkin bolǵan qosımsha maksimal quwatlılıq.</value>
+    <value>The additional maximum power that can be allocated to the GPU based on the power consumption of the CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
-    <value>GPU temperaturasınıń shegi</value>
+    <value>GPU Temperature Limit</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>Quwatlılıq hám tezlik páseyiwi aldınan, grafikalıq processor tárepinen jetiwi múmkin bolǵan eń joqarı temperatura.</value>
+    <value>The maximum temperature that can be reached by the GPU before frequency and power is reduced.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
-    <value>Grafikalıq processor</value>
+    <value>GPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl" xml:space="preserve">
     <value>GPU to CPU Dynamic Boost</value>
@@ -1193,16 +1193,16 @@ Rasında da, bul variant penen abaylı bolıń!</value>
     <value>This is the maximum additional power that can be allocated to the CPU from the GPU based on CPU usage. The higher the value, the better the performance of applications that use the CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
-    <value>Ózgermeli toktaǵı processordıń ulıwmalıq quwatlılıǵı</value>
+    <value>Total Processor Power Target In AC</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>CPU - GPU ushın ózgeriwsheń quwatlılıqtan paydalanıw sazlawın iske túsiretuǵın orın.</value>
+    <value>The point at which the CPU triggers dynamic power consumption adjustment for the GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
     <value>Custom Mode settings will not be applied correctly when Legion Space or its services are running.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
-    <value>Eger Legion Zone yamasa onıń xızmetlerin islep atirǵan bolsa, paydalanıwshı rejimi sazlawları tuwrı qollanılmaydı.</value>
+    <value>Custom Mode settings will not be applied correctly when Legion Zone or its services are running.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Precision Boost Overdrive Boost Frequency.</value>
@@ -1217,7 +1217,7 @@ Rasında da, bul variant penen abaylı bolıń!</value>
     <value>Precision Boost Overdrive Scaler</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
-    <value>Arnawlı rejim sazlawları</value>
+    <value>Custom Mode Settings</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
     <value>Enable / Disable Core Curve Adjustment.</value>
@@ -1232,24 +1232,24 @@ Rasında da, bul variant penen abaylı bolıń!</value>
     <value>Advanced Overclocking Options</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
-    <value>Lenovo vantage yamasa onıń xızmetlerin islep atirǵan bolsa, paydalanıwshı rejimi sazlawları tuwrı qollanılmaydı.</value>
+    <value>Custom Mode settings will not be applied correctly when Lenovo Vantage or its services are running.</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displeyde High Dynamic Range (HDR)dı qosıw.
+    <value>Enable high dynamic range (HDR) on the built-in display.
 
-DIQQAT: Eger ishki displey óshirilgen bolsa, bul háreket durıs orınlanbaydı.</value>
+WARNING: This action will not run correctly if the internal display is off.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
   </data>
   <data name="HDRControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displeyde High Dynamic Range (HDR)dı qosıw.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRControl_Title" xml:space="preserve">
     <value>HDR</value>
   </data>
   <data name="HDRControl_Warning" xml:space="preserve">
-    <value>HDRdan paydalanıw Windows sazlawları tárepinen bloklanǵan.</value>
+    <value>HDR usage is blocked by Windows settings.</value>
   </data>
   <data name="Hide" xml:space="preserve">
     <value>Hide</value>
@@ -1258,47 +1258,47 @@ DIQQAT: Eger ishki displey óshirilgen bolsa, bul háreket durıs orınlanbaydı
     <value>Hide all</value>
   </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
-    <value>Eger kútilgen nátiyjeni kórmeseńiz, bir neshe sekunddan keyin rejimdi jáne ózgertirip kóriń.
- Eger dGPU ulıwma juwap bermese, noutbuktı qayta jumısqa túsiriń.</value>
+    <value>Try changing the mode again in a couple of seconds, if you do not see expected result.
+If dGPU does not respond at all, please restart your laptop.</value>
   </data>
   <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
-    <value>DGPU isletilip atırǵanda hám noutbuk batareya quwatında bolǵanda avtomatikalıq túrde úziledi.</value>
+    <value>dGPU will disconnect automatically when not in use and laptop is on battery power.</value>
   </data>
   <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
-    <value>Diskret grafik karta isletilmegende avtomatikalıq túrde úziledi.</value>
+    <value>dGPU will disconnect automatically when not in use.</value>
   </data>
   <data name="IGPUModeChangeException_Title" xml:space="preserve">
-    <value>GPU jumıs rejimin ózgertip bolmadı</value>
+    <value>Could not change GPU Working Mode</value>
   </data>
   <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
-    <value>dGPU házirde isletilip atır yamasa noutbuk batareya quwatında isletilmey atır</value>
+    <value>dGPU is currently in use or laptop is not on battery power</value>
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
-    <value>Diskret grafik karta isletilip atır</value>
+    <value>dGPU is currently in use</value>
   </data>
   <data name="Import" xml:space="preserve">
-    <value>Importlaw</value>
+    <value>Import</value>
   </data>
   <data name="Inactive" xml:space="preserve">
-    <value>Aktiv emes</value>
+    <value>Inactive</value>
   </data>
   <data name="IncompatibleDevice_Message" xml:space="preserve">
-    <value>Bul qurılma Lenovo Legion Toolkit penen mas kelmeydi.</value>
+    <value>This device is not compatible with Lenovo Legion Toolkit.</value>
   </data>
   <data name="Information" xml:space="preserve">
     <value>Information</value>
   </data>
   <data name="InstantBootAutomationStepControl_Message" xml:space="preserve">
-    <value>Zaryadlawshını jalǵaǵanda noutbukti qosıń.</value>
+    <value>Turn on the laptop when a charger is connected.</value>
   </data>
   <data name="InstantBootAutomationStepControl_Title" xml:space="preserve">
-    <value>Kóp urınıw</value>
+    <value>Instant Boot</value>
   </data>
   <data name="InstantBootControl_Message" xml:space="preserve">
-    <value>Zaryadlawshını jalǵaǵanda noutbukti qosıń.</value>
+    <value>Turn on the laptop when a charger is connected.</value>
   </data>
   <data name="InstantBootControl_Title" xml:space="preserve">
-    <value>Operativ</value>
+    <value>Instant Boot</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
     <value>Change IdeaPad Power Mode</value>
@@ -1324,16 +1324,16 @@ This feature might prevent LLT to control the keyboard.
 Click Yes to disable and No to ignore.</value>
   </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
-    <value>Mas klaviatura tabılmadı</value>
+    <value>No compatible keyboards found</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
-    <value>Klaviaturanıń arqa jaqtılıǵı</value>
+    <value>Keyboard Backlight</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Lenovo Vantage yamasa onıń xızmetleri islep turǵanda, klaviaturanıń arqa jaqtılıǵın bul jerde basqarıw múmkin emes.</value>
+    <value>Keyboard backlight cannot be controlled in here when Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo vantage yamasa onıń xızmetlerin islep atır</value>
+    <value>Lenovo Vantage or its services are running</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1441,7 +1441,7 @@ Click Yes to disable and No to ignore.</value>
     <value>Live Preview</value>
   </data>
   <data name="Load" xml:space="preserve">
-    <value>Júklew</value>
+    <value>Load</value>
   </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
     <value>Enable or disable macros.</value>
@@ -1522,34 +1522,34 @@ Click Yes to disable and No to ignore.</value>
     <value>Legion Zone is running in the background.</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
-    <value>Baǵdarlama haqqında</value>
+    <value>About</value>
   </data>
   <data name="MainWindow_NavigationItem_Actions" xml:space="preserve">
-    <value>Háreketler</value>
+    <value>Actions</value>
   </data>
   <data name="MainWindow_NavigationItem_Battery" xml:space="preserve">
-    <value>Batareya</value>
+    <value>Battery</value>
   </data>
   <data name="MainWindow_NavigationItem_Dashboard" xml:space="preserve">
-    <value>Basqarıw paneli</value>
+    <value>Dashboard</value>
   </data>
   <data name="MainWindow_NavigationItem_Donate" xml:space="preserve">
-    <value>Qollap-quwatlaw</value>
+    <value>Donate</value>
   </data>
   <data name="MainWindow_NavigationItem_FanCurve" xml:space="preserve">
     <value>Fan Curve</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
-    <value>Klaviatura</value>
+    <value>Keyboard</value>
   </data>
   <data name="MainWindow_NavigationItem_Macro" xml:space="preserve">
     <value>Macro</value>
   </data>
   <data name="MainWindow_NavigationItem_Packages" xml:space="preserve">
-    <value>Júklengenler</value>
+    <value>Downloads</value>
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
-    <value>Sazlawlar</value>
+    <value>Settings</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
     <value>You need to install PawnIO first to use hardware sensors!</value>
@@ -1558,37 +1558,37 @@ Click Yes to disable and No to ignore.</value>
     <value>Warning</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
-    <value>Jańalanıw bar!</value>
+    <value>Update available!</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
-    <value>{0} Jańalanıw bar!</value>
+    <value>Update {0} available!</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Don't show again.</value>
   </data>
   <data name="MHz" xml:space="preserve">
-    <value>MGts</value>
+    <value>MHz</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Message" xml:space="preserve">
-    <value>Óshirilgende, mikrofonlar dawısı óshiriledi.</value>
+    <value>When off, microphones will be muted.</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Title" xml:space="preserve">
-    <value>Mikrofon</value>
+    <value>Microphone</value>
   </data>
   <data name="MicrophoneControl_Message" xml:space="preserve">
-    <value>Óshirilgende, mikrofonlar dawısı óshiriledi.</value>
+    <value>When off, microphones will be muted.</value>
   </data>
   <data name="MicrophoneControl_Title" xml:space="preserve">
-    <value>Mikrofon</value>
+    <value>Microphone</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
-    <value>Tómenge kóshiriw</value>
+    <value>Move down</value>
   </data>
   <data name="MoveUp" xml:space="preserve">
-    <value>Joqarıǵa kóshiriw</value>
+    <value>Move up</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Bir neshe triggerler...</value>
+    <value>Multiple triggers...</value>
     <comment>Allows the user to merge multiple triggers for the execution of selected actions.</comment>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_And" xml:space="preserve">
@@ -1601,41 +1601,41 @@ Click Yes to disable and No to ignore.</value>
     <value>Logic</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>Yaq</value>
+    <value>No</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Bildiriwxatları teksti</value>
+    <value>Notification Text</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
-    <value>Bildiriwxatların kórsetiw</value>
+    <value>Show notification</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
-    <value>Quwatlaw blogı</value>
+    <value>AC Adapter</value>
   </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
-    <value>Ámeller</value>
+    <value>Actions</value>
   </data>
   <data name="NotificationsSettingsWindow_Camera" xml:space="preserve">
-    <value>Kamera</value>
+    <value>Camera</value>
   </data>
   <data name="NotificationsSettingsWindow_CapsAndNumLock" xml:space="preserve">
-    <value>Caps Lock hám Num Lock</value>
+    <value>Caps Lock and Num Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
-    <value>Fn túymesiniń mikrofon dawısın óshiriw sıyaqlı háreketleri haqqındaǵı xabarlamalardı óshiredi
-Eger de tolıq ekranlı baǵdarlamalar menen mashqalalar bolsa, bul varianttı qosıń.</value>
+    <value>Disables notification for Fn keys actions like microphone mute.
+Enable this option if you have conflicts with full screen applications.</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
-    <value>Xabarlamalardı kórsetpew</value>
+    <value>Don't show notifications</value>
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Fn Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_KeyboardBacklight" xml:space="preserve">
-    <value>Klaviaturanıń arqa jaqtılıǵı</value>
+    <value>Keyboard Backlight</value>
   </data>
   <data name="NotificationsSettingsWindow_Microphone" xml:space="preserve">
-    <value>Mikrofon</value>
+    <value>Microphone</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Message" xml:space="preserve">
     <value>Always put notification at the top.
@@ -1645,7 +1645,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Notification always on top</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
-    <value>Dawam etiw waqtı</value>
+    <value>Duration</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Message" xml:space="preserve">
     <value>Show notification on all screens connected to your device.</value>
@@ -1654,118 +1654,118 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Notification on all screens</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationPosition_Title" xml:space="preserve">
-    <value>Orın</value>
+    <value>Position</value>
   </data>
   <data name="NotificationsSettingsWindow_PowerMode" xml:space="preserve">
-    <value>Quwatlılıq rejimi</value>
+    <value>Power Mode</value>
   </data>
   <data name="NotificationsSettingsWindow_RefreshRate" xml:space="preserve">
-    <value>Jańalanıw tezligi</value>
+    <value>Refresh Rate</value>
   </data>
   <data name="NotificationsSettingsWindow_SmartKey" xml:space="preserve">
-    <value>Aqıllı túyme</value>
+    <value>Smart Key</value>
   </data>
   <data name="NotificationsSettingsWindow_Title" xml:space="preserve">
-    <value>Xabarlamalar</value>
+    <value>Notifications</value>
   </data>
   <data name="NotificationsSettingsWindow_TouchpadLock" xml:space="preserve">
-    <value>Sensorlı panel bloklanıwı</value>
+    <value>Touchpad Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_Updates_Title" xml:space="preserve">
-    <value>Jańalanıwlar</value>
+    <value>Updates</value>
   </data>
   <data name="Notification_ACAdapterConnected" xml:space="preserve">
-    <value>Quwatlaw blogı jalǵanǵan</value>
+    <value>AC adapter connected</value>
   </data>
   <data name="Notification_ACAdapterConnectedLowWattage" xml:space="preserve">
-    <value>Quwatlaw apadteri jalǵanǵan (Kem quwatlılıq)</value>
+    <value>AC adapter connected (Low wattage)</value>
   </data>
   <data name="Notification_ACAdapterDisconnected" xml:space="preserve">
-    <value>Quwatlaw blogı jalǵanbaǵan</value>
+    <value>AC adapter disconnected</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
-    <value>Kamera óshirilgen</value>
+    <value>Camera off</value>
   </data>
   <data name="Notification_CameraOn" xml:space="preserve">
-    <value>Kamera qosıwlı</value>
+    <value>Camera on</value>
   </data>
   <data name="Notification_CapsLockOff" xml:space="preserve">
-    <value>Caps Lock óshirildi</value>
+    <value>Caps Lock off</value>
   </data>
   <data name="Notification_CapsLockOn" xml:space="preserve">
-    <value>Caps Lock qosıldı</value>
+    <value>Caps Lock on</value>
   </data>
   <data name="Notification_FnLockOff" xml:space="preserve">
-    <value>Fn Lock óshirildi</value>
+    <value>Fn Lock off</value>
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
-    <value>Fn Lock qosıldı</value>
+    <value>Fn Lock on</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
-    <value>Mikrofon óshirildi</value>
+    <value>Microphone off</value>
   </data>
   <data name="Notification_MicrophoneOn" xml:space="preserve">
-    <value>Mikrofon qosıldı</value>
+    <value>Microphone on</value>
   </data>
   <data name="Notification_NumLockOff" xml:space="preserve">
-    <value>Num Lock óshirildi</value>
+    <value>Num Lock off</value>
   </data>
   <data name="Notification_NumLockOn" xml:space="preserve">
-    <value>Num Lock qosıldı</value>
+    <value>Num Lock on</value>
   </data>
   <data name="Notification_PanelLogoLightingOff" xml:space="preserve">
-    <value>Logotip Legion óshirilgen</value>
+    <value>Legion logo off</value>
   </data>
   <data name="Notification_PanelLogoLightingOn" xml:space="preserve">
-    <value>Logotip Legion qosıwlı</value>
+    <value>Legion logo on</value>
   </data>
   <data name="Notification_PortLightingOff" xml:space="preserve">
-    <value>Portlardıń arqa jaqtılıǵı óshirilgen</value>
+    <value>Ports backlight off</value>
   </data>
   <data name="Notification_PortLightingOn" xml:space="preserve">
-    <value>Portlardıń arqa jaqtılıǵı qosıwlı</value>
+    <value>Ports backlight on</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Backlight" xml:space="preserve">
-    <value>Arqa jaqtılıq {0}</value>
+    <value>Backlight {0}</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Brightness" xml:space="preserve">
-    <value>Jarıqlıq {0}</value>
+    <value>Brightness {0}</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Profile" xml:space="preserve">
-    <value>Profil {0}</value>
+    <value>Profile {0}</value>
   </data>
   <data name="Notification_TouchpadOff" xml:space="preserve">
-    <value>Sensorlı panel óshirildi</value>
+    <value>Touchpad off</value>
   </data>
   <data name="Notification_TouchpadOn" xml:space="preserve">
-    <value>Sensorlı panel qosıldı</value>
+    <value>Touchpad on</value>
   </data>
   <data name="Notification_UpdateAvailable" xml:space="preserve">
-    <value>{0} Jańalanıw bar!</value>
+    <value>Update {0} available!</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklight" xml:space="preserve">
-    <value>Arqa jaqtılıq {0}</value>
+    <value>Backlight {0}</value>
   </data>
   <data name="Off" xml:space="preserve">
-    <value>Óshik</value>
+    <value>Off</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>Yaqshı</value>
+    <value>OK</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Arqa jaqtılıqtı qosıw yamasa óshiriw.</value>
+    <value>Turn backlight on or off.</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Klaviaturanıń arqa jaqtılıǵı</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>Arqa jaqtılıqtı Fn+Space járdeminde qosıwıńız yamasa óshiriwińiz múmkin.</value>
+    <value>You can turn backlight on or off with Fn+Space.</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Klaviaturanıń arqa jaqtılıǵı</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Ashıw</value>
+    <value>Open</value>
   </data>
   <data name="OsdAutomationStepControl_Message" xml:space="preserve">
     <value>Show or Hide the OSD</value>
@@ -1921,36 +1921,36 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Diskret GPOnı overclock qılıw arqalı ónimlilikti asırıń.
+    <value>Increase performance by overclocking discrete GPU.
 
-ESKERTIW: Diskret GPU ámeldegi bolmasa, bul ámel tuwrı atqarılmaydı.</value>
+WARNING: This action will not run correctly, if discrete GPU is not available.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Overclock GPU</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Message" xml:space="preserve">
-    <value>Diskret GPOdı overclock qılıw arqalı ónimlilikti asırıń.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>Overclock GPU</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
-    <value>Tiykarǵı chastota ofset</value>
+    <value>Core Frequency Offset</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
-    <value>Yad chastotasınıń ofseti</value>
+    <value>Memory Frequency Offset</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
-    <value>GPU overclock sazlamaları</value>
+    <value>Overclock GPU Settings</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displeydiń juwap waqtın jaqsılaw.</value>
+    <value>Improve response time of the built-in display.</value>
   </data>
   <data name="OverDriveAutomationStepControl_Title" xml:space="preserve">
     <value>Over Drive</value>
   </data>
   <data name="OverDriveControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displeydiń juwap waqtın jaqsılaw.</value>
+    <value>Improve response time of the built-in display.</value>
   </data>
   <data name="OverDriveControl_Title" xml:space="preserve">
     <value>Over Drive</value>
@@ -1959,62 +1959,62 @@ ESKERTIW: Diskret GPU ámeldegi bolmasa, bul ámel tuwrı atqarılmaydı.</value
     <value>Download</value>
   </data>
   <data name="PackageControl_DownloadComplete_Message" xml:space="preserve">
-    <value>{0} júklendi!</value>
+    <value>{0} downloaded!</value>
   </data>
   <data name="PackageControl_DownloadComplete_Title" xml:space="preserve">
-    <value>Júklew juwmaqlandı</value>
+    <value>Download complete</value>
   </data>
   <data name="PackageControl_GeneralError_Title" xml:space="preserve">
-    <value>Qátelik júz berdi</value>
+    <value>Something went wrong</value>
   </data>
   <data name="PackageControl_Http404Error_Message" xml:space="preserve">
-    <value>Server 404 qátelik kodın qaytardı.</value>
+    <value>Server returned code 404.</value>
   </data>
   <data name="PackageControl_Http404Error_Title" xml:space="preserve">
-    <value>Fayl joq bolǵanǵa qusaydı</value>
+    <value>The file seems to be gone</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Message" xml:space="preserve">
-    <value>Internet baylanısı islep turǵanın tekseriń.</value>
+    <value>Check if your internet connection is up and running.</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Title" xml:space="preserve">
-    <value>Qátelik júz berdi</value>
+    <value>Something went wrong</value>
   </data>
   <data name="PackageControl_IsUpdateInfo" xml:space="preserve">
-    <value>Jańalanıw bar!</value>
+    <value>Update available!</value>
   </data>
   <data name="PackageControl_OldPackageWarning" xml:space="preserve">
-    <value>Bul paket bir jıldan asqan.</value>
+    <value>This package is more than a year old.</value>
   </data>
   <data name="PackageControl_OpenReadme" xml:space="preserve">
     <value>Open README</value>
   </data>
   <data name="PackageControl_RebootRecommended" xml:space="preserve">
-    <value>Qayta iske túsiriw usınıs etiledi</value>
+    <value>Restart recommended</value>
   </data>
   <data name="PackageControl_RebootRequired" xml:space="preserve">
-    <value>Qayta iske túsiriw talap etiledi</value>
+    <value>Restart required</value>
   </data>
   <data name="PackageControl_ShutdownRequired" xml:space="preserve">
-    <value>Óshiriw talap etiledi</value>
+    <value>Shutdown required</value>
   </data>
   <data name="PackageControl_Version" xml:space="preserve">
-    <value>Versiya</value>
+    <value>Version</value>
   </data>
   <data name="PackagesPage_Disclaimer_Message" xml:space="preserve">
-    <value>Tómende noutbukıńızǵa mas dep belgilengen baǵdarlamalıq paketler dizimi keltirilgen. 
-Durıs paketlerdi ornatıp atırǵanıńızǵa isenim kámil etiń.</value>
+    <value>Below is a list of software packages that are marked as compatible with your laptop.
+Always make sure that you are installing correct packages.</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Message" xml:space="preserve">
-    <value>Qurılma modeliniń túri hám OS durıs kórsetilgenin tekseriń.</value>
+    <value>Check if Machine Type and OS are set correctly.</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Title" xml:space="preserve">
-    <value>Qátelik júz berdi</value>
+    <value>Something went wrong</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Message" xml:space="preserve">
-    <value>Sortlawdı ózgertiw, nátiyjelerdi filtrlew, paketlerdi jasırıw yamasa dizimdi jańalaw júklep alıwdı toqtatadı. Dawam etiwdi qáleysiz be?</value>
+    <value>Changing sorting, filtering results, hiding packages or refreshing the list will stop the download. Do you want to continue?</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Title" xml:space="preserve">
-    <value>Júklenbekte</value>
+    <value>Download in progress</value>
   </data>
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
     <value>Download folder</value>
@@ -2026,46 +2026,46 @@ Durıs paketlerdi ornatıp atırǵanıńızǵa isenim kámil etiń.</value>
     <value>Something went wrong</value>
   </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
-    <value>Qurılma modeliniń túri</value>
+    <value>Machine Type</value>
   </data>
   <data name="PackagesPage_NoMatchingDownloads" xml:space="preserve">
-    <value>Sáykes júklemeler tabılmadı</value>
+    <value>No matching downloads found</value>
   </data>
   <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
-    <value>Tek jańalanıwlardı kórsetiw</value>
+    <value>Show updates only</value>
   </data>
   <data name="PackagesPage_OpenDownloadTo" xml:space="preserve">
     <value>Open Download folder</value>
   </data>
   <data name="PackagesPage_OperatingSystem" xml:space="preserve">
-    <value>Operacion sistema</value>
+    <value>Operating System</value>
   </data>
   <data name="PackagesPage_PrimarySource" xml:space="preserve">
-    <value>Tiykarǵı (Usınıs etilgen)</value>
+    <value>Primary (Recommended)</value>
   </data>
   <data name="PackagesPage_PrimarySource_Message" xml:space="preserve">
-    <value>Lenovo Vantage benen birdey</value>
+    <value>Same as Lenovo Vantage</value>
   </data>
   <data name="PackagesPage_SecondarySource" xml:space="preserve">
-    <value>Ekilemshi</value>
+    <value>Secondary</value>
   </data>
   <data name="PackagesPage_SecondarySource_Message" xml:space="preserve">
-    <value>Lenovo PC qollap-quwatlawı menen birdey</value>
+    <value>Same as Lenovo PC Support</value>
   </data>
   <data name="PackagesPage_Sort_Category" xml:space="preserve">
-    <value>Kategoriya</value>
+    <value>Category</value>
   </data>
   <data name="PackagesPage_Sort_Date" xml:space="preserve">
-    <value>Sáne</value>
+    <value>Date</value>
   </data>
   <data name="PackagesPage_Sort_Name" xml:space="preserve">
-    <value>Ataması</value>
+    <value>Name</value>
   </data>
   <data name="PackagesPage_Source" xml:space="preserve">
-    <value>Derek</value>
+    <value>Source</value>
   </data>
   <data name="PackagesPage_Title" xml:space="preserve">
-    <value>Júklengenler</value>
+    <value>Downloads</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
     <value>Try getting updates from the other source.</value>
@@ -2074,19 +2074,19 @@ Durıs paketlerdi ornatıp atırǵanıńızǵa isenim kámil etiń.</value>
     <value>Update catalog not found</value>
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Noutbuk qapqaǵındaǵı arqa jaqtılıqtı qosıń yamasa óshiriń.</value>
+    <value>Turn on or off the backlight on the lid of the laptop.</value>
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Panelde kórsetilgen logotip</value>
+    <value>Panel logo backlight</value>
   </data>
   <data name="PanelLogoBacklightControl_Message" xml:space="preserve">
-    <value>Noutbuk qapqaǵındaǵı arqa jaqtılıqtı qosıń yamasa óshiriń.</value>
+    <value>Turn on or off the backlight on the lid of the laptop.</value>
   </data>
   <data name="PanelLogoBacklightControl_Title" xml:space="preserve">
-    <value>Panelde kórsetilgen logotip</value>
+    <value>Panel logo backlight</value>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>Ornalastırıw</value>
+    <value>Paste</value>
   </data>
   <data name="Percent" xml:space="preserve">
     <value>%</value>
@@ -2095,7 +2095,7 @@ Durıs paketlerdi ornatıp atırǵanıńızǵa isenim kámil etiń.</value>
     <value>Minutes</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Period" xml:space="preserve">
-    <value>Period (minutes)</value>
+    <value>Period</value>
     <comment>A prompt that is used both to ask the user to input an integer, representing the number of minutes between two periodic actions are triggered, and to inform the user what have they set once they are done configuring the action.</comment>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Seconds" xml:space="preserve">
@@ -2108,51 +2108,51 @@ Durıs paketlerdi ornatıp atırǵanıńızǵa isenim kámil etiń.</value>
     <value>Play sound</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Noutbuktiń arqa tárepindegi port jarıtqıshın qosıń yáki óshiriń.</value>
+    <value>Turn on or off the backlight of the ports on the back of the laptop.</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Portlardıń jarıtqıshı</value>
+    <value>Ports backlight</value>
   </data>
   <data name="PortsBacklightControl_Message" xml:space="preserve">
-    <value>Noutbukdıń arqa bólegindegi portlardıń jarıǵın qosıń yáki óshiriń.</value>
+    <value>Turn on or off backlight of the ports on the back of the laptop.</value>
   </data>
   <data name="PortsBacklightControl_Title" xml:space="preserve">
-    <value>Portlardıń jarıtqıshı</value>
+    <value>Ports backlight</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
-    <value>Óshirilgen</value>
+    <value>Powered Off</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Islew rejimin tańlań.</value>
+    <value>Change performance mode.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Quwatlılıq rejimi</value>
+    <value>Power Mode</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Islew rejimin saylań.
-Rejimdi Fn+Q járdeminde ózgerte alasız.</value>
+    <value>Change performance mode.
+Performance mode can also be changed with Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
-    <value>Sazlawlar</value>
+    <value>Settings</value>
   </data>
   <data name="PowerModeControl_Title" xml:space="preserve">
-    <value>Quwatlılıq rejimi</value>
+    <value>Power Mode</value>
   </data>
   <data name="PowerModeControl_Warning" xml:space="preserve">
-    <value>Quwatlaw blogı qosılmasa, saylanǵan quwatlılıq rejimi durıs islemewi múmkin.</value>
+    <value>Selected power mode may not work correctly without AC adapter connected.</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
-    <value>Elektr quwatsız {0} quwat rejimi joq.</value>
+    <value>{0} power mode is not available without AC power.</value>
     <comment>For example: "{Performance} power mode is not available without AC power."</comment>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Title" xml:space="preserve">
-    <value>Quwat rejimin ózgertip bolmaydı</value>
+    <value>Cannot change Power Mode</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
-    <value>Bul qurılma Modern Standbydı qollap-quwatlaytuǵının Windows xabarlaydı. Teńlestirilgen quwatlılıq jobasınan basqasın qollanıw kútilmegen háreketke alıp keliwi múmkin.</value>
+    <value>Windows reports that this laptop supports Modern Standby. Using power plans other than Balanced may cause unexpected behavior.</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Title" xml:space="preserve">
-    <value>S0 tómen quwatlılıq modeli anıqlandı</value>
+    <value>S0 Lower Power Model detected</value>
   </data>
   <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
     <value>Run a saved quick action.</value>
@@ -2161,47 +2161,47 @@ Rejimdi Fn+Q járdeminde ózgerte alasız.</value>
     <value>Quick Action</value>
   </data>
   <data name="Refresh" xml:space="preserve">
-    <value>Jańalaw</value>
+    <value>Refresh</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displeydiń jańalanıw tezligin ózgertiw.
+    <value>Change refresh rate of the built-in display.
 
-ESLETPE: Eger ishki displey óshirilgen bolsa, bul ámel durıs orınlanbaydı.</value>
+WARNING: This action will not run correctly, if internal display is off.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
-    <value>Jańalanıw tezligi</value>
+    <value>Refresh rate</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displeydiń jańalanıw tezligin ózgertiw.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
-    <value>Jańalanıw tezligi</value>
+    <value>Refresh rate</value>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>Qayta ataw</value>
+    <value>Rename</value>
   </data>
   <data name="Reset" xml:space="preserve">
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displey kólemin ózgertiw.
+    <value>Change resolution of the built-in display.
 
-ESLETPE: Eger ishki displey óshirilgen bolsa, bul ámel durıs orınlanbaydı.</value>
+WARNING: This action will not run correctly, if internal display is off.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
-    <value>Kólem</value>
+    <value>Resolution</value>
   </data>
   <data name="ResolutionControl_Message" xml:space="preserve">
-    <value>Ornatılǵan displeydiń kólemin ózgertiw.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionControl_Title" xml:space="preserve">
-    <value>Kólem</value>
+    <value>Resolution</value>
   </data>
   <data name="RestartLater" xml:space="preserve">
-    <value>Keyinirek qayta iske qosaman</value>
+    <value>I will restart later</value>
   </data>
   <data name="RestartNow" xml:space="preserve">
-    <value>Házir qayta iske qosıw</value>
+    <value>Restart now</value>
   </data>
   <data name="RestartRequired_Message" xml:space="preserve">
     <value>Changing this requires restart. Do you want to restart now?</value>
@@ -2213,65 +2213,65 @@ ESLETPE: Eger ishki displey óshirilgen bolsa, bul ámel durıs orınlanbaydı.<
     <value>Restore Defaults</value>
   </data>
   <data name="Revert" xml:space="preserve">
-    <value>Izge qaytarıw</value>
+    <value>Revert</value>
   </data>
   <data name="RevertToDefault" xml:space="preserve">
-    <value>Standart sazlawlardı tikleń</value>
+    <value>Revert to default</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Klaviaturnıń arqa jaqtılıǵın aldınnan sazlawdı ornatıń.</value>
+    <value>Adjust keyboard backlight preset.</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Klaviaturanıń arqa jaqtılıǵı</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="RGBKeyboardBacklightBrightnessCardControl_Brightness" xml:space="preserve">
-    <value>Jarıqlıq</value>
+    <value>Brightness</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset1" xml:space="preserve">
-    <value>Sazlawlar jıyındısı 1</value>
+    <value>Preset 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset2" xml:space="preserve">
-    <value>Sazlawlar jıyındısı 2</value>
+    <value>Preset 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset3" xml:space="preserve">
-    <value>Sazlawlar jıyındısı 3</value>
+    <value>Preset 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset4" xml:space="preserve">
     <value>Preset 4</value>
   </data>
   <data name="RGBKeyboardBacklightControl_PresetOff" xml:space="preserve">
-    <value>Óshirilgen</value>
+    <value>Off</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone1" xml:space="preserve">
-    <value>Zona 1</value>
+    <value>Zone 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone2" xml:space="preserve">
-    <value>Zona 2</value>
+    <value>Zone 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone3" xml:space="preserve">
-    <value>Zona 3</value>
+    <value>Zone 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone4" xml:space="preserve">
-    <value>Zona 4</value>
+    <value>Zone 4</value>
   </data>
   <data name="RGBKeyboardBacklightEffectCardControl_Title" xml:space="preserve">
-    <value>Effekt</value>
+    <value>Effect</value>
   </data>
   <data name="RGBKeyboardBacklightSpeedCardControl_Title" xml:space="preserve">
-    <value>Tezlik</value>
+    <value>Speed</value>
   </data>
   <data name="RPM" xml:space="preserve">
-    <value>aylanıw/min</value>
+    <value>RPM</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
-    <value>Argumentler</value>
+    <value>Arguments</value>
   </data>
   <data name="RunAutomationStepControl_ExePath" xml:space="preserve">
-    <value>Orınlanatuǵın faylǵa jol</value>
+    <value>Executable Path</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Skript yamasa baǵdarlamanı iske túsiriń.
-Siziń skriptińiz durıs orınlanıp atırǵanına isenim kámil etiń.</value>
+    <value>Run a script or a program.
+Make sure that your script runs correctly first.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -2292,25 +2292,25 @@ Siziń skriptińiz durıs orınlanıp atırǵanına isenim kámil etiń.</value>
     <value>Wait until program or script finishes executing</value>
   </data>
   <data name="RunAutomationStepControl_Title" xml:space="preserve">
-    <value>Orınlaw</value>
+    <value>Run</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Saqlaw</value>
+    <value>Save</value>
   </data>
   <data name="SaveAndClose" xml:space="preserve">
-    <value>Saqlaw hám jabıw</value>
+    <value>Save &amp; Close</value>
   </data>
   <data name="Saving" xml:space="preserve">
-    <value>Saqlanbaqta...</value>
+    <value>Saving...</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Izbe-iz orınlanıw ushın bir yamasa bir neshe tez háreketlerdi tańlaw</value>
+    <value>Choose one or more quick actions to cycle through</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>Tez háreketler anıqlanbaǵan.</value>
+    <value>No Quick Actions defined.</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Bul baǵdarlamanı kórsetiw</value>
+    <value>Show this app</value>
   </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
     <value>Battery Level</value>
@@ -2370,13 +2370,13 @@ Siziń skriptińiz durıs orınlanıp atırǵanına isenim kámil etiń.</value>
     <value>Battery</value>
   </data>
   <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
-    <value>Tiykarǵı saat</value>
+    <value>Core Clock</value>
   </data>
   <data name="SensorsControl_CPU_Power" xml:space="preserve">
     <value>Power</value>
   </data>
   <data name="SensorsControl_CPU_Title" xml:space="preserve">
-    <value>Oraylıq protsessor</value>
+    <value>CPU</value>
   </data>
   <data name="SensorsControl_Disk_1_Temperature" xml:space="preserve">
     <value>Disk 1 Temperature</value>
@@ -2388,7 +2388,7 @@ Siziń skriptińiz durıs orınlanıp atırǵanına isenim kámil etiń.</value>
     <value>Disk</value>
   </data>
   <data name="SensorsControl_Fan_Title" xml:space="preserve">
-    <value>Íshqıpaz</value>
+    <value>Fan</value>
   </data>
   <data name="SensorsControl_GpuCoreTemperature_Title" xml:space="preserve">
     <value>Core Temp</value>
@@ -2403,13 +2403,13 @@ Siziń skriptińiz durıs orınlanıp atırǵanına isenim kámil etiń.</value>
     <value>Power</value>
   </data>
   <data name="SensorsControl_GPU_Title" xml:space="preserve">
-    <value>Grafik. Oraylıq protsessor</value>
+    <value>GPU</value>
   </data>
   <data name="SensorsControl_Maximum" xml:space="preserve">
-    <value>Maksimal: {0}</value>
+    <value>Maximum: {0}</value>
   </data>
   <data name="SensorsControl_MemoryClock_Title" xml:space="preserve">
-    <value>Yad saatı</value>
+    <value>Memory Clock</value>
   </data>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
     <value>Memory</value>
@@ -2430,10 +2430,10 @@ Siziń skriptińiz durıs orınlanıp atırǵanına isenim kámil etiń.</value>
     <value>State</value>
   </data>
   <data name="SensorsControl_Temperature_Title" xml:space="preserve">
-    <value>Temperatura</value>
+    <value>Temperature</value>
   </data>
   <data name="SensorsControl_Utilization_Title" xml:space="preserve">
-    <value>Paydalanıw</value>
+    <value>Utilization</value>
   </data>
   <data name="SensorSettingsPage_Average_Frequency_Title" xml:space="preserve">
     <value>Average Frequency</value>
@@ -2502,16 +2502,16 @@ Siziń skriptińiz durıs orınlanıp atırǵanına isenim kámil etiń.</value>
     <value>Backup Settings</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
-    <value>Baǵdarlamanıń sáykes reńin ózgertiw.</value>
+    <value>Change the accent color of the app.</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>Sáykes reń</value>
+    <value>Accent color</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
-    <value>Windowsqa kirgende kishireytilgen kóriniste iske túsiriw.</value>
+    <value>Start minimized to tray when you log in to Windows.</value>
   </data>
   <data name="SettingsPage_Autorun_Title" xml:space="preserve">
-    <value>Avtomatikalıq iske túsiriw</value>
+    <value>Autorun</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
     <value>Back up or restore application settings.</value>
@@ -2523,10 +2523,10 @@ Siziń skriptińiz durıs orınlanıp atırǵanına isenim kámil etiń.</value>
     <value>This feature modifies the EFI partition. Use with caution.</value>
   </data>
   <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
-    <value>Sistema jumısqa túskende kórsetiletuǵın júklew logotipin sazlaw.</value>
+    <value>Customize Boot Logo image, visible during system startup.</value>
   </data>
   <data name="SettingsPage_BootLogo_Title" xml:space="preserve">
-    <value>Logotip júklenip atır</value>
+    <value>Boot Logo</value>
   </data>
   <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
     <value>App Behavior</value>
@@ -2595,51 +2595,47 @@ Siziń skriptińiz durıs orınlanıp atırǵanına isenim kámil etiń.</value>
     <value>Couldn't disable Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Message" xml:space="preserve">
-    <value>Legion Zone hám onıń xızmetleriniń iskerligin toqtatıp, ózin óshirmew.
-Bul varianttı ózgertkennen keyin, qayta iske túsiriw usınıs etiledi.</value>
+    <value>Disable Legion Space and its service without uninstalling it.</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Title" xml:space="preserve">
     <value>Disable Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone nadurıs óshirilgen bolıwı múmkin</value>
+    <value>Legion Zone may have not been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
-    <value>Legion Zonedi óshiriw ámelge aspadı</value>
+    <value>Couldn't disable Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>Legion Zone hám onıń xızmetleriniń iskerligin toqtatıp, ózin óshirmew.
-Bul varianttı ózgertkennen keyin, qayta iske túsiriw usınıs etiledi.</value>
+    <value>Disable Legion Zone and its service without uninstalling it.</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
-    <value>Legion Zonedi óshiriw</value>
+    <value>Disable Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Legion Hotkeys nadurıs óshirilgen bolıwı múmkin</value>
+    <value>Lenovo Hotkeys may have not been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Lenovo Hotkeysti óshiriw ámelge aspadı</value>
+    <value>Couldn't disable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Lenovo Hotkeystiń ózin óshirmesten, onıń xızmetlerin óshiriw.
-Eger óshirilgen bolsa, bul baǵdarlama Fn tez túymelerin orınlaydı.
-Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it.
+If disabled, this app will handle Fn shortcuts.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
-    <value>Lenovo Hotkeysti óshiriw</value>
+    <value>Disable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage hám/yamasa ImController nadurıs óshirilgen bolıwı múmkin</value>
+    <value>Lenovo Vantage and/or ImController may have not been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>Lenovo Vantage hám/yamasa ImControllerdi óshirip bo'lmadı</value>
+    <value>Couldn't disable Lenovo Vantage and/or ImController</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Lenovo vantage hám ImController-ni óshirmesten óshirip qoyıń.
- Bul sazlawdı ózgertirgennen keyin, qayta iske túsiriw usınıs etiledi.</value>
+    <value>Disable Lenovo Vantage and ImController without uninstalling them.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
-    <value>Lenovo vantage hám ImControllerni óshirip qoyıń</value>
+    <value>Disable Lenovo Vantage and ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space may have not been enabled correctly</value>
@@ -2648,16 +2644,16 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Couldn't enable Legion Space</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone nadurıs iske túsirilgen bolıwı múmkin</value>
+    <value>Legion Zone may have not been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
-    <value>Legion Zonedi iske túsiriw ámelge aspadı</value>
+    <value>Couldn't enable Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys nadurıs iske túsirilgen bolıwı múmkin</value>
+    <value>Lenovo Hotkeys may have not been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Lenovo Hotkeystiń túymelerin iske túsiriw ámelge aspadı</value>
+    <value>Couldn't enable Lenovo Hotkeys Keys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Enable logging for debug.</value>
@@ -2666,19 +2662,19 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Enable Logging</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage hám/yamasa ImController tuwrı jaǵılmaǵan bolıwı múmkin</value>
+    <value>Lenovo Vantage and/or ImController may have not been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Lenovo Vantage hám/yamasa ImControllerdi jaǵılmadı</value>
+    <value>Couldn't enable Lenovo Vantage and/or ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
     <value>Excluded Processes</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Fn+R túymelerin paydalıraq qılıw ushın, siz jańalanıw tezligin esaptan tısqarı qılıwıńız múmkin</value>
+    <value>You can exclude refresh rates, to make Fn+R shortcut more useful.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
-    <value>Jańalanıw tezligin esaptan tısqarı qılıw</value>
+    <value>Exclude Refresh Rates</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
     <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
@@ -2708,7 +2704,7 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Power saving (iGPU)</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
-    <value>Share fan speed, battery temperature etc. with HWiNFO64. You may need to restart HWiNFO64 after changing this option.</value>
+    <value>Share fan speed, battery temperature etc. with HWiNFO64.</value>
   </data>
   <data name="SettingsPage_HWiNFO_RestartInfo" xml:space="preserve">
     <value>You may need to restart HWiNFO64 after changing this option.</value>
@@ -2717,10 +2713,10 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>HWiNFO64</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Tildi saylań.</value>
+    <value>Select language.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
-    <value>Til</value>
+    <value>Language</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Lock LLT's window size. To prevent something change it.</value>
@@ -2729,10 +2725,10 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Lock Window Size</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Hámiyshe xabarlamalar maydanına kishireytiw. Xabarlamalar maydanındaǵı tańbada tıshqanshanıń oń túymesin basıw járdeminde jabıw.</value>
+    <value>Always minimize to tray. Close with right click on tray icon.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>Jawǵanda jıynaw</value>
+    <value>Minimize on close</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
     <value>Always minimize to tray instead of taskbar.</value>
@@ -2741,10 +2737,10 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Minimize to tray</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
-    <value>Qanday xabarlamalar kórsetiliwin sazlań.</value>
+    <value>Configure which notifications are shown.</value>
   </data>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
-    <value>Xabarlamalar</value>
+    <value>Notifications</value>
   </data>
   <data name="SettingsPage_OnBatterySinceReset_Message" xml:space="preserve">
     <value>Resets the counter for "On battery since" in the battery section when the system reboots.</value>
@@ -2780,28 +2776,28 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Sensor Settings</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Alt, Ctrl yamasa Shift túymeleri basılǵanda Fn Lock óshiriledi.</value>
+    <value>Fn Lock will be temporarily disabled when Alt, Ctrl or Shift key is depressed.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Smart Fn Lock</value>
   </data>
   <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
-    <value>Fn+F9 túymelerin eki márte basıw ushın tez háreketti belgileń.</value>
+    <value>Assign Quick Action to Fn+F9 double press.</value>
   </data>
   <data name="SettingsPage_SmartKeyDoublePressAction_Title" xml:space="preserve">
-    <value>Aqıllı túymeniń ekilemshi háreketi</value>
+    <value>Smart Key Secondary Action</value>
   </data>
   <data name="SettingsPage_SmartKeySinglePressAction_Message" xml:space="preserve">
-    <value>Fn+F9 túymelerin bir márte basıw ushın tez háreketti belgileń.</value>
+    <value>Assign Quick Action to Fn+F9 single press.</value>
   </data>
   <data name="SettingsPage_SmartKeySinglePressAction_Title" xml:space="preserve">
-    <value>Aqıllı túyme háreketi</value>
+    <value>Smart Key Action</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Qosılǵanda hám hár ózgertilgende, barlıq Windows quwatlılıq rejelerine birdey jarıqlıq dárejesi qollanıladı.</value>
+    <value>When on, same brightness level will be applied to all Windows power plans whenever you change it.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
-    <value>Bir displeydıń jarıqlıǵı</value>
+    <value>Single Display Brightness</value>
   </data>
   <data name="SettingsPage_Temperature_Message" xml:space="preserve">
     <value>Select units for temperature sensors.</value>
@@ -2810,13 +2806,13 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Temperature</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Jaqtı temanı, qaranǵı temanı ornatıw yamasa sistema sazlawlarına ámel etiw.</value>
+    <value>Set light theme, dark theme or follow system settings.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
-    <value>Tema</value>
+    <value>Theme</value>
   </data>
   <data name="SettingsPage_Title" xml:space="preserve">
-    <value>Sazlawlar</value>
+    <value>Settings</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>Update Channel</value>
@@ -2849,13 +2845,13 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Windows Power Modes</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlansControlPanel_Title" xml:space="preserve">
-    <value>Windows basqarıw panelindegi quwatlılıq jobası variantları</value>
+    <value>Power Plan options in Windows Control Panel</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Message" xml:space="preserve">
-    <value>Quwatlılıq rejimi ózgergende qollanılatuǵın Windows quwatlılıq jobaların tańlań.</value>
+    <value>Select Windows Power Plans to apply when Power Mode changes.</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
-    <value>Quwatlılıq jobaları</value>
+    <value>Windows Power Plans</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Message" xml:space="preserve">
     <value>Allow quick switching to Custom Mode with Fn+Q.</value>
@@ -2876,85 +2872,85 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Speaker Volume</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Klaviaturnıń arqa jaqtılıǵı jarıqlıǵın sazlań.</value>
+    <value>Adjust keyboard backlight brightness.</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Off" xml:space="preserve">
-    <value>Óshik</value>
+    <value>Off</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Title" xml:space="preserve">
-    <value>Klaviaturnıń arqa jaqtılıǵınıń jarıqlıǵı</value>
+    <value>Keyboard backlight brightness</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_AddEffect" xml:space="preserve">
-    <value>Effekt qosıw</value>
+    <value>Add effect</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Message" xml:space="preserve">
-    <value>Arqa jaqtılıqtıń profilın qollanıw ámelge aspadı.</value>
+    <value>Lighting profile couldn't be applied.</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Title" xml:space="preserve">
-    <value>Profildi qollanıw ámelge aspadı</value>
+    <value>Couldn't apply profile</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Brightness_Title" xml:space="preserve">
-    <value>Jarıqlıq</value>
+    <value>Brightness</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_DeselectAll_ToolTip" xml:space="preserve">
-    <value>Barlıq zonalardıń belgilengenin alıp taslaw</value>
+    <value>Deselect all zones</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Effects" xml:space="preserve">
-    <value>Effektler</value>
+    <value>Effects</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Message" xml:space="preserve">
-    <value>Profildi eksport qılıw ámelge aspadı</value>
+    <value>Profile couldn't be exported</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Title" xml:space="preserve">
-    <value>Profildi eksport qılıw ámelge aspadı</value>
+    <value>Couldn't export profile</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Message" xml:space="preserve">
-    <value>Profildi import qılıw ámelge aspadı</value>
+    <value>Profile couldn't be imported</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Title" xml:space="preserve">
-    <value>Profildi import qılıw ámelge aspadı</value>
+    <value>Couldn't import profile</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_NoEffects_Text" xml:space="preserve">
-    <value>Effektler qosılmaǵan.</value>
+    <value>No effects added.</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Preset" xml:space="preserve">
     <value>Preset</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ResetToDefault_Tooltip" xml:space="preserve">
-    <value>Aldınnan sazlawdı qayta ornatıw</value>
+    <value>Reset to default</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_SelectAll_ToolTip" xml:space="preserve">
-    <value>Barlıq zonalardı tańlaw</value>
+    <value>Select all zones</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_SwitchKeyboardLayout_ToolTip" xml:space="preserve">
-    <value>Klaviatura jaylasıw tártibin ózgertiw</value>
+    <value>Switch keyboard layout</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_ClockwiseDirection_Title" xml:space="preserve">
-    <value>Baǵdar</value>
+    <value>Direction</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Colors_Title" xml:space="preserve">
-    <value>Reńler</value>
+    <value>Colors</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Color_Title" xml:space="preserve">
-    <value>Reń</value>
+    <value>Color</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Direction_Title" xml:space="preserve">
-    <value>Baǵdar</value>
+    <value>Direction</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Effect_Title" xml:space="preserve">
-    <value>Effekt</value>
+    <value>Effect</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Effect_Warning" xml:space="preserve">
-    <value>Bul effekt pútkil klaviaturaǵa qollanıladı hám barlıq effectlerdi ózgertedi.</value>
+    <value>This effect will be applied to the whole keyboard and will replace all other effects.</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Speed_Title" xml:space="preserve">
-    <value>Tezlik</value>
+    <value>Speed</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Title_Add" xml:space="preserve">
-    <value>Effekt qosıw</value>
+    <value>Add effect</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Title_Edit" xml:space="preserve">
-    <value>Effektti ózgertiw</value>
+    <value>Edit effect</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostBrightnessFactor" xml:space="preserve">
     <value>Boost Brightness Factor</value>
@@ -2975,34 +2971,34 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Vantage Color Boost</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>Ámeldegi profilge arqa jaqtılıq konfiguratsiyasın import etiń hám qollań.</value>
+    <value>Import and apply backlight configuration to the current profile.</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
-    <value>Jol</value>
+    <value>Path</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Title" xml:space="preserve">
-    <value>Túymetaxta arqa nurı profilin import etiń</value>
+    <value>Import keyboard backlight profile</value>
   </data>
   <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>Klaviatura arqa jaqtılıǵınıń profilin sazlaw.</value>
+    <value>Adjust keyboard backlight profile.</value>
   </data>
   <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Title" xml:space="preserve">
-    <value>Klaviatura arqa jaqtılıǵınıń profili</value>
+    <value>Keyboard backlight profile</value>
   </data>
   <data name="SpectrumKeyboardEffectControl_Description_AllZones" xml:space="preserve">
-    <value>Bárshe túymeler</value>
+    <value>All keys</value>
   </data>
   <data name="SpectrumKeyboardEffectControl_Description_Zones" xml:space="preserve">
-    <value>{0} zona</value>
+    <value>{0} zones</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
-    <value>Batareya</value>
+    <value>Battery</value>
   </data>
   <data name="StatusTrayPopup_DischargeRate" xml:space="preserve">
-    <value>Zaryadsızlanıw tezligi</value>
+    <value>Discharge rate</value>
   </data>
   <data name="StatusTrayPopup_DiscreteGPU" xml:space="preserve">
-    <value>Bólekli grafikalıq processor</value>
+    <value>Discrete GPU</value>
   </data>
   <data name="StatusTrayPopup_MaxDischargeRate" xml:space="preserve">
     <value>Max discharge rate</value>
@@ -3011,19 +3007,19 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>Min discharge rate</value>
   </data>
   <data name="StatusTrayPopup_Mode" xml:space="preserve">
-    <value>Rejim</value>
+    <value>Mode</value>
   </data>
   <data name="StatusTrayPopup_PowerMode" xml:space="preserve">
-    <value>Quwatlılıq rejimi</value>
+    <value>Power Mode</value>
   </data>
   <data name="StatusTrayPopup_PowerState" xml:space="preserve">
-    <value>Quwatlılıq jaǵdayı</value>
+    <value>Power State</value>
   </data>
   <data name="StatusTrayPopup_Preset" xml:space="preserve">
-    <value>Sazlawlar jıyındısı</value>
+    <value>Preset</value>
   </data>
   <data name="StatusTrayPopup_UpdateAvailable" xml:space="preserve">
-    <value>Jańalanıw bar!</value>
+    <value>Update available!</value>
   </data>
   <data name="StatusWindow_Fan_And_Power" xml:space="preserve">
     <value>Fan / Power</value>
@@ -3035,67 +3031,67 @@ Bul varianttı ózgertkennen keyin qayta iske túsiriw usınıs etiledi.</value>
     <value>System Fan</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
-    <value>Tańbanı tańlaw</value>
+    <value>Select icon</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
-    <value>Quyash shıǵıwı</value>
+    <value>Sunrise</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunset" xml:space="preserve">
-    <value>Quyash batıwı</value>
+    <value>Sunset</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Time" xml:space="preserve">
-    <value>Waqıt</value>
+    <value>Time</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Integraciyalasqan hám diskret GPU ortasında almasıwǵa ruxsat beriń.
- Qayta jumısqa túsiriwdi talap etedi.</value>
+    <value>Allow switching between integrated and discrete GPU.
+Requires restart.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Gibrid rejimi</value>
+    <value>Hybrid Mode</value>
   </data>
   <data name="ToggleHybridModeControl_Message" xml:space="preserve">
-    <value>Ornatılǵan hám bólekli grafikalıq processor arasında ózgertiw imkániyatın beredi.
-Qayta iske túsiriw talap etiledi.</value>
+    <value>Allow switching between integrated and discrete GPU.
+Requires restart.</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>Gibrid rejimin ózgertiw qayta iske túsiriwdi talap etedi. Házir qayta iske túsiriwdi qáleysiz be?</value>
+    <value>Changing Hybrid Mode requires restart. Do you want to restart now?</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>Qayta iske túsiriw talap etiledi</value>
+    <value>Restart required</value>
   </data>
   <data name="ToggleHybridModeControl_Title" xml:space="preserve">
-    <value>Gibrid rejim</value>
+    <value>Hybrid Mode</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
-    <value>Sensorlı paneldi óshiriw.</value>
+    <value>Disable touchpad.</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Title" xml:space="preserve">
-    <value>Sensorlı panel bloklanıwı</value>
+    <value>Touchpad Lock</value>
   </data>
   <data name="TouchpadLockControl_Message" xml:space="preserve">
-    <value>Sensorlı paneldi óshiriw.</value>
+    <value>Disable touchpad.</value>
   </data>
   <data name="TouchpadLockControl_Title" xml:space="preserve">
-    <value>Sensorlı panel bloklanıwı</value>
+    <value>Touchpad Lock</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
-    <value>Qayta urınıp kóriń</value>
+    <value>Try again</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
-    <value>Ámeldegi barlıq ekranlardı óshiriw.</value>
+    <value>Turn off all available displays.</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Title" xml:space="preserve">
-    <value>Displeylerdi óshiriw</value>
+    <value>Turn off displays</value>
   </data>
   <data name="TurnOffMonitorsControl_Message" xml:space="preserve">
-    <value>Barlıq displeylerdi óshiriw.
-Tıshqanshanı qozǵaw yamasa klaviaturanı basıw displeydi iske túsiredi.</value>
+    <value>Turn off all available displays.
+Moving the mouse or pressing the keyboard will wake displays up.</value>
   </data>
   <data name="TurnOffMonitorsControl_Title" xml:space="preserve">
-    <value>Displeylerdi óshiriw</value>
+    <value>Turn off displays</value>
   </data>
   <data name="TurnOffMonitorsControl_TurnOff" xml:space="preserve">
-    <value>Óshiriw</value>
+    <value>Turn off</value>
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Turn off Wi-Fi</value>
@@ -3104,42 +3100,42 @@ Tıshqanshanı qozǵaw yamasa klaviaturanı basıw displeydi iske túsiredi.</va
     <value>Turn on Wi-Fi</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Unexpected exception occurred:
-{0}</value>
+    <value>Unexpected exception occurred:</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
-    <value>Atı atalmaǵan</value>
+    <value>Unnamed</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer" xml:space="preserve">
-    <value>Siz ózińizdi qáwipke qoyıp dawam etiwdi tańlawıńız múmkin, bıraq este saqlań, ayırım funkciyalar bolmawı hám/yamasa durıs islemewi múmkin.
-Eger siz dawam etiwdi tańlasańız, jurnaldı júrgiziw avtomatikalıq qosıladı.</value>
+    <value>You may choose to continue at your own risk, but keep in mind that some features may not be available and/or not work properly.
+
+Logging will be enabled automatically, if you choose to continue.</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer_GitHub" xml:space="preserve">
-    <value>Qosımsha maǵlıwmat alıw ushın GitHubdaǵi joybar betin tekseriń.</value>
+    <value>Check out project page on GitHub for more information.</value>
   </data>
   <data name="UnsupportedWindow_MachineType" xml:space="preserve">
-    <value>Qurılma modeliniń túri</value>
+    <value>Machine Type</value>
   </data>
   <data name="UnsupportedWindow_Message" xml:space="preserve">
-    <value>Lenovo Legion Toolkit siziń qurılmańızda tekserilmedi.</value>
+    <value>Lenovo Legion Toolkit has not been tested with your device.</value>
   </data>
   <data name="UnsupportedWindow_Model" xml:space="preserve">
     <value>Model</value>
   </data>
   <data name="UnsupportedWindow_Title" xml:space="preserve">
-    <value>Qollap-quwatlanbaytuǵın qurılma</value>
+    <value>Unsupported device</value>
   </data>
   <data name="UnsupportedWindow_Vendor" xml:space="preserve">
-    <value>Támiyinlewshi</value>
+    <value>Vendor</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Jańalaw</value>
+    <value>Update</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
-    <value>Jańalanıw bar</value>
+    <value>Update available</value>
   </data>
   <data name="UpdateWindow_WhatsNew" xml:space="preserve">
-    <value>Ne jańalıq?</value>
+    <value>What's new?</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Warning</value>
@@ -3148,16 +3144,16 @@ Eger siz dawam etiwdi tańlasańız, jurnaldı júrgiziw avtomatikalıq qosılad
     <value>W</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Klaviaturnıń arqa jaqtılıǵınıń jarıqlıǵın sazlaw.</value>
+    <value>Adjust keyboard backlight brightness.</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Klaviaturanıń arqa jaqtılıǵı</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>Siz jarıqlıqtı Fn+Space járdeminde ózgerte alasız</value>
+    <value>You can change brightness with Fn+Space</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Klaviaturanıń arqa jaqtılıǵı</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_CopyCurrentNetworkName" xml:space="preserve">
     <value>Copy current network name</value>
@@ -3181,12 +3177,12 @@ Eger siz dawam etiwdi tańlasańız, jurnaldı júrgiziw avtomatikalıq qosılad
     <value>Windows Key Lock</value>
   </data>
   <data name="WinKeyControl_Message" xml:space="preserve">
-    <value>Tek ǵana ornatılǵan klaviaturada isleydi.</value>
+    <value>Only works on built-in keyboard.</value>
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
-    <value>Windows túymesin bloklaw</value>
+    <value>Windows Key Lock</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Awa</value>
+    <value>Yes</value>
   </data>
 </root>
