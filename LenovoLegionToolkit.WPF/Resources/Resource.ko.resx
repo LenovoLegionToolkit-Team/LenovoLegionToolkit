@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -121,7 +121,7 @@
     <value>Application Folders</value>
   </data>
   <data name="AboutPage_AppName" xml:space="preserve">
-    <value>Lenovo Legion Toolkit (Unofficial Fork)</value>
+    <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="AboutPage_Build" xml:space="preserve">
     <value>Build</value>
@@ -2095,7 +2095,7 @@ Always make sure that you are installing correct packages.</value>
     <value>Minutes</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Period" xml:space="preserve">
-    <value>Period (minutes)</value>
+    <value>Period</value>
     <comment>A prompt that is used both to ask the user to input an integer, representing the number of minutes between two periodic actions are triggered, and to inform the user what have they set once they are done configuring the action.</comment>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Seconds" xml:space="preserve">
@@ -2595,8 +2595,7 @@ Make sure that your script runs correctly first.</value>
     <value>Couldn't disable Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Message" xml:space="preserve">
-    <value>Disable Legion Space and its service without uninstalling it.
-Restart is recommended after changing this option.</value>
+    <value>Disable Legion Space and its service without uninstalling it.</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Title" xml:space="preserve">
     <value>Disable Legion Space</value>
@@ -2608,8 +2607,7 @@ Restart is recommended after changing this option.</value>
     <value>Couldn't disable Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>Disable Legion Zone and its service without uninstalling it.
-Restart is recommended after changing this option.</value>
+    <value>Disable Legion Zone and its service without uninstalling it.</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
     <value>Disable Legion Zone</value>
@@ -2622,8 +2620,7 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
     <value>Disable Lenovo Hotkeys and its service without uninstalling it.
-If disabled, this app will handle Fn shortcuts.
-Restart is recommended after changing this option.</value>
+If disabled, this app will handle Fn shortcuts.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Disable Lenovo Hotkeys</value>
@@ -2635,8 +2632,7 @@ Restart is recommended after changing this option.</value>
     <value>Couldn't disable Lenovo Vantage and/or ImController</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Disable Lenovo Vantage and ImController without uninstalling them.
-Restart is recommended after changing this option.</value>
+    <value>Disable Lenovo Vantage and ImController without uninstalling them.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
     <value>Disable Lenovo Vantage and ImController</value>
@@ -2708,7 +2704,7 @@ Restart is recommended after changing this option.</value>
     <value>Power saving (iGPU)</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
-    <value>Share fan speed, battery temperature etc. with HWiNFO64. You may need to restart HWiNFO64 after changing this option.</value>
+    <value>Share fan speed, battery temperature etc. with HWiNFO64.</value>
   </data>
   <data name="SettingsPage_HWiNFO_RestartInfo" xml:space="preserve">
     <value>You may need to restart HWiNFO64 after changing this option.</value>
@@ -3104,8 +3100,7 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
     <value>Turn on Wi-Fi</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Unexpected exception occurred:
-{0}</value>
+    <value>Unexpected exception occurred:</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Unnamed</value>
