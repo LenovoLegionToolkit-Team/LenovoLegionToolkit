@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Features;
@@ -92,12 +93,23 @@ public class FanCurveManager : IDisposable
         }
     }
 
-    private async Task ApplyStateLogicAsync(PowerModeState state)
+    private const int FanCurveSettleDelayMs = 500;
+
+    private async Task ApplyStateLogicAsync(PowerModeState state, CancellationToken cancellationToken = default)
     {
         if (state == PowerModeState.GodMode)
         {
             Log.Instance.Trace($"PowerMode is GodMode. Enabling custom fan control.");
-            await Task.Delay(500).ConfigureAwait(false); // wait for BIOS to settle after mode switch
+            await Task.Delay(TimeSpan.FromMilliseconds(FanCurveSettleDelayMs), cancellationToken).ConfigureAwait(false); // wait for BIOS to settle after mode switch
+            
+            // Re-check that mode hasn't changed during the settle delay
+            var currentState = await _powerModeFeature.GetStateAsync().ConfigureAwait(false);
+            if (currentState != PowerModeState.GodMode)
+            {
+                Log.Instance.Trace($"PowerMode changed during settle delay. Skipping fan curve re-apply.");
+                return;
+            }
+
             await SetRegisterAsync(true).ConfigureAwait(false);
         }
         else
