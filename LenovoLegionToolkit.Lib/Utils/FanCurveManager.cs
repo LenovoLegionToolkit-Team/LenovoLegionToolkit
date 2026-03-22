@@ -97,6 +97,7 @@ public class FanCurveManager : IDisposable
         if (state == PowerModeState.GodMode)
         {
             Log.Instance.Trace($"PowerMode is GodMode. Enabling custom fan control.");
+            await Task.Delay(500).ConfigureAwait(false); // wait for BIOS to settle after mode switch
             await SetRegisterAsync(true).ConfigureAwait(false);
         }
         else
