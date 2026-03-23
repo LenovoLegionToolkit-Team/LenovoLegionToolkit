@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Threading.Tasks;
 using Windows.Win32;
 using Windows.Win32.UI.Input.KeyboardAndMouse;
@@ -13,7 +14,7 @@ namespace LenovoLegionToolkit.Lib.Controllers;
 public class SmartFnLockController(FnLockFeature feature, ApplicationSettings settings)
 {
     private readonly AsyncLock _lock = new();
-
+    private CancellationTokenSource _cts = new();
     private bool _ctrlDepressed;
     private bool _shiftDepressed;
     private bool _altDepressed;
@@ -24,12 +25,24 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
         if (settings.Store.SmartFnLockFlags == 0)
             return;
 
+        _cts.Cancel();
+        _cts = new CancellationTokenSource();
+        var token = _cts.Token;
+
         Task.Run(async () =>
         {
             try
             {
+                if (token.IsCancellationRequested)
+                    return;
+
                 using (await _lock.LockAsync().ConfigureAwait(false))
+                {
+                    if (token.IsCancellationRequested)
+                        return;
+
                     await OnKeyboardEventAsync(wParam, kbStruct).ConfigureAwait(false);
+                }
             }
             catch (Exception ex)
             {
@@ -50,14 +63,12 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
                 return;
 
             Log.Instance.Trace($"Disabling Fn Lock temporarily...");
-
             await feature.SetStateAsync(FnLockState.Off).ConfigureAwait(false);
             _restoreFnLock = true;
         }
         else if (_restoreFnLock)
         {
             Log.Instance.Trace($"Re-enabling Fn Lock...");
-
             await feature.SetStateAsync(FnLockState.On).ConfigureAwait(false);
             _restoreFnLock = false;
         }
@@ -70,10 +81,8 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
 
         if (vkKeyCode is VIRTUAL_KEY.VK_LCONTROL or VIRTUAL_KEY.VK_RCONTROL)
             _ctrlDepressed = isKeyDown;
-
         if (vkKeyCode is VIRTUAL_KEY.VK_LSHIFT or VIRTUAL_KEY.VK_RSHIFT)
             _shiftDepressed = isKeyDown;
-
         if (vkKeyCode is VIRTUAL_KEY.VK_LMENU or VIRTUAL_KEY.VK_RMENU)
             _altDepressed = isKeyDown;
 
@@ -85,15 +94,12 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
 
         if (flags.HasFlag(ModifierKey.Ctrl))
             result |= _ctrlDepressed;
-
         if (flags.HasFlag(ModifierKey.Shift))
             result |= _shiftDepressed;
-
         if (flags.HasFlag(ModifierKey.Alt))
             result |= _altDepressed;
 
         Log.Instance.Trace($"Modifier key is depressed: {result} [ctrl={_ctrlDepressed}, shift={_shiftDepressed}, alt={_altDepressed}, flags={flags}]");
-
         return result;
     }
 }
