@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,13 +7,16 @@ using System.Windows.Controls.Primitives;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Listeners;
+using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.WPF.Resources;
+using LenovoLegionToolkit.WPF.Windows.Dashboard;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
 public partial class DiscreteGPUControl
 {
     private readonly GPUController _gpuController = IoCContainer.Resolve<GPUController>();
+    private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
     private readonly NativeWindowsMessageListener _nativeWindowsMessageListener = IoCContainer.Resolve<NativeWindowsMessageListener>();
 
     public DiscreteGPUControl()
@@ -36,6 +39,7 @@ public partial class DiscreteGPUControl
         if (!_gpuController.IsSupported())
             throw new InvalidOperationException("Unsupported operation");
 
+        _gpuController.Interval = _settings.Store.GPUMonitoringInterval;
         await _gpuController.StartAsync();
     }
 
@@ -162,5 +166,14 @@ public partial class DiscreteGPUControl
     {
         _deactivateGPUButton.IsEnabled = false;
         await _gpuController.RestartGPUAsync();
+    }
+
+    private void GpuInfoButton_Click(object sender, RoutedEventArgs e)
+    {
+        var window = new DiscreteGPUManagementWindow
+        {
+            Owner = Window.GetWindow(this)
+        };
+        window.ShowDialog();
     }
 }

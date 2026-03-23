@@ -1,4 +1,4 @@
-﻿<controls:AbstractRefreshingControl
+<controls:AbstractRefreshingControl
     x:Class="LenovoLegionToolkit.WPF.Controls.Dashboard.DiscreteGPUControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -57,9 +57,9 @@
                     Margin="8,0,0,0"
                     AutomationProperties.HelpText="{x:Static resources:Resource.Information}"
                     AutomationProperties.Name="{x:Static resources:Resource.DiscreteGPUControl_Title}"
-                    ClickMode="Hover"
+                    Click="GpuInfoButton_Click"
                     FontSize="20"
-                    Icon="QuestionCircle24"
+                    Icon="Settings24"
                     ToolTipService.InitialShowDelay="0" />
             </Grid>
             <wpfui:Button

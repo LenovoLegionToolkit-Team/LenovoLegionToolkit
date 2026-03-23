@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -15,21 +15,27 @@ public static class NVAPIExtensions
         "explorer.exe",
     ];
 
-    public static List<Process> GetActiveProcesses(PhysicalGPU gpu)
+    public static (List<Process> All, List<Process> Filtered) GetActiveProcesses(PhysicalGPU gpu)
     {
-        var processes = new List<Process>();
-        var apps = GPUApi.QueryActiveApps(gpu.Handle).Where(app => !Exclusions.Contains(app.ProcessName, StringComparer.InvariantCultureIgnoreCase));
-
+        var allProcesses = new List<Process>();
+        var filteredProcesses = new List<Process>();
+        var apps = GPUApi.QueryActiveApps(gpu.Handle);
+        
         foreach (var app in apps)
         {
             try
             {
                 var process = Process.GetProcessById(app.ProcessId);
-                processes.Add(process);
+                allProcesses.Add(process);
+                
+                if (!Exclusions.Contains(app.ProcessName, StringComparer.InvariantCultureIgnoreCase))
+                {
+                    filteredProcesses.Add(process);
+                }
             }
             catch (ArgumentException) { }
         }
 
-        return processes;
+        return (allProcesses, filteredProcesses);
     }
 }

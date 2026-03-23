@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
@@ -81,13 +82,13 @@ public partial class SettingsAppearanceControl
         {
             _gpuPreferenceComboBox.Visibility = Visibility.Visible;
             var exePath = Environment.ProcessPath ?? string.Empty;
-            var prefString = LenovoLegionToolkit.Lib.System.Registry.GetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", exePath, string.Empty);
-            if (prefString.Contains("GpuPreference=1"))
-                _gpuPreferenceComboBox.SelectedIndex = 1;
-            else if (prefString.Contains("GpuPreference=2"))
-                _gpuPreferenceComboBox.SelectedIndex = 2;
-            else
-                _gpuPreferenceComboBox.SelectedIndex = 0;
+            var pref = IoCContainer.Resolve<GPUController>().GetGpuPreference(exePath);
+            _gpuPreferenceComboBox.SelectedIndex = pref switch
+            {
+                GPUController.GpuPreference.Integrated => 1,
+                GPUController.GpuPreference.Discrete => 2,
+                _ => 0
+            };
         }
 
         _isRefreshing = false;
@@ -263,26 +264,14 @@ public partial class SettingsAppearanceControl
         if (string.IsNullOrEmpty(exePath))
             return;
 
-        if (_gpuPreferenceComboBox.SelectedIndex == 1)
+        var preference = _gpuPreferenceComboBox.SelectedIndex switch
         {
-            LenovoLegionToolkit.Lib.System.Registry.SetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", exePath, "GpuPreference=1;", false, Microsoft.Win32.RegistryValueKind.String);
-        }
-        else if (_gpuPreferenceComboBox.SelectedIndex == 2)
-        {
-            LenovoLegionToolkit.Lib.System.Registry.SetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", exePath, "GpuPreference=2;", false, Microsoft.Win32.RegistryValueKind.String);
-        }
-        else
-        {
-            try
-            {
-                using var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", true);
-                key?.DeleteValue(exePath, false);
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Failed to reset GPU preference.", ex);
-            }
-        }
+            1 => GPUController.GpuPreference.Integrated,
+            2 => GPUController.GpuPreference.Discrete,
+            _ => GPUController.GpuPreference.Default
+        };
+
+        IoCContainer.Resolve<GPUController>().SetGpuPreference(exePath, preference);
 
         SnackbarHelper.Show(Resource.SettingsPage_HardwareAcceleration_Title, Resource.SettingsPage_RestartRequired_Message, SnackbarType.Success);
     }

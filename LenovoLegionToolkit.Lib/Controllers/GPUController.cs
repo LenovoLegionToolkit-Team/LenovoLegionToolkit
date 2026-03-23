@@ -1,11 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Resources;
+using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
@@ -21,11 +23,20 @@ public class GPUController
 {
     private readonly AsyncLock _lock = new();
 
+    public int Interval { get; set; } = 5000;
+
+    public enum GpuPreference
+    {
+        Default = 0,
+        Integrated = 1,
+        Discrete = 2
+    }
     private Task? _refreshTask;
     private CancellationTokenSource? _refreshCancellationTokenSource;
 
     private GPUState _state = GPUState.Unknown;
     private List<Process> _processes = [];
+    private List<Process> _allProcesses = [];
     private string? _gpuInstanceId;
     private string? _performanceState;
 
@@ -61,22 +72,21 @@ public class GPUController
     {
         using (await _lock.LockAsync().ConfigureAwait(false))
         {
-            await RefreshLoopAsync(0, 0, CancellationToken.None).ConfigureAwait(false);
+            await RefreshLoopAsync(0, CancellationToken.None, true).ConfigureAwait(false);
             return new GPUStatus(_state, _performanceState, _processes);
         }
     }
 
-    public Task StartAsync(int delay = 1_000, int interval = 5_000)
+    public Task StartAsync(int delay = -1, int interval = 5_000)
     {
         if (IsStarted)
             return Task.CompletedTask;
         
-        // Comment for quiet debugging.
-        // Log.Instance.Trace($"Starting... [delay={delay}, interval={interval}]");
+        var startupDelay = delay >= 0 ? delay : IoCContainer.Resolve<ApplicationSettings>().Store.GPUMonitoringStartupDelay;
 
         _refreshCancellationTokenSource = new CancellationTokenSource();
         var token = _refreshCancellationTokenSource.Token;
-        _refreshTask = Task.Run(() => RefreshLoopAsync(delay, interval, token), token);
+        _refreshTask = Task.Run(() => RefreshLoopAsync(startupDelay, token), token);
         return Task.CompletedTask;
     }
 
@@ -156,7 +166,7 @@ public class GPUController
         }
     }
 
-    private async Task RefreshLoopAsync(int delay, int interval, CancellationToken token)
+    private async Task RefreshLoopAsync(int delay, CancellationToken token, bool runOnce = false)
     {
         try
         {
@@ -178,8 +188,8 @@ public class GPUController
                     Refreshed?.Invoke(this, new GPUStatus(_state, _performanceState, _processes));
                 }
 
-                if (interval > 0)
-                    await Task.Delay(interval, token).ConfigureAwait(false);
+                if (!runOnce && Interval > 0)
+                    await Task.Delay(Interval, token).ConfigureAwait(false);
                 else
                     break;
             }
@@ -196,6 +206,7 @@ public class GPUController
     {
         _state = GPUState.Unknown;
         _processes = [];
+        _allProcesses = [];
         _gpuInstanceId = null;
         _performanceState = null;
 
@@ -227,7 +238,7 @@ public class GPUController
         {
             Log.Instance.Trace($"GPU status exception.", ex);
 
-            _performanceState = "Unknown";
+            _performanceState = null;
         }
 
         var pnpDeviceIdPart = NVAPI.GetGPUId(gpu);
@@ -236,8 +247,10 @@ public class GPUController
             throw new InvalidOperationException("pnpDeviceIdPart is null or empty");
 
         var gpuInstanceId = await WMI.Win32.PnpEntity.GetDeviceIDAsync(pnpDeviceIdPart).ConfigureAwait(false);
-        var processNames = NVAPIExtensions.GetActiveProcesses(gpu);
+        var (allProcessNames, processNames) = NVAPIExtensions.GetActiveProcesses(gpu);
         var feature = IoCContainer.Resolve<HybridModeFeature>();
+
+        _allProcesses = allProcessNames;
 
         if (await feature.GetStateAsync().ConfigureAwait(false) == HybridModeState.Off)
         {
@@ -265,6 +278,66 @@ public class GPUController
             _gpuInstanceId = gpuInstanceId;
 
             Log.Instance.Trace($"Inactive [state={_state}, processes.Count={_processes.Count}, gpuInstanceId={_gpuInstanceId}]");
+        }
+    }
+
+    public IReadOnlyList<Process> ActiveProcesses => _processes;
+    public IReadOnlyList<Process> AllActiveProcesses => _allProcesses;
+
+    public GpuPreference GetGpuPreference(string exePath)
+    {
+        var prefString = Registry.GetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", exePath, string.Empty);
+        
+        var isOurApp = string.Equals(exePath, Environment.ProcessPath, StringComparison.OrdinalIgnoreCase);
+        var aumid = isOurApp ? GetAppUserModelId() : null;
+
+        if (string.IsNullOrEmpty(prefString) && !string.IsNullOrEmpty(aumid))
+            prefString = Registry.GetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", aumid, string.Empty);
+
+        if (prefString.Contains("GpuPreference=1")) return GpuPreference.Integrated;
+        if (prefString.Contains("GpuPreference=2")) return GpuPreference.Discrete;
+        return GpuPreference.Default;
+    }
+
+    public void SetGpuPreference(string exePath, GpuPreference preference)
+    {
+        try
+        {
+            var isOurApp = string.Equals(exePath, Environment.ProcessPath, StringComparison.OrdinalIgnoreCase);
+            var aumid = isOurApp ? GetAppUserModelId() : null;
+
+            if (preference == GpuPreference.Default)
+            {
+                using var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", true);
+                key?.DeleteValue(exePath, false);
+
+                if (!string.IsNullOrEmpty(aumid))
+                    key?.DeleteValue(aumid, false);
+            }
+            else
+            {
+                var value = preference == GpuPreference.Integrated ? "GpuPreference=1;" : "GpuPreference=2;";
+                Registry.SetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", exePath, value, false, Microsoft.Win32.RegistryValueKind.String);
+
+                if (!string.IsNullOrEmpty(aumid))
+                    Registry.SetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", aumid, value, false, Microsoft.Win32.RegistryValueKind.String);
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to set GPU preference for {exePath}.", ex);
+        }
+    }
+
+    private static string? GetAppUserModelId()
+    {
+        try
+        {
+            return Windows.ApplicationModel.Package.Current.Id.FamilyName + "!App";
+        }
+        catch
+        {
+            return null;
         }
     }
 }

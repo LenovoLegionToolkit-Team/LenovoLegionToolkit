@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using static LenovoLegionToolkit.Lib.Settings.ApplicationSettings;
@@ -62,6 +62,9 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public bool DynamicLightingWarningDontShowAgain { get; set; }
         public bool CustomModeWarningDontShowAgain { get; set; }
         public bool EnableHardwareAcceleration { get; set; }
+        public int GPUMonitoringInterval { get; set; } = 5000;
+        public int GPUMonitoringStartupDelay { get; set; } = 1000;
+        public int GPUKillProcessDelay { get; set; } = 500;
         public WindowBackdropType BackdropType { get; set; } = WindowBackdropType.Mica;
     }
 
