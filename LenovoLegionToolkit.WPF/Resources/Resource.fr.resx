@@ -836,11 +836,29 @@ ATTENTION : Cette action ne fonctionnera pas correctement, si l'écran intégré
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Désactiver</value>
   </data>
+  <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
+    <value>Force Kill Process</value>
+  </data>
+  <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
+    <value>Graphics Preferences</value>
+  </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Fermer les applications</value>
   </data>
+  <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
+    <value>Wait time before refreshing the active processes list after a forced termination.</value>
+  </data>
+  <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
+    <value>Force Kill Refresh Delay</value>
+  </data>
+  <data name="DiscreteGPUControl_ManagementWindowTitle" xml:space="preserve">
+    <value>Discrete GPU Management</value>
+  </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>Désactive le GPU dédié s'il est actif inutilement.</value>
+  </data>
+  <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
+    <value>Miscellaneous</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Un écran est connecté au GPU nVidia.</value>
@@ -854,11 +872,32 @@ ATTENTION : Cette action ne fonctionnera pas correctement, si l'écran intégré
   <data name="DiscreteGPUControl_PerformanceState_Unknown" xml:space="preserve">
     <value>Inconnu</value>
   </data>
+  <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
+    <value>Adjust how often the app checks for GPU activity.</value>
+  </data>
+  <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
+    <value>Polling Interval</value>
+  </data>
+  <data name="DiscreteGPUControl_PreferenceDefault" xml:space="preserve">
+    <value>Let Windows decide</value>
+  </data>
+  <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
+    <value>Discrete GPU</value>
+  </data>
+  <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
+    <value>Integrated GPU</value>
+  </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Processus</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Redémarrer le GPU</value>
+  </data>
+  <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
+    <value>Delay before initializing the dGPU monitoring service.</value>
+  </data>
+  <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
+    <value>Startup Delay</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
     <value>GPU dédié</value>
@@ -2302,6 +2341,9 @@ Assurez-vous d'abord que votre script s'exécute correctement.</value>
   </data>
   <data name="Saving" xml:space="preserve">
     <value>Sauvegarde en cours...</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>{0}s</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
     <value>Choisissez une ou plusieurs actions rapides à parcourir</value>
