@@ -836,11 +836,29 @@ VAROVÁNÍ: Tato akce neproběhne správně, pokud je displej notebooku vypnutý
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Deaktivovat</value>
   </data>
+  <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
+    <value>Force Kill Process</value>
+  </data>
+  <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
+    <value>Graphics Preferences</value>
+  </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Ukončit aplikace</value>
   </data>
+  <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
+    <value>Wait time before refreshing the active processes list after a forced termination.</value>
+  </data>
+  <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
+    <value>Force Kill Refresh Delay</value>
+  </data>
+  <data name="DiscreteGPUControl_ManagementWindowTitle" xml:space="preserve">
+    <value>Discrete GPU Management</value>
+  </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>Deaktivovat dedikované GPU, když je zbytečně aktivní.</value>
+  </data>
+  <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
+    <value>Miscellaneous</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Monitor je připojen k nVidia GPU.</value>
@@ -854,11 +872,32 @@ VAROVÁNÍ: Tato akce neproběhne správně, pokud je displej notebooku vypnutý
   <data name="DiscreteGPUControl_PerformanceState_Unknown" xml:space="preserve">
     <value>Neznámý</value>
   </data>
+  <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
+    <value>Adjust how often the app checks for GPU activity.</value>
+  </data>
+  <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
+    <value>Polling Interval</value>
+  </data>
+  <data name="DiscreteGPUControl_PreferenceDefault" xml:space="preserve">
+    <value>Let Windows decide</value>
+  </data>
+  <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
+    <value>Discrete GPU</value>
+  </data>
+  <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
+    <value>Integrated GPU</value>
+  </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Procesy</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Restartovat GPU</value>
+  </data>
+  <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
+    <value>Delay before initializing the dGPU monitoring service.</value>
+  </data>
+  <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
+    <value>Startup Delay</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
     <value>Dedikované GPU</value>
@@ -2303,6 +2342,9 @@ Nejprve se ujisti, že tvůj skript běží správně.</value>
   </data>
   <data name="Saving" xml:space="preserve">
     <value>Ukládání...</value>
+  </data>
+  <data name="Seconds" xml:space="preserve">
+    <value>{0}s</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
     <value>Zvol jednu nebo více rychlých akcí, které chceš procházet</value>
