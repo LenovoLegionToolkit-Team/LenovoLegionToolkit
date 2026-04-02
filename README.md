@@ -1,633 +1,652 @@
-<div align="center">
-  <img height="128" src="assets/logo.png" alt="Lenovo Legion Toolkit Logo">
-  
-  # Lenovo Legion Toolkit
+[default.md](https://github.com/user-attachments/files/26447816/default.md)
+# Lenovo Legion Toolkit
 
-  [![Build Status](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
-  [![Downloads](https://img.shields.io/github/downloads/LenovoLegionToolkit-Team/LenovoLegionToolkit/total?color=brightgreen)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases)
-  [![Translation Status](https://badges.crowdin.net/lenovolegiontoolkit-unofficial/localized.svg)](https://crowdin.com/project/lenovolegiontoolkit-unofficial)
-  [![Discord Official](https://img.shields.io/badge/Discord-Official-5865F2?logo=discord&logoColor=white)](https://discord.gg/TB3ER8ZVdt)
-  [![Discord Community](https://img.shields.io/badge/Discord-Legion%20Series-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/legionseries)
-  [![Discord Community](https://img.shields.io/badge/Discord-LOQ%20Series-5865F2?logo=discord&logoColor=white)](https://discord.gg/3GKzQtwdNf)
-</div>
+[![Статус сборки](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white)]()
+[![Загрузки](https://img.shields.io/github/downloads/LenovoLegionToolkit-Team/LenovoLegionToolkit/total?color=brightgreen)]()
+[![Crowdin](https://badges.crowdin.net/lenovolegiontoolkit-unofficial/localized.svg)]()
+[![Discord Официальный](https://img.shields.io/badge/Discord-Official-5865F2?logo=discord&logoColor=white)]()
+[![Discord Legion Series](https://img.shields.io/badge/Discord-Legion%20Series-5865F2?logo=discord&logoColor=white)]()
+[![Discord LOQ Series](https://img.shields.io/badge/Discord-LOQ%20Series-5865F2?logo=discord&logoColor=white)]()
 
-## 🚨 Project Status Notice
+## 🚨 Уведомление о статусе проекта
 
-> [!IMPORTANT]
-> + This project is actively developed by the **LenovoLegionToolkit-Team**
-> + Source repository [BartoszCichecki/LenovoLegionToolkit](https://github.com/BartoszCichecki/LenovoLegionToolkit) is archived
-> - Not officially affiliated with Lenovo
+**❗ Важно**  
+Этот проект активно разрабатывается командой LenovoLegionToolkit-Team.  
+Исходный репозиторий [BartoszCichecki/LenovoLegionToolkit](https://github.com/BartoszCichecki/LenovoLegionToolkit) заархивирован.  
+Не имеет официальной связи с Lenovo.
 
-#### Other language versions of this README file:
-* [简体中文版简介](README_zh-hans.md)
-* [日本語版のREADME](README_ja-JP.md)
+Другие языковые версии этого файла README:
+- [简体中文版简介](README_zh-hans.md)
+- [日本語版のREADME](README_ja-JP.md)
+  Ф
+**Lenovo Legion Toolkit (LLT)** — это утилита для Windows, созданная для игровых ноутбуков Lenovo, которая заменяет Lenovo Vantage / Legion Zone / Legion Space.
+
+Она не запускает фоновые службы, использует меньше памяти, практически не нагружает процессор и не содержит телеметрии. Как и Lenovo Vantage, это приложение работает только под Windows.
+
+**Присоединяйтесь к официальному Discord:** https://discord.gg/TB3ER8ZVdt (для релизов, поддержки и обсуждений)  
+**Присоединяйтесь к Legion Series Discord:** https://discord.com/invite/legionseries  
+**Присоединяйтесь к LOQ Series Discord:** https://discord.gg/3GKzQtwdNf
+
+![Demo](https://github.com/user-attachments/assets/9261f768-191c-4dcb-a603-8fa2d144b049)
 
 ---
 
-<br />
+## Локализация
 
-Lenovo Legion Toolkit (LLT) is a Windows desktop utility created for Lenovo gaming laptops that replaces Lenovo Vantage / Legion Zone / Legion Space.
+Этот форк подключён к Crowdin: [LenovoLegionToolkit-Unofficial](https://crowdin.com/project/lenovolegiontoolkit-unofficial).
 
-It runs no background services, uses less memory, uses virtually no CPU, and contains no telemetry. Just like Lenovo Vantage, this application is Windows only.
+Вклад в локализацию горячо приветствуется и высоко ценится!
 
-_Join the Official Discord: https://discord.gg/TB3ER8ZVdt_ (for releases, support and discussions)<br>
-_Join the Legion Series Discord: https://discord.com/invite/legionseries_<br>
-_Join the LOQ Series Discord: https://discord.gg/3GKzQtwdNf_
+## Содержание
 
-<img src="https://github.com/user-attachments/assets/9261f768-191c-4dcb-a603-8fa2d144b049" width="700" />
+- [Отказ от ответственности](#отказ-от-ответственности)
+- [Скачивание](#скачивание)
+- [Совместимость](#совместимость)
+- [Возможности](#возможности)
+- [Пожертвования](#пожертвования)
+- [Благодарности](#благодарности)
+- [ЧАВО](#чаво)
+- [Аргументы](#аргументы)
+- [Как собрать логи?](#как-собрать-логи)
+- [Вопросы?](#вопросы)
+- [Вклад в проект](#вклад-в-проект)
 
-&nbsp;
+## Отказ от ответственности
 
-# Localization
-This fork has linked to crowdin [LenovoLegionToolkit-Unofficial](https://crowdin.com/project/lenovolegiontoolkit-unofficial)
+Инструмент предоставляется без гарантии. Используйте на свой страх и риск.
 
-Contributions to the localization efforts are warmly welcomed and greatly appreciated!
+Пожалуйста, будьте терпеливы и внимательно прочитайте этот README — он содержит важную информацию.
 
-# Table of Contents
-  - [Disclaimer](#disclaimer)
-  - [Download](#download)
-  - [Compatibility](#compatibility)
-  - [Features](#features)
-  - [Donate](#donate)
-  - [Credits](#credits)
-  - [FAQ](#faq)
-  - [Arguments](#arguments)
-  - [How to collect logs?](#how-to-collect-logs)
-  - [Questions?](#questions)
-  - [Contribution](#contribution)
+## Скачивание
 
-## Disclaimer
+Вы можете скачать программу следующими способами:
 
-**The tool comes with no warranty. Use at your own risk.**
+- Со страницы [Releases](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases/latest)
 
-Please be patient and read through this readme carefully - it contains important information.
+**💡 Совет**  
+Если вы ищете альтернативу Vantage для Linux, ознакомьтесь с проектом [LenovoLegionLinux](https://github.com/johnfanv2/LenovoLegionLinux).
 
-## Download
+### Следующие шаги
 
-You can download the program by the following ways:
+LLT работает лучше всего, когда запущен в фоновом режиме, поэтому перейдите в Настройки и включите «Автозапуск» и «Сворачивать при закрытии». Следующим шагом будет либо отключение Vantage и Hotkeys, либо их удаление. После этого LLT будет всегда запускаться при старте и возьмёт на себя все функции, которые выполняли Vantage и Hotkeys.
 
-- From the [Releases page](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases/latest)
-  
-> [!TIP]
-> If you are looking for a Vantage alternative for Linux, check [LenovoLegionLinux](https://github.com/johnfanv2/LenovoLegionLinux) project out.
+**⚠️ Внимание**  
+Если полностью закрыть LLT, некоторые функции не будут работать, например, синхронизация режимов питания Windows или планов электропитания Windows с текущим режимом питания, макросы или действия. Это связано с тем, что LLT не запускает фоновые службы и не сможет реагировать на изменения.
 
-#### Next steps
+### Необходимые драйверы
 
-LLT works best when it's running in the background, so go to Settings and enable _Autorun_ and _Minimize on close_. Next thing is to either disable Vantage and Hotkeys or just uninstall them. After that LLT will always run on startup and will take over all functions that were handled by Vantage and Hotkeys.
+Если вы установили LLT на чистую установку Windows, убедитесь, что установлены необходимые драйверы. Если драйверы отсутствуют, некоторые опции могут быть недоступны. Особенно убедитесь, что эти два драйвера установлены в вашей системе:
 
-> [!WARNING]
-> If you close LLT completely some functions will not work, like synchronizing Windows Power Modes or Windows Power Plans with current Power Mode, Macros or Actions. This is due to the fact that LLT does not run any background services and won't be able to respond to changes.
+- Lenovo Energy Management
+- Lenovo Vantage Gaming Feature Driver
 
-#### Required drivers
+### Проблемы с .NET?
 
-If you installed LLT on a clean Windows install, make sure to have necessary drivers installed. If drivers are missing, some options might not be available. Especially make sure that these two are installed on your system:
-1. Lenovo Energy Management
-2. Lenovo Vantage Gaming Feature Driver
+Если по какой-либо причине установщик LLT не настроил .NET должным образом:
 
-#### Problems with .NET?
+1. Перейдите на https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+2. Найдите раздел ".NET Desktop Runtime"
+3. Скачайте установщик x64 для Windows
+4. Запустите установщик
 
-If for whatever reason LLT installer did not setup .NET properly:
-1. Go to https://dotnet.microsoft.com/en-us/download/dotnet/9.0
-2. Find section ".NET Desktop Runtime"
-3. Download x64 Windows installer
-4. Run the installer
+**📌 Примечание**  
+Если вы установили LLT через Scoop, .NET 9 должен был установиться автоматически как зависимость. Если что-то не работает, используйте `scoop update` для обновления всех пакетов и попробуйте переустановить LLT с аргументом `--force`.
 
-> [!NOTE]
-> If you installed LLT from Scoop, .NET 9 should have been installed automatically as a dependency. If anything fails, use `scoop update` to update all packages and try to reinstall LLT with `--force` argument.
-
-After following these steps, you can open Terminal and type: `dotnet --info`. In the output look for section `.NET runtimes installed`, in this section you should see something like:
+После выполнения этих шагов вы можете открыть Терминал и ввести: `dotnet --info`. В выводе найдите раздел `.NET runtimes installed`. В этом разделе вы должны увидеть что-то вроде:
 
 `Microsoft.NETCore.App 9.0.0 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]`
 
-and
+и
 
 `Microsoft.WindowsDesktop.App 9.0.0 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]`
 
-The exact version number can be different, but as long as it is `9.x.x` it should be fine. If after these steps LLT still shows an error on startup that .NET couldn't be found or similar, the problem is on your machine and not with LLT.
+Точный номер версии может отличаться, но пока это `9.x.x`, всё должно быть в порядке. Если после этих шагов LLT всё ещё показывает ошибку при запуске, что .NET не найден или что-то подобное, проблема на вашей машине, а не в LLT.
 
-#### Want to help with testing?
+### Хотите помочь с тестированием?
 
-Join the [Official Discord](https://discord.gg/TB3ER8ZVdt) for the latest updates across several channels:
-- `#stable-updates` - Notifications for official releases.
-- `#beta-builds` - Pre-release versions for broader testing.
-- `#dev-snapshots` - Experimental builds straight from the development branch.
+Присоединяйтесь к [Официальному Discord](https://discord.gg/TB3ER8ZVdt) для получения последних обновлений через несколько каналов:
 
-The server also supports **issue reporting**, **feature requests**, and **hardware-related** discussions.
+- `#stable-updates` — Уведомления об официальных релизах.
+- `#beta-builds` — Предрелизные версии для широкого тестирования.
+- `#dev-snapshots` — Экспериментальные сборки прямо из ветки разработки.
 
-You can also find us in:
-- [Legion Series Discord](https://discord.com/invite/legionseries) (`#legion-toolkit` channel)
-- [LOQ Series Discord](https://discord.gg/3GKzQtwdNf) (`#legion-toolkit` channel)
+Сервер также поддерживает сообщения об ошибках, запросы функций и обсуждения, связанные с оборудованием.
 
-## Compatibility
+Вы также можете найти нас в:
 
-Lenovo Legion Toolkit is made for Lenovo Legion laptops, and other similar laptops like Ideapad Gaming, LOQ and their Chinese variants.
+- [Legion Series Discord](https://discord.com/invite/legionseries) (канал `#legion-toolkit`)
+- [LOQ Series Discord](https://discord.gg/3GKzQtwdNf) (канал `#legion-toolkit`)
 
-Generations 6 (2021), 7 (2022), 8 (2023), 9 (2024), and 10 (2025) are supported, although some features also work on the 5th generation (2020). Issues related to devices older than Gen 6 or that are not Legions are out of scope of this project.
+## Совместимость
 
-If you are getting an incompatible message on startup, you can check the *Contribution* section down at the bottom, to see how can you help. Keep in mind, that not always we can make all options compatible with all hardware since we do not have access to it.
+Lenovo Legion Toolkit создан для ноутбуков Lenovo Legion, а также других похожих ноутбуков, таких как IdeaPad Gaming, LOQ и их китайские варианты.
 
-**Support for other laptops is not planned.**
+Поддерживаются поколения 6 (2021), 7 (2022), 8 (2023), 9 (2024) и 10 (2025), хотя некоторые функции также работают на 5-м поколении (2020). Проблемы, связанные с устройствами старше 6-го поколения или не являющимися Legion, выходят за рамки этого проекта.
 
-### Lenovo's software
+Если вы получаете сообщение о несовместимости при запуске, вы можете проверить раздел «Вклад в проект» внизу, чтобы узнать, как помочь. Имейте в виду, что мы не всегда можем сделать все опции совместимыми со всем оборудованием, так как у нас нет к нему доступа.
 
-Overall the recommendation is to disable or uninstall Vantage, Hotkeys and Legion Zone while using LLT. There are some functions that cause conflicts or may not work properly when LLT is working alongside other Lenovo apps.
+Поддержка других ноутбуков не планируется.
 
-> [!TIP]
-> Using the disable option in LLT is often the easiest option.
+### Программное обеспечение Lenovo
 
-### Other remarks
+В целом рекомендуется отключить или удалить Vantage, Hotkeys и Legion Zone при использовании LLT. Есть некоторые функции, которые вызывают конфликты или могут работать неправильно, когда LLT работает вместе с другими приложениями Lenovo.
 
-LLT currently does not support installation for multiple users, so if you need to have multiple users on your laptop you might encounter issues. Same goes for accounts without Administrator rights - LLT needs an account with Administrator rights. If you install LLT on an account without such rights, LLT will not work properly.
+**💡 Совет**  
+Использование опции отключения в LLT часто является самым простым вариантом.
 
-## Features
+### Другие замечания
 
-The app allows to:
+LLT в настоящее время не поддерживает установку для нескольких пользователей, поэтому, если вам нужно иметь несколько пользователей на вашем ноутбуке, вы можете столкнуться с проблемами. То же самое относится к учётным записям без прав администратора — LLT нужна учётная запись с правами администратора. Если вы установите LLT на учётную запись без таких прав, LLT не будет работать должным образом.
 
-- Change settings like power mode, battery charging mode, etc. that are available only through Vantage.
-- Spectrum RGB, 4-zone RGB and White backlight keyboards support.
-- Monitor dGPU activity (NVIDIA only).
-- Highly customizable On-Screen Display (OSD) to monitor system vitals in real-time.
-- Define Actions that will run when the laptop is e.g. connected to AC power.
-- View battery statistics.
-- Control laptop features from command line
-- Check for driver and software updates.
-- Check warranty status.
-- Disable/enable Lenovo Vantage, Legion Zone and Lenovo Hotkeys service without uninstalling them.
-- ... and more!
+## Возможности
+
+Приложение позволяет:
+
+- Изменять настройки, такие как режим питания, режим зарядки аккумулятора и т. д., которые доступны только через Vantage.
+- Поддержка клавиатур с подсветкой Spectrum RGB, 4-зонной RGB и белой подсветкой.
+- Мониторинг активности dGPU (только NVIDIA).
+- Гибко настраиваемое экранное отображение (OSD) для мониторинга жизненно важных показателей системы в реальном времени.
+- Определять действия, которые будут выполняться, когда ноутбук, например, подключён к сети переменного тока.
+- Просматривать статистику аккумулятора.
+- Управлять функциями ноутбука из командной строки.
+- Проверять наличие обновлений драйверов и программного обеспечения.
+- Проверять статус гарантии.
+- Отключать/включать службы Lenovo Vantage, Legion Zone и Lenovo Hotkeys без их удаления.
+- ... и многое другое!
 
 ### Custom Mode
 
-Custom Mode is available on all devices that support it. You can find it in the Power Mode dropdown as it basically is 4th power mode and it allows for adjusting power limits and fans. Custom Mode can't be accessed with Fn+Q shortcut. Not all features of Custom Mode are supported by all devices.
+Custom Mode доступен на всех устройствах, которые его поддерживают. Вы можете найти его в выпадающем списке режима питания, так как это, по сути, 4-й режим питания, и он позволяет настраивать лимиты мощности и вентиляторы. Custom Mode нельзя получить с помощью сочетания клавиш Fn+Q. Не все функции Custom Mode поддерживаются всеми устройствами.
 
-If you have one of the following BIOSes:
-* G9CN (24 or higher)
-* GKCN (46 or higher)
-* H1CN (39 or higher)
-* HACN (31 or higher)
-* HHCN (20 or higher)
+Если у вас один из следующих BIOS:
 
-Make sure to update it to at least minimum version mentioned above for Custom Mode to function properly.
+- G9CN (24 или выше)
+- GKCN (46 или выше)
+- H1CN (39 или выше)
+- HACN (31 или выше)
+- HHCN (20 или выше)
 
-### RGB and lighting
+Убедитесь, что вы обновили его как минимум до минимальной версии, указанной выше, чтобы Custom Mode работал должным образом.
 
-Both Spectrum per-key RGB and 4-zone RGB backlight is supported. Vantage and its services need to be disabled to avoid conflicts when communicating with hardware. If you use other RGB apps that might conflict with LLT, check [FAQ](#faq) for solutions.
+### RGB и подсветка
 
-Other lighting features like both 1 and 3 level white keyboard backlight, panel logo and rear ports backlight are also supported, however there are some constraints:
+Поддерживается как Spectrum с RGB-подсветкой каждой клавиши, так и 4-зонная RGB-подсветка. Vantage и его службы должны быть отключены, чтобы избежать конфликтов при взаимодействии с оборудованием. Если вы используете другие RGB-приложения, которые могут конфликтовать с LLT, проверьте [ЧАВО](#чаво) для решений.
 
-* GKCN54WW and lower - some lighting features are disabled due to a bug in these BIOS versions causing BSOD
-* some (mostly Gen 6) laptops models might not show all options or show options that aren't there - this is due misconfigured BIOS that doesn't report availability of these features
+Другие функции подсветки, такие как белая подсветка клавиатуры с 1 и 3 уровнями, подсветка логотипа на панели и подсветка задних портов, также поддерживаются, однако есть некоторые ограничения:
 
-Lighting that required Corsair iCue is not supported by LLT.
+- GKCN54WW и ниже — некоторые функции подсветки отключены из-за ошибки в этих версиях BIOS, вызывающей BSOD.
+- Некоторые модели ноутбуков (в основном 6-го поколения) могут не показывать все опции или показывать опции, которых нет — это связано с неправильно настроенным BIOS, который не сообщает о наличии этих функций.
+- Подсветка, требующая Corsair iCue, не поддерживается LLT.
 
-> [!IMPORTANT]
-> Riot Vanguard DRM (used in Valorant for example) is known to cause issues with RGB controls. If you don't see RGB settings and have it installed, make sure it doesn't run on startup or uninstall it._
+**❗ Важно**  
+Известно, что Riot Vanguard DRM (используется, например, в Valorant) вызывает проблемы с управлением RGB. Если вы не видите настройки RGB и он у вас установлен, убедитесь, что он не запускается при старте, или удалите его.
 
-### Hybrid Mode and GPU Working Modes
+### Hybrid Mode и режимы работы GPU
 
-> [!NOTE]
-> Hybrid Mode/GPU Working Mode options _are not_ Advanced Optimus and work separately from it.
+**📌 Примечание**  
+Опции Hybrid Mode / GPU Working Mode не являются Advanced Optimus и работают отдельно от него.
 
-There are two main ways you can use your dGPU:
+Есть два основных способа использования вашей dGPU:
 
-1. Hybrid mode on - internal laptop display is connected to integrated GPU, discrete GPU will work when needed and power off when not in use, giving better battery life
-2. Hybrid mode off (aka dGPU) - internal laptop display is connected directly to discrete GPU, giving best performance but also worst battery life
+- **Hybrid mode включён** — внутренний дисплей ноутбука подключён к интегрированной GPU, dGPU будет работать при необходимости и отключаться, когда не используется, обеспечивая лучшее время работы от аккумулятора.
+- **Hybrid mode выключен (он же dGPU)** — внутренний дисплей ноутбука подключён напрямую к dGPU, обеспечивая лучшую производительность, но также худшее время работы от аккумулятора.
 
-Switching between two modes requires restart.
+Переключение между двумя режимами требует перезагрузки.
 
-On Gen 7 and 8 laptops, there are additional 2 settings for Hybrid mode:
+На ноутбуках 7-го и 8-го поколений есть дополнительные 2 настройки для Hybrid mode:
 
-1. Hybrid iGPU-only - in this mode dGPU will be disconnected (think of it like ejecting USB drive), so there is no risk of it using power when you want to achieve best battery life
-2. Hybrid Auto - similar to the above, but tries to automate the process by automatically disconnecting dGPU on battery power and reconnecting it when you plug in AC adapter
+- **Hybrid iGPU-only** — в этом режиме dGPU будет отключена (представьте это как извлечение USB-накопителя), поэтому нет риска, что она будет использовать питание, когда вы хотите добиться лучшего времени работы от аккумулятора.
+- **Hybrid Auto** — аналогично вышеуказанному, но пытается автоматизировать процесс, автоматически отключая dGPU при работе от аккумулятора и подключая её обратно, когда вы подключаете адаптер переменного тока.
 
-Discrete GPU may not disconnect, and in most cases will not disconnect, when it is used. That includes apps using dGPU, external monitor connected and probably some other cases that aren't specified by Lenovo. If you use the "Deactivate GPU" option in LLT, make sure that it reports dGPU Powered Off and no external screens are connected, before switching between Hybrid Modes in case you encounter problems.
+dGPU может не отключиться и в большинстве случаев не отключится, когда она используется. Это включает приложения, использующие dGPU, подключённый внешний монитор и, вероятно, некоторые другие случаи, которые не указаны Lenovo. Если вы используете опцию «Deactivate GPU» в LLT, убедитесь, что она сообщает «dGPU Powered Off» и никакие внешние экраны не подключены, перед переключением между Hybrid Modes на случай, если вы столкнётесь с проблемами.
 
-All above settings are using built in functions of the EC and how well they work relies on Lenovo's firmware implementation. From our observations, they are reliable, unless you start switching them frequently. Be patient, because changes to these methods are not instantaneous. LLT also attempts to mitigate these issues, by disallowing frequent Hybrid Mode switching and additional attempts to wake dGPU if EC failed to do so. It may take up to 10 seconds for dGPU to reappear when switching to Hybrid Mode, in case EC failed to wake it.
+Все вышеуказанные настройки используют встроенные функции EC, и насколько хорошо они работают, зависит от реализации прошивки Lenovo. По нашим наблюдениям, они надёжны, если вы не начинаете часто их переключать. Будьте терпеливы, потому что изменения в этих методах не происходят мгновенно. LLT также пытается смягчить эти проблемы, запрещая частое переключение Hybrid Mode и дополнительными попытками разбудить dGPU, если EC не смог это сделать. Может потребоваться до 10 секунд, чтобы dGPU появилась снова при переключении на Hybrid Mode, в случае если EC не смог её разбудить.
 
-If you encounter issues, you might try an alternative, experimental method of handling GPU Working Mode - see [Arguments](#arguments) section for more details.
+Если вы столкнётесь с проблемами, вы можете попробовать альтернативный, экспериментальный метод обработки GPU Working Mode — см. раздел [Аргументы](#аргументы) для получения более подробной информации.
 
-> [!WARNING]
-> Disabling dGPU via Device Manager DOES NOT disconnect the device and will cause high power consumption!
+**⚠️ Внимание**  
+Отключение dGPU через Диспетчер устройств НЕ отключает устройство и вызовет высокое потребление энергии!
 
-### Deactivate discrete NVIDIA GPU
+### Деактивация дискретной GPU NVIDIA
 
-Sometimes discrete GPU stays active even when it should not. This can happen for example, if you work with an external screen and you disconnect it - some processes will keep running on discrete GPU keeping it alive and shortening battery life.
+Иногда дискретная GPU остаётся активной, даже когда не должна. Это может произойти, например, если вы работаете с внешним экраном и отключаете его — некоторые процессы будут продолжать работать на dGPU, поддерживая её активность и сокращая время работы от аккумулятора.
 
-There are two ways to help the GPU deactivate:
+Есть два способа помочь GPU деактивироваться:
 
-1. killing all processes running on dGPU (this one seems to work better),
-2. disabling dGPU for a short amount of time, which will force all processes to move to the integrated GPU.
+1. Завершение всех процессов, работающих на dGPU (этот, кажется, работает лучше).
+2. Отключение dGPU на короткое время, что заставит все процессы переместиться на интегрированную GPU.
 
-Deactivate button will be enabled when dGPU is active, you have Hybrid mode enabled and there are no screens connected to dGPU. If you hover over the button, you will see the current P state of dGPU and the list of processes running on it.
+Кнопка Deactivate будет включена, когда dGPU активна, у вас включён Hybrid mode и к dGPU не подключены экраны. Если вы наведёте курсор на кнопку, вы увидите текущее P-состояние dGPU и список процессов, работающих на ней.
 
-> [!NOTE]
-> Some apps may not like this feature and crash when you use deactivate dGPU option.
+**📌 Примечание**  
+Некоторые приложения могут не любить эту функцию и аварийно завершаться, когда вы используете опцию деактивации dGPU.
 
-### Overclock discrete NVIDIA GPUs
+### Разгон дискретных NVIDIA GPU
 
-The overclock option is intended for simple overclocking, similar to the one available in Vantage. It is not intended to replace tools like Afterburner. Here are some points to keep in mind:
-* Make sure GPU overclocking is enabled in BIOS, if your laptop has such option.
-* Overclocking does not work with Vantage or LegionZone running in the background.
-* It is not recommended to use the option while using other tools like Afterburner.
-* If you edited your Dashboard, you might need to add the control manually.
+Опция разгона предназначена для простого разгона, аналогичного тому, что доступен в Vantage. Она не предназначена для замены таких инструментов, как Afterburner. Вот несколько моментов, которые следует иметь в виду:
 
-### Windows Power Plans & Windows Power Mode
+- Убедитесь, что разгон GPU включён в BIOS, если ваш ноутбук имеет такую опцию.
+- Разгон не работает, когда Vantage или Legion Zone работают в фоновом режиме.
+- Не рекомендуется использовать опцию при использовании других инструментов, таких как Afterburner.
+- Если вы редактировали свой Dashboard, вам может потребоваться добавить управление вручную.
 
-First of all, the Power Mode you see in LLT (or toggle with Fn+Q) **is not** the same as Power Plans (that you access from Control Panel) or Power Mode (that you can change from Settings app).
+### Планы электропитания Windows и режим питания Windows
 
-The modern (and recommended) approach is to use Windows Power Modes and only one, default, "Balanced (recommended)" power plan. You should have 3 Power Modes to choose from in Windows Settings app:
+Прежде всего, режим питания, который вы видите в LLT (или переключаете с помощью Fn+Q), не совпадает с планами электропитания (к которым вы получаете доступ из Панели управления) или режимом питания (который вы можете изменить в приложении Настройки).
 
-* Best power efficiency
-* Balanced
-* Best performance
+Современный (и рекомендуемый) подход — использовать режимы питания Windows и только один, по умолчанию, план «Сбалансированный (рекомендуется)». У вас должно быть 3 режима питания на выбор в приложении Настройки Windows:
 
-You can assign these in LLT settings to each of Legion Power Modes: Quiet, Balance, Performance and Custom. If you choose to do so, respective Windows Power Mode will be automatically set when you change Legion Power Modes.
+- Лучшая энергоэффективность
+- Сбалансированный
+- Лучшая производительность
 
-The legacy approach is to use multiple Power Plans, that some devices had installed from factory. If you decide to use them, or configure your own plans, leave the settings in Windows Settings app on the default "Balanced" setting. You can configure LLT to switch Power Plans automatically whenever you change the "Legion" Power Mode in LLT settings.
+Вы можете назначить их в настройках LLT каждому из режимов питания Legion: Quiet, Balance, Performance и Custom. Если вы решите это сделать, соответствующий режим питания Windows будет автоматически установлен при изменении режимов питания Legion.
 
-If you encounter issues with power mode or plan synchronization, especially when switching between the two approaches, you can reset Windows power settings to default using `powercfg -restoredefaultschemes; shutdown /r /t ` command. This command will reset all power plans to default and reboot your device. All plans except for the default "Balanced (recommended)" will be deleted, so make sure to make a copy, if you plan on using them again.
+Устаревший подход — использовать несколько планов электропитания, которые некоторые устройства имели установленными с завода. Если вы решите использовать их или настроить свои собственные планы, оставьте настройки в приложении Настройки Windows на настройке по умолчанию «Сбалансированный». Вы можете настроить LLT на автоматическое переключение планов электропитания всякий раз, когда вы изменяете режим питания Legion в настройках LLT.
+
+Если вы столкнётесь с проблемами синхронизации режима питания или плана, особенно при переключении между двумя подходами, вы можете сбросить настройки питания Windows к значениям по умолчанию с помощью команды `powercfg -restoredefaultschemes; shutdown /r /t 0`. Эта команда сбросит все планы электропитания к значениям по умолчанию и перезагрузит ваше устройство. Все планы, кроме по умолчанию «Сбалансированный (рекомендуется)», будут удалены, поэтому убедитесь, что сделали их копию, если планируете использовать их снова.
 
 ### Boot Logo
 
-On some laptops, it is possible to change the boot logo (the default "Legion" image you see at boot). Boot logo is *not* stored in UEFI - it is stored on the UEFI partition on boot drive. When setting custom boot logo, LLT conducts basic checks, like resolution, image format and calculates a checksum to ensure compatibility. However, the real verification happens on the next boot. UEFI will attempt to load the image from UEFI partition and show it. If that fails for whatever reason, default image will be used. Exact criteria, except for resolution and image format, are not known and some images might not be shown. In this case, try another image, edited with different image editor.
+На некоторых ноутбуках можно изменить загрузочный логотип (изображение «Legion» по умолчанию, которое вы видите при загрузке). Boot Logo не хранится в UEFI — он хранится на разделе UEFI на загрузочном диске. При установке пользовательского загрузочного логотипа LLT проводит базовые проверки, такие как разрешение, формат изображения и вычисляет контрольную сумму для обеспечения совместимости. Однако реальная проверка происходит при следующей загрузке. UEFI попытается загрузить изображение с раздела UEFI и показать его. Если это не удастся по какой-либо причине, будет использовано изображение по умолчанию. Точные критерии, кроме разрешения и формата изображения, неизвестны, и некоторые изображения могут не отображаться. В этом случае попробуйте другое изображение, отредактированное с помощью другого графического редактора.
 
-### Running programs or scripts from actions
+### Запуск программ или скриптов из действий
 
-You can use "Run" step in Actions to start any program or script from Actions. To configure it, you need to provide path to the executable (`.exe`) or a script (`.bat`). Optionally, you can also provide arguments that the script or program supports - just like running anything from command line.
+Вы можете использовать шаг «Run» в действиях для запуска любой программы или скрипта. Для его настройки вам нужно указать путь к исполняемому файлу (`.exe`) или скрипту (`.bat`). При желании вы также можете указать аргументы, которые поддерживает скрипт или программа — точно так же, как при запуске чего-либо из командной строки.
 
-<details>
-<summary>Examples</summary>
+#### Примеры
 
-_Shutdown laptop_
- - Executable path: `shutdown`
- - Arguments: `/s /t 0`
+**Выключение ноутбука**
+- Путь к исполняемому файлу: `shutdown`
+- Аргументы: `/s /t 0`
 
-_Restart laptop_
- - Executable path: `shutdown`
- - Arguments: `/r`
+**Перезагрузка ноутбука**
+- Путь к исполняемому файлу: `shutdown`
+- Аргументы: `/r`
 
-_Running a program_
- - Executable path: `C:\path\to\the\program.exe` (if the program is on your PATH variable, you can use the name only)
- - Arguments: ` ` (optional, for list of supported argument check the program's readme, website etc.)
+**Запуск программы**
+- Путь к исполняемому файлу: `C:\path\to\the\program.exe` (если программа находится в вашей переменной PATH, вы можете использовать только имя)
+- Аргументы: (необязательно, список поддерживаемых аргументов смотрите в readme программы, на сайте и т. д.)
 
-_Running a script_
- - Executable path: `C:\path\to\the\script.bat` (if the script is on your PATH variable, you can use the name only)
- - Arguments: ` ` (optional, for list of supported argument check the script's readme, website etc.)
+**Запуск скрипта**
+- Путь к исполняемому файлу: `C:\path\to\the\script.bat` (если скрипт находится в вашей переменной PATH, вы можете использовать только имя)
+- Аргументы: (необязательно, список поддерживаемых аргументов смотрите в readme скрипта, на сайте и т. д.)
 
-_Python script_
- - Executable path: `C:\path\to\python.exe` (or just `python`, if it is on your PATH variable)
- - Arguments: `C:\path\to\script.py`
+**Python-скрипт**
+- Путь к исполняемому файлу: `C:\path\to\python.exe` (или просто `python`, если он находится в вашей переменной PATH)
+- Аргументы: `C:\path\to\script.py`
 
- </details>
+### Переменные окружения
 
-#### Environment
+LLT автоматически добавляет некоторые переменные в окружение процесса, к которым можно получить доступ из скрипта. Они полезны для более сложных скриптов, где нужен контекст. В зависимости от того, что было триггером, добавляются разные переменные.
 
-LLT automatically adds some variables to the process environment that can be accessed, from within the script. They are useful for more advanced scripts, where context is needed. Depending on what was the trigger, different variables are added.
+#### Переменные окружения
 
-<details>
-<summary>Environment variables</summary>
+**Когда адаптер питания переменного тока подключён**
+- `LLT_IS_AC_ADAPTER_CONNECTED=TRUE`
 
-- When AC power adapter is connected
-	- `LLT_IS_AC_ADAPTER_CONNECTED=TRUE`
-- When low wattage AC power adapter is connected
-	- `LLT_IS_AC_ADAPTER_CONNECTED=TRUE`
-	- `LLT_IS_AC_ADAPTER_LOW_POWER=TRUE`
-- When AC power adapter is disconnected
-	- `LLT_IS_AC_ADAPTER_CONNECTED=FALSE`
-- When Power Mode is changed:
-	- `LLT_POWER_MODE=<value>`, where `value` is one of: `1` - Quiet, `2` - Balance, `3` - Performance, `255` - Custom
-	- `LLT_POWER_MODE_NAME=<value>`, where `value` is one of: `QUIET`, `BALANCE`, `PERFORMANCE`, `CUSTOM`
-- When game is running
-	- `LLT_IS_GAME_RUNNING=TRUE`
-- When game closes
-	- `LLT_IS_GAME_RUNNING=FALSE`
-- When app starts
-	- `LLT_PROCESSES_STARTED=TRUE`
-	- `LLT_PROCESSES=<value>`, where `value` is comma separated list of process names
-- When app closes
-	- `LLT_PROCESSES_STARTED=FALSE`
-	- `LLT_PROCESSES=<value>`, where `value` is comma separated list of process names
-- Lid opened
-	- `LLT_IS_LID_OPEN=TRUE`
-- Lid closed
-	- `LLT_IS_LID_OPEN=FALSE`
-- When displays turn on
-	- `LLT_IS_DISPLAY_ON=TRUE`
-- When displays turn off
-	- `LLT_IS_DISPLAY_ON=FALSE`
-- When external display is connected
-	- `LLT_IS_EXTERNAL_DISPLAY_CONNECTED=TRUE`
-- When external display is disconnected
-	- `LLT_IS_EXTERNAL_DISPLAY_CONNECTED=FALSE`
-- When HDR is on
-	- `LLT_IS_HDR_ON=TRUE`
-- When HDR is off
-	- `LLT_IS_HDR_ON=FALSE`
-- When WiFi is connected
-	- `LLT_WIFI_CONNECTED=TRUE`
-	- `LLT_WIFI_SSID=<value>`, where `value` is the SSID of the network
-- When WiFi is disconnected
-	- `LLT_WIFI_CONNECTED=FALSE`
-- At specified time
-	- `LLT_IS_SUNSET=<value>`, where `value` is `TRUE` or `FALSE`, depending on configuration of the trigger
-	- `LLT_IS_SUNRISE=<value>`, where `value` is `TRUE` or `FALSE`, depending on configuration of the trigger
-	- `LLT_TIME`, where `value` is `HH:mm`, depending on configuration of the trigger
-	- `LLT_DAYS`, where `value` is comma separated list of: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, depending on configuration of the trigger
-- Periodic action
-	- `LLT_PERIOD=<value>`, where `value` is the interval in seconds
-- On startup
-	- `LLT_STARTUP=TRUE`
-- On resume
-	- `LLT_RESUME=TRUE`
+**Когда подключён адаптер питания переменного тока низкой мощности**
+- `LLT_IS_AC_ADAPTER_CONNECTED=TRUE`
+- `LLT_IS_AC_ADAPTER_LOW_POWER=TRUE`
 
-</details>
+**Когда адаптер питания переменного тока отключён**
+- `LLT_IS_AC_ADAPTER_CONNECTED=FALSE`
 
-#### Output
+**Когда изменён режим питания:**
+- `LLT_POWER_MODE=<value>`, где `value` — одно из: `1` — Quiet, `2` — Balance, `3` — Performance, `255` — Custom
+- `LLT_POWER_MODE_NAME=<value>`, где `value` — одно из: `QUIET`, `BALANCE`, `PERFORMANCE`, `CUSTOM`
 
-If "Wait for exit" is checked, LLT will capture the output from standard output of the launched process. This output is stored in `$RUN_OUTPUT$` variable and can be displayed in Show notification step.
+**Когда игра запущена**
+- `LLT_IS_GAME_RUNNING=TRUE`
+
+**Когда игра закрывается**
+- `LLT_IS_GAME_RUNNING=FALSE`
+
+**Когда приложение запускается**
+- `LLT_PROCESSES_STARTED=TRUE`
+- `LLT_PROCESSES=<value>`, где `value` — разделённый запятыми список имён процессов
+
+**Когда приложение закрывается**
+- `LLT_PROCESSES_STARTED=FALSE`
+- `LLT_PROCESSES=<value>`, где `value` — разделённый запятыми список имён процессов
+
+**Крышка открыта**
+- `LLT_IS_LID_OPEN=TRUE`
+
+**Крышка закрыта**
+- `LLT_IS_LID_OPEN=FALSE`
+
+**Когда дисплеи включаются**
+- `LLT_IS_DISPLAY_ON=TRUE`
+
+**Когда дисплеи выключаются**
+- `LLT_IS_DISPLAY_ON=FALSE`
+
+**Когда внешний дисплей подключён**
+- `LLT_IS_EXTERNAL_DISPLAY_CONNECTED=TRUE`
+
+**Когда внешний дисплей отключён**
+- `LLT_IS_EXTERNAL_DISPLAY_CONNECTED=FALSE`
+
+**Когда HDR включён**
+- `LLT_IS_HDR_ON=TRUE`
+
+**Когда HDR выключен**
+- `LLT_IS_HDR_ON=FALSE`
+
+**Когда WiFi подключён**
+- `LLT_WIFI_CONNECTED=TRUE`
+- `LLT_WIFI_SSID=<value>`, где `value` — SSID сети
+
+**Когда WiFi отключён**
+- `LLT_WIFI_CONNECTED=FALSE`
+
+**В указанное время**
+- `LLT_IS_SUNSET=<value>`, где `value` — `TRUE` или `FALSE`, в зависимости от конфигурации триггера
+- `LLT_IS_SUNRISE=<value>`, где `value` — `TRUE` или `FALSE`, в зависимости от конфигурации триггера
+- `LLT_TIME=<value>`, где `value` — `HH:mm`, в зависимости от конфигурации триггера
+- `LLT_DAYS=<value>`, где `value` — разделённый запятыми список: `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`, в зависимости от конфигурации триггера
+
+**Периодическое действие**
+- `LLT_PERIOD=<value>`, где `value` — интервал в секундах
+
+**При запуске**
+- `LLT_STARTUP=TRUE`
+
+**При возобновлении**
+- `LLT_RESUME=TRUE`
+
+### Вывод
+
+Если отмечено «Wait for exit», LLT захватит вывод из стандартного вывода запущенного процесса. Этот вывод сохраняется в переменной `$RUN_OUTPUT$` и может быть отображён в шаге «Show notification».
 
 ### CLI
 
-It is possible to control some features of LLT directly from the command line. The CLI executable is called `llt.exe` and can be found in the install directory.
+Можно управлять некоторыми функциями LLT напрямую из командной строки. Исполняемый файл CLI называется `llt.exe` и может быть найден в каталоге установки.
 
-For CLI to work properly, LLT needs to run in the background and CLI option needs to be enabled in LLT settings. You can also chose to add `llt.exe` to your PATH variable for easier access.
+Для правильной работы CLI LLT должен работать в фоновом режиме, и опция CLI должна быть включена в настройках LLT. Вы также можете добавить `llt.exe` в вашу переменную PATH для более лёгкого доступа.
 
-CLI does not need to be run as Administrator.
+CLI не нужно запускать от имени администратора.
 
-<details>
-<summary>Features</summary>
+#### Возможности
 
-* `llt quickAction --list` - list all Quick Actions
-* `llt quickAction <name>` - run Quick Action with given `<name>`
-* `llt feature --list` - list all supported features
-* `llt feature get <name>` - get value of a feature with given `<name>`
-* `llt feature set <name> --list` - list all values for a feature with given `<name>`
-* `llt feature set <name> <value>` - set feature with given `<name>` to a specified `<value>`
-* `llt spectrum profile get` - get current profile Spectrum RGB is set to
-* `llt spectrum profile set <profile>` - set Spectrum RGB profile to `<profile>`
-* `llt spectrum brightness get` - get current brightness Spectrum RGB is set to
-* `llt spectrum brightness set <brightness>` - set Spectrum RGB brightness to `<brightness>`
-* `llt rgb get` - get current 4-zone RGB preset
-* `llt rgb set <profile>` - set 4-zone RGB to `<preset>`
+- `llt quickAction --list` — вывести список всех быстрых действий
+- `llt quickAction <name>` — выполнить быстрое действие с данным `<name>`
+- `llt feature --list` — вывести список всех поддерживаемых функций
+- `llt feature get <name>` — получить значение функции с данным `<name>`
+- `llt feature set <name> --list` — вывести список всех значений для функции с данным `<name>`
+- `llt feature set <name> <value>` — установить функцию с данным `<name>` в указанное `<value>`
+- `llt spectrum profile get` — получить текущий профиль, установленный для Spectrum RGB
+- `llt spectrum profile set <profile>` — установить профиль Spectrum RGB в `<profile>`
+- `llt spectrum brightness get` — получить текущую яркость, установленную для Spectrum RGB
+- `llt spectrum brightness set <brightness>` — установить яркость Spectrum RGB в `<brightness>`
+- `llt rgb get` — получить текущий пресет 4-зонной RGB
+- `llt rgb set <profile>` — установить 4-зонную RGB в `<preset>`
 
-</details>
+## Пожертвования
 
-## Donate
+Если вам нравится использовать Lenovo Legion Toolkit, рассмотрите возможность спонсирования проекта с помощью кнопки GitHub Sponsors в верхней части страницы репозитория.
 
-If you enjoy using the Lenovo Legion Toolkit, consider sponsoring the project using the GitHub Sponsors button at the top of the repository page.
+## Благодарности
 
-## Credits
+Lenovo Legion Toolkit был изначально создан Bartosz Cichecki ([GitHub](https://github.com/BartoszCichecki)). С тех пор как исходный репозиторий был заархивирован, проект теперь поддерживается и разрабатывается командой LenovoLegionToolkit-Team, в частности Kaguya и Dr. Skinner.
 
-Lenovo Legion Toolkit was originally created by **Bartosz Cichecki** ([GitHub](https://github.com/BartoszCichecki)). Since the original repository was archived, the project is now maintained and developed by the **LenovoLegionToolkit-Team**, specifically by **Kaguya** and **Dr. Skinner**.
+**Особая благодарность:**
 
-Special thanks to:
-* [ViRb3](https://github.com/ViRb3), for creating [Lenovo Controller](https://github.com/ViRb3/LenovoController), which was used as a base for this tool.
-* [falahati](https://github.com/falahati), for creating [NvAPIWrapper](https://github.com/falahati/NvAPIWrapper) and [WindowsDisplayAPI](https://github.com/falahati/WindowsDisplayAPI).
-* [tebjan](https://github.com/tebjan/NvAPIWrapper), for upgrading the NVAPIWrapper to newest NVAPI.
-* [SmokelessCPU](https://github.com/SmokelessCPU), for help with 4-zone RGB and Spectrum keyboard support.
-* [Mario Bălănică](https://github.com/mariobalanica), for all contributions.
-* [Ace-Radom](https://github.com/Ace-Radom), for all contributions.
-* [fan](https://github.com/Undervoltologist), for ec reverse engineering.
+- [ViRb3](https://github.com/ViRb3) — за создание [Lenovo Controller](https://github.com/ViRb3/LenovoController), который был использован в качестве основы для этого инструмента.
+- [falahati](https://github.com/falahati) — за создание [NvAPIWrapper](https://github.com/falahati/NvAPIWrapper) и [WindowsDisplayAPI](https://github.com/falahati/WindowsDisplayAPI).
+- [tebjan](https://github.com/tebjan/NvAPIWrapper) — за обновление NVAPIWrapper до новейшего NVAPI.
+- [SmokelessCPU](https://github.com/SmokelessCPU) — за помощь с поддержкой 4-зонной RGB и клавиатуры Spectrum.
+- [Mario Bălănică](https://github.com/mariobalanica) — за все вклады.
+- [Ace-Radom](https://github.com/Ace-Radom) — за все вклады.
+- [fan](https://github.com/Undervoltologist) — за реверс-инжиниринг EC.
 
-### Third-party libraries
+### Сторонние библиотеки
 
-LLT makes use of several open-source libraries:
+LLT использует несколько библиотек с открытым исходным кодом:
 
-**Core UI & Framework**
-* **WPF-UI** ([lepoco/wpfui](https://github.com/lepoco/wpfui))
-* **Autofac** ([autofac/Autofac](https://github.com/autofac/Autofac))
-* **Humanizer** ([Humanizr/Humanizer](https://github.com/Humanizr/Humanizer))
-* **Markdig** ([xoofx/markdig](https://github.com/xoofx/markdig)) & **Markdig.Wpf** ([Kryptos-FR/markdig.wpf](https://github.com/Kryptos-FR/markdig.wpf))
+**Основной UI и фреймворк:**
+- WPF-UI ([lepoco/wpfui](https://github.com/lepoco/wpfui))
+- Autofac ([autofac/Autofac](https://github.com/autofac/Autofac))
+- Humanizer ([Humanizr/Humanizer](https://github.com/Humanizr/Humanizer))
+- Markdig ([xoofx/markdig](https://github.com/xoofx/markdig)) & Markdig.Wpf ([Kryptos-FR/markdig.wpf](https://github.com/Kryptos-FR/markdig.wpf))
 
-**Systems & Hardware**
-* **RAMSPDToolkit** ([Blacktempel/RAMSPDToolkit](https://github.com/Blacktempel/RAMSPDToolkit))
-* **LibreHardwareMonitor** ([LibreHardwareMonitor/LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor))
-* **PawnIO** ([namazso/PawnIO](https://github.com/namazso/PawnIO))
-* **CoordinateSharp** ([Tronald/CoordinateSharp](https://github.com/Tronald/CoordinateSharp))
-* **UniversalFanControl.Lib** ([XKaguya/UniversalFanControl.Lib](https://www.nuget.org/packages/UniversalFanControl.Lib))
-* **ZenStates-Core** ([irusanov/ZenStates-Core](https://github.com/irusanov/ZenStates-Core))
-* **PresentMonFps** ([lemutec/PresentMonFps](https://github.com/lemutec/PresentMonFps))
+**Системы и оборудование:**
+- RAMSPDToolkit ([Blacktempel/RAMSPDToolkit](https://github.com/Blacktempel/RAMSPDToolkit))
+- LibreHardwareMonitor ([LibreHardwareMonitor/LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor))
+- PawnIO ([namazso/PawnIO](https://github.com/namazso/PawnIO))
+- CoordinateSharp ([Tronald/CoordinateSharp](https://github.com/Tronald/CoordinateSharp))
+- UniversalFanControl.Lib ([XKaguya/UniversalFanControl.Lib](https://www.nuget.org/packages/UniversalFanControl.Lib))
+- ZenStates-Core ([irusanov/ZenStates-Core](https://github.com/irusanov/ZenStates-Core))
+- PresentMonFps ([lemutec/PresentMonFps](https://github.com/lemutec/PresentMonFps))
 
-**Utilities**
-* **Newtonsoft.Json** ([JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json))
-* **Octokit** ([octokit/octokit.net](https://github.com/octokit/octokit.net))
-* **TaskScheduler** ([dahall/TaskScheduler](https://github.com/dahall/TaskScheduler))
-* **ManagedNativeWifi** ([emoacht/ManagedNativeWifi](https://github.com/emoacht/ManagedNativeWifi))
-* **PubSub** ([upta/pubsub](https://github.com/upta/pubsub))
-* **NeoSmart.AsyncLock** ([neosmart/AsyncLock](https://github.com/neosmart/AsyncLock))
-* **System.CommandLine** ([dotnet/command-line-api](https://github.com/dotnet/command-line-api))
-* **NAudio.Wasapi** ([naudio/NAudio](https://github.com/naudio/NAudio))
-* **Ben.Demystifier** ([benaadams/Ben.Demystifier](https://github.com/benaadams/Ben.Demystifier))
+**Утилиты:**
+- Newtonsoft.Json ([JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json))
+- Octokit ([octokit/octokit.net](https://github.com/octokit/octokit.net))
+- TaskScheduler ([dahall/TaskScheduler](https://github.com/dahall/TaskScheduler))
+- ManagedNativeWifi ([emoacht/ManagedNativeWifi](https://github.com/emoacht/ManagedNativeWifi))
+- PubSub ([upta/pubsub](https://github.com/upta/pubsub))
+- NeoSmart.AsyncLock ([neosmart/AsyncLock](https://github.com/neosmart/AsyncLock))
+- System.CommandLine ([dotnet/command-line-api](https://github.com/dotnet/command-line-api))
+- NAudio.Wasapi ([naudio/NAudio](https://github.com/naudio/NAudio))
+- Ben.Demystifier ([benaadams/Ben.Demystifier](https://github.com/benaadams/Ben.Demystifier))
 
-**Visuals & UI Helpers**
-* **PixiEditor.ColorPicker** ([PixiEditor/ColorPicker](https://github.com/PixiEditor/ColorPicker))
-* **WpfScreenHelper** ([micdenny/WpfScreenHelper](https://github.com/micdenny/WpfScreenHelper))
+**Визуалы и помощники UI:**
+- PixiEditor.ColorPicker ([PixiEditor/ColorPicker](https://github.com/PixiEditor/ColorPicker))
+- WpfScreenHelper ([micdenny/WpfScreenHelper](https://github.com/micdenny/WpfScreenHelper))
 
-For a full list of third-party components and license notices, see the [NOTICE](NOTICE) file.
+Полный список сторонних компонентов и уведомлений о лицензиях см. в файле [NOTICE](NOTICE).
 
-Translations provided by:
-* Bulgarian - [Ekscentricitet](https://github.com/Ekscentricitet)
-* Chinese (Simplified) - [凌卡Karl](https://github.com/KarlLee830), [Ace-Radom](https://github.com/Ace-Radom)
-* Chinese (Traditional) - [flandretw](https://github.com/flandretw)
-* Czech - J0sef
-* Dutch - Melm, [JarneStaalPXL](https://github.com/JarneStaalPXL)
-* French - EliotAku, [Georges de Massol](https://github.com/jojo2massol), Rigbone, ZeroDegree
-* German - Sko-Inductor, Running_Dead89
-* Greek - GreatApo
-* Italian - [Lampadina17](https://github.com/Lampadina17)
-* Karakalpak - KarLin, Gulnaz, Niyazbek Tolibaev, Shingis Joldasbaev
-* Latvian - RJSkudra
-* Romanian - [Mario Bălănică](https://github.com/mariobalanica)
-* Slovak - Mitschud, Newbie414
-* Spanish - M.A.G.
-* Polish - Mariusz Dziemianowicz
-* Portuguese - dvsilva
-* Portuguese (Brasil) - Vernon
-* Russian - [Edward Johan](https://github.com/younyokel)
-* Turkish - Undervolt
-* Ukrainian -  [Vladyslav Prydatko](https://github.com/va1dee), [Dmytro Zozulia](https://github.com/Nollasko)
-* Vietnamese - Not_Nhan, Kuri, Nagidrop
+### Переводы предоставлены:
 
-Many thanks to everyone else, who monitors and corrects translations!
+- **Болгарский** — [Ekscentricitet](https://github.com/Ekscentricitet)
+- **Китайский (упрощённый)** — [凌卡Karl](https://github.com/KarlLee830), [Ace-Radom](https://github.com/Ace-Radom)
+- **Китайский (традиционный)** — [flandretw](https://github.com/flandretw)
+- **Чешский** — J0sef
+- **Голландский** — Melm, [JarneStaalPXL](https://github.com/JarneStaalPXL)
+- **Французский** — EliotAku, [Georges de Massol](https://github.com/jojo2massol), Rigbone, ZeroDegree
+- **Немецкий** — Sko-Inductor, Running_Dead89
+- **Греческий** — GreatApo
+- **Итальянский** — [Lampadina17](https://github.com/Lampadina17)
+- **Каракалпакский** — KarLin, Gulnaz, Niyazbek Tolibaev, Shingis Joldasbaev
+- **Латышский** — RJSkudra
+- **Румынский** — [Mario Bălănică](https://github.com/mariobalanica)
+- **Словацкий** — Mitschud, Newbie414
+- **Испанский** — M.A.G.
+- **Польский** — Mariusz Dziemianowicz
+- **Португальский** — dvsilva
+- **Португальский (Бразилия)** — Vernon
+- **Русский** — [Edward Johan](https://github.com/younyokel)
+- **Турецкий** — Undervolt
+- **Украинский** — [Vladyslav Prydatko](https://github.com/va1dee), [Dmytro Zozulia](https://github.com/Nollasko)
+- **Вьетнамский** — Not_Nhan, Kuri, Nagidrop
 
-## FAQ
+**Большое спасибо всем остальным, кто отслеживает и исправляет переводы!**
 
-#### Why do I get a message that Vantage is still running, even though I uninstalled it?
+## ЧАВО
 
-Starting from version 2.14.0, LLT is much more strict about detecting leftover processes related to Vantage. Vantage installs 3 components:
+### Почему я получаю сообщение, что Vantage всё ещё работает, хотя я удалил его?
 
-1. Lenovo Vantage app
-2. Lenovo Vantage Service
+Начиная с версии 2.14.0, LLT стал гораздо строже в обнаружении оставшихся процессов, связанных с Vantage. Vantage устанавливает 3 компонента:
+
+1. Приложение Lenovo Vantage
+2. Служба Lenovo Vantage Service
 3. System Interface Foundation V2 Device
 
-The easiest solution is to go into LLT settings and select options to disable Lenovo Vantage, Legion Zone and Hotkeys (only still installed ones are shown).
+Самое простое решение — зайти в настройки LLT и выбрать опции для отключения Lenovo Vantage, Legion Zone и Hotkeys (показываются только те, которые всё ещё установлены).
 
-If you want to remove them instead, make sure that you uninstall all 3, otherwise some options in LLT will not be available. You can check Task Manager for any processes containing `Vantage` or `ImController`. You can also check this guide for more info: [Uninstalling System Interface Foundation V2 Device](https://support.lenovo.com/us/en/solutions/HT506070), if you have troubles getting rid of `ImController` processes.
+Если вы хотите удалить их вместо этого, убедитесь, что вы удалили все 3, иначе некоторые опции в LLT будут недоступны. Вы можете проверить Диспетчер задач на наличие любых процессов, содержащих `Vantage` или `ImController`. Вы также можете проверить это руководство для получения дополнительной информации: [Uninstalling System Interface Foundation V2 Device](https://support.lenovo.com/us/en/solutions/HT506070), если у вас есть проблемы с избавлением от процессов `ImController`.
 
-#### Why is my antivirus reporting that the installer contains a virus/trojan/malware?
+### Почему мой антивирус сообщает, что установщик содержит вирус/троян/вредоносное ПО?
 
-LLT makes use of many low-level Windows APIs that can be falsely flagged by antiviruses as suspicious, resulting in a false-positive. LLT is open source and can easily be audited by anyone who has any doubts as to what this software does. All installers are built directly on GitHub with GitHub Actions, so that there is no doubt what they contain. 
+LLT использует много низкоуровневых Windows API, которые могут быть ложно отмечены антивирусами как подозрительные, что приводит к ложному срабатыванию. LLT имеет открытый исходный код и может быть легко проверен любым, у кого есть какие-либо сомнения относительно того, что делает это программное обеспечение. Все установщики собираются непосредственно на GitHub с помощью GitHub Actions, так что нет никаких сомнений в том, что они содержат.
 
-To ensure authenticity, the installer executable is signed with a project certificate. This signature allows the application's custom updater to verify that the installer hasn't been tampered with and originated from the official build process.
+Для обеспечения подлинности исполняемый файл установщика подписан сертификатом проекта. Эта подпись позволяет собственному обновлению приложения проверить, что установщик не был изменён и произошёл из официального процесса сборки.
 
-If you downloaded the installer from this project's website or GitHub, you shouldn't worry - the warning is a false-positive. 
+Если вы скачали установщик с веб-сайта этого проекта или GitHub, вам не стоит беспокоиться — предупреждение является ложным срабатыванием.
 
-#### Can I customize hotkeys?
+### Могу ли я настроить горячие клавиши?
 
-You can customize Fn+F9 hotkey in LLT settings. Other hotkeys can't be customized.
+Вы можете настроить горячую клавишу Fn+F9 в настройках LLT. Другие горячие клавиши не могут быть настроены.
 
-#### Can I customize Conservation mode threshold?
+### Могу ли я настроить порог режима Conservation mode?
 
-No. Conservation mode threshold is set in firmware to 60% (2021 and earlier) or 80% (2022 and later) and it can't be changed.
+Нет. Порог режима Conservation mode установлен в прошивке на уровне 60% (2021 и ранее) или 80% (2022 и позже), и его нельзя изменить.
 
-#### Can I customize fans in Quiet, Balance or Performance modes?
+### Могу ли я настроить вентиляторы в режимах Quiet, Balance или Performance?
 
-No, it isn't possible to customize how the fan works in power modes other than Custom.
+Нет, невозможно настроить работу вентилятора в режимах питания, отличных от Custom.
 
-#### Why can't I switch to Performance or Custom Power Mode on battery?
+### Почему я не могу переключиться на режим питания Performance или Custom от аккумулятора?
 
-Starting with version 2.11.0, LLT's behavior was aligned with Vantage and Legion Zone and it does not allow using them without an appropriate power source.
+Начиная с версии 2.11.0, поведение LLT было приведено в соответствие с Vantage и Legion Zone, и он не позволяет использовать их без соответствующего источника питания.
 
-If for whatever reason you want to use these modes on battery anyway, you can use `--allow-all-power-modes-on-battery` argument. Check [Arguments](#arguments) section for more details.
+Если по какой-либо причине вы всё равно хотите использовать эти режимы от аккумулятора, вы можете использовать аргумент `--allow-all-power-modes-on-battery`. Проверьте раздел [Аргументы](#аргументы) для получения более подробной информации.
 
-> [!WARNING]
-> Power limits and other settings are not applied correctly on most devices when laptop is not connected to full power AC adapter and unpredictable and weird behavior is expected. Therefore, no support is provided for issues related to using this argument.
+**⚠️ Внимание**  
+Лимиты мощности и другие настройки применяются некорректно на большинстве устройств, когда ноутбук не подключён к полному адаптеру питания переменного тока, и ожидается непредсказуемое и странное поведение. Поэтому никакая поддержка не предоставляется для проблем, связанных с использованием этого аргумента.
 
-#### Why does switching to Performance mode seem buggy, when AI Engine is enabled?
+### Почему переключение в режим Performance кажется глючным, когда включён AI Engine?
 
-It seems that some BIOS versions indeed have weird issues when using Fn+Q. Only hope is to wait for Lenovo to fix it.
+Похоже, что некоторые версии BIOS действительно имеют странные проблемы при использовании Fn+Q. Остаётся только надеяться, что Lenovo исправит это.
 
-#### Why am I getting incompatible message after motherboard replacement?
+### Почему я получаю сообщение о несовместимости после замены материнской платы?
 
-Sometimes new motherboard does not contain correct model numbers and serial numbers. You should try [this tutorial](https://laptopwiki.eu/laptopwiki/guides/lenovo/legion_bios_lvarrecovery) to try and recover them. If that method does not succeed, you can workaround it with `--skip-compat-check` argument. Check [Arguments](#arguments) section for more details.
+Иногда новая материнская плата не содержит правильных номеров модели и серийных номеров. Вы должны попробовать [это руководство](https://laptopwiki.eu/laptopwiki/guides/lenovo/legion_bios_lvarrecovery), чтобы попытаться восстановить их. Если этот метод не увенчается успехом, вы можете обойти это с помощью аргумента `--skip-compat-check`. Проверьте раздел [Аргументы](#аргументы) для получения более подробной информации.
 
-#### Why isn't a game detected, even though Actions are configured properly?
+### Почему игра не обнаруживается, хотя действия настроены правильно?
 
-Game detection feature is built on top of Windows' game detection, meaning LLT will react to EXE files that Windows considers "a game". That also means that if you nuked Xbox Game Bar from your installation, there is 99.9% chance this feature will not work.
+Функция обнаружения игр построена на основе обнаружения игр Windows, что означает, что LLT будет реагировать на EXE-файлы, которые Windows считает «игрой». Это также означает, что если вы удалили Xbox Game Bar из вашей установки, есть 99,9% вероятность, что эта функция не будет работать.
 
-Windows probably doesn't recognize all games properly, but you can mark any program as game in Xbox Game Bar settings (Win+G). You can find list of recognized games in registry: `HKEY_CURRENT_USER\System\GameConfigStore\Children`.
+Windows, вероятно, не распознаёт все игры должным образом, но вы можете отметить любую программу как игру в настройках Xbox Game Bar (Win+G). Вы можете найти список распознанных игр в реестре: `HKEY_CURRENT_USER\System\GameConfigStore\Children`.
 
-#### Can I use other RGB software while using LLT?
+### Могу ли я использовать другое RGB-программное обеспечение при использовании LLT?
 
-In general, yes. LLT will disable RGB controls when Vantage is running to avoid conflicts. If you use other RGB software like [L5P-Keyboard-RGB](https://github.com/4JX/L5P-Keyboard-RGB) or [OpenRGB](https://openrgb.org/), you can disable RGB in LLT to avoid conflicts with `--force-disable-rgbkb` or `--force-disable-spectrumkb` argument. Check [Arguments](#arguments) section for more details.
+В целом, да. LLT отключит управление RGB, когда Vantage работает, чтобы избежать конфликтов. Если вы используете другое RGB-программное обеспечение, такое как [L5P-Keyboard-RGB](https://github.com/4JX/L5P-Keyboard-RGB) или [OpenRGB](https://openrgb.org/), вы можете отключить RGB в LLT, чтобы избежать конфликтов, с помощью аргумента `--force-disable-rgbkb` или `--force-disable-spectrumkb`. Проверьте раздел [Аргументы](#аргументы) для получения более подробной информации.
 
-#### Will iCue RGB keyboards be supported?
+### Будут ли поддерживаться клавиатуры iCue RGB?
 
-No. Check out [OpenRGB](https://openrgb.org/) project.
+Нет. Проверьте проект [OpenRGB](https://openrgb.org/).
 
-#### Can I have more RGB effects?
+### Могу ли я иметь больше RGB-эффектов?
 
-Only options natively supported by hardware are available; adding support for custom effects is not planned. If you would like more customization check out [L5P-Keyboard-RGB](https://github.com/4JX/L5P-Keyboard-RGB) or [OpenRGB](https://openrgb.org/).
+Доступны только опции, изначально поддерживаемые оборудованием; добавление поддержки пользовательских эффектов не планируется. Если вы хотите больше настроек, проверьте [L5P-Keyboard-RGB](https://github.com/4JX/L5P-Keyboard-RGB) или [OpenRGB](https://openrgb.org/).
 
-#### Can you add fan control to other models?
+### Можете ли вы добавить управление вентиляторами для других моделей?
 
-Fan control is available on Gen 7 and later models. Older models will not be supported due to technical limitations. For discussions about fan control experimental support, join the **Official Discord**.
+Управление вентиляторами доступно на моделях 7-го поколения и новее. Более старые модели не будут поддерживаться из-за технических ограничений. Для обсуждений об экспериментальной поддержке управления вентиляторами присоединяйтесь к Официальному Discord.
 
-#### Why don't I see the custom tooltip when I hover LLT icon in tray?
+### Почему я не вижу пользовательскую подсказку, когда навожу курсор на значок LLT в трее?
 
-In Windows 10 and 11, Microsoft did plenty of changes to the tray, breaking a lot of things on the way. As a result, custom tooltips do not always work properly. Solution? Update your Windows and keep fingers crossed.
+В Windows 10 и 11 Microsoft внесла много изменений в трей, сломав по пути много вещей. В результате пользовательские подсказки не всегда работают должным образом. Решение? Обновите вашу Windows и держите пальцы скрещенными.
 
-#### How can I OC/UV my CPU?
+### Как я могу разогнать или снизить напряжение (undervolt) моего CPU?
 
-There are very good tools like [Intel XTU](https://www.intel.com/content/www/us/en/download/17881/intel-extreme-tuning-utility-intel-xtu.html) (which is used by Vantage) or [ThrottleStop](https://www.techpowerup.com/download/techpowerup-throttlestop/) made just for that.
+Есть очень хорошие инструменты, такие как [Intel XTU](https://www.intel.com/content/www/us/en/download/17881/intel-extreme-tuning-utility-intel-xtu.html) (который используется Vantage) или [ThrottleStop](https://www.techpowerup.com/download/techpowerup-throttlestop/), созданные именно для этого.
 
-#### What if I overclocked my GPU too much?
+### Что, если я слишком сильно разогнал мою GPU?
 
-If you end up in a situation where your GPU is not stable and you can't boot into Windows, there are two things you can do:
+Если вы окажетесь в ситуации, когда ваша GPU нестабильна и вы не можете загрузиться в Windows, есть две вещи, которые вы можете сделать:
 
-1. Go into BIOS and try to find an option similar to "Enabled GPU Overclocking" and disable it, start Windows, and toggle the BIOS option again to Enabled.
-2. Start Windows in Safe Mode, and delete `gpu_oc.json` file under LLT settings, which are located in `"%LOCALAPPDATA%\LenovoLegionToolkit`.
+1. Зайдите в BIOS и попробуйте найти опцию, похожую на «Enabled GPU Overclocking», и отключите её, запустите Windows и переключите опцию BIOS обратно на Enabled.
+2. Запустите Windows в безопасном режиме и удалите файл `gpu_oc.json` из папки настроек LLT, которая находится в `"%LOCALAPPDATA%\LenovoLegionToolkit"`.
 
-#### Why is my Boot Logo not applied?
+### Почему мой Boot Logo не применяется?
 
-When you change the Boot Logo, LLT verifies that it is in the correct format and correct resolution. If LLT shows that boot logo is applied, it means that the setting was correctly saved to UEFI. If you don't see the custom boot logo, it means that even though UEFI is configured and custom image is saved to UEFI partition, your UEFI for some reason does not render it. In this case the best idea is to try a different image, maybe in different format, edited with different image editor etc. If the boot logo is not shown after all these steps, it's probably a problem with your BIOS version.
+Когда вы изменяете Boot Logo, LLT проверяет, что он в правильном формате и правильном разрешении. Если LLT показывает, что boot logo применён, это означает, что настройка была правильно сохранена в UEFI. Если вы не видите пользовательский boot logo, это означает, что хотя UEFI настроен и пользовательское изображение сохранено на разделе UEFI, ваш UEFI по какой-то причине не отображает его. В этом случае лучшая идея — попробовать другое изображение, возможно, в другом формате, отредактированное с помощью другого графического редактора и т. д. Если boot logo не показывается после всех этих шагов, это, вероятно, проблема с вашей версией BIOS.
 
-#### Why do I see stuttering when using Smart Fn Lock?
+### Почему я вижу заикания при использовании Smart Fn Lock?
 
-On some BIOS versions, toggling Fn Lock causes a brief stutter and since Smart Fn Lock is basically an automatic toggle for Fn Lock, it is also affected by this issue. Try disabling "Fool proof Fn Lock" (or similar) option in BIOS - it was reported that it fixes stutter when toggling Fn Lock.
+На некоторых версиях BIOS переключение Fn Lock вызывает кратковременное заикание, и поскольку Smart Fn Lock — это, по сути, автоматическое переключение для Fn Lock, оно также затронуто этой проблемой. Попробуйте отключить опцию «Fool proof Fn Lock» (или похожую) в BIOS — было сообщено, что это исправляет заикание при переключении Fn Lock.
 
-#### Why don't I see warranty infos in device information?
+### Почему я не вижу информацию о гарантии в информации об устройстве?
 
-In latest version LLT removes this feature for Chinese models due to increasing unreliability. If you got warranty infos before it should be displayed normally, but after manually refreshing or deleting stored data the infos will disappear. This change only affects users with a Chinese Legion laptop.
+В последней версии LLT удалил эту функцию для китайских моделей из-за возрастающей ненадёжности. Если у вас была информация о гарантии раньше, она должна отображаться нормально, но после ручного обновления или удаления сохранённых данных информация исчезнет. Это изменение затрагивает только пользователей с китайским ноутбуком Legion.
 
-#### Which generation is my laptop?
+### Какое поколение у моего ноутбука?
 
-Check the model number. Example model numbers are `16ACH6H` or `16IAX7`. The last number of the model number indicates generation.
+Проверьте номер модели. Примеры номеров моделей: `16ACH6H` или `16IAX7`. Последняя цифра номера модели указывает поколение.
 
-## Arguments
+## Аргументы
 
-Some, less frequently needed, features or options can be enabled by using additional arguments. These arguments can either be passed as parameters or added to `args.txt` file.
+Некоторые, реже необходимые, функции или опции могут быть включены с помощью дополнительных аргументов. Эти аргументы могут быть переданы как параметры или добавлены в файл `args.txt`.
 
-* `--trace` - enables logging to `%LOCALAPPDATA%\LenovoLegionToolkit\log`
-* `--minimized` - starts LLT minimized to tray
-* `--skip-compat-check` - disables compatibility check on startup _(No support is provided when this argument is used)_
-* `--disable-tray-tooltip` - disables tray tooltip that is shown when you hover the cursor over tray icon
-* `--allow-all-power-modes-on-battery` - allows using all Power Modes without AC adapter _(No support is provided when this argument is used)_
-* `--enable-hybrid-mode-automation` - allows changing Hybrid Mode/GPU Working Mode with actions _(No support is provided when this argument is used)_
-* `--force-disable-rgbkb` - disables all lighting features for 4-zone RGB keyboards
-* `--force-disable-spectrumkb` - disables all lighting features for Spectrum per-key RGB keyboards
-* `--force-disable-lenovolighting` - disables all lighting features related to panel logo, ports backlight and some white backlit keyboards
-* `--experimental-gpu-working-mode` - changes GPU Working Mode switch to use experimental method, that is used by LegionZone _(No support is provided when this argument is used)_
-* `--proxy-url=example.com` - specifies proxy server URL that LLT should use
-* `--proxy-username=some_username` - if applicable, specifies proxy server username to use
-* `--proxy-password=some_password` - if applicable, specifies proxy server password to use
-* `--proxy-allow-all-certs` - if needed relaxes criteria needed to establish HTTPS/SSL connections via proxy server
-* `--disable-update-checker` - disable update checks in LLT, in case you want to rely on winget, scoop etc.
-* `--disable-conflicting-software-warning` - disables warning banners when conflicting software is running
+- `--trace` — включает логирование в `%LOCALAPPDATA%\LenovoLegionToolkit\log`
+- `--minimized` — запускает LLT свёрнутым в трей
+- `--skip-compat-check` — отключает проверку совместимости при запуске (Поддержка не предоставляется при использовании этого аргумента)
+- `--disable-tray-tooltip` — отключает подсказку трея, которая показывается, когда вы наводите курсор на значок в трее
+- `--allow-all-power-modes-on-battery` — позволяет использовать все режимы питания без адаптера переменного тока (Поддержка не предоставляется при использовании этого аргумента)
+- `--enable-hybrid-mode-automation` — позволяет изменять Hybrid Mode/GPU Working Mode с помощью действий (Поддержка не предоставляется при использовании этого аргумента)
+- `--force-disable-rgbkb` — отключает все функции подсветки для 4-зонных RGB клавиатур
+- `--force-disable-spectrumkb` — отключает все функции подсветки для Spectrum per-key RGB клавиатур
+- `--force-disable-lenovolighting` — отключает все функции подсветки, связанные с логотипом панели, подсветкой портов и некоторыми белыми подсветками клавиатур
+- `--experimental-gpu-working-mode` — изменяет переключение GPU Working Mode на использование экспериментального метода, который используется Legion Zone (Поддержка не предоставляется при использовании этого аргумента)
+- `--proxy-url=example.com` — указывает URL прокси-сервера, который должен использовать LLT
+- `--proxy-username=some_username` — если применимо, указывает имя пользователя прокси-сервера для использования
+- `--proxy-password=some_password` — если применимо, указывает пароль прокси-сервера для использования
+- `--proxy-allow-all-certs` — если необходимо, ослабляет критерии, необходимые для установления HTTPS/SSL соединений через прокси-сервер
+- `--disable-update-checker` — отключает проверку обновлений в LLT, в случае если вы хотите полагаться на winget, scoop и т. д.
+- `--disable-conflicting-software-warning` — отключает предупреждающие баннеры, когда работает конфликтующее программное обеспечение
 
-If you decide to use the arguments with `args.txt` file:
-1. Go to `%LOCALAPPDATA%\LenovoLegionToolkit`
-2. Create or edit `args.txt` file in there
-3. Paste **one** argument per line
-4. Start LLT
+Если вы решите использовать аргументы с файлом `args.txt`:
 
-Arguments not listed above are no longer needed or available.
+1. Перейдите в `%LOCALAPPDATA%\LenovoLegionToolkit`
+2. Создайте или отредактируйте файл `args.txt` там
+3. Вставьте один аргумент на строку
+4. Запустите LLT
 
-## How to collect logs?
+Аргументы, не указанные выше, больше не нужны или недоступны.
 
-In all troubleshooting situations, logs provide important information. **Always** attach logs to your issues. 
+## Как собрать логи?
 
-#### Method 1: Via app settings (Recommended)
-1. Open **Lenovo Legion Toolkit**.
-2. Go to **Settings**.
-3. Toggle **Enable logging**.
-4. Reproduce the issue.
-5. Critical and hardware error logs are automatically saved under `"%LOCALAPPDATA%\LenovoLegionToolkit\log"`.
+Во всех ситуациях устранения неполадок логи предоставляют важную информацию. Всегда прикрепляйте логи к вашим проблемам.
 
-#### Method 2: Manual trace (Alternative for startup issues)
-1. Make sure that Lenovo Legion Toolkit is not running (also gone from tray area).
-2. Open `Run` (Win+R) and type there: `"%LOCALAPPDATA%\Programs\LenovoLegionToolkit\Lenovo Legion Toolkit.exe" --trace` and hit OK.
-3. LLT will start and in the title bar you should see: `[LOGGING ENABLED]`.
-4. Reproduce the issue and close the app.
-5. In `Run` (Win+R) type `"%LOCALAPPDATA%\LenovoLegionToolkit\log"`.
+### Метод 1: Через настройки приложения (Рекомендуется)
 
-## Questions?
-If you have a general question, please use [GitHub Discussions](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/discussions) or join our **Official Discord**. 
+1. Откройте Lenovo Legion Toolkit.
+2. Перейдите в Настройки.
+3. Включите «Enable logging».
+4. Воспроизведите проблему.
+5. Критические логи и логи ошибок оборудования автоматически сохраняются в `"%LOCALAPPDATA%\LenovoLegionToolkit\log"`.
 
-## Contribution
+### Метод 2: Ручное трассирование (Альтернатива для проблем запуска)
 
-We appreciate any feedback that you have, so please do not hesitate to report issues.
-Pull Requests are also welcome, but make sure to check out [CONTRIBUTING.md](CONTRIBUTING.md) first!
+1. Убедитесь, что Lenovo Legion Toolkit не работает (также исчез из области трея).
+2. Откройте `Run` (Win+R) и введите там: `"%LOCALAPPDATA%\Programs\LenovoLegionToolkit\Lenovo Legion Toolkit.exe" --trace` и нажмите OK.
+3. LLT запустится, и в заголовке вы должны увидеть: `[LOGGING ENABLED]`.
+4. Воспроизведите проблему и закройте приложение.
+5. В `Run` (Win+R) введите `"%LOCALAPPDATA%\LenovoLegionToolkit\log"`.
 
-#### Compatibility
+## Вопросы?
 
-> [!IMPORTANT]
-> If your laptop is not part of Legion, IdeaPad Gaming or LOQ series, this software is not for you. Do not open compatibility requests for other devices.
+Если у вас есть общий вопрос, пожалуйста, используйте [GitHub Discussions](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/discussions) или присоединяйтесь к нашему Официальному Discord.
 
-It would be great to expand the list of compatible devices, but to do it your help is needed!
+## Вклад в проект
 
-If you are willing to check if this app works correctly on your device that is currently unsupported, click _Continue_ on the popup you saw on startup. Lenovo Legion Toolkit will start logging automatically so you can submit the logs if anything goes wrong.
+Мы ценим любые отзывы, которые у вас есть, поэтому, пожалуйста, не стесняйтесь сообщать о проблемах.
 
-*Remember that some functions may not function properly.*
+Pull Requests также приветствуются, но убедитесь, что сначала проверили [CONTRIBUTING.md](CONTRIBUTING.md)!
 
-We would appreciate it, if you create an issue here on GitHub with the results of your testing.
+### Совместимость
 
-Make sure to include the following information in your issue:
+**❗ Важно**  
+Если ваш ноутбук не является частью серии Legion, IdeaPad Gaming или LOQ, это программное обеспечение не для вас. Не открывайте запросы о совместимости для других устройств.
 
-1. Full model name (e.g. Legion 5 Pro 16ACH6H)
-2. List of features that are working as expected.
-3. List of features that seem to not work.
-4. List of features that crash the app.
+Было бы здорово расширить список совместимых устройств, но для этого нужна ваша помощь!
 
-The more info you add, the better the app will get over time. If anything seems off, write down precisely what was wrong and attach logs (`%LOCALAPPDATA%\LenovoLegionToolkit\log`). 
+Если вы готовы проверить, работает ли это приложение правильно на вашем устройстве, которое в настоящее время не поддерживается, нажмите «Continue» во всплывающем окне, которое вы увидели при запуске. Lenovo Legion Toolkit начнёт логирование автоматически, чтобы вы могли отправить логи, если что-то пойдёт не так.
 
-Thanks in advance!
+Помните, что некоторые функции могут работать некорректно.
+
+Мы будем признательны, если вы создадите проблему здесь на GitHub с результатами вашего тестирования.
+
+Убедитесь, что включили следующую информацию в вашу проблему:
+
+- Полное название модели (например, Legion 5 Pro 16ACH6H)
+- Список функций, которые работают как ожидается.
+- Список функций, которые, кажется, не работают.
+- Список функций, которые вызывают сбой приложения.
+
+Чем больше информации вы добавите, тем лучше будет становиться приложение со временем. Если что-то кажется неправильным, запишите точно, что было не так, и прикрепите логи (`%LOCALAPPDATA%\LenovoLegionToolkit\log`).
+
+Заранее спасибо!
