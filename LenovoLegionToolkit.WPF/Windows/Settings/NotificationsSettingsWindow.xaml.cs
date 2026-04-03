@@ -20,7 +20,8 @@ public partial class NotificationsSettingsWindow
         _notificationPositionCard,
         _notificationDurationCard,
         _updateAvailableCard,
-        _capsNumLockCard,
+        _capsLockCard,
+        _numsLockCard,
         _fnLockCard,
         _touchpadLockCard,
         _keyboardBacklightCard,
@@ -45,7 +46,8 @@ public partial class NotificationsSettingsWindow
         _notificationDurationComboBox.SetItems(Enum.GetValues<NotificationDuration>(), _settings.Store.NotificationDuration, v => v.GetDisplayName());
 
         _updateAvailableToggle.IsChecked = _settings.Store.Notifications.UpdateAvailable;
-        _capsNumLockToggle.IsChecked = _settings.Store.Notifications.CapsNumLock;
+        _capsLockToggle.IsChecked = _settings.Store.Notifications.CapsLock;
+        _numsLockToggle.IsChecked = _settings.Store.Notifications.NumsLock;
         _fnLockToggle.IsChecked = _settings.Store.Notifications.FnLock;
         _touchpadLockToggle.IsChecked = _settings.Store.Notifications.TouchpadLock;
         _keyboardBacklightToggle.IsChecked = _settings.Store.Notifications.KeyboardBacklight;
@@ -118,13 +120,23 @@ public partial class NotificationsSettingsWindow
         _settings.SynchronizeStore();
     }
 
-    private void CapsNumLockToggle_Click(object sender, RoutedEventArgs e)
+    private void CapsLockToggle_Click(object sender, RoutedEventArgs e)
     {
-        var state = _capsNumLockToggle.IsChecked;
+        var state = _capsLockToggle.IsChecked;
         if (state is null)
             return;
 
-        _settings.Store.Notifications.CapsNumLock = state.Value;
+        _settings.Store.Notifications.CapsLock = state.Value;
+        _settings.SynchronizeStore();
+    }
+
+    private void NumsLockToggle_Click(object sender, RoutedEventArgs e)
+    {
+        var state = _numsLockToggle.IsChecked;
+        if (state is null)
+            return;
+
+        _settings.Store.Notifications.NumsLock = state.Value;
         _settings.SynchronizeStore();
     }
 
