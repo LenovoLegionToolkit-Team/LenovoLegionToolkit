@@ -229,7 +229,7 @@
                         x:Name="_pchName"
                         MinWidth="25"
                         Style="{DynamicResource TextBlockStyle}"
-                        Text="{Binding Source={x:Static resources:Resource.Osd_Chipset}}" />
+                        Text="{Binding Source={x:Static resources:Resource.Osd_Pch}}" />
                     <TextBlock
                         x:Name="_pchTemperature"
                         Style="{DynamicResource TextBlockStyle}"

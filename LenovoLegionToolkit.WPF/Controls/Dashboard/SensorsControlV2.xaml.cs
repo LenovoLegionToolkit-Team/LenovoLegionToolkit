@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -17,6 +17,7 @@ using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Settings;
+using LenovoLegionToolkit.WPF.Windows.Dashboard;
 using Wpf.Ui.Common;
 using MenuItem = Wpf.Ui.Controls.MenuItem;
 
@@ -142,6 +143,14 @@ public partial class SensorsControlV2
             };
             ContextMenu.Items.Add(item);
         }
+        ContextMenu.Items.Add(new Separator());
+        var customizeItem = new MenuItem
+        {
+            Header = Resource.DashboardPage_Customize,
+            SymbolIcon = SymbolRegular.Settings24
+        };
+        customizeItem.Click += (_, _) => EditSensorGroupWindow.ShowInstance();
+        ContextMenu.Items.Add(customizeItem);
     }
 
     private void SensorsControl_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)

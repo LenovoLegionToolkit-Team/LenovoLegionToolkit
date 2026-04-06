@@ -428,7 +428,7 @@
                         FontSize="14"
                         FontWeight="Bold"
                         Style="{DynamicResource SensorLabelStyle}"
-                        Text="{Binding Source={x:Static resources:Resource.Osd_Chipset}, StringFormat='— {0} —'}" />
+                        Text="{Binding Source={x:Static resources:Resource.Osd_Pch}, StringFormat='— {0} —'}" />
 
                     <Grid>
                         <Grid.ColumnDefinitions>

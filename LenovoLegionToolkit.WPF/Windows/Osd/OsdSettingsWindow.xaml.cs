@@ -56,19 +56,19 @@ public partial class OsdSettingsWindow
     private void OsdSettingsWindow_Loaded(object sender, RoutedEventArgs e)
     {
         InitializeCheckboxes();
-        
+
         _osdRefreshInterval.Value = _OsdSettings.Store.OsdRefreshInterval;
         _osdStyleComboBox.SelectedIndex = _OsdSettings.Store.SelectedStyleIndex;
 
         _osdOpacitySlider.Value = _OsdSettings.Store.BackgroundOpacity;
         _opacityValueText.Text = $"{(_OsdSettings.Store.BackgroundOpacity * 100):0}{Resource.Percent}";
-        
+
         _osdFontSize.Value = _OsdSettings.Store.FontSize;
 
         _osdCornerRadiusTopSlider.Value = _OsdSettings.Store.CornerRadiusTop;
         _osdCornerRadiusBottomSlider.Value = _OsdSettings.Store.CornerRadiusBottom;
         _cornerRadiusValueText.Text = $"{_OsdSettings.Store.CornerRadiusTop} / {_OsdSettings.Store.CornerRadiusBottom}";
-        
+
         _osdLockPosition.IsChecked = _OsdSettings.Store.IsLocked;
 
         try
@@ -123,11 +123,11 @@ public partial class OsdSettingsWindow
                 [
                     OsdItem.GpuUtilization, OsdItem.GpuFrequency,
                     OsdItem.GpuTemperature,
-                    OsdItem.GpuVramUtilization, OsdItem.GpuVramTemperature, 
+                    OsdItem.GpuVramUtilization, OsdItem.GpuVramTemperature,
                     OsdItem.GpuPower, OsdItem.GpuFan
                 ]
             },
-            new OsdItemGroup { Header = Resource.Osd_Chipset, Items =
+            new OsdItemGroup { Header = Resource.Osd_Pch, Items =
                 [
                     OsdItem.MemoryUtilization, OsdItem.MemoryTemperature,
                     OsdItem.Disk1Temperature, OsdItem.Disk2Temperature,

@@ -5071,15 +5071,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chipset.
-        /// </summary>
-        public static string Osd_Chipset {
-            get {
-                return ResourceManager.GetString("Osd_Chipset", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to CPU.
         /// </summary>
         public static string Osd_Cpu {
@@ -5193,6 +5184,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string Osd_Memory_Utilization {
             get {
                 return ResourceManager.GetString("Osd_Memory_Utilization", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PCH.
+        /// </summary>
+        public static string Osd_Pch {
+            get {
+                return ResourceManager.GetString("Osd_Pch", resourceCulture);
             }
         }
         
@@ -6979,7 +6979,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Memory.
+        ///   Looks up a localized string similar to RAM.
         /// </summary>
         public static string SensorsControl_Memory_Title {
             get {
