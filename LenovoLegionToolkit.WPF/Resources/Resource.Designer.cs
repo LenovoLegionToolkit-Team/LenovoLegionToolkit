@@ -2839,6 +2839,51 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run or stop Lenovo&apos;s fan cleaning mode..
+        /// </summary>
+        public static string FanCoolingAutomationStepControl_Message {
+            get {
+                return ResourceManager.GetString("FanCoolingAutomationStepControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fan Cleaning.
+        /// </summary>
+        public static string FanCoolingAutomationStepControl_Title {
+            get {
+                return ResourceManager.GetString("FanCoolingAutomationStepControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Run Lenovo&apos;s fan cleaning mode to spin up the fans and help clear dust..
+        /// </summary>
+        public static string FanCoolingControl_Message {
+            get {
+                return ResourceManager.GetString("FanCoolingControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start cleaning.
+        /// </summary>
+        public static string FanCoolingControl_Run {
+            get {
+                return ResourceManager.GetString("FanCoolingControl_Run", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fan Cleaning.
+        /// </summary>
+        public static string FanCoolingControl_Title {
+            get {
+                return ResourceManager.GetString("FanCoolingControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Filter....
         /// </summary>
         public static string Filter {

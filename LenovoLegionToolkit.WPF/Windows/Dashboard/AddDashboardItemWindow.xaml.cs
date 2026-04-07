@@ -35,7 +35,7 @@ public partial class AddDashboardItemWindow
 
     private void CancelButton_Click(object sender, RoutedEventArgs e) => Close();
 
-    private Task RefreshAsync()
+    private async Task RefreshAsync()
     {
         _content.Children.Clear();
 
@@ -43,9 +43,12 @@ public partial class AddDashboardItemWindow
         var existingItems = _existingItems().ToArray();
 
         foreach (var item in allItems.Except(existingItems))
-            _content.Children.Add(CreateCardControl(item));
+        {
+            if (!await item.IsSupportedAsync())
+                continue;
 
-        return Task.CompletedTask;
+            _content.Children.Add(CreateCardControl(item));
+        }
     }
 
     private CardControl CreateCardControl(DashboardItem item)

@@ -524,6 +524,7 @@ public class AutomationPipelineControl : UserControl
             DelayAutomationStep s => new DelayAutomationStepControl(s),
             DisplayBrightnessAutomationStep s => new DisplayBrightnessAutomationStepControl(s),
             DpiScaleAutomationStep s => new DpiScaleAutomationStepControl(s),
+            FanCoolingAutomationStep s => new FanCoolingAutomationStepControl(s),
             FlipToStartAutomationStep s => new FlipToStartAutomationStepControl(s),
             FnLockAutomationStep s => new FnLockAutomationStepControl(s),
             GodModePresetAutomationStep s => new GodModePresetAutomationStepControl(s),

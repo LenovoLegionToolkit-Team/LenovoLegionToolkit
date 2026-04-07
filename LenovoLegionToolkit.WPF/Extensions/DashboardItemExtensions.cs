@@ -1,6 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Controls.Dashboard;
 using LenovoLegionToolkit.WPF.Resources;
@@ -10,9 +11,12 @@ namespace LenovoLegionToolkit.WPF.Extensions;
 
 public static class DashboardItemExtensions
 {
+    public static Task<bool> IsSupportedAsync(this DashboardItem dashboardItem) => Task.FromResult(true);
+
     public static SymbolRegular GetIcon(this DashboardItem dashboardItem) => dashboardItem switch
     {
         DashboardItem.PowerMode => SymbolRegular.Gauge24,
+        DashboardItem.FanCooling => SymbolRegular.TopSpeed24,
         DashboardItem.BatteryMode => SymbolRegular.BatteryCharge24,
         DashboardItem.BatteryNightChargeMode => SymbolRegular.WeatherMoon24,
         DashboardItem.AlwaysOnUsb => SymbolRegular.UsbStick24,
@@ -41,6 +45,7 @@ public static class DashboardItemExtensions
     public static string GetTitle(this DashboardItem dashboardItem) => dashboardItem switch
     {
         DashboardItem.PowerMode => Resource.PowerModeControl_Title,
+        DashboardItem.FanCooling => Resource.FanCoolingControl_Title,
         DashboardItem.BatteryMode => Resource.BatteryModeControl_Title,
         DashboardItem.BatteryNightChargeMode => Resource.BatteryNightChargeModeControl_Title,
         DashboardItem.AlwaysOnUsb => Resource.AlwaysOnUSBControl_Title,
@@ -69,6 +74,7 @@ public static class DashboardItemExtensions
     public static async Task<IEnumerable<AbstractRefreshingControl>> GetControlAsync(this DashboardItem dashboardItem) => dashboardItem switch
     {
         DashboardItem.PowerMode => [new PowerModeControl()],
+        DashboardItem.FanCooling => [new FanCoolingControl()],
         DashboardItem.BatteryMode => [new BatteryModeControl()],
         DashboardItem.BatteryNightChargeMode => [new BatteryNightChargeModeControl()],
         DashboardItem.AlwaysOnUsb => [new AlwaysOnUSBControl()],

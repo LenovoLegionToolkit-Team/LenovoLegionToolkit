@@ -37,6 +37,41 @@ public static partial class WMI
             [],
             pdc => Convert.ToInt32(pdc["Data"].Value));
 
+        public static async Task<int> IsSupportFanCoolingAsync()
+        {
+            var hasSupportMethod = await WMI.MethodExistsAsync("root\\WMI", "LENOVO_GAMEZONE_DATA", "IsSupportFanCooling").ConfigureAwait(false);
+            if (hasSupportMethod)
+            {
+                try
+                {
+                    return await CallAsync("root\\WMI",
+                        $"SELECT * FROM LENOVO_GAMEZONE_DATA",
+                        "IsSupportFanCooling",
+                        [],
+                        pdc => Convert.ToInt32(pdc["Data"].Value)).ConfigureAwait(false);
+                }
+                catch
+                {
+                    // Fall back to checking for the underlying methods below.
+                }
+            }
+
+            var hasSetMethod = await WMI.MethodExistsAsync("root\\WMI", "LENOVO_GAMEZONE_DATA", "SetFanCooling").ConfigureAwait(false);
+            var hasGetMethod = await WMI.MethodExistsAsync("root\\WMI", "LENOVO_GAMEZONE_DATA", "GetFanCoolingStatus").ConfigureAwait(false);
+            return hasSetMethod && hasGetMethod ? 1 : 0;
+        }
+
+        public static Task<int> GetFanCoolingStatusAsync() => CallAsync("root\\WMI",
+            $"SELECT * FROM LENOVO_GAMEZONE_DATA",
+            "GetFanCoolingStatus",
+            [],
+            pdc => Convert.ToInt32(pdc["Data"].Value));
+
+        public static Task SetFanCoolingAsync(int data) => CallAsync("root\\WMI",
+            $"SELECT * FROM LENOVO_GAMEZONE_DATA",
+            "SetFanCooling",
+            new() { { "Data", (uint)data } });
+
         public static Task SetSmartFanModeAsync(int data) => CallAsync("root\\WMI",
             $"SELECT * FROM LENOVO_GAMEZONE_DATA",
             "SetSmartFanMode",

@@ -156,6 +156,19 @@ catch (Exception ex) { LogError(ex); }
 
 try
 {
+    var fanCooling = await WMI.LenovoGameZoneData.IsSupportFanCoolingAsync().ConfigureAwait(false);
+    Console.WriteLine($"  Fan Cooling Supported: {fanCooling}");
+
+    if (fanCooling > 0)
+    {
+        var fanCoolingStatus = await WMI.LenovoGameZoneData.GetFanCoolingStatusAsync().ConfigureAwait(false);
+        Console.WriteLine($"  Fan Cooling Status: {fanCoolingStatus}");
+    }
+}
+catch (Exception ex) { LogError(ex); }
+
+try
+{
     var gsync = await WMI.LenovoGameZoneData.IsSupportGSyncAsync().ConfigureAwait(false);
     Console.WriteLine($"  G-Sync Support Value: {gsync}");
 }

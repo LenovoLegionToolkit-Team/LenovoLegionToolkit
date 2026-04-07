@@ -270,6 +270,24 @@ namespace LenovoLegionToolkit.Lib.Resources {
         /// <summary>
         ///   查找类似 Off 的本地化字符串。
         /// </summary>
+        public static string FanCoolingState_Off {
+            get {
+                return ResourceManager.GetString("FanCoolingState_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 On 的本地化字符串。
+        /// </summary>
+        public static string FanCoolingState_On {
+            get {
+                return ResourceManager.GetString("FanCoolingState_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Off 的本地化字符串。
+        /// </summary>
         public static string FlipToStartState_Off {
             get {
                 return ResourceManager.GetString("FlipToStartState_Off", resourceCulture);

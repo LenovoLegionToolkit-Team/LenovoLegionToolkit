@@ -116,6 +116,7 @@ public class IoCModule : Module
 
         builder.Register<AIController>();
         builder.Register<DisplayBrightnessController>();
+        builder.Register<FanCoolingController>();
         builder.Register<GodModeController>();
         builder.Register<GodModeControllerV1>(true);
         builder.Register<GodModeControllerV2>(true);

@@ -883,7 +883,7 @@ public partial class App
         }
     }
 
-    private static async Task InitAutomationLocalization()
+    private static Task InitAutomationLocalization()
     {
         AutomationTranslator.GetTitleFunc = typeName =>
         {
@@ -892,6 +892,8 @@ public partial class App
                 return Resource.ResourceManager.GetString($"{name}Control_Title") ?? name.Replace("AutomationStep", string.Empty);
             });
         };
+
+        return Task.CompletedTask;
     }
 
     private static async Task InitSetPowerMode()

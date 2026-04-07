@@ -262,7 +262,7 @@ public partial class SettingsAppBehaviorControl
         MessagingCenter.Publish(new SensorDashboardSwappedMessage());
     }
 
-    private async void UseNewSensorDashboard_Toggle(object sender, RoutedEventArgs e)
+    private void UseNewSensorDashboard_Toggle(object sender, RoutedEventArgs e)
     {
         e.Handled = true;
 

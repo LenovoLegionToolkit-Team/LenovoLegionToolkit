@@ -15,6 +15,7 @@ public enum DashboardGroupType
 public enum DashboardItem
 {
     PowerMode,
+    FanCooling,
     BatteryMode,
     BatteryNightChargeMode,
     AlwaysOnUsb,

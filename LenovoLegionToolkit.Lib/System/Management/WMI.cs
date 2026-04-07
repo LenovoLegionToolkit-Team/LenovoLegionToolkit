@@ -55,6 +55,21 @@ public static partial class WMI
         }
     }
 
+    private static Task<bool> MethodExistsAsync(string scope, string className, string methodName)
+    {
+        try
+        {
+            var managementClass = new ManagementClass(scope, className, null);
+            var exists = managementClass.Methods.Cast<MethodData>()
+                .Any(m => string.Equals(m.Name, methodName, StringComparison.OrdinalIgnoreCase));
+            return Task.FromResult(exists);
+        }
+        catch
+        {
+            return Task.FromResult(false);
+        }
+    }
+
     private static async Task CallAsync(string scope, FormattableString query, string methodName, Dictionary<string, object> methodParams)
     {
         try

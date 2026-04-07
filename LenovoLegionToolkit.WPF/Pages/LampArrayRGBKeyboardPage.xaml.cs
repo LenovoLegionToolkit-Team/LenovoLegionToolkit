@@ -69,21 +69,16 @@ public partial class LampArrayRGBKeyboardPage : UiPage
         }
     }
 
-    public static async Task<bool> IsSupportedAsync()
+    public static Task<bool> IsSupportedAsync()
     {
         try
         {
-            if (AppFlags.Instance.EnableLampArray)
-            {
-                return true;
-            }
-
-            return false;
+            return Task.FromResult(AppFlags.Instance.EnableLampArray);
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Error checking keyboard support: {ex.Message}");
-            return false;
+            return Task.FromResult(false);
         }
     }
 

@@ -116,7 +116,7 @@ public partial class RGBKeyboardBacklightControl
         await RefreshAsync();
     }
 
-    private async void SynchroniseZonesMenuItem_Click(object sender, RoutedEventArgs e)
+    private void SynchroniseZonesMenuItem_Click(object sender, RoutedEventArgs e)
     {
         if (sender is not MenuItem { Parent: ContextMenu { PlacementTarget: CardControl { Content: ColorPickerControl pickerControl } } })
             return;
@@ -125,7 +125,6 @@ public partial class RGBKeyboardBacklightControl
             zone.SelectedColor = pickerControl.SelectedColor;
 
         UpdatePendingZoneColors();
-
     }
 
     private async void ApplyButton_Click(object sender, RoutedEventArgs e)

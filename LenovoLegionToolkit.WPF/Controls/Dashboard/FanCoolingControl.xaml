@@ -1,0 +1,26 @@
+<controls:AbstractRefreshingControl
+    x:Class="LenovoLegionToolkit.WPF.Controls.Dashboard.FanCoolingControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:LenovoLegionToolkit.WPF.Controls"
+    xmlns:custom="clr-namespace:LenovoLegionToolkit.WPF.Controls.Custom"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:resources="clr-namespace:LenovoLegionToolkit.WPF.Resources"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <custom:CardControl Margin="0,0,0,8" Icon="TopSpeed24">
+        <custom:CardControl.Header>
+            <controls:CardHeaderControl Title="{x:Static resources:Resource.FanCoolingControl_Title}" Subtitle="{x:Static resources:Resource.FanCoolingControl_Message}" />
+        </custom:CardControl.Header>
+        <wpfui:Button
+            x:Name="_runButton"
+            MinWidth="120"
+            AutomationProperties.Name="{x:Static resources:Resource.FanCoolingControl_Title}"
+            Click="RunButton_Click"
+            Content="{x:Static resources:Resource.FanCoolingControl_Run}"
+            Focusable="True" />
+    </custom:CardControl>
+</controls:AbstractRefreshingControl>

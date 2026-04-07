@@ -172,6 +172,7 @@ public partial class AutomationPage
             new DelayAutomationStep(default),
             new DisplayBrightnessAutomationStep(50),
             new DpiScaleAutomationStep(default),
+            new FanCoolingAutomationStep(),
             new FlipToStartAutomationStep(default),
             new FnLockAutomationStep(default),
             new GodModePresetAutomationStep(default),

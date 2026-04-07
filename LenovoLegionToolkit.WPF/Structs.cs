@@ -118,6 +118,7 @@ public readonly struct DashboardGroup(DashboardGroupType type, string? customNam
                 DashboardItem.OverDrive,
                 DashboardItem.TurnOffMonitors),
             new(DashboardGroupType.Other, null,
+                DashboardItem.FanCooling,
                 DashboardItem.Microphone,
                 DashboardItem.WhiteKeyboardBacklight,
                 DashboardItem.PanelLogoBacklight,
