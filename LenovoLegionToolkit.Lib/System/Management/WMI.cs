@@ -59,7 +59,7 @@ public static partial class WMI
     {
         try
         {
-            var managementClass = new ManagementClass(scope, className, null);
+            using var managementClass = new ManagementClass(scope, className, null);
             var exists = managementClass.Methods.Cast<MethodData>()
                 .Any(m => string.Equals(m.Name, methodName, StringComparison.OrdinalIgnoreCase));
             return Task.FromResult(exists);

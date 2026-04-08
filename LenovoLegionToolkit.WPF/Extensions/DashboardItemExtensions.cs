@@ -11,6 +11,9 @@ namespace LenovoLegionToolkit.WPF.Extensions;
 
 public static class DashboardItemExtensions
 {
+    // Intentionally avoid gating dashboard visibility on FanCoolingController.IsSupportedAsync():
+    // some working Legion models return false from IsSupportFanCooling even though the
+    // fan cleaning action itself works, which would hide a functional dashboard action.
     public static Task<bool> IsSupportedAsync(this DashboardItem dashboardItem) => Task.FromResult(true);
 
     public static SymbolRegular GetIcon(this DashboardItem dashboardItem) => dashboardItem switch

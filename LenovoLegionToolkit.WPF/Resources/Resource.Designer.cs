@@ -2839,7 +2839,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run or stop Lenovo&apos;s fan cleaning mode..
+        ///   Looks up a localized string similar to Run Lenovo&apos;s fan cleaning mode for 10 seconds. It stops automatically..
         /// </summary>
         public static string FanCoolingAutomationStepControl_Message {
             get {
