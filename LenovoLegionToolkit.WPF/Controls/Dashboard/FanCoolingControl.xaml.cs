@@ -21,10 +21,15 @@ public partial class FanCoolingControl
     private async void RunButton_Click(object sender, RoutedEventArgs e)
     {
         if (DateTime.UtcNow < _nextAvailableAtUtc)
+        {
+            var remaining = _nextAvailableAtUtc - DateTime.UtcNow;
+            Log.Instance.Trace($"Fan cleaning button press ignored because cooldown is active. [remaining={remaining}]");
             return;
+        }
 
         _nextAvailableAtUtc = DateTime.UtcNow.Add(Cooldown);
         _runButton.IsEnabled = false;
+        Log.Instance.Trace($"Fan cleaning button clicked. [runDuration={RunDuration}, cooldown={Cooldown}, nextAvailableAtUtc={_nextAvailableAtUtc:O}]");
 
         try
         {
@@ -37,9 +42,13 @@ public partial class FanCoolingControl
 
         var waitTime = _nextAvailableAtUtc - DateTime.UtcNow;
         if (waitTime > TimeSpan.Zero)
+        {
+            Log.Instance.Trace($"Fan cleaning cooldown active. Waiting before re-enabling button. [remaining={waitTime}]");
             await Task.Delay(waitTime).ConfigureAwait(true);
+        }
 
         _runButton.IsEnabled = true;
+        Log.Instance.Trace($"Fan cleaning cooldown finished. Button re-enabled.");
     }
 
     protected override Task OnRefreshAsync()
