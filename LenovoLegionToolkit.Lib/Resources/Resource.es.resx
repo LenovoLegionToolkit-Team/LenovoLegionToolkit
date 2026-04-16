@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -323,7 +323,7 @@
     <value>Temperatura Disco 2</value>
   </data>
   <data name="OsdItem_E_Core_Frequency" xml:space="preserve">
-    <value>E-Core Clock</value>
+    <value>Reloj E-Core</value>
   </data>
   <data name="OsdItem_Fan" xml:space="preserve">
     <value>Ventilador</value>
@@ -341,7 +341,7 @@
     <value>1% Mínimo</value>
   </data>
   <data name="OsdItem_MemoryTemperature" xml:space="preserve">
-    <value>Memory Temperature</value>
+    <value>Temperatura memoria</value>
   </data>
   <data name="OsdItem_MotherboardTemperature" xml:space="preserve">
     <value>Temperatura de la placa base</value>
@@ -350,7 +350,7 @@
     <value>Consumo</value>
   </data>
   <data name="OsdItem_P_Core_Frequency" xml:space="preserve">
-    <value>P-Core Clock</value>
+    <value>Reloj P-Core</value>
   </data>
   <data name="OsdItem_Temperature" xml:space="preserve">
     <value>Temperatura</value>
@@ -359,10 +359,10 @@
     <value>Uso</value>
   </data>
   <data name="OsdItem_VramTemperature" xml:space="preserve">
-    <value>VRAM Temperature</value>
+    <value>Temperatura VRAM</value>
   </data>
   <data name="OsdItem_VramUtilization" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>Uso VRAM</value>
   </data>
   <data name="OsdState_Hidden" xml:space="preserve">
     <value>Hide</value>
