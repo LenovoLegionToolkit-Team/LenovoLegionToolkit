@@ -124,22 +124,22 @@
     <value>Когда блок питания отключен</value>
   </data>
   <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
-    <value>Warning: Cannot overclock a deactivated GPU. The Overclock step will fail.</value>
+    <value>Предупреждение: Невозможно разогнать отключённый GPU. Шаг разгона завершится ошибкой.</value>
   </data>
   <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
-    <value>Warning: Windows HDR locks screen brightness. Brightness settings applied after HDR are ignored.</value>
+    <value>Предупреждение: Windows HDR блокирует яркость. Настройки яркости, применённые после включения HDR, игнорируются.</value>
   </data>
   <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
-    <value>Warning: Changing Hybrid Mode to dGPU Mode forces a system reboot. This must be the last step.</value>
+    <value>Предупреждение: Переключение гибридного режима на режим dGPU приведёт к перезагрузке системы. Это действие должно быть последним.</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
-    <value>Warning: Power Mode resets Fan Speed. Run the Power Mode step first.</value>
+    <value>Предупреждение: Режим питания сбрасывает скорость вентиляторов. Сначала выполните шаг «Режим питания».</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
-    <value>Warning: Power Mode resets Brightness and Refresh Rate. Run the Power Mode step first.</value>
+    <value>Предупреждение: Режим питания сбрасывает яркость и частоту обновления. Сначала выполните шаг «Режим питания».</value>
   </data>
   <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
-    <value>Warning: Changing Resolution resets Refresh Rate. Run the Resolution step first.</value>
+    <value>Предупреждение: Изменение разрешения сбрасывает частоту обновления. Сначала выполните шаг «Разрешение».</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
     <value>Завершить процессы</value>
@@ -191,10 +191,10 @@
     <value>При включении HDR</value>
   </data>
   <data name="HybridModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Hybrid Mode</value>
+    <value>Гибридный режим</value>
   </data>
   <data name="ITSModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When IdeaPad Power Mode is changed</value>
+    <value>При изменении режима питания IdeaPad</value>
   </data>
   <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Крышка ноутбука закрыта</value>
@@ -218,7 +218,7 @@
     <value>При запуске системы</value>
   </data>
   <data name="OsdState_Toggle" xml:space="preserve">
-    <value>Toggle</value>
+    <value>Переключатель</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepState_Off" xml:space="preserve">
     <value>Откл.</value>
@@ -240,10 +240,10 @@
     <value>При закрытии приложения</value>
   </data>
   <data name="SessionLockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Session locked</value>
+    <value>Сессия заблокирована</value>
   </data>
   <data name="SessionUnlockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Session unlocked</value>
+    <value>Сессия разблокирована</value>
   </data>
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>В заданное время</value>
