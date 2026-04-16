@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -725,7 +725,7 @@
     <value>风扇转速 %</value>
   </data>
   <data name="CustomFanCurve_Max_Pwm" xml:space="preserve">
-    <value>Max Pwm</value>
+    <value>最大 PWM</value>
   </data>
   <data name="CustomFanCurve_PWM_Value" xml:space="preserve">
     <value>PWM 值</value>
@@ -841,29 +841,29 @@
     <value>强制休眠显卡</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
-    <value>Force Kill Process</value>
+    <value>强制终止程序</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
-    <value>Graphics Preferences</value>
+    <value>首选 GPU</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>关闭占用应用</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the active processes list after a forced termination.</value>
+    <value>强制终止程序后刷新活动进程列表前等待时间。</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
-    <value>Force Kill Refresh Delay</value>
+    <value>强制终止程序刷新延迟</value>
   </data>
   <data name="DiscreteGPUControl_ManagementWindowTitle" xml:space="preserve">
-    <value>Discrete GPU Management</value>
+    <value>独立显卡管理</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>在不需要时强制休眠显卡，可能会导致应用崩溃。
 请尽可能通过手动关闭占用进程来解除独立显卡占用。</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>其他</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>有显示器正在使用此显卡。</value>
@@ -878,19 +878,19 @@
     <value>未知</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Adjust how often the app checks for GPU activity.</value>
+    <value>调整 LLT 查询程序使用独显操作的频率。</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
-    <value>Polling Interval</value>
+    <value>检查更新间隔</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDefault" xml:space="preserve">
-    <value>Let Windows decide</value>
+    <value>自动（Windows 决定）</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
-    <value>Discrete GPU</value>
+    <value>独立显卡</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
-    <value>Integrated GPU</value>
+    <value>集成显卡</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>正在使用显卡的进程</value>
@@ -899,10 +899,10 @@
     <value>重启显卡</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Delay before initializing the dGPU monitoring service.</value>
+    <value>初始化 dGPU 监测服务之前的延迟。</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
-    <value>Startup Delay</value>
+    <value>启动延迟</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
     <value>独立显卡</value>
@@ -1669,7 +1669,7 @@
     <value>摄像头</value>
   </data>
   <data name="NotificationsSettingsWindow_CapsLock" xml:space="preserve">
-    <value>Caps Lock</value>
+    <value>大写锁定</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
     <value>禁用麦克风静音等 Fn 键操作的弹窗。
@@ -1707,7 +1707,7 @@
     <value>位置</value>
   </data>
   <data name="NotificationsSettingsWindow_NumLock" xml:space="preserve">
-    <value>Num Lock</value>
+    <value>小键盘数字锁</value>
   </data>
   <data name="NotificationsSettingsWindow_PowerMode" xml:space="preserve">
     <value>性能模式</value>
@@ -2359,7 +2359,7 @@
     <value>保存中...</value>
   </data>
   <data name="Seconds" xml:space="preserve">
-    <value>{0}s</value>
+    <value>{0}秒</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
     <value>选择单个或多个快捷操作来循环执行。</value>
@@ -2470,7 +2470,7 @@
     <value>显存频率</value>
   </data>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
-    <value>RAM</value>
+    <value>内存</value>
   </data>
   <data name="SensorsControl_Motherboard_Temperature" xml:space="preserve">
     <value>主板温度</value>
@@ -3195,10 +3195,10 @@
     <value>更新</value>
   </data>
   <data name="UpdateWindow_DownloadError_Title" xml:space="preserve">
-    <value>Update download failed</value>
+    <value>更新下载失败</value>
   </data>
   <data name="UpdateWindow_SecurityError_Title" xml:space="preserve">
-    <value>Failed to verify update</value>
+    <value>检查更新失败</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
     <value>有新的更新！</value>
