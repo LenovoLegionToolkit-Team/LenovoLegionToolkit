@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -200,37 +200,37 @@
     <value>Profile apply has been canceled due to abnormal restart.</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz)</value>
+    <value>CPU 最高加速頻率 (Mhz)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
-    <value>FMax Frequency</value>
+    <value>最高頻率</value>
   </data>
   <data name="AmdOverclocking_Global_Dim" xml:space="preserve">
-    <value>-1 All</value>
+    <value>-1</value>
   </data>
   <data name="AmdOverclocking_Global_Offset" xml:space="preserve">
     <value>Global Offset:</value>
   </data>
   <data name="AmdOverclocking_Global_Plus" xml:space="preserve">
-    <value>+1 All</value>
+    <value>+1</value>
   </data>
   <data name="AmdOverclocking_Per_Core_Title" xml:space="preserve">
     <value>Per-Core Optimization</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
-    <value>Status</value>
+    <value>狀態</value>
   </data>
   <data name="AmdOverclocking_Success_Message" xml:space="preserve">
     <value>Settings applied successfully.</value>
   </data>
   <data name="AmdOverclocking_Success_Title" xml:space="preserve">
-    <value>Success</value>
+    <value>成功</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
     <value>停用 CCD 1 以獲得更穩定的 FPS 與溫度</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
-    <value>X3D Gaming Mode</value>
+    <value>X3D 遊戲模式</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>套用</value>
@@ -245,22 +245,22 @@
     <value>偵錯</value>
   </data>
   <data name="ArgumentWindow_Category_General" xml:space="preserve">
-    <value>General</value>
+    <value>一般</value>
   </data>
   <data name="ArgumentWindow_Category_Hardware_Automation" xml:space="preserve">
-    <value>Hardware &amp; Automation</value>
+    <value>硬體與自動化</value>
   </data>
   <data name="ArgumentWindow_Category_Lighting" xml:space="preserve">
     <value>Lighting</value>
   </data>
   <data name="ArgumentWindow_Category_Network_Proxy" xml:space="preserve">
-    <value>Network Proxy</value>
+    <value>網路代理伺服器</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
     <value>Open an argument window for convenient modification of arguments.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Edit Arguments</value>
+    <value>編輯引數</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
     <value>Allow All Certificates</value>
@@ -296,13 +296,13 @@
     <value>Experimental GPU Working Mode</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyPassword" xml:space="preserve">
-    <value>Proxy Password</value>
+    <value>代理伺服器密碼</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUrl" xml:space="preserve">
-    <value>Proxy URL</value>
+    <value>代理伺服器 URL</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUsername" xml:space="preserve">
-    <value>Proxy Username</value>
+    <value>代理伺服器使用者名稱</value>
   </data>
   <data name="ArgumentWindow_Flag_SkipCompatCheck" xml:space="preserve">
     <value>Skip Compatibility Check</value>
@@ -347,19 +347,19 @@
     <value>Automatic (All Methods)</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
-    <value>Discrete GPU Activity</value>
+    <value>獨立 GPU 活動率</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Game_Mode" xml:space="preserve">
     <value>Windows Game Mode</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_List" xml:space="preserve">
-    <value>Known Game List</value>
+    <value>已知的遊戲列表</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
     <value>Configure detection methods and exclusions.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
-    <value>Game Detection</value>
+    <value>遊戲偵測</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
     <value>尚未定義快捷功能。點擊「新增」以建立新的快捷功能。</value>
@@ -422,7 +422,7 @@
     <value>立刻執行</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
-    <value>Run on startup</value>
+    <value>當啟動時執行</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup_Tooltip" xml:space="preserve">
     <value>When enabled, this automation will check and apply when the app starts</value>
@@ -518,7 +518,7 @@
     <value>目前容量</value>
   </data>
   <data name="BatteryPage_CycleCount_Message" xml:space="preserve">
-    <value>電池充電 / 釋放循環次數。</value>
+    <value>電池充電／釋放循環次數。</value>
   </data>
   <data name="BatteryPage_CycleCount_Title" xml:space="preserve">
     <value>循環次數</value>
@@ -708,7 +708,7 @@
     <value>Accelerate control's how much PWM is added to the current PWM Value.</value>
   </data>
   <data name="CustomFanCurve_Critical_Temp" xml:space="preserve">
-    <value>Critical Temp</value>
+    <value>臨界溫度</value>
   </data>
   <data name="CustomFanCurve_Critical_Temp_Tooltip" xml:space="preserve">
     <value>Force the maximum speed when the temperature is greater than or equal to this temperature to prevent burning out.</value>
@@ -830,19 +830,19 @@
     <value>裝置</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
-    <value>dGPU（獨立顯示卡）已連接</value>
+    <value>已連接獨立顯示卡（dGPU）</value>
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
-    <value>dGPU（獨立顯示卡）已中斷連接</value>
+    <value>已中斷連接獨立顯示卡（dGPU）</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>休眠</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
-    <value>Force Kill Process</value>
+    <value>強制結束工作</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
-    <value>Graphics Preferences</value>
+    <value>圖形偏好設定</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>強制關閉應用程式</value>
@@ -860,7 +860,7 @@
     <value>如果 GPU 不需要活動時停用顯示卡。</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>其他</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>顯示器已連接到 nVidia GPU。</value>
@@ -884,7 +884,7 @@
     <value>Let Windows decide</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
-    <value>Discrete GPU</value>
+    <value>獨立 GPU</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
     <value>Integrated GPU</value>
@@ -899,7 +899,7 @@
     <value>Delay before initializing the dGPU monitoring service.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
-    <value>Startup Delay</value>
+    <value>啟動延遲</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
     <value>獨立顯示卡</value>
@@ -964,7 +964,7 @@
     <value>客製化控制面板</value>
   </data>
   <data name="EditSensorWindow_Title" xml:space="preserve">
-    <value>編輯傳感器</value>
+    <value>編輯感測器</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>錯誤</value>
@@ -997,7 +997,7 @@
     <value>匯出</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
-    <value>使用電池時只使用內建顯示卡，連接電源供應器時使用內建顯示卡和獨立顯示卡。當連接低功率電源供應器時，系統將接換到混合模式（Hybrid-iGPU）。</value>
+    <value>使用電池時只使用內建顯示卡，連接電源供應器時使用內建顯示卡和獨立顯示卡。當連接低功率電源供應器時，系統將接換到混合模式 (Hybrid-iGPU)。</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Title" xml:space="preserve">
     <value>混合自動模式（Hybrid-Auto Mode）</value>
@@ -1009,7 +1009,7 @@
     <value>僅使用獨立顯示卡。此模式將提供最佳化的圖形效能，但會顯著地增加功率。</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
-    <value>獨立顯示卡直接連接模式（dGPU Mode）</value>
+    <value>獨立顯示卡直接連接模式 (dGPU Mode)</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
     <value>內建顯示卡和獨立顯示卡都將啟用。系統將視情況自動地切換它們。</value>
@@ -1024,7 +1024,7 @@
     <value>僅使用內建顯示卡，此模式將消耗最少的電源和最小的風扇噪音。</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Title" xml:space="preserve">
-    <value>混合僅限內建顯示卡模式（Hybrid-iGPU Only Mode）</value>
+    <value>混合僅限內建顯示卡模式 (Hybrid-iGPU Only Mode)</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Title" xml:space="preserve">
     <value>關於 GPU 運作模式</value>
@@ -1048,7 +1048,7 @@
     <value>GPU #2</value>
   </data>
   <data name="FanCurveControl_PCH" xml:space="preserve">
-    <value>南橋</value>
+    <value>PCH</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
     <value>Set fan to maximum speed.</value>
@@ -1132,7 +1132,7 @@
     <value>CPU 在一定的延遲後可以達到的最大功率限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
-    <value>長時間功率限制（Cross Loading）</value>
+    <value>長時間功率限制 (Cross Loading)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
     <value>CPU 和 GPU 達到最大負載時，CPU 可以達到的最大功率。</value>
@@ -1246,16 +1246,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>當 LegionZone 或其他服務正在執行時，客製化模式設定將無法被正確地套用。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency.</value>
+    <value>精準頻率提升加速頻率。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency</value>
+    <value>精準頻率提升加速頻率</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Scaler.</value>
+    <value>精準頻率提升倍數。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
-    <value>Precision Boost Overdrive Scaler</value>
+    <value>精準頻率提升倍數</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
     <value>客製化模式設定</value>
@@ -1270,13 +1270,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>啟用／停用進階超頻選項。</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Advanced Overclocking Options</value>
+    <value>進階超頻選項</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>當 Lenovo Vantage 或其他服務正在執行時，客製化模式設定將無法被正確地套用。</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>啟用高動態範圍（HDR）顯示。
+    <value>啟用高動態範圍 (HDR) 顯示。
 
 警告：如果已關閉內部顯示器，則此功能將無法正確地執行。</value>
   </data>
@@ -1284,7 +1284,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>HDR</value>
   </data>
   <data name="HDRControl_Message" xml:space="preserve">
-    <value>啟用高動態範圍（HDR）顯示。</value>
+    <value>啟用高動態範圍 (HDR) 顯示。</value>
   </data>
   <data name="HDRControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -1299,23 +1299,23 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>隱藏全部</value>
   </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
-    <value>如果 dGPU（獨立顯示卡）沒有變更模式，請等幾秒後再次嘗試。
+    <value>如果獨立顯示卡 (dGPU) 沒有變更模式，請等幾秒後再次嘗試。
 如果仍然沒有得到回應，請重新啟動您的筆記型電腦。</value>
   </data>
   <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
-    <value>未使用筆記型電腦或使用電池供電時，dGPU（獨立顯示卡）將自動中斷連接。</value>
+    <value>未使用筆記型電腦或使用電池供電時，獨立顯示卡 (dGPU) 將自動中斷連接。</value>
   </data>
   <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
-    <value>當 dGPU（獨立顯示卡）未使用時將自動中斷連接。</value>
+    <value>當獨立顯示卡 (dGPU) 未使用時將自動中斷連接。</value>
   </data>
   <data name="IGPUModeChangeException_Title" xml:space="preserve">
     <value>無法變更 GPU 運作模式</value>
   </data>
   <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
-    <value>dGPU（獨立顯示卡）目前正在使用或筆記型電腦未使用電池電源</value>
+    <value>獨立顯示卡 (dGPU) 目前正在使用或筆記型電腦未使用電池電源</value>
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
-    <value>dGPU（獨立顯示卡）目前使用中</value>
+    <value>獨立顯示卡 (dGPU) 目前使用中</value>
   </data>
   <data name="Import" xml:space="preserve">
     <value>匯入</value>
@@ -1380,7 +1380,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Aft Ambient</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_All" xml:space="preserve">
-    <value>All</value>
+    <value>全選</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aurora_Sync" xml:space="preserve">
     <value>Aurora Sync</value>
@@ -1392,7 +1392,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Breathe</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Brightness" xml:space="preserve">
-    <value>Brightness</value>
+    <value>亮度</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Clear_Colors" xml:space="preserve">
     <value>Clear Colors</value>
@@ -1404,7 +1404,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Direction</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Effect" xml:space="preserve">
-    <value>Effect</value>
+    <value>特效</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Export_Profile" xml:space="preserve">
     <value>Export Profile</value>
@@ -1425,7 +1425,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Meteor</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_None" xml:space="preserve">
-    <value>None</value>
+    <value>無</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_No_Selection" xml:space="preserve">
     <value>No Selection</value>
@@ -1434,10 +1434,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Probe Indices</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow" xml:space="preserve">
-    <value>Rainbow</value>
+    <value>彩虹</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow_Wave" xml:space="preserve">
-    <value>Rainbow Wave</value>
+    <value>彩虹波浪</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rear_Ambient" xml:space="preserve">
     <value>Rear Ambient</value>
@@ -1464,7 +1464,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Speed</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Spiral_Rainbow" xml:space="preserve">
-    <value>Spiral Rainbow</value>
+    <value>螺旋彩虹</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Static" xml:space="preserve">
     <value>Static</value>
@@ -1476,7 +1476,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Top to Bottom</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Wave" xml:space="preserve">
-    <value>Wave</value>
+    <value>波浪</value>
   </data>
   <data name="LivePreview" xml:space="preserve">
     <value>Live Preview</value>
@@ -1660,7 +1660,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>相機</value>
   </data>
   <data name="NotificationsSettingsWindow_CapsLock" xml:space="preserve">
-    <value>Caps Lock</value>
+    <value>大寫鎖定</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
     <value>停用麥克風靜音等 Fn 鍵功能通知。
@@ -1698,7 +1698,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>位置</value>
   </data>
   <data name="NotificationsSettingsWindow_NumLock" xml:space="preserve">
-    <value>Num Lock</value>
+    <value>數字鎖定</value>
   </data>
   <data name="NotificationsSettingsWindow_PowerMode" xml:space="preserve">
     <value>電源模式</value>
@@ -1812,16 +1812,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>開啟</value>
   </data>
   <data name="OsdAutomationStepControl_Message" xml:space="preserve">
-    <value>Show or Hide the OSD</value>
+    <value>顯示或隱藏 OSD</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>OSD</value>
   </data>
   <data name="OsdSettings_Appearance_BackgroundColor" xml:space="preserve">
-    <value>Background Color</value>
+    <value>背景顏色</value>
   </data>
   <data name="OsdSettings_Appearance_CategoryColor" xml:space="preserve">
-    <value>Category Color</value>
+    <value>分類顏色</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadius" xml:space="preserve">
     <value>Corner Radius</value>
@@ -1836,13 +1836,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Critical Color</value>
   </data>
   <data name="OsdSettings_Appearance_FontSize" xml:space="preserve">
-    <value>Font Size</value>
+    <value>字型大小</value>
   </data>
   <data name="OsdSettings_Appearance_LabelColor" xml:space="preserve">
     <value>Label Color</value>
   </data>
   <data name="OsdSettings_Appearance_Opacity" xml:space="preserve">
-    <value>Opacity</value>
+    <value>透明度</value>
   </data>
   <data name="OsdSettings_Appearance_ValueColor" xml:space="preserve">
     <value>Value Color</value>
@@ -1857,7 +1857,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Overlay Style</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>重新整理間隔</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval_Tooltip" xml:space="preserve">
     <value>Sensor refresh interval</value>
@@ -1869,13 +1869,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Snapping Threshold</value>
   </data>
   <data name="OsdSettings_Tabs_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>外觀</value>
   </data>
   <data name="OsdSettings_Tabs_General" xml:space="preserve">
     <value>General</value>
   </data>
   <data name="OsdSettings_Tabs_SensorItems" xml:space="preserve">
-    <value>Sensors</value>
+    <value>感測器</value>
   </data>
   <data name="OsdSettings_Tabs_Thresholds" xml:space="preserve">
     <value>Thresholds</value>
@@ -1884,7 +1884,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Critical</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline" xml:space="preserve">
-    <value>FPS Redline</value>
+    <value>FPS 紅線</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline_Description" xml:space="preserve">
     <value>The minimum acceptable frame rate. Below this, the color turns critical.</value>
@@ -1899,31 +1899,31 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Performance</value>
   </data>
   <data name="OsdSettings_Thresholds_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>溫度</value>
   </data>
   <data name="OsdSettings_Thresholds_Usage" xml:space="preserve">
-    <value>Usage</value>
+    <value>使用率</value>
   </data>
   <data name="OsdSettings_Thresholds_Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>警告</value>
   </data>
   <data name="OsdWindow_Title" xml:space="preserve">
-    <value>OSD Settings</value>
+    <value>OSD 設定</value>
   </data>
   <data name="Osd_Cpu" xml:space="preserve">
     <value>CPU</value>
   </data>
   <data name="Osd_CPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>風扇</value>
   </data>
   <data name="Osd_Disk_0_Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>磁碟 1 溫度</value>
   </data>
   <data name="Osd_Disk_1_Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>磁碟 2 溫度</value>
   </data>
   <data name="Osd_ECoreClock" xml:space="preserve">
-    <value>E-Core Clock</value>
+    <value>E-Core 時脈</value>
   </data>
   <data name="Osd_Fps" xml:space="preserve">
     <value>FPS</value>
@@ -1938,16 +1938,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>GPU</value>
   </data>
   <data name="Osd_GPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>風扇</value>
   </data>
   <data name="Osd_Low_Fps" xml:space="preserve">
-    <value>1% Low</value>
+    <value>1% 最低</value>
   </data>
   <data name="Osd_Memory_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>溫度</value>
   </data>
   <data name="Osd_Memory_Utilization" xml:space="preserve">
-    <value>Utilization</value>
+    <value>使用率</value>
   </data>
   <data name="Osd_Pch" xml:space="preserve">
     <value>PCH</value>
@@ -1956,13 +1956,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>PCH 風扇</value>
   </data>
   <data name="Osd_PCoreClock" xml:space="preserve">
-    <value>P-Core Clock</value>
+    <value>P-Core 時脈</value>
   </data>
   <data name="Osd_Style_Bar" xml:space="preserve">
-    <value>Bar</value>
+    <value>欄位</value>
   </data>
   <data name="Osd_Style_Panel" xml:space="preserve">
-    <value>Panel</value>
+    <value>面板</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
     <value>藉由對獨立 GPU 超頻以提升效能。
@@ -2348,7 +2348,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>儲存中……</value>
   </data>
   <data name="Seconds" xml:space="preserve">
-    <value>{0}s</value>
+    <value>{0} 秒</value>
   </data>
   <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
     <value>選擇一個或更多快捷動作來循環執行。</value>
@@ -2378,7 +2378,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>溫度</value>
   </data>
   <data name="SensorItem_CpuUtilitzation" xml:space="preserve">
-    <value>CPU Utilization</value>
+    <value>CPU 使用率</value>
   </data>
   <data name="SensorItem_Disk1Temperature" xml:space="preserve">
     <value>磁盤1溫度</value>
@@ -2396,19 +2396,19 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>溫度</value>
   </data>
   <data name="SensorItem_GpuUtilization" xml:space="preserve">
-    <value>利用率</value>
+    <value>GPU 使用率</value>
   </data>
   <data name="SensorItem_MemoryTemperature" xml:space="preserve">
     <value>溫度</value>
   </data>
   <data name="SensorItem_MemoryUtilization" xml:space="preserve">
-    <value>利用率</value>
+    <value>記憶體使用率</value>
   </data>
   <data name="SensorItem_PchFanSpeed" xml:space="preserve">
-    <value>轉速</value>
+    <value>PCH 風扇轉速</value>
   </data>
   <data name="SensorItem_PchTemperature" xml:space="preserve">
-    <value>溫度</value>
+    <value>PCH 溫度</value>
   </data>
   <data name="SensorsControl_BatteryLevel_Title" xml:space="preserve">
     <value>電量</value>
@@ -2438,13 +2438,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>風扇</value>
   </data>
   <data name="SensorsControl_GpuCoreTemperature_Title" xml:space="preserve">
-    <value>Core Temp</value>
+    <value>核心溫度</value>
   </data>
   <data name="SensorsControl_GpuMemoryTemperature_Title" xml:space="preserve">
-    <value>VRAM Temp</value>
+    <value>VRAM 溫度</value>
   </data>
   <data name="SensorsControl_GpuVramUtilization_Title" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>VRAM 使用率</value>
   </data>
   <data name="SensorsControl_GPU_Power" xml:space="preserve">
     <value>功耗</value>
@@ -2462,16 +2462,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>RAM</value>
   </data>
   <data name="SensorsControl_Motherboard_Temperature" xml:space="preserve">
-    <value>Board Temperature</value>
+    <value>主機板溫度</value>
   </data>
   <data name="SensorsControl_Motherboard_Title" xml:space="preserve">
     <value>主機板</value>
   </data>
   <data name="SensorsControl_PchTemperature_Title" xml:space="preserve">
-    <value>溫度</value>
+    <value>PCH 溫度</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>重新整理間隔</value>
   </data>
   <data name="SensorsControl_State_Title" xml:space="preserve">
     <value>狀態</value>
@@ -2489,25 +2489,25 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Determine the type of CPU frequency displayed on the Dashboard and Osd.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>CPU 頻率</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
   <data name="SensorSettingsPage_IGPU_Title" xml:space="preserve">
-    <value>iGPU</value>
+    <value>內建顯示卡 (iGPU)</value>
   </data>
   <data name="SensorSettingsPage_Max_Frequency_Title" xml:space="preserve">
-    <value>Max Frequency</value>
+    <value>最高頻率</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Message" xml:space="preserve">
     <value>Choose how memory utilization is displayed on the Dashboard and OSD.</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Title" xml:space="preserve">
-    <value>Memory Display Mode</value>
+    <value>記憶體顯示模式</value>
   </data>
   <data name="SensorSettingsPage_Percentage_Title" xml:space="preserve">
-    <value>Percentage</value>
+    <value>百分比</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Message" xml:space="preserve">
     <value>When multiple graphics cards are present, the primary device displayed is preferred</value>
@@ -2516,7 +2516,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Preferred GPU</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
-    <value>Used/Total Memory (GB)</value>
+    <value>已使用／總計記憶體 (GB)</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
@@ -2528,7 +2528,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Backup completed successfully.</value>
   </data>
   <data name="SettingsBackupWindow_NoFilesSelected" xml:space="preserve">
-    <value>No files selected.</value>
+    <value>未選取任何檔案。</value>
   </data>
   <data name="SettingsBackupWindow_NoMatchingFiles" xml:space="preserve">
     <value>No matching files found in selected folder.</value>
@@ -2543,10 +2543,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Restore completed successfully. The application will restart.</value>
   </data>
   <data name="SettingsBackupWindow_SelectAll" xml:space="preserve">
-    <value>Select All</value>
+    <value>全選</value>
   </data>
   <data name="SettingsBackupWindow_Title" xml:space="preserve">
-    <value>Backup Settings</value>
+    <value>備份設定</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
     <value>變更應用程式的主題色彩。</value>
@@ -2564,7 +2564,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Back up or restore application settings.</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
-    <value>Back Up Settings</value>
+    <value>備份設定</value>
   </data>
   <data name="SettingsPage_BootLogo_EFIInfo" xml:space="preserve">
     <value>This feature modifies the EFI partition. Use with caution.</value>
@@ -2576,28 +2576,28 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>啟動商標</value>
   </data>
   <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
-    <value>App Behavior</value>
+    <value>應用程式行為</value>
   </data>
   <data name="SettingsPage_Category_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>外觀</value>
   </data>
   <data name="SettingsPage_Category_Display" xml:space="preserve">
-    <value>Display</value>
+    <value>顯示</value>
   </data>
   <data name="SettingsPage_Category_Integrations" xml:space="preserve">
-    <value>Integrations</value>
+    <value>整合</value>
   </data>
   <data name="SettingsPage_Category_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>電源</value>
   </data>
   <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>Smart Key</value>
   </data>
   <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
-    <value>Software Control</value>
+    <value>軟體控制</value>
   </data>
   <data name="SettingsPage_Category_Updates" xml:space="preserve">
-    <value>Updates</value>
+    <value>更新</value>
   </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>檢查</value>
@@ -2615,16 +2615,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>清除圖片</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Message" xml:space="preserve">
-    <value>新增命令列介面（CLI）至使用者 PATH 環境變數。</value>
+    <value>新增命令列介面 (CLI) 至使用者 PATH 環境變數。</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Title" xml:space="preserve">
-    <value>新增命令列介面（CLI）至 PATH 變數</value>
+    <value>新增命令列介面 (CLI) 至 PATH 變數</value>
   </data>
   <data name="SettingsPage_CLI_Message" xml:space="preserve">
     <value>啟用命令列介面，允許使用命令列進行控制。</value>
   </data>
   <data name="SettingsPage_CLI_Title" xml:space="preserve">
-    <value>命令列介面（CLI）</value>
+    <value>命令列介面 (CLI)</value>
   </data>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
     <value>Restart is recommended after changing this option.</value>
@@ -2743,7 +2743,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>You need to install PawnIO first to use hardware sensors!</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>硬體感測器</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Auto (Let Windows decide)</value>
@@ -2752,7 +2752,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>High performance (dGPU)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_PowerSaving" xml:space="preserve">
-    <value>Power saving (iGPU)</value>
+    <value>省電 (內建顯示卡 (iGPU))</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
     <value>與 HWiNFO64 共享風扇速度、電池溫度等。變更此選項後，您可能需要重新啟動 HWiNFO64。</value>
@@ -2770,10 +2770,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>語言</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>鎖定 LLT 的窗口大小防止別的軟體更改。</value>
+    <value>鎖定 LLT 的視窗尺寸以防止其被更改。</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
-    <value>鎖定窗口大小</value>
+    <value>鎖定視窗尺寸</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
     <value>保持最小化到系統匣。對系統匣圖示點擊右鍵以關閉應用程式。</value>
@@ -2803,7 +2803,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Floating overlay showing live sensor data.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>Enable OSD</value>
+    <value>啟用 OSD</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
     <value>當變更電源模式時，自動地變更 Windows 電源計劃或 Windows 電源模式。</value>
@@ -2824,7 +2824,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>圖片檔案</value>
   </data>
   <data name="SettingsPage_SensorSettings_Title" xml:space="preserve">
-    <value>Sensor Settings</value>
+    <value>感測器設定</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
     <value>按下 Alt、Ctrl 或 Shift 鍵時，Fn 將會暫時解除鎖定。</value>
@@ -2866,7 +2866,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>設定</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
-    <value>Update Channel</value>
+    <value>更新通道</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>自動檢查更新</value>
@@ -2887,7 +2887,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>The effect used for the background of the application window.</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Title" xml:space="preserve">
-    <value>Window Backdrop</value>
+    <value>視窗背景</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
     <value>選擇電源模式變更時要套用的 Windows 電源模式。</value>
@@ -2917,10 +2917,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>喇叭</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change the speaker's volume.</value>
+    <value>變更喇叭音量。</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Title" xml:space="preserve">
-    <value>Speaker Volume</value>
+    <value>喇叭音量</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>調整鍵盤背光亮度。</value>
@@ -3004,22 +3004,22 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>編輯特效</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostBrightnessFactor" xml:space="preserve">
-    <value>Boost Brightness Factor</value>
+    <value>增強亮度因數</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostFloor" xml:space="preserve">
-    <value>Boost Floor</value>
+    <value>增強標準</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostTarget" xml:space="preserve">
-    <value>Boost Target</value>
+    <value>增強目標</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_Title" xml:space="preserve">
-    <value>Color Boost Settings</value>
+    <value>色彩增強設定</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_WhiteThreshold" xml:space="preserve">
-    <value>White Threshold</value>
+    <value>白色臨界值</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoost_Title" xml:space="preserve">
-    <value>Vantage Color Boost</value>
+    <value>Vantage 色彩增強</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
     <value>匯入並套用背光組態設定到目前的設定檔。</value>
@@ -3183,10 +3183,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>更新</value>
   </data>
   <data name="UpdateWindow_DownloadError_Title" xml:space="preserve">
-    <value>Update download failed</value>
+    <value>無法更新下載</value>
   </data>
   <data name="UpdateWindow_SecurityError_Title" xml:space="preserve">
-    <value>Failed to verify update</value>
+    <value>無法驗證更新</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
     <value>已有可供使用的更新</value>
