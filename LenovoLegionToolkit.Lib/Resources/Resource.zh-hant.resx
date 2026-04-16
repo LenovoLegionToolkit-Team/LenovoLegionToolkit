@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -217,7 +217,7 @@
     <comment>Informs the user that HDR is or will be turned on.</comment>
   </data>
   <data name="HybridModeState_Off" xml:space="preserve">
-    <value>獨立顯示卡直接連接模式（dGPU）</value>
+    <value>獨立顯示卡 (dGPU)</value>
   </data>
   <data name="HybridModeState_On" xml:space="preserve">
     <value>混合模式（Hybrid）</value>
@@ -226,22 +226,22 @@
     <value>混合自動模式（Hybrid-Auto）</value>
   </data>
   <data name="HybridModeState_OnIGPUOnly" xml:space="preserve">
-    <value>混合內建顯示卡模式（Hybrid-iGPU）</value>
+    <value>混合內建顯示卡（Hybrid-iGPU）</value>
   </data>
   <data name="HybridModeState_UMA" xml:space="preserve">
     <value>核显直连模式</value>
   </data>
   <data name="InstantBootState_AcAdapter" xml:space="preserve">
-    <value>方形电源口</value>
+    <value>電源供應器</value>
   </data>
   <data name="InstantBootState_AcAdapterAndUsbPowerDelivery" xml:space="preserve">
-    <value>方形电源口与 PD 充电口</value>
+    <value>電源供應器與 USB PD</value>
   </data>
   <data name="InstantBootState_Off" xml:space="preserve">
-    <value>关闭</value>
+    <value>關閉</value>
   </data>
   <data name="InstantBootState_UsbPowerDelivery" xml:space="preserve">
-    <value>USB PD 充电口</value>
+    <value>USB Power Delivery</value>
   </data>
   <data name="ITSMode_Intelligent_Battery_Saving" xml:space="preserve">
     <value>省電模式</value>
@@ -323,7 +323,7 @@
     <value>磁碟 2 溫度</value>
   </data>
   <data name="OsdItem_E_Core_Frequency" xml:space="preserve">
-    <value>E-Core Clock</value>
+    <value>E-Core 時脈</value>
   </data>
   <data name="OsdItem_Fan" xml:space="preserve">
     <value>風扇</value>
@@ -338,10 +338,10 @@
     <value>頻率</value>
   </data>
   <data name="OsdItem_LowFps" xml:space="preserve">
-    <value>1% Low</value>
+    <value>1% 最低</value>
   </data>
   <data name="OsdItem_MemoryTemperature" xml:space="preserve">
-    <value>Memory Temperature</value>
+    <value>記憶體溫度</value>
   </data>
   <data name="OsdItem_MotherboardTemperature" xml:space="preserve">
     <value>主機板溫度</value>
@@ -350,7 +350,7 @@
     <value>功率</value>
   </data>
   <data name="OsdItem_P_Core_Frequency" xml:space="preserve">
-    <value>P-Core Clock</value>
+    <value>P-Core 時脈</value>
   </data>
   <data name="OsdItem_Temperature" xml:space="preserve">
     <value>溫度</value>
@@ -359,19 +359,19 @@
     <value>使用率</value>
   </data>
   <data name="OsdItem_VramTemperature" xml:space="preserve">
-    <value>VRAM Temperature</value>
+    <value>VRAM 溫度</value>
   </data>
   <data name="OsdItem_VramUtilization" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>VRAM 使用率</value>
   </data>
   <data name="OsdState_Hidden" xml:space="preserve">
-    <value>Hide</value>
+    <value>隱藏</value>
   </data>
   <data name="OsdState_Show" xml:space="preserve">
     <value>顯示</value>
   </data>
   <data name="OsdState_Toggle" xml:space="preserve">
-    <value>Toggle State</value>
+    <value>切換狀態</value>
   </data>
   <data name="OverdriveState_Off" xml:space="preserve">
     <value>關閉</value>
@@ -397,10 +397,10 @@
     <value>禁用</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerMode" xml:space="preserve">
-    <value>Windows 电源模式</value>
+    <value>Windows 電源模式</value>
   </data>
   <data name="PowerModeMappingMode_WindowsPowerPlan" xml:space="preserve">
-    <value>Windows 电源计划</value>
+    <value>Windows 電源計劃</value>
   </data>
   <data name="PowerModeState_Balance" xml:space="preserve">
     <value>平衡模式</value>
@@ -433,16 +433,16 @@
     <value>静态</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_WaveLTR" xml:space="preserve">
-    <value>从左向右</value>
+    <value>從左向右</value>
   </data>
   <data name="RGBKeyboardBacklightEffect_WaveRTL" xml:space="preserve">
-    <value>从右向左</value>
+    <value>從右向左</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Four" xml:space="preserve">
     <value>预设 4</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Off" xml:space="preserve">
-    <value>关闭</value>
+    <value>關閉</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_One" xml:space="preserve">
     <value>预设 1</value>
@@ -529,7 +529,7 @@
     <value>螺旋彩虹</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
-    <value>彩虹波</value>
+    <value>彩虹波浪</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Ripple" xml:space="preserve">
     <value>涟漪</value>
@@ -582,7 +582,7 @@
     <value>Invalid signature thumbprint {0}</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
-    <value>从不</value>
+    <value>永不</value>
   </data>
   <data name="UpdateCheckFrequency_PerDay" xml:space="preserve">
     <value>每日</value>
@@ -600,13 +600,13 @@
     <value>每十二小时</value>
   </data>
   <data name="UpdateCheckFrequency_PerWeek" xml:space="preserve">
-    <value>每周</value>
+    <value>每週</value>
   </data>
   <data name="UpdateMethod_GitHub" xml:space="preserve">
     <value>GitHub</value>
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
-    <value>服务器</value>
+    <value>伺服器</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>高亮度</value>
@@ -615,7 +615,7 @@
     <value>低亮度</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>关闭</value>
+    <value>關閉</value>
   </data>
   <data name="WindowBackdropType_Acrylic" xml:space="preserve">
     <value>Acrylic</value>
