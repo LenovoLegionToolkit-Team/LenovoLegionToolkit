@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -229,7 +229,7 @@
     <value>成功</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>关闭 CCD 1 以获取更平滑的帧数与更低的温度</value>
+    <value>关闭 CCD 1 以获取更平滑的帧数与更低的温度。</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
     <value>X3D 游戏模式</value>
@@ -358,7 +358,7 @@
     <value>已知游戏列表</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>配置检测方法与黑名单</value>
+    <value>配置检测方法与黑名单。</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
     <value>游戏检测</value>
@@ -379,13 +379,13 @@
     <value>重命名</value>
   </data>
   <data name="AutomationPage_Reverted_Message" xml:space="preserve">
-    <value>所有修改已被重置</value>
+    <value>所有修改已被重置！</value>
   </data>
   <data name="AutomationPage_Reverted_Title" xml:space="preserve">
     <value>重置</value>
   </data>
   <data name="AutomationPage_Saved_Message" xml:space="preserve">
-    <value>所有修改已成功保存</value>
+    <value>所有修改已成功保存！</value>
   </data>
   <data name="AutomationPage_Saved_Title" xml:space="preserve">
     <value>已保存</value>
@@ -403,7 +403,7 @@
     <value>独占此条件</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>当触发此条件后，仅运行当前任务，不运行其它符合条件的任务</value>
+    <value>当触发此条件后，仅运行当前任务，不运行其它符合条件的任务。</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>运行中...</value>
@@ -412,13 +412,13 @@
     <value>立刻运行</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Message" xml:space="preserve">
-    <value>运行出错</value>
+    <value>运行出错。</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Title" xml:space="preserve">
     <value>立刻运行</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Message" xml:space="preserve">
-    <value>运行成功</value>
+    <value>运行成功！</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Title" xml:space="preserve">
     <value>立刻运行</value>
@@ -502,7 +502,7 @@
     <value>已插入电源适配器，未充电...</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Message" xml:space="preserve">
-    <value>电池完全充电容量</value>
+    <value>电池完全充电容量。</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Title" xml:space="preserve">
     <value>电池健康度</value>
@@ -550,7 +550,7 @@
     <value>代表电池被第一次使用的时间。</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Message" xml:space="preserve">
-    <value>当电池充满电时的容量</value>
+    <value>当电池充满电时的容量。</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Title" xml:space="preserve">
     <value>满电容量</value>
@@ -734,7 +734,7 @@
     <value>设置</value>
   </data>
   <data name="CustomFanCurve_Temperature" xml:space="preserve">
-    <value>Temperature °C</value>
+    <value>温度 ℃</value>
   </data>
   <data name="CustomFanCurve_Title" xml:space="preserve">
     <value>实时监控</value>
@@ -899,7 +899,7 @@
     <value>重启显卡</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>初始化 dGPU 监测服务之前的延迟。</value>
+    <value>初始化独立显卡监测服务之前的延迟。</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>启动延迟</value>
@@ -2573,7 +2573,7 @@
     <value>开机启动</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
-    <value>备份或恢复应用设置</value>
+    <value>备份或恢复设置。</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
     <value>备份设置</value>
@@ -2642,7 +2642,7 @@
     <value>修改此项后需要重启电脑。</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>自定义背景图片</value>
+    <value>自定义程序背景图片。</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>自定义背景图片</value>
@@ -2776,7 +2776,7 @@
     <value>HWiNFO64</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>选择语言</value>
+    <value>选择偏好语言。</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>语言</value>
@@ -2887,7 +2887,7 @@
     <value>更新途径</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Message" xml:space="preserve">
-    <value>使用新的仪表盘</value>
+    <value>使用新的仪表盘。</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
     <value>使用新的状态面板</value>
