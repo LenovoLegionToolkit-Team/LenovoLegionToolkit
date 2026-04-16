@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -290,7 +290,7 @@
     <value>Desactivar la comprobación de actualización</value>
   </data>
   <data name="ArgumentWindow_Flag_EnableLampArray" xml:space="preserve">
-    <value>Enable Lamp Array</value>
+    <value>Habilitar LampArray</value>
   </data>
   <data name="ArgumentWindow_Flag_ExpGpuMode" xml:space="preserve">
     <value>Modo de trabajo de GPU experimental</value>
@@ -839,28 +839,28 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
     <value>Desactivada</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
-    <value>Force Kill Process</value>
+    <value>Forzar el cierre del proceso</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
-    <value>Graphics Preferences</value>
+    <value>Preferencias gráficas</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Terminar aplicaciones</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the active processes list after a forced termination.</value>
+    <value>Tiempo de espera antes de actualizar la lista de procesos activos tras una finalización forzada.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
-    <value>Force Kill Refresh Delay</value>
+    <value>Retardo de actualización del forzado de cierre</value>
   </data>
   <data name="DiscreteGPUControl_ManagementWindowTitle" xml:space="preserve">
-    <value>Discrete GPU Management</value>
+    <value>Gestión de GPU dedicadas</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>Desactivar la GPU dedicada si está activa innecesariamente.</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>Otros</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Un monitor está conectado a la GPU nVidia.</value>
@@ -875,19 +875,19 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
     <value>Desconocido</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Adjust how often the app checks for GPU activity.</value>
+    <value>Ajusta la frecuencia con la que la aplicación comprueba la actividad de la GPU.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
-    <value>Polling Interval</value>
+    <value>Intervalo de sondeo</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDefault" xml:space="preserve">
-    <value>Let Windows decide</value>
+    <value>Dejar que Windows decida</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
-    <value>Discrete GPU</value>
+    <value>GPU dedicada</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
-    <value>Integrated GPU</value>
+    <value>GPU integrada</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Procesos</value>
@@ -896,10 +896,10 @@ AVISO: Esta acción no se ejecutará correctamente, si la pantalla interna está
     <value>Reiniciar la GPU</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Delay before initializing the dGPU monitoring service.</value>
+    <value>Retardo antes de inicializar el servicio de supervisión de la tarjeta gráfica dedicada.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
-    <value>Startup Delay</value>
+    <value>Retardo del inicio</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
     <value>GPU dedicada</value>
@@ -1383,106 +1383,106 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
     <value>Aft Ambient</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_All" xml:space="preserve">
-    <value>All</value>
+    <value>Todos</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aurora_Sync" xml:space="preserve">
     <value>Aurora Sync</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Bottom_to_Top" xml:space="preserve">
-    <value>Bottom to Top</value>
+    <value>De abajo a arriba</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Breathe" xml:space="preserve">
-    <value>Breathe</value>
+    <value>Respiración</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Brightness" xml:space="preserve">
-    <value>Brightness</value>
+    <value>Brillo</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Clear_Colors" xml:space="preserve">
-    <value>Clear Colors</value>
+    <value>Limpiar colores</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Personalizado</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Direction" xml:space="preserve">
-    <value>Direction</value>
+    <value>Dirección</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Effect" xml:space="preserve">
-    <value>Effect</value>
+    <value>Efecto</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Export_Profile" xml:space="preserve">
-    <value>Export Profile</value>
+    <value>Exportar Perfil</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Gradient" xml:space="preserve">
-    <value>Gradient</value>
+    <value>Gradiente</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Import_Profile" xml:space="preserve">
-    <value>Import Profile</value>
+    <value>Importar Perfil</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Keyboard" xml:space="preserve">
-    <value>Keyboard</value>
+    <value>Teclado</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Left_to_Right" xml:space="preserve">
-    <value>Left to Right</value>
+    <value>De izquierda a derecha</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Meteor" xml:space="preserve">
-    <value>Meteor</value>
+    <value>Meteorito</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_None" xml:space="preserve">
-    <value>None</value>
+    <value>Ninguno</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_No_Selection" xml:space="preserve">
-    <value>No Selection</value>
+    <value>Nada seleccionado</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Probe_Indices" xml:space="preserve">
-    <value>Probe Indices</value>
+    <value>Indices de sonda</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow" xml:space="preserve">
-    <value>Rainbow</value>
+    <value>Arcoiris</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow_Wave" xml:space="preserve">
-    <value>Rainbow Wave</value>
+    <value>Onda de arco iris</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rear_Ambient" xml:space="preserve">
-    <value>Rear Ambient</value>
+    <value>Ambiente parte trasera</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Right_to_Left" xml:space="preserve">
-    <value>Right to Left</value>
+    <value>De derecha a izquierda</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Ripple" xml:space="preserve">
-    <value>Ripple</value>
+    <value>Ondulación</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selected_Key" xml:space="preserve">
-    <value>Selected {0} keys with {1} effect</value>
+    <value>Seleccionadas {0} teclas con el efecto {1}</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selection" xml:space="preserve">
-    <value>Selection</value>
+    <value>Selección</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Smooth_Transition" xml:space="preserve">
-    <value>Smooth Transition</value>
+    <value>Transición suave</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Sparkle" xml:space="preserve">
-    <value>Sparkle</value>
+    <value>Destello</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Speed" xml:space="preserve">
-    <value>Speed</value>
+    <value>Velocidad</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Spiral_Rainbow" xml:space="preserve">
-    <value>Spiral Rainbow</value>
+    <value>Arcoiris con espiral</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Static" xml:space="preserve">
-    <value>Static</value>
+    <value>Estático</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Target_Zone" xml:space="preserve">
-    <value>Target Zone</value>
+    <value>Zona Objetivo</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Top_to_Bottom" xml:space="preserve">
-    <value>Top to Bottom</value>
+    <value>De arriba a abajo</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Wave" xml:space="preserve">
-    <value>Wave</value>
+    <value>Onda</value>
   </data>
   <data name="LivePreview" xml:space="preserve">
-    <value>Live Preview</value>
+    <value>Vista previa en vivo</value>
   </data>
   <data name="Load" xml:space="preserve">
     <value>Cargar</value>
@@ -1596,7 +1596,7 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
     <value>Ajustes</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>¡Necesitas instalar primero PawnIO para poder usar el nuevo panel de control!</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
     <value>Aviso</value>
@@ -1821,103 +1821,103 @@ No afectará a otras ventanas a pantalla completa, pero no podrá hacer clic en 
     <value>Widget flotante</value>
   </data>
   <data name="OsdSettings_Appearance_BackgroundColor" xml:space="preserve">
-    <value>Background Color</value>
+    <value>Color de fondo</value>
   </data>
   <data name="OsdSettings_Appearance_CategoryColor" xml:space="preserve">
-    <value>Category Color</value>
+    <value>Color de la categoría</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadius" xml:space="preserve">
-    <value>Corner Radius</value>
+    <value>Radio de esquina</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusBottom" xml:space="preserve">
-    <value>Bottom</value>
+    <value>Parte inferior</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusTop" xml:space="preserve">
-    <value>Top</value>
+    <value>Parte superior</value>
   </data>
   <data name="OsdSettings_Appearance_CriticalColor" xml:space="preserve">
-    <value>Critical Color</value>
+    <value>Color para Crítico</value>
   </data>
   <data name="OsdSettings_Appearance_FontSize" xml:space="preserve">
-    <value>Font Size</value>
+    <value>Tamaño de la fuente</value>
   </data>
   <data name="OsdSettings_Appearance_LabelColor" xml:space="preserve">
-    <value>Label Color</value>
+    <value>Color de la etiqueta</value>
   </data>
   <data name="OsdSettings_Appearance_Opacity" xml:space="preserve">
-    <value>Opacity</value>
+    <value>Opacidad</value>
   </data>
   <data name="OsdSettings_Appearance_ValueColor" xml:space="preserve">
-    <value>Value Color</value>
+    <value>Valor del color</value>
   </data>
   <data name="OsdSettings_Appearance_WarningColor" xml:space="preserve">
-    <value>Warning Color</value>
+    <value>Color para Advertencia</value>
   </data>
   <data name="OsdSettings_General_LockPosition" xml:space="preserve">
-    <value>Lock Position</value>
+    <value>Fijar posición</value>
   </data>
   <data name="OsdSettings_General_OverlayStyle" xml:space="preserve">
-    <value>Overlay Style</value>
+    <value>Estilo del Overlay</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>Intervalo de actualización</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval_Tooltip" xml:space="preserve">
-    <value>Sensor refresh interval</value>
+    <value>Intervalo de actualización del sensor</value>
   </data>
   <data name="OsdSettings_General_ResetPosition" xml:space="preserve">
-    <value>Reset Position</value>
+    <value>Restablecer posición</value>
   </data>
   <data name="OsdSettings_General_SnapThreshold" xml:space="preserve">
-    <value>Snapping Threshold</value>
+    <value>Umbral de Snap</value>
   </data>
   <data name="OsdSettings_Tabs_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Apariencia</value>
   </data>
   <data name="OsdSettings_Tabs_General" xml:space="preserve">
     <value>General</value>
   </data>
   <data name="OsdSettings_Tabs_SensorItems" xml:space="preserve">
-    <value>Sensors</value>
+    <value>Sensores</value>
   </data>
   <data name="OsdSettings_Tabs_Thresholds" xml:space="preserve">
-    <value>Thresholds</value>
+    <value>Umbrales</value>
   </data>
   <data name="OsdSettings_Thresholds_Critical" xml:space="preserve">
-    <value>Critical</value>
+    <value>Crítico</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline" xml:space="preserve">
     <value>FPS Redline</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline_Description" xml:space="preserve">
-    <value>The minimum acceptable frame rate. Below this, the color turns critical.</value>
+    <value>La frecuencia de fotogramas mínima aceptable. Por debajo de este valor, el color se pone en nivel crítico.</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta" xml:space="preserve">
-    <value>Low FPS Delta</value>
+    <value>Delta para FPS bajos</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta_Description" xml:space="preserve">
-    <value>The maximum difference between average FPS and 1% Low. Above this, the counter turns critical.</value>
+    <value>La diferencia máxima entre el promedio de FPS y el 1 % más bajo. Por encima de este valor, el contador se pone en nivel crítico.</value>
   </data>
   <data name="OsdSettings_Thresholds_Performance" xml:space="preserve">
-    <value>Performance</value>
+    <value>Rendimiento</value>
   </data>
   <data name="OsdSettings_Thresholds_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Temperatura</value>
   </data>
   <data name="OsdSettings_Thresholds_Usage" xml:space="preserve">
-    <value>Usage</value>
+    <value>Uso</value>
   </data>
   <data name="OsdSettings_Thresholds_Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>Advertencia</value>
   </data>
   <data name="OsdWindow_Title" xml:space="preserve">
-    <value>OSD Settings</value>
+    <value>Ajustes OSD</value>
   </data>
   <data name="Osd_Cpu" xml:space="preserve">
     <value>CPU</value>
   </data>
   <data name="Osd_CPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>Ventilador</value>
   </data>
   <data name="Osd_Disk_0_Temperature" xml:space="preserve">
     <value>Temperatura Disco 1</value>
@@ -1926,7 +1926,7 @@ No afectará a otras ventanas a pantalla completa, pero no podrá hacer clic en 
     <value>Temperatura Disco 2</value>
   </data>
   <data name="Osd_ECoreClock" xml:space="preserve">
-    <value>E-Core Clock</value>
+    <value>Reloj E-Core</value>
   </data>
   <data name="Osd_Fps" xml:space="preserve">
     <value>FPS</value>
@@ -1941,16 +1941,16 @@ No afectará a otras ventanas a pantalla completa, pero no podrá hacer clic en 
     <value>GPU</value>
   </data>
   <data name="Osd_GPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>Ventilador</value>
   </data>
   <data name="Osd_Low_Fps" xml:space="preserve">
     <value>1% Mínimo</value>
   </data>
   <data name="Osd_Memory_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Temperatura</value>
   </data>
   <data name="Osd_Memory_Utilization" xml:space="preserve">
-    <value>Utilization</value>
+    <value>Uso</value>
   </data>
   <data name="Osd_Pch" xml:space="preserve">
     <value>PCH</value>
@@ -1959,10 +1959,10 @@ No afectará a otras ventanas a pantalla completa, pero no podrá hacer clic en 
     <value>Ventilador PCH</value>
   </data>
   <data name="Osd_PCoreClock" xml:space="preserve">
-    <value>P-Core Clock</value>
+    <value>Reloj P-Core</value>
   </data>
   <data name="Osd_Style_Bar" xml:space="preserve">
-    <value>Bar</value>
+    <value>Barra</value>
   </data>
   <data name="Osd_Style_Panel" xml:space="preserve">
     <value>Panel</value>
@@ -2381,7 +2381,7 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>Temperatura de la CPU</value>
   </data>
   <data name="SensorItem_CpuUtilitzation" xml:space="preserve">
-    <value>CPU Utilization</value>
+    <value>Uso de CPU</value>
   </data>
   <data name="SensorItem_Disk1Temperature" xml:space="preserve">
     <value>Temperatura del disco 1</value>
@@ -2441,13 +2441,13 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>Ventilador</value>
   </data>
   <data name="SensorsControl_GpuCoreTemperature_Title" xml:space="preserve">
-    <value>Core Temp</value>
+    <value>Temperatura Núcleo</value>
   </data>
   <data name="SensorsControl_GpuMemoryTemperature_Title" xml:space="preserve">
-    <value>VRAM Temp</value>
+    <value>Temperatura VRAM</value>
   </data>
   <data name="SensorsControl_GpuVramUtilization_Title" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>Uso VRAM</value>
   </data>
   <data name="SensorsControl_GPU_Power" xml:space="preserve">
     <value>Consumo</value>
@@ -2474,7 +2474,7 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>Temperatura PCH</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>Intervalo de actualización</value>
   </data>
   <data name="SensorsControl_State_Title" xml:space="preserve">
     <value>Estado</value>
@@ -2504,13 +2504,13 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>Frecuencia máxima</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Message" xml:space="preserve">
-    <value>Choose how memory utilization is displayed on the Dashboard and OSD.</value>
+    <value>Elija cómo se muestra el uso de la memoria en el panel de control y en el OSD.</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Title" xml:space="preserve">
-    <value>Memory Display Mode</value>
+    <value>Modo de visualización de la memoria</value>
   </data>
   <data name="SensorSettingsPage_Percentage_Title" xml:space="preserve">
-    <value>Percentage</value>
+    <value>Porcentaje</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Message" xml:space="preserve">
     <value>Cuando hay varias tarjetas gráficas, se da preferencia al dispositivo principal que se muestra</value>
@@ -2519,7 +2519,7 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
     <value>GPU preferida</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
-    <value>Used/Total Memory (GB)</value>
+    <value>Memoria Usada/Total (GB)</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Ajustes</value>
@@ -2804,10 +2804,10 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Restablecer "En batería desde" al iniciar</value>
   </data>
   <data name="SettingsPage_Osd_Message" xml:space="preserve">
-    <value>Floating overlay showing live sensor data.</value>
+    <value>Ventana emergente que muestra los datos de los sensores en tiempo real.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>Enable OSD</value>
+    <value>Habilitar OSD</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
     <value>Cambiar automáticamente el plan de energía o el modo de energía de Windows al cambiar los modos de energía.</value>
