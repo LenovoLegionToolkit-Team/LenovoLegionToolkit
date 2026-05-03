@@ -18,6 +18,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Threading;
+using Windows.Devices.Enumeration;
+using Windows.Devices.Lights;
 using Wpf.Ui.Controls;
 using Button = System.Windows.Controls.Button;
 using WinUIColor = Windows.UI.Color;
@@ -74,15 +76,14 @@ public partial class LampArrayRGBKeyboardPage : UiPage
         try
         {
             if (AppFlags.Instance.EnableLampArray)
-            {
                 return true;
-            }
 
-            return false;
+            var devices = await DeviceInformation.FindAllAsync(LampArray.GetDeviceSelector());
+            return devices.Count > 0;
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"Error checking keyboard support: {ex.Message}");
+            Log.Instance.Trace($"Error checking LampArray support: {ex.Message}");
             return false;
         }
     }
