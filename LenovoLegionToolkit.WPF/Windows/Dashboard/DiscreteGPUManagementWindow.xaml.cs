@@ -116,12 +116,15 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
 
                 var preference = _gpuController.GetGpuPreference(path).ToString();
 
+                var isProtected = NVAPIExtensions.IsExcluded(Path.GetFileName(path) ?? string.Empty);
+
                 var existing = _apps.FirstOrDefault(a => a.Path.Equals(path, StringComparison.OrdinalIgnoreCase));
                 if (existing != null)
                 {
                     existing.ProcessIds = processIds;
                     existing.IsActive = isActive;
                     existing.Preference = preference;
+                    existing.IsProtected = isProtected;
                 }
                 else
                 {
@@ -134,6 +137,7 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
                         ProcessIds = processIds,
                         Preference = preference,
                         IsPreferenceEnabled = data.hasMultipleGpus,
+                        IsProtected = isProtected,
                         Icon = icon
                     });
                 }
@@ -241,6 +245,9 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
     {
         if (sender is MenuItem menuItem && menuItem.CommandParameter is List<int> pids)
         {
+            if (menuItem.DataContext is DiscreteGPUAppViewModel { IsProtected: true })
+                return;
+
             foreach (var pid in pids)
             {
                 try
@@ -277,7 +284,8 @@ public class DiscreteGPUAppViewModel : INotifyPropertyChanged
             OnPropertyChanged(nameof(CanKill));
         }
     }
-    public bool CanKill => IsActive && ProcessIds.Count > 0;
+    public bool IsProtected { get; set; }
+    public bool CanKill => IsActive && ProcessIds.Count > 0 && !IsProtected;
 
     private bool _isActive;
     public bool IsActive
