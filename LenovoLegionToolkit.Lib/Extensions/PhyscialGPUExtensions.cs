@@ -15,20 +15,23 @@ public static class NVAPIExtensions
         "explorer.exe",
     ];
 
+    public static bool IsExcluded(string processName) =>
+        Exclusions.Contains(processName, StringComparer.InvariantCultureIgnoreCase);
+
     public static (List<Process> All, List<Process> Filtered) GetActiveProcesses(PhysicalGPU gpu)
     {
         var allProcesses = new List<Process>();
         var filteredProcesses = new List<Process>();
         var apps = GPUApi.QueryActiveApps(gpu.Handle);
-        
+
         foreach (var app in apps)
         {
             try
             {
                 var process = Process.GetProcessById(app.ProcessId);
                 allProcesses.Add(process);
-                
-                if (!Exclusions.Contains(app.ProcessName, StringComparer.InvariantCultureIgnoreCase))
+
+                if (!IsExcluded(app.ProcessName))
                 {
                     filteredProcesses.Add(process);
                 }

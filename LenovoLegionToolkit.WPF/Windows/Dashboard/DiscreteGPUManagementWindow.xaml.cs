@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
@@ -124,6 +125,7 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
                         ProcessIds = processIds,
                         Preference = preference,
                         IsPreferenceEnabled = hasMultipleGpus,
+                        IsProtected = NVAPIExtensions.IsExcluded(System.IO.Path.GetFileName(path)),
                         Icon = icon
                     });
                 }
@@ -225,6 +227,9 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
     {
         if (sender is MenuItem menuItem && menuItem.CommandParameter is List<int> pids)
         {
+            if (menuItem.DataContext is DiscreteGPUAppViewModel { IsProtected: true })
+                return;
+
             foreach (var pid in pids)
             {
                 try
@@ -250,7 +255,8 @@ public class DiscreteGPUAppViewModel : INotifyPropertyChanged
     public bool IsPreferenceEnabled { get; set; }
 
     public List<int> ProcessIds { get; set; } = [];
-    public bool CanKill => IsActive && ProcessIds.Count > 0;
+    public bool IsProtected { get; set; }
+    public bool CanKill => IsActive && ProcessIds.Count > 0 && !IsProtected;
 
     private bool _isActive;
     public bool IsActive
