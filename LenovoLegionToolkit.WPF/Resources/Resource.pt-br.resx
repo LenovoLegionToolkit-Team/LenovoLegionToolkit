@@ -1379,14 +1379,20 @@ Click Yes to disable and No to ignore.</value>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Add Custom Key</value>
   </data>
+  <data name="KeyDiscovery_Added" xml:space="preserve">
+    <value>Added</value>
+  </data>
   <data name="KeyDiscovery_CodeText" xml:space="preserve">
-    <value>code: {0}</value>
+    <value>Code: {0}</value>
   </data>
-  <data name="KeyDiscovery_EnterKeyName" xml:space="preserve">
-    <value>Enter key name...</value>
+  <data name="KeyDiscovery_KnownKeyTooltip" xml:space="preserve">
+    <value>Known key</value>
   </data>
-  <data name="KeyDiscovery_Instruction" xml:space="preserve">
-    <value>Press the Fn hotkey to check if it supports customization.</value>
+  <data name="KeyDiscovery_Listening" xml:space="preserve">
+    <value>Listening for key presses... Press ESC to stop.</value>
+  </data>
+  <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
+    <value>Unknown key – can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -2980,7 +2986,7 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
     <value>Key Discovery</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
-    <value>Find key that is not defined in LLT.</value>
+    <value>Press Fn hotkeys to discover which ones can be added and customized as Smart Keys.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
     <value>Start</value>
@@ -2997,12 +3003,6 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
   <data name="SpecialKeyDetail_Mode_Description" xml:space="preserve">
     <value>Choose how this key responds when pressed.</value>
   </data>
-  <data name="SpecialKey_DriverSuffix" xml:space="preserve">
-    <value>(Driver)</value>
-  </data>
-  <data name="SpecialKey_UnknownKey" xml:space="preserve">
-    <value>Key {0}</value>
-  </data>
   <data name="SpecialKeysWindow_Description" xml:space="preserve">
     <value>Assign custom Quick Actions to Fn keys. Each key can override its default behavior with a custom pipeline. Right-click any key to hide it from this list.</value>
   </data>
@@ -3011,6 +3011,12 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
   </data>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
     <value>Show {0} hidden keys</value>
+  </data>
+  <data name="SpecialKey_DriverSuffix" xml:space="preserve">
+    <value>(Driver)</value>
+  </data>
+  <data name="SpecialKey_UnknownKey" xml:space="preserve">
+    <value>Key {0}</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>Ajustar a iluminação do teclado.</value>
