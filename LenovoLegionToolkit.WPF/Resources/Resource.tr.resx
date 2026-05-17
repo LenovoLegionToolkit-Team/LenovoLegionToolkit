@@ -2979,13 +2979,22 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Stop</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Label</value>
   </data>
-  <data name="SpecialKey_Mode_Custom_Description" xml:space="preserve">
-    <value>Custom Quick Action</value>
+  <data name="SpecialKeyDetail_Mode" xml:space="preserve">
+    <value>Mode</value>
   </data>
-  <data name="SpecialKey_Mode_Default_Description" xml:space="preserve">
-    <value>Default behavior</value>
+  <data name="SpecialKeyDetail_Mode_Description" xml:space="preserve">
+    <value>Choose how this key responds when pressed.</value>
+  </data>
+  <data name="SpecialKeysWindow_Description" xml:space="preserve">
+    <value>Assign custom Quick Actions to Fn keys. Each key can override its default behavior with a custom pipeline. Right-click any key to hide it from this list.</value>
+  </data>
+  <data name="SpecialKeysWindow_HideHiddenKeys" xml:space="preserve">
+    <value>Hide {0} hidden keys</value>
+  </data>
+  <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
+    <value>Show {0} hidden keys</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>Klavye ışık seviyesini ayarlayın.</value>
@@ -3217,6 +3226,9 @@ Fareyi hareket ettirmek veya klavyeye basmak ekranları uyandırır.</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
     <value>Beklenmeyen bir istisna oluştu:</value>
+  </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>Unhide</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Adsız</value>
