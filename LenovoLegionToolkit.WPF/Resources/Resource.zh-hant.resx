@@ -257,7 +257,7 @@
     <value>網路代理伺服器</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Open an argument window for convenient modification of arguments.</value>
+    <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
     <value>編輯引數</value>
@@ -2641,14 +2641,14 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>檢查</value>
   </data>
+  <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
+    <value>Check now for the latest version.</value>
+  </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>正在檢查更新⋯⋯</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
     <value>檢查更新</value>
-  </data>
-  <data name="SettingsPage_ClearBackgroundImage_Title" xml:space="preserve">
-    <value>已清除圖片</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
     <value>清除圖片</value>
@@ -2668,11 +2668,14 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
     <value>Restart is recommended after changing this option.</value>
   </data>
+  <data name="SettingsPage_Custom_BackgroundImage_Dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>自訂背景圖片</value>
+    <value>Set a custom wallpaper for the app window.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>自訂背景圖片</value>
+    <value>Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space 可能沒有被正確地停用。</value>
@@ -2761,13 +2764,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Excluded Processes</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>您可以排除更新率，使用 Fn+R 快捷鍵切換更加實用。</value>
+    <value>Hide specific refresh rates from the Fn+R cycle.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>排除更新率</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
+    <value>Use hardware acceleration for the user interface.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
     <value>Hardware Acceleration</value>
@@ -2809,19 +2812,19 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Key Discovery</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>選擇語言。</value>
+    <value>Change the display language of the app.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>語言</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>鎖定 LLT 的視窗尺寸以防止其被更改。</value>
+    <value>Prevent the window from being resized.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>鎖定視窗尺寸</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>保持最小化到系統匣。對系統匣圖示點擊右鍵以關閉應用程式。</value>
+    <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>關閉時最小化</value>
@@ -2881,7 +2884,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>感測器設定</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>按下 Alt、Ctrl 或 Shift 鍵時，Fn 將會暫時解除鎖定。</value>
+    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>智慧鎖定 Fn 鍵</value>
@@ -2905,7 +2908,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Smart Keys</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>當啟用後，變更 Windows 電源計劃時仍將保持亮度不變。</value>
+    <value>Apply the same brightness level across all Windows power plans.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>固定顯示亮度</value>
@@ -2917,7 +2920,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>溫度</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>設定淺色、深色模式，或跟隨系統。</value>
+    <value>Set light, dark, or system-matched theme.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>主題</value>
@@ -2925,11 +2928,20 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="SettingsPage_Title" xml:space="preserve">
     <value>設定</value>
   </data>
+  <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
+    <value>Choose between stable, beta and dev releases.</value>
+  </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>更新通道</value>
   </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
+    <value>Choose how often to check for new versions.</value>
+  </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>自動檢查更新</value>
+  </data>
+  <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
+    <value>Choose how updates are downloaded and installed.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>更新途徑</value>
