@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -257,7 +257,7 @@
     <value>Прокси - сервер</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Откройте окно аргументов для удобного редактирования.</value>
+    <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
     <value>Редактировать аргументы</value>
@@ -733,7 +733,7 @@
     <value>Настройки</value>
   </data>
   <data name="CustomFanCurve_Temperature" xml:space="preserve">
-    <value>Temperature °C</value>
+    <value>Температура, °C</value>
   </data>
   <data name="CustomFanCurve_Title" xml:space="preserve">
     <value>Мониторинг в режиме реального времени</value>
@@ -1278,10 +1278,10 @@
     <value>Параметры пользовательского режима будут неправильно применены, если запущен Lenovo Vantage или его службы.</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable or disable background polling for hardware sensors.</value>
+    <value>Включение или отключение фонового опроса для аппаратных датчиков.</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>Аппаратные датчики</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
     <value>Включить High Dynamic Range (HDR) на встроенном дисплее.
@@ -1381,11 +1381,20 @@
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Add Custom Key</value>
   </data>
-  <data name="KeyDiscovery_EnterKeyName" xml:space="preserve">
-    <value>Enter key name...</value>
+  <data name="KeyDiscovery_Added" xml:space="preserve">
+    <value>Added</value>
   </data>
-  <data name="KeyDiscovery_Instruction" xml:space="preserve">
-    <value>Press the Fn hotkey to check if it supports customization.</value>
+  <data name="KeyDiscovery_CodeText" xml:space="preserve">
+    <value>Code: {0}</value>
+  </data>
+  <data name="KeyDiscovery_KnownKeyTooltip" xml:space="preserve">
+    <value>Known key</value>
+  </data>
+  <data name="KeyDiscovery_Listening" xml:space="preserve">
+    <value>Listening for key presses... Press ESC to stop.</value>
+  </data>
+  <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
+    <value>Unknown key – can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Фоновая подсветка задняя зона</value>
@@ -1664,6 +1673,9 @@
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>Блок питания</value>
   </data>
+  <data name="NotificationsSettingsWindow_AirplaneMode" xml:space="preserve">
+    <value>Airplane mode</value>
+  </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
     <value>Действия</value>
   </data>
@@ -1737,6 +1749,12 @@
   </data>
   <data name="Notification_ACAdapterDisconnected" xml:space="preserve">
     <value>Блок питания отключен</value>
+  </data>
+  <data name="Notification_AirplaneModeOff" xml:space="preserve">
+    <value>Airplane mode off</value>
+  </data>
+  <data name="Notification_AirplaneModeOn" xml:space="preserve">
+    <value>Airplane mode on</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
     <value>Камера отключена</value>
@@ -2580,6 +2598,12 @@
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
     <value>Контрастный цвет</value>
   </data>
+  <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
+    <value>Keep the app window above all other windows.</value>
+  </data>
+  <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
+    <value>Pin to Top</value>
+  </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
     <value>Запускать свернутым при входе в Windows.</value>
   </data>
@@ -2617,7 +2641,7 @@
     <value>Питание</value>
   </data>
   <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>Умные клавиши</value>
   </data>
   <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
     <value>Программное управление</value>
@@ -2628,14 +2652,14 @@
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Проверить</value>
   </data>
+  <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
+    <value>Check now for the latest version.</value>
+  </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>Проверка наличия обновлений...</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
     <value>Проверить наличие обновлений</value>
-  </data>
-  <data name="SettingsPage_ClearBackgroundImage_Title" xml:space="preserve">
-    <value>Изображение удалено</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
     <value>Очистить изображение</value>
@@ -2655,11 +2679,14 @@
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
     <value>После изменения этого параметра рекомендуется перезагрузить компьютер.</value>
   </data>
+  <data name="SettingsPage_Custom_BackgroundImage_Dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Пользовательское фоновое изображение</value>
+    <value>Set a custom wallpaper for the app window.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Пользовательское фоновое изображение</value>
+    <value>Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Возможно, Legion Space был неверно отключен</value>
@@ -2748,13 +2775,13 @@
     <value>Исключенные процессы</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Вы можете исключить частоту обновления, чтобы сделать сочетание клавиш Fn+R более полезным.</value>
+    <value>Hide specific refresh rates from the Fn+R cycle.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>Исключить частоту обновления</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Используйте аппаратное ускорение для пользовательского интерфейса. Это может повысить производительность и плавность.</value>
+    <value>Use hardware acceleration for the user interface.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
     <value>Аппаратное ускорение</value>
@@ -2796,19 +2823,19 @@
     <value>Key Discovery</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Выбрать язык.</value>
+    <value>Change the display language of the app.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Язык</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Заблокировать размер окна LLT. Чтобы предотвратить что-то изменить его.</value>
+    <value>Prevent the window from being resized.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Заблокировать размер окна</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Всегда сворачивать в область уведомлений. Закрывать правой кнопкой мыши на значке в области уведомлений.</value>
+    <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>Сворачивать при закрытии</value>
@@ -2844,13 +2871,13 @@
     <value>Синхронизация режима питания</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
-    <value>Are you sure you want to reset all settings to defaults? This action cannot be undone and the application will restart.</value>
+    <value>Вы уверены, что хотите сбросить все настройки по умолчанию? Это действие не может быть отменено и приложение будет перезапущено.</value>
   </data>
   <data name="SettingsPage_ResetSettings_Message" xml:space="preserve">
-    <value>Reset all application settings to their defaults.</value>
+    <value>Сбросить настройки приложения к настройкам по умолчанию.</value>
   </data>
   <data name="SettingsPage_ResetSettings_Title" xml:space="preserve">
-    <value>Reset Settings</value>
+    <value>Сбросить настройки</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Перезапустите, чтобы применить изменения.</value>
@@ -2868,7 +2895,7 @@
     <value>Настройки датчиков</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Функция Fn Lock будет временно отключена при нажатии клавиш Alt, Ctrl или Shift.</value>
+    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Умная клавиша Fn Lock</value>
@@ -2892,7 +2919,7 @@
     <value>Умные клавиши</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>При включении этого параметра один и тот же уровень яркости будет применяться ко всем схемам питания Windows при каждом его изменении.</value>
+    <value>Apply the same brightness level across all Windows power plans.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>Яркость одного дисплея</value>
@@ -2904,7 +2931,7 @@
     <value>Температура</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Установить светлую тему, темную тему или следовать системным настройкам.</value>
+    <value>Set light, dark, or system-matched theme.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>Тема оформления</value>
@@ -2912,11 +2939,20 @@
   <data name="SettingsPage_Title" xml:space="preserve">
     <value>Настройки</value>
   </data>
+  <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
+    <value>Choose between stable, beta and dev releases.</value>
+  </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>Канал обновления</value>
   </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
+    <value>Choose how often to check for new versions.</value>
+  </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>Автоматически проверять наличие обновлений</value>
+  </data>
+  <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
+    <value>Choose how updates are downloaded and installed.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>Метод обновления</value>
@@ -2928,7 +2964,7 @@
     <value>Использовать новую панель мониторинга датчиков</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
-    <value>If you experience visual artifacts on Snackbar Notifications in HDR mode, set this to "None".</value>
+    <value>Если вы наблюдаете визуальные артефакты на всплывающих уведомлениях в режимах HDR или ACM, установите для этого параметра значение «Нет».</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Message" xml:space="preserve">
     <value>Определяет визуальный эффект, применяемый к фону окна приложения.</value>
@@ -2973,7 +3009,7 @@
     <value>Key Discovery</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
-    <value>Find key that is not defined in LLT.</value>
+    <value>Press Fn hotkeys to discover which ones can be added and customized as Smart Keys.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
     <value>Start</value>
@@ -2982,7 +3018,28 @@
     <value>Stop</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Label</value>
+  </data>
+  <data name="SpecialKeyDetail_Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="SpecialKeyDetail_Mode_Description" xml:space="preserve">
+    <value>Choose how this key responds when pressed.</value>
+  </data>
+  <data name="SpecialKeysWindow_Description" xml:space="preserve">
+    <value>Assign custom Quick Actions to Fn keys. Each key can override its default behavior with a custom pipeline. Right-click any key to hide it from this list.</value>
+  </data>
+  <data name="SpecialKeysWindow_HideHiddenKeys" xml:space="preserve">
+    <value>Hide {0} hidden keys</value>
+  </data>
+  <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
+    <value>Show {0} hidden keys</value>
+  </data>
+  <data name="SpecialKey_DriverSuffix" xml:space="preserve">
+    <value>(Driver)</value>
+  </data>
+  <data name="SpecialKey_UnknownKey" xml:space="preserve">
+    <value>Key {0}</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>Настроить яркость подсветки клавиатуры.</value>
@@ -3216,6 +3273,9 @@
     <value>Непредвиденная ошибка:
 {0}</value>
   </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>Unhide</value>
+  </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Без имени</value>
   </data>
@@ -3294,7 +3354,7 @@
     <value>DC</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_Title" xml:space="preserve">
-    <value>Power Mode</value>
+    <value>Режим питания</value>
   </data>
   <data name="WindowsPowerPlansWindow_Title" xml:space="preserve">
     <value>Схемы питания Windows</value>
