@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -257,7 +257,7 @@
     <value>Network Proxy</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Open an argument window for convenient modification of arguments.</value>
+    <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
     <value>Edit Arguments</value>
@@ -1380,11 +1380,20 @@ Klicken Sie auf Ja zum Deaktivieren und Nein zum Ignorieren.</value>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Add Custom Key</value>
   </data>
-  <data name="KeyDiscovery_EnterKeyName" xml:space="preserve">
-    <value>Enter key name...</value>
+  <data name="KeyDiscovery_Added" xml:space="preserve">
+    <value>Added</value>
   </data>
-  <data name="KeyDiscovery_Instruction" xml:space="preserve">
-    <value>Press the Fn hotkey to check if it supports customization.</value>
+  <data name="KeyDiscovery_CodeText" xml:space="preserve">
+    <value>Code: {0}</value>
+  </data>
+  <data name="KeyDiscovery_KnownKeyTooltip" xml:space="preserve">
+    <value>Known key</value>
+  </data>
+  <data name="KeyDiscovery_Listening" xml:space="preserve">
+    <value>Listening for key presses... Press ESC to stop.</value>
+  </data>
+  <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
+    <value>Unknown key – can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1663,6 +1672,9 @@ Klicken Sie auf Ja zum Deaktivieren und Nein zum Ignorieren.</value>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>Netzadapter</value>
   </data>
+  <data name="NotificationsSettingsWindow_AirplaneMode" xml:space="preserve">
+    <value>Airplane mode</value>
+  </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
     <value>Aktionen</value>
   </data>
@@ -1736,6 +1748,12 @@ Andere Vollbildfenster werden dadurch nicht beeinträchtigt, aber Sie können ni
   </data>
   <data name="Notification_ACAdapterDisconnected" xml:space="preserve">
     <value>Netzadapter nicht angeschlossen</value>
+  </data>
+  <data name="Notification_AirplaneModeOff" xml:space="preserve">
+    <value>Airplane mode off</value>
+  </data>
+  <data name="Notification_AirplaneModeOn" xml:space="preserve">
+    <value>Airplane mode on</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
     <value>Kamera aus</value>
@@ -2624,14 +2642,14 @@ Stellen Sie zunächst sicher, dass Ihr Skript korrekt ausgeführt wird.</value>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Überprüfe</value>
   </data>
+  <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
+    <value>Check now for the latest version.</value>
+  </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>Nach Updates suchen...</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
     <value>Nach Updates suchen</value>
-  </data>
-  <data name="SettingsPage_ClearBackgroundImage_Title" xml:space="preserve">
-    <value>Bild gelöscht</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
     <value>Bild löschen</value>
@@ -2651,11 +2669,14 @@ Stellen Sie zunächst sicher, dass Ihr Skript korrekt ausgeführt wird.</value>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
     <value>Restart is recommended after changing this option.</value>
   </data>
+  <data name="SettingsPage_Custom_BackgroundImage_Dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Individuelles Hintergrundbild</value>
+    <value>Set a custom wallpaper for the app window.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Individuelles Hintergrundbild</value>
+    <value>Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space wurde möglicherweise nicht korrekt deaktiviert</value>
@@ -2744,13 +2765,13 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Excluded Processes</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Sie können Bildwiederholraten ausschließen, um die Tastenkombination Fn+R nützlicher zu machen.</value>
+    <value>Hide specific refresh rates from the Fn+R cycle.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>Bildwiederholraten ausschließen</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
+    <value>Use hardware acceleration for the user interface.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
     <value>Hardware Acceleration</value>
@@ -2792,19 +2813,25 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Key Discovery</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Sprache auswählen.</value>
+    <value>Change the display language of the app.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Sprache</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Sperrt die Fenstergröße von LLT, um eine Änderung zu verhindern.</value>
+    <value>Prevent the window from being resized.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Fenstergröße sperren</value>
   </data>
+  <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
+    <value>Keep the app window above all other windows.</value>
+  </data>
+  <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
+    <value>Pin to Top</value>
+  </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Immer in die Taskleiste minimieren. Schließen mit Rechtsklick auf das Tray-Symbol.</value>
+    <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>Minimieren beim Schließen</value>
@@ -2864,7 +2891,7 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Sensor Settings</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Fn-Lock wird vorübergehend deaktiviert, wenn die Umschalt-, Strg- oder Alt-Taste gedrückt wird.</value>
+    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Smart Fn-Lock</value>
@@ -2888,7 +2915,7 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Smart Keys</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Wenn diese Option aktiviert ist, wird die gleiche Helligkeitsstufe auf alle Windows-Energiepläne angewendet, sobald Sie sie ändern.</value>
+    <value>Apply the same brightness level across all Windows power plans.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>Einzelne Display-Helligkeit</value>
@@ -2900,7 +2927,7 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Temperatur</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Legen Sie ein helles oder dunkles Thema fest oder folgen Sie den Systemeinstellungen.</value>
+    <value>Set light, dark, or system-matched theme.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>Erscheinungsbild</value>
@@ -2908,11 +2935,20 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
   <data name="SettingsPage_Title" xml:space="preserve">
     <value>Einstellungen</value>
   </data>
+  <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
+    <value>Choose between stable, beta and dev releases.</value>
+  </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>Update Channel</value>
   </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
+    <value>Choose how often to check for new versions.</value>
+  </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>Automatisch auf Updates prüfen</value>
+  </data>
+  <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
+    <value>Choose how updates are downloaded and installed.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>Update-Methode</value>
@@ -2969,7 +3005,7 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Key Discovery</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
-    <value>Find key that is not defined in LLT.</value>
+    <value>Press Fn hotkeys to discover which ones can be added and customized as Smart Keys.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
     <value>Start</value>
@@ -2978,7 +3014,28 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Stop</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Label</value>
+  </data>
+  <data name="SpecialKeyDetail_Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="SpecialKeyDetail_Mode_Description" xml:space="preserve">
+    <value>Choose how this key responds when pressed.</value>
+  </data>
+  <data name="SpecialKeysWindow_Description" xml:space="preserve">
+    <value>Assign custom Quick Actions to Fn keys. Each key can override its default behavior with a custom pipeline. Right-click any key to hide it from this list.</value>
+  </data>
+  <data name="SpecialKeysWindow_HideHiddenKeys" xml:space="preserve">
+    <value>Hide {0} hidden keys</value>
+  </data>
+  <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
+    <value>Show {0} hidden keys</value>
+  </data>
+  <data name="SpecialKey_DriverSuffix" xml:space="preserve">
+    <value>(Driver)</value>
+  </data>
+  <data name="SpecialKey_UnknownKey" xml:space="preserve">
+    <value>Key {0}</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>Helligkeit der Tastaturbeleuchtung einstellen.</value>
@@ -3210,6 +3267,9 @@ Mausbewegung oder Tastendruck weckt die Bildschirme auf.</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
     <value>Unerwartete Ausnahme aufgetreten:</value>
+  </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>Unhide</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Ohne Titel</value>
