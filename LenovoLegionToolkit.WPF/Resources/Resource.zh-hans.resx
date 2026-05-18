@@ -259,7 +259,7 @@
     <value>网络代理</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>打开参数窗口以方便用户修改启动参数。</value>
+    <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
     <value>编辑参数</value>
@@ -2653,14 +2653,14 @@
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>检查</value>
   </data>
+  <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
+    <value>Check now for the latest version.</value>
+  </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>正在检查更新...</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
     <value>检查更新</value>
-  </data>
-  <data name="SettingsPage_ClearBackgroundImage_Title" xml:space="preserve">
-    <value>背景图片已清除</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
     <value>清空图片</value>
@@ -2680,11 +2680,14 @@
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
     <value>修改此项后需要重启电脑。</value>
   </data>
+  <data name="SettingsPage_Custom_BackgroundImage_Dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>自定义程序背景图片。</value>
+    <value>Set a custom wallpaper for the app window.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>自定义背景图片</value>
+    <value>Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space 可能未被正确禁用</value>
@@ -2773,13 +2776,13 @@
     <value>排除应用</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>你可以排除某个刷新率，使 Fn+R 快捷键切换更快速。</value>
+    <value>Hide specific refresh rates from the Fn+R cycle.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>排除刷新率</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>为 UI 界面启用硬件加速，可以使 UI 更流畅。</value>
+    <value>Use hardware acceleration for the user interface.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
     <value>硬件加速</value>
@@ -2821,19 +2824,19 @@
     <value>Key Discovery</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>选择偏好语言。</value>
+    <value>Change the display language of the app.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>语言</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>锁定窗口大小，当锁定后，Windows 与您都将无法修改 LLT 窗口的大小。</value>
+    <value>Prevent the window from being resized.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>锁定窗口大小</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>总是最小化到托盘。开启后需右键点击托盘图标点击关闭以关闭软件。</value>
+    <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>关闭时最小化</value>
@@ -2893,7 +2896,7 @@
     <value>传感器设置</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>按下 Alt、Ctrl 或 Shift 键时，Fn 将会暂时解除锁定。</value>
+    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>智能锁定 Fn 键</value>
@@ -2917,7 +2920,7 @@
     <value>Smart Keys</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>启用后在不同电源计划间切换将保持亮度不变。</value>
+    <value>Apply the same brightness level across all Windows power plans.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>固定显示亮度</value>
@@ -2929,7 +2932,7 @@
     <value>温度</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>选择浅色或深色模式，亦或者跟随系统。</value>
+    <value>Set light, dark, or system-matched theme.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>主题</value>
@@ -2937,11 +2940,20 @@
   <data name="SettingsPage_Title" xml:space="preserve">
     <value>设置</value>
   </data>
+  <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
+    <value>Choose between stable, beta and dev releases.</value>
+  </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>更新通道</value>
   </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
+    <value>Choose how often to check for new versions.</value>
+  </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>自动检查更新</value>
+  </data>
+  <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
+    <value>Choose how updates are downloaded and installed.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>更新途径</value>
