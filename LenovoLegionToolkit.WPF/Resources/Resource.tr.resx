@@ -257,7 +257,7 @@
     <value>Ağ Proxy'si</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Argümanları kolayca değiştirmek için bir argüman penceresi açın.</value>
+    <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
     <value>Argümanları Düzenle</value>
@@ -2643,14 +2643,14 @@ UYARI: Dahili ekran kapalıysa, bu işlem doğru çalışmaz.</value>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Denetle</value>
   </data>
+  <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
+    <value>Check now for the latest version.</value>
+  </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>Güncelleme denetleniyor...</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
     <value>Güncellemeleri denetle</value>
-  </data>
-  <data name="SettingsPage_ClearBackgroundImage_Title" xml:space="preserve">
-    <value>Görüntü Temizlendi</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
     <value>Görseli Temizle</value>
@@ -2670,11 +2670,14 @@ UYARI: Dahili ekran kapalıysa, bu işlem doğru çalışmaz.</value>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
     <value>Bu seçeneği değiştirdikten sonra yeniden başlatmanız önerilir.</value>
   </data>
+  <data name="SettingsPage_Custom_BackgroundImage_Dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Özel Arkaplan Resmi</value>
+    <value>Set a custom wallpaper for the app window.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Özel Arkaplan Resmi</value>
+    <value>Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space düzgün bir şekilde devre dışı bırakılmamış olabilir</value>
@@ -2763,13 +2766,13 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Hariç Tutulan İşlemler</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Fn+R kısayolunu daha kullanışlı hale getirmek için yenileme hızlarını hariç tutabilirsiniz.</value>
+    <value>Hide specific refresh rates from the Fn+R cycle.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>Yenileme Hızlarını Hariç Tut</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Kullanıcı arayüzü için donanımsal hızlandırmayı kullan. Bu, performansı ve akıcılığı artırabilir.</value>
+    <value>Use hardware acceleration for the user interface.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
     <value>Donanımsal Hızlandırma</value>
@@ -2811,19 +2814,19 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Key Discovery</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Dil seçin.</value>
+    <value>Change the display language of the app.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Dil</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>LLT penceresinin boyutunu kilitleyerek değiştirilmesini önleyin.</value>
+    <value>Prevent the window from being resized.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Pencere Boyutunu Kilitle</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Her zaman görev çubuğu tepsisine küçültün. Tepsi simgesine sağ tıklayarak kapatın.</value>
+    <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>Kapatırken simge durumuna küçült</value>
@@ -2883,7 +2886,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Sensör Ayarları</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Shift, Ctrl veya Alt tuşuna basıldığında Fn Kilidi geçici olarak devre dışı bırakılacaktır.</value>
+    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Akıllı Fn Kilidi</value>
@@ -2907,7 +2910,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Smart Keys</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Açık olduğunda, değiştirdiğinizde tüm Windows güç planlarına aynı parlaklık düzeyi uygulanacaktır.</value>
+    <value>Apply the same brightness level across all Windows power plans.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>Tek Ekran Parlaklığı</value>
@@ -2919,7 +2922,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Sıcaklık</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Açık temayı, koyu temayı ayarlayın veya sistem ayarlarını takip edin.</value>
+    <value>Set light, dark, or system-matched theme.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>Tema</value>
@@ -2927,11 +2930,20 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   <data name="SettingsPage_Title" xml:space="preserve">
     <value>Ayarlar</value>
   </data>
+  <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
+    <value>Choose between stable, beta and dev releases.</value>
+  </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>Güncelleme Kanalı</value>
   </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
+    <value>Choose how often to check for new versions.</value>
+  </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>Güncellemeleri otomatik olarak denetle</value>
+  </data>
+  <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
+    <value>Choose how updates are downloaded and installed.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>Güncelleme Yöntemi</value>
