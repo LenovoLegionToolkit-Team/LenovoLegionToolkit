@@ -257,7 +257,7 @@
     <value>Мережевий проксі</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Відкрийте вікно аргументів для зручної зміни аргументів.</value>
+    <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
     <value>Змінити аргументи</value>
@@ -2639,14 +2639,14 @@
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Перевірити</value>
   </data>
+  <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
+    <value>Check now for the latest version.</value>
+  </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>Перевірка наявності оновлень...</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
     <value>Перевірити наявність оновлень</value>
-  </data>
-  <data name="SettingsPage_ClearBackgroundImage_Title" xml:space="preserve">
-    <value>Зображення видалено</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
     <value>Очистити зображення</value>
@@ -2666,11 +2666,14 @@
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
     <value>Рекомендується перезапуск після зміни цього параметру.</value>
   </data>
+  <data name="SettingsPage_Custom_BackgroundImage_Dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Власне фонове зображення</value>
+    <value>Set a custom wallpaper for the app window.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Власне фонове зображення</value>
+    <value>Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space, можливо, не був відключений правильно</value>
@@ -2759,13 +2762,13 @@
     <value>Виключені процеси</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Ви можете виключити частоту оновлення, щоб зробити комбінацію клавіш Fn+R більш корисною.</value>
+    <value>Hide specific refresh rates from the Fn+R cycle.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>Виключити частоти оновлення</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Використовуйте апаратне прискорення для інтерфейсу користувача. Це може підвищити продуктивність та плавність.</value>
+    <value>Use hardware acceleration for the user interface.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
     <value>Апаратне прискорення</value>
@@ -2807,19 +2810,19 @@
     <value>Key Discovery</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Обрати мову.</value>
+    <value>Change the display language of the app.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Мова</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Заблокувати розмір вікна LLT. Щоб запобігти його зміні чимось.</value>
+    <value>Prevent the window from being resized.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Заблокувати розмір вікна</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Завжди згортати у лоток. Закривайте натисканням правою кнопкою миші на образець у лотку.</value>
+    <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>Згортати при закритті</value>
@@ -2879,7 +2882,7 @@
     <value>Налаштування датчика</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Fn Lock буде тимчасово вимкнено при натисканні клавіш Alt, Ctrl або Shift.</value>
+    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Розумне Fn Lock</value>
@@ -2903,7 +2906,7 @@
     <value>Smart Keys</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Коли увімкнено, однаковий рівень яскравості буде застосований для всіх планів потужності Windows, поки ви не зміните його.</value>
+    <value>Apply the same brightness level across all Windows power plans.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>Спільна яскравість дисплеїв</value>
@@ -2915,7 +2918,7 @@
     <value>Температура</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Встановить білу тему, темну тему або дотримуйтесь системних налаштувань.</value>
+    <value>Set light, dark, or system-matched theme.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>Тема</value>
@@ -2923,11 +2926,20 @@
   <data name="SettingsPage_Title" xml:space="preserve">
     <value>Налаштування</value>
   </data>
+  <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
+    <value>Choose between stable, beta and dev releases.</value>
+  </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>Канал оновлень</value>
   </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
+    <value>Choose how often to check for new versions.</value>
+  </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>Автоматично перевіряти наявність оновлень</value>
+  </data>
+  <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
+    <value>Choose how updates are downloaded and installed.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>Метод оновлення</value>
