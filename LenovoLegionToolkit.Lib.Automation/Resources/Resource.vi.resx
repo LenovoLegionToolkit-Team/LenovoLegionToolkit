@@ -124,22 +124,22 @@
     <value>Khi ngắt kết nối nguồn điện</value>
   </data>
   <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
-    <value>Warning: Cannot overclock a deactivated GPU. The Overclock step will fail.</value>
+    <value>Cảnh báo: GPU đã bị tắt không thể được ép xung. Các bước ép xung sẽ bị lỗi.</value>
   </data>
   <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
-    <value>Warning: Windows HDR locks screen brightness. Brightness settings applied after HDR are ignored.</value>
+    <value>Cảnh báo: Chế độ HDR của Windows khoá độ sáng của màn hình. Vì vậy thiết lập độ sáng sau khi bật HDR sẽ bị bỏ qua.</value>
   </data>
   <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
-    <value>Warning: Changing Hybrid Mode to dGPU Mode forces a system reboot. This must be the last step.</value>
+    <value>Cảnh báo: Chuyển từ chế độ Hỗn Hợp sang Chế độ Gpu rời sẽ bắt buộc máy phải khởi động lại. Đây chắc chắn là bước cuối cùng.</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
-    <value>Warning: Power Mode resets Fan Speed. Run the Power Mode step first.</value>
+    <value>Cảnh báo: Các chế độ nguồn điện sẽ đặt lại cài đặt Tốc độ quạt. Hãy chỉnh chế độ nguồn điện trước.</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
-    <value>Warning: Power Mode resets Brightness and Refresh Rate. Run the Power Mode step first.</value>
+    <value>Cảnh báo: Các chế độ nguồn điện sẽ đặt lại cài đặt Độ sáng và Tần số quét. Hãy chỉnh chế độ nguồn điện trước.</value>
   </data>
   <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
-    <value>Warning: Changing Resolution resets Refresh Rate. Run the Resolution step first.</value>
+    <value>Cảnh báo: Chuyển độ phân giải sẽ đạt lại cài đặt Tần số quét. Hãy chỉnh tần số quét trước.</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
     <value>Tắt app dùng GPU rời</value>
@@ -218,7 +218,7 @@
     <value>Khi khởi động</value>
   </data>
   <data name="OsdState_Toggle" xml:space="preserve">
-    <value>Toggle</value>
+    <value>Bật/Tắt</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepState_Off" xml:space="preserve">
     <value>Tắt</value>
