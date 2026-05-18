@@ -210,6 +210,8 @@ public class DriverKeyListener(
                 MessagingCenter.Publish(state == WhiteKeyboardBacklightState.Off
                     ? new NotificationMessage(NotificationType.WhiteKeyboardBacklightOff, state.GetDisplayName())
                     : new NotificationMessage(NotificationType.WhiteKeyboardBacklightChanged, state.GetDisplayName()));
+
+                Log.Instance.Trace($"DEBUG: {state}");
             }
         }
         catch (Exception ex)
