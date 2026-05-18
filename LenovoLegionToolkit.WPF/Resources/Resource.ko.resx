@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,83 +118,83 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutPage_ApplicationFolders" xml:space="preserve">
-    <value>Application Folders</value>
+    <value>애플리케이션 폴더</value>
   </data>
   <data name="AboutPage_AppName" xml:space="preserve">
     <value>Lenovo Legion Toolkit (Unofficial Fork)</value>
   </data>
   <data name="AboutPage_Build" xml:space="preserve">
-    <value>Build</value>
+    <value>빌드</value>
   </data>
   <data name="AboutPage_Data" xml:space="preserve">
-    <value>Data</value>
+    <value>데이터</value>
   </data>
   <data name="AboutPage_LatestReleaseOnGitHub" xml:space="preserve">
-    <value>Latest release on GitHub</value>
+    <value>GitHub 최신 릴리즈</value>
   </data>
   <data name="AboutPage_Links" xml:space="preserve">
-    <value>Links</value>
+    <value>링크</value>
   </data>
   <data name="AboutPage_Log" xml:space="preserve">
-    <value>Log</value>
+    <value>로그</value>
   </data>
   <data name="AboutPage_ProjectWebsiteOnGitHub" xml:space="preserve">
-    <value>Project website on GitHub</value>
+    <value>GitHub 프로젝트 웹사이트</value>
   </data>
   <data name="AboutPage_Temp" xml:space="preserve">
-    <value>Temp</value>
+    <value>임시 파일</value>
   </data>
   <data name="AboutPage_ThirdPartyLibraries" xml:space="preserve">
-    <value>Third-party libraries</value>
+    <value>서드파티 라이브러리</value>
   </data>
   <data name="AboutPage_Title" xml:space="preserve">
-    <value>About</value>
+    <value>정보</value>
   </data>
   <data name="AboutPage_TranslationCredit" xml:space="preserve">
     <value>Translations provided by community.</value>
     <comment>Please replace this text with something like "Translated into &lt;language&gt; by &lt;your name&gt;."</comment>
   </data>
   <data name="AboutPage_Version" xml:space="preserve">
-    <value>Version</value>
+    <value>버전</value>
   </data>
   <data name="AbstractAutomationStepControl_Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>삭제</value>
   </data>
   <data name="Active" xml:space="preserve">
     <value>Active</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Add</value>
+    <value>추가</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
-    <value>Add step</value>
+    <value>단계 추가</value>
   </data>
   <data name="AddNew" xml:space="preserve">
-    <value>Add new</value>
+    <value>새로 추가</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
     <value>Charge USB devices, when the laptop is off, sleeping or hibernated.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
-    <value>Always on USB</value>
+    <value>USB 항상 켜짐</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Charge USB devices, when the laptop is off, sleeping or hibernated.</value>
+    <value>노트북이 꺼져 있거나 절전 모드, 최대 절전 모드일 때 USB 장치를 충전합니다.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
-    <value>Always on USB</value>
+    <value>USB 항상 켜짐</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
-    <value>Apply Changes</value>
+    <value>변경 사항 적용</value>
   </data>
   <data name="AmdOverclocking_Caution_Message" xml:space="preserve">
-    <value>Changing these settings may impact system stability. Proceed with caution.</value>
+    <value>이 설정을 변경하면 시스템 안정성에 영향을 줄 수 있습니다. 신중히 변경하세요.</value>
   </data>
   <data name="AmdOverclocking_Caution_Title" xml:space="preserve">
-    <value>Caution</value>
+    <value>주의</value>
   </data>
   <data name="AmdOverclocking_Core_Title" xml:space="preserve">
-    <value>Core</value>
+    <value>코어</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Profile apply has been canceled due to abnormal restart.</value>
@@ -206,13 +206,13 @@
     <value>FMax Frequency</value>
   </data>
   <data name="AmdOverclocking_Global_Dim" xml:space="preserve">
-    <value>-1 All</value>
+    <value>모두 -1</value>
   </data>
   <data name="AmdOverclocking_Global_Offset" xml:space="preserve">
     <value>Global Offset:</value>
   </data>
   <data name="AmdOverclocking_Global_Plus" xml:space="preserve">
-    <value>+1 All</value>
+    <value>모두 +1</value>
   </data>
   <data name="AmdOverclocking_Per_Core_Title" xml:space="preserve">
     <value>Per-Core Optimization</value>
@@ -224,7 +224,7 @@
     <value>Settings applied successfully.</value>
   </data>
   <data name="AmdOverclocking_Success_Title" xml:space="preserve">
-    <value>Success</value>
+    <value>성공</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
     <value>Disable CCD 1 to get stability on both FPS and temperatures</value>
@@ -233,52 +233,52 @@
     <value>X3D Gaming Mode</value>
   </data>
   <data name="Apply" xml:space="preserve">
-    <value>Apply</value>
+    <value>적용</value>
   </data>
   <data name="ApplyAndClose" xml:space="preserve">
-    <value>Apply &amp; Close</value>
+    <value>적용 및 닫기</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="ArgumentWindow_Category_Debugging" xml:space="preserve">
-    <value>Debugging</value>
+    <value>디버깅</value>
   </data>
   <data name="ArgumentWindow_Category_General" xml:space="preserve">
-    <value>General</value>
+    <value>일반</value>
   </data>
   <data name="ArgumentWindow_Category_Hardware_Automation" xml:space="preserve">
-    <value>Hardware &amp; Automation</value>
+    <value>하드웨어 및 자동화</value>
   </data>
   <data name="ArgumentWindow_Category_Lighting" xml:space="preserve">
-    <value>Lighting</value>
+    <value>조명</value>
   </data>
   <data name="ArgumentWindow_Category_Network_Proxy" xml:space="preserve">
-    <value>Network Proxy</value>
+    <value>네트워크 프록시</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Open an argument window for convenient modification of arguments.</value>
+    <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
     <value>Edit Arguments</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
-    <value>Allow All Certificates</value>
+    <value>모든 인증서 허용</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowPowerModesBattery" xml:space="preserve">
     <value>Allow All Power Modes on Battery</value>
   </data>
   <data name="ArgumentWindow_Flag_DebugMode" xml:space="preserve">
-    <value>Debug Mode</value>
+    <value>디버그 모드</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableConflictWarning" xml:space="preserve">
-    <value>Disable Conflict Warning</value>
+    <value>충돌 경고 끄기</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableLenovoLighting" xml:space="preserve">
     <value>Disable Lenovo Lighting</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableRgbKb" xml:space="preserve">
-    <value>Disable RGB Keyboard</value>
+    <value>RGB 키보드 끄기</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableSpectrumKb" xml:space="preserve">
     <value>Disable Spectrum Keyboard</value>
@@ -296,16 +296,16 @@
     <value>Experimental GPU Working Mode</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyPassword" xml:space="preserve">
-    <value>Proxy Password</value>
+    <value>프록시 비밀번호</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUrl" xml:space="preserve">
-    <value>Proxy URL</value>
+    <value>프록시 URL</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUsername" xml:space="preserve">
-    <value>Proxy Username</value>
+    <value>프록시 사용자 이름</value>
   </data>
   <data name="ArgumentWindow_Flag_SkipCompatCheck" xml:space="preserve">
-    <value>Skip Compatibility Check</value>
+    <value>호환성 확인 건너뛰기</value>
   </data>
   <data name="ArgumentWindow_Flag_StartMinimized" xml:space="preserve">
     <value>Start Minimized</value>
@@ -336,13 +336,13 @@ Only actions that match current state will run.</value>
     <value>Actions</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Placeholder" xml:space="preserve">
-    <value>Name...</value>
+    <value>이름 입력...</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Title" xml:space="preserve">
-    <value>Add new</value>
+    <value>새로 추가</value>
   </data>
   <data name="AutomationPage_ChangeIcon" xml:space="preserve">
-    <value>Change icon</value>
+    <value>아이콘 변경</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
     <value>Automatic (All Methods)</value>
@@ -372,10 +372,10 @@ Only actions that match current state will run.</value>
     <value>Quick Actions</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Placeholder" xml:space="preserve">
-    <value>Name...</value>
+    <value>이름 입력...</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Title" xml:space="preserve">
-    <value>Rename</value>
+    <value>이름 바꾸기</value>
   </data>
   <data name="AutomationPage_Reverted_Message" xml:space="preserve">
     <value>All changes reverted!</value>
@@ -414,13 +414,13 @@ Only actions that match current state will run.</value>
     <value>Completed with errors.</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Title" xml:space="preserve">
-    <value>Run now</value>
+    <value>지금 실행</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Message" xml:space="preserve">
     <value>Completed successfully!</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Title" xml:space="preserve">
-    <value>Run now</value>
+    <value>지금 실행</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
     <value>Run on startup</value>
@@ -429,16 +429,16 @@ Only actions that match current state will run.</value>
     <value>When enabled, this automation will check and apply when the app starts</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
-    <value>{0} step</value>
+    <value>{0} 단계</value>
   </data>
   <data name="AutomationPipelineControl_Step_Many" xml:space="preserve">
-    <value>{0} steps</value>
+    <value>{0} 단계</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_After" xml:space="preserve">
     <value>After {0}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Apps" xml:space="preserve">
-    <value>Apps</value>
+    <value>앱</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunrise" xml:space="preserve">
     <value>At sunrise</value>
@@ -474,13 +474,13 @@ Only actions that match current state will run.</value>
     <value>Choose how the battery is charged.</value>
   </data>
   <data name="BatteryAutomationStepControl_Title" xml:space="preserve">
-    <value>Battery Mode</value>
+    <value>배터리 모드</value>
   </data>
   <data name="BatteryModeControl_Message" xml:space="preserve">
     <value>Choose how the battery is charged.</value>
   </data>
   <data name="BatteryModeControl_Title" xml:space="preserve">
-    <value>Battery Mode</value>
+    <value>배터리 모드</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Message" xml:space="preserve">
     <value>When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning.</value>
@@ -501,34 +501,34 @@ Only actions that match current state will run.</value>
     <value>Connected, not charging</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Message" xml:space="preserve">
-    <value>Battery maximum charge capacity.</value>
+    <value>배터리의 최대 충전 용량입니다.</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Title" xml:space="preserve">
-    <value>Battery health</value>
+    <value>배터리 상태</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Message" xml:space="preserve">
-    <value>Current temperature of the battery.</value>
+    <value>배터리의 현재 온도입니다.</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Title" xml:space="preserve">
-    <value>Battery temperature</value>
+    <value>배터리 온도</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Message" xml:space="preserve">
-    <value>Current battery capacity.</value>
+    <value>배터리의 현재 용량입니다.</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Title" xml:space="preserve">
-    <value>Current capacity</value>
+    <value>현재 용량</value>
   </data>
   <data name="BatteryPage_CycleCount_Message" xml:space="preserve">
-    <value>Number of charge/discharge cycles.</value>
+    <value>배터리의 충전/방전 횟수입니다.</value>
   </data>
   <data name="BatteryPage_CycleCount_Title" xml:space="preserve">
-    <value>Cycle count</value>
+    <value>사이클 수</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Message" xml:space="preserve">
-    <value>Battery capacity as designed.</value>
+    <value>배터리의 설계된 용량입니다.</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Title" xml:space="preserve">
-    <value>Design capacity</value>
+    <value>설계 용량</value>
   </data>
   <data name="BatteryPage_DischargeRate_Message" xml:space="preserve">
     <value>Rate at which battery is charged (+), or discharged (-).</value>
@@ -614,43 +614,43 @@ Supported formats are: {1}.</value>
     <value>Default boot logo set.</value>
   </data>
   <data name="BootLogoWindow_SetError_Cannot_Mount_EFI_Partition" xml:space="preserve">
-    <value>Cannot mount EFI partition.</value>
+    <value>EFI 파티션을 마운트할 수 없습니다.</value>
   </data>
   <data name="BootLogoWindow_SetError_Cannot_Set_UEFI_Privilege" xml:space="preserve">
-    <value>Cannot set UEFI privilege.</value>
+    <value>UEFI 권한을 설정할 수 없습니다.</value>
   </data>
   <data name="BootLogoWindow_SetError_Invalid_Image_Format" xml:space="preserve">
-    <value>Invalid image format.</value>
+    <value>이미지 형식이 잘못되었습니다.</value>
   </data>
   <data name="BootLogoWindow_SetError_Invalid_Image_Size" xml:space="preserve">
-    <value>Invalid image size.</value>
+    <value>이미지 크기가 잘못되었습니다.</value>
   </data>
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
-    <value>Not enough free space on EFI partition.</value>
+    <value>EFI 파티션의 여유 공간이 부족합니다.</value>
   </data>
   <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>Status</value>
+    <value>상태</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
-    <value>Boot Logo</value>
+    <value>부팅 로고</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>취소</value>
   </data>
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
   <data name="Clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>지우기</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Close</value>
+    <value>닫기</value>
   </data>
   <data name="CloseAutomationStepControl_Message" xml:space="preserve">
-    <value>Close the Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit을 닫습니다.</value>
   </data>
   <data name="CloseAutomationStepControl_Title" xml:space="preserve">
-    <value>Close</value>
+    <value>닫기</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Blue</value>
@@ -685,22 +685,22 @@ Switching modes may require restart.</value>
     <value>Error occured when reading device information.</value>
   </data>
   <data name="Continue" xml:space="preserve">
-    <value>Continue</value>
+    <value>계속</value>
   </data>
   <data name="CopiedToClipboard_Message_WithParam" xml:space="preserve">
     <value>"{0}" copied to clipboard.</value>
   </data>
   <data name="CopiedToClipboard_Title" xml:space="preserve">
-    <value>Copied!</value>
+    <value>복사 완료!</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
-    <value>Copy all</value>
+    <value>모두 복사</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>새로 만들기</value>
   </data>
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
-    <value>Create Action</value>
+    <value>액션 만들기</value>
   </data>
   <data name="CustomFanCurve_Accelerate" xml:space="preserve">
     <value>Accelerate</value>
@@ -721,7 +721,7 @@ Switching modes may require restart.</value>
     <value>Deceleration control's how much PWM is decreased to the current PWM Value.</value>
   </data>
   <data name="CustomFanCurve_Fan_Speed" xml:space="preserve">
-    <value>Fan Speed %</value>
+    <value>팬 속도 %</value>
   </data>
   <data name="CustomFanCurve_Max_Pwm" xml:space="preserve">
     <value>Max Pwm</value>
@@ -730,42 +730,42 @@ Switching modes may require restart.</value>
     <value>PWM Value</value>
   </data>
   <data name="CustomFanCurve_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>설정</value>
   </data>
   <data name="CustomFanCurve_Temperature" xml:space="preserve">
-    <value>Temperature °C</value>
+    <value>온도 °C</value>
   </data>
   <data name="CustomFanCurve_Title" xml:space="preserve">
-    <value>Real-Time Monitoring</value>
+    <value>실시간 모니터링</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
-    <value>AC Connected</value>
+    <value>AC 연결됨</value>
   </data>
   <data name="DashboardBattery_AcDisconnected" xml:space="preserve">
-    <value>AC Disconnected</value>
+    <value>AC 연결 해제됨</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>사용자 정의</value>
   </data>
   <data name="DashboardPage_Display_Title" xml:space="preserve">
-    <value>Display</value>
+    <value>디스플레이</value>
   </data>
   <data name="DashboardPage_Graphics_Title" xml:space="preserve">
-    <value>Graphics</value>
+    <value>그래픽</value>
   </data>
   <data name="DashboardPage_Other_Title" xml:space="preserve">
-    <value>Other</value>
+    <value>기타</value>
   </data>
   <data name="DashboardPage_Power_Title" xml:space="preserve">
-    <value>Power</value>
+    <value>전원</value>
   </data>
   <data name="DashboardPage_Title" xml:space="preserve">
-    <value>Home</value>
+    <value>홈</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Disable discrete GPU if it is active unnecessarily.
+    <value>불필요하게 활성화된 외장 GPU를 끕니다.
 
-WARNING: This action will not run correctly, if internal display is off or Hybrid mode is not active.</value>
+경고: 내장 디스플레이가 꺼져 있거나 하이브리드 모드가 비활성화된 경우 외장 GPU를 정상적으로 끌 수 없습니다.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Deactivate GPU</value>
@@ -861,19 +861,19 @@ WARNING: This action will not run correctly, if internal display is off or Hybri
     <value>Disable discrete GPU, if it is active unnecessarily.</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>기타</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
-    <value>A monitor is connected to nVidia GPU.</value>
+    <value>모니터가 NVIDIA GPU에 연결되어 있습니다.</value>
   </data>
   <data name="DiscreteGPUControl_NoProcesses" xml:space="preserve">
-    <value>No processes</value>
+    <value>프로세스 없음</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState" xml:space="preserve">
     <value>Performance state</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState_Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>알 수 없음</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
     <value>Adjust how often the app checks for GPU activity.</value>
@@ -885,16 +885,16 @@ WARNING: This action will not run correctly, if internal display is off or Hybri
     <value>Let Windows decide</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
-    <value>Discrete GPU</value>
+    <value>외장 GPU</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
-    <value>Integrated GPU</value>
+    <value>내장 GPU</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
-    <value>Processes</value>
+    <value>프로세스</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
-    <value>Restart GPU</value>
+    <value>GPU 재시작</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
     <value>Delay before initializing the dGPU monitoring service.</value>
@@ -903,15 +903,15 @@ WARNING: This action will not run correctly, if internal display is off or Hybri
     <value>Startup Delay</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
-    <value>Discrete GPU</value>
+    <value>외장 GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Change display brightness of the built-in display.
+    <value>내장 디스플레이의 밝기를 변경합니다.
 
-WARNING: This action will not run correctly, if internal display is off.</value>
+경고: 내장 디스플레이가 꺼져 있는 경우 밝기를 정상적으로 변경할 수 없습니다.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
-    <value>Display brightness</value>
+    <value>디스플레이 밝기</value>
   </data>
   <data name="DonatePage_DonateWith" xml:space="preserve">
     <value>Donate with</value>
@@ -927,48 +927,48 @@ Thanks in advance!</value>
     <value>Donate</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Change scaling of the built-in display.
+    <value>내장 디스플레이의 화면 비율을 변경합니다.
 
-WARNING: This action will not run correctly, if internal display is off.</value>
+경고: 내장 디스플레이가 꺼져 있는 경우 화면 비율을 정상적으로 변경할 수 없습니다.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
   </data>
   <data name="DpiScaleControl_Message" xml:space="preserve">
-    <value>Change scale of the built-in display.</value>
+    <value>내장 디스플레이의 배율을 변경합니다.</value>
   </data>
   <data name="DpiScaleControl_Title" xml:space="preserve">
     <value>DPI</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Edit</value>
+    <value>편집</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Message" xml:space="preserve">
-    <value>Name</value>
+    <value>이름</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Title" xml:space="preserve">
-    <value>Edit group name</value>
+    <value>그룹 이름 편집</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Message" xml:space="preserve">
-    <value>Name</value>
+    <value>이름</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
-    <value>Create group</value>
+    <value>그룹 만들기</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Some features may not appear on the Dashboard depending on state and configuration of your laptop.</value>
+    <value>노트북의 상태와 설정에 따라 대시보드에 일부 기능이 보이지 않을 수 있습니다.</value>
   </data>
   <data name="EditDashboardWindow_Sensors" xml:space="preserve">
-    <value>Sensors</value>
+    <value>센서</value>
   </data>
   <data name="EditDashboardWindow_Title" xml:space="preserve">
-    <value>Customize Dashboard</value>
+    <value>대시보드 사용자 정의</value>
   </data>
   <data name="EditSensorWindow_Title" xml:space="preserve">
-    <value>Edit Sensor</value>
+    <value>센서 편집</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>오류</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
@@ -992,10 +992,10 @@ WARNING: This action will not run correctly, if internal display is off.</value>
     <value>Exclude Refresh Rates</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>나가기</value>
   </data>
   <data name="Export" xml:space="preserve">
-    <value>Export</value>
+    <value>내보내기</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
     <value>Use only integrated GPU when on battery and both integrated and discrete GPU when AC adapter is connected. When a non-standard adapter is connected, system switches to Hybrid-iGPU Only Mode.</value>
@@ -1380,11 +1380,20 @@ Click Yes to disable and No to ignore.</value>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Add Custom Key</value>
   </data>
-  <data name="KeyDiscovery_EnterKeyName" xml:space="preserve">
-    <value>Enter key name...</value>
+  <data name="KeyDiscovery_Added" xml:space="preserve">
+    <value>Added</value>
   </data>
-  <data name="KeyDiscovery_Instruction" xml:space="preserve">
-    <value>Press the Fn hotkey to check if it supports customization.</value>
+  <data name="KeyDiscovery_CodeText" xml:space="preserve">
+    <value>Code: {0}</value>
+  </data>
+  <data name="KeyDiscovery_KnownKeyTooltip" xml:space="preserve">
+    <value>Known key</value>
+  </data>
+  <data name="KeyDiscovery_Listening" xml:space="preserve">
+    <value>Listening for key presses... Press ESC to stop.</value>
+  </data>
+  <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
+    <value>Unknown key – can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1663,6 +1672,9 @@ Click Yes to disable and No to ignore.</value>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>AC Adapter</value>
   </data>
+  <data name="NotificationsSettingsWindow_AirplaneMode" xml:space="preserve">
+    <value>Airplane mode</value>
+  </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
     <value>Actions</value>
   </data>
@@ -1736,6 +1748,12 @@ It won't affect other full screen windows, but you will not be able to click on 
   </data>
   <data name="Notification_ACAdapterDisconnected" xml:space="preserve">
     <value>AC adapter disconnected</value>
+  </data>
+  <data name="Notification_AirplaneModeOff" xml:space="preserve">
+    <value>Airplane mode off</value>
+  </data>
+  <data name="Notification_AirplaneModeOn" xml:space="preserve">
+    <value>Airplane mode on</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
     <value>Camera off</value>
@@ -2579,6 +2597,12 @@ Make sure that your script runs correctly first.</value>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
     <value>Accent color</value>
   </data>
+  <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
+    <value>Keep the app window above all other windows.</value>
+  </data>
+  <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
+    <value>Pin to Top</value>
+  </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
     <value>Start minimized to tray when you log in to Windows.</value>
   </data>
@@ -2627,14 +2651,14 @@ Make sure that your script runs correctly first.</value>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Check</value>
   </data>
+  <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
+    <value>Check now for the latest version.</value>
+  </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>Checking for updates...</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
     <value>Check for updates</value>
-  </data>
-  <data name="SettingsPage_ClearBackgroundImage_Title" xml:space="preserve">
-    <value>Image Cleared</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
     <value>Clear Image</value>
@@ -2654,11 +2678,14 @@ Make sure that your script runs correctly first.</value>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
     <value>Restart is recommended after changing this option.</value>
   </data>
+  <data name="SettingsPage_Custom_BackgroundImage_Dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Custom Background Image</value>
+    <value>Set a custom wallpaper for the app window.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Custom Background Image</value>
+    <value>Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space may have not been disabled correctly</value>
@@ -2747,13 +2774,13 @@ Restart is recommended after changing this option.</value>
     <value>Excluded Processes</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>You can exclude refresh rates, to make Fn+R shortcut more useful.</value>
+    <value>Hide specific refresh rates from the Fn+R cycle.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>Exclude Refresh Rates</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
+    <value>Use hardware acceleration for the user interface.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
     <value>Hardware Acceleration</value>
@@ -2795,19 +2822,19 @@ Restart is recommended after changing this option.</value>
     <value>Key Discovery</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Select language.</value>
+    <value>Change the display language of the app.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Lock LLT's window size. To prevent something change it.</value>
+    <value>Prevent the window from being resized.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Lock Window Size</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Always minimize to tray. Close with right click on tray icon.</value>
+    <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>Minimize on close</value>
@@ -2867,7 +2894,7 @@ Restart is recommended after changing this option.</value>
     <value>Sensor Settings</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Fn Lock will be temporarily disabled when Alt, Ctrl or Shift key is depressed.</value>
+    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Smart Fn Lock</value>
@@ -2891,7 +2918,7 @@ Restart is recommended after changing this option.</value>
     <value>Smart Keys</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>When on, same brightness level will be applied to all Windows power plans whenever you change it.</value>
+    <value>Apply the same brightness level across all Windows power plans.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>Single Display Brightness</value>
@@ -2903,7 +2930,7 @@ Restart is recommended after changing this option.</value>
     <value>Temperature</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Set light theme, dark theme or follow system settings.</value>
+    <value>Set light, dark, or system-matched theme.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>Theme</value>
@@ -2911,11 +2938,20 @@ Restart is recommended after changing this option.</value>
   <data name="SettingsPage_Title" xml:space="preserve">
     <value>Settings</value>
   </data>
+  <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
+    <value>Choose between stable, beta and dev releases.</value>
+  </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>Update Channel</value>
   </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
+    <value>Choose how often to check for new versions.</value>
+  </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>Automatically check for updates</value>
+  </data>
+  <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
+    <value>Choose how updates are downloaded and installed.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>Update Method</value>
@@ -2972,7 +3008,7 @@ Restart is recommended after changing this option.</value>
     <value>Key Discovery</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
-    <value>Find key that is not defined in LLT.</value>
+    <value>Press Fn hotkeys to discover which ones can be added and customized as Smart Keys.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
     <value>Start</value>
@@ -2981,7 +3017,28 @@ Restart is recommended after changing this option.</value>
     <value>Stop</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Label</value>
+  </data>
+  <data name="SpecialKeyDetail_Mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="SpecialKeyDetail_Mode_Description" xml:space="preserve">
+    <value>Choose how this key responds when pressed.</value>
+  </data>
+  <data name="SpecialKeysWindow_Description" xml:space="preserve">
+    <value>Assign custom Quick Actions to Fn keys. Each key can override its default behavior with a custom pipeline. Right-click any key to hide it from this list.</value>
+  </data>
+  <data name="SpecialKeysWindow_HideHiddenKeys" xml:space="preserve">
+    <value>Hide {0} hidden keys</value>
+  </data>
+  <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
+    <value>Show {0} hidden keys</value>
+  </data>
+  <data name="SpecialKey_DriverSuffix" xml:space="preserve">
+    <value>(Driver)</value>
+  </data>
+  <data name="SpecialKey_UnknownKey" xml:space="preserve">
+    <value>Key {0}</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>Adjust keyboard backlight brightness.</value>
@@ -3214,6 +3271,9 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
   <data name="UnexpectedException" xml:space="preserve">
     <value>Unexpected exception occurred:
 {0}</value>
+  </data>
+  <data name="Unhide" xml:space="preserve">
+    <value>Unhide</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Unnamed</value>
