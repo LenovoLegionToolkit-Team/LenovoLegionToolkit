@@ -257,7 +257,7 @@
     <value>Proxy de red</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Abre una ventana de argumentos para modificar cómodamente los argumentos.</value>
+    <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
     <value>Editar argumentos</value>
@@ -2644,14 +2644,14 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Comprobar</value>
   </data>
+  <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
+    <value>Check now for the latest version.</value>
+  </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>Buscando actualizaciones....</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
     <value>Buscar actualizaciones</value>
-  </data>
-  <data name="SettingsPage_ClearBackgroundImage_Title" xml:space="preserve">
-    <value>Imagen borrada</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
     <value>Quitar imagen</value>
@@ -2671,11 +2671,14 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
     <value>Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
+  <data name="SettingsPage_Custom_BackgroundImage_Dim" xml:space="preserve">
+    <value>Dim</value>
+  </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Imagen de fondo personalizada</value>
+    <value>Set a custom wallpaper for the app window.</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Imagen de fondo personalizada</value>
+    <value>Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Es posible que Legion Space no se haya desactivado correctamente</value>
@@ -2764,13 +2767,13 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Procesos excluidos</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Puede excluir las tasas de refresco, para que el acceso rápido Fn+R sea más útil.</value>
+    <value>Hide specific refresh rates from the Fn+R cycle.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>Excluir tasas de refresco</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Utiliza la aceleración por hardware para la interfaz de usuario. Esto puede mejorar el rendimiento y la fluidez.</value>
+    <value>Use hardware acceleration for the user interface.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
     <value>Aceleración por hardware</value>
@@ -2812,20 +2815,19 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Key Discovery</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Seleccionar idioma.</value>
+    <value>Change the display language of the app.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Idioma</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Bloquea el tamaño de la ventana de LTT. Para así evitar que algo lo modifique.</value>
+    <value>Prevent the window from being resized.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Bloquear el tamaño de ventana</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Minimizar siempre en la bandeja. Haciendo clic derecho en el icono de la bandeja, podrá cerrar el programa.
-</value>
+    <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>Minimizar al cerrar</value>
@@ -2885,7 +2887,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Configuración de los sensores</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>El bloqueo Fn se desactivará temporalmente al pulsar las teclas Mayús, Ctrl o Alt.</value>
+    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Bloqueo Fn inteligente</value>
@@ -2909,7 +2911,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Smart Keys</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Si está activado, se aplicará el mismo nivel de brillo a todos los planes de energía de Windows cada vez que lo cambie.</value>
+    <value>Apply the same brightness level across all Windows power plans.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>Un solo brillo de pantalla</value>
@@ -2921,7 +2923,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Temperatura</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Establecer un tema claro, un tema oscuro o seguir con la configuración del sistema.</value>
+    <value>Set light, dark, or system-matched theme.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>Tema</value>
@@ -2929,11 +2931,20 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   <data name="SettingsPage_Title" xml:space="preserve">
     <value>Ajustes</value>
   </data>
+  <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
+    <value>Choose between stable, beta and dev releases.</value>
+  </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>Canal de actualización</value>
   </data>
+  <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
+    <value>Choose how often to check for new versions.</value>
+  </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>Buscar actualizaciones automáticamente</value>
+  </data>
+  <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
+    <value>Choose how updates are downloaded and installed.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>Método de actualización</value>
