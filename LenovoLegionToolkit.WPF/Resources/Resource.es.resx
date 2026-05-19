@@ -701,42 +701,6 @@ El cambio de modo puede requerir un reinicio.</value>
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
     <value>Crear acción</value>
   </data>
-  <data name="CustomFanCurve_Accelerate" xml:space="preserve">
-    <value>Acelerar</value>
-  </data>
-  <data name="CustomFanCurve_Accelerate_Tooltip" xml:space="preserve">
-    <value>El control de aceleración determina cuánto PWM se añade al valor PWM actual.</value>
-  </data>
-  <data name="CustomFanCurve_Critical_Temp" xml:space="preserve">
-    <value>Temperatura Crítica</value>
-  </data>
-  <data name="CustomFanCurve_Critical_Temp_Tooltip" xml:space="preserve">
-    <value>Forzar la velocidad máxima cuando la temperatura es mayor o igual a esta temperatura para evitar que se queme.</value>
-  </data>
-  <data name="CustomFanCurve_Deceleration" xml:space="preserve">
-    <value>Desaceleración</value>
-  </data>
-  <data name="CustomFanCurve_Deceleration_Tooltip" xml:space="preserve">
-    <value>El control de desaceleración es la cantidad en que se reduce el PWM hasta el valor PWM actual.</value>
-  </data>
-  <data name="CustomFanCurve_Fan_Speed" xml:space="preserve">
-    <value>Velocidad del ventilador %</value>
-  </data>
-  <data name="CustomFanCurve_Max_Pwm" xml:space="preserve">
-    <value>Max Pwm</value>
-  </data>
-  <data name="CustomFanCurve_PWM_Value" xml:space="preserve">
-    <value>Valor del PWM</value>
-  </data>
-  <data name="CustomFanCurve_Settings" xml:space="preserve">
-    <value>Ajustes</value>
-  </data>
-  <data name="CustomFanCurve_Temperature" xml:space="preserve">
-    <value>Temperature °C</value>
-  </data>
-  <data name="CustomFanCurve_Title" xml:space="preserve">
-    <value>Monitorización en tiempo real</value>
-  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>Conectado a CA</value>
   </data>
@@ -1332,9 +1296,6 @@ Si la dGPU no responde del todo, reinicie su portátil.</value>
   <data name="Inactive" xml:space="preserve">
     <value>Inactiva</value>
   </data>
-  <data name="IncompatibleDevice_Message" xml:space="preserve">
-    <value>Este dispositivo no es compatible con Lenovo Legion Toolkit.</value>
-  </data>
   <data name="Information" xml:space="preserve">
     <value>Información</value>
   </data>
@@ -1597,9 +1558,6 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   </data>
   <data name="MainWindow_NavigationItem_Donate" xml:space="preserve">
     <value>Donar</value>
-  </data>
-  <data name="MainWindow_NavigationItem_FanCurve" xml:space="preserve">
-    <value>Curva del ventilador</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
     <value>Teclado</value>
@@ -2383,15 +2341,6 @@ Asegúrese primero de que su script se ejecuta correctamente.</value>
   <data name="Seconds" xml:space="preserve">
     <value>{0}s</value>
   </data>
-  <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Elija una o varias acciones rápidas para desplazarse por ellas.</value>
-  </data>
-  <data name="SelectSmartKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>Ninguna acción rápida definida.</value>
-  </data>
-  <data name="SelectSmartKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Mostrar esta aplicación</value>
-  </data>
   <data name="SelectSpecialKeyPipelinesWindow_Configure_Title" xml:space="preserve">
     <value>Configure {0}</value>
   </data>
@@ -2919,18 +2868,6 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Bloqueo Fn inteligente</value>
   </data>
-  <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
-    <value>Asignar acción rápida al presionar Fn+F9 dos veces.</value>
-  </data>
-  <data name="SettingsPage_SmartKeyDoublePressAction_Title" xml:space="preserve">
-    <value>Acción secundaria de la tecla inteligente</value>
-  </data>
-  <data name="SettingsPage_SmartKeySinglePressAction_Message" xml:space="preserve">
-    <value>Asignar acción rápida al presionar Fn+F9 una vez.</value>
-  </data>
-  <data name="SettingsPage_SmartKeySinglePressAction_Title" xml:space="preserve">
-    <value>Acción de la tecla inteligente</value>
-  </data>
   <data name="SettingsPage_SmartKeys_Message" xml:space="preserve">
     <value>Customize the Fn hotkeys.</value>
   </data>
@@ -2968,7 +2905,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Choose how often to check for new versions.</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
-    <value>Buscar actualizaciones automáticamente</value>
+    <value>Update Frequency</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
     <value>Choose how updates are downloaded and installed.</value>
