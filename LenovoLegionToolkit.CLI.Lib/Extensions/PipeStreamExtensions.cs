@@ -27,14 +27,15 @@ public static class PipeStreamExtensions
             throw new InvalidOperationException("ReadMode is not PipeTransmissionMode.Message");
 
         var buffer = new byte[1024];
-        var builder = new StringBuilder();
+        using var ms = new global::System.IO.MemoryStream();
 
         do
         {
-            _ = await stream.ReadAsync(buffer, token).ConfigureAwait(false);
-            builder.Append(Encoding.GetString(buffer));
+            var read = await stream.ReadAsync(buffer, token).ConfigureAwait(false);
+            if (read <= 0) break;
+            ms.Write(buffer, 0, read);
         } while (!stream.IsMessageComplete);
 
-        return JsonConvert.DeserializeObject<T>(builder.ToString());
+        return JsonConvert.DeserializeObject<T>(Encoding.GetString(ms.GetBuffer(), 0, (int)ms.Length));
     }
 }
