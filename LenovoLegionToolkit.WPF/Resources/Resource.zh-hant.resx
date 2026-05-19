@@ -701,42 +701,6 @@
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
     <value>建立功能</value>
   </data>
-  <data name="CustomFanCurve_Accelerate" xml:space="preserve">
-    <value>Accelerate</value>
-  </data>
-  <data name="CustomFanCurve_Accelerate_Tooltip" xml:space="preserve">
-    <value>Accelerate control's how much PWM is added to the current PWM Value.</value>
-  </data>
-  <data name="CustomFanCurve_Critical_Temp" xml:space="preserve">
-    <value>臨界溫度</value>
-  </data>
-  <data name="CustomFanCurve_Critical_Temp_Tooltip" xml:space="preserve">
-    <value>Force the maximum speed when the temperature is greater than or equal to this temperature to prevent burning out.</value>
-  </data>
-  <data name="CustomFanCurve_Deceleration" xml:space="preserve">
-    <value>Deceleration</value>
-  </data>
-  <data name="CustomFanCurve_Deceleration_Tooltip" xml:space="preserve">
-    <value>Deceleration control's how much PWM is decreased to the current PWM Value.</value>
-  </data>
-  <data name="CustomFanCurve_Fan_Speed" xml:space="preserve">
-    <value>風扇轉速 %</value>
-  </data>
-  <data name="CustomFanCurve_Max_Pwm" xml:space="preserve">
-    <value>Max Pwm</value>
-  </data>
-  <data name="CustomFanCurve_PWM_Value" xml:space="preserve">
-    <value>PWM 值</value>
-  </data>
-  <data name="CustomFanCurve_Settings" xml:space="preserve">
-    <value>設定</value>
-  </data>
-  <data name="CustomFanCurve_Temperature" xml:space="preserve">
-    <value>Temperature °C</value>
-  </data>
-  <data name="CustomFanCurve_Title" xml:space="preserve">
-    <value>即時監測</value>
-  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>交流電</value>
   </data>
@@ -1329,9 +1293,6 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="Inactive" xml:space="preserve">
     <value>休眠中</value>
   </data>
-  <data name="IncompatibleDevice_Message" xml:space="preserve">
-    <value>此裝置不相容於 Lenovo Legion 工具套件。</value>
-  </data>
   <data name="Information" xml:space="preserve">
     <value>資訊</value>
   </data>
@@ -1594,9 +1555,6 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="MainWindow_NavigationItem_Donate" xml:space="preserve">
     <value>贊助</value>
-  </data>
-  <data name="MainWindow_NavigationItem_FanCurve" xml:space="preserve">
-    <value>風扇曲線</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
     <value>鍵盤</value>
@@ -2380,15 +2338,6 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="Seconds" xml:space="preserve">
     <value>{0} 秒</value>
   </data>
-  <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>選擇一個或更多快捷動作來循環執行。</value>
-  </data>
-  <data name="SelectSmartKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>尚未定義快捷功能。</value>
-  </data>
-  <data name="SelectSmartKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>顯示此應用程式</value>
-  </data>
   <data name="SelectSpecialKeyPipelinesWindow_Configure_Title" xml:space="preserve">
     <value>Configure {0}</value>
   </data>
@@ -2916,18 +2865,6 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>智慧鎖定 Fn 鍵</value>
   </data>
-  <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
-    <value>指派雙重點擊 Fn+F9 的快捷功能。</value>
-  </data>
-  <data name="SettingsPage_SmartKeyDoublePressAction_Title" xml:space="preserve">
-    <value>Smart Key 次要動作</value>
-  </data>
-  <data name="SettingsPage_SmartKeySinglePressAction_Message" xml:space="preserve">
-    <value>指派點擊 Fn+F9 的快捷功能。</value>
-  </data>
-  <data name="SettingsPage_SmartKeySinglePressAction_Title" xml:space="preserve">
-    <value>Smart Key 動作</value>
-  </data>
   <data name="SettingsPage_SmartKeys_Message" xml:space="preserve">
     <value>Customize the Fn hotkeys.</value>
   </data>
@@ -2965,7 +2902,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Choose how often to check for new versions.</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
-    <value>自動檢查更新</value>
+    <value>Update Frequency</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
     <value>Choose how updates are downloaded and installed.</value>
