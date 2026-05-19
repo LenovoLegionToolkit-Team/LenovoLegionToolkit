@@ -702,42 +702,6 @@
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
     <value>Создать действие</value>
   </data>
-  <data name="CustomFanCurve_Accelerate" xml:space="preserve">
-    <value>Ускорение</value>
-  </data>
-  <data name="CustomFanCurve_Accelerate_Tooltip" xml:space="preserve">
-    <value>Параметр «Ускорение» определяет, какая величина PWM добавляется к текущему значению.</value>
-  </data>
-  <data name="CustomFanCurve_Critical_Temp" xml:space="preserve">
-    <value>Критическая Температура</value>
-  </data>
-  <data name="CustomFanCurve_Critical_Temp_Tooltip" xml:space="preserve">
-    <value>Принудительно устанавливает максимальную скорость вентилятора, если температура достигает или превышает это значение, чтобы предотвратить перегрев.</value>
-  </data>
-  <data name="CustomFanCurve_Deceleration" xml:space="preserve">
-    <value>Замедление</value>
-  </data>
-  <data name="CustomFanCurve_Deceleration_Tooltip" xml:space="preserve">
-    <value>Параметр «Замедление» определяет, какая величина PWM вычитается из текущего значения.</value>
-  </data>
-  <data name="CustomFanCurve_Fan_Speed" xml:space="preserve">
-    <value>Скорость вентилятора %</value>
-  </data>
-  <data name="CustomFanCurve_Max_Pwm" xml:space="preserve">
-    <value>Максимальный PWM</value>
-  </data>
-  <data name="CustomFanCurve_PWM_Value" xml:space="preserve">
-    <value>Значение PWM</value>
-  </data>
-  <data name="CustomFanCurve_Settings" xml:space="preserve">
-    <value>Настройки</value>
-  </data>
-  <data name="CustomFanCurve_Temperature" xml:space="preserve">
-    <value>Температура, °C</value>
-  </data>
-  <data name="CustomFanCurve_Title" xml:space="preserve">
-    <value>Мониторинг в режиме реального времени</value>
-  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>Подключено к сети питания</value>
   </data>
@@ -1331,9 +1295,6 @@
   <data name="Inactive" xml:space="preserve">
     <value>Неактивен</value>
   </data>
-  <data name="IncompatibleDevice_Message" xml:space="preserve">
-    <value>Это устройство не совместимо с Lenovo Legion Toolkit.</value>
-  </data>
   <data name="Information" xml:space="preserve">
     <value>Информация</value>
   </data>
@@ -1596,9 +1557,6 @@
   </data>
   <data name="MainWindow_NavigationItem_Donate" xml:space="preserve">
     <value>Донат</value>
-  </data>
-  <data name="MainWindow_NavigationItem_FanCurve" xml:space="preserve">
-    <value>Кривая вентилятора</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
     <value>Клавиатура</value>
@@ -2382,15 +2340,6 @@
   <data name="Seconds" xml:space="preserve">
     <value>{0}s</value>
   </data>
-  <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Выбрать одно или несколько быстрых действий для последовательного выполнения</value>
-  </data>
-  <data name="SelectSmartKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>Умная клавиша не определена.</value>
-  </data>
-  <data name="SelectSmartKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Отобразить это приложение</value>
-  </data>
   <data name="SelectSpecialKeyPipelinesWindow_Configure_Title" xml:space="preserve">
     <value>Configure {0}</value>
   </data>
@@ -2918,18 +2867,6 @@
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Умная клавиша Fn Lock</value>
   </data>
-  <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
-    <value>Назначить быстрое действие на двойное нажатие Fn+F9.</value>
-  </data>
-  <data name="SettingsPage_SmartKeyDoublePressAction_Title" xml:space="preserve">
-    <value>Вторичное действие умной клавиши</value>
-  </data>
-  <data name="SettingsPage_SmartKeySinglePressAction_Message" xml:space="preserve">
-    <value>Назначить быстрое действие на одиночное нажатие Fn+F9.</value>
-  </data>
-  <data name="SettingsPage_SmartKeySinglePressAction_Title" xml:space="preserve">
-    <value>Действие умной клавиши</value>
-  </data>
   <data name="SettingsPage_SmartKeys_Message" xml:space="preserve">
     <value>Customize the Fn hotkeys.</value>
   </data>
@@ -2967,7 +2904,7 @@
     <value>Choose how often to check for new versions.</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
-    <value>Автоматически проверять наличие обновлений</value>
+    <value>Update Frequency</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
     <value>Choose how updates are downloaded and installed.</value>
