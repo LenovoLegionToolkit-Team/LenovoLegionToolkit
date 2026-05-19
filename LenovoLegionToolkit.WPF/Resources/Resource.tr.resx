@@ -702,42 +702,6 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
     <value>Eylem Oluştur</value>
   </data>
-  <data name="CustomFanCurve_Accelerate" xml:space="preserve">
-    <value>Hızlandır</value>
-  </data>
-  <data name="CustomFanCurve_Accelerate_Tooltip" xml:space="preserve">
-    <value>Hızlandırma kontrolü, mevcut PWM değerine ne kadar PWM ekleneceğini belirler.</value>
-  </data>
-  <data name="CustomFanCurve_Critical_Temp" xml:space="preserve">
-    <value>Kritik Sıcaklık</value>
-  </data>
-  <data name="CustomFanCurve_Critical_Temp_Tooltip" xml:space="preserve">
-    <value>Yanmayı önlemek için sıcaklık bu sıcaklığa eşit veya daha yüksek olduğunda maksimum hızı zorla.</value>
-  </data>
-  <data name="CustomFanCurve_Deceleration" xml:space="preserve">
-    <value>Yavaşlama</value>
-  </data>
-  <data name="CustomFanCurve_Deceleration_Tooltip" xml:space="preserve">
-    <value>Yavaşlama kontrolü, mevcut PWM değerinden ne kadar PWM düşürüleceğini belirler.</value>
-  </data>
-  <data name="CustomFanCurve_Fan_Speed" xml:space="preserve">
-    <value>Fan Hızı %</value>
-  </data>
-  <data name="CustomFanCurve_Max_Pwm" xml:space="preserve">
-    <value>Max PWM</value>
-  </data>
-  <data name="CustomFanCurve_PWM_Value" xml:space="preserve">
-    <value>PWM Değeri</value>
-  </data>
-  <data name="CustomFanCurve_Settings" xml:space="preserve">
-    <value>Ayarlar</value>
-  </data>
-  <data name="CustomFanCurve_Temperature" xml:space="preserve">
-    <value>Sıcaklık °C</value>
-  </data>
-  <data name="CustomFanCurve_Title" xml:space="preserve">
-    <value>Gerçek Zamanlı İzleme</value>
-  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>AC Bağlı</value>
   </data>
@@ -1331,9 +1295,6 @@ GPU hiç yanıt vermiyorsa, lütfen dizüstü bilgisayarınızı yeniden başlat
   <data name="Inactive" xml:space="preserve">
     <value>Aktif değil</value>
   </data>
-  <data name="IncompatibleDevice_Message" xml:space="preserve">
-    <value>Bu cihaz, Lenovo Legion Toolkit ile uyumlu değildir.</value>
-  </data>
   <data name="Information" xml:space="preserve">
     <value>Bilgi</value>
   </data>
@@ -1596,9 +1557,6 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
   </data>
   <data name="MainWindow_NavigationItem_Donate" xml:space="preserve">
     <value>Bağış</value>
-  </data>
-  <data name="MainWindow_NavigationItem_FanCurve" xml:space="preserve">
-    <value>Fan Eğrisi</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
     <value>Klavye</value>
@@ -2382,15 +2340,6 @@ UYARI: Dahili ekran kapalıysa, bu işlem doğru çalışmaz.</value>
   <data name="Seconds" xml:space="preserve">
     <value>{0}sn</value>
   </data>
-  <data name="SelectSmartKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Geçiş yapmak için bir veya daha fazla hızlı işlem seçin</value>
-  </data>
-  <data name="SelectSmartKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>Hızlı İşlem tanımlanmadı.</value>
-  </data>
-  <data name="SelectSmartKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Bu uygulamayı göster</value>
-  </data>
   <data name="SelectSpecialKeyPipelinesWindow_Configure_Title" xml:space="preserve">
     <value>Configure {0}</value>
   </data>
@@ -2918,18 +2867,6 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Akıllı Fn Kilidi</value>
   </data>
-  <data name="SettingsPage_SmartKeyDoublePressAction_Message" xml:space="preserve">
-    <value>Fn+F9'a çift basışa Hızlı İşlem atayın.</value>
-  </data>
-  <data name="SettingsPage_SmartKeyDoublePressAction_Title" xml:space="preserve">
-    <value>Akıllı Tuş İkincil İşlem</value>
-  </data>
-  <data name="SettingsPage_SmartKeySinglePressAction_Message" xml:space="preserve">
-    <value>Fn+F9 tek basışına Hızlı Eylem atayın.</value>
-  </data>
-  <data name="SettingsPage_SmartKeySinglePressAction_Title" xml:space="preserve">
-    <value>Akıllı Tuş Eylemi</value>
-  </data>
   <data name="SettingsPage_SmartKeys_Message" xml:space="preserve">
     <value>Customize the Fn hotkeys.</value>
   </data>
@@ -2967,7 +2904,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Choose how often to check for new versions.</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
-    <value>Güncellemeleri otomatik olarak denetle</value>
+    <value>Update Frequency</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
     <value>Choose how updates are downloaded and installed.</value>
