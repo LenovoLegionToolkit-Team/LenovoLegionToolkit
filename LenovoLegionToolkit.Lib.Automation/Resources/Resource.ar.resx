@@ -124,22 +124,22 @@
     <value>عند فك كابل الشحن</value>
   </data>
   <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
-    <value>Warning: Cannot overclock a deactivated GPU. The Overclock step will fail.</value>
+    <value>تحذير: لا يمكن كسر سرعة كرت شاشة معطل. سوف تفشل الخطوة.</value>
   </data>
   <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
-    <value>Warning: Windows HDR locks screen brightness. Brightness settings applied after HDR are ignored.</value>
+    <value>تحذير: يقفل ويندوز HDR سطوع الشاشة. إعدادات السطوع المطبقة بعد تفعيل HDR تٌتَجاهل.</value>
   </data>
   <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
-    <value>Warning: Changing Hybrid Mode to dGPU Mode forces a system reboot. This must be the last step.</value>
+    <value>تحذير: تغيير الوضع الهجين إلى وضع كرت الشاشة المنفصل يفرض إعادة تشغيل النظام. يجب أن تكون هذه هي الخطوة الأخيرة.</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
-    <value>Warning: Power Mode resets Fan Speed. Run the Power Mode step first.</value>
+    <value>تحذير: وضع التشغيل يعيد تعيين سرعة المراوح. قم بتشغيل وضع التشغيل أولاً.</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
-    <value>Warning: Power Mode resets Brightness and Refresh Rate. Run the Power Mode step first.</value>
+    <value>تحذير: وضع الطاقة يعيد تعيين السطوع و معدل تحديث الشاشة. قم بتشغيل وضع الطاقة أولاً.</value>
   </data>
   <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
-    <value>Warning: Changing Resolution resets Refresh Rate. Run the Resolution step first.</value>
+    <value>تحذير: تغيير دقة الشاشة يعيد تعيين معدل تحديث الشاشة. قم بتشغيل خطوة دقة الشاشة أولاً.</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
     <value>قتل التطبيقات</value>
@@ -182,25 +182,25 @@
     <value>عندما تغلق اللعبة</value>
   </data>
   <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When Custom Mode preset changes</value>
+    <value>عند تغيير الوضع المسبق للوضع المخصص</value>
   </data>
   <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When HDR turns off</value>
+    <value>عند إيقاف تشغيل HDR</value>
   </data>
   <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When HDR turns on</value>
+    <value>عند تشغيل HDR</value>
   </data>
   <data name="HybridModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Hybrid Mode</value>
+    <value>الوضع الهجين</value>
   </data>
   <data name="ITSModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When IdeaPad Power Mode is changed</value>
+    <value>عند تغير وضع الطاقة لIdeaPad</value>
   </data>
   <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Lid closed</value>
+    <value>الشاشة مغلقة</value>
   </data>
   <data name="LidOpenedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Lid opened</value>
+    <value>الشاشة مفتوحة</value>
   </data>
   <data name="LowWattageACAdapterConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>عند اتصال كابل شحن ذو قوة كهربائية منخفضة</value>
@@ -212,13 +212,13 @@
     <value>مفعل</value>
   </data>
   <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>On resume</value>
+    <value>عند الاستئناف</value>
   </data>
   <data name="OnStartupAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>عند بدء التشغيل</value>
   </data>
   <data name="OsdState_Toggle" xml:space="preserve">
-    <value>Toggle</value>
+    <value>تبديل الحالة</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepState_Off" xml:space="preserve">
     <value>إيقاف</value>
@@ -227,7 +227,7 @@
     <value>مفعل</value>
   </data>
   <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Periodic action</value>
+    <value>إجراء دوري</value>
     <comment>The display name of the periodic automation action.</comment>
   </data>
   <data name="PowerModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
@@ -240,10 +240,10 @@
     <value>عندما يغلق تطبيق</value>
   </data>
   <data name="SessionLockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Session locked</value>
+    <value>الجلسة مقفلة</value>
   </data>
   <data name="SessionUnlockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Session unlocked</value>
+    <value>الجلسة مفتوحة</value>
   </data>
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>عند أوقات محددة</value>
