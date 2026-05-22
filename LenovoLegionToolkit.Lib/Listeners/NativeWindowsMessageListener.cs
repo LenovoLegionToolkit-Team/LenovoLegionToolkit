@@ -43,6 +43,8 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
     private HPOWERNOTIFY _powerSavingStateChangeNotificationHandle;
     private HHOOK _kbHook;
 
+    private bool _lastCapslockState;
+
     public bool IsMonitorOn { get; private set; }
     public bool IsLidOpen { get; private set; }
 
@@ -55,6 +57,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         _smartFnLockController = smartFnLockController;
         _powerModeFeature = powerModeFeature;
 
+        _lastCapslockState = (PInvoke.GetKeyState((int)VIRTUAL_KEY.VK_CAPITAL) & 0x1) != 0;
         _kbProc = LowLevelKeyboardProc;
     }
 
@@ -350,9 +353,16 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
         if (kbStruct.vkCode == (ulong)VIRTUAL_KEY.VK_CAPITAL)
         {
-            var isOn = (PInvoke.GetKeyState((int)VIRTUAL_KEY.VK_CAPITAL) & 0x1) != 0;
-            var type = isOn ? NotificationType.CapsLockOn : NotificationType.CapsLockOff;
-            MessagingCenter.Publish(new NotificationMessage(type));
+            Task.Delay(50).ContinueWith(t =>
+            {
+                var isOn = (PInvoke.GetKeyState((int)VIRTUAL_KEY.VK_CAPITAL) & 0x1) != 0;
+                if (isOn != _lastCapslockState)
+                {
+                    _lastCapslockState = isOn;
+                    var type = isOn ? NotificationType.CapsLockOn : NotificationType.CapsLockOff;
+                    MessagingCenter.Publish(new NotificationMessage(type));
+                }
+            });
         }
 
         if (kbStruct.vkCode == (ulong)VIRTUAL_KEY.VK_NUMLOCK)
