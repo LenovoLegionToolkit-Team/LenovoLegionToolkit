@@ -138,11 +138,6 @@ public partial class App
 
     private async Task<bool> InitializeCoreEnvironmentAsync(StartupEventArgs e)
     {
-        if (!EnsureSingleInstance())
-        {
-            return false;
-        }
-
 #if DEBUG
         if (Debugger.IsAttached)
         {
@@ -164,6 +159,11 @@ public partial class App
         {
             InitializeDebugConsole();
             Console.WriteLine(@"[Startup] Ensuring Single Instance...");
+        }
+
+        if (!EnsureSingleInstance())
+        {
+            return false;
         }
 
         await Compatibility.PrintMachineInfoAsync().ConfigureAwait(false);
