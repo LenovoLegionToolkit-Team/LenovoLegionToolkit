@@ -36,6 +36,7 @@ public class IoCModule : Module
         builder.Register<VantageDisabler>();
 
         builder.Register<ApplicationSettings>();
+        builder.Register<NotificationSettings>();
         builder.Register<BalanceModeSettings>();
         builder.Register<OsdSettings>();
         builder.Register<GodModeSettings>();

@@ -30,7 +30,7 @@ public partial class SettingsBackupWindow
         "automation.json", "macro.json", "settings.json", "balancemode.json", 
         "godmode.json", "gpu_oc.json", "integrations.json", 
         "itsmode_settings.json", "lamp_array.json", "package_downloader.json", 
-        "update_settings.json", "sunrise_sunset.json", "spectrum_keyboard.json", 
+        "update_settings.json", "notification_settings.json", "special_key.json", "sunrise_sunset.json", "spectrum_keyboard.json", 
         "rgb_keyboard.json", "osd.json", "args.txt", "lang"
     };
 

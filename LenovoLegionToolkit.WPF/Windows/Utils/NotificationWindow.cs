@@ -107,6 +107,7 @@ public class NotificationWindow : UiWindow, INotificationWindow
         ResizeMode = ResizeMode.NoResize;
         WindowStyle = WindowStyle.None;
         AllowsTransparency = true;
+        Topmost = true;
 
         Focusable = false;
         ExtendsContentIntoTitleBar = false;

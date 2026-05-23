@@ -22,11 +22,11 @@ public class NotificationsManager
 {
     private static Dispatcher Dispatcher => Application.Current.Dispatcher;
 
-    private readonly ApplicationSettings _settings;
+    private readonly NotificationSettings _settings;
 
     private List<INotificationWindow?> _windows = [];
 
-    public NotificationsManager(ApplicationSettings settings)
+    public NotificationsManager(NotificationSettings settings)
     {
         _settings = settings;
 

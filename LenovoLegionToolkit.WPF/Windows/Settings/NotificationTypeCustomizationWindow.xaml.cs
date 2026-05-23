@@ -33,14 +33,14 @@ public partial class NotificationTypeCustomizationWindow
         public ComboBox DurationComboBox { get; } = durationComboBox;
     }
 
-    private readonly ApplicationSettings _settings;
+    private readonly NotificationSettings _settings;
     private readonly IReadOnlyList<(NotificationType Type, string DisplayName)> _types;
     private readonly List<NotificationTypeRow> _rows = [];
 
     public NotificationTypeCustomizationWindow(
         string categoryTitle,
         IReadOnlyList<(NotificationType Type, string DisplayName)> types,
-        ApplicationSettings settings)
+        NotificationSettings settings)
     {
         _settings = settings;
         _types = types;

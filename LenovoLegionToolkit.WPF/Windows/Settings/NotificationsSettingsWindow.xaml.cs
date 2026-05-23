@@ -14,7 +14,7 @@ namespace LenovoLegionToolkit.WPF.Windows.Settings;
 
 public partial class NotificationsSettingsWindow
 {
-    private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
+    private readonly NotificationSettings _settings = IoCContainer.Resolve<NotificationSettings>();
 
     private IEnumerable<CardControl> Cards =>
     [
