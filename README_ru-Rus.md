@@ -14,7 +14,7 @@
 ## 🚨 Уведомление о статусе проекта
 
 > [!IMPORTANT] ❗ Важно
-> - Этот проект активно разрабатывается командой **LenovoLegionToolkit-Team**
+> - Этот проект активно разрабатывается  командой **LenovoLegionToolkit-Team**
 > - Исходный репозиторий [BartoszCichecki/LenovoLegionToolkit](https://github.com/BartoszCichecki/LenovoLegionToolkit) заархивирован
 > - Не имеет официальной связи с Lenovo
 
