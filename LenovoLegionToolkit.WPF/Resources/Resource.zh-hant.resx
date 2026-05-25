@@ -260,7 +260,7 @@
     <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>編輯引數</value>
+    <value>Arguments</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
     <value>Allow All Certificates</value>
@@ -1290,6 +1290,12 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="HideAll" xml:space="preserve">
     <value>隱藏全部</value>
   </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="IconColor" xml:space="preserve">
+    <value>Icon color</value>
+  </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
     <value>如果獨立顯示卡 (dGPU) 沒有變更模式，請等幾秒後再次嘗試。
 如果仍然沒有得到回應，請重新啟動您的筆記型電腦。</value>
@@ -1308,12 +1314,6 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
     <value>獨立顯示卡 (dGPU) 目前使用中</value>
-  </data>
-  <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
-  </data>
-  <data name="IconColor" xml:space="preserve">
-    <value>Icon color</value>
   </data>
   <data name="Import" xml:space="preserve">
     <value>匯入</value>
@@ -2408,9 +2408,6 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
     <value>No Quick Actions defined.</value>
   </data>
-  <data name="SelectSpecialKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Show this app</value>
-  </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
     <value>電量</value>
   </data>
@@ -2604,7 +2601,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>變更應用程式的主題色彩。</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>主題色彩</value>
+    <value>Accent Color</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
     <value>Keep the app window above all other windows.</value>
@@ -2864,13 +2861,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>關閉時最小化</value>
+    <value>Minimize on Close</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
     <value>保持最小化到系統匣而不是工作列。</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
-    <value>最小化到系統匣</value>
+    <value>Minimize to Tray</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
     <value>設定哪些通知要顯示。</value>
@@ -2975,7 +2972,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>使用新的傳感器儀錶板而不是舊的。</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>使用新的儀表盤</value>
+    <value>New Sensor Dashboard</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
     <value>If you experience visual artifacts on Snackbar Notifications in HDR mode, set this to "None".</value>
@@ -3006,6 +3003,12 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
     <value>使用 Fn+Q 切換到客製化模式</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
+    <value>Show the Lenovo Legion Toolkit</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
+    <value>Show App</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>當開啟靜音後，所有活動的音訊輸出裝置都將會被靜音。</value>
@@ -3386,12 +3389,6 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
     <value>鎖定 Windows 鍵</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>是</value>
