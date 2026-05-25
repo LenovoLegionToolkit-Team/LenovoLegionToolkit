@@ -260,7 +260,7 @@
     <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Argümanları Düzenle</value>
+    <value>Arguments</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
     <value>Tüm Sertifikalara İzin Ver</value>
@@ -1292,6 +1292,12 @@ UYARI: Dahili ekran kapalıysa bu işlem doğru çalışmaz.</value>
   <data name="HideAll" xml:space="preserve">
     <value>Tümünü gizle</value>
   </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="IconColor" xml:space="preserve">
+    <value>Icon color</value>
+  </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
     <value>Beklenen sonucu görmezseniz, birkaç saniye içinde modu tekrar değiştirmeyi deneyin.
 GPU hiç yanıt vermiyorsa, lütfen dizüstü bilgisayarınızı yeniden başlatın.</value>
@@ -1310,12 +1316,6 @@ GPU hiç yanıt vermiyorsa, lütfen dizüstü bilgisayarınızı yeniden başlat
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
     <value>dGPU şuan kullanımda</value>
-  </data>
-  <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
-  </data>
-  <data name="IconColor" xml:space="preserve">
-    <value>Icon color</value>
   </data>
   <data name="Import" xml:space="preserve">
     <value>İçe Aktar</value>
@@ -2410,9 +2410,6 @@ UYARI: Dahili ekran kapalıysa, bu işlem doğru çalışmaz.</value>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
     <value>No Quick Actions defined.</value>
   </data>
-  <data name="SelectSpecialKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Show this app</value>
-  </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
     <value>Pil Seviyesi</value>
   </data>
@@ -2606,7 +2603,7 @@ UYARI: Dahili ekran kapalıysa, bu işlem doğru çalışmaz.</value>
     <value>Uygulamanın rengini değiştirin.</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>Renk</value>
+    <value>Accent Color</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
     <value>Keep the app window above all other windows.</value>
@@ -2866,13 +2863,13 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>Kapatırken simge durumuna küçült</value>
+    <value>Minimize on Close</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
     <value>Görev çubuğu yerine, her zaman sistem tepsisine küçült.</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
-    <value>Sistem tepsisine küçült</value>
+    <value>Minimize to Tray</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
     <value>Hangi bildirimlerin gösterileceğini ayarlayın.</value>
@@ -2977,7 +2974,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Eski sensör gösterge paneli yerine yeni sensör gösterge panelini kullan.</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>Yeni Sensör Gösterge Panelini Kullan</value>
+    <value>New Sensor Dashboard</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
     <value>HDR modunda Snackbar Bildirimleri'nde görsel bozulmalar yaşıyorsanız, bunu “Yok” olarak ayarlayın.</value>
@@ -3008,6 +3005,12 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
     <value>Fn+Q ile Özel Moda geçin</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
+    <value>Show the Lenovo Legion Toolkit</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
+    <value>Show App</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Sessize alındığında tüm aktif ses çıkış cihazlarının sesi kapatılacaktır.</value>
@@ -3388,12 +3391,6 @@ Devam etmeyi seçerseniz, kayıt etme otomatik olarak etkinleştirilecektir.</va
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
     <value>Windows Tuş Kilidi</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Evet</value>
