@@ -260,7 +260,7 @@
     <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Edit Arguments</value>
+    <value>Arguments</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
     <value>Allow All Certificates</value>
@@ -1292,6 +1292,12 @@ VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.
   <data name="HideAll" xml:space="preserve">
     <value>Skrýt vše</value>
   </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="IconColor" xml:space="preserve">
+    <value>Icon color</value>
+  </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
     <value>Zkuste znovu změnit režim za pár sekund, pokud nevidíte očekávané výsledky.
 Pokud dGPU vůbec nereaguje, prosím restartujte svůj notebook.</value>
@@ -1310,12 +1316,6 @@ Pokud dGPU vůbec nereaguje, prosím restartujte svůj notebook.</value>
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
     <value>dGPU se právě používá</value>
-  </data>
-  <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
-  </data>
-  <data name="IconColor" xml:space="preserve">
-    <value>Icon color</value>
   </data>
   <data name="Import" xml:space="preserve">
     <value>Importovat</value>
@@ -2410,9 +2410,6 @@ Nejprve se ujisti, že tvůj skript běží správně.</value>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
     <value>No Quick Actions defined.</value>
   </data>
-  <data name="SelectSpecialKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Show this app</value>
-  </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
     <value>Úroveň baterie</value>
   </data>
@@ -2606,7 +2603,7 @@ Nejprve se ujisti, že tvůj skript běží správně.</value>
     <value>Změnit motiv a barvy aplikace.</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>Barva aplikace</value>
+    <value>Accent Color</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
     <value>Keep the app window above all other windows.</value>
@@ -2866,13 +2863,13 @@ Po změně této volby je doporučen restart.</value>
     <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>Minimalizovat při zavření</value>
+    <value>Minimize on Close</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
     <value>Vždy minimalizovat do lišty namísto hlavního panelu.</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
-    <value>Minimalizovat do systémové lišty</value>
+    <value>Minimize to Tray</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
     <value>Nastavení notifikací z aplikace.</value>
@@ -2977,7 +2974,7 @@ Po změně této volby je doporučen restart.</value>
     <value>Používejte nový snímač namísto starého.</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>Použít nový ovládací panel senzoru</value>
+    <value>New Sensor Dashboard</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
     <value>If you experience visual artifacts on Snackbar Notifications in HDR mode, set this to "None".</value>
@@ -3008,6 +3005,12 @@ Po změně této volby je doporučen restart.</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
     <value>Přepnout na vlastní režim pomocí Fn+Q</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
+    <value>Show the Lenovo Legion Toolkit</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
+    <value>Show App</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Po ztlumení, všechna aktivní zvuková zařízení budou ztlumena.</value>
@@ -3389,12 +3392,6 @@ Pokud se rozhodneš pokračovat, protokolování bude automaticky povoleno.</val
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
     <value>Zámek tlačítka Windows</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Ano</value>
