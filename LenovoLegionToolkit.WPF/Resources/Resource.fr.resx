@@ -260,7 +260,7 @@
     <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Edit Arguments</value>
+    <value>Arguments</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
     <value>Allow All Certificates</value>
@@ -1292,6 +1292,12 @@ AVERTISSEMENT : Cette action ne fonctionnera pas correctement si l'affichage int
   <data name="HideAll" xml:space="preserve">
     <value>Cacher tout</value>
   </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="IconColor" xml:space="preserve">
+    <value>Icon color</value>
+  </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
     <value>Essayez de changer à nouveau de mode dans quelques secondes, si vous n'obtenez pas le résultat escompté. Si le GPU dédié ne répond pas du tout, redémarrez votre ordinateur portable.</value>
   </data>
@@ -1309,12 +1315,6 @@ AVERTISSEMENT : Cette action ne fonctionnera pas correctement si l'affichage int
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
     <value>Le dGPU est actuellement utilisé</value>
-  </data>
-  <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
-  </data>
-  <data name="IconColor" xml:space="preserve">
-    <value>Icon color</value>
   </data>
   <data name="Import" xml:space="preserve">
     <value>Importer</value>
@@ -2409,9 +2409,6 @@ Assurez-vous d'abord que votre script s'exécute correctement.</value>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
     <value>No Quick Actions defined.</value>
   </data>
-  <data name="SelectSpecialKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Show this app</value>
-  </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
     <value>Battery Level</value>
   </data>
@@ -2605,7 +2602,7 @@ Assurez-vous d'abord que votre script s'exécute correctement.</value>
     <value>Changer la couleur d'accentuation de l'application.</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>Couleur d'accentuation</value>
+    <value>Accent Color</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
     <value>Keep the app window above all other windows.</value>
@@ -2865,13 +2862,13 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
     <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>Minimiser à la fermeture</value>
+    <value>Minimize on Close</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
     <value>Toujours réduire dans la zone de notification au lieu de la barre des tâches.</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
-    <value>Réduire dans la zone de notification</value>
+    <value>Minimize to Tray</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
     <value>Configurez quelles notifications afficher.</value>
@@ -2976,7 +2973,7 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
     <value>Utiliser un nouveau tableau de bord de capteur au lieu de l'ancien tableau de bord.</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>Use New Sensor Dashboard</value>
+    <value>New Sensor Dashboard</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
     <value>If you experience visual artifacts on Snackbar Notifications in HDR mode, set this to "None".</value>
@@ -3007,6 +3004,12 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
     <value>Passer en mode personnalisé avec Fn+Q</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
+    <value>Show the Lenovo Legion Toolkit</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
+    <value>Show App</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Lorsque la fonction muet est activée, tous les dispositifs de sortie audio actifs sont mis en sourdine.</value>
@@ -3388,12 +3391,6 @@ La journalisation sera activée automatiquement si vous choisissez de continuer.
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
     <value>Verrouillage de la touche Windows</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Oui</value>
