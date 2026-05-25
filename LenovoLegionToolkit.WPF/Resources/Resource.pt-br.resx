@@ -260,7 +260,7 @@
     <value>Modify startup arguments for the app.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Edit Arguments</value>
+    <value>Arguments</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
     <value>Allow All Certificates</value>
@@ -1291,6 +1291,12 @@ AVISO: Esta ação não será executada corretamente se o display interno estive
   <data name="HideAll" xml:space="preserve">
     <value>Ocultar todos</value>
   </data>
+  <data name="Icon" xml:space="preserve">
+    <value>Icon</value>
+  </data>
+  <data name="IconColor" xml:space="preserve">
+    <value>Icon color</value>
+  </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
     <value>Tente alterar o modo novamente em alguns segundos, se você não tiver o resultado esperado. Se a GPU dedicada não responder, reinicie o notebook.</value>
   </data>
@@ -1308,12 +1314,6 @@ AVISO: Esta ação não será executada corretamente se o display interno estive
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
     <value>A GPU dedicada está em uso</value>
-  </data>
-  <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
-  </data>
-  <data name="IconColor" xml:space="preserve">
-    <value>Icon color</value>
   </data>
   <data name="Import" xml:space="preserve">
     <value>Importar</value>
@@ -2408,9 +2408,6 @@ Certifique-se de que seu script seja executado corretamente primeiro.</value>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
     <value>No Quick Actions defined.</value>
   </data>
-  <data name="SelectSpecialKeyPipelinesWindow_ShowThisApp" xml:space="preserve">
-    <value>Show this app</value>
-  </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
     <value>Battery Level</value>
   </data>
@@ -2604,7 +2601,7 @@ Certifique-se de que seu script seja executado corretamente primeiro.</value>
     <value>Alterar o tema e as cores do aplicativo.</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>Cor de destaque</value>
+    <value>Accent Color</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
     <value>Keep the app window above all other windows.</value>
@@ -2864,13 +2861,13 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
     <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>Minimizar ao Fechar</value>
+    <value>Minimize on Close</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
     <value>Sempre minimizar para a bandeja do sistema (ignorar barra de tarefas)</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
-    <value>Minimizar para a Bandeja do Sistema</value>
+    <value>Minimize to Tray</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
     <value>Configure como as notificações são exibidas.</value>
@@ -2975,7 +2972,7 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
     <value>Use o novo painel do sensor em vez do antigo.</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>Use New Sensor Dashboard</value>
+    <value>New Sensor Dashboard</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
     <value>If you experience visual artifacts on Snackbar Notifications in HDR mode, set this to "None".</value>
@@ -3006,6 +3003,12 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
     <value>Alterne para o modo Custom pressionando as teclas Fn+Q</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
+    <value>Show the Lenovo Legion Toolkit</value>
+  </data>
+  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
+    <value>Show App</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Quando mutado, todos os dispositivos de saída de áudio ativos serão silenciados.</value>
@@ -3387,12 +3390,6 @@ O registro será ativado automaticamente, se você optar por continuar.</value>
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
     <value>Bloqueio da tecla Windows</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
-  </data>
-  <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Sim</value>
