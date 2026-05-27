@@ -1,5 +1,6 @@
 HWND_BROADCAST
 
+WM_APP
 WM_CLOSE
 WM_COMMAND
 WM_DESTROY
@@ -186,6 +187,7 @@ GetDpiForMonitor
 
 RegNotifyChangeKeyValue
 
+PostMessage
 SendInput
 SendMessage
 SendNotifyMessage
