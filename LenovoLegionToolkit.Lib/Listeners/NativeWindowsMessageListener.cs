@@ -353,16 +353,9 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
         if (kbStruct.vkCode == (ulong)VIRTUAL_KEY.VK_CAPITAL)
         {
-            Task.Delay(50).ContinueWith(t =>
-            {
-                var isOn = (PInvoke.GetKeyState((int)VIRTUAL_KEY.VK_CAPITAL) & 0x1) != 0;
-                if (isOn != _lastCapslockState)
-                {
-                    _lastCapslockState = isOn;
-                    var type = isOn ? NotificationType.CapsLockOn : NotificationType.CapsLockOff;
-                    MessagingCenter.Publish(new NotificationMessage(type));
-                }
-            });
+            var isOn = (PInvoke.GetKeyState((int)VIRTUAL_KEY.VK_CAPITAL) & 0x1) != 0;
+            var type = isOn ? NotificationType.CapsLockOn : NotificationType.CapsLockOff;
+            MessagingCenter.Publish(new NotificationMessage(type));
         }
 
         if (kbStruct.vkCode == (ulong)VIRTUAL_KEY.VK_NUMLOCK)
