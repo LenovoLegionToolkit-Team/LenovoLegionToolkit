@@ -124,22 +124,22 @@
     <value>當與電源供應器中斷連接時</value>
   </data>
   <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
-    <value>Warning: Cannot overclock a deactivated GPU. The Overclock step will fail.</value>
+    <value>警告：無法超頻獨立顯示卡。</value>
   </data>
   <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
-    <value>Warning: Windows HDR locks screen brightness. Brightness settings applied after HDR are ignored.</value>
+    <value>警告：Windows HDR 鎖定螢幕亮度，將無視套用 HDR 之後的亮度設定。</value>
   </data>
   <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
-    <value>Warning: Changing Hybrid Mode to dGPU Mode forces a system reboot. This must be the last step.</value>
+    <value>警告：變更混合模式為獨立顯示卡直接連接模式將強制重新啟動系統，必須放在最後再操作。</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
-    <value>Warning: Power Mode resets Fan Speed. Run the Power Mode step first.</value>
+    <value>警告：電源模式會重設風扇轉速，請將電源模式步驟設為優先。</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
-    <value>Warning: Power Mode resets Brightness and Refresh Rate. Run the Power Mode step first.</value>
+    <value>警告：電源模式會重設亮度與更新率，請將電源模式步驟設為優先。</value>
   </data>
   <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
-    <value>Warning: Changing Resolution resets Refresh Rate. Run the Resolution step first.</value>
+    <value>警告：變更解析度會重設更新率，請將解析度步驟設為優先。</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
     <value>強制關閉應用程式</value>
