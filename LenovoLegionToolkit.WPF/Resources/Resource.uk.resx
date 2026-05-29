@@ -1654,10 +1654,13 @@ Thank you for your support!</value>
     <value>Ні</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Текст сповіщення</value>
+    <value>Notification Text (supports $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Показувати сповіщення</value>
+  </data>
+  <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
+    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>Адаптер живлення</value>
@@ -1683,9 +1686,6 @@ Thank you for your support!</value>
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Блокування Fn</value>
-  </data>
-  <data name="NotificationsSettingsWindow_GodModePreset" xml:space="preserve">
-    <value>Custom Mode Preset</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
     <value>ITS Mode</value>
@@ -1771,9 +1771,6 @@ Thank you for your support!</value>
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
     <value>Fn Lock увімкнено</value>
-  </data>
-  <data name="Notification_GodModePresetChanged" xml:space="preserve">
-    <value>Custom Mode Preset: {0}</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
     <value>Мікрофон вимкнено</value>
@@ -3276,6 +3273,9 @@ Thank you for your support!</value>
   <data name="TryAgain" xml:space="preserve">
     <value>Спробувати знову</value>
   </data>
+  <data name="TurnOffAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn off airplane mode</value>
+  </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
     <value>Вимкнути усі доступні дисплеї.</value>
   </data>
@@ -3294,6 +3294,9 @@ Thank you for your support!</value>
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Вимкнути Wi-Fi</value>
+  </data>
+  <data name="TurnOnAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn on airplane mode</value>
   </data>
   <data name="TurnOnWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Увімкнути Wi-Fi</value>
