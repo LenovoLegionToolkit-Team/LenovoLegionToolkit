@@ -1652,10 +1652,13 @@ Click Yes to disable and No to ignore.</value>
     <value>No</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Notification Text</value>
+    <value>Notification Text (supports $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Show notification</value>
+  </data>
+  <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
+    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>Alimentatore</value>
@@ -1681,9 +1684,6 @@ Abilita questa opzione in caso di conflitti con le applicazioni a schermo intero
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Fn Lock</value>
-  </data>
-  <data name="NotificationsSettingsWindow_GodModePreset" xml:space="preserve">
-    <value>Custom Mode Preset</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
     <value>ITS Mode</value>
@@ -1769,9 +1769,6 @@ It won't affect other full screen windows, but you will not be able to click on 
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
     <value>Fn Lock on</value>
-  </data>
-  <data name="Notification_GodModePresetChanged" xml:space="preserve">
-    <value>Custom Mode Preset: {0}</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
     <value>Microfono disattivato</value>
@@ -3274,6 +3271,9 @@ Richiede il riavvio.</value>
   <data name="TryAgain" xml:space="preserve">
     <value>Riprova</value>
   </data>
+  <data name="TurnOffAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn off airplane mode</value>
+  </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
     <value>Spegni tutti i display.</value>
   </data>
@@ -3292,6 +3292,9 @@ Spostare il mouse o premere il tasto sulla tastiera per risvegliarli.</value>
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Turn off Wi-Fi</value>
+  </data>
+  <data name="TurnOnAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn on airplane mode</value>
   </data>
   <data name="TurnOnWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Turn on Wi-Fi</value>
