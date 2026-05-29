@@ -669,8 +669,7 @@ Formatos suportados são: {1}.</value>
     <value>Vermelho</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Selecione o modo de funcionamento da GPU baseado na utilização do computador e condições de energia.
-Poderá ser necessário reiniciar para aplicar mudança.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Modo de Funcionamento da GPU</value>
@@ -712,6 +711,12 @@ Poderá ser necessário reiniciar para mudar de modo.</value>
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>AC Connected</value>
   </data>
@@ -737,9 +742,7 @@ Poderá ser necessário reiniciar para mudar de modo.</value>
     <value>Home</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Desativar GPU se estiver ligada desnecessariamente.
-
-ATENÇÃO: Esta ação não irá correr corretamente se o ecrã interno estiver desligado ou se o modo Híbrido não estiver ativo.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Desativar GPU</value>
@@ -880,11 +883,7 @@ ATENÇÃO: Esta ação não irá correr corretamente se o ecrã interno estiver 
     <value>GPU discreta</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Altera o brilho do ecrã interno.
-Os modos de desempenho podem alterar o brilho nalguns dispositivos.
-Certifica-te de que colocas este passo em último, se algo não funcionar corretamente 
-
-ATENÇÃO: Está ação não irá funcionar corretamente se o ecrã interno estiver desligado.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Brilho do ecrã</value>
@@ -922,9 +921,7 @@ Thank you for your support!</value>
     <value>Doar</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Alterar escala do ecrã interno.
-
-ATENÇÃO: Esta ação não irá executar corretamente se o ecrã interno estiver desligado.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1086,8 +1083,7 @@ ATENÇÃO: Esta ação não irá executar corretamente se o ecrã interno estive
     <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Ativar predefinição do Modo Customizado.
-Esta definição apenas tem efeito quando o mesmo está ativo.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Predefinição do Modo Customizado</value>
@@ -1278,9 +1274,7 @@ A sério! Tem cuidado com esta opção!</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Ativar HDR no ecrã interno.
-
-ATENÇÃO: Está ação não irá executar corretamente se o ecrã interno estiver desligado.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2033,9 +2027,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Aumenta o desempenho ao fazer overclock da GPU discreta.
-
-Atenção: Esta ação não irá correr corretamente se a GPU discreta estiver indisponível.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Overclock da GPU</value>
@@ -2276,9 +2268,7 @@ Podes mudar com Fn+Q.</value>
     <value>Atualizar</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Altera a taxa de atualização do ecrã interno.
-
-ATENÇÃO: Está ação não irá executar corretamente se o ecrã interno estiver desligado.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Taxa de atualização</value>
@@ -2296,9 +2286,7 @@ ATENÇÃO: Está ação não irá executar corretamente se o ecrã interno estiv
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Alterar resolução do ecrã interno.
-
-ATENÇÃO: Esta ação não irá executar corretamente se o ecrã interno estiver desligado.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Resolução</value>
@@ -2382,8 +2370,7 @@ ATENÇÃO: Esta ação não irá executar corretamente se o ecrã interno estive
     <value>Caminho do executável</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Executar um script ou programa.
-Certifica-te que o script executa corretamente primeiro.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -3252,7 +3239,7 @@ Se desativado, esta app irá executar os atalhos Fn.
     <value>Hora</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Permite alterar entre a GPU discreta e integrada. Reinício necessário.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Modo Híbrido</value>
