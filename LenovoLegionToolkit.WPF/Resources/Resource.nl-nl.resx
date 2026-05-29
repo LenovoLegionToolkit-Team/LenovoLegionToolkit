@@ -668,8 +668,7 @@ Ondersteunde formaten zijn: {1}.</value>
     <value>Rood</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Selecteer de GPU-bedieningsmodus op basis van het gebruik en de stroomvoorziening van uw computer.
-Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Modus</value>
@@ -711,6 +710,12 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>AC Verbonden</value>
   </data>
@@ -736,9 +741,7 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
     <value>Startscherm</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Schakel discrete GPU uit als deze onnodig actief is.
-
-WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display is uitgeschakeld of de hybride modus niet actief is.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Deactiveren</value>
@@ -879,10 +882,7 @@ WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display i
     <value>Discrete Videokaart</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Wijzig de helderheid van het ingebouwde display.
-Energiemodi veranderen de helderheid op sommige apparaten. Zorg ervoor dat u deze stap als laatste zet, als iets niet goed werkt.
-
-WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display is uitgeschakeld.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Schermhelderheid</value>
@@ -920,9 +920,7 @@ Thank you for your support!</value>
     <value>Doneer</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Verander de schaal van het ingebouwde display.
-
-WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne beeldscherm is uitgeschakeld.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1084,8 +1082,7 @@ WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne beeldsche
     <value>Ghz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Activeer de Aangepaste Voorinstelling modus.
-Deze instelling is alleen van kracht wanneer de Aangepaste modus ingeschakeld is.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Aangepaste modus voorinstelling</value>
@@ -1276,9 +1273,7 @@ Serieus, wees voorzichtig met deze optie!</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>De hoog dynamisch bereik (HDR) van het ingebouwde beeldscherm inschakelen.
-
-WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display is uitgeschakeld.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2030,9 +2025,7 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Verbeter prestaties door de discrete videokaart te overklokken.
-
-WAARSCHUWING: Deze actie zal niet correct uitgevoerd worden als de externe videokaart niet beschikbaar is.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Overklokken</value>
@@ -2273,9 +2266,7 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Vernieuw</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Wijzig de verversingssnelheid van het ingebouwde beeldscherm.
-
-WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display is uitgeschakeld.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Verversingssnelheid</value>
@@ -2293,9 +2284,7 @@ WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne display i
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Wijzig de resolutie van het ingebouwde display.
-
-WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne beeldscherm is uitgeschakeld.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Resolutie</value>
@@ -2380,8 +2369,7 @@ WAARSCHUWING: Deze actie wordt niet correct uitgevoerd als het interne beeldsche
     <value>Uitvoerbaar Pad</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Voer een script of een programma uit.
-Zorg ervoor dat uw script eerst correct wordt uitgevoerd.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -3250,8 +3238,7 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Tijd</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Sta het schakelen tussen de geïntegreerde en de discrete videokaart toe. 
-Dit vereist een herstart.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Hybride modus</value>
