@@ -1655,10 +1655,13 @@ Click Yes to disable and No to ignore.</value>
     <value>Ne</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Text oznámení</value>
+    <value>Notification Text (supports $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Zobrazit oznámení</value>
+  </data>
+  <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
+    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>AC nabíječka</value>
@@ -1684,9 +1687,6 @@ Povol tuto možnost, pokud máš konflikty s aplikacemi na celou obrazovku.</val
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Zámek Fn</value>
-  </data>
-  <data name="NotificationsSettingsWindow_GodModePreset" xml:space="preserve">
-    <value>Custom Mode Preset</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
     <value>ITS Mode</value>
@@ -1772,9 +1772,6 @@ Nebude to mít vliv na ostatní celoobrazovková okna, ale nebudete moci kliknou
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
     <value>Fn Lock zapnut</value>
-  </data>
-  <data name="Notification_GodModePresetChanged" xml:space="preserve">
-    <value>Custom Mode Preset: {0}</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
     <value>Mikrofon vypnut</value>
@@ -3277,6 +3274,9 @@ Vyžaduje restart.</value>
   <data name="TryAgain" xml:space="preserve">
     <value>Zkusit znovu</value>
   </data>
+  <data name="TurnOffAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn off airplane mode</value>
+  </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
     <value>Vypnout všechny dostupné monitory.</value>
   </data>
@@ -3295,6 +3295,9 @@ Pohybem myši, nebo stiskem klávesnice se znovu zapnou.</value>
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Vypnout Wi-Fi</value>
+  </data>
+  <data name="TurnOnAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn on airplane mode</value>
   </data>
   <data name="TurnOnWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Zapnout Wi-Fi</value>
