@@ -1655,10 +1655,13 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
     <value>Hayır</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Bildirim Metni</value>
+    <value>Notification Text (supports $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Bildirimi göster</value>
+  </data>
+  <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
+    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>AC Adaptörü</value>
@@ -1684,9 +1687,6 @@ Tam ekran uygulamalarda rahatsız oluyorsanız bu seçeneği etkinleştirin.</va
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Fn Kilidi</value>
-  </data>
-  <data name="NotificationsSettingsWindow_GodModePreset" xml:space="preserve">
-    <value>Custom Mode Preset</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
     <value>ITS Mode</value>
@@ -1772,9 +1772,6 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
     <value>Fn Kilidi açık</value>
-  </data>
-  <data name="Notification_GodModePresetChanged" xml:space="preserve">
-    <value>Custom Mode Preset: {0}</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
     <value>Mikrofon kapalı</value>
@@ -3277,6 +3274,9 @@ Yeniden başlatma gerektirir.</value>
   <data name="TryAgain" xml:space="preserve">
     <value>Tekrar deneyin</value>
   </data>
+  <data name="TurnOffAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn off airplane mode</value>
+  </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
     <value>Mevcut tüm ekranları kapat.</value>
   </data>
@@ -3295,6 +3295,9 @@ Fareyi hareket ettirmek veya klavyeye basmak ekranları uyandırır.</value>
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>WiFi'yi kapat</value>
+  </data>
+  <data name="TurnOnAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn on airplane mode</value>
   </data>
   <data name="TurnOnWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>WiFi'yi aç</value>
