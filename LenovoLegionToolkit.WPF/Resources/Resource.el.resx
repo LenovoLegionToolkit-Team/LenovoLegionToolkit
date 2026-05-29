@@ -669,8 +669,7 @@
     <value>Κόκκινο</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Επιλέξτε τον τρόπο λειτουργίας της GPU με βάση τη χρήση και τις συνθήκες ισχύος του υπολογιστή σας.
-Η εναλλαγή λειτουργιών ενδέχεται να απαιτεί επανεκκίνηση.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Κατάσταση Λειτουργίας GPU</value>
@@ -712,6 +711,12 @@
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>Ρεύμα σε σύνδεση</value>
   </data>
@@ -737,9 +742,7 @@
     <value>Αρχική</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Απενεργοποίηση της διακριτής GPU εάν είναι άσκοπα ενεργή.
-
-ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Αυτή η δράση δε θα εκτελεστεί σωστά, εάν η ενσωματωμένη οθόνη είναι απενεργοποιημένη ή η υβριδική λειτουργία δεν είναι ενεργή.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Απενεργοποίηση της GPU</value>
@@ -880,9 +883,7 @@
     <value>Διακριτή GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Αλλαγή φωτεινότητας οθόνης της ενσωματωμένης οθόνης.
-
-ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Αυτή η δράση δε θα εκτελεστεί σωστά εάν η ενσωματωμένη οθόνη είναι απενεργοποιημένη.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Φωτεινότητα οθόνης</value>
@@ -920,9 +921,7 @@ Thank you for your support!</value>
     <value>Δωρεά</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Αλλαγή κλίμακας της ενσωματωμένης οθόνης.
-
-ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Αυτή η δράση δε θα εκτελεστεί σωστά εάν η εσωτερική οθόνη είναι απενεργοποιημένη.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1084,8 +1083,7 @@ Thank you for your support!</value>
     <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Ενεργοποίηση προεπιλογής Προσαρμοσμένης Λειτουργίας.
-Αυτή η ρύθμιση τίθεται σε ισχύ μόνο όταν η Προσαρμοσμένη Λειτουργία είναι ενεργοποιημένη.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Προεπιλογή Προσαρμοσμένης Λειτουργίας</value>
@@ -1276,9 +1274,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Ενεργοποίηση υψηλού δυναμικού εύρους (HDR) στην ενσωματωμένη οθόνη.
-
-ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Αυτή η δράση δε θα εκτελεστεί σωστά εάν η ενσωματωμένη οθόνη είναι ανενεργή.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2031,9 +2027,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Αύξηση απόδοσης με υπερχρονισμό της διακριτής GPU.
-
-ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Αυτή η δράση δε θα εκτελεστεί σωστά, εάν η διακριτή GPU δεν είναι διαθέσιμη.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Υπερχρονισμός GPU</value>
@@ -2274,9 +2268,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Ανανέωση</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Αλλαγή του ρυθμού ανανέωσης της ενσωματωμένης οθόνης.
-
-ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Αυτή η δράση δε θα εκτελεστεί σωστά εάν η εσωτερική οθόνη είναι απενεργοποιημένη.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Ρυθμός ανανέωσης</value>
@@ -2294,9 +2286,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Αλλαγή ανάλυσης της ενσωματωμένης οθόνης.
-
-ΠΡΟΕΙΔΟΠΟΙΗΣΗ: Αυτή η δράση δε θα εκτελεστεί σωστά εάν η εσωτερική οθόνη είναι απενεργοποιημένη.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Ανάλυση</value>
@@ -2380,8 +2370,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Διαδρομή Εκτελέσιμου</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Εκτελέστε ένα script ή ένα πρόγραμμα.
-Πρώτα βεβαιωθείτε ότι το script σας εκτελείται σωστά.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -3250,8 +3239,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Ώρα</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Επιτρέπει την εναλλαγή μεταξύ ενσωματωμένης και διακριτής GPU.
-Απαιτεί επανεκκίνηση.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Υβριδική Λειτουργία</value>
