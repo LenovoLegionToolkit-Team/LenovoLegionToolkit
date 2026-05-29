@@ -1655,10 +1655,13 @@ Click Yes to disable and No to ignore.</value>
     <value>Nu</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Notification Text</value>
+    <value>Notification Text (supports $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Show notification</value>
+  </data>
+  <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
+    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>Alimentator</value>
@@ -1684,9 +1687,6 @@ Activați această opțiune dacă aveți conflicte cu aplicațiile pe ecran comp
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Blocare Fn</value>
-  </data>
-  <data name="NotificationsSettingsWindow_GodModePreset" xml:space="preserve">
-    <value>Custom Mode Preset</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
     <value>ITS Mode</value>
@@ -1772,9 +1772,6 @@ It won't affect other full screen windows, but you will not be able to click on 
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
     <value>Blocare Fn activată</value>
-  </data>
-  <data name="Notification_GodModePresetChanged" xml:space="preserve">
-    <value>Custom Mode Preset: {0}</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
     <value>Microfon oprit</value>
@@ -3277,6 +3274,9 @@ Necesită repornirea.</value>
   <data name="TryAgain" xml:space="preserve">
     <value>Încercați din nou</value>
   </data>
+  <data name="TurnOffAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn off airplane mode</value>
+  </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
     <value>Opriți toate afișajele disponibile.</value>
   </data>
@@ -3295,6 +3295,9 @@ Mișcarea mouse-ului sau apăsarea tastaturii va reporni afișajele.</value>
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Turn off Wi-Fi</value>
+  </data>
+  <data name="TurnOnAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn on airplane mode</value>
   </data>
   <data name="TurnOnWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Turn on Wi-Fi</value>
