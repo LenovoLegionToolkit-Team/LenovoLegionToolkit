@@ -668,8 +668,7 @@ Podporované formáty jsou: {1}.</value>
     <value>Červená</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Vyber provozní režim GPU na základě využití počítače a podmínek napájení.
-Přepínání režimů může vyžadovat restart.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Pracovní režim GPU</value>
@@ -711,6 +710,12 @@ Přepínání režimů může vyžadovat restart.</value>
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>Nabíječka připojena</value>
   </data>
@@ -736,9 +741,7 @@ Přepínání režimů může vyžadovat restart.</value>
     <value>Domů</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Deaktivovat dedikované GPU, když je zbytečně aktivní.
-
-VAROVÁNÍ: Tato akce neproběhne správně, pokud je displej notebooku vypnutý, nebo není aktivní hybridní režim.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Deaktivovat GPU</value>
@@ -879,10 +882,7 @@ VAROVÁNÍ: Tato akce neproběhne správně, pokud je displej notebooku vypnutý
     <value>Dedikované GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Změnit jas displeje notebooku.
-Režimy napájení mění jas na některých zařízeních. Ujisti se, že tento krok dáš jako poslední, pokud něco nefunguje správně.
-
-VAROVÁNÍ: Tato akce neproběhne správně, pokud je displej notebooku vypnutý.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Jas displeje</value>
@@ -920,9 +920,7 @@ Thank you for your support!</value>
     <value>Přispět</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Změnit měřítko displeje notebooku.
-
-VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1084,8 +1082,7 @@ VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.
     <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Aktivovat předvolbu vlastního režimu.
-Toto nastavení se aplikuje jen když je zapnutý vlastní režim.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Předvolba vlastního režimu</value>
@@ -1276,9 +1273,7 @@ Vážně, buď opatrný s touto možností!</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Povolit vysoký dynamický rozsah (HDR) na displeji notebooku.
-
-VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2031,9 +2026,7 @@ Nebude to mít vliv na ostatní celoobrazovková okna, ale nebudete moci kliknou
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Zvyšte výkon přetaktováním diskrétního GPU.
-
-VAROVÁNÍ: Tato akce nebude správně spuštěna, pokud diskrétní GPU není dostupné.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Přetaktovat GPU</value>
@@ -2274,9 +2267,7 @@ Režim můžeš přepínat pomocí Fn+Q.</value>
     <value>Obnovit</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Změnit obnovovací frekvenci displeje notebooku.
-
-VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Obnovovací frekvence</value>
@@ -2294,9 +2285,7 @@ VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Změnit rozlišení displeje notebooku.
-
-VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Rozlišení</value>
@@ -2380,8 +2369,7 @@ VAROVÁNÍ: Tato akce neproběhne správně, pokud je interní displej vypnutý.
     <value>Umístění spustitelného souboru</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Spusť skript nebo program.
-Nejprve se ujisti, že tvůj skript běží správně.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -3250,8 +3238,7 @@ Po změně této volby je doporučen restart.</value>
     <value>Čas</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Povolit přepínání mezi integrovaným a diskrétním GPU.
-Vyžaduje restart.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Hybridní režim</value>
