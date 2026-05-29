@@ -1655,10 +1655,13 @@ Click Yes to disable and No to ignore.</value>
     <value>Nem</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Értesítési szöveg</value>
+    <value>Notification Text (supports $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Értesítés megjelenítése</value>
+  </data>
+  <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
+    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>Hálózati adapter</value>
@@ -1684,9 +1687,6 @@ Engedélyezze ezt az opciót, ha konfliktusok vannak a teljes képernyős alkalm
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Fn Lock</value>
-  </data>
-  <data name="NotificationsSettingsWindow_GodModePreset" xml:space="preserve">
-    <value>Custom Mode Preset</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
     <value>ITS Mode</value>
@@ -1772,9 +1772,6 @@ Nincs hatással a többi teljes képernyős ablakokra, de nem lehet kattintani a
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
     <value>Fn Lock be</value>
-  </data>
-  <data name="Notification_GodModePresetChanged" xml:space="preserve">
-    <value>Custom Mode Preset: {0}</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
     <value>Mikrofon ki</value>
@@ -3277,6 +3274,9 @@ Az opció módosítása után ajánlott az újraindítás.</value>
   <data name="TryAgain" xml:space="preserve">
     <value>Próbálja meg újra</value>
   </data>
+  <data name="TurnOffAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn off airplane mode</value>
+  </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
     <value>Kikapcsolja az összes rendelkezésre álló kijelzőt.</value>
   </data>
@@ -3295,6 +3295,9 @@ Az egér mozgatása vagy a billentyűzet megnyomása felébreszti a kijelzőket.
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Wi-Fi kikapcsolása</value>
+  </data>
+  <data name="TurnOnAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn on airplane mode</value>
   </data>
   <data name="TurnOnWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Wi-Fi bekapcsolása</value>
