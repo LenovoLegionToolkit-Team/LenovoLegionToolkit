@@ -668,8 +668,7 @@ Supported formats are: {1}.</value>
     <value>Sarkans</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Atlasiet GPU darbības režīmu atkarībā no datora lietojuma un barošanas apstākļiem.
-Pārslēdzot režīmus dators iespējams būs jārestartē.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Darbošanās režīms</value>
@@ -711,6 +710,12 @@ Pārslēdzot režīms dators varbūt būt jārestartē.</value>
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>AC Connected</value>
   </data>
@@ -736,9 +741,7 @@ Pārslēdzot režīms dators varbūt būt jārestartē.</value>
     <value>Sākums</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Atspējojiet diskrēto GPU, ja tas ir nevajadzīgi aktīvs.
-
-BRĪDINĀJUMS. Ja iekšējais displejs ir izslēgts vai hibrīda režīms nav aktīvs, šī darbība nedarbosies pareizi.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Deaktivizēt GPU</value>
@@ -879,10 +882,7 @@ BRĪDINĀJUMS. Ja iekšējais displejs ir izslēgts vai hibrīda režīms nav ak
     <value>Diskrētais GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Mainiet iebūvētā ekrāna spilgtumu.
-Enerģijas režīmi maina spilgtumu dažās ierīcēs. Pārliecinies, ka šis solis ir pēdējais, ja kaut kas nesanāk vienkārši pareizi.
-
-BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies pareizi.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Ekrāna spilgtums</value>
@@ -920,9 +920,7 @@ Thank you for your support!</value>
     <value>Ziedot</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Mainiet iebūvētā ekrāna mērogošanu.
-
-BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies pareizi.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1084,8 +1082,7 @@ BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies p
     <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Aktivizējiet Pielāgotā Režīma priekšiestatījumu.
-Šie iestatījumi stājas spēkā tikai tad, ja ir iespējots pielāgotais režīms.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Pielāgotā režīma priekšiestatījums</value>
@@ -1276,9 +1273,7 @@ Nopietni, esi uzmanīgs ar šo variantu!</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Iebūvētajā ekrānā iespējojiet augstu dinamisko diapazonu (HDR).
-
-BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies pareizi.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2031,9 +2026,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Palieliniet veiktspēju, virstaktējot diskrēto GPU.
-
-BRĪDINĀJUMS. Ja nav pieejams atsevišķs GPU, šī darbība nedarbosies pareizi.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Virstaktēt GPU</value>
@@ -2274,9 +2267,7 @@ Jūs varat režīmus mainīt ar Fn+Q.</value>
     <value>Atsvaidzināt</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Mainiet iebūvētā ekrāna atsvaidzināšanas ātrumu.
-
-BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies pareizi.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Atsvaidzināšanas ātrums</value>
@@ -2294,9 +2285,7 @@ BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies p
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Mainiet iebūvētā ekrāna izšķirtspēju.
-
-BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies pareizi.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Izšķirtspēja</value>
@@ -2380,8 +2369,7 @@ BRĪDINĀJUMS. Ja iebūvētais ekrāns ir izslēgts, šī darbība nedarbosies p
     <value>Izpildāmā Ceļš</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Palaidiet skriptu vai programmu.
-Vispirms pārliecinieties, vai skripts darbojas pareizi.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -3250,8 +3238,7 @@ Pēc šīs opcijas maiņas ieteicams restartēt datoru.</value>
     <value>Laiks</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Atļaut pārslēgšanos starp integrēto un diskrēto GPU.
-Nepieciešama restartēšana.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Hibrīda Režīms</value>
