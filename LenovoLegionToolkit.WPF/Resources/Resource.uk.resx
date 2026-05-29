@@ -667,8 +667,7 @@
     <value>Червона</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Оберіть роботи графічного процесора залежно від використання комп'ютера та умов живлення.
-Перемикання режимів може вимагати перезавантаження.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Режим роботи ГП</value>
@@ -710,6 +709,12 @@
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>Живлення під’єднано</value>
   </data>
@@ -735,9 +740,7 @@
     <value>Головна</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Вимкнути дискретну відеокарту якщо вона працює без необхідності.
-
-УВАГА: Ця дія може працювати некоректно, якщо вбудований дисплей вимкнений чи Гібридний режим не активовано.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Вимкнути відеокарту</value>
@@ -878,8 +881,7 @@
     <value>Дискретний ГП</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Змінити яскравість вбудованого дисплея.
-Режими живлення змінюють яскравість на деяких пристроях. Переконайтеся, що робите цей крок останнім, якщо щось не працює належним чином.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Яскравість дисплея</value>
@@ -917,9 +919,7 @@ Thank you for your support!</value>
     <value>Пожертування</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Змінити масштаб вбудованого дисплея.
-
-УВАГА: Ця дія може спрацювати некоректно, якщо вбудований дисплей вимкнено.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1081,8 +1081,7 @@ Thank you for your support!</value>
     <value>ГГц</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Активувати користувальницькі попередні налаштування.
-Ці налаштування працюють тільки, коли включений користувальницький режим.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Пресет користувальницького режиму</value>
@@ -1273,9 +1272,7 @@ Thank you for your support!</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Увімкнути HDR на вбудованому дисплеї.
-
-УВАГА: Ця дія може спрацювати некоректно, якщо вбудований дисплей вимкнено.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2028,8 +2025,7 @@ Thank you for your support!</value>
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Підвищення продуктивності шляхом розгону дискретного графічного процесора.
-УВАГА: Ця дія не виконуватиметься належним чином, якщо дискретний графічний процесор недоступний.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Розгін ГП</value>
@@ -2270,9 +2266,7 @@ Thank you for your support!</value>
     <value>Оновлення</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Змінити частоту оновлення вбудованого дисплея.
-
-УВАГА: Ця дія може спрацювати некоректно, якщо вбудований дисплей вимкнено.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Частота оновлення</value>
@@ -2290,9 +2284,7 @@ Thank you for your support!</value>
     <value>Скинути</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Змінити роздільну здатність вбудованого дисплея.
-
-УВАГА: Ця дія може спрацювати некоректно, якщо вбудований дисплей вимкнено.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Роздільна здатність</value>
@@ -2376,8 +2368,7 @@ Thank you for your support!</value>
     <value>Виконавчий шлях</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Запустити скрипт або застосунок.
-В першу чергу перевірте, чи всі скрипти виконуються правильно.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Перевірити екземпляр</value>
@@ -3246,8 +3237,7 @@ Thank you for your support!</value>
     <value>Час</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Дозволяти перемикатися між інтегрованим та дискретним ГП.
-Потребує перезавантаження.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Гібридний режим</value>
