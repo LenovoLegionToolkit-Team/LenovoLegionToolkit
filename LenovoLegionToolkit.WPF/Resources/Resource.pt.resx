@@ -1656,10 +1656,13 @@ Click Yes to disable and No to ignore.</value>
     <value>Não</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Texto de Notificação</value>
+    <value>Notification Text (supports $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Mostrar notificação</value>
+  </data>
+  <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
+    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>Carregador</value>
@@ -1685,9 +1688,6 @@ Ativa esta opção se tiveres problemas de conflitos com apps em ecrã inteiro.<
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Fn Lock</value>
-  </data>
-  <data name="NotificationsSettingsWindow_GodModePreset" xml:space="preserve">
-    <value>Custom Mode Preset</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
     <value>ITS Mode</value>
@@ -1773,9 +1773,6 @@ It won't affect other full screen windows, but you will not be able to click on 
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
     <value>Fn Lock ligado</value>
-  </data>
-  <data name="Notification_GodModePresetChanged" xml:space="preserve">
-    <value>Custom Mode Preset: {0}</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
     <value>Microfone desligado</value>
@@ -3277,6 +3274,9 @@ Se desativado, esta app irá executar os atalhos Fn.
   <data name="TryAgain" xml:space="preserve">
     <value>Tentar novamente</value>
   </data>
+  <data name="TurnOffAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn off airplane mode</value>
+  </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
     <value>Desligar todos os ecrãs disponíveis.</value>
   </data>
@@ -3295,6 +3295,9 @@ Mover o rato ou clicar no teclado vai ligar os ecrãs.</value>
   </data>
   <data name="TurnOffWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Desligar o Wi-Fi</value>
+  </data>
+  <data name="TurnOnAirplaneModeAutomationStepControl_Title" xml:space="preserve">
+    <value>Turn on airplane mode</value>
   </data>
   <data name="TurnOnWiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Ligar o Wi-Fi</value>
