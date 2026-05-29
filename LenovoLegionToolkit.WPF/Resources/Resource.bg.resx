@@ -667,8 +667,7 @@
     <value>Червено</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Изберете режим на работа за видео картата в зависимост от натоварването и захранването на компютъра.
-Промяна в режима може да изисква рестартиране.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Режим на работа на видео картата</value>
@@ -710,6 +709,12 @@
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>AC Connected</value>
   </data>
@@ -735,9 +740,7 @@
     <value>Начало</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Деактивирайте допълнителната видеокарта, ако се използва без да има нужда от нея.
-
-ВНИМАНИЕ: Това действие може да не се изпълни правилно, ако вграденият монитор е изключен или ако не е активиран Хибриден режим.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Деактивирайте видеокартата</value>
@@ -878,10 +881,7 @@
     <value>Допълнителна видеокарта</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Променете яркостта на вградения екран.
-Промяна в режима на захранване може да доведе до промяна в яркостта при някои устройства. Уверете се, че настоящата стъпка е сложена на последно място, ако нещо не работи, както очаквате.
-
-ВНИМАНИЕ: Това действие може да не се изпълни правилно, ако вграденият екран е изключен.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Яркост на екрана</value>
@@ -919,9 +919,7 @@ Thank you for your support!</value>
     <value>Дарете</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Променете мащаба на вградения дисплей.
-
-ВНИМАНИЕ: Това действие може да не бъде изпълнено правилно, ако вграденият дисплей е изключен.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>Точки на инч (DPI)</value>
@@ -1083,8 +1081,7 @@ Thank you for your support!</value>
     <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Активирай предварително зададения персонализиран режим.
-Тази настройка ще бъде приложена само когато персонализираният режим е активиран.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Предварително зададен персонализиран режим</value>
@@ -1275,9 +1272,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Активирай висок динамичен обхват (HDR) на вградения екран.
-
-ВНИМАНИЕ: Това действие няма да бъде изпълнено правилно, ако вградения екран е изключен.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>Висок динамичен обхват (HDR)</value>
@@ -2030,9 +2025,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Увеличете производителността чрез овърклок на допълнителната видео карта.
-
-ВНИМАНИЕ: Това действие няма да бъде изпълнено правилно, ако Вашето устройство не разполага с допълнителна видео карта.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Овърклок на видео картата</value>
@@ -2273,9 +2266,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Опресни</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Променете честотата на опресняване на вградения дисплей.
-
-ВНИМАНИЕ: Това действие може да не бъде изпълнено правилно, ако вграденият дисплей е изключен.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Честота на опресняване</value>
@@ -2293,7 +2284,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Променете разделителната способност на вградения дисплей.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Разделителна способност</value>
@@ -2377,8 +2368,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Път до изпълнимия файл</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Изпълни скрипт или програма.
-Първо се уверете, че скриптът Ви работи правилно.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -3247,8 +3237,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Време</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Позволи превключване между вградена и допълнителна видеокарта.
-Изисква рестартиране.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Хибриден режим</value>
