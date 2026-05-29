@@ -668,8 +668,7 @@
     <value>Красный</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Выберите режим работы видеокарты в зависимости от особенностей использования компьютера и условий питания.
-Для переключения режимов может потребоваться перезагрузка.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Режим работы видеокарты</value>
@@ -711,6 +710,12 @@
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>Подключено к сети питания</value>
   </data>
@@ -736,9 +741,7 @@
     <value>Домашняя страница</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Отключить дискретный графический процессор, если он активен без необходимости.
-
-ВНИМАНИЕ: Это действие не будет выполняться корректно, если внутренний дисплей выключен или не активен Гибридный режим.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Деактивировать GPU</value>
@@ -879,10 +882,7 @@
     <value>Дискретный граф. процессор</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Изменить яркость встроенного дисплея.
-На некоторых устройствах режимы питания изменяют яркость. Убедитесь, что этот шаг последний, если что-то работает не так, как нужно.
-
-ВНИМАНИЕ: Это действие не будет выполняться корректно, если внутренний дисплей выключен.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Яркость дисплея</value>
@@ -920,9 +920,7 @@ Thank you for your support!</value>
     <value>Сделать пожертвование</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Изменить масштаб встроенного дисплея.
-
-ВНИМАНИЕ: Это действие не будет выполняться корректно, если внутренний дисплей выключен.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1084,8 +1082,7 @@ Thank you for your support!</value>
     <value>ГГц</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Активирует пресет пользовательского режима.
-Эта настройка действует только при включенном пользовательском режиме.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Пресет пользовательского режима</value>
@@ -1276,9 +1273,7 @@ Thank you for your support!</value>
     <value>Аппаратные датчики</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Включить High Dynamic Range (HDR) на встроенном дисплее.
-
-ВНИМАНИЕ: Это действие не будет выполняться корректно, если внутренний дисплей выключен.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2031,9 +2026,7 @@ Thank you for your support!</value>
     <value>Панель</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Повысить производительность путем разгона дискретного GPU.
-
-ВНИМАНИЕ: Это действие не будет выполняться корректно, если дискретный GPU недоступен.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Разгон GPU</value>
@@ -2274,9 +2267,7 @@ Thank you for your support!</value>
     <value>Обновить</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Изменить частоту обновления встроенного дисплея.
-
-ВНИМАНИЕ: Это действие не будет выполняться корректно, если внутренний дисплей выключен.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Частота обновления</value>
@@ -2294,9 +2285,7 @@ Thank you for your support!</value>
     <value>Сброс</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Изменить разрешение встроенного дисплея.
-
-ВНИМАНИЕ: Это действие не будет выполняться корректно, если внутренний дисплей выключен.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Разрешение</value>
@@ -2380,8 +2369,7 @@ Thank you for your support!</value>
     <value>Путь к исполняемому файлу</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Запустите сценарий или программу.
-Убедитесь, что ваш сценарий выполняется правильно.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Проверить экземпляр</value>
@@ -3250,8 +3238,7 @@ Thank you for your support!</value>
     <value>Время</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Позволяет переключаться между встроенным и дискретным графическим процессором.
-Требуется перезагрузка.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Гибридный режим</value>
