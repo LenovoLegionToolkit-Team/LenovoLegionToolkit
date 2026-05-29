@@ -668,8 +668,7 @@ Este tempo pode não ser exato caso o equipamento for carregado em estado de sus
     <value>Vermelho</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Selecionar o modo de funcionamento da GPU, seguindo o uso e as condições de energia de seu equipamento.
-Uma reinicialização pode ser necessária.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Modo de trabalho da GPU</value>
@@ -711,6 +710,12 @@ Uma reinicialização pode ser necessária.</value>
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>Conectado na Tomada</value>
   </data>
@@ -736,9 +741,7 @@ Uma reinicialização pode ser necessária.</value>
     <value>Início</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Desativar a GPU dedicada se estiver ativa sem necessidade.
-
-AVISO: Esta ação não será executada corretamente se o display interno estiver desligado ou o modo híbrido não estiver ativo.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Desativar GPU</value>
@@ -879,9 +882,7 @@ AVISO: Esta ação não será executada corretamente se o display interno estive
     <value>GPU dedicada</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Alterar o brilho da tela integrada.
-
-AVISO: Esta ação não será executada corretamente se a tela integrada estiver desligada.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Brilho da tela</value>
@@ -919,9 +920,7 @@ Thank you for your support!</value>
     <value>Doar</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Altera a escala de resolução da tela integrada, afetando o tamanho dos textos, aplicativos e outros itens.
-
-AVISO: Esta ação não será executada corretamente se a tela integrada estiver desligada.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1083,8 +1082,7 @@ AVISO: Esta ação não será executada corretamente se a tela integrada estiver
     <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Ativar predefinição Modo Personalizado.
-Esta configuração somente terá efeito se o Modo Personalizado estiver ativo.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Predefinição do modo personalizado</value>
@@ -1275,9 +1273,7 @@ Sério, cuidado com essa opção!</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Ative a alta faixa dinâmica (HDR) na tela integrada.
-
-AVISO: Esta ação não será executada corretamente se o display interno estiver desligado.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2029,9 +2025,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Aumentar performance overclocando a GPU dedicada.
-
-AVISO: Esta ação não será executada corretamente caso a GPU dedicada não esteja disponível.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Overclock da GPU</value>
@@ -2272,9 +2266,7 @@ Você pode alternar entre os modos pressionando Fn+Q.</value>
     <value>Atualizar</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Alterar a taxa de atualização da tela integrada.
-
-AVISO: Esta ação não será executada corretamente se a tela integrada estiver desligada.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Taxa de atualização</value>
@@ -2292,9 +2284,7 @@ AVISO: Esta ação não será executada corretamente se a tela integrada estiver
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Alterar a resolução da tela integrada.
-
-AVISO: Esta ação não será executada corretamente se a tela integrada estiver desligada.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Resolução</value>
@@ -2378,8 +2368,7 @@ AVISO: Esta ação não será executada corretamente se a tela integrada estiver
     <value>Caminho do executável</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Execute um script ou um programa.
-Certifique-se de que seu script seja executado corretamente primeiro.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -3248,8 +3237,7 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
     <value>Hora</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Permite alternar entre as GPU's integrada e dedicada.
-Requer reinicialização.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Modo híbrido</value>
