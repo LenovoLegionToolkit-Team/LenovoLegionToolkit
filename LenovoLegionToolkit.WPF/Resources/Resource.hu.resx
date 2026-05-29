@@ -668,8 +668,7 @@ A támogatott formátumok a következők: {1}.</value>
     <value>Vörös</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Válassza ki a GPU működési módját a számítógép használatának és az energiaellátás körülményeinek megfelelően.
-Az üzemmódok váltása újraindítást igényelhet.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>GPU működési mód</value>
@@ -711,6 +710,12 @@ Az üzemmódok közötti váltás újraindítást igényelhet.</value>
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>AC Csatlakoztatva</value>
   </data>
@@ -736,9 +741,7 @@ Az üzemmódok közötti váltás újraindítást igényelhet.</value>
     <value>Kezdőlap</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Letiltja a diszkrét GPU-t, ha az feleslegesen aktív.
-
-FIGYELMEZTETÉS: Ez a művelet nem fog helyesen futni, ha a belső kijelző ki van kapcsolva vagy a hibrid üzemmód nem aktív.</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPU deaktiválása</value>
@@ -879,9 +882,7 @@ FIGYELMEZTETÉS: Ez a művelet nem fog helyesen futni, ha a belső kijelző ki v
     <value>Diszkrét GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>A beépített kijelző fényerejének módosítása.
-
-FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Kijelző fényereje</value>
@@ -919,9 +920,7 @@ Thank you for your support!</value>
     <value>Támogatás</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>A beépített kijelző méretezésének módosítása.
-
-FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1083,8 +1082,7 @@ FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző 
     <value>Ghz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Egyéni üzemmód előbeállítás aktiválása.
-Ez a beállítás csak akkor lép hatályba, ha az Egyéni üzemmód engedélyezve van.</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Egyéni üzemmód beállítása</value>
@@ -1275,9 +1273,7 @@ Komolyan, legyen óvatos ezzel az opcióval!</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>A nagy dinamikatartomány (HDR) engedélyezése a beépített kijelzőn.
-
-FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2030,9 +2026,7 @@ Nincs hatással a többi teljes képernyős ablakokra, de nem lehet kattintani a
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Növelje a teljesítményt a diszkrét GPU túlhajtásával.
-
-FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha nem áll rendelkezésre diszkrét GPU.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Overclock</value>
@@ -2273,9 +2267,7 @@ A teljesítménymódot az Fn+Q billentyűkombinációval is meg lehet változtat
     <value>Frissítés</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>A beépített kijelző frissítési sebességének módosítása.
-
-FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Frissítés gyakorisága</value>
@@ -2293,9 +2285,7 @@ FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző 
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>A beépített kijelző felbontásának módosítása.
-
-FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző ki van kapcsolva.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Felbontás</value>
@@ -2379,8 +2369,7 @@ FIGYELMEZTETÉS: Ez a művelet nem fog megfelelően futni, ha a belső kijelző 
     <value>Futtatható elérési útvonal</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Szkript vagy program futtatása.
-Először győződjön meg róla, hogy a szkript helyesen fut.</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -3249,8 +3238,7 @@ Az opció módosítása után ajánlott az újraindítás.</value>
     <value>Idő</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Lehetővé teszi az integrált és a diszkrét GPU közötti váltást.
-Újraindítást igényel.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Hibrid mód</value>
