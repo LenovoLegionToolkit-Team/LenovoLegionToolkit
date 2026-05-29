@@ -668,8 +668,7 @@
     <value>赤</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Select GPU operating mode based on your computer's usage and power conditions.
-Switching modes may require restart.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Working Mode</value>
@@ -711,6 +710,12 @@ Switching modes may require restart.</value>
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
   </data>
+  <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
+    <value>Cycle through available Custom Mode presets.</value>
+  </data>
+  <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
+    <value>Cycle Custom Mode preset</value>
+  </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>AC Connected</value>
   </data>
@@ -736,9 +741,7 @@ Switching modes may require restart.</value>
     <value>ホーム</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>ディスクリートGPUが不必要にアクティブになっている場合は無効にします。
-
-警告: 内蔵ディスプレイがオフになっているか、ハイブリッドモードがアクティブでない場合、このアクションは正しく実行されません。</value>
+    <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPUを非アクティブ化</value>
@@ -879,9 +882,7 @@ Switching modes may require restart.</value>
     <value>ディスクリートGPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>内蔵ディスプレイの表示輝度を変更します。
-
-警告: 内蔵ディスプレイがオフの場合、このアクションは正しく実行されません。</value>
+    <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>ディスプレイの明るさ</value>
@@ -919,9 +920,7 @@ Thank you for your support!</value>
     <value>寄付</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>内蔵ディスプレイの表示の大きさを変更します。
-
-警告: 内蔵ディスプレイがオフの場合、このアクションは正しく実行されません。</value>
+    <value>Change scaling of the built-in display.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1083,8 +1082,7 @@ Thank you for your support!</value>
     <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>カスタムモードプリセットを有効にします。
-この設定は、カスタムモードが有効な場合にのみ有効です。</value>
+    <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>カスタムモードプリセット</value>
@@ -1275,9 +1273,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>内蔵ディスプレイでハイダイナミックレンジ（HDR）を有効にします。
-
-警告: 内蔵ディスプレイがオフの場合、このアクションは正しく実行されません。</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -2030,9 +2026,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>ディスクリートGPU をオーバークロックすることでパフォーマンスを向上させます。
-
-警告: ディスクリートGPUが利用できない場合、このアクションは正しく実行されません。</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>オーバークロックGPU</value>
@@ -2273,9 +2267,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>更新</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>内蔵ディスプレイのリフレッシュレートを変更します。
-
-警告: 内蔵ディスプレイがオフの場合、このアクションは正しく実行されません。</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>リフレッシュレート</value>
@@ -2293,9 +2285,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>内蔵ディスプレイの解像度を変更します。
-
-警告: 内蔵ディスプレイがオフの場合、このアクションは正しく実行されません。</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>解像度</value>
@@ -2379,8 +2369,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>実行パス</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>スクリプトまたはプログラムを実行します。
-この項目を設定する前に、スクリプトが正しく実行されることを確認してください。</value>
+    <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -3249,8 +3238,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>時間</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Allow switching between integrated and discrete GPU.
-Requires restart.</value>
+    <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>ハイブリッドモード</value>
