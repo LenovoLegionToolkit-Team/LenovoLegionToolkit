@@ -1,4 +1,4 @@
-﻿using LenovoLegionToolkit.Lib.Utils;
+using LenovoLegionToolkit.Lib.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +57,8 @@ public static class DeviceInformation
     private static readonly Lazy<List<MemoryHardwareInfo>> _memoryInfos = new(FetchMemoryInfos);
     private static readonly Lazy<List<DisplayHardwareInfo>> _displayInfos = new(FetchDisplayInfos);
     private static readonly Lazy<MotherboardHardwareInfo> _motherboardInfo = new(FetchMotherboardInfo);
+    private static readonly Lazy<List<LogicalDriveInfo>> _logicalDrives = new(FetchLogicalDrives);
+    private static readonly Lazy<List<NetworkHardwareInfo>> _networkAdapters = new(FetchNetworkAdapters);
 
     public static CpuHardwareInfo GetCpuInfo() => _cpuInfo.Value;
     public static List<GpuHardwareInfo> GetGpuInfos() => _gpuInfos.Value.ToList();
@@ -64,6 +66,8 @@ public static class DeviceInformation
     public static List<MemoryHardwareInfo> GetMemoryInfos() => _memoryInfos.Value.ToList();
     public static List<DisplayHardwareInfo> GetDisplayInfos() => _displayInfos.Value.ToList();
     public static MotherboardHardwareInfo GetMotherboardInfo() => _motherboardInfo.Value;
+    public static List<LogicalDriveInfo> GetLogicalDrives() => _logicalDrives.Value.ToList();
+    public static List<NetworkHardwareInfo> GetNetworkAdapters() => _networkAdapters.Value.ToList();
 
     #region Fetching Implementation
 
@@ -76,7 +80,7 @@ public static class DeviceInformation
 
             foreach (var obj in collection)
             {
-                string name = obj["Name"]?.ToString()?.Trim() ?? "Unknown CPU";
+                string? name = obj["Name"]?.ToString()?.Trim();
                 uint cores = obj["NumberOfCores"] is not null ? Convert.ToUInt32(obj["NumberOfCores"]) : 0;
                 uint threads = obj["NumberOfLogicalProcessors"] is not null ? Convert.ToUInt32(obj["NumberOfLogicalProcessors"]) : 0;
 
@@ -117,7 +121,7 @@ public static class DeviceInformation
                 if (ramBytes > 0 && ramBytes < 4294967295)
                 {
                     double ramGigabytes = ramBytes / 1_073_741_824.0;
-                    vramStr = ramGigabytes <= 0.1 ? "Shared/Dynamic" : $"{ramGigabytes:F1} GB";
+                    vramStr = ramGigabytes <= 0.1 ? "Shared/Dynamic" : ramGigabytes.ToString("F1");
                 }
 
                 gpus.Add(new GpuHardwareInfo(name, vramStr));
@@ -137,9 +141,9 @@ public static class DeviceInformation
             {
                 string nvName = nvGpu.FullName;
                 double vramGb = nvGpu.MemoryInformation.DedicatedVideoMemoryInkB / (1024.0 * 1024.0);
-                string trueVramStr = $"{vramGb:F1} GB";
+                string trueVramStr = vramGb.ToString("F1");
 
-                var existingIndex = gpus.FindIndex(g => g.Name.Contains("NVIDIA", StringComparison.OrdinalIgnoreCase) && (g.Name.Contains(nvName) || nvName.Contains(g.Name)));
+                var existingIndex = gpus.FindIndex(g => g.Name != null && g.Name.Contains("NVIDIA", StringComparison.OrdinalIgnoreCase) && (g.Name.Contains(nvName) || nvName.Contains(g.Name)));
 
                 if (existingIndex >= 0)
                 {
@@ -169,7 +173,7 @@ public static class DeviceInformation
 
             foreach (var obj in collection)
             {
-                string model = obj["Model"]?.ToString()?.Trim() ?? "Unknown Disk";
+                string? model = obj["Model"]?.ToString()?.Trim();
                 ulong bytes = obj["Size"] is not null ? Convert.ToUInt64(obj["Size"]) : 0;
                 double gigabytes = bytes / 1_073_741_824.0;
 
@@ -197,18 +201,18 @@ public static class DeviceInformation
                 ulong bytes = obj["Capacity"] is not null ? Convert.ToUInt64(obj["Capacity"]) : 0;
                 double gigabytes = bytes / 1_073_741_824.0;
 
-                string speed = obj["Speed"] is not null ? $"{obj["Speed"]} MHz" : "Unknown Frequency";
+                string? speed = obj["Speed"]?.ToString();
 
                 uint typeCode = Convert.ToUInt32(obj["SMBIOSMemoryType"] ?? obj["MemoryType"] ?? 0u);
                 string generation = GetMemoryGeneration(typeCode);
 
-                string rawManufacturer = obj["Manufacturer"]?.ToString()?.Trim() ?? "";
+                string? rawManufacturer = obj["Manufacturer"]?.ToString()?.Trim() ?? "";
 
                 if (string.IsNullOrWhiteSpace(rawManufacturer) ||
                     rawManufacturer.StartsWith("00") ||
                     rawManufacturer.Equals("Unknown", StringComparison.OrdinalIgnoreCase))
                 {
-                    rawManufacturer = "Unknown";
+                    rawManufacturer = null;
                 }
 
                 memoryList.Add(new MemoryHardwareInfo(slot++, generation, gigabytes, speed, rawManufacturer));
@@ -342,8 +346,8 @@ public static class DeviceInformation
 
             foreach (var obj in collection)
             {
-                string manufacturer = obj["Manufacturer"]?.ToString()?.Trim() ?? "Unknown Manufacturer";
-                string product = obj["Product"]?.ToString()?.Trim() ?? "Unknown Product";
+                string? manufacturer = obj["Manufacturer"]?.ToString()?.Trim();
+                string? product = obj["Product"]?.ToString()?.Trim();
 
                 return new MotherboardHardwareInfo(manufacturer, product);
             }
@@ -353,81 +357,149 @@ public static class DeviceInformation
             Log.Instance.Trace($"Unable to get Motherboard info from WMI. Reason: {ex}");
         }
 
-        return new MotherboardHardwareInfo("Motherboard Not Found", "Unknown");
+        return new MotherboardHardwareInfo(null, null);
     }
 
-    private static string GetMemoryGeneration(uint typeCode) => typeCode switch
+    private static string? GetMemoryGeneration(uint typeCode) => typeCode switch
     {
         26 => "DDR4",
         34 => "DDR5",
-        _ => "Unknown"
+        _ => null
     };
+
+    private static List<LogicalDriveInfo> FetchLogicalDrives()
+    {
+        var drives = new List<LogicalDriveInfo>();
+        try
+        {
+            foreach (var drive in global::System.IO.DriveInfo.GetDrives())
+            {
+                if (drive.IsReady && drive.DriveType == global::System.IO.DriveType.Fixed)
+                {
+                    double sizeGb = drive.TotalSize / 1_073_741_824.0;
+                    double freeGb = drive.AvailableFreeSpace / 1_073_741_824.0;
+                    drives.Add(new LogicalDriveInfo(drive.Name, drive.VolumeLabel, sizeGb, freeGb));
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Unable to get logical drives. Reason: {ex}");
+        }
+        return drives;
+    }
+
+    private static List<NetworkHardwareInfo> FetchNetworkAdapters()
+    {
+        var adapters = new List<NetworkHardwareInfo>();
+        try
+        {
+            using var searcher = new ManagementObjectSearcher("SELECT Name, MACAddress FROM Win32_NetworkAdapter WHERE PhysicalAdapter = True AND MACAddress IS NOT NULL");
+            using var collection = searcher.Get();
+
+            foreach (var obj in collection)
+            {
+                string? name = obj["Name"]?.ToString()?.Trim();
+                string? mac = obj["MACAddress"]?.ToString()?.Trim();
+                adapters.Add(new NetworkHardwareInfo(name, mac));
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Unable to get network adapters from WMI. Reason: {ex}");
+        }
+        return adapters;
+    }
 
     #endregion
 }
 
-public record CpuHardwareInfo(string Name, uint CoreCount, uint ThreadCount)
+public record CpuHardwareInfo(string? Name, uint CoreCount, uint ThreadCount)
 {
     public string this[int index] => index switch
     {
-        0 => Name,
+        0 => Name ?? "",
         1 => CoreCount.ToString(),
         2 => ThreadCount.ToString(),
         _ => throw new ArgumentOutOfRangeException(nameof(index))
     };
 }
 
-public record GpuHardwareInfo(string Name, string Vram)
+public record GpuHardwareInfo(string? Name, string? Vram)
 {
     public string this[int index] => index switch
     {
-        0 => Name,
-        1 => Vram,
+        0 => Name ?? "",
+        1 => Vram ?? "",
         _ => throw new ArgumentOutOfRangeException(nameof(index))
     };
 }
 
-public record DiskHardwareInfo(string Model, double SizeGb)
+public record DiskHardwareInfo(string? Model, double SizeGb)
 {
     public string this[int index] => index switch
     {
-        0 => Model,
-        1 => $"{SizeGb:F2} GB",
+        0 => Model ?? "",
+        1 => SizeGb.ToString("F2"),
         _ => throw new ArgumentOutOfRangeException(nameof(index))
     };
 }
 
-public record MemoryHardwareInfo(int Slot, string Generation, double CapacityGb, string SpeedMhz, string Manufacturer)
+public record MemoryHardwareInfo(int Slot, string? Generation, double CapacityGb, string? SpeedMhz, string? Manufacturer)
 {
     public string this[int index] => index switch
     {
         0 => Slot.ToString(),
-        1 => Generation,
-        2 => $"{CapacityGb:F0} GB",
-        3 => SpeedMhz,
-        4 => Manufacturer,
+        1 => Generation ?? "",
+        2 => CapacityGb.ToString("F0"),
+        3 => SpeedMhz ?? "",
+        4 => Manufacturer ?? "",
         _ => throw new ArgumentOutOfRangeException(nameof(index))
     };
 }
 
-public record DisplayHardwareInfo(int Index, string Model, int Width, int Height, int RefreshRate)
+public record DisplayHardwareInfo(int Index, string? Model, int Width, int Height, int RefreshRate)
 {
     public string this[int index] => index switch
     {
         0 => Index.ToString(),
-        1 => Model,
+        1 => Model ?? "",
         2 => $"{Width}x{Height}",
-        3 => $"{RefreshRate} Hz",
+        3 => RefreshRate.ToString(),
         _ => throw new ArgumentOutOfRangeException(nameof(index))
     };
 }
 
-public record MotherboardHardwareInfo(string Manufacturer, string Product)
+public record MotherboardHardwareInfo(string? Manufacturer, string? Product)
 {
     public string this[int index] => index switch
     {
-        0 => Manufacturer,
-        1 => Product,
+        0 => Manufacturer ?? "",
+        1 => Product ?? "",
+        _ => throw new ArgumentOutOfRangeException(nameof(index))
+    };
+}
+
+public record LogicalDriveInfo(string Name, string Label, double SizeGb, double FreeGb)
+{
+    public double UsedGb => SizeGb - FreeGb;
+
+    public string this[int index] => index switch
+    {
+        0 => Name,
+        1 => Label,
+        2 => SizeGb.ToString("F2"),
+        3 => FreeGb.ToString("F2"),
+        _ => throw new ArgumentOutOfRangeException(nameof(index))
+    };
+}
+
+public record NetworkHardwareInfo(string? Name, string? MacAddress)
+{
+    public string this[int index] => index switch
+    {
+        0 => Name ?? "",
+        1 => MacAddress ?? "",
         _ => throw new ArgumentOutOfRangeException(nameof(index))
     };
 }
