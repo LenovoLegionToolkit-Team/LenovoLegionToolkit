@@ -563,6 +563,9 @@ Only actions that match current state will run.</value>
   <data name="BatteryPage_FullChargeCapacity_Title" xml:space="preserve">
     <value>Full charge capacity</value>
   </data>
+  <data name="BatteryPage_LiveCharge_Title" xml:space="preserve">
+    <value>Current charge</value>
+  </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
     <value>Battery level low</value>
   </data>
@@ -596,6 +599,9 @@ This time might not be accurate, if laptop was charged when sleeping or off.</va
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
     <value>Battery</value>
+  </data>
+  <data name="BiosVersion" xml:space="preserve">
+    <value>BIOS version</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
     <value>Customize</value>
@@ -704,6 +710,12 @@ Switching modes may require restart.</value>
   <data name="CopyAll" xml:space="preserve">
     <value>Copy all</value>
   </data>
+  <data name="Cores" xml:space="preserve">
+    <value>Cores</value>
+  </data>
+  <data name="CPU" xml:space="preserve">
+    <value>CPU</value>
+  </data>
   <data name="Create" xml:space="preserve">
     <value>Create</value>
   </data>
@@ -743,6 +755,9 @@ Switching modes may require restart.</value>
   <data name="DashboardPage_Title" xml:space="preserve">
     <value>Home</value>
   </data>
+  <data name="DaysRemaining" xml:space="preserve">
+    <value>Days remaining</value>
+  </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
     <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
@@ -761,6 +776,9 @@ Switching modes may require restart.</value>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Device" xml:space="preserve">
+    <value>Device</value>
+  </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
     <value>Show connected devices only</value>
   </data>
@@ -770,41 +788,11 @@ Switching modes may require restart.</value>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlySelected" xml:space="preserve">
     <value>Show selected devices only</value>
   </data>
-  <data name="DeviceInformationWindow_BiosVersion_Title" xml:space="preserve">
-    <value>BIOS version</value>
-  </data>
-  <data name="DeviceInformationWindow_Device_Title" xml:space="preserve">
-    <value>Device</value>
-  </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
     <value>Lenovo Support</value>
   </data>
-  <data name="DeviceInformationWindow_MachineType_Title" xml:space="preserve">
-    <value>Machine Type</value>
-  </data>
-  <data name="DeviceInformationWindow_Manufacturer_Title" xml:space="preserve">
-    <value>Manufacturer</value>
-  </data>
-  <data name="DeviceInformationWindow_Model_Title" xml:space="preserve">
-    <value>Model</value>
-  </data>
-  <data name="DeviceInformationWindow_Refresh" xml:space="preserve">
-    <value>Refresh</value>
-  </data>
-  <data name="DeviceInformationWindow_SerialNumber_Title" xml:space="preserve">
-    <value>Serial number</value>
-  </data>
   <data name="DeviceInformationWindow_Title" xml:space="preserve">
     <value>About your device</value>
-  </data>
-  <data name="DeviceInformationWindow_WarrantyEndDate_Title" xml:space="preserve">
-    <value>End date</value>
-  </data>
-  <data name="DeviceInformationWindow_WarrantyStartDate_Title" xml:space="preserve">
-    <value>Start date</value>
-  </data>
-  <data name="DeviceInformationWindow_Warranty_Title" xml:space="preserve">
-    <value>Warranty</value>
   </data>
   <data name="DevicePipelineTriggerTabItemContent_Devices" xml:space="preserve">
     <value>Devices</value>
@@ -890,6 +878,9 @@ Switching modes may require restart.</value>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Display brightness</value>
   </data>
+  <data name="Displays" xml:space="preserve">
+    <value>Displays</value>
+  </data>
   <data name="DonatePage_Bartosz_Description" xml:space="preserve">
     <value>Bartosz created Lenovo Legion Toolkit and authored the foundational architecture that powers every feature in the application today.</value>
   </data>
@@ -961,6 +952,9 @@ Thank you for your support!</value>
   <data name="EditSensorWindow_Title" xml:space="preserve">
     <value>Edit Sensor</value>
   </data>
+  <data name="EndDate" xml:space="preserve">
+    <value>End date</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -987,6 +981,9 @@ Thank you for your support!</value>
   </data>
   <data name="Exit" xml:space="preserve">
     <value>Exit</value>
+  </data>
+  <data name="Expired" xml:space="preserve">
+    <value>Expired</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Export</value>
@@ -1080,6 +1077,9 @@ Thank you for your support!</value>
   </data>
   <data name="GB" xml:space="preserve">
     <value>GB</value>
+  </data>
+  <data name="Generation" xml:space="preserve">
+    <value>Generation</value>
   </data>
   <data name="GHz" xml:space="preserve">
     <value>GHz</value>
@@ -1269,6 +1269,12 @@ Seriously, be careful with this option!</value>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>Custom Mode settings will not be applied correctly when Lenovo Vantage or its services are running.</value>
   </data>
+  <data name="GPU" xml:space="preserve">
+    <value>GPU</value>
+  </data>
+  <data name="HardwareFeatures" xml:space="preserve">
+    <value>Hardware Features</value>
+  </data>
   <data name="HardwareSensorsAutomationStepControl_Message" xml:space="preserve">
     <value>Enable or disable background polling for hardware sensors.</value>
   </data>
@@ -1295,6 +1301,9 @@ Seriously, be careful with this option!</value>
   </data>
   <data name="HideAll" xml:space="preserve">
     <value>Hide all</value>
+  </data>
+  <data name="Hz" xml:space="preserve">
+    <value>Hz</value>
   </data>
   <data name="Icon" xml:space="preserve">
     <value>Icon</value>
@@ -1497,6 +1506,12 @@ Click Yes to disable and No to ignore.</value>
   <data name="Load" xml:space="preserve">
     <value>Load</value>
   </data>
+  <data name="MacAddress" xml:space="preserve">
+    <value>MAC address</value>
+  </data>
+  <data name="MachineType" xml:space="preserve">
+    <value>Machine Type</value>
+  </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
     <value>Enable or disable macros.</value>
   </data>
@@ -1632,6 +1647,12 @@ Click Yes to disable and No to ignore.</value>
   <data name="MicrophoneControl_Title" xml:space="preserve">
     <value>Microphone</value>
   </data>
+  <data name="Model" xml:space="preserve">
+    <value>Model</value>
+  </data>
+  <data name="Motherboard" xml:space="preserve">
+    <value>Motherboard</value>
+  </data>
   <data name="MoveDown" xml:space="preserve">
     <value>Move down</value>
   </data>
@@ -1653,6 +1674,9 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
     <value>Logic</value>
+  </data>
+  <data name="NetworkAdapters" xml:space="preserve">
+    <value>Network adapters</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>No</value>
@@ -2052,6 +2076,9 @@ It won't affect other full screen windows, but you will not be able to click on 
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>Overclock GPU Settings</value>
   </data>
+  <data name="Overclocking_UnlockSteps" xml:space="preserve">
+    <value>Unlocking in {0}...</value>
+  </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
     <value>Improve response time of the built-in display.</value>
   </data>
@@ -2210,6 +2237,9 @@ Always make sure that you are installing correct packages.</value>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Seconds" xml:space="preserve">
     <value>Seconds</value>
   </data>
+  <data name="PlatformAndCapabilities" xml:space="preserve">
+    <value>Platform &amp; Capabilities</value>
+  </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
     <value>Common music formats like wav or mp3 are supported.</value>
   </data>
@@ -2250,6 +2280,9 @@ Performance mode can also be changed with Fn+Q.</value>
   <data name="PowerModeControl_Warning" xml:space="preserve">
     <value>Selected power mode may not work correctly without AC adapter connected.</value>
   </data>
+  <data name="PowerModes" xml:space="preserve">
+    <value>Power Modes</value>
+  </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
     <value>{0} power mode is not available without AC power.</value>
     <comment>For example: "{Performance} power mode is not available without AC power."</comment>
@@ -2268,6 +2301,9 @@ Performance mode can also be changed with Fn+Q.</value>
   </data>
   <data name="QuickActionAutomationStepControl_Title" xml:space="preserve">
     <value>Quick Action</value>
+  </data>
+  <data name="RAM" xml:space="preserve">
+    <value>RAM</value>
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Refresh</value>
@@ -2577,6 +2613,12 @@ Performance mode can also be changed with Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Used/Total Memory (GB)</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Serial number</value>
+  </data>
+  <data name="Series" xml:space="preserve">
+    <value>Series</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
@@ -3017,6 +3059,15 @@ If disabled, this app will handle Fn shortcuts.</value>
   <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
     <value>Show App</value>
   </data>
+  <data name="ShowLess" xml:space="preserve">
+    <value>Show less</value>
+  </data>
+  <data name="ShowMore" xml:space="preserve">
+    <value>Show more</value>
+  </data>
+  <data name="Slot" xml:space="preserve">
+    <value>Slot</value>
+  </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>When mute, all active audio output devices will be muted.</value>
   </data>
@@ -3185,6 +3236,9 @@ If disabled, this app will handle Fn shortcuts.</value>
   <data name="SpectrumKeyboardEffectControl_Description_Zones" xml:space="preserve">
     <value>{0} zones</value>
   </data>
+  <data name="StartDate" xml:space="preserve">
+    <value>Start date</value>
+  </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
     <value>Battery</value>
   </data>
@@ -3224,11 +3278,17 @@ If disabled, this app will handle Fn shortcuts.</value>
   <data name="StatusWindow_System_Fan" xml:space="preserve">
     <value>System Fan</value>
   </data>
+  <data name="Storage" xml:space="preserve">
+    <value>Storage</value>
+  </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Select icon</value>
   </data>
   <data name="TextColor" xml:space="preserve">
     <value>Text color</value>
+  </data>
+  <data name="Threads" xml:space="preserve">
+    <value>Threads</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
     <value>Sunrise</value>
@@ -3295,6 +3355,9 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
   <data name="Unhide" xml:space="preserve">
     <value>Unhide</value>
   </data>
+  <data name="Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Unnamed</value>
   </data>
@@ -3336,8 +3399,14 @@ Logging will be enabled automatically, if you choose to continue.</value>
   <data name="UpdateWindow_WhatsNew" xml:space="preserve">
     <value>What's new?</value>
   </data>
+  <data name="Used" xml:space="preserve">
+    <value>Used</value>
+  </data>
   <data name="Warning" xml:space="preserve">
     <value>Warning</value>
+  </data>
+  <data name="Warranty" xml:space="preserve">
+    <value>Warranty</value>
   </data>
   <data name="Watt" xml:space="preserve">
     <value>W</value>
