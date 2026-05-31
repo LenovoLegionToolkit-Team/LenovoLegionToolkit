@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,149 +118,149 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutPage_ApplicationFolders" xml:space="preserve">
-    <value>Папки приложения</value>
+    <value>Application Folders</value>
   </data>
   <data name="AboutPage_AppName" xml:space="preserve">
     <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="AboutPage_Build" xml:space="preserve">
-    <value>Сборка</value>
+    <value>Build</value>
   </data>
   <data name="AboutPage_Data" xml:space="preserve">
-    <value>Данные</value>
+    <value>Data</value>
   </data>
   <data name="AboutPage_LatestReleaseOnGitHub" xml:space="preserve">
-    <value>Последняя версия на GitHub</value>
+    <value>Latest release on GitHub</value>
   </data>
   <data name="AboutPage_Links" xml:space="preserve">
-    <value>Ссылки</value>
+    <value>Links</value>
   </data>
   <data name="AboutPage_Log" xml:space="preserve">
-    <value>Лог</value>
+    <value>Log</value>
   </data>
   <data name="AboutPage_ProjectWebsiteOnGitHub" xml:space="preserve">
-    <value>Страница проекта на GitHub</value>
+    <value>Project website on GitHub</value>
   </data>
   <data name="AboutPage_Temp" xml:space="preserve">
-    <value>Временные файлы</value>
+    <value>Temp</value>
   </data>
   <data name="AboutPage_ThirdPartyLibraries" xml:space="preserve">
-    <value>Сторонние библиотеки</value>
+    <value>Third-party libraries</value>
   </data>
   <data name="AboutPage_Title" xml:space="preserve">
-    <value>О программе</value>
+    <value>About</value>
   </data>
   <data name="AboutPage_TranslationCredit" xml:space="preserve">
-    <value>Переводы предоставлены сообществом.</value>
+    <value>Translations provided by community.</value>
     <comment>Please replace this text with something like "Translated into &lt;language&gt; by &lt;your name&gt;."</comment>
   </data>
   <data name="AboutPage_Version" xml:space="preserve">
-    <value>Версия</value>
+    <value>Version</value>
   </data>
   <data name="AbstractAutomationStepControl_Delete" xml:space="preserve">
-    <value>Удалить</value>
+    <value>Delete</value>
   </data>
   <data name="Active" xml:space="preserve">
-    <value>Активен</value>
+    <value>Active</value>
   </data>
   <data name="Add" xml:space="preserve">
-    <value>Добавить</value>
+    <value>Add</value>
   </data>
   <data name="AddAutomationStepWindow_MultipleSteps" xml:space="preserve">
     <value>Multiple steps...</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
-    <value>Добавить шаг</value>
+    <value>Add step</value>
   </data>
   <data name="AddNew" xml:space="preserve">
-    <value>Добавить новое действие</value>
+    <value>Add new</value>
   </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>Airplane mode</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
-    <value>Зарядка устройств через USB, когда компьютер выключен или находится в режиме сна или гибернации.</value>
+    <value>Charge USB devices, when the laptop is off, sleeping or hibernated.</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Title" xml:space="preserve">
-    <value>Постоянное питание от USB</value>
+    <value>Always on USB</value>
   </data>
   <data name="AlwaysOnUSBControl_Message" xml:space="preserve">
-    <value>Зарядка устройств через USB, когда компьютер выключен или находится в режиме сна или гибернации.</value>
+    <value>Charge USB devices, when the laptop is off, sleeping or hibernated.</value>
   </data>
   <data name="AlwaysOnUSBControl_Title" xml:space="preserve">
-    <value>Постоянное питание от USB</value>
+    <value>Always on USB</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
-    <value>Применить изменения</value>
+    <value>Apply Changes</value>
   </data>
   <data name="AmdOverclocking_Caution_Message" xml:space="preserve">
-    <value>Изменение этих параметров может повлиять на стабильность системы. Действуйте с осторожностью.</value>
+    <value>Changing these settings may impact system stability. Proceed with caution.</value>
   </data>
   <data name="AmdOverclocking_Caution_Title" xml:space="preserve">
-    <value>Внимание</value>
+    <value>Caution</value>
   </data>
   <data name="AmdOverclocking_Core_Title" xml:space="preserve">
-    <value>Ядро</value>
+    <value>Core</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
-    <value>Применение профиля отменено из-за некорректной перезагрузки.</value>
+    <value>Profile apply has been canceled due to abnormal restart.</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Переопределение максимальной частоты турбобуста процессора (МГц)</value>
+    <value>Maximum CPU boost frequency override (MHz)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
-    <value>FMax частота</value>
+    <value>FMax Frequency</value>
   </data>
   <data name="AmdOverclocking_Global_Dim" xml:space="preserve">
-    <value>-1 Все</value>
+    <value>-1 All</value>
   </data>
   <data name="AmdOverclocking_Global_Offset" xml:space="preserve">
-    <value>Глобальное смещение:</value>
+    <value>Global Offset:</value>
   </data>
   <data name="AmdOverclocking_Global_Plus" xml:space="preserve">
-    <value>+1 Всё</value>
+    <value>+1 All</value>
   </data>
   <data name="AmdOverclocking_Per_Core_Title" xml:space="preserve">
-    <value>Оптимизация по ядру</value>
+    <value>Per-Core Optimization</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
-    <value>Состояние</value>
+    <value>Status</value>
   </data>
   <data name="AmdOverclocking_Success_Message" xml:space="preserve">
-    <value>Настройки успешно применены.</value>
+    <value>Settings applied successfully.</value>
   </data>
   <data name="AmdOverclocking_Success_Title" xml:space="preserve">
-    <value>Успешно</value>
+    <value>Success</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Отключите CCD 1 для стабилизации FPS и температур</value>
+    <value>Disable CCD 1 to get stability on both FPS and temperatures</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
-    <value>Игровой режим X3D</value>
+    <value>X3D Gaming Mode</value>
   </data>
   <data name="Apply" xml:space="preserve">
-    <value>Применить</value>
+    <value>Apply</value>
   </data>
   <data name="ApplyAndClose" xml:space="preserve">
-    <value>Применить и закрыть</value>
+    <value>Apply &amp; Close</value>
   </data>
   <data name="AppName" xml:space="preserve">
     <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="ArgumentWindow_Category_Debugging" xml:space="preserve">
-    <value>Отладка</value>
+    <value>Debugging</value>
   </data>
   <data name="ArgumentWindow_Category_General" xml:space="preserve">
-    <value>Общее</value>
+    <value>General</value>
   </data>
   <data name="ArgumentWindow_Category_Hardware_Automation" xml:space="preserve">
-    <value>Оборудование и автоматизация</value>
+    <value>Hardware &amp; Automation</value>
   </data>
   <data name="ArgumentWindow_Category_Lighting" xml:space="preserve">
-    <value>Подсветка</value>
+    <value>Lighting</value>
   </data>
   <data name="ArgumentWindow_Category_Network_Proxy" xml:space="preserve">
-    <value>Прокси - сервер</value>
+    <value>Network Proxy</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
     <value>Modify startup arguments for the app.</value>
@@ -269,397 +269,397 @@
     <value>Arguments</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
-    <value>Разрешить все сертификаты</value>
+    <value>Allow All Certificates</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowPowerModesBattery" xml:space="preserve">
-    <value>Разрешить все режимы питания от батареи</value>
+    <value>Allow All Power Modes on Battery</value>
   </data>
   <data name="ArgumentWindow_Flag_DebugMode" xml:space="preserve">
-    <value>Режим отладки</value>
+    <value>Debug Mode</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableConflictWarning" xml:space="preserve">
-    <value>Отключить предупреждение о конфликтах</value>
+    <value>Disable Conflict Warning</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableLenovoLighting" xml:space="preserve">
-    <value>Отключить подсветку Lenovo</value>
+    <value>Disable Lenovo Lighting</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableRgbKb" xml:space="preserve">
-    <value>Отключить RGB-подсветку клавиатуры</value>
+    <value>Disable RGB Keyboard</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableSpectrumKb" xml:space="preserve">
-    <value>Отключить поддержку клавиатуры Spectrum</value>
+    <value>Disable Spectrum Keyboard</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableTrayTooltip" xml:space="preserve">
-    <value>Отключить всплывающие подсказки в трее</value>
+    <value>Disable Tray Tooltip</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableUpdateChecker" xml:space="preserve">
-    <value>Отключить проверку обновлений</value>
+    <value>Disable Update Checker</value>
   </data>
   <data name="ArgumentWindow_Flag_EnableLampArray" xml:space="preserve">
-    <value>Включить массив подсветки</value>
+    <value>Enable Lamp Array</value>
   </data>
   <data name="ArgumentWindow_Flag_ExpGpuMode" xml:space="preserve">
-    <value>Экспериментальный режим работы GPU</value>
+    <value>Experimental GPU Working Mode</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyPassword" xml:space="preserve">
-    <value>Пароль прокси - сервера</value>
+    <value>Proxy Password</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUrl" xml:space="preserve">
-    <value>URL прокси - сервера</value>
+    <value>Proxy URL</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUsername" xml:space="preserve">
-    <value>Имя пользователя прокси - сервера</value>
+    <value>Proxy Username</value>
   </data>
   <data name="ArgumentWindow_Flag_SkipCompatCheck" xml:space="preserve">
-    <value>Пропустить проверку совместимости</value>
+    <value>Skip Compatibility Check</value>
   </data>
   <data name="ArgumentWindow_Flag_StartMinimized" xml:space="preserve">
-    <value>Запускать свернутым</value>
+    <value>Start Minimized</value>
   </data>
   <data name="ArgumentWindow_Flag_TraceEnabled" xml:space="preserve">
-    <value>Включить ведение журнала трассировки</value>
+    <value>Enable Trace Logging</value>
   </data>
   <data name="ArgumentWindow_NotSet" xml:space="preserve">
-    <value>Не задано</value>
+    <value>Not Set</value>
   </data>
   <data name="ArgumentWindow_Title" xml:space="preserve">
-    <value>Окно аргументов</value>
+    <value>Argument Window</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
-    <value>Активировать</value>
+    <value>Enable</value>
   </data>
   <data name="AutomationPage_ActionsEnable_Message" xml:space="preserve">
-    <value>Lenovo Legion Toolkit должен быть запущен для выполнения автоматических действий.</value>
+    <value>Lenovo Legion Toolkit must be running for automatic actions to work.</value>
   </data>
   <data name="AutomationPage_Actions_Empty" xml:space="preserve">
-    <value>Действия не заданы. Нажмите "Добавить новое действие" для создания.</value>
+    <value>No Actions defined. Click "Add new" to create new Action.</value>
   </data>
   <data name="AutomationPage_Actions_Message" xml:space="preserve">
-    <value>При активации эти действия будут выполняться автоматически. При изменении состояния все действия будут обрабатываться сверху вниз.
-Будут выполняться только те действия, которые соответствуют текущему состоянию.</value>
+    <value>If enabled, these action will run automatically. Whenever state changes, all actions will be evaluated from top to bottom.
+Only actions that match current state will run.</value>
   </data>
   <data name="AutomationPage_Actions_Title" xml:space="preserve">
-    <value>Действия</value>
+    <value>Actions</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Placeholder" xml:space="preserve">
-    <value>Название...</value>
+    <value>Name...</value>
   </data>
   <data name="AutomationPage_AddManualPipeline_Title" xml:space="preserve">
-    <value>Добавить новое</value>
+    <value>Add new</value>
   </data>
   <data name="AutomationPage_ChangeIcon" xml:space="preserve">
-    <value>Изменить значок</value>
+    <value>Change icon</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
-    <value>Автоматически (все методы)</value>
+    <value>Automatic (All Methods)</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
-    <value>Отображаемая активность GPU</value>
+    <value>Discrete GPU Activity</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Game_Mode" xml:space="preserve">
-    <value>Игровой режим Windows</value>
+    <value>Windows Game Mode</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_List" xml:space="preserve">
-    <value>Список поддерживаемых игр</value>
+    <value>Known Game List</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Настройте способы обнаружения и список исключений.</value>
+    <value>Configure detection methods and exclusions.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
-    <value>Обнаружение игр</value>
+    <value>Game Detection</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
-    <value>Быстрые действия не заданы. Нажмите "Добавить новое действие" для создания.</value>
+    <value>No Quick Actions defined. Click "Add new" to create new Quick Action.</value>
   </data>
   <data name="AutomationPage_QuickActions_Message" xml:space="preserve">
-    <value>Быстрые действия доступны в меню иконки в области уведомлений, вызываемом правой кнопкой мыши.</value>
+    <value>Quick actions are available in the right click menu of the tray icon.</value>
   </data>
   <data name="AutomationPage_QuickActions_Title" xml:space="preserve">
-    <value>Быстрые действия</value>
+    <value>Quick Actions</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Placeholder" xml:space="preserve">
-    <value>Название...</value>
+    <value>Name...</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Title" xml:space="preserve">
-    <value>Переименовать</value>
+    <value>Rename</value>
   </data>
   <data name="AutomationPage_Reverted_Message" xml:space="preserve">
-    <value>Все изменения отменены!</value>
+    <value>All changes reverted!</value>
   </data>
   <data name="AutomationPage_Reverted_Title" xml:space="preserve">
-    <value>Сброшено</value>
+    <value>Reverted</value>
   </data>
   <data name="AutomationPage_Saved_Message" xml:space="preserve">
-    <value>Изменения успешно сохранены!</value>
+    <value>Changes were saved successfully!</value>
   </data>
   <data name="AutomationPage_Saved_Title" xml:space="preserve">
-    <value>Сохранено</value>
+    <value>Saved</value>
   </data>
   <data name="AutomationPage_Title" xml:space="preserve">
-    <value>Автоматизация</value>
+    <value>Automation</value>
   </data>
   <data name="AutomationPipelineControl_AddStep" xml:space="preserve">
-    <value>Добавить шаг</value>
+    <value>Add step</value>
   </data>
   <data name="AutomationPipelineControl_Configure" xml:space="preserve">
-    <value>Настроить</value>
+    <value>Configure</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive" xml:space="preserve">
-    <value>Исключение</value>
+    <value>Exclusive</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>Не выполнять последующие операции при запуске этого действия.</value>
+    <value>Do not execute further actions when this action runs.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
-    <value>Выполнение...</value>
+    <value>Running...</value>
   </data>
   <data name="AutomationPipelineControl_RunNow" xml:space="preserve">
-    <value>Выполнить сейчас</value>
+    <value>Run now</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Message" xml:space="preserve">
-    <value>Завершено с ошибками.</value>
+    <value>Completed with errors.</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Error_Title" xml:space="preserve">
-    <value>Выполнение</value>
+    <value>Run now</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Message" xml:space="preserve">
-    <value>Успешно завершено!</value>
+    <value>Completed successfully!</value>
   </data>
   <data name="AutomationPipelineControl_RunNow_Success_Title" xml:space="preserve">
-    <value>Выполнение</value>
+    <value>Run now</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
-    <value>Запускать при старте</value>
+    <value>Run on startup</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup_Tooltip" xml:space="preserve">
-    <value>При включении будет проверять условия и применять профиль при запуске приложения</value>
+    <value>When enabled, this automation will check and apply when the app starts</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
-    <value>{0} шаг</value>
+    <value>{0} step</value>
   </data>
   <data name="AutomationPipelineControl_Step_Many" xml:space="preserve">
-    <value>{0} шагов</value>
+    <value>{0} steps</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_After" xml:space="preserve">
-    <value>Через {0}</value>
+    <value>After {0}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Apps" xml:space="preserve">
-    <value>Приложения</value>
+    <value>Apps</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunrise" xml:space="preserve">
-    <value>На рассвете</value>
+    <value>At sunrise</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtSunset" xml:space="preserve">
-    <value>На закате</value>
+    <value>At sunset</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
-    <value>В {0:D2}:{1:D2}:{2:D2}</value>
+    <value>At {0:D2}:{1:D2}:{2:D2}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
-    <value>Режим питания</value>
+    <value>Power Mode</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Preset" xml:space="preserve">
-    <value>Пресет</value>
+    <value>Preset</value>
   </data>
   <data name="AutomationPipelineControl_Unnamed" xml:space="preserve">
-    <value>Без имени</value>
+    <value>Unnamed</value>
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
-    <value>Настроить</value>
+    <value>Configure</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Back</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
-    <value>Автоматически определяет, когда запущены определенные игры, и настраивает производительность CPU и GPU. Возможно повышение температуры и шума вентиляторов.</value>
+    <value>Automatically detects when certain games are running and tweaks CPU and GPU performance. Temperatures and fan noise might increase.</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Title" xml:space="preserve">
-    <value>Включить AI Engine</value>
+    <value>Enable AI Engine</value>
   </data>
   <data name="BalanceModeSettingsWindow_Title" xml:space="preserve">
-    <value>Настройки режима баланса</value>
+    <value>Balance Mode Settings</value>
   </data>
   <data name="BatteryAutomationStepControl_Message" xml:space="preserve">
-    <value>Выбрать способ зарядки батареи.</value>
+    <value>Choose how the battery is charged.</value>
   </data>
   <data name="BatteryAutomationStepControl_Title" xml:space="preserve">
-    <value>Режим батареи</value>
+    <value>Battery Mode</value>
   </data>
   <data name="BatteryModeControl_Message" xml:space="preserve">
-    <value>Выбрать способ зарядки батареи.</value>
+    <value>Choose how the battery is charged.</value>
   </data>
   <data name="BatteryModeControl_Title" xml:space="preserve">
-    <value>Режим батареи</value>
+    <value>Battery Mode</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Message" xml:space="preserve">
-    <value>Когда эта функция включена, устройство будет заряжаться на 80% при подключении к сети на ночь и завершать зарядку до 100% к тому времени, как вы воспользуетесь устройством утром.</value>
+    <value>When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning.</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Title" xml:space="preserve">
-    <value>Ночная зарядка аккумулятора</value>
+    <value>Overnight Battery Charging</value>
   </data>
   <data name="BatteryNightChargeModeControl_Message" xml:space="preserve">
-    <value>Когда эта функция включена, устройство будет заряжаться на 80% при подключении к сети на ночь и завершать зарядку до 100% к тому времени, как вы воспользуетесь устройством утром.</value>
+    <value>When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning.</value>
   </data>
   <data name="BatteryNightChargeModeControl_Title" xml:space="preserve">
-    <value>Ночная зарядка аккумулятора</value>
+    <value>Overnight Battery Charging</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedAndCharging" xml:space="preserve">
-    <value>Подключен, заряжается...</value>
+    <value>Connected, charging...</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedNotCharging" xml:space="preserve">
-    <value>Подключен, не заряжается</value>
+    <value>Connected, not charging</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Message" xml:space="preserve">
-    <value>Максимальная ёмкость заряда аккумулятора.</value>
+    <value>Battery maximum charge capacity.</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Title" xml:space="preserve">
-    <value>Состояние аккумулятора</value>
+    <value>Battery health</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Message" xml:space="preserve">
-    <value>Текущая температура батареи.</value>
+    <value>Current temperature of the battery.</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Title" xml:space="preserve">
-    <value>Температура батареи</value>
+    <value>Battery temperature</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Message" xml:space="preserve">
-    <value>Текущая емкость батареи.</value>
+    <value>Current battery capacity.</value>
   </data>
   <data name="BatteryPage_CurrentCapacity_Title" xml:space="preserve">
-    <value>Текущая емкость</value>
+    <value>Current capacity</value>
   </data>
   <data name="BatteryPage_CycleCount_Message" xml:space="preserve">
-    <value>Число циклов перезарядки.</value>
+    <value>Number of charge/discharge cycles.</value>
   </data>
   <data name="BatteryPage_CycleCount_Title" xml:space="preserve">
-    <value>Число циклов</value>
+    <value>Cycle count</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Message" xml:space="preserve">
-    <value>Первоначальная емкость аккумулятора.</value>
+    <value>Battery capacity as designed.</value>
   </data>
   <data name="BatteryPage_DesignCapacity_Title" xml:space="preserve">
-    <value>Расчетная емкость</value>
+    <value>Design capacity</value>
   </data>
   <data name="BatteryPage_DischargeRate_Message" xml:space="preserve">
-    <value>Частота заряда (+) или разряда (-) батареи.</value>
+    <value>Rate at which battery is charged (+), or discharged (-).</value>
   </data>
   <data name="BatteryPage_DischargeRate_Title" xml:space="preserve">
-    <value>Мгновенная мощность при разрядке</value>
+    <value>Discharge rate</value>
   </data>
   <data name="BatteryPage_EstimatedBatteryLifeRemaining" xml:space="preserve">
-    <value>Оставшееся время: {0}</value>
+    <value>Estimated time remaining: {0}</value>
   </data>
   <data name="BatteryPage_EstimatingBatteryLife" xml:space="preserve">
-    <value>Оценка времени...</value>
+    <value>Estimating time...</value>
   </data>
   <data name="BatteryPage_FirstUseDate_Title" xml:space="preserve">
-    <value>Дата первого применения</value>
+    <value>First use date</value>
   </data>
   <data name="BatteryPage_FirstUse_Message" xml:space="preserve">
-    <value>Когда впервые был использован аккумулятор.</value>
+    <value>When was the battery first used.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Message" xml:space="preserve">
-    <value>Емкость батареи при полной зарядке.</value>
+    <value>Battery capacity when fully charged.</value>
   </data>
   <data name="BatteryPage_FullChargeCapacity_Title" xml:space="preserve">
-    <value>Полная емкость заряда</value>
+    <value>Full charge capacity</value>
   </data>
   <data name="BatteryPage_LiveCharge_Title" xml:space="preserve">
     <value>Current charge</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
-    <value>Низкий уровень заряда батареи</value>
+    <value>Battery level low</value>
   </data>
   <data name="BatteryPage_LowWattageChargerConnected" xml:space="preserve">
-    <value>Подключено зарядное устройство низкой мощности</value>
+    <value>Low wattage charger connected</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Message" xml:space="preserve">
-    <value>Когда был изготовлен аккумулятор.</value>
+    <value>When was the battery manufactured.</value>
   </data>
   <data name="BatteryPage_ManufactureDate_Title" xml:space="preserve">
-    <value>Дата изготовления</value>
+    <value>Manufacture date</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Message" xml:space="preserve">
-    <value>Максимальная скорость заряда (+) или разряда (-) аккумулятора.</value>
+    <value>Maximum rate at which battery is charged (+), or discharged (-).</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Title" xml:space="preserve">
-    <value>Максимальная скорость разряда</value>
+    <value>Maximum discharge rate</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Message" xml:space="preserve">
-    <value>Минимальная скорость заряда (+) или разряда (-) аккумулятора.</value>
+    <value>Minimum rate at which battery is charged (+), or discharged (-).</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Title" xml:space="preserve">
-    <value>Минимальная скорость разряда</value>
+    <value>Minimum discharge rate</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
-    <value>Время с момента последнего подключения ноутбука к сети.
-Это время может быть неточным, если ноутбук заряжался во время сна или был выключен.</value>
+    <value>Time since laptop was last connected to AC power.
+This time might not be accurate, if laptop was charged when sleeping or off.</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Title" xml:space="preserve">
-    <value>На аккумуляторе</value>
+    <value>On battery since</value>
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
-    <value>Батарея</value>
+    <value>Battery</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
     <value>BIOS version</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
-    <value>Настроить</value>
+    <value>Customize</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>Установлен пользовательский логотип загрузки</value>
+    <value>Custom Boot Logo is set</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>Установлен логотип загрузки по умолчанию</value>
+    <value>Default Boot Logo is set</value>
   </data>
   <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Пользовательский логотип загрузки должен быть размером ровно {0} пикселей.
-Поддерживаемые форматы: {1}.</value>
+    <value>Custom boot logo must be exactly {0} pixels large.
+Supported formats are: {1}.</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
-    <value>Не удается установить логотип загрузки: {0}</value>
+    <value>Custom logo could not be set: {0}</value>
   </data>
   <data name="BootLogoWindow_SetCustomSuccess" xml:space="preserve">
-    <value>Пользовательский логотип загрузки установлен.</value>
+    <value>Custom boot logo set.</value>
   </data>
   <data name="BootLogoWindow_SetDefaultFailed" xml:space="preserve">
-    <value>Не удается установить логотип загрузки по умолчанию: {0}</value>
+    <value>Default logo could not be set: {0}</value>
   </data>
   <data name="BootLogoWindow_SetDefaultSuccess" xml:space="preserve">
-    <value>Установлен логотип загрузки по умолчанию.</value>
+    <value>Default boot logo set.</value>
   </data>
   <data name="BootLogoWindow_SetError_Cannot_Mount_EFI_Partition" xml:space="preserve">
-    <value>Не удается смонтировать раздел EFI.</value>
+    <value>Cannot mount EFI partition.</value>
   </data>
   <data name="BootLogoWindow_SetError_Cannot_Set_UEFI_Privilege" xml:space="preserve">
-    <value>Не удается задать права доступа UEFI.</value>
+    <value>Cannot set UEFI privilege.</value>
   </data>
   <data name="BootLogoWindow_SetError_Invalid_Image_Format" xml:space="preserve">
-    <value>Недопустимый формат изображения.</value>
+    <value>Invalid image format.</value>
   </data>
   <data name="BootLogoWindow_SetError_Invalid_Image_Size" xml:space="preserve">
-    <value>Недопустимый размер изображения.</value>
+    <value>Invalid image size.</value>
   </data>
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
-    <value>Недостаточно свободного места на разделе EFI.</value>
+    <value>Not enough free space on EFI partition.</value>
   </data>
   <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>Состояние</value>
+    <value>Status</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
-    <value>Логотип загрузки</value>
+    <value>Boot Logo</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Отмена</value>
+    <value>Cancel</value>
   </data>
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
   <data name="Clear" xml:space="preserve">
-    <value>Очистить</value>
+    <value>Clear</value>
   </data>
   <data name="Close" xml:space="preserve">
-    <value>Закрыть</value>
+    <value>Close</value>
   </data>
   <data name="CloseAppAutomationStepControl_Message" xml:space="preserve">
     <value>Close the Lenovo Legion Toolkit</value>
@@ -668,47 +668,47 @@
     <value>Close App</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
-    <value>Синий</value>
+    <value>Blue</value>
   </data>
   <data name="Color_Green" xml:space="preserve">
-    <value>Зеленый</value>
+    <value>Green</value>
   </data>
   <data name="Color_Red" xml:space="preserve">
-    <value>Красный</value>
+    <value>Red</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
     <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Режим работы видеокарты</value>
+    <value>GPU Working Mode</value>
   </data>
   <data name="ComboBoxHybridModeControl_Message" xml:space="preserve">
-    <value>Выберите режим работы видеокарты в зависимости от особенностей использования компьютера и условий питания.
-Для переключения режимов может потребоваться перезагрузка.</value>
+    <value>Select GPU operating mode based on your computer's usage and power conditions.
+Switching modes may require restart.</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>Изменение на {0} требует перезагрузки. Вы хотите выполнить перезапуск сейчас?</value>
+    <value>Changing to {0} requires restart. Do you want to restart now?</value>
   </data>
   <data name="ComboBoxHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>Требуется перезапуск</value>
+    <value>Restart required</value>
   </data>
   <data name="ComboBoxHybridModeControl_Title" xml:space="preserve">
-    <value>Режим работы видеокарты</value>
+    <value>GPU Working Mode</value>
   </data>
   <data name="CompatibilityCheckError_Message" xml:space="preserve">
-    <value>Произошла ошибка при чтении информации об устройстве.</value>
+    <value>Error occured when reading device information.</value>
   </data>
   <data name="Continue" xml:space="preserve">
-    <value>Далее</value>
+    <value>Continue</value>
   </data>
   <data name="CopiedToClipboard_Message_WithParam" xml:space="preserve">
-    <value>"{0}" скопировано в буфер обмена.</value>
+    <value>"{0}" copied to clipboard.</value>
   </data>
   <data name="CopiedToClipboard_Title" xml:space="preserve">
-    <value>Скопировано!</value>
+    <value>Copied!</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
-    <value>Скопировать все</value>
+    <value>Copy all</value>
   </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
@@ -717,10 +717,10 @@
     <value>CPU</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Создать</value>
+    <value>Create</value>
   </data>
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
-    <value>Создать действие</value>
+    <value>Create Action</value>
   </data>
   <data name="Customize" xml:space="preserve">
     <value>Customize</value>
@@ -732,28 +732,28 @@
     <value>Cycle Custom Mode preset</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
-    <value>Подключено к сети питания</value>
+    <value>AC Connected</value>
   </data>
   <data name="DashboardBattery_AcDisconnected" xml:space="preserve">
-    <value>Отключен от сети питания</value>
+    <value>AC Disconnected</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
-    <value>Настроить</value>
+    <value>Customize</value>
   </data>
   <data name="DashboardPage_Display_Title" xml:space="preserve">
-    <value>Дисплей</value>
+    <value>Display</value>
   </data>
   <data name="DashboardPage_Graphics_Title" xml:space="preserve">
-    <value>Графика</value>
+    <value>Graphics</value>
   </data>
   <data name="DashboardPage_Other_Title" xml:space="preserve">
-    <value>Прочее</value>
+    <value>Other</value>
   </data>
   <data name="DashboardPage_Power_Title" xml:space="preserve">
-    <value>Питание</value>
+    <value>Power</value>
   </data>
   <data name="DashboardPage_Title" xml:space="preserve">
-    <value>Домашняя страница</value>
+    <value>Home</value>
   </data>
   <data name="DaysRemaining" xml:space="preserve">
     <value>Days remaining</value>
@@ -762,121 +762,121 @@
     <value>Disable discrete GPU if it is active unnecessarily.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
-    <value>Деактивировать GPU</value>
+    <value>Deactivate GPU</value>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>По умолчанию</value>
+    <value>Default</value>
   </data>
   <data name="DelayAutomationStepControl_Message" xml:space="preserve">
-    <value>Добавить задержку перед выполнением следующего шага.</value>
+    <value>Add delay before running next step.</value>
   </data>
   <data name="DelayAutomationStepControl_Title" xml:space="preserve">
-    <value>Задержка</value>
+    <value>Delay</value>
   </data>
   <data name="Delete" xml:space="preserve">
-    <value>Удалить</value>
+    <value>Delete</value>
   </data>
   <data name="Device" xml:space="preserve">
     <value>Device</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
-    <value>Показывать только соединенные устройства</value>
+    <value>Show connected devices only</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable" xml:space="preserve">
-    <value>Показывать только съемные устройства</value>
+    <value>Show removable devices only</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlySelected" xml:space="preserve">
-    <value>Показывать только выбранные устройства</value>
+    <value>Show selected devices only</value>
   </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
-    <value>Поддержка Lenovo</value>
+    <value>Lenovo Support</value>
   </data>
   <data name="DeviceInformationWindow_Title" xml:space="preserve">
-    <value>О вашем устройстве</value>
+    <value>About your device</value>
   </data>
   <data name="DevicePipelineTriggerTabItemContent_Devices" xml:space="preserve">
-    <value>Устройства</value>
+    <value>Devices</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
-    <value>Графический процессор подключен</value>
+    <value>dGPU connected</value>
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
-    <value>Графический процессор отключен</value>
+    <value>dGPU disconnected</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
-    <value>Деактивировать</value>
+    <value>Deactivate</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
-    <value>Принудительно завершить процесс</value>
+    <value>Force Kill Process</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
-    <value>Параметры графики</value>
+    <value>Graphics Preferences</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
-    <value>Завершить процессы</value>
+    <value>Kill apps</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Время ожидания перед обновлением списка активных процессов после принудительного завершения.</value>
+    <value>Wait time before refreshing the active processes list after a forced termination.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
-    <value>Задержка обновления после принудительного завершения</value>
+    <value>Force Kill Refresh Delay</value>
   </data>
   <data name="DiscreteGPUControl_ManagementWindowTitle" xml:space="preserve">
-    <value>Управление дискретной видеокартой</value>
+    <value>Discrete GPU Management</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
-    <value>Отключить дискретный графический процессор, если он активен без необходимости.</value>
+    <value>Disable discrete GPU, if it is active unnecessarily.</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
-    <value>Разное</value>
+    <value>Miscellaneous</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
-    <value>Монитор подключен к графическому процессору nVidia.</value>
+    <value>A monitor is connected to nVidia GPU.</value>
   </data>
   <data name="DiscreteGPUControl_NoProcesses" xml:space="preserve">
-    <value>Нет процессов</value>
+    <value>No processes</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState" xml:space="preserve">
-    <value>Состояние производительности</value>
+    <value>Performance state</value>
   </data>
   <data name="DiscreteGPUControl_PerformanceState_Unknown" xml:space="preserve">
-    <value>Неизвестно</value>
+    <value>Unknown</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Настройте частоту проверки активности GPU.</value>
+    <value>Adjust how often the app checks for GPU activity.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
-    <value>Интервал опроса</value>
+    <value>Polling Interval</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDefault" xml:space="preserve">
-    <value>Оставить выбор за Windows</value>
+    <value>Let Windows decide</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
-    <value>Дискретный GPU</value>
+    <value>Discrete GPU</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
-    <value>Интегрированный GPU</value>
+    <value>Integrated GPU</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
-    <value>Процессы</value>
+    <value>Processes</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
-    <value>Перезапустить граф. процессор</value>
+    <value>Restart GPU</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Задержка перед инициализацией службы мониторинга дискретной видеокарты.</value>
+    <value>Delay before initializing the dGPU monitoring service.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
-    <value>Задержка запуска</value>
+    <value>Startup Delay</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
-    <value>Дискретный граф. процессор</value>
+    <value>Discrete GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>Change display brightness of the built-in display.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
-    <value>Яркость дисплея</value>
+    <value>Display brightness</value>
   </data>
   <data name="Displays" xml:space="preserve">
     <value>Displays</value>
@@ -911,7 +911,7 @@ Thank you for your support!</value>
     <value>Sponsor</value>
   </data>
   <data name="DonatePage_Title" xml:space="preserve">
-    <value>Сделать пожертвование</value>
+    <value>Donate</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
     <value>Change scaling of the built-in display.</value>
@@ -920,160 +920,160 @@ Thank you for your support!</value>
     <value>DPI</value>
   </data>
   <data name="DpiScaleControl_Message" xml:space="preserve">
-    <value>Изменить масштаб встроенного дисплея.</value>
+    <value>Change scale of the built-in display.</value>
   </data>
   <data name="DpiScaleControl_Title" xml:space="preserve">
     <value>DPI</value>
   </data>
   <data name="Edit" xml:space="preserve">
-    <value>Редактировать</value>
+    <value>Edit</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Message" xml:space="preserve">
-    <value>Имя</value>
+    <value>Name</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Title" xml:space="preserve">
-    <value>Изменить имя группы</value>
+    <value>Edit group name</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Message" xml:space="preserve">
-    <value>Имя</value>
+    <value>Name</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
-    <value>Создать группу</value>
+    <value>Create group</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Некоторые функции могут не отображаться на вкладке "Обзор" в зависимости от состояния и конфигурации вашего устройства.</value>
+    <value>Some features may not appear on the Dashboard depending on state and configuration of your laptop.</value>
   </data>
   <data name="EditDashboardWindow_Sensors" xml:space="preserve">
-    <value>Датчики</value>
+    <value>Sensors</value>
   </data>
   <data name="EditDashboardWindow_Title" xml:space="preserve">
-    <value>Настроить домашнюю страницу</value>
+    <value>Customize Dashboard</value>
   </data>
   <data name="EditSensorWindow_Title" xml:space="preserve">
-    <value>Редактирование датчика</value>
+    <value>Edit Sensor</value>
   </data>
   <data name="EndDate" xml:space="preserve">
     <value>End date</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Ошибка</value>
+    <value>Error</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Процессы из этого списка будут игнорироваться триггерами запуска/остановки игры и ИИ/Интеллектуальным режимом Lenovo. Введите имя процесса без указания пути (например, "discord" или "blender").</value>
+    <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
   </data>
   <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Имя процесса (например, discord)</value>
+    <value>Process Name (e.g. discord)</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Исключенные процессы</value>
+    <value>Excluded Processes</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
-    <value>Снимите галочки с частот обновления, которые вы не хотите учитывать при использовании сочетания клавиш Fn+R.</value>
+    <value>Uncheck refresh rates that you do not want to use when Fn+R shortcut is used.</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Message" xml:space="preserve">
-    <value>Убедитесь, что дисплей ноутбука включен. Lenovo Legion Toolkit не может загрузить частоты обновления для не включенного дисплея.</value>
+    <value>Make sure that laptop display is on. Lenovo Legion Toolkit can't load refresh rates for a display that is not on.</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Title" xml:space="preserve">
-    <value>Частота обновления не обнаружена</value>
+    <value>No Refresh Rates found</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Title" xml:space="preserve">
-    <value>Исключить частоту обновления</value>
+    <value>Exclude Refresh Rates</value>
   </data>
   <data name="Exit" xml:space="preserve">
-    <value>Выход</value>
+    <value>Exit</value>
   </data>
   <data name="Expired" xml:space="preserve">
     <value>Expired</value>
   </data>
   <data name="Export" xml:space="preserve">
-    <value>Экспортировать</value>
+    <value>Export</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Message" xml:space="preserve">
-    <value>Использовать только интегрированную видеокарту при работе от батареи и одновременно встроенную и дискретную GPU при подключении блока питания. При подключении нестандартного блока питания система переключится в Гибридный режим с использованием интегрированной GPU (Hybrid-iGPU Only Mode).</value>
+    <value>Use only integrated GPU when on battery and both integrated and discrete GPU when AC adapter is connected. When a non-standard adapter is connected, system switches to Hybrid-iGPU Only Mode.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Auto_Title" xml:space="preserve">
-    <value>Режим Hybrid-Auto</value>
+    <value>Hybrid-Auto Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Disclaimer" xml:space="preserve">
-    <value>Переключение этого режима требует перезапуска.</value>
+    <value>Switching to and from this mode requires restart.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Message" xml:space="preserve">
-    <value>Использовать исключительно дискретный графический процессор. Этот режим дает наилучшую производительность, но увеличивает энергопотребление.</value>
+    <value>Use only discrete GPU. This mode provides best graphics performance, but increases power consumption.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_DGPU_Title" xml:space="preserve">
-    <value>Режим дискретной видеокарты</value>
+    <value>dGPU Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>Будут включены как встроенная, так и дискретная видеокарта. Система будет автоматически переключаться между ними в зависимости от потребностей.</value>
+    <value>Both integrated and discrete GPU are enabled. System will automatically switch between them based on its needs.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
-    <value>Гибридный режим</value>
+    <value>Hybrid Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Disclaimer" xml:space="preserve">
-    <value>Этот режим действует только в том случае, если дискретная видеокарта не работает.</value>
+    <value>This mode only takes effect when discrete GPU is not working.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Message" xml:space="preserve">
-    <value>Использовать только встроенную видеокарту. Этот режим минимизирует энергопотребление и шум.</value>
+    <value>Only use integrated GPU. This mode minimizes power consumption and noise.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_IGPU_Title" xml:space="preserve">
-    <value>Гибридный режим с использованием интегрированной GPU</value>
+    <value>Hybrid-iGPU Only Mode</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Title" xml:space="preserve">
-    <value>О режимах работы графического процессора</value>
+    <value>About GPU Working Modes</value>
   </data>
   <data name="Fahrenheit" xml:space="preserve">
     <value>°F</value>
   </data>
   <data name="FanCurveControl_CPU" xml:space="preserve">
-    <value>ЦП</value>
+    <value>CPU</value>
   </data>
   <data name="FanCurveControl_CPUSensor" xml:space="preserve">
-    <value>Датчик ЦП</value>
+    <value>CPU Sensor</value>
   </data>
   <data name="FanCurveControl_FanSpeed" xml:space="preserve">
-    <value>Скорость вентилятора</value>
+    <value>Fan Speed</value>
   </data>
   <data name="FanCurveControl_GPU" xml:space="preserve">
-    <value>Граф. процессор</value>
+    <value>GPU</value>
   </data>
   <data name="FanCurveControl_GPU2" xml:space="preserve">
-    <value>Граф. процессор #2</value>
+    <value>GPU #2</value>
   </data>
   <data name="FanCurveControl_PCH" xml:space="preserve">
     <value>PCH</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
-    <value>Установить на максимальную скорость.</value>
+    <value>Set fan to maximum speed.</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Title" xml:space="preserve">
-    <value>Макс. Скорость вентилятора</value>
+    <value>Fan Max Speed</value>
   </data>
   <data name="Filter" xml:space="preserve">
-    <value>Фильтр...</value>
+    <value>Filter...</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Message" xml:space="preserve">
-    <value>Включить ноутбук при открытии крышки.</value>
+    <value>Turn on the laptop when you open the lid.</value>
   </data>
   <data name="FlipToStartAutomationStepControl_Title" xml:space="preserve">
-    <value>Включение при открытии крышки</value>
+    <value>Flip To Start</value>
   </data>
   <data name="FlipToStartControl_Message" xml:space="preserve">
-    <value>Включить ноутбук при открытии крышки.</value>
+    <value>Turn on the laptop when you open the lid.</value>
   </data>
   <data name="FlipToStartControl_Title" xml:space="preserve">
-    <value>Включение при открытии крышки</value>
+    <value>Flip To Start</value>
   </data>
   <data name="FnLockAutomationStepControl_Message" xml:space="preserve">
-    <value>Использовать вторичные функции клавиш F1-F12, не удерживая клавишу Fn.</value>
+    <value>Use secondary functions of F1-F12 keys without holding Fn key.</value>
   </data>
   <data name="FnLockAutomationStepControl_Title" xml:space="preserve">
-    <value>Блокировка Fn</value>
+    <value>Fn Lock</value>
   </data>
   <data name="FnLockControl_Message" xml:space="preserve">
-    <value>Использовать вторичные функции клавиш F1-F12, не удерживая клавишу Fn.</value>
+    <value>Use secondary functions of F1-F12 keys without holding Fn key.</value>
   </data>
   <data name="FnLockControl_Title" xml:space="preserve">
-    <value>Блокировка Fn</value>
+    <value>Fn Lock</value>
   </data>
   <data name="GB" xml:space="preserve">
     <value>GB</value>
@@ -1082,192 +1082,192 @@ Thank you for your support!</value>
     <value>Generation</value>
   </data>
   <data name="GHz" xml:space="preserve">
-    <value>ГГц</value>
+    <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
     <value>Apply a specific Custom Mode preset.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Пресет пользовательского режима</value>
+    <value>Custom Mode preset</value>
   </data>
   <data name="GodModeSettingsWindow_ActivePreset_Title" xml:space="preserve">
-    <value>Активный пресет</value>
+    <value>Active preset</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>ВНИМАНИЕ!
-Некоторые ноутбуки могут допускать более высокие пределы мощности, чем они указывают, однако будьте осторожны. Этот параметр может привести к непредсказуемому поведению, поэтому, если вы не уверены в своих действиях, оставьте значение 0.</value>
+    <value>WARNING!
+Some laptops may accept higher values than they indicate, but be careful. This option may result in unpredictable behavior. If you are not sure what are you doing, leave this at 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
-    <value>Максимальное смещение</value>
+    <value>Maximum offset</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>Не изменяйте указанные ниже параметры, если вы не знаете, что делаете.</value>
+    <value>Do not change options below unless you really know what you are doing.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>ВНИМАНИЕ!
-Некоторые ноутбуки могут допускать более низкие пределы мощности, чем они указывают, однако будьте осторожны. Этот параметр может привести к непредсказуемому поведению, поэтому, если вы не уверены в своих действиях, оставьте значение 0.</value>
+    <value>WARNING!
+Some laptops may accept lower values than they indicate, but be careful. This option may result in unpredictable behavior. If you are not sure what are you doing, leave this at 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
-    <value>Минимальное смещение</value>
+    <value>Minimum offset</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
-    <value>Доп. настройки</value>
+    <value>Advanced</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>Оптимизатор кривой все ядра.</value>
+    <value>All Core Curve Optimizer.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
-    <value>Оптимизатор кривой все ядра</value>
+    <value>All Core Curve Optimizer</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL" xml:space="preserve">
-    <value>Предельная мощность APU sPPT</value>
+    <value>APU sPPT Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>Пиковая потребляемая мощность, которая может быть достигнута процессором при незначительной задержке.</value>
+    <value>The peak power consumption that can be reached by the CPU with a minor delay.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
-    <value>Долгосрочное ограничение мощности (перекрестная загрузка)</value>
+    <value>Long Term Power Limit (Cross Loading)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>Максимальное энергопотребление, которое может быть достигнуто CPU при полной загрузке CPU и GPU.</value>
+    <value>The maximum power consumption that can be reached by the CPU when both CPU and GPU are fully utilized.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
-    <value>Долгосрочное ограничение мощности</value>
+    <value>Long Term Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>Непрерывное потребление энергии, которое может быть достигнуто процессором.</value>
+    <value>The continuous power consumption that can be reached by the CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
-    <value>Предельная пиковая мощность</value>
+    <value>Peak Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>Максимальное значение потребляемой мощности, которое может быть достигнуто процессором.</value>
+    <value>The maximum instantaneous power consumption that can be reached by the CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau" xml:space="preserve">
-    <value>Срок краткосрочного ограничения мощности</value>
+    <value>Short Term Power Limit Duration</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau_Description" xml:space="preserve">
-    <value>Количество времени, в течение которого процессору разрешено увеличивать и использовать краткосрочное ограничение мощности. Когда Тау истекает, используется долгосрочное ограничение мощности.</value>
+    <value>The amount of time the CPU is allowed to boost and use Short Term Power Limit for. When Tau expires, Long Term Power Limit is used.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
-    <value>Краткосрочное ограничение мощности</value>
+    <value>Short Term Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>Пиковая потребляемая мощность, которая может быть достигнута процессором за короткое время.</value>
+    <value>The peak power consumption that can be reached by the CPU within a short amount time.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
-    <value>Ограничение температуры ЦП</value>
+    <value>CPU Temperature Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>Максимальная температура, которая может быть достигнута процессором до снижения частоты и мощности.</value>
+    <value>The maximum temperature that can be reached by the CPU before frequency and power is reduced.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
-    <value>ЦП</value>
+    <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Пользовательский режим предоставляет доступ к критически важным системным параметрам, таким как лимиты мощности и кривые вентиляторов.
+    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
 
-Неправильная настройка может привести к серьезной нестабильности системы, троттлингу или необратимому повреждению оборудования. Внесенные здесь изменения могут аннулировать гарантию производителя.
+Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
 
-Не продолжайте, если вы не обладаете необходимыми техническими знаниями.</value>
+Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
-    <value>Имя</value>
+    <value>Name</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Title" xml:space="preserve">
-    <value>Название пресета</value>
+    <value>Preset name</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Apply_Title" xml:space="preserve">
-    <value>Не удалось применить настройки</value>
+    <value>Couldn't apply settings</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
-    <value>Не удалось загрузить настройки.</value>
+    <value>Couldn't load setting.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Скорость вращения вентилятора не определяется одним температурным датчиком. Он будет увеличивать или уменьшать скорость в зависимости от наибольшего датчика между температурой CPU, GPU и кулера. Точные значения будут отображаться при наведении курсора мыши на каждый шаг.</value>
+    <value>Fan speed is not strictly determined by one temperature sensor. It will raise or lower speed per the highest sensor between CPU, GPU and Heatsink temperature. Exact values will appear when you hover mouse over each step.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
-    <value>Кривая вентилятора</value>
+    <value>Fan curve</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>ВНИМАНИЕ!
-Длительное использование этой опции приводит к деградации вентиляторов, снижая их срок службы.
-Серьезно, будьте осторожны с этой опцией!</value>
+    <value>WARNING!
+Prolonged usage of this option will degrade fans decreasing their longevity.
+Seriously, be careful with this option!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
-    <value>Максимальная скорость вентилятора</value>
+    <value>Maximum fan speed</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
-    <value>Вентиляторы</value>
+    <value>Fans</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP" xml:space="preserve">
-    <value>Настраиваемый TGP</value>
+    <value>Configurable TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>Дополнительное количество энергии, которое может быть выделено на GPU сверх базового энергопотребления.</value>
+    <value>The additional amount of power that can be allocated to the GPU on top of base power consumption.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>Dynamic Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>Дополнительная максимальная мощность, которая может быть выделена GPU на основе энергопотребления CPU.</value>
+    <value>The additional maximum power that can be allocated to the GPU based on the power consumption of the CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
-    <value>Ограничение температуры GPU</value>
+    <value>GPU Temperature Limit</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>Максимальная температура, которая может быть достигнута графическим процессором до снижения частоты и мощности.</value>
+    <value>The maximum temperature that can be reached by the GPU before frequency and power is reduced.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
-    <value>Граф. процессор</value>
+    <value>GPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl" xml:space="preserve">
-    <value>Dynamic Boost GPU на CPU</value>
+    <value>GPU to CPU Dynamic Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>Это максимальная дополнительная мощность, которая может быть выделена на GPU из CPU в зависимости от загрузки процессора. Чем выше это значение, тем выше производительность приложений, использующих GPU.</value>
+    <value>This is the maximum additional power that can be allocated to the CPU from the GPU based on CPU usage. The higher the value, the better the performance of applications that use the CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
-    <value>Общая целевая мощность процессора в сети переменного тока</value>
+    <value>Total Processor Power Target In AC</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>Точка при которой процессор запускает динамическую регулировку энергопотребления для GPU.</value>
+    <value>The point at which the CPU triggers dynamic power consumption adjustment for the GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
-    <value>Настройки пользовательского режима не будут применяться корректно при работе Legion Space или его служб.</value>
+    <value>Custom Mode settings will not be applied correctly when Legion Space or its services are running.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
-    <value>Параметры пользовательского режима будут неправильно применены, если запущен Legion Zone или его службы.</value>
+    <value>Custom Mode settings will not be applied correctly when Legion Zone or its services are running.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Частота ускорения Precision Boost Overdrive.</value>
+    <value>Precision Boost Overdrive Boost Frequency.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
-    <value>Частота ускорения Precision Boost Overdrive</value>
+    <value>Precision Boost Overdrive Boost Frequency</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Множитель Precision Boost Overdrive.</value>
+    <value>Precision Boost Overdrive Scaler.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
-    <value>Множитель Precision Boost Overdrive</value>
+    <value>Precision Boost Overdrive Scaler</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
-    <value>Настройки пользовательского режима</value>
+    <value>Custom Mode Settings</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Включить /Выключить настройку кривой ядер.</value>
+    <value>Enable / Disable Core Curve Adjustment.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
-    <value>Регулировка кривой ядер</value>
+    <value>Core Curve Adjustment</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Включить /Выключить расширенные параметры разгона.</value>
+    <value>Enable / Disable Advanced Overclocking options.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Расширенные параметры разгона</value>
+    <value>Advanced Overclocking Options</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
-    <value>Параметры пользовательского режима будут неправильно применены, если запущен Lenovo Vantage или его службы.</value>
+    <value>Custom Mode settings will not be applied correctly when Lenovo Vantage or its services are running.</value>
   </data>
   <data name="GPU" xml:space="preserve">
     <value>GPU</value>
@@ -1288,19 +1288,19 @@ Thank you for your support!</value>
     <value>HDR</value>
   </data>
   <data name="HDRControl_Message" xml:space="preserve">
-    <value>Включить High Dynamic Range (HDR) на встроенном дисплее.</value>
+    <value>Enable high dynamic range (HDR) on the built-in display.</value>
   </data>
   <data name="HDRControl_Title" xml:space="preserve">
     <value>HDR</value>
   </data>
   <data name="HDRControl_Warning" xml:space="preserve">
-    <value>Использование HDR блокируется настройками Windows.</value>
+    <value>HDR usage is blocked by Windows settings.</value>
   </data>
   <data name="Hide" xml:space="preserve">
-    <value>Скрыть</value>
+    <value>Hide</value>
   </data>
   <data name="HideAll" xml:space="preserve">
-    <value>Скрыть все</value>
+    <value>Hide all</value>
   </data>
   <data name="Hz" xml:space="preserve">
     <value>Hz</value>
@@ -1312,73 +1312,73 @@ Thank you for your support!</value>
     <value>Icon color</value>
   </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
-    <value>Если ожидаемый результат не наступил, попробуйте изменить режим еще раз через пару секунд.
-Если dGPU не отвечает вовсе, перезагрузите ноутбук.</value>
+    <value>Try changing the mode again in a couple of seconds, if you do not see expected result.
+If dGPU does not respond at all, please restart your laptop.</value>
   </data>
   <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
-    <value>Дискретная видеокарта будет автоматически отключаться, если ноутбук не используется и работает от акумулятора.</value>
+    <value>dGPU will disconnect automatically when not in use and laptop is on battery power.</value>
   </data>
   <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
-    <value>Дискретная видеокарта будет автоматически отключаться, если она не используется.</value>
+    <value>dGPU will disconnect automatically when not in use.</value>
   </data>
   <data name="IGPUModeChangeException_Title" xml:space="preserve">
-    <value>Не удалось изменить режим работы GPU</value>
+    <value>Could not change GPU Working Mode</value>
   </data>
   <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
-    <value>Дискретная видеокарта в настоящее время используется или ноутбук не работает от аккумулятора</value>
+    <value>dGPU is currently in use or laptop is not on battery power</value>
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
-    <value>Дискретная видеокарта уже используется</value>
+    <value>dGPU is currently in use</value>
   </data>
   <data name="Import" xml:space="preserve">
-    <value>Импортировать</value>
+    <value>Import</value>
   </data>
   <data name="Inactive" xml:space="preserve">
-    <value>Неактивен</value>
+    <value>Inactive</value>
   </data>
   <data name="Information" xml:space="preserve">
-    <value>Информация</value>
+    <value>Information</value>
   </data>
   <data name="InstantBootAutomationStepControl_Message" xml:space="preserve">
-    <value>Включать ноутбук при подключении зарядного устройства.</value>
+    <value>Turn on the laptop when a charger is connected.</value>
   </data>
   <data name="InstantBootAutomationStepControl_Title" xml:space="preserve">
-    <value>Мгновенное включение</value>
+    <value>Instant Boot</value>
   </data>
   <data name="InstantBootControl_Message" xml:space="preserve">
-    <value>Включать ноутбук при подключении зарядного устройства.</value>
+    <value>Turn on the laptop when a charger is connected.</value>
   </data>
   <data name="InstantBootControl_Title" xml:space="preserve">
-    <value>Мгновенное включение</value>
+    <value>Instant Boot</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Изменить режим питания IdeaPad</value>
+    <value>Change IdeaPad Power Mode</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Режим питания IdeaPad</value>
+    <value>IdeaPad Power Mode</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Изменить режим питания IdeaPad</value>
+    <value>Change IdeaPad Power Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>Режим питания IdeaPad</value>
+    <value>IdeaPad Power Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
-    <value>Включена динамическая подсветка Windows.
-Эта функция может помешать LLT управлять подсветкой клавиатуры.
-Нажмите «Да», чтобы отключить её, или «Нет», чтобы проигнорировать.</value>
+    <value>Windows Dynamic lighting is enabled.
+This feature might prevent LLT to control the keyboard.
+Click Yes to disable and No to ignore.</value>
   </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
-    <value>Не найдено подходящих клавиатур</value>
+    <value>No compatible keyboards found</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
-    <value>Подсветка клавиатуры</value>
+    <value>Keyboard Backlight</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Подсветкой клавиатуры нельзя управлять здесь, когда работает Lenovo Vantage или его службы.</value>
+    <value>Keyboard backlight cannot be controlled in here when Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage или его службы запущены</value>
+    <value>Lenovo Vantage or its services are running</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Add Custom Key</value>
@@ -1399,112 +1399,112 @@ Thank you for your support!</value>
     <value>Unknown key – can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
-    <value>Фоновая подсветка задняя зона</value>
+    <value>Aft Ambient</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_All" xml:space="preserve">
-    <value>Всё</value>
+    <value>All</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aurora_Sync" xml:space="preserve">
     <value>Aurora Sync</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Bottom_to_Top" xml:space="preserve">
-    <value>Снизу вверх</value>
+    <value>Bottom to Top</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Breathe" xml:space="preserve">
-    <value>Дыхание</value>
+    <value>Breathe</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Brightness" xml:space="preserve">
-    <value>Яркость</value>
+    <value>Brightness</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Clear_Colors" xml:space="preserve">
-    <value>Удалить выбранные цвета</value>
+    <value>Clear Colors</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Custom" xml:space="preserve">
-    <value>Пользовательский</value>
+    <value>Custom</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Direction" xml:space="preserve">
-    <value>Направление</value>
+    <value>Direction</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Effect" xml:space="preserve">
-    <value>Эффект</value>
+    <value>Effect</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Export_Profile" xml:space="preserve">
-    <value>Экспорт профиля</value>
+    <value>Export Profile</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Gradient" xml:space="preserve">
-    <value>Градиент</value>
+    <value>Gradient</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Import_Profile" xml:space="preserve">
-    <value>Импорт профиля</value>
+    <value>Import Profile</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Keyboard" xml:space="preserve">
-    <value>Клавиатура</value>
+    <value>Keyboard</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Left_to_Right" xml:space="preserve">
-    <value>Слева направо</value>
+    <value>Left to Right</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Meteor" xml:space="preserve">
-    <value>Метеор</value>
+    <value>Meteor</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_None" xml:space="preserve">
-    <value>Нет</value>
+    <value>None</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_No_Selection" xml:space="preserve">
-    <value>Ничего не выбрано</value>
+    <value>No Selection</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Probe_Indices" xml:space="preserve">
-    <value>Индексы для опроса</value>
+    <value>Probe Indices</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow" xml:space="preserve">
-    <value>Радуга</value>
+    <value>Rainbow</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow_Wave" xml:space="preserve">
-    <value>Радужная волна</value>
+    <value>Rainbow Wave</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rear_Ambient" xml:space="preserve">
-    <value>Фоновая подсветка задняя зона</value>
+    <value>Rear Ambient</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Right_to_Left" xml:space="preserve">
-    <value>Справа налево</value>
+    <value>Right to Left</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Ripple" xml:space="preserve">
-    <value>Волна</value>
+    <value>Ripple</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selected_Key" xml:space="preserve">
-    <value>Выбрано {0} клавиш с эффектом «{1}»</value>
+    <value>Selected {0} keys with {1} effect</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selection" xml:space="preserve">
-    <value>Выбранные элементы</value>
+    <value>Selection</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Smooth_Transition" xml:space="preserve">
-    <value>Плавный переход</value>
+    <value>Smooth Transition</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Sparkle" xml:space="preserve">
-    <value>Мерцание</value>
+    <value>Sparkle</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Speed" xml:space="preserve">
-    <value>Скорость</value>
+    <value>Speed</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Spiral_Rainbow" xml:space="preserve">
-    <value>Спиральная радуга</value>
+    <value>Spiral Rainbow</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Static" xml:space="preserve">
-    <value>Статичный</value>
+    <value>Static</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Target_Zone" xml:space="preserve">
-    <value>Целевая зона</value>
+    <value>Target Zone</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Top_to_Bottom" xml:space="preserve">
-    <value>Сверху вниз</value>
+    <value>Top to Bottom</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Wave" xml:space="preserve">
-    <value>Волна</value>
+    <value>Wave</value>
   </data>
   <data name="LivePreview" xml:space="preserve">
-    <value>Предварительный просмотр в режиме реального времени</value>
+    <value>Live Preview</value>
   </data>
   <data name="Load" xml:space="preserve">
-    <value>Сброс</value>
+    <value>Load</value>
   </data>
   <data name="MacAddress" xml:space="preserve">
     <value>MAC address</value>
@@ -1513,139 +1513,139 @@ Thank you for your support!</value>
     <value>Machine Type</value>
   </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
-    <value>Включить или выключить работу макросов.</value>
+    <value>Enable or disable macros.</value>
   </data>
   <data name="MacroAutomationStepControl_Title" xml:space="preserve">
-    <value>Макрос</value>
+    <value>Macro</value>
   </data>
   <data name="MacroPage_Enable_Subtitle" xml:space="preserve">
-    <value>Lenovo Legion Toolkit должен быть запущен для работы макросов.</value>
+    <value>Lenovo Legion Toolkit must be running for macros to work.</value>
   </data>
   <data name="MacroPage_Enable_Title" xml:space="preserve">
-    <value>Активировать</value>
+    <value>Enable</value>
   </data>
   <data name="MacroPage_Subtitle" xml:space="preserve">
-    <value>Вы можете записать последовательность нажатий клавиш и вызвать их с помощью цифровой клавиатуры.</value>
+    <value>You can record series of key presses and invoke them using the number pad on your keyboard.</value>
   </data>
   <data name="MacroPage_Title" xml:space="preserve">
-    <value>Макросы</value>
+    <value>Macro</value>
   </data>
   <data name="MacroRecordingWindow_Preparing_Title" xml:space="preserve">
-    <value>Запись начнется через 3 секунды...</value>
+    <value>Recording will start in 3 seconds...</value>
   </data>
   <data name="MacroRecordingWindow_Recording_Message" xml:space="preserve">
-    <value>Нажмите Esc для остановки.</value>
+    <value>Press ESC to stop.</value>
   </data>
   <data name="MacroRecordingWindow_Recording_Title" xml:space="preserve">
-    <value>Идет запись...</value>
+    <value>Recording...</value>
   </data>
   <data name="MacroSequenceControl_DontRepeat" xml:space="preserve">
-    <value>Не повторять</value>
+    <value>Don't repeat</value>
   </data>
   <data name="MacroSequenceControl_IgnoreDelays_Title" xml:space="preserve">
-    <value>Игнорировать задержки</value>
+    <value>Ignore delays</value>
   </data>
   <data name="MacroSequenceControl_InterruptOnOtherKey_Title" xml:space="preserve">
-    <value>Прервать, если была нажата другая клавиша</value>
+    <value>Interrupt if another key was pressed</value>
   </data>
   <data name="MacroSequenceControl_Keyboard" xml:space="preserve">
-    <value>Только клавиатура</value>
+    <value>Keyboard only</value>
   </data>
   <data name="MacroSequenceControl_KeyboardMouse" xml:space="preserve">
-    <value>Клавиши клавиатуры и кнопки мыши</value>
+    <value>Keyboard keys and mouse buttons</value>
   </data>
   <data name="MacroSequenceControl_KeyboardMouseMovement" xml:space="preserve">
-    <value>Любое движение</value>
+    <value>All inputs</value>
   </data>
   <data name="MacroSequenceControl_Record" xml:space="preserve">
-    <value>Запись</value>
+    <value>Record</value>
   </data>
   <data name="MacroSequenceControl_RecordingOptions" xml:space="preserve">
-    <value>Параметры записи</value>
+    <value>Recording options</value>
   </data>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
-    <value>Повторение</value>
+    <value>Repeat</value>
   </data>
   <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys запущен в фоновом режиме.</value>
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
   <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage и/или ImController запущены в фоновом режиме.</value>
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
-    <value>Достигнут лимит запросов API, попробуйте позже.</value>
+    <value>API rate limit reached, please try again later.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_Title" xml:space="preserve">
-    <value>Не удалось проверить обновления</value>
+    <value>Failed to check for updates</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_Unknown_Message" xml:space="preserve">
-    <value>Что-то пошло не так, повторите попытку позже.</value>
+    <value>Something went wrong, please try again later.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
-    <value>Обновления не найдены</value>
+    <value>No updates found</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
-    <value>Legion Space работает в фоновом режиме.</value>
+    <value>Legion Space is running in the background.</value>
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
-    <value>Legion Zone запущен в фоновом режиме.</value>
+    <value>Legion Zone is running in the background.</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
-    <value>О ПО</value>
+    <value>About</value>
   </data>
   <data name="MainWindow_NavigationItem_Actions" xml:space="preserve">
-    <value>Действия</value>
+    <value>Actions</value>
   </data>
   <data name="MainWindow_NavigationItem_Battery" xml:space="preserve">
-    <value>Батарея</value>
+    <value>Battery</value>
   </data>
   <data name="MainWindow_NavigationItem_Dashboard" xml:space="preserve">
-    <value>Обзор</value>
+    <value>Dashboard</value>
   </data>
   <data name="MainWindow_NavigationItem_Donate" xml:space="preserve">
-    <value>Донат</value>
+    <value>Donate</value>
   </data>
   <data name="MainWindow_NavigationItem_Keyboard" xml:space="preserve">
-    <value>Клавиатура</value>
+    <value>Keyboard</value>
   </data>
   <data name="MainWindow_NavigationItem_Macro" xml:space="preserve">
-    <value>Макросы</value>
+    <value>Macro</value>
   </data>
   <data name="MainWindow_NavigationItem_Packages" xml:space="preserve">
-    <value>Загрузки</value>
+    <value>Downloads</value>
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Settings</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>Для использования аппаратных датчиков сначала необходимо установить PawnIO!</value>
+    <value>You need to install PawnIO first to use hardware sensors!</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>Внимание</value>
+    <value>Warning</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
-    <value>Доступно обновление!</value>
+    <value>Update available!</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
-    <value>Доступно обновление {0}!</value>
+    <value>Update {0} available!</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
-    <value>Больше не показывать.</value>
+    <value>Don't show again.</value>
   </data>
   <data name="MHz" xml:space="preserve">
-    <value>МГц</value>
+    <value>MHz</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Message" xml:space="preserve">
-    <value>Отключить все доступные микрофоны.</value>
+    <value>When off, microphones will be muted.</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Title" xml:space="preserve">
-    <value>Отключить микрофон</value>
+    <value>Microphone</value>
   </data>
   <data name="MicrophoneControl_Message" xml:space="preserve">
-    <value>Отключить все доступные микрофоны.</value>
+    <value>When off, microphones will be muted.</value>
   </data>
   <data name="MicrophoneControl_Title" xml:space="preserve">
-    <value>Микрофон</value>
+    <value>Microphone</value>
   </data>
   <data name="Model" xml:space="preserve">
     <value>Model</value>
@@ -1654,94 +1654,94 @@ Thank you for your support!</value>
     <value>Motherboard</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
-    <value>Переместить вниз</value>
+    <value>Move down</value>
   </data>
   <data name="MoveUp" xml:space="preserve">
-    <value>Переместить вверх</value>
+    <value>Move up</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Несколько триггеров...</value>
+    <value>Multiple triggers...</value>
     <comment>Allows the user to merge multiple triggers for the execution of selected actions.</comment>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_And" xml:space="preserve">
-    <value>Все условия</value>
+    <value>Match All (AND)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_None" xml:space="preserve">
     <value>No Logic (Separate)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
-    <value>Любое условие</value>
+    <value>Match Any (OR)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
-    <value>Логика</value>
+    <value>Logic</value>
   </data>
   <data name="NetworkAdapters" xml:space="preserve">
     <value>Network adapters</value>
   </data>
   <data name="No" xml:space="preserve">
-    <value>Нет</value>
+    <value>No</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
     <value>Notification Text (supports $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
-    <value>Показывать уведомление</value>
+    <value>Show notification</value>
   </data>
   <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
     <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
-    <value>Блок питания</value>
+    <value>AC Adapter</value>
   </data>
   <data name="NotificationsSettingsWindow_AirplaneMode" xml:space="preserve">
     <value>Airplane mode</value>
   </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
-    <value>Действия</value>
+    <value>Actions</value>
   </data>
   <data name="NotificationsSettingsWindow_Camera" xml:space="preserve">
-    <value>Камера</value>
+    <value>Camera</value>
   </data>
   <data name="NotificationsSettingsWindow_CapsLock" xml:space="preserve">
     <value>Caps Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
-    <value>Отключает уведомления о действиях клавиш Fn, таких как приглушение микрофона
-Включите эту опцию, если у вас возникают конфликты с полноэкранными приложениями.</value>
+    <value>Disables notification for Fn keys actions like microphone mute.
+Enable this option if you have conflicts with full screen applications.</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
-    <value>Не показывать уведомления</value>
+    <value>Don't show notifications</value>
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
-    <value>Блокировка Fn</value>
+    <value>Fn Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
     <value>ITS Mode</value>
   </data>
   <data name="NotificationsSettingsWindow_KeyboardBacklight" xml:space="preserve">
-    <value>Подсветка клавиатуры</value>
+    <value>Keyboard Backlight</value>
   </data>
   <data name="NotificationsSettingsWindow_Microphone" xml:space="preserve">
-    <value>Микрофон</value>
+    <value>Microphone</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Message" xml:space="preserve">
-    <value>Всегда отображать уведомления поверх остальных окон.
-Это не повлияет на полноэкранные приложения, но вы не сможете нажимать на уведомления.</value>
+    <value>Always put notification at the top.
+It won't affect other full screen windows, but you will not be able to click on the notifications.</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Title" xml:space="preserve">
-    <value>Уведомления поверх остальных окон</value>
+    <value>Notification always on top</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
-    <value>Длительность</value>
+    <value>Duration</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Message" xml:space="preserve">
-    <value>Показывать уведомления на всех мониторах, подключенных к устройству.</value>
+    <value>Show notification on all screens connected to your device.</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Title" xml:space="preserve">
-    <value>Уведомления на всех мониторах</value>
+    <value>Notification on all screens</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationPosition_Title" xml:space="preserve">
-    <value>Положение</value>
+    <value>Position</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationType" xml:space="preserve">
     <value>Name</value>
@@ -1750,31 +1750,31 @@ Thank you for your support!</value>
     <value>Num Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_PowerMode" xml:space="preserve">
-    <value>Режим питания</value>
+    <value>Power Mode</value>
   </data>
   <data name="NotificationsSettingsWindow_RefreshRate" xml:space="preserve">
-    <value>Частота обновления</value>
+    <value>Refresh Rate</value>
   </data>
   <data name="NotificationsSettingsWindow_SmartKey" xml:space="preserve">
-    <value>Умная клавиша</value>
+    <value>Smart Key</value>
   </data>
   <data name="NotificationsSettingsWindow_Title" xml:space="preserve">
-    <value>Уведомления</value>
+    <value>Notifications</value>
   </data>
   <data name="NotificationsSettingsWindow_TouchpadLock" xml:space="preserve">
-    <value>Блокировка сенсорной панели</value>
+    <value>Touchpad Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_Updates_Title" xml:space="preserve">
-    <value>Обновления</value>
+    <value>Updates</value>
   </data>
   <data name="Notification_ACAdapterConnected" xml:space="preserve">
-    <value>Блок питания подключен</value>
+    <value>AC adapter connected</value>
   </data>
   <data name="Notification_ACAdapterConnectedLowWattage" xml:space="preserve">
-    <value>Блок питания подключен (низкая мощность)</value>
+    <value>AC adapter connected (Low wattage)</value>
   </data>
   <data name="Notification_ACAdapterDisconnected" xml:space="preserve">
-    <value>Блок питания отключен</value>
+    <value>AC adapter disconnected</value>
   </data>
   <data name="Notification_AirplaneModeOff" xml:space="preserve">
     <value>Airplane mode off</value>
@@ -1783,46 +1783,46 @@ Thank you for your support!</value>
     <value>Airplane mode on</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
-    <value>Камера отключена</value>
+    <value>Camera off</value>
   </data>
   <data name="Notification_CameraOn" xml:space="preserve">
-    <value>Камера включена</value>
+    <value>Camera on</value>
   </data>
   <data name="Notification_CapsLockOff" xml:space="preserve">
-    <value>Caps Lock отключен</value>
+    <value>Caps Lock off</value>
   </data>
   <data name="Notification_CapsLockOn" xml:space="preserve">
-    <value>Caps Lock включен</value>
+    <value>Caps Lock on</value>
   </data>
   <data name="Notification_FnLockOff" xml:space="preserve">
-    <value>Fn Lock отключен</value>
+    <value>Fn Lock off</value>
   </data>
   <data name="Notification_FnLockOn" xml:space="preserve">
-    <value>Fn Lock включен</value>
+    <value>Fn Lock on</value>
   </data>
   <data name="Notification_MicrophoneOff" xml:space="preserve">
-    <value>Микрофон отключен</value>
+    <value>Microphone off</value>
   </data>
   <data name="Notification_MicrophoneOn" xml:space="preserve">
-    <value>Микрофон включен</value>
+    <value>Microphone on</value>
   </data>
   <data name="Notification_NumLockOff" xml:space="preserve">
-    <value>Num Lock отключен</value>
+    <value>Num Lock off</value>
   </data>
   <data name="Notification_NumLockOn" xml:space="preserve">
-    <value>Num Lock включен</value>
+    <value>Num Lock on</value>
   </data>
   <data name="Notification_PanelLogoLightingOff" xml:space="preserve">
-    <value>Логотип Legion выключен</value>
+    <value>Legion logo off</value>
   </data>
   <data name="Notification_PanelLogoLightingOn" xml:space="preserve">
-    <value>Логотип Legion включен</value>
+    <value>Legion logo on</value>
   </data>
   <data name="Notification_PortLightingOff" xml:space="preserve">
-    <value>Подсветка портов отключена</value>
+    <value>Ports backlight off</value>
   </data>
   <data name="Notification_PortLightingOn" xml:space="preserve">
-    <value>Подсветка портов включена</value>
+    <value>Ports backlight on</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightChanged" xml:space="preserve">
     <value>RGB Changed</value>
@@ -1846,25 +1846,25 @@ Thank you for your support!</value>
     <value>Spectrum Preset</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Backlight" xml:space="preserve">
-    <value>Подсветка {0}</value>
+    <value>Backlight {0}</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Brightness" xml:space="preserve">
-    <value>Яркость {0}</value>
+    <value>Brightness {0}</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Profile" xml:space="preserve">
-    <value>Профиль {0}</value>
+    <value>Profile {0}</value>
   </data>
   <data name="Notification_TouchpadOff" xml:space="preserve">
-    <value>Сенсорная панель отключена</value>
+    <value>Touchpad off</value>
   </data>
   <data name="Notification_TouchpadOn" xml:space="preserve">
-    <value>Сенсорная панель включена</value>
+    <value>Touchpad on</value>
   </data>
   <data name="Notification_UpdateAvailable" xml:space="preserve">
-    <value>Доступно обновление {0}!</value>
+    <value>Update {0} available!</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklight" xml:space="preserve">
-    <value>Подсветка {0}</value>
+    <value>Backlight {0}</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightChanged" xml:space="preserve">
     <value>White Changed</value>
@@ -1876,31 +1876,31 @@ Thank you for your support!</value>
     <value>Backlight changed</value>
   </data>
   <data name="Off" xml:space="preserve">
-    <value>Откл.</value>
+    <value>Off</value>
   </data>
   <data name="OK" xml:space="preserve">
-    <value>ОК</value>
+    <value>OK</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Включить или выключить подсветку.</value>
+    <value>Turn backlight on or off.</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Подсветка клавиатуры</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>Включить или выключить подсветку можно с помощью Fn+Пробел.</value>
+    <value>You can turn backlight on or off with Fn+Space.</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Подсветка клавиатуры</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="Open" xml:space="preserve">
-    <value>Открыть</value>
+    <value>Open</value>
   </data>
   <data name="OsdAutomationStepControl_Message" xml:space="preserve">
-    <value>Показать или скрыть OSD</value>
+    <value>Show or Hide the OSD</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>OSD-виджет</value>
+    <value>OSD</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Set the lock position state of the OSD.</value>
@@ -1909,539 +1909,539 @@ Thank you for your support!</value>
     <value>OSD Lock Position</value>
   </data>
   <data name="OsdSettings_Appearance_BackgroundColor" xml:space="preserve">
-    <value>Цвет фона</value>
+    <value>Background Color</value>
   </data>
   <data name="OsdSettings_Appearance_CategoryColor" xml:space="preserve">
-    <value>Цвет категории</value>
+    <value>Category Color</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadius" xml:space="preserve">
-    <value>Радиус скругления</value>
+    <value>Corner Radius</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusBottom" xml:space="preserve">
-    <value>Нижние углы</value>
+    <value>Bottom</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusTop" xml:space="preserve">
-    <value>Верхние углы</value>
+    <value>Top</value>
   </data>
   <data name="OsdSettings_Appearance_CriticalColor" xml:space="preserve">
-    <value>Цвет критического состояния</value>
+    <value>Critical Color</value>
   </data>
   <data name="OsdSettings_Appearance_FontSize" xml:space="preserve">
-    <value>Размер шрифта</value>
+    <value>Font Size</value>
   </data>
   <data name="OsdSettings_Appearance_LabelColor" xml:space="preserve">
-    <value>Цвет метки</value>
+    <value>Label Color</value>
   </data>
   <data name="OsdSettings_Appearance_Opacity" xml:space="preserve">
-    <value>Непрозрачность</value>
+    <value>Opacity</value>
   </data>
   <data name="OsdSettings_Appearance_ValueColor" xml:space="preserve">
-    <value>Цвет значения</value>
+    <value>Value Color</value>
   </data>
   <data name="OsdSettings_Appearance_WarningColor" xml:space="preserve">
-    <value>Цвет предупреждения</value>
+    <value>Warning Color</value>
   </data>
   <data name="OsdSettings_General_LockPosition" xml:space="preserve">
-    <value>Зафиксировать положение</value>
+    <value>Lock Position</value>
   </data>
   <data name="OsdSettings_General_OverlayStyle" xml:space="preserve">
-    <value>Стиль оверлея</value>
+    <value>Overlay Style</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval" xml:space="preserve">
-    <value>Интервал обновления</value>
+    <value>Refresh Interval</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval_Tooltip" xml:space="preserve">
-    <value>Частота опроса датчиков</value>
+    <value>Sensor refresh interval</value>
   </data>
   <data name="OsdSettings_General_ResetPosition" xml:space="preserve">
-    <value>Сбросить положение</value>
+    <value>Reset Position</value>
   </data>
   <data name="OsdSettings_General_SnapThreshold" xml:space="preserve">
-    <value>Прилипание окон</value>
+    <value>Snapping Threshold</value>
   </data>
   <data name="OsdSettings_Tabs_Appearance" xml:space="preserve">
-    <value>Внешний вид</value>
+    <value>Appearance</value>
   </data>
   <data name="OsdSettings_Tabs_General" xml:space="preserve">
-    <value>Общее</value>
+    <value>General</value>
   </data>
   <data name="OsdSettings_Tabs_SensorItems" xml:space="preserve">
-    <value>Датчики</value>
+    <value>Sensors</value>
   </data>
   <data name="OsdSettings_Tabs_Thresholds" xml:space="preserve">
-    <value>Пороги</value>
+    <value>Thresholds</value>
   </data>
   <data name="OsdSettings_Thresholds_Critical" xml:space="preserve">
-    <value>Критический уровень</value>
+    <value>Critical</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline" xml:space="preserve">
     <value>FPS Redline</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline_Description" xml:space="preserve">
-    <value>Минимально допустимая частота кадров. При падении ниже этого значения цвет индикатора меняется на критический.</value>
+    <value>The minimum acceptable frame rate. Below this, the color turns critical.</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta" xml:space="preserve">
-    <value>Низкая дельта FPS</value>
+    <value>Low FPS Delta</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta_Description" xml:space="preserve">
-    <value>Максимальная разница между средним FPS и 1% Низким. При этом счётчик становится критическим.</value>
+    <value>The maximum difference between average FPS and 1% Low. Above this, the counter turns critical.</value>
   </data>
   <data name="OsdSettings_Thresholds_Performance" xml:space="preserve">
-    <value>Макс. Производительность</value>
+    <value>Performance</value>
   </data>
   <data name="OsdSettings_Thresholds_Temperature" xml:space="preserve">
-    <value>Температура</value>
+    <value>Temperature</value>
   </data>
   <data name="OsdSettings_Thresholds_Usage" xml:space="preserve">
-    <value>Загрузка</value>
+    <value>Usage</value>
   </data>
   <data name="OsdSettings_Thresholds_Warning" xml:space="preserve">
-    <value>Предупреждение</value>
+    <value>Warning</value>
   </data>
   <data name="OsdWindow_Title" xml:space="preserve">
-    <value>Настройки OSD (Мониторинга)</value>
+    <value>OSD Settings</value>
   </data>
   <data name="Osd_Cpu" xml:space="preserve">
     <value>CPU</value>
   </data>
   <data name="Osd_CPU_Fan" xml:space="preserve">
-    <value>Вентилятор</value>
+    <value>Fan</value>
   </data>
   <data name="Osd_Disk_0_Temperature" xml:space="preserve">
-    <value>Температура диска 1</value>
+    <value>Disk 1 Temperature</value>
   </data>
   <data name="Osd_Disk_1_Temperature" xml:space="preserve">
-    <value>Температура диска 2</value>
+    <value>Disk 2 Temperature</value>
   </data>
   <data name="Osd_ECoreClock" xml:space="preserve">
-    <value>Частота E-ядер</value>
+    <value>E-Core Clock</value>
   </data>
   <data name="Osd_Fps" xml:space="preserve">
     <value>FPS</value>
   </data>
   <data name="Osd_Frame_Time" xml:space="preserve">
-    <value>Время кадра</value>
+    <value>Frame Time</value>
   </data>
   <data name="Osd_Game" xml:space="preserve">
-    <value>Игра</value>
+    <value>Game</value>
   </data>
   <data name="Osd_Gpu" xml:space="preserve">
     <value>GPU</value>
   </data>
   <data name="Osd_GPU_Fan" xml:space="preserve">
-    <value>Вентилятор</value>
+    <value>Fan</value>
   </data>
   <data name="Osd_Low_Fps" xml:space="preserve">
     <value>1% Low</value>
   </data>
   <data name="Osd_Memory_Temperature" xml:space="preserve">
-    <value>Температура</value>
+    <value>Temperature</value>
   </data>
   <data name="Osd_Memory_Utilization" xml:space="preserve">
-    <value>Загрузка</value>
+    <value>Utilization</value>
   </data>
   <data name="Osd_Pch" xml:space="preserve">
     <value>PCH</value>
   </data>
   <data name="Osd_PCH_Fan" xml:space="preserve">
-    <value>Вентилятор PCH</value>
+    <value>PCH Fan</value>
   </data>
   <data name="Osd_PCoreClock" xml:space="preserve">
-    <value>Частота П-Ядер</value>
+    <value>P-Core Clock</value>
   </data>
   <data name="Osd_Style_Bar" xml:space="preserve">
-    <value>Прогресс - бар</value>
+    <value>Bar</value>
   </data>
   <data name="Osd_Style_Panel" xml:space="preserve">
-    <value>Панель</value>
+    <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
     <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
-    <value>Разгон GPU</value>
+    <value>Overclock GPU</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Message" xml:space="preserve">
-    <value>Повысить производительность путем разгона дискретного GPU.</value>
+    <value>Increase performance by overclocking discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
-    <value>Разгон GPU</value>
+    <value>Overclock GPU</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
-    <value>Смещение частоты ядра</value>
+    <value>Core Frequency Offset</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
-    <value>Смещение частоты памяти</value>
+    <value>Memory Frequency Offset</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
-    <value>Настройки разгона GPU</value>
+    <value>Overclock GPU Settings</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Unlocking in {0}...</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
-    <value>Улучшить время отклика встроенного дисплея.</value>
+    <value>Improve response time of the built-in display.</value>
   </data>
   <data name="OverDriveAutomationStepControl_Title" xml:space="preserve">
     <value>Over Drive</value>
   </data>
   <data name="OverDriveControl_Message" xml:space="preserve">
-    <value>Улучшить время отклика встроенного дисплея.</value>
+    <value>Improve response time of the built-in display.</value>
   </data>
   <data name="OverDriveControl_Title" xml:space="preserve">
     <value>Over Drive</value>
   </data>
   <data name="PackageControl_Download" xml:space="preserve">
-    <value>Загрузить</value>
+    <value>Download</value>
   </data>
   <data name="PackageControl_DownloadComplete_Message" xml:space="preserve">
-    <value>{0} загружен!</value>
+    <value>{0} downloaded!</value>
   </data>
   <data name="PackageControl_DownloadComplete_Title" xml:space="preserve">
-    <value>Скачивание завершено</value>
+    <value>Download complete</value>
   </data>
   <data name="PackageControl_GeneralError_Title" xml:space="preserve">
-    <value>Что-то пошло не так</value>
+    <value>Something went wrong</value>
   </data>
   <data name="PackageControl_Http404Error_Message" xml:space="preserve">
-    <value>Сервер вернул код ошибки 404.</value>
+    <value>Server returned code 404.</value>
   </data>
   <data name="PackageControl_Http404Error_Title" xml:space="preserve">
-    <value>Похоже, файл отсутствует</value>
+    <value>The file seems to be gone</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Message" xml:space="preserve">
-    <value>Убедитесь, что ваше интернет-соединение работает.</value>
+    <value>Check if your internet connection is up and running.</value>
   </data>
   <data name="PackageControl_HttpGeneralError_Title" xml:space="preserve">
-    <value>Что-то пошло не так</value>
+    <value>Something went wrong</value>
   </data>
   <data name="PackageControl_IsUpdateInfo" xml:space="preserve">
-    <value>Доступно обновление!</value>
+    <value>Update available!</value>
   </data>
   <data name="PackageControl_OldPackageWarning" xml:space="preserve">
-    <value>Этому пакету ПО более года.</value>
+    <value>This package is more than a year old.</value>
   </data>
   <data name="PackageControl_OpenReadme" xml:space="preserve">
-    <value>Открыть README</value>
+    <value>Open README</value>
   </data>
   <data name="PackageControl_RebootRecommended" xml:space="preserve">
-    <value>Рекомендуется перезапуск системы</value>
+    <value>Restart recommended</value>
   </data>
   <data name="PackageControl_RebootRequired" xml:space="preserve">
-    <value>Требуется перезапуск</value>
+    <value>Restart required</value>
   </data>
   <data name="PackageControl_ShutdownRequired" xml:space="preserve">
-    <value>Требуется выключение системы</value>
+    <value>Shutdown required</value>
   </data>
   <data name="PackageControl_Version" xml:space="preserve">
-    <value>Версия</value>
+    <value>Version</value>
   </data>
   <data name="PackagesPage_Disclaimer_Message" xml:space="preserve">
-    <value>Ниже приведен список пакетов программного обеспечения, отмеченные как совместимые с вашим ноутбуком.
-Убедитесь, что вы устанавливаете правильные пакеты.</value>
+    <value>Below is a list of software packages that are marked as compatible with your laptop.
+Always make sure that you are installing correct packages.</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Message" xml:space="preserve">
-    <value>Проверьте, верно ли заданы Тип модели устройства и ОС.</value>
+    <value>Check if Machine Type and OS are set correctly.</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Title" xml:space="preserve">
-    <value>Что-то пошло не так</value>
+    <value>Something went wrong</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Message" xml:space="preserve">
-    <value>При изменении сортировки, фильтрации результатов, скрытии пакетов или обновлении списка процесс загрузки будет остановлен. Вы хотите продолжить?</value>
+    <value>Changing sorting, filtering results, hiding packages or refreshing the list will stop the download. Do you want to continue?</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Title" xml:space="preserve">
-    <value>Идет скачивание</value>
+    <value>Download in progress</value>
   </data>
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
-    <value>Папка загрузки</value>
+    <value>Download folder</value>
   </data>
   <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
-    <value>Проверьте, что ваше интернет-соединение исправно.</value>
+    <value>Check if your internet connection is up and running.</value>
   </data>
   <data name="PackagesPage_Error_Title" xml:space="preserve">
-    <value>Что-то пошло не так</value>
+    <value>Something went wrong</value>
   </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
-    <value>Тип модели устройства</value>
+    <value>Machine Type</value>
   </data>
   <data name="PackagesPage_NoMatchingDownloads" xml:space="preserve">
-    <value>Подходящих пакетов не найдено</value>
+    <value>No matching downloads found</value>
   </data>
   <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
-    <value>Показывать только обновления</value>
+    <value>Show updates only</value>
   </data>
   <data name="PackagesPage_OpenDownloadTo" xml:space="preserve">
-    <value>Открыть папку загрузки</value>
+    <value>Open Download folder</value>
   </data>
   <data name="PackagesPage_OperatingSystem" xml:space="preserve">
-    <value>Операционная система</value>
+    <value>Operating System</value>
   </data>
   <data name="PackagesPage_PrimarySource" xml:space="preserve">
-    <value>Основной (Рекомендуется)</value>
+    <value>Primary (Recommended)</value>
   </data>
   <data name="PackagesPage_PrimarySource_Message" xml:space="preserve">
-    <value>Аналогичен Lenovo Vantage</value>
+    <value>Same as Lenovo Vantage</value>
   </data>
   <data name="PackagesPage_SecondarySource" xml:space="preserve">
-    <value>Вторичный</value>
+    <value>Secondary</value>
   </data>
   <data name="PackagesPage_SecondarySource_Message" xml:space="preserve">
-    <value>Аналогичен Поддержке ПК Lenovo</value>
+    <value>Same as Lenovo PC Support</value>
   </data>
   <data name="PackagesPage_Sort_Category" xml:space="preserve">
-    <value>Категория</value>
+    <value>Category</value>
   </data>
   <data name="PackagesPage_Sort_Date" xml:space="preserve">
-    <value>Дата</value>
+    <value>Date</value>
   </data>
   <data name="PackagesPage_Sort_Name" xml:space="preserve">
-    <value>Название</value>
+    <value>Name</value>
   </data>
   <data name="PackagesPage_Source" xml:space="preserve">
-    <value>Источник</value>
+    <value>Source</value>
   </data>
   <data name="PackagesPage_Title" xml:space="preserve">
-    <value>Загрузки</value>
+    <value>Downloads</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
-    <value>Попробуйте загрузить обновления из другого источника.</value>
+    <value>Try getting updates from the other source.</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Title" xml:space="preserve">
-    <value>Каталога обновлений не найдено</value>
+    <value>Update catalog not found</value>
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Включить или выключить подсветку на крышке ноутбука.</value>
+    <value>Turn on or off the backlight on the lid of the laptop.</value>
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Подсветка логотипа на панели</value>
+    <value>Panel logo backlight</value>
   </data>
   <data name="PanelLogoBacklightControl_Message" xml:space="preserve">
-    <value>Включить или выключить подсветку на крышке ноутбука.</value>
+    <value>Turn on or off the backlight on the lid of the laptop.</value>
   </data>
   <data name="PanelLogoBacklightControl_Title" xml:space="preserve">
-    <value>Подсветка логотипа на панели</value>
+    <value>Panel logo backlight</value>
   </data>
   <data name="Paste" xml:space="preserve">
-    <value>Вставить</value>
+    <value>Paste</value>
   </data>
   <data name="Percent" xml:space="preserve">
     <value>%</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Minutes" xml:space="preserve">
-    <value>Минуты</value>
+    <value>Minutes</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Period" xml:space="preserve">
-    <value>Период (минуты)</value>
+    <value>Period</value>
     <comment>A prompt that is used both to ask the user to input an integer, representing the number of minutes between two periodic actions are triggered, and to inform the user what have they set once they are done configuring the action.</comment>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Seconds" xml:space="preserve">
-    <value>Секунд</value>
+    <value>Seconds</value>
   </data>
   <data name="PlatformAndCapabilities" xml:space="preserve">
     <value>Platform &amp; Capabilities</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
-    <value>Поддерживаются такие форматы музыки, как wav или mp3.</value>
+    <value>Common music formats like wav or mp3 are supported.</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
-    <value>Воспроизвести звук</value>
+    <value>Play sound</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Включить или выключить подсветку портов на задней стороне ноутбука.</value>
+    <value>Turn on or off the backlight of the ports on the back of the laptop.</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Подсветка портов</value>
+    <value>Ports backlight</value>
   </data>
   <data name="PortsBacklightControl_Message" xml:space="preserve">
-    <value>Включить или выключить подсветку портов на задней стороне ноутбука.</value>
+    <value>Turn on or off backlight of the ports on the back of the laptop.</value>
   </data>
   <data name="PortsBacklightControl_Title" xml:space="preserve">
-    <value>Подсветка портов</value>
+    <value>Ports backlight</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
-    <value>Отключен</value>
+    <value>Powered Off</value>
   </data>
   <data name="PowerModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Выбрать режим работы.</value>
+    <value>Change performance mode.</value>
   </data>
   <data name="PowerModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Режим питания</value>
+    <value>Power Mode</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>Выберите режим работы.
-Переключение режима осуществляется с помощью Fn+Q. </value>
+    <value>Change performance mode.
+Performance mode can also be changed with Fn+Q.</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Settings</value>
   </data>
   <data name="PowerModeControl_Title" xml:space="preserve">
-    <value>Режим питания</value>
+    <value>Power Mode</value>
   </data>
   <data name="PowerModeControl_Warning" xml:space="preserve">
-    <value>Выбранный режим питания может работать некорректно, если блок питания не подключен.</value>
+    <value>Selected power mode may not work correctly without AC adapter connected.</value>
   </data>
   <data name="PowerModes" xml:space="preserve">
     <value>Power Modes</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
-    <value>Режим питания {0} недоступна без питания от сети.</value>
+    <value>{0} power mode is not available without AC power.</value>
     <comment>For example: "{Performance} power mode is not available without AC power."</comment>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Title" xml:space="preserve">
-    <value>Не удалось изменить режим питания</value>
+    <value>Cannot change Power Mode</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
-    <value>Windows сообщает, что это устройство поддерживает Modern Standby. Применение планов питания, отличных от сбалансированного, может привести к неожиданному поведению.</value>
+    <value>Windows reports that this laptop supports Modern Standby. Using power plans other than Balanced may cause unexpected behavior.</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Title" xml:space="preserve">
-    <value>Обнаружена модель низкой мощности S0</value>
+    <value>S0 Lower Power Model detected</value>
   </data>
   <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
-    <value>Выполнить сохраненное быстрое действие.</value>
+    <value>Run a saved quick action.</value>
   </data>
   <data name="QuickActionAutomationStepControl_Title" xml:space="preserve">
-    <value>Быстрое действие</value>
+    <value>Quick Action</value>
   </data>
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
   </data>
   <data name="Refresh" xml:space="preserve">
-    <value>Обновить</value>
+    <value>Refresh</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
     <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
-    <value>Частота обновления</value>
+    <value>Refresh rate</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
-    <value>Изменить частоту обновления встроенного дисплея.</value>
+    <value>Change refresh rate of the built-in display.</value>
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
-    <value>Частота обновления</value>
+    <value>Refresh rate</value>
   </data>
   <data name="Rename" xml:space="preserve">
-    <value>Переименовать</value>
+    <value>Rename</value>
   </data>
   <data name="Reset" xml:space="preserve">
-    <value>Сброс</value>
+    <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
     <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
-    <value>Разрешение</value>
+    <value>Resolution</value>
   </data>
   <data name="ResolutionControl_Message" xml:space="preserve">
-    <value>Изменить разрешение встроенного дисплея.</value>
+    <value>Change resolution of the built-in display.</value>
   </data>
   <data name="ResolutionControl_Title" xml:space="preserve">
-    <value>Разрешение</value>
+    <value>Resolution</value>
   </data>
   <data name="RestartLater" xml:space="preserve">
-    <value>Перезапущу позже</value>
+    <value>I will restart later</value>
   </data>
   <data name="RestartNow" xml:space="preserve">
-    <value>Перезапустить сейчас</value>
+    <value>Restart now</value>
   </data>
   <data name="RestartRequired_Message" xml:space="preserve">
-    <value>Для применения изменений требуется перезагрузка. Перезагрузить сейчас?</value>
+    <value>Changing this requires restart. Do you want to restart now?</value>
   </data>
   <data name="RestartRequired_Title" xml:space="preserve">
-    <value>Требуется перезапуск</value>
+    <value>Restart required</value>
   </data>
   <data name="RestoreDefaults" xml:space="preserve">
-    <value>Восстановить по умолчанию</value>
+    <value>Restore Defaults</value>
   </data>
   <data name="Revert" xml:space="preserve">
-    <value>Отменить</value>
+    <value>Revert</value>
   </data>
   <data name="RevertToDefault" xml:space="preserve">
-    <value>Вернуть параметры по умолчанию</value>
+    <value>Revert to default</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Настройть пресет подсветки клавиатуры.</value>
+    <value>Adjust keyboard backlight preset.</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Подсветка клавиатуры</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="RGBKeyboardBacklightBrightnessCardControl_Brightness" xml:space="preserve">
-    <value>Яркость</value>
+    <value>Brightness</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset1" xml:space="preserve">
-    <value>Пресет 1</value>
+    <value>Preset 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset2" xml:space="preserve">
-    <value>Пресет 2</value>
+    <value>Preset 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset3" xml:space="preserve">
-    <value>Пресет 3</value>
+    <value>Preset 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Preset4" xml:space="preserve">
-    <value>Пресет 4</value>
+    <value>Preset 4</value>
   </data>
   <data name="RGBKeyboardBacklightControl_PresetOff" xml:space="preserve">
-    <value>Откл.</value>
+    <value>Off</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone1" xml:space="preserve">
-    <value>Зона 1</value>
+    <value>Zone 1</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone2" xml:space="preserve">
-    <value>Зона 2</value>
+    <value>Zone 2</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone3" xml:space="preserve">
-    <value>Зона 3</value>
+    <value>Zone 3</value>
   </data>
   <data name="RGBKeyboardBacklightControl_Zone4" xml:space="preserve">
-    <value>Зона 4</value>
+    <value>Zone 4</value>
   </data>
   <data name="RGBKeyboardBacklightEffectCardControl_Title" xml:space="preserve">
-    <value>Эффект</value>
+    <value>Effect</value>
   </data>
   <data name="RGBKeyboardBacklightSpeedCardControl_Title" xml:space="preserve">
-    <value>Скорость</value>
+    <value>Speed</value>
   </data>
   <data name="RPM" xml:space="preserve">
-    <value>об/мин</value>
+    <value>RPM</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
-    <value>Аргументы</value>
+    <value>Arguments</value>
   </data>
   <data name="RunAutomationStepControl_ExePath" xml:space="preserve">
-    <value>Путь к исполняемому файлу</value>
+    <value>Executable Path</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
     <value>Run a script or a program.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
-    <value>Проверить экземпляр</value>
+    <value>Check Instance</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance_Description" xml:space="preserve">
-    <value>Проверить, уже ли запущен процесс.</value>
+    <value>Check if process already started.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently" xml:space="preserve">
-    <value>Тихий запуск</value>
+    <value>Run silently</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently_Description" xml:space="preserve">
-    <value>Выполнять консольные задачи, не открывая окно командной строки.</value>
+    <value>Execute console applications, without creating a console window.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished" xml:space="preserve">
-    <value>Ждать до завершения</value>
+    <value>Wait until finished</value>
   </data>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished_Description" xml:space="preserve">
-    <value>Ждать, пока задача или скрипт не завершат работу</value>
+    <value>Wait until program or script finishes executing</value>
   </data>
   <data name="RunAutomationStepControl_Title" xml:space="preserve">
-    <value>Выполнить</value>
+    <value>Run</value>
   </data>
   <data name="Save" xml:space="preserve">
-    <value>Сохранить</value>
+    <value>Save</value>
   </data>
   <data name="SaveAndClose" xml:space="preserve">
-    <value>Сохранить и закрыть</value>
+    <value>Save &amp; Close</value>
   </data>
   <data name="Saving" xml:space="preserve">
-    <value>Сохранение...</value>
+    <value>Saving...</value>
   </data>
   <data name="Seconds" xml:space="preserve">
     <value>{0}s</value>
@@ -2456,163 +2456,163 @@ Thank you for your support!</value>
     <value>No Quick Actions defined.</value>
   </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
-    <value>Уровень заряда батареи</value>
+    <value>Battery Level</value>
   </data>
   <data name="SensorItem_BatteryState" xml:space="preserve">
-    <value>Состояние батареи</value>
+    <value>Battery State</value>
   </data>
   <data name="SensorItem_CpuFanSpeed" xml:space="preserve">
-    <value>Скорость вентилятора CPU</value>
+    <value>CPU Fan Speed</value>
   </data>
   <data name="SensorItem_CpuFrequency" xml:space="preserve">
-    <value>Частота CPU</value>
+    <value>CPU Frequency</value>
   </data>
   <data name="SensorItem_CpuPower" xml:space="preserve">
-    <value>Мощность ЦП (Вт)</value>
+    <value>CPU Power</value>
   </data>
   <data name="SensorItem_CpuTemperature" xml:space="preserve">
-    <value>Температура CPU</value>
+    <value>CPU Temperature</value>
   </data>
   <data name="SensorItem_CpuUtilitzation" xml:space="preserve">
-    <value>Загрузка CPU</value>
+    <value>CPU Utilization</value>
   </data>
   <data name="SensorItem_Disk1Temperature" xml:space="preserve">
-    <value>Температура диска 1</value>
+    <value>Disk 1 Temperature</value>
   </data>
   <data name="SensorItem_Disk2Temperature" xml:space="preserve">
-    <value>Температура диска 2</value>
+    <value>Disk 2 Temperature</value>
   </data>
   <data name="SensorItem_GpuFanSpeed" xml:space="preserve">
-    <value>Скорость вентилятора GPU</value>
+    <value>GPU Fan Speed</value>
   </data>
   <data name="SensorItem_GpuFrequency" xml:space="preserve">
-    <value>Частота GPU</value>
+    <value>GPU Frequency</value>
   </data>
   <data name="SensorItem_GpuTemperatures" xml:space="preserve">
-    <value>Температура GPU</value>
+    <value>GPU Temperature</value>
   </data>
   <data name="SensorItem_GpuUtilization" xml:space="preserve">
-    <value>Использование GPU</value>
+    <value>GPU Utilization</value>
   </data>
   <data name="SensorItem_MemoryTemperature" xml:space="preserve">
-    <value>Температура памяти</value>
+    <value>Memory Temperature</value>
   </data>
   <data name="SensorItem_MemoryUtilization" xml:space="preserve">
-    <value>Использование памяти</value>
+    <value>Memory Utilization</value>
   </data>
   <data name="SensorItem_PchFanSpeed" xml:space="preserve">
-    <value>Скорость вентилятора PCH</value>
+    <value>PCH Fan Speed</value>
   </data>
   <data name="SensorItem_PchTemperature" xml:space="preserve">
-    <value>Температура PCH</value>
+    <value>PCH Temperature</value>
   </data>
   <data name="SensorsControl_BatteryLevel_Title" xml:space="preserve">
-    <value>Уровень заряда батареи</value>
+    <value>Battery Level</value>
   </data>
   <data name="SensorsControl_Battery_Title" xml:space="preserve">
-    <value>Батарея</value>
+    <value>Battery</value>
   </data>
   <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
-    <value>Тактовая частота ядра</value>
+    <value>Core Clock</value>
   </data>
   <data name="SensorsControl_CPU_Power" xml:space="preserve">
-    <value>Мощность</value>
+    <value>Power</value>
   </data>
   <data name="SensorsControl_CPU_Title" xml:space="preserve">
-    <value>ЦП</value>
+    <value>CPU</value>
   </data>
   <data name="SensorsControl_Disk_1_Temperature" xml:space="preserve">
-    <value>Температура диска 1</value>
+    <value>Disk 1 Temperature</value>
   </data>
   <data name="SensorsControl_Disk_2_Temperature" xml:space="preserve">
-    <value>Температура диска 2</value>
+    <value>Disk 2 Temperature</value>
   </data>
   <data name="SensorsControl_Disk_Title" xml:space="preserve">
-    <value>Диск</value>
+    <value>Disk</value>
   </data>
   <data name="SensorsControl_Fan_Title" xml:space="preserve">
-    <value>Вентилятор</value>
+    <value>Fan</value>
   </data>
   <data name="SensorsControl_GpuCoreTemperature_Title" xml:space="preserve">
-    <value>Температура ядра</value>
+    <value>Core Temp</value>
   </data>
   <data name="SensorsControl_GpuMemoryTemperature_Title" xml:space="preserve">
-    <value>Температура VRAM</value>
+    <value>VRAM Temp</value>
   </data>
   <data name="SensorsControl_GpuVramUtilization_Title" xml:space="preserve">
-    <value>Использование VRAM</value>
+    <value>VRAM Utilization</value>
   </data>
   <data name="SensorsControl_GPU_Power" xml:space="preserve">
-    <value>Мощность</value>
+    <value>Power</value>
   </data>
   <data name="SensorsControl_GPU_Title" xml:space="preserve">
-    <value>Граф. процессор</value>
+    <value>GPU</value>
   </data>
   <data name="SensorsControl_Maximum" xml:space="preserve">
-    <value>Максимум: {0}</value>
+    <value>Maximum: {0}</value>
   </data>
   <data name="SensorsControl_MemoryClock_Title" xml:space="preserve">
-    <value>Частота памяти</value>
+    <value>Memory Clock</value>
   </data>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
-    <value>ОЗУ</value>
+    <value>RAM</value>
   </data>
   <data name="SensorsControl_Motherboard_Temperature" xml:space="preserve">
-    <value>Температура материнской платы</value>
+    <value>Board Temperature</value>
   </data>
   <data name="SensorsControl_Motherboard_Title" xml:space="preserve">
-    <value>Материнская плата</value>
+    <value>Motherboard</value>
   </data>
   <data name="SensorsControl_PchTemperature_Title" xml:space="preserve">
-    <value>Температура PCH</value>
+    <value>PCH Temperature</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
-    <value>Интервал обновления</value>
+    <value>Refresh Interval</value>
   </data>
   <data name="SensorsControl_State_Title" xml:space="preserve">
-    <value>Состояние</value>
+    <value>State</value>
   </data>
   <data name="SensorsControl_Temperature_Title" xml:space="preserve">
-    <value>Температура</value>
+    <value>Temperature</value>
   </data>
   <data name="SensorsControl_Utilization_Title" xml:space="preserve">
-    <value>Использование</value>
+    <value>Utilization</value>
   </data>
   <data name="SensorSettingsPage_Average_Frequency_Title" xml:space="preserve">
-    <value>Средняя частота</value>
+    <value>Average Frequency</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Позволяет выбрать тип частоты ЦП для отображения на панели мониторинга и в оверлее.</value>
+    <value>Determine the type of CPU frequency displayed on the Dashboard and Osd.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
-    <value>Частота CPU</value>
+    <value>CPU Frequency</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
-    <value>Дискретная Видеокарта</value>
+    <value>dGPU</value>
   </data>
   <data name="SensorSettingsPage_IGPU_Title" xml:space="preserve">
-    <value>Интегрированная Видеокарта</value>
+    <value>iGPU</value>
   </data>
   <data name="SensorSettingsPage_Max_Frequency_Title" xml:space="preserve">
-    <value>Максимальная частота</value>
+    <value>Max Frequency</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Message" xml:space="preserve">
-    <value>Позволяет выбрать способ отображения загрузки памяти на панели мониторинга и в оверлее.</value>
+    <value>Choose how memory utilization is displayed on the Dashboard and OSD.</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Title" xml:space="preserve">
-    <value>Режим отображения памяти</value>
+    <value>Memory Display Mode</value>
   </data>
   <data name="SensorSettingsPage_Percentage_Title" xml:space="preserve">
-    <value>Проценты</value>
+    <value>Percentage</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Message" xml:space="preserve">
-    <value>При наличии нескольких видеокарт для отображения выбирается основное устройство</value>
+    <value>When multiple graphics cards are present, the primary device displayed is preferred</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
-    <value>Предпочтительный GPU</value>
+    <value>Preferred GPU</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
-    <value>Использовано/Суммарная память (GB)</value>
+    <value>Used/Total Memory (GB)</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Serial number</value>
@@ -2621,40 +2621,40 @@ Thank you for your support!</value>
     <value>Series</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Settings</value>
   </data>
   <data name="SettingsBackupWindow_Backup" xml:space="preserve">
-    <value>Создать резервную копию</value>
+    <value>Back Up</value>
   </data>
   <data name="SettingsBackupWindow_BackupSuccess" xml:space="preserve">
-    <value>Резервное копирование успешно завершено.</value>
+    <value>Backup completed successfully.</value>
   </data>
   <data name="SettingsBackupWindow_NoFilesSelected" xml:space="preserve">
-    <value>Файлы не выбраны.</value>
+    <value>No files selected.</value>
   </data>
   <data name="SettingsBackupWindow_NoMatchingFiles" xml:space="preserve">
-    <value>В выбранной папке не найдено подходящих файлов.</value>
+    <value>No matching files found in selected folder.</value>
   </data>
   <data name="SettingsBackupWindow_Restore" xml:space="preserve">
-    <value>Восстановить</value>
+    <value>Restore</value>
   </data>
   <data name="SettingsBackupWindow_RestoreConfirm" xml:space="preserve">
-    <value>Восстановление настроек перезапишет текущую конфигурацию и перезапустит приложение. Продолжить?</value>
+    <value>Restoring settings will overwrite your current configuration and restart the application. Do you want to continue?</value>
   </data>
   <data name="SettingsBackupWindow_RestoreSuccess" xml:space="preserve">
-    <value>Восстановление настроек успешно завершено. Приложение будет перезапущено.</value>
+    <value>Restore completed successfully. The application will restart.</value>
   </data>
   <data name="SettingsBackupWindow_SelectAll" xml:space="preserve">
-    <value>Выбрать все</value>
+    <value>Select All</value>
   </data>
   <data name="SettingsBackupWindow_Title" xml:space="preserve">
-    <value>Настройки резервного копирования</value>
+    <value>Backup Settings</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
-    <value>Изменить контрастный цвет приложения.</value>
+    <value>Change the accent color of the app.</value>
   </data>
   <data name="SettingsPage_AccentColor_Title" xml:space="preserve">
-    <value>Контрастный цвет</value>
+    <value>Accent Color</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
     <value>Keep the app window above all other windows.</value>
@@ -2663,79 +2663,79 @@ Thank you for your support!</value>
     <value>Pin to Top</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
-    <value>Запускать свернутым при входе в Windows.</value>
+    <value>Start minimized to tray when you log in to Windows.</value>
   </data>
   <data name="SettingsPage_Autorun_Title" xml:space="preserve">
-    <value>Автозагрузка</value>
+    <value>Autorun</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
-    <value>Создание резервной копии настроек приложения или их восстановление.</value>
+    <value>Back up or restore application settings.</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
-    <value>Резервное копирование настроек</value>
+    <value>Back Up Settings</value>
   </data>
   <data name="SettingsPage_BootLogo_EFIInfo" xml:space="preserve">
-    <value>Эта функция изменяет раздел EFI. Используйте с осторожностью.</value>
+    <value>This feature modifies the EFI partition. Use with caution.</value>
   </data>
   <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
-    <value>Настройка логотипа загрузки, отображаемого при запуске системы.</value>
+    <value>Customize Boot Logo image, visible during system startup.</value>
   </data>
   <data name="SettingsPage_BootLogo_Title" xml:space="preserve">
-    <value>Логотип загрузки</value>
+    <value>Boot Logo</value>
   </data>
   <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
-    <value>Поведение приложения</value>
+    <value>App Behavior</value>
   </data>
   <data name="SettingsPage_Category_Appearance" xml:space="preserve">
-    <value>Внешний вид</value>
+    <value>Appearance</value>
   </data>
   <data name="SettingsPage_Category_Display" xml:space="preserve">
-    <value>Дисплей</value>
+    <value>Display</value>
   </data>
   <data name="SettingsPage_Category_Integrations" xml:space="preserve">
-    <value>Интеграция</value>
+    <value>Integrations</value>
   </data>
   <data name="SettingsPage_Category_Power" xml:space="preserve">
-    <value>Питание</value>
+    <value>Power</value>
   </data>
   <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
     <value>Smart Keys</value>
   </data>
   <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
-    <value>Программное управление</value>
+    <value>Software Control</value>
   </data>
   <data name="SettingsPage_Category_Updates" xml:space="preserve">
-    <value>Обновления</value>
+    <value>Updates</value>
   </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
-    <value>Проверить</value>
+    <value>Check</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
     <value>Check now for the latest version.</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
-    <value>Проверка наличия обновлений...</value>
+    <value>Checking for updates...</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
-    <value>Проверить наличие обновлений</value>
+    <value>Check for updates</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
-    <value>Очистить изображение</value>
+    <value>Clear Image</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Message" xml:space="preserve">
-    <value>Добавить CLI в переменную окружения PATH пользователя.</value>
+    <value>Add CLI to user's PATH environment variable.</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Title" xml:space="preserve">
-    <value>Добавить CLI в PATH</value>
+    <value>Add CLI to PATH</value>
   </data>
   <data name="SettingsPage_CLI_Message" xml:space="preserve">
-    <value>Включить интерфейс для управления из командной строки.</value>
+    <value>Enable Command Line Interface that allows control from command line.</value>
   </data>
   <data name="SettingsPage_CLI_Title" xml:space="preserve">
-    <value>Интерфейс командной строки (CLI)</value>
+    <value>CLI</value>
   </data>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
-    <value>После изменения этого параметра рекомендуется перезагрузить компьютер.</value>
+    <value>Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_CompactMode_Message" xml:space="preserve">
     <value>Reduce visual clutter to fit more content on screen.</value>
@@ -2765,129 +2765,125 @@ Thank you for your support!</value>
     <value>Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Возможно, Legion Space был неверно отключен</value>
+    <value>Legion Space may have not been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
-    <value>Не удалось отключить Legion Space</value>
+    <value>Couldn't disable Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Message" xml:space="preserve">
-    <value>Отключить Legion Zone и его службы, не удаляя его.
-После изменения этого параметра рекомендуется перезагрузка.</value>
+    <value>Disable Legion Space and its service without uninstalling it.</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Title" xml:space="preserve">
-    <value>Отключить Legion Space</value>
+    <value>Disable Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Возможно, Legion Zone был неверно отключен</value>
+    <value>Legion Zone may have not been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
-    <value>Не удалось отключить Legion Zone</value>
+    <value>Couldn't disable Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Message" xml:space="preserve">
-    <value>Отключить Legion Zone и его службы, не удаляя его.
-После изменения этого параметра рекомендуется перезагрузка.</value>
+    <value>Disable Legion Zone and its service without uninstalling it.</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Title" xml:space="preserve">
-    <value>Отключить Legion Zone</value>
+    <value>Disable Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Возможно, Lenovo Hotkeys был неверно отключен</value>
+    <value>Lenovo Hotkeys may have not been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Не удалось отключить Lenovo Hotkeys</value>
+    <value>Couldn't disable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Отключить Lenovo Hotkeys и его сервис без удаления.
-Если опция отключена, Lenovo Hotkeys будет обслуживать горячие клавиши Fn.
-После изменения этого параметра рекомендуется перезагрузка.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it.
+If disabled, this app will handle Fn shortcuts.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
-    <value>Отключить Lenovo Hotkeys</value>
+    <value>Disable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Возможно, Lenovo Vantage и/или ImController были отключены неправильно</value>
+    <value>Lenovo Vantage and/or ImController may have not been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
-    <value>Не удалось отключить Lenovo Vantage и/или ImController</value>
+    <value>Couldn't disable Lenovo Vantage and/or ImController</value>
   </data>
   <data name="SettingsPage_DisableVantage_Message" xml:space="preserve">
-    <value>Отключить Lenovo Vantage и ImController, не удаляя их.
-После изменения этого параметра рекомендуется перезагрузка.</value>
+    <value>Disable Lenovo Vantage and ImController without uninstalling them.</value>
   </data>
   <data name="SettingsPage_DisableVantage_Title" xml:space="preserve">
-    <value>Отключить Lenovo Vantage и ImController</value>
+    <value>Disable Lenovo Vantage and ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space, возможно, не был включен правильно</value>
+    <value>Legion Space may have not been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
-    <value>Не удалось включить Legion Space</value>
+    <value>Couldn't enable Legion Space</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Возможно, Legion Zone был неверно запущен</value>
+    <value>Legion Zone may have not been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
-    <value>Не удалось включить Legion Zone</value>
+    <value>Couldn't enable Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Возможно, Lenovo Hotkeys был неверно запущен</value>
+    <value>Lenovo Hotkeys may have not been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Не удалось включить клавиши горячих клавиш Lenovo Hotkeys</value>
+    <value>Couldn't enable Lenovo Hotkeys Keys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
-    <value>Включить журнал для отладки.</value>
+    <value>Enable logging for debug.</value>
   </data>
   <data name="SettingsPage_EnableLogging_Title" xml:space="preserve">
-    <value>Включить ведение журнала</value>
+    <value>Enable Logging</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Возможно, Lenovo Vantage и/или ImController были включены неправильно</value>
+    <value>Lenovo Vantage and/or ImController may have not been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Не удалось включить Lenovo Vantage и/или ImController</value>
+    <value>Couldn't enable Lenovo Vantage and/or ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Исключенные процессы</value>
+    <value>Excluded Processes</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Hide specific refresh rates from the Fn+R cycle.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
-    <value>Исключить частоту обновления</value>
+    <value>Exclude Refresh Rates</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
     <value>Use hardware acceleration for the user interface.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
-    <value>Аппаратное ускорение</value>
+    <value>Hardware Acceleration</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Включение аппаратного ускорения может вызвать мерцание или черные вспышки на некоторых гибридных графических системах, а также может помешать отключению дискретного GPU.</value>
+    <value>Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
-    <value>Включите расширенный опрос оборудования для детального мониторинга температур, частот и ограничений мощности.</value>
+    <value>Enable advanced hardware polling to monitor detailed temperatures, frequencies, and power limits.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_PawnIOWarning" xml:space="preserve">
-    <value>Сначала вам необходимо установить PawnIO, чтобы использовать аппаратные датчики!</value>
+    <value>You need to install PawnIO first to use hardware sensors!</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Title" xml:space="preserve">
-    <value>Аппаратные датчики</value>
+    <value>Hardware Sensors</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
-    <value>Авто (Windows сама решает)</value>
+    <value>Auto (Let Windows decide)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
-    <value>Высокая производительность (dGPU)</value>
+    <value>High performance (dGPU)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_PowerSaving" xml:space="preserve">
-    <value>Энергосбережение (iGPU)</value>
+    <value>Power saving (iGPU)</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
-    <value>Делиться данными о скорости вращения вентилятора, температуре аккумулятора и т.д. с HWiNFO64. После изменения этого параметра может потребоваться перезапуск HWiNFO64.</value>
+    <value>Share fan speed, battery temperature etc. with HWiNFO64.</value>
   </data>
   <data name="SettingsPage_HWiNFO_RestartInfo" xml:space="preserve">
-    <value>Возможно, после изменения этого параметра необходимо перезапустить HWiNFO64.</value>
+    <value>You may need to restart HWiNFO64 after changing this option.</value>
   </data>
   <data name="SettingsPage_HWiNFO_Title" xml:space="preserve">
     <value>HWiNFO64</value>
@@ -2902,49 +2898,49 @@ Thank you for your support!</value>
     <value>Change the display language of the app.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
-    <value>Язык</value>
+    <value>Language</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Prevent the window from being resized.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
-    <value>Заблокировать размер окна</value>
+    <value>Lock Window Size</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
     <value>Minimize to the system tray instead of closing.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
-    <value>Сворачивать при закрытии</value>
+    <value>Minimize on Close</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
-    <value>Всегда сворачивать в трей вместо панели задач.</value>
+    <value>Always minimize to tray instead of taskbar.</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
-    <value>Свернуть в трей</value>
+    <value>Minimize to Tray</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
-    <value>Настройте, какие уведомления будут отображаться</value>
+    <value>Configure which notifications are shown.</value>
   </data>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
-    <value>Уведомления</value>
+    <value>Notifications</value>
   </data>
   <data name="SettingsPage_OnBatterySinceReset_Message" xml:space="preserve">
-    <value>Сбрасывать счет времени значения "На аккумуляторе" при перезагрузке системы.</value>
+    <value>Resets the counter for "On battery since" in the battery section when the system reboots.</value>
   </data>
   <data name="SettingsPage_OnBatterySinceReset_Title" xml:space="preserve">
-    <value>Сбросить счетчик "На аккумуляторе" при запуске</value>
+    <value>Reset "On battery since" at startup</value>
   </data>
   <data name="SettingsPage_Osd_Message" xml:space="preserve">
-    <value>Плавающее наложение показывает текущие данные датчиков.</value>
+    <value>Floating overlay showing live sensor data.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>Включить OSD</value>
+    <value>Enable OSD</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
-    <value>Автоматическое изменение схемы питания Windows или режима питания Windows при смене режимов питания LLT.</value>
+    <value>Automatically change Windows Power Plan or Windows Power Mode when changing Power Modes.</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
-    <value>Синхронизация режима питания</value>
+    <value>Power Mode Synchronization</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>Are you sure you want to reset all settings to defaults? This action cannot be undone and the application will restart.</value>
@@ -2956,58 +2952,58 @@ Thank you for your support!</value>
     <value>Reset Settings</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
-    <value>Перезапустите, чтобы применить изменения.</value>
+    <value>Restart to apply changes.</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
-    <value>Все файлы</value>
+    <value>All Files</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_Content" xml:space="preserve">
-    <value>Выбрать изображение</value>
+    <value>Select Image</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_ImageFile" xml:space="preserve">
-    <value>Файл изображения</value>
+    <value>Image File</value>
   </data>
   <data name="SettingsPage_SensorSettings_Title" xml:space="preserve">
-    <value>Настройки датчиков</value>
+    <value>Sensor Settings</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
     <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
-    <value>Умная клавиша Fn Lock</value>
+    <value>Smart Fn Lock</value>
   </data>
   <data name="SettingsPage_SmartKeys_Message" xml:space="preserve">
     <value>Customize the Fn hotkeys.</value>
   </data>
   <data name="SettingsPage_SmartKeys_Title" xml:space="preserve">
-    <value>Умные клавиши</value>
+    <value>Smart Keys</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
     <value>Apply the same brightness level across all Windows power plans.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
-    <value>Яркость одного дисплея</value>
+    <value>Single Display Brightness</value>
   </data>
   <data name="SettingsPage_Temperature_Message" xml:space="preserve">
-    <value>Выбрать единицы измерения сенсоров температуры.</value>
+    <value>Select units for temperature sensors.</value>
   </data>
   <data name="SettingsPage_Temperature_Title" xml:space="preserve">
-    <value>Температура</value>
+    <value>Temperature</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
     <value>Set light, dark, or system-matched theme.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
-    <value>Тема оформления</value>
+    <value>Theme</value>
   </data>
   <data name="SettingsPage_Title" xml:space="preserve">
-    <value>Настройки</value>
+    <value>Settings</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
     <value>Choose between stable, beta and dev releases.</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
-    <value>Канал обновления</value>
+    <value>Update Channel</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
     <value>Choose how often to check for new versions.</value>
@@ -3019,10 +3015,10 @@ Thank you for your support!</value>
     <value>Choose how updates are downloaded and installed.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
-    <value>Метод обновления</value>
+    <value>Update Method</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Message" xml:space="preserve">
-    <value>Использовать новую панель сенсора вместо старой панели.</value>
+    <value>Use new sensor dashboard instead of the old one.</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
     <value>New Sensor Dashboard</value>
@@ -3031,31 +3027,31 @@ Thank you for your support!</value>
     <value>If you experience visual artifacts on Snackbar Notifications in HDR mode, set this to "None".</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Message" xml:space="preserve">
-    <value>Определяет визуальный эффект, применяемый к фону окна приложения.</value>
+    <value>The effect used for the background of the application window.</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Title" xml:space="preserve">
-    <value>Фон окна</value>
+    <value>Window Backdrop</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
-    <value>Укажите режим питания Windows, который будет применяться при изменении режима питания LLT.</value>
+    <value>Select Windows Power Mode to apply when Power Mode changes.</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Title" xml:space="preserve">
-    <value>Режимы питания Windows</value>
+    <value>Windows Power Modes</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlansControlPanel_Title" xml:space="preserve">
-    <value>Параметры схемы питания в панели управления Windows</value>
+    <value>Power Plan options in Windows Control Panel</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Message" xml:space="preserve">
-    <value>Выберите схемы питания Windows, которые будут применяться при изменении режима питания.</value>
+    <value>Select Windows Power Plans to apply when Power Mode changes.</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
-    <value>Схемы питания</value>
+    <value>Windows Power Plans</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Message" xml:space="preserve">
-    <value>Позволяет быстро переключаться в пользовательский режим с помощью Fn+Q.</value>
+    <value>Allow quick switching to Custom Mode with Fn+Q.</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
-    <value>Переход в пользовательский режим с помощью Fn+Q</value>
+    <value>Switch to Custom Mode with Fn+Q</value>
   </data>
   <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
     <value>Show the Lenovo Legion Toolkit</value>
@@ -3073,22 +3069,22 @@ Thank you for your support!</value>
     <value>Slot</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
-    <value>При выключении звука все активные выходные аудиоустройства будут заглушены.</value>
+    <value>When mute, all active audio output devices will be muted.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Title" xml:space="preserve">
-    <value>Динамик</value>
+    <value>Speaker</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Message" xml:space="preserve">
-    <value>Изменить громкость динамика.</value>
+    <value>Change the speaker's volume.</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Title" xml:space="preserve">
-    <value>Громкость динамика</value>
+    <value>Speaker Volume</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery" xml:space="preserve">
     <value>Key Discovery</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
-    <value>Find key that is not defined in LLT.</value>
+    <value>Press Fn hotkeys to discover which ones can be added and customized as Smart Keys.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
     <value>Start</value>
@@ -3097,7 +3093,7 @@ Thank you for your support!</value>
     <value>Stop</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
-    <value>Description</value>
+    <value>Label</value>
   </data>
   <data name="SpecialKeyDetail_Mode" xml:space="preserve">
     <value>Mode</value>
@@ -3121,172 +3117,172 @@ Thank you for your support!</value>
     <value>Key {0}</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Настроить яркость подсветки клавиатуры.</value>
+    <value>Adjust keyboard backlight brightness.</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Off" xml:space="preserve">
-    <value>Откл.</value>
+    <value>Off</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Title" xml:space="preserve">
-    <value>Яркость подсветки клавиатуры</value>
+    <value>Keyboard backlight brightness</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_AddEffect" xml:space="preserve">
-    <value>Добавить эффект</value>
+    <value>Add effect</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Message" xml:space="preserve">
-    <value>Не удалось применить профиль подсветки.</value>
+    <value>Lighting profile couldn't be applied.</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ApplyProfileError_Title" xml:space="preserve">
-    <value>Не удалось применить профиль</value>
+    <value>Couldn't apply profile</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Brightness_Title" xml:space="preserve">
-    <value>Яркость</value>
+    <value>Brightness</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_DeselectAll_ToolTip" xml:space="preserve">
-    <value>Снять выделение всех зон</value>
+    <value>Deselect all zones</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Effects" xml:space="preserve">
-    <value>Эффекты</value>
+    <value>Effects</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Message" xml:space="preserve">
-    <value>Не удалось экспортировать профиль</value>
+    <value>Profile couldn't be exported</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Title" xml:space="preserve">
-    <value>Не удалось экспортировать профиль</value>
+    <value>Couldn't export profile</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Message" xml:space="preserve">
-    <value>Не удалось импортировать профиль</value>
+    <value>Profile couldn't be imported</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Title" xml:space="preserve">
-    <value>Не удалось импортировать профиль</value>
+    <value>Couldn't import profile</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_NoEffects_Text" xml:space="preserve">
-    <value>Эффекты не добавлены.</value>
+    <value>No effects added.</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_Preset" xml:space="preserve">
-    <value>Пресет</value>
+    <value>Preset</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ResetToDefault_Tooltip" xml:space="preserve">
-    <value>Сбросить по умолчанию</value>
+    <value>Reset to default</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_SelectAll_ToolTip" xml:space="preserve">
-    <value>Выделить все зоны</value>
+    <value>Select all zones</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_SwitchKeyboardLayout_ToolTip" xml:space="preserve">
-    <value>Переключить раскладку клавиатуры</value>
+    <value>Switch keyboard layout</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_ClockwiseDirection_Title" xml:space="preserve">
-    <value>Направление</value>
+    <value>Direction</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Colors_Title" xml:space="preserve">
-    <value>Цвета</value>
+    <value>Colors</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Color_Title" xml:space="preserve">
-    <value>Цвет</value>
+    <value>Color</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Direction_Title" xml:space="preserve">
-    <value>Направление</value>
+    <value>Direction</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Effect_Title" xml:space="preserve">
-    <value>Эффект</value>
+    <value>Effect</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Effect_Warning" xml:space="preserve">
-    <value>Этот эффект будет применен ко всей клавиатуре и заменит все иные эффекты.</value>
+    <value>This effect will be applied to the whole keyboard and will replace all other effects.</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Speed_Title" xml:space="preserve">
-    <value>Скорость</value>
+    <value>Speed</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Title_Add" xml:space="preserve">
-    <value>Добавить эффект</value>
+    <value>Add effect</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Title_Edit" xml:space="preserve">
-    <value>Изменить эффект</value>
+    <value>Edit effect</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostBrightnessFactor" xml:space="preserve">
-    <value>Множитель яркости</value>
+    <value>Boost Brightness Factor</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostFloor" xml:space="preserve">
-    <value>Порог усиления</value>
+    <value>Boost Floor</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostTarget" xml:space="preserve">
-    <value>Целевое значение усиления</value>
+    <value>Boost Target</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_Title" xml:space="preserve">
-    <value>Настройки усиления цвета</value>
+    <value>Color Boost Settings</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_WhiteThreshold" xml:space="preserve">
-    <value>Порог белого</value>
+    <value>White Threshold</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoost_Title" xml:space="preserve">
-    <value>Усиление цвета (Vantage)</value>
+    <value>Vantage Color Boost</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>Импортировать и применить конфигурации подсветки к текущему профилю.</value>
+    <value>Import and apply backlight configuration to the current profile.</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
-    <value>Путь</value>
+    <value>Path</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Title" xml:space="preserve">
-    <value>Импортировать профиль подсветки клавиатуры</value>
+    <value>Import keyboard backlight profile</value>
   </data>
   <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>Настроить профиль подсветки клавиатуры.</value>
+    <value>Adjust keyboard backlight profile.</value>
   </data>
   <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Title" xml:space="preserve">
-    <value>Профиль подсветки клавиатуры</value>
+    <value>Keyboard backlight profile</value>
   </data>
   <data name="SpectrumKeyboardEffectControl_Description_AllZones" xml:space="preserve">
-    <value>Все клавиши</value>
+    <value>All keys</value>
   </data>
   <data name="SpectrumKeyboardEffectControl_Description_Zones" xml:space="preserve">
-    <value>{0} зон(ы)</value>
+    <value>{0} zones</value>
   </data>
   <data name="StartDate" xml:space="preserve">
     <value>Start date</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
-    <value>Батарея</value>
+    <value>Battery</value>
   </data>
   <data name="StatusTrayPopup_DischargeRate" xml:space="preserve">
-    <value>Мгновенная мощность при разрядке</value>
+    <value>Discharge rate</value>
   </data>
   <data name="StatusTrayPopup_DiscreteGPU" xml:space="preserve">
-    <value>Дискретный граф. процессор</value>
+    <value>Discrete GPU</value>
   </data>
   <data name="StatusTrayPopup_MaxDischargeRate" xml:space="preserve">
-    <value>Макс. Мощность разряда</value>
+    <value>Max discharge rate</value>
   </data>
   <data name="StatusTrayPopup_MinDischargeRate" xml:space="preserve">
-    <value>Мин. Мощность разряда</value>
+    <value>Min discharge rate</value>
   </data>
   <data name="StatusTrayPopup_Mode" xml:space="preserve">
-    <value>Режим</value>
+    <value>Mode</value>
   </data>
   <data name="StatusTrayPopup_PowerMode" xml:space="preserve">
-    <value>Режим питания</value>
+    <value>Power Mode</value>
   </data>
   <data name="StatusTrayPopup_PowerState" xml:space="preserve">
-    <value>Статус питания</value>
+    <value>Power State</value>
   </data>
   <data name="StatusTrayPopup_Preset" xml:space="preserve">
-    <value>Пресет</value>
+    <value>Preset</value>
   </data>
   <data name="StatusTrayPopup_UpdateAvailable" xml:space="preserve">
-    <value>Доступно обновление!</value>
+    <value>Update available!</value>
   </data>
   <data name="StatusWindow_Fan_And_Power" xml:space="preserve">
-    <value>Вентилятор / Питание</value>
+    <value>Fan / Power</value>
   </data>
   <data name="StatusWindow_Frequency_And_Temperature" xml:space="preserve">
-    <value>Частота / Температура</value>
+    <value>Frequency / Temperature</value>
   </data>
   <data name="StatusWindow_System_Fan" xml:space="preserve">
-    <value>Системный Кулер</value>
+    <value>System Fan</value>
   </data>
   <data name="Storage" xml:space="preserve">
     <value>Storage</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
-    <value>Выбрать значок</value>
+    <value>Select icon</value>
   </data>
   <data name="TextColor" xml:space="preserve">
     <value>Text color</value>
@@ -3295,67 +3291,66 @@ Thank you for your support!</value>
     <value>Threads</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
-    <value>Рассвет</value>
+    <value>Sunrise</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunset" xml:space="preserve">
-    <value>Закат</value>
+    <value>Sunset</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Time" xml:space="preserve">
-    <value>Время</value>
+    <value>Time</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
     <value>Allow switching between integrated and discrete GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Гибридный режим</value>
+    <value>Hybrid Mode</value>
   </data>
   <data name="ToggleHybridModeControl_Message" xml:space="preserve">
-    <value>Позволяет переключаться между встроенным и дискретным графическим процессором.
-Требуется перезагрузка.</value>
+    <value>Allow switching between integrated and discrete GPU.
+Requires restart.</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>Изменение Гибридного режима требует перезагрузки. Вы хотите выполнить перезапуск сейчас?</value>
+    <value>Changing Hybrid Mode requires restart. Do you want to restart now?</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Title" xml:space="preserve">
-    <value>Требуется перезапуск</value>
+    <value>Restart required</value>
   </data>
   <data name="ToggleHybridModeControl_Title" xml:space="preserve">
-    <value>Гибридный режим</value>
+    <value>Hybrid Mode</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
-    <value>Выключить сенсорную панель.</value>
+    <value>Disable touchpad.</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Title" xml:space="preserve">
-    <value>Блокировка сенсорной панели</value>
+    <value>Touchpad Lock</value>
   </data>
   <data name="TouchpadLockControl_Message" xml:space="preserve">
-    <value>Выключить сенсорную панель.</value>
+    <value>Disable touchpad.</value>
   </data>
   <data name="TouchpadLockControl_Title" xml:space="preserve">
-    <value>Блокировка сенсорной панели</value>
+    <value>Touchpad Lock</value>
   </data>
   <data name="TryAgain" xml:space="preserve">
-    <value>Повторите попытку</value>
+    <value>Try again</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
-    <value>Выключить все доступные дисплеи.</value>
+    <value>Turn off all available displays.</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Title" xml:space="preserve">
-    <value>Выключить дисплеи</value>
+    <value>Turn off displays</value>
   </data>
   <data name="TurnOffMonitorsControl_Message" xml:space="preserve">
-    <value>Выключить все доступные дисплеи.
-Движение мыши или нажатие клавиш клавиатуры приведет к пробуждению дисплеев.</value>
+    <value>Turn off all available displays.
+Moving the mouse or pressing the keyboard will wake displays up.</value>
   </data>
   <data name="TurnOffMonitorsControl_Title" xml:space="preserve">
-    <value>Выключить дисплеи</value>
+    <value>Turn off displays</value>
   </data>
   <data name="TurnOffMonitorsControl_TurnOff" xml:space="preserve">
-    <value>Отключить</value>
+    <value>Turn off</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Непредвиденная ошибка:
-{0}</value>
+    <value>Unexpected exception occurred:</value>
   </data>
   <data name="Unhide" xml:space="preserve">
     <value>Unhide</value>
@@ -3364,51 +3359,51 @@ Thank you for your support!</value>
     <value>Unknown</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
-    <value>Без имени</value>
+    <value>Unnamed</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer" xml:space="preserve">
-    <value>Вы можете продолжить на свой страх и риск, но имейте в виду, что некоторые функции могут быть недоступны и/или работать некорректно.
+    <value>You may choose to continue at your own risk, but keep in mind that some features may not be available and/or not work properly.
 
-Ведение журнала будет включено автоматически, если вы решите продолжить.</value>
+Logging will be enabled automatically, if you choose to continue.</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer_GitHub" xml:space="preserve">
-    <value>Для получения дополнительной информации посетите страницу проекта на GitHub.</value>
+    <value>Check out project page on GitHub for more information.</value>
   </data>
   <data name="UnsupportedWindow_MachineType" xml:space="preserve">
-    <value>Тип модели устройства</value>
+    <value>Machine Type</value>
   </data>
   <data name="UnsupportedWindow_Message" xml:space="preserve">
-    <value>Lenovo Legion Toolkit не был проверен на вашем устройстве.</value>
+    <value>Lenovo Legion Toolkit has not been tested with your device.</value>
   </data>
   <data name="UnsupportedWindow_Model" xml:space="preserve">
-    <value>Модель</value>
+    <value>Model</value>
   </data>
   <data name="UnsupportedWindow_Title" xml:space="preserve">
-    <value>Устройство не поддерживается</value>
+    <value>Unsupported device</value>
   </data>
   <data name="UnsupportedWindow_Vendor" xml:space="preserve">
-    <value>Поставщик</value>
+    <value>Vendor</value>
   </data>
   <data name="Update" xml:space="preserve">
-    <value>Обновить</value>
+    <value>Update</value>
   </data>
   <data name="UpdateWindow_DownloadError_Title" xml:space="preserve">
-    <value>Не удалось загрузить обновление</value>
+    <value>Update download failed</value>
   </data>
   <data name="UpdateWindow_SecurityError_Title" xml:space="preserve">
-    <value>Не удалось проверить обновление</value>
+    <value>Failed to verify update</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
-    <value>Доступно обновление</value>
+    <value>Update available</value>
   </data>
   <data name="UpdateWindow_WhatsNew" xml:space="preserve">
-    <value>﻿Что нового?</value>
+    <value>What's new?</value>
   </data>
   <data name="Used" xml:space="preserve">
     <value>Used</value>
   </data>
   <data name="Warning" xml:space="preserve">
-    <value>Предупреждение</value>
+    <value>Warning</value>
   </data>
   <data name="Warranty" xml:space="preserve">
     <value>Warranty</value>
@@ -3417,60 +3412,60 @@ Thank you for your support!</value>
     <value>W</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Настройть яркость подсветки клавиатуры.</value>
+    <value>Adjust keyboard backlight brightness.</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Подсветка клавиатуры</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>Вы можете изменить яркость с помощью Fn+Пробел</value>
+    <value>You can change brightness with Fn+Space</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Title" xml:space="preserve">
-    <value>Подсветка клавиатуры</value>
+    <value>Keyboard backlight</value>
   </data>
   <data name="WiFiAutomationStepControl_Title" xml:space="preserve">
     <value>Wi-Fi</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_CopyCurrentNetworkName" xml:space="preserve">
-    <value>Скопировать название текущей сети</value>
+    <value>Copy current network name</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_LeaveEmptyForAnyNetwork" xml:space="preserve">
-    <value>Оставить пустым для любой сети.</value>
+    <value>Leave empty for any Wi-Fi network.</value>
   </data>
   <data name="WindowsPowerModesWindow_Title" xml:space="preserve">
-    <value>Режимы питания Windows</value>
+    <value>Windows Power Modes</value>
   </data>
   <data name="WindowsPowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
-    <value>По умолчанию</value>
+    <value>System Default</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_AC" xml:space="preserve">
-    <value>AC</value>
+    <value>Plugged in</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_DC" xml:space="preserve">
-    <value>DC</value>
+    <value>On battery</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_Title" xml:space="preserve">
     <value>Power Mode</value>
   </data>
   <data name="WindowsPowerPlansWindow_Title" xml:space="preserve">
-    <value>Схемы питания Windows</value>
+    <value>Windows Power Plans</value>
   </data>
   <data name="WindowsPowerPlan_Title" xml:space="preserve">
     <value>Windows Power Plan</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
-    <value>Отключить клавишу Windows на встроенной клавиатуре.</value>
+    <value>Disable Windows key on built-in keyboard.</value>
   </data>
   <data name="WinKeyAutomationStepControl_Title" xml:space="preserve">
-    <value>Блокировка клавиши Windows</value>
+    <value>Windows Key Lock</value>
   </data>
   <data name="WinKeyControl_Message" xml:space="preserve">
-    <value>Действует только на встроенной клавиатуре.</value>
+    <value>Only works on built-in keyboard.</value>
   </data>
   <data name="WinKeyControl_Title" xml:space="preserve">
-    <value>Блокировка клавиши Windows</value>
+    <value>Windows Key Lock</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Да</value>
+    <value>Yes</value>
   </data>
 </root>
