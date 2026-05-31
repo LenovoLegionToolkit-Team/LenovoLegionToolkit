@@ -83,9 +83,9 @@ public abstract class OsdWindowBase : Window
         SourceInitialized += OnSourceInitialized;
         Closed += OnWindowClosed;
         Loaded += OnLoaded;
-        ContentRendered += OnContentRendered;
         LocationChanged += OnLocationChanged;
         MouseLeftButtonDown += OnMouseLeftButtonDown;
+        SizeChanged += OnSizeChanged;
 
         SystemEvents.DisplaySettingsChanged += OnDisplaySettingsChanged;
 
@@ -197,14 +197,25 @@ public abstract class OsdWindowBase : Window
         }
     }
 
-    private void OnLoaded(object? sender, RoutedEventArgs e) => Dispatcher.BeginInvoke(new Action(SetWindowPosition), DispatcherPriority.Loaded);
-
-    private void OnContentRendered(object? sender, EventArgs e)
+    private async void OnLoaded(object? sender, RoutedEventArgs e)
     {
+        await Dispatcher.InvokeAsync(() => { }, DispatcherPriority.Render);
+
+        UpdateLayout();
+        SetWindowPosition();
+    }
+
+    private void OnSizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        if (SavedPositionX.HasValue)
+            return;
+
         if (!_positionSet)
-        {
-            Dispatcher.BeginInvoke(new Action(SetWindowPosition), DispatcherPriority.Render);
-        }
+            return;
+
+        var workArea = SystemParameters.WorkArea;
+
+        Left = workArea.Left + (workArea.Width - ActualWidth) / 2;
     }
 
     protected virtual void SetWindowPosition()

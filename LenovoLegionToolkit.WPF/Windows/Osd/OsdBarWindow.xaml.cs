@@ -128,13 +128,16 @@ public partial class OsdBarWindow : OsdWindowBase
 
     protected override void SetDefaultWindowPosition()
     {
-        if (double.IsNaN(ActualWidth) || ActualWidth <= 0) return;
+        UpdateLayout();
 
-        var screenWidth = SystemParameters.PrimaryScreenWidth;
+        if (ActualWidth <= 0)
+            return;
+
         var workArea = SystemParameters.WorkArea;
 
-        Left = (screenWidth - ActualWidth) / 2;
+        Left = workArea.Left + (workArea.Width - ActualWidth) / 2;
         Top = workArea.Top;
+
         _positionSet = true;
     }
 
