@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,22 +124,22 @@
     <value>Când alimentatorul este deconectat</value>
   </data>
   <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
-    <value>Warning: Cannot overclock a deactivated GPU. The Overclock step will fail.</value>
+    <value>Avertisment: Nu se poate suprapune un GPU dezactivat. Pasul Overclock va eșua.</value>
   </data>
   <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
-    <value>Warning: Windows HDR locks screen brightness. Brightness settings applied after HDR are ignored.</value>
+    <value>Avertisment: Windows HDR blochează luminozitatea ecranului. Setările de luminozitate aplicate după HDR sunt ignorate.</value>
   </data>
   <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
-    <value>Warning: Changing Hybrid Mode to dGPU Mode forces a system reboot. This must be the last step.</value>
+    <value>Atenție: Schimbarea Modului Hibrid în Modul dGPU forțează repornirea sistemului. Acesta trebuie să fie ultimul pas.</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
-    <value>Warning: Power Mode resets Fan Speed. Run the Power Mode step first.</value>
+    <value>Atenție: Modul Energie resetează Viteza Fan. Execută mai întâi Modul Putere.</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
-    <value>Warning: Power Mode resets Brightness and Refresh Rate. Run the Power Mode step first.</value>
+    <value>Avertisment: Modul de alimentare resetează luminozitatea și rata de reîmprospătare. Rulează pasul Mod Putere mai întâi.</value>
   </data>
   <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
-    <value>Warning: Changing Resolution resets Refresh Rate. Run the Resolution step first.</value>
+    <value>Avertisment: Schimbarea rezoluției resetează rata de reîmprospătare. Execută pasul de rezoluție mai întâi.</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
     <value>Închidere aplicații</value>
@@ -148,7 +148,7 @@
     <value>Repornire GPU</value>
   </data>
   <data name="DeactivateGpuQuickAction_Title" xml:space="preserve">
-    <value>Deactivate GPU</value>
+    <value>Dezactivați GPU</value>
     <comment>The display name of the default Quick Action that is presented to the user upon first installation.</comment>
   </data>
   <data name="Delay_Second" xml:space="preserve">
@@ -158,10 +158,10 @@
     <value>{0} secunde</value>
   </data>
   <data name="DeviceConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When device is connected</value>
+    <value>Când dispozitivul este conectat</value>
   </data>
   <data name="DeviceDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When device is disconnected</value>
+    <value>Când dispozitivul este deconectat</value>
   </data>
   <data name="DisplayOffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Când afișajele se opresc</value>
@@ -182,19 +182,19 @@
     <value>Când jocul se închide</value>
   </data>
   <data name="GodModePresetChangedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When Custom Mode preset changes</value>
+    <value>Când presetarea Modului Personalizat se modifică</value>
   </data>
   <data name="HDROffAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When HDR turns off</value>
+    <value>Când HDR se opreşte</value>
   </data>
   <data name="HDROnAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When HDR turns on</value>
+    <value>Când HDR se activează</value>
   </data>
   <data name="HybridModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Hybrid Mode</value>
+    <value>Mod hibrid</value>
   </data>
   <data name="ITSModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When IdeaPad Power Mode is changed</value>
+    <value>Când modul IdeaPad Power este schimbat</value>
   </data>
   <data name="LidClosedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>Capac închis</value>
@@ -206,13 +206,13 @@
     <value>Când alimentatorul de putere scăzută este conectat</value>
   </data>
   <data name="OnResumeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>On resume</value>
+    <value>La reluare</value>
   </data>
   <data name="OnStartupAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>La pornire</value>
   </data>
   <data name="PeriodicActionPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Periodic action</value>
+    <value>Acțiune periodică</value>
     <comment>The display name of the periodic automation action.</comment>
   </data>
   <data name="PowerModeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
@@ -225,24 +225,24 @@
     <value>Când o aplicație se închide</value>
   </data>
   <data name="SessionLockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Session locked</value>
+    <value>Sesiune blocată</value>
   </data>
   <data name="SessionUnlockAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Session unlocked</value>
+    <value>Sesiune deblocată</value>
   </data>
   <data name="TimeAutomationPipelineTrigger_DisplayName" xml:space="preserve">
     <value>La timpul specificat</value>
   </data>
   <data name="UserInactivityAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When user becomes inactive</value>
+    <value>Când utilizatorul devine inactiv</value>
   </data>
   <data name="UserInactivityAutomationPipelineTrigger_DisplayName_Zero" xml:space="preserve">
-    <value>When user becomes active</value>
+    <value>Când utilizatorul devine activ</value>
   </data>
   <data name="WiFiConnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When Wi-Fi is connected</value>
+    <value>Când Wi-Fi este conectat</value>
   </data>
   <data name="WiFiDisconnectedAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>When Wi-Fi is disconnected</value>
+    <value>Când Wi-Fi este deconectat</value>
   </data>
 </root>
