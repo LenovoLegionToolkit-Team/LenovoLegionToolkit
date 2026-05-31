@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -136,7 +136,7 @@
     <value>リンク</value>
   </data>
   <data name="AboutPage_Log" xml:space="preserve">
-    <value>Log</value>
+    <value>ログ</value>
   </data>
   <data name="AboutPage_ProjectWebsiteOnGitHub" xml:space="preserve">
     <value>GitHubのリポジトリ</value>
@@ -167,7 +167,7 @@
     <value>追加</value>
   </data>
   <data name="AddAutomationStepWindow_MultipleSteps" xml:space="preserve">
-    <value>Multiple steps...</value>
+    <value>複数のステップ...</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>ステップを追加</value>
@@ -176,7 +176,7 @@
     <value>新しく追加</value>
   </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Airplane mode</value>
+    <value>機内モード</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
     <value>デバイスの電源がオフ、スリープ、または休止状態の場合にUSB機器を充電します。</value>
@@ -191,52 +191,52 @@
     <value>USBの常時給電</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
-    <value>Apply Changes</value>
+    <value>変更を適用</value>
   </data>
   <data name="AmdOverclocking_Caution_Message" xml:space="preserve">
-    <value>Changing these settings may impact system stability. Proceed with caution.</value>
+    <value>これらの設定を変更するとシステムの安定性に影響を与える可能性があります。注意してください。</value>
   </data>
   <data name="AmdOverclocking_Caution_Title" xml:space="preserve">
-    <value>Caution</value>
+    <value>注意</value>
   </data>
   <data name="AmdOverclocking_Core_Title" xml:space="preserve">
-    <value>Core</value>
+    <value>コア</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
-    <value>Profile apply has been canceled due to abnormal restart.</value>
+    <value>異常な再起動のためプロファイルの適用がキャンセルされました。</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz)</value>
+    <value>最大CPUブースト周波数オーバーライド(MHz)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
-    <value>FMax Frequency</value>
+    <value>FMax 周波数</value>
   </data>
   <data name="AmdOverclocking_Global_Dim" xml:space="preserve">
-    <value>-1 All</value>
+    <value>-1 すべて</value>
   </data>
   <data name="AmdOverclocking_Global_Offset" xml:space="preserve">
-    <value>Global Offset:</value>
+    <value>グローバルオフセット:</value>
   </data>
   <data name="AmdOverclocking_Global_Plus" xml:space="preserve">
-    <value>+1 All</value>
+    <value>すべて+1</value>
   </data>
   <data name="AmdOverclocking_Per_Core_Title" xml:space="preserve">
-    <value>Per-Core Optimization</value>
+    <value>コア毎の最適化</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
-    <value>Status</value>
+    <value>ステータス</value>
   </data>
   <data name="AmdOverclocking_Success_Message" xml:space="preserve">
-    <value>Settings applied successfully.</value>
+    <value>設定が正常に適用されました。</value>
   </data>
   <data name="AmdOverclocking_Success_Title" xml:space="preserve">
-    <value>Success</value>
+    <value>成功</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures</value>
+    <value>FPSと温度の両方の安定性を得るには、CCD1を無効にしてください。</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
-    <value>X3D Gaming Mode</value>
+    <value>X3D ゲームモード</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>適用</value>
@@ -248,82 +248,82 @@
     <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="ArgumentWindow_Category_Debugging" xml:space="preserve">
-    <value>Debugging</value>
+    <value>デバッグ</value>
   </data>
   <data name="ArgumentWindow_Category_General" xml:space="preserve">
-    <value>General</value>
+    <value>全般</value>
   </data>
   <data name="ArgumentWindow_Category_Hardware_Automation" xml:space="preserve">
-    <value>Hardware &amp; Automation</value>
+    <value>ハードウェアと自動化</value>
   </data>
   <data name="ArgumentWindow_Category_Lighting" xml:space="preserve">
-    <value>Lighting</value>
+    <value>照明</value>
   </data>
   <data name="ArgumentWindow_Category_Network_Proxy" xml:space="preserve">
-    <value>Network Proxy</value>
+    <value>ネットワークプロキシ</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Modify startup arguments for the app.</value>
+    <value>Open an argument window for convenient modification of arguments.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Arguments</value>
+    <value>引数</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
-    <value>Allow All Certificates</value>
+    <value>すべての証明書を許可する</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowPowerModesBattery" xml:space="preserve">
-    <value>Allow All Power Modes on Battery</value>
+    <value>バッテリー時にすべての電源モードを許可</value>
   </data>
   <data name="ArgumentWindow_Flag_DebugMode" xml:space="preserve">
-    <value>Debug Mode</value>
+    <value>デバッグモード</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableConflictWarning" xml:space="preserve">
-    <value>Disable Conflict Warning</value>
+    <value>競合警告を無効にする</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableLenovoLighting" xml:space="preserve">
-    <value>Disable Lenovo Lighting</value>
+    <value>Lenovo Lighting を無効にする</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableRgbKb" xml:space="preserve">
-    <value>Disable RGB Keyboard</value>
+    <value>RGB キーボードを無効にする</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableSpectrumKb" xml:space="preserve">
-    <value>Disable Spectrum Keyboard</value>
+    <value>スペクトルキーボードを無効にする</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableTrayTooltip" xml:space="preserve">
-    <value>Disable Tray Tooltip</value>
+    <value>トレイツールチップを無効にする</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableUpdateChecker" xml:space="preserve">
-    <value>Disable Update Checker</value>
+    <value>更新チェッカーを無効にする</value>
   </data>
   <data name="ArgumentWindow_Flag_EnableLampArray" xml:space="preserve">
-    <value>Enable Lamp Array</value>
+    <value>ランプ配列を有効にする</value>
   </data>
   <data name="ArgumentWindow_Flag_ExpGpuMode" xml:space="preserve">
-    <value>Experimental GPU Working Mode</value>
+    <value> Experimental GPU Working Mode</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyPassword" xml:space="preserve">
-    <value>Proxy Password</value>
+    <value>プロキシパスワード</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUrl" xml:space="preserve">
-    <value>Proxy URL</value>
+    <value> Proxy URL</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUsername" xml:space="preserve">
-    <value>Proxy Username</value>
+    <value>プロキシユーザー名</value>
   </data>
   <data name="ArgumentWindow_Flag_SkipCompatCheck" xml:space="preserve">
-    <value>Skip Compatibility Check</value>
+    <value>互換性チェックをスキップ</value>
   </data>
   <data name="ArgumentWindow_Flag_StartMinimized" xml:space="preserve">
-    <value>Start Minimized</value>
+    <value>最小化されて開始</value>
   </data>
   <data name="ArgumentWindow_Flag_TraceEnabled" xml:space="preserve">
-    <value>Enable Trace Logging</value>
+    <value>トレースログを有効にする</value>
   </data>
   <data name="ArgumentWindow_NotSet" xml:space="preserve">
-    <value>Not Set</value>
+    <value>未設定</value>
   </data>
   <data name="ArgumentWindow_Title" xml:space="preserve">
-    <value>Argument Window</value>
+    <value>引数ウィンドウ</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>有効化</value>
@@ -351,22 +351,22 @@
     <value>アイコンの変更</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
-    <value>Automatic (All Methods)</value>
+    <value>自動 (すべての方法)</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
-    <value>Discrete GPU Activity</value>
+    <value>Discrete GPU アクティビティ</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Game_Mode" xml:space="preserve">
-    <value>Windows Game Mode</value>
+    <value>Windowsゲームモード</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_List" xml:space="preserve">
-    <value>Known Game List</value>
+    <value>既知のゲームリスト</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configure detection methods and exclusions.</value>
+    <value>検出方法と除外を設定します。</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
-    <value>Game Detection</value>
+    <value>ゲームの検出</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
     <value>クイック アクションが定義されていません。「新しく追加」をクリックして、新しいクイックアクションを作成します。</value>
@@ -405,7 +405,7 @@
     <value>設定</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive" xml:space="preserve">
-    <value>Exclusive</value>
+    <value>専用</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
     <value>このアクションの実行中は、それ以外のアクションを実行しないでください。</value>
@@ -429,10 +429,10 @@
     <value>今すぐ実行</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
-    <value>Run on startup</value>
+    <value>起動時に実行</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup_Tooltip" xml:space="preserve">
-    <value>When enabled, this automation will check and apply when the app starts</value>
+    <value>有効にすると、このオートメーションはアプリの起動時にチェックして適用されます。</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
     <value>{0} ステップ</value>
@@ -441,7 +441,7 @@
     <value>{0} ステップ</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_After" xml:space="preserve">
-    <value>After {0}</value>
+    <value>{0} 後</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Apps" xml:space="preserve">
     <value>アプリケーション</value>
@@ -468,7 +468,7 @@
     <value>設定</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>戻る</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
     <value>特定のゲームの実行中を自動的に検出し、CPU と GPU のパフォーマンスを調整します。温度とファンの騒音が増加する可能性があります。</value>
@@ -492,10 +492,10 @@
     <value>バッテリーモード</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Message" xml:space="preserve">
-    <value>When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning.</value>
+    <value>有効にすると、 このデバイスは、一晩で80%まで充電し、午前中にこのデバイスを使用するまでに充電を100%終了します。</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Title" xml:space="preserve">
-    <value>Overnight Battery Charging</value>
+    <value>一晩バッテリー充電中</value>
   </data>
   <data name="BatteryNightChargeModeControl_Message" xml:space="preserve">
     <value>有効にすると、夜間にこのデバイスに電源を接続した場合80%まで充電され、翌朝このデバイスを使用するまでに100%まで充電が完了します。</value>
@@ -510,10 +510,10 @@
     <value>電源に接続済み。充電していません。</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Message" xml:space="preserve">
-    <value>Battery maximum charge capacity.</value>
+    <value>バッテリー最大充電容量</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Title" xml:space="preserve">
-    <value>Battery health</value>
+    <value>バッテリーの健康</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Message" xml:space="preserve">
     <value>バッテリーの現在の温度</value>
@@ -564,7 +564,7 @@
     <value>バッテリーの最大容量</value>
   </data>
   <data name="BatteryPage_LiveCharge_Title" xml:space="preserve">
-    <value>Current charge</value>
+    <value>現在の料金</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
     <value>バッテリー残量が少なくなっています。</value>
@@ -579,16 +579,16 @@
     <value>製造日</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Message" xml:space="preserve">
-    <value>Maximum rate at which battery is charged (+), or discharged (-).</value>
+    <value>バッテリーを充電する最大レート(+)、または放電(-)です。</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Title" xml:space="preserve">
-    <value>Maximum discharge rate</value>
+    <value>最大放電率</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Message" xml:space="preserve">
-    <value>Minimum rate at which battery is charged (+), or discharged (-).</value>
+    <value>バッテリーが充電される最小レート(+)、または放電される(-)。</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Title" xml:space="preserve">
-    <value>Minimum discharge rate</value>
+    <value>最小排出率</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
     <value>デバイスが最後に電源に接続されてからの時間
@@ -601,7 +601,7 @@
     <value>バッテリー</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
-    <value>BIOS version</value>
+    <value>BIOS バージョン</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
     <value>カスタマイズ</value>
@@ -662,10 +662,10 @@
     <value>閉じる</value>
   </data>
   <data name="CloseAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Close the Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit を閉じる</value>
   </data>
   <data name="CloseAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Close App</value>
+    <value>アプリを閉じる</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>青</value>
@@ -677,10 +677,10 @@
     <value>赤</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
+    <value>コンピュータの使用状況と電力条件に基づいてGPU動作モードを選択します。</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
-    <value>GPU Working Mode</value>
+    <value>GPU ワーキングモード</value>
   </data>
   <data name="ComboBoxHybridModeControl_Message" xml:space="preserve">
     <value>コンピューターの使用状況と電源状態に基づいて GPU 動作モードを選択します。
@@ -696,7 +696,7 @@
     <value>GPU動作モード</value>
   </data>
   <data name="CompatibilityCheckError_Message" xml:space="preserve">
-    <value>Error occured when reading device information.</value>
+    <value>デバイス情報の読み込み中にエラーが発生しました。</value>
   </data>
   <data name="Continue" xml:space="preserve">
     <value>続行</value>
@@ -723,19 +723,19 @@
     <value>アクションを作成</value>
   </data>
   <data name="Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>カスタマイズ</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Cycle through available Custom Mode presets.</value>
+    <value>使用可能なカスタムモードプリセットを切り替えます。</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Cycle Custom Mode preset</value>
+    <value>カスタムモードプリセットのサイクル</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
-    <value>AC Connected</value>
+    <value>AC接続</value>
   </data>
   <data name="DashboardBattery_AcDisconnected" xml:space="preserve">
-    <value>AC Disconnected</value>
+    <value>AC 切断</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
     <value>カスタマイズ</value>
@@ -756,10 +756,10 @@
     <value>ホーム</value>
   </data>
   <data name="DaysRemaining" xml:space="preserve">
-    <value>Days remaining</value>
+    <value>残り日数</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Disable discrete GPU if it is active unnecessarily.</value>
+    <value>不必要にアクティブな場合は離散GPUを無効にします。</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPUを非アクティブ化</value>
@@ -777,16 +777,16 @@
     <value>削除</value>
   </data>
   <data name="Device" xml:space="preserve">
-    <value>Device</value>
+    <value>デバイス</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
-    <value>Show connected devices only</value>
+    <value>接続されているデバイスのみ表示</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable" xml:space="preserve">
-    <value>Show removable devices only</value>
+    <value>リムーバブルデバイスのみ表示</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlySelected" xml:space="preserve">
-    <value>Show selected devices only</value>
+    <value>選択したデバイスのみ表示</value>
   </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
     <value>Lenovo Support</value>
@@ -795,7 +795,7 @@
     <value>このデバイスについて</value>
   </data>
   <data name="DevicePipelineTriggerTabItemContent_Devices" xml:space="preserve">
-    <value>Devices</value>
+    <value>デバイス</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
     <value>dGPUが接続されました</value>
@@ -807,28 +807,28 @@
     <value>無効</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
-    <value>Force Kill Process</value>
+    <value>強制終了プロセス</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
-    <value>Graphics Preferences</value>
+    <value>図の設定</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>アプリを強制終了</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the active processes list after a forced termination.</value>
+    <value>強制終了後にアクティブなプロセスのリストをリフレッシュするまでの待ち時間。</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
-    <value>Force Kill Refresh Delay</value>
+    <value>強制的に強制的にリフレッシュの遅延</value>
   </data>
   <data name="DiscreteGPUControl_ManagementWindowTitle" xml:space="preserve">
-    <value>Discrete GPU Management</value>
+    <value>Discrete GPU 管理</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>ディスクリートGPUが不必要にアクティブになっている場合は無効にします。</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>その他</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>モニターは NVIDIA GPU に接続されています。</value>
@@ -843,19 +843,19 @@
     <value>不明</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Adjust how often the app checks for GPU activity.</value>
+    <value>アプリが GPU アクティビティをチェックする頻度を調整します。</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
-    <value>Polling Interval</value>
+    <value>ポーリング間隔</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDefault" xml:space="preserve">
-    <value>Let Windows decide</value>
+    <value>Windowsが決定します</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
-    <value>Discrete GPU</value>
+    <value>ディスクリートGPU</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
-    <value>Integrated GPU</value>
+    <value>統合されたGPU</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>プロセス</value>
@@ -864,57 +864,57 @@
     <value>GPUを再起動</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Delay before initializing the dGPU monitoring service.</value>
+    <value>dGPU 監視サービスを初期化する前の遅延。</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
-    <value>Startup Delay</value>
+    <value>起動の遅延</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
     <value>ディスクリートGPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Change display brightness of the built-in display.</value>
+    <value>内蔵ディスプレイの表示明るさを変更します。</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>ディスプレイの明るさ</value>
   </data>
   <data name="Displays" xml:space="preserve">
-    <value>Displays</value>
+    <value>表示</value>
   </data>
   <data name="DonatePage_Bartosz_Description" xml:space="preserve">
-    <value>Bartosz created Lenovo Legion Toolkit and authored the foundational architecture that powers every feature in the application today.</value>
+    <value>BartoszはLenovo Legion Toolkitを作成し、今日のアプリケーションのすべての機能を動作させる基本的なアーキテクチャを作成しました。</value>
   </data>
   <data name="DonatePage_Bartosz_Role" xml:space="preserve">
-    <value>Original Creator</value>
+    <value>オリジナルの作成者</value>
   </data>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
-    <value>Even if you can't donate, simply using, sharing, and starring the project on GitHub goes a long way. Every bit of support is genuinely appreciated</value>
+    <value>寄付ができない場合でも、GitHub上でプロジェクトを単純に使用、共有、主演することは長い道のりです。サポートのすべてのビットは本当に感謝されています</value>
   </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
-    <value>Responsible for core feature development, quality assurance, UI/UX design, and overall project direction as the current project lead.</value>
+    <value>現在のプロジェクトリーダーとして、中核的な機能開発、品質保証、UI/UX設計、およびプロジェクト全体の方向性を担当しています。</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
-    <value>Core Developer &amp; Project Lead</value>
+    <value>コア開発者＆プロジェクトリード</value>
   </data>
   <data name="DonatePage_Kaguya_Description" xml:space="preserve">
-    <value>Specializes in hardware research and reverse engineering, with contributions spanning core feature development and low-level system integration.</value>
+    <value>ハードウェア研究とリバースエンジニアリングを専門としており、コア機能の開発と低レベルのシステム統合に及ぶ貢献があります。</value>
   </data>
   <data name="DonatePage_Kaguya_Role" xml:space="preserve">
-    <value>Core Developer &amp; Reverser</value>
+    <value>コア開発者＆リバーサー</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
-    <value>Development and maintenance of Lenovo Legion Toolkit takes a lot of time and effort. If you enjoy using this software, you can support its future by sponsoring the authors who make it possible.
+    <value>Lenovo Legion Toolkit の開発とメンテナンスには多くの時間と労力がかかります。 このソフトウェアを楽しんでいただけるならば、それを可能にする作者を後援することで、その未来を支えることができます。
 
-Thank you for your support!</value>
+ご支援ありがとうございます！</value>
   </data>
   <data name="DonatePage_Sponsor" xml:space="preserve">
-    <value>Sponsor</value>
+    <value>スポンサー情報</value>
   </data>
   <data name="DonatePage_Title" xml:space="preserve">
     <value>寄付</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Change scaling of the built-in display.</value>
+    <value>内蔵ディスプレイのスケーリングを変更します。</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -950,22 +950,22 @@ Thank you for your support!</value>
     <value>ダッシュボードをカスタマイズ</value>
   </data>
   <data name="EditSensorWindow_Title" xml:space="preserve">
-    <value>Edit Sensor</value>
+    <value>センサーを編集</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>End date</value>
+    <value>終了日</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>エラー</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
+    <value>このリスト内のプロセスは、ゲームの開始/停止トリガーとレノボのAI/インテリジェントモードによって無視されます。 パスのないプロセス名を入力します ("discord" や "blender" など)。</value>
   </data>
   <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Process Name (e.g. discord)</value>
+    <value>プロセス名 (例: discord)</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>除外プロセス</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Fn+R ショートカットを使用するときに、使用しないリフレッシュレートのチェックを外します。</value>
@@ -983,7 +983,7 @@ Thank you for your support!</value>
     <value>終了</value>
   </data>
   <data name="Expired" xml:space="preserve">
-    <value>Expired</value>
+    <value>期限切れ</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>エクスポート</value>
@@ -1043,10 +1043,10 @@ Thank you for your support!</value>
     <value>PCH</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
-    <value>Set fan to maximum speed.</value>
+    <value>ファンを最大速度に設定します。</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Title" xml:space="preserve">
-    <value>Fan Max Speed</value>
+    <value>ファン最大速度</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>フィルタ...</value>
@@ -1079,13 +1079,13 @@ Thank you for your support!</value>
     <value>GB</value>
   </data>
   <data name="Generation" xml:space="preserve">
-    <value>Generation</value>
+    <value>生成</value>
   </data>
   <data name="GHz" xml:space="preserve">
     <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Apply a specific Custom Mode preset.</value>
+    <value>特定のカスタムモードプリセットを適用します</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>カスタムモードプリセット</value>
@@ -1114,52 +1114,52 @@ Thank you for your support!</value>
     <value>高度</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>All Core Curve Optimizer.</value>
+    <value>すべてのコアカーブオプティマイザ。</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
-    <value>All Core Curve Optimizer</value>
+    <value>すべてのコアカーブオプティマイザー</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL" xml:space="preserve">
     <value>APU sPPTの電力制限</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>The peak power consumption that can be reached by the CPU with a minor delay.</value>
+    <value>CPUによって遅延を軽減することができるピーク消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>Long Term Power Limit (Cross Loading)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>The maximum power consumption that can be reached by the CPU when both CPU and GPU are fully utilized.</value>
+    <value>CPUとGPUの両方が完全に使用されている場合、CPUによって達成できる最大消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>Long Term Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>The continuous power consumption that can be reached by the CPU.</value>
+    <value>CPUによって達成することができる連続消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>ピークパワー制限</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>The maximum instantaneous power consumption that can be reached by the CPU.</value>
+    <value>CPUによって達成することができる最大瞬時消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau" xml:space="preserve">
-    <value>Short Term Power Limit Duration</value>
+    <value>短期パワーリミット時間</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau_Description" xml:space="preserve">
-    <value>The amount of time the CPU is allowed to boost and use Short Term Power Limit for. When Tau expires, Long Term Power Limit is used.</value>
+    <value>CPUのブーストと使用時間の長さは、短期パワーリミットです。 Tauの有効期限が切れると、長期パワーリミットが使用されます。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Short Term Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>The peak power consumption that can be reached by the CPU within a short amount time.</value>
+    <value>CPUによって短時間で達成できるピーク消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>CPUの温度制限</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>The maximum temperature that can be reached by the CPU before frequency and power is reduced.</value>
+    <value>周波数と電力が減少する前にCPUによって達することができる最大温度。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>CPU</value>
@@ -1204,85 +1204,85 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>構成可能なTGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>The additional amount of power that can be allocated to the GPU on top of base power consumption.</value>
+    <value>ベース消費電力の上にGPUに割り当てることができる追加電力量。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>ダイナミックブースト</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>The additional maximum power that can be allocated to the GPU based on the power consumption of the CPU.</value>
+    <value>CPUの消費電力に基づいてGPUに割り当てることができる追加の最大電力。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>GPUの温度制限</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>The maximum temperature that can be reached by the GPU before frequency and power is reduced.</value>
+    <value>周波数と電力が減少する前にGPUによって達することができる最大温度。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>GPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl" xml:space="preserve">
-    <value>GPU to CPU Dynamic Boost</value>
+    <value>GPU から CPU の動的ブースト</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>This is the maximum additional power that can be allocated to the CPU from the GPU based on CPU usage. The higher the value, the better the performance of applications that use the CPU.</value>
+    <value>これは、CPU使用率に基づいてGPUからCPUに割り当てることができる最大追加電力です。 値が高いほど、CPUを使用するアプリケーションのパフォーマンスが向上します。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
-    <value>Total Processor Power Target In AC</value>
+    <value>AC内の合計プロセッサ電源ターゲット</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>The point at which the CPU triggers dynamic power consumption adjustment for the GPU.</value>
+    <value>CPUがGPUの動的消費電力調整をトリガーするポイント。</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Legion Space or its services are running.</value>
+    <value>Legion Spaceまたはそのサービスが実行されている場合、カスタムモード設定は正しく適用されません。</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Legion Zone or its services are running.</value>
+    <value>レジオンゾーンまたはそのサービスが実行されている場合、カスタムモードの設定は正しく適用されません。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency.</value>
+    <value>精密ブーストオーバードライブブースト周波数</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency</value>
+    <value>精密ブーストオーバードライブブースト周波数</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Scaler.</value>
+    <value>精度ブーストオーバードライブスケーラー。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
-    <value>Precision Boost Overdrive Scaler</value>
+    <value>高精度ブーストオーバードライブスカラー</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
     <value>カスタムモード設定</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Enable / Disable Core Curve Adjustment.</value>
+    <value>コアカーブ調整の有効/無効を切り替えます。</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
-    <value>Core Curve Adjustment</value>
+    <value>コアカーブ調整</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Enable / Disable Advanced Overclocking options.</value>
+    <value>高度なオーバークロックオプションを有効/無効にします。</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Advanced Overclocking Options</value>
+    <value>高度なオーバークロックオプション</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Lenovo Vantage or its services are running.</value>
+    <value>Lenovo Vantageまたはそのサービスが実行されている場合、カスタムモードの設定は正しく適用されません。</value>
   </data>
   <data name="GPU" xml:space="preserve">
     <value>GPU</value>
   </data>
   <data name="HardwareFeatures" xml:space="preserve">
-    <value>Hardware Features</value>
+    <value>ハードウェアの機能</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable or disable background polling for hardware sensors.</value>
+    <value>ハードウェアセンサーのバックグラウンドポーリングを有効または無効にします。</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>ハードウェアセンサー</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable high dynamic range (HDR) on the built-in display.</value>
+    <value>内蔵ディスプレイでハイダイナミックレンジ(HDR)を有効にします。</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -1297,35 +1297,35 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>HDRの使用はWindowsの設定によってブロックされています。</value>
   </data>
   <data name="Hide" xml:space="preserve">
-    <value>Hide</value>
+    <value>非表示</value>
   </data>
   <data name="HideAll" xml:space="preserve">
-    <value>Hide all</value>
+    <value>すべて非表示</value>
   </data>
   <data name="Hz" xml:space="preserve">
     <value>Hz</value>
   </data>
   <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
+    <value>アイコン</value>
   </data>
   <data name="IconColor" xml:space="preserve">
-    <value>Icon color</value>
+    <value>アイコンの色</value>
   </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
-    <value>Try changing the mode again in a couple of seconds, if you do not see expected result.
-If dGPU does not respond at all, please restart your laptop.</value>
+    <value>予想される結果が表示されない場合は、数秒で再度モードを変更してみてください。
+dGPU がまったく応答しない場合は、ラップトップを再起動してください。</value>
   </data>
   <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
-    <value>dGPU will disconnect automatically when not in use and laptop is on battery power.</value>
+    <value>使用していない状態でラップトップがバッテリ電源に入っている場合、dGPUは自動的に切断されます。</value>
   </data>
   <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
-    <value>dGPU will disconnect automatically when not in use.</value>
+    <value>使用していない場合、dGPU は自動的に切断されます。</value>
   </data>
   <data name="IGPUModeChangeException_Title" xml:space="preserve">
-    <value>Could not change GPU Working Mode</value>
+    <value>GPU ワーキングモードを変更できませんでした</value>
   </data>
   <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
-    <value>dGPU is currently in use or laptop is not on battery power</value>
+    <value>dGPUが現在使用されているか、またはラップトップがバッテリ電力ではありません</value>
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
     <value>dGPUは現在使用中です</value>
@@ -1352,21 +1352,21 @@ If dGPU does not respond at all, please restart your laptop.</value>
     <value>インスタントブート</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change IdeaPad Power Mode</value>
+    <value>IdeaPad 電源モードの変更</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>IdeaPad Power Mode</value>
+    <value>IdeaPad 電源モード</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Change IdeaPad Power Mode</value>
+    <value>IdeaPad 電源モードの変更</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>IdeaPad Power Mode</value>
+    <value>IdeaPad 電源モード</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows Dynamic lighting is enabled.
-This feature might prevent LLT to control the keyboard.
-Click Yes to disable and No to ignore.</value>
+この機能は、LLTがキーボードを制御するのを妨げる可能性があります。
+format@@2 無効にするには「はい」をクリックし、無視するには「いいえ」をクリックします。</value>
   </data>
   <data name="KeyboardBacklightPage_NoCompatibleKeyboardsFound" xml:space="preserve">
     <value>互換性のあるキーボードが見つかりません</value>
@@ -1381,112 +1381,112 @@ Click Yes to disable and No to ignore.</value>
     <value>Lenovo Vantage またはそのサービスが実行されています</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
-    <value>Add Custom Key</value>
+    <value>カスタムキーを追加</value>
   </data>
   <data name="KeyDiscovery_Added" xml:space="preserve">
-    <value>Added</value>
+    <value>追加しました</value>
   </data>
   <data name="KeyDiscovery_CodeText" xml:space="preserve">
-    <value>Code: {0}</value>
+    <value>コード: {0}</value>
   </data>
   <data name="KeyDiscovery_KnownKeyTooltip" xml:space="preserve">
-    <value>Known key</value>
+    <value>既知のキー</value>
   </data>
   <data name="KeyDiscovery_Listening" xml:space="preserve">
-    <value>Listening for key presses... Press ESC to stop.</value>
+    <value>キー押す音を聞いています... ESCを押して停止します。</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Unknown key – can be added</value>
+    <value>不明なキーを追加できます</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_All" xml:space="preserve">
-    <value>All</value>
+    <value>すべて</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aurora_Sync" xml:space="preserve">
     <value>Aurora Sync</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Bottom_to_Top" xml:space="preserve">
-    <value>Bottom to Top</value>
+    <value>下から上へ</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Breathe" xml:space="preserve">
     <value>Breathe</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Brightness" xml:space="preserve">
-    <value>Brightness</value>
+    <value>画面の明るさ</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Clear_Colors" xml:space="preserve">
-    <value>Clear Colors</value>
+    <value>クリアーカラー</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>カスタム</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Direction" xml:space="preserve">
-    <value>Direction</value>
+    <value>方向</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Effect" xml:space="preserve">
-    <value>Effect</value>
+    <value>効果</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Export_Profile" xml:space="preserve">
-    <value>Export Profile</value>
+    <value>プロファイルをエクスポート</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Gradient" xml:space="preserve">
     <value>Gradient</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Import_Profile" xml:space="preserve">
-    <value>Import Profile</value>
+    <value>プロファイルをインポート</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Keyboard" xml:space="preserve">
     <value>Keyboard</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Left_to_Right" xml:space="preserve">
-    <value>Left to Right</value>
+    <value>左から右</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Meteor" xml:space="preserve">
     <value>Meteor</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_None" xml:space="preserve">
-    <value>None</value>
+    <value>なし</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_No_Selection" xml:space="preserve">
-    <value>No Selection</value>
+    <value>選択なし</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Probe_Indices" xml:space="preserve">
-    <value>Probe Indices</value>
+    <value>プローブインデックス</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow" xml:space="preserve">
     <value>Rainbow</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow_Wave" xml:space="preserve">
-    <value>Rainbow Wave</value>
+    <value>レインボーウェーブ</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rear_Ambient" xml:space="preserve">
-    <value>Rear Ambient</value>
+    <value>アンビエントリア</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Right_to_Left" xml:space="preserve">
-    <value>Right to Left</value>
+    <value>右から左</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Ripple" xml:space="preserve">
-    <value>Ripple</value>
+    <value>リップル語</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selected_Key" xml:space="preserve">
-    <value>Selected {0} keys with {1} effect</value>
+    <value>{0} キーを選択し、 {1} 効果を付与しました。</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selection" xml:space="preserve">
-    <value>Selection</value>
+    <value>選択</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Smooth_Transition" xml:space="preserve">
-    <value>Smooth Transition</value>
+    <value>滑らかな切り替え</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Sparkle" xml:space="preserve">
-    <value>Sparkle</value>
+    <value>スパーク</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Speed" xml:space="preserve">
-    <value>Speed</value>
+    <value>速度</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Spiral_Rainbow" xml:space="preserve">
-    <value>Spiral Rainbow</value>
+    <value>スパイラルレインボー(スパイラルレインボー)</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Static" xml:space="preserve">
     <value>Static</value>
@@ -1495,22 +1495,22 @@ Click Yes to disable and No to ignore.</value>
     <value>Target Zone</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Top_to_Bottom" xml:space="preserve">
-    <value>Top to Bottom</value>
+    <value>上から下へ</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Wave" xml:space="preserve">
-    <value>Wave</value>
+    <value>ウェーブ</value>
   </data>
   <data name="LivePreview" xml:space="preserve">
-    <value>Live Preview</value>
+    <value>ライブプレビュー</value>
   </data>
   <data name="Load" xml:space="preserve">
     <value>読み込み</value>
   </data>
   <data name="MacAddress" xml:space="preserve">
-    <value>MAC address</value>
+    <value>MACアドレス</value>
   </data>
   <data name="MachineType" xml:space="preserve">
-    <value>Machine Type</value>
+    <value>マシンタイプ</value>
   </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
     <value>マクロを有効または無効にします。</value>
@@ -1567,7 +1567,7 @@ Click Yes to disable and No to ignore.</value>
     <value>繰り返し</value>
   </data>
   <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
+    <value>Lenovo ホットキーはバックグラウンドで実行されています。</value>
   </data>
   <data name="MainWindows_VantageRunning" xml:space="preserve">
     <value>Lenovo VantageとImControllerの両方またはいずれか一方がバックグラウンドで実行されています。</value>
@@ -1585,10 +1585,10 @@ Click Yes to disable and No to ignore.</value>
     <value>更新はありません</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
-    <value>Legion Space is running in the background.</value>
+    <value>背景には軍団スペースがあります。</value>
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
-    <value>Legion Zone is running in the background.</value>
+    <value>軍団ゾーンはバックグラウンドで実行されています。</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>ヘルプ</value>
@@ -1618,10 +1618,10 @@ Click Yes to disable and No to ignore.</value>
     <value>設定</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>You need install PawnIO first to use the new dashboard!</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>Warning</value>
+    <value>警告</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
     <value>更新があります！</value>
@@ -1630,7 +1630,7 @@ Click Yes to disable and No to ignore.</value>
     <value>バーション {0} の更新があります！</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
-    <value>Don't show again.</value>
+    <value>今後表示しない</value>
   </data>
   <data name="MHz" xml:space="preserve">
     <value>MHz</value>
@@ -1648,10 +1648,10 @@ Click Yes to disable and No to ignore.</value>
     <value>マイク</value>
   </data>
   <data name="Model" xml:space="preserve">
-    <value>Model</value>
+    <value>モデル</value>
   </data>
   <data name="Motherboard" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>マザーボード</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
     <value>下へ移動</value>
@@ -1667,7 +1667,7 @@ Click Yes to disable and No to ignore.</value>
     <value>Match All (And)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_None" xml:space="preserve">
-    <value>No Logic (Separate)</value>
+    <value>ロジックなし (区切り)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
     <value>Match Any (Or)</value>
@@ -1676,25 +1676,25 @@ Click Yes to disable and No to ignore.</value>
     <value>Logic</value>
   </data>
   <data name="NetworkAdapters" xml:space="preserve">
-    <value>Network adapters</value>
+    <value>ネットワークアダプター</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>いいえ</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Notification Text (supports $RUN_OUTPUT$)</value>
+    <value>通知テキスト ( $RUN_OUTPUT$ をサポート)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>通知を表示</value>
   </data>
   <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
-    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
+    <value>$RUN_OUTPUT$ を使用して、前のステップの出力を動的に挿入できます。</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>ACアダプタ</value>
   </data>
   <data name="NotificationsSettingsWindow_AirplaneMode" xml:space="preserve">
-    <value>Airplane mode</value>
+    <value>機内モード</value>
   </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
     <value>アクション</value>
@@ -1716,7 +1716,7 @@ Click Yes to disable and No to ignore.</value>
     <value>Fn Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITSモード</value>
   </data>
   <data name="NotificationsSettingsWindow_KeyboardBacklight" xml:space="preserve">
     <value>キーボードバックライト</value>
@@ -1725,26 +1725,26 @@ Click Yes to disable and No to ignore.</value>
     <value>マイク</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Message" xml:space="preserve">
-    <value>Always put notification at the top.
-It won't affect other full screen windows, but you will not be able to click on the notifications.</value>
+    <value>
+他の全画面ウィンドウには影響しませんが、通知をクリックすることはできません。</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Title" xml:space="preserve">
-    <value>Notification always on top</value>
+    <value>常に上部に通知</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
     <value>長さ</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Message" xml:space="preserve">
-    <value>Show notification on all screens connected to your device.</value>
+    <value>デバイスに接続されているすべての画面に通知を表示します。</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Title" xml:space="preserve">
-    <value>Notification on all screens</value>
+    <value>すべての画面で通知</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationPosition_Title" xml:space="preserve">
     <value>位置</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationType" xml:space="preserve">
-    <value>Name</value>
+    <value>名前</value>
   </data>
   <data name="NotificationsSettingsWindow_NumLock" xml:space="preserve">
     <value>Num Lock</value>
@@ -1777,10 +1777,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>ACアダプターが切断されました</value>
   </data>
   <data name="Notification_AirplaneModeOff" xml:space="preserve">
-    <value>Airplane mode off</value>
+    <value>機内モードOFF</value>
   </data>
   <data name="Notification_AirplaneModeOn" xml:space="preserve">
-    <value>Airplane mode on</value>
+    <value>機内モードON</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
     <value>カメラが無効になりました</value>
@@ -1825,25 +1825,25 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>ポートのバックライトが有効になりました</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightChanged" xml:space="preserve">
-    <value>RGB Changed</value>
+    <value>RGB 変更</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightOff" xml:space="preserve">
-    <value>RGB Off</value>
+    <value>RGB オフ</value>
   </data>
   <data name="Notification_SmartKeyDoublePress" xml:space="preserve">
     <value>Double Press</value>
   </data>
   <data name="Notification_SmartKeySinglePress" xml:space="preserve">
-    <value>Single Press</value>
+    <value>シングルプレス</value>
   </data>
   <data name="Notification_SpectrumBacklightChanged" xml:space="preserve">
-    <value>Spectrum Changed</value>
+    <value>スペクトルが変更されました</value>
   </data>
   <data name="Notification_SpectrumBacklightOff" xml:space="preserve">
-    <value>Spectrum Off</value>
+    <value>スペクトルオフ</value>
   </data>
   <data name="Notification_SpectrumBacklightPresetChanged" xml:space="preserve">
-    <value>Spectrum Preset</value>
+    <value>スペクトルプリセット</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Backlight" xml:space="preserve">
     <value>バックライト {0}</value>
@@ -1867,13 +1867,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>バックライト {0}</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightChanged" xml:space="preserve">
-    <value>White Changed</value>
+    <value>ホワイトが変更されました</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightOff" xml:space="preserve">
-    <value>White Off</value>
+    <value>ホワイト オフ</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
-    <value>Backlight changed</value>
+    <value>バックライトが変更されました</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>オフ</value>
@@ -1882,13 +1882,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>OK</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Turn backlight on or off.</value>
+    <value>バックライトをオンまたはオフにします。</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
     <value>キーボードバックライト</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>You can turn backlight on or off with Fn+Space.</value>
+    <value>Fn+スペースでバックライトのオン/オフを切り替えることができます。</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
     <value>キーボードバックライト</value>
@@ -1897,79 +1897,79 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>開ける</value>
   </data>
   <data name="OsdAutomationStepControl_Message" xml:space="preserve">
-    <value>Show or Hide the OSD</value>
+    <value>OSDを表示または非表示</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>OSD</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
-    <value>Set the lock position state of the OSD.</value>
+    <value>OSDのロック位置の状態を設定します。</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Title" xml:space="preserve">
-    <value>OSD Lock Position</value>
+    <value>OSDロックの位置</value>
   </data>
   <data name="OsdSettings_Appearance_BackgroundColor" xml:space="preserve">
-    <value>Background Color</value>
+    <value>背景色</value>
   </data>
   <data name="OsdSettings_Appearance_CategoryColor" xml:space="preserve">
-    <value>Category Color</value>
+    <value>カテゴリの色</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadius" xml:space="preserve">
     <value>Corner Radius</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusBottom" xml:space="preserve">
-    <value>Bottom</value>
+    <value>下揃え</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusTop" xml:space="preserve">
-    <value>Top</value>
+    <value>上</value>
   </data>
   <data name="OsdSettings_Appearance_CriticalColor" xml:space="preserve">
-    <value>Critical Color</value>
+    <value>重要な色</value>
   </data>
   <data name="OsdSettings_Appearance_FontSize" xml:space="preserve">
     <value>Font Size</value>
   </data>
   <data name="OsdSettings_Appearance_LabelColor" xml:space="preserve">
-    <value>Label Color</value>
+    <value>ラベルの色</value>
   </data>
   <data name="OsdSettings_Appearance_Opacity" xml:space="preserve">
-    <value>Opacity</value>
+    <value>透明度</value>
   </data>
   <data name="OsdSettings_Appearance_ValueColor" xml:space="preserve">
-    <value>Value Color</value>
+    <value>値の色</value>
   </data>
   <data name="OsdSettings_Appearance_WarningColor" xml:space="preserve">
-    <value>Warning Color</value>
+    <value>警告の色</value>
   </data>
   <data name="OsdSettings_General_LockPosition" xml:space="preserve">
-    <value>Lock Position</value>
+    <value>位置をロック</value>
   </data>
   <data name="OsdSettings_General_OverlayStyle" xml:space="preserve">
-    <value>Overlay Style</value>
+    <value>オーバーレイスタイル</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>更新間隔</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval_Tooltip" xml:space="preserve">
-    <value>Sensor refresh interval</value>
+    <value>センサーの更新間隔</value>
   </data>
   <data name="OsdSettings_General_ResetPosition" xml:space="preserve">
-    <value>Reset Position</value>
+    <value>位置をリセット</value>
   </data>
   <data name="OsdSettings_General_SnapThreshold" xml:space="preserve">
-    <value>Snapping Threshold</value>
+    <value>スナップのしきい値</value>
   </data>
   <data name="OsdSettings_Tabs_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>外観</value>
   </data>
   <data name="OsdSettings_Tabs_General" xml:space="preserve">
-    <value>General</value>
+    <value>全般</value>
   </data>
   <data name="OsdSettings_Tabs_SensorItems" xml:space="preserve">
-    <value>Sensors</value>
+    <value>センサー</value>
   </data>
   <data name="OsdSettings_Tabs_Thresholds" xml:space="preserve">
-    <value>Thresholds</value>
+    <value>しきい値</value>
   </data>
   <data name="OsdSettings_Thresholds_Critical" xml:space="preserve">
     <value>Critical</value>
@@ -1978,64 +1978,64 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>FPS Redline</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline_Description" xml:space="preserve">
-    <value>The minimum acceptable frame rate. Below this, the color turns critical.</value>
+    <value>最小許容フレームレート。この下では、色が重要になります。</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta" xml:space="preserve">
-    <value>Low FPS Delta</value>
+    <value>低FPS Delta</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta_Description" xml:space="preserve">
-    <value>The maximum difference between average FPS and 1% Low. Above this, the counter turns critical.</value>
+    <value>平均FPSと1named@@0の最大差は、この上に、カウンタは重要になります。</value>
   </data>
   <data name="OsdSettings_Thresholds_Performance" xml:space="preserve">
-    <value>Performance</value>
+    <value>パフォーマンス</value>
   </data>
   <data name="OsdSettings_Thresholds_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>温度</value>
   </data>
   <data name="OsdSettings_Thresholds_Usage" xml:space="preserve">
-    <value>Usage</value>
+    <value>使用法</value>
   </data>
   <data name="OsdSettings_Thresholds_Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>警告</value>
   </data>
   <data name="OsdWindow_Title" xml:space="preserve">
-    <value>OSD Settings</value>
+    <value>OSD設定</value>
   </data>
   <data name="Osd_Cpu" xml:space="preserve">
     <value>CPU</value>
   </data>
   <data name="Osd_CPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>ファン</value>
   </data>
   <data name="Osd_Disk_0_Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>ディスク1温度</value>
   </data>
   <data name="Osd_Disk_1_Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>ディスク2温度</value>
   </data>
   <data name="Osd_ECoreClock" xml:space="preserve">
-    <value>E-Core Clock</value>
+    <value>E-Core時計</value>
   </data>
   <data name="Osd_Fps" xml:space="preserve">
     <value>FPS</value>
   </data>
   <data name="Osd_Frame_Time" xml:space="preserve">
-    <value>Frame Time</value>
+    <value>フレーム時間</value>
   </data>
   <data name="Osd_Game" xml:space="preserve">
-    <value>Game</value>
+    <value>ゲーム</value>
   </data>
   <data name="Osd_Gpu" xml:space="preserve">
     <value>GPU</value>
   </data>
   <data name="Osd_GPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>ファン</value>
   </data>
   <data name="Osd_Low_Fps" xml:space="preserve">
-    <value>1% Low</value>
+    <value>1% 低い</value>
   </data>
   <data name="Osd_Memory_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>温度</value>
   </data>
   <data name="Osd_Memory_Utilization" xml:space="preserve">
     <value>Utilization</value>
@@ -2044,19 +2044,19 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>PCH</value>
   </data>
   <data name="Osd_PCH_Fan" xml:space="preserve">
-    <value>PCH Fan</value>
+    <value>PCHファン</value>
   </data>
   <data name="Osd_PCoreClock" xml:space="preserve">
-    <value>P-Core Clock</value>
+    <value>Pコア時計</value>
   </data>
   <data name="Osd_Style_Bar" xml:space="preserve">
-    <value>Bar</value>
+    <value>バー</value>
   </data>
   <data name="Osd_Style_Panel" xml:space="preserve">
-    <value>Panel</value>
+    <value>パネル</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Increase performance by overclocking discrete GPU.</value>
+    <value>離散GPUをオーバークロックすることでパフォーマンスを向上させます。</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>オーバークロックGPU</value>
@@ -2068,16 +2068,16 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>オーバークロックGPU</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
-    <value>Core Frequency Offset</value>
+    <value>コア周波数オフセット</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
-    <value>Memory Frequency Offset</value>
+    <value>メモリ周波数オフセット</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>オーバークロックGPUの設定</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
-    <value>Unlocking in {0}...</value>
+    <value>{0} でロック解除中...</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
     <value>内蔵ディスプレイの応答時間を改善します。</value>
@@ -2141,13 +2141,13 @@ It won't affect other full screen windows, but you will not be able to click on 
 常に正しいパッケージをインストールしていることを確認してください。</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Message" xml:space="preserve">
-    <value>Check if Machine Type and OS are set correctly.</value>
+    <value>マシンタイプとOSが正しく設定されているか確認してください。</value>
   </data>
   <data name="PackagesPage_DownloadFailed_Title" xml:space="preserve">
     <value>エラーが発生しました</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Message" xml:space="preserve">
-    <value>Changing sorting, filtering results, hiding packages or refreshing the list will stop the download. Do you want to continue?</value>
+    <value>ソート、フィルタリング結果の変更、パッケージを非表示にしたり、リストを更新するとダウンロードが停止します。続行しますか？</value>
   </data>
   <data name="PackagesPage_DownloadInProgress_Title" xml:space="preserve">
     <value>ダウンロードが進行中です</value>
@@ -2156,10 +2156,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>ダウンロードフォルダ</value>
   </data>
   <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
-    <value>Check if your internet connection is up and running.</value>
+    <value>インターネット接続が起動しているか確認してください。</value>
   </data>
   <data name="PackagesPage_Error_Title" xml:space="preserve">
-    <value>Something went wrong</value>
+    <value>問題が発生しました</value>
   </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
     <value>デバイスの種類</value>
@@ -2228,32 +2228,32 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>%</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Minutes" xml:space="preserve">
-    <value>Minutes</value>
+    <value>分</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Period" xml:space="preserve">
     <value>間隔（分）</value>
     <comment>A prompt that is used both to ask the user to input an integer, representing the number of minutes between two periodic actions are triggered, and to inform the user what have they set once they are done configuring the action.</comment>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Seconds" xml:space="preserve">
-    <value>Seconds</value>
+    <value>秒</value>
   </data>
   <data name="PlatformAndCapabilities" xml:space="preserve">
-    <value>Platform &amp; Capabilities</value>
+    <value>プラットフォームと機能</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
-    <value>Common music formats like wav or mp3 are supported.</value>
+    <value>wavやmp3などの一般的な音楽形式がサポートされています。</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
-    <value>Play sound</value>
+    <value>サウンドを再生</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Turn on or off the backlight of the ports on the back of the laptop.</value>
+    <value>ラップトップの背面にあるポートのバックライトをオンまたはオフにします。</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Title" xml:space="preserve">
     <value>ポートのバックライト</value>
   </data>
   <data name="PortsBacklightControl_Message" xml:space="preserve">
-    <value>Turn on or off backlight of the ports on the back of the laptop.</value>
+    <value>ラップトップの背面にあるポートのバックライトをオンまたはオフにします。</value>
   </data>
   <data name="PortsBacklightControl_Title" xml:space="preserve">
     <value>ポートのバックライト</value>
@@ -2281,26 +2281,26 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>AC アダプタが接続されていないと、選択した電源モードが正しく動作しない可能性があります。</value>
   </data>
   <data name="PowerModes" xml:space="preserve">
-    <value>Power Modes</value>
+    <value>電源モード</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
-    <value>{0} power mode is not available without AC power.</value>
+    <value>{0} 電源モードはAC電源なしでは利用できません。</value>
     <comment>For example: "{Performance} power mode is not available without AC power."</comment>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Title" xml:space="preserve">
     <value>電源モードを変更できません</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
-    <value>Windows reports that this laptop supports Modern Standby. Using power plans other than Balanced may cause unexpected behavior.</value>
+    <value>Windowsは、このラップトップがモダンスタンバイに対応していることを報告しています。バランス以外の電源プランを使用すると、予期しない動作が発生する可能性があります。</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Title" xml:space="preserve">
-    <value>S0 Lower Power Model detected</value>
+    <value>S0 低電力モデルが検出されました</value>
   </data>
   <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
-    <value>Run a saved quick action.</value>
+    <value>保存されたクイックアクションを実行します。</value>
   </data>
   <data name="QuickActionAutomationStepControl_Title" xml:space="preserve">
-    <value>Quick Action</value>
+    <value>クイックアクション</value>
   </data>
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
@@ -2309,7 +2309,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>更新</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Change refresh rate of the built-in display.</value>
+    <value>内蔵ディスプレイのリフレッシュレートを変更します。</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>リフレッシュレート</value>
@@ -2327,7 +2327,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Change resolution of the built-in display.</value>
+    <value>内蔵ディスプレイの解像度を変更します。</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>解像度</value>
@@ -2345,13 +2345,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>今すぐ再起動</value>
   </data>
   <data name="RestartRequired_Message" xml:space="preserve">
-    <value>Changing this requires restart. Do you want to restart now?</value>
+    <value>再起動が必要です。今すぐ再起動しますか？</value>
   </data>
   <data name="RestartRequired_Title" xml:space="preserve">
-    <value>Restart required</value>
+    <value>再起動が必要です</value>
   </data>
   <data name="RestoreDefaults" xml:space="preserve">
-    <value>Restore Defaults</value>
+    <value>デフォルトに戻す</value>
   </data>
   <data name="Revert" xml:space="preserve">
     <value>元に戻す</value>
@@ -2411,13 +2411,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>実行パス</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Run a script or a program.</value>
+    <value>スクリプトやプログラムを実行します。</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
-    <value>Check Instance</value>
+    <value>インスタンスを確認</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance_Description" xml:space="preserve">
-    <value>Check if process already started.</value>
+    <value>プロセスがすでに開始されているかどうかを確認します。</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently" xml:space="preserve">
     <value>バックグラウンドで実行</value>
@@ -2444,106 +2444,106 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>保存しています...</value>
   </data>
   <data name="Seconds" xml:space="preserve">
-    <value>{0}s</value>
+    <value>{0}秒</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_Configure_Title" xml:space="preserve">
-    <value>Configure {0}</value>
+    <value>{0} を設定</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Choose one or more quick actions to cycle through.</value>
+    <value>1つ以上のクイックアクションを選択してください。</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>No Quick Actions defined.</value>
+    <value>クイックアクションが定義されていません。</value>
   </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
-    <value>Battery Level</value>
+    <value>バッテリー残量</value>
   </data>
   <data name="SensorItem_BatteryState" xml:space="preserve">
-    <value>Battery State</value>
+    <value>バッテリー状態</value>
   </data>
   <data name="SensorItem_CpuFanSpeed" xml:space="preserve">
-    <value>CPU Fan Speed</value>
+    <value>CPUファン速度</value>
   </data>
   <data name="SensorItem_CpuFrequency" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>CPU周波数</value>
   </data>
   <data name="SensorItem_CpuPower" xml:space="preserve">
-    <value>CPU Power</value>
+    <value>CPU電力</value>
   </data>
   <data name="SensorItem_CpuTemperature" xml:space="preserve">
-    <value>CPU Temperature</value>
+    <value>CPU温度</value>
   </data>
   <data name="SensorItem_CpuUtilitzation" xml:space="preserve">
-    <value>CPU Utilization</value>
+    <value>CPU利用</value>
   </data>
   <data name="SensorItem_Disk1Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>ディスク1温度</value>
   </data>
   <data name="SensorItem_Disk2Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>ディスク2温度</value>
   </data>
   <data name="SensorItem_GpuFanSpeed" xml:space="preserve">
-    <value>GPU Fan Speed</value>
+    <value>GPU ファン速度</value>
   </data>
   <data name="SensorItem_GpuFrequency" xml:space="preserve">
-    <value>GPU Frequency</value>
+    <value>GPU 周波数</value>
   </data>
   <data name="SensorItem_GpuTemperatures" xml:space="preserve">
-    <value>GPU Temperature</value>
+    <value>GPU 温度</value>
   </data>
   <data name="SensorItem_GpuUtilization" xml:space="preserve">
     <value>GPU Utilization</value>
   </data>
   <data name="SensorItem_MemoryTemperature" xml:space="preserve">
-    <value>Memory Temperature</value>
+    <value>メモリ温度</value>
   </data>
   <data name="SensorItem_MemoryUtilization" xml:space="preserve">
-    <value>Memory Utilization</value>
+    <value>メモリ使用量</value>
   </data>
   <data name="SensorItem_PchFanSpeed" xml:space="preserve">
-    <value>PCH Fan Speed</value>
+    <value>PCHファン速度</value>
   </data>
   <data name="SensorItem_PchTemperature" xml:space="preserve">
-    <value>PCH Temperature</value>
+    <value>PCH 温度</value>
   </data>
   <data name="SensorsControl_BatteryLevel_Title" xml:space="preserve">
-    <value>Battery Level</value>
+    <value>バッテリー残量</value>
   </data>
   <data name="SensorsControl_Battery_Title" xml:space="preserve">
-    <value>Battery</value>
+    <value>バッテリー</value>
   </data>
   <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
     <value>コアクロック</value>
   </data>
   <data name="SensorsControl_CPU_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>パワー</value>
   </data>
   <data name="SensorsControl_CPU_Title" xml:space="preserve">
     <value>CPU</value>
   </data>
   <data name="SensorsControl_Disk_1_Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>ディスク1温度</value>
   </data>
   <data name="SensorsControl_Disk_2_Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>ディスク2温度</value>
   </data>
   <data name="SensorsControl_Disk_Title" xml:space="preserve">
-    <value>Disk</value>
+    <value>ディスク</value>
   </data>
   <data name="SensorsControl_Fan_Title" xml:space="preserve">
     <value>ファン</value>
   </data>
   <data name="SensorsControl_GpuCoreTemperature_Title" xml:space="preserve">
-    <value>Core Temp</value>
+    <value>コア温度</value>
   </data>
   <data name="SensorsControl_GpuMemoryTemperature_Title" xml:space="preserve">
-    <value>VRAM Temp</value>
+    <value>VRAM Temperature</value>
   </data>
   <data name="SensorsControl_GpuVramUtilization_Title" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>VRAM利用</value>
   </data>
   <data name="SensorsControl_GPU_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>パワー</value>
   </data>
   <data name="SensorsControl_GPU_Title" xml:space="preserve">
     <value>GPU</value>
@@ -2558,19 +2558,19 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>RAM</value>
   </data>
   <data name="SensorsControl_Motherboard_Temperature" xml:space="preserve">
-    <value>Board Temperature</value>
+    <value>ボード温度</value>
   </data>
   <data name="SensorsControl_Motherboard_Title" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>マザーボード</value>
   </data>
   <data name="SensorsControl_PchTemperature_Title" xml:space="preserve">
-    <value>PCH Temperature</value>
+    <value>PCH 温度</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>更新間隔</value>
   </data>
   <data name="SensorsControl_State_Title" xml:space="preserve">
-    <value>State</value>
+    <value>都道府県：</value>
   </data>
   <data name="SensorsControl_Temperature_Title" xml:space="preserve">
     <value>温度</value>
@@ -2579,13 +2579,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>使用率</value>
   </data>
   <data name="SensorSettingsPage_Average_Frequency_Title" xml:space="preserve">
-    <value>Average Frequency</value>
+    <value>平均周波数</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and Osd.</value>
+    <value>ダッシュボードとOSDに表示されるCPU周波数の種類を指定します。</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>CPU周波数</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2594,61 +2594,61 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>iGPU</value>
   </data>
   <data name="SensorSettingsPage_Max_Frequency_Title" xml:space="preserve">
-    <value>Max Frequency</value>
+    <value>最大周波数</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Message" xml:space="preserve">
-    <value>Choose how memory utilization is displayed on the Dashboard and OSD.</value>
+    <value>ダッシュボードとOSDにメモリ使用率を表示する方法を選択します。</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Title" xml:space="preserve">
-    <value>Memory Display Mode</value>
+    <value>メモリ表示モード</value>
   </data>
   <data name="SensorSettingsPage_Percentage_Title" xml:space="preserve">
-    <value>Percentage</value>
+    <value>割合</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Message" xml:space="preserve">
-    <value>When multiple graphics cards are present, the primary device displayed is preferred</value>
+    <value>複数のグラフィックカードが存在する場合、プライマリデバイスが優先されます</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
-    <value>Preferred GPU</value>
+    <value>優先GPU</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
-    <value>Used/Total Memory (GB)</value>
+    <value>使用済み/合計メモリ (GB)</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
-    <value>Serial number</value>
+    <value>シリアル番号</value>
   </data>
   <data name="Series" xml:space="preserve">
-    <value>Series</value>
+    <value>シリーズ</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>設定</value>
   </data>
   <data name="SettingsBackupWindow_Backup" xml:space="preserve">
-    <value>Back Up</value>
+    <value>バックアップ</value>
   </data>
   <data name="SettingsBackupWindow_BackupSuccess" xml:space="preserve">
-    <value>Backup completed successfully.</value>
+    <value>バックアップが完了しました。</value>
   </data>
   <data name="SettingsBackupWindow_NoFilesSelected" xml:space="preserve">
-    <value>No files selected.</value>
+    <value>ファイルが選択されていません。</value>
   </data>
   <data name="SettingsBackupWindow_NoMatchingFiles" xml:space="preserve">
-    <value>No matching files found in selected folder.</value>
+    <value>選択したフォルダに一致するファイルが見つかりませんでした。</value>
   </data>
   <data name="SettingsBackupWindow_Restore" xml:space="preserve">
-    <value>Restore</value>
+    <value>復元</value>
   </data>
   <data name="SettingsBackupWindow_RestoreConfirm" xml:space="preserve">
-    <value>Restoring settings will overwrite your current configuration and restart the application. Do you want to continue?</value>
+    <value>設定を復元すると、現在の設定が上書きされ、アプリケーションを再起動します。続行しますか？</value>
   </data>
   <data name="SettingsBackupWindow_RestoreSuccess" xml:space="preserve">
-    <value>Restore completed successfully. The application will restart.</value>
+    <value>正常に復元が完了しました。アプリケーションを再起動します。</value>
   </data>
   <data name="SettingsBackupWindow_SelectAll" xml:space="preserve">
-    <value>Select All</value>
+    <value>すべて選択</value>
   </data>
   <data name="SettingsBackupWindow_Title" xml:space="preserve">
-    <value>Backup Settings</value>
+    <value>バックアップ設定</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
     <value>アプリのアクセントカラーを変更できます。</value>
@@ -2657,10 +2657,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>アクセントカラー</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
-    <value>Keep the app window above all other windows.</value>
+    <value>他のすべてのウィンドウの上にアプリウィンドウを維持します。</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
-    <value>Pin to Top</value>
+    <value>上部に固定</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
     <value>Windowsにログオンした時にシステムトレイに最小化して起動します。</value>
@@ -2669,13 +2669,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>自動起動</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
-    <value>Back up or restore application settings.</value>
+    <value>アプリケーションの設定をバックアップまたは復元します。</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
-    <value>Back Up Settings</value>
+    <value>設定をバックアップ</value>
   </data>
   <data name="SettingsPage_BootLogo_EFIInfo" xml:space="preserve">
-    <value>This feature modifies the EFI partition. Use with caution.</value>
+    <value>この機能はEFIパーティションを変更します。注意して使用してください。</value>
   </data>
   <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
     <value>システムの起動時に表示されるブートロゴをカスタマイズできます。</value>
@@ -2684,34 +2684,34 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>ブートロゴ</value>
   </data>
   <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
-    <value>App Behavior</value>
+    <value>アプリの動作</value>
   </data>
   <data name="SettingsPage_Category_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>外観</value>
   </data>
   <data name="SettingsPage_Category_Display" xml:space="preserve">
-    <value>Display</value>
+    <value>表示</value>
   </data>
   <data name="SettingsPage_Category_Integrations" xml:space="preserve">
-    <value>Integrations</value>
+    <value>統合</value>
   </data>
   <data name="SettingsPage_Category_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>パワー</value>
   </data>
   <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>スマートキー</value>
   </data>
   <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
-    <value>Software Control</value>
+    <value>ソフトウェア管理</value>
   </data>
   <data name="SettingsPage_Category_Updates" xml:space="preserve">
-    <value>Updates</value>
+    <value>更新</value>
   </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>確認</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
-    <value>Check now for the latest version.</value>
+    <value>最新バージョンを確認してください。</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>更新を確認しています…</value>
@@ -2720,7 +2720,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>更新の確認</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
-    <value>Clear Image</value>
+    <value>画像をクリア</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Message" xml:space="preserve">
     <value>ユーザーのPATH環境変数にCLIを追加します。</value>
@@ -2729,19 +2729,19 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>CLIをPATHに追加</value>
   </data>
   <data name="SettingsPage_CLI_Message" xml:space="preserve">
-    <value>Enable Command Line Interface that allows control from command line.</value>
+    <value>コマンドラインからの制御を可能にするコマンドラインインターフェースを有効にします。</value>
   </data>
   <data name="SettingsPage_CLI_Title" xml:space="preserve">
     <value>CLI</value>
   </data>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
-    <value>Restart is recommended after changing this option.</value>
+    <value>このオプションを変更した後の再起動をお勧めします。</value>
   </data>
   <data name="SettingsPage_CompactMode_Message" xml:space="preserve">
-    <value>Reduce visual clutter to fit more content on screen.</value>
+    <value>画面上のより多くのコンテンツを収まるように視覚的な混乱を減らします。</value>
   </data>
   <data name="SettingsPage_CompactMode_Title" xml:space="preserve">
-    <value>Compact Mode</value>
+    <value>コンパクトモード</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Blur" xml:space="preserve">
     <value>Blur</value>
@@ -2750,35 +2750,35 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Dim</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Set a custom wallpaper for the app window.</value>
+    <value>Custom Background Image</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Crop" xml:space="preserve">
-    <value>Crop</value>
+    <value>クロップ</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Fill" xml:space="preserve">
-    <value>Fill</value>
+    <value>塗りつぶし</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Fit" xml:space="preserve">
-    <value>Fit</value>
+    <value>合わせる</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Background Image</value>
+    <value>Custom Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space may have not been disabled correctly</value>
+    <value>軍団スペースが正しく無効になっていない可能性があります</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
-    <value>Couldn't disable Legion Space</value>
+    <value>軍団スペースを無効にできませんでした</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Message" xml:space="preserve">
     <value>Legion Zoneとそのサービスをアンインストールせずに無効にします。
 このオプションを変更した後はデバイスを再起動することをお勧めします。</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Title" xml:space="preserve">
-    <value>Disable Legion Space</value>
+    <value>軍団のスペースを無効にする</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone may have not been disabled correctly</value>
+    <value>軍団ゾーンが正しく無効になっていない可能性があります</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Legion Zoneを無効にできませんでした</value>
@@ -2818,13 +2818,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Lenovo Vantage と ImController を無効化</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space may have not been enabled correctly</value>
+    <value>軍団スペースが正しく有効になっていない可能性があります</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Legion Space</value>
+    <value>軍団スペースを有効にできませんでした</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone may have not been enabled correctly</value>
+    <value>軍団ゾーンが正しく有効になっていない可能性があります</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Legion Zoneを有効にできませんでした</value>
@@ -2833,13 +2833,13 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Lenovo Hotkeys は正しく有効になっていない可能性があります</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Lenovo Hotkeys Keys</value>
+    <value>Lenovoホットキーを有効にできませんでした</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
-    <value>Enable logging for debug.</value>
+    <value>デバッグのログを有効にします。</value>
   </data>
   <data name="SettingsPage_EnableLogging_Title" xml:space="preserve">
-    <value>Enable Logging</value>
+    <value>ログを有効にする</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo VantageとImControllerの両方またはいずれか一方が正しく有効になっていない可能性があります</value>
@@ -2848,70 +2848,70 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Lenovo VantageとImControllerの両方またはいずれか一方を有効にできませんでした</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>除外プロセス</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Hide specific refresh rates from the Fn+R cycle.</value>
+    <value>Fn+R ショートカットをさらに便利にするために、リフレッシュレートを除外できます。</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>リフレッシュレートの除外</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface.</value>
+    <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
-    <value>Hardware Acceleration</value>
+    <value>ハードウェアアクセラレーション</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off.</value>
+    <value>ハードウェアアクセラレーションを有効にすると、一部のハイブリッド・グラフィック・システムでちらつきやブラックフラッシュが発生する可能性があり、ディスクリート・GPUがオフになるのを防ぐ可能性があります。</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
-    <value>Enable advanced hardware polling to monitor detailed temperatures, frequencies, and power limits.</value>
+    <value>高度なハードウェアポーリングを有効にして、詳細な温度、周波数、および電力制限を監視できます。</value>
   </data>
   <data name="SettingsPage_HardwareSensors_PawnIOWarning" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>ハードウェアセンサーを使用するには、まずPawnIOをインストールする必要があります。</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>ハードウェアセンサー</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
-    <value>Auto (Let Windows decide)</value>
+    <value>自動 (Windows の設定)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
-    <value>High performance (dGPU)</value>
+    <value>高パフォーマンス (dGPU)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_PowerSaving" xml:space="preserve">
-    <value>Power saving (iGPU)</value>
+    <value>節電（iGPU）</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
     <value>Share fan speed, battery temperature etc. with HWiNFO64. You may need to restart HWiNFO64 after changing this option.</value>
   </data>
   <data name="SettingsPage_HWiNFO_RestartInfo" xml:space="preserve">
-    <value>You may need to restart HWiNFO64 after changing this option.</value>
+    <value>このオプションを変更した後、HWiNFO64 を再起動する必要があるかもしれません。</value>
   </data>
   <data name="SettingsPage_HWiNFO_Title" xml:space="preserve">
     <value>HWiNFO64</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Message" xml:space="preserve">
-    <value>Find undefined Fn hotkeys in LLT.</value>
+    <value>LLTで未定義のFnホットキーを検索します。</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Title" xml:space="preserve">
-    <value>Key Discovery</value>
+    <value>鍵の発見</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Change the display language of the app.</value>
+    <value>このソフトウェアで表示する言語を選択できます。</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>言語</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Prevent the window from being resized.</value>
+    <value>Lock LLT's window size. To prevent something change it.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
-    <value>Lock Window Size</value>
+    <value>ウィンドウサイズをロック</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Minimize to the system tray instead of closing.</value>
+    <value>常にトレイに最小化します。トレイのアイコンを右クリックしてアプリケーションを閉じます。</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>終了時に最小化</value>
@@ -2935,10 +2935,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>起動時に「バッテリー駆動時間」をリセットする</value>
   </data>
   <data name="SettingsPage_Osd_Message" xml:space="preserve">
-    <value>Floating overlay showing live sensor data.</value>
+    <value>ライブセンサーデータを表示するオーバーレイを表示します。</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>Enable OSD</value>
+    <value>OSDを有効にする</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
     <value>電源モードを変更するときに、Windows電源プランまたは Windows電源モードを自動的に変更します。</value>
@@ -2947,43 +2947,43 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>電源モードの同期</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
-    <value>Are you sure you want to reset all settings to defaults? This action cannot be undone and the application will restart.</value>
+    <value>すべての設定をデフォルトにリセットしてもよろしいですか？この操作は元に戻せず、アプリケーションを再起動します。</value>
   </data>
   <data name="SettingsPage_ResetSettings_Message" xml:space="preserve">
-    <value>Reset all application settings to their defaults.</value>
+    <value>すべてのアプリケーション設定をデフォルトにリセットします。</value>
   </data>
   <data name="SettingsPage_ResetSettings_Title" xml:space="preserve">
-    <value>Reset Settings</value>
+    <value>設定をリセット</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
-    <value>Restart to apply changes.</value>
+    <value>再起動して変更を適用します。</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>すべてのファイル</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_Content" xml:space="preserve">
-    <value>Select Image</value>
+    <value>画像を選択</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_ImageFile" xml:space="preserve">
-    <value>Image File</value>
+    <value>画像ファイル</value>
   </data>
   <data name="SettingsPage_SensorSettings_Title" xml:space="preserve">
-    <value>Sensor Settings</value>
+    <value>センサーの設定</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
+    <value>Alt、Ctrl、Shift キーを押すと、Fn Lock が一時的に無効になります。</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>スマート Fn Lock</value>
   </data>
   <data name="SettingsPage_SmartKeys_Message" xml:space="preserve">
-    <value>Customize the Fn hotkeys.</value>
+    <value>Fnホットキーをカスタマイズします。</value>
   </data>
   <data name="SettingsPage_SmartKeys_Title" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>スマートキー</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Apply the same brightness level across all Windows power plans.</value>
+    <value>オンにすると、変更するたびにすべてのWindows電源プランに同じ輝度レベルが適用されます。</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>一定なディスプレイの明るさ</value>
@@ -2995,7 +2995,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>温度</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Set light, dark, or system-matched theme.</value>
+    <value>テーマをライト、ダークから指定できます。システムに従うこともできます。</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>テーマ</value>
@@ -3004,37 +3004,37 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>設定</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
-    <value>Choose between stable, beta and dev releases.</value>
+    <value>安定版とベータ版と開発版のどちらかを選択します。</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
-    <value>Update Channel</value>
+    <value>チャンネルを更新</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
-    <value>Choose how often to check for new versions.</value>
+    <value>新しいバージョンを確認する頻度を選択します。</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
-    <value>Update Frequency</value>
+    <value>更新頻度</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
-    <value>Choose how updates are downloaded and installed.</value>
+    <value>アップデートのダウンロードとインストール方法を選択します。</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
-    <value>Update Method</value>
+    <value>メソッドを更新</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Message" xml:space="preserve">
     <value>古いセンサーダッシュボードの代わりに新しいセンサーダッシュボードを使用します。</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>New Sensor Dashboard</value>
+    <value>新しいセンサーダッシュボード</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
-    <value>If you experience visual artifacts on Snackbar Notifications in HDR mode, set this to "None".</value>
+    <value>HDRモードでSnackbar通知で視覚的なアーティファクトが発生した場合は、これを「なし」に設定してください。</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Message" xml:space="preserve">
-    <value>The effect used for the background of the application window.</value>
+    <value>アプリケーションウィンドウの背景に使用されるエフェクト。</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Title" xml:space="preserve">
-    <value>Window Backdrop</value>
+    <value>ウィンドウの背景</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
     <value>電源モードが変更されたときに適用する、Windows電源モードを選択します。</value>
@@ -3043,34 +3043,34 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Windows電源モード</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlansControlPanel_Title" xml:space="preserve">
-    <value>Power Plan options in Windows Control Panel</value>
+    <value>Windowsのコントロールパネルの電源プランオプション</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Message" xml:space="preserve">
-    <value>Select Windows Power Plans to apply when Power Mode changes.</value>
+    <value>電源モードが変更されたときに適用する Windows 電源プランを選択します。</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
     <value>Windows電源プラン</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Message" xml:space="preserve">
-    <value>Allow quick switching to Custom Mode with Fn+Q.</value>
+    <value>Fn+Qでカスタムモードに切り替えることができます。</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
-    <value>Switch to Custom Mode with Fn+Q</value>
+    <value>Fn+Q でカスタムモードに切り替える</value>
   </data>
   <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit を表示</value>
   </data>
   <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
+    <value>アプリを表示</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
-    <value>Show less</value>
+    <value>表示を減らす</value>
   </data>
   <data name="ShowMore" xml:space="preserve">
-    <value>Show more</value>
+    <value>詳細を表示</value>
   </data>
   <data name="Slot" xml:space="preserve">
-    <value>Slot</value>
+    <value>スロット</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>ミュートすると、アクティブなオーディオ出力デバイスがすべてミュートされます。</value>
@@ -3079,46 +3079,46 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>スピーカー</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change the speaker's volume.</value>
+    <value>スピーカーの音量を変更する。</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Title" xml:space="preserve">
-    <value>Speaker Volume</value>
+    <value>スピーカー音量</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery" xml:space="preserve">
-    <value>Key Discovery</value>
+    <value>鍵の発見</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
     <value>Find key that is not defined in LLT.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
-    <value>Start</value>
+    <value>開始</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>停止</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="SpecialKeyDetail_Mode" xml:space="preserve">
-    <value>Mode</value>
+    <value>モード</value>
   </data>
   <data name="SpecialKeyDetail_Mode_Description" xml:space="preserve">
-    <value>Choose how this key responds when pressed.</value>
+    <value>このキーが押されたときにどのように反応するかを選択します。</value>
   </data>
   <data name="SpecialKeysWindow_Description" xml:space="preserve">
-    <value>Assign custom Quick Actions to Fn keys. Each key can override its default behavior with a custom pipeline. Right-click any key to hide it from this list.</value>
+    <value>カスタム クイックアクションを Fn キーに割り当てます。各キーはカスタムパイプラインでデフォルトの動作を上書きできます。 任意のキーを右クリックすると、このリストから非表示になります。</value>
   </data>
   <data name="SpecialKeysWindow_HideHiddenKeys" xml:space="preserve">
     <value>Hide {0} hidden keys</value>
   </data>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
-    <value>Show {0} hidden keys</value>
+    <value>{0} 隠しキーを表示</value>
   </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
-    <value>(Driver)</value>
+    <value>(ドライバー)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
-    <value>Key {0}</value>
+    <value>キー {0}</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>キーボードのバックライトの明るさを調整します。</value>
@@ -3190,7 +3190,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>エフェクト</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Effect_Warning" xml:space="preserve">
-    <value>This effect will be applied to the whole keyboard and will replace all other effects.</value>
+    <value>この効果はキーボード全体に適用され、他のすべての効果が置き換えられます。</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_Speed_Title" xml:space="preserve">
     <value>速度</value>
@@ -3202,25 +3202,25 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>エフェクトを編集</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostBrightnessFactor" xml:space="preserve">
-    <value>Boost Brightness Factor</value>
+    <value>明るさ係数をブーストする</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostFloor" xml:space="preserve">
-    <value>Boost Floor</value>
+    <value>ブースト床</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostTarget" xml:space="preserve">
     <value>Boost Target</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_Title" xml:space="preserve">
-    <value>Color Boost Settings</value>
+    <value>色のブースト設定</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_WhiteThreshold" xml:space="preserve">
-    <value>White Threshold</value>
+    <value>ホワイトしきい値</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoost_Title" xml:space="preserve">
-    <value>Vantage Color Boost</value>
+    <value>有利な色のブースト</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>Import and apply backlight configuration to the current profile.</value>
+    <value>現在のプロファイルにバックライト設定をインポートして適用します。</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
     <value>パス</value>
@@ -3229,7 +3229,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>キーボードのバックライトのプロファイルをインポート</value>
   </data>
   <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>Adjust keyboard backlight profile.</value>
+    <value>キーボードのバックライトプロファイルを調整します。</value>
   </data>
   <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Title" xml:space="preserve">
     <value>キーボードのバックライトのプロファイル</value>
@@ -3241,7 +3241,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>ゾーン {0}</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start date</value>
+    <value>開始日</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
     <value>バッテリー</value>
@@ -3253,10 +3253,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>ディスクリートGPU</value>
   </data>
   <data name="StatusTrayPopup_MaxDischargeRate" xml:space="preserve">
-    <value>Max discharge rate</value>
+    <value>最大放電率</value>
   </data>
   <data name="StatusTrayPopup_MinDischargeRate" xml:space="preserve">
-    <value>Min discharge rate</value>
+    <value>最小放電率</value>
   </data>
   <data name="StatusTrayPopup_Mode" xml:space="preserve">
     <value>モード</value>
@@ -3274,25 +3274,25 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>更新があります！</value>
   </data>
   <data name="StatusWindow_Fan_And_Power" xml:space="preserve">
-    <value>Fan / Power</value>
+    <value>ファン / パワー</value>
   </data>
   <data name="StatusWindow_Frequency_And_Temperature" xml:space="preserve">
-    <value>Frequency / Temperature</value>
+    <value>頻度/温度</value>
   </data>
   <data name="StatusWindow_System_Fan" xml:space="preserve">
-    <value>System Fan</value>
+    <value>システムファン</value>
   </data>
   <data name="Storage" xml:space="preserve">
-    <value>Storage</value>
+    <value>ストレージ</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>アイコンの選択</value>
   </data>
   <data name="TextColor" xml:space="preserve">
-    <value>Text color</value>
+    <value>テキストの色</value>
   </data>
   <data name="Threads" xml:space="preserve">
-    <value>Threads</value>
+    <value>スレッド</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
     <value>日の出</value>
@@ -3304,17 +3304,17 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>時間</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Allow switching between integrated and discrete GPU.</value>
+    <value>内蔵GPUと離散GPUの切り替えを許可します。</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>ハイブリッドモード</value>
   </data>
   <data name="ToggleHybridModeControl_Message" xml:space="preserve">
-    <value>Allow switching between integrated and discrete GPU.
-Requires restart.</value>
+    <value>統合GPUと離散GPUの切り替えを許可します。
+再起動が必要です。</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Message" xml:space="preserve">
-    <value>Changing Hybrid Mode requires restart. Do you want to restart now?</value>
+    <value>ハイブリッドモードを変更するには再起動が必要です。今すぐ再起動しますか？</value>
   </data>
   <data name="ToggleHybridModeControl_RestartRequired_Title" xml:space="preserve">
     <value>再起動が必要です</value>
@@ -3361,7 +3361,7 @@ Requires restart.</value>
     <value>Unhide</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>不明</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>名前なし</value>
@@ -3372,7 +3372,7 @@ Requires restart.</value>
 続行することを選択すると、ログは自動的に有効になります。</value>
   </data>
   <data name="UnsupportedWindow_Disclaimer_GitHub" xml:space="preserve">
-    <value>Check out project page on GitHub for more information.</value>
+    <value>詳細は GitHub のプロジェクト ページを参照してください。</value>
   </data>
   <data name="UnsupportedWindow_MachineType" xml:space="preserve">
     <value>デバイスの種類</value>
@@ -3393,10 +3393,10 @@ Requires restart.</value>
     <value>更新</value>
   </data>
   <data name="UpdateWindow_DownloadError_Title" xml:space="preserve">
-    <value>Update download failed</value>
+    <value>アップデートのダウンロードに失敗しました</value>
   </data>
   <data name="UpdateWindow_SecurityError_Title" xml:space="preserve">
-    <value>Failed to verify update</value>
+    <value>更新の確認に失敗しました</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
     <value>アップデートがあります</value>
@@ -3405,25 +3405,25 @@ Requires restart.</value>
     <value>新着情報</value>
   </data>
   <data name="Used" xml:space="preserve">
-    <value>Used</value>
+    <value>使用中</value>
   </data>
   <data name="Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>警告</value>
   </data>
   <data name="Warranty" xml:space="preserve">
-    <value>Warranty</value>
+    <value>保証</value>
   </data>
   <data name="Watt" xml:space="preserve">
     <value>W</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Adjust keyboard backlight brightness.</value>
+    <value>キーボードバックライトの明るさを調整します。</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
     <value>キーボードバックライト</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>You can change brightness with Fn+Space</value>
+    <value>Fn+Spaceで明るさを変更できます</value>
   </data>
   <data name="WhiteKeyboardBacklightControl_Title" xml:space="preserve">
     <value>キーボードバックライト</value>
@@ -3432,10 +3432,10 @@ Requires restart.</value>
     <value>Wi-Fi</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_CopyCurrentNetworkName" xml:space="preserve">
-    <value>Copy current network name</value>
+    <value>現在のネットワーク名をコピー</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_LeaveEmptyForAnyNetwork" xml:space="preserve">
-    <value>Leave empty for any Wi-Fi network.</value>
+    <value>Wi-Fiネットワークは空のままにしてください。</value>
   </data>
   <data name="WindowsPowerModesWindow_Title" xml:space="preserve">
     <value>Windows電源モード</value>
@@ -3450,13 +3450,13 @@ Requires restart.</value>
     <value>DC</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_Title" xml:space="preserve">
-    <value>Power Mode</value>
+    <value>電源モード</value>
   </data>
   <data name="WindowsPowerPlansWindow_Title" xml:space="preserve">
     <value>Windows電源プラン</value>
   </data>
   <data name="WindowsPowerPlan_Title" xml:space="preserve">
-    <value>Windows Power Plan</value>
+    <value>Windows電源プラン</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
     <value>内蔵キーボードの Windows キーを無効にします。</value>
