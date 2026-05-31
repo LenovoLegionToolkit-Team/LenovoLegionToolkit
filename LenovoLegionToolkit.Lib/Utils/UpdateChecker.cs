@@ -58,7 +58,7 @@ public class UpdateChecker
         var obfuscated = Convert.FromHexString(UrlObfuscatedHex);
 
         for (var i = 0; i < obfuscated.Length; i++)
-            obfuscated[i] ^= keyHash[i];
+            obfuscated[i] ^= keyHash[i % keyHash.Length];
 
         _serverUrl = Encoding.UTF8.GetString(obfuscated);
         return _serverUrl;
@@ -261,7 +261,7 @@ public class UpdateChecker
         UpdateCheckFrequency.Never => TimeSpan.FromSeconds(0),
         UpdateCheckFrequency.PerHour => TimeSpan.FromHours(1),
         UpdateCheckFrequency.PerThreeHours => TimeSpan.FromHours(3),
-        UpdateCheckFrequency.PerTwelveHours => TimeSpan.FromHours(13),
+        UpdateCheckFrequency.PerTwelveHours => TimeSpan.FromHours(12),
         UpdateCheckFrequency.PerDay => TimeSpan.FromDays(1),
         UpdateCheckFrequency.PerWeek => TimeSpan.FromDays(7),
         UpdateCheckFrequency.PerMonth => TimeSpan.FromDays(30),
@@ -444,14 +444,13 @@ public class UpdateChecker
             return (StatusCode.Null, string.Empty);
         }
 
-        var channelMapping = new List<(string ApiKey, string ProjectKey)>
+        var channelMapping = new (string ApiKey, string ProjectKey)[]
         {
             ("stable", "LenovoLegionToolkit"),
             ("beta",   "LenovoLegionToolkitBeta"),
             ("dev",    "LenovoLegionToolkitDev"),
+            ("test",   "LenovoLegionToolkitTest"),
         };
-        if (AppFlags.Instance.Debug)
-            channelMapping.Add(("test", "LenovoLegionToolkitTest"));
 
         foreach (var (apiKey, projectKey) in channelMapping)
         {

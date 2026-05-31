@@ -100,10 +100,11 @@ public abstract class OsdWindowBase : Window
     private async void InitializeComponentSpecifics()
     {
         var mi = await Compatibility.GetMachineInformationAsync();
+        if (!IsLoaded)
+            return;
+
         if (mi.Properties.IsAmdDevice)
-        {
             OnAmdDeviceDetected();
-        }
 
         _hasLenovoController = await _controller.IsSupportedAsync();
     }

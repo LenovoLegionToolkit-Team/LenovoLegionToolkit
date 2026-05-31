@@ -494,12 +494,10 @@ public record GpuHardwareInfo(string? Name, string? Vram)
     {
         get
         {
-            if (Vram != Resource.DeviceInformation_SharedMemory)
-            {
-                return $"{Vram} GB";
-            }
+            if (string.IsNullOrEmpty(Vram) || Vram == Resource.DeviceInformation_SharedMemory)
+                return Resource.DeviceInformation_SharedMemory;
 
-            return Vram;
+            return $"{Vram} GB";
         }
     }
 }
