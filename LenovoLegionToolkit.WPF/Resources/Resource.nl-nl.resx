@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -121,7 +121,7 @@
     <value>Applicatiemappen</value>
   </data>
   <data name="AboutPage_AppName" xml:space="preserve">
-    <value>Lenovo Legion Toolkit</value>
+    <value>Lenovo Legioen Gereedschapskit</value>
   </data>
   <data name="AboutPage_Build" xml:space="preserve">
     <value>Versie</value>
@@ -167,7 +167,7 @@
     <value>Toevoegen</value>
   </data>
   <data name="AddAutomationStepWindow_MultipleSteps" xml:space="preserve">
-    <value>Multiple steps...</value>
+    <value>Meerdere stappen...</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>Stap toevoegen</value>
@@ -176,7 +176,7 @@
     <value>Toevoegen</value>
   </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Airplane mode</value>
+    <value>Vliegtuigmodus</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
     <value>Laad USB-apparaten op wanneer de computer is uitgeschakeld of in de slaap- of sluimerstand staat.</value>
@@ -191,52 +191,52 @@
     <value>USB Altijd Aan</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
-    <value>Apply Changes</value>
+    <value>Wijzigingen toepassen</value>
   </data>
   <data name="AmdOverclocking_Caution_Message" xml:space="preserve">
-    <value>Changing these settings may impact system stability. Proceed with caution.</value>
+    <value>Het wijzigen van deze instellingen kan de stabiliteit van het systeem beïnvloeden. Wees voorzichtig.</value>
   </data>
   <data name="AmdOverclocking_Caution_Title" xml:space="preserve">
-    <value>Caution</value>
+    <value>Voorzichtigheid</value>
   </data>
   <data name="AmdOverclocking_Core_Title" xml:space="preserve">
-    <value>Core</value>
+    <value>Kern</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
-    <value>Profile apply has been canceled due to abnormal restart.</value>
+    <value>Profiel toepassen is geannuleerd vanwege de abnormale herstart</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz)</value>
+    <value>Maximale CPU boost frequentie overschrijving (MHz)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
-    <value>FMax Frequency</value>
+    <value>FMax frequentie</value>
   </data>
   <data name="AmdOverclocking_Global_Dim" xml:space="preserve">
-    <value>-1 All</value>
+    <value>-1 Alles</value>
   </data>
   <data name="AmdOverclocking_Global_Offset" xml:space="preserve">
-    <value>Global Offset:</value>
+    <value>Globale Offset:</value>
   </data>
   <data name="AmdOverclocking_Global_Plus" xml:space="preserve">
-    <value>+1 All</value>
+    <value>+1 Alle</value>
   </data>
   <data name="AmdOverclocking_Per_Core_Title" xml:space="preserve">
-    <value>Per-Core Optimization</value>
+    <value>Per-Core optimalisatie</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
-    <value>Status</value>
+    <value>status</value>
   </data>
   <data name="AmdOverclocking_Success_Message" xml:space="preserve">
-    <value>Settings applied successfully.</value>
+    <value>Instellingen succesvol toegepast.</value>
   </data>
   <data name="AmdOverclocking_Success_Title" xml:space="preserve">
-    <value>Success</value>
+    <value>Geslaagd</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures</value>
+    <value>Schakel CCD 1 uit om stabiliteit te krijgen op zowel FPS als temperaturen</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
-    <value>X3D Gaming Mode</value>
+    <value>X3D spelmodus</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>Toepassen</value>
@@ -248,82 +248,82 @@
     <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="ArgumentWindow_Category_Debugging" xml:space="preserve">
-    <value>Debugging</value>
+    <value>Foutopsporing</value>
   </data>
   <data name="ArgumentWindow_Category_General" xml:space="preserve">
-    <value>General</value>
+    <value>Algemeen</value>
   </data>
   <data name="ArgumentWindow_Category_Hardware_Automation" xml:space="preserve">
-    <value>Hardware &amp; Automation</value>
+    <value>Hardware &amp; Automatisering</value>
   </data>
   <data name="ArgumentWindow_Category_Lighting" xml:space="preserve">
-    <value>Lighting</value>
+    <value>Verlichting</value>
   </data>
   <data name="ArgumentWindow_Category_Network_Proxy" xml:space="preserve">
-    <value>Network Proxy</value>
+    <value>Netwerk Proxy</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Modify startup arguments for the app.</value>
+    <value>Open an argument window for convenient modification of arguments.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Arguments</value>
+    <value>Argumenten</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
-    <value>Allow All Certificates</value>
+    <value>Alle certificaten toestaan</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowPowerModesBattery" xml:space="preserve">
-    <value>Allow All Power Modes on Battery</value>
+    <value>Alle accumodus toestaan op de accu</value>
   </data>
   <data name="ArgumentWindow_Flag_DebugMode" xml:space="preserve">
-    <value>Debug Mode</value>
+    <value>Debug modus</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableConflictWarning" xml:space="preserve">
-    <value>Disable Conflict Warning</value>
+    <value>Conflict Waarschuwing Uitschakelen</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableLenovoLighting" xml:space="preserve">
-    <value>Disable Lenovo Lighting</value>
+    <value>Lenovo verlichting uitschakelen</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableRgbKb" xml:space="preserve">
-    <value>Disable RGB Keyboard</value>
+    <value>RGB toetsenbord uitschakelen</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableSpectrumKb" xml:space="preserve">
-    <value>Disable Spectrum Keyboard</value>
+    <value>Spectrum toetsenbord uitschakelen</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableTrayTooltip" xml:space="preserve">
-    <value>Disable Tray Tooltip</value>
+    <value>Taaktip uitschakelen</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableUpdateChecker" xml:space="preserve">
-    <value>Disable Update Checker</value>
+    <value>Update Checker uitschakelen</value>
   </data>
   <data name="ArgumentWindow_Flag_EnableLampArray" xml:space="preserve">
-    <value>Enable Lamp Array</value>
+    <value>Lamp matrix inschakelen</value>
   </data>
   <data name="ArgumentWindow_Flag_ExpGpuMode" xml:space="preserve">
-    <value>Experimental GPU Working Mode</value>
+    <value> Experimental GPU Working Mode</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyPassword" xml:space="preserve">
-    <value>Proxy Password</value>
+    <value>Proxy wachtwoord</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUrl" xml:space="preserve">
-    <value>Proxy URL</value>
+    <value> Proxy URL</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUsername" xml:space="preserve">
-    <value>Proxy Username</value>
+    <value>Proxy Gebruikersnaam</value>
   </data>
   <data name="ArgumentWindow_Flag_SkipCompatCheck" xml:space="preserve">
-    <value>Skip Compatibility Check</value>
+    <value>Compatibiliteitscontrole overslaan</value>
   </data>
   <data name="ArgumentWindow_Flag_StartMinimized" xml:space="preserve">
-    <value>Start Minimized</value>
+    <value>Geminimaliseerd starten</value>
   </data>
   <data name="ArgumentWindow_Flag_TraceEnabled" xml:space="preserve">
-    <value>Enable Trace Logging</value>
+    <value>Schakel Tracce Logging in</value>
   </data>
   <data name="ArgumentWindow_NotSet" xml:space="preserve">
-    <value>Not Set</value>
+    <value>Niet ingesteld</value>
   </data>
   <data name="ArgumentWindow_Title" xml:space="preserve">
-    <value>Argument Window</value>
+    <value>Argument Venster</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>Inschakelen</value>
@@ -351,22 +351,22 @@ Alleen acties die overeenkomen met de huidige status worden uitgevoerd.</value>
     <value>Verander icoon</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
-    <value>Automatic (All Methods)</value>
+    <value>Automatisch (alle methoden)</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
-    <value>Discrete GPU Activity</value>
+    <value>Discrete GPU-activiteit</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Game_Mode" xml:space="preserve">
-    <value>Windows Game Mode</value>
+    <value>Windows spelmodus</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_List" xml:space="preserve">
-    <value>Known Game List</value>
+    <value>Bekende Spellijst</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configure detection methods and exclusions.</value>
+    <value>Configureren van detectiemethoden en uitsluitingen.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
-    <value>Game Detection</value>
+    <value>Spel detectie</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
     <value>Geen snelle acties gedefinieerd. Klik op "Nieuw toevoegen" om een nieuwe snelle actie te maken.</value>
@@ -429,10 +429,10 @@ Alleen acties die overeenkomen met de huidige status worden uitgevoerd.</value>
     <value>Nu uitvoeren</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
-    <value>Run on startup</value>
+    <value>Start bij opstarten</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup_Tooltip" xml:space="preserve">
-    <value>When enabled, this automation will check and apply when the app starts</value>
+    <value>Wanneer ingeschakeld, zal deze automatisering controleren en toepassen wanneer de app start</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
     <value>{0} stap</value>
@@ -468,7 +468,7 @@ Alleen acties die overeenkomen met de huidige status worden uitgevoerd.</value>
     <value>Configureren</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>Achterzijde</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
     <value>Detecteert automatisch wanneer bepaalde games worden uitgevoerd en past de CPU- en GPU-prestaties aan. Temperaturen en ventilatorgeluid kunnen toenemen.</value>
@@ -564,7 +564,7 @@ Alleen acties die overeenkomen met de huidige status worden uitgevoerd.</value>
     <value>Volledige laadcapaciteit</value>
   </data>
   <data name="BatteryPage_LiveCharge_Title" xml:space="preserve">
-    <value>Current charge</value>
+    <value>Huidige lading</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
     <value>Batterij bijna leeg</value>
@@ -601,7 +601,7 @@ Deze tijd is mogelijk niet nauwkeurig als de laptop is opgeladen tijdens het sla
     <value>Batterij</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
-    <value>BIOS version</value>
+    <value>BIOS versie</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
     <value>Aanpassen</value>
@@ -662,10 +662,10 @@ Ondersteunde formaten zijn: {1}.</value>
     <value>Sluiten</value>
   </data>
   <data name="CloseAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Close the Lenovo Legion Toolkit</value>
+    <value>Sluit de Lenovo Legioen Toolkit</value>
   </data>
   <data name="CloseAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Close App</value>
+    <value>App sluiten</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Blauw</value>
@@ -677,7 +677,7 @@ Ondersteunde formaten zijn: {1}.</value>
     <value>Rood</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
+    <value>Selecteer de GPU-werkingsmodus op basis van de gebruiksvoorwaarden van uw computer.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Modus</value>
@@ -723,13 +723,13 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
     <value>Nieuwe actie aanmaken</value>
   </data>
   <data name="Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>Aanpassen</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Cycle through available Custom Mode presets.</value>
+    <value>Wissel door de beschikbare aangepaste modus voorinstellingen.</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Cycle Custom Mode preset</value>
+    <value>Wissel aangepaste modus voorinstelling</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>AC Verbonden</value>
@@ -756,10 +756,10 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
     <value>Startscherm</value>
   </data>
   <data name="DaysRemaining" xml:space="preserve">
-    <value>Days remaining</value>
+    <value>Dagen resterend</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Disable discrete GPU if it is active unnecessarily.</value>
+    <value>Schakel discrete GPU uit als deze onnodig actief is.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Deactiveren</value>
@@ -777,7 +777,7 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
     <value>Verwijderen</value>
   </data>
   <data name="Device" xml:space="preserve">
-    <value>Device</value>
+    <value>Apparaat</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
     <value>Laat alleen geselecteerde apparaten zien</value>
@@ -807,28 +807,28 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
     <value>Deactiveren</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
-    <value>Force Kill Process</value>
+    <value>Geforceerd beëindigen proces</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
-    <value>Graphics Preferences</value>
+    <value>Grafische Voorkeuren</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Apps stoppen</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the active processes list after a forced termination.</value>
+    <value>Wacht op tijd voordat u de actieve processenlijst ververst na een gedwongen afloop.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
-    <value>Force Kill Refresh Delay</value>
+    <value>Geforceerd Kill Vernieuwen Vertraging</value>
   </data>
   <data name="DiscreteGPUControl_ManagementWindowTitle" xml:space="preserve">
-    <value>Discrete GPU Management</value>
+    <value>Discrete GPU-beheer</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>Schakel discrete GPU uit als deze onnodig actief is.</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>Diversen</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>Een scherm is connecteerd met de nVidia GPU.</value>
@@ -843,19 +843,19 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
     <value>Onbekend</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Adjust how often the app checks for GPU activity.</value>
+    <value>Pas aan hoe vaak de app controleert op de GPU-activiteit.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Polling Interval</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDefault" xml:space="preserve">
-    <value>Let Windows decide</value>
+    <value>Windows laten beslissen</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
     <value>Discrete GPU</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
-    <value>Integrated GPU</value>
+    <value>Geïntegreerde GPU</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Processen</value>
@@ -864,48 +864,48 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
     <value>GPU Opnieuw Opstarten</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Delay before initializing the dGPU monitoring service.</value>
+    <value>Vertraging voor het initialiseren van de dGPU-monitorservice.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
-    <value>Startup Delay</value>
+    <value>Opstarten vertraging</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
     <value>Discrete Videokaart</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Change display brightness of the built-in display.</value>
+    <value>Wijzig de schermhelderheid van het ingebouwde scherm.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Schermhelderheid</value>
   </data>
   <data name="Displays" xml:space="preserve">
-    <value>Displays</value>
+    <value>Weergaven</value>
   </data>
   <data name="DonatePage_Bartosz_Description" xml:space="preserve">
-    <value>Bartosz created Lenovo Legion Toolkit and authored the foundational architecture that powers every feature in the application today.</value>
+    <value>Bartosz heeft Lenovo Legioen Toolkit gemaakt en heeft de fundamentele architectuur geschreven die elk kenmerk in de toepassing vandaag nog aandraagt.</value>
   </data>
   <data name="DonatePage_Bartosz_Role" xml:space="preserve">
-    <value>Original Creator</value>
+    <value>Originele maker</value>
   </data>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
-    <value>Even if you can't donate, simply using, sharing, and starring the project on GitHub goes a long way. Every bit of support is genuinely appreciated</value>
+    <value>Zelfs als je niet kunt doneren, gebruik het gewoon gebruiken, delen en staren van het project op GitHub gaat heel ver. Elke vorm van ondersteuning wordt echt gewaardeerd.</value>
   </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
-    <value>Responsible for core feature development, quality assurance, UI/UX design, and overall project direction as the current project lead.</value>
+    <value>Verantwoordelijk voor kernfuncties ontwikkeling, kwaliteitsgarantie, UI/UX ontwerp en de algemene projectrichting als de huidige projectleiding.</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
-    <value>Core Developer &amp; Project Lead</value>
+    <value>Kernontwikkelaar &amp; projectleider</value>
   </data>
   <data name="DonatePage_Kaguya_Description" xml:space="preserve">
-    <value>Specializes in hardware research and reverse engineering, with contributions spanning core feature development and low-level system integration.</value>
+    <value>Specialiseert in hardware-onderzoek en omgekeerde techniek, met bijdragen aan kernfuncties ontwikkeling en integratie van systeem laag niveau.</value>
   </data>
   <data name="DonatePage_Kaguya_Role" xml:space="preserve">
-    <value>Core Developer &amp; Reverser</value>
+    <value>Kern Ontwikkelaar &amp; Reverser</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
-    <value>Development and maintenance of Lenovo Legion Toolkit takes a lot of time and effort. If you enjoy using this software, you can support its future by sponsoring the authors who make it possible.
+    <value>Ontwikkeling en onderhoud van Lenovo Legioen Toolkit kost veel tijd en inspanning. Als het gebruik van deze software u bevalt, kunt u de toekomst ervan ondersteunen door de auteurs te sponsoren die het mogelijk maken.
 
-Thank you for your support!</value>
+Bedankt voor uw steun!</value>
   </data>
   <data name="DonatePage_Sponsor" xml:space="preserve">
     <value>Sponsor</value>
@@ -914,7 +914,7 @@ Thank you for your support!</value>
     <value>Doneer</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Change scaling of the built-in display.</value>
+    <value>Schalen van het ingebouwde scherm wijzigen.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -953,19 +953,19 @@ Thank you for your support!</value>
     <value>Bewerk Sensor</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>End date</value>
+    <value>End Date</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Foutmelding</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
+    <value>Processen in deze lijst zullen worden genegeerd door starteren/stoppen triggers en Lenovo's AI/Intelligent Mode. Voer de procesnaam in zonder pad (bijv. "discord" of "blender").</value>
   </data>
   <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Process Name (e.g. discord)</value>
+    <value>Procesnaam (bijv. discord)</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>Uitgesloten processen</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Vink vernieuwingsfrequenties uit die u niet wilt gebruiken wanneer de snelkoppeling Fn+R wordt gebruikt.</value>
@@ -983,7 +983,7 @@ Thank you for your support!</value>
     <value>Sluiten</value>
   </data>
   <data name="Expired" xml:space="preserve">
-    <value>Expired</value>
+    <value>Verlopen</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Exporteer</value>
@@ -1043,10 +1043,10 @@ Thank you for your support!</value>
     <value>PCH</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
-    <value>Set fan to maximum speed.</value>
+    <value>Stel ventilator in op maximale snelheid.</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Title" xml:space="preserve">
-    <value>Fan Max Speed</value>
+    <value>Ventilator Max Snelheid</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>Filteren...</value>
@@ -1079,13 +1079,13 @@ Thank you for your support!</value>
     <value>GB</value>
   </data>
   <data name="Generation" xml:space="preserve">
-    <value>Generation</value>
+    <value>Genereren</value>
   </data>
   <data name="GHz" xml:space="preserve">
     <value>Ghz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Apply a specific Custom Mode preset.</value>
+    <value>Toepassen van een specifieke aangepaste modus voorinstelling.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Aangepaste modus voorinstelling</value>
@@ -1165,11 +1165,11 @@ Sommige laptops accepteren lagere waarden dan aangegeven. Deze optie kan onvoors
     <value>Processor</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+    <value>Aangepaste modus geeft toegang tot kritieke systeemparameters zoals stroomlimieten en fan curves. 
 
-Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+Misconfiguratie kan leiden tot ernstige systeeminstabiliteit, thermische beperking of permanente hardware-schade. Aanpassingen die hier worden gemaakt, kunnen uw fabrieksgarantie ongeldig maken. 
 
-Do not proceed unless you possess the necessary technical expertise.</value>
+Ga niet verder tenzij u over de nodige technische expertise beschikt.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
     <value>Naam</value>
@@ -1273,16 +1273,16 @@ Serieus, wees voorzichtig met deze optie!</value>
     <value>GPU</value>
   </data>
   <data name="HardwareFeatures" xml:space="preserve">
-    <value>Hardware Features</value>
+    <value>Hardware functies</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable or disable background polling for hardware sensors.</value>
+    <value>In- of uitschakelen van opiniepeiling voor hardware-sensoren.</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>Hardware sensoren</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable high dynamic range (HDR) on the built-in display.</value>
+    <value>Schakel hoge dynamische afstand (HDR) in op de ingebouwde weergave.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -1306,10 +1306,10 @@ Serieus, wees voorzichtig met deze optie!</value>
     <value>Hz</value>
   </data>
   <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
+    <value>Pictogram</value>
   </data>
   <data name="IconColor" xml:space="preserve">
-    <value>Icon color</value>
+    <value>Pictogram kleur</value>
   </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
     <value>Probeer de modus opnieuw te veranderen over een paar seconden, als je het verwachte resultaat niet ziet. Als de videokaart helemaal niet reageert, herstart dan je laptop.</value>
@@ -1380,136 +1380,136 @@ Klik Ja om het uit te schakelen en nee om het te negeren.</value>
     <value>Lenovo Vantage of zijn services zijn actief</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
-    <value>Add Custom Key</value>
+    <value>Aangepaste sleutel toevoegen</value>
   </data>
   <data name="KeyDiscovery_Added" xml:space="preserve">
-    <value>Added</value>
+    <value>Toegevoegd</value>
   </data>
   <data name="KeyDiscovery_CodeText" xml:space="preserve">
     <value>Code: {0}</value>
   </data>
   <data name="KeyDiscovery_KnownKeyTooltip" xml:space="preserve">
-    <value>Known key</value>
+    <value>Bekende sleutel</value>
   </data>
   <data name="KeyDiscovery_Listening" xml:space="preserve">
-    <value>Listening for key presses... Press ESC to stop.</value>
+    <value>Luisteren voor toetsdrukken... Druk op ESC om te stoppen.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Unknown key – can be added</value>
+    <value>Onbekende sleutel - kan worden toegevoegd</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_All" xml:space="preserve">
-    <value>All</value>
+    <value>Allemaal</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aurora_Sync" xml:space="preserve">
     <value>Aurora Sync</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Bottom_to_Top" xml:space="preserve">
-    <value>Bottom to Top</value>
+    <value>Onderaan naar boven</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Breathe" xml:space="preserve">
-    <value>Breathe</value>
+    <value>Ademen</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Brightness" xml:space="preserve">
-    <value>Brightness</value>
+    <value>Helderheid</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Clear_Colors" xml:space="preserve">
-    <value>Clear Colors</value>
+    <value>Kleuren wissen</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Aangepaste</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Direction" xml:space="preserve">
-    <value>Direction</value>
+    <value>Richting</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Effect" xml:space="preserve">
     <value>Effect</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Export_Profile" xml:space="preserve">
-    <value>Export Profile</value>
+    <value>Profiel exporteren</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Gradient" xml:space="preserve">
-    <value>Gradient</value>
+    <value>Kleurovergang</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Import_Profile" xml:space="preserve">
-    <value>Import Profile</value>
+    <value>Profiel importeren</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Keyboard" xml:space="preserve">
     <value>Keyboard</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Left_to_Right" xml:space="preserve">
-    <value>Left to Right</value>
+    <value>Van links naar rechts</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Meteor" xml:space="preserve">
     <value>Meteor</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_None" xml:space="preserve">
-    <value>None</value>
+    <value>geen</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_No_Selection" xml:space="preserve">
-    <value>No Selection</value>
+    <value>Geen selectie</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Probe_Indices" xml:space="preserve">
     <value>Probe Indices</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow" xml:space="preserve">
-    <value>Rainbow</value>
+    <value>Regenboog</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow_Wave" xml:space="preserve">
-    <value>Rainbow Wave</value>
+    <value>Regenboog Golf</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rear_Ambient" xml:space="preserve">
-    <value>Rear Ambient</value>
+    <value>Omgeving achteraan</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Right_to_Left" xml:space="preserve">
-    <value>Right to Left</value>
+    <value>Rechts naar links</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Ripple" xml:space="preserve">
-    <value>Ripple</value>
+    <value>Rimpel</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selected_Key" xml:space="preserve">
-    <value>Selected {0} keys with {1} effect</value>
+    <value>{0} sleutels geselecteerd met {1} effect</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selection" xml:space="preserve">
-    <value>Selection</value>
+    <value>Selectie</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Smooth_Transition" xml:space="preserve">
-    <value>Smooth Transition</value>
+    <value>Vloeiende overgang</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Sparkle" xml:space="preserve">
-    <value>Sparkle</value>
+    <value>Graaf</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Speed" xml:space="preserve">
-    <value>Speed</value>
+    <value>Snelheid</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Spiral_Rainbow" xml:space="preserve">
-    <value>Spiral Rainbow</value>
+    <value>Spiraal Regenboog</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Static" xml:space="preserve">
-    <value>Static</value>
+    <value>statisch</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Target_Zone" xml:space="preserve">
     <value>Target Zone</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Top_to_Bottom" xml:space="preserve">
-    <value>Top to Bottom</value>
+    <value>Van boven naar beneden</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Wave" xml:space="preserve">
-    <value>Wave</value>
+    <value>Golf</value>
   </data>
   <data name="LivePreview" xml:space="preserve">
-    <value>Live Preview</value>
+    <value>Live voorbeeld</value>
   </data>
   <data name="Load" xml:space="preserve">
     <value>Reset</value>
   </data>
   <data name="MacAddress" xml:space="preserve">
-    <value>MAC address</value>
+    <value>MAC-adres</value>
   </data>
   <data name="MachineType" xml:space="preserve">
-    <value>Machine Type</value>
+    <value>Machine type</value>
   </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
     <value>Schakel macro's in of uit.</value>
@@ -1617,7 +1617,7 @@ Klik Ja om het uit te schakelen en nee om het te negeren.</value>
     <value>Instellingen</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>Je moet eerst PawnIO installeren om het nieuwe dashboard te gebruiken!</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
     <value>Waarschuwing</value>
@@ -1629,7 +1629,7 @@ Klik Ja om het uit te schakelen en nee om het te negeren.</value>
     <value>Update {0} is beschikbaar!</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
-    <value>Don't show again.</value>
+    <value>Niet meer tonen.</value>
   </data>
   <data name="MHz" xml:space="preserve">
     <value>Mhz</value>
@@ -1650,7 +1650,7 @@ Klik Ja om het uit te schakelen en nee om het te negeren.</value>
     <value>Model</value>
   </data>
   <data name="Motherboard" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>Moederbord</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
     <value>Omlaag verplaatsen</value>
@@ -1666,34 +1666,34 @@ Klik Ja om het uit te schakelen en nee om het te negeren.</value>
     <value>Match All (And)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_None" xml:space="preserve">
-    <value>No Logic (Separate)</value>
+    <value>Geen Logica (Separat)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
     <value>Match Any (Or)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
-    <value>Logic</value>
+    <value>Logisch</value>
   </data>
   <data name="NetworkAdapters" xml:space="preserve">
-    <value>Network adapters</value>
+    <value>Netwerk adapters</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Nee</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Notification Text (supports $RUN_OUTPUT$)</value>
+    <value>Notificatietekst (ondersteund $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Meldingen weergeven</value>
   </data>
   <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
-    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
+    <value>Je kunt $RUN_OUTPUT$ gebruiken om de uitvoer van de vorige stap dynamisch in te voegen.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>Oplader</value>
   </data>
   <data name="NotificationsSettingsWindow_AirplaneMode" xml:space="preserve">
-    <value>Airplane mode</value>
+    <value>Vliegtuigmodus</value>
   </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
     <value>Acties</value>
@@ -1715,7 +1715,7 @@ Zet deze optie aan als u problemen ondervindt met applicaties in de volledige sc
     <value>Fn Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITS modus</value>
   </data>
   <data name="NotificationsSettingsWindow_KeyboardBacklight" xml:space="preserve">
     <value>Toetsenbord Achtergrondverlichting</value>
@@ -1743,7 +1743,7 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>Positie</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationType" xml:space="preserve">
-    <value>Name</value>
+    <value>naam</value>
   </data>
   <data name="NotificationsSettingsWindow_NumLock" xml:space="preserve">
     <value>Num Lock</value>
@@ -1776,10 +1776,10 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>AC-adapter losgekoppeld</value>
   </data>
   <data name="Notification_AirplaneModeOff" xml:space="preserve">
-    <value>Airplane mode off</value>
+    <value>Vliegtuigmodus uit</value>
   </data>
   <data name="Notification_AirplaneModeOn" xml:space="preserve">
-    <value>Airplane mode on</value>
+    <value>Vliegtuigmodus aan</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
     <value>Camera uit</value>
@@ -1824,25 +1824,25 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>Achtergrondverlichting van poorten aan</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightChanged" xml:space="preserve">
-    <value>RGB Changed</value>
+    <value>RGB gewijzigd</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightOff" xml:space="preserve">
-    <value>RGB Off</value>
+    <value>RGB uit</value>
   </data>
   <data name="Notification_SmartKeyDoublePress" xml:space="preserve">
-    <value>Double Press</value>
+    <value>Dubbele Indrukken</value>
   </data>
   <data name="Notification_SmartKeySinglePress" xml:space="preserve">
-    <value>Single Press</value>
+    <value>Enkele druk</value>
   </data>
   <data name="Notification_SpectrumBacklightChanged" xml:space="preserve">
-    <value>Spectrum Changed</value>
+    <value>Spectrum gewijzigd</value>
   </data>
   <data name="Notification_SpectrumBacklightOff" xml:space="preserve">
-    <value>Spectrum Off</value>
+    <value>Spectrum uit</value>
   </data>
   <data name="Notification_SpectrumBacklightPresetChanged" xml:space="preserve">
-    <value>Spectrum Preset</value>
+    <value>Voorkeursinstelling pectrum</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Backlight" xml:space="preserve">
     <value>Achtergrondverlichting {0}</value>
@@ -1866,13 +1866,13 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>Achtergrondverlichting {0}</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightChanged" xml:space="preserve">
-    <value>White Changed</value>
+    <value>Wit veranderd</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightOff" xml:space="preserve">
-    <value>White Off</value>
+    <value>Wit Uit</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
-    <value>Backlight changed</value>
+    <value>Achtergrondverlichting gewijzigd</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>Uit</value>
@@ -1902,109 +1902,109 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>Zwevende Gadget</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
-    <value>Set the lock position state of the OSD.</value>
+    <value>Stel de vergrendelingsstatus van de OSD in.</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Title" xml:space="preserve">
-    <value>OSD Lock Position</value>
+    <value>OSD Lock Positie</value>
   </data>
   <data name="OsdSettings_Appearance_BackgroundColor" xml:space="preserve">
-    <value>Background Color</value>
+    <value>Achtergrond Kleur</value>
   </data>
   <data name="OsdSettings_Appearance_CategoryColor" xml:space="preserve">
-    <value>Category Color</value>
+    <value>Kleur categorie</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadius" xml:space="preserve">
     <value>Corner Radius</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusBottom" xml:space="preserve">
-    <value>Bottom</value>
+    <value>Onderaan</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusTop" xml:space="preserve">
-    <value>Top</value>
+    <value>Bovenkant</value>
   </data>
   <data name="OsdSettings_Appearance_CriticalColor" xml:space="preserve">
-    <value>Critical Color</value>
+    <value>Kritieke Kleur</value>
   </data>
   <data name="OsdSettings_Appearance_FontSize" xml:space="preserve">
     <value>Font Size</value>
   </data>
   <data name="OsdSettings_Appearance_LabelColor" xml:space="preserve">
-    <value>Label Color</value>
+    <value>Label kleur</value>
   </data>
   <data name="OsdSettings_Appearance_Opacity" xml:space="preserve">
-    <value>Opacity</value>
+    <value>Transparantie</value>
   </data>
   <data name="OsdSettings_Appearance_ValueColor" xml:space="preserve">
-    <value>Value Color</value>
+    <value>Kleur van waarde</value>
   </data>
   <data name="OsdSettings_Appearance_WarningColor" xml:space="preserve">
-    <value>Warning Color</value>
+    <value>Waarschuwing kleur</value>
   </data>
   <data name="OsdSettings_General_LockPosition" xml:space="preserve">
-    <value>Lock Position</value>
+    <value>Positie vergrendelen</value>
   </data>
   <data name="OsdSettings_General_OverlayStyle" xml:space="preserve">
-    <value>Overlay Style</value>
+    <value>Overlay stijl</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>Interval vernieuwen</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval_Tooltip" xml:space="preserve">
-    <value>Sensor refresh interval</value>
+    <value>Sensor verversingsinterval</value>
   </data>
   <data name="OsdSettings_General_ResetPosition" xml:space="preserve">
-    <value>Reset Position</value>
+    <value>Positie herstellen</value>
   </data>
   <data name="OsdSettings_General_SnapThreshold" xml:space="preserve">
-    <value>Snapping Threshold</value>
+    <value>Uitgaande drempel</value>
   </data>
   <data name="OsdSettings_Tabs_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Uiterlijk</value>
   </data>
   <data name="OsdSettings_Tabs_General" xml:space="preserve">
-    <value>General</value>
+    <value>Algemeen</value>
   </data>
   <data name="OsdSettings_Tabs_SensorItems" xml:space="preserve">
-    <value>Sensors</value>
+    <value>Sensoren</value>
   </data>
   <data name="OsdSettings_Tabs_Thresholds" xml:space="preserve">
-    <value>Thresholds</value>
+    <value>Drempels</value>
   </data>
   <data name="OsdSettings_Thresholds_Critical" xml:space="preserve">
-    <value>Critical</value>
+    <value>Kritiek</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline" xml:space="preserve">
     <value>FPS Redline</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline_Description" xml:space="preserve">
-    <value>The minimum acceptable frame rate. Below this, the color turns critical.</value>
+    <value>Het minimale accepteerbare framesnelheid hieronder wordt de kleur kritisch.</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta" xml:space="preserve">
-    <value>Low FPS Delta</value>
+    <value>Lage FPS Delta</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta_Description" xml:space="preserve">
-    <value>The maximum difference between average FPS and 1% Low. Above this, the counter turns critical.</value>
+    <value>Het maximale verschil tussen gemiddeld FPS en 1% Laag. Bovendien, wordt de teller cruciaal.</value>
   </data>
   <data name="OsdSettings_Thresholds_Performance" xml:space="preserve">
-    <value>Performance</value>
+    <value>Prestaties</value>
   </data>
   <data name="OsdSettings_Thresholds_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Temperatuur</value>
   </data>
   <data name="OsdSettings_Thresholds_Usage" xml:space="preserve">
-    <value>Usage</value>
+    <value>Gebruik</value>
   </data>
   <data name="OsdSettings_Thresholds_Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>Waarschuwing</value>
   </data>
   <data name="OsdWindow_Title" xml:space="preserve">
-    <value>OSD Settings</value>
+    <value>OSD instellingen</value>
   </data>
   <data name="Osd_Cpu" xml:space="preserve">
     <value>Processor</value>
   </data>
   <data name="Osd_CPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>Ventilator</value>
   </data>
   <data name="Osd_Disk_0_Temperature" xml:space="preserve">
     <value>Schijf 1 temperatuur</value>
@@ -2013,7 +2013,7 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>Schijf 2 temperatuur</value>
   </data>
   <data name="Osd_ECoreClock" xml:space="preserve">
-    <value>E-Core Clock</value>
+    <value>E-Core Klok</value>
   </data>
   <data name="Osd_Fps" xml:space="preserve">
     <value>FPS</value>
@@ -2028,13 +2028,13 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>Videokaart</value>
   </data>
   <data name="Osd_GPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>Ventilator</value>
   </data>
   <data name="Osd_Low_Fps" xml:space="preserve">
-    <value>1% Low</value>
+    <value>1% Laag</value>
   </data>
   <data name="Osd_Memory_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Temperatuur</value>
   </data>
   <data name="Osd_Memory_Utilization" xml:space="preserve">
     <value>Utilization</value>
@@ -2043,19 +2043,19 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>PCH</value>
   </data>
   <data name="Osd_PCH_Fan" xml:space="preserve">
-    <value>PCH Fan</value>
+    <value>PCH ventilator</value>
   </data>
   <data name="Osd_PCoreClock" xml:space="preserve">
-    <value>P-Core Clock</value>
+    <value>P-Core Klok</value>
   </data>
   <data name="Osd_Style_Bar" xml:space="preserve">
-    <value>Bar</value>
+    <value>Balk</value>
   </data>
   <data name="Osd_Style_Panel" xml:space="preserve">
-    <value>Panel</value>
+    <value>Paneel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Increase performance by overclocking discrete GPU.</value>
+    <value>Verhoog de prestaties door overlay discrete GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Overklokken</value>
@@ -2076,7 +2076,7 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
     <value>Videokaart overklok instellingen</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
-    <value>Unlocking in {0}...</value>
+    <value>Ontgrendelen in {0}...</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
     <value>Verbeter de responstijd van het ingebouwde display.</value>
@@ -2227,17 +2227,17 @@ Zorg er altijd voor dat u de juiste pakketten installeert.</value>
     <value>%</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Minutes" xml:space="preserve">
-    <value>Minutes</value>
+    <value>minuten</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Period" xml:space="preserve">
     <value>Periode (in minuten)</value>
     <comment>A prompt that is used both to ask the user to input an integer, representing the number of minutes between two periodic actions are triggered, and to inform the user what have they set once they are done configuring the action.</comment>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Seconds" xml:space="preserve">
-    <value>Seconds</value>
+    <value>seconden</value>
   </data>
   <data name="PlatformAndCapabilities" xml:space="preserve">
-    <value>Platform &amp; Capabilities</value>
+    <value>Platform &amp; mogelijkheden</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
     <value>Bestandsformaten zoals. .wav en.mp3 zijn ondersteund.</value>
@@ -2280,7 +2280,7 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>De geselecteerde energiemodus werkt mogelijk niet correct als de netadapter niet is aangesloten.</value>
   </data>
   <data name="PowerModes" xml:space="preserve">
-    <value>Power Modes</value>
+    <value>Energie modus</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
     <value>{0} energiemodus is niet beschikbaar zonder een oplader.</value>
@@ -2308,7 +2308,7 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Vernieuw</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Change refresh rate of the built-in display.</value>
+    <value>Verander de verversingssnelheid van het ingebouwde scherm.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Verversingssnelheid</value>
@@ -2326,7 +2326,7 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Change resolution of the built-in display.</value>
+    <value>Wijzig de resolutie van het ingebouwde scherm.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Resolutie</value>
@@ -2344,13 +2344,13 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Nu opnieuw opstarten</value>
   </data>
   <data name="RestartRequired_Message" xml:space="preserve">
-    <value>Changing this requires restart. Do you want to restart now?</value>
+    <value>Dit wijzigen vereist herstart. Wilt u nu opnieuw opstarten?</value>
   </data>
   <data name="RestartRequired_Title" xml:space="preserve">
-    <value>Restart required</value>
+    <value>Opnieuw opstarten vereist</value>
   </data>
   <data name="RestoreDefaults" xml:space="preserve">
-    <value>Restore Defaults</value>
+    <value>Standaardinstellingen herstellen</value>
   </data>
   <data name="Revert" xml:space="preserve">
     <value>Terug draaien</value>
@@ -2411,13 +2411,13 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Uitvoerbaar Pad</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Run a script or a program.</value>
+    <value>Voer een script of een programma uit.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
-    <value>Check Instance</value>
+    <value>Instantie controleren</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance_Description" xml:space="preserve">
-    <value>Check if process already started.</value>
+    <value>Controleer of het proces al is gestart.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently" xml:space="preserve">
     <value>Stil uitvoeren</value>
@@ -2447,13 +2447,13 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>{0}s</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_Configure_Title" xml:space="preserve">
-    <value>Configure {0}</value>
+    <value>{0} configureren</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Choose one or more quick actions to cycle through.</value>
+    <value>Kies een of meer snelle acties om door te schakelen.</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>No Quick Actions defined.</value>
+    <value>Geen Snelle Acties gedefinieerd.</value>
   </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
     <value>Batterijniveau</value>
@@ -2474,7 +2474,7 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Processor Temperatuur</value>
   </data>
   <data name="SensorItem_CpuUtilitzation" xml:space="preserve">
-    <value>CPU Utilization</value>
+    <value>CPU gebruikmaking</value>
   </data>
   <data name="SensorItem_Disk1Temperature" xml:space="preserve">
     <value>Schijf 1 temperatuur</value>
@@ -2534,13 +2534,13 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Ventilatie</value>
   </data>
   <data name="SensorsControl_GpuCoreTemperature_Title" xml:space="preserve">
-    <value>Core Temp</value>
+    <value>Kern temp</value>
   </data>
   <data name="SensorsControl_GpuMemoryTemperature_Title" xml:space="preserve">
-    <value>VRAM Temp</value>
+    <value>VRAM Temperature</value>
   </data>
   <data name="SensorsControl_GpuVramUtilization_Title" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>VRAM gebruik</value>
   </data>
   <data name="SensorsControl_GPU_Power" xml:space="preserve">
     <value>Stroom</value>
@@ -2567,7 +2567,7 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>PCH temperatuur</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>Interval vernieuwen</value>
   </data>
   <data name="SensorsControl_State_Title" xml:space="preserve">
     <value>Staat</value>
@@ -2579,13 +2579,13 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Gebruik</value>
   </data>
   <data name="SensorSettingsPage_Average_Frequency_Title" xml:space="preserve">
-    <value>Average Frequency</value>
+    <value>Gemiddelde frequentie</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and Osd.</value>
+    <value>Bepaal het type CPU frequentie dat wordt weergegeven op het Dashboard en op het Osd.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>CPU Frequentie</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2594,61 +2594,61 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>iGPU</value>
   </data>
   <data name="SensorSettingsPage_Max_Frequency_Title" xml:space="preserve">
-    <value>Max Frequency</value>
+    <value>Maximale frequentie</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Message" xml:space="preserve">
-    <value>Choose how memory utilization is displayed on the Dashboard and OSD.</value>
+    <value>Kies hoe geheugengebruik wordt weergegeven op het Dashboard en OSD.</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Title" xml:space="preserve">
-    <value>Memory Display Mode</value>
+    <value>Geheugen Weergave Modus</value>
   </data>
   <data name="SensorSettingsPage_Percentage_Title" xml:space="preserve">
     <value>Percentage</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Message" xml:space="preserve">
-    <value>When multiple graphics cards are present, the primary device displayed is preferred</value>
+    <value>Wanneer er meerdere grafische kaarten aanwezig zijn, geeft het primaire apparaat de voorkeur</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
-    <value>Preferred GPU</value>
+    <value>Gewenste GPU</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
-    <value>Used/Total Memory (GB)</value>
+    <value>Gebruikt/Totaal Geheugen (GB)</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
-    <value>Serial number</value>
+    <value>Serienummer</value>
   </data>
   <data name="Series" xml:space="preserve">
-    <value>Series</value>
+    <value>Serie</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Instellingen</value>
   </data>
   <data name="SettingsBackupWindow_Backup" xml:space="preserve">
-    <value>Back Up</value>
+    <value>Back-up omhoog</value>
   </data>
   <data name="SettingsBackupWindow_BackupSuccess" xml:space="preserve">
-    <value>Backup completed successfully.</value>
+    <value>Back-up met succes voltooid.</value>
   </data>
   <data name="SettingsBackupWindow_NoFilesSelected" xml:space="preserve">
-    <value>No files selected.</value>
+    <value>Geen bestanden geselecteerd.</value>
   </data>
   <data name="SettingsBackupWindow_NoMatchingFiles" xml:space="preserve">
-    <value>No matching files found in selected folder.</value>
+    <value>Geen overeenkomende bestanden gevonden in de geselecteerde map.</value>
   </data>
   <data name="SettingsBackupWindow_Restore" xml:space="preserve">
-    <value>Restore</value>
+    <value>Herstellen</value>
   </data>
   <data name="SettingsBackupWindow_RestoreConfirm" xml:space="preserve">
-    <value>Restoring settings will overwrite your current configuration and restart the application. Do you want to continue?</value>
+    <value>Het herstellen van de instellingen zal uw huidige configuratie overschrijven en de applicatie opnieuw starten. Wilt u doorgaan?</value>
   </data>
   <data name="SettingsBackupWindow_RestoreSuccess" xml:space="preserve">
-    <value>Restore completed successfully. The application will restart.</value>
+    <value>Herstellen is voltooid. De applicatie wordt opnieuw opgestart.</value>
   </data>
   <data name="SettingsBackupWindow_SelectAll" xml:space="preserve">
-    <value>Select All</value>
+    <value>Alles selecteren</value>
   </data>
   <data name="SettingsBackupWindow_Title" xml:space="preserve">
-    <value>Backup Settings</value>
+    <value>Back-up Instellingen</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
     <value>Pas het thema en de kleuren van de app aan</value>
@@ -2657,10 +2657,10 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Accentkleur</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
-    <value>Keep the app window above all other windows.</value>
+    <value>Houd het app-venster boven alle andere vensters.</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
-    <value>Pin to Top</value>
+    <value>Bovenaan vastzetten</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
     <value>Start geminimaliseerd naar lade wanneer u zich aanmeldt bij Windows.</value>
@@ -2669,13 +2669,13 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Automatisch uitvoeren</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
-    <value>Back up or restore application settings.</value>
+    <value>Back-up maken of herstellen van toepassingsinstellingen.</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
-    <value>Back Up Settings</value>
+    <value>Back-up van instellingen</value>
   </data>
   <data name="SettingsPage_BootLogo_EFIInfo" xml:space="preserve">
-    <value>This feature modifies the EFI partition. Use with caution.</value>
+    <value>Deze functie wijzigt de EFI-partitie. Wees voorzichtig.</value>
   </data>
   <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
     <value>Pas het opstartlogo aan, dat zichtbaar is als het systeem opstart.</value>
@@ -2684,34 +2684,34 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Opstartlogo</value>
   </data>
   <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
-    <value>App Behavior</value>
+    <value>App gedrag</value>
   </data>
   <data name="SettingsPage_Category_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>Uiterlijk</value>
   </data>
   <data name="SettingsPage_Category_Display" xml:space="preserve">
-    <value>Display</value>
+    <value>Weergeven</value>
   </data>
   <data name="SettingsPage_Category_Integrations" xml:space="preserve">
-    <value>Integrations</value>
+    <value>Integraties</value>
   </data>
   <data name="SettingsPage_Category_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Vermogen</value>
   </data>
   <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>Slimme toetsen</value>
   </data>
   <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
-    <value>Software Control</value>
+    <value>Software Controle</value>
   </data>
   <data name="SettingsPage_Category_Updates" xml:space="preserve">
-    <value>Updates</value>
+    <value>Bijwerken</value>
   </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
     <value>Controleer</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
-    <value>Check now for the latest version.</value>
+    <value>Controleer nu voor de laatste versie.</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>Controleren op updates...</value>
@@ -2735,13 +2735,13 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>CLI</value>
   </data>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
-    <value>Restart is recommended after changing this option.</value>
+    <value>Herstart wordt aanbevolen na het wijzigen van deze optie.</value>
   </data>
   <data name="SettingsPage_CompactMode_Message" xml:space="preserve">
-    <value>Reduce visual clutter to fit more content on screen.</value>
+    <value>Verminder visuele rommel om meer inhoud op het scherm te passen.</value>
   </data>
   <data name="SettingsPage_CompactMode_Title" xml:space="preserve">
-    <value>Compact Mode</value>
+    <value>Compacte modus</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Blur" xml:space="preserve">
     <value>Blur</value>
@@ -2750,19 +2750,19 @@ U kunt van modus wisselen met Fn+Q.</value>
     <value>Dim</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Set a custom wallpaper for the app window.</value>
+    <value>Selecteer een achtergrondsafbeelding</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Crop" xml:space="preserve">
-    <value>Crop</value>
+    <value>Bijsnijden</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Fill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Invullen</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Fit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Passend</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Background Image</value>
+    <value>Selecteer een achtergrondsafbeelding</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space is mogelijk niet correct uitgeschakeld</value>
@@ -2848,70 +2848,70 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Kon Lenovo Vantage en/of ImController niet inschakelen</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>Uitgesloten processen</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Hide specific refresh rates from the Fn+R cycle.</value>
+    <value>U kunt verversingssnelheid uitsluiten om de Fn+R-snelkoppeling nuttiger te maken.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>Verversingsnelheid uitsluiten</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface.</value>
+    <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
-    <value>Hardware Acceleration</value>
+    <value>Hardware versnelling</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off.</value>
+    <value>Het inschakelen van hardware-acceleratie kan flitsen of zwart veroorzaken op sommige hybride grafische systemen, en kan voorkomen dat de discrete GPU wordt uitgeschakeld.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
-    <value>Enable advanced hardware polling to monitor detailed temperatures, frequencies, and power limits.</value>
+    <value>Schakel geavanceerde hardware polling in om gedetailleerde temperaturen, frequenties en stroomlimieten te monitoren.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_PawnIOWarning" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>Je moet eerst PawnIO installeren om hardware-sensoren te gebruiken!</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>Hardware sensoren</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
-    <value>Auto (Let Windows decide)</value>
+    <value>Automatisch (Laat Windows beslissen)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
-    <value>High performance (dGPU)</value>
+    <value>Hoge prestaties (dGPU)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_PowerSaving" xml:space="preserve">
-    <value>Power saving (iGPU)</value>
+    <value>Energiebesparing (iGPU)</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
     <value>Deel ventilatorsnelheid, batterijtemperatuur, etc. met HWiNFO64. De laptop moet mogelijk opnieuw opgestart worden na het wijzigen van deze optie.</value>
   </data>
   <data name="SettingsPage_HWiNFO_RestartInfo" xml:space="preserve">
-    <value>You may need to restart HWiNFO64 after changing this option.</value>
+    <value>Misschien moet u HWiNFO64 opnieuw opstarten nadat u deze optie heeft gewijzigd.</value>
   </data>
   <data name="SettingsPage_HWiNFO_Title" xml:space="preserve">
     <value>HWiNFO64</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Message" xml:space="preserve">
-    <value>Find undefined Fn hotkeys in LLT.</value>
+    <value>Ongedefinieerde Fn sneltoetsen vinden in LLT.</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Title" xml:space="preserve">
-    <value>Key Discovery</value>
+    <value>Sleutel Ontdekking</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Change the display language of the app.</value>
+    <value>Selecteer taal.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Taal</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Prevent the window from being resized.</value>
+    <value>Vergrendel LLT's venstergrootte. Om te voorkomen dat iets verandert.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Vergrendel Venster Grootte</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Minimize to the system tray instead of closing.</value>
+    <value>Minimaliseer altijd tot tray. Sluit met de rechtermuisknop op het systeemvakpictogram.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>Minimaliseer Bij Sluiten</value>
@@ -2935,10 +2935,10 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Stel de teller voor 'Op batterij sinds' opnieuw in wanneer het systeem opstart</value>
   </data>
   <data name="SettingsPage_Osd_Message" xml:space="preserve">
-    <value>Floating overlay showing live sensor data.</value>
+    <value>Zwevende overlay toont live sensor gegevens.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>Enable OSD</value>
+    <value>OSD inschakelen</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
     <value>Pas de Windows-energiemodus of het energiebeheerschema automatisch aan wanneer de energiemodus wordt gewijzigd.</value>
@@ -2947,13 +2947,13 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Energiemodus synchronisatie</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
-    <value>Are you sure you want to reset all settings to defaults? This action cannot be undone and the application will restart.</value>
+    <value>Weet u zeker dat u alle instellingen wilt resetten naar standaarden? Deze actie kan niet ongedaan worden gemaakt en de applicatie zal opnieuw starten.</value>
   </data>
   <data name="SettingsPage_ResetSettings_Message" xml:space="preserve">
-    <value>Reset all application settings to their defaults.</value>
+    <value>Alle applicatie-instellingen naar hun standaardwaarden terugzetten.</value>
   </data>
   <data name="SettingsPage_ResetSettings_Title" xml:space="preserve">
-    <value>Reset Settings</value>
+    <value>Instellingen opnieuw instellen</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Herstart om de wijzigingen toe te passen.</value>
@@ -2968,22 +2968,22 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Afbeeldingsbestand</value>
   </data>
   <data name="SettingsPage_SensorSettings_Title" xml:space="preserve">
-    <value>Sensor Settings</value>
+    <value>Sensor instellingen</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
+    <value>De functieknop wordt slim vergrendeld wanneer Alt, Ctrl of Shift is ingedrukt.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Fn knop slim vergrendelen</value>
   </data>
   <data name="SettingsPage_SmartKeys_Message" xml:space="preserve">
-    <value>Customize the Fn hotkeys.</value>
+    <value>Pas de sneltoetsen aan.</value>
   </data>
   <data name="SettingsPage_SmartKeys_Title" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>Slimme toetsen</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Apply the same brightness level across all Windows power plans.</value>
+    <value>Wanneer deze instelling is ingeschakeld, zal dezelfde helderheid worden toegepast op alle Windows Energiebeheerschema's wanneer je deze aanpast.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>Enkele Schermhelderheid</value>
@@ -2995,7 +2995,7 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Temperatuur</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Set light, dark, or system-matched theme.</value>
+    <value>Stel een licht thema, een donker thema in of volg de systeeminstellingen.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>Thema</value>
@@ -3004,19 +3004,19 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Instellingen</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
-    <value>Choose between stable, beta and dev releases.</value>
+    <value>Kies tussen stabiele, beta en dev releases.</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
-    <value>Update Channel</value>
+    <value>Kanaal bijwerken</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
-    <value>Choose how often to check for new versions.</value>
+    <value>Kies hoe vaak nieuwe versies gecontroleerd moeten worden.</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
-    <value>Update Frequency</value>
+    <value>Update frequentie</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
-    <value>Choose how updates are downloaded and installed.</value>
+    <value>Kies hoe updates worden gedownload en geïnstalleerd.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>Update methode</value>
@@ -3025,16 +3025,16 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Gebruik het nieuwe sensordashboard in plaats van het oude.</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>New Sensor Dashboard</value>
+    <value>Nieuw Sensor Dashboard</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
-    <value>If you experience visual artifacts on Snackbar Notifications in HDR mode, set this to "None".</value>
+    <value>Als je visuele artefacten op Snackbar meldingen in HDR modus ervaart, zet dit op "Geen".</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Message" xml:space="preserve">
-    <value>The effect used for the background of the application window.</value>
+    <value>Het effect dat gebruikt wordt op de achtergrond van het programmavenster.</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Title" xml:space="preserve">
-    <value>Window Backdrop</value>
+    <value>Venster Achtergrond</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
     <value>Laat de windows energiemodus toepassen wanneer de energiemodus verandert.</value>
@@ -3058,19 +3058,19 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Schakel naar aangepaste modus met Fn+Q</value>
   </data>
   <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
+    <value>Toon de Lenovo Legioen Gereedschapskit</value>
   </data>
   <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
+    <value>App weergeven</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
-    <value>Show less</value>
+    <value>Minder weergeven</value>
   </data>
   <data name="ShowMore" xml:space="preserve">
-    <value>Show more</value>
+    <value>Toon meer</value>
   </data>
   <data name="Slot" xml:space="preserve">
-    <value>Slot</value>
+    <value>Plek</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Wanneer gedempt, zullen alle actieve audio-uitvoerapparaten worden gedempt.</value>
@@ -3079,46 +3079,46 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Luidspreker</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change the speaker's volume.</value>
+    <value>Wijzig volume van de spreker.</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Title" xml:space="preserve">
-    <value>Speaker Volume</value>
+    <value>Luidspreker Volume</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery" xml:space="preserve">
-    <value>Key Discovery</value>
+    <value>Sleutel Ontdekking</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
     <value>Find key that is not defined in LLT.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
-    <value>Start</value>
+    <value>Beginnen</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Stoppen</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="SpecialKeyDetail_Mode" xml:space="preserve">
-    <value>Mode</value>
+    <value>Modus</value>
   </data>
   <data name="SpecialKeyDetail_Mode_Description" xml:space="preserve">
-    <value>Choose how this key responds when pressed.</value>
+    <value>Kies hoe deze toets reageert wanneer deze wordt ingedrukt.</value>
   </data>
   <data name="SpecialKeysWindow_Description" xml:space="preserve">
-    <value>Assign custom Quick Actions to Fn keys. Each key can override its default behavior with a custom pipeline. Right-click any key to hide it from this list.</value>
+    <value>Wijs aangepaste Quick Acties toe aan Fn keys. Elke sleutel kan zijn standaard gedrag met een aangepaste pipeline overschrijven. Klik met de rechtermuisknop op een toets om deze van deze lijst te verbergen.</value>
   </data>
   <data name="SpecialKeysWindow_HideHiddenKeys" xml:space="preserve">
-    <value>Hide {0} hidden keys</value>
+    <value>{0} verborgen sleutels verbergen</value>
   </data>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
-    <value>Show {0} hidden keys</value>
+    <value>Toon {0} verborgen sleutels</value>
   </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
-    <value>(Driver)</value>
+    <value>(Bestuurder)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
-    <value>Key {0}</value>
+    <value>Sleutel {0}</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>Pas de helderheid van de toetsenbordverlichting aan.</value>
@@ -3202,22 +3202,22 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Bewerk effect</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostBrightnessFactor" xml:space="preserve">
-    <value>Boost Brightness Factor</value>
+    <value>Helderheidsfactor versterken</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostFloor" xml:space="preserve">
-    <value>Boost Floor</value>
+    <value>Versnel de Vloer</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostTarget" xml:space="preserve">
     <value>Boost Target</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_Title" xml:space="preserve">
-    <value>Color Boost Settings</value>
+    <value>Instellingen voor kleurboost</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_WhiteThreshold" xml:space="preserve">
-    <value>White Threshold</value>
+    <value>Witte drempel</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoost_Title" xml:space="preserve">
-    <value>Vantage Color Boost</value>
+    <value>Vantage Kleur Vergroting</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
     <value>Importeer en pas een achtergrondverlichtingsconfiguratie toe aan het huidige profiel.</value>
@@ -3241,7 +3241,7 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>{0} zones</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start date</value>
+    <value>Start datum</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
     <value>Batterij</value>
@@ -3283,16 +3283,16 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Systeemfan</value>
   </data>
   <data name="Storage" xml:space="preserve">
-    <value>Storage</value>
+    <value>Opslagruimte</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Selecteer icoon</value>
   </data>
   <data name="TextColor" xml:space="preserve">
-    <value>Text color</value>
+    <value>Tekst kleur</value>
   </data>
   <data name="Threads" xml:space="preserve">
-    <value>Threads</value>
+    <value>Conversaties</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
     <value>Zonsopgang</value>
@@ -3304,7 +3304,7 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Tijd</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Allow switching between integrated and discrete GPU.</value>
+    <value>Overschakelen tussen geïntegreerde en discrete GPU toestaan.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Hybride modus</value>
@@ -3360,7 +3360,7 @@ Als u de muis beweegt of op het toetsenbord drukt, worden de schermen gewekt.</v
     <value>Unhide</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>onbekend</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>naamloos</value>
@@ -3392,10 +3392,10 @@ Logboekregistratie wordt automatisch ingeschakeld als u ervoor kiest om door te 
     <value>Bijwerken</value>
   </data>
   <data name="UpdateWindow_DownloadError_Title" xml:space="preserve">
-    <value>Update download failed</value>
+    <value>Downloaden van update mislukt</value>
   </data>
   <data name="UpdateWindow_SecurityError_Title" xml:space="preserve">
-    <value>Failed to verify update</value>
+    <value>Update verifiëren mislukt</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
     <value>Update beschikbaar</value>
@@ -3404,13 +3404,13 @@ Logboekregistratie wordt automatisch ingeschakeld als u ervoor kiest om door te 
     <value>Wat is er nieuw?</value>
   </data>
   <data name="Used" xml:space="preserve">
-    <value>Used</value>
+    <value>Gebruikt</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Waarschuwing</value>
   </data>
   <data name="Warranty" xml:space="preserve">
-    <value>Warranty</value>
+    <value>Garantie</value>
   </data>
   <data name="Watt" xml:space="preserve">
     <value>W</value>
@@ -3449,7 +3449,7 @@ Logboekregistratie wordt automatisch ingeschakeld als u ervoor kiest om door te 
     <value>DC</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_Title" xml:space="preserve">
-    <value>Power Mode</value>
+    <value>Kracht modus</value>
   </data>
   <data name="WindowsPowerPlansWindow_Title" xml:space="preserve">
     <value>Windows Energiebeheerschema's</value>
