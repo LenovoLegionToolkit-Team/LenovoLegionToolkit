@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -133,7 +133,7 @@
     <value>Bật, Chỉ khi Ngủ</value>
   </data>
   <data name="AmdOverclocking_Ac_Message" xml:space="preserve">
-    <value>Profile will not apply without AC adapter (Full wattage) connected.</value>
+    <value>Tuỳ chỉnh này sẽ không được áp dụng cho đến khi cắm sạc (với đầy đủ công suất) được kết nối.</value>
   </data>
   <data name="AmdOverclocking_Not_Initialized_Message" xml:space="preserve">
     <value>Chưa được khởi tạo.</value>
@@ -142,7 +142,7 @@
     <value>Không được hỗ trợ.</value>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
-    <value>Warning: For safety, these steps will be skipped on startup: {0}. All other steps will execute normally.</value>
+    <value>Cảnh báo: Để đảm bảo an toàn, nhưng bước sau sẽ được bỏ qua khi khởi động: {0}. Tất cả những bước không được liệt kê vẫn sẽ được thực thi như bình thường.</value>
   </data>
   <data name="AutorunState_Disabled" xml:space="preserve">
     <value>Tắt</value>
@@ -154,7 +154,7 @@
     <value>Bật với độ trễ</value>
   </data>
   <data name="Balanced" xml:space="preserve">
-    <value>Balanced</value>
+    <value>Cân bằng</value>
   </data>
   <data name="BatteryNightChargeState_Off" xml:space="preserve">
     <value>Tắt</value>
@@ -172,25 +172,25 @@
     <value>Sạc Nhanh</value>
   </data>
   <data name="BestPerformance" xml:space="preserve">
-    <value>Performance</value>
+    <value>Hiệu năng tốt nhất</value>
   </data>
   <data name="BestPowerEfficiency" xml:space="preserve">
-    <value>Best Power Efficiency</value>
+    <value>Tiết kiệm điện tốt nhất</value>
   </data>
   <data name="CustomFanCurveControl_Fan_CPU" xml:space="preserve">
-    <value>CPU Fan</value>
+    <value>Quạt CPU</value>
   </data>
   <data name="CustomFanCurveControl_Fan_GPU" xml:space="preserve">
-    <value>GPU Fan</value>
+    <value>Quạt GPU</value>
   </data>
   <data name="CustomFanCurveControl_Fan_System" xml:space="preserve">
-    <value>System Fan</value>
+    <value>Quạt hệ thống</value>
   </data>
   <data name="CustomSpecialKey_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Tùy chỉnh</value>
   </data>
   <data name="CustomSpecialKey_Default" xml:space="preserve">
-    <value>Default</value>
+    <value>Mặc định</value>
   </data>
   <data name="DeviceInformation_SharedMemory" xml:space="preserve">
     <value>Shared / Dynamic</value>
@@ -218,10 +218,10 @@
     <value>Kích hoạt</value>
   </data>
   <data name="HardwareSensorsState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Tắt</value>
   </data>
   <data name="HardwareSensorsState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Bật</value>
   </data>
   <data name="HDRState_Off" xml:space="preserve">
     <value>Tắt</value>
@@ -235,7 +235,7 @@
     <value>GPU rời</value>
   </data>
   <data name="HybridModeState_On" xml:space="preserve">
-    <value>Hybrid</value>
+    <value>Hỗn hợp</value>
   </data>
   <data name="HybridModeState_OnAuto" xml:space="preserve">
     <value>Hybrid- Tự động</value>
@@ -268,7 +268,7 @@
     <value>Hiệu năng tối đa</value>
   </data>
   <data name="ITSMode_Intelligent_Geek" xml:space="preserve">
-    <value>Geek</value>
+    <value>Hết ga hết số</value>
   </data>
   <data name="MicrophoneState_Off" xml:space="preserve">
     <value>Tắt</value>
@@ -332,13 +332,13 @@
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned on.</comment>
   </data>
   <data name="OsdItem_Disk1Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>Nhiệt độ Ổ cứng 1</value>
   </data>
   <data name="OsdItem_Disk2Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>Nhiệt độ Ổ cứng 2</value>
   </data>
   <data name="OsdItem_E_Core_Frequency" xml:space="preserve">
-    <value>E-Core Clock</value>
+    <value>Xung nhịp E-Core</value>
   </data>
   <data name="OsdItem_Fan" xml:space="preserve">
     <value>Quạt</value>
@@ -353,7 +353,7 @@
     <value>Xung nhịp</value>
   </data>
   <data name="OsdItem_LowFps" xml:space="preserve">
-    <value>1% Low</value>
+    <value>1% Thấp</value>
   </data>
   <data name="OsdItem_MemoryTemperature" xml:space="preserve">
     <value>Nhiệt độ</value>
@@ -365,7 +365,7 @@
     <value>Công suất</value>
   </data>
   <data name="OsdItem_P_Core_Frequency" xml:space="preserve">
-    <value>P-Core Clock</value>
+    <value>Xung nhịp P-Core</value>
   </data>
   <data name="OsdItem_Temperature" xml:space="preserve">
     <value>Nhiệt độ</value>
@@ -374,10 +374,10 @@
     <value>Mức sử dụng</value>
   </data>
   <data name="OsdItem_VramTemperature" xml:space="preserve">
-    <value>VRAM Temperature</value>
+    <value>Nhiệt độ VRAM</value>
   </data>
   <data name="OsdItem_VramUtilization" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>Mức sử dụng VRAM</value>
   </data>
   <data name="OverdriveState_Off" xml:space="preserve">
     <value>Tắt</value>
@@ -514,7 +514,7 @@
     <value>Nhịp nhạc</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_AudioRipple" xml:space="preserve">
-    <value>Audio Ripple</value>
+    <value>Gợn sóng từ âm thanh</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>Đồng bộ Aurora</value>
@@ -565,13 +565,13 @@
     <value>Hệ thống</value>
   </data>
   <data name="ToggleState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Tắt</value>
   </data>
   <data name="ToggleState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Bật</value>
   </data>
   <data name="ToggleState_Toggle" xml:space="preserve">
-    <value>Toggle</value>
+    <value>Bật/Tắt</value>
   </data>
   <data name="TouchpadLockState_Off" xml:space="preserve">
     <value>Tắt</value>
@@ -582,19 +582,19 @@
     <comment>Informs the user that Touchpad Lock is or will be turned on.</comment>
   </data>
   <data name="UpdateChannel_Beta" xml:space="preserve">
-    <value>Beta</value>
+    <value>Thử nghiệm</value>
   </data>
   <data name="UpdateChannel_Dev" xml:space="preserve">
-    <value>Dev</value>
+    <value>Đang phát triển</value>
   </data>
   <data name="UpdateChannel_Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>Ổn định</value>
   </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
-    <value>The downloaded update is not signed by the trusted server certificate {0}</value>
+    <value>Gói tập tin cập nhật chưa được kí bởi bên phía máy chủ {0}</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
-    <value>Invalid signature thumbprint {0}</value>
+    <value>Chữ kì từ dấu vân tay không hợp lệ {0}</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
     <value>Không bao giờ</value>
@@ -621,7 +621,7 @@
     <value>GitHub</value>
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
-    <value>Server</value>
+    <value>Máy chủ</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>Cao</value>
@@ -639,7 +639,7 @@
     <value>Mica</value>
   </data>
   <data name="WindowBackdropType_None" xml:space="preserve">
-    <value>None</value>
+    <value>Không</value>
   </data>
   <data name="WindowBackdropType_Tabbed" xml:space="preserve">
     <value>Tabbed</value>
