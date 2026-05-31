@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -332,16 +332,16 @@
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned on.</comment>
   </data>
   <data name="OsdItem_Disk1Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>Temperatura do Disco 1</value>
   </data>
   <data name="OsdItem_Disk2Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>Temperatura do Disco 2</value>
   </data>
   <data name="OsdItem_E_Core_Frequency" xml:space="preserve">
     <value>E-Core Clock</value>
   </data>
   <data name="OsdItem_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>Ventoinha</value>
   </data>
   <data name="OsdItem_Fps" xml:space="preserve">
     <value>FPS</value>
@@ -362,7 +362,7 @@
     <value>Motherboard Temperature</value>
   </data>
   <data name="OsdItem_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Potência</value>
   </data>
   <data name="OsdItem_P_Core_Frequency" xml:space="preserve">
     <value>P-Core Clock</value>
@@ -371,13 +371,13 @@
     <value>Temperature</value>
   </data>
   <data name="OsdItem_Utilization" xml:space="preserve">
-    <value>Utilization</value>
+    <value>Uso</value>
   </data>
   <data name="OsdItem_VramTemperature" xml:space="preserve">
     <value>VRAM Temperature</value>
   </data>
   <data name="OsdItem_VramUtilization" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>Uso de VRAM</value>
   </data>
   <data name="OverdriveState_Off" xml:space="preserve">
     <value>Desligado</value>
@@ -565,13 +565,13 @@
     <value>Sistema</value>
   </data>
   <data name="ToggleState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Desligado</value>
   </data>
   <data name="ToggleState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Ligado</value>
   </data>
   <data name="ToggleState_Toggle" xml:space="preserve">
-    <value>Toggle</value>
+    <value>Alternador</value>
   </data>
   <data name="TouchpadLockState_Off" xml:space="preserve">
     <value>Desligado</value>
@@ -585,7 +585,7 @@
     <value>Beta</value>
   </data>
   <data name="UpdateChannel_Dev" xml:space="preserve">
-    <value>Dev</value>
+    <value>Desenvolvimento</value>
   </data>
   <data name="UpdateChannel_Stable" xml:space="preserve">
     <value>Stable</value>
@@ -597,7 +597,7 @@
     <value>Invalid signature thumbprint {0}</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
-    <value>Never</value>
+    <value>Nunca</value>
   </data>
   <data name="UpdateCheckFrequency_PerDay" xml:space="preserve">
     <value>Diariamente</value>
@@ -639,7 +639,7 @@
     <value>Mica</value>
   </data>
   <data name="WindowBackdropType_None" xml:space="preserve">
-    <value>None</value>
+    <value>Nenhum</value>
   </data>
   <data name="WindowBackdropType_Tabbed" xml:space="preserve">
     <value>Tabbed</value>
