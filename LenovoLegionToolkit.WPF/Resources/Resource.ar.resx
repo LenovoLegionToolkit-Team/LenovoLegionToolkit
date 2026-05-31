@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutPage_ApplicationFolders" xml:space="preserve">
-    <value>Application Folders</value>
+    <value>مجلدات التطبيقات</value>
   </data>
   <data name="AboutPage_AppName" xml:space="preserve">
     <value>Lenovo Legion Toolkit</value>
@@ -127,7 +127,7 @@
     <value>نسخة</value>
   </data>
   <data name="AboutPage_Data" xml:space="preserve">
-    <value>Data</value>
+    <value>البيانات</value>
   </data>
   <data name="AboutPage_LatestReleaseOnGitHub" xml:space="preserve">
     <value>أخر إصدار على GitHub</value>
@@ -136,13 +136,13 @@
     <value>الروابط</value>
   </data>
   <data name="AboutPage_Log" xml:space="preserve">
-    <value>Log</value>
+    <value>سجل</value>
   </data>
   <data name="AboutPage_ProjectWebsiteOnGitHub" xml:space="preserve">
     <value>موقع المشروع على GitHub</value>
   </data>
   <data name="AboutPage_Temp" xml:space="preserve">
-    <value>Temp</value>
+    <value>درجة الحرارة</value>
   </data>
   <data name="AboutPage_ThirdPartyLibraries" xml:space="preserve">
     <value>مكتبات الطرف الثالث</value>
@@ -158,7 +158,7 @@
     <value>الإصدار</value>
   </data>
   <data name="AbstractAutomationStepControl_Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>حذف</value>
   </data>
   <data name="Active" xml:space="preserve">
     <value>مفعل</value>
@@ -167,7 +167,7 @@
     <value>إضافة</value>
   </data>
   <data name="AddAutomationStepWindow_MultipleSteps" xml:space="preserve">
-    <value>Multiple steps...</value>
+    <value>خطوات متعددة...</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>إضافة خطوة</value>
@@ -176,7 +176,7 @@
     <value>أضف جديد</value>
   </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Airplane mode</value>
+    <value>وضع الطائرة</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
     <value>شحن الاجهزة عبر ال USB, حتى لو كان الحاسب مغلق او فى وضع النوم او السبات.</value>
@@ -191,52 +191,52 @@
     <value>ال USB يعمل دائما</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
-    <value>Apply Changes</value>
+    <value>تطبيق التغييرات</value>
   </data>
   <data name="AmdOverclocking_Caution_Message" xml:space="preserve">
-    <value>Changing these settings may impact system stability. Proceed with caution.</value>
+    <value>تغيير هذه الإعدادات قد يؤثر على استقرار النظام. المتابعة بحذر.</value>
   </data>
   <data name="AmdOverclocking_Caution_Title" xml:space="preserve">
-    <value>Caution</value>
+    <value>تحذير</value>
   </data>
   <data name="AmdOverclocking_Core_Title" xml:space="preserve">
-    <value>Core</value>
+    <value>المركز</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
-    <value>Profile apply has been canceled due to abnormal restart.</value>
+    <value>تم إلغاء تطبيق الوضع المخصص بسبب إعادة تشغيل غير عادية.</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz)</value>
+    <value>تجاوز تردد تعزيز المعالج الأقصى (MHz)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
-    <value>FMax Frequency</value>
+    <value>تردد Fmax</value>
   </data>
   <data name="AmdOverclocking_Global_Dim" xml:space="preserve">
-    <value>-1 All</value>
+    <value>-1 الكل</value>
   </data>
   <data name="AmdOverclocking_Global_Offset" xml:space="preserve">
-    <value>Global Offset:</value>
+    <value>النبذة على نطاق الجهاز:</value>
   </data>
   <data name="AmdOverclocking_Global_Plus" xml:space="preserve">
-    <value>+1 All</value>
+    <value>+1 الكل</value>
   </data>
   <data name="AmdOverclocking_Per_Core_Title" xml:space="preserve">
-    <value>Per-Core Optimization</value>
+    <value>تحسين لكل مركز</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
-    <value>Status</value>
+    <value>الحالة</value>
   </data>
   <data name="AmdOverclocking_Success_Message" xml:space="preserve">
-    <value>Settings applied successfully.</value>
+    <value>تم تطبيق الإعدادات بنجاح.</value>
   </data>
   <data name="AmdOverclocking_Success_Title" xml:space="preserve">
-    <value>Success</value>
+    <value>تم بنجاح</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures</value>
+    <value>تعطيل CCD 1 للحصول على الاستقرار على الاطارات بالثانية ودرجات الحرارة</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
-    <value>X3D Gaming Mode</value>
+    <value>وضع الألعاب X3D</value>
   </data>
   <data name="Apply" xml:space="preserve">
     <value>تطبيق</value>
@@ -248,82 +248,82 @@
     <value>Lenovo Legion Toolkit</value>
   </data>
   <data name="ArgumentWindow_Category_Debugging" xml:space="preserve">
-    <value>Debugging</value>
+    <value>تسجيل الأخطاء</value>
   </data>
   <data name="ArgumentWindow_Category_General" xml:space="preserve">
-    <value>General</value>
+    <value>العامة</value>
   </data>
   <data name="ArgumentWindow_Category_Hardware_Automation" xml:space="preserve">
-    <value>Hardware &amp; Automation</value>
+    <value>الأجهزة والأتمتة</value>
   </data>
   <data name="ArgumentWindow_Category_Lighting" xml:space="preserve">
-    <value>Lighting</value>
+    <value>الإضاءة</value>
   </data>
   <data name="ArgumentWindow_Category_Network_Proxy" xml:space="preserve">
-    <value>Network Proxy</value>
+    <value>وكيل الشبكة</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Modify startup arguments for the app.</value>
+    <value>Open an argument window for convenient modification of arguments.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Arguments</value>
+    <value>حجج</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
-    <value>Allow All Certificates</value>
+    <value>السماح لجميع الشهادات</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowPowerModesBattery" xml:space="preserve">
-    <value>Allow All Power Modes on Battery</value>
+    <value>السماح لكل أوضاع الطاقة بالعمل على البطارية</value>
   </data>
   <data name="ArgumentWindow_Flag_DebugMode" xml:space="preserve">
-    <value>Debug Mode</value>
+    <value>وضع تسجيل الأخطاء</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableConflictWarning" xml:space="preserve">
-    <value>Disable Conflict Warning</value>
+    <value>تعطيل تحذير التعارض</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableLenovoLighting" xml:space="preserve">
-    <value>Disable Lenovo Lighting</value>
+    <value>تعطيل إضاءة Lenovo</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableRgbKb" xml:space="preserve">
-    <value>Disable RGB Keyboard</value>
+    <value>تعطيل RGB لوحة المفاتيح</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableSpectrumKb" xml:space="preserve">
-    <value>Disable Spectrum Keyboard</value>
+    <value>تعطيل Spectrum لوحة المفاتيح</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableTrayTooltip" xml:space="preserve">
-    <value>Disable Tray Tooltip</value>
+    <value>تعطيل تلميح على علبة النظام</value>
   </data>
   <data name="ArgumentWindow_Flag_DisableUpdateChecker" xml:space="preserve">
-    <value>Disable Update Checker</value>
+    <value>تعطيل التحقق من التحديث</value>
   </data>
   <data name="ArgumentWindow_Flag_EnableLampArray" xml:space="preserve">
-    <value>Enable Lamp Array</value>
+    <value>تفعيل مصباح الاصطفاف</value>
   </data>
   <data name="ArgumentWindow_Flag_ExpGpuMode" xml:space="preserve">
-    <value>Experimental GPU Working Mode</value>
+    <value>وضع عمل كرت الشاشة التجريبي</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyPassword" xml:space="preserve">
-    <value>Proxy Password</value>
+    <value>كلمة مرور الوكيل</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUrl" xml:space="preserve">
-    <value>Proxy URL</value>
+    <value>رابط الوكيل</value>
   </data>
   <data name="ArgumentWindow_Flag_ProxyUsername" xml:space="preserve">
-    <value>Proxy Username</value>
+    <value>اسم المستخدم الوكيل</value>
   </data>
   <data name="ArgumentWindow_Flag_SkipCompatCheck" xml:space="preserve">
-    <value>Skip Compatibility Check</value>
+    <value>تخطي التحقق من التوافق</value>
   </data>
   <data name="ArgumentWindow_Flag_StartMinimized" xml:space="preserve">
-    <value>Start Minimized</value>
+    <value>البدء مُصغرًا</value>
   </data>
   <data name="ArgumentWindow_Flag_TraceEnabled" xml:space="preserve">
-    <value>Enable Trace Logging</value>
+    <value>تفعيل تسجيل التتبع</value>
   </data>
   <data name="ArgumentWindow_NotSet" xml:space="preserve">
-    <value>Not Set</value>
+    <value>لم يتم التعيين</value>
   </data>
   <data name="ArgumentWindow_Title" xml:space="preserve">
-    <value>Argument Window</value>
+    <value>نافذة الحجة</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>تفعيل</value>
@@ -347,25 +347,25 @@
     <value>أضف جديد</value>
   </data>
   <data name="AutomationPage_ChangeIcon" xml:space="preserve">
-    <value>Change icon</value>
+    <value>تغيير الأيقونة</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
-    <value>Automatic (All Methods)</value>
+    <value>تلقائي (جميع الأساليب)</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
-    <value>Discrete GPU Activity</value>
+    <value>نشاط وحدة كرت الشاشة المنفصل</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Game_Mode" xml:space="preserve">
-    <value>Windows Game Mode</value>
+    <value>وضع لعبة ويندوز</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_List" xml:space="preserve">
-    <value>Known Game List</value>
+    <value>قائمة اللعبة المعروفة</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configure detection methods and exclusions.</value>
+    <value>تكوين طرق الكشف والاستبعادات.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
-    <value>Game Detection</value>
+    <value>كشف اللعبة</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
     <value>لا يوجد أجراءات سريعة معرفة. اضعط على "اضافة جديد" لأنشاء أجراءات سريعة جديدة.</value>
@@ -428,10 +428,10 @@
     <value>نفذ الأن</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup" xml:space="preserve">
-    <value>Run on startup</value>
+    <value>تشغيل عند بدء التشغيل</value>
   </data>
   <data name="AutomationPipelineControl_RunOnStartup_Tooltip" xml:space="preserve">
-    <value>When enabled, this automation will check and apply when the app starts</value>
+    <value>عند التمكين، سيتم التحقق من هذه الأتمتة وتطبيقها عند بدء تشغيل التطبيق</value>
   </data>
   <data name="AutomationPipelineControl_Step" xml:space="preserve">
     <value>{0} خطوة</value>
@@ -440,7 +440,7 @@
     <value>{0} خطوات</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_After" xml:space="preserve">
-    <value>After {0}</value>
+    <value>بعد {0}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Apps" xml:space="preserve">
     <value>التطبيقات</value>
@@ -464,10 +464,10 @@
     <value>غير مسمى</value>
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
-    <value>Configure</value>
+    <value>تكوين</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>الرجوع</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
     <value>يتم تلقائيا اكتشاف بعض الألعاب عندما تعمل و يقوم بتعديل أداء كرت الشاشة و المعالج. الحرارة و صوت المروحة ممكن أن تزيد.</value>
@@ -491,16 +491,16 @@
     <value>وضع البطارية</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Message" xml:space="preserve">
-    <value>When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning.</value>
+    <value>عند التمكين، سيتم شحن هذا الجهاز بنسبة 80٪ عند توصيل الشحن بين عشية وضحاها والانتهاء من الشحن بنسبة 100٪ في الوقت الذي تستخدم فيه هذا الجهاز في الصباح.</value>
   </data>
   <data name="BatteryNightChargeAutomationStepControl_Title" xml:space="preserve">
-    <value>Overnight Battery Charging</value>
+    <value>شحن البطارية الليلي</value>
   </data>
   <data name="BatteryNightChargeModeControl_Message" xml:space="preserve">
-    <value>When enabled, this device will charge to 80% when plugged in overnight and finish charging to 100% by the time you use this device in the morning.</value>
+    <value>عند التمكين، سيتم شحن هذا الجهاز بنسبة 80٪ عند توصيل الشحن بين عشية وضحاها والانتهاء من الشحن بنسبة 100٪ في الوقت الذي تستخدم فيه هذا الجهاز في الصباح.</value>
   </data>
   <data name="BatteryNightChargeModeControl_Title" xml:space="preserve">
-    <value>Overnight Battery Charging</value>
+    <value>شحن البطارية الليلية</value>
   </data>
   <data name="BatteryPage_ACAdapterConnectedAndCharging" xml:space="preserve">
     <value>تمام التوصيل, جارى الشحن...</value>
@@ -509,10 +509,10 @@
     <value>تم التوصيل، ولكن لا يتم الشحن</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Message" xml:space="preserve">
-    <value>Battery maximum charge capacity.</value>
+    <value>سعة الشحن القصوى للبطارية.</value>
   </data>
   <data name="BatteryPage_BatteryHealth_Title" xml:space="preserve">
-    <value>Battery health</value>
+    <value>صحة البطارية</value>
   </data>
   <data name="BatteryPage_BatteryTemperature_Message" xml:space="preserve">
     <value>الحرارة الحالية للبطارية.</value>
@@ -563,10 +563,10 @@
     <value>سعة الشحن الكامل</value>
   </data>
   <data name="BatteryPage_LiveCharge_Title" xml:space="preserve">
-    <value>Current charge</value>
+    <value>الشحن الحالي</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
-    <value>Battery level low</value>
+    <value>مستوى البطارية منخفض</value>
   </data>
   <data name="BatteryPage_LowWattageChargerConnected" xml:space="preserve">
     <value>تم توصيل شاحن منخفض القوة</value>
@@ -578,16 +578,16 @@
     <value>تاريخ التنصيع</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Message" xml:space="preserve">
-    <value>Maximum rate at which battery is charged (+), or discharged (-).</value>
+    <value>الحد الأعلى الذي تستخدم فيه البطارية بالشحن + او التصريف -</value>
   </data>
   <data name="BatteryPage_MaxDischargeRate_Title" xml:space="preserve">
-    <value>Maximum discharge rate</value>
+    <value>الحد الأعلى لمعدل التصريف</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Message" xml:space="preserve">
-    <value>Minimum rate at which battery is charged (+), or discharged (-).</value>
+    <value>الحد الأدنى الذي تستخدم فيه البطارية بالشحن + او التصريف -</value>
   </data>
   <data name="BatteryPage_MinDischargeRate_Title" xml:space="preserve">
-    <value>Minimum discharge rate</value>
+    <value>الحد الأدنى لمعدل التصريف</value>
   </data>
   <data name="BatteryPage_OnBatterySince_Message" xml:space="preserve">
     <value>الوقت منذ توصيل كابل الشحن لأخر مرة.
@@ -600,53 +600,53 @@
     <value>البطارية</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
-    <value>BIOS version</value>
+    <value>إصدار BIOS</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>تخصيص</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>Custom Boot Logo is set</value>
+    <value>تم تعيين شعار التمهيد المخصص</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>Default Boot Logo is set</value>
+    <value>تم تعيين شعار الحذاء الافتراضي</value>
   </data>
   <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Custom boot logo must be exactly {0} pixels large.
-Supported formats are: {1}.</value>
+    <value>شعار التمهيد المخصص يجب أن يكون كبير على وجه الدقة {0} بكسل.
+الصيغ المدعومة هي: {1}.</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
-    <value>Custom logo could not be set: {0}</value>
+    <value>لا يمكن تعيين شعار مخصص: {0}</value>
   </data>
   <data name="BootLogoWindow_SetCustomSuccess" xml:space="preserve">
-    <value>Custom boot logo set.</value>
+    <value>تم تعيين شعار التمهيد المخصص.</value>
   </data>
   <data name="BootLogoWindow_SetDefaultFailed" xml:space="preserve">
-    <value>Default logo could not be set: {0}</value>
+    <value>لا يمكن تعيين الشعار الافتراضي: {0}</value>
   </data>
   <data name="BootLogoWindow_SetDefaultSuccess" xml:space="preserve">
-    <value>Default boot logo set.</value>
+    <value>تم تعيين شعار التمهيد الافتراضي.</value>
   </data>
   <data name="BootLogoWindow_SetError_Cannot_Mount_EFI_Partition" xml:space="preserve">
-    <value>Cannot mount EFI partition.</value>
+    <value>لا يمكن تحميل قسم EFI.</value>
   </data>
   <data name="BootLogoWindow_SetError_Cannot_Set_UEFI_Privilege" xml:space="preserve">
-    <value>Cannot set UEFI privilege.</value>
+    <value>لا يمكن تعيين امتياز UEFI.</value>
   </data>
   <data name="BootLogoWindow_SetError_Invalid_Image_Format" xml:space="preserve">
     <value>Invalid image format.</value>
   </data>
   <data name="BootLogoWindow_SetError_Invalid_Image_Size" xml:space="preserve">
-    <value>Invalid image size.</value>
+    <value>حجم الصورة غير صالح.</value>
   </data>
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
-    <value>Not enough free space on EFI partition.</value>
+    <value>لا توجد مساحة مجانية كافية في قسم EFI.</value>
   </data>
   <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>Status</value>
+    <value>الحالة</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
-    <value>Boot Logo</value>
+    <value>شعار التمهيد</value>
   </data>
   <data name="Cancel" xml:space="preserve">
     <value>الغاء</value>
@@ -655,16 +655,16 @@ Supported formats are: {1}.</value>
     <value>°C</value>
   </data>
   <data name="Clear" xml:space="preserve">
-    <value>Clear</value>
+    <value>مسح</value>
   </data>
   <data name="Close" xml:space="preserve">
     <value>إغلاق</value>
   </data>
   <data name="CloseAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Close the Lenovo Legion Toolkit</value>
+    <value>أغلق مجموعة أدوات فيلق لينوفو</value>
   </data>
   <data name="CloseAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Close App</value>
+    <value>إغلاق التطبيق</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>أزرق</value>
@@ -676,10 +676,10 @@ Supported formats are: {1}.</value>
     <value>أحمر</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
+    <value>حدد وضع تشغيل GPU استنادًا إلى استخدام الكمبيوتر وظروف الطاقة.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
-    <value>GPU Working Mode</value>
+    <value>وضع عمل كرت الشاشة</value>
   </data>
   <data name="ComboBoxHybridModeControl_Message" xml:space="preserve">
     <value>اختار وضع تشغيل كارت الشاشة بناء على استخدامك للحاسب و حالة الطاقة المتوفرة.
@@ -695,7 +695,7 @@ Supported formats are: {1}.</value>
     <value>وضع عمل كرت الشاشة</value>
   </data>
   <data name="CompatibilityCheckError_Message" xml:space="preserve">
-    <value>Error occured when reading device information.</value>
+    <value>حدث خطأ عند قراءة معلومات الجهاز.</value>
   </data>
   <data name="Continue" xml:space="preserve">
     <value>اكمل</value>
@@ -713,31 +713,31 @@ Supported formats are: {1}.</value>
     <value>Cores</value>
   </data>
   <data name="CPU" xml:space="preserve">
-    <value>CPU</value>
+    <value>المعالج</value>
   </data>
   <data name="Create" xml:space="preserve">
-    <value>Create</value>
+    <value>إنشاء</value>
   </data>
   <data name="CreateAutomationPipelineWindow_Title" xml:space="preserve">
-    <value>Create Action</value>
+    <value>إنشاء إجراء</value>
   </data>
   <data name="Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>تخصيص</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Cycle through available Custom Mode presets.</value>
+    <value>دورة من خلال الإعدادات المسبقة للوضع المخصص.</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Cycle Custom Mode preset</value>
+    <value>الإعداد المسبق لدورة وضع مخصص</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
-    <value>AC Connected</value>
+    <value>متصل بالشاحن</value>
   </data>
   <data name="DashboardBattery_AcDisconnected" xml:space="preserve">
-    <value>AC Disconnected</value>
+    <value>AC غير متصل</value>
   </data>
   <data name="DashboardPage_Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>تخصيص</value>
   </data>
   <data name="DashboardPage_Display_Title" xml:space="preserve">
     <value>الشاشة</value>
@@ -755,16 +755,16 @@ Supported formats are: {1}.</value>
     <value>المنزل</value>
   </data>
   <data name="DaysRemaining" xml:space="preserve">
-    <value>Days remaining</value>
+    <value>الأيام المتبقية</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Disable discrete GPU if it is active unnecessarily.</value>
+    <value>قم بتعطيل وحدة GPU المنفصلة إذا كانت نشطة بدون ضرورة.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>اغلق كرت الشاشة</value>
   </data>
   <data name="Default" xml:space="preserve">
-    <value>Default</value>
+    <value>الافتراضي</value>
   </data>
   <data name="DelayAutomationStepControl_Message" xml:space="preserve">
     <value>اضافة مهلة قبل تشغيل الخطوة القادمة.</value>
@@ -776,16 +776,16 @@ Supported formats are: {1}.</value>
     <value>مسح</value>
   </data>
   <data name="Device" xml:space="preserve">
-    <value>Device</value>
+    <value>الجهاز</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
-    <value>Show connected devices only</value>
+    <value>إظهار الأجهزة المتصلة فقط</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyRemovable" xml:space="preserve">
-    <value>Show removable devices only</value>
+    <value>إظهار الأجهزة القابلة للإزالة فقط</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlySelected" xml:space="preserve">
-    <value>Show selected devices only</value>
+    <value>إظهار الأجهزة المحددة فقط</value>
   </data>
   <data name="DeviceInformationWindow_LenovoSupport" xml:space="preserve">
     <value>خدمة Lenovo</value>
@@ -794,40 +794,40 @@ Supported formats are: {1}.</value>
     <value>حول الجهاز</value>
   </data>
   <data name="DevicePipelineTriggerTabItemContent_Devices" xml:space="preserve">
-    <value>Devices</value>
+    <value>الأجهزة</value>
   </data>
   <data name="DGPU_Connected_Title" xml:space="preserve">
-    <value>dGPU connected</value>
+    <value>dGPU متصل</value>
   </data>
   <data name="DGPU_Disconnected_Title" xml:space="preserve">
-    <value>dGPU disconnected</value>
+    <value>dGPU غير متصل</value>
   </data>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>غير مفعل</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
-    <value>Force Kill Process</value>
+    <value>عملية قتل القوة</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
-    <value>Graphics Preferences</value>
+    <value>تفضيلات الرسومات</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>قتل التطبيقات</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the active processes list after a forced termination.</value>
+    <value>انتظر الوقت قبل تحديث قائمة العمليات النشطة بعد الإنهاء القسري.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
-    <value>Force Kill Refresh Delay</value>
+    <value>اقتل تأخير التحديث بالقوة</value>
   </data>
   <data name="DiscreteGPUControl_ManagementWindowTitle" xml:space="preserve">
-    <value>Discrete GPU Management</value>
+    <value>إدارة وحدة البيانات العالمية المنفصلة</value>
   </data>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>أغلاق بطاقة الشاشة الخارجية لو كانت تعمل دون الحاجة أليها.</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
-    <value>Miscellaneous</value>
+    <value>متنوعات</value>
   </data>
   <data name="DiscreteGPUControl_MonitorConnected" xml:space="preserve">
     <value>يوجد شاشة خارجية متصلة ببطاقة نفيديا.</value>
@@ -842,19 +842,19 @@ Supported formats are: {1}.</value>
     <value>مجهول</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Adjust how often the app checks for GPU activity.</value>
+    <value>ضبط عدد مرات التحقق من التطبيق لنشاط GPU</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
-    <value>Polling Interval</value>
+    <value>الفاصل الزمني للتصويت</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDefault" xml:space="preserve">
-    <value>Let Windows decide</value>
+    <value>السماح للويندوز أن يقرر</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
-    <value>Discrete GPU</value>
+    <value>وحدة GPU منفصلة</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
-    <value>Integrated GPU</value>
+    <value>GPU مدمج</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>العمليات</value>
@@ -863,43 +863,43 @@ Supported formats are: {1}.</value>
     <value>أعادة تشغيل كرت الشاشة</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Delay before initializing the dGPU monitoring service.</value>
+    <value>تأخير قبل تهيئة خدمة الرصد لـ dGPU</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
-    <value>Startup Delay</value>
+    <value>تأخير بدء التشغيل</value>
   </data>
   <data name="DiscreteGPUControl_Title" xml:space="preserve">
     <value>كرت الشاشة الخارجى</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Change display brightness of the built-in display.</value>
+    <value>تغيير سطوع العرض للعرض المدمج.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>سطوع الشاشة</value>
   </data>
   <data name="Displays" xml:space="preserve">
-    <value>Displays</value>
+    <value>عرض</value>
   </data>
   <data name="DonatePage_Bartosz_Description" xml:space="preserve">
-    <value>Bartosz created Lenovo Legion Toolkit and authored the foundational architecture that powers every feature in the application today.</value>
+    <value>أنشأ بارتوسز مجموعة أدوات لينوفو وألف الهيكل التأسيسي الذي يقوي كل سمة من سمات التطبيق اليوم.</value>
   </data>
   <data name="DonatePage_Bartosz_Role" xml:space="preserve">
-    <value>Original Creator</value>
+    <value>المنشئ الأصلي</value>
   </data>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
-    <value>Even if you can't donate, simply using, sharing, and starring the project on GitHub goes a long way. Every bit of support is genuinely appreciated</value>
+    <value>حتى لو كنت لا تستطيع التبرع ، ببساطة إستخدام، مشاركة، وبدء المشروع على GitHub يذهب إلى طريق طويل. كل جزء من الدعم يحظى بتقدير حقيقي</value>
   </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
-    <value>Responsible for core feature development, quality assurance, UI/UX design, and overall project direction as the current project lead.</value>
+    <value>مسؤول عن تطوير المعالم الأساسية، وضمان الجودة، وتصميم UI/UX، والتوجيه العام للمشروع بوصفه الرائد الحالي للمشروع.</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
-    <value>Core Developer &amp; Project Lead</value>
+    <value>المطور الأساسي و رائد المشروع</value>
   </data>
   <data name="DonatePage_Kaguya_Description" xml:space="preserve">
-    <value>Specializes in hardware research and reverse engineering, with contributions spanning core feature development and low-level system integration.</value>
+    <value>التخصص في بحوث المعدات والهندسة العكسية، مع مساهمات تشمل تطوير السمات الأساسية وتكامل النظم على مستوى منخفض.</value>
   </data>
   <data name="DonatePage_Kaguya_Role" xml:space="preserve">
-    <value>Core Developer &amp; Reverser</value>
+    <value>المطور والمتراجع الأساسي</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
     <value>Development and maintenance of Lenovo Legion Toolkit takes a lot of time and effort. If you enjoy using this software, you can support its future by sponsoring the authors who make it possible.
@@ -907,64 +907,64 @@ Supported formats are: {1}.</value>
 Thank you for your support!</value>
   </data>
   <data name="DonatePage_Sponsor" xml:space="preserve">
-    <value>Sponsor</value>
+    <value>الراعي</value>
   </data>
   <data name="DonatePage_Title" xml:space="preserve">
     <value>دعم المشروع</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Change scaling of the built-in display.</value>
+    <value>تغيير حجم العرض المدمج.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
-    <value>DPI</value>
+    <value>إدارة</value>
   </data>
   <data name="DpiScaleControl_Message" xml:space="preserve">
-    <value>Change scale of the built-in display.</value>
+    <value>تغيير مقياس العرض المدمج.</value>
   </data>
   <data name="DpiScaleControl_Title" xml:space="preserve">
-    <value>DPI</value>
+    <value>إدارة</value>
   </data>
   <data name="Edit" xml:space="preserve">
     <value>تحرير</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Message" xml:space="preserve">
-    <value>Name</value>
+    <value>الاسم</value>
   </data>
   <data name="EditDashboardGroupControl_EditGroup_Title" xml:space="preserve">
-    <value>Edit group name</value>
+    <value>تحرير اسم المجموعة</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Message" xml:space="preserve">
     <value>الاسم</value>
   </data>
   <data name="EditDashboardWindow_CreateGroup_Title" xml:space="preserve">
-    <value>Create group</value>
+    <value>إنشاء مجموعة</value>
   </data>
   <data name="EditDashboardWindow_Disclaimer_Message" xml:space="preserve">
-    <value>Some features may not appear on the Dashboard depending on state and configuration of your laptop.</value>
+    <value>قد لا تظهر بعض الميزات على لوحة التحكم اعتماداً على حالة وتكوين الكمبيوتر المحمول الخاص بك.</value>
   </data>
   <data name="EditDashboardWindow_Sensors" xml:space="preserve">
-    <value>Sensors</value>
+    <value>أجهزة الاستشعار</value>
   </data>
   <data name="EditDashboardWindow_Title" xml:space="preserve">
-    <value>Customize Dashboard</value>
+    <value>تخصيص لوحة التحكم</value>
   </data>
   <data name="EditSensorWindow_Title" xml:space="preserve">
-    <value>Edit Sensor</value>
+    <value>تعديل مستشعر</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>End date</value>
+    <value>تاريخ الانتهاء</value>
   </data>
   <data name="Error" xml:space="preserve">
-    <value>Error</value>
+    <value>خطأ</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
+    <value>سيتم تجاهل العمليات في هذه القائمة من خلال تشغيل اللعبة/إيقاف تشغيل اللعبة ووضع الذكاء AI/ Lenovo. أدخل اسم العملية بدون المسار (على سبيل المثال، "ديسكورد" أو "مزيج").</value>
   </data>
   <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Process Name (e.g. discord)</value>
+    <value>اسم العملية (مثل Discord)</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>العمليات المستبعدة</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>قم بإلغاء تحديد معدلات التحديث التي لا تريد استخدامها عند استخدام اختصار Fn + R.</value>
@@ -982,7 +982,7 @@ Thank you for your support!</value>
     <value>خروج</value>
   </data>
   <data name="Expired" xml:space="preserve">
-    <value>Expired</value>
+    <value>منتهية</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>تصدير</value>
@@ -1003,7 +1003,7 @@ Thank you for your support!</value>
     <value>وضع كرت الشاشة الخارجى</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Message" xml:space="preserve">
-    <value>Both integrated and discrete GPU are enabled. System will automatically switch between them based on its needs.</value>
+    <value>ويجري تمكين كل من وحدة البيانات العالمية المتكاملة والمتميزة، وسيتحول النظام تلقائيا فيما بينهما استنادا إلى احتياجاته.</value>
   </data>
   <data name="ExtendedHybridModeInfoWindow_Hybrid_Title" xml:space="preserve">
     <value>الوضع الهجين</value>
@@ -1042,10 +1042,10 @@ Thank you for your support!</value>
     <value>PCH</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
-    <value>Set fan to maximum speed.</value>
+    <value>تعيين المعجبين إلى أقصى سرعة.</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Title" xml:space="preserve">
-    <value>Fan Max Speed</value>
+    <value>الحد الأقصى لسرعة المعجبين</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>جارٍ التصفية...</value>
@@ -1075,29 +1075,29 @@ Thank you for your support!</value>
     <value>Fn قفل ال</value>
   </data>
   <data name="GB" xml:space="preserve">
-    <value>GB</value>
+    <value>جيجابايت</value>
   </data>
   <data name="Generation" xml:space="preserve">
-    <value>Generation</value>
+    <value>الجيل</value>
   </data>
   <data name="GHz" xml:space="preserve">
-    <value>GHz</value>
+    <value>غيغاهرتز</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Apply a specific Custom Mode preset.</value>
+    <value>تطبيق وضع مخصص محدد مسبقاً.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Custom Mode preset</value>
+    <value>وضع مخصص الإعداد المسبق</value>
   </data>
   <data name="GodModeSettingsWindow_ActivePreset_Title" xml:space="preserve">
-    <value>Active preset</value>
+    <value>تنشيط الإعداد المسبق</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
     <value>WARNING!
 Some laptops may accept higher values than they indicate, but be careful. This option may result in unpredictable behavior. If you are not sure what are you doing, leave this at 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
-    <value>Maximum offset</value>
+    <value>الحد الأقصى للإزاحة</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>لا تغير الخيارات في الأسفل إلا إذا كنت تعلم ماذا تفعل.</value>
@@ -1107,58 +1107,58 @@ Some laptops may accept higher values than they indicate, but be careful. This o
 Some laptops may accept lower values than they indicate, but be careful. This option may result in unpredictable behavior. If you are not sure what are you doing, leave this at 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
-    <value>Minimum offset</value>
+    <value>الحد الأدنى للإزاحة</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
     <value>إعدادات متقدمة</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>All Core Curve Optimizer.</value>
+    <value>تحسين منحنى كل النواة</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
-    <value>All Core Curve Optimizer</value>
+    <value>تحسين المنحنى الأساسي</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL" xml:space="preserve">
-    <value>APU sPPT Power Limit</value>
+    <value>حد طاقة APU sPT</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>The peak power consumption that can be reached by the CPU with a minor delay.</value>
+    <value>ذروة استهلاك الطاقة التي يمكن أن تصل إليها وحدة المعالجة المركزية مع تأخير طفيف.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>حدا لطاقه لفتره طويله</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>The maximum power consumption that can be reached by the CPU when both CPU and GPU are fully utilized.</value>
+    <value>الحد الأقصى لاستهلاك الطاقة الذي يمكن أن تصل إليه وحدة المعالجة المركزية عندما يتم استخدام كل من وحدة المعالجة المركزية ووحدة البيانات العالمية.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>حد الطاقة على الأمد الطويل</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>The continuous power consumption that can be reached by the CPU.</value>
+    <value>استهلاك الطاقة المستمر الذي يمكن الوصول إليه من قبل وحدة المعالجة المركزية.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
-    <value>Peak Power Limit</value>
+    <value>حد قوة الذروة</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>The maximum instantaneous power consumption that can be reached by the CPU.</value>
+    <value>الحد الأقصى لاستهلاك الطاقة الفورية الذي يمكن أن تصل إليه وحدة المعالجة المركزية.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau" xml:space="preserve">
-    <value>Short Term Power Limit Duration</value>
+    <value>مدة الحد الاقصى للطاقة</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL1Tau_Description" xml:space="preserve">
-    <value>The amount of time the CPU is allowed to boost and use Short Term Power Limit for. When Tau expires, Long Term Power Limit is used.</value>
+    <value>مقدار الوقت المسموح به لوحدة المعالجة المركزية لتعزيز واستخدام حد الطاقة القصير الأجل من أجله. عندما تنتهي مدة صلاحية تاو، يتم استخدام حد الطاقة الطويل الأجل.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>حدا لطاقه لفتره قصيره</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>The peak power consumption that can be reached by the CPU within a short amount time.</value>
+    <value>الذروة في استهلاك الطاقة التي يمكن أن تصل إليها وحدة المعالجة المركزية في غضون وقت قصير.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>حد حرارة المعالج</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>The maximum temperature that can be reached by the CPU before frequency and power is reduced.</value>
+    <value>درجة الحرارة القصوى التي يمكن أن تصل إليها وحدة المعالجة المركزية قبل خفض التردد والطاقة.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>المعالج</value>
@@ -1171,10 +1171,10 @@ Misconfiguration can lead to severe system instability, thermal throttling, or p
 Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
-    <value>Name</value>
+    <value>الاسم</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Title" xml:space="preserve">
-    <value>Preset name</value>
+    <value>اسم الإعداد المسبق</value>
   </data>
   <data name="GodModeSettingsWindow_Error_Apply_Title" xml:space="preserve">
     <value>تعذّر تعيين الإعدادات</value>
@@ -1203,85 +1203,85 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>TGP قابل للضبط</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>The additional amount of power that can be allocated to the GPU on top of base power consumption.</value>
+    <value>الكمية الإضافية من الطاقة التي يمكن تخصيصها للاتحاد البريدي العالمي علاوة على استهلاك الطاقة الأساسية.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>تعزيز أو دعم تلقائي</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>The additional maximum power that can be allocated to the GPU based on the power consumption of the CPU.</value>
+    <value>الحد الأقصى من الطاقة الإضافية التي يمكن تخصيصها للاتحاد العالمي لتحديد المواقع استناداً إلى استهلاك الطاقة من وحدة المعالجة المعالجة.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>أعلى حد لحرارة المعالج</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>The maximum temperature that can be reached by the GPU before frequency and power is reduced.</value>
+    <value>درجة الحرارة القصوى التي يمكن أن تصل إليها الوحدة البريدية العالمية قبل خفض التردد والطاقة.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>وحدة معالجة الرسومات</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl" xml:space="preserve">
-    <value>GPU to CPU Dynamic Boost</value>
+    <value>تعزيز GPU إلى المعالج الديناميكي</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>This is the maximum additional power that can be allocated to the CPU from the GPU based on CPU usage. The higher the value, the better the performance of applications that use the CPU.</value>
+    <value>هذا هو الحد الأقصى من الطاقة الإضافية التي يمكن تخصيصها لوحدة المعالجة المركزية من وحدة المعالجة المركزية استناداً إلى استخدام وحدة المعالجة المركزية. كلما ارتفعت القيمة، كان أداء التطبيقات التي تستخدم المعالج.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
-    <value>Total Processor Power Target In AC</value>
+    <value>مجموع قوة المعالج الهدف في AC</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>The point at which the CPU triggers dynamic power consumption adjustment for the GPU.</value>
+    <value>النقطة التي تقوم عندها وحدة المعالجة المركزية بتفعيل تعديل استهلاك الطاقة الديناميكي لوحدة المعالجة المركزية (GPU).</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Legion Space or its services are running.</value>
+    <value>لن يتم تطبيق إعدادات الوضع المخصصة بشكل صحيح عند تشغيل فضاء الفيلق أو خدماته.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Legion Zone or its services are running.</value>
+    <value>لن يتم تطبيق إعدادات الوضع المخصصة بشكل صحيح عند تشغيل منطقة الفيلق أو خدماته.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency.</value>
+    <value>تردد التعزيز الدقيق.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency</value>
+    <value>تردد تعزيز الدفع الزائد بدقة</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Scaler.</value>
+    <value>دقّة تعزيز الذاكرة الفائقة.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
-    <value>Precision Boost Overdrive Scaler</value>
+    <value>تعزيز الذاكرة الفائقة</value>
   </data>
   <data name="GodModeSettingsWindow_Title" xml:space="preserve">
     <value>إعدادات الوضع الخاص</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Enable / Disable Core Curve Adjustment.</value>
+    <value>تمكين / تعطيل تعديل منحنى النواة</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
-    <value>Core Curve Adjustment</value>
+    <value>تعديل المنحنى الأساسي</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Enable / Disable Advanced Overclocking options.</value>
+    <value>تمكين / تعطيل خيارات تسجيل مفرطة متقدمة.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Advanced Overclocking Options</value>
+    <value>خيارات فائضة متقدمة</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Lenovo Vantage or its services are running.</value>
+    <value>لن يتم تطبيق إعدادات الوضع المخصص بشكل صحيح عند تشغيل Lenovo Vantage أو خدماته.</value>
   </data>
   <data name="GPU" xml:space="preserve">
     <value>GPU</value>
   </data>
   <data name="HardwareFeatures" xml:space="preserve">
-    <value>Hardware Features</value>
+    <value>ميزات الجهاز</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable or disable background polling for hardware sensors.</value>
+    <value>تمكين أو تعطيل تصويت الخلفية لمستشعرات الأجهزة.</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>أجهزة استشعار الأجهزة</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable high dynamic range (HDR) on the built-in display.</value>
+    <value>تمكين النطاق الديناميكي العالي (HDR) على الشاشة المدمجة.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>النطاق الديناميكي العالي</value>
@@ -1296,71 +1296,71 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>استخدام النطاق الديناميكي العالي موقف من قبل إعدادات نظام التشغيل.</value>
   </data>
   <data name="Hide" xml:space="preserve">
-    <value>Hide</value>
+    <value>إخفاء</value>
   </data>
   <data name="HideAll" xml:space="preserve">
-    <value>Hide all</value>
+    <value>إخفاء الكل</value>
   </data>
   <data name="Hz" xml:space="preserve">
-    <value>Hz</value>
+    <value>هرتز</value>
   </data>
   <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
+    <value>أيقونة</value>
   </data>
   <data name="IconColor" xml:space="preserve">
-    <value>Icon color</value>
+    <value>لون الأيقونة</value>
   </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
-    <value>Try changing the mode again in a couple of seconds, if you do not see expected result.
-If dGPU does not respond at all, please restart your laptop.</value>
+    <value>حاول تغيير الوضع مرة أخرى في بضع ثوانٍ، إذا لم تر النتيجة المتوقعة.
+إذا كان dGPU لا يستجيب على الإطلاق، يرجى إعادة تشغيل الكمبيوتر المحمول الخاص بك.</value>
   </data>
   <data name="IGPUModeChangeException_Message_Auto" xml:space="preserve">
-    <value>dGPU will disconnect automatically when not in use and laptop is on battery power.</value>
+    <value>سيقوم dGPU بقطع الاتصال تلقائيًا عندما لا يكون قيد الاستخدام ويكون الكمبيوتر المحمول على طاقة البطارية.</value>
   </data>
   <data name="IGPUModeChangeException_Message_IGPUOnly" xml:space="preserve">
-    <value>dGPU will disconnect automatically when not in use.</value>
+    <value>dGPU سيتم قطع الاتصال تلقائيًا عند عدم الاستخدام.</value>
   </data>
   <data name="IGPUModeChangeException_Title" xml:space="preserve">
-    <value>Could not change GPU Working Mode</value>
+    <value>لا يمكن تغيير وضع عمل GPU</value>
   </data>
   <data name="IGPUModeChangeException_Title_Auto" xml:space="preserve">
-    <value>dGPU is currently in use or laptop is not on battery power</value>
+    <value>dGPU قيد الاستخدام حاليا أو الكمبيوتر المحمول ليس على طاقة البطارية</value>
   </data>
   <data name="IGPUModeChangeException_Title_IGPUOnly" xml:space="preserve">
-    <value>dGPU is currently in use</value>
+    <value>يستخدم dGPU حاليا</value>
   </data>
   <data name="Import" xml:space="preserve">
-    <value>Import</value>
+    <value>استيراد</value>
   </data>
   <data name="Inactive" xml:space="preserve">
     <value>غير مفعل</value>
   </data>
   <data name="Information" xml:space="preserve">
-    <value>Information</value>
+    <value>معلومات</value>
   </data>
   <data name="InstantBootAutomationStepControl_Message" xml:space="preserve">
-    <value>Turn on the laptop when a charger is connected.</value>
+    <value>تشغيل الكمبيوتر المحمول عند توصيل الشاحن.</value>
   </data>
   <data name="InstantBootAutomationStepControl_Title" xml:space="preserve">
-    <value>Instant Boot</value>
+    <value>حذاء فوري</value>
   </data>
   <data name="InstantBootControl_Message" xml:space="preserve">
-    <value>Turn on the laptop when a charger is connected.</value>
+    <value>تشغيل الكمبيوتر المحمول عند توصيل الشاحن.</value>
   </data>
   <data name="InstantBootControl_Title" xml:space="preserve">
-    <value>Instant Boot</value>
+    <value>حذاء فوري</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change IdeaPad Power Mode</value>
+    <value>تغيير وضع الطاقة</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>IdeaPad Power Mode</value>
+    <value>وضع الطاقة</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Change IdeaPad Power Mode</value>
+    <value>تغيير وضع الطاقة</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>IdeaPad Power Mode</value>
+    <value>وضع الطاقة</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows Dynamic lighting is enabled.
@@ -1374,220 +1374,220 @@ Click Yes to disable and No to ignore.</value>
     <value>الإضاءة الخلفية للوحة المفاتيح</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Keyboard backlight cannot be controlled in here when Lenovo Vantage or its services are running.</value>
+    <value>لا يمكن التحكم في الإضاءة الخلفية لوحة المفاتيح هنا عندما يكون Lenovo Vantage أو خدماتها قيد التشغيل.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage or its services are running</value>
+    <value>Lenovo Vantage أو خدماته تعمل</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
-    <value>Add Custom Key</value>
+    <value>إضافة مفتاح مخصص</value>
   </data>
   <data name="KeyDiscovery_Added" xml:space="preserve">
-    <value>Added</value>
+    <value>أضيف</value>
   </data>
   <data name="KeyDiscovery_CodeText" xml:space="preserve">
-    <value>Code: {0}</value>
+    <value>الرمز: {0}</value>
   </data>
   <data name="KeyDiscovery_KnownKeyTooltip" xml:space="preserve">
-    <value>Known key</value>
+    <value>مفتاح معروف</value>
   </data>
   <data name="KeyDiscovery_Listening" xml:space="preserve">
-    <value>Listening for key presses... Press ESC to stop.</value>
+    <value>الاستماع لضغطات المفتاح... اضغط ESC للتوقف.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Unknown key – can be added</value>
+    <value>مفتاح غير معروف - يمكن إضافته</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_All" xml:space="preserve">
-    <value>All</value>
+    <value>الكل</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aurora_Sync" xml:space="preserve">
     <value>Aurora Sync</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Bottom_to_Top" xml:space="preserve">
-    <value>Bottom to Top</value>
+    <value>أسفل إلى الأعلى</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Breathe" xml:space="preserve">
-    <value>Breathe</value>
+    <value>تباطؤ</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Brightness" xml:space="preserve">
-    <value>Brightness</value>
+    <value>السطوع</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Clear_Colors" xml:space="preserve">
-    <value>Clear Colors</value>
+    <value>مسح الألوان</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>مخصص</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Direction" xml:space="preserve">
-    <value>Direction</value>
+    <value>الاتجاه</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Effect" xml:space="preserve">
-    <value>Effect</value>
+    <value>تأثير</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Export_Profile" xml:space="preserve">
-    <value>Export Profile</value>
+    <value>تصدير الملف الشخصي</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Gradient" xml:space="preserve">
-    <value>Gradient</value>
+    <value>متدرج</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Import_Profile" xml:space="preserve">
-    <value>Import Profile</value>
+    <value>استيراد الملف الشخصي</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Keyboard" xml:space="preserve">
-    <value>Keyboard</value>
+    <value>لوحة المفاتيح</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Left_to_Right" xml:space="preserve">
-    <value>Left to Right</value>
+    <value>من اليسار إلى اليمين</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Meteor" xml:space="preserve">
     <value>Meteor</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_None" xml:space="preserve">
-    <value>None</value>
+    <value>لا</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_No_Selection" xml:space="preserve">
-    <value>No Selection</value>
+    <value>لا اختيار</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Probe_Indices" xml:space="preserve">
-    <value>Probe Indices</value>
+    <value>مؤشرات المسح</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow" xml:space="preserve">
-    <value>Rainbow</value>
+    <value>قوس قزح</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rainbow_Wave" xml:space="preserve">
-    <value>Rainbow Wave</value>
+    <value>موجة قوس قزح</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rear_Ambient" xml:space="preserve">
-    <value>Rear Ambient</value>
+    <value>المحيط الخلفي</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Right_to_Left" xml:space="preserve">
-    <value>Right to Left</value>
+    <value>من اليمين إلى اليسار</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Ripple" xml:space="preserve">
-    <value>Ripple</value>
+    <value>تموج</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selected_Key" xml:space="preserve">
-    <value>Selected {0} keys with {1} effect</value>
+    <value>تم اختيار مفاتيح {0} مع تأثير {1}</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selection" xml:space="preserve">
-    <value>Selection</value>
+    <value>الاختيار</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Smooth_Transition" xml:space="preserve">
-    <value>Smooth Transition</value>
+    <value>تحول سلس</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Sparkle" xml:space="preserve">
-    <value>Sparkle</value>
+    <value>البانكلي</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Speed" xml:space="preserve">
-    <value>Speed</value>
+    <value>السرعة</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Spiral_Rainbow" xml:space="preserve">
-    <value>Spiral Rainbow</value>
+    <value>قوس قزح حلوي</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Static" xml:space="preserve">
-    <value>Static</value>
+    <value>ثابت</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Target_Zone" xml:space="preserve">
-    <value>Target Zone</value>
+    <value>الجهاز قيد الختيار</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Top_to_Bottom" xml:space="preserve">
-    <value>Top to Bottom</value>
+    <value>أعلى إلى الأسفل</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Wave" xml:space="preserve">
-    <value>Wave</value>
+    <value>موجة</value>
   </data>
   <data name="LivePreview" xml:space="preserve">
-    <value>Live Preview</value>
+    <value>معاينة حية</value>
   </data>
   <data name="Load" xml:space="preserve">
-    <value>Load</value>
+    <value>تحميل</value>
   </data>
   <data name="MacAddress" xml:space="preserve">
-    <value>MAC address</value>
+    <value>عنوان MAC</value>
   </data>
   <data name="MachineType" xml:space="preserve">
-    <value>Machine Type</value>
+    <value>نوع الآلة</value>
   </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable or disable macros.</value>
+    <value>تمكين أو تعطيل وحدات الماكرو.</value>
   </data>
   <data name="MacroAutomationStepControl_Title" xml:space="preserve">
-    <value>Macro</value>
+    <value>ماكرو</value>
   </data>
   <data name="MacroPage_Enable_Subtitle" xml:space="preserve">
-    <value>Lenovo Legion Toolkit must be running for macros to work.</value>
+    <value>يجب ان يكون التطبيق مفتوحاََ حتى تعمل الماكرو.</value>
   </data>
   <data name="MacroPage_Enable_Title" xml:space="preserve">
-    <value>Enable</value>
+    <value>تمكين</value>
   </data>
   <data name="MacroPage_Subtitle" xml:space="preserve">
-    <value>You can record series of key presses and invoke them using the number pad on your keyboard.</value>
+    <value>يمكنك تسجيل سلسلة من ضغطات المفاتيح واستدعائها باستخدام لوحة الأرقام على لوحة المفاتيح الخاصة بك.</value>
   </data>
   <data name="MacroPage_Title" xml:space="preserve">
-    <value>Macro</value>
+    <value>ماكرو</value>
   </data>
   <data name="MacroRecordingWindow_Preparing_Title" xml:space="preserve">
-    <value>Recording will start in 3 seconds...</value>
+    <value>سيبدأ التسجيل في 3 ثواني...</value>
   </data>
   <data name="MacroRecordingWindow_Recording_Message" xml:space="preserve">
-    <value>Press ESC to stop.</value>
+    <value>اضغط على ESC للتوقف.</value>
   </data>
   <data name="MacroRecordingWindow_Recording_Title" xml:space="preserve">
-    <value>Recording...</value>
+    <value>تسجيل...</value>
   </data>
   <data name="MacroSequenceControl_DontRepeat" xml:space="preserve">
-    <value>Don't repeat</value>
+    <value>عدم التكرار</value>
   </data>
   <data name="MacroSequenceControl_IgnoreDelays_Title" xml:space="preserve">
-    <value>Ignore delays</value>
+    <value>تجاهل حالات التأخير</value>
   </data>
   <data name="MacroSequenceControl_InterruptOnOtherKey_Title" xml:space="preserve">
-    <value>Interrupt if another key was pressed</value>
+    <value>توقف إذا تم الضغط على مفتاح آخر</value>
   </data>
   <data name="MacroSequenceControl_Keyboard" xml:space="preserve">
-    <value>Keyboard only</value>
+    <value>لوحة المفاتيح فقط</value>
   </data>
   <data name="MacroSequenceControl_KeyboardMouse" xml:space="preserve">
-    <value>Keyboard keys and mouse buttons</value>
+    <value>مفاتيح لوحة المفاتيح وأزرار الماوس</value>
   </data>
   <data name="MacroSequenceControl_KeyboardMouseMovement" xml:space="preserve">
-    <value>All inputs</value>
+    <value>جميع المدخلات</value>
   </data>
   <data name="MacroSequenceControl_Record" xml:space="preserve">
-    <value>Record</value>
+    <value>تسجيل</value>
   </data>
   <data name="MacroSequenceControl_RecordingOptions" xml:space="preserve">
-    <value>Recording options</value>
+    <value>خيارات التسجيل</value>
   </data>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
-    <value>Repeat</value>
+    <value>تكرار</value>
   </data>
   <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
+    <value>Lenovo Hotkeys تعمل في الخلفية.</value>
   </data>
   <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController is running in the background.</value>
+    <value>Lenovo Vantage و/أو غير مراقب يعمل في الخلفية.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
-    <value>API rate limit reached, please try again later.</value>
+    <value>وصل الحد الأقصى لمعدل API، الرجاء المحاولة مرة أخرى لاحقاً.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_Title" xml:space="preserve">
-    <value>Failed to check for updates</value>
+    <value>فشل التحقق من وجود تحديثات</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_Unknown_Message" xml:space="preserve">
-    <value>Something went wrong, please try again later.</value>
+    <value>حدث خطأ ما، الرجاء المحاولة مرة أخرى لاحقاً.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
-    <value>No updates found</value>
+    <value>لم يتم العثور على تحديثات</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
-    <value>Legion Space is running in the background.</value>
+    <value>فضاء الفيلق يعمل في الخلفية.</value>
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
-    <value>Legion Zone is running in the background.</value>
+    <value>منطقة الفيلق تعمل في الخلفية.</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>حول البرنامج</value>
@@ -1608,7 +1608,7 @@ Click Yes to disable and No to ignore.</value>
     <value>لوحة المفاتيح</value>
   </data>
   <data name="MainWindow_NavigationItem_Macro" xml:space="preserve">
-    <value>Macro</value>
+    <value>ماكرو</value>
   </data>
   <data name="MainWindow_NavigationItem_Packages" xml:space="preserve">
     <value>التحميلات</value>
@@ -1617,10 +1617,10 @@ Click Yes to disable and No to ignore.</value>
     <value>الإعدادات</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>You need install PawnIO first to use the new dashboard!</value>
   </data>
   <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>Warning</value>
+    <value>تحذير</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
     <value>يتوفر تحديث!</value>
@@ -1629,28 +1629,28 @@ Click Yes to disable and No to ignore.</value>
     <value>يتوفر {0} تحديث!</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
-    <value>Don't show again.</value>
+    <value>لا تظهر مرة أخرى.</value>
   </data>
   <data name="MHz" xml:space="preserve">
-    <value>MHz</value>
+    <value>ميغاهرتز</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Message" xml:space="preserve">
-    <value>When off, microphones will be muted.</value>
+    <value>عند الإيقاف ، سيتم كتم صوت الميكروفون.</value>
   </data>
   <data name="MicrophoneAutomationStepControl_Title" xml:space="preserve">
     <value>الميكروفون</value>
   </data>
   <data name="MicrophoneControl_Message" xml:space="preserve">
-    <value>When off, microphones will be muted.</value>
+    <value>عند الإيقاف ، سيتم كتم صوت الميكروفون.</value>
   </data>
   <data name="MicrophoneControl_Title" xml:space="preserve">
-    <value>Microphone</value>
+    <value>الميكروفون</value>
   </data>
   <data name="Model" xml:space="preserve">
-    <value>Model</value>
+    <value>الموديل</value>
   </data>
   <data name="Motherboard" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>اللوحة الأم</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
     <value>التحريك للأسفل</value>
@@ -1659,50 +1659,50 @@ Click Yes to disable and No to ignore.</value>
     <value>اذهب للأعلى</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_DisplayName" xml:space="preserve">
-    <value>Multiple triggers...</value>
+    <value>تشغيل متعدد...</value>
     <comment>Allows the user to merge multiple triggers for the execution of selected actions.</comment>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_And" xml:space="preserve">
     <value>Match All (And)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_None" xml:space="preserve">
-    <value>No Logic (Separate)</value>
+    <value>لا يوجد منطق (منفصل)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
     <value>Match Any (Or)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
-    <value>Logic</value>
+    <value>المنطق</value>
   </data>
   <data name="NetworkAdapters" xml:space="preserve">
-    <value>Network adapters</value>
+    <value>محوّلات الشبكة</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>لا</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Notification Text (supports $RUN_OUTPUT$)</value>
+    <value>نص الإشعار (يدعم $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
-    <value>Show notification</value>
+    <value>إظهار الإشعار</value>
   </data>
   <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
-    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
+    <value>يمكنك استخدام $RUN_OUTPUT$ لإدراج ناتج الخطوة السابقة بشكل ديناميكي.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>محول التيار المتردد</value>
   </data>
   <data name="NotificationsSettingsWindow_AirplaneMode" xml:space="preserve">
-    <value>Airplane mode</value>
+    <value>وضع الطائرة</value>
   </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
-    <value>Actions</value>
+    <value>الإجراءات</value>
   </data>
   <data name="NotificationsSettingsWindow_Camera" xml:space="preserve">
     <value>الكاميرا</value>
   </data>
   <data name="NotificationsSettingsWindow_CapsLock" xml:space="preserve">
-    <value>Caps Lock</value>
+    <value>حد الاقفال</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
     <value>تعطيل الإشعار بإجراءات مفاتيح Fn مثل كتم صوت الميكروفون
@@ -1715,7 +1715,7 @@ Click Yes to disable and No to ignore.</value>
     <value>مفاتيح Fn</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>وضع ITS</value>
   </data>
   <data name="NotificationsSettingsWindow_KeyboardBacklight" xml:space="preserve">
     <value>الإضاءة الخلفية للوحة المفاتيح</value>
@@ -1728,22 +1728,22 @@ Click Yes to disable and No to ignore.</value>
 It won't affect other full screen windows, but you will not be able to click on the notifications.</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Title" xml:space="preserve">
-    <value>Notification always on top</value>
+    <value>الإشعارات دائماً في الأعلى</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
-    <value>Duration</value>
+    <value>المدة</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Message" xml:space="preserve">
-    <value>Show notification on all screens connected to your device.</value>
+    <value>إظهار الإشعار على جميع الشاشات المتصلة بجهازك.</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Title" xml:space="preserve">
-    <value>Notification on all screens</value>
+    <value>إشعار على جميع الشاشات</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationPosition_Title" xml:space="preserve">
     <value>الموضع</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationType" xml:space="preserve">
-    <value>Name</value>
+    <value>الاسم</value>
   </data>
   <data name="NotificationsSettingsWindow_NumLock" xml:space="preserve">
     <value>Num Lock</value>
@@ -1764,7 +1764,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>لوحة اللمس مُشغلة</value>
   </data>
   <data name="NotificationsSettingsWindow_Updates_Title" xml:space="preserve">
-    <value>Updates</value>
+    <value>التحديثات</value>
   </data>
   <data name="Notification_ACAdapterConnected" xml:space="preserve">
     <value>محول التيار المتردد متصل</value>
@@ -1776,10 +1776,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>محول التيار المتردد غير متصل</value>
   </data>
   <data name="Notification_AirplaneModeOff" xml:space="preserve">
-    <value>Airplane mode off</value>
+    <value>إيقاف وضع الطائرة</value>
   </data>
   <data name="Notification_AirplaneModeOn" xml:space="preserve">
-    <value>Airplane mode on</value>
+    <value>تشغيل وضع الطائرة</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
     <value>الكاميرا مغلقة</value>
@@ -1812,37 +1812,37 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>مفاتيح ألأرقام مفتوحة</value>
   </data>
   <data name="Notification_PanelLogoLightingOff" xml:space="preserve">
-    <value>Legion logo off</value>
+    <value>شعار الفيلق مغلق</value>
   </data>
   <data name="Notification_PanelLogoLightingOn" xml:space="preserve">
-    <value>Legion logo on</value>
+    <value>شعار الفيلق يعمل</value>
   </data>
   <data name="Notification_PortLightingOff" xml:space="preserve">
-    <value>Ports backlight off</value>
+    <value>إيقاف إضاءة المنافذ الخلفية</value>
   </data>
   <data name="Notification_PortLightingOn" xml:space="preserve">
-    <value>Ports backlight on</value>
+    <value>تشغيل الإضاءة الخلفية للمنفذ</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightChanged" xml:space="preserve">
-    <value>RGB Changed</value>
+    <value>تم تغيير RGB</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightOff" xml:space="preserve">
-    <value>RGB Off</value>
+    <value>إيقاف RGB</value>
   </data>
   <data name="Notification_SmartKeyDoublePress" xml:space="preserve">
-    <value>Double Press</value>
+    <value>ضغط مزدوج</value>
   </data>
   <data name="Notification_SmartKeySinglePress" xml:space="preserve">
-    <value>Single Press</value>
+    <value>صحافة واحدة</value>
   </data>
   <data name="Notification_SpectrumBacklightChanged" xml:space="preserve">
-    <value>Spectrum Changed</value>
+    <value>تم تغيير الطيف</value>
   </data>
   <data name="Notification_SpectrumBacklightOff" xml:space="preserve">
-    <value>Spectrum Off</value>
+    <value>إطفاء الطيف</value>
   </data>
   <data name="Notification_SpectrumBacklightPresetChanged" xml:space="preserve">
-    <value>Spectrum Preset</value>
+    <value>ضبط الطيف مسبقاً</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Backlight" xml:space="preserve">
     <value>الإضاءة الخلفية {0}</value>
@@ -1866,28 +1866,28 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>الإضاءة الخلفية {0}</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightChanged" xml:space="preserve">
-    <value>White Changed</value>
+    <value>تم تغيير الأبيض</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightOff" xml:space="preserve">
-    <value>White Off</value>
+    <value>أبيض معطل</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
-    <value>Backlight changed</value>
+    <value>تم تغيير الإضاءة الخلفية</value>
   </data>
   <data name="Off" xml:space="preserve">
-    <value>Off</value>
+    <value>متوقف</value>
   </data>
   <data name="OK" xml:space="preserve">
     <value>موافق</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Turn backlight on or off.</value>
+    <value>تشغيل أو إيقاف الإضاءة الخلفية.</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightAutomationStepControl_Title" xml:space="preserve">
     <value>الإضاءة الخلفية للوحة المفاتيح</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Message" xml:space="preserve">
-    <value>You can turn backlight on or off with Fn+Space.</value>
+    <value>يمكنك تشغيل أو إيقاف الإضاءة الخلفية باستخدام Fn+Space.</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightControl_Title" xml:space="preserve">
     <value>الإضاءة الخلفية للوحة المفاتيح</value>
@@ -1896,145 +1896,145 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>فتح</value>
   </data>
   <data name="OsdAutomationStepControl_Message" xml:space="preserve">
-    <value>Show or Hide the OSD</value>
+    <value>إظهار أو إخفاء OSD</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>OSD</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
-    <value>Set the lock position state of the OSD.</value>
+    <value>تعيين حالة موضع القفل الخاص ب OSD.</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Title" xml:space="preserve">
-    <value>OSD Lock Position</value>
+    <value>موقع قفل OSD</value>
   </data>
   <data name="OsdSettings_Appearance_BackgroundColor" xml:space="preserve">
-    <value>Background Color</value>
+    <value>لون الخلفية</value>
   </data>
   <data name="OsdSettings_Appearance_CategoryColor" xml:space="preserve">
-    <value>Category Color</value>
+    <value>لون الفئة</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadius" xml:space="preserve">
     <value>Corner Radius</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusBottom" xml:space="preserve">
-    <value>Bottom</value>
+    <value>أسفل</value>
   </data>
   <data name="OsdSettings_Appearance_CornerRadiusTop" xml:space="preserve">
-    <value>Top</value>
+    <value>أعلى</value>
   </data>
   <data name="OsdSettings_Appearance_CriticalColor" xml:space="preserve">
-    <value>Critical Color</value>
+    <value>لون حرج</value>
   </data>
   <data name="OsdSettings_Appearance_FontSize" xml:space="preserve">
     <value>Font Size</value>
   </data>
   <data name="OsdSettings_Appearance_LabelColor" xml:space="preserve">
-    <value>Label Color</value>
+    <value>لون التسمية</value>
   </data>
   <data name="OsdSettings_Appearance_Opacity" xml:space="preserve">
-    <value>Opacity</value>
+    <value>التعتيم</value>
   </data>
   <data name="OsdSettings_Appearance_ValueColor" xml:space="preserve">
-    <value>Value Color</value>
+    <value>لون القيمة</value>
   </data>
   <data name="OsdSettings_Appearance_WarningColor" xml:space="preserve">
-    <value>Warning Color</value>
+    <value>لون التحذير</value>
   </data>
   <data name="OsdSettings_General_LockPosition" xml:space="preserve">
-    <value>Lock Position</value>
+    <value>موقع القفل</value>
   </data>
   <data name="OsdSettings_General_OverlayStyle" xml:space="preserve">
-    <value>Overlay Style</value>
+    <value>نمط التراكب</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>الفاصل الزمني للتحديث</value>
   </data>
   <data name="OsdSettings_General_RefreshInterval_Tooltip" xml:space="preserve">
-    <value>Sensor refresh interval</value>
+    <value>الفاصل الزمني لتحديث المستشعر</value>
   </data>
   <data name="OsdSettings_General_ResetPosition" xml:space="preserve">
-    <value>Reset Position</value>
+    <value>إعادة تعيين الموضع</value>
   </data>
   <data name="OsdSettings_General_SnapThreshold" xml:space="preserve">
-    <value>Snapping Threshold</value>
+    <value>الحد الاقصى</value>
   </data>
   <data name="OsdSettings_Tabs_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>المظهر</value>
   </data>
   <data name="OsdSettings_Tabs_General" xml:space="preserve">
-    <value>General</value>
+    <value>عام</value>
   </data>
   <data name="OsdSettings_Tabs_SensorItems" xml:space="preserve">
-    <value>Sensors</value>
+    <value>أجهزة الاستشعار</value>
   </data>
   <data name="OsdSettings_Tabs_Thresholds" xml:space="preserve">
-    <value>Thresholds</value>
+    <value>العينات</value>
   </data>
   <data name="OsdSettings_Thresholds_Critical" xml:space="preserve">
-    <value>Critical</value>
+    <value>حرج</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline" xml:space="preserve">
     <value>FPS Redline</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline_Description" xml:space="preserve">
-    <value>The minimum acceptable frame rate. Below this, the color turns critical.</value>
+    <value>الحد الأدنى لمعدل الإطار المقبول. أسفله، اللون يصبح حاسماً.</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta" xml:space="preserve">
-    <value>Low FPS Delta</value>
+    <value>دلتا FPS منخفض</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta_Description" xml:space="preserve">
-    <value>The maximum difference between average FPS and 1% Low. Above this, the counter turns critical.</value>
+    <value>الفارق الأقصى بين متوسط FPS و 1% منخفض. وفوق ذلك، يصبح العداد حاسماً.</value>
   </data>
   <data name="OsdSettings_Thresholds_Performance" xml:space="preserve">
-    <value>Performance</value>
+    <value>الأداء</value>
   </data>
   <data name="OsdSettings_Thresholds_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>درجة</value>
   </data>
   <data name="OsdSettings_Thresholds_Usage" xml:space="preserve">
-    <value>Usage</value>
+    <value>الاستخدام</value>
   </data>
   <data name="OsdSettings_Thresholds_Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>تحذير</value>
   </data>
   <data name="OsdWindow_Title" xml:space="preserve">
-    <value>OSD Settings</value>
+    <value>إعدادات OSD</value>
   </data>
   <data name="Osd_Cpu" xml:space="preserve">
-    <value>CPU</value>
+    <value>المعالج</value>
   </data>
   <data name="Osd_CPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>المعجبين</value>
   </data>
   <data name="Osd_Disk_0_Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>درجة حرارة القرص 1</value>
   </data>
   <data name="Osd_Disk_1_Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>درجة حرارة القرص 2</value>
   </data>
   <data name="Osd_ECoreClock" xml:space="preserve">
-    <value>E-Core Clock</value>
+    <value>الساعة الأساسية</value>
   </data>
   <data name="Osd_Fps" xml:space="preserve">
     <value>FPS</value>
   </data>
   <data name="Osd_Frame_Time" xml:space="preserve">
-    <value>Frame Time</value>
+    <value>وقت الإطار</value>
   </data>
   <data name="Osd_Game" xml:space="preserve">
-    <value>Game</value>
+    <value>المباراة</value>
   </data>
   <data name="Osd_Gpu" xml:space="preserve">
     <value>GPU</value>
   </data>
   <data name="Osd_GPU_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>المعجبين</value>
   </data>
   <data name="Osd_Low_Fps" xml:space="preserve">
-    <value>1% Low</value>
+    <value>1% منخفض</value>
   </data>
   <data name="Osd_Memory_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>درجة</value>
   </data>
   <data name="Osd_Memory_Utilization" xml:space="preserve">
     <value>Utilization</value>
@@ -2043,40 +2043,40 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>PCH</value>
   </data>
   <data name="Osd_PCH_Fan" xml:space="preserve">
-    <value>PCH Fan</value>
+    <value>معجب PCH</value>
   </data>
   <data name="Osd_PCoreClock" xml:space="preserve">
-    <value>P-Core Clock</value>
+    <value>P-Core ساعة</value>
   </data>
   <data name="Osd_Style_Bar" xml:space="preserve">
-    <value>Bar</value>
+    <value>شريط</value>
   </data>
   <data name="Osd_Style_Panel" xml:space="preserve">
-    <value>Panel</value>
+    <value>لوحة</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Increase performance by overclocking discrete GPU.</value>
+    <value>زيادة الأداء عن طريق الإفراط في التسويق GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
-    <value>Overclock GPU</value>
+    <value>تجاوز الساعة GPU</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Message" xml:space="preserve">
-    <value>Increase performance by overclocking discrete GPU.</value>
+    <value>زيادة الأداء عن طريق كسر السرعة في كرت الشاشة المنفصل.</value>
   </data>
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
-    <value>Overclock GPU</value>
+    <value>كسر سرعة كرت الشاشة</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
-    <value>Core Frequency Offset</value>
+    <value>إزاحة التردد الأساسي</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
-    <value>Memory Frequency Offset</value>
+    <value>إزاحة تردد الذاكرة</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
-    <value>Overclock GPU Settings</value>
+    <value>إعدادات GPU على مدار الساعة</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
-    <value>Unlocking in {0}...</value>
+    <value>فتح في {0}...</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
     <value>تحسين وقت استجابة الشاشة المدمجة.</value>
@@ -2091,7 +2091,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>مسنن مضاعفة السرعة</value>
   </data>
   <data name="PackageControl_Download" xml:space="preserve">
-    <value>Download</value>
+    <value>تنزيل</value>
   </data>
   <data name="PackageControl_DownloadComplete_Message" xml:space="preserve">
     <value>{0} مُحمل!</value>
@@ -2121,16 +2121,16 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>هذه الحزمة عمرها أكثر من عام.</value>
   </data>
   <data name="PackageControl_OpenReadme" xml:space="preserve">
-    <value>Open README</value>
+    <value>فتح الملف</value>
   </data>
   <data name="PackageControl_RebootRecommended" xml:space="preserve">
-    <value>Restart recommended</value>
+    <value>إعادة التشغيل الموصى بها</value>
   </data>
   <data name="PackageControl_RebootRequired" xml:space="preserve">
-    <value>Restart required</value>
+    <value>إعادة التشغيل مطلوبة</value>
   </data>
   <data name="PackageControl_ShutdownRequired" xml:space="preserve">
-    <value>Shutdown required</value>
+    <value>إيقاف التشغيل مطلوب</value>
   </data>
   <data name="PackageControl_Version" xml:space="preserve">
     <value>نسخة</value>
@@ -2152,25 +2152,25 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>جارٍ التنزيل</value>
   </data>
   <data name="PackagesPage_DownloadTo" xml:space="preserve">
-    <value>Download folder</value>
+    <value>مجلد التحميل</value>
   </data>
   <data name="PackagesPage_Error_CheckInternet_Message" xml:space="preserve">
-    <value>Check if your internet connection is up and running.</value>
+    <value>تحقق مما إذا كان الاتصال بالإنترنت الخاص بك قيد التشغيل.</value>
   </data>
   <data name="PackagesPage_Error_Title" xml:space="preserve">
-    <value>Something went wrong</value>
+    <value>حدث خطأ ما</value>
   </data>
   <data name="PackagesPage_MachineType" xml:space="preserve">
     <value>نوع الجهاز أو الآلة</value>
   </data>
   <data name="PackagesPage_NoMatchingDownloads" xml:space="preserve">
-    <value>No matching downloads found</value>
+    <value>لم يتم العثور على تنزيلات مطابقة</value>
   </data>
   <data name="PackagesPage_OnlyShowUpdates" xml:space="preserve">
-    <value>Show updates only</value>
+    <value>إظهار التحديثات فقط</value>
   </data>
   <data name="PackagesPage_OpenDownloadTo" xml:space="preserve">
-    <value>Open Download folder</value>
+    <value>فتح مجلد التحميل</value>
   </data>
   <data name="PackagesPage_OperatingSystem" xml:space="preserve">
     <value>نظام التشغيل</value>
@@ -2203,22 +2203,22 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>التحميلات</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Message" xml:space="preserve">
-    <value>Try getting updates from the other source.</value>
+    <value>حاول الحصول على التحديثات من المصدر الآخر.</value>
   </data>
   <data name="PackagesPage_UpdateCatalogNotFound_Title" xml:space="preserve">
-    <value>Update catalog not found</value>
+    <value>تحديث الكتالوج غير موجود</value>
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Turn on or off the backlight on the lid of the laptop.</value>
+    <value>تشغيل أو إيقاف الإضاءة الخلفية على غطاء الكمبيوتر المحمول.</value>
   </data>
   <data name="PanelLogoBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Panel logo backlight</value>
+    <value>ضوء لوحة الشعار الخلفية</value>
   </data>
   <data name="PanelLogoBacklightControl_Message" xml:space="preserve">
-    <value>Turn on or off the backlight on the lid of the laptop.</value>
+    <value>تشغيل أو إيقاف الإضاءة الخلفية على غطاء الكمبيوتر المحمول.</value>
   </data>
   <data name="PanelLogoBacklightControl_Title" xml:space="preserve">
-    <value>Panel logo backlight</value>
+    <value>ضوء لوحة الشعار الخلفية</value>
   </data>
   <data name="Paste" xml:space="preserve">
     <value>لصق</value>
@@ -2227,35 +2227,35 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>%</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Minutes" xml:space="preserve">
-    <value>Minutes</value>
+    <value>دقائق</value>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Period" xml:space="preserve">
     <value>Period (minutes)</value>
     <comment>A prompt that is used both to ask the user to input an integer, representing the number of minutes between two periodic actions are triggered, and to inform the user what have they set once they are done configuring the action.</comment>
   </data>
   <data name="PeriodicActionPipelineTriggerTabItemContent_Seconds" xml:space="preserve">
-    <value>Seconds</value>
+    <value>ثواني</value>
   </data>
   <data name="PlatformAndCapabilities" xml:space="preserve">
-    <value>Platform &amp; Capabilities</value>
+    <value>المنصة والقدرات</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
-    <value>Common music formats like wav or mp3 are supported.</value>
+    <value>صيغ الموسيقى الشائعة مثل الواف أو mp3 مدعومة.</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Title" xml:space="preserve">
-    <value>Play sound</value>
+    <value>تشغيل الصوت</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Message" xml:space="preserve">
-    <value>Turn on or off the backlight of the ports on the back of the laptop.</value>
+    <value>تشغيل أو إيقاف الإضاءة الخلفية للمنفذ على ظهر الكمبيوتر المحمول.</value>
   </data>
   <data name="PortsBacklightAutomationStepControl_Title" xml:space="preserve">
-    <value>Ports backlight</value>
+    <value>الإضاءة الخلفية للموانئ</value>
   </data>
   <data name="PortsBacklightControl_Message" xml:space="preserve">
-    <value>Turn on or off backlight of the ports on the back of the laptop.</value>
+    <value>تشغيل أو إيقاف الإضاءة الخلفية للمنفذ على ظهر الكمبيوتر المحمول.</value>
   </data>
   <data name="PortsBacklightControl_Title" xml:space="preserve">
-    <value>Ports backlight</value>
+    <value>الإضاءة الخلفية للموانئ</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>مغلق</value>
@@ -2280,26 +2280,26 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>قد لا يعمل وضع الطاقة المحدد بشكل صحيح بِدون توصيل محول التيار المتردد.</value>
   </data>
   <data name="PowerModes" xml:space="preserve">
-    <value>Power Modes</value>
+    <value>أوضاع الطاقة</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
-    <value>{0} power mode is not available without AC power.</value>
+    <value>وضع الطاقة {0} غير متوفر بدون طاقة AC.</value>
     <comment>For example: "{Performance} power mode is not available without AC power."</comment>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Title" xml:space="preserve">
-    <value>Cannot change Power Mode</value>
+    <value>لا يمكن تغيير وضع الطاقة</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Message" xml:space="preserve">
-    <value>Windows reports that this laptop supports Modern Standby. Using power plans other than Balanced may cause unexpected behavior.</value>
+    <value>ويندوز يفيد بأن هذا الكمبيوتر المحمول يدعم الاستعداد الحديث. استخدام خطط الطاقة غير المتوازنة قد يسبب سلوكا غير متوقع.</value>
   </data>
   <data name="PowerPlansWindow_AoAcWarning_Title" xml:space="preserve">
-    <value>S0 Lower Power Model detected</value>
+    <value>تم اكتشاف موديل الطاقة السفلى S0</value>
   </data>
   <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
-    <value>Run a saved quick action.</value>
+    <value>تشغيل إجراء سريع محفوظ.</value>
   </data>
   <data name="QuickActionAutomationStepControl_Title" xml:space="preserve">
-    <value>Quick Action</value>
+    <value>إجراء سريع</value>
   </data>
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
@@ -2308,7 +2308,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>تحديث</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Change refresh rate of the built-in display.</value>
+    <value>تغيير معدل التحديث للعرض المدمج.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value> معدل التحديث</value>
@@ -2326,16 +2326,16 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Reset</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Change resolution of the built-in display.</value>
+    <value>تغيير دقة العرض المدمج.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
-    <value>Resolution</value>
+    <value>قرار</value>
   </data>
   <data name="ResolutionControl_Message" xml:space="preserve">
-    <value>Change resolution of the built-in display.</value>
+    <value>تغيير دقة العرض المدمج.</value>
   </data>
   <data name="ResolutionControl_Title" xml:space="preserve">
-    <value>Resolution</value>
+    <value>قرار</value>
   </data>
   <data name="RestartLater" xml:space="preserve">
     <value>سأقوم بإعادة التشغيل لاحقًا</value>
@@ -2344,19 +2344,19 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>إعادة التشغيل الآن</value>
   </data>
   <data name="RestartRequired_Message" xml:space="preserve">
-    <value>Changing this requires restart. Do you want to restart now?</value>
+    <value>تغيير هذا يتطلب إعادة التشغيل. هل تريد إعادة التشغيل الآن؟</value>
   </data>
   <data name="RestartRequired_Title" xml:space="preserve">
-    <value>Restart required</value>
+    <value>إعادة التشغيل مطلوبة</value>
   </data>
   <data name="RestoreDefaults" xml:space="preserve">
-    <value>Restore Defaults</value>
+    <value>استعادة الافتراضي</value>
   </data>
   <data name="Revert" xml:space="preserve">
     <value>العودة إلى الوراء</value>
   </data>
   <data name="RevertToDefault" xml:space="preserve">
-    <value>Revert to default</value>
+    <value>العودة إلى الافتراضي</value>
   </data>
   <data name="RGBKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>اضبط الإعداد المسبق للإضاءة الخلفية للوحة المفاتيح.</value>
@@ -2410,25 +2410,25 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>مسار ملف قابل للتنفيذ</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Run a script or a program.</value>
+    <value>تشغيل برنامج نصي أو برنامجي.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
-    <value>Check Instance</value>
+    <value>تحقق من المثيل</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance_Description" xml:space="preserve">
-    <value>Check if process already started.</value>
+    <value>تحقق مما إذا كانت العملية قد بدأت بالفعل.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently" xml:space="preserve">
-    <value>Run silently</value>
+    <value>تشغيل بصمت</value>
   </data>
   <data name="RunAutomationStepControl_ProcessRunSilently_Description" xml:space="preserve">
-    <value>Execute console applications, without creating a console window.</value>
+    <value>تنفيذ تطبيقات وحدة التحكم دون إنشاء نافذة وحدة التحكم</value>
   </data>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished" xml:space="preserve">
-    <value>Wait until finished</value>
+    <value>انتظر حتى الانتهاء</value>
   </data>
   <data name="RunAutomationStepControl_ProcessWaitUntilFinished_Description" xml:space="preserve">
-    <value>Wait until program or script finishes executing</value>
+    <value>انتظر حتى ينتهي تنفيذ البرنامج أو البرنامج النصي</value>
   </data>
   <data name="RunAutomationStepControl_Title" xml:space="preserve">
     <value>تشغيل</value>
@@ -2443,148 +2443,148 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>جاري الحفظ...</value>
   </data>
   <data name="Seconds" xml:space="preserve">
-    <value>{0}s</value>
+    <value>{0}ثانية</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_Configure_Title" xml:space="preserve">
-    <value>Configure {0}</value>
+    <value>تكوين {0}</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Choose one or more quick actions to cycle through.</value>
+    <value>اختر واحدا أو أكثر من الإجراءات السريعة للدوران من خلالها.</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>No Quick Actions defined.</value>
+    <value>لا توجد إجراءات سريعة.</value>
   </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
-    <value>Battery Level</value>
+    <value>مستوى البطارية</value>
   </data>
   <data name="SensorItem_BatteryState" xml:space="preserve">
-    <value>Battery State</value>
+    <value>حالة البطارية</value>
   </data>
   <data name="SensorItem_CpuFanSpeed" xml:space="preserve">
-    <value>CPU Fan Speed</value>
+    <value>سرعة معجب المعالج</value>
   </data>
   <data name="SensorItem_CpuFrequency" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>تردد المعالج</value>
   </data>
   <data name="SensorItem_CpuPower" xml:space="preserve">
-    <value>CPU Power</value>
+    <value>قوة المعالج</value>
   </data>
   <data name="SensorItem_CpuTemperature" xml:space="preserve">
-    <value>CPU Temperature</value>
+    <value>درجة حرارة المعالج</value>
   </data>
   <data name="SensorItem_CpuUtilitzation" xml:space="preserve">
-    <value>CPU Utilization</value>
+    <value>استخدام المعالج</value>
   </data>
   <data name="SensorItem_Disk1Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>درجة حرارة القرص 1</value>
   </data>
   <data name="SensorItem_Disk2Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>درجة حرارة القرص 2</value>
   </data>
   <data name="SensorItem_GpuFanSpeed" xml:space="preserve">
-    <value>GPU Fan Speed</value>
+    <value>سرعة معجب GPU</value>
   </data>
   <data name="SensorItem_GpuFrequency" xml:space="preserve">
-    <value>GPU Frequency</value>
+    <value>تردد GPU</value>
   </data>
   <data name="SensorItem_GpuTemperatures" xml:space="preserve">
-    <value>GPU Temperature</value>
+    <value>درجة حرارة GPU</value>
   </data>
   <data name="SensorItem_GpuUtilization" xml:space="preserve">
     <value>GPU Utilization</value>
   </data>
   <data name="SensorItem_MemoryTemperature" xml:space="preserve">
-    <value>Memory Temperature</value>
+    <value>درجة حرارة الذاكرة</value>
   </data>
   <data name="SensorItem_MemoryUtilization" xml:space="preserve">
-    <value>Memory Utilization</value>
+    <value>استخدام الذاكرة</value>
   </data>
   <data name="SensorItem_PchFanSpeed" xml:space="preserve">
-    <value>PCH Fan Speed</value>
+    <value>سرعة معجب PCH</value>
   </data>
   <data name="SensorItem_PchTemperature" xml:space="preserve">
-    <value>PCH Temperature</value>
+    <value>درجة حرارة PCH</value>
   </data>
   <data name="SensorsControl_BatteryLevel_Title" xml:space="preserve">
-    <value>Battery Level</value>
+    <value>مستوى شحن البطارية</value>
   </data>
   <data name="SensorsControl_Battery_Title" xml:space="preserve">
-    <value>Battery</value>
+    <value>البطارية</value>
   </data>
   <data name="SensorsControl_CoreClock_Title" xml:space="preserve">
-    <value>Core Clock</value>
+    <value>ساعة المركز</value>
   </data>
   <data name="SensorsControl_CPU_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>القوة</value>
   </data>
   <data name="SensorsControl_CPU_Title" xml:space="preserve">
-    <value>CPU</value>
+    <value>المعالج</value>
   </data>
   <data name="SensorsControl_Disk_1_Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>درجة حرارة القرص 1</value>
   </data>
   <data name="SensorsControl_Disk_2_Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>درجة حرارة القرص 2</value>
   </data>
   <data name="SensorsControl_Disk_Title" xml:space="preserve">
-    <value>Disk</value>
+    <value>القرص</value>
   </data>
   <data name="SensorsControl_Fan_Title" xml:space="preserve">
-    <value>Fan</value>
+    <value>المعجبين</value>
   </data>
   <data name="SensorsControl_GpuCoreTemperature_Title" xml:space="preserve">
-    <value>Core Temp</value>
+    <value>حرارة المركز</value>
   </data>
   <data name="SensorsControl_GpuMemoryTemperature_Title" xml:space="preserve">
-    <value>VRAM Temp</value>
+    <value>حرارة ذاكرة الفيديو</value>
   </data>
   <data name="SensorsControl_GpuVramUtilization_Title" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>استخدام VRAM</value>
   </data>
   <data name="SensorsControl_GPU_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>القوة</value>
   </data>
   <data name="SensorsControl_GPU_Title" xml:space="preserve">
     <value>GPU</value>
   </data>
   <data name="SensorsControl_Maximum" xml:space="preserve">
-    <value>Maximum: {0}</value>
+    <value>الحد الأقصى: {0}</value>
   </data>
   <data name="SensorsControl_MemoryClock_Title" xml:space="preserve">
-    <value>Memory Clock</value>
+    <value>ساعة الذاكرة</value>
   </data>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
-    <value>RAM</value>
+    <value>الذاكرة</value>
   </data>
   <data name="SensorsControl_Motherboard_Temperature" xml:space="preserve">
-    <value>Board Temperature</value>
+    <value>درجة حرارة المجلس</value>
   </data>
   <data name="SensorsControl_Motherboard_Title" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>اللوحة الأم</value>
   </data>
   <data name="SensorsControl_PchTemperature_Title" xml:space="preserve">
-    <value>PCH Temperature</value>
+    <value>حرارة PCH</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
-    <value>Refresh Interval</value>
+    <value>الفاصل الزمني للتحديث</value>
   </data>
   <data name="SensorsControl_State_Title" xml:space="preserve">
-    <value>State</value>
+    <value>الحالة</value>
   </data>
   <data name="SensorsControl_Temperature_Title" xml:space="preserve">
-    <value>Temperature</value>
+    <value>درجة</value>
   </data>
   <data name="SensorsControl_Utilization_Title" xml:space="preserve">
     <value>Utilization</value>
   </data>
   <data name="SensorSettingsPage_Average_Frequency_Title" xml:space="preserve">
-    <value>Average Frequency</value>
+    <value>متوسط التردد</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and Osd.</value>
+    <value>تحديد نوع تردد المعالج المعروض على لوحة التحكم و Osd.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
-    <value>CPU Frequency</value>
+    <value>تردد المعالج</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2593,61 +2593,61 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>iGPU</value>
   </data>
   <data name="SensorSettingsPage_Max_Frequency_Title" xml:space="preserve">
-    <value>Max Frequency</value>
+    <value>التردد الأقصى</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Message" xml:space="preserve">
-    <value>Choose how memory utilization is displayed on the Dashboard and OSD.</value>
+    <value>اختر كيفية عرض استخدام الذاكرة على لوحة التحكم و OSD.</value>
   </data>
   <data name="SensorSettingsPage_Memory_Display_Mode_Title" xml:space="preserve">
-    <value>Memory Display Mode</value>
+    <value>وضع عرض الذاكرة</value>
   </data>
   <data name="SensorSettingsPage_Percentage_Title" xml:space="preserve">
-    <value>Percentage</value>
+    <value>النسبة المئوية</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Message" xml:space="preserve">
-    <value>When multiple graphics cards are present, the primary device displayed is preferred</value>
+    <value>عندما تكون بطاقات رسومات متعددة موجودة، يتم عرض الجهاز الرئيسي مفضل</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
-    <value>Preferred GPU</value>
+    <value>GPU المفضل</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
-    <value>Used/Total Memory (GB)</value>
+    <value>الذاكرة المستخدمة/الإجمالية (GB)</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
-    <value>Serial number</value>
+    <value>الرقم التسلسلي</value>
   </data>
   <data name="Series" xml:space="preserve">
-    <value>Series</value>
+    <value>السلسلة</value>
   </data>
   <data name="Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>الإعدادات</value>
   </data>
   <data name="SettingsBackupWindow_Backup" xml:space="preserve">
-    <value>Back Up</value>
+    <value>الرجوع إلى الأعلى</value>
   </data>
   <data name="SettingsBackupWindow_BackupSuccess" xml:space="preserve">
-    <value>Backup completed successfully.</value>
+    <value>اكتمل النسخ الاحتياطي بنجاح.</value>
   </data>
   <data name="SettingsBackupWindow_NoFilesSelected" xml:space="preserve">
-    <value>No files selected.</value>
+    <value>لم يتم تحديد الملفات.</value>
   </data>
   <data name="SettingsBackupWindow_NoMatchingFiles" xml:space="preserve">
-    <value>No matching files found in selected folder.</value>
+    <value>لم يتم العثور على ملفات مطابقة في المجلد المحدد.</value>
   </data>
   <data name="SettingsBackupWindow_Restore" xml:space="preserve">
-    <value>Restore</value>
+    <value>إستعادة</value>
   </data>
   <data name="SettingsBackupWindow_RestoreConfirm" xml:space="preserve">
-    <value>Restoring settings will overwrite your current configuration and restart the application. Do you want to continue?</value>
+    <value>إستعادة الإعدادات سوف تستبدل الإعدادات الحالية و تعيد تشغيل التطبيق. هل تريد الاستمرار؟</value>
   </data>
   <data name="SettingsBackupWindow_RestoreSuccess" xml:space="preserve">
-    <value>Restore completed successfully. The application will restart.</value>
+    <value>اكتملت الاستعادة بنجاح. سيتم إعادة تشغيل التطبيق.</value>
   </data>
   <data name="SettingsBackupWindow_SelectAll" xml:space="preserve">
-    <value>Select All</value>
+    <value>حدد الكل</value>
   </data>
   <data name="SettingsBackupWindow_Title" xml:space="preserve">
-    <value>Backup Settings</value>
+    <value>إعدادات النسخ الاحتياطي</value>
   </data>
   <data name="SettingsPage_AccentColor_Description" xml:space="preserve">
     <value>تغيير المظهر والألوان في التطبيق.</value>
@@ -2656,10 +2656,10 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>لون المظهر</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
-    <value>Keep the app window above all other windows.</value>
+    <value>إبقاء نافذة التطبيق فوق كل النوافذ الأخرى.</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
-    <value>Pin to Top</value>
+    <value>تثبيت إلى الأعلى</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
     <value>شغل مصغرا للمعروضات عند تسجيل الدخول لنظام التشغيل أو الويندوز.</value>
@@ -2668,79 +2668,79 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>تشغيل تلقائي</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
-    <value>Back up or restore application settings.</value>
+    <value>النسخ الاحتياطي أو استعادة إعدادات التطبيق.</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
-    <value>Back Up Settings</value>
+    <value>إعدادات الرجوع</value>
   </data>
   <data name="SettingsPage_BootLogo_EFIInfo" xml:space="preserve">
-    <value>This feature modifies the EFI partition. Use with caution.</value>
+    <value>هذه الميزة تغير قسم EFI. استخدمها بحذر.</value>
   </data>
   <data name="SettingsPage_BootLogo_Message" xml:space="preserve">
-    <value>Customize Boot Logo image, visible during system startup.</value>
+    <value>تخصيص صورة شعار التشغيل، مرئية أثناء بدء تشغيل النظام.</value>
   </data>
   <data name="SettingsPage_BootLogo_Title" xml:space="preserve">
-    <value>Boot Logo</value>
+    <value>شعار التمهيد</value>
   </data>
   <data name="SettingsPage_Category_AppBehavior" xml:space="preserve">
-    <value>App Behavior</value>
+    <value>سلوك التطبيق</value>
   </data>
   <data name="SettingsPage_Category_Appearance" xml:space="preserve">
-    <value>Appearance</value>
+    <value>المظهر</value>
   </data>
   <data name="SettingsPage_Category_Display" xml:space="preserve">
-    <value>Display</value>
+    <value>عرض</value>
   </data>
   <data name="SettingsPage_Category_Integrations" xml:space="preserve">
-    <value>Integrations</value>
+    <value>التكاملات</value>
   </data>
   <data name="SettingsPage_Category_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>القوة</value>
   </data>
   <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>المفاتيح الذكية</value>
   </data>
   <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
-    <value>Software Control</value>
+    <value>التحكم بالبرامج</value>
   </data>
   <data name="SettingsPage_Category_Updates" xml:space="preserve">
-    <value>Updates</value>
+    <value>التحديثات</value>
   </data>
   <data name="SettingsPage_CheckUpdatesButton_Content" xml:space="preserve">
-    <value>Check</value>
+    <value>تحقق</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
-    <value>Check now for the latest version.</value>
+    <value>تحقق الآن من أحدث إصدار.</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
-    <value>Checking for updates...</value>
+    <value>البحث عن تحديثات...</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Title" xml:space="preserve">
-    <value>Check for updates</value>
+    <value>التحقق من وجود تحديثات</value>
   </data>
   <data name="SettingsPage_Clear_BackgroundImage_Title" xml:space="preserve">
-    <value>Clear Image</value>
+    <value>مسح الصورة</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Message" xml:space="preserve">
-    <value>Add CLI to user's PATH environment variable.</value>
+    <value>إضافة CLI إلى متغير بيئة PATH للمستخدم.</value>
   </data>
   <data name="SettingsPage_CLIAddToPath_Title" xml:space="preserve">
-    <value>Add CLI to PATH</value>
+    <value>إضافة CLI إلى PATH</value>
   </data>
   <data name="SettingsPage_CLI_Message" xml:space="preserve">
-    <value>Enable Command Line Interface that allows control from command line.</value>
+    <value>تمكين واجهة خط الأوامر التي تسمح بالتحكم من سطر الأوامر.</value>
   </data>
   <data name="SettingsPage_CLI_Title" xml:space="preserve">
     <value>CLI</value>
   </data>
   <data name="SettingsPage_Common_RestartRecommended" xml:space="preserve">
-    <value>Restart is recommended after changing this option.</value>
+    <value>يُنصح بإعادة التشغيل بعد تغيير هذا الخيار.</value>
   </data>
   <data name="SettingsPage_CompactMode_Message" xml:space="preserve">
-    <value>Reduce visual clutter to fit more content on screen.</value>
+    <value>تقليل الفوضى البصرية لتلائم محتوى أكثر على الشاشة.</value>
   </data>
   <data name="SettingsPage_CompactMode_Title" xml:space="preserve">
-    <value>Compact Mode</value>
+    <value>الوضع المضغوط</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Blur" xml:space="preserve">
     <value>Blur</value>
@@ -2749,32 +2749,32 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>Dim</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Set a custom wallpaper for the app window.</value>
+    <value>Custom Background Image</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Crop" xml:space="preserve">
-    <value>Crop</value>
+    <value>محاصيل</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Fill" xml:space="preserve">
-    <value>Fill</value>
+    <value>تعبئة</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Fit" xml:space="preserve">
-    <value>Fit</value>
+    <value>مناسب</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Background Image</value>
+    <value>Custom Background Image</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space may have not been disabled correctly</value>
+    <value>ربما لم يتم تعطيل فضاء الفيلق بشكل صحيح</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
-    <value>Couldn't disable Legion Space</value>
+    <value>تعذر تعطيل فضاء الفيلق</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Message" xml:space="preserve">
     <value>Disable Legion Space and its service without uninstalling it.
 Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Title" xml:space="preserve">
-    <value>Disable Legion Space</value>
+    <value>تعطيل فضاء الفيلق</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
     <value>ربما لم يتم تعطيل Legion Zone أو منطقة Legion بشكل صحيح</value>
@@ -2817,109 +2817,109 @@ Restart is recommended after changing this option.</value>
     <value>قم بتعطيل Lenovo Vantage</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space may have not been enabled correctly</value>
+    <value>ربما لم يتم تمكين فضاء الفيلق بشكل صحيح</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Legion Space</value>
+    <value>تعذر تمكين فضاء الفيلق</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone may have not been enabled correctly</value>
+    <value>ربما لم يتم تمكين منطقة الفيلق بشكل صحيح</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Legion Zone</value>
+    <value>تعذر تمكين منطقة الفيلق</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys may have not been enabled correctly</value>
+    <value>لربما لم يتم تمكين المفاتيح الساخنة Lenovo بشكل صحيح</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>تعذر تعطيل مفاتيح مِيزة Lenovo Hotkeys أو مفاتيح مِيزة مفاتيح Lenovo الساخنة</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
-    <value>Enable logging for debug.</value>
+    <value>تمكين التسجيل لتصحيح الأخطاء.</value>
   </data>
   <data name="SettingsPage_EnableLogging_Title" xml:space="preserve">
-    <value>Enable Logging</value>
+    <value>تمكين تسجيل الدخول</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController may have not been enabled correctly</value>
+    <value>Lenovo Vantage و/أو غير مراقب ربما لم يتم تمكينه بشكل صحيح</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Lenovo Vantage and/or ImController</value>
+    <value>تعذر تمكين Lenovo Vantage و/أو ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>العمليات المستبعدة</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Hide specific refresh rates from the Fn+R cycle.</value>
+    <value>يمكنك استبعاد معدلات التحديث ، لجعل اختصار Fn + R أكثر فائدة.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>استبعاد معدلات التحديث</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface.</value>
+    <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
-    <value>Hardware Acceleration</value>
+    <value>تسريع الأجهزة</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off.</value>
+    <value>ويمكن أن يؤدي التسريع التمكيني للمعدات إلى إغراق بعض النظم الرسومية الهجينة أو إصابتها بالأسود؛ وقد يحول دون إيقاف تشغيل وحدة البيانات العالمية المنفصلة.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
-    <value>Enable advanced hardware polling to monitor detailed temperatures, frequencies, and power limits.</value>
+    <value>تمكين تصويت الأجهزة المتقدمة لرصد درجات الحرارة والترددات وحدود الطاقة المفصلة.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_PawnIOWarning" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!</value>
+    <value>تحتاج إلى تثبيت PawnIO أولاً لاستخدام أجهزة استشعار الجهاز!</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>أجهزة استشعار الأجهزة</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
-    <value>Auto (Let Windows decide)</value>
+    <value>تلقائي (دع ويندوز يقرر)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
-    <value>High performance (dGPU)</value>
+    <value>أداء عالي (DGPU)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_PowerSaving" xml:space="preserve">
-    <value>Power saving (iGPU)</value>
+    <value>توفير الطاقة (iGPU)</value>
   </data>
   <data name="SettingsPage_HWiNFO_Message" xml:space="preserve">
     <value>Share fan speed, battery temperature etc. with HWiNFO64. You may need to restart HWiNFO64 after changing this option.</value>
   </data>
   <data name="SettingsPage_HWiNFO_RestartInfo" xml:space="preserve">
-    <value>You may need to restart HWiNFO64 after changing this option.</value>
+    <value>قد تحتاج إلى إعادة تشغيل HWiNFO64 بعد تغيير هذا الخيار.</value>
   </data>
   <data name="SettingsPage_HWiNFO_Title" xml:space="preserve">
     <value>HWiNFO64</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Message" xml:space="preserve">
-    <value>Find undefined Fn hotkeys in LLT.</value>
+    <value>العثور على مفاتيح Fn Hotys غير محددة في LLT.</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Title" xml:space="preserve">
-    <value>Key Discovery</value>
+    <value>اكتشاف المفتاح</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Change the display language of the app.</value>
+    <value>اختر اللغة.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>اللغة</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Prevent the window from being resized.</value>
+    <value>Lock LLT's window size. To prevent something change it.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
-    <value>Lock Window Size</value>
+    <value>قفل حجم النافذة</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Minimize to the system tray instead of closing.</value>
+    <value>قلل دائمًا إلى حدود الصفحة المعروضة. أغلق بالنقر بزر الماوس الأيمن على أيقونة الصفحة المعروضة.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>تصغير عند الإغلاق</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Message" xml:space="preserve">
-    <value>Always minimize to tray instead of taskbar.</value>
+    <value>تصغير دائمًا إلى الصباغة بدلاً من شريط المهام.</value>
   </data>
   <data name="SettingsPage_MinimizeToTray_Title" xml:space="preserve">
-    <value>Minimize to Tray</value>
+    <value>تصغير إلى القناة</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
     <value>الرجاء قم بضبط أي الإشعارات تريد عرضها.</value>
@@ -2928,73 +2928,73 @@ Restart is recommended after changing this option.</value>
     <value>الإشعارات</value>
   </data>
   <data name="SettingsPage_OnBatterySinceReset_Message" xml:space="preserve">
-    <value>Resets the counter for "On battery since" in the battery section when the system reboots.</value>
+    <value>إعادة تعيين العداد "على البطارية منذئذ" في قسم البطارية عند إعادة تشغيل النظام.</value>
   </data>
   <data name="SettingsPage_OnBatterySinceReset_Title" xml:space="preserve">
-    <value>Reset "On battery since" at startup</value>
+    <value>إعادة تعيين "عند تشغيل البطارية" عند بدء التشغيل</value>
   </data>
   <data name="SettingsPage_Osd_Message" xml:space="preserve">
-    <value>Floating overlay showing live sensor data.</value>
+    <value>الطبقة العائمة التي تظهر بيانات الاستشعار الحي.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>Enable OSD</value>
+    <value>تمكين OSD</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
-    <value>Automatically change Windows Power Plan or Windows Power Mode when changing Power Modes.</value>
+    <value>تغيير تلقائي لخطة تشغيل ويندوز أو وضع طاقة ويندوز عند تغيير أنماط الطاقة.</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
-    <value>Power Mode Synchronization</value>
+    <value>مزامنة وضع التشغيل</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
-    <value>Are you sure you want to reset all settings to defaults? This action cannot be undone and the application will restart.</value>
+    <value>هل أنت متأكد من أنك تريد إعادة تعيين كافة الإعدادات إلى الإعدادات الافتراضية؟ لا يمكن التراجع عن هذا الإجراء وسيتم إعادة تشغيل التطبيق.</value>
   </data>
   <data name="SettingsPage_ResetSettings_Message" xml:space="preserve">
-    <value>Reset all application settings to their defaults.</value>
+    <value>إعادة تعيين كافة إعدادات التطبيق إلى الإعدادات الافتراضية الخاصة بهم.</value>
   </data>
   <data name="SettingsPage_ResetSettings_Title" xml:space="preserve">
-    <value>Reset Settings</value>
+    <value>إعادة تعيين الإعدادات</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
-    <value>Restart to apply changes.</value>
+    <value>إعادة التشغيل لتطبيق التغييرات.</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
-    <value>All Files</value>
+    <value>جميع الملفات</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_Content" xml:space="preserve">
-    <value>Select Image</value>
+    <value>حدد صورة</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_ImageFile" xml:space="preserve">
-    <value>Image File</value>
+    <value>ملف الصورة</value>
   </data>
   <data name="SettingsPage_SensorSettings_Title" xml:space="preserve">
-    <value>Sensor Settings</value>
+    <value>إعدادات الإستشعار</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
+    <value>Fn Lock will be temporarily disabled when Alt, Ctrl or Shift key is depressed.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
-    <value>Smart Fn Lock</value>
+    <value>قفل Fn الذكي</value>
   </data>
   <data name="SettingsPage_SmartKeys_Message" xml:space="preserve">
-    <value>Customize the Fn hotkeys.</value>
+    <value>تخصيص المفاتيح الساخنة.</value>
   </data>
   <data name="SettingsPage_SmartKeys_Title" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>المفاتيح الذكية</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Apply the same brightness level across all Windows power plans.</value>
+    <value>When on, same brightness level will be applied to all Windows power plans whenever you change it.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
-    <value>Single Display Brightness</value>
+    <value>سطوع العرض الفردي</value>
   </data>
   <data name="SettingsPage_Temperature_Message" xml:space="preserve">
-    <value>Select units for temperature sensors.</value>
+    <value>حدد وحدات لأجهزة استشعار درجة الحرارة.</value>
   </data>
   <data name="SettingsPage_Temperature_Title" xml:space="preserve">
-    <value>Temperature</value>
+    <value>درجة الحرارة</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Set light, dark, or system-matched theme.</value>
+    <value>عيّن مظهرًا فاتحًا أو مظهرًا داكنًا أو اتبع إعدادات النظام.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>مظهر</value>
@@ -3003,121 +3003,121 @@ Restart is recommended after changing this option.</value>
     <value>الإعدادات</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
-    <value>Choose between stable, beta and dev releases.</value>
+    <value>اختر بين إصدارات مستقرة، بيتا وديف.</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
-    <value>Update Channel</value>
+    <value>تحديث القناة</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
-    <value>Choose how often to check for new versions.</value>
+    <value>اختر عدد مرات التحقق من الإصدارات الجديدة.</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
-    <value>Update Frequency</value>
+    <value>تردد التحديث</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
-    <value>Choose how updates are downloaded and installed.</value>
+    <value>اختر كيفية تنزيل التحديثات وتثبيتها.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
-    <value>Update Method</value>
+    <value>طريقة التحديث</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Message" xml:space="preserve">
     <value>استخدام لوحة تحكم مستشعر جديدة بدلاً من لوحة التحكم القديمة. </value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>New Sensor Dashboard</value>
+    <value>لوحة تحكم مستشعر جديدة</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
-    <value>If you experience visual artifacts on Snackbar Notifications in HDR mode, set this to "None".</value>
+    <value>إذا واجهت أدوات مرئية على إشعارات Snackbar في وضع HDR ، قم بتعيين هذا إلى "لا شيء".</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Message" xml:space="preserve">
-    <value>The effect used for the background of the application window.</value>
+    <value>التأثير المستخدم في خلفية نافذة التطبيق.</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Title" xml:space="preserve">
-    <value>Window Backdrop</value>
+    <value>خلفية النافذة</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Message" xml:space="preserve">
-    <value>Select Windows Power Mode to apply when Power Mode changes.</value>
+    <value>حدد وضع تشغيل Windows لتطبيقه عند تغيير وضع التشغيل.</value>
   </data>
   <data name="SettingsPage_WindowsPowerModes_Title" xml:space="preserve">
-    <value>Windows Power Modes</value>
+    <value>أوضاع الطاقة للويندوز</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlansControlPanel_Title" xml:space="preserve">
-    <value>Power Plan options in Windows Control Panel</value>
+    <value>خيارات خطة الطاقة في لوحة تحكم Windows</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Message" xml:space="preserve">
-    <value>Select Windows Power Plans to apply when Power Mode changes.</value>
+    <value>حدد خطط تشغيل ويندوز لتطبيقها عند تغيير وضع الطاقة.</value>
   </data>
   <data name="SettingsPage_WindowsPowerPlans_Title" xml:space="preserve">
     <value>أوضاع أو خطط الطاقة</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Message" xml:space="preserve">
-    <value>Allow quick switching to Custom Mode with Fn+Q.</value>
+    <value>السماح بالتبديل السريع إلى وضع مخصص باستخدام Fn+Q.</value>
   </data>
   <data name="Settings_GodModeFnQSwitchable_Title" xml:space="preserve">
-    <value>Switch to Custom Mode with Fn+Q</value>
+    <value>التبديل إلى وضع مخصص باستخدام Fn+Q</value>
   </data>
   <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
+    <value>إظهار مجموعة أدوات فيلق لينوفو</value>
   </data>
   <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
+    <value>إظهار التطبيق</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
-    <value>Show less</value>
+    <value>إظهار أقل</value>
   </data>
   <data name="ShowMore" xml:space="preserve">
-    <value>Show more</value>
+    <value>إظهار المزيد</value>
   </data>
   <data name="Slot" xml:space="preserve">
-    <value>Slot</value>
+    <value>خانة</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
-    <value>When mute, all active audio output devices will be muted.</value>
+    <value>عند كتم، سيتم كتم جميع أجهزة إخراج الصوت النشطة.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Title" xml:space="preserve">
-    <value>Speaker</value>
+    <value>مكبر</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change the speaker's volume.</value>
+    <value>تغيير مستوى صوت المتكلم.</value>
   </data>
   <data name="SpeakerVolumeAutomationStepControl_Title" xml:space="preserve">
-    <value>Speaker Volume</value>
+    <value>مستوى صوت السماعة</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery" xml:space="preserve">
-    <value>Key Discovery</value>
+    <value>اكتشاف المفتاح</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
     <value>Find key that is not defined in LLT.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
-    <value>Start</value>
+    <value>ابدأ</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>توقف</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="SpecialKeyDetail_Mode" xml:space="preserve">
-    <value>Mode</value>
+    <value>الوضع</value>
   </data>
   <data name="SpecialKeyDetail_Mode_Description" xml:space="preserve">
-    <value>Choose how this key responds when pressed.</value>
+    <value>اختر كيف يستجيب هذا المفتاح عند الضغط عليه.</value>
   </data>
   <data name="SpecialKeysWindow_Description" xml:space="preserve">
-    <value>Assign custom Quick Actions to Fn keys. Each key can override its default behavior with a custom pipeline. Right-click any key to hide it from this list.</value>
+    <value>تعيين إجراءات سريعة مخصصة لمفاتيح Fn. يمكن لكل مفتاح أن يتجاوز سلوكه الافتراضي مع خط أنابيب مخصص. انقر بالزر الأيمن على أي مفتاح لإخفائه من هذه القائمة.</value>
   </data>
   <data name="SpecialKeysWindow_HideHiddenKeys" xml:space="preserve">
-    <value>Hide {0} hidden keys</value>
+    <value>إخفاء المفاتيح المخفية {0}</value>
   </data>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
-    <value>Show {0} hidden keys</value>
+    <value>إظهار المفاتيح المخفية {0}</value>
   </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
-    <value>(Driver)</value>
+    <value>(سائق)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
-    <value>Key {0}</value>
+    <value>المفتاح {0}</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>اضبط الإعداد المسبق للإضاءة الخلفية للوحة المفاتيح.</value>
@@ -3147,16 +3147,16 @@ Restart is recommended after changing this option.</value>
     <value>مؤثرات</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Message" xml:space="preserve">
-    <value>Profile couldn't be exported</value>
+    <value>تعذر تصدير الملف الشخصي</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Title" xml:space="preserve">
-    <value>Couldn't export profile</value>
+    <value>تعذر تصدير الملف الشخصي</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Message" xml:space="preserve">
-    <value>Profile couldn't be imported</value>
+    <value>تعذر استيراد الملف الشخصي</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Title" xml:space="preserve">
-    <value>Couldn't import profile</value>
+    <value>تعذر استيراد الملف الشخصي</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_NoEffects_Text" xml:space="preserve">
     <value>لا مؤثرات إضاءة تم أضافتها.</value>
@@ -3201,31 +3201,31 @@ Restart is recommended after changing this option.</value>
     <value>تعديل التأثير</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostBrightnessFactor" xml:space="preserve">
-    <value>Boost Brightness Factor</value>
+    <value>عامل السطوع المعزز</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostFloor" xml:space="preserve">
-    <value>Boost Floor</value>
+    <value>تعزيز الطابق</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_BoostTarget" xml:space="preserve">
     <value>Boost Target</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_Title" xml:space="preserve">
-    <value>Color Boost Settings</value>
+    <value>إعدادات تعزيز الألوان</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoostSettings_WhiteThreshold" xml:space="preserve">
-    <value>White Threshold</value>
+    <value>عتبة بيضاء</value>
   </data>
   <data name="SpectrumKeyboardBacklightEditEffectWindow_VantageColorBoost_Title" xml:space="preserve">
-    <value>Vantage Color Boost</value>
+    <value>تعزيز الألوان</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Message" xml:space="preserve">
-    <value>Import and apply backlight configuration to the current profile.</value>
+    <value>استيراد إعدادات الإضاءة الخلفية وتطبيقها على الملف الشخصي الحالي.</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Path" xml:space="preserve">
-    <value>Path</value>
+    <value>المسار</value>
   </data>
   <data name="SpectrumKeyboardBacklightImportProfileAutomationStepControl_Title" xml:space="preserve">
-    <value>Import keyboard backlight profile</value>
+    <value>استيراد الملف الشخصي للإضاءة الخلفية للوحة المفاتيح</value>
   </data>
   <data name="SpectrumKeyboardBacklightProfileAutomationStepControl_Message" xml:space="preserve">
     <value>ضبط وضع الإضاءة الخلفية للوحة المفاتيح.</value>
@@ -3240,31 +3240,31 @@ Restart is recommended after changing this option.</value>
     <value>المناطق {0}</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start date</value>
+    <value>تاريخ البدء</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
-    <value>Battery</value>
+    <value>البطارية</value>
   </data>
   <data name="StatusTrayPopup_DischargeRate" xml:space="preserve">
-    <value>Discharge rate</value>
+    <value>معدل التفريغ</value>
   </data>
   <data name="StatusTrayPopup_DiscreteGPU" xml:space="preserve">
-    <value>Discrete GPU</value>
+    <value>كرت الشاشة المنفصل</value>
   </data>
   <data name="StatusTrayPopup_MaxDischargeRate" xml:space="preserve">
-    <value>Max discharge rate</value>
+    <value>الحد الأقصى لمعدل التفريغ</value>
   </data>
   <data name="StatusTrayPopup_MinDischargeRate" xml:space="preserve">
-    <value>Min discharge rate</value>
+    <value>الحد الأدنى لمعدل التصريف</value>
   </data>
   <data name="StatusTrayPopup_Mode" xml:space="preserve">
-    <value>Mode</value>
+    <value>الوضع</value>
   </data>
   <data name="StatusTrayPopup_PowerMode" xml:space="preserve">
-    <value>Power Mode</value>
+    <value>وضع الأداء</value>
   </data>
   <data name="StatusTrayPopup_PowerState" xml:space="preserve">
-    <value>Power State</value>
+    <value>حالة الطاقة</value>
   </data>
   <data name="StatusTrayPopup_Preset" xml:space="preserve">
     <value>Preset</value>
@@ -3273,25 +3273,25 @@ Restart is recommended after changing this option.</value>
     <value>يتوفر تحديث!</value>
   </data>
   <data name="StatusWindow_Fan_And_Power" xml:space="preserve">
-    <value>Fan / Power</value>
+    <value>معجب / قوة</value>
   </data>
   <data name="StatusWindow_Frequency_And_Temperature" xml:space="preserve">
-    <value>Frequency / Temperature</value>
+    <value>التردد / درجة الحرارة</value>
   </data>
   <data name="StatusWindow_System_Fan" xml:space="preserve">
-    <value>System Fan</value>
+    <value>معجب النظام</value>
   </data>
   <data name="Storage" xml:space="preserve">
-    <value>Storage</value>
+    <value>التخزين</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
-    <value>Select icon</value>
+    <value>اختر أيقونة</value>
   </data>
   <data name="TextColor" xml:space="preserve">
-    <value>Text color</value>
+    <value>لون النص</value>
   </data>
   <data name="Threads" xml:space="preserve">
-    <value>Threads</value>
+    <value>المواضيع</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
     <value>الشروق</value>
@@ -3303,10 +3303,10 @@ Restart is recommended after changing this option.</value>
     <value>الوقت</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Allow switching between integrated and discrete GPU.</value>
+    <value>السماح بالتبديل بين GPU المتكامل والمتميز.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Hybrid Mode</value>
+    <value>الوضع الهجين</value>
   </data>
   <data name="ToggleHybridModeControl_Message" xml:space="preserve">
     <value>السماح بالتبديل بين وحدة معالجة الرسومات المدمجة والمنفصلة.
@@ -3325,7 +3325,7 @@ Restart is recommended after changing this option.</value>
     <value>تعطيل لوحة اللمس.</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Title" xml:space="preserve">
-    <value>Touchpad Lock</value>
+    <value>قفل لوحة اللوحة</value>
   </data>
   <data name="TouchpadLockControl_Message" xml:space="preserve">
     <value>تعطيل لوحة اللمس.</value>
@@ -3337,20 +3337,20 @@ Restart is recommended after changing this option.</value>
     <value>حاول مرة أخرى</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Message" xml:space="preserve">
-    <value>Turn off all available displays.</value>
+    <value>إيقاف تشغيل جميع العروض المتاحة.</value>
   </data>
   <data name="TurnOffMonitorsAutomationStepControl_Title" xml:space="preserve">
-    <value>Turn off displays</value>
+    <value>إيقاف تشغيل العرض</value>
   </data>
   <data name="TurnOffMonitorsControl_Message" xml:space="preserve">
     <value>Turn off all available displays.
 Moving the mouse or pressing the keyboard will wake displays up.</value>
   </data>
   <data name="TurnOffMonitorsControl_Title" xml:space="preserve">
-    <value>Turn off displays</value>
+    <value>إيقاف تشغيل العرض</value>
   </data>
   <data name="TurnOffMonitorsControl_TurnOff" xml:space="preserve">
-    <value>Turn off</value>
+    <value>إيقاف التشغيل</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
     <value>Unexpected exception occurred:
@@ -3360,7 +3360,7 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
     <value>Unhide</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>غير معروف</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>غير مسمى</value>
@@ -3392,10 +3392,10 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
     <value>تحديث</value>
   </data>
   <data name="UpdateWindow_DownloadError_Title" xml:space="preserve">
-    <value>Update download failed</value>
+    <value>فشل تنزيل التحديث</value>
   </data>
   <data name="UpdateWindow_SecurityError_Title" xml:space="preserve">
-    <value>Failed to verify update</value>
+    <value>فشل التحقق من التحديث</value>
   </data>
   <data name="UpdateWindow_Title" xml:space="preserve">
     <value>التحديث متوفر</value>
@@ -3404,13 +3404,13 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
     <value>ما الجديد؟</value>
   </data>
   <data name="Used" xml:space="preserve">
-    <value>Used</value>
+    <value>مستخدم</value>
   </data>
   <data name="Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>تحذير</value>
   </data>
   <data name="Warranty" xml:space="preserve">
-    <value>Warranty</value>
+    <value>الضمان</value>
   </data>
   <data name="Watt" xml:space="preserve">
     <value>W</value>
@@ -3431,13 +3431,13 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
     <value>Wi-Fi</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_CopyCurrentNetworkName" xml:space="preserve">
-    <value>Copy current network name</value>
+    <value>نسخ اسم الشبكة الحالي</value>
   </data>
   <data name="WiFiConnectedPipelineTriggerTabItemContent_LeaveEmptyForAnyNetwork" xml:space="preserve">
-    <value>Leave empty for any Wi-Fi network.</value>
+    <value>اتركه فارغاً لأي شبكة Wi-Fi.</value>
   </data>
   <data name="WindowsPowerModesWindow_Title" xml:space="preserve">
-    <value>Windows Power Modes</value>
+    <value>أوضاع الطاقة للويندوز</value>
   </data>
   <data name="WindowsPowerPlansWindow_DefaultPowerPlan" xml:space="preserve">
     <value>Default</value>
@@ -3449,19 +3449,19 @@ Moving the mouse or pressing the keyboard will wake displays up.</value>
     <value>DC</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_Title" xml:space="preserve">
-    <value>Power Mode</value>
+    <value>وضع الطاقة</value>
   </data>
   <data name="WindowsPowerPlansWindow_Title" xml:space="preserve">
-    <value>Windows Power Plans</value>
+    <value>خطط تشغيل ويندوز</value>
   </data>
   <data name="WindowsPowerPlan_Title" xml:space="preserve">
-    <value>Windows Power Plan</value>
+    <value>خطة تشغيل ويندوز</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
-    <value>Disable Windows key on built-in keyboard.</value>
+    <value>تعطيل مفتاح Windows على لوحة المفاتيح المدمجة.</value>
   </data>
   <data name="WinKeyAutomationStepControl_Title" xml:space="preserve">
-    <value>Windows Key Lock</value>
+    <value>قفل مفتاح Windows</value>
   </data>
   <data name="WinKeyControl_Message" xml:space="preserve">
     <value>يعمل فقط على لوحة المفاتيح المدمجة.</value>
