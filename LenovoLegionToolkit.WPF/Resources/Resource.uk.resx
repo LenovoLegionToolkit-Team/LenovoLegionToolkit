@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -59,46 +59,46 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+  <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -167,7 +167,7 @@
     <value>Додати</value>
   </data>
   <data name="AddAutomationStepWindow_MultipleSteps" xml:space="preserve">
-    <value>Multiple steps...</value>
+    <value>Кілька кроків...</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>Додати крок</value>
@@ -176,7 +176,7 @@
     <value>Додати нову</value>
   </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Airplane mode</value>
+    <value>Режим польоту</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
     <value>Заряджати USB-пристрої, коли комп'ютер вимкнений або у режимі сну та режимі гібернації.</value>
@@ -263,7 +263,7 @@
     <value>Мережевий проксі</value>
   </data>
   <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Modify startup arguments for the app.</value>
+    <value>Відкрийте вікно аргументів для зручної зміни аргументів.</value>
   </data>
   <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
     <value>Arguments</value>
@@ -467,7 +467,7 @@
     <value>Налаштування</value>
   </data>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>Відмінити</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
     <value>Автоматично виявляє коли деякі ігри використовують або підлаштовують продуктивність процесора і відеокарти. Температури та шум кулерів може підвищитися.</value>
@@ -563,7 +563,7 @@
     <value>Місткість повного заряду</value>
   </data>
   <data name="BatteryPage_LiveCharge_Title" xml:space="preserve">
-    <value>Current charge</value>
+    <value>Поточний заряд</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
     <value>Низький рівень заряду батареї</value>
@@ -600,7 +600,7 @@
     <value>Батарея</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
-    <value>BIOS version</value>
+    <value>Версія BIOS</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
     <value>Налаштувати</value>
@@ -676,7 +676,7 @@
     <value>Червона</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
+    <value>Виберіть режим роботи графічного процесора на основі використання вашого комп'ютера і стану живлення.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Режим роботи ГП</value>
@@ -713,7 +713,7 @@
     <value>Cores</value>
   </data>
   <data name="CPU" xml:space="preserve">
-    <value>CPU</value>
+    <value>ЦП</value>
   </data>
   <data name="Create" xml:space="preserve">
     <value>Створити</value>
@@ -725,10 +725,10 @@
     <value>Customize</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Cycle through available Custom Mode presets.</value>
+    <value>Перемикання через доступні шаблони користувацьких режимів.</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Cycle Custom Mode preset</value>
+    <value>Змінити режим користувача</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>Живлення під’єднано</value>
@@ -755,10 +755,10 @@
     <value>Головна</value>
   </data>
   <data name="DaysRemaining" xml:space="preserve">
-    <value>Days remaining</value>
+    <value>Днів залишилося</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Disable discrete GPU if it is active unnecessarily.</value>
+    <value>Вимкнути дискретні GPU якщо вона є необов’язковою.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Вимкнути відеокарту</value>
@@ -776,7 +776,7 @@
     <value>Видалити</value>
   </data>
   <data name="Device" xml:space="preserve">
-    <value>Device</value>
+    <value>Пристрій</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
     <value>Показати лише під'єднані пристрої</value>
@@ -872,13 +872,13 @@
     <value>Дискретний ГП</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Change display brightness of the built-in display.</value>
+    <value>Змінити яскравість екрану для вбудованого дисплея.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Яскравість дисплея</value>
   </data>
   <data name="Displays" xml:space="preserve">
-    <value>Displays</value>
+    <value>Показує</value>
   </data>
   <data name="DonatePage_Bartosz_Description" xml:space="preserve">
     <value>Bartosz created Lenovo Legion Toolkit and authored the foundational architecture that powers every feature in the application today.</value>
@@ -913,7 +913,7 @@ Thank you for your support!</value>
     <value>Пожертування</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Change scaling of the built-in display.</value>
+    <value>Зміна масштабу вбудованого дисплея.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -952,7 +952,7 @@ Thank you for your support!</value>
     <value>Редагувати датчик</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>End date</value>
+    <value>Дата закінчення</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Помилка</value>
@@ -982,7 +982,7 @@ Thank you for your support!</value>
     <value>Вийти</value>
   </data>
   <data name="Expired" xml:space="preserve">
-    <value>Expired</value>
+    <value>Термін дії закінчився</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Експорт</value>
@@ -1078,13 +1078,13 @@ Thank you for your support!</value>
     <value>GB</value>
   </data>
   <data name="Generation" xml:space="preserve">
-    <value>Generation</value>
+    <value>Покоління</value>
   </data>
   <data name="GHz" xml:space="preserve">
     <value>ГГц</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Apply a specific Custom Mode preset.</value>
+    <value>Застосувати специфічний шаблон налаштовуваного режиму.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Пресет користувальницького режиму</value>
@@ -1269,10 +1269,10 @@ Thank you for your support!</value>
     <value>Налаштування користувальницького режиму не застосовуватимуться правильно, коли запущено Lenovo Vantage або його служби.</value>
   </data>
   <data name="GPU" xml:space="preserve">
-    <value>GPU</value>
+    <value>Геконка</value>
   </data>
   <data name="HardwareFeatures" xml:space="preserve">
-    <value>Hardware Features</value>
+    <value>Особливості обладнання</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Message" xml:space="preserve">
     <value>Enable or disable background polling for hardware sensors.</value>
@@ -1281,7 +1281,7 @@ Thank you for your support!</value>
     <value>Hardware Sensors</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable high dynamic range (HDR) on the built-in display.</value>
+    <value>Увімкнути високодинамічний діапазон (HDR) на вбудованому дисплеї.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -1302,7 +1302,7 @@ Thank you for your support!</value>
     <value>Приховати всі</value>
   </data>
   <data name="Hz" xml:space="preserve">
-    <value>Hz</value>
+    <value>Гц</value>
   </data>
   <data name="Icon" xml:space="preserve">
     <value>Icon</value>
@@ -1506,10 +1506,10 @@ Thank you for your support!</value>
     <value>Скидання</value>
   </data>
   <data name="MacAddress" xml:space="preserve">
-    <value>MAC address</value>
+    <value>MAC-адреса</value>
   </data>
   <data name="MachineType" xml:space="preserve">
-    <value>Machine Type</value>
+    <value>Тип машини</value>
   </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
     <value>Увімкнути або вимкнути макрос.</value>
@@ -1647,10 +1647,10 @@ Thank you for your support!</value>
     <value>Мікрофон</value>
   </data>
   <data name="Model" xml:space="preserve">
-    <value>Model</value>
+    <value>Модель</value>
   </data>
   <data name="Motherboard" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>Материнська плата</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
     <value>Перемістити вниз</value>
@@ -1666,7 +1666,7 @@ Thank you for your support!</value>
     <value>Збіг всіх (і)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_None" xml:space="preserve">
-    <value>No Logic (Separate)</value>
+    <value>Без логіки (роздільники)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
     <value>Збіг будь-якого (або)</value>
@@ -1675,19 +1675,19 @@ Thank you for your support!</value>
     <value>Логіка</value>
   </data>
   <data name="NetworkAdapters" xml:space="preserve">
-    <value>Network adapters</value>
+    <value>Мережеві адаптери</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Ні</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Notification Text (supports $RUN_OUTPUT$)</value>
+    <value>Текст повідомлень (підтримує $RUN_OUTPUT$)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Показувати сповіщення</value>
   </data>
   <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
-    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
+    <value>Ви можете використати $RUN_OUTPUT$ , щоб вставити вихід попереднього кроку.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>Адаптер живлення</value>
@@ -1902,10 +1902,10 @@ Thank you for your support!</value>
     <value>Плаваючий ґаджет</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
-    <value>Set the lock position state of the OSD.</value>
+    <value>Встановлення положення ОП.</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Title" xml:space="preserve">
-    <value>OSD Lock Position</value>
+    <value>Розташування OSD</value>
   </data>
   <data name="OsdSettings_Appearance_BackgroundColor" xml:space="preserve">
     <value>Background Color</value>
@@ -2055,7 +2055,7 @@ Thank you for your support!</value>
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Increase performance by overclocking discrete GPU.</value>
+    <value>Підвищити продуктивність за допомогою блокування дискретного GPU.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>Розгін ГП</value>
@@ -2076,7 +2076,7 @@ Thank you for your support!</value>
     <value>Налаштування розгону ГП</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
-    <value>Unlocking in {0}...</value>
+    <value>Розблокування {0}...</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
     <value>Покращити час відгуку вбудованого дисплея.</value>
@@ -2237,7 +2237,7 @@ Thank you for your support!</value>
     <value>Секунди</value>
   </data>
   <data name="PlatformAndCapabilities" xml:space="preserve">
-    <value>Platform &amp; Capabilities</value>
+    <value>Платформа і можливості</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
     <value>Підтримуються такі поширені звукові формати, як wav або mp3.</value>
@@ -2280,7 +2280,7 @@ Thank you for your support!</value>
     <value>Обраний режим живлення може не працювати справно без підключеного блоку живлення.</value>
   </data>
   <data name="PowerModes" xml:space="preserve">
-    <value>Power Modes</value>
+    <value>Режими електроенергії</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
     <value>Режим живлення {0} не доступний без живлення від мережі.</value>
@@ -2308,7 +2308,7 @@ Thank you for your support!</value>
     <value>Оновлення</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Change refresh rate of the built-in display.</value>
+    <value>Змінити швидкість оновлення дисплея, що вбудовано.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Частота оновлення</value>
@@ -2326,7 +2326,7 @@ Thank you for your support!</value>
     <value>Скинути</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Change resolution of the built-in display.</value>
+    <value>Зміна роздільної здатності вбудованого дисплея.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Роздільна здатність</value>
@@ -2410,7 +2410,7 @@ Thank you for your support!</value>
     <value>Виконавчий шлях</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Run a script or a program.</value>
+    <value>Запустіть скрипт чи програму.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Перевірити екземпляр</value>
@@ -2614,10 +2614,10 @@ Thank you for your support!</value>
     <value>Used/Total Memory (GB)</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
-    <value>Serial number</value>
+    <value>Серійний номер</value>
   </data>
   <data name="Series" xml:space="preserve">
-    <value>Series</value>
+    <value>Серія</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Налаштування</value>
@@ -2698,7 +2698,7 @@ Thank you for your support!</value>
     <value>Потужність</value>
   </data>
   <data name="SettingsPage_Category_SmartKeys" xml:space="preserve">
-    <value>Smart Keys</value>
+    <value>Розумна клавіша</value>
   </data>
   <data name="SettingsPage_Category_SoftwareControl" xml:space="preserve">
     <value>Керування програмою</value>
@@ -2749,7 +2749,7 @@ Thank you for your support!</value>
     <value>Dim</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
-    <value>Set a custom wallpaper for the app window.</value>
+    <value>Власне фонове зображення</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Crop" xml:space="preserve">
     <value>Crop</value>
@@ -2761,7 +2761,7 @@ Thank you for your support!</value>
     <value>Fit</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
-    <value>Background Image</value>
+    <value>Власне фонове зображення</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space, можливо, не був відключений правильно</value>
@@ -2850,13 +2850,13 @@ Thank you for your support!</value>
     <value>Виключені процеси</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
-    <value>Hide specific refresh rates from the Fn+R cycle.</value>
+    <value>Ви можете виключити частоту оновлення, щоб зробити комбінацію клавіш Fn+R більш корисною.</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Title" xml:space="preserve">
     <value>Виключити частоти оновлення</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Message" xml:space="preserve">
-    <value>Use hardware acceleration for the user interface.</value>
+    <value>Використовуйте апаратне прискорення для інтерфейсу користувача. Це може підвищити продуктивність та плавність.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
     <value>Апаратне прискорення</value>
@@ -2898,19 +2898,19 @@ Thank you for your support!</value>
     <value>Key Discovery</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
-    <value>Change the display language of the app.</value>
+    <value>Обрати мову.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Мова</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
-    <value>Prevent the window from being resized.</value>
+    <value>Заблокувати розмір вікна LLT. Щоб запобігти його зміні чимось.</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Заблокувати розмір вікна</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Minimize to the system tray instead of closing.</value>
+    <value>Завжди згортати у лоток. Закривайте натисканням правою кнопкою миші на образець у лотку.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>Згортати при закритті</value>
@@ -2970,7 +2970,7 @@ Thank you for your support!</value>
     <value>Налаштування датчика</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>Temporarily disable Fn Lock while Alt, Ctrl or Shift is held.</value>
+    <value>Fn Lock буде тимчасово вимкнено при натисканні клавіш Alt, Ctrl або Shift.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Розумне Fn Lock</value>
@@ -2982,7 +2982,7 @@ Thank you for your support!</value>
     <value>Розумна клавіша</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Apply the same brightness level across all Windows power plans.</value>
+    <value>Коли увімкнено, однаковий рівень яскравості буде застосований для всіх планів потужності Windows, поки ви не зміните його.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>Спільна яскравість дисплеїв</value>
@@ -2994,7 +2994,7 @@ Thank you for your support!</value>
     <value>Температура</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>Set light, dark, or system-matched theme.</value>
+    <value>Встановить білу тему, темну тему або дотримуйтесь системних налаштувань.</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>Тема</value>
@@ -3063,13 +3063,13 @@ Thank you for your support!</value>
     <value>Show App</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
-    <value>Show less</value>
+    <value>Показати менше</value>
   </data>
   <data name="ShowMore" xml:space="preserve">
-    <value>Show more</value>
+    <value>Показати більше</value>
   </data>
   <data name="Slot" xml:space="preserve">
-    <value>Slot</value>
+    <value>Слот</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Усі активні пристрої виводу звуку будуть вимкнені.</value>
@@ -3240,7 +3240,7 @@ Thank you for your support!</value>
     <value>{0} зон</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start date</value>
+    <value>Дата закінчення</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
     <value>Батарея</value>
@@ -3282,7 +3282,7 @@ Thank you for your support!</value>
     <value>Системний вентилятор</value>
   </data>
   <data name="Storage" xml:space="preserve">
-    <value>Storage</value>
+    <value>Сховище</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Вибрати образець</value>
@@ -3291,7 +3291,7 @@ Thank you for your support!</value>
     <value>Text color</value>
   </data>
   <data name="Threads" xml:space="preserve">
-    <value>Threads</value>
+    <value>Потоків</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
     <value>Світанок</value>
@@ -3303,7 +3303,7 @@ Thank you for your support!</value>
     <value>Час</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Allow switching between integrated and discrete GPU.</value>
+    <value>Дозволити перемикання між інтегрованим та дискретним GPU.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Гібридний режим</value>
@@ -3360,7 +3360,7 @@ Thank you for your support!</value>
     <value>Unhide</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>Не вказано</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Безіменний</value>
@@ -3404,13 +3404,13 @@ Thank you for your support!</value>
     <value>Що нового?</value>
   </data>
   <data name="Used" xml:space="preserve">
-    <value>Used</value>
+    <value>Використано</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Попередження</value>
   </data>
   <data name="Warranty" xml:space="preserve">
-    <value>Warranty</value>
+    <value>Гарантія</value>
   </data>
   <data name="Watt" xml:space="preserve">
     <value>W</value>
@@ -3455,7 +3455,7 @@ Thank you for your support!</value>
     <value>План живлення Windows</value>
   </data>
   <data name="WindowsPowerPlan_Title" xml:space="preserve">
-    <value>Windows Power Plan</value>
+    <value>План енергії Windows</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
     <value>Вимкнути клавішу Windows вбудованої клавіатури.</value>
