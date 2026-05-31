@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -133,16 +133,16 @@
     <value>Allumé, en veille</value>
   </data>
   <data name="AmdOverclocking_Ac_Message" xml:space="preserve">
-    <value>Profile will not apply without AC adapter (Full wattage) connected.</value>
+    <value>Le profil ne s'appliquera pas sans adaptateur CA (wattage complet) connecté.</value>
   </data>
   <data name="AmdOverclocking_Not_Initialized_Message" xml:space="preserve">
-    <value>Not initialized.</value>
+    <value>Non initialisé.</value>
   </data>
   <data name="AmdOverclocking_Not_Supported" xml:space="preserve">
-    <value>Not supported.</value>
+    <value>Non pris en charge.</value>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
-    <value>Warning: For safety, these steps will be skipped on startup: {0}. All other steps will execute normally.</value>
+    <value>Avertissement : Pour des raisons de sécurité, ces étapes seront ignorées au démarrage : {0}. Toutes les autres étapes s'exécuteront normalement.</value>
   </data>
   <data name="AutorunState_Disabled" xml:space="preserve">
     <value>Désactivé</value>
@@ -154,7 +154,7 @@
     <value>Activé (avec délai)</value>
   </data>
   <data name="Balanced" xml:space="preserve">
-    <value>Balanced</value>
+    <value>Equilibré</value>
   </data>
   <data name="BatteryNightChargeState_Off" xml:space="preserve">
     <value>Désactivé</value>
@@ -166,37 +166,37 @@
     <value>Conservation</value>
   </data>
   <data name="BatteryState_Normal" xml:space="preserve">
-    <value>Normal</value>
+    <value>Normale</value>
   </data>
   <data name="BatteryState_RapidCharge" xml:space="preserve">
     <value>Charge rapide</value>
   </data>
   <data name="BestPerformance" xml:space="preserve">
-    <value>Best Performance</value>
+    <value>Meilleure performance</value>
   </data>
   <data name="BestPowerEfficiency" xml:space="preserve">
-    <value>Best Power Efficiency</value>
+    <value>Meilleure efficacité énergétique</value>
   </data>
   <data name="CustomFanCurveControl_Fan_CPU" xml:space="preserve">
-    <value>CPU Fan</value>
+    <value>Fan du CPU</value>
   </data>
   <data name="CustomFanCurveControl_Fan_GPU" xml:space="preserve">
-    <value>GPU Fan</value>
+    <value>Fan GPU</value>
   </data>
   <data name="CustomFanCurveControl_Fan_System" xml:space="preserve">
-    <value>System Fan</value>
+    <value>Ventilateur système</value>
   </data>
   <data name="CustomSpecialKey_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>Personnalisé</value>
   </data>
   <data name="CustomSpecialKey_Default" xml:space="preserve">
-    <value>Default</value>
+    <value>Par défaut</value>
   </data>
   <data name="DeviceInformation_SharedMemory" xml:space="preserve">
-    <value>Shared / Dynamic</value>
+    <value>Partagé / Dynamique</value>
   </data>
   <data name="FlipToStartState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
     <comment>Informs the user that Flip to Start is or will be turned off.</comment>
   </data>
   <data name="FlipToStartState_On" xml:space="preserve">
@@ -208,7 +208,7 @@
     <comment>Informs the user that Fn Lock is or will be turned off.</comment>
   </data>
   <data name="FnLockState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
     <comment>Informs the user that Fn Lock is or will be turned on.</comment>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
@@ -218,17 +218,17 @@
     <value>Activé</value>
   </data>
   <data name="HardwareSensorsState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
   </data>
   <data name="HardwareSensorsState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
   </data>
   <data name="HDRState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
     <comment>Informs the user that HDR is or will be turned off.</comment>
   </data>
   <data name="HDRState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
     <comment>Informs the user that HDR is or will be turned on.</comment>
   </data>
   <data name="HybridModeState_Off" xml:space="preserve">
@@ -253,10 +253,10 @@
     <value>Secteur et USB PD</value>
   </data>
   <data name="InstantBootState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
   </data>
   <data name="InstantBootState_UsbPowerDelivery" xml:space="preserve">
-    <value>USB Power Delivery</value>
+    <value>Livraison d'alimentation USB</value>
   </data>
   <data name="ITSMode_Intelligent_Battery_Saving" xml:space="preserve">
     <value>Économie de batterie</value>
@@ -271,11 +271,11 @@
     <value>Geek</value>
   </data>
   <data name="MicrophoneState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
     <comment>Informs the user that the microphone is or will be turned off.</comment>
   </data>
   <data name="MicrophoneState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
     <comment>Informs the user that the microphone is or will be turned on.</comment>
   </data>
   <data name="ModifierKey_Alt" xml:space="preserve">
@@ -324,80 +324,80 @@
     <value>En haut à droite</value>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned off.</comment>
   </data>
   <data name="OneLevelWhiteKeyboardBacklightState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned on.</comment>
   </data>
   <data name="OsdItem_Disk1Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>Température du disque 1</value>
   </data>
   <data name="OsdItem_Disk2Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>Température disque 2</value>
   </data>
   <data name="OsdItem_E_Core_Frequency" xml:space="preserve">
-    <value>E-Core Clock</value>
+    <value>Horloge E-Core</value>
   </data>
   <data name="OsdItem_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>Ventilateur</value>
   </data>
   <data name="OsdItem_Fps" xml:space="preserve">
     <value>FPS</value>
   </data>
   <data name="OsdItem_FrameTime" xml:space="preserve">
-    <value>Frame Time</value>
+    <value>Heure du cadre</value>
   </data>
   <data name="OsdItem_Frequency" xml:space="preserve">
-    <value>Frequency</value>
+    <value>Fréquence</value>
   </data>
   <data name="OsdItem_LowFps" xml:space="preserve">
-    <value>1% Low</value>
+    <value>1 % Bas</value>
   </data>
   <data name="OsdItem_MemoryTemperature" xml:space="preserve">
-    <value>Memory Temperature</value>
+    <value>Température mémoire</value>
   </data>
   <data name="OsdItem_MotherboardTemperature" xml:space="preserve">
-    <value>Motherboard Temperature</value>
+    <value>Température de la carte mère</value>
   </data>
   <data name="OsdItem_Power" xml:space="preserve">
-    <value>Power</value>
+    <value>Électricité</value>
   </data>
   <data name="OsdItem_P_Core_Frequency" xml:space="preserve">
-    <value>P-Core Clock</value>
+    <value>Horloge P-Core</value>
   </data>
   <data name="OsdItem_Temperature" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Température</value>
   </data>
   <data name="OsdItem_Utilization" xml:space="preserve">
     <value>Utilization</value>
   </data>
   <data name="OsdItem_VramTemperature" xml:space="preserve">
-    <value>VRAM Temperature</value>
+    <value>Température VRAM</value>
   </data>
   <data name="OsdItem_VramUtilization" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>Utilisation de VRAM</value>
   </data>
   <data name="OverdriveState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
     <comment>Informs the user that Overdrive is or will be turned off.</comment>
   </data>
   <data name="OverdriveState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
     <comment>Informs the user that Overdrive is or will be turned on.</comment>
   </data>
   <data name="PanelLogoBacklightState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
   </data>
   <data name="PanelLogoBacklightState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
   </data>
   <data name="PortsBacklightState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
   </data>
   <data name="PortsBacklightState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
   </data>
   <data name="PowerModeMappingMode_Disabled" xml:space="preserve">
     <value>Désactivé</value>
@@ -412,13 +412,13 @@
     <value>Équilibré</value>
   </data>
   <data name="PowerModeState_Extreme" xml:space="preserve">
-    <value>Extreme</value>
+    <value>Extrême</value>
   </data>
   <data name="PowerModeState_GodMode" xml:space="preserve">
     <value>Personnalisé</value>
   </data>
   <data name="PowerModeState_Performance" xml:space="preserve">
-    <value>Performance</value>
+    <value>Performances</value>
   </data>
   <data name="PowerModeState_Quiet" xml:space="preserve">
     <value>Silencieux</value>
@@ -448,7 +448,7 @@
     <value>Pré-réglage 4</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
   </data>
   <data name="RGBKeyboardBacklightPreset_One" xml:space="preserve">
     <value>Prédéfini 1</value>
@@ -487,7 +487,7 @@
     <value>Intermédiaire</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightness_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
   </data>
   <data name="SpectrumKeyboardBacklightDirection_BottomToTop" xml:space="preserve">
     <value>De bas en haut</value>
@@ -565,39 +565,39 @@
     <value>Système</value>
   </data>
   <data name="ToggleState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
   </data>
   <data name="ToggleState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
   </data>
   <data name="ToggleState_Toggle" xml:space="preserve">
-    <value>Toggle</value>
+    <value>Activer/désactiver</value>
   </data>
   <data name="TouchpadLockState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
     <comment>Informs the user that Touchpad Lock is or will be turned off.</comment>
   </data>
   <data name="TouchpadLockState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
     <comment>Informs the user that Touchpad Lock is or will be turned on.</comment>
   </data>
   <data name="UpdateChannel_Beta" xml:space="preserve">
-    <value>Beta</value>
+    <value>Bêta</value>
   </data>
   <data name="UpdateChannel_Dev" xml:space="preserve">
-    <value>Dev</value>
+    <value>Dév</value>
   </data>
   <data name="UpdateChannel_Stable" xml:space="preserve">
-    <value>Stable</value>
+    <value>Écurie</value>
   </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
-    <value>The downloaded update is not signed by the trusted server certificate {0}</value>
+    <value>La mise à jour téléchargée n'est pas signée par le certificat de serveur de confiance {0}</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
-    <value>Invalid signature thumbprint {0}</value>
+    <value>Signature de signature non valide {0}</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
-    <value>Never</value>
+    <value>Jamais</value>
   </data>
   <data name="UpdateCheckFrequency_PerDay" xml:space="preserve">
     <value>Tous les jours</value>
@@ -621,7 +621,7 @@
     <value>GitHub</value>
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
-    <value>Server</value>
+    <value>Serveur</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>Élevé</value>
@@ -639,17 +639,17 @@
     <value>Mica</value>
   </data>
   <data name="WindowBackdropType_None" xml:space="preserve">
-    <value>None</value>
+    <value>Aucun</value>
   </data>
   <data name="WindowBackdropType_Tabbed" xml:space="preserve">
-    <value>Tabbed</value>
+    <value>Onglet</value>
   </data>
   <data name="WinKeyState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Désactivé</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
   <data name="WinKeyState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Activé</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
   </data>
 </root>
