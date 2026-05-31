@@ -1438,6 +1438,15 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   查找类似 Test 的本地化字符串。
+        /// </summary>
+        public static string UpdateChannel_Test {
+            get {
+                return ResourceManager.GetString("UpdateChannel_Test", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 The downloaded update is not signed by the trusted server certificate {0} 的本地化字符串。
         /// </summary>
         public static string UpdateChecker_Security_Invalid {

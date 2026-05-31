@@ -311,6 +311,8 @@ public class UpdateChecker
                 return IsReleaseOnBranch(release, "master") && release.Prerelease;
             case UpdateChannel.Dev:
                 return IsReleaseOnBranch(release, "dev") && !release.Prerelease;
+            case UpdateChannel.Test:
+                return IsReleaseOnBranch(release, "test") && !release.Prerelease;
             default:
                 return false;
         }
@@ -353,6 +355,7 @@ public class UpdateChecker
     {
         UpdateChannel.Beta => "Beta",
         UpdateChannel.Dev => "Dev",
+        UpdateChannel.Test => "Test",
         _ => ""
     };
 
@@ -360,6 +363,7 @@ public class UpdateChecker
     {
         UpdateChannel.Beta => "beta",
         UpdateChannel.Dev => "dev",
+        UpdateChannel.Test => "test",
         _ => "stable"
     };
 
@@ -440,12 +444,14 @@ public class UpdateChecker
             return (StatusCode.Null, string.Empty);
         }
 
-        var channelMapping = new (string ApiKey, string ProjectKey)[]
+        var channelMapping = new List<(string ApiKey, string ProjectKey)>
         {
             ("stable", "LenovoLegionToolkit"),
             ("beta",   "LenovoLegionToolkitBeta"),
             ("dev",    "LenovoLegionToolkitDev"),
         };
+        if (AppFlags.Instance.Debug)
+            channelMapping.Add(("test", "LenovoLegionToolkitTest"));
 
         foreach (var (apiKey, projectKey) in channelMapping)
         {

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -45,7 +46,9 @@ public partial class SettingsUpdateControl
             _updateMethodComboBox.Visibility = Visibility.Visible;
             _updateMethodComboBox.SetItems(Enum.GetValues<UpdateMethod>(), _updateSettings.Store.UpdateMethod, t => t.GetDisplayName());
             _updateChannelComboBox.Visibility = Visibility.Visible;
-            _updateChannelComboBox.SetItems(Enum.GetValues<UpdateChannel>(), _updateSettings.Store.UpdateChannel, t => t.GetDisplayName());
+            var channels = Enum.GetValues<UpdateChannel>()
+                .Where(c => c != UpdateChannel.Test || AppFlags.Instance.Debug);
+            _updateChannelComboBox.SetItems(channels, _updateSettings.Store.UpdateChannel, t => t.GetDisplayName());
         }
 
         _isRefreshing = false;

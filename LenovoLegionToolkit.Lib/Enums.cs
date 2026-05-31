@@ -959,6 +959,8 @@ public enum UpdateChannel
     Beta,
     [Display(ResourceType = typeof(Resource), Name = "UpdateChannel_Dev")]
     Dev,
+    [Display(ResourceType = typeof(Resource), Name = "UpdateChannel_Test")]
+    Test,
 }
 
 public enum WhiteKeyboardBacklightState
