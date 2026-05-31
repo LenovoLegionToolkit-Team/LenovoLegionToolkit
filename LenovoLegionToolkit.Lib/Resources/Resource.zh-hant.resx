@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -133,7 +133,7 @@
     <value>僅限睡眠時</value>
   </data>
   <data name="AmdOverclocking_Ac_Message" xml:space="preserve">
-    <value>Profile will not apply without AC adapter (Full wattage) connected.</value>
+    <value>未連接電源供應器（全功率）時，將不會套用設定檔。</value>
   </data>
   <data name="AmdOverclocking_Not_Initialized_Message" xml:space="preserve">
     <value>未初始化。</value>
@@ -142,7 +142,7 @@
     <value>不支援。</value>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
-    <value>Warning: For safety, these steps will be skipped on startup: {0}. All other steps will execute normally.</value>
+    <value>警告：為了安全起見，這些步驟將會在啟動時跳過：{0}，其他步驟將正常地執行。</value>
   </data>
   <data name="AutorunState_Disabled" xml:space="preserve">
     <value>停用</value>
@@ -154,7 +154,7 @@
     <value>延遲開啟</value>
   </data>
   <data name="Balanced" xml:space="preserve">
-    <value>Balanced</value>
+    <value>平衡模式</value>
   </data>
   <data name="BatteryNightChargeState_Off" xml:space="preserve">
     <value>关</value>
@@ -187,10 +187,10 @@
     <value>系統風扇</value>
   </data>
   <data name="CustomSpecialKey_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>客製化</value>
   </data>
   <data name="CustomSpecialKey_Default" xml:space="preserve">
-    <value>Default</value>
+    <value>預設</value>
   </data>
   <data name="DeviceInformation_SharedMemory" xml:space="preserve">
     <value>Shared / Dynamic</value>
@@ -218,10 +218,10 @@
     <value>已啟動</value>
   </data>
   <data name="HardwareSensorsState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>關閉</value>
   </data>
   <data name="HardwareSensorsState_On" xml:space="preserve">
-    <value>On</value>
+    <value>開啟</value>
   </data>
   <data name="HDRState_Off" xml:space="preserve">
     <value>關閉</value>
@@ -591,10 +591,10 @@
     <value>穩定版</value>
   </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
-    <value>The downloaded update is not signed by the trusted server certificate {0}</value>
+    <value>下載的更新未經受信任伺服器憑證簽署 {0}</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
-    <value>Invalid signature thumbprint {0}</value>
+    <value>無效的憑證指紋 {0}</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
     <value>永不</value>
