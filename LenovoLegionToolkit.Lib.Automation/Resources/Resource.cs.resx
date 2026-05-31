@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -124,22 +124,22 @@
     <value>Když je AC nabíječka odpojena</value>
   </data>
   <data name="AutomationPipeline_Warning_GPU_OC" xml:space="preserve">
-    <value>Warning: Cannot overclock a deactivated GPU. The Overclock step will fail.</value>
+    <value>Varování: Nelze přehodit protokol GPU. Krok Překrytí se nezdaří.</value>
   </data>
   <data name="AutomationPipeline_Warning_HDR" xml:space="preserve">
-    <value>Warning: Windows HDR locks screen brightness. Brightness settings applied after HDR are ignored.</value>
+    <value>Varování: HDR zamkne displej s Windows. Nastavení jasu je použito po ignorování HDR.</value>
   </data>
   <data name="AutomationPipeline_Warning_Hybrid_Mode" xml:space="preserve">
-    <value>Warning: Changing Hybrid Mode to dGPU Mode forces a system reboot. This must be the last step.</value>
+    <value>Varování: Změna hybridního režimu na dGPU vyžaduje restart systému. Toto musí být poslední krok.</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Fan" xml:space="preserve">
-    <value>Warning: Power Mode resets Fan Speed. Run the Power Mode step first.</value>
+    <value>Varování: Režim napájení resetuje rychlost ventilátoru. Nejdříve spusťte krok v režimu výkonu.</value>
   </data>
   <data name="AutomationPipeline_Warning_Power_Mode_Visual" xml:space="preserve">
-    <value>Warning: Power Mode resets Brightness and Refresh Rate. Run the Power Mode step first.</value>
+    <value>Varování: Režim napájení resetuje jas a obnovuje Rate. Nejdříve spusťte krok v energetickém režimu.</value>
   </data>
   <data name="AutomationPipeline_Warning_Resolution" xml:space="preserve">
-    <value>Warning: Changing Resolution resets Refresh Rate. Run the Resolution step first.</value>
+    <value>Varování: Změna obnoví Rate Rat. Nejprve spusťte krok usnesení.</value>
   </data>
   <data name="DeactivateGPUAutomationStepState_KillApps" xml:space="preserve">
     <value>Ukončit aplikace</value>
