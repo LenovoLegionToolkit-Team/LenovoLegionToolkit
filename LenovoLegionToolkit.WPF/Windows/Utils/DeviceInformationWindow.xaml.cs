@@ -447,7 +447,11 @@ public partial class DeviceInformationWindow
     {
         _count = 0;
 
-        if (sender is not Wpf.Ui.Controls.Button button || button.Tag is not string textToCopy)
+        if (sender is not Wpf.Ui.Controls.Button button)
+            return;
+
+        var textToCopy = button == _copySerialNumberButton ? _actualSerialNumber : button.Tag as string;
+        if (textToCopy is null)
             return;
 
         try
