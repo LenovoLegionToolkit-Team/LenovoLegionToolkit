@@ -489,6 +489,19 @@ public record GpuHardwareInfo(string? Name, string? Vram)
         1 => Vram ?? "",
         _ => throw new ArgumentOutOfRangeException(nameof(index))
     };
+
+    public string DisplayVram
+    {
+        get
+        {
+            if (Vram != Resource.DeviceInformation_SharedMemory)
+            {
+                return $"{Vram} GB";
+            }
+
+            return Vram;
+        }
+    }
 }
 
 public record DiskHardwareInfo(string? Model, double SizeGb)

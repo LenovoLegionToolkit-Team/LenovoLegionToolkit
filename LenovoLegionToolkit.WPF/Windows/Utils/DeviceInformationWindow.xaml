@@ -40,8 +40,15 @@
                 <ColumnDefinition Width="Auto" />
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                <wpfui:SymbolIcon Symbol="Laptop24" Foreground="{DynamicResource PaletteLightBlueBrush}" FontSize="16" Margin="0,0,8,0" />
+            <StackPanel
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                Orientation="Horizontal">
+                <wpfui:SymbolIcon
+                    Margin="0,0,8,0"
+                    FontSize="16"
+                    Foreground="{DynamicResource PaletteLightBlueBrush}"
+                    Symbol="Laptop24" />
                 <TextBlock
                     VerticalAlignment="Center"
                     FontSize="13"
@@ -60,25 +67,57 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <!-- Left Column -->
+                <!--  Left Column  -->
                 <StackPanel Grid.Column="0" Margin="0,0,5,0">
-                    <!-- Device Details -->
-                    <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  Device Details  -->
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon Symbol="Laptop24" Foreground="{DynamicResource PaletteLightBlueBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.Device}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PaletteLightBlueBrush}"
+                                    Symbol="Laptop24" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.Device}" />
                             </StackPanel>
-                            
-                            <TextBlock x:Name="_modelLargeLabel" FontSize="16" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Margin="0,0,0,12" />
+
+                            <TextBlock
+                                x:Name="_modelLargeLabel"
+                                Margin="0,0,0,12"
+                                FontSize="16"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
 
                             <Grid Margin="0,0,0,10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon Grid.Column="0" Symbol="Window24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock x:Name="_osVersionLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" />
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Symbol="Window24" />
+                                <TextBlock
+                                    x:Name="_osVersionLabel"
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                             </Grid>
 
                             <Grid Margin="0,0,0,10">
@@ -88,15 +127,54 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon Grid.Column="0" Symbol="Key24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Symbol="Key24" />
+                                <StackPanel
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,4,0"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                         <Run Text="{x:Static resources:Resource.SerialNumber}" /><Run Text=":" />
                                     </TextBlock>
-                                    <TextBlock x:Name="_serialNumberLabel" Margin="0,0,8,0" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontWeight="Medium" Focusable="True" VerticalAlignment="Center" />
+                                    <TextBlock
+                                        x:Name="_serialNumberLabel"
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="Center"
+                                        Focusable="True"
+                                        FontSize="12"
+                                        FontWeight="Medium"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                                 </StackPanel>
-                                <wpfui:Button x:Name="_toggleSerialNumberButton" Grid.Column="2" Padding="4" Appearance="Transparent" Cursor="Hand" Click="ToggleSerialNumberButton_OnClick" Icon="Eye24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" Margin="0,0,4,0" />
-                                <wpfui:Button x:Name="_copySerialNumberButton" Grid.Column="3" Padding="4" Appearance="Transparent" Cursor="Hand" Click="CopyButton_OnClick" Icon="Copy24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" Tag="{Binding ElementName=_serialNumberLabel, Path=Text}" />
+                                <wpfui:Button
+                                    x:Name="_toggleSerialNumberButton"
+                                    Grid.Column="2"
+                                    Margin="0,0,4,0"
+                                    Padding="4"
+                                    VerticalAlignment="Center"
+                                    Appearance="Transparent"
+                                    Click="ToggleSerialNumberButton_OnClick"
+                                    Cursor="Hand"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Icon="Eye24" />
+                                <wpfui:Button
+                                    x:Name="_copySerialNumberButton"
+                                    Grid.Column="3"
+                                    Padding="4"
+                                    VerticalAlignment="Center"
+                                    Appearance="Transparent"
+                                    Click="CopyButton_OnClick"
+                                    Cursor="Hand"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Icon="Copy24"
+                                    Tag="{Binding ElementName=_serialNumberLabel, Path=Text}" />
                             </Grid>
 
                             <Grid Margin="0,0,0,10">
@@ -105,14 +183,41 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon Grid.Column="0" Symbol="Tag24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Symbol="Tag24" />
+                                <StackPanel
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,4,0"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                         <Run Text="{x:Static resources:Resource.Model}" /><Run Text=":" />
                                     </TextBlock>
-                                    <TextBlock x:Name="_modelLabel" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontWeight="Medium" Focusable="True" />
+                                    <TextBlock
+                                        x:Name="_modelLabel"
+                                        Focusable="True"
+                                        FontSize="12"
+                                        FontWeight="Medium"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                                 </StackPanel>
-                                <wpfui:Button x:Name="_copyModelButton" Grid.Column="2" Padding="4" Appearance="Transparent" Cursor="Hand" Click="CopyButton_OnClick" Icon="Copy24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" Tag="{Binding ElementName=_modelLabel, Path=Text}" />
+                                <wpfui:Button
+                                    x:Name="_copyModelButton"
+                                    Grid.Column="2"
+                                    Padding="4"
+                                    VerticalAlignment="Center"
+                                    Appearance="Transparent"
+                                    Click="CopyButton_OnClick"
+                                    Cursor="Hand"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Icon="Copy24"
+                                    Tag="{Binding ElementName=_modelLabel, Path=Text}" />
                             </Grid>
 
                             <Grid Margin="0,0,0,10">
@@ -121,59 +226,157 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon Grid.Column="0" Symbol="NumberSymbol24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Symbol="NumberSymbol24" />
+                                <StackPanel
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,4,0"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                         <Run Text="{x:Static resources:Resource.MachineType}" /><Run Text=":" />
                                     </TextBlock>
-                                    <TextBlock x:Name="_mtmLabel" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontWeight="Medium" Focusable="True" />
+                                    <TextBlock
+                                        x:Name="_mtmLabel"
+                                        Focusable="True"
+                                        FontSize="12"
+                                        FontWeight="Medium"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                                 </StackPanel>
-                                <wpfui:Button x:Name="_copyMtmButton" Grid.Column="2" Padding="4" Appearance="Transparent" Cursor="Hand" Click="CopyButton_OnClick" Icon="Copy24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" Tag="{Binding ElementName=_mtmLabel, Path=Text}" />
+                                <wpfui:Button
+                                    x:Name="_copyMtmButton"
+                                    Grid.Column="2"
+                                    Padding="4"
+                                    VerticalAlignment="Center"
+                                    Appearance="Transparent"
+                                    Click="CopyButton_OnClick"
+                                    Cursor="Hand"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Icon="Copy24"
+                                    Tag="{Binding ElementName=_mtmLabel, Path=Text}" />
                             </Grid>
 
-                            <Grid x:Name="_biosCard" Background="Transparent" MouseLeftButtonUp="BiosCard_OnMouseLeftButtonUp">
+                            <Grid
+                                x:Name="_biosCard"
+                                Background="Transparent"
+                                MouseLeftButtonUp="BiosCard_OnMouseLeftButtonUp">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon Grid.Column="0" Symbol="Code24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Symbol="Code24" />
+                                <StackPanel
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,4,0"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                         <Run Text="{x:Static resources:Resource.BiosVersion}" /><Run Text=":" />
                                     </TextBlock>
-                                    <TextBlock x:Name="_biosLabel" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontWeight="Medium" Focusable="True" />
+                                    <TextBlock
+                                        x:Name="_biosLabel"
+                                        Focusable="True"
+                                        FontSize="12"
+                                        FontWeight="Medium"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                                 </StackPanel>
-                                <wpfui:Button x:Name="_copyBiosButton" Grid.Column="2" Padding="4" Appearance="Transparent" Cursor="Hand" Click="CopyButton_OnClick" Icon="Copy24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" Tag="{Binding ElementName=_biosLabel, Path=Text}" />
+                                <wpfui:Button
+                                    x:Name="_copyBiosButton"
+                                    Grid.Column="2"
+                                    Padding="4"
+                                    VerticalAlignment="Center"
+                                    Appearance="Transparent"
+                                    Click="CopyButton_OnClick"
+                                    Cursor="Hand"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Icon="Copy24"
+                                    Tag="{Binding ElementName=_biosLabel, Path=Text}" />
                             </Grid>
                         </StackPanel>
                     </Border>
 
-                    <!-- Warranty -->
-                    <Border x:Name="_warrantyInfo" Visibility="Collapsed" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  Warranty  -->
+                    <Border
+                        x:Name="_warrantyInfo"
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Visibility="Collapsed">
                         <StackPanel>
                             <Grid Margin="0,0,0,16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <StackPanel Orientation="Horizontal" Grid.Column="0">
-                                    <wpfui:SymbolIcon x:Name="_warrantyStatusIcon" Symbol="CheckmarkCircle24" Foreground="{DynamicResource PaletteGreenBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                    <TextBlock Text="{x:Static resources:Resource.Warranty}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                                <StackPanel Grid.Column="0" Orientation="Horizontal">
+                                    <wpfui:SymbolIcon
+                                        x:Name="_warrantyStatusIcon"
+                                        Margin="0,0,8,0"
+                                        VerticalAlignment="Center"
+                                        FontSize="18"
+                                        Foreground="{DynamicResource PaletteGreenBrush}"
+                                        Symbol="CheckmarkCircle24" />
+                                    <TextBlock
+                                        VerticalAlignment="Center"
+                                        FontSize="15"
+                                        FontWeight="SemiBold"
+                                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                        Text="{x:Static resources:Resource.Warranty}" />
                                 </StackPanel>
-                                <wpfui:Button x:Name="_refreshWarrantyButton" Grid.Column="1" Padding="4" Appearance="Transparent" Cursor="Hand" Click="RefreshWarrantyButton_OnClick" Icon="ArrowClockwise24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" ToolTip="{x:Static resources:Resource.Refresh}" />
+                                <wpfui:Button
+                                    x:Name="_refreshWarrantyButton"
+                                    Grid.Column="1"
+                                    Padding="4"
+                                    Appearance="Transparent"
+                                    Click="RefreshWarrantyButton_OnClick"
+                                    Cursor="Hand"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Icon="ArrowClockwise24"
+                                    ToolTip="{x:Static resources:Resource.Refresh}" />
                             </Grid>
-                            
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-                                <TextBlock x:Name="_warrantyStatusLabel" FontSize="12" FontWeight="Bold" Foreground="{DynamicResource PaletteGreenBrush}" />
+
+                            <StackPanel Margin="0,0,0,8" Orientation="Horizontal">
+                                <TextBlock
+                                    x:Name="_warrantyStatusLabel"
+                                    FontSize="12"
+                                    FontWeight="Bold"
+                                    Foreground="{DynamicResource PaletteGreenBrush}" />
                             </StackPanel>
 
-                            <Border CornerRadius="3" ClipToBounds="True" Height="6" Background="{DynamicResource ControlStrokeColorDefaultBrush}" Margin="0,8,0,12">
-                                <ProgressBar x:Name="_warrantyProgressBar" Value="100" BorderThickness="0" Background="Transparent">
+                            <Border
+                                Height="6"
+                                Margin="0,8,0,12"
+                                Background="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                ClipToBounds="True"
+                                CornerRadius="3">
+                                <ProgressBar
+                                    x:Name="_warrantyProgressBar"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Value="100">
                                     <ProgressBar.Foreground>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                            <GradientStop Color="{StaticResource PaletteGreenColor}" Offset="0" />
-                                            <GradientStop Color="{StaticResource PaletteTealColor}" Offset="1" />
+                                            <GradientStop Offset="0" Color="{StaticResource PaletteGreenColor}" />
+                                            <GradientStop Offset="1" Color="{StaticResource PaletteTealColor}" />
                                         </LinearGradientBrush>
                                     </ProgressBar.Foreground>
                                 </ProgressBar>
@@ -184,87 +387,188 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <TextBlock
+                                    Margin="0,0,4,0"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                     <Run Text="{x:Static resources:Resource.StartDate}" /><Run Text=":" />
                                 </TextBlock>
-                                <TextBlock x:Name="_warrantyStartLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Medium" />
+                                <TextBlock
+                                    x:Name="_warrantyStartLabel"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                             </Grid>
-                            
+
                             <Grid Margin="0,0,0,6">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <TextBlock
+                                    Margin="0,0,4,0"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                     <Run Text="{x:Static resources:Resource.EndDate}" /><Run Text=":" />
                                 </TextBlock>
-                                <TextBlock x:Name="_warrantyEndLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Medium" />
+                                <TextBlock
+                                    x:Name="_warrantyEndLabel"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                             </Grid>
-                            
+
                             <Grid Margin="0,0,0,16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <TextBlock
+                                    Margin="0,0,4,0"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                     <Run Text="{x:Static resources:Resource.DaysRemaining}" /><Run Text=":" />
                                 </TextBlock>
-                                <TextBlock x:Name="_warrantyDaysRemainingLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource PaletteGreenBrush}" FontWeight="Medium" />
+                                <TextBlock
+                                    x:Name="_warrantyDaysRemainingLabel"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource PaletteGreenBrush}" />
                             </Grid>
-                            
-                            <wpfui:Button x:Name="_warrantyLinkCardAction" Appearance="Transparent" Cursor="Hand" BorderThickness="0" HorizontalAlignment="Left" Padding="0" Margin="0,10,0,0" Click="WarrantyLinkCardAction_OnClick" Content="{x:Static resources:Resource.DeviceInformationWindow_LenovoSupport}" Icon="Open24" IsEnabled="False" Foreground="{DynamicResource PaletteLightBlueBrush}" />
+
+                            <wpfui:Button
+                                x:Name="_warrantyLinkCardAction"
+                                Margin="0,10,0,0"
+                                Padding="0"
+                                HorizontalAlignment="Left"
+                                Appearance="Transparent"
+                                BorderThickness="0"
+                                Click="WarrantyLinkCardAction_OnClick"
+                                Content="{x:Static resources:Resource.DeviceInformationWindow_LenovoSupport}"
+                                Cursor="Hand"
+                                Foreground="{DynamicResource PaletteLightBlueBrush}"
+                                Icon="Open24"
+                                IsEnabled="False" />
                         </StackPanel>
                     </Border>
 
-                    <!-- Platform & Capabilities -->
-                    <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  Platform & Capabilities  -->
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon Symbol="Info24" Foreground="{DynamicResource PaletteLightBlueBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.PlatformAndCapabilities}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PaletteLightBlueBrush}"
+                                    Symbol="Info24" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.PlatformAndCapabilities}" />
                             </StackPanel>
 
-                            <Grid Margin="0,0,0,10" x:Name="_seriesRow">
+                            <Grid x:Name="_seriesRow" Margin="0,0,0,10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon Grid.Column="0" Symbol="Layer24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Symbol="Layer24" />
+                                <StackPanel
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,4,0"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                         <Run Text="{x:Static resources:Resource.Series}" /><Run Text=":" />
                                     </TextBlock>
-                                    <TextBlock x:Name="_seriesLabel" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontWeight="Medium" Focusable="True" />
+                                    <TextBlock
+                                        x:Name="_seriesLabel"
+                                        Focusable="True"
+                                        FontSize="12"
+                                        FontWeight="Medium"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                                 </StackPanel>
                             </Grid>
 
-                            <Grid Margin="0,0,0,10" x:Name="_generationRow">
+                            <Grid x:Name="_generationRow" Margin="0,0,0,10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon Grid.Column="0" Symbol="History24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Symbol="History24" />
+                                <StackPanel
+                                    Grid.Column="1"
+                                    VerticalAlignment="Center"
+                                    Orientation="Horizontal">
+                                    <TextBlock
+                                        Margin="0,0,4,0"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                         <Run Text="{x:Static resources:Resource.Generation}" /><Run Text=":" />
                                     </TextBlock>
-                                    <TextBlock x:Name="_generationLabel" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontWeight="Medium" Focusable="True" />
+                                    <TextBlock
+                                        x:Name="_generationLabel"
+                                        Focusable="True"
+                                        FontSize="12"
+                                        FontWeight="Medium"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                                 </StackPanel>
                             </Grid>
 
 
 
-                            <Grid Margin="0,0,0,10" x:Name="_modesRow">
+                            <Grid x:Name="_modesRow" Margin="0,0,0,10">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon Grid.Column="0" Symbol="Gauge24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Top" />
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Top"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Symbol="Gauge24" />
                                 <StackPanel Grid.Column="1" VerticalAlignment="Top">
-                                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,4">
+                                    <TextBlock
+                                        Margin="0,0,0,4"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                         <Run Text="{x:Static resources:Resource.PowerModes}" /><Run Text=":" />
                                     </TextBlock>
-                                    <TextBlock x:Name="_powerModesLabel" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontWeight="Medium" Focusable="True" TextWrapping="Wrap" />
+                                    <TextBlock
+                                        x:Name="_powerModesLabel"
+                                        Focusable="True"
+                                        FontSize="12"
+                                        FontWeight="Medium"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                        TextWrapping="Wrap" />
                                 </StackPanel>
                             </Grid>
 
@@ -273,13 +577,40 @@
                                     <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon Grid.Column="0" Symbol="DeveloperBoard24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="16" Margin="0,0,8,0" VerticalAlignment="Top" />
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Top"
+                                    FontSize="16"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Symbol="DeveloperBoard24" />
                                 <StackPanel Grid.Column="1" VerticalAlignment="Top">
-                                    <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,0,4">
+                                    <TextBlock
+                                        Margin="0,0,0,4"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                         <Run Text="{x:Static resources:Resource.HardwareFeatures}" /><Run Text=":" />
                                     </TextBlock>
-                                    <TextBlock x:Name="_capabilitiesLabel" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontWeight="Medium" Focusable="True" TextWrapping="Wrap" MaxHeight="35" TextTrimming="CharacterEllipsis" />
-                                    <ToggleButton x:Name="_expandCapabilitiesButton" Content="{x:Static resources:Resource.ShowMore}" Background="Transparent" Cursor="Hand" BorderThickness="0" Foreground="{DynamicResource PaletteLightBlueBrush}" FontSize="12" Padding="0,4" HorizontalAlignment="Left" Click="ExpandCapabilities_OnClick" />
+                                    <TextBlock
+                                        x:Name="_capabilitiesLabel"
+                                        MaxHeight="35"
+                                        Focusable="True"
+                                        FontSize="12"
+                                        FontWeight="Medium"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                        TextTrimming="CharacterEllipsis"
+                                        TextWrapping="Wrap" />
+                                    <ToggleButton
+                                        x:Name="_expandCapabilitiesButton"
+                                        Padding="0,4"
+                                        HorizontalAlignment="Left"
+                                        Background="Transparent"
+                                        BorderThickness="0"
+                                        Click="ExpandCapabilities_OnClick"
+                                        Content="{x:Static resources:Resource.ShowMore}"
+                                        Cursor="Hand"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource PaletteLightBlueBrush}" />
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
@@ -287,37 +618,88 @@
 
                 </StackPanel>
 
-                <!-- Middle Column -->
+                <!--  Middle Column  -->
                 <StackPanel Grid.Column="1" Margin="5,0,5,0">
 
-                    <!-- CPU -->
-                    <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  CPU  -->
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon x:Name="_cpuIcon" Symbol="DeveloperBoard24" Foreground="{DynamicResource PaletteLightBlueBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.CPU}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    x:Name="_cpuIcon"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PaletteLightBlueBrush}"
+                                    Symbol="DeveloperBoard24" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.CPU}" />
                             </StackPanel>
-                            <TextBlock x:Name="_cpuNameLabel" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Focusable="True" TextWrapping="Wrap" />
-                            <TextBlock x:Name="_cpuDetailsLabel" FontSize="12" Margin="0,4,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Focusable="True" />
+                            <TextBlock
+                                x:Name="_cpuNameLabel"
+                                Focusable="True"
+                                FontSize="14"
+                                FontWeight="Bold"
+                                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                TextWrapping="Wrap" />
+                            <TextBlock
+                                x:Name="_cpuDetailsLabel"
+                                Margin="0,4,0,0"
+                                Focusable="True"
+                                FontSize="12"
+                                Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                         </StackPanel>
                     </Border>
 
-                    <!-- GPU -->
-                    <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  GPU  -->
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon x:Name="_gpuIcon" Symbol="Games24" Foreground="{DynamicResource PaletteLightBlueBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.GPU}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    x:Name="_gpuIcon"
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PaletteLightBlueBrush}"
+                                    Symbol="Games24" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.GPU}" />
                             </StackPanel>
                             <ItemsControl x:Name="_gpuList">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Margin="0,0,0,8">
-                                            <TextBlock Text="{Binding Name, TargetNullValue={x:Static resources:Resource.Unknown}}" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextWrapping="Wrap" />
-                                            <TextBlock FontSize="12" Margin="0,4,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}">
-                                                <Run Text="{Binding Vram}" />
-                                                <Run Text=" " />
-                                                <Run Text="{x:Static resources:Resource.GB}" />
+                                            <TextBlock
+                                                FontSize="14"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                                Text="{Binding Name, TargetNullValue={x:Static resources:Resource.Unknown}}"
+                                                TextWrapping="Wrap" />
+                                            <TextBlock
+                                                Margin="0,4,0,0"
+                                                FontSize="12"
+                                                Foreground="{DynamicResource TextFillColorSecondaryBrush}">
+                                                <Run Text="{Binding DisplayVram, Mode=OneWay}" />
                                             </TextBlock>
                                         </StackPanel>
                                     </DataTemplate>
@@ -326,12 +708,28 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- RAM -->
-                    <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  RAM  -->
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon Symbol="Database24" Foreground="{DynamicResource PalettePurpleBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.RAM}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PalettePurpleBrush}"
+                                    Symbol="Database24" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.RAM}" />
                             </StackPanel>
                             <ItemsControl x:Name="_ramList">
                                 <ItemsControl.ItemTemplate>
@@ -342,24 +740,29 @@
                                                 <ColumnDefinition Width="Auto" />
                                             </Grid.ColumnDefinitions>
                                             <StackPanel Grid.Column="0">
-                                                <TextBlock FontSize="14" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}">
+                                                <TextBlock
+                                                    FontSize="14"
+                                                    FontWeight="Bold"
+                                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}">
                                                     <Run Text="{Binding CapacityGb, StringFormat=\{0:F0\}}" />
-                                                    <Run Text=" " />
                                                     <Run Text="{x:Static resources:Resource.GB}" />
                                                     <Run Text=" " />
                                                     <Run Text="{Binding Generation, TargetNullValue={x:Static resources:Resource.Unknown}}" />
                                                 </TextBlock>
-                                                <TextBlock Foreground="{DynamicResource TextFillColorSecondaryBrush}" FontSize="12">
+                                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                                     <Run Text="{x:Static resources:Resource.Slot}" />
-                                                    <Run Text=" " />
                                                     <Run Text="{Binding Slot}" />
                                                     <Run Text=" • " />
                                                     <Run Text="{Binding Manufacturer, TargetNullValue={x:Static resources:Resource.Unknown}}" />
                                                 </TextBlock>
                                             </StackPanel>
-                                            <TextBlock Grid.Column="1" FontSize="13" FontWeight="Medium" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center">
+                                            <TextBlock
+                                                Grid.Column="1"
+                                                VerticalAlignment="Center"
+                                                FontSize="13"
+                                                FontWeight="Medium"
+                                                Foreground="{DynamicResource TextFillColorPrimaryBrush}">
                                                 <Run Text="{Binding SpeedMhz, TargetNullValue={x:Static resources:Resource.Unknown}}" />
-                                                <Run Text=" " />
                                                 <Run Text="{x:Static resources:Resource.MHz}" />
                                             </TextBlock>
                                         </Grid>
@@ -369,12 +772,28 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- Motherboard -->
-                    <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  Motherboard  -->
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon Symbol="DeveloperBoard24" Foreground="{DynamicResource PaletteGreenBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.Motherboard}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PaletteGreenBrush}"
+                                    Symbol="DeveloperBoard24" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.Motherboard}" />
                             </StackPanel>
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -382,10 +801,30 @@
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Grid.Column="0">
-                                    <TextBlock x:Name="_motherboardNameLabel" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" Focusable="True" />
-                                    <TextBlock x:Name="_motherboardDetailsLabel" FontSize="12" Margin="0,4,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Focusable="True" />
+                                    <TextBlock
+                                        x:Name="_motherboardNameLabel"
+                                        Focusable="True"
+                                        FontSize="14"
+                                        FontWeight="Bold"
+                                        Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+                                    <TextBlock
+                                        x:Name="_motherboardDetailsLabel"
+                                        Margin="0,4,0,0"
+                                        Focusable="True"
+                                        FontSize="12"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
                                 </StackPanel>
-                                <wpfui:Button x:Name="_copyMotherboardButton" Grid.Column="1" Padding="4" Appearance="Transparent" Cursor="Hand" Click="CopyButton_OnClick" Icon="Copy24" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center" Tag="{Binding ElementName=_motherboardNameLabel, Path=Text}" />
+                                <wpfui:Button
+                                    x:Name="_copyMotherboardButton"
+                                    Grid.Column="1"
+                                    Padding="4"
+                                    VerticalAlignment="Center"
+                                    Appearance="Transparent"
+                                    Click="CopyButton_OnClick"
+                                    Cursor="Hand"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Icon="Copy24"
+                                    Tag="{Binding ElementName=_motherboardNameLabel, Path=Text}" />
                             </Grid>
                         </StackPanel>
                     </Border>
@@ -393,14 +832,30 @@
 
                 </StackPanel>
 
-                <!-- Right Column -->
+                <!--  Right Column  -->
                 <StackPanel Grid.Column="2" Margin="5,0,0,0">
-                    <!-- Storage -->
-                    <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  Storage  -->
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon Symbol="HardDrive20" Foreground="{DynamicResource PaletteLightBlueBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.Storage}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PaletteLightBlueBrush}"
+                                    Symbol="HardDrive20" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.Storage}" />
                             </StackPanel>
                             <ItemsControl x:Name="_diskList">
                                 <ItemsControl.ItemTemplate>
@@ -412,27 +867,45 @@
                                                     <ColumnDefinition Width="Auto" />
                                                 </Grid.ColumnDefinitions>
                                                 <StackPanel Grid.Column="0">
-                                                    <TextBlock Text="{Binding Name, TargetNullValue={x:Static resources:Resource.Unknown}}" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextWrapping="Wrap" />
-                                                    <TextBlock Text="{Binding Label}" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                                                    <TextBlock
+                                                        FontSize="14"
+                                                        FontWeight="Bold"
+                                                        Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                                        Text="{Binding Name, TargetNullValue={x:Static resources:Resource.Unknown}}"
+                                                        TextWrapping="Wrap" />
+                                                    <TextBlock
+                                                        FontSize="12"
+                                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                                        Text="{Binding Label}" />
                                                 </StackPanel>
-                                                <TextBlock Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" VerticalAlignment="Center">
+                                                <TextBlock
+                                                    Grid.Column="1"
+                                                    VerticalAlignment="Center"
+                                                    FontSize="12"
+                                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                                     <Run Text="{Binding UsedGb, StringFormat=\{0:F1\}, Mode=OneWay}" />
-                                                    <Run Text=" " />
                                                     <Run Text="{x:Static resources:Resource.GB}" />
-                                                    <Run Text=" " />
-                                                    <Run Text="{x:Static resources:Resource.Used}" />
-                                                    <Run Text=" / " />
+                                                    <Run Text="/" />
                                                     <Run Text="{Binding SizeGb, StringFormat=\{0:F1\}, Mode=OneWay}" />
-                                                    <Run Text=" " />
                                                     <Run Text="{x:Static resources:Resource.GB}" />
                                                 </TextBlock>
                                             </Grid>
-                                            <Border CornerRadius="3" ClipToBounds="True" Height="6" Background="{DynamicResource ControlStrokeColorDefaultBrush}" Margin="0,8,0,0">
-                                                <ProgressBar Value="{Binding UsedGb, Mode=OneWay}" Maximum="{Binding SizeGb, Mode=OneWay}" BorderThickness="0" Background="Transparent" x:Name="StorageProgressBar">
+                                            <Border
+                                                Height="6"
+                                                Margin="0,8,0,0"
+                                                Background="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                                ClipToBounds="True"
+                                                CornerRadius="3">
+                                                <ProgressBar
+                                                    x:Name="StorageProgressBar"
+                                                    Background="Transparent"
+                                                    BorderThickness="0"
+                                                    Maximum="{Binding SizeGb, Mode=OneWay}"
+                                                    Value="{Binding UsedGb, Mode=OneWay}">
                                                     <ProgressBar.Foreground>
                                                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                                                            <GradientStop Color="{StaticResource PaletteLightBlueColor}" Offset="0" />
-                                                            <GradientStop Color="{StaticResource PaletteTealColor}" Offset="1" />
+                                                            <GradientStop Offset="0" Color="{StaticResource PaletteLightBlueColor}" />
+                                                            <GradientStop Offset="1" Color="{StaticResource PaletteTealColor}" />
                                                         </LinearGradientBrush>
                                                     </ProgressBar.Foreground>
                                                 </ProgressBar>
@@ -444,22 +917,45 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- Displays -->
-                    <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  Displays  -->
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon Symbol="Desktop24" Foreground="{DynamicResource PaletteLightBlueBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.Displays}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PaletteLightBlueBrush}"
+                                    Symbol="Desktop24" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.Displays}" />
                             </StackPanel>
                             <ItemsControl x:Name="_displayList">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Grid Margin="0,0,0,8">
                                             <StackPanel>
-                                                <TextBlock FontSize="14" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextWrapping="Wrap">
+                                                <TextBlock
+                                                    FontSize="14"
+                                                    FontWeight="Bold"
+                                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                                    TextWrapping="Wrap">
                                                     <Run Text="{x:Static resources:Resource.DashboardPage_Display_Title}" /><Run Text=" " /><Run Text="{Binding Index, Mode=OneWay}" /><Run Text=": " /><Run Text="{Binding Model, TargetNullValue={x:Static resources:Resource.Unknown}, Mode=OneWay}" />
                                                 </TextBlock>
-                                                <TextBlock FontSize="12" Margin="0,4,0,0" Foreground="{DynamicResource TextFillColorSecondaryBrush}">
+                                                <TextBlock
+                                                    Margin="0,4,0,0"
+                                                    FontSize="12"
+                                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                                     <Run Text="{Binding Width}" />
                                                     <Run Text="×" />
                                                     <Run Text="{Binding Height}" />
@@ -476,12 +972,30 @@
                         </StackPanel>
                     </Border>
 
-                    <!-- Battery -->
-                    <Border x:Name="_batteryInfo" Visibility="Collapsed" Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  Battery  -->
+                    <Border
+                        x:Name="_batteryInfo"
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12"
+                        Visibility="Collapsed">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon Symbol="BatteryCharge24" Foreground="{DynamicResource PaletteGreenBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.BatteryPage_Title}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PaletteGreenBrush}"
+                                    Symbol="BatteryCharge24" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.BatteryPage_Title}" />
                             </StackPanel>
 
                             <Grid Margin="0,0,0,6">
@@ -489,10 +1003,18 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <TextBlock
+                                    Margin="0,0,4,0"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                     <Run Text="{x:Static resources:Resource.BatteryPage_LiveCharge_Title}" /><Run Text=":" />
                                 </TextBlock>
-                                <TextBlock x:Name="_batteryLiveChargeLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Medium" />
+                                <TextBlock
+                                    x:Name="_batteryLiveChargeLabel"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                             </Grid>
 
                             <Grid Margin="0,0,0,2">
@@ -500,13 +1022,30 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <TextBlock
+                                    Margin="0,0,4,0"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                     <Run Text="{x:Static resources:Resource.BatteryPage_BatteryHealth_Title}" /><Run Text=":" />
                                 </TextBlock>
-                                <TextBlock x:Name="_batteryHealthLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Medium" />
+                                <TextBlock
+                                    x:Name="_batteryHealthLabel"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                             </Grid>
-                            <Border CornerRadius="3" ClipToBounds="True" Height="6" Background="{DynamicResource ControlStrokeColorDefaultBrush}" Margin="0,0,0,10">
-                                <ProgressBar x:Name="_batteryHealthProgressBar" Maximum="100" BorderThickness="0" Background="Transparent" />
+                            <Border
+                                Height="6"
+                                Margin="0,0,0,10"
+                                Background="{DynamicResource ControlStrokeColorDefaultBrush}"
+                                ClipToBounds="True"
+                                CornerRadius="3">
+                                <ProgressBar
+                                    x:Name="_batteryHealthProgressBar"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Maximum="100" />
                             </Border>
 
                             <Grid Margin="0,0,0,6">
@@ -514,10 +1053,18 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <TextBlock
+                                    Margin="0,0,4,0"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                     <Run Text="{x:Static resources:Resource.BatteryPage_DesignCapacity_Title}" /><Run Text=":" />
                                 </TextBlock>
-                                <TextBlock x:Name="_batteryDesignCapacityLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Medium" />
+                                <TextBlock
+                                    x:Name="_batteryDesignCapacityLabel"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                             </Grid>
 
                             <Grid Margin="0,0,0,6">
@@ -525,10 +1072,18 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <TextBlock
+                                    Margin="0,0,4,0"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                     <Run Text="{x:Static resources:Resource.BatteryPage_FullChargeCapacity_Title}" /><Run Text=":" />
                                 </TextBlock>
-                                <TextBlock x:Name="_batteryFullCapacityLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Medium" />
+                                <TextBlock
+                                    x:Name="_batteryFullCapacityLabel"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                             </Grid>
 
                             <Grid Margin="0,0,0,6">
@@ -536,10 +1091,18 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <TextBlock
+                                    Margin="0,0,4,0"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                     <Run Text="{x:Static resources:Resource.BatteryPage_CycleCount_Title}" /><Run Text=":" />
                                 </TextBlock>
-                                <TextBlock x:Name="_batteryCycleCountLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Medium" />
+                                <TextBlock
+                                    x:Name="_batteryCycleCountLabel"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                             </Grid>
 
                             <Grid Margin="0,0,0,0">
@@ -547,31 +1110,65 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}" Margin="0,0,4,0">
+                                <TextBlock
+                                    Margin="0,0,4,0"
+                                    FontSize="12"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                     <Run Text="{x:Static resources:Resource.BatteryPage_ManufactureDate_Title}" /><Run Text=":" />
                                 </TextBlock>
-                                <TextBlock x:Name="_batteryManufactureDateLabel" Grid.Column="1" FontSize="12" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Medium" />
+                                <TextBlock
+                                    x:Name="_batteryManufactureDateLabel"
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
                             </Grid>
                         </StackPanel>
                     </Border>
 
-                    <!-- Network -->
-                    <Border Background="{DynamicResource CardBackgroundFillColorDefaultBrush}" BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}" BorderThickness="1" CornerRadius="12" Padding="16" Margin="0,0,0,10">
+                    <!--  Network  -->
+                    <Border
+                        Margin="0,0,0,10"
+                        Padding="16"
+                        Background="{DynamicResource CardBackgroundFillColorDefaultBrush}"
+                        BorderBrush="{DynamicResource CardStrokeColorDefaultSolidBrush}"
+                        BorderThickness="1"
+                        CornerRadius="12">
                         <StackPanel>
-                            <StackPanel Orientation="Horizontal" Margin="0,0,0,16">
-                                <wpfui:SymbolIcon Symbol="Wifi124" Foreground="{DynamicResource PaletteBlueBrush}" FontSize="18" Margin="0,0,8,0" VerticalAlignment="Center" />
-                                <TextBlock Text="{x:Static resources:Resource.NetworkAdapters}" FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" VerticalAlignment="Center" />
+                            <StackPanel Margin="0,0,0,16" Orientation="Horizontal">
+                                <wpfui:SymbolIcon
+                                    Margin="0,0,8,0"
+                                    VerticalAlignment="Center"
+                                    FontSize="18"
+                                    Foreground="{DynamicResource PaletteBlueBrush}"
+                                    Symbol="Wifi124" />
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    FontSize="15"
+                                    FontWeight="SemiBold"
+                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                    Text="{x:Static resources:Resource.NetworkAdapters}" />
                             </StackPanel>
                             <ItemsControl x:Name="_networkList">
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel Margin="0,0,0,12">
-                                            <TextBlock Text="{Binding Name, TargetNullValue={x:Static resources:Resource.Unknown}}" FontSize="14" FontWeight="Bold" Foreground="{DynamicResource TextFillColorPrimaryBrush}" TextWrapping="Wrap" />
-                                            <StackPanel Orientation="Horizontal" Margin="0,4,0,0">
+                                            <TextBlock
+                                                FontSize="14"
+                                                FontWeight="Bold"
+                                                Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                                Text="{Binding Name, TargetNullValue={x:Static resources:Resource.Unknown}}"
+                                                TextWrapping="Wrap" />
+                                            <StackPanel Margin="0,4,0,0" Orientation="Horizontal">
                                                 <TextBlock FontSize="12" Foreground="{DynamicResource TextFillColorSecondaryBrush}">
                                                     <Run Text="{x:Static resources:Resource.MacAddress}" /><Run Text=":" />
                                                 </TextBlock>
-                                                <TextBlock Text="{Binding MacAddress, TargetNullValue={x:Static resources:Resource.Unknown}}" FontSize="12" Margin="4,0,0,0" Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="Medium" />
+                                                <TextBlock
+                                                    Margin="4,0,0,0"
+                                                    FontSize="12"
+                                                    FontWeight="Medium"
+                                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                                    Text="{Binding MacAddress, TargetNullValue={x:Static resources:Resource.Unknown}}" />
                                             </StackPanel>
                                         </StackPanel>
                                     </DataTemplate>

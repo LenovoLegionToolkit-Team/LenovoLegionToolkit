@@ -294,7 +294,7 @@ public partial class DeviceInformationWindow
                     if (daysRemaining > 0)
                     {
                         _warrantyDaysRemainingLabel.Text = daysRemaining.ToString();
-                        _warrantyStatusLabel.Text = Resource.Active;
+                        _warrantyStatusLabel.Text = Resource.DeviceInformationWindow_Warranty_Valid;
                         _warrantyStatusLabel.Foreground = (System.Windows.Media.Brush)FindResource("PaletteGreenBrush");
                         _warrantyStatusIcon.Foreground = (System.Windows.Media.Brush)FindResource("PaletteGreenBrush");
 
