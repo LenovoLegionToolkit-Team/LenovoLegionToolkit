@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -564,7 +564,7 @@ Chỉ có các Hành động thỏa điều kiện hiện tại sẽ được ch
     <value>Dung lượng tối đa</value>
   </data>
   <data name="BatteryPage_LiveCharge_Title" xml:space="preserve">
-    <value>Current charge</value>
+    <value>Sạc hiện tại</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
     <value>Mức pin yếu</value>
@@ -610,7 +610,7 @@ Thời gian có thể không chính xác nếu laptop được sạc khi Ngủ h
     <value>Percentage</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
-    <value>BIOS version</value>
+    <value>Phiên bản BIOS</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
     <value>Tùy chỉnh</value>
@@ -720,7 +720,7 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Sao chép tất cả</value>
   </data>
   <data name="Cores" xml:space="preserve">
-    <value>Cores</value>
+    <value>Nhân</value>
   </data>
   <data name="CPU" xml:space="preserve">
     <value>CPU</value>
@@ -765,7 +765,7 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Trang chủ</value>
   </data>
   <data name="DaysRemaining" xml:space="preserve">
-    <value>Days remaining</value>
+    <value>Ngày còn lại</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
     <value>Tắt GPU rời nếu nó đang hoạt động một cách lãng phí.</value>
@@ -786,7 +786,7 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Xóa</value>
   </data>
   <data name="Device" xml:space="preserve">
-    <value>Device</value>
+    <value>Thiết bị</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
     <value>Chỉ hiển thị các thiết bị đang kết nối</value>
@@ -888,7 +888,7 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Độ sáng màn hình</value>
   </data>
   <data name="Displays" xml:space="preserve">
-    <value>Displays</value>
+    <value>Hiển thị</value>
   </data>
   <data name="DonatePage_Bartosz_Description" xml:space="preserve">
     <value>Bartosz là người đã sáng tạo ra Lenovo Legion Toolkit và là tác giả của kiến trúc nền tảng giúp vận hành mọi tính năng trong ứng dụng ngày hôm nay.</value>
@@ -962,7 +962,7 @@ Cảm ơn bạn đã ủng hộ!</value>
     <value>Chỉnh sửa cảm biến</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>End date</value>
+    <value>Ngày kết thúc</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Lỗi</value>
@@ -992,7 +992,7 @@ Cảm ơn bạn đã ủng hộ!</value>
     <value>Thoát</value>
   </data>
   <data name="Expired" xml:space="preserve">
-    <value>Expired</value>
+    <value>Đã hết hạn</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Xuất ra</value>
@@ -1088,7 +1088,7 @@ Cảm ơn bạn đã ủng hộ!</value>
     <value>GB</value>
   </data>
   <data name="Generation" xml:space="preserve">
-    <value>Generation</value>
+    <value>Thế hệ</value>
   </data>
   <data name="GHz" xml:space="preserve">
     <value>GHz</value>
@@ -1283,7 +1283,7 @@ THẬT CẨN THẬN KHI SỬ DỤNG LỰA CHỌN NÀY!!! KHÔNG NÊN SỬ DỤNG
     <value>GPU</value>
   </data>
   <data name="HardwareFeatures" xml:space="preserve">
-    <value>Hardware Features</value>
+    <value>Tính năng Phần cứng</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Message" xml:space="preserve">
     <value>Bật hoặc tắt chức năng quét ngầm cảm biến phần cứng.</value>
@@ -1517,10 +1517,10 @@ Chọn Có để tắt và Không để bỏ qua.</value>
     <value>Tải</value>
   </data>
   <data name="MacAddress" xml:space="preserve">
-    <value>MAC address</value>
+    <value>Địa chỉ MAC</value>
   </data>
   <data name="MachineType" xml:space="preserve">
-    <value>Machine Type</value>
+    <value>Loại máy</value>
   </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
     <value>Bật hoặc tắt macros.</value>
@@ -1658,10 +1658,10 @@ Chọn Có để tắt và Không để bỏ qua.</value>
     <value>Micrô</value>
   </data>
   <data name="Model" xml:space="preserve">
-    <value>Model</value>
+    <value>Mẫu</value>
   </data>
   <data name="Motherboard" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>Bo mạch chủ</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
     <value>Di chuyển lên</value>
@@ -1686,7 +1686,7 @@ Chọn Có để tắt và Không để bỏ qua.</value>
     <value>Logic</value>
   </data>
   <data name="NetworkAdapters" xml:space="preserve">
-    <value>Network adapters</value>
+    <value>Bộ điều hợp mạng</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Không</value>
@@ -2087,7 +2087,7 @@ Chức năng này không ảnh hưởng các cửa sổ ở chế độ toàn m�
     <value>Cài đặt ép xung GPU rời</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
-    <value>Unlocking in {0}...</value>
+    <value>Đang mở khóa trong {0}...</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
     <value>Cải thiện thời gian phản hồi cho màn hình laptop.</value>
@@ -2248,7 +2248,7 @@ Luôn kiểm tra rằng bạn cài đặt đúng các gói cài đặt mà bạn
     <value>Giây</value>
   </data>
   <data name="PlatformAndCapabilities" xml:space="preserve">
-    <value>Platform &amp; Capabilities</value>
+    <value>Nền tảng &amp; Khả năng</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
     <value>Hỗ trợ các định dạng âm thanh phổ biến như .wav hoặc .mp3.</value>
@@ -2291,7 +2291,7 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>Chế độ được lựa chọn có thể không hoạt động nếu không được kết nối nguồn điện ngoài.</value>
   </data>
   <data name="PowerModes" xml:space="preserve">
-    <value>Power Modes</value>
+    <value>Chế độ nguồn</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
     <value>{0} Power mode không khả dụng nếu không kết nối với bộ sạc.</value>
@@ -2625,10 +2625,10 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>Đã sử dụng/Tổng bộ nhớ (GB)</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
-    <value>Serial number</value>
+    <value>Số sê-ri</value>
   </data>
   <data name="Series" xml:space="preserve">
-    <value>Series</value>
+    <value>Sê-ri</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Cài đặt</value>
@@ -3077,13 +3077,13 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Hiển thị ứng dụng</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
-    <value>Show less</value>
+    <value>Thu gọn</value>
   </data>
   <data name="ShowMore" xml:space="preserve">
-    <value>Show more</value>
+    <value>Mở rộng</value>
   </data>
   <data name="Slot" xml:space="preserve">
-    <value>Slot</value>
+    <value>Khe cắm</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Khi tắt tiếng, tất cả các đầu ra âm thanh đang sử dụng cũng sẽ bị tắt.</value>
@@ -3254,7 +3254,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>{0} vùng</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start date</value>
+    <value>Ngày bắt đầu</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
     <value>Pin</value>
@@ -3296,7 +3296,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Quạt hệ thống</value>
   </data>
   <data name="Storage" xml:space="preserve">
-    <value>Storage</value>
+    <value>Bộ nhớ</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Chọn biểu tượng</value>
@@ -3305,7 +3305,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Màu văn bản</value>
   </data>
   <data name="Threads" xml:space="preserve">
-    <value>Threads</value>
+    <value>Luồng</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
     <value>Bình minh</value>
@@ -3373,7 +3373,7 @@ Di chuyển chuột hoặc bấm phím bất kỳ trên bàn phím để bật m
     <value>Bỏ ẩn</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>Không rõ</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Chưa có tên</value>
@@ -3417,7 +3417,7 @@ Logging sẽ được tự động bật, nếu bạn chọn tiếp tục.</valu
     <value>Có gì mới?</value>
   </data>
   <data name="Used" xml:space="preserve">
-    <value>Used</value>
+    <value>Đã dùng</value>
   </data>
   <data name="Valid" xml:space="preserve">
     <value>Valid</value>
@@ -3426,7 +3426,7 @@ Logging sẽ được tự động bật, nếu bạn chọn tiếp tục.</valu
     <value>Cảnh báo</value>
   </data>
   <data name="Warranty" xml:space="preserve">
-    <value>Warranty</value>
+    <value>Bảo hành</value>
   </data>
   <data name="Watt" xml:space="preserve">
     <value>W</value>
