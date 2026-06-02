@@ -10,6 +10,7 @@ using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
+using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Windows.Settings;
 
 namespace LenovoLegionToolkit.WPF.Controls.Settings;
@@ -61,6 +62,11 @@ public partial class SettingsPowerControl
         _windowsPowerPlansCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
         _windowsPowerPlansControlPanelCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
 
+        if (isITSModeFeatureSupported && _settings.Store.PowerModeMappingMode != PowerModeMappingMode.Disabled)
+            _powerModeMappingCardHeader.Warning = Resource.SettingsPage_PowerModeMapping_ITSWarning;
+        else
+            _powerModeMappingCardHeader.Warning = string.Empty;
+
         _onBatterySinceResetToggle.IsChecked = _settings.Store.ResetBatteryOnSinceTimerOnReboot;
         _onBatterySinceResetToggle.Visibility = Visibility.Visible;
 
@@ -103,6 +109,11 @@ public partial class SettingsPowerControl
         _powerModesCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
         _windowsPowerPlansCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
         _windowsPowerPlansControlPanelCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+
+        if (isITSModeFeatureSupported && powerModeMappingMode != PowerModeMappingMode.Disabled)
+            _powerModeMappingCardHeader.Warning = Resource.SettingsPage_PowerModeMapping_ITSWarning;
+        else
+            _powerModeMappingCardHeader.Warning = string.Empty;
 
         if (powerModeMappingMode != PowerModeMappingMode.Disabled)
             await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync();

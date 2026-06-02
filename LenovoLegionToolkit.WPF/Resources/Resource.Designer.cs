@@ -8482,6 +8482,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to ITS Mode natively synchronizes power settings, so overriding it here may cause conflicts..
+        /// </summary>
+        public static string SettingsPage_PowerModeMapping_ITSWarning {
+            get {
+                return ResourceManager.GetString("SettingsPage_PowerModeMapping_ITSWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Automatically change Windows Power Plan or Windows Power Mode when changing Power Modes..
         /// </summary>
         public static string SettingsPage_PowerModeMapping_Message {

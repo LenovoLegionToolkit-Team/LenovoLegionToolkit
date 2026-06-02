@@ -29,7 +29,7 @@
                 Icon="Flash24"
                 Visibility="Collapsed">
                 <custom:CardControl.Header>
-                    <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_PowerModeMapping_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_PowerModeMapping_Message}" />
+                    <controls:CardHeaderControl x:Name="_powerModeMappingCardHeader" Title="{x:Static resources:Resource.SettingsPage_PowerModeMapping_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_PowerModeMapping_Message}" />
                 </custom:CardControl.Header>
                 <ComboBox
                     x:Name="_powerModeMappingComboBox"
