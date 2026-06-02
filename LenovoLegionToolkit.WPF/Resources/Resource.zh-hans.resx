@@ -409,7 +409,7 @@
     <value>独占此条件</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>当触发此条件后，仅运行当前任务，不运行其它符合条件的任务</value>
+    <value>When this automation runs, no further automations will be executed.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>运行中...</value>
@@ -600,6 +600,15 @@
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
     <value>电池</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
+    <value>Goes above</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
+    <value>Goes below</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
+    <value>Percentage</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
     <value>BIOS 版本</value>
@@ -2951,7 +2960,7 @@
     <value>启用 OSD</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
-    <value>ITS Mode natively synchronizes power settings, so overriding it here may cause conflicts.</value>
+    <value>ITS 模式自带同步电源设置，此处覆盖它可能导致冲突。</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
     <value>在切换性能模式时，同步自动切换 Windows 电源计划或 Windows 电源模式。</value>
@@ -3420,7 +3429,7 @@
     <value>已使用</value>
   </data>
   <data name="Valid" xml:space="preserve">
-    <value>Valid</value>
+    <value>有效</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>警告</value>
