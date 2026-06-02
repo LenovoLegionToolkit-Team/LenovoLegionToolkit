@@ -408,7 +408,7 @@ Only actions that match current state will run.</value>
     <value>Exclusive</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>Do not execute further actions when this action runs.</value>
+    <value>When this automation runs, no further automations will be executed.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>Running...</value>
@@ -599,6 +599,15 @@ This time might not be accurate, if laptop was charged when sleeping or off.</va
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
     <value>Battery</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
+    <value>Goes above</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
+    <value>Goes below</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
+    <value>Percentage</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
     <value>BIOS version</value>
