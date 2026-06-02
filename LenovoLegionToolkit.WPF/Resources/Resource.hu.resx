@@ -408,7 +408,7 @@ Csak az aktuális állapotnak megfelelő műveletek fognak futni.</value>
     <value>Exkluzív</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>Ne hajtson végre további műveleteket, ha ez a művelet fut.</value>
+    <value>When this automation runs, no further automations will be executed.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>Futás...</value>
@@ -599,6 +599,15 @@ Ez az idő nem biztos, hogy pontos, ha a laptopot alvó vagy kikapcsolt állapot
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
     <value>Akkumulátor</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
+    <value>Goes above</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
+    <value>Goes below</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
+    <value>Percentage</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
     <value>BIOS version</value>
