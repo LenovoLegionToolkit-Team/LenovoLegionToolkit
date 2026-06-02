@@ -926,7 +926,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When this automation runs, no further automations will be executed..
+        ///   Looks up a localized string similar to When checked, stops further automations from running after this one..
         /// </summary>
         public static string AutomationPipelineControl_Exclusive_ToolTip {
             get {
