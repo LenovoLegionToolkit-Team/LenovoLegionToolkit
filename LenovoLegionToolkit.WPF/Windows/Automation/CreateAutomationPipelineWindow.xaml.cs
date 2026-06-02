@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,6 +27,7 @@ public partial class CreateAutomationPipelineWindow
         new ACAdapterConnectedAutomationPipelineTrigger(),
         new LowWattageACAdapterConnectedAutomationPipelineTrigger(),
         new ACAdapterDisconnectedAutomationPipelineTrigger(),
+        new BatteryPercentageAutomationPipelineTrigger(),
         new PowerModeAutomationPipelineTrigger(PowerModeState.Balance),
         new GodModePresetChangedAutomationPipelineTrigger(Guid.Empty),
         new GamesAreRunningAutomationPipelineTrigger(),

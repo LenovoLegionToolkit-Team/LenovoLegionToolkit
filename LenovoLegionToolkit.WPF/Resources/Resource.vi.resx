@@ -408,7 +408,7 @@ Chỉ có các Hành động thỏa điều kiện hiện tại sẽ được ch
     <value>Đặc quyền</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>Không thực hiện thêm bất kì Hành động nào khác sau khi thực hiện xong Hành động này.</value>
+    <value>When this automation runs, no further automations will be executed.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>Đang chạy...</value>
@@ -599,6 +599,15 @@ Thời gian có thể không chính xác nếu laptop được sạc khi Ngủ h
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
     <value>Pin</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
+    <value>Goes above</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
+    <value>Goes below</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
+    <value>Percentage</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
     <value>BIOS version</value>

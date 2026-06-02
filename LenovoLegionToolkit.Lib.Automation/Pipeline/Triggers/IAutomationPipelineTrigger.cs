@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -48,6 +48,14 @@ public interface IOnStartupAutomationPipelineTrigger : IDisallowDuplicatesAutoma
 public interface IOnResumeAutomationPipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger;
 
 public interface IPowerStateAutomationPipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger;
+
+public interface IBatteryPercentageAutomationPipelineTrigger : IAutomationPipelineTrigger
+{
+    int Percentage { get; }
+    bool IsBelow { get; }
+
+    IBatteryPercentageAutomationPipelineTrigger DeepCopy(int percentage, bool isBelow);
+}
 
 public interface IITSModeAutomationPipelineTrigger : IAutomationPipelineTrigger
 {

@@ -408,7 +408,7 @@ Only actions that match current state will run.</value>
     <value>Ekskluzivno</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>Nemoj izvršavati dalje radnje kada se ova akcija pokrene.</value>
+    <value>When this automation runs, no further automations will be executed.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>Pokretanje...</value>
@@ -599,6 +599,15 @@ Ovo vrijeme možda neće biti tačno ako je laptop bio napunjen dok je spavao il
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
     <value>Baterija</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
+    <value>Goes above</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
+    <value>Goes below</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
+    <value>Percentage</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
     <value>BIOS version</value>

@@ -133,6 +133,15 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to When battery percentage.
+        /// </summary>
+        public static string BatteryPercentageAutomationPipelineTrigger_DisplayName {
+            get {
+                return ResourceManager.GetString("BatteryPercentageAutomationPipelineTrigger_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kill apps.
         /// </summary>
         public static string DeactivateGPUAutomationStepState_KillApps {

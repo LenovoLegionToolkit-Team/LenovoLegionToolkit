@@ -111,6 +111,7 @@ public class IoCModule : Module
         builder.Register<ITSModeListener>().AutoActivateListener();
         builder.Register<VolumeListener>().AutoActivateListener();
 
+        builder.Register<BatteryAutoListener>();
         builder.Register<GameAutoListener>();
         builder.Register<InstanceStartedEventAutoAutoListener>();
         builder.Register<InstanceStoppedEventAutoAutoListener>();

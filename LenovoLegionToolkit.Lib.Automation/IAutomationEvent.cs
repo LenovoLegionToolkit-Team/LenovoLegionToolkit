@@ -91,3 +91,8 @@ public readonly struct WiFiAutomationEvent(bool isConnected, string? ssid) : IAu
     public bool IsConnected { get; } = isConnected;
     public string? Ssid { get; } = ssid;
 }
+
+public readonly struct BatteryPercentageAutomationEvent(int percentage) : IAutomationEvent
+{
+    public int Percentage { get; } = percentage;
+}

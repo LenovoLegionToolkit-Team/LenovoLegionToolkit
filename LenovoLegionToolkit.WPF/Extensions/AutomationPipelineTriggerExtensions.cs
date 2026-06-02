@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 using Wpf.Ui.Common;
 
@@ -10,6 +10,7 @@ public static class AutomationPipelineTriggerExtensions
     {
         IHybridModeAutomationPipelineTrigger => SymbolRegular.LeafOne24,
         IITSModeAutomationPipelineTrigger => SymbolRegular.Gauge24,
+        IBatteryPercentageAutomationPipelineTrigger => SymbolRegular.Battery1024,
         IPowerStateAutomationPipelineTrigger => SymbolRegular.BatteryCharge24,
         IPowerModeAutomationPipelineTrigger => SymbolRegular.Gauge24,
         IGodModePresetChangedAutomationPipelineTrigger => SymbolRegular.Gauge24,

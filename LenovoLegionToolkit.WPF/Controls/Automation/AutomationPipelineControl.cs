@@ -457,6 +457,12 @@ public class AutomationPipelineControl : UserControl
         if (AutomationPipeline.Trigger is IDeviceAutomationPipelineTrigger dt && dt.InstanceIds.Length != 0)
             result += $" | {Resource.DevicePipelineTriggerTabItemContent_Devices}: {dt.InstanceIds.Length}";
 
+        if (AutomationPipeline.Trigger is IBatteryPercentageAutomationPipelineTrigger bt)
+        {
+            var direction = bt.IsBelow ? Resource.BatteryPercentageAutomationPipelineTriggerTabItemContent_Below : Resource.BatteryPercentageAutomationPipelineTriggerTabItemContent_Above;
+            result += $" | {direction.ToLower()} {bt.Percentage}%";
+        }
+
         return result;
     }
 

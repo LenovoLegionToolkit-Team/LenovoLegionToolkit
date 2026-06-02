@@ -408,7 +408,7 @@ Yalnızca mevcut durumla eşleşen eylemler çalışacaktır.</value>
     <value>Ayrıcalıklı</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>Bu eylem çalıştığında başka eylemler yürütmeyin.</value>
+    <value>When this automation runs, no further automations will be executed.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>Çalışıyor...</value>
@@ -599,6 +599,15 @@ Dizüstü bilgisayar uyurken veya kapalıyken şarj edildiyse bu süre doğru ol
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
     <value>Pil</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
+    <value>Goes above</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
+    <value>Goes below</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
+    <value>Percentage</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
     <value>BIOS version</value>

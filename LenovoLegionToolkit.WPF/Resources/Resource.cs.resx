@@ -408,7 +408,7 @@ Spustí se pouze akce, které odpovídají aktuálnímu stavu.</value>
     <value>Exkluzivní</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>Neprovádět další akce, když tato akce běží.</value>
+    <value>When this automation runs, no further automations will be executed.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>Spuštěn...</value>
@@ -599,6 +599,15 @@ Tento čas nemusí být přesný, pokud byl notebook nabíjen ve spánku nebo ve
   </data>
   <data name="BatteryPage_Title" xml:space="preserve">
     <value>Baterie</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
+    <value>Goes above</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
+    <value>Goes below</value>
+  </data>
+  <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
+    <value>Percentage</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
     <value>Verze BIOS</value>

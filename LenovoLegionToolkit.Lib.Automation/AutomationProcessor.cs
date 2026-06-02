@@ -21,6 +21,7 @@ public class AutomationProcessor(
     PowerStateListener powerStateListener,
     PowerModeListener powerModeListener,
     GodModeController godModeController,
+    BatteryAutoListener batteryAutoListener,
     GameAutoListener gameAutoListener,
     ProcessAutoListener processAutoListener,
     SessionLockUnlockListener sessionLockUnlockListener,
@@ -302,6 +303,12 @@ public class AutomationProcessor(
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
+    private async void BatteryAutoListener_Changed(object? sender, BatteryAutoListener.ChangedEventArgs args)
+    {
+        var e = new BatteryPercentageAutomationEvent(args.Percentage);
+        await ProcessEvent(e).ConfigureAwait(false);
+    }
+
     #endregion
 
     #region Event processing
@@ -335,6 +342,7 @@ public class AutomationProcessor(
         if (wasRunning)
             gameAutoListener.PreserveStateOnRestart();
 
+        await batteryAutoListener.UnsubscribeChangedAsync(BatteryAutoListener_Changed).ConfigureAwait(false);
         await gameAutoListener.UnsubscribeChangedAsync(GameAutoListener_Changed).ConfigureAwait(false);
         await processAutoListener.UnsubscribeChangedAsync(ProcessAutoListener_Changed).ConfigureAwait(false);
         await timeAutoListener.UnsubscribeChangedAsync(TimeAutoListener_Changed).ConfigureAwait(false);
@@ -386,6 +394,13 @@ public class AutomationProcessor(
             Log.Instance.Trace($"Starting WiFi listener...");
 
             await wifiAutoListener.SubscribeChangedAsync(WiFiAutoListener_Changed).ConfigureAwait(false);
+        }
+
+        if (triggers.OfType<IBatteryPercentageAutomationPipelineTrigger>().Any())
+        {
+            Log.Instance.Trace($"Starting battery listener...");
+
+            await batteryAutoListener.SubscribeChangedAsync(BatteryAutoListener_Changed).ConfigureAwait(false);
         }
 
         Log.Instance.Trace($"Started relevant listeners.");

@@ -926,7 +926,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Do not execute further actions when this action runs..
+        ///   Looks up a localized string similar to When this automation runs, no further automations will be executed..
         /// </summary>
         public static string AutomationPipelineControl_Exclusive_ToolTip {
             get {
@@ -1499,6 +1499,33 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string BatteryPage_Title {
             get {
                 return ResourceManager.GetString("BatteryPage_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goes above.
+        /// </summary>
+        public static string BatteryPercentageAutomationPipelineTriggerTabItemContent_Above {
+            get {
+                return ResourceManager.GetString("BatteryPercentageAutomationPipelineTriggerTabItemContent_Above", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Goes below.
+        /// </summary>
+        public static string BatteryPercentageAutomationPipelineTriggerTabItemContent_Below {
+            get {
+                return ResourceManager.GetString("BatteryPercentageAutomationPipelineTriggerTabItemContent_Below", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Percentage.
+        /// </summary>
+        public static string BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage {
+            get {
+                return ResourceManager.GetString("BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage", resourceCulture);
             }
         }
         
