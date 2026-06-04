@@ -70,6 +70,8 @@ public partial class NotificationTypeCustomizationWindow
                 Foreground = secondaryBrush,
                 HorizontalAlignment = alignment,
                 VerticalAlignment = VerticalAlignment.Center,
+                TextAlignment = alignment == HorizontalAlignment.Center ? TextAlignment.Center : TextAlignment.Left,
+                TextWrapping = TextWrapping.Wrap,
                 Margin = new Thickness(column == 0 ? 0 : 6, 4, 6, 12)
             };
             Grid.SetRow(textBlock, 0);

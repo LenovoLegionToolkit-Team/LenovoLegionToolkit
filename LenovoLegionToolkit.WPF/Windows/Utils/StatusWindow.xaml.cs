@@ -122,6 +122,8 @@ public partial class StatusWindow
         IsVisibleChanged += StatusWindow_IsVisibleChanged;
         WindowStyle = WindowStyle.None;
         WindowStartupLocation = WindowStartupLocation.Manual;
+        Left = -10000;
+        Top = -10000;
         ResizeMode = ResizeMode.NoResize;
         SizeToContent = SizeToContent.WidthAndHeight;
         Focusable = false;
@@ -161,6 +163,10 @@ public partial class StatusWindow
             var isGpuOn = gpuStatus.Value.State != GPUState.PoweredOff;
             var gpuDetailsVis = isGpuOn ? Visibility.Visible : Visibility.Collapsed;
             var gpuSensorVis = (useSensors && isGpuOn) ? Visibility.Visible : Visibility.Collapsed;
+
+            _gpuActive.Visibility = gpuStatus.Value.State == GPUState.Active ? Visibility.Visible : Visibility.Collapsed;
+            _gpuInactive.Visibility = gpuStatus.Value.State == GPUState.Inactive ? Visibility.Visible : Visibility.Collapsed;
+            _gpuPoweredOff.Visibility = gpuStatus.Value.State == GPUState.PoweredOff ? Visibility.Visible : Visibility.Collapsed;
 
             _gpuPowerStateValue.Visibility = gpuDetailsVis;
             _gpuPowerStateValueLabel.Visibility = gpuDetailsVis;
