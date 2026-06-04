@@ -65,6 +65,7 @@ public static partial class Compatibility
 
         "15ACH",
         "15AHP",
+        "15IPH",
         "15AKP",
         "15APH",
         "15ARH",
@@ -107,7 +108,7 @@ public static partial class Compatibility
         { "83DG", LegionSeries.Legion_5 }, { "83EW", LegionSeries.Legion_5 }, { "83EG", LegionSeries.Legion_5 },
         { "83JJ", LegionSeries.Legion_5 }, { "82RC", LegionSeries.Legion_5 }, { "82RB", LegionSeries.Legion_5 },
         { "82TB", LegionSeries.Legion_5 }, { "83EF", LegionSeries.Legion_5 }, { "82RE", LegionSeries.Legion_5 },
-        { "82RD", LegionSeries.Legion_5 }, { "83Q7", LegionSeries.Legion_5 },
+        { "82RD", LegionSeries.Legion_5 }, { "83Q7", LegionSeries.Legion_5 }, { "83RW", LegionSeries.Legion_5 },
 
         { "83DH", LegionSeries.Legion_Slim_5 }, { "83EX", LegionSeries.Legion_Slim_5 }, { "82Y5", LegionSeries.Legion_Slim_5 },
         { "82Y9", LegionSeries.Legion_Slim_5 }, { "82YA", LegionSeries.Legion_Slim_5 }, { "83D6", LegionSeries.Legion_Slim_5 },
