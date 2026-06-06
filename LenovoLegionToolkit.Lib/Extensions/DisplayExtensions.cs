@@ -43,7 +43,7 @@ public static class DisplayExtensions
             }
         }
 
-        PathInfo.ApplyPathInfos(pathInfos);
+        PathInfo.ApplyPathInfos(pathInfos, saveToDatabase: true);
     }
 
     public static DisplayAdvancedColorInfo GetAdvancedColorInfo(this Display display)
