@@ -69,7 +69,7 @@ public static class DisplayExtensions
             bool advancedColorForceDisabled = false;
             bool advancedColorEnabled = hdrSupported && getAdvancedColorInfo2.activeColorMode == DISPLAYCONFIG_ADVANCED_COLOR_MODE.DISPLAYCONFIG_ADVANCED_COLOR_MODE_HDR;
 
-            return new(advancedColorSupported,
+            return new(hdrSupported,
                 advancedColorEnabled,
                 wideColorEnforced,
                 advancedColorForceDisabled);
