@@ -223,10 +223,14 @@ public class NotifyIcon : NativeWindow, IDisposable
                 data.hIcon = new HICON(_icon.Handle);
             }
 
-            if (_text is not null && _toolTipWindow is null)
+            if (_text is not null)
             {
-                data.uFlags |= NOTIFY_ICON_DATA_FLAGS.NIF_TIP | NOTIFY_ICON_DATA_FLAGS.NIF_SHOWTIP;
+                data.uFlags |= NOTIFY_ICON_DATA_FLAGS.NIF_TIP;
                 data.szTip = _text;
+                if (_toolTipWindow is null)
+                {
+                    data.uFlags |= NOTIFY_ICON_DATA_FLAGS.NIF_SHOWTIP;
+                }
             }
 
             switch (_visible, _added)
