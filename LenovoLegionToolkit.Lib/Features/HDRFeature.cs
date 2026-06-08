@@ -6,7 +6,7 @@ using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Features;
 
-public class HDRFeature : IFeature<HDRState>
+public class HDRFeature(RefreshRateFeature refreshRateFeature) : IFeature<HDRState>
 {
     public async Task<bool> IsSupportedAsync()
     {
@@ -85,8 +85,12 @@ public class HDRFeature : IFeature<HDRState>
         if (display is null)
             throw new InvalidOperationException("Built in display not found");
 
+        var currentRefreshRate = await refreshRateFeature.GetStateAsync().ConfigureAwait(false);
+
         Log.Instance.Trace($"Setting display HDR to {state}");
 
         display.SetAdvancedColorState(state == HDRState.On);
+
+        await refreshRateFeature.SetStateAsync(currentRefreshRate).ConfigureAwait(false);
     }
 }
