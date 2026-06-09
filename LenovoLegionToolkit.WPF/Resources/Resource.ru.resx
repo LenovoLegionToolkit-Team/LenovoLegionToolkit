@@ -815,17 +815,29 @@
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Деактивировать</value>
   </data>
+  <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
+    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+  </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>Принудительно завершить процесс</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
     <value>Параметры графики</value>
   </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
+    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
+    <value>This increases power consumption and reduces battery life.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
+    <value>Keep dGPU awake</value>
+  </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Завершить процессы</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Время ожидания перед обновлением списка активных процессов после принудительного завершения.</value>
+    <value>Wait time before refreshing the apps list after terminating a process.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Задержка обновления после принудительного завершения</value>
@@ -852,7 +864,7 @@
     <value>Неизвестно</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Настройте частоту проверки активности GPU.</value>
+    <value>How often to check the discrete GPU for active processes.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Интервал опроса</value>
@@ -873,7 +885,7 @@
     <value>Перезапустить граф. процессор</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Задержка перед инициализацией службы мониторинга дискретной видеокарты.</value>
+    <value>Wait time before starting the discrete GPU monitoring service.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>Задержка запуска</value>
