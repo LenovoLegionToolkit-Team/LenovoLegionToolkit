@@ -816,17 +816,29 @@
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Απενεργοποίηση</value>
   </data>
+  <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
+    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+  </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>Εξαναγκασμός Διεργασίας Τερματισμού</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
     <value>Προτιμήσεις Γραφικών</value>
   </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
+    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
+    <value>This increases power consumption and reduces battery life.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
+    <value>Keep dGPU awake</value>
+  </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Τερματισμός εφαρμογών</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Χρόνος αναμονής πριν από την ανανέωση της λίστας ενεργών διεργασιών μετά από αναγκαστική τερματισμό.</value>
+    <value>Wait time before refreshing the apps list after terminating a process.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Εξαναγκασμός Τερματισμού Καθυστέρησης</value>
@@ -853,7 +865,7 @@
     <value>Άγνωστο</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Προσαρμόστε πόσο συχνά οι έλεγχοι της εφαρμογής για τη δραστηριότητα GPU.</value>
+    <value>How often to check the discrete GPU for active processes.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Διάστημα Δημοσκόπησης</value>
@@ -874,7 +886,7 @@
     <value>Επανεκκίνηση GPU</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Καθυστέρηση πριν από την αρχικοποίηση της υπηρεσίας παρακολούθησης dGPU.</value>
+    <value>Wait time before starting the discrete GPU monitoring service.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>Καθυστέρηση Εκκίνησης</value>
