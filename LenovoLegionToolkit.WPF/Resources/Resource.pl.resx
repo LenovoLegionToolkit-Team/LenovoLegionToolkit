@@ -815,17 +815,29 @@ Zmiana trybu może wymagać ponownego uruchomienia.</value>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Zdezaktywuj</value>
   </data>
+  <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
+    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+  </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>Wymuś proces zabijania</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
     <value>Ustawienia grafiki</value>
   </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
+    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
+    <value>This increases power consumption and reduces battery life.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
+    <value>Keep dGPU awake</value>
+  </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Zatrzymaj aplikacje</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Odczekaj czas przed odświeżeniem aktywnej listy procesów po wymuszonym zakończeniu.</value>
+    <value>Wait time before refreshing the apps list after terminating a process.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Wymuś opóźnienie odświeżania zabójstw</value>
@@ -852,7 +864,7 @@ Zmiana trybu może wymagać ponownego uruchomienia.</value>
     <value>Nieznany</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Dostosuj jak często aplikacja sprawdza aktywność GPU.</value>
+    <value>How often to check the discrete GPU for active processes.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Częstotliwość ankiet</value>
@@ -873,7 +885,7 @@ Zmiana trybu może wymagać ponownego uruchomienia.</value>
     <value>Zrestartuj GPU</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Opóźnij przed zainicjowaniem usługi monitorowania dGPU.</value>
+    <value>Wait time before starting the discrete GPU monitoring service.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>Opóźnienie uruchomienia</value>
