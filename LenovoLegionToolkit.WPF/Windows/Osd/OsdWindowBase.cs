@@ -288,7 +288,6 @@ public abstract class OsdWindowBase : Window
 
         SavedPositionX = Left;
         SavedPositionY = Top;
-        _OsdSettings.SynchronizeStore();
     }
 
     private void OnDisplaySettingsChanged(object? sender, EventArgs e)
