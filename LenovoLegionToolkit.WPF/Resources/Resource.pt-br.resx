@@ -815,17 +815,29 @@ Uma reinicialização pode ser necessária.</value>
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Desativar</value>
   </data>
+  <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
+    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+  </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>Forçar Matança de Processo</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
     <value>Preferências Gráficas</value>
   </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
+    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
+    <value>This increases power consumption and reduces battery life.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
+    <value>Keep dGPU awake</value>
+  </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Encerrar Aplicativos</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Tempo de espera antes de atualizar a lista de processos ativos após uma finalização forçada.</value>
+    <value>Wait time before refreshing the apps list after terminating a process.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Forçar Atraso para Matar Atualização</value>
@@ -852,7 +864,7 @@ Uma reinicialização pode ser necessária.</value>
     <value>Desconhecido</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Ajuste a frequência com que o app verifica a atividade do GPU.</value>
+    <value>How often to check the discrete GPU for active processes.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Intervalo de votação</value>
@@ -873,7 +885,7 @@ Uma reinicialização pode ser necessária.</value>
     <value>Reiniciar GPU</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Atraso antes de inicializar o serviço de monitoramento dGPU.</value>
+    <value>Wait time before starting the discrete GPU monitoring service.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>Atraso na inicialização</value>
