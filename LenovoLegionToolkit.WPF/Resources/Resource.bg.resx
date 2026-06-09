@@ -814,17 +814,29 @@
   <data name="DiscreteGPUControl_Deactivate" xml:space="preserve">
     <value>Деактивирай</value>
   </data>
+  <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
+    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+  </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>Force Kill Process</value>
   </data>
   <data name="DiscreteGPUControl_GraphicsPreferencesTabLabel" xml:space="preserve">
     <value>Graphics Preferences</value>
   </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
+    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
+    <value>This increases power consumption and reduces battery life.</value>
+  </data>
+  <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
+    <value>Keep dGPU awake</value>
+  </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Спри приложенията</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the active processes list after a forced termination.</value>
+    <value>Wait time before refreshing the apps list after terminating a process.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Force Kill Refresh Delay</value>
@@ -851,7 +863,7 @@
     <value>Неизвестен</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>Adjust how often the app checks for GPU activity.</value>
+    <value>How often to check the discrete GPU for active processes.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Polling Interval</value>
@@ -872,7 +884,7 @@
     <value>Рестартирайте видеокартата</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Delay before initializing the dGPU monitoring service.</value>
+    <value>Wait time before starting the discrete GPU monitoring service.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>Startup Delay</value>
