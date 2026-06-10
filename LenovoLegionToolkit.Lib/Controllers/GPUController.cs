@@ -14,8 +14,8 @@ using LenovoLegionToolkit.Lib.Utils;
 using NeoSmart.AsyncLock;
 using NvAPIWrapper;
 using NvAPIWrapper.GPU;
-using NvAPIWrapper.Native.Exceptions;
 using NvAPIWrapper.DRS;
+using NvAPIWrapper.Native.Exceptions;
 using Resource = LenovoLegionToolkit.Lib.Resources.Resource;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
@@ -338,35 +338,7 @@ public class GPUController
         }
     }
 
-    private const uint FpsLimiterSettingId = 0x2770AAC4;
-
-    public void SetMaxFrameRateLimit(int fps) 
-    {
-        try
-        {
-            using var session = DriverSettingsSession.CreateAndLoad();
-            var globalProfile = session.CurrentGlobalProfile; 
-
-            if (fps > 0) 
-            {
-                globalProfile.SetSetting(FpsLimiterSettingId, (uint)fps);
-            } 
-            else 
-            {
-                try { globalProfile.DeleteSetting(FpsLimiterSettingId); } catch { }
-            }
-            session.Save();
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Failed to set max frame rate limit.", ex);
-        }
-    }
-
-
-
     private const uint WhisperModeSettingId = 0x10115C8D;
-    private const uint BatteryBoostSettingId = 0x10115C8C;
 
     public void SetWhisperModeState(bool enabled) 
     {
@@ -390,29 +362,4 @@ public class GPUController
             Log.Instance.Trace($"Failed to set WhisperMode.", ex);
         }
     }
-
-
-    public void SetBatteryBoostMaxFps(int fps) 
-    {
-        try
-        {
-            using var session = DriverSettingsSession.CreateAndLoad();
-            var globalProfile = session.CurrentGlobalProfile; 
-
-            if (fps > 0) 
-            {
-                globalProfile.SetSetting(BatteryBoostSettingId, (uint)fps);
-            } 
-            else 
-            {
-                try { globalProfile.DeleteSetting(BatteryBoostSettingId); } catch { }
-            }
-            session.Save();
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Failed to set BatteryBoost.", ex);
-        }
-    }
-
 }

@@ -2135,24 +2135,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Paces frame rates to extend battery life when unplugged..
-        /// </summary>
-        public static string DiscreteGPUControl_BatteryBoostDescription {
-            get {
-                return ResourceManager.GetString("DiscreteGPUControl_BatteryBoostDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to BatteryBoost.
-        /// </summary>
-        public static string DiscreteGPUControl_BatteryBoostTitle {
-            get {
-                return ResourceManager.GetString("DiscreteGPUControl_BatteryBoostTitle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Deactivate.
         /// </summary>
         public static string DiscreteGPUControl_Deactivate {
@@ -2176,33 +2158,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string DiscreteGPUControl_ForceKillProcessMenu {
             get {
                 return ResourceManager.GetString("DiscreteGPUControl_ForceKillProcessMenu", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to FPS.
-        /// </summary>
-        public static string DiscreteGPUControl_FPS {
-            get {
-                return ResourceManager.GetString("DiscreteGPUControl_FPS", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Limit the maximum frame rate globally across all NVIDIA rendered applications..
-        /// </summary>
-        public static string DiscreteGPUControl_GlobalFrameRateLimitDescription {
-            get {
-                return ResourceManager.GetString("DiscreteGPUControl_GlobalFrameRateLimitDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Global Frame Rate Limit.
-        /// </summary>
-        public static string DiscreteGPUControl_GlobalFrameRateLimitTitle {
-            get {
-                return ResourceManager.GetString("DiscreteGPUControl_GlobalFrameRateLimitTitle", resourceCulture);
             }
         }
         

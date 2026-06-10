@@ -201,45 +201,6 @@
                             <wpfui:ToggleSwitch x:Name="_whisperModeToggle" Checked="WhisperModeToggle_CheckedChanged" Unchecked="WhisperModeToggle_CheckedChanged" />
                         </custom:CardControl>
 
-                        <custom:CardControl Margin="0,0,0,8" Icon="LockMultiple24">
-                            <custom:CardControl.Header>
-                                <StackPanel VerticalAlignment="Center">
-                                    <TextBlock Text="{x:Static resources:Resource.DiscreteGPUControl_GlobalFrameRateLimitTitle}" FontWeight="Medium" />
-                                    <TextBlock Text="{x:Static resources:Resource.DiscreteGPUControl_GlobalFrameRateLimitDescription}" FontSize="11" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                </StackPanel>
-                            </custom:CardControl.Header>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Slider 
-                                    x:Name="_fpsLimitSlider" 
-                                    Width="140" 
-                                    Minimum="19" 
-                                    Maximum="360" 
-                                    TickFrequency="1"
-                                    IsSnapToTickEnabled="True" 
-                                    ValueChanged="FpsLimitSlider_ValueChanged" />
-                                <TextBlock x:Name="_fpsLimitText" Width="60" Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Medium" />
-                            </StackPanel>
-                        </custom:CardControl>
-
-                        <custom:CardControl Margin="0,0,0,8" Icon="Battery1024">
-                            <custom:CardControl.Header>
-                                <StackPanel VerticalAlignment="Center">
-                                    <TextBlock Text="{x:Static resources:Resource.DiscreteGPUControl_BatteryBoostTitle}" FontWeight="Medium" />
-                                    <TextBlock Text="{x:Static resources:Resource.DiscreteGPUControl_BatteryBoostDescription}" FontSize="11" TextWrapping="WrapWithOverflow" Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                </StackPanel>
-                            </custom:CardControl.Header>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Slider 
-                                    x:Name="_batteryBoostSlider" 
-                                    Width="140" 
-                                    Minimum="19" 
-                                    Maximum="360" 
-                                    TickFrequency="1"
-                                    IsSnapToTickEnabled="True" 
-                                    ValueChanged="BatteryBoostSlider_ValueChanged" />
-                                <TextBlock x:Name="_batteryBoostText" Width="60" Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Medium" />
-                            </StackPanel>
-                        </custom:CardControl>
 
                         <custom:CardControl Margin="0,0,0,8" Icon="Timer24">
                             <custom:CardControl.Header>
