@@ -32,14 +32,12 @@ public class SensorsControllerV0(GPUController gpuController) : AbstractSensorsC
 
     protected override async Task<int> GetCpuCurrentTemperatureAsync()
     {
-        var value = await WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.CpuCurrentTemperature).ConfigureAwait(false);
-        return value < 1 ? -1 : value;
+        return 0;
     }
 
     protected override async Task<int> GetGpuCurrentTemperatureAsync()
     {
-        var value = await WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.GpuCurrentTemperature).ConfigureAwait(false);
-        return value < 1 ? -1 : value;
+        return 0;
     }
 
     protected override Task<int> GetCpuCurrentFanSpeedAsync() => WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.CpuCurrentFanSpeed);

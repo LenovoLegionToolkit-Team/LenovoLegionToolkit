@@ -274,6 +274,12 @@ public partial class SensorsControlV2
         HardwareSensorSnapshot snapshot,
         BatteryInformation? batteryInfo)
     {
+        if (AppFlags.Instance.Debug)
+        {
+            Log.Instance.Trace($"CPU Sensor Data: {data.CPU.ToString()}");
+            Log.Instance.Trace($"GPU Sensor Data: {data.GPU.ToString()}");
+        }
+
         var cpuUsage = snapshot.CpuUsage;
         var cpuTemp = snapshot.CpuTemp;
         var cpuClock = _sensorsGroupControllers.ShowAverageCpuFrequency ? snapshot.CpuAvgClock : snapshot.CpuMaxClock;
