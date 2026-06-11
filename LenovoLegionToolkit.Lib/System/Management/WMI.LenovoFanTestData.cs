@@ -16,19 +16,27 @@ public static partial class WMI
         public static Task<bool> ExistsAsync(int fanId) =>
             WMI.ExistsAsync("root\\WMI", $"SELECT * FROM LENOVO_FAN_TEST_DATA WHERE FanId = {fanId}");
 
-        public static Task<IEnumerable<(bool active, uint[] fanIds, uint[] fanMaxSpeeds, uint[] fanMinSpeeds, uint numOfFans)>> ReadAsync() =>
-                    WMI.ReadAsync("root\\WMI",
-                    $"SELECT * FROM LENOVO_FAN_TEST_DATA",
-                    pdc =>
-                    {
-                        var active = Convert.ToBoolean(pdc["Active"].Value);
-                        var numOfFans = Convert.ToUInt32(pdc["NumOfFans"].Value);
-                        var fanIds = (uint[]?)pdc["FanId"].Value ?? [];
-                        var fanMaxSpeeds = (uint[]?)pdc["FanMaxSpeed"].Value ?? [];
-                        var fanMinSpeeds = (uint[]?)pdc["FanMinSpeed"].Value ?? [];
+        public static async Task<int> GetFanMinSpeedAsync(int fanId)
+        {
+            var results = await WMI.ReadAsync("root\\WMI",
+                $"SELECT * FROM LENOVO_FAN_TEST_DATA",
+                pdc =>
+                {
+                    var fanIds = (uint[]?)pdc["FanId"].Value ?? [];
+                    var fanMaxSpeeds = (uint[]?)pdc["FanMin"].Value ?? [];
 
-                        return (active, fanIds, fanMaxSpeeds, fanMinSpeeds, numOfFans);
-        });
+                    var index = Array.IndexOf(fanIds, (uint)fanId);
+
+                    if (index >= 0 && index < fanMaxSpeeds.Length)
+                    {
+                        return (int)fanMaxSpeeds[index];
+                    }
+
+                    return -1;
+                }).ConfigureAwait(false);
+
+            return results.FirstOrDefault(speed => speed > -1);
+        }
 
         public static async Task<int> GetFanMaxSpeedAsync(int fanId)
         {
