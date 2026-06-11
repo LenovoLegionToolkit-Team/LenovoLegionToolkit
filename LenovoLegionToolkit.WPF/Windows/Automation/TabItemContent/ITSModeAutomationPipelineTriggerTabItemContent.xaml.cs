@@ -42,7 +42,7 @@ public partial class ITSModeAutomationPipelineTriggerTabItemContent : IAutomatio
         {
             var radio = new RadioButton
             {
-                Content = state.GetDisplayName(),
+                Content = _feature.GetITSModeDisplayName(state),
                 Tag = state,
                 IsChecked = state == _powerModeState,
                 Margin = new(0, 0, 0, 8)

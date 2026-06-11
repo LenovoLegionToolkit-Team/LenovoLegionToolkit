@@ -2,6 +2,7 @@ using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
+using LenovoLegionToolkit.Lib.Resources;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
@@ -205,6 +206,31 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     {
         _supportsGeekMode ??= GetDispatcherVersionEx() >= DISPATCHER_VERSION_3;
         return _supportsGeekMode.Value;
+    }
+
+    private bool ShowGeekAsCreatorMode()
+    {
+        try
+        {
+            using var key = Registry.LocalMachine.OpenSubKey(REG_KEY_DISPATCHER, false);
+            if (key != null)
+            {
+                int capability = ReadRegistryInt(key, VAL_ITS_FN_CAP, 0);
+                return (capability & 0x20) != 0;
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"ShowGeekAsCreatorMode() failed", ex);
+        }
+        return false;
+    }
+
+    public string GetITSModeDisplayName(ITSMode mode)
+    {
+        if (mode == ITSMode.MmcGeek && ShowGeekAsCreatorMode())
+            return Resource.ITSMode_Intelligent_Creator;
+        return mode.GetDisplayName();
     }
 
     public async Task<ITSMode> GetITSModeEx()

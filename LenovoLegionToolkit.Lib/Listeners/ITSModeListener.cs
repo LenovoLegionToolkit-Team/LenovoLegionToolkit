@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
-using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Utils;
@@ -9,7 +9,7 @@ using LenovoLegionToolkit.Lib.Utils;
 namespace LenovoLegionToolkit.Lib.Listeners;
 
 public class ITSModeListener(
-    WindowsPowerModeController windowsPowerModeController, 
+    WindowsPowerModeController windowsPowerModeController,
     WindowsPowerPlanController windowsPowerPlanController) : IListener<ITSModeListener.ChangedEventArgs>, IDisposable
 {
     public class ChangedEventArgs(ITSMode state) : EventArgs
@@ -69,19 +69,21 @@ public class ITSModeListener(
 
     private static void PublishNotification(ITSMode value)
     {
+        var displayName = IoCContainer.Resolve<ITSModeFeature>().GetITSModeDisplayName(value);
+
         switch (value)
         {
             case ITSMode.ItsAuto:
-                MessagingCenter.Publish(new NotificationMessage(NotificationType.ITSModeAuto, value.GetDisplayName()));
+                MessagingCenter.Publish(new NotificationMessage(NotificationType.ITSModeAuto, displayName));
                 break;
             case ITSMode.MmcCool:
-                MessagingCenter.Publish(new NotificationMessage(NotificationType.ITSModeCool, value.GetDisplayName()));
+                MessagingCenter.Publish(new NotificationMessage(NotificationType.ITSModeCool, displayName));
                 break;
             case ITSMode.MmcPerformance:
-                MessagingCenter.Publish(new NotificationMessage(NotificationType.ITSModePerformance, value.GetDisplayName()));
+                MessagingCenter.Publish(new NotificationMessage(NotificationType.ITSModePerformance, displayName));
                 break;
             case ITSMode.MmcGeek:
-                MessagingCenter.Publish(new NotificationMessage(NotificationType.ITSModeGeek, value.GetDisplayName()));
+                MessagingCenter.Publish(new NotificationMessage(NotificationType.ITSModeGeek, displayName));
                 break;
         }
     }

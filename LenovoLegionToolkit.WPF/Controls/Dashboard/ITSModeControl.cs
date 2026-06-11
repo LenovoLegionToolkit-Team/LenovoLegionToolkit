@@ -74,6 +74,8 @@ public class ITSModeControl : AbstractComboBoxFeatureCardControl<ITSMode>
         _comboBox.SelectedItem = mode;
     }
 
+    protected override string ComboBoxItemDisplayName(ITSMode value) => _itsModeFeature.GetITSModeDisplayName(value);
+
     protected override async Task OnStateChangeAsync(ComboBox comboBox, IFeature<ITSMode> feature, ITSMode? newValue, ITSMode? oldValue)
     {
         if (newValue == null || oldValue == null)

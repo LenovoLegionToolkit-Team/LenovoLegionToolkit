@@ -180,7 +180,7 @@ public partial class WindowsPowerModesWindow
 
         var tabItem = new TabItem
         {
-            Header = itsMode.GetDisplayName(),
+            Header = _itsModeFeature.GetITSModeDisplayName(itsMode),
             Tag = itsMode
         };
 
