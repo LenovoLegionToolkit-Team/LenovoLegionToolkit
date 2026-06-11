@@ -14,7 +14,7 @@ public static partial class WMI
     public static class LenovoFanTestData
     {
         public static Task<bool> ExistsAsync(int fanId) =>
-            WMI.ExistsAsync("root\\WMI", $"SELECT * FROM LENOVO_FAN_TABLE_DATA WHERE FanId = {fanId}");
+            WMI.ExistsAsync("root\\WMI", $"SELECT * FROM LENOVO_FAN_TEST_DATA WHERE FanId = {fanId}");
 
         public static Task<IEnumerable<(bool active, uint[] fanIds, uint[] fanMaxSpeeds, uint[] fanMinSpeeds, uint numOfFans)>> ReadAsync() =>
                     WMI.ReadAsync("root\\WMI",
