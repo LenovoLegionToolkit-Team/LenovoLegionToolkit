@@ -31,6 +31,9 @@ public static partial class Compatibility
     [GeneratedRegex("[0-9]{2}")]
     private static partial Regex BiosVersionRegex();
 
+    [GeneratedRegex(@"([AI][A-Z]{2}(?:\d+|\b)|\bR\d{4})", RegexOptions.RightToLeft)]
+    private static partial Regex IsAmdDeviceRegex();
+
     private static readonly string[] ALLOWED_VENDORS = ["LENOVO", "MOTOROLA"];
     private static readonly string FakeMachineInformationPath = Path.Combine(Folders.AppData, "fake_mi.json");
     public static bool FakeMachineInformationMode { get; private set; } = false;
@@ -283,7 +286,7 @@ public static partial class Compatibility
 
         var normalizedModel = model.ToUpperInvariant();
 
-        var regex = new Regex(@"([AI][A-Z]{2}\d+|\bR\d{4})", RegexOptions.RightToLeft);
+        var regex = IsAmdDeviceRegex();
 
         var match = regex.Match(normalizedModel);
 
@@ -294,12 +297,7 @@ public static partial class Compatibility
 
         var val = match.Value;
 
-        if (val.StartsWith("A") || val.StartsWith("R"))
-        {
-            return true;
-        }
-
-        return false;
+        return val.StartsWith('A') || val.StartsWith('R');
     }
 
     private static async Task<MachineInformation.FeatureData> GetFeaturesAsync()
