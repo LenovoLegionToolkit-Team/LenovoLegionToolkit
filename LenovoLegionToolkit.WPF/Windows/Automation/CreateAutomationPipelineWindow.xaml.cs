@@ -8,6 +8,7 @@ using System.Windows.Input;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Station.Services;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Extensions;
@@ -75,6 +76,13 @@ public partial class CreateAutomationPipelineWindow
             _triggers.Insert(1, new ITSModeAutomationPipelineTrigger(ITSMode.ItsAuto));
             _triggers.Remove(new PowerModeAutomationPipelineTrigger(PowerModeState.Balance));
             _triggers.Remove(new GodModePresetChangedAutomationPipelineTrigger(Guid.Empty));
+        }
+
+        var triggerRegistry = IoCContainer.Resolve<IAutomationTriggerRegistry>();
+        foreach (var extInfo in triggerRegistry.Triggers)
+        {
+            if (extInfo.Factory() is IAutomationPipelineTrigger trigger)
+                _triggers.Add(trigger);
         }
 
         IsVisibleChanged += CreateAutomationPipelineWindow_IsVisibleChanged;

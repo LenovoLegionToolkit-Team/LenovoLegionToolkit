@@ -7,6 +7,8 @@ namespace LenovoLegionToolkit.Lib.Station.Core;
 public interface IExtensionContext
 {
     INavigationService Navigation { get; }
+    IAutomationStepRegistry AutomationSteps { get; }
+    IAutomationTriggerRegistry AutomationTriggers { get; }
     IUiDispatcher UiDispatcher { get; }
     IExtensionLogger Logger { get; }
 

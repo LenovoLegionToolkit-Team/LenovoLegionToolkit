@@ -29,6 +29,8 @@ public class IoCModule : Module
         builder.Register<IpcServer>();
 
         builder.RegisterType<Station.Services.NavigationService>().As<INavigationService>().SingleInstance();
+        builder.RegisterType<Station.Services.AutomationStepRegistry>().As<IAutomationStepRegistry>().SingleInstance();
+        builder.RegisterType<Station.Services.AutomationTriggerRegistry>().As<IAutomationTriggerRegistry>().SingleInstance();
         builder.RegisterType<Station.Core.ExtensionManager>().SingleInstance();
         builder.RegisterType<Station.Core.ExtensionContextFactory>().SingleInstance();
         builder.RegisterType<Station.Logging.ExtensionLogger>().As<IExtensionLogger>();

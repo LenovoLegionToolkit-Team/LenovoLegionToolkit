@@ -13,6 +13,7 @@ using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls.Automation;
+using LenovoLegionToolkit.Lib.Station.Services;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
@@ -213,6 +214,13 @@ public partial class AutomationPage
             new OsdLockPositionAutomationStep(default),
             new FanMaxSpeedAutomationStep(default),
         };
+
+        var registry = IoCContainer.Resolve<IAutomationStepRegistry>();
+        foreach (var extInfo in registry.Steps)
+        {
+            if (extInfo.Factory() is IAutomationStep step)
+                steps.Add(step);
+        }
 
         for (var index = steps.Count - 1; index >= 0; index--)
         {

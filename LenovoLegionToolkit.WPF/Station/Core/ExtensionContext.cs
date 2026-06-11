@@ -18,15 +18,19 @@ public sealed class ExtensionContext : IExtensionContext
     private readonly SemaphoreSlim _settingsLock = new(1, 1);
     private Dictionary<string, JsonElement>? _settings;
 
-    public ExtensionContext(string pluginId, INavigationService navigation, IUiDispatcher uiDispatcher, IExtensionLogger logger)
+    public ExtensionContext(string pluginId, INavigationService navigation, IAutomationStepRegistry automationSteps, IAutomationTriggerRegistry automationTriggers, IUiDispatcher uiDispatcher, IExtensionLogger logger)
     {
         _pluginId = pluginId;
         Navigation = navigation;
+        AutomationSteps = automationSteps;
+        AutomationTriggers = automationTriggers;
         UiDispatcher = uiDispatcher;
         Logger = logger;
     }
 
     public INavigationService Navigation { get; }
+    public IAutomationStepRegistry AutomationSteps { get; }
+    public IAutomationTriggerRegistry AutomationTriggers { get; }
     public IUiDispatcher UiDispatcher { get; }
     public IExtensionLogger Logger { get; }
 

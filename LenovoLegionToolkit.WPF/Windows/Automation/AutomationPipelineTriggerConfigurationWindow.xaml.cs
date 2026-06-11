@@ -5,7 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
+using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
+using LenovoLegionToolkit.Lib.Station.Services;
 using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Utils;
@@ -226,8 +228,15 @@ public partial class AutomationPipelineTriggerConfigurationWindow
         IUserInactivityPipelineTrigger t2 when t2.InactivityTimeSpan > TimeSpan.Zero => true,
         IWiFiConnectedPipelineTrigger => true,
         IBatteryPercentageAutomationPipelineTrigger => true,
-        _ => false
+        _ => IsExtensionTrigger(trigger)
     };
+
+    private static bool IsExtensionTrigger(IAutomationPipelineTrigger trigger)
+    {
+        var registry = IoCContainer.Resolve<IAutomationTriggerRegistry>();
+        var extInfo = registry.Triggers.FirstOrDefault(t => t.TriggerType.IsInstanceOfType(trigger));
+        return extInfo?.ConfigurationControlType is not null;
+    }
 
     private static IAutomationPipelineTriggerTabItemContent<IAutomationPipelineTrigger>? Create(IAutomationPipelineTrigger trigger) => trigger switch
     {
@@ -241,6 +250,17 @@ public partial class AutomationPipelineTriggerConfigurationWindow
         IUserInactivityPipelineTrigger ut when ut.InactivityTimeSpan > TimeSpan.Zero => new UserInactivityPipelineTriggerTabItemContent(ut),
         IWiFiConnectedPipelineTrigger wt => new WiFiConnectedPipelineTriggerTabItemContent(wt),
         IBatteryPercentageAutomationPipelineTrigger bt => new BatteryPercentageAutomationPipelineTriggerTabItemContent(bt),
-        _ => null
+        _ => CreateExtensionTrigger(trigger)
     };
+
+    private static IAutomationPipelineTriggerTabItemContent<IAutomationPipelineTrigger>? CreateExtensionTrigger(IAutomationPipelineTrigger trigger)
+    {
+        var registry = IoCContainer.Resolve<IAutomationTriggerRegistry>();
+        var extInfo = registry.Triggers.FirstOrDefault(t => t.TriggerType.IsInstanceOfType(trigger));
+        if (extInfo?.ConfigurationControlType is null)
+            return null;
+
+        return (IAutomationPipelineTriggerTabItemContent<IAutomationPipelineTrigger>)
+            Activator.CreateInstance(extInfo.ConfigurationControlType, trigger)!;
+    }
 }

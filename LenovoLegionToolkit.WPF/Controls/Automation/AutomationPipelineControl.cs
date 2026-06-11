@@ -16,6 +16,7 @@ using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 using LenovoLegionToolkit.Lib.Automation.Steps;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
+using LenovoLegionToolkit.Lib.Station.Services;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls.Automation.Steps;
 using LenovoLegionToolkit.WPF.Extensions;
@@ -530,57 +531,68 @@ public class AutomationPipelineControl : UserControl
 
     private async Task<AbstractAutomationStepControl> GenerateStepControlAsync(IAutomationStep automationStep)
     {
-        AbstractAutomationStepControl control = automationStep switch
+        AbstractAutomationStepControl control;
+
+        var registry = IoCContainer.Resolve<IAutomationStepRegistry>();
+        var extInfo = registry.Steps.FirstOrDefault(s => s.StepType.IsInstanceOfType(automationStep));
+        if (extInfo is not null)
         {
-            AlwaysOnUsbAutomationStep s => new AlwaysOnUsbAutomationStepControl(s),
-            BatteryAutomationStep s => new BatteryAutomationStepControl(s),
-            BatteryNightChargeAutomationStep s => new BatteryNightChargeAutomationStepControl(s),
-            DeactivateGPUAutomationStep s => new DeactivateGPUAutomationStepControl(s),
-            DelayAutomationStep s => new DelayAutomationStepControl(s),
-            DisplayBrightnessAutomationStep s => new DisplayBrightnessAutomationStepControl(s),
-            DpiScaleAutomationStep s => new DpiScaleAutomationStepControl(s),
-            FlipToStartAutomationStep s => new FlipToStartAutomationStepControl(s),
-            FnLockAutomationStep s => new FnLockAutomationStepControl(s),
-            CycleGodModePresetAutomationStep s => new CycleGodModePresetAutomationStepControl(s),
-            GodModePresetAutomationStep s => new GodModePresetAutomationStepControl(s),
-            HardwareSensorsAutomationStep s => new HardwareSensorsAutomationStepControl(s),
-            HDRAutomationStep s => new HDRAutomationStepControl(s),
-            HybridModeAutomationStep s => await HybridModeAutomationStepControlFactory.GetControlAsync(s),
-            ITSModeAutomationStep s => new ITSModeAutomationStepControl(s),
-            InstantBootAutomationStep s => new InstantBootAutomationStepControl(s),
-            MacroAutomationStep s => new MacroAutomationStepControl(s),
-            MicrophoneAutomationStep s => new MicrophoneAutomationStepControl(s),
-            NotificationAutomationStep s => new NotificationAutomationStepControl(s),
-            OneLevelWhiteKeyboardBacklightAutomationStep s => new OneLevelWhiteKeyboardBacklightAutomationStepControl(s),
-            OverDriveAutomationStep s => new OverDriveAutomationStepControl(s),
-            OverclockDiscreteGPUAutomationStep s => new OverclockDiscreteGPUAutomationStepControl(s),
-            PanelLogoBacklightAutomationStep s => new PanelLogoBacklightAutomationStepControl(s),
-            PlaySoundAutomationStep s => new PlaySoundAutomationStepControl(s),
-            PortsBacklightAutomationStep s => new PortsBacklightAutomationStepControl(s),
-            PowerModeAutomationStep s => new PowerModeAutomationStepControl(s),
-            QuickActionAutomationStep s => new QuickActionAutomationStepControl(s),
-            RefreshRateAutomationStep s => new RefreshRateAutomationStepControl(s),
-            ResolutionAutomationStep s => new ResolutionAutomationStepControl(s),
-            RGBKeyboardBacklightAutomationStep s => new RGBKeyboardBacklightAutomationStepControl(s),
-            RunAutomationStep s => new RunAutomationStepControl(s),
-            SpeakerAutomationStep s => new SpeakerAutomationStepControl(s),
-            SpeakerVolumeAutomationStep s => new SpeakerVolumeAutomationStepControl(s),
-            SpectrumKeyboardBacklightBrightnessAutomationStep s => new SpectrumKeyboardBacklightBrightnessAutomationStepControl(s),
-            SpectrumKeyboardBacklightImportProfileAutomationStep s => new SpectrumKeyboardBacklightImportProfileAutomationStepControl(s),
-            SpectrumKeyboardBacklightProfileAutomationStep s => new SpectrumKeyboardBacklightProfileAutomationStepControl(s),
-            TurnOffMonitorsAutomationStep s => new TurnOffMonitorsAutomationStepControl(s),
-            WiFiAutomationStep s => new WiFiAutomationStepControl(s),
-            AirplaneModeAutomationStep s => new AirplaneModeAutomationStepControl(s),
-            TouchpadLockAutomationStep s => new TouchpadLockAutomationStepControl(s),
-            WhiteKeyboardBacklightAutomationStep s => new WhiteKeyboardBacklightAutomationStepControl(s),
-            WinKeyAutomationStep s => new WinKeyAutomationStepControl(s),
-            CloseAppAutomationStep s => new CloseAppAutomationStepControl(s),
-            ShowAppAutomationStep s => new ShowAppAutomationStepControl(s),
-            OsdAutomationStep s => new OsdAutomationStepControl(s),
-            OsdLockPositionAutomationStep s => new OsdLockPositionAutomationStepControl(s),
-            FanMaxSpeedAutomationStep s => new FanMaxSpeedAutomationStepControl(s),
-            _ => throw new InvalidOperationException("Unknown step type"),
-        };
+            control = (AbstractAutomationStepControl)Activator.CreateInstance(extInfo.ControlType, automationStep)!;
+        }
+        else
+        {
+            control = automationStep switch
+            {
+                AlwaysOnUsbAutomationStep s => new AlwaysOnUsbAutomationStepControl(s),
+                BatteryAutomationStep s => new BatteryAutomationStepControl(s),
+                BatteryNightChargeAutomationStep s => new BatteryNightChargeAutomationStepControl(s),
+                DeactivateGPUAutomationStep s => new DeactivateGPUAutomationStepControl(s),
+                DelayAutomationStep s => new DelayAutomationStepControl(s),
+                DisplayBrightnessAutomationStep s => new DisplayBrightnessAutomationStepControl(s),
+                DpiScaleAutomationStep s => new DpiScaleAutomationStepControl(s),
+                FlipToStartAutomationStep s => new FlipToStartAutomationStepControl(s),
+                FnLockAutomationStep s => new FnLockAutomationStepControl(s),
+                CycleGodModePresetAutomationStep s => new CycleGodModePresetAutomationStepControl(s),
+                GodModePresetAutomationStep s => new GodModePresetAutomationStepControl(s),
+                HardwareSensorsAutomationStep s => new HardwareSensorsAutomationStepControl(s),
+                HDRAutomationStep s => new HDRAutomationStepControl(s),
+                HybridModeAutomationStep s => await HybridModeAutomationStepControlFactory.GetControlAsync(s),
+                ITSModeAutomationStep s => new ITSModeAutomationStepControl(s),
+                InstantBootAutomationStep s => new InstantBootAutomationStepControl(s),
+                MacroAutomationStep s => new MacroAutomationStepControl(s),
+                MicrophoneAutomationStep s => new MicrophoneAutomationStepControl(s),
+                NotificationAutomationStep s => new NotificationAutomationStepControl(s),
+                OneLevelWhiteKeyboardBacklightAutomationStep s => new OneLevelWhiteKeyboardBacklightAutomationStepControl(s),
+                OverDriveAutomationStep s => new OverDriveAutomationStepControl(s),
+                OverclockDiscreteGPUAutomationStep s => new OverclockDiscreteGPUAutomationStepControl(s),
+                PanelLogoBacklightAutomationStep s => new PanelLogoBacklightAutomationStepControl(s),
+                PlaySoundAutomationStep s => new PlaySoundAutomationStepControl(s),
+                PortsBacklightAutomationStep s => new PortsBacklightAutomationStepControl(s),
+                PowerModeAutomationStep s => new PowerModeAutomationStepControl(s),
+                QuickActionAutomationStep s => new QuickActionAutomationStepControl(s),
+                RefreshRateAutomationStep s => new RefreshRateAutomationStepControl(s),
+                ResolutionAutomationStep s => new ResolutionAutomationStepControl(s),
+                RGBKeyboardBacklightAutomationStep s => new RGBKeyboardBacklightAutomationStepControl(s),
+                RunAutomationStep s => new RunAutomationStepControl(s),
+                SpeakerAutomationStep s => new SpeakerAutomationStepControl(s),
+                SpeakerVolumeAutomationStep s => new SpeakerVolumeAutomationStepControl(s),
+                SpectrumKeyboardBacklightBrightnessAutomationStep s => new SpectrumKeyboardBacklightBrightnessAutomationStepControl(s),
+                SpectrumKeyboardBacklightImportProfileAutomationStep s => new SpectrumKeyboardBacklightImportProfileAutomationStepControl(s),
+                SpectrumKeyboardBacklightProfileAutomationStep s => new SpectrumKeyboardBacklightProfileAutomationStepControl(s),
+                TurnOffMonitorsAutomationStep s => new TurnOffMonitorsAutomationStepControl(s),
+                WiFiAutomationStep s => new WiFiAutomationStepControl(s),
+                AirplaneModeAutomationStep s => new AirplaneModeAutomationStepControl(s),
+                TouchpadLockAutomationStep s => new TouchpadLockAutomationStepControl(s),
+                WhiteKeyboardBacklightAutomationStep s => new WhiteKeyboardBacklightAutomationStepControl(s),
+                WinKeyAutomationStep s => new WinKeyAutomationStepControl(s),
+                CloseAppAutomationStep s => new CloseAppAutomationStepControl(s),
+                ShowAppAutomationStep s => new ShowAppAutomationStepControl(s),
+                OsdAutomationStep s => new OsdAutomationStepControl(s),
+                OsdLockPositionAutomationStep s => new OsdLockPositionAutomationStepControl(s),
+                FanMaxSpeedAutomationStep s => new FanMaxSpeedAutomationStepControl(s),
+                _ => throw new InvalidOperationException("Unknown step type"),
+            };
+        }
 
         control.MouseRightButtonUp += (_, e) =>
         {
