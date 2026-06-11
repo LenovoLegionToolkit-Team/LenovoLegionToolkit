@@ -247,24 +247,19 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
             if (dispatcherVersion >= DISPATCHER_VERSION_3)
             {
-                var machineInfo = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
-                var isThinkBook = machineInfo.LegionSeries == LegionSeries.ThinkBook;
-
                 using RegistryKey? key = Registry.LocalMachine.OpenSubKey(REG_KEY_DISPATCHER, false);
                 if (key != null)
                 {
                     int capability = ReadRegistryInt(key, VAL_ITS_FN_CAP, 0);
-
-                    if (!isThinkBook)
-                    {
-                        capability &= ~0x10;
-                    }
-
                     bool useVersioned = (capability & 0x10) != 0;
-                    string settingKey = useVersioned ? VAL_ITS_CUR_SET_V : VAL_ITS_CUR_SET;
 
-                    int currentSetting = ReadRegistryInt(key, settingKey, -1);
-                    Log.Instance.Trace($"ITS mode check: {settingKey}={currentSetting}");
+                    int currentSetting = ReadRegistryInt(key, useVersioned ? VAL_ITS_CUR_SET_V : VAL_ITS_CUR_SET, -1);
+                    if (currentSetting == -1 && useVersioned)
+                        currentSetting = ReadRegistryInt(key, VAL_ITS_CUR_SET, -1);
+                    else if (currentSetting == -1 && !useVersioned)
+                        currentSetting = ReadRegistryInt(key, VAL_ITS_CUR_SET_V, -1);
+
+                    Log.Instance.Trace($"ITS mode check: {(useVersioned ? VAL_ITS_CUR_SET_V : VAL_ITS_CUR_SET)}={currentSetting}");
 
                     return currentSetting switch
                     {

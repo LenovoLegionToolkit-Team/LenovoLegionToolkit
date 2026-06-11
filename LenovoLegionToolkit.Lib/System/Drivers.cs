@@ -14,6 +14,7 @@ public static class Drivers
     public const uint IOCTL_ENERGY_KEYBOARD = 0x83102144;
     public const uint IOCTL_KEY_WAIT_HANDLE = 0x831020D8;
     public const uint IOCTL_KEY_VALUE = 0x831020CC;
+    public const uint IOCTL_DYTC = 0x831E003C;
 
     private static readonly object Lock = new();
 
