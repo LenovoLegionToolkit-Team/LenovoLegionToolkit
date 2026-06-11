@@ -72,7 +72,6 @@
                                 Width="180"
                                 AutomationProperties.Name="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title}"
                                 IsSnapToTickEnabled="True"
-                                Minimum="0"
                                 TickFrequency="1"
                                 ValueChanged="CoreSlider_OnValueChanged" />
                             <Label
@@ -96,7 +95,6 @@
                                 Width="180"
                                 AutomationProperties.Name="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title}"
                                 IsSnapToTickEnabled="True"
-                                Minimum="0"
                                 TickFrequency="1"
                                 ValueChanged="MemorySlider_OnValueChanged" />
                             <Label
@@ -110,29 +108,6 @@
 
                     <!-- Undervolting Section -->
                     <TextBlock Text="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_Undervolting}" FontWeight="SemiBold" FontSize="14" Margin="0,0,0,8" />
-
-                    <custom:CardControl Margin="0,0,0,8" Icon="ArrowDownload24">
-                        <custom:CardControl.Header>
-                            <controls:CardHeaderControl
-                                Title="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_VoltageOffset}"
-                                Subtitle="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_VoltageOffsetDesc}" />
-                        </custom:CardControl.Header>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <Slider
-                                x:Name="_voltageOffsetSlider"
-                                Width="180"
-                                AutomationProperties.Name="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_VoltageOffset}"
-                                IsSnapToTickEnabled="True"
-                                TickFrequency="5"
-                                ValueChanged="VoltageOffsetSlider_OnValueChanged" />
-                            <Label
-                                x:Name="_voltageOffsetLabel"
-                                Width="60"
-                                Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                FontWeight="Medium" />
-                        </StackPanel>
-                    </custom:CardControl>
 
                     <custom:CardControl Margin="0,0,0,8" Icon="LockClosed24">
                         <custom:CardControl.Header>

@@ -4,6 +4,7 @@ using System.Windows.Input;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.WPF.Resources;
+using LenovoLegionToolkit.WPF.Utils;
 
 namespace LenovoLegionToolkit.WPF.Windows.Dashboard;
 
@@ -21,14 +22,12 @@ public partial class OverclockDiscreteGPUSettingsWindow
         _applyCloseGrid.Visibility = enabled ? Visibility.Visible : Visibility.Collapsed;
         _saveGrid.Visibility = enabled ? Visibility.Collapsed : Visibility.Visible;
 
+        _coreSlider.Minimum = GPUOverclockController.GetMinCoreDeltaMhz();
         _coreSlider.Maximum = GPUOverclockController.GetMaxCoreDeltaMhz();
         _coreSlider.Value = info.CoreDeltaMhz;
+        _memorySlider.Minimum = GPUOverclockController.GetMinMemoryDeltaMhz();
         _memorySlider.Maximum = GPUOverclockController.GetMaxMemoryDeltaMhz();
         _memorySlider.Value = info.MemoryDeltaMhz;
-        
-        _voltageOffsetSlider.Minimum = GPUOverclockController.GetMinVoltageOffsetMv();
-        _voltageOffsetSlider.Maximum = GPUOverclockController.GetMaxVoltageOffsetMv();
-        _voltageOffsetSlider.Value = info.VoltageOffsetMv;
         
         int minLock = GPUOverclockController.GetMinVoltageLockMv();
         _voltageLockSlider.Minimum = minLock - _voltageLockSlider.TickFrequency;
@@ -44,7 +43,6 @@ public partial class OverclockDiscreteGPUSettingsWindow
 
         _coreLabel.Content = $"{(int)_coreSlider.Value:+0;-0;0} {Resource.MHz}";
         _memoryLabel.Content = $"{(int)_memorySlider.Value:+0;-0;0} {Resource.MHz}";
-        _voltageOffsetLabel.Content = $"{(int)_voltageOffsetSlider.Value:+0;-0;0} {Resource.mV}";
         _voltageLockLabel.Content = _voltageLockSlider.Value <= _voltageLockSlider.Minimum ? Resource.Off : $"{(int)_voltageLockSlider.Value} {Resource.mV}";
     }
 
@@ -58,12 +56,6 @@ public partial class OverclockDiscreteGPUSettingsWindow
     {
         if (_memoryLabel != null && _memorySlider != null)
             _memoryLabel.Content = $"{(int)_memorySlider.Value:+0;-0;0} {Resource.MHz}";
-    }
-
-    private void VoltageOffsetSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-    {
-        if (_voltageOffsetLabel != null && _voltageOffsetSlider != null)
-            _voltageOffsetLabel.Content = $"{(int)_voltageOffsetSlider.Value:+0;-0;0} {Resource.mV}";
     }
 
     private void VoltageLockSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -82,18 +74,21 @@ public partial class OverclockDiscreteGPUSettingsWindow
     {
         Save();
         await ApplyAsync();
+        SnackbarHelper.Show(Resource.OverclockDiscreteGPUSettingsWindow_Title, Resource.Snackbar_SettingsApplied_Message, SnackbarType.Success);
     }
 
     private async void ApplyAndCloseButton_Click(object sender, RoutedEventArgs e)
     {
         Save();
         await ApplyAsync();
+        SnackbarHelper.Show(Resource.OverclockDiscreteGPUSettingsWindow_Title, Resource.Snackbar_SettingsApplied_Message, SnackbarType.Success);
         Close();
     }
 
     private void SaveButton_Click(object sender, RoutedEventArgs e)
     {
         Save();
+        SnackbarHelper.Show(Resource.OverclockDiscreteGPUSettingsWindow_Title, Resource.Snackbar_SettingsApplied_Message, SnackbarType.Success);
         Close();
     }
 
@@ -101,7 +96,7 @@ public partial class OverclockDiscreteGPUSettingsWindow
     {
         var (enabled, _) = _gpuOverclockController.GetState();
         int voltageLock = _voltageLockSlider.Value <= _voltageLockSlider.Minimum ? 0 : (int)_voltageLockSlider.Value;
-        var info = new GPUOverclockInfo((int)_coreSlider.Value, (int)_memorySlider.Value, (int)_voltageOffsetSlider.Value, voltageLock);
+        var info = new GPUOverclockInfo((int)_coreSlider.Value, (int)_memorySlider.Value, voltageLock);
 
         _gpuOverclockController.SaveState(enabled, info);
     }
