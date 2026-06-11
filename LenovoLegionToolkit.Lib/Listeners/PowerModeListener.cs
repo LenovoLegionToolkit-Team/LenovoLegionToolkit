@@ -58,7 +58,11 @@ public class PowerModeListener(
         var gpuOverclockController = IoCContainer.Resolve<GPUOverclockController>();
         if (await gpuOverclockController.IsSupportedAsync().ConfigureAwait(false))
         {
-            await gpuOverclockController.EnsureOverclockIsAppliedAsync().ConfigureAwait(false);
+            _ = Task.Run(async () =>
+            {
+                await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+                await gpuOverclockController.EnsureOverclockIsAppliedAsync().ConfigureAwait(false);
+            });
         }
     }
 
