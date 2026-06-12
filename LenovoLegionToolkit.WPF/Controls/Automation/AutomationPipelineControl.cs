@@ -108,6 +108,7 @@ public class AutomationPipelineControl : UserControl
     };
 
     private readonly IAutomationStep[] _supportedAutomationSteps;
+    private readonly int _totalAutomationStepsCount;
 
     public AutomationPipeline AutomationPipeline { get; }
 
@@ -118,10 +119,11 @@ public class AutomationPipelineControl : UserControl
 
     public Task InitializedTask => _initializedTaskCompletionSource.Task;
 
-    public AutomationPipelineControl(AutomationPipeline automationPipeline, IAutomationStep[] supportedAutomationSteps)
+    public AutomationPipelineControl(AutomationPipeline automationPipeline, IAutomationStep[] supportedAutomationSteps, int totalAutomationStepsCount)
     {
         AutomationPipeline = automationPipeline;
         _supportedAutomationSteps = supportedAutomationSteps;
+        _totalAutomationStepsCount = totalAutomationStepsCount;
 
 
 
@@ -249,7 +251,7 @@ public class AutomationPipelineControl : UserControl
             foreach (var step in _supportedAutomationSteps)
                 stepControls.Add(await GenerateStepControlAsync(step));
 
-            var window = new AddAutomationStepWindow(stepControls, AddStep) { Owner = Window.GetWindow(this) };
+            var window = new AddAutomationStepWindow(stepControls, AddStep, _totalAutomationStepsCount) { Owner = Window.GetWindow(this) };
             window.ShowDialog();
         };
 
@@ -402,6 +404,9 @@ public class AutomationPipelineControl : UserControl
 
         if (AutomationPipeline.Trigger is IPowerModeAutomationPipelineTrigger pm)
             result += $" | {Resource.AutomationPipelineControl_SubtitlePart_PowerMode}: {pm.PowerModeState.GetDisplayName()}";
+
+        if (AutomationPipeline.Trigger is IHybridModeAutomationPipelineTrigger hm)
+            result += $" | {Resource.AutomationPipelineControl_SubtitlePart_HybridMode}: {hm.HybridModeState.GetDisplayName()}";
 
         if (AutomationPipeline.Trigger is IGodModePresetChangedAutomationPipelineTrigger gpt)
         {

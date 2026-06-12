@@ -30,6 +30,7 @@ public partial class AutomationPage
     private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
 
     private IAutomationStep[] _supportedAutomationSteps = [];
+    private static int _totalAutomationStepsCount = 0;
 
     public AutomationPage()
     {
@@ -222,6 +223,8 @@ public partial class AutomationPage
                 steps.Add(step);
         }
 
+        _totalAutomationStepsCount = steps.Count;
+
         for (var index = steps.Count - 1; index >= 0; index--)
         {
             if (!await steps[index].IsSupportedAsync())
@@ -239,7 +242,7 @@ public partial class AutomationPage
             supportedSteps = Array.FindAll(supportedSteps, s => s is not QuickActionAutomationStep);
         }
 
-        var control = new AutomationPipelineControl(pipeline, supportedSteps);
+        var control = new AutomationPipelineControl(pipeline, supportedSteps, _totalAutomationStepsCount);
         control.MouseRightButtonUp += (_, e) =>
         {
             ShowPipelineContextMenu(control, stackPanel);

@@ -20,12 +20,14 @@ public partial class AddAutomationStepWindow
     private readonly HashSet<AbstractAutomationStepControl> _selectedSteps = [];
     private bool _multiSelect;
 
-    public AddAutomationStepWindow(List<AbstractAutomationStepControl> controls, Action<AbstractAutomationStepControl> addStepControl)
+    public AddAutomationStepWindow(List<AbstractAutomationStepControl> controls, Action<AbstractAutomationStepControl> addStepControl, int totalAvailableStepsCount)
     {
         _controls = controls;
         _addStepControl = addStepControl;
 
         InitializeComponent();
+
+        _countsTextBlock.Text = string.Format(Resource.Automation_SupportedAvailableCount, controls.Count, totalAvailableStepsCount);
 
         IsVisibleChanged += AddAutomationStepWindow_IsVisibleChanged;
     }
@@ -78,6 +80,7 @@ public partial class AddAutomationStepWindow
 
         _backButton.Visibility = _multiSelect ? Visibility.Visible : Visibility.Collapsed;
         _addButton.Visibility = _multiSelect ? Visibility.Visible : Visibility.Collapsed;
+        _countsTextBlock.Visibility = _multiSelect ? Visibility.Collapsed : Visibility.Visible;
         RefreshAddButton();
 
         return Task.CompletedTask;

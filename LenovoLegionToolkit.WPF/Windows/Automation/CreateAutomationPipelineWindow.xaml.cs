@@ -30,6 +30,7 @@ public partial class CreateAutomationPipelineWindow
         new ACAdapterDisconnectedAutomationPipelineTrigger(),
         new BatteryPercentageAutomationPipelineTrigger(),
         new PowerModeAutomationPipelineTrigger(PowerModeState.Balance),
+        new ITSModeAutomationPipelineTrigger(ITSMode.ItsAuto),
         new GodModePresetChangedAutomationPipelineTrigger(Guid.Empty),
         new GamesAreRunningAutomationPipelineTrigger(),
         new GamesStopAutomationPipelineTrigger(),
@@ -45,6 +46,7 @@ public partial class CreateAutomationPipelineWindow
         new DisplayOffAutomationPipelineTrigger(),
         new HDROnAutomationPipelineTrigger(),
         new HDROffAutomationPipelineTrigger(),
+        new HybridModeAutomationPipelineTrigger(HybridModeState.On),
         new DeviceConnectedAutomationPipelineTrigger([]),
         new DeviceDisconnectedAutomationPipelineTrigger([]),
         new ExternalDisplayConnectedAutomationPipelineTrigger(),
@@ -71,19 +73,33 @@ public partial class CreateAutomationPipelineWindow
 
         InitializeComponent();
 
+        var totalAvailableTriggers = _triggers.Count;
+
         if (machineInformation.Properties.SupportsITSMode)
         {
-            _triggers.Insert(1, new ITSModeAutomationPipelineTrigger(ITSMode.ItsAuto));
             _triggers.Remove(new PowerModeAutomationPipelineTrigger(PowerModeState.Balance));
             _triggers.Remove(new GodModePresetChangedAutomationPipelineTrigger(Guid.Empty));
         }
+        else
+        {
+            _triggers.Remove(new ITSModeAutomationPipelineTrigger(ITSMode.ItsAuto));
+        }
+
+        if (!machineInformation.Properties.SupportsGSync && !machineInformation.Properties.SupportsIGPUMode)
+        {
+            _triggers.Remove(new HybridModeAutomationPipelineTrigger(HybridModeState.On));
+        }
 
         var triggerRegistry = IoCContainer.Resolve<IAutomationTriggerRegistry>();
+        totalAvailableTriggers += triggerRegistry.Triggers.Count;
+
         foreach (var extInfo in triggerRegistry.Triggers)
         {
             if (extInfo.Factory() is IAutomationPipelineTrigger trigger)
                 _triggers.Add(trigger);
         }
+
+        _countsTextBlock.Text = string.Format(Resource.Automation_SupportedAvailableCount, _triggers.Count, totalAvailableTriggers);
 
         IsVisibleChanged += CreateAutomationPipelineWindow_IsVisibleChanged;
         _logicComboBox.SelectionChanged += (_, _) => _ = RefreshAsync();
@@ -157,6 +173,7 @@ public partial class CreateAutomationPipelineWindow
         _backButton.Visibility = _multiSelect ? Visibility.Visible : Visibility.Collapsed;
         _createButton.Visibility = _multiSelect ? Visibility.Visible : Visibility.Collapsed;
         _logicComboBox.Visibility = _multiSelect ? Visibility.Visible : Visibility.Collapsed;
+        _countsTextBlock.Visibility = _multiSelect ? Visibility.Collapsed : Visibility.Visible;
         RefreshCreateButton();
 
         return Task.CompletedTask;

@@ -691,6 +691,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Supported: {0} / Available: {1}.
+        /// </summary>
+        public static string Automation_SupportedAvailableCount {
+            get {
+                return ResourceManager.GetString("Automation_SupportedAvailableCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No Actions defined. Click &quot;Add new&quot; to create new Action..
         /// </summary>
         public static string AutomationPage_Actions_Empty {
@@ -1084,6 +1093,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string AutomationPipelineControl_SubtitlePart_PowerMode {
             get {
                 return ResourceManager.GetString("AutomationPipelineControl_SubtitlePart_PowerMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPU Working Mode.
+        /// </summary>
+        public static string AutomationPipelineControl_SubtitlePart_HybridMode {
+            get {
+                return ResourceManager.GetString("AutomationPipelineControl_SubtitlePart_HybridMode", resourceCulture);
             }
         }
         

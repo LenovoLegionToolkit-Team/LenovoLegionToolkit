@@ -228,6 +228,7 @@ public partial class AutomationPipelineTriggerConfigurationWindow
         IUserInactivityPipelineTrigger t2 when t2.InactivityTimeSpan > TimeSpan.Zero => true,
         IWiFiConnectedPipelineTrigger => true,
         IBatteryPercentageAutomationPipelineTrigger => true,
+        IHybridModeAutomationPipelineTrigger => true,
         _ => IsExtensionTrigger(trigger)
     };
 
@@ -250,6 +251,7 @@ public partial class AutomationPipelineTriggerConfigurationWindow
         IUserInactivityPipelineTrigger ut when ut.InactivityTimeSpan > TimeSpan.Zero => new UserInactivityPipelineTriggerTabItemContent(ut),
         IWiFiConnectedPipelineTrigger wt => new WiFiConnectedPipelineTriggerTabItemContent(wt),
         IBatteryPercentageAutomationPipelineTrigger bt => new BatteryPercentageAutomationPipelineTriggerTabItemContent(bt),
+        IHybridModeAutomationPipelineTrigger ht => new HybridModeAutomationPipelineTriggerTabItemContent(ht),
         _ => CreateExtensionTrigger(trigger)
     };
 

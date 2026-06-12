@@ -1,4 +1,4 @@
-﻿    <local:BaseWindow
+    <local:BaseWindow
     x:Class="LenovoLegionToolkit.WPF.Windows.Automation.CreateAutomationPipelineWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -92,6 +92,15 @@
                 <ComboBoxItem Content="{x:Static resources:Resource.MultipleTriggersAutomationPipelineTrigger_Logic_And}" />
                 <ComboBoxItem Content="{x:Static resources:Resource.MultipleTriggersAutomationPipelineTrigger_Logic_Or}" />
             </ComboBox>
+
+            <TextBlock
+                x:Name="_countsTextBlock"
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Margin="12,0,0,0"
+                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                Visibility="Collapsed" />
 
             <wpfui:Button
                 x:Name="_createButton"
