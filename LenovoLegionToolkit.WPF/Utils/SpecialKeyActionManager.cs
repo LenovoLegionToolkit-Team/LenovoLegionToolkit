@@ -21,7 +21,7 @@ public class SpecialKeyActionManager
     private Action? _bringToForeground;
 
     private readonly ConcurrentDictionary<int, TaskCompletionSource<bool>> _pendingPresses = new();
-    private static readonly TimeSpan DoublePressInterval = TimeSpan.FromMilliseconds(500);
+    private static readonly TimeSpan DoublePressInterval = TimeSpan.FromMilliseconds(300);
 
     public SpecialKeyActionManager(SpecialKeySettings settings, AutomationProcessor automationProcessor)
     {
