@@ -172,9 +172,6 @@
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>添加步骤</value>
   </data>
-  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
-    <value>Supported: {0} / Available: {1}</value>
-  </data>
   <data name="AddNew" xml:space="preserve">
     <value>新建</value>
   </data>
@@ -258,9 +255,6 @@
   <data name="ArgumentWindow_Category_General" xml:space="preserve">
     <value>常规</value>
   </data>
-  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
-    <value>Settings applied successfully.</value>
-  </data>
   <data name="ArgumentWindow_Category_Hardware_Automation" xml:space="preserve">
     <value>硬件和自动化</value>
   </data>
@@ -269,12 +263,6 @@
   </data>
   <data name="ArgumentWindow_Category_Network_Proxy" xml:space="preserve">
     <value>网络代理</value>
-  </data>
-  <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>修改应用程序的启动参数。</value>
-  </data>
-  <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>参数</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
     <value>允许所有证书</value>
@@ -462,11 +450,11 @@
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
     <value>将在 {0:D2}:{1:D2}:{2:D2} 运行</value>
   </data>
-  <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
-    <value>性能模式</value>
-  </data>
   <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
     <value>GPU Working Mode</value>
+  </data>
+  <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
+    <value>性能模式</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Preset" xml:space="preserve">
     <value>预设</value>
@@ -476,6 +464,9 @@
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
     <value>配置</value>
+  </data>
+  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
+    <value>Supported: {0} / Available: {1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>后退</value>
@@ -1712,6 +1703,9 @@
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
     <value>判断逻辑</value>
   </data>
+  <data name="mV" xml:space="preserve">
+    <value>mV</value>
+  </data>
   <data name="NetworkAdapters" xml:space="preserve">
     <value>网络适配器</value>
   </data>
@@ -2104,14 +2098,32 @@
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>超频独立显卡</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
+    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>核心频率偏移量</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
+    <value>Adjust VRAM speed to modify memory bandwidth.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>显存频率偏移量</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
+    <value>Overclocking</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>独立显卡超频设置</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
+    <value>Undervolting</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
+    <value>Voltage Lock</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
+    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>{0} 次点击后打开...</value>
@@ -2344,6 +2356,9 @@
   <data name="RAM" xml:space="preserve">
     <value>内存</value>
   </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
   <data name="Refresh" xml:space="preserve">
     <value>刷新</value>
   </data>
@@ -2443,6 +2458,9 @@
   <data name="RPM" xml:space="preserve">
     <value>转</value>
   </data>
+  <data name="Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
     <value>参数</value>
   </data>
@@ -2481,6 +2499,18 @@
   </data>
   <data name="Saving" xml:space="preserve">
     <value>保存中...</value>
+  </data>
+  <data name="ScriptConsole_Code_Title" xml:space="preserve">
+    <value>Code Block</value>
+  </data>
+  <data name="ScriptConsole_Output_Title" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="ScriptConsole_Title" xml:space="preserve">
+    <value>Script Console</value>
+  </data>
+  <data name="ScriptConsole_Warn_Message" xml:space="preserve">
+    <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
   </data>
   <data name="Seconds" xml:space="preserve">
     <value>{0}秒</value>
@@ -2700,6 +2730,12 @@
   </data>
   <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
     <value>置顶 LLT 窗口</value>
+  </data>
+  <data name="SettingsPage_ArgumentWindow_Message" xml:space="preserve">
+    <value>Modify startup arguments for the app.</value>
+  </data>
+  <data name="SettingsPage_ArgumentWindow_Title" xml:space="preserve">
+    <value>Arguments</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
     <value>开启自启并最小化到托盘。
@@ -3001,6 +3037,12 @@
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>重启以查看改动</value>
   </data>
+  <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
+    <value>Execute C# scripts in the application runtime.</value>
+  </data>
+  <data name="SettingsPage_ScriptConsole_Title" xml:space="preserve">
+    <value>Script Console</value>
+  </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
     <value>所有文件</value>
   </data>
@@ -3114,6 +3156,9 @@
   </data>
   <data name="Slot" xml:space="preserve">
     <value>栏位</value>
+  </data>
+  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
+    <value>Settings applied successfully.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>静音此项将静音所有可用的音频输出设备。</value>
@@ -3517,26 +3562,5 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>是</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
-    <value>Voltage Lock</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
-    <value>Overclocking</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
-    <value>Undervolting</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
-    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
-    <value>Adjust VRAM speed to modify memory bandwidth.</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
-  </data>
-  <data name="mV" xml:space="preserve">
-    <value>mV</value>
   </data>
 </root>
