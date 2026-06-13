@@ -172,9 +172,6 @@
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>Lépés hozzáadása</value>
   </data>
-  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
-    <value>Supported: {0} / Available: {1}</value>
-  </data>
   <data name="AddNew" xml:space="preserve">
     <value>Új hozzáadása</value>
   </data>
@@ -256,9 +253,6 @@
   <data name="ArgumentWindow_Category_General" xml:space="preserve">
     <value>General</value>
   </data>
-  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
-    <value>Settings applied successfully.</value>
-  </data>
   <data name="ArgumentWindow_Category_Hardware_Automation" xml:space="preserve">
     <value>Hardware &amp; Automation</value>
   </data>
@@ -267,12 +261,6 @@
   </data>
   <data name="ArgumentWindow_Category_Network_Proxy" xml:space="preserve">
     <value>Network Proxy</value>
-  </data>
-  <data name="ArgumentWindow_Edit_Message" xml:space="preserve">
-    <value>Open an argument window for convenient modification of arguments.</value>
-  </data>
-  <data name="ArgumentWindow_Edit_Title" xml:space="preserve">
-    <value>Arguments</value>
   </data>
   <data name="ArgumentWindow_Flag_AllowAllCerts" xml:space="preserve">
     <value>Allow All Certificates</value>
@@ -461,11 +449,11 @@ Csak az aktuális állapotnak megfelelő műveletek fognak futni.</value>
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
     <value>{0:D2}:{1:D2}:{2:D2}-kor</value>
   </data>
-  <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
-    <value>Teljesítménymód</value>
-  </data>
   <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
     <value>GPU Working Mode</value>
+  </data>
+  <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
+    <value>Teljesítménymód</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_Preset" xml:space="preserve">
     <value>Előbeállítás</value>
@@ -475,6 +463,9 @@ Csak az aktuális állapotnak megfelelő műveletek fognak futni.</value>
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
     <value>Beállítás</value>
+  </data>
+  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
+    <value>Supported: {0} / Available: {1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Back</value>
@@ -1705,6 +1696,9 @@ Click Yes to disable and No to ignore.</value>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
     <value>Logic</value>
   </data>
+  <data name="mV" xml:space="preserve">
+    <value>mV</value>
+  </data>
   <data name="NetworkAdapters" xml:space="preserve">
     <value>Network adapters</value>
   </data>
@@ -2097,14 +2091,32 @@ Nincs hatással a többi teljes képernyős ablakokra, de nem lehet kattintani a
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>GPU Overclock</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
+    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>Core Frequency Eltolás</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
+    <value>Adjust VRAM speed to modify memory bandwidth.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>Memory Frequency Eltolás</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
+    <value>Overclocking</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>GPU Overclock beállítások</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
+    <value>Undervolting</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
+    <value>Voltage Lock</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
+    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Unlocking in {0}...</value>
@@ -2335,6 +2347,9 @@ A teljesítménymódot az Fn+Q billentyűkombinációval is meg lehet változtat
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
   </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Ready</value>
+  </data>
   <data name="Refresh" xml:space="preserve">
     <value>Frissítés</value>
   </data>
@@ -2434,6 +2449,9 @@ A teljesítménymódot az Fn+Q billentyűkombinációval is meg lehet változtat
   <data name="RPM" xml:space="preserve">
     <value>RPM</value>
   </data>
+  <data name="Run" xml:space="preserve">
+    <value>Run</value>
+  </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
     <value>Paraméterek</value>
   </data>
@@ -2472,6 +2490,18 @@ A teljesítménymódot az Fn+Q billentyűkombinációval is meg lehet változtat
   </data>
   <data name="Saving" xml:space="preserve">
     <value>Mentés...</value>
+  </data>
+  <data name="ScriptConsole_Code_Title" xml:space="preserve">
+    <value>Code Block</value>
+  </data>
+  <data name="ScriptConsole_Output_Title" xml:space="preserve">
+    <value>Output</value>
+  </data>
+  <data name="ScriptConsole_Title" xml:space="preserve">
+    <value>Script Console</value>
+  </data>
+  <data name="ScriptConsole_Warn_Message" xml:space="preserve">
+    <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
   </data>
   <data name="Seconds" xml:space="preserve">
     <value>{0}s</value>
@@ -2691,6 +2721,12 @@ A teljesítménymódot az Fn+Q billentyűkombinációval is meg lehet változtat
   </data>
   <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
     <value>Pin to Top</value>
+  </data>
+  <data name="SettingsPage_ArgumentWindow_Message" xml:space="preserve">
+    <value>Modify startup arguments for the app.</value>
+  </data>
+  <data name="SettingsPage_ArgumentWindow_Title" xml:space="preserve">
+    <value>Arguments</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
     <value>A Windows rendszerbe való bejelentkezéskor a tálcára minimalizálva indul.</value>
@@ -2991,6 +3027,12 @@ Az opció módosítása után ajánlott az újraindítás.</value>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Restart to apply changes.</value>
   </data>
+  <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
+    <value>Execute C# scripts in the application runtime.</value>
+  </data>
+  <data name="SettingsPage_ScriptConsole_Title" xml:space="preserve">
+    <value>Script Console</value>
+  </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
     <value>All Files</value>
   </data>
@@ -3104,6 +3146,9 @@ Az opció módosítása után ajánlott az újraindítás.</value>
   </data>
   <data name="Slot" xml:space="preserve">
     <value>Slot</value>
+  </data>
+  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
+    <value>Settings applied successfully.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Némításkor az összes aktív hangkimeneti eszköz elnémul.</value>
@@ -3507,26 +3552,5 @@ A naplózás automatikusan engedélyezésre kerül, ha a folytatást választja.
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Igen</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
-    <value>Voltage Lock</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
-    <value>Overclocking</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
-    <value>Undervolting</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
-    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
-    <value>Adjust VRAM speed to modify memory bandwidth.</value>
-  </data>
-  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
-  </data>
-  <data name="mV" xml:space="preserve">
-    <value>mV</value>
   </data>
 </root>
