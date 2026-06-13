@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Utils;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Scripting;
 using Microsoft.CodeAnalysis.Scripting;
@@ -50,6 +51,11 @@ public class ScriptEngine
 
     public async Task<ScriptResult> ExecuteAsync(string code, CancellationToken ct = default)
     {
+        if (!AppFlags.Instance.Debug)
+        {
+            return new ScriptResult("Null", "Null", null, TimeSpan.FromSeconds(0));
+        }
+
         var validationResult = Validate(code);
         if (validationResult is not null)
         {
