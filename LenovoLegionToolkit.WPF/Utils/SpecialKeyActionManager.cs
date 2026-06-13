@@ -113,6 +113,13 @@ public class SpecialKeyActionManager
 
         var currentId = actions[0];
 
+        if (actions.Count > 1)
+        {
+            actions.RemoveAt(0);
+            actions.Add(currentId);
+            _settings.SynchronizeStore();
+        }
+
         try
         {
             var pipelines = await _automationProcessor.GetPipelinesAsync().ConfigureAwait(false);
@@ -129,10 +136,6 @@ public class SpecialKeyActionManager
             Log.Instance.Trace($"Running pipeline {currentId} for {keyName} failed.", ex);
         }
 
-        actions.RemoveAt(0);
-        actions.Add(currentId);
-        _settings.SynchronizeStore();
-
         return true;
     }
 
@@ -144,6 +147,13 @@ public class SpecialKeyActionManager
             return false;
 
         var currentId = actions[0];
+
+        if (actions.Count > 1)
+        {
+            actions.RemoveAt(0);
+            actions.Add(currentId);
+            _settings.SynchronizeStore();
+        }
 
         try
         {
@@ -160,10 +170,6 @@ public class SpecialKeyActionManager
         {
             Log.Instance.Trace($"Running pipeline {currentId} for {keyName} failed.", ex);
         }
-
-        actions.RemoveAt(0);
-        actions.Add(currentId);
-        _settings.SynchronizeStore();
 
         return true;
     }
