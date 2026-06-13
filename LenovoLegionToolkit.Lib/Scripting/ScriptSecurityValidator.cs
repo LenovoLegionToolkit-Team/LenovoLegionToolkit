@@ -29,6 +29,7 @@ public class ScriptSecurityValidator : CSharpSyntaxWalker
         "System.DirectoryServices",
         "System.Security",
         "System.Web",
+        "System.Linq.Expressions",
     };
 
     private static readonly (string Type, string Message)[] BlockedTypes =
@@ -45,10 +46,47 @@ public class ScriptSecurityValidator : CSharpSyntaxWalker
         ("System.Net.Sockets.TcpClient", "Network access is not allowed"),
         ("System.Net.Sockets.UdpClient", "Network access is not allowed"),
         ("System.Reflection.Assembly", "Reflection is not allowed"),
+        ("System.Reflection.MethodInfo", "Reflection is not allowed"),
+        ("System.Reflection.MethodBase", "Reflection is not allowed"),
+        ("System.Reflection.ConstructorInfo", "Reflection is not allowed"),
+        ("System.AppDomain", "Assembly/AppDomain enumeration is not allowed"),
+        ("System.Type", "Runtime type discovery is not allowed"),
+        ("System.Activator", "Dynamic instantiation is not allowed"),
         ("System.Runtime.InteropServices.Marshal", "Native interop is not allowed"),
         ("Microsoft.Win32.Registry", "Registry access is not allowed"),
         ("System.Management.ManagementObject", "WMI access is not allowed"),
     ];
+
+    private static readonly HashSet<string> DangerousMethodNames = new(StringComparer.Ordinal)
+    {
+        "GetAssemblies",
+        "GetType",
+        "GetMethod",
+        "GetMethods",
+        "GetField",
+        "GetFields",
+        "GetProperty",
+        "GetProperties",
+        "GetConstructor",
+        "GetConstructors",
+        "GetEvent",
+        "GetEvents",
+        "GetNestedType",
+        "GetNestedTypes",
+        "GetInterface",
+        "GetInterfaces",
+        "Load",
+        "LoadFrom",
+        "LoadFile",
+        "LoadWithPartialName",
+        "CreateInstance",
+        "InvokeMember",
+        "Invoke",
+        "Compile",
+        "MakeGenericType",
+        "MakeGenericMethod",
+        "CreateDelegate",
+    };
 
     public ScriptSecurityValidator() : base(SyntaxWalkerDepth.StructuredTrivia) { }
 
@@ -60,8 +98,7 @@ public class ScriptSecurityValidator : CSharpSyntaxWalker
         {
             if (IsBlockedNamespace(ns, prefix))
             {
-                AddViolation(node,
-                    $"Using '{ns}' is blocked — {prefix} is not allowed in scripts");
+                AddViolation(node, $"Using '{ns}' is blocked — {prefix} is not allowed in scripts");
                 break;
             }
         }
@@ -83,6 +120,12 @@ public class ScriptSecurityValidator : CSharpSyntaxWalker
                     AddViolation(node, $"{message}: '{text}'");
                     break;
                 }
+            }
+
+            var methodName = node.Name.Identifier.Text;
+            if (DangerousMethodNames.Contains(methodName))
+            {
+                AddViolation(node, $"Reflection/discovery is not allowed: '{text}'");
             }
         }
 

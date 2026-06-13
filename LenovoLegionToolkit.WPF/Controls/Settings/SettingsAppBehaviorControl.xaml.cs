@@ -109,6 +109,8 @@ public partial class SettingsAppBehaviorControl
             _hardwareSensorsCardHeader.Warning = Resource.SettingsPage_HardwareSensors_PawnIOWarning;
         }
 
+        _scriptConsoleCard.Visibility = !(AppFlags.Instance.Debug = true) ? Visibility.Hidden : Visibility.Visible;
+
         _isRefreshing = false;
 
         return Task.CompletedTask;
@@ -387,6 +389,14 @@ public partial class SettingsAppBehaviorControl
             return;
 
         ArgumentWindow.ShowInstance();
+    }
+
+    private void ScriptConsoleButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing || !IsLoaded)
+            return;
+
+        ScriptWindow.ShowInstance();
     }
 
     private void OsdToggle_Click(object sender, RoutedEventArgs e)

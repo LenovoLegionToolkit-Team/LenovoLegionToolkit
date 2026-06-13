@@ -94,9 +94,7 @@
             </custom:CardControl>
             <custom:CardControl Margin="0,0,0,8" Icon="Resize24">
                 <custom:CardControl.Header>
-                    <controls:CardHeaderControl
-                        Title="{x:Static resources:Resource.SettingsPage_CompactMode_Title}"
-                        Subtitle="{x:Static resources:Resource.SettingsPage_CompactMode_Message}" />
+                    <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_CompactMode_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_CompactMode_Message}" />
                 </custom:CardControl.Header>
                 <wpfui:ToggleSwitch
                     x:Name="_compactModeToggle"
@@ -147,13 +145,13 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <controls:CardHeaderControl
                         x:Name="_hardwareSensorsCardHeader"
-                        Grid.Column="0"
                         Title="{x:Static resources:Resource.SettingsPage_HardwareSensors_Title}"
+                        Grid.Column="0"
                         Subtitle="{x:Static resources:Resource.SettingsPage_HardwareSensors_Message}" />
-                    
+
                     <wpfui:ToggleSwitch
                         x:Name="_hardwareSensorsToggle"
                         Grid.Column="1"
@@ -177,8 +175,8 @@
                     </Grid.ColumnDefinitions>
 
                     <controls:CardHeaderControl
-                        Grid.Column="0"
                         Title="{x:Static resources:Resource.SettingsPage_UseNewSensorDashboard_Title}"
+                        Grid.Column="0"
                         Subtitle="{x:Static resources:Resource.SettingsPage_UseNewSensorDashboard_Message}" />
 
                     <wpfui:ToggleSwitch
@@ -202,12 +200,12 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <controls:CardHeaderControl
-                        Grid.Column="0"
                         Title="{x:Static resources:Resource.SettingsPage_Osd_Title}"
+                        Grid.Column="0"
                         Subtitle="{x:Static resources:Resource.SettingsPage_Osd_Message}" />
-                    
+
                     <wpfui:ToggleSwitch
                         x:Name="_osdToggle"
                         Grid.Column="1"
@@ -223,7 +221,14 @@
                 Margin="0,0,0,8"
                 Click="ArgumentWindowButton_Click"
                 Icon="Window24">
-                <controls:CardHeaderControl Title="{x:Static resources:Resource.ArgumentWindow_Edit_Title}" Subtitle="{x:Static resources:Resource.ArgumentWindow_Edit_Message}" />
+                <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_ArgumentWindow_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_ArgumentWindow_Message}" />
+            </custom:CardAction>
+            <custom:CardAction
+                x:Name="_scriptConsoleCard"
+                Margin="0,0,0,8"
+                Click="ScriptConsoleButton_Click"
+                Icon="WindowConsole20">
+                <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_ScriptConsole_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_ScriptConsole_Message}" />
             </custom:CardAction>
         </StackPanel>
     </ScrollViewer>

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -98,6 +99,11 @@ public class ScriptEngine
 
     private static ScriptResult? Validate(string code)
     {
+        if (code.Contains("#r", StringComparison.OrdinalIgnoreCase))
+        {
+            return new ScriptResult(null, null, "Security check failed: #r directives are not allowed.", TimeSpan.Zero);
+        }
+
         var tree = Microsoft.CodeAnalysis.CSharp.CSharpSyntaxTree.ParseText(code);
         var validator = new ScriptSecurityValidator();
         validator.Visit(tree.GetRoot());
@@ -112,10 +118,29 @@ public class ScriptEngine
         return null;
     }
 
+    private static readonly HashSet<string> AllowedAssemblyPrefixes = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "LenovoLegionToolkit",
+        "Newtonsoft.Json",
+        "NeoSmart.AsyncLock",
+        "System.Runtime",
+        "System.Linq",
+        "System.Console",
+        "System.Collections",
+        "System.Threading",
+        "System.Text",
+    };
+
     private static MetadataReference[] GetAssemblies()
     {
         return AppDomain.CurrentDomain.GetAssemblies()
             .Where(a => !a.IsDynamic && !string.IsNullOrEmpty(a.Location))
+            .Where(a =>
+            {
+                var name = a.GetName().Name;
+                return name is not null && AllowedAssemblyPrefixes.Any(p =>
+                    name.StartsWith(p, StringComparison.OrdinalIgnoreCase));
+            })
             .Select(a => MetadataReference.CreateFromFile(a.Location))
             .ToArray();
     }
