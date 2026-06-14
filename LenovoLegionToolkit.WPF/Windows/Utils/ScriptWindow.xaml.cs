@@ -6,6 +6,7 @@ using System.Windows.Media;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Scripting;
 using LenovoLegionToolkit.WPF.Resources;
+using LenovoLegionToolkit.WPF.Utils;
 
 namespace LenovoLegionToolkit.WPF.Windows.Utils;
 
@@ -14,12 +15,18 @@ public partial class ScriptWindow
     private static ScriptWindow? _instance;
 
     private readonly ScriptEngine _engine = IoCContainer.Resolve<ScriptEngine>();
+    private readonly ThemeManager _themeManager = IoCContainer.Resolve<ThemeManager>();
 
     private ScriptWindow()
     {
         InitializeComponent();
-        Loaded += (_, _) => _codeInput.Focus();
+        Loaded += (_, _) =>
+        {
+            _codeInput.Focus();
+            UpdateSyntaxColors();
+        };
         _codeInput.PreviewKeyDown += CodeInput_PreviewKeyDown;
+        _themeManager.ThemeApplied += (_, _) => UpdateSyntaxColors();
     }
 
     public static void ShowInstance()
@@ -46,57 +53,6 @@ public partial class ScriptWindow
             _ = ExecuteAsync();
             return;
         }
-
-        if (e.Key == Key.Tab)
-        {
-            e.Handled = true;
-            if (Keyboard.Modifiers == ModifierKeys.Shift)
-                Unindent();
-            else
-                Indent();
-            return;
-        }
-
-        if (e.Key == Key.Enter && Keyboard.Modifiers == ModifierKeys.None)
-        {
-            e.Handled = true;
-            InsertNewLineWithIndent();
-            return;
-        }
-    }
-
-    private void Indent()
-    {
-        var caret = _codeInput.CaretIndex;
-        _codeInput.Text = _codeInput.Text.Insert(caret, "    ");
-        _codeInput.CaretIndex = caret + 4;
-    }
-
-    private void Unindent()
-    {
-        if (_codeInput.SelectionLength > 0)
-            return;
-
-        var lineStart = _codeInput.Text.LastIndexOf('\n', Math.Max(0, _codeInput.CaretIndex - 1)) + 1;
-        var line = _codeInput.Text.Substring(lineStart);
-        var spaces = 0;
-        while (spaces < 4 && spaces < line.Length && line[spaces] == ' ')
-            spaces++;
-
-        if (spaces > 0)
-        {
-            _codeInput.Select(lineStart, spaces);
-            _codeInput.SelectedText = "";
-        }
-    }
-
-    private void InsertNewLineWithIndent()
-    {
-        var lineStart = _codeInput.Text.LastIndexOf('\n', Math.Max(0, _codeInput.CaretIndex - 1)) + 1;
-        var line = _codeInput.Text[lineStart.._codeInput.CaretIndex];
-        var indent = GetLeadingSpaces(line);
-        _codeInput.SelectedText = Environment.NewLine + indent;
-        _codeInput.CaretIndex = _codeInput.CaretIndex + Environment.NewLine.Length + indent.Length;
     }
 
     private async void Execute_Click(object sender, RoutedEventArgs e) => await ExecuteAsync();
@@ -156,12 +112,58 @@ public partial class ScriptWindow
         _statusLabel.Foreground = brush;
     }
 
-    private static string GetLeadingSpaces(string text)
+    private void UpdateSyntaxColors()
     {
-        var count = 0;
-        while (count < text.Length && text[count] == ' ')
-            count++;
-        return text[..count];
+        if (_codeInput.SyntaxHighlighting == null) return;
+
+        Color GetColor(string resourceKey)
+        {
+            if (Application.Current.TryFindResource(resourceKey) is Color color)
+                return color;
+            return Colors.Gray;
+        }
+
+        var commentColor = GetColor("PaletteGreenColor");
+        var stringColor = GetColor("PaletteOrangeColor");
+        var keywordColor = GetColor("PaletteLightBlueColor");
+        var textColor = GetColor("TextFillColorPrimary");
+        var numberColor = GetColor("PaletteTealColor");
+        var preprocessorColor = GetColor("TextFillColorSecondary");
+
+        void SetColor(string name, Color color)
+        {
+            var rule = _codeInput.SyntaxHighlighting.GetNamedColor(name);
+            if (rule != null)
+                rule.Foreground = new ICSharpCode.AvalonEdit.Highlighting.SimpleHighlightingBrush(color);
+        }
+
+        SetColor("Comment", commentColor);
+        SetColor("String", stringColor);
+        SetColor("Char", stringColor);
+        SetColor("Preprocessor", preprocessorColor);
+        SetColor("Punctuation", textColor);
+        SetColor("ValueTypeKeywords", keywordColor);
+        SetColor("ReferenceTypeKeywords", keywordColor);
+        SetColor("MethodCall", textColor);
+        SetColor("NumberLiteral", numberColor);
+        SetColor("ThisOrBaseReference", keywordColor);
+        SetColor("NullOrValueKeywords", keywordColor);
+        SetColor("Keywords", keywordColor);
+        SetColor("GotoKeywords", keywordColor);
+        SetColor("ContextKeywords", keywordColor);
+        SetColor("ExceptionKeywords", keywordColor);
+        SetColor("CheckedKeyword", keywordColor);
+        SetColor("UnsafeKeywords", keywordColor);
+        SetColor("OperatorKeywords", keywordColor);
+        SetColor("ParameterModifiers", keywordColor);
+        SetColor("Modifiers", keywordColor);
+        SetColor("Visibility", keywordColor);
+        SetColor("NamespaceKeywords", keywordColor);
+        SetColor("GetSetAddRemove", keywordColor);
+        SetColor("TrueFalse", keywordColor);
+        SetColor("TypeKeywords", keywordColor);
+
+        _codeInput.TextArea.TextView.Redraw();
     }
 
     private static string FormatResult(ScriptResult result)

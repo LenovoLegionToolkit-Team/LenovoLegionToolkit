@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:resources="clr-namespace:LenovoLegionToolkit.WPF.Resources"
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:avalonedit="http://icsharpcode.net/sharpdevelop/avalonedit"
     Width="900"
     Height="720"
     MinWidth="640"
@@ -104,35 +105,18 @@
                 <SolidColorBrush Color="{DynamicResource SolidBackgroundFillColorSecondary}" />
             </Border.Background>
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="4" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <Border Grid.Column="0" CornerRadius="2,0,0,2">
-                    <Border.Background>
-                        <SolidColorBrush Color="{DynamicResource SystemAccentColorPrimary}" />
-                    </Border.Background>
-                </Border>
-
-                <TextBox
+                <avalonedit:TextEditor
                     x:Name="_codeInput"
-                    Grid.Column="1"
                     MinHeight="200"
                     Padding="12,10"
-                    AcceptsReturn="True"
-                    AcceptsTab="True"
                     Background="Transparent"
                     BorderThickness="0"
-                    CaretBrush="{DynamicResource TextFillColorPrimaryBrush}"
                     FontFamily="Consolas"
                     FontSize="13"
                     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                    HorizontalScrollBarVisibility="Auto"
-                    SelectionBrush="{DynamicResource AccentFillColorSelectedTextBackgroundBrush}"
-                    SpellCheck.IsEnabled="False"
-                    TextWrapping="NoWrap"
-                    VerticalScrollBarVisibility="Auto" />
+                    LineNumbersForeground="{DynamicResource TextFillColorTertiaryBrush}"
+                    ShowLineNumbers="True"
+                    SyntaxHighlighting="C#" />
             </Grid>
         </Border>
 
