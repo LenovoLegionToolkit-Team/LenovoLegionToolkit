@@ -2506,13 +2506,10 @@ Você pode alternar entre os modos pressionando Fn+Q.</value>
     <value>Return Value</value>
   </data>
   <data name="ScriptConsole_Status_Error" xml:space="preserve">
-    <value>Error &#8212; {0} ms</value>
+    <value>Execution failed: {0} ms</value>
   </data>
   <data name="ScriptConsole_Status_Ok" xml:space="preserve">
-    <value>OK &#8212; {0} ms</value>
-  </data>
-  <data name="ScriptConsole_Status_Ready" xml:space="preserve">
-    <value>Ready &#8212; state reset</value>
+    <value>Execution succeeded: {0} ms</value>
   </data>
   <data name="ScriptConsole_Status_Running" xml:space="preserve">
     <value>Running...</value>
@@ -2524,14 +2521,11 @@ Você pode alternar entre os modos pressionando Fn+Q.</value>
     <value>Script Console</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
-    <value>Only for Debug, allowing users to execute custom C# scripts and obtain data.</value>
+    <value>Intended for advanced debugging. Allows execution of custom C# scripts to interact with the application state.</value>
   </data>
   <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
-    <value>&#9484;&#9472; Unexpected Error &#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;
-&#9474;
-&#9474;  {0}
-&#9474;
-&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;</value>
+    <value>Unexpected Error:
+{0}</value>
   </data>
   <data name="Seconds" xml:space="preserve">
     <value>{0}s</value>
