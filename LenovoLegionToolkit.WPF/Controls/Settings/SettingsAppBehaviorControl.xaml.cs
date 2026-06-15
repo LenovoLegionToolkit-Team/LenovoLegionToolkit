@@ -109,7 +109,7 @@ public partial class SettingsAppBehaviorControl
             _hardwareSensorsCardHeader.Warning = Resource.SettingsPage_HardwareSensors_PawnIOWarning;
         }
 
-        _scriptConsoleCard.Visibility = AppFlags.Instance.Debug ? Visibility.Visible : Visibility.Hidden;
+        _scriptConsoleCard.Visibility = Visibility.Hidden;
 
         _isRefreshing = false;
 

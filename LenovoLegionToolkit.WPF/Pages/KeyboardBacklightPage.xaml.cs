@@ -1,4 +1,4 @@
-﻿using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
@@ -137,35 +137,19 @@ public partial class KeyboardBacklightPage
             var spectrumController = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();
             if (await spectrumController.IsSupportedAsync())
             {
-                if (AppFlags.Instance.Debug && anyAdded)
-                {
-                    _content.Children.Add(new System.Windows.Controls.Separator { Margin = new(0, 16, 0, 16) });
-                }
                 var control = new SpectrumKeyboardBacklightControl();
                 _content.Children.Add(control);
                 anyAdded = true;
-
-                if (!AppFlags.Instance.Debug)
-                {
-                    return;
-                }
+                return;
             }
 
             var rgbController = IoCContainer.Resolve<RGBKeyboardBacklightController>();
             if (await rgbController.IsSupportedAsync())
             {
-                if (AppFlags.Instance.Debug && anyAdded)
-                {
-                    _content.Children.Add(new System.Windows.Controls.Separator { Margin = new(0, 16, 0, 16) });
-                }
                 var control = new RGBKeyboardBacklightControl();
                 _content.Children.Add(control);
                 anyAdded = true;
-
-                if (!AppFlags.Instance.Debug)
-                {
-                    return;
-                }
+                return;
             }
 
             if (!anyAdded)

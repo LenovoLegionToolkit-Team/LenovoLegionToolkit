@@ -47,7 +47,7 @@ public partial class SettingsUpdateControl
             _updateMethodComboBox.SetItems(Enum.GetValues<UpdateMethod>(), _updateSettings.Store.UpdateMethod, t => t.GetDisplayName());
             _updateChannelComboBox.Visibility = Visibility.Visible;
             var channels = Enum.GetValues<UpdateChannel>()
-                .Where(c => c != UpdateChannel.Test || AppFlags.Instance.Debug);
+                .Where(c => c != UpdateChannel.Test);
             _updateChannelComboBox.SetItems(channels, _updateSettings.Store.UpdateChannel, t => t.GetDisplayName());
         }
 
