@@ -10,7 +10,6 @@ using LenovoLegionToolkit.Lib.Resources;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using ZenStates.Core;
-using static ZenStates.Core.Cpu;
 
 namespace LenovoLegionToolkit.Lib.Overclocking.Amd;
 
@@ -180,78 +179,6 @@ public sealed class AmdOverclockingController : IDisposable
     {
         EnsureInitialized();
         await Task.Run(() => _cpu.SetFMax(fmax)).ConfigureAwait(false);
-    }
-
-    public float GetPBOScalar()
-    {
-        EnsureInitialized();
-        return _cpu.GetPBOScalar();
-    }
-
-    public SMU.Status SetPBOScalar(float scalar)
-    {
-        EnsureInitialized();
-        return _cpu.SetPBOScalar((uint)(scalar * 100));
-    }
-
-    public SMU.Status SetEDCVDDLimit(uint amps)
-    {
-        EnsureInitialized();
-        return _cpu.SetEDCVDDLimit(amps);
-    }
-
-    public SMU.Status SetEDCSOCLimit(uint amps)
-    {
-        EnsureInitialized();
-        return _cpu.SetEDCSOCLimit(amps);
-    }
-
-    public SMU.Status SetTDCVDDLimit(uint amps)
-    {
-        EnsureInitialized();
-        return _cpu.SetTDCVDDLimit(amps);
-    }
-
-    public SMU.Status SetTDCSOCLimit(uint amps)
-    {
-        EnsureInitialized();
-        return _cpu.SetTDCSOCLimit(amps);
-    }
-
-    public SMU.Status SetPPTLimit(uint watts)
-    {
-        EnsureInitialized();
-        return _cpu.SetPPTLimit(watts);
-    }
-
-    public SMU.Status SetSlowLimit(uint watts)
-    {
-        EnsureInitialized();
-        return _cpu.SetSlowLimit(watts);
-    }
-
-    public SMU.Status SetStapmLimit(uint watts)
-    {
-        EnsureInitialized();
-        return _cpu.SetStapmLimit(watts);
-    }
-
-    public PboFusedLimits? GetPboFusedLimits()
-    {
-        EnsureInitialized();
-        return _cpu.GetPboFusedLimits();
-    }
-
-    public SystemPowerLimit? GetSystemConfiguredPowerLimit()
-    {
-        EnsureInitialized();
-        return _cpu.GetSystemPowerLimit();
-    }
-
-    public SMU.Status SetTctlMax(uint temp)
-    {
-        EnsureInitialized();
-        return _cpu.SetTctlMax(temp);
     }
 
     public async Task ApplyInternalProfileAsync()
