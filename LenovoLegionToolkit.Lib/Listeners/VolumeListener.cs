@@ -55,11 +55,13 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
             _speakerDevice.AudioEndpointVolume.OnVolumeNotification -= OnSpeakerVolumeNotification;
 
         _speakerDevice?.Dispose();
+        _speakerDevice = null;
 
         if (_enumerator != null)
         {
             _enumerator.UnregisterEndpointNotificationCallback(this);
             _enumerator.Dispose();
+            _enumerator = null;
         }
 
         try
@@ -116,21 +118,73 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
 
         if (dataFlow != DataFlow.Render) return;
 
+        ScheduleSync(() => SyncToDevice(defaultDeviceId));
+    }
+
+    public void OnDeviceAdded(string deviceId)
+    {
+        Log.Instance.Trace($"VolumeListener OnDeviceAdded: id={deviceId}");
+        HandleDeviceNotification(deviceId);
+    }
+
+    public void OnDeviceRemoved(string deviceId)
+    {
+        Log.Instance.Trace($"VolumeListener OnDeviceRemoved: id={deviceId}");
+
+        if (_speakerDevice?.ID == deviceId)
+        {
+            Log.Instance.Trace($"VolumeListener: tracked device removed, syncing to active device.");
+            ScheduleSync(SyncToActiveDevice);
+        }
+    }
+
+    public void OnDeviceStateChanged(string deviceId, DeviceState newState)
+    {
+        Log.Instance.Trace($"VolumeListener OnDeviceStateChanged: id={deviceId}, state={newState}");
+        HandleDeviceNotification(deviceId);
+    }
+
+    public void OnPropertyValueChanged(string deviceId, PropertyKey propertyKey)
+    {
+    }
+
+    private void HandleDeviceNotification(string deviceId)
+    {
+        try
+        {
+            var device = _enumerator?.GetDevice(deviceId);
+            if (device == null)
+                return;
+
+            var isRender = device.DataFlow == DataFlow.Render;
+            device.Dispose();
+
+            if (isRender)
+                ScheduleSync(SyncToActiveDevice);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"VolumeListener HandleDeviceNotification error: {ex.Message}", ex);
+        }
+    }
+
+    private void ScheduleSync(Action syncAction)
+    {
         Task.Run(async () =>
         {
             if (!await _initLock.WaitAsync(0))
             {
-                Log.Instance.Trace($"VolumeListener re-init skipped, already in progress.");
+                Log.Instance.Trace($"VolumeListener sync skipped, already in progress.");
                 return;
             }
 
             try
             {
-                Reinitialize(defaultDeviceId);
+                syncAction();
             }
             catch (Exception ex)
             {
-                Log.Instance.Trace($"VolumeListener re-init error: {ex.Message}", ex);
+                Log.Instance.Trace($"VolumeListener sync error: {ex.Message}", ex);
             }
             finally
             {
@@ -139,60 +193,78 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
         });
     }
 
-    public void OnDeviceAdded(string deviceId)
+    private void SyncToActiveDevice()
     {
-        Log.Instance.Trace($"VolumeListener OnDeviceAdded: id={deviceId}");
+        var enumerator = _enumerator;
+        if (enumerator == null) return;
+
+        var device = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active).FirstOrDefault();
+
+        if (device == null)
+        {
+            ClearTrackedDevice();
+            return;
+        }
+
+        SubscribeToDevice(device);
     }
 
-    public void OnDeviceRemoved(string deviceId)
+    private void SyncToDevice(string deviceId)
     {
-        Log.Instance.Trace($"VolumeListener OnDeviceRemoved: id={deviceId}");
+        var enumerator = _enumerator;
+        if (enumerator == null) return;
+
+        var device = enumerator.GetDevice(deviceId);
+
+        if (device == null)
+        {
+            Log.Instance.Trace($"VolumeListener: GetDevice({deviceId}) returned null, falling back to enumeration.");
+            SyncToActiveDevice();
+            return;
+        }
+
+        SubscribeToDevice(device);
     }
 
-    public void OnDeviceStateChanged(string deviceId, DeviceState newState)
+    private void SubscribeToDevice(MMDevice device)
     {
-        Log.Instance.Trace($"VolumeListener OnDeviceStateChanged: id={deviceId}, state={newState}");
-    }
+        if (_speakerDevice?.ID == device.ID)
+        {
+            Log.Instance.Trace($"VolumeListener: already tracking device [{device.FriendlyName}], skipping.");
+            device.Dispose();
+            return;
+        }
 
-    public void OnPropertyValueChanged(string deviceId, PropertyKey propertyKey)
-    {
-    }
+        var previousMute = _lastMuteState;
 
-    private void Reinitialize(string targetDeviceId)
-    {
         if (_speakerDevice != null)
         {
             _speakerDevice.AudioEndpointVolume.OnVolumeNotification -= OnSpeakerVolumeNotification;
             Log.Instance.Trace($"VolumeListener unsubscribed from: {_speakerDevice.FriendlyName}");
+            _speakerDevice.Dispose();
         }
-        _speakerDevice?.Dispose();
 
-        var previousMute = _lastMuteState;
+        _speakerDevice = device;
+        _lastMuteState = device.AudioEndpointVolume.Mute;
+        device.AudioEndpointVolume.OnVolumeNotification += OnSpeakerVolumeNotification;
+        Log.Instance.Trace($"VolumeListener subscribed. [device={device.FriendlyName}, mute={_lastMuteState}, previousMute={previousMute}]");
 
-        _speakerDevice = _enumerator!.GetDevice(targetDeviceId);
-        if (_speakerDevice == null)
+        if (previousMute != _lastMuteState && _lastMuteState.HasValue)
         {
-            Log.Instance.Trace($"VolumeListener: GetDevice({targetDeviceId}) returned null, falling back to enumeration.");
-            _speakerDevice = _enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active).FirstOrDefault();
+            Log.Instance.Trace($"VolumeListener mute state changed after sync. [old={previousMute}, new={_lastMuteState}]");
+            _ = OnChangedAsync(_lastMuteState.Value);
         }
+    }
 
-        if (_speakerDevice != null)
-        {
-            _lastMuteState = _speakerDevice.AudioEndpointVolume.Mute;
-            _speakerDevice.AudioEndpointVolume.OnVolumeNotification += OnSpeakerVolumeNotification;
-            Log.Instance.Trace($"VolumeListener re-subscribed. [device={_speakerDevice.FriendlyName}, mute={_lastMuteState}, previousMute={previousMute}]");
+    private void ClearTrackedDevice()
+    {
+        if (_speakerDevice == null) return;
 
-            if (previousMute != _lastMuteState && _lastMuteState.HasValue)
-            {
-                Log.Instance.Trace($"VolumeListener mute state changed after re-init. [old={previousMute}, new={_lastMuteState}]");
-                _ = OnChangedAsync(_lastMuteState.Value);
-            }
-        }
-        else
-        {
-            _lastMuteState = null;
-            Log.Instance.Trace($"VolumeListener: no render device available after re-init.");
-        }
+        _speakerDevice.AudioEndpointVolume.OnVolumeNotification -= OnSpeakerVolumeNotification;
+        _speakerDevice.Dispose();
+        _speakerDevice = null;
+        _lastMuteState = null;
+        Log.Instance.Trace($"VolumeListener: no render devices, cleared tracked device.");
     }
 
     public void Dispose()
