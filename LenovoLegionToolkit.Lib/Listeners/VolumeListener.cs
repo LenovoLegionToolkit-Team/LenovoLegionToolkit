@@ -30,7 +30,16 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
         {
             _enumerator = new MMDeviceEnumerator();
             _enumerator.RegisterEndpointNotificationCallback(this);
-            _speakerDevice = _enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active).FirstOrDefault();
+
+            try
+            {
+                _speakerDevice = _enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"VolumeListener: GetDefaultAudioEndpoint failed on start: {ex.Message}, falling back to enumeration.");
+                _speakerDevice = _enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active).FirstOrDefault();
+            }
 
             if (_speakerDevice != null)
             {
@@ -198,7 +207,16 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
         var enumerator = _enumerator;
         if (enumerator == null) return;
 
-        var device = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active).FirstOrDefault();
+        MMDevice? device = null;
+        try
+        {
+            device = enumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"VolumeListener: GetDefaultAudioEndpoint failed: {ex.Message}, falling back to enumeration.");
+            device = enumerator.EnumerateAudioEndPoints(DataFlow.Render, DeviceState.Active).FirstOrDefault();
+        }
 
         if (device == null)
         {
