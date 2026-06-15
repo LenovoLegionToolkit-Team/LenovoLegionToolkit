@@ -18,6 +18,7 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
     public event EventHandler<ChangedEventArgs>? Changed;
 
     private readonly SemaphoreSlim _initLock = new(1, 1);
+    private readonly object _muteStateLock = new();
     private MMDeviceEnumerator? _enumerator;
     private MMDevice? _speakerDevice;
     private bool _disposed;
@@ -43,9 +44,21 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
 
             if (_speakerDevice != null)
             {
-                _lastMuteState = _speakerDevice.AudioEndpointVolume.Mute;
-                _speakerDevice.AudioEndpointVolume.OnVolumeNotification += OnSpeakerVolumeNotification;
-                Log.Instance.Trace($"VolumeListener started. [device={_speakerDevice.FriendlyName}, mute={_lastMuteState}]");
+                try
+                {
+                    _lastMuteState = _speakerDevice.AudioEndpointVolume.Mute;
+                    _speakerDevice.AudioEndpointVolume.OnVolumeNotification += OnSpeakerVolumeNotification;
+                    Log.Instance.Trace($"VolumeListener started. [device={_speakerDevice.FriendlyName}, mute={_lastMuteState}]");
+
+                    await SpecialKeyLedHelper.SetLedAsync(_lastMuteState.Value ? SpecialKeyLedState.SpeakerOn : SpecialKeyLedState.SpeakerOff).ConfigureAwait(false);
+                }
+                catch (Exception ex)
+                {
+                    Log.Instance.Trace($"VolumeListener: failed to init device [{_speakerDevice.FriendlyName}]: {ex.Message}");
+                    _speakerDevice.Dispose();
+                    _speakerDevice = null;
+                    _lastMuteState = null;
+                }
             }
             else
             {
@@ -104,12 +117,20 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
         {
             Log.Instance.Trace($"VolumeListener notification: muted={data.Muted}, lastMute={_lastMuteState}");
 
-            if (_lastMuteState == data.Muted)
-            {
+            var sourceDevice = _speakerDevice;
+            if (sourceDevice == null)
                 return;
+
+            lock (_muteStateLock)
+            {
+                if (_lastMuteState == data.Muted)
+                    return;
+
+                _lastMuteState = data.Muted;
             }
 
-            _lastMuteState = data.Muted;
+            if (sourceDevice != _speakerDevice)
+                return;
 
             await SpecialKeyLedHelper.SetLedAsync(data.Muted ? SpecialKeyLedState.SpeakerOn : SpecialKeyLedState.SpeakerOff).ConfigureAwait(false);
 
@@ -163,7 +184,11 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
         {
             var device = _enumerator?.GetDevice(deviceId);
             if (device == null)
+            {
+                Log.Instance.Trace($"VolumeListener: GetDevice({deviceId}) returned null on notification, syncing to be safe.");
+                ScheduleSync(SyncToActiveDevice);
                 return;
+            }
 
             var isRender = device.DataFlow == DataFlow.Render;
             device.Dispose();
@@ -181,9 +206,12 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
     {
         Task.Run(async () =>
         {
-            if (!await _initLock.WaitAsync(0))
+            try
             {
-                Log.Instance.Trace($"VolumeListener sync skipped, already in progress.");
+                await _initLock.WaitAsync().ConfigureAwait(false);
+            }
+            catch (ObjectDisposedException)
+            {
                 return;
             }
 
@@ -255,6 +283,18 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
 
         var previousMute = _lastMuteState;
 
+        bool newMute;
+        try
+        {
+            newMute = device.AudioEndpointVolume.Mute;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"VolumeListener: failed to read mute state from [{device.FriendlyName}]: {ex.Message}");
+            device.Dispose();
+            return;
+        }
+
         if (_speakerDevice != null)
         {
             _speakerDevice.AudioEndpointVolume.OnVolumeNotification -= OnSpeakerVolumeNotification;
@@ -263,14 +303,16 @@ public class VolumeListener : IListener<VolumeListener.ChangedEventArgs>, IMMNot
         }
 
         _speakerDevice = device;
-        _lastMuteState = device.AudioEndpointVolume.Mute;
+        _lastMuteState = newMute;
         device.AudioEndpointVolume.OnVolumeNotification += OnSpeakerVolumeNotification;
         Log.Instance.Trace($"VolumeListener subscribed. [device={device.FriendlyName}, mute={_lastMuteState}, previousMute={previousMute}]");
 
-        if (previousMute != _lastMuteState && _lastMuteState.HasValue)
+        _ = SpecialKeyLedHelper.SetLedAsync(newMute ? SpecialKeyLedState.SpeakerOn : SpecialKeyLedState.SpeakerOff);
+
+        if (previousMute != newMute && previousMute.HasValue)
         {
-            Log.Instance.Trace($"VolumeListener mute state changed after sync. [old={previousMute}, new={_lastMuteState}]");
-            _ = OnChangedAsync(_lastMuteState.Value);
+            Log.Instance.Trace($"VolumeListener mute state changed after sync. [old={previousMute}, new={newMute}]");
+            _ = OnChangedAsync(newMute);
         }
     }
 
