@@ -205,6 +205,12 @@
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Việc áp dụng cấu hình đã bị hủy do quá trình khởi động lại không bình thường.</value>
   </data>
+  <data name="AmdOverclocking_Enable_Message" xml:space="preserve">
+    <value>Enable AMD overclocking features.</value>
+  </data>
+  <data name="AmdOverclocking_Enable_Title" xml:space="preserve">
+    <value>Enable AMD Overclocking</value>
+  </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
     <value>Ghi đè xung nhịp tăng cường CPU tối đa (MHz)</value>
   </data>
@@ -2522,12 +2528,12 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
   <data name="ScriptConsole_Title" xml:space="preserve">
     <value>Script Console</value>
   </data>
-  <data name="ScriptConsole_Warn_Message" xml:space="preserve">
-    <value>Intended for advanced debugging. Allows execution of custom C# scripts to interact with the application state.</value>
-  </data>
   <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
     <value>Unexpected Error:
 {0}</value>
+  </data>
+  <data name="ScriptConsole_Warn_Message" xml:space="preserve">
+    <value>Intended for advanced debugging. Allows execution of custom C# scripts to interact with the application state.</value>
   </data>
   <data name="Seconds" xml:space="preserve">
     <value>{0}giây</value>
