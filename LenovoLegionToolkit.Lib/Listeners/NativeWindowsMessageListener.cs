@@ -321,12 +321,13 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
     private void OnDeviceConnected(string name)
     {
-        if (!string.IsNullOrEmpty(name) && 
+        if (!string.IsNullOrEmpty(name) &&
             name.Contains("VEN_10DE", StringComparison.OrdinalIgnoreCase))
         {
             if (Log.Instance.IsTraceEnabled)
                 Log.Instance.Trace($"NVIDIA GPU device arrival detected. Resetting NVAPI cache. [device={name}]");
             NVAPI.SetCache(null);
+            NVAPI.IsInitialized = false;
         }
 
         RaiseChanged(NativeWindowsMessage.DeviceConnected, ConvertDeviceNameToDeviceInstanceId(name));
