@@ -94,6 +94,8 @@ public partial class SensorsControlV2
                     }
 
                     UpdateControlsVisibility();
+                    if (IsVisible && _applicationSettings.Store.EnableHardwareSensors)
+                        StartSensorUpdates();
                 }
             });
         });
@@ -111,7 +113,7 @@ public partial class SensorsControlV2
                 else if (IsVisible)
                 {
                     _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
-                    _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(_sensorsControlSettings.Store.SensorsRefreshIntervalSeconds));
+                    StartSensorUpdates();
                 }
             });
         });
@@ -161,7 +163,7 @@ public partial class SensorsControlV2
                 InitializeContextMenu();
                 if (IsVisible)
                 {
-                    _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(interval));
+                    StartSensorUpdates(interval);
                 }
             };
             ContextMenu.Items.Add(item);
@@ -198,13 +200,65 @@ public partial class SensorsControlV2
                 return;
 
             _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
-            _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(_sensorsControlSettings.Store.SensorsRefreshIntervalSeconds));
+            StartSensorUpdates();
         }
         else
         {
             _sensorsGroupControllers.Stop(this);
             _sensorsGroupControllers.SensorsUpdated -= OnSensorsUpdated;
         }
+    }
+
+    private void StartSensorUpdates(double? intervalSeconds = null)
+    {
+        var interval = TimeSpan.FromSeconds(intervalSeconds ?? _sensorsControlSettings.Store.SensorsRefreshIntervalSeconds);
+        _sensorsGroupControllers.Start(this, interval, GetHardwareUpdateScope());
+    }
+
+    private HardwareUpdateScope GetHardwareUpdateScope()
+    {
+        var scope = HardwareUpdateScope.None;
+
+        if (_activeSensorItems.Overlaps([
+                SensorItem.CpuUtilization,
+                SensorItem.CpuFrequency,
+                SensorItem.CpuTemperature,
+                SensorItem.CpuPower
+            ]))
+            scope |= HardwareUpdateScope.Cpu;
+
+        if (_activeSensorItems.Overlaps([
+                SensorItem.GpuUtilization,
+                SensorItem.GpuFrequency,
+                SensorItem.GpuCoreTemperature,
+                SensorItem.GpuVramTemperature,
+                SensorItem.GpuTemperatures,
+                SensorItem.GpuPower,
+                SensorItem.GpuVramUtilization
+            ]))
+            scope |= HardwareUpdateScope.Gpu;
+
+        if (_activeSensorItems.Overlaps([
+                SensorItem.MemoryUtilization,
+                SensorItem.MemoryTemperature
+            ]))
+            scope |= HardwareUpdateScope.Memory;
+
+        if (_activeSensorItems.Overlaps([
+                SensorItem.CpuFanSpeed,
+                SensorItem.GpuFanSpeed,
+                SensorItem.PchFanSpeed,
+                SensorItem.PchTemperature
+            ]))
+            scope |= HardwareUpdateScope.Fans;
+
+        if (_activeSensorItems.Overlaps([
+                SensorItem.Disk1Temperature,
+                SensorItem.Disk2Temperature
+            ]))
+            scope |= HardwareUpdateScope.Storage;
+
+        return scope;
     }
 
     private async void OnSensorsUpdated(HardwareSensorSnapshot snapshot)

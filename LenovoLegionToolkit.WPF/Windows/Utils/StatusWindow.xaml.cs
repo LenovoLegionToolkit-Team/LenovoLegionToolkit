@@ -217,7 +217,7 @@ public partial class StatusWindow
                 ? _sensorsControlSettings.Store.SensorsRefreshIntervalSeconds
                 : _dashboardSettings.Store.SensorsRefreshIntervalSeconds;
 
-            _sensorsGroupController.Start(this, TimeSpan.FromSeconds(refreshInterval));
+            _sensorsGroupController.Start(this, TimeSpan.FromSeconds(refreshInterval), HardwareUpdateScope.Cpu | HardwareUpdateScope.Gpu);
         }
         else
         {

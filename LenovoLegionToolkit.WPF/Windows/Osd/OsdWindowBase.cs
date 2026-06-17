@@ -137,6 +137,8 @@ public abstract class OsdWindowBase : Window
 
                 _activeItems = newItemsSet;
                 UpdateMeasurementControlsVisibility();
+                if (IsVisible && _applicationSettings.Store.EnableHardwareSensors)
+                    StartHardwareSensorUpdates();
             });
         });
 
@@ -341,7 +343,7 @@ public abstract class OsdWindowBase : Window
             CheckAndUpdateFpsMonitoring();
             UpdateMeasurementControlsVisibility();
 
-            _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(_OsdSettings.Store.OsdRefreshInterval));
+            StartHardwareSensorUpdates();
 
             await TheRing(_cts.Token);
         }
@@ -351,6 +353,58 @@ public abstract class OsdWindowBase : Window
             _sensorsGroupControllers.Stop(this);
             CheckAndUpdateFpsMonitoring();
         }
+    }
+
+    private void StartHardwareSensorUpdates()
+    {
+        _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(_OsdSettings.Store.OsdRefreshInterval), GetHardwareUpdateScope());
+    }
+
+    private HardwareUpdateScope GetHardwareUpdateScope()
+    {
+        var scope = HardwareUpdateScope.None;
+
+        if (_activeItems.Overlaps([
+                OsdItem.CpuFrequency,
+                OsdItem.CpuPCoreFrequency,
+                OsdItem.CpuECoreFrequency,
+                OsdItem.CpuUtilization,
+                OsdItem.CpuTemperature,
+                OsdItem.CpuPower
+            ]))
+            scope |= HardwareUpdateScope.Cpu;
+
+        if (_activeItems.Overlaps([
+                OsdItem.GpuFrequency,
+                OsdItem.GpuUtilization,
+                OsdItem.GpuTemperature,
+                OsdItem.GpuVramUtilization,
+                OsdItem.GpuVramTemperature,
+                OsdItem.GpuPower
+            ]))
+            scope |= HardwareUpdateScope.Gpu;
+
+        if (_activeItems.Overlaps([
+                OsdItem.MemoryUtilization,
+                OsdItem.MemoryTemperature
+            ]))
+            scope |= HardwareUpdateScope.Memory;
+
+        if (_activeItems.Overlaps([
+                OsdItem.CpuFan,
+                OsdItem.GpuFan,
+                OsdItem.PchTemperature,
+                OsdItem.PchFan
+            ]))
+            scope |= HardwareUpdateScope.Fans;
+
+        if (_activeItems.Overlaps([
+                OsdItem.Disk1Temperature,
+                OsdItem.Disk2Temperature
+            ]))
+            scope |= HardwareUpdateScope.Storage;
+
+        return scope;
     }
 
     private void OnWindowClosed(object? sender, EventArgs e)
