@@ -9,9 +9,11 @@ using Windows.Win32.UI.WindowsAndMessaging;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Features.Hybrid.Notify;
+using System.Linq;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Overclocking.Amd;
+using LenovoLegionToolkit.Lib.Station.Core;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using Microsoft.Win32;
@@ -214,7 +216,10 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
             await feature.ResetAllActiveCoresCoAsync().ConfigureAwait(false);
         }
 
-        MessagingCenter.Publish(new FanStateMessage(FanState.Auto));
+        if (HasExtensionProvider("FanControl"))
+        {
+            MessagingCenter.Publish(new FanStateMessage(FanState.Auto));
+        }
     }
 
     private async Task HandleResumeInternalAsync(PowerAdapterStatus currentAdapterStatus)
@@ -257,7 +262,10 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
             await _powerModeFeature.EnsureGodModeStateIsAppliedAsync().ConfigureAwait(false);
         }
 
-        MessagingCenter.Publish(new FanStateMessage(FanState.Manual));
+        if (HasExtensionProvider("FanControl"))
+        {
+            MessagingCenter.Publish(new FanStateMessage(FanState.Manual));
+        }
 
         _ = NotifyDgpuAsync();
     }
@@ -271,6 +279,9 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
 
         _ = NotifyDgpuAsync();
     }
+
+    private static bool HasExtensionProvider(string capability) =>
+        IoCContainer.TryResolve<IExtensionManager>()?.HasProvider(capability) ?? false;
 
     private async Task NotifyDgpuAsync()
     {

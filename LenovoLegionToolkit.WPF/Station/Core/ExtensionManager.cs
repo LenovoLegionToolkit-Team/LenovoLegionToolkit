@@ -11,7 +11,7 @@ using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.WPF.Station.Core;
 
-public sealed class ExtensionManager
+public sealed class ExtensionManager : IExtensionManager
 {
     private readonly ExtensionContextFactory _contextFactory;
     private readonly IExtensionLogger _logger;
@@ -24,6 +24,13 @@ public sealed class ExtensionManager
     }
 
     public IReadOnlyCollection<IExtensionProvider> Providers => _providers.AsReadOnly();
+
+    public bool HasProvider(string capability) =>
+        _providers.Any(p => capability.Equals(p.GetData(nameof(ExtensionDataKey.Capability))));
+
+    public string? GetProviderVersion(string capability) =>
+        _providers.FirstOrDefault(p => capability.Equals(p.GetData(nameof(ExtensionDataKey.Capability))))
+            ?.GetData(nameof(ExtensionDataKey.Version)) as string;
 
     public void Load()
     {
@@ -85,6 +92,8 @@ public sealed class ExtensionManager
                 _logger.Error($"Failed to dispose provider {provider.GetType().FullName}", ex);
             }
         }
+
+        _providers.Clear();
     }
 
     private void TryLoadAssemblyProviders(string assemblyPath)
@@ -92,7 +101,9 @@ public sealed class ExtensionManager
         try
         {
             _logger.Trace($"Loading extension assembly: {assemblyPath}");
+
             var assembly = Assembly.LoadFrom(assemblyPath);
+
             _logger.Trace($"Assembly loaded successfully: {assembly.FullName}");
 
             Type[] types;
@@ -107,6 +118,7 @@ public sealed class ExtensionManager
                     .Where(e => e is not null)
                     .Select(e => e!.Message)
                     .ToArray() ?? [];
+
                 _logger.Error($"Failed to enumerate types from assembly {assemblyPath}. LoaderExceptions={string.Join(" | ", loaderExceptions)}", ex);
                 return;
             }
@@ -120,6 +132,7 @@ public sealed class ExtensionManager
             if (providerTypes.Length == 0)
             {
                 _logger.Trace($"No IExtensionProvider implementations found in assembly: {assemblyPath}");
+                return;
             }
 
             foreach (var providerType in providerTypes)
@@ -133,9 +146,21 @@ public sealed class ExtensionManager
                 }
 
                 _logger.Trace($"Initializing provider: {providerType.FullName}");
+
                 provider.Initialize(_contextFactory.Create(providerType.FullName ?? providerType.Name));
+
                 _providers.Add(provider);
-                _logger.Trace($"Loaded provider successfully: {providerType.FullName}. Total loaded providers: {_providers.Count}");
+
+                var capability = provider.GetData(nameof(ExtensionDataKey.Capability)) as string;
+                var version = provider.GetData(nameof(ExtensionDataKey.Version)) as string;
+                var capabilityDisplay = string.IsNullOrEmpty(capability) ? "(none)" : capability;
+
+                _logger.Trace(
+                    $"Loaded provider successfully: {providerType.FullName}, " +
+                    $"Version: {version}, " +
+                    $"Capabilities: {capabilityDisplay}, " +
+                    $"Total loaded providers: {_providers.Count}"
+                );
             }
         }
         catch (Exception ex)
