@@ -264,28 +264,29 @@ public partial class StatusWindow
         SensorsData? sensorsData = null;
         double cpuPower = -1, gpuPower = -1, cpuClock = -1, cpuTemp = -1, gpuClock = -1, gpuTemp = -1;
 
-        var tasks = new List<Task>();
-
-        tasks.Add(Task.Run(async () => {
-            try
+        var tasks = new List<Task>
+        {
+            Task.Run(async () =>
             {
-                if (await _powerModeFeature.IsSupportedAsync().WaitAsync(token))
+                try
                 {
-                    state = await _powerModeFeature.GetStateAsync().WaitAsync(token);
-                    if (state == PowerModeState.GodMode) godModePresetName = await _godModeController.GetActivePresetNameAsync().WaitAsync(token);
+                    if (await _powerModeFeature.IsSupportedAsync().WaitAsync(token))
+                    {
+                        state = await _powerModeFeature.GetStateAsync().WaitAsync(token);
+                        if (state == PowerModeState.GodMode) godModePresetName = await _godModeController.GetActivePresetNameAsync().WaitAsync(token);
+                    }
+                    else if (await _itsModeFeature.IsSupportedAsync().WaitAsync(token))
+                    {
+                        mode = await _itsModeFeature.GetStateAsync().WaitAsync(token);
+                    }
                 }
-                else if (await _itsModeFeature.IsSupportedAsync().WaitAsync(token))
-                {
-                    mode = await _itsModeFeature.GetStateAsync().WaitAsync(token);
-                }
-            }
-            catch { /* Ignore */ }
-        }, token));
-
-        tasks.Add(Task.Run(async () => { try { if (_gpuController.IsSupported()) gpuStatus = await _gpuController.RefreshNowAsync().WaitAsync(token); } catch { } }, token));
-        tasks.Add(Task.Run(() => { try { batteryInfo = Battery.GetBatteryInformation(); } catch { } }, token));
-        tasks.Add(Task.Run(async () => { try { if (await _batteryFeature.IsSupportedAsync().WaitAsync(token)) batteryState = await _batteryFeature.GetStateAsync().WaitAsync(token); } catch { } }, token));
-        tasks.Add(Task.Run(async () => { try { if (_updateSettings.Store.UpdateCheckFrequency != UpdateCheckFrequency.Never) hasUpdate = await _updateChecker.CheckAsync(false).WaitAsync(token) is not null; } catch { } }, token));
+                catch { /* Ignore */ }
+            }, token),
+            Task.Run(async () => { try { if (_gpuController.IsSupported()) gpuStatus = await _gpuController.RefreshNowAsync().WaitAsync(token); } catch { } }, token),
+            Task.Run(() => { try { batteryInfo = Battery.GetBatteryInformation(); } catch { } }, token),
+            Task.Run(async () => { try { if (await _batteryFeature.IsSupportedAsync().WaitAsync(token)) batteryState = await _batteryFeature.GetStateAsync().WaitAsync(token); } catch { } }, token),
+            Task.Run(async () => { try { if (_updateSettings.Store.UpdateCheckFrequency != UpdateCheckFrequency.Never) hasUpdate = await _updateChecker.CheckAsync(false).WaitAsync(token) is not null; } catch { } }, token)
+        };
 
         await Task.WhenAll(tasks).ConfigureAwait(false);
 

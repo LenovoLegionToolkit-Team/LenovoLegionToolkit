@@ -112,8 +112,8 @@ public partial class SensorsControlV2
                 }
                 else if (IsVisible)
                 {
-                    _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
                     StartSensorUpdates();
+                    _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
                 }
             });
         });
@@ -199,8 +199,8 @@ public partial class SensorsControlV2
             if (!_applicationSettings.Store.EnableHardwareSensors)
                 return;
 
-            _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
             StartSensorUpdates();
+            _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
         }
         else
         {
@@ -211,54 +211,29 @@ public partial class SensorsControlV2
 
     private void StartSensorUpdates(double? intervalSeconds = null)
     {
-        var interval = TimeSpan.FromSeconds(intervalSeconds ?? _sensorsControlSettings.Store.SensorsRefreshIntervalSeconds);
-        _sensorsGroupControllers.Start(this, interval, GetHardwareUpdateScope());
+        if (!_applicationSettings.Store.EnableHardwareSensors)
+        {
+            return;
+        }
+
+        var scope = GetHardwareUpdateScope();
+        if (scope == HardwareUpdateScope.None)
+        {
+            _sensorsGroupControllers.Stop(this);
+            return;
+        }
+
+        _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(intervalSeconds ?? _sensorsControlSettings.Store.SensorsRefreshIntervalSeconds), scope);
     }
 
     private HardwareUpdateScope GetHardwareUpdateScope()
     {
-        var scope = HardwareUpdateScope.None;
-
-        if (_activeSensorItems.Overlaps([
-                SensorItem.CpuUtilization,
-                SensorItem.CpuFrequency,
-                SensorItem.CpuTemperature,
-                SensorItem.CpuPower
-            ]))
-            scope |= HardwareUpdateScope.Cpu;
-
-        if (_activeSensorItems.Overlaps([
-                SensorItem.GpuUtilization,
-                SensorItem.GpuFrequency,
-                SensorItem.GpuCoreTemperature,
-                SensorItem.GpuVramTemperature,
-                SensorItem.GpuTemperatures,
-                SensorItem.GpuPower,
-                SensorItem.GpuVramUtilization
-            ]))
-            scope |= HardwareUpdateScope.Gpu;
-
-        if (_activeSensorItems.Overlaps([
-                SensorItem.MemoryUtilization,
-                SensorItem.MemoryTemperature
-            ]))
-            scope |= HardwareUpdateScope.Memory;
-
-        if (_activeSensorItems.Overlaps([
-                SensorItem.CpuFanSpeed,
-                SensorItem.GpuFanSpeed,
-                SensorItem.PchFanSpeed,
-                SensorItem.PchTemperature
-            ]))
-            scope |= HardwareUpdateScope.Fans;
-
-        if (_activeSensorItems.Overlaps([
-                SensorItem.Disk1Temperature,
-                SensorItem.Disk2Temperature
-            ]))
-            scope |= HardwareUpdateScope.Storage;
-
-        return scope;
+        return SensorsGroupController.BuildHardwareUpdateScope(
+            hasCpu: _activeSensorItems.Overlaps([SensorItem.CpuUtilization, SensorItem.CpuFrequency, SensorItem.CpuTemperature, SensorItem.CpuPower]),
+            hasGpu: _activeSensorItems.Overlaps([SensorItem.GpuUtilization, SensorItem.GpuFrequency, SensorItem.GpuCoreTemperature, SensorItem.GpuVramTemperature, SensorItem.GpuTemperatures, SensorItem.GpuPower, SensorItem.GpuVramUtilization]),
+            hasMemory: _activeSensorItems.Overlaps([SensorItem.MemoryUtilization, SensorItem.MemoryTemperature]),
+            hasFans: _activeSensorItems.Overlaps([SensorItem.CpuFanSpeed, SensorItem.GpuFanSpeed, SensorItem.PchFanSpeed, SensorItem.PchTemperature]),
+            hasStorage: _activeSensorItems.Overlaps([SensorItem.Disk1Temperature, SensorItem.Disk2Temperature]));
     }
 
     private async void OnSensorsUpdated(HardwareSensorSnapshot snapshot)

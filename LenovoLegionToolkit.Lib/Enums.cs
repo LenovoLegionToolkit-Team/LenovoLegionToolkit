@@ -394,6 +394,19 @@ public enum MicrophoneState
     On
 }
 
+[Flags]
+public enum HardwareUpdateScope
+{
+    None = 0,
+    Cpu = 1,
+    Gpu = 2,
+    Memory = 4,
+    Fans = 8,
+    Storage = 16,
+    AllNonStorage = Cpu | Gpu | Memory | Fans,
+    All = AllNonStorage | Storage
+}
+
 public enum HardwareSensorsState
 {
     [Display(ResourceType = typeof(Resource), Name = "HardwareSensorsState_Off")]

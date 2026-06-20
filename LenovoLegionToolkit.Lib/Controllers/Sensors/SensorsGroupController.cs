@@ -17,19 +17,6 @@ using LibreHardwareMonitor.Hardware;
 
 namespace LenovoLegionToolkit.Lib.Controllers.Sensors;
 
-[Flags]
-public enum HardwareUpdateScope
-{
-    None = 0,
-    Cpu = 1,
-    Gpu = 2,
-    Memory = 4,
-    Fans = 8,
-    Storage = 16,
-    AllNonStorage = Cpu | Gpu | Memory | Fans,
-    All = AllNonStorage | Storage
-}
-
 public class SensorsGroupController : IDisposable
 {
     #region Constants (Magic Words & Numbers)
@@ -547,10 +534,15 @@ public class SensorsGroupController : IDisposable
         try
         {
             var now = Environment.TickCount64;
+            _lastUpdateTick = now;
+
+            if (scope == HardwareUpdateScope.None)
+            {
+                return;
+            }
+
             var gpuState = await _gpuController.GetLastKnownStateAsync().ConfigureAwait(false);
             bool gpuInactive = IsGpuInActive(gpuState);
-
-            _lastUpdateTick = now;
 
             await Task.Run(() =>
             {
@@ -690,7 +682,7 @@ public class SensorsGroupController : IDisposable
                         }
 
                         double memMaxTemp = _memoryTempSensors.Count > 0 ? (double)(_memoryTempSensors.Max(s => s.Value) ?? 0) : INVALID_VALUE_DOUBLE;
-                        var ssdTemps = Snapshot.SsdTemps;
+                        var ssdTemps = (INVALID_VALUE_FLOAT, INVALID_VALUE_FLOAT);
                         if (Includes(scope, HardwareUpdateScope.Storage))
                         {
                             float t1 = _storageTempSensors.Count > 0 ? _storageTempSensors[0].Value ?? INVALID_VALUE_FLOAT : INVALID_VALUE_FLOAT;
@@ -735,10 +727,7 @@ public class SensorsGroupController : IDisposable
         }
         finally
         {
-            lock (_updateTaskLock)
-            {
-                _activeUpdateTask = null;
-            }
+            _activeUpdateTask = null;
         }
     }
 
@@ -879,8 +868,40 @@ public class SensorsGroupController : IDisposable
             HardwareType.GpuAmd or HardwareType.GpuIntel or HardwareType.GpuNvidia => Includes(scope, HardwareUpdateScope.Gpu),
             HardwareType.Memory => Includes(scope, HardwareUpdateScope.Memory),
             HardwareType.Storage => Includes(scope, HardwareUpdateScope.Storage),
-            _ => Includes(scope, HardwareUpdateScope.Fans)
+            _ => false
         };
+    }
+
+    public static HardwareUpdateScope BuildHardwareUpdateScope(bool hasCpu, bool hasGpu, bool hasMemory, bool hasFans, bool hasStorage)
+    {
+        var scope = HardwareUpdateScope.None;
+
+        if (hasCpu)
+        {
+            scope |= HardwareUpdateScope.Cpu;
+        }
+
+        if (hasGpu)
+        {
+            scope |= HardwareUpdateScope.Gpu;
+        }
+
+        if (hasMemory)
+        {
+            scope |= HardwareUpdateScope.Memory;
+        }
+
+        if (hasFans)
+        {
+            scope |= HardwareUpdateScope.Fans;
+        }
+
+        if (hasStorage)
+        {
+            scope |= HardwareUpdateScope.Storage;
+        }
+
+        return scope;
     }
 
     private static bool Includes(HardwareUpdateScope scope, HardwareUpdateScope flag) => (scope & flag) != 0;
