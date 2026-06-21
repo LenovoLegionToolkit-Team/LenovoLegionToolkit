@@ -178,6 +178,65 @@ public class SensorsGroupController : IDisposable
         public HardwareUpdateScope Scope { get; } = scope;
     }
 
+    private static readonly IDisposable NoOpDisposable = new LambdaDisposable(() => { });
+
+    private static readonly SensorItem[] CpuSensorItems = [SensorItem.CpuUtilization, SensorItem.CpuFrequency, SensorItem.CpuTemperature, SensorItem.CpuPower];
+    private static readonly SensorItem[] GpuSensorItems = [SensorItem.GpuUtilization, SensorItem.GpuFrequency, SensorItem.GpuCoreTemperature, SensorItem.GpuVramTemperature, SensorItem.GpuTemperatures, SensorItem.GpuPower, SensorItem.GpuVramUtilization];
+    private static readonly SensorItem[] MemorySensorItems = [SensorItem.MemoryUtilization, SensorItem.MemoryTemperature];
+    private static readonly SensorItem[] FansSensorItems = [SensorItem.CpuFanSpeed, SensorItem.GpuFanSpeed, SensorItem.PchFanSpeed, SensorItem.PchTemperature];
+    private static readonly SensorItem[] StorageSensorItems = [SensorItem.Disk1Temperature, SensorItem.Disk2Temperature];
+
+    private static readonly OsdItem[] CpuOsdItems = [OsdItem.CpuFrequency, OsdItem.CpuPCoreFrequency, OsdItem.CpuECoreFrequency, OsdItem.CpuUtilization, OsdItem.CpuTemperature, OsdItem.CpuPower];
+    private static readonly OsdItem[] GpuOsdItems = [OsdItem.GpuFrequency, OsdItem.GpuUtilization, OsdItem.GpuTemperature, OsdItem.GpuVramUtilization, OsdItem.GpuVramTemperature, OsdItem.GpuPower];
+    private static readonly OsdItem[] MemoryOsdItems = [OsdItem.MemoryUtilization, OsdItem.MemoryTemperature];
+    private static readonly OsdItem[] FansOsdItems = [OsdItem.CpuFan, OsdItem.GpuFan, OsdItem.PchTemperature, OsdItem.PchFan];
+    private static readonly OsdItem[] StorageOsdItems = [OsdItem.Disk1Temperature, OsdItem.Disk2Temperature];
+
+    public IDisposable Subscribe(TimeSpan interval, IEnumerable<SensorItem> items)
+    {
+        var scope = ComputeScopeFromSensorItems(items);
+        if (scope == HardwareUpdateScope.None)
+            return NoOpDisposable;
+        return Subscribe(interval, scope);
+    }
+
+    public IDisposable Subscribe(TimeSpan interval, IEnumerable<OsdItem> items)
+    {
+        var scope = ComputeScopeFromOsdItems(items);
+        if (scope == HardwareUpdateScope.None)
+            return NoOpDisposable;
+        return Subscribe(interval, scope);
+    }
+
+    public IDisposable Subscribe(TimeSpan interval, HardwareUpdateScope scope)
+    {
+        var key = new object();
+        Start(key, interval, scope);
+        return new LambdaDisposable(() => Stop(key));
+    }
+
+    private static HardwareUpdateScope ComputeScopeFromSensorItems(IEnumerable<SensorItem> items)
+    {
+        var set = items as HashSet<SensorItem> ?? new HashSet<SensorItem>(items);
+        return BuildHardwareUpdateScope(
+            hasCpu: set.Overlaps(CpuSensorItems),
+            hasGpu: set.Overlaps(GpuSensorItems),
+            hasMemory: set.Overlaps(MemorySensorItems),
+            hasFans: set.Overlaps(FansSensorItems),
+            hasStorage: set.Overlaps(StorageSensorItems));
+    }
+
+    private static HardwareUpdateScope ComputeScopeFromOsdItems(IEnumerable<OsdItem> items)
+    {
+        var set = items as HashSet<OsdItem> ?? new HashSet<OsdItem>(items);
+        return BuildHardwareUpdateScope(
+            hasCpu: set.Overlaps(CpuOsdItems),
+            hasGpu: set.Overlaps(GpuOsdItems),
+            hasMemory: set.Overlaps(MemoryOsdItems),
+            hasFans: set.Overlaps(FansOsdItems),
+            hasStorage: set.Overlaps(StorageOsdItems));
+    }
+
     public async Task<LibreHardwareMonitorInitialState> IsSupportedAsync()
     {
         LibreHardwareMonitorInitialState result = await InitializeAsync().ConfigureAwait(false);

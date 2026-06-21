@@ -31,6 +31,7 @@ public partial class SensorsControlV2
     private readonly HardwareSensorSettings _hardwareSensorSettings = IoCContainer.Resolve<HardwareSensorSettings>();
     private readonly ApplicationSettings _applicationSettings = IoCContainer.Resolve<ApplicationSettings>();
     private readonly Lock _updateLock = new();
+    private IDisposable? _sensorSubscription;
     private readonly Task<string> _cpuNameTask;
     private Task<string>? _gpuNameTask;
     private readonly HashSet<SensorItem> _activeSensorItems = [];
@@ -106,7 +107,7 @@ public partial class SensorsControlV2
             {
                 if (message.State == HardwareSensorsState.Off)
                 {
-                    _sensorsGroupControllers.Stop(this);
+                    _sensorSubscription?.Dispose();
                     _sensorsGroupControllers.SensorsUpdated -= OnSensorsUpdated;
                     ClearAllSensorValues();
                 }
@@ -204,36 +205,22 @@ public partial class SensorsControlV2
         }
         else
         {
-            _sensorsGroupControllers.Stop(this);
+            _sensorSubscription?.Dispose();
             _sensorsGroupControllers.SensorsUpdated -= OnSensorsUpdated;
         }
     }
 
     private void StartSensorUpdates(double? intervalSeconds = null)
     {
+        _sensorSubscription?.Dispose();
+
         if (!_applicationSettings.Store.EnableHardwareSensors)
-        {
             return;
-        }
 
-        var scope = GetHardwareUpdateScope();
-        if (scope == HardwareUpdateScope.None)
-        {
-            _sensorsGroupControllers.Stop(this);
+        if (_activeSensorItems.Count == 0)
             return;
-        }
 
-        _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(intervalSeconds ?? _sensorsControlSettings.Store.SensorsRefreshIntervalSeconds), scope);
-    }
-
-    private HardwareUpdateScope GetHardwareUpdateScope()
-    {
-        return SensorsGroupController.BuildHardwareUpdateScope(
-            hasCpu: _activeSensorItems.Overlaps([SensorItem.CpuUtilization, SensorItem.CpuFrequency, SensorItem.CpuTemperature, SensorItem.CpuPower]),
-            hasGpu: _activeSensorItems.Overlaps([SensorItem.GpuUtilization, SensorItem.GpuFrequency, SensorItem.GpuCoreTemperature, SensorItem.GpuVramTemperature, SensorItem.GpuTemperatures, SensorItem.GpuPower, SensorItem.GpuVramUtilization]),
-            hasMemory: _activeSensorItems.Overlaps([SensorItem.MemoryUtilization, SensorItem.MemoryTemperature]),
-            hasFans: _activeSensorItems.Overlaps([SensorItem.CpuFanSpeed, SensorItem.GpuFanSpeed, SensorItem.PchFanSpeed, SensorItem.PchTemperature]),
-            hasStorage: _activeSensorItems.Overlaps([SensorItem.Disk1Temperature, SensorItem.Disk2Temperature]));
+        _sensorSubscription = _sensorsGroupControllers.Subscribe(TimeSpan.FromSeconds(intervalSeconds ?? _sensorsControlSettings.Store.SensorsRefreshIntervalSeconds), _activeSensorItems);
     }
 
     private async void OnSensorsUpdated(HardwareSensorSnapshot snapshot)

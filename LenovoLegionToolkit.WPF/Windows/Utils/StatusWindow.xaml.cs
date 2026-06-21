@@ -48,6 +48,7 @@ public partial class StatusWindow
     private readonly SensorsController _sensorsController = IoCContainer.Resolve<SensorsController>();
     private readonly SensorsGroupController _sensorsGroupController = IoCContainer.Resolve<SensorsGroupController>();
     private readonly HardwareSensorSettings _hardwareSensorSettings = IoCContainer.Resolve<HardwareSensorSettings>();
+    private IDisposable? _sensorSubscription;
 
     private MachineInformation? _machineInfo;
     private Type? _cachedControllerType;
@@ -217,11 +218,12 @@ public partial class StatusWindow
                 ? _sensorsControlSettings.Store.SensorsRefreshIntervalSeconds
                 : _dashboardSettings.Store.SensorsRefreshIntervalSeconds;
 
-            _sensorsGroupController.Start(this, TimeSpan.FromSeconds(refreshInterval), HardwareUpdateScope.Cpu | HardwareUpdateScope.Gpu);
+            _sensorSubscription?.Dispose();
+            _sensorSubscription = _sensorsGroupController.Subscribe(TimeSpan.FromSeconds(refreshInterval), HardwareUpdateScope.Cpu | HardwareUpdateScope.Gpu);
         }
         else
         {
-            _sensorsGroupController.Stop(this);
+            _sensorSubscription?.Dispose();
             _sensorsGroupController.SensorsUpdated -= OnSensorsUpdated;
             _cancellationTokenSource.Cancel();
         }

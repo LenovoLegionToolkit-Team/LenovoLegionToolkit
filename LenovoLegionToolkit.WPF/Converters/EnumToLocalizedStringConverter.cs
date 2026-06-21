@@ -1,4 +1,5 @@
-﻿using LenovoLegionToolkit.WPF.Resources;
+﻿using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.WPF.Resources;
 
 namespace LenovoLegionToolkit.WPF.Converters
 {

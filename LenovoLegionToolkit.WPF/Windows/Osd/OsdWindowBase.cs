@@ -66,6 +66,7 @@ public abstract class OsdWindowBase : Window
     private long _lastFpsUiUpdateTick;
 
     private CancellationTokenSource? _cts;
+    private IDisposable? _sensorSubscription;
     protected bool _positionSet;
     private bool _fpsMonitoringStarted;
     private bool _hasLenovoController;
@@ -350,33 +351,22 @@ public abstract class OsdWindowBase : Window
         else
         {
             _cts?.Cancel();
-            _sensorsGroupControllers.Stop(this);
+            _sensorSubscription?.Dispose();
             CheckAndUpdateFpsMonitoring();
         }
     }
 
     private void StartHardwareSensorUpdates()
     {
-        if (!_applicationSettings.Store.EnableHardwareSensors) return;
+        _sensorSubscription?.Dispose();
 
-        var scope = GetHardwareUpdateScope();
-        if (scope == HardwareUpdateScope.None)
-        {
-            _sensorsGroupControllers.Stop(this);
+        if (!_applicationSettings.Store.EnableHardwareSensors)
             return;
-        }
 
-        _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(_OsdSettings.Store.OsdRefreshInterval), scope);
-    }
+        if (_activeItems.Count == 0)
+            return;
 
-    private HardwareUpdateScope GetHardwareUpdateScope()
-    {
-        return SensorsGroupController.BuildHardwareUpdateScope(
-            hasCpu: _activeItems.Overlaps([OsdItem.CpuFrequency, OsdItem.CpuPCoreFrequency, OsdItem.CpuECoreFrequency, OsdItem.CpuUtilization, OsdItem.CpuTemperature, OsdItem.CpuPower]),
-            hasGpu: _activeItems.Overlaps([OsdItem.GpuFrequency, OsdItem.GpuUtilization, OsdItem.GpuTemperature, OsdItem.GpuVramUtilization, OsdItem.GpuVramTemperature, OsdItem.GpuPower]),
-            hasMemory: _activeItems.Overlaps([OsdItem.MemoryUtilization, OsdItem.MemoryTemperature]),
-            hasFans: _activeItems.Overlaps([OsdItem.CpuFan, OsdItem.GpuFan, OsdItem.PchTemperature, OsdItem.PchFan]),
-            hasStorage: _activeItems.Overlaps([OsdItem.Disk1Temperature, OsdItem.Disk2Temperature]));
+        _sensorSubscription = _sensorsGroupControllers.Subscribe(TimeSpan.FromSeconds(_OsdSettings.Store.OsdRefreshInterval), _activeItems);
     }
 
     private void OnWindowClosed(object? sender, EventArgs e)
