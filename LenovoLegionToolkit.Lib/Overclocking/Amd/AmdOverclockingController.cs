@@ -285,11 +285,11 @@ public sealed class AmdOverclockingController : IDisposable
             {
                 var godModeController = IoCContainer.Resolve<GodModeController>();
                 var (_, preset) = await godModeController.GetActivePresetAsync().ConfigureAwait(false);
-                await powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(preset).ConfigureAwait(false);
+                await powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(preset, skipThrottle: true).ConfigureAwait(false);
             }
             else
             {
-                await powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync().ConfigureAwait(false);
+                await powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(skipThrottle: true).ConfigureAwait(false);
             }
         }
         catch (Exception ex)

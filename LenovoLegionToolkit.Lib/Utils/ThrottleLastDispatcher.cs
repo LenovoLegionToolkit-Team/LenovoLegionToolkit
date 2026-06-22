@@ -33,4 +33,12 @@ public class ThrottleLastDispatcher(TimeSpan interval, string? tag = null)
                 Log.Instance.Trace($"Throttling... [tag={tag}]");
         }
     }
+
+    public async Task DispatchImmediateAsync(Func<Task> task)
+    {
+        if (tag is not null)
+            Log.Instance.Trace($"Immediate dispatch... [tag={tag}]");
+
+        await task().ConfigureAwait(false);
+    }
 }

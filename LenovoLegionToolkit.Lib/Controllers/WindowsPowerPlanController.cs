@@ -31,7 +31,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
-    public async Task SetPowerPlanAsync(PowerModeState powerModeState, bool alwaysActivateDefaults = false, GodModeSettingsStore.Preset? preset = null)
+    public async Task SetPowerPlanAsync(PowerModeState powerModeState, bool alwaysActivateDefaults = false, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
     {
         if (settings.Store.PowerModeMappingMode is not PowerModeMappingMode.WindowsPowerPlan)
         {
@@ -78,7 +78,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         {
             Log.Instance.Trace($"Power plan {powerPlanToActivate.Guid} is already active. [name={powerPlanToActivate.Name}]");
 
-            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, powerModeState, isDefault, preset).ConfigureAwait(false);
+            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, powerModeState, isDefault, preset, skipThrottle).ConfigureAwait(false);
             return;
         }
 
@@ -96,7 +96,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, powerModeState, isDefault, preset).ConfigureAwait(false);
     }
 
-    private async Task ApplyBalanceOverlayIfNeededAsync(Guid activePowerPlanGuid, PowerModeState powerModeState, bool isDefault, GodModeSettingsStore.Preset? preset = null)
+    private async Task ApplyBalanceOverlayIfNeededAsync(Guid activePowerPlanGuid, PowerModeState powerModeState, bool isDefault, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
     {
         if (!PowerPlanExtensions.IsPlanBasedOnBalanced(activePowerPlanGuid))
         {
@@ -113,7 +113,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         var presetBalanceAc = preset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerPlanBalanceOnAc);
         var presetBalanceDc = preset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerPlanBalanceOnDc);
         var isPreset = presetBalanceAc.HasValue || presetBalanceDc.HasValue;
-        
+
         var acMode = WindowsPowerMode.Balanced;
         var dcMode = WindowsPowerMode.Balanced;
 
@@ -137,29 +137,17 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         var acRegistryGuid = WindowsPowerModeController.GuidForWindowsPowerMode(acMode);
         var dcRegistryGuid = WindowsPowerModeController.GuidForWindowsPowerMode(dcMode);
 
-        await _overlayDispatcher.DispatchAsync(() =>
+        if (skipThrottle)
         {
-            mainThreadDispatcher.Dispatch(() =>
-            {
-                try
-                {
-                    WindowsPowerModeController.ApplyActiveOverlayScheme(guidToApply);
-                    Log.Instance.Trace($"Balance overlay scheme applied. [guidToApply={guidToApply}]");
-                }
-                catch (Exception ex)
-                {
-                    Log.Instance.Trace($"Failed to apply balance overlay scheme.", ex);
-                }
-            });
-
-            WindowsPowerModeController.SetActiveOverlayRegistryForAc(acRegistryGuid);
-            WindowsPowerModeController.SetActiveOverlayRegistryForDc(dcRegistryGuid);
-
-            return Task.CompletedTask;
-        }).ConfigureAwait(false);
+            await _overlayDispatcher.DispatchImmediateAsync(() => ExecuteBalanceOverlayDispatch(guidToApply, acRegistryGuid, dcRegistryGuid)).ConfigureAwait(false);
+        }
+        else
+        {
+            await _overlayDispatcher.DispatchAsync(() => ExecuteBalanceOverlayDispatch(guidToApply, acRegistryGuid, dcRegistryGuid)).ConfigureAwait(false);
+        }
     }
 
-    public async Task SetPowerPlanAsync(ITSMode itsMode, bool alwaysActivateDefaults = false)
+    public async Task SetPowerPlanAsync(ITSMode itsMode, bool alwaysActivateDefaults = false, bool skipThrottle = false)
     {
         if (settings.Store.PowerModeMappingMode is not PowerModeMappingMode.WindowsPowerPlan)
         {
@@ -206,7 +194,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         {
             Log.Instance.Trace($"Power plan {powerPlanToActivate.Guid} is already active. [name={powerPlanToActivate.Name}]");
 
-            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, itsMode, isDefault).ConfigureAwait(false);
+            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, itsMode, isDefault, skipThrottle).ConfigureAwait(false);
             return;
         }
 
@@ -224,7 +212,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, itsMode, isDefault).ConfigureAwait(false);
     }
 
-    private async Task ApplyBalanceOverlayIfNeededAsync(Guid activePowerPlanGuid, ITSMode itsMode, bool isDefault)
+    private async Task ApplyBalanceOverlayIfNeededAsync(Guid activePowerPlanGuid, ITSMode itsMode, bool isDefault, bool skipThrottle = false)
     {
         if (!PowerPlanExtensions.IsPlanBasedOnBalanced(activePowerPlanGuid))
         {
@@ -257,26 +245,35 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         var acRegistryGuid = WindowsPowerModeController.GuidForWindowsPowerMode(acMode);
         var dcRegistryGuid = WindowsPowerModeController.GuidForWindowsPowerMode(dcMode);
 
-        await _overlayDispatcher.DispatchAsync(() =>
+        if (skipThrottle)
         {
-            mainThreadDispatcher.Dispatch(() =>
+            await _overlayDispatcher.DispatchImmediateAsync(() => ExecuteBalanceOverlayDispatch(guidToApply, acRegistryGuid, dcRegistryGuid)).ConfigureAwait(false);
+        }
+        else
+        {
+            await _overlayDispatcher.DispatchAsync(() => ExecuteBalanceOverlayDispatch(guidToApply, acRegistryGuid, dcRegistryGuid)).ConfigureAwait(false);
+        }
+    }
+
+    private Task ExecuteBalanceOverlayDispatch(Guid guidToApply, Guid acRegistryGuid, Guid dcRegistryGuid)
+    {
+        mainThreadDispatcher.Dispatch(() =>
+        {
+            try
             {
-                try
-                {
-                    WindowsPowerModeController.ApplyActiveOverlayScheme(guidToApply);
-                    Log.Instance.Trace($"Balance overlay scheme applied. [guidToApply={guidToApply}]");
-                }
-                catch (Exception ex)
-                {
-                    Log.Instance.Trace($"Failed to apply balance overlay scheme.", ex);
-                }
-            });
+                WindowsPowerModeController.ApplyActiveOverlayScheme(guidToApply);
+                Log.Instance.Trace($"Balance overlay scheme applied. [guidToApply={guidToApply}]");
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to apply balance overlay scheme.", ex);
+            }
+        });
 
-            WindowsPowerModeController.SetActiveOverlayRegistryForAc(acRegistryGuid);
-            WindowsPowerModeController.SetActiveOverlayRegistryForDc(dcRegistryGuid);
+        WindowsPowerModeController.SetActiveOverlayRegistryForAc(acRegistryGuid);
+        WindowsPowerModeController.SetActiveOverlayRegistryForDc(dcRegistryGuid);
 
-            return Task.CompletedTask;
-        }).ConfigureAwait(false);
+        return Task.CompletedTask;
     }
 
     public void SetPowerPlanParameter(WindowsPowerPlan windowsPowerPlan, Brightness brightness)
