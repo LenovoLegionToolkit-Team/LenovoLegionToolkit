@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -502,6 +502,9 @@
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
     <value>О {0:D2}:{1:D2}:{2:D2}</value>
   </data>
+  <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
+    <value>GPU Working Mode</value>
+  </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
     <value>Режим живлення</value>
   </data>
@@ -513,6 +516,9 @@
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
     <value>Налаштування</value>
+  </data>
+  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
+    <value>Supported: {0} / Available: {1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Відмінити</value>
@@ -1746,6 +1752,9 @@ Thank you for your support!</value>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
     <value>Логіка</value>
   </data>
+  <data name="mV" xml:space="preserve">
+    <value>mV</value>
+  </data>
   <data name="NetworkAdapters" xml:space="preserve">
     <value>Мережеві адаптери</value>
   </data>
@@ -2138,14 +2147,32 @@ Thank you for your support!</value>
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>Розгін ГП</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
+    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>Зміна частоти ядра</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
+    <value>Adjust VRAM speed to modify memory bandwidth.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>Зміна частоти пам'яті</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
+    <value>Overclocking</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>Налаштування розгону ГП</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
+    <value>Undervolting</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
+    <value>Voltage Lock</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
+    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Розблокування {0}...</value>
@@ -2526,11 +2553,36 @@ Thank you for your support!</value>
   <data name="ScriptConsole_Output_Title" xml:space="preserve">
     <value>Output</value>
   </data>
+  <data name="ScriptConsole_Section_Elapsed" xml:space="preserve">
+    <value>Elapsed: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Section_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ScriptConsole_Section_ReturnValue" xml:space="preserve">
+    <value>Return Value</value>
+  </data>
+  <data name="ScriptConsole_Status_Error" xml:space="preserve">
+    <value>Execution failed: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Ok" xml:space="preserve">
+    <value>Execution succeeded: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Running" xml:space="preserve">
+    <value>Running...</value>
+  </data>
+  <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
+    <value>Unexpected error</value>
+  </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
     <value>Script Console</value>
   </data>
+  <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
+    <value>Unexpected Error:
+{0}</value>
+  </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
-    <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
+    <value>Intended for advanced debugging. Allows execution of custom C# scripts to interact with the application state.</value>
   </data>
   <data name="Seconds" xml:space="preserve">
     <value>{0}s</value>
@@ -2752,10 +2804,10 @@ Thank you for your support!</value>
     <value>Закріпити на початку</value>
   </data>
   <data name="SettingsPage_ArgumentWindow_Message" xml:space="preserve">
-    <value>Відкрийте вікно аргументів для зручної зміни аргументів.</value>
+    <value>Modify startup arguments for the app.</value>
   </data>
   <data name="SettingsPage_ArgumentWindow_Title" xml:space="preserve">
-    <value>Аргументи</value>
+    <value>Arguments</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
     <value>Запускати згорнутим у лоток, коли ви входите у Windows.</value>
@@ -3175,6 +3227,9 @@ Thank you for your support!</value>
   </data>
   <data name="Slot" xml:space="preserve">
     <value>Слот</value>
+  </data>
+  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
+    <value>Settings applied successfully.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Усі активні пристрої виводу звуку будуть вимкнені.</value>
