@@ -541,16 +541,10 @@ public struct BootLogoInfo
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct BootLogoChecksum
 {
-    private readonly int Unused1;
-    public uint Crc;
-    private readonly int Unused2;
-    private readonly int Unused3;
-    private readonly int Unused4;
-    private readonly int Unused5;
-    private readonly int Unused6;
-    private readonly int Unused7;
-    private readonly int Unused8;
-    private readonly int Unused9;
+    public int Version;
+    [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]
+    public byte[] Hash;
+    private readonly int Padding;
 }
 
 #endregion

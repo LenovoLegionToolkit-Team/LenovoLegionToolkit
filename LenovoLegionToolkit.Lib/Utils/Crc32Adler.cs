@@ -45,8 +45,8 @@ public static class Crc32Adler
     {
         var buffer = new byte[length];
         using var fs = File.Open(path, FileMode.Open);
-        _ = fs.Read(buffer);
-        return Calculate(buffer);
+        var bytesRead = fs.Read(buffer, 0, length);
+        return Calculate(buffer.Take(bytesRead));
     }
 
     private static uint Calculate(IEnumerable<byte> data) => ~data.Aggregate(0xFFFFFFFF, (current, d) => LookUpTable[(current ^ d) & 0xFF] ^ (current >> 8));
