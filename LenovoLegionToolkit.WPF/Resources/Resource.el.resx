@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -197,7 +197,7 @@
     <value>Allow in all power modes</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options even when running on battery power.</value>
+    <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
     <value>Allow on battery</value>
@@ -503,6 +503,9 @@
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
     <value>Στις {0:D2}:{1:D2}:{2:D2}</value>
   </data>
+  <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
+    <value>GPU Working Mode</value>
+  </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
     <value>Λειτουργία Ισχύος</value>
   </data>
@@ -514,6 +517,9 @@
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
     <value>Ρύθμιση</value>
+  </data>
+  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
+    <value>Supported: {0} / Available: {1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Πίσω</value>
@@ -1748,6 +1754,9 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
     <value>Λογική</value>
   </data>
+  <data name="mV" xml:space="preserve">
+    <value>mV</value>
+  </data>
   <data name="NetworkAdapters" xml:space="preserve">
     <value>Προσαρμογείς δικτύου</value>
   </data>
@@ -2140,14 +2149,32 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>Υπερχρονισμός GPU</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
+    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>Αντιστάθμισμα Βασικής Συχνότητας</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
+    <value>Adjust VRAM speed to modify memory bandwidth.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>Αντιστάθμισμα Συχνότητας Μνήμης</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
+    <value>Overclocking</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>Ρυθμίσεις Υπερχρονισμού GPU</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
+    <value>Undervolting</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
+    <value>Voltage Lock</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
+    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Ξεκλείδωμα στο {0}...</value>
@@ -2528,8 +2555,33 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="ScriptConsole_Output_Title" xml:space="preserve">
     <value>Output</value>
   </data>
+  <data name="ScriptConsole_Section_Elapsed" xml:space="preserve">
+    <value>Elapsed: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Section_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ScriptConsole_Section_ReturnValue" xml:space="preserve">
+    <value>Return Value</value>
+  </data>
+  <data name="ScriptConsole_Status_Error" xml:space="preserve">
+    <value>Execution failed: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Ok" xml:space="preserve">
+    <value>Execution succeeded: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Running" xml:space="preserve">
+    <value>Running...</value>
+  </data>
+  <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
+    <value>Unexpected error</value>
+  </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
     <value>Script Console</value>
+  </data>
+  <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
+    <value>Unexpected Error:
+{0}</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
     <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
@@ -3177,6 +3229,9 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="Slot" xml:space="preserve">
     <value>Υποδοχή</value>
+  </data>
+  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
+    <value>Settings applied successfully.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>'Όταν είναι σε σίγαση, όλες οι ενεργές συσκευές εξόδου ήχου θα σιγήσουν.</value>

@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -197,7 +197,7 @@
     <value>Allow in all power modes</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options even when running on battery power.</value>
+    <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
     <value>Allow on battery</value>
@@ -227,10 +227,10 @@
     <value>EDC VDD</value>
   </data>
   <data name="AmdOverclocking_Enable_Message" xml:space="preserve">
-    <value>Enable AMD overclocking features.</value>
+    <value>Habilitar las funciones de overclocking de AMD.</value>
   </data>
   <data name="AmdOverclocking_Enable_Title" xml:space="preserve">
-    <value>Enable AMD Overclocking</value>
+    <value>Habilitar el overclocking de AMD</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
     <value>Frecuencia máxima de overclocking de la CPU (MHz)</value>
@@ -503,6 +503,9 @@ Sólo se ejecutarán las acciones que coincidan con el estado actual.</value>
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
     <value>A las {0:D2}:{1:D2}:{2:D2}</value>
   </data>
+  <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
+    <value>Modo de funcionamiento de la GPU</value>
+  </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
     <value>Modo de alimentación</value>
   </data>
@@ -514,6 +517,9 @@ Sólo se ejecutarán las acciones que coincidan con el estado actual.</value>
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
     <value>Configurar</value>
+  </data>
+  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
+    <value>Soportado(s): {0} / Disponible(s): {1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Atrás</value>
@@ -866,7 +872,7 @@ El cambio de modo puede requerir un reinicio.</value>
     <value>Desactivada</value>
   </data>
   <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
-    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+    <value>Gestiona los procesos activos modificando sus preferencias gráficas, haz clic con el botón derecho para cerrarlos de forma forzada o configura los ajustes avanzados.</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>Forzar el cierre del proceso</value>
@@ -875,19 +881,19 @@ El cambio de modo puede requerir un reinicio.</value>
     <value>Preferencias gráficas</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
-    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+    <value>Mantiene una conexión activa con la GPU dedicada para evitar el stuttering.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
-    <value>This increases power consumption and reduces battery life.</value>
+    <value>Esto aumenta el consumo de energía y reduce la duración de la batería.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
-    <value>Keep dGPU awake</value>
+    <value>Mantener la dGPU activa</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Terminar aplicaciones</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the apps list after terminating a process.</value>
+    <value>Tiempo de espera antes de actualizar la lista de aplicaciones tras finalizar un proceso.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Retardo de actualización del forzado de cierre</value>
@@ -914,7 +920,7 @@ El cambio de modo puede requerir un reinicio.</value>
     <value>Desconocido</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>How often to check the discrete GPU for active processes.</value>
+    <value>Con qué frecuencia se debe comprobar si hay procesos activos en la GPU dedicada.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Intervalo de sondeo</value>
@@ -935,7 +941,7 @@ El cambio de modo puede requerir un reinicio.</value>
     <value>Reiniciar la GPU</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Wait time before starting the discrete GPU monitoring service.</value>
+    <value>Tiempo de espera antes de iniciar el servicio de monitorización de la GPU dedicada.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>Retardo del inicio</value>
@@ -1748,6 +1754,9 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
     <value>Lógica</value>
   </data>
+  <data name="mV" xml:space="preserve">
+    <value>mV</value>
+  </data>
   <data name="NetworkAdapters" xml:space="preserve">
     <value>Adaptadores de red</value>
   </data>
@@ -2140,14 +2149,32 @@ No afectará a otras ventanas a pantalla completa, pero no podrá hacer clic en 
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>Overclock de la GPU</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
+    <value>Ajusta la frecuencia del núcleo de la GPU para que funcione a una velocidad superior o inferior a la de fábrica.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>Compensación de frecuencia del núcleo</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
+    <value>Ajusta la velocidad de la VRAM para modificar el ancho de banda de la memoria.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>Compensación de frecuencia de la memoria</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
+    <value>Overclocking</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>Ajustes de overclocking de la GPU</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
+    <value>Reducción de voltaje</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
+    <value>Fijar voltaje</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
+    <value>Fija el voltaje y la frecuencia de la GPU para garantizar un rendimiento perfectamente constante.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Desbloqueando en {0}...</value>
@@ -2379,7 +2406,7 @@ Puede cambiar de modo con Fn+Q.</value>
     <value>RAM</value>
   </data>
   <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
+    <value>Listo</value>
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Actualizar</value>
@@ -2481,7 +2508,7 @@ Puede cambiar de modo con Fn+Q.</value>
     <value>RPM</value>
   </data>
   <data name="Run" xml:space="preserve">
-    <value>Run</value>
+    <value>Ejecutar</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
     <value>Argumentos</value>
@@ -2523,16 +2550,41 @@ Puede cambiar de modo con Fn+Q.</value>
     <value>Guardando...</value>
   </data>
   <data name="ScriptConsole_Code_Title" xml:space="preserve">
-    <value>Code Block</value>
+    <value>Bloque de código</value>
   </data>
   <data name="ScriptConsole_Output_Title" xml:space="preserve">
-    <value>Output</value>
+    <value>Salida</value>
+  </data>
+  <data name="ScriptConsole_Section_Elapsed" xml:space="preserve">
+    <value>Transcurrido(s): {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Section_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ScriptConsole_Section_ReturnValue" xml:space="preserve">
+    <value>Valor devuelto</value>
+  </data>
+  <data name="ScriptConsole_Status_Error" xml:space="preserve">
+    <value>Error en la ejecución: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Ok" xml:space="preserve">
+    <value>Ejecución completada con éxito: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Running" xml:space="preserve">
+    <value>Ejecutando...</value>
+  </data>
+  <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
+    <value>Error inesperado</value>
   </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>Consola de scripts</value>
+  </data>
+  <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
+    <value>Error inesperado:
+{0}</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
-    <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
+    <value>Destinado a la depuración avanzada. Permite ejecutar scripts personalizados en C# para interactuar con el estado de la aplicación.</value>
   </data>
   <data name="Seconds" xml:space="preserve">
     <value>{0}s</value>
@@ -3060,10 +3112,10 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Reinicie para aplicar los cambios.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
-    <value>Execute C# scripts in the application runtime.</value>
+    <value>Ejecutar scripts de C# en el entorno de ejecución de la aplicación.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>Consola de scripts</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
     <value>Todos los ficheros</value>
@@ -3178,6 +3230,9 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="Slot" xml:space="preserve">
     <value>Ranura</value>
+  </data>
+  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
+    <value>Configuración aplicada con éxito.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Al silenciar, se silenciarán todos los dispositivos de salida de audio activos.</value>

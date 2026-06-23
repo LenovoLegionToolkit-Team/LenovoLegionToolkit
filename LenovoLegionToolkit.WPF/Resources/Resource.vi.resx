@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -191,16 +191,16 @@
     <value>Luôn bật cổng USB</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options over all power mode.</value>
+    <value>Áp dụng Trình tối ưu Điện áp và các tùy chọn nâng cao trên tất cả các chế độ nguồn.</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Title" xml:space="preserve">
-    <value>Allow in all power modes</value>
+    <value>Cho phép ở tất cả các chế độ nguồn</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options even when running on battery power.</value>
+    <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
-    <value>Allow on battery</value>
+    <value>Cho phép khi dùng pin</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
     <value>Áp dụng thay đổi</value>
@@ -215,7 +215,7 @@
     <value>Nhân</value>
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
-    <value>Current Limits</value>
+    <value>Giới hạn hiện tại</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Việc áp dụng cấu hình đã bị hủy do quá trình khởi động lại không bình thường.</value>
@@ -227,10 +227,10 @@
     <value>EDC VDD</value>
   </data>
   <data name="AmdOverclocking_Enable_Message" xml:space="preserve">
-    <value>Enable AMD overclocking features.</value>
+    <value>Bật các tính năng ép xung của AMD.</value>
   </data>
   <data name="AmdOverclocking_Enable_Title" xml:space="preserve">
-    <value>Enable AMD Overclocking</value>
+    <value>Bật ép xung AMD</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
     <value>Ghi đè xung nhịp tăng cường CPU tối đa (MHz)</value>
@@ -251,16 +251,16 @@
     <value>Tối ưu hóa từng lõi</value>
   </data>
   <data name="AmdOverclocking_PowerLimits" xml:space="preserve">
-    <value>Power Limits</value>
+    <value>Giới hạn công suất</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Long" xml:space="preserve">
-    <value>Power Limit (Long)</value>
+    <value>Giới hạn công suất (Dài)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Peak" xml:space="preserve">
-    <value>Power Limit (Peak)</value>
+    <value>Giới hạn công suất (Tối đa)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Short" xml:space="preserve">
-    <value>Power Limit (Short)</value>
+    <value>Giới hạn công suất (Ngắn)</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
     <value>Trạng thái</value>
@@ -272,13 +272,13 @@
     <value>Thành công</value>
   </data>
   <data name="AmdOverclocking_Tab_Advanced" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Nâng cao</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
-    <value>Curve Optimizer</value>
+    <value>Trình tối ưu Điện áp</value>
   </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Cài đặt</value>
   </data>
   <data name="AmdOverclocking_TDC_SoC" xml:space="preserve">
     <value>TDC SoC</value>
@@ -456,7 +456,7 @@ Chỉ có các Hành động thỏa điều kiện hiện tại sẽ được ch
     <value>Đặc quyền</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>When checked, stops further automations from running after this one.</value>
+    <value>Khi được chọn, sẽ dừng các tự động hóa tiếp theo chạy sau lần này.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>Đang chạy...</value>
@@ -503,6 +503,9 @@ Chỉ có các Hành động thỏa điều kiện hiện tại sẽ được ch
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
     <value>Vào lúc {0:D2}:{1:D2}:{2:D2}</value>
   </data>
+  <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
+    <value>Chế độ hoạt động của GPU</value>
+  </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
     <value>Chế độ</value>
   </data>
@@ -514,6 +517,9 @@ Chỉ có các Hành động thỏa điều kiện hiện tại sẽ được ch
   </data>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
     <value>Tùy chỉnh</value>
+  </data>
+  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
+    <value>Được hỗ trợ: {0} / Khả dụng: {1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Quay lại</value>
@@ -649,13 +655,13 @@ Thời gian có thể không chính xác nếu laptop được sạc khi Ngủ h
     <value>Pin</value>
   </data>
   <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
-    <value>Goes above</value>
+    <value>Đi bên trên</value>
   </data>
   <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
-    <value>Goes below</value>
+    <value>Đi bên dưới</value>
   </data>
   <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
-    <value>Percentage</value>
+    <value>Phần trăm</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
     <value>Phiên bản BIOS</value>
@@ -867,7 +873,7 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Ngắt kích hoạt</value>
   </data>
   <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
-    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+    <value>Quản lý các quy trình đang hoạt động bằng cách thay đổi tùy chọn đồ họa của chúng, nhấp chuột phải để buộc chấm dứt chúng hoặc định cấu hình cài đặt nâng cao.</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>Buộc đóng tiến trình</value>
@@ -876,19 +882,19 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Tuỳ chọn đồ hoạ</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
-    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+    <value>Duy trì kết nối hoạt động với GPU rời để tránh giật hình.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
-    <value>This increases power consumption and reduces battery life.</value>
+    <value>Điều này làm tăng mức tiêu thụ điện năng và giảm tuổi thọ pin.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
-    <value>Keep dGPU awake</value>
+    <value>Giữ dGPU hoạt động</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Tắt app dùng GPU rời</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the apps list after terminating a process.</value>
+    <value>Chờ trước khi làm mới danh sách ứng dụng sau khi kết thúc một tiến trình.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Độ trễ làm mới sau khi buộc dừng</value>
@@ -915,7 +921,7 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Không biết</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>How often to check the discrete GPU for active processes.</value>
+    <value>Tần suất kiểm tra GPU rời cho các tiến trình đang hoạt động.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Chu kỳ quét</value>
@@ -936,7 +942,7 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Khởi động lại GPU</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Wait time before starting the discrete GPU monitoring service.</value>
+    <value>Thời gian chờ trước khi bắt đầu dịch vụ giám sát GPU rời.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>Delay khởi động</value>
@@ -1748,6 +1754,9 @@ Chọn Có để tắt và Không để bỏ qua.</value>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
     <value>Logic</value>
   </data>
+  <data name="mV" xml:space="preserve">
+    <value>mV</value>
+  </data>
   <data name="NetworkAdapters" xml:space="preserve">
     <value>Bộ điều hợp mạng</value>
   </data>
@@ -2140,14 +2149,32 @@ Chức năng này không ảnh hưởng các cửa sổ ở chế độ toàn m�
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>Ép xung GPU</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
+    <value>Điều chỉnh tần số lõi GPU để chạy nhanh hơn hoặc chậm hơn tốc độ xuất xưởng.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>Tăng xung nhịp nhân</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
+    <value>Điều chỉnh tốc độ VRAM để sửa đổi băng thông bộ nhớ.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>Tăng xung nhịp VRAM</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
+    <value>Ép xung</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>Cài đặt ép xung GPU rời</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
+    <value>Hạ điện áp</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
+    <value>Khóa Hiệu điện thế</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
+    <value>Khóa điện áp và tần số GPU để có hiệu suất hoàn toàn nhất quán.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Đang mở khóa trong {0}...</value>
@@ -2379,7 +2406,7 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>RAM</value>
   </data>
   <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
+    <value>Sẵn sàng</value>
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Làm mới</value>
@@ -2481,7 +2508,7 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>RPM</value>
   </data>
   <data name="Run" xml:space="preserve">
-    <value>Run</value>
+    <value>Chạy</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
     <value>Tham số</value>
@@ -2523,13 +2550,38 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>Đang lưu...</value>
   </data>
   <data name="ScriptConsole_Code_Title" xml:space="preserve">
-    <value>Code Block</value>
+    <value>Khối mã</value>
   </data>
   <data name="ScriptConsole_Output_Title" xml:space="preserve">
-    <value>Output</value>
+    <value>Đầu ra</value>
+  </data>
+  <data name="ScriptConsole_Section_Elapsed" xml:space="preserve">
+    <value>Đã trôi qua: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Section_Error" xml:space="preserve">
+    <value>Lỗi</value>
+  </data>
+  <data name="ScriptConsole_Section_ReturnValue" xml:space="preserve">
+    <value>Giá trị trả lại</value>
+  </data>
+  <data name="ScriptConsole_Status_Error" xml:space="preserve">
+    <value>Thực hiện thất bại: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Ok" xml:space="preserve">
+    <value>Thực hiện thành công: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Running" xml:space="preserve">
+    <value>Đang chạy...</value>
+  </data>
+  <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
+    <value>Lỗi bất thường</value>
   </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>Bảng điều khiển tập lệnh</value>
+  </data>
+  <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
+    <value>Lỗi bất thường:
+{0}</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
     <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
@@ -3038,7 +3090,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Bật OSD</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
-    <value>ITS Mode natively synchronizes power settings, so overriding it here may cause conflicts.</value>
+    <value>Chế độ ITS đồng bộ hóa cài đặt nguồn nguyên bản, vì vậy việc ghi đè nó ở đây có thể gây ra xung đột.</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
     <value>Tự động thay đổi Windows Power Plan hoặc Windows Power Mode khi thay đổi các chế độ năng lượng.</value>
@@ -3059,10 +3111,10 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Khởi động lại để áp dụng các thay đổi.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
-    <value>Execute C# scripts in the application runtime.</value>
+    <value>Thực thi các tập lệnh C# trong thời gian chạy ứng dụng.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>Bảng điều khiển tập lệnh</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
     <value>Tất cả tệp</value>
@@ -3177,6 +3229,9 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
   </data>
   <data name="Slot" xml:space="preserve">
     <value>Khe cắm</value>
+  </data>
+  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
+    <value>Đã áp dụng cài đặt thành công.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Khi tắt tiếng, tất cả các đầu ra âm thanh đang sử dụng cũng sẽ bị tắt.</value>
@@ -3513,7 +3568,7 @@ Logging sẽ được tự động bật, nếu bạn chọn tiếp tục.</valu
     <value>Đã dùng</value>
   </data>
   <data name="Valid" xml:space="preserve">
-    <value>Valid</value>
+    <value>Có hiệu lực</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Cảnh báo</value>
