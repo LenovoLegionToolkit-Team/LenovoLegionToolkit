@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -167,7 +167,7 @@
     <value>新增</value>
   </data>
   <data name="AddAutomationStepWindow_MultipleSteps" xml:space="preserve">
-    <value>Multiple steps...</value>
+    <value>多重步驟……</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>新增條件</value>
@@ -197,7 +197,7 @@
     <value>Allow in all power modes</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options even when running on battery power.</value>
+    <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
     <value>Allow on battery</value>
@@ -227,10 +227,10 @@
     <value>EDC VDD</value>
   </data>
   <data name="AmdOverclocking_Enable_Message" xml:space="preserve">
-    <value>Enable AMD overclocking features.</value>
+    <value>啟用 AMD 超頻功能。</value>
   </data>
   <data name="AmdOverclocking_Enable_Title" xml:space="preserve">
-    <value>Enable AMD Overclocking</value>
+    <value>啟用 AMD 超頻</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
     <value>CPU 最高加速頻率 (Mhz)</value>
@@ -344,7 +344,7 @@
     <value>停用檢查更新</value>
   </data>
   <data name="ArgumentWindow_Flag_EnableLampArray" xml:space="preserve">
-    <value>Enable Lamp Array</value>
+    <value>啟用 Lamp Array</value>
   </data>
   <data name="ArgumentWindow_Flag_ExpGpuMode" xml:space="preserve">
     <value> Experimental GPU Working Mode</value>
@@ -359,16 +359,16 @@
     <value>代理伺服器使用者名稱</value>
   </data>
   <data name="ArgumentWindow_Flag_SkipCompatCheck" xml:space="preserve">
-    <value>Skip Compatibility Check</value>
+    <value>略過相容性檢查</value>
   </data>
   <data name="ArgumentWindow_Flag_StartMinimized" xml:space="preserve">
-    <value>Start Minimized</value>
+    <value>啟動時最小化</value>
   </data>
   <data name="ArgumentWindow_Flag_TraceEnabled" xml:space="preserve">
-    <value>Enable Trace Logging</value>
+    <value>啟用追蹤記錄</value>
   </data>
   <data name="ArgumentWindow_NotSet" xml:space="preserve">
-    <value>Not Set</value>
+    <value>未設定</value>
   </data>
   <data name="ArgumentWindow_Title" xml:space="preserve">
     <value>引數視窗</value>
@@ -398,7 +398,7 @@
     <value>變更圖示</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
-    <value>Automatic (All Methods)</value>
+    <value>自動（所有方法）</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
     <value>獨立 GPU 活動率</value>
@@ -410,7 +410,7 @@
     <value>已知的遊戲列表</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configure detection methods and exclusions.</value>
+    <value>設定偵測與排除方法。</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
     <value>遊戲偵測</value>
@@ -502,6 +502,9 @@
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
     <value>將在 {0:D2}:{1:D2}:{2:D2} 執行</value>
   </data>
+  <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
+    <value>GPU 運作模式</value>
+  </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
     <value>電源模式</value>
   </data>
@@ -514,8 +517,11 @@
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
     <value>組態設定</value>
   </data>
+  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
+    <value>Supported: {0} / Available: {1}</value>
+  </data>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>返回</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
     <value>啟用 Legion AI 引擎以自動偵測遊戲並調整 CPU / GPU 效能。可能會增加裝置溫度和風扇噪音。</value>
@@ -611,7 +617,7 @@
     <value>充飽容量</value>
   </data>
   <data name="BatteryPage_LiveCharge_Title" xml:space="preserve">
-    <value>Current charge</value>
+    <value>目前電量</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
     <value>電池低電量</value>
@@ -648,16 +654,16 @@
     <value>電池</value>
   </data>
   <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
-    <value>Goes above</value>
+    <value>高於</value>
   </data>
   <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
-    <value>Goes below</value>
+    <value>低於</value>
   </data>
   <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
-    <value>Percentage</value>
+    <value>百分比</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
-    <value>BIOS version</value>
+    <value>BIOS 版本</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
     <value>客製化</value>
@@ -721,7 +727,7 @@
     <value>關閉</value>
   </data>
   <data name="CloseAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Close the Lenovo Legion Toolkit</value>
+    <value>關閉 Lenovo Legion 工具套件</value>
   </data>
   <data name="CloseAppAutomationStepControl_Title" xml:space="preserve">
     <value>關閉應用程式</value>
@@ -770,7 +776,7 @@
     <value>複製全部</value>
   </data>
   <data name="Cores" xml:space="preserve">
-    <value>Cores</value>
+    <value>核心</value>
   </data>
   <data name="CPU" xml:space="preserve">
     <value>CPU</value>
@@ -815,7 +821,7 @@
     <value>首頁</value>
   </data>
   <data name="DaysRemaining" xml:space="preserve">
-    <value>Days remaining</value>
+    <value>剩餘天數</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
     <value>Disable discrete GPU if it is active unnecessarily.</value>
@@ -836,7 +842,7 @@
     <value>刪除</value>
   </data>
   <data name="Device" xml:space="preserve">
-    <value>Device</value>
+    <value>裝置</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
     <value>僅顯示已連接的裝置</value>
@@ -950,7 +956,7 @@
     <value>顯示亮度</value>
   </data>
   <data name="Displays" xml:space="preserve">
-    <value>Displays</value>
+    <value>顯示器</value>
   </data>
   <data name="DonatePage_Bartosz_Description" xml:space="preserve">
     <value>Bartosz created Lenovo Legion Toolkit and authored the foundational architecture that powers every feature in the application today.</value>
@@ -974,12 +980,12 @@
     <value>Core Developer &amp; Reverser</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
-    <value>Development and maintenance of Lenovo Legion Toolkit takes a lot of time and effort. If you enjoy using this software, you can support its future by sponsoring the authors who make it possible.
+    <value>Lenovo Legion 工具套件的開發和維護需要花費大量時間和精力。如果您喜歡使用這款軟體，可以透過贊助開發人員來應援它的未來發展。
 
-Thank you for your support!</value>
+感謝您的應援！</value>
   </data>
   <data name="DonatePage_Sponsor" xml:space="preserve">
-    <value>Sponsor</value>
+    <value>贊助</value>
   </data>
   <data name="DonatePage_Title" xml:space="preserve">
     <value>贊助</value>
@@ -1024,7 +1030,7 @@ Thank you for your support!</value>
     <value>編輯感測器</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>End date</value>
+    <value>結束日期</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>錯誤</value>
@@ -1054,7 +1060,7 @@ Thank you for your support!</value>
     <value>離開</value>
   </data>
   <data name="Expired" xml:space="preserve">
-    <value>Expired</value>
+    <value>已到期</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>匯出</value>
@@ -1150,7 +1156,7 @@ Thank you for your support!</value>
     <value>GB</value>
   </data>
   <data name="Generation" xml:space="preserve">
-    <value>Generation</value>
+    <value>世代</value>
   </data>
   <data name="GHz" xml:space="preserve">
     <value>GHz</value>
@@ -1344,13 +1350,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>GPU</value>
   </data>
   <data name="HardwareFeatures" xml:space="preserve">
-    <value>Hardware Features</value>
+    <value>硬體功能</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Message" xml:space="preserve">
     <value>Enable or disable background polling for hardware sensors.</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
-    <value>Hardware Sensors</value>
+    <value>硬體感測器</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
     <value>Enable high dynamic range (HDR) on the built-in display.</value>
@@ -1455,19 +1461,19 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>新增自訂快速鍵</value>
   </data>
   <data name="KeyDiscovery_Added" xml:space="preserve">
-    <value>Added</value>
+    <value>已新增</value>
   </data>
   <data name="KeyDiscovery_CodeText" xml:space="preserve">
-    <value>Code: {0}</value>
+    <value>按鍵碼：{0}</value>
   </data>
   <data name="KeyDiscovery_KnownKeyTooltip" xml:space="preserve">
-    <value>Known key</value>
+    <value>已知的按鍵</value>
   </data>
   <data name="KeyDiscovery_Listening" xml:space="preserve">
-    <value>Listening for key presses... Press ESC to stop.</value>
+    <value>正在監聽按鍵……按下 ESC 停止。</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Unknown key – can be added</value>
+    <value>未知的按鍵 - 可新增</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1578,10 +1584,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>重設</value>
   </data>
   <data name="MacAddress" xml:space="preserve">
-    <value>MAC address</value>
+    <value>MAC 位址</value>
   </data>
   <data name="MachineType" xml:space="preserve">
-    <value>Machine Type</value>
+    <value>裝置類型</value>
   </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
     <value>啟用或停用巨集。</value>
@@ -1701,7 +1707,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>已有可供使用的更新 {0}！</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
-    <value>Don't show again.</value>
+    <value>不再顯示。</value>
   </data>
   <data name="MHz" xml:space="preserve">
     <value>MHz</value>
@@ -1719,10 +1725,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>麥克風</value>
   </data>
   <data name="Model" xml:space="preserve">
-    <value>Model</value>
+    <value>型號</value>
   </data>
   <data name="Motherboard" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>主機板</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
     <value>往下移</value>
@@ -1738,16 +1744,19 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Match All (And)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_None" xml:space="preserve">
-    <value>No Logic (Separate)</value>
+    <value>無判斷邏輯（分離）</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
     <value>Match Any (Or)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
-    <value>Logic</value>
+    <value>判斷邏輯</value>
+  </data>
+  <data name="mV" xml:space="preserve">
+    <value>毫伏</value>
   </data>
   <data name="NetworkAdapters" xml:space="preserve">
-    <value>Network adapters</value>
+    <value>網路介面卡</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>否</value>
@@ -2025,7 +2034,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Sensor refresh interval</value>
   </data>
   <data name="OsdSettings_General_ResetPosition" xml:space="preserve">
-    <value>Reset Position</value>
+    <value>重設位置</value>
   </data>
   <data name="OsdSettings_General_SnapThreshold" xml:space="preserve">
     <value>Snapping Threshold</value>
@@ -2138,17 +2147,35 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>GPU 超頻</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
+    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>核心頻率偏移</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
+    <value>Adjust VRAM speed to modify memory bandwidth.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>記憶體頻率偏移</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
+    <value>超頻</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>GPU 超頻設定</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
+    <value>降壓</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
+    <value>Voltage Lock</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
+    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
+  </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
-    <value>Unlocking in {0}...</value>
+    <value>點擊 {0} 次後解鎖……</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
     <value>透過增加電壓超頻以提升內部顯示器反應速度。（可能會導致顯示器過衝產生鬼影）</value>
@@ -2309,7 +2336,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>秒</value>
   </data>
   <data name="PlatformAndCapabilities" xml:space="preserve">
-    <value>Platform &amp; Capabilities</value>
+    <value>平臺 &amp; 功能</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
     <value>支援像 wav 或 mp3 等音訊格式。</value>
@@ -2352,7 +2379,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>尚未連接電源供應器時，電源模式可能無法正確地的運作。</value>
   </data>
   <data name="PowerModes" xml:space="preserve">
-    <value>Power Modes</value>
+    <value>電源模式</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
     <value>當未連接電源供應器時無法啟用 {0}。</value>
@@ -2526,8 +2553,33 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="ScriptConsole_Output_Title" xml:space="preserve">
     <value>Output</value>
   </data>
+  <data name="ScriptConsole_Section_Elapsed" xml:space="preserve">
+    <value>Elapsed: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Section_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="ScriptConsole_Section_ReturnValue" xml:space="preserve">
+    <value>Return Value</value>
+  </data>
+  <data name="ScriptConsole_Status_Error" xml:space="preserve">
+    <value>Execution failed: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Ok" xml:space="preserve">
+    <value>Execution succeeded: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Running" xml:space="preserve">
+    <value>執行中……</value>
+  </data>
+  <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
+    <value>Unexpected error</value>
+  </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
     <value>Script Console</value>
+  </data>
+  <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
+    <value>Unexpected Error:
+{0}</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
     <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
@@ -2539,10 +2591,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Configure {0}</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Choose one or more quick actions to cycle through.</value>
+    <value>選擇一個或更多快速操作來循環執行。</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>No Quick Actions defined.</value>
+    <value>尚未定義快速操作。</value>
   </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
     <value>電量</value>
@@ -2704,7 +2756,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>已使用／總計記憶體 (GB)</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
-    <value>Serial number</value>
+    <value>序號</value>
   </data>
   <data name="Series" xml:space="preserve">
     <value>Series</value>
@@ -2713,10 +2765,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>設定</value>
   </data>
   <data name="SettingsBackupWindow_Backup" xml:space="preserve">
-    <value>Back Up</value>
+    <value>備份</value>
   </data>
   <data name="SettingsBackupWindow_BackupSuccess" xml:space="preserve">
-    <value>Backup completed successfully.</value>
+    <value>已成功地完成備份。</value>
   </data>
   <data name="SettingsBackupWindow_NoFilesSelected" xml:space="preserve">
     <value>未選取任何檔案。</value>
@@ -2725,7 +2777,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>No matching files found in selected folder.</value>
   </data>
   <data name="SettingsBackupWindow_Restore" xml:space="preserve">
-    <value>Restore</value>
+    <value>復原</value>
   </data>
   <data name="SettingsBackupWindow_RestoreConfirm" xml:space="preserve">
     <value>Restoring settings will overwrite your current configuration and restart the application. Do you want to continue?</value>
@@ -2746,10 +2798,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>主題色彩</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
-    <value>Keep the app window above all other windows.</value>
+    <value>維持應用程式視窗位於所有其他視窗之上。</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
-    <value>Pin to Top</value>
+    <value>釘選到最上層</value>
   </data>
   <data name="SettingsPage_ArgumentWindow_Message" xml:space="preserve">
     <value>Open an argument window for convenient modification of arguments.</value>
@@ -2764,7 +2816,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>開機啟動</value>
   </data>
   <data name="SettingsPage_BackupSettings_Message" xml:space="preserve">
-    <value>Back up or restore application settings.</value>
+    <value>備份或復原應用程式設定。</value>
   </data>
   <data name="SettingsPage_BackupSettings_Title" xml:space="preserve">
     <value>備份設定</value>
@@ -2806,7 +2858,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>檢查</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
-    <value>Check now for the latest version.</value>
+    <value>立刻檢查最新版本。</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>正在檢查更新⋯⋯</value>
@@ -2833,10 +2885,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_CompactMode_Message" xml:space="preserve">
-    <value>Reduce visual clutter to fit more content on screen.</value>
+    <value>減少視覺干擾，以便在螢幕上顯示更多內容。</value>
   </data>
   <data name="SettingsPage_CompactMode_Title" xml:space="preserve">
-    <value>Compact Mode</value>
+    <value>緊湊模式</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Blur" xml:space="preserve">
     <value>Blur</value>
@@ -2955,7 +3007,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Use hardware acceleration for the user interface. This can improve performance and fluidity.</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Title" xml:space="preserve">
-    <value>Hardware Acceleration</value>
+    <value>硬體加速</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
     <value>Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off.</value>
@@ -2988,7 +3040,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>HWiNFO64</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Message" xml:space="preserve">
-    <value>Find undefined Fn hotkeys in LLT.</value>
+    <value>尋找在 LLT 中未被定義的 Fn 快速鍵。</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Title" xml:space="preserve">
     <value>Key Discovery</value>
@@ -3051,7 +3103,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>重設所有應用程式設定為預設。</value>
   </data>
   <data name="SettingsPage_ResetSettings_Title" xml:space="preserve">
-    <value>Reset Settings</value>
+    <value>重設設定</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>重新啟動以套用變更</value>
@@ -3108,19 +3160,19 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>設定</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
-    <value>Choose between stable, beta and dev releases.</value>
+    <value>選擇穩定版、公開測試版、開發版版本。</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>更新通道</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
-    <value>Choose how often to check for new versions.</value>
+    <value>選擇檢查新版本的頻率。</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
     <value>Update Frequency</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
-    <value>Choose how updates are downloaded and installed.</value>
+    <value>選擇如何下載和安裝更新。</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>更新途徑</value>
@@ -3162,19 +3214,22 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>使用 Fn+Q 切換到客製化模式</value>
   </data>
   <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
+    <value>顯示 Lenovo Legion 工具套件</value>
   </data>
   <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
+    <value>顯示應用程式</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
-    <value>Show less</value>
+    <value>顯示較少</value>
   </data>
   <data name="ShowMore" xml:space="preserve">
-    <value>Show more</value>
+    <value>顯示更多</value>
   </data>
   <data name="Slot" xml:space="preserve">
-    <value>Slot</value>
+    <value>插槽</value>
+  </data>
+  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
+    <value>Settings applied successfully.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>當開啟靜音後，所有活動的音訊輸出裝置都將會被靜音。</value>
@@ -3189,16 +3244,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>喇叭音量</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery" xml:space="preserve">
-    <value>Key Discovery</value>
+    <value>按鍵探索</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
     <value>Find key that is not defined in LLT.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
-    <value>Start</value>
+    <value>開始</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>停止</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
     <value>Description</value>
@@ -3216,13 +3271,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Hide {0} hidden keys</value>
   </data>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
-    <value>Show {0} hidden keys</value>
+    <value>顯示 {0} 個隱藏按鍵</value>
   </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
     <value>(Driver)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
-    <value>Key {0}</value>
+    <value>按鍵 {0}</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>調整鍵盤背光亮度。</value>
@@ -3345,7 +3400,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>{0} 區</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start date</value>
+    <value>開始日期</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
     <value>電池</value>
@@ -3387,16 +3442,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>系統風扇</value>
   </data>
   <data name="Storage" xml:space="preserve">
-    <value>Storage</value>
+    <value>儲存裝置</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>選擇圖示</value>
   </data>
   <data name="TextColor" xml:space="preserve">
-    <value>Text color</value>
+    <value>文字色彩</value>
   </data>
   <data name="Threads" xml:space="preserve">
-    <value>Threads</value>
+    <value>執行緒</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
     <value>日出</value>
@@ -3461,10 +3516,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>發生了非預期的例外狀況：</value>
   </data>
   <data name="Unhide" xml:space="preserve">
-    <value>Unhide</value>
+    <value>取消隱藏</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>未知</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>未命名</value>
@@ -3508,16 +3563,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>有什麼新功能？</value>
   </data>
   <data name="Used" xml:space="preserve">
-    <value>Used</value>
+    <value>已使用</value>
   </data>
   <data name="Valid" xml:space="preserve">
-    <value>Valid</value>
+    <value>有效</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>警告</value>
   </data>
   <data name="Warranty" xml:space="preserve">
-    <value>Warranty</value>
+    <value>保固</value>
   </data>
   <data name="Watt" xml:space="preserve">
     <value>W</value>
