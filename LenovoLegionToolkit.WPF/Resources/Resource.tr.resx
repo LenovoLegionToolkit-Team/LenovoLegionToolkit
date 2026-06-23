@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -167,7 +167,7 @@
     <value>Ekle</value>
   </data>
   <data name="AddAutomationStepWindow_MultipleSteps" xml:space="preserve">
-    <value>Multiple steps...</value>
+    <value>Birden fazla adım...</value>
   </data>
   <data name="AddAutomationStepWindow_Title" xml:space="preserve">
     <value>Adım ekle</value>
@@ -176,7 +176,7 @@
     <value>Yeni ekle</value>
   </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Airplane mode</value>
+    <value>Uçak modu</value>
   </data>
   <data name="AlwaysOnUsbAutomationStepControl_Message" xml:space="preserve">
     <value>Bilgisayar kapalı, uyku veya hazırda bekletme modundayken USB cihazlarını şarj edin.</value>
@@ -197,7 +197,7 @@
     <value>Allow in all power modes</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options even when running on battery power.</value>
+    <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
     <value>Allow on battery</value>
@@ -227,10 +227,10 @@
     <value>EDC VDD</value>
   </data>
   <data name="AmdOverclocking_Enable_Message" xml:space="preserve">
-    <value>Enable AMD overclocking features.</value>
+    <value>AMD overclock özelliklerini etkinleştir.</value>
   </data>
   <data name="AmdOverclocking_Enable_Title" xml:space="preserve">
-    <value>Enable AMD Overclocking</value>
+    <value>AMD Overclock'u Etkinleştir</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
     <value>Maksimum CPU boost frekansını geçersiz kılma (MHz)</value>
@@ -456,7 +456,7 @@ Yalnızca mevcut durumla eşleşen eylemler çalışacaktır.</value>
     <value>Ayrıcalıklı</value>
   </data>
   <data name="AutomationPipelineControl_Exclusive_ToolTip" xml:space="preserve">
-    <value>When checked, stops further automations from running after this one.</value>
+    <value>Bu seçenek işaretlendiğinde, bu otomasyondan sonra diğer otomasyonların çalışması durdurulur.</value>
   </data>
   <data name="AutomationPipelineControl_Running" xml:space="preserve">
     <value>Çalışıyor...</value>
@@ -503,6 +503,9 @@ Yalnızca mevcut durumla eşleşen eylemler çalışacaktır.</value>
   <data name="AutomationPipelineControl_SubtitlePart_AtTime" xml:space="preserve">
     <value>{0:D2}:{1:D2}:{2:D2}</value>
   </data>
+  <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
+    <value>GPU Çalışma Modu</value>
+  </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
     <value>Güç Kipi</value>
   </data>
@@ -515,8 +518,11 @@ Yalnızca mevcut durumla eşleşen eylemler çalışacaktır.</value>
   <data name="AutomationPipelineTriggerConfigurationWindow_Title" xml:space="preserve">
     <value>Yapılandır</value>
   </data>
+  <data name="Automation_SupportedAvailableCount" xml:space="preserve">
+    <value>Desteklenen: {0} / Mevcut: {1}</value>
+  </data>
   <data name="Back" xml:space="preserve">
-    <value>Back</value>
+    <value>Geri</value>
   </data>
   <data name="BalanceModeSettingsWindow_AIEngine_Message" xml:space="preserve">
     <value>Belirli oyunların ne zaman çalıştığını otomatik olarak algılar ve CPU ve GPU performansını düzenler. Sıcaklıklar ve fan sesi artabilir.</value>
@@ -612,7 +618,7 @@ Yalnızca mevcut durumla eşleşen eylemler çalışacaktır.</value>
     <value>Tam şarj kapasitesi</value>
   </data>
   <data name="BatteryPage_LiveCharge_Title" xml:space="preserve">
-    <value>Current charge</value>
+    <value>Mevcut şarj</value>
   </data>
   <data name="BatteryPage_LowLevel" xml:space="preserve">
     <value>Düşük pil seviyesi</value>
@@ -649,16 +655,16 @@ Dizüstü bilgisayar uyurken veya kapalıyken şarj edildiyse bu süre doğru ol
     <value>Pil</value>
   </data>
   <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Above" xml:space="preserve">
-    <value>Goes above</value>
+    <value>Üstüne çıkar</value>
   </data>
   <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Below" xml:space="preserve">
-    <value>Goes below</value>
+    <value>Aşağıya iner</value>
   </data>
   <data name="BatteryPercentageAutomationPipelineTriggerTabItemContent_Percentage" xml:space="preserve">
-    <value>Percentage</value>
+    <value>Yüzde</value>
   </data>
   <data name="BiosVersion" xml:space="preserve">
-    <value>BIOS version</value>
+    <value>BIOS sürümü</value>
   </data>
   <data name="BootLogoWindow_Customize" xml:space="preserve">
     <value>Özelleştir</value>
@@ -722,10 +728,10 @@ Desteklenen biçimler: {1}.</value>
     <value>Kapat</value>
   </data>
   <data name="CloseAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Close the Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit'i Kapat</value>
   </data>
   <data name="CloseAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Close App</value>
+    <value>Uygulamayı kapat</value>
   </data>
   <data name="Color_Blue" xml:space="preserve">
     <value>Mavi</value>
@@ -737,7 +743,7 @@ Desteklenen biçimler: {1}.</value>
     <value>Kırmızı</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
+    <value>Bilgisayarınızın kullanım şekline ve güç koşullarına göre GPU çalışma modunu seçin.</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Çalışma Modu</value>
@@ -771,7 +777,7 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
     <value>Tümünü kopyala</value>
   </data>
   <data name="Cores" xml:space="preserve">
-    <value>Cores</value>
+    <value>Çekirdekler</value>
   </data>
   <data name="CPU" xml:space="preserve">
     <value>CPU</value>
@@ -783,13 +789,13 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
     <value>Eylem Oluştur</value>
   </data>
   <data name="Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>Özelleştir</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Cycle through available Custom Mode presets.</value>
+    <value>Mevcut Özel Mod ön ayarları arasında geçiş yapın.</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Cycle Custom Mode preset</value>
+    <value>Özel Mod ön ayarları arasında geçiş yapın</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>AC Bağlı</value>
@@ -816,10 +822,10 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
     <value>Ana Sayfa</value>
   </data>
   <data name="DaysRemaining" xml:space="preserve">
-    <value>Days remaining</value>
+    <value>Kalan günler</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Disable discrete GPU if it is active unnecessarily.</value>
+    <value>Gerekmedikçe ayrık GPU'yu devre dışı bırakın.</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Pasifleştir</value>
@@ -837,7 +843,7 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
     <value>Sil</value>
   </data>
   <data name="Device" xml:space="preserve">
-    <value>Device</value>
+    <value>Cihaz</value>
   </data>
   <data name="DeviceAutomationPipelineTriggerTabItemContent_OnlyConnected" xml:space="preserve">
     <value>Yalnızca bağlı cihazları göster</value>
@@ -867,7 +873,7 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
     <value>Pasifleştir</value>
   </data>
   <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
-    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+    <value>Grafik tercihlerini değiştirerek aktif işlemleri yönetin, sağ tıklayarak bunları zorla sonlandırın veya gelişmiş ayarları ayarlayın.</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>İşlemi Zorla Sonlandır</value>
@@ -876,19 +882,19 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
     <value>Grafik Tercihleri</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
-    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+    <value>Takılmaları önlemek için harici GPU ile aktif bir bağlantı kurar.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
-    <value>This increases power consumption and reduces battery life.</value>
+    <value>Bu, güç tüketimini artırır ve pil ömrünü kısaltır.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
-    <value>Keep dGPU awake</value>
+    <value>dGPU’yu uyanık tut</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Uygulamaları kapat</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the apps list after terminating a process.</value>
+    <value>Bir işlemi sonlandırdıktan sonra uygulama listesinin yenilenmesi için geçen bekleme süresi.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Zorla Sonlandırma Yenileme Gecikmesi</value>
@@ -915,7 +921,7 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
     <value>Bilinmeyen</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>How often to check the discrete GPU for active processes.</value>
+    <value>Harici GPU’da aktif işlemlerin ne sıklıkla kontrol edileceği.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Yoklama Aralığı</value>
@@ -936,7 +942,7 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
     <value>GPU'yu yeniden başlat</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Wait time before starting the discrete GPU monitoring service.</value>
+    <value>Harici GPU izleme hizmetinin başlatılmasından önceki bekleme süresi.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>Başlatma Gecikmesi</value>
@@ -945,39 +951,39 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
     <value>Harici GPU</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Message" xml:space="preserve">
-    <value>Change display brightness of the built-in display.</value>
+    <value>Dahili ekranın parlaklığını değiştirin.</value>
   </data>
   <data name="DisplayBrightnessAutomationStepControl_Title" xml:space="preserve">
     <value>Ekran parlaklığı</value>
   </data>
   <data name="Displays" xml:space="preserve">
-    <value>Displays</value>
+    <value>Ekranlar</value>
   </data>
   <data name="DonatePage_Bartosz_Description" xml:space="preserve">
-    <value>Bartosz created Lenovo Legion Toolkit and authored the foundational architecture that powers every feature in the application today.</value>
+    <value>Bartosz, Lenovo Legion Toolkit'i geliştirdi ve bugün uygulamadaki tüm özelliklerin temelini oluşturan mimariyi tasarladı.</value>
   </data>
   <data name="DonatePage_Bartosz_Role" xml:space="preserve">
-    <value>Original Creator</value>
+    <value>Orijinal Yaratıcı</value>
   </data>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
-    <value>Even if you can't donate, simply using, sharing, and starring the project on GitHub goes a long way. Every bit of support is genuinely appreciated</value>
+    <value>Bağış yapamasanız bile, GitHub'da bu projeyi kullanmak, paylaşmak ve yıldızlamak bile büyük bir katkı sağlar. Her türlü desteğiniz için içtenlikle teşekkür ederiz</value>
   </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
-    <value>Responsible for core feature development, quality assurance, UI/UX design, and overall project direction as the current project lead.</value>
+    <value>Mevcut proje lideri olarak temel özelliklerin geliştirilmesinden, kalite güvencesinden, UI/UX tasarımından ve projenin genel yönlendirilmesinden sorumlu.</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
-    <value>Core Developer &amp; Project Lead</value>
+    <value>Ana Geliştirici ve Proje Lideri</value>
   </data>
   <data name="DonatePage_Kaguya_Description" xml:space="preserve">
-    <value>Specializes in hardware research and reverse engineering, with contributions spanning core feature development and low-level system integration.</value>
+    <value>Donanım araştırması ve tersine mühendislik alanlarında uzmanlaşmış olup, temel özelliklerin geliştirilmesinden düşük seviyeli sistem entegrasyonuna kadar geniş bir yelpazede katkılarda bulunmaktadır.</value>
   </data>
   <data name="DonatePage_Kaguya_Role" xml:space="preserve">
-    <value>Core Developer &amp; Reverser</value>
+    <value>Ana Geliştirici ve Tersine Mühendislik Uzmanı</value>
   </data>
   <data name="DonatePage_Message" xml:space="preserve">
-    <value>Development and maintenance of Lenovo Legion Toolkit takes a lot of time and effort. If you enjoy using this software, you can support its future by sponsoring the authors who make it possible.
+    <value>Lenovo Legion Toolkit'in geliştirilmesi ve bakımı çok zaman ve emek gerektiriyor. Bu yazılımı kullanmaktan memnun kaldıysanız, bunu mümkün kılan geliştiricilere sponsor olarak yazılımın geleceğine destek olabilirsiniz.
 
-Thank you for your support!</value>
+Desteğiniz için teşekkür ederiz!</value>
   </data>
   <data name="DonatePage_Sponsor" xml:space="preserve">
     <value>Sponsor</value>
@@ -986,7 +992,7 @@ Thank you for your support!</value>
     <value>Bağış</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Message" xml:space="preserve">
-    <value>Change scaling of the built-in display.</value>
+    <value>Dahili ekranın ölçeğini değiştirin.</value>
   </data>
   <data name="DpiScaleAutomationStepControl_Title" xml:space="preserve">
     <value>DPI</value>
@@ -1025,7 +1031,7 @@ Thank you for your support!</value>
     <value>Sensörü Düzenle</value>
   </data>
   <data name="EndDate" xml:space="preserve">
-    <value>End date</value>
+    <value>Bitiş tarihi</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Hata</value>
@@ -1055,7 +1061,7 @@ Thank you for your support!</value>
     <value>Çıkış</value>
   </data>
   <data name="Expired" xml:space="preserve">
-    <value>Expired</value>
+    <value>Süresi dolmuş</value>
   </data>
   <data name="Export" xml:space="preserve">
     <value>Dışa Aktar</value>
@@ -1151,13 +1157,13 @@ Thank you for your support!</value>
     <value>GB</value>
   </data>
   <data name="Generation" xml:space="preserve">
-    <value>Generation</value>
+    <value>Nesil</value>
   </data>
   <data name="GHz" xml:space="preserve">
     <value>GHz</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Message" xml:space="preserve">
-    <value>Apply a specific Custom Mode preset.</value>
+    <value>Belirli bir Özel Mod ön ayarını uygulayın.</value>
   </data>
   <data name="GodModePresetAutomationStepControl_Title" xml:space="preserve">
     <value>Özel Mod Ön Ayarı</value>
@@ -1345,7 +1351,7 @@ Cidden, bu seçeneğe dikkat edin!</value>
     <value>GPU</value>
   </data>
   <data name="HardwareFeatures" xml:space="preserve">
-    <value>Hardware Features</value>
+    <value>Donanım Özellikleri</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Message" xml:space="preserve">
     <value>Donanım sensörleri için arka plan yoklamasını etkinleştirin veya devre dışı bırakın.</value>
@@ -1354,7 +1360,7 @@ Cidden, bu seçeneğe dikkat edin!</value>
     <value>Donanım Sensörleri</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
-    <value>Enable high dynamic range (HDR) on the built-in display.</value>
+    <value>Dahili ekranda yüksek dinamik aralığı (HDR) etkinleştirin.</value>
   </data>
   <data name="HDRAutomationStepControl_Title" xml:space="preserve">
     <value>HDR</value>
@@ -1378,10 +1384,10 @@ Cidden, bu seçeneğe dikkat edin!</value>
     <value>Hz</value>
   </data>
   <data name="Icon" xml:space="preserve">
-    <value>Icon</value>
+    <value>İkon</value>
   </data>
   <data name="IconColor" xml:space="preserve">
-    <value>Icon color</value>
+    <value>İkon rengi</value>
   </data>
   <data name="IGPUModeChangeException_Message" xml:space="preserve">
     <value>Beklenen sonucu görmezseniz, birkaç saniye içinde modu tekrar değiştirmeyi deneyin.
@@ -1453,22 +1459,22 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
     <value>Lenovo Vantage veya hizmetleri çalışıyor</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
-    <value>Add Custom Key</value>
+    <value>Özel Tuş Ekle</value>
   </data>
   <data name="KeyDiscovery_Added" xml:space="preserve">
-    <value>Added</value>
+    <value>Eklendi</value>
   </data>
   <data name="KeyDiscovery_CodeText" xml:space="preserve">
-    <value>Code: {0}</value>
+    <value>Kod: {0}</value>
   </data>
   <data name="KeyDiscovery_KnownKeyTooltip" xml:space="preserve">
-    <value>Known key</value>
+    <value>Bilinen tuş</value>
   </data>
   <data name="KeyDiscovery_Listening" xml:space="preserve">
-    <value>Listening for key presses... Press ESC to stop.</value>
+    <value>Tuş basışları için bekliyor... Durdurmak için ESC tuşuna basın.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Unknown key – can be added</value>
+    <value>Bilinmeyen tuş – eklenebilir</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambiyans</value>
@@ -1579,10 +1585,10 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
     <value>Yükle</value>
   </data>
   <data name="MacAddress" xml:space="preserve">
-    <value>MAC address</value>
+    <value>MAC adresi</value>
   </data>
   <data name="MachineType" xml:space="preserve">
-    <value>Machine Type</value>
+    <value>Cihaz Tipi</value>
   </data>
   <data name="MacroAutomationStepControl_Message" xml:space="preserve">
     <value>Makroları etkinleştir veya devre dışı bırak.</value>
@@ -1723,7 +1729,7 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
     <value>Model</value>
   </data>
   <data name="Motherboard" xml:space="preserve">
-    <value>Motherboard</value>
+    <value>Anakart</value>
   </data>
   <data name="MoveDown" xml:space="preserve">
     <value>Aşağı Taşı</value>
@@ -1739,7 +1745,7 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
     <value>Tümünü Eşleştir (Ve)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_None" xml:space="preserve">
-    <value>No Logic (Separate)</value>
+    <value>Mantıksız (Ayrı)</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
     <value>Herhangi birini eşleştir (Veya)</value>
@@ -1747,26 +1753,29 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
     <value>Mantık</value>
   </data>
+  <data name="mV" xml:space="preserve">
+    <value>mV</value>
+  </data>
   <data name="NetworkAdapters" xml:space="preserve">
-    <value>Network adapters</value>
+    <value>Ağ adaptörleri</value>
   </data>
   <data name="No" xml:space="preserve">
     <value>Hayır</value>
   </data>
   <data name="NotificationAutomationStepControl_NotificationText" xml:space="preserve">
-    <value>Notification Text (supports $RUN_OUTPUT$)</value>
+    <value>Bildirim Metni ($RUN_OUTPUT$ desteği vardır)</value>
   </data>
   <data name="NotificationAutomationStepControl_Title" xml:space="preserve">
     <value>Bildirimi göster</value>
   </data>
   <data name="NotificationAutomationStepControl_ToolTip" xml:space="preserve">
-    <value>You can use $RUN_OUTPUT$ to insert the output of the previous step dynamically.</value>
+    <value>$RUN_OUTPUT$ değişkenini kullanarak önceki adımın çıktısını dinamik olarak ekleyebilirsiniz.</value>
   </data>
   <data name="NotificationsSettingsWindow_ACAdapter" xml:space="preserve">
     <value>AC Adaptörü</value>
   </data>
   <data name="NotificationsSettingsWindow_AirplaneMode" xml:space="preserve">
-    <value>Airplane mode</value>
+    <value>Uçak modu</value>
   </data>
   <data name="NotificationsSettingsWindow_Automation" xml:space="preserve">
     <value>Eylemler</value>
@@ -1788,7 +1797,7 @@ Tam ekran uygulamalarda rahatsız oluyorsanız bu seçeneği etkinleştirin.</va
     <value>Fn Kilidi</value>
   </data>
   <data name="NotificationsSettingsWindow_ITSMode" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITS Modu</value>
   </data>
   <data name="NotificationsSettingsWindow_KeyboardBacklight" xml:space="preserve">
     <value>Klavye Işığı</value>
@@ -1816,7 +1825,7 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
     <value>Konum</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationType" xml:space="preserve">
-    <value>Name</value>
+    <value>İsim</value>
   </data>
   <data name="NotificationsSettingsWindow_NumLock" xml:space="preserve">
     <value>Num Lock</value>
@@ -1849,10 +1858,10 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
     <value>AC adaptörü bağlantısı kesildi</value>
   </data>
   <data name="Notification_AirplaneModeOff" xml:space="preserve">
-    <value>Airplane mode off</value>
+    <value>Uçak modu kapalı</value>
   </data>
   <data name="Notification_AirplaneModeOn" xml:space="preserve">
-    <value>Airplane mode on</value>
+    <value>Uçak modu açık</value>
   </data>
   <data name="Notification_CameraOff" xml:space="preserve">
     <value>Kamera kapalı</value>
@@ -1897,25 +1906,25 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
     <value>Port ışıkları açık</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightChanged" xml:space="preserve">
-    <value>RGB Changed</value>
+    <value>RGB Değiştirildi</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightOff" xml:space="preserve">
-    <value>RGB Off</value>
+    <value>RGB Kapalı</value>
   </data>
   <data name="Notification_SmartKeyDoublePress" xml:space="preserve">
-    <value>Double Press</value>
+    <value>Çift Basma</value>
   </data>
   <data name="Notification_SmartKeySinglePress" xml:space="preserve">
-    <value>Single Press</value>
+    <value>Tek Basma</value>
   </data>
   <data name="Notification_SpectrumBacklightChanged" xml:space="preserve">
-    <value>Spectrum Changed</value>
+    <value>Spektrum Değiştirildi</value>
   </data>
   <data name="Notification_SpectrumBacklightOff" xml:space="preserve">
-    <value>Spectrum Off</value>
+    <value>Spektrum Kapalı</value>
   </data>
   <data name="Notification_SpectrumBacklightPresetChanged" xml:space="preserve">
-    <value>Spectrum Preset</value>
+    <value>Spektrum Ön Ayarı</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Backlight" xml:space="preserve">
     <value>Arka ışık {0}</value>
@@ -1939,13 +1948,13 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
     <value>Arka ışık {0}</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightChanged" xml:space="preserve">
-    <value>White Changed</value>
+    <value>Beyaz Değiştirildi</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightOff" xml:space="preserve">
-    <value>White Off</value>
+    <value>Beyaz Kapalı</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
-    <value>Backlight changed</value>
+    <value>Arka ışık değiştirildi</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>Kapalı</value>
@@ -1975,10 +1984,10 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
     <value>Yüzen Gadget</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
-    <value>Set the lock position state of the OSD.</value>
+    <value>OSD'nin kilit konumunu ayarlayın.</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Title" xml:space="preserve">
-    <value>OSD Lock Position</value>
+    <value>OSD Kilit Konumu</value>
   </data>
   <data name="OsdSettings_Appearance_BackgroundColor" xml:space="preserve">
     <value>Arkaplan Rengi</value>
@@ -2128,7 +2137,7 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
     <value>Panel</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>Increase performance by overclocking discrete GPU.</value>
+    <value>Harici GPU'yu overclock yaparak performansı artırın.</value>
   </data>
   <data name="OverclockDiscreteGPUAutomationStepControl_Title" xml:space="preserve">
     <value>GPU Hız Aşırtma</value>
@@ -2139,17 +2148,35 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
   <data name="OverclockDiscreteGPUControl_Title" xml:space="preserve">
     <value>GPU Hız Aşırtma</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
+    <value>GPU çekirdek frekansını, fabrika ayarlarından daha hızlı veya daha yavaş çalışacak şekilde ayarlayın.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>Çekirdek Frekans Ofseti</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
+    <value>Bellek bant genişliğini değiştirmek için VRAM hızını ayarlayın.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>Bellek Frekans Ofseti</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
+    <value>Overclock Yapma</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>GPU Hız Aşırtma Ayarları</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
+    <value>Undervolt Yapma</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
+    <value>Voltaj Kilidi</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
+    <value>Mükemmel tutarlılıkta performans sağlamak için GPU voltajını ve frekansını sabitler.</value>
+  </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
-    <value>Unlocking in {0}...</value>
+    <value>{0}'de kilit açılıyor...</value>
   </data>
   <data name="OverDriveAutomationStepControl_Message" xml:space="preserve">
     <value>Yerleşik ekranın yanıt süresini iyileştirin.</value>
@@ -2310,7 +2337,7 @@ Daima doğru paketleri kurduğunuzdan emin olun.</value>
     <value>Saniye</value>
   </data>
   <data name="PlatformAndCapabilities" xml:space="preserve">
-    <value>Platform &amp; Capabilities</value>
+    <value>Platform ve Özellikler</value>
   </data>
   <data name="PlaySoundAutomationStepControl_Message" xml:space="preserve">
     <value>Wav veya mp3 gibi yaygın müzik biçimleri desteklenmektedir.</value>
@@ -2353,7 +2380,7 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Seçilen güç modu, AC adaptörü bağlı olmadan düzgün çalışmayabilir.</value>
   </data>
   <data name="PowerModes" xml:space="preserve">
-    <value>Power Modes</value>
+    <value>Güç Modları</value>
   </data>
   <data name="PowerModeUnavailableWithoutACException_Message" xml:space="preserve">
     <value>{0} güç modu, AC gücü olmadan kullanılamaz.</value>
@@ -2378,13 +2405,13 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>RAM</value>
   </data>
   <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
+    <value>Hazır</value>
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Yenile</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Message" xml:space="preserve">
-    <value>Change refresh rate of the built-in display.</value>
+    <value>Yerleşik ekranın yenileme hızını değiştirin.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Yenileme hızı</value>
@@ -2402,7 +2429,7 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Sıfırla</value>
   </data>
   <data name="ResolutionAutomationStepControl_Message" xml:space="preserve">
-    <value>Change resolution of the built-in display.</value>
+    <value>Yerleşik ekranın çözünürlüğünü değiştirin.</value>
   </data>
   <data name="ResolutionAutomationStepControl_Title" xml:space="preserve">
     <value>Çözünürlük</value>
@@ -2480,7 +2507,7 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>RPM</value>
   </data>
   <data name="Run" xml:space="preserve">
-    <value>Run</value>
+    <value>Çalıştır</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
     <value>Argümanlar</value>
@@ -2489,7 +2516,7 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Çalıştıralabilirin Konumu</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Run a script or a program.</value>
+    <value>Bir komut dosyasını veya programı çalıştırın.</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Örneği Kontrol Et</value>
@@ -2522,13 +2549,38 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Kaydediliyor...</value>
   </data>
   <data name="ScriptConsole_Code_Title" xml:space="preserve">
-    <value>Code Block</value>
+    <value>Kod Bloğu</value>
   </data>
   <data name="ScriptConsole_Output_Title" xml:space="preserve">
-    <value>Output</value>
+    <value>Çıktı</value>
+  </data>
+  <data name="ScriptConsole_Section_Elapsed" xml:space="preserve">
+    <value>Geçen süre: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Section_Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="ScriptConsole_Section_ReturnValue" xml:space="preserve">
+    <value>Dönüş Değeri</value>
+  </data>
+  <data name="ScriptConsole_Status_Error" xml:space="preserve">
+    <value>Yürütme başarısız: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Ok" xml:space="preserve">
+    <value>Yürütme başarılı: {0} ms</value>
+  </data>
+  <data name="ScriptConsole_Status_Running" xml:space="preserve">
+    <value>Çalışıyor...</value>
+  </data>
+  <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
+    <value>Beklenmedik hata</value>
   </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>Komut Dosyası Konsolu</value>
+  </data>
+  <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
+    <value>Beklenmedik Hata:
+{0}</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
     <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
@@ -2537,13 +2589,13 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>{0}sn</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_Configure_Title" xml:space="preserve">
-    <value>Configure {0}</value>
+    <value>{0}'ı yapılandır</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Description" xml:space="preserve">
-    <value>Choose one or more quick actions to cycle through.</value>
+    <value>Geçiş yapmak için bir veya daha fazla hızlı eylemi seçin.</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Empty" xml:space="preserve">
-    <value>No Quick Actions defined.</value>
+    <value>Hızlı Eylem tanımlanmadı.</value>
   </data>
   <data name="SensorItem_BatteryLevel" xml:space="preserve">
     <value>Pil Seviyesi</value>
@@ -2705,10 +2757,10 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Kullanılan/Toplam Bellek (GB)</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
-    <value>Serial number</value>
+    <value>Seri numarası</value>
   </data>
   <data name="Series" xml:space="preserve">
-    <value>Series</value>
+    <value>Seri</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Ayarlar</value>
@@ -2747,16 +2799,16 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Renk</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Message" xml:space="preserve">
-    <value>Keep the app window above all other windows.</value>
+    <value>Uygulama penceresini diğer tüm pencerelerin üzerinde tut.</value>
   </data>
   <data name="SettingsPage_AlwaysOnTop_Title" xml:space="preserve">
-    <value>Pin to Top</value>
+    <value>En üste sabitle</value>
   </data>
   <data name="SettingsPage_ArgumentWindow_Message" xml:space="preserve">
     <value>Argümanları kolayca değiştirmek için bir argüman penceresi açın.</value>
   </data>
   <data name="SettingsPage_ArgumentWindow_Title" xml:space="preserve">
-    <value>Arguments</value>
+    <value>Argümanlar</value>
   </data>
   <data name="SettingsPage_Autorun_Message" xml:space="preserve">
     <value>Windows'ta oturum açtığınızda küçültülmüş halde başlatın.</value>
@@ -2807,7 +2859,7 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Denetle</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Message" xml:space="preserve">
-    <value>Check now for the latest version.</value>
+    <value>En son sürümü şimdi kontrol edin.</value>
   </data>
   <data name="SettingsPage_CheckUpdates_Started_Title" xml:space="preserve">
     <value>Güncelleme denetleniyor...</value>
@@ -2834,28 +2886,28 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Bu seçeneği değiştirdikten sonra yeniden başlatmanız önerilir.</value>
   </data>
   <data name="SettingsPage_CompactMode_Message" xml:space="preserve">
-    <value>Reduce visual clutter to fit more content on screen.</value>
+    <value>Görsel karmaşayı azaltarak ekrana daha fazla içerik sığdırın.</value>
   </data>
   <data name="SettingsPage_CompactMode_Title" xml:space="preserve">
-    <value>Compact Mode</value>
+    <value>Kompakt Mod</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Blur" xml:space="preserve">
-    <value>Blur</value>
+    <value>Bulanıklık</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Dim" xml:space="preserve">
-    <value>Dim</value>
+    <value>Karartma</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Message" xml:space="preserve">
     <value>Özel Arkaplan Resmi</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Crop" xml:space="preserve">
-    <value>Crop</value>
+    <value>Kırp</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Fill" xml:space="preserve">
-    <value>Fill</value>
+    <value>Doldur</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Stretch_Fit" xml:space="preserve">
-    <value>Fit</value>
+    <value>Sığdır</value>
   </data>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Özel Arkaplan Resmi</value>
@@ -2989,10 +3041,10 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>HWiNFO64</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Message" xml:space="preserve">
-    <value>Find undefined Fn hotkeys in LLT.</value>
+    <value>LLT'de tanımlanmamış Fn kısayol tuşlarını bulun.</value>
   </data>
   <data name="SettingsPage_Key_Discovery_Title" xml:space="preserve">
-    <value>Key Discovery</value>
+    <value>Klavye Tuş Keşfi</value>
   </data>
   <data name="SettingsPage_Language_Message" xml:space="preserve">
     <value>Dil seçin.</value>
@@ -3037,7 +3089,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>OSD'yi Etkinleştir</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
-    <value>ITS Mode natively synchronizes power settings, so overriding it here may cause conflicts.</value>
+    <value>ITS Modu, güç ayarlarını varsayılan olarak senkronize eder; bu nedenle bu ayarı burada geçersiz kılmak çakışmalara neden olabilir.</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Message" xml:space="preserve">
     <value>Güç Modlarını değiştirirken Windows Güç Planını veya Windows Güç Modunu otomatik olarak değiştirin.</value>
@@ -3058,10 +3110,10 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Değişiklikleri uygulamak için yeniden başlatın.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
-    <value>Execute C# scripts in the application runtime.</value>
+    <value>Uygulama çalışma ortamında C# komut dosyalarını çalıştır.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>Komut Dosyası Konsolu</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
     <value>Tüm Dosyalar</value>
@@ -3082,7 +3134,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Akıllı Fn Kilidi</value>
   </data>
   <data name="SettingsPage_SmartKeys_Message" xml:space="preserve">
-    <value>Customize the Fn hotkeys.</value>
+    <value>Fn kısayol tuşlarını özelleştirin.</value>
   </data>
   <data name="SettingsPage_SmartKeys_Title" xml:space="preserve">
     <value>Akıllı Tuşlar</value>
@@ -3109,19 +3161,19 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Ayarlar</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Message" xml:space="preserve">
-    <value>Choose between stable, beta and dev releases.</value>
+    <value>Stabil, beta ve dev sürümleri arasından seçim yapın.</value>
   </data>
   <data name="SettingsPage_UpdateChannel_Title" xml:space="preserve">
     <value>Güncelleme Kanalı</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Message" xml:space="preserve">
-    <value>Choose how often to check for new versions.</value>
+    <value>Yeni sürümlerin olup olmadığını ne sıklıkla kontrol etmek istediğinizi seçin.</value>
   </data>
   <data name="SettingsPage_UpdateCheckFrequency_Title" xml:space="preserve">
-    <value>Update Frequency</value>
+    <value>Güncelleme Sıklığı</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Message" xml:space="preserve">
-    <value>Choose how updates are downloaded and installed.</value>
+    <value>Güncellemelerin nasıl indirileceğini ve kurulacağını seçin.</value>
   </data>
   <data name="SettingsPage_UpdateMethod_Title" xml:space="preserve">
     <value>Güncelleme Yöntemi</value>
@@ -3130,7 +3182,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Eski sensör gösterge paneli yerine yeni sensör gösterge panelini kullan.</value>
   </data>
   <data name="SettingsPage_UseNewSensorDashboard_Title" xml:space="preserve">
-    <value>New Sensor Dashboard</value>
+    <value>Yeni Sensör Gösterge Paneli</value>
   </data>
   <data name="SettingsPage_WindowBackdropType_Info" xml:space="preserve">
     <value>HDR modunda Snackbar Bildirimleri'nde görsel bozulmalar yaşıyorsanız, bunu “Yok” olarak ayarlayın.</value>
@@ -3163,19 +3215,22 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Fn+Q ile Özel Moda geçin</value>
   </data>
   <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Show the Lenovo Legion Toolkit</value>
+    <value>Lenovo Legion Toolkit'i Göster</value>
   </data>
   <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Show App</value>
+    <value>Uygulamayı Göster</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
-    <value>Show less</value>
+    <value>Daha az göster</value>
   </data>
   <data name="ShowMore" xml:space="preserve">
-    <value>Show more</value>
+    <value>Daha fazla göster</value>
   </data>
   <data name="Slot" xml:space="preserve">
     <value>Slot</value>
+  </data>
+  <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
+    <value>Ayarlar başarıyla uygulandı.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Sessize alındığında tüm aktif ses çıkış cihazlarının sesi kapatılacaktır.</value>
@@ -3190,40 +3245,40 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Hoparlör Ses Seviyesi</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery" xml:space="preserve">
-    <value>Key Discovery</value>
+    <value>Klavye Tuş Keşfi</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
     <value>Find key that is not defined in LLT.</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
-    <value>Start</value>
+    <value>Başla</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Dur</value>
   </data>
   <data name="SpecialKeyDetail_Description" xml:space="preserve">
     <value>Description</value>
   </data>
   <data name="SpecialKeyDetail_Mode" xml:space="preserve">
-    <value>Mode</value>
+    <value>Mod</value>
   </data>
   <data name="SpecialKeyDetail_Mode_Description" xml:space="preserve">
-    <value>Choose how this key responds when pressed.</value>
+    <value>Bu tuşa basıldığında nasıl tepki vereceğini seçin.</value>
   </data>
   <data name="SpecialKeysWindow_Description" xml:space="preserve">
-    <value>Assign custom Quick Actions to Fn keys. Each key can override its default behavior with a custom pipeline. Right-click any key to hide it from this list.</value>
+    <value>Fn tuşlarına özel Hızlı Eylemler atayın. Her tuş, özel bir iş akışıyla varsayılan davranışını geçersiz kılabilir. Herhangi bir tuşu sağ tıklayarak bu listeden gizleyebilirsiniz.</value>
   </data>
   <data name="SpecialKeysWindow_HideHiddenKeys" xml:space="preserve">
-    <value>Hide {0} hidden keys</value>
+    <value>{0} gizli anahtarı gizle</value>
   </data>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
-    <value>Show {0} hidden keys</value>
+    <value>{0} gizli anahtarı göster</value>
   </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
-    <value>(Driver)</value>
+    <value>(Sürücü)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
-    <value>Key {0}</value>
+    <value>{0} anahtarı</value>
   </data>
   <data name="SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message" xml:space="preserve">
     <value>Klavye ışık seviyesini ayarlayın.</value>
@@ -3346,7 +3401,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>{0} bölge</value>
   </data>
   <data name="StartDate" xml:space="preserve">
-    <value>Start date</value>
+    <value>Başlangıç tarihi</value>
   </data>
   <data name="StatusTrayPopup_Battery" xml:space="preserve">
     <value>Pil</value>
@@ -3388,13 +3443,13 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Sistem Fanı</value>
   </data>
   <data name="Storage" xml:space="preserve">
-    <value>Storage</value>
+    <value>Depolama</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Simge seç</value>
   </data>
   <data name="TextColor" xml:space="preserve">
-    <value>Text color</value>
+    <value>Yazı rengi</value>
   </data>
   <data name="Threads" xml:space="preserve">
     <value>Threads</value>
@@ -3409,7 +3464,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Zaman</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Allow switching between integrated and discrete GPU.</value>
+    <value>Dahili ve harici GPU arasında geçişe izin verin.</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>Hibrit Modu</value>
@@ -3462,10 +3517,10 @@ Fareyi hareket ettirmek veya klavyeye basmak ekranları uyandırır.</value>
     <value>Beklenmeyen bir istisna oluştu:</value>
   </data>
   <data name="Unhide" xml:space="preserve">
-    <value>Unhide</value>
+    <value>Gizlemeyi kaldır</value>
   </data>
   <data name="Unknown" xml:space="preserve">
-    <value>Unknown</value>
+    <value>Bilinmeyen</value>
   </data>
   <data name="Unnamed" xml:space="preserve">
     <value>Adsız</value>
@@ -3509,16 +3564,16 @@ Devam etmeyi seçerseniz, kayıt etme otomatik olarak etkinleştirilecektir.</va
     <value>Yenilikler nedir?</value>
   </data>
   <data name="Used" xml:space="preserve">
-    <value>Used</value>
+    <value>Kullanılıyor</value>
   </data>
   <data name="Valid" xml:space="preserve">
-    <value>Valid</value>
+    <value>Geçerli</value>
   </data>
   <data name="Warning" xml:space="preserve">
     <value>Uyarı</value>
   </data>
   <data name="Warranty" xml:space="preserve">
-    <value>Warranty</value>
+    <value>Garanti</value>
   </data>
   <data name="Watt" xml:space="preserve">
     <value>W</value>
@@ -3563,7 +3618,7 @@ Devam etmeyi seçerseniz, kayıt etme otomatik olarak etkinleştirilecektir.</va
     <value>Windows Güç Planları</value>
   </data>
   <data name="WindowsPowerPlan_Title" xml:space="preserve">
-    <value>Windows Power Plan</value>
+    <value>Windows Güç Planı</value>
   </data>
   <data name="WinKeyAutomationStepControl_Message" xml:space="preserve">
     <value>Dahili klavyedeki Windows tuşunu devre dışı bırakın.</value>
