@@ -295,7 +295,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Apply Curve Optimizer and FMax even when running on battery power. 的本地化字符串。
+        ///   查找类似 Apply Curve Optimizer and advanced options even when running on battery power. 的本地化字符串。
         /// </summary>
         public static string AmdOverclocking_AllowOnBattery_Message {
             get {
