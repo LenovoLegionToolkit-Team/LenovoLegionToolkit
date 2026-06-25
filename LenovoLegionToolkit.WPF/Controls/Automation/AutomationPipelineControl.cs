@@ -469,6 +469,12 @@ public class AutomationPipelineControl : UserControl
             result += $" | {direction.ToLower()} {bt.Percentage}%";
         }
 
+        if (AutomationPipeline.Trigger is AndAutomationPipelineTrigger)
+            result += $" | {Resource.MultipleTriggersAutomationPipelineTrigger_Logic_And}";
+
+        if (AutomationPipeline.Trigger is OrAutomationPipelineTrigger)
+            result += $" | {Resource.MultipleTriggersAutomationPipelineTrigger_Logic_Or}";
+
         return result;
     }
 
