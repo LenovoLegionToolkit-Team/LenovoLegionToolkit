@@ -33,12 +33,12 @@ public class PrecisionTouchpadLockFeature : IFeature<TouchpadLockState>
         using var key = Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\PrecisionTouchPad\Status", false);
         
         object? value = key?.GetValue("Enabled");
-        if (value != null)
+        if (value is int enabled && enabled != 0)
         {
-            return (TouchpadLockState)value;
+            return TouchpadLockState.Off;
         }
 
-        return TouchpadLockState.Off;
+        return TouchpadLockState.On;
     }
 
     public async Task<TouchpadLockState[]> GetAllStatesAsync()
