@@ -110,23 +110,23 @@ LLT работает оптимально в фоновом режиме. Пер
 #### Проблемы с .NET?
 
 Если установщик LLT не настроил .NET корректно:
-1. Перейдите на [https://dotnet.microsoft.com/en-us/download/dotnet/9.0](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+1. Перейдите на [https://dotnet.microsoft.com/en-us/download/dotnet/10.0](https://dotnet.microsoft.com/en-us/download/dotnet/10.0)
 2. Найдите раздел «.NET Desktop Runtime»
 3. Скачайте установщик x64 для Windows
 4. Запустите установщик
 
 > [!NOTE] 📌 Примечание
-> При установке через Scoop .NET 9 должен установиться автоматически как зависимость. В случае ошибок выполните `scoop update` и переустановите LLT с флагом `--force`.
+> При установке через Scoop .NET 10 должен установиться автоматически как зависимость. В случае ошибок выполните `scoop update` и переустановите LLT с флагом `--force`.
 
 После этого откройте Терминал и введите: `dotnet --info`. В выводе найдите раздел `.NET runtimes installed`. Вы должны увидеть строки вида:
 
-`Microsoft.NETCore.App 9.0.0 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]`
+`Microsoft.NETCore.App 10.0.0 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]`
 
 и
 
-`Microsoft.WindowsDesktop.App 9.0.0 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]`
+`Microsoft.WindowsDesktop.App 10.0.0 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]`
 
-Точная версия может отличаться, но мажорная версия должна быть `9.x.x`. Если после этих шагов LLT всё ещё сообщает об ошибке .NET, проблема в конфигурации вашей системы, а не в утилите.
+Точная версия может отличаться, но мажорная версия должна быть `10.x.x`. Если после этих шагов LLT всё ещё сообщает об ошибке .NET, проблема в конфигурации вашей системы, а не в утилите.
 
 #### Хотите помочь с тестированием?
 

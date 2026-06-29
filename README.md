@@ -109,23 +109,23 @@ If you installed LLT on a clean Windows install, make sure to have necessary dri
 #### Problems with .NET?
 
 If for whatever reason LLT installer did not setup .NET properly:
-1. Go to https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+1. Go to https://dotnet.microsoft.com/en-us/download/dotnet/10.0
 2. Find section ".NET Desktop Runtime"
 3. Download x64 Windows installer
 4. Run the installer
 
 > [!NOTE]
-> If you installed LLT from Scoop, .NET 9 should have been installed automatically as a dependency. If anything fails, use `scoop update` to update all packages and try to reinstall LLT with `--force` argument.
+> If you installed LLT from Scoop, .NET 10 should have been installed automatically as a dependency. If anything fails, use `scoop update` to update all packages and try to reinstall LLT with `--force` argument.
 
 After following these steps, you can open Terminal and type: `dotnet --info`. In the output look for section `.NET runtimes installed`, in this section you should see something like:
 
-`Microsoft.NETCore.App 9.0.0 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]`
+`Microsoft.NETCore.App 10.0.0 [C:\Program Files\dotnet\shared\Microsoft.NETCore.App]`
 
 and
 
-`Microsoft.WindowsDesktop.App 9.0.0 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]`
+`Microsoft.WindowsDesktop.App 10.0.0 [C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App]`
 
-The exact version number can be different, but as long as it is `9.x.x` it should be fine. If after these steps LLT still shows an error on startup that .NET couldn't be found or similar, the problem is on your machine and not with LLT.
+The exact version number can be different, but as long as it is `10.x.x` it should be fine. If after these steps LLT still shows an error on startup that .NET couldn't be found or similar, the problem is on your machine and not with LLT.
 
 #### Want to help with testing?
 
