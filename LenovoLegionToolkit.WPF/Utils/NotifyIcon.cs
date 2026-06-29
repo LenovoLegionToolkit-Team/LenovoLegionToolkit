@@ -74,7 +74,7 @@ public class NotifyIcon : NativeWindow, IDisposable
         }
     }
 
-    public ContextMenu? ContextMenu { get; set; }
+    public System.Windows.Controls.ContextMenu? ContextMenu { get; set; }
 
     public event EventHandler? OnClick;
 

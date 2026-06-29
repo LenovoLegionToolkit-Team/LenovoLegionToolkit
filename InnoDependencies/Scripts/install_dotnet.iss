@@ -1,8 +1,8 @@
 #define DotNetPrettyName "Microsoft .NET Desktop Runtime"
-#define DotNetName "Microsoft.WindowsDesktop.App 9"
-#define DotNetVersion "9.0.13"
-#define DotNetURL "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/9.0.13/windowsdesktop-runtime-9.0.13-win-x64.exe"
-#define DotNetExeName "dotnet9.exe"
+#define DotNetName "Microsoft.WindowsDesktop.App 10"
+#define DotNetVersion "10.0.9"
+#define DotNetURL "https://builds.dotnet.microsoft.com/dotnet/WindowsDesktop/10.0.9/windowsdesktop-runtime-10.0.9-win-x64.exe"
+#define DotNetExeName "dotnet10.exe"
 #define DotNetExeArgs "/install /repair /passive /norestart"
 
 [Code]

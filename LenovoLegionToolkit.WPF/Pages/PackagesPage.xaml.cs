@@ -293,7 +293,7 @@ public partial class PackagesPage : IProgress<float>
         return location;
     }
 
-    private ContextMenu? GetContextMenu(Package package, IEnumerable<Package> packages)
+    private System.Windows.Controls.ContextMenu? GetContextMenu(Package package, IEnumerable<Package> packages)
     {
         if (_packageDownloaderSettings.Store.HiddenPackages.Contains(package.Id))
             return null;
@@ -325,7 +325,7 @@ public partial class PackagesPage : IProgress<float>
             Reload();
         };
 
-        var cm = new ContextMenu();
+        var cm = new System.Windows.Controls.ContextMenu();
         cm.Items.Add(hideMenuItem);
         cm.Items.Add(hideAllMenuItem);
         return cm;
