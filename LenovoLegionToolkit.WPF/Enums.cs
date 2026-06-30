@@ -89,31 +89,6 @@ public enum SensorGroupType
     Disk
 }
 
-public enum SensorItem
-{
-    CpuUtilization,
-    CpuFrequency,
-    CpuFanSpeed,
-    CpuTemperature,
-    CpuPower,
-    GpuUtilization,
-    GpuFrequency,
-    GpuFanSpeed,
-    GpuCoreTemperature,
-    GpuVramTemperature,
-    GpuTemperatures,
-    GpuPower,
-    PchFanSpeed,
-    PchTemperature,
-    BatteryState,
-    BatteryLevel,
-    MemoryUtilization,
-    MemoryTemperature,
-    Disk1Temperature,
-    Disk2Temperature,
-    GpuVramUtilization
-}
-
 public enum SnackbarType
 {
     Success,

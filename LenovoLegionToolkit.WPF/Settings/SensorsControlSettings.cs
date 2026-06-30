@@ -1,4 +1,5 @@
 using System.Linq;
+using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Settings;
 
 namespace LenovoLegionToolkit.WPF.Settings;

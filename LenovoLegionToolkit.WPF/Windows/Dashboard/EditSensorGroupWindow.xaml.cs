@@ -119,8 +119,7 @@ public partial class EditSensorGroupWindow
         _settings.Store.VisibleItems = selectedItems.ToArray();
         _settings.SynchronizeStore();
 
-        var libItems = Array.ConvertAll(_settings.Store.VisibleItems, x => (Lib.SensorItem)(int)x);
-        MessagingCenter.Publish(new DashboardElementChangedMessage(libItems));
+        MessagingCenter.Publish(new DashboardElementChangedMessage(_settings.Store.VisibleItems));
 
         Apply?.Invoke(this, EventArgs.Empty);
         Close();

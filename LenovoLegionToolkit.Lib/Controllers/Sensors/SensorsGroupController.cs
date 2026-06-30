@@ -165,13 +165,77 @@ public class SensorsGroupController : IDisposable
     private long _lastUpdateTick;
     private const int MIN_UPDATE_INTERVAL_MS = 100;
 
-    private readonly Dictionary<object, TimeSpan> _subscribers = [];
+    private readonly Dictionary<object, SensorSubscription> _subscribers = [];
     private CancellationTokenSource? _producerCts;
     private Task? _producerTask;
     public event Action<HardwareSensorSnapshot>? SensorsUpdated;
 
     private readonly GPUController _gpuController = IoCContainer.Resolve<GPUController>();
 
+    private readonly struct SensorSubscription(TimeSpan interval, HardwareUpdateScope scope)
+    {
+        public TimeSpan Interval { get; } = interval;
+        public HardwareUpdateScope Scope { get; } = scope;
+    }
+
+    private static readonly IDisposable NoOpDisposable = new LambdaDisposable(() => { });
+
+    private static readonly SensorItem[] CpuSensorItems = [SensorItem.CpuUtilization, SensorItem.CpuFrequency, SensorItem.CpuTemperature, SensorItem.CpuPower];
+    private static readonly SensorItem[] GpuSensorItems = [SensorItem.GpuUtilization, SensorItem.GpuFrequency, SensorItem.GpuCoreTemperature, SensorItem.GpuVramTemperature, SensorItem.GpuTemperatures, SensorItem.GpuPower, SensorItem.GpuVramUtilization];
+    private static readonly SensorItem[] MemorySensorItems = [SensorItem.MemoryUtilization, SensorItem.MemoryTemperature];
+    private static readonly SensorItem[] FansSensorItems = [SensorItem.CpuFanSpeed, SensorItem.GpuFanSpeed, SensorItem.PchFanSpeed, SensorItem.PchTemperature];
+    private static readonly SensorItem[] StorageSensorItems = [SensorItem.Disk1Temperature, SensorItem.Disk2Temperature];
+
+    private static readonly OsdItem[] CpuOsdItems = [OsdItem.CpuFrequency, OsdItem.CpuPCoreFrequency, OsdItem.CpuECoreFrequency, OsdItem.CpuUtilization, OsdItem.CpuTemperature, OsdItem.CpuPower];
+    private static readonly OsdItem[] GpuOsdItems = [OsdItem.GpuFrequency, OsdItem.GpuUtilization, OsdItem.GpuTemperature, OsdItem.GpuVramUtilization, OsdItem.GpuVramTemperature, OsdItem.GpuPower];
+    private static readonly OsdItem[] MemoryOsdItems = [OsdItem.MemoryUtilization, OsdItem.MemoryTemperature];
+    private static readonly OsdItem[] FansOsdItems = [OsdItem.CpuFan, OsdItem.GpuFan, OsdItem.PchTemperature, OsdItem.PchFan];
+    private static readonly OsdItem[] StorageOsdItems = [OsdItem.Disk1Temperature, OsdItem.Disk2Temperature];
+
+    public IDisposable Subscribe(TimeSpan interval, IEnumerable<SensorItem> items)
+    {
+        var scope = ComputeScopeFromSensorItems(items);
+        if (scope == HardwareUpdateScope.None)
+            return NoOpDisposable;
+        return Subscribe(interval, scope);
+    }
+
+    public IDisposable Subscribe(TimeSpan interval, IEnumerable<OsdItem> items)
+    {
+        var scope = ComputeScopeFromOsdItems(items);
+        if (scope == HardwareUpdateScope.None)
+            return NoOpDisposable;
+        return Subscribe(interval, scope);
+    }
+
+    public IDisposable Subscribe(TimeSpan interval, HardwareUpdateScope scope)
+    {
+        var key = new object();
+        Start(key, interval, scope);
+        return new LambdaDisposable(() => Stop(key));
+    }
+
+    private static HardwareUpdateScope ComputeScopeFromSensorItems(IEnumerable<SensorItem> items)
+    {
+        var set = items as HashSet<SensorItem> ?? new HashSet<SensorItem>(items);
+        return BuildHardwareUpdateScope(
+            hasCpu: set.Overlaps(CpuSensorItems),
+            hasGpu: set.Overlaps(GpuSensorItems),
+            hasMemory: set.Overlaps(MemorySensorItems),
+            hasFans: set.Overlaps(FansSensorItems),
+            hasStorage: set.Overlaps(StorageSensorItems));
+    }
+
+    private static HardwareUpdateScope ComputeScopeFromOsdItems(IEnumerable<OsdItem> items)
+    {
+        var set = items as HashSet<OsdItem> ?? new HashSet<OsdItem>(items);
+        return BuildHardwareUpdateScope(
+            hasCpu: set.Overlaps(CpuOsdItems),
+            hasGpu: set.Overlaps(GpuOsdItems),
+            hasMemory: set.Overlaps(MemoryOsdItems),
+            hasFans: set.Overlaps(FansOsdItems),
+            hasStorage: set.Overlaps(StorageOsdItems));
+    }
 
     public async Task<LibreHardwareMonitorInitialState> IsSupportedAsync()
     {
@@ -503,7 +567,7 @@ public class SensorsGroupController : IDisposable
     private Task? _activeUpdateTask;
     private readonly Lock _updateTaskLock = new();
 
-    public async Task UpdateAsync(bool force = false)
+    public async Task UpdateAsync(bool force = false, HardwareUpdateScope scope = HardwareUpdateScope.All)
     {
         if (_isResetting || !IsLibreHardwareMonitorInitialized()) return;
 
@@ -515,7 +579,7 @@ public class SensorsGroupController : IDisposable
         {
             if (_activeUpdateTask == null)
             {
-                _activeUpdateTask = PerformUpdateInternal(force);
+                _activeUpdateTask = PerformUpdateInternal(scope);
             }
             updateTask = _activeUpdateTask;
         }
@@ -524,15 +588,20 @@ public class SensorsGroupController : IDisposable
             await updateTask.ConfigureAwait(false);
     }
 
-    private async Task PerformUpdateInternal(bool force)
+    private async Task PerformUpdateInternal(HardwareUpdateScope scope)
     {
         try
         {
             var now = Environment.TickCount64;
+            _lastUpdateTick = now;
+
+            if (scope == HardwareUpdateScope.None)
+            {
+                return;
+            }
+
             var gpuState = await _gpuController.GetLastKnownStateAsync().ConfigureAwait(false);
             bool gpuInactive = IsGpuInActive(gpuState);
-
-            _lastUpdateTick = now;
 
             await Task.Run(() =>
             {
@@ -545,7 +614,7 @@ public class SensorsGroupController : IDisposable
                         foreach (var h in _hardware)
                         {
                             if (h == null) continue;
-                            if (gpuInactive && h.HardwareType == HardwareType.GpuNvidia) continue;
+                            if (!ShouldUpdateHardware(h, scope, gpuInactive)) continue;
                             try
                             {
                                 h.Update();
@@ -672,8 +741,13 @@ public class SensorsGroupController : IDisposable
                         }
 
                         double memMaxTemp = _memoryTempSensors.Count > 0 ? (double)(_memoryTempSensors.Max(s => s.Value) ?? 0) : INVALID_VALUE_DOUBLE;
-                        float t1 = _storageTempSensors.Count > 0 ? _storageTempSensors[0].Value ?? INVALID_VALUE_FLOAT : INVALID_VALUE_FLOAT;
-                        float t2 = _storageTempSensors.Count > 1 ? _storageTempSensors[1].Value ?? INVALID_VALUE_FLOAT : INVALID_VALUE_FLOAT;
+                        var ssdTemps = (INVALID_VALUE_FLOAT, INVALID_VALUE_FLOAT);
+                        if (Includes(scope, HardwareUpdateScope.Storage))
+                        {
+                            float t1 = _storageTempSensors.Count > 0 ? _storageTempSensors[0].Value ?? INVALID_VALUE_FLOAT : INVALID_VALUE_FLOAT;
+                            float t2 = _storageTempSensors.Count > 1 ? _storageTempSensors[1].Value ?? INVALID_VALUE_FLOAT : INVALID_VALUE_FLOAT;
+                            ssdTemps = (t1, t2);
+                        }
 
                         Snapshot = new HardwareSensorSnapshot
                         {
@@ -698,7 +772,7 @@ public class SensorsGroupController : IDisposable
                             MemUsed = memUsed,
                             MemTotal = memTotal,
                             MemMaxTemp = memMaxTemp,
-                            SsdTemps = (t1, t2)
+                            SsdTemps = ssdTemps
                         };
 
                         SensorsUpdated?.Invoke(Snapshot);
@@ -712,10 +786,7 @@ public class SensorsGroupController : IDisposable
         }
         finally
         {
-            lock (_updateTaskLock)
-            {
-                _activeUpdateTask = null;
-            }
+            _activeUpdateTask = null;
         }
     }
 
@@ -769,11 +840,13 @@ public class SensorsGroupController : IDisposable
     public bool IsGpuInActive(GPUState state) => state is GPUState.Inactive or GPUState.PoweredOff or GPUState.Unknown or GPUState.NvidiaGpuNotFound;
     public bool IsLibreHardwareMonitorInitialized() => InitialState is LibreHardwareMonitorInitialState.Initialized or LibreHardwareMonitorInitialState.Success;
 
-    public void Start(object subscriber, TimeSpan interval)
+    public void Start(object subscriber, TimeSpan interval) => Start(subscriber, interval, HardwareUpdateScope.All);
+
+    public void Start(object subscriber, TimeSpan interval, HardwareUpdateScope scope)
     {
         lock (_subscribers)
         {
-            _subscribers[subscriber] = interval;
+            _subscribers[subscriber] = new SensorSubscription(interval, scope);
             UpdateProducerLoop();
         }
     }
@@ -817,15 +890,17 @@ public class SensorsGroupController : IDisposable
         while (!token.IsCancellationRequested)
         {
             TimeSpan minInterval;
+            HardwareUpdateScope scope;
             lock (_subscribers)
             {
                 if (_subscribers.Count == 0) return;
-                minInterval = _subscribers.Values.Min();
+                minInterval = _subscribers.Values.Min(s => s.Interval);
+                scope = _subscribers.Values.Aggregate(HardwareUpdateScope.None, (current, s) => current | s.Scope);
             }
 
             try
             {
-                await UpdateAsync(true).ConfigureAwait(false);
+                await UpdateAsync(true, scope).ConfigureAwait(false);
 
                 await Task.Delay(minInterval, token).ConfigureAwait(false);
             }
@@ -840,6 +915,55 @@ public class SensorsGroupController : IDisposable
             }
         }
     }
+
+    private static bool ShouldUpdateHardware(IHardware hardware, HardwareUpdateScope scope, bool gpuInactive)
+    {
+        if (gpuInactive && hardware.HardwareType == HardwareType.GpuNvidia)
+            return false;
+
+        return hardware.HardwareType switch
+        {
+            HardwareType.Cpu => Includes(scope, HardwareUpdateScope.Cpu),
+            HardwareType.GpuAmd or HardwareType.GpuIntel or HardwareType.GpuNvidia => Includes(scope, HardwareUpdateScope.Gpu),
+            HardwareType.Memory => Includes(scope, HardwareUpdateScope.Memory),
+            HardwareType.Storage => Includes(scope, HardwareUpdateScope.Storage),
+            _ => false
+        };
+    }
+
+    public static HardwareUpdateScope BuildHardwareUpdateScope(bool hasCpu, bool hasGpu, bool hasMemory, bool hasFans, bool hasStorage)
+    {
+        var scope = HardwareUpdateScope.None;
+
+        if (hasCpu)
+        {
+            scope |= HardwareUpdateScope.Cpu;
+        }
+
+        if (hasGpu)
+        {
+            scope |= HardwareUpdateScope.Gpu;
+        }
+
+        if (hasMemory)
+        {
+            scope |= HardwareUpdateScope.Memory;
+        }
+
+        if (hasFans)
+        {
+            scope |= HardwareUpdateScope.Fans;
+        }
+
+        if (hasStorage)
+        {
+            scope |= HardwareUpdateScope.Storage;
+        }
+
+        return scope;
+    }
+
+    private static bool Includes(HardwareUpdateScope scope, HardwareUpdateScope flag) => (scope & flag) != 0;
 
     public void Dispose()
     {

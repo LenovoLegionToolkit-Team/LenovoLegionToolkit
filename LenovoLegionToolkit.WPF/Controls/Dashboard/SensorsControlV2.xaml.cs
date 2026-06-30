@@ -31,6 +31,7 @@ public partial class SensorsControlV2
     private readonly HardwareSensorSettings _hardwareSensorSettings = IoCContainer.Resolve<HardwareSensorSettings>();
     private readonly ApplicationSettings _applicationSettings = IoCContainer.Resolve<ApplicationSettings>();
     private readonly Lock _updateLock = new();
+    private IDisposable? _sensorSubscription;
     private readonly Task<string> _cpuNameTask;
     private Task<string>? _gpuNameTask;
     private readonly HashSet<SensorItem> _activeSensorItems = [];
@@ -94,6 +95,8 @@ public partial class SensorsControlV2
                     }
 
                     UpdateControlsVisibility();
+                    if (IsVisible && _applicationSettings.Store.EnableHardwareSensors)
+                        StartSensorUpdates();
                 }
             });
         });
@@ -104,14 +107,14 @@ public partial class SensorsControlV2
             {
                 if (message.State == HardwareSensorsState.Off)
                 {
-                    _sensorsGroupControllers.Stop(this);
+                    _sensorSubscription?.Dispose();
                     _sensorsGroupControllers.SensorsUpdated -= OnSensorsUpdated;
                     ClearAllSensorValues();
                 }
                 else if (IsVisible)
                 {
+                    StartSensorUpdates();
                     _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
-                    _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(_sensorsControlSettings.Store.SensorsRefreshIntervalSeconds));
                 }
             });
         });
@@ -161,7 +164,7 @@ public partial class SensorsControlV2
                 InitializeContextMenu();
                 if (IsVisible)
                 {
-                    _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(interval));
+                    StartSensorUpdates(interval);
                 }
             };
             ContextMenu.Items.Add(item);
@@ -197,14 +200,27 @@ public partial class SensorsControlV2
             if (!_applicationSettings.Store.EnableHardwareSensors)
                 return;
 
+            StartSensorUpdates();
             _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
-            _sensorsGroupControllers.Start(this, TimeSpan.FromSeconds(_sensorsControlSettings.Store.SensorsRefreshIntervalSeconds));
         }
         else
         {
-            _sensorsGroupControllers.Stop(this);
+            _sensorSubscription?.Dispose();
             _sensorsGroupControllers.SensorsUpdated -= OnSensorsUpdated;
         }
+    }
+
+    private void StartSensorUpdates(double? intervalSeconds = null)
+    {
+        _sensorSubscription?.Dispose();
+
+        if (!_applicationSettings.Store.EnableHardwareSensors)
+            return;
+
+        if (_activeSensorItems.Count == 0)
+            return;
+
+        _sensorSubscription = _sensorsGroupControllers.Subscribe(TimeSpan.FromSeconds(intervalSeconds ?? _sensorsControlSettings.Store.SensorsRefreshIntervalSeconds), _activeSensorItems);
     }
 
     private async void OnSensorsUpdated(HardwareSensorSnapshot snapshot)
