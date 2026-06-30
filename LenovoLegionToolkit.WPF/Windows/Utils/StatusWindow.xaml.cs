@@ -212,6 +212,7 @@ public partial class StatusWindow
     {
         if (IsVisible)
         {
+            _sensorsGroupController.SensorsUpdated -= OnSensorsUpdated;
             _sensorsGroupController.SensorsUpdated += OnSensorsUpdated;
 
             var refreshInterval = _settings.Store.UseNewSensorDashboard

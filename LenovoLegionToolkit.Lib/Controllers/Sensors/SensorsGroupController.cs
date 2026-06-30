@@ -194,6 +194,8 @@ public class SensorsGroupController : IDisposable
 
     public IDisposable Subscribe(TimeSpan interval, IEnumerable<SensorItem> items)
     {
+        if (items is null)
+            return NoOpDisposable;
         var scope = ComputeScopeFromSensorItems(items);
         if (scope == HardwareUpdateScope.None)
             return NoOpDisposable;
@@ -202,6 +204,8 @@ public class SensorsGroupController : IDisposable
 
     public IDisposable Subscribe(TimeSpan interval, IEnumerable<OsdItem> items)
     {
+        if (items is null)
+            return NoOpDisposable;
         var scope = ComputeScopeFromOsdItems(items);
         if (scope == HardwareUpdateScope.None)
             return NoOpDisposable;
@@ -786,7 +790,10 @@ public class SensorsGroupController : IDisposable
         }
         finally
         {
-            _activeUpdateTask = null;
+            lock (_updateTaskLock)
+            {
+                _activeUpdateTask = null;
+            }
         }
     }
 

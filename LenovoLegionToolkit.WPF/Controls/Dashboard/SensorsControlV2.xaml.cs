@@ -91,7 +91,7 @@ public partial class SensorsControlV2
 
                     foreach (var item in message.Items)
                     {
-                        _activeSensorItems.Add((SensorItem)(int)item);
+                        _activeSensorItems.Add(item);
                     }
 
                     UpdateControlsVisibility();
@@ -114,6 +114,7 @@ public partial class SensorsControlV2
                 else if (IsVisible)
                 {
                     StartSensorUpdates();
+                    _sensorsGroupControllers.SensorsUpdated -= OnSensorsUpdated;
                     _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
                 }
             });
@@ -201,6 +202,7 @@ public partial class SensorsControlV2
                 return;
 
             StartSensorUpdates();
+            _sensorsGroupControllers.SensorsUpdated -= OnSensorsUpdated;
             _sensorsGroupControllers.SensorsUpdated += OnSensorsUpdated;
         }
         else
