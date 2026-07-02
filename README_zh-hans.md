@@ -1,28 +1,68 @@
-<img height="128" align="left" src="assets/logo.png" alt="Logo">
+<div align="center">
+  <img height="128" src="assets/logo.png" alt="Lenovo Legion Toolkit Logo">
+  
+  # 拯救者工具箱 Lenovo Legion Toolkit
 
-# 拯救者工具箱 Lenovo Legion Toolkit
+  [![Build Status](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
+  [![Downloads](https://img.shields.io/github/downloads/LenovoLegionToolkit-Team/LenovoLegionToolkit/total?color=brightgreen)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases)
+  [![Translation Status](https://badges.crowdin.net/lenovolegiontoolkit-unofficial/localized.svg)](https://crowdin.com/project/lenovolegiontoolkit-unofficial)
+  [![Discord Official](https://img.shields.io/badge/Discord-Official-5865F2?logo=discord&logoColor=white)](https://discord.gg/TB3ER8ZVdt)
+  [![Discord Community](https://img.shields.io/badge/Discord-Legion%20Series-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/legionseries)
+  [![Discord Community](https://img.shields.io/badge/Discord-LOQ%20Series-5865F2?logo=discord&logoColor=white)](https://discord.gg/3GKzQtwdNf)
+</div>
 
-[![Build](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
-[![Downloads](https://img.shields.io/github/downloads/LenovoLegionToolkit-Team/LenovoLegionToolkit/total?color=brightgreen)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases)
-[![Crowdin](https://badges.crowdin.net/llt/localized.svg)](https://crowdin.com/project/llt)
-[![Join Discord](https://img.shields.io/discord/761178912230473768?label=Legion%20Series%20Discord)](https://discord.com/invite/legionseries)
-<a href="https://hellogithub.com/repository/dd55be3ac0c146208259f17b29d2162f" target="_blank"><img src="https://abroad.hellogithub.com/v1/widgets/recommend.svg?rid=dd55be3ac0c146208259f17b29d2162f&claim_uid=LBbuUlZqTIm1JAP&theme=small" alt="Featured｜HelloGitHub" /></a>
+## 🚨 项目状态通知
+
+> [!IMPORTANT]
+> - 本项目由 **LenovoLegionToolkit-Team** 积极维护
+> - 源仓库 [BartoszCichecki/LenovoLegionToolkit](https://github.com/BartoszCichecki/LenovoLegionToolkit) 已归档
+> - 本项目与 Lenovo 官方无隶属关系
+
+#### 此 README 的其他语言版本：
+* [English README](README.md)
+* [日本語版のREADME](README_ja-JP.md)
 
 ---
 
-联想拯救者工具箱 Lenovo Legion Toolkit (LLT) 是为联想拯救者系列笔记本打造的轻量化工具箱。可实现原来联想软件如 Lenovo Vantage、Legion Zone、联想电脑管家才可实现的功能。
+联想拯救者工具箱 Lenovo Legion Toolkit (LLT) 是为联想游戏本打造的 Windows 桌面工具，可替代 Lenovo Vantage / Legion Zone / Legion Space。
 
-**本软件仅适配拯救者系列，如果你不是拯救者系列笔记本则这个软件不适合你，请不要提出兼容 Issue ，如果提出将被直接关闭不作受理。**
+**本软件面向 Lenovo Legion、Legion Go、IdeaPad Gaming、LOQ、Lenovo Slim 与 ThinkBook 系列（含中国区 R/Y 系列）设备。请不要为上述范围外的设备提出兼容 Issue。**
 
 本软件不运行后台服务，使用较少的内存，几乎不使用 CPU，并且不收集用户信息。本程序仅适用于 Windows。
 
-加入 Legion Series Discord 频道: https://discord.com/invite/legionseries!
+加入 Official Discord 频道：https://discord.gg/TB3ER8ZVdt （发布、支持与讨论）<br>
+加入 Legion Series Discord 频道：https://discord.com/invite/legionseries<br>
+加入 LOQ Series Discord 频道：https://discord.gg/3GKzQtwdNf
 
 ~~**中文用户可加入[拯救者工具箱 QQ 频道](https://pd.qq.com/s/jj0737)，频道内推送正式版/测试版更新并附带国内镜像加速下载链接。**~~
 
 **鉴于原作者已经归档，本仓库不会创建类似渠道。如遇到任何问题请于 [Github Issue](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/issues) 进行反馈，谢谢。**
 
-<img src="assets/Main_DarkMode.png" width="700" />
+# 本地化
+本分支已接入 Crowdin：[LenovoLegionToolkit](https://crowdin.com/project/lenovolegiontoolkit-unofficial)。
+
+欢迎并感谢大家参与本地化翻译！
+
+# 截图
+
+### 主窗口
+<img src="assets/Main_DarkMode.png" width="49%" /> <img src="assets/Main_LightMode.png" width="49%" />
+
+### 页面
+<img src="assets/Battery.png" width="49%" /> <img src="assets/Actions.png" width="49%" />
+<img src="assets/Macro.png" width="49%" />
+
+### 键盘与灯光
+<img src="assets/Keyboard_WMI.png" width="49%" /> <img src="assets/Keyboard_DynamicLighting.png" width="49%" />
+
+### 屏幕显示
+<img src="assets/OSD_BarStyle.png" width="49%" />
+
+### 设置
+<img src="assets/Setting_AppBehavior.png" width="49%" /> <img src="assets/Settings_Appearance.png" width="49%" />
+<img src="assets/Settings_Power.png" width="49%" /> <img src="assets/Settings_Display.png" width="49%" />
+<img src="assets/Settings_SmartKeys.png" width="49%" /> <img src="assets/Settings_SoftwareControl.png" width="49%" />
+<img src="assets/Settings_Updates.png" width="49%" /> <img src="assets/Settings_Integrations.png" width="49%" />
 
 &nbsp;
 
@@ -592,7 +632,7 @@ Windows 可能无法正确识别所有的游戏，但你可以在 Xbox Game Bar 
 #### 适配
 
 > [!IMPORTANT]
-> 拯救者工具箱只目标适配联想拯救者（海内及海外版）、IdeaPad Gaming 和 LOQ 系列。请不要为除上述系列以外的设备提出兼容请求。
+> 拯救者工具箱面向联想 Legion、Legion Go、IdeaPad Gaming、LOQ、Lenovo Slim 与 ThinkBook 系列（含中国区 R/Y 系列）设备。请不要为除上述范围以外的设备提出兼容请求。
 
 如果能适配更多设备就更好了！但要做到这点，我真的很需要你的帮助！
 

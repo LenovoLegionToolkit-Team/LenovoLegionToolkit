@@ -1,14 +1,22 @@
-<img height="128" align="left" src="assets/logo.png" alt="Logo">
+<div align="center">
+  <img height="128" src="assets/logo.png" alt="Lenovo Legion Toolkit Logo">
+  
+  # レノボ・レギオン・ツールキット
 
-# レノボ・レギオン・ツールキット
+  [![Build Status](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
+  [![Downloads](https://img.shields.io/github/downloads/LenovoLegionToolkit-Team/LenovoLegionToolkit/total?color=brightgreen)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases)
+  [![Translation Status](https://badges.crowdin.net/lenovolegiontoolkit-unofficial/localized.svg)](https://crowdin.com/project/lenovolegiontoolkit-unofficial)
+  [![Discord Official](https://img.shields.io/badge/Discord-Official-5865F2?logo=discord&logoColor=white)](https://discord.gg/TB3ER8ZVdt)
+  [![Discord Community](https://img.shields.io/badge/Discord-Legion%20Series-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/legionseries)
+  [![Discord Community](https://img.shields.io/badge/Discord-LOQ%20Series-5865F2?logo=discord&logoColor=white)](https://discord.gg/3GKzQtwdNf)
+</div>
 
-[![Build](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
-[![Downloads](https://img.shields.io/github/downloads/LenovoLegionToolkit-Team/LenovoLegionToolkit/total?color=brightgreen)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases)
-[![Crowdin](https://badges.crowdin.net/llt/localized.svg)](https://crowdin.com/project/llt)
-[![Join Discord](https://img.shields.io/discord/761178912230473768?label=Legion%20Series%20Discord)](https://discord.com/invite/legionseries)
-<a href="https://hellogithub.com/repository/dd55be3ac0c146208259f17b29d2162f" target="_blank"><img src="https://abroad.hellogithub.com/v1/widgets/recommend.svg?rid=dd55be3ac0c146208259f17b29d2162f&claim_uid=LBbuUlZqTIm1JAP&theme=small" alt="Featured｜HelloGitHub" /></a>
+## 🚨 プロジェクト状況のお知らせ
 
----
+> [!IMPORTANT]
+> - このプロジェクトは **LenovoLegionToolkit-Team** によって活発に開発されています
+> - 元のリポジトリ [BartoszCichecki/LenovoLegionToolkit](https://github.com/BartoszCichecki/LenovoLegionToolkit) はアーカイブされています
+> - Lenovo 公式とは関係ありません
 
 #### 他の言語バージョンのこのREADMEファイル：
 * [英語版のREADME](README.md)
@@ -22,9 +30,35 @@
 
 バックグラウンドサービスを実行せず、メモリを少なく使用し、CPUをほとんど使用せず、テレメトリを含みません。Lenovo Vantageと同様に、このアプリケーションはWindows専用です。
 
-_レギオンシリーズのDiscordに参加してください：https://discord.com/invite/legionseries!_
+_Official Discord に参加: https://discord.gg/TB3ER8ZVdt（リリース、サポート、議論）_<br>
+_Legion Series Discord に参加: https://discord.com/invite/legionseries_<br>
+_LOQ Series Discord に参加: https://discord.gg/3GKzQtwdNf_
 
-<img src="assets/Main_DarkMode.png" width="700" />
+# ローカライズ
+このフォークは Crowdin の [LenovoLegionToolkit](https://crowdin.com/project/lenovolegiontoolkit-unofficial) に連携しています。
+
+ローカライズへの貢献を歓迎し、深く感謝します！
+
+# スクリーンショット
+
+### メインウィンドウ
+<img src="assets/Main_DarkMode.png" width="49%" /> <img src="assets/Main_LightMode.png" width="49%" />
+
+### ページ
+<img src="assets/Battery.png" width="49%" /> <img src="assets/Actions.png" width="49%" />
+<img src="assets/Macro.png" width="49%" />
+
+### キーボードとライティング
+<img src="assets/Keyboard_WMI.png" width="49%" /> <img src="assets/Keyboard_DynamicLighting.png" width="49%" />
+
+### オンスクリーンディスプレイ
+<img src="assets/OSD_BarStyle.png" width="49%" />
+
+### 設定
+<img src="assets/Setting_AppBehavior.png" width="49%" /> <img src="assets/Settings_Appearance.png" width="49%" />
+<img src="assets/Settings_Power.png" width="49%" /> <img src="assets/Settings_Display.png" width="49%" />
+<img src="assets/Settings_SmartKeys.png" width="49%" /> <img src="assets/Settings_SoftwareControl.png" width="49%" />
+<img src="assets/Settings_Updates.png" width="49%" /> <img src="assets/Settings_Integrations.png" width="49%" />
 
 &nbsp;
 
@@ -54,7 +88,7 @@ _レギオンシリーズのDiscordに参加してください：https://discord
 - [winget](https://github.com/microsoft/winget-cli)を使用：
 
   ```sh
-  winget install BartoszCichecki.LenovoLegionToolkit
+  winget install LenovoLegionToolkit.LenovoLegionToolkit
   ```
 
 - [Scoop](https://scoop.sh)を使用：
@@ -450,4 +484,123 @@ LLT設定でFn+F9ホットキーをカスタマイズできます。他のホッ
 
 #### コンザベーションモードのしきい値をカスタマイズできますか？
 
-いいえ。コンザベーションモードのしきい値は、ファームウェアで60％（2021年およびそれ以前）または80％（2022年およびそれ以降）
+いいえ。コンザベーションモードのしきい値はファームウェアで 60%（2021年以前）または 80%（2022年以降）に固定されており、変更できません。
+
+#### Quiet、Balance、Performanceモードでファンをカスタマイズできますか？
+
+いいえ。ファン制御はカスタムモードでのみ利用できます。
+
+#### バッテリーでPerformance、Extreme、Custom Power Modeに切り替えられないのはなぜですか？
+
+Lenovo の制限により、これらのモードは AC アダプター接続時のみ使用できます。
+
+#### AIエンジンが有効な場合、Performanceモードへの切り替えがバグのように見えるのはなぜですか？
+
+AI Engine が有効な一部機種では、Lenovo のファームウェアが電源モードを自動調整します。必要に応じて AI Engine を無効にしてください。
+
+#### マザーボードの交換後に互換性のないメッセージが表示されるのはなぜですか？
+
+交換後に BIOS の機種情報が正しく書き込まれていない可能性があります。Lenovo サポートまたは修理業者に、正しい機種情報の書き込みを依頼してください。
+
+#### アクションが正しく構成されているのに、ゲームが検出されないのはなぜですか？
+
+ゲームの実行ファイル名が起動後に変わる場合があります。タスクマネージャーで実際のプロセス名を確認し、アクション設定に追加してください。
+
+#### LLTを使用している間に他のRGBソフトウェアを使用できますか？
+
+同じデバイスを制御する RGB ソフトウェアを同時に使うと競合する可能性があります。問題がある場合は片方を無効にしてください。
+
+#### iCue RGBキーボードはサポートされますか？
+
+いいえ。iCue 対応キーボードは異なる制御方式を使用しており、LLT ではサポートされません。
+
+#### RGBエフェクトを増やすことはできますか？
+
+対応できる効果はファームウェアとハードウェアに依存します。追加できる効果は限定的です。
+
+#### 他のモデルにファンコントロールを追加できますか？
+
+ファン制御はモデルごとの EC 実装に強く依存します。未対応モデルへの追加には、対象機種でのテストとログが必要です。
+
+#### LLTアイコンにカーソルを合わせたときにカスタムツールチップが表示されないのはなぜですか？
+
+Windows の通知領域の制限により、カスタムツールチップが表示されないことがあります。LLT の機能には影響しません。
+
+#### CPUをオーバークロック/アンダーボルトする方法は？
+
+LLT は CPU のオーバークロックやアンダーボルトを提供していません。BIOS または専用ツールを使用してください。
+
+#### GPUをオーバークロックしすぎた場合はどうすればよいですか？
+
+LLT をセーフモードで起動するか、設定を削除してオーバークロック値をリセットしてください。安定しない値は使用しないでください。
+
+#### ブートロゴが適用されないのはなぜですか？
+
+機種、BIOS バージョン、画像形式によって適用できないことがあります。対応形式とサイズを確認し、必要に応じて BIOS を更新してください。
+
+#### スマートFnロックを使用しているときにスタッタリングが発生するのはなぜですか？
+
+一部のデバイスではキーボード状態の監視がシステムに負荷を与える場合があります。問題がある場合は Smart Fn Lock を無効にしてください。
+
+#### デバイス情報に保証情報が表示されないのはなぜですか？
+
+Lenovo の保証 API や地域ごとの制限により、保証情報を取得できない場合があります。
+
+#### 私のノートパソコンはどの世代ですか？
+
+機種名や CPU 世代から判断できます。正確な情報は Lenovo の製品ページまたは BIOS の製品情報を確認してください。
+
+## 引数
+
+LLT は以下のコマンドライン引数をサポートしています。
+
+* `--minimized` - LLT を最小化して起動します
+* `--skip-welcome` - 初回起動ウィザードをスキップします
+* `--trace` - 詳細ログを有効にします
+* `--disable-actions` - アクションを無効にします
+* `--disable-tooltips` - ツールチップを無効にします
+* `--force-disable-vantage` - Lenovo Vantage 関連の検出と統合を無効にします
+* `--force-disable-lenovohotkeys` - Lenovo Hotkeys 関連機能を無効にします
+* `--force-disable-lenovolighting` - Lenovo Lighting 関連機能を無効にします
+* `--experimental-gpu-working-mode` - Legion Zone と同じ実験的な GPU Working Mode 切り替えを使用します
+* `--proxy-url=example.com` - LLT が使用するプロキシサーバーを指定します
+* `--proxy-username=some_username` - 必要に応じてプロキシのユーザー名を指定します
+* `--proxy-password=some_password` - 必要に応じてプロキシのパスワードを指定します
+* `--proxy-allow-all-certs` - 必要に応じてプロキシ経由の HTTPS/SSL 証明書検証を緩和します
+* `--disable-update-checker` - LLT の更新確認を無効にします
+
+引数を `args.txt` に保存する場合：
+1. `%LOCALAPPDATA%\LenovoLegionToolkit` を開きます
+2. `args.txt` というテキストファイルを作成します
+3. 1 行に 1 つずつ引数を追加します
+4. LLT を起動します
+
+上記にない古い引数は廃止されており、使用できません。
+
+## ログの収集方法
+
+#### 方法 1: アプリ設定から（推奨）
+
+設定ページでログ収集を有効にし、問題を再現してから `%LOCALAPPDATA%\LenovoLegionToolkit\log` のログを Issue に添付してください。
+
+#### 方法 2: 手動トレース（起動時の問題向け）
+
+1. LLT を完全に終了します。
+2. Win + R を押し、`"%LOCALAPPDATA%\Programs\LenovoLegionToolkit\Lenovo Legion Toolkit.exe" --trace` を実行します。
+3. 左上に `[LOGGING ENABLED]` が表示された状態で問題を再現します。
+4. LLT を終了し、`%LOCALAPPDATA%\LenovoLegionToolkit\log` のログを添付してください。
+
+## 質問がありますか？
+
+質問、リリース、サポート、議論には Official Discord を利用してください: https://discord.gg/TB3ER8ZVdt
+
+## 貢献
+
+フィードバック、Issue、Pull Request を歓迎します。PR を作成する前に [CONTRIBUTING.md](CONTRIBUTING.md) を確認してください。
+
+#### 互換性
+
+> [!IMPORTANT]
+> Lenovo Legion Toolkit は Lenovo Legion、Legion Go、IdeaPad Gaming、LOQ、Lenovo Slim、ThinkBook シリーズ（中国向け R/Y シリーズを含む）を対象としています。その他のデバイスに対する互換性リクエストは作成しないでください。
+
+未対応機種でテストする場合は、起動時の互換性警告で続行すると LLT が自動的にログ収集を有効にします。Issue には、完全な機種名、動作する機能、動作しない機能、クラッシュする機能、ログを含めてください。
