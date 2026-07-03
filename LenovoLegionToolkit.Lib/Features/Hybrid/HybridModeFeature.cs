@@ -92,6 +92,7 @@ public class HybridModeFeature(GSyncFeature gSyncFeature, IGPUModeFeature igpuMo
         {
             await biosHybridMode.SetUMAAsync().ConfigureAwait(false);
             _lastState = state;
+            _ = IoCContainer.Resolve<DgpuAwakeManager>().UpdateStateAsync();
             return;
         }
 
@@ -145,6 +146,7 @@ public class HybridModeFeature(GSyncFeature gSyncFeature, IGPUModeFeature igpuMo
         Log.Instance.Trace($"State set to {state} [gSync={gSync}, igpuMode={igpuMode}]");
 
         _lastState = state;
+        _ = IoCContainer.Resolve<DgpuAwakeManager>().UpdateStateAsync();
     }
 
     public async Task EnsureDGPUEjectedIfNeededAsync()

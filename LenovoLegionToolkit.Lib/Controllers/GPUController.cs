@@ -257,7 +257,6 @@ public class GPUController
             newPerformanceState = null;
         }
 
-        // InstanceId — cached, only queried once per GPU session
         newGpuInstanceId = cachedGpuInstanceId;
         if (string.IsNullOrEmpty(newGpuInstanceId))
         {
@@ -266,8 +265,27 @@ public class GPUController
                 newGpuInstanceId = await WMI.Win32.PnpEntity.GetDeviceIDAsync(pnpDeviceIdPart).ConfigureAwait(false);
         }
 
-        var (allProcessNames, processNames) = NVAPIExtensions.GetActiveProcesses(gpu);
-        newAllProcesses = allProcessNames;
+        List<Process> processNames;
+        try
+        {
+            var (allProcessNames, filteredProcessNames) = NVAPIExtensions.GetActiveProcesses(gpu);
+            newAllProcesses = allProcessNames;
+            processNames = filteredProcessNames;
+        }
+        catch (NVIDIAApiException ex)
+        {
+            Log.Instance.Trace($"NVAPI exception in GetActiveProcesses.", ex);
+            NVAPI.IsInitialized = false;
+            using (await _stateLock.LockAsync(token).ConfigureAwait(false))
+            {
+                _state = GPUState.Unknown;
+                _performanceState = null;
+                _processes = [];
+                _allProcesses = [];
+                _gpuInstanceId = null;
+            }
+            return;
+        }
 
         var feature = IoCContainer.Resolve<HybridModeFeature>();
 

@@ -7,6 +7,7 @@ using Windows.Win32.Graphics.Direct3D11;
 using Windows.Win32.System.Power;
 using Windows.Win32.UI.WindowsAndMessaging;
 using System.Runtime.InteropServices;
+using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
@@ -46,13 +47,39 @@ public sealed class DgpuAwakeManager : IAsyncDisposable, IDisposable
             Log.Instance.Trace($"System resumed: restoring dGPU awake manager.");
             await UpdateStateAsync().ConfigureAwait(false);
         }
+        else if (e.PowerAdapterStateChanged)
+        {
+            Log.Instance.Trace($"Power adapter state changed: updating dGPU awake manager.");
+            await UpdateStateAsync().ConfigureAwait(false);
+        }
     }
 
     public async Task UpdateStateAsync()
     {
         if (_isDisposed) return;
 
-        if (_settings.Store.KeepDgpuAwake)
+        var keepAwake = _settings.Store.KeepDgpuAwake;
+
+        if (keepAwake)
+        {
+            var hybridModeFeature = IoCContainer.Resolve<HybridModeFeature>();
+            var state = await hybridModeFeature.GetStateAsync().ConfigureAwait(false);
+
+            if (state is HybridModeState.OnIGPUOnly or HybridModeState.UMA)
+            {
+                keepAwake = false;
+            }
+            else if (state == HybridModeState.OnAuto)
+            {
+                var acStatus = await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false);
+                if (acStatus != PowerAdapterStatus.Connected)
+                {
+                    keepAwake = false;
+                }
+            }
+        }
+
+        if (keepAwake)
         {
             await StartInternalAsync().ConfigureAwait(false);
         }
