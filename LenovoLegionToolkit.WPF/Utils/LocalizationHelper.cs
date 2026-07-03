@@ -113,6 +113,14 @@ public static class LocalizationHelper
         cultureInfo ??= await GetLanguageAsync();
 
         SetLanguageInternal(cultureInfo);
+
+        _ = Task.Run(() =>
+        {
+            foreach (var culture in Languages)
+            {
+                _ = LanguageDisplayName(culture);
+            }
+        });
     }
 
     public static async Task SetLanguageAsync(CultureInfo cultureInfo)
