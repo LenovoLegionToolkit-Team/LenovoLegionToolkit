@@ -10,14 +10,14 @@ namespace LenovoLegionToolkit.Lib.Extensions;
 
 public static class DisplayExtensions
 {
-    public static void SetSettingsUsingPathInfo(this Display display, DisplaySetting displaySetting)
+    public static void SetSettingsUsingPathInfo(this Display display, DisplaySetting displaySetting, bool enableDrr = false)
     {
         // Use display path APIs to change internal display resolution & refresh rate.
         // Compared to Display.SetSettings(), these APIs can change the Active Signal Mode and not just the Desktop mode.
         // Setting 60Hz will change the Active Signal Mode to 60Hz instead of leaving it at the max refresh rate,
         // which lets the display consume less power for more battery life.
         var displaySource = display.DisplayScreen.ToPathDisplaySource();
-        var pathInfos = PathInfo.GetActivePaths();
+        var pathInfos = PathInfo.GetActivePaths(virtualModeAware: true);
 
         for (var i = 0; i < pathInfos.Length; i++)
         {
@@ -30,7 +30,9 @@ public static class DisplayExtensions
                     .Select(targetInfo => new PathTargetInfo(targetInfo.DisplayTarget,
                         new PathTargetSignalInfo(displaySetting, displaySetting.Resolution),
                         targetInfo.Rotation,
-                        targetInfo.Scaling))
+                        targetInfo.Scaling,
+                        targetInfo.IsVirtualModeSupportedByPath,
+                        enableDrr && targetInfo.IsVirtualModeSupportedByPath))
                     .ToArray();
 
                 pathInfos[i] = new PathInfo(

@@ -37,11 +37,26 @@ public class RefreshRateFeature : IFeature<RefreshRate>
             .Distinct()
             .OrderBy(freq => freq)
             .Select(freq => new RefreshRate(freq))
-            .ToArray();
+            .ToList();
+
+        if (OSExtensions.GetCurrent() == OS.Windows11 && result.Count > 0)
+        {
+            var maxFreq = result.Max(r => r.Frequency);
+            if (maxFreq > 60)
+            {
+                var displaySource = display.DisplayScreen.ToPathDisplaySource();
+                var pathInfos = WindowsDisplayAPI.DisplayConfig.PathInfo.GetActivePaths(virtualModeAware: true);
+                var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource);
+                if (activePath is not null && activePath.TargetsInfo.Any(t => t.IsVirtualModeSupportedByPath))
+                {
+                    result.Add(new RefreshRate(maxFreq, isDynamic: true));
+                }
+            }
+        }
 
         Log.Instance.Trace($"Possible refresh rates are {string.Join(", ", result)}");
 
-        return result;
+        return result.ToArray();
     }
 
     public async Task<RefreshRate> GetStateAsync()
@@ -65,7 +80,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
             if (target is not null && target.IsBoostRefreshRate && target.IsSignalInformationAvailable)
             {
                 var physicalFreq = (int)(target.SignalInfo.VerticalSyncFrequencyInMillihertz / 1000);
-                var drrResult = new RefreshRate(physicalFreq);
+                var drrResult = new RefreshRate(physicalFreq, isDynamic: true);
                 Log.Instance.Trace($"Dynamic Refresh Rate (DRR) is active. Physical refresh rate is {drrResult}");
                 return drrResult;
             }
@@ -93,9 +108,9 @@ public class RefreshRateFeature : IFeature<RefreshRate>
 
         Log.Instance.Trace($"Current built in display settings: {currentSettings.ToExtendedString()} (reported: {currentState})");
 
-        if (currentState.Frequency == state.Frequency)
+        if (currentState == state)
         {
-            Log.Instance.Trace($"Frequency already set to {state.Frequency}");
+            Log.Instance.Trace($"Frequency already set to {state}");
             return;
         }
 
@@ -110,7 +125,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         {
             Log.Instance.Trace($"Setting display to {newSettings.ToExtendedString()}...");
 
-            display.SetSettingsUsingPathInfo(newSettings);
+            display.SetSettingsUsingPathInfo(newSettings, state.IsDynamic);
 
             Log.Instance.Trace($"Display set to {newSettings.ToExtendedString()}");
         }

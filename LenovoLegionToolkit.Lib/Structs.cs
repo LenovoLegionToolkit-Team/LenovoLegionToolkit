@@ -1048,15 +1048,21 @@ public readonly struct DpiScale(int scale) : IDisplayName, IEquatable<DpiScale>
 }
 
 [method: JsonConstructor]
-public readonly struct RefreshRate(int frequency) : IDisplayName, IEquatable<RefreshRate>
+public readonly struct RefreshRate(int frequency, bool isDynamic = false) : IDisplayName, IEquatable<RefreshRate>
 {
     public int Frequency { get; } = frequency;
+    public bool IsDynamic { get; } = isDynamic;
 
-    [JsonIgnore] public string DisplayName => $"{Frequency} Hz";
+    [JsonIgnore]
+    public string DisplayName => IsDynamic
+        ? string.Format(Resources.Resource.RefreshRate_Dynamic, Frequency)
+        : $"{Frequency} Hz";
 
     public override string ToString()
     {
-        return $"{Frequency}Hz";
+        return IsDynamic
+            ? string.Format(Resources.Resource.RefreshRate_Dynamic, Frequency)
+            : $"{Frequency}Hz";
     }
 
     #region Equality
@@ -1068,12 +1074,12 @@ public readonly struct RefreshRate(int frequency) : IDisplayName, IEquatable<Ref
 
     public bool Equals(RefreshRate other)
     {
-        return Frequency == other.Frequency;
+        return Frequency == other.Frequency && IsDynamic == other.IsDynamic;
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Frequency);
+        return HashCode.Combine(Frequency, IsDynamic);
     }
 
     public static bool operator ==(RefreshRate left, RefreshRate right)
