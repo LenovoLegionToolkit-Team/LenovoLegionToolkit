@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.System;
@@ -16,7 +16,7 @@ public class DpiScaleFeature : IFeature<DpiScale>
         Log.Instance.Trace($"Getting all DPI scales...");
 
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
-        var pds = display?.ToPathDisplaySource();
+        var pds = display?.DisplayScreen?.ToPathDisplaySource();
         if (pds is null)
         {
             Log.Instance.Trace($"Built in display not found");
@@ -45,7 +45,7 @@ public class DpiScaleFeature : IFeature<DpiScale>
         Log.Instance.Trace($"Getting current DPI scale...");
 
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
-        var pds = display?.ToPathDisplaySource();
+        var pds = display?.DisplayScreen?.ToPathDisplaySource();
         if (pds is null)
         {
             Log.Instance.Trace($"Built in display not found");
@@ -63,7 +63,7 @@ public class DpiScaleFeature : IFeature<DpiScale>
     public async Task SetStateAsync(DpiScale state)
     {
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
-        var pds = display?.ToPathDisplaySource();
+        var pds = display?.DisplayScreen?.ToPathDisplaySource();
         if (pds is null)
         {
             Log.Instance.Trace($"Built in display not found");

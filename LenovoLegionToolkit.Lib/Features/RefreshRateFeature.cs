@@ -27,11 +27,11 @@ public class RefreshRateFeature : IFeature<RefreshRate>
 
         Log.Instance.Trace($"Built in display found: {display}");
 
-        var currentSettings = display.CurrentSetting;
+        var currentSettings = display.DisplayScreen.CurrentSetting;
 
         Log.Instance.Trace($"Current built in display settings: {currentSettings.ToExtendedString()}");
 
-        var result = display.GetPossibleSettings()
+        var result = display.DisplayScreen.GetPossibleSettings()
             .Where(dps => Match(dps, currentSettings))
             .Select(dps => dps.Frequency)
             .Distinct()
@@ -56,7 +56,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
             return default(RefreshRate);
         }
 
-        var displaySource = display.ToPathDisplaySource();
+        var displaySource = display.DisplayScreen.ToPathDisplaySource();
         var pathInfos = WindowsDisplayAPI.DisplayConfig.PathInfo.GetActivePaths(virtualModeAware: true);
         var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource);
         if (activePath is not null)
@@ -71,7 +71,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
             }
         }
 
-        var currentSettings = display.CurrentSetting;
+        var currentSettings = display.DisplayScreen.CurrentSetting;
         var result = new RefreshRate(currentSettings.Frequency);
 
         Log.Instance.Trace($"Current refresh rate is {result} [currentSettings={currentSettings.ToExtendedString()}]");
@@ -88,7 +88,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
             throw new InvalidOperationException("Built in display not found");
         }
 
-        var currentSettings = display.CurrentSetting;
+        var currentSettings = display.DisplayScreen.CurrentSetting;
         var currentState = await GetStateAsync();
 
         Log.Instance.Trace($"Current built in display settings: {currentSettings.ToExtendedString()} (reported: {currentState})");
@@ -99,7 +99,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
             return;
         }
 
-        var possibleSettings = display.GetPossibleSettings();
+        var possibleSettings = display.DisplayScreen.GetPossibleSettings();
         var newSettings = possibleSettings
             .Where(dps => Match(dps, currentSettings))
             .Where(dps => dps.Frequency == state.Frequency)

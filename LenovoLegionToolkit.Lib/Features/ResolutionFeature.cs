@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
@@ -27,11 +27,11 @@ public class ResolutionFeature : IFeature<Resolution>
 
         Log.Instance.Trace($"Built in display found: {display}");
 
-        var currentSettings = display.CurrentSetting;
+        var currentSettings = display.DisplayScreen.CurrentSetting;
 
         Log.Instance.Trace($"Current built in display settings: {currentSettings.ToExtendedString()}");
 
-        var result = display.GetPossibleSettings()
+        var result = display.DisplayScreen.GetPossibleSettings()
             .Where(dps => Match(dps, currentSettings))
             .Select(dps => dps.Resolution)
             .Select(res => new Resolution(res))
@@ -56,7 +56,7 @@ public class ResolutionFeature : IFeature<Resolution>
             return default(Resolution);
         }
 
-        var currentSettings = display.CurrentSetting;
+        var currentSettings = display.DisplayScreen.CurrentSetting;
         var result = new Resolution(currentSettings.Resolution);
 
         Log.Instance.Trace($"Current resolution is {result} [currentSettings={currentSettings.ToExtendedString()}]");
@@ -73,7 +73,7 @@ public class ResolutionFeature : IFeature<Resolution>
             throw new InvalidOperationException("Built in display not found");
         }
 
-        var currentSettings = display.CurrentSetting;
+        var currentSettings = display.DisplayScreen.CurrentSetting;
 
         if (currentSettings.Resolution == state)
         {
@@ -81,7 +81,7 @@ public class ResolutionFeature : IFeature<Resolution>
             return;
         }
 
-        var possibleSettings = display.GetPossibleSettings();
+        var possibleSettings = display.DisplayScreen.GetPossibleSettings();
 
         Log.Instance.Trace($"Current built in display settings: {currentSettings.ToExtendedString()}");
 
