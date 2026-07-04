@@ -3,6 +3,7 @@
 ### Other language versions of this contributing guide:
 * [简体中文版开发者指南](CONTRIBUTING_zh-hans.md)
 * [日本語版の貢献ガイド](CONTRIBUTING_ja-JP.md)
+* [한국어 버전 기여 가이드](CONTRIBUTING_ko-KR.md)
 
 Thanks for investing your time in contributing to this project! Giving the growing popularity of LLT, here are a few rules to follow to ensure that your contribution goes smoothly.
 
