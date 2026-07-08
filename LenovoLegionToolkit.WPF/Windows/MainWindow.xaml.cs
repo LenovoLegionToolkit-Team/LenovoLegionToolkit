@@ -123,7 +123,7 @@ public partial class MainWindow
         }
 
         var actionManager = IoCContainer.Resolve<SpecialKeyActionManager>();
-        actionManager.WireUp(_specialKeyListener, () => Dispatcher.Invoke(BringToForeground));
+        actionManager.WireUp(_specialKeyListener, () => Dispatcher.Invoke(BringToForeground), () => Dispatcher.Invoke(ShowSystemInfoPopup));
         actionManager.WireUp(_driverKeyListener);
 
         AddExtensionNavigationItems();
@@ -504,6 +504,24 @@ public partial class MainWindow
     }
 
     private void BringToForeground() => WindowExtensions.BringToForeground(this);
+
+    private Utils.StatusWindow? _statusWindow;
+
+    private void ShowSystemInfoPopup()
+    {
+        if (_statusWindow != null && _statusWindow.IsVisible)
+        {
+            _statusWindow.Activate();
+            _statusWindow.Focus();
+            _statusWindow.Highlight();
+            return;
+        }
+
+        _statusWindow = new Utils.StatusWindow();
+        _statusWindow.Closed += (s, e) => _statusWindow = null;
+        _statusWindow.ShowCentered();
+        _ = _statusWindow.InitializeAsync();
+    }
 
     private static void OpenLog()
     {

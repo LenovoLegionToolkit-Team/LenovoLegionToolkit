@@ -19,6 +19,7 @@ public class SpecialKeyActionManager
     private readonly SpecialKeySettings _settings;
     private readonly AutomationProcessor _automationProcessor;
     private Action? _bringToForeground;
+    private Action? _showSystemInfo;
 
     private readonly ConcurrentDictionary<int, TaskCompletionSource<bool>> _pendingPresses = new();
     private static readonly TimeSpan DoublePressInterval = TimeSpan.FromMilliseconds(500);
@@ -29,9 +30,10 @@ public class SpecialKeyActionManager
         _automationProcessor = automationProcessor;
     }
 
-    public void WireUp(SpecialKeyListener listener, Action? bringToForeground = null)
+    public void WireUp(SpecialKeyListener listener, Action? bringToForeground = null, Action? showSystemInfo = null)
     {
         _bringToForeground = bringToForeground;
+        _showSystemInfo = showSystemInfo;
         listener.CustomKeyHandler = ExecuteAsync;
     }
 
@@ -48,7 +50,7 @@ public class SpecialKeyActionManager
 
         if (key == SpecialKey.FnN)
         {
-            _bringToForeground?.Invoke();
+            _showSystemInfo?.Invoke();
             return true;
         }
 

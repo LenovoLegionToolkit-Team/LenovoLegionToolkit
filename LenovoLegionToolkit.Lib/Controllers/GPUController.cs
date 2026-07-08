@@ -68,6 +68,12 @@ public class GPUController
             return _state;
     }
 
+    public async Task<GPUStatus> GetLastKnownStatusAsync()
+    {
+        using (await _lock.LockAsync().ConfigureAwait(false))
+            return new GPUStatus(_state, _performanceState, _processes);
+    }
+
     public async Task<GPUStatus> RefreshNowAsync()
     {
         using (await _lock.LockAsync().ConfigureAwait(false))

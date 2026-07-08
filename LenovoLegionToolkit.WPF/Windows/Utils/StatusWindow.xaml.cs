@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Forms;
 using System.Windows.Media;
 using LenovoLegionToolkit.Lib;
@@ -100,12 +101,45 @@ public partial class StatusWindow
         return window;
     }
 
-    private async Task InitializeAsync()
+    internal async Task InitializeAsync()
     {
         if (!_machineInfo.HasValue)
         {
             SetMachineInformation(await Compatibility.GetMachineInformationAsync().ConfigureAwait(false));
         }
+
+        // Populate model + BIOS + Serial + MachineType labels
+        try
+        {
+            var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+            var model = mi.Model;
+            var biosVersion = mi.BiosVersionRaw;
+            var serialNumber = mi.SerialNumber;
+            var machineType = mi.MachineType;
+
+            if (Compatibility.FakeMachineInformationMode)
+            {
+                var fakeMi = await Compatibility.GetFakeMachineInformationAsync().ConfigureAwait(false);
+                if (fakeMi.HasValue)
+                {
+                    model = fakeMi.Value.Model ?? model;
+                    biosVersion = fakeMi.Value.BiosVersion ?? biosVersion;
+                    serialNumber = fakeMi.Value.SerialNumber ?? serialNumber;
+                    machineType = fakeMi.Value.MachineType ?? machineType;
+                }
+            }
+
+            Dispatcher.Invoke(() =>
+            {
+                _deviceModelLabel.Content = model;
+                _biosVersionLabel.Content = biosVersion;
+                _serialNumberLabel.Content = serialNumber;
+                _machineTypeLabel.Content = machineType;
+                _osVersionLabel.Content = Environment.OSVersion.ToString();
+            });
+        }
+        catch { /* Non-critical — labels remain empty */ }
+
         var token = _cancellationTokenSource.Token;
         try
         {
@@ -113,6 +147,81 @@ public partial class StatusWindow
             ApplyDataToUI(initialData);
         }
         catch { }
+    }
+
+    /// <summary>
+    /// Shows the StatusWindow near the current mouse cursor and auto-closes after <paramref name="durationMs"/> milliseconds.
+    /// </summary>
+    public void ShowNearCursor(int durationMs = 4000)
+    {
+        MoveBottomRightEdgeOfWindowToMousePosition();
+        Show();
+
+        var timer = new System.Windows.Threading.DispatcherTimer
+        {
+            Interval = TimeSpan.FromMilliseconds(durationMs)
+        };
+        timer.Tick += (_, _) =>
+        {
+            timer.Stop();
+            if (IsVisible)
+                Close();
+        };
+        timer.Start();
+    }
+
+    public void ShowCentered()
+    {
+        _actionButtons.Visibility = Visibility.Visible;
+        WindowStartupLocation = WindowStartupLocation.CenterScreen;
+        Show();
+        this.Activate();
+        this.Focus();
+        this.Topmost = true;
+        this.Topmost = false;
+    }
+
+    private void CopyButton_Click(object sender, RoutedEventArgs e)
+    {
+        var text = $"Device Model: {_deviceModelLabel.Content}\n" +
+                   $"BIOS Version: {_biosVersionLabel.Content}\n" +
+                   $"Serial Number: {_serialNumberLabel.Content}\n" +
+                   $"Machine Type: {_machineTypeLabel.Content}\n" +
+                   $"OS Version: {_osVersionLabel.Content}";
+        try
+        {
+            System.Windows.Clipboard.SetText(text);
+        }
+        catch { }
+    }
+
+    private void CloseButton_Click(object sender, RoutedEventArgs e)
+    {
+        if (IsVisible)
+            Close();
+    }
+
+    private void TopBar_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ChangedButton == MouseButton.Left)
+            DragMove();
+    }
+
+    public void Highlight()
+    {
+        this.Activate();
+        this.Focus();
+        this.Topmost = true;
+        this.Topmost = false;
+        
+        var animation = new System.Windows.Media.Animation.DoubleAnimation
+        {
+            From = 0.5,
+            To = 1.0,
+            Duration = new Duration(TimeSpan.FromMilliseconds(300)),
+            AutoReverse = false
+        };
+        BeginAnimation(OpacityProperty, animation);
     }
 
     public StatusWindow()
@@ -125,7 +234,6 @@ public partial class StatusWindow
         ResizeMode = ResizeMode.NoResize;
         SizeToContent = SizeToContent.WidthAndHeight;
         Focusable = false;
-        Topmost = true;
         ExtendsContentIntoTitleBar = true;
         ShowInTaskbar = false;
         ShowActivated = false;
@@ -184,22 +292,36 @@ public partial class StatusWindow
         }
     }
 
-    private void StatusWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+    private async void StatusWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
         if (IsVisible)
         {
-            _sensorsGroupController.SensorsUpdated += OnSensorsUpdated;
-
             var refreshInterval = _settings.Store.UseNewSensorDashboard
                 ? _sensorsControlSettings.Store.SensorsRefreshIntervalSeconds
                 : _dashboardSettings.Store.SensorsRefreshIntervalSeconds;
 
             _sensorsGroupController.Start(this, TimeSpan.FromSeconds(refreshInterval));
+
+            var token = _cancellationTokenSource.Token;
+            while (!token.IsCancellationRequested)
+            {
+                try
+                {
+                    var data = await GetStatusWindowDataAsync(token);
+                    if (token.IsCancellationRequested) break;
+
+                    await Dispatcher.InvokeAsync(() => ApplyDataToUI(data), DispatcherPriority.Normal, token);
+                }
+                catch (Exception ex)
+                {
+                    Log.Instance.Trace($"StatusWindow update failed: {ex}");
+                }
+                await Task.Delay(TimeSpan.FromSeconds(1), token).ConfigureAwait(false);
+            }
         }
         else
         {
             _sensorsGroupController.Stop(this);
-            _sensorsGroupController.SensorsUpdated -= OnSensorsUpdated;
             _cancellationTokenSource.Cancel();
         }
     }
@@ -259,10 +381,11 @@ public partial class StatusWindow
             catch { /* Ignore */ }
         }, token));
 
-        tasks.Add(Task.Run(async () => { try { if (_gpuController.IsSupported()) gpuStatus = await _gpuController.RefreshNowAsync().WaitAsync(token); } catch { } }, token));
+        tasks.Add(Task.Run(async () => { try { if (_gpuController.IsSupported()) gpuStatus = await _gpuController.GetLastKnownStatusAsync().WaitAsync(token); } catch { } }, token));
         tasks.Add(Task.Run(() => { try { batteryInfo = Battery.GetBatteryInformation(); } catch { } }, token));
         tasks.Add(Task.Run(async () => { try { if (await _batteryFeature.IsSupportedAsync().WaitAsync(token)) batteryState = await _batteryFeature.GetStateAsync().WaitAsync(token); } catch { } }, token));
-        tasks.Add(Task.Run(async () => { try { if (_updateSettings.Store.UpdateCheckFrequency != UpdateCheckFrequency.Never) hasUpdate = await _updateChecker.CheckAsync(false).WaitAsync(token) is not null; } catch { } }, token));
+        
+        hasUpdate = _updateChecker.UpdateFromServer is not null;
 
         await Task.WhenAll(tasks).ConfigureAwait(false);
 
@@ -326,6 +449,9 @@ public partial class StatusWindow
 
         RefreshBattery(data.BatteryInformation, data.BatteryState);
         RefreshUpdate(data.HasUpdate);
+
+        _loadingRing.Visibility = Visibility.Collapsed;
+        _loadingOverlay.Visibility = Visibility.Collapsed;
     }
 
     private void ApplySensorsData(StatusWindowData data)
@@ -396,7 +522,10 @@ public partial class StatusWindow
         if (info.IsLowBattery) _batteryValueLabel.SetResourceReference(ForegroundProperty, "SystemFillColorCautionBrush"); else _batteryValueLabel.ClearValue(ForegroundProperty);
         _batteryValueLabel.Content = $"{info.BatteryPercentage}{Resource.Percent}";
         _batteryModeValueLabel.Content = batteryState.GetDisplayName();
-        _batteryDischargeValueLabel.Content = $"{info.DischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
+        
+        _batteryDischargeLabel.Content = info.IsCharging ? "Charge Rate" : Resource.StatusTrayPopup_DischargeRate;
+        _batteryDischargeValueLabel.Content = $"{(Math.Abs(info.DischargeRate) / 1000.0):0.00} {Resource.Watt}";
+        
         _batteryMinDischargeValueLabel.Content = $"{info.MinDischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
         _batteryMaxDischargeValueLabel.Content = $"{info.MaxDischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
     }
