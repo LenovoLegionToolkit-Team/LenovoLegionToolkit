@@ -168,7 +168,7 @@
                 Grid.Column="1"
                 Margin="8,4,0,0"
                 VerticalContentAlignment="Center"
-                Content="OS Version"
+                Content="{x:Static resources:Resource.OSVersion}"
                 FontSize="{StaticResource SecondaryFontSize}"
                 FontWeight="Medium"
                 Foreground="{DynamicResource TextFillColorSecondaryBrush}" />

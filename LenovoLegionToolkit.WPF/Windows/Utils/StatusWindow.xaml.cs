@@ -144,7 +144,7 @@ public partial class StatusWindow
         try
         {
             var initialData = await GetStatusWindowDataAsync(token, skipRetry: true);
-            ApplyDataToUI(initialData);
+            await Dispatcher.InvokeAsync(() => ApplyDataToUI(initialData));
         }
         catch { }
     }
@@ -523,7 +523,7 @@ public partial class StatusWindow
         _batteryValueLabel.Content = $"{info.BatteryPercentage}{Resource.Percent}";
         _batteryModeValueLabel.Content = batteryState.GetDisplayName();
         
-        _batteryDischargeLabel.Content = info.IsCharging ? "Charge Rate" : Resource.StatusTrayPopup_DischargeRate;
+        _batteryDischargeLabel.Content = info.IsCharging ? Resource.StatusTrayPopup_ChargeRate : Resource.StatusTrayPopup_DischargeRate;
         _batteryDischargeValueLabel.Content = $"{(Math.Abs(info.DischargeRate) / 1000.0):0.00} {Resource.Watt}";
         
         _batteryMinDischargeValueLabel.Content = $"{info.MinDischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
