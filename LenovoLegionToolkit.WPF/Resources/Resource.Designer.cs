@@ -3740,6 +3740,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 Your device may not support the full feature set of Custom Mode. 的本地化字符串。
+        /// </summary>
+        public static string GodModeSettingsWindow_PartialSupport_Message {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_PartialSupport_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Precision Boost Overdrive Boost Frequency. 的本地化字符串。
         /// </summary>
         public static string GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description {

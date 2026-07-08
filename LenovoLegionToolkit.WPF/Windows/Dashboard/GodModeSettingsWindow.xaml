@@ -69,6 +69,13 @@
                 IsClosable="False"
                 IsOpen="False"
                 Severity="Error" />
+            <custom:InfoBar
+                x:Name="_capabilityWarningInfoBar"
+                Title="{x:Static resources:Resource.GodModeSettingsWindow_PartialSupport_Message}"
+                Margin="0,8,0,0"
+                IsClosable="False"
+                IsOpen="False"
+                Severity="Warning" />
         </StackPanel>
 
         <Grid Grid.Row="2" Margin="12,16,16,12">
@@ -115,13 +122,14 @@
             Grid.Row="3"
             Margin="12,0,12,0"
             IndicatorVerticalAlignment="Center">
-            <TabControl
-                Style="{StaticResource SidebarTabControlStyle}"
-                ItemContainerStyle="{StaticResource SidebarTabItemStyle}">
+            <TabControl ItemContainerStyle="{StaticResource SidebarTabItemStyle}" Style="{StaticResource SidebarTabControlStyle}">
 
                 <TabItem x:Name="_cpuTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Text="{x:Static resources:Resource.GodModeSettingsWindow_CPU_Title}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="{x:Static resources:Resource.GodModeSettingsWindow_CPU_Title}"
+                            TextWrapping="NoWrap" />
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,16,0">
@@ -173,7 +181,10 @@
 
                 <TabItem x:Name="_pboTabItem" Visibility="Collapsed">
                     <TabItem.Header>
-                        <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Text="{x:Static resources:Resource.GodModeSettingsWindow_Toggle_OC_Title}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="{x:Static resources:Resource.GodModeSettingsWindow_Toggle_OC_Title}"
+                            TextWrapping="NoWrap" />
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,16,0">
@@ -224,7 +235,10 @@
 
                 <TabItem x:Name="_gpuTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Text="{x:Static resources:Resource.GodModeSettingsWindow_GPU_Title}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="{x:Static resources:Resource.GodModeSettingsWindow_GPU_Title}"
+                            TextWrapping="NoWrap" />
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,16,0">
@@ -264,7 +278,10 @@
 
                 <TabItem x:Name="_fanTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Text="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Title}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Title}"
+                            TextWrapping="NoWrap" />
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,16,0">
@@ -303,7 +320,10 @@
 
                 <TabItem x:Name="_advancedTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Title}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Title}"
+                            TextWrapping="NoWrap" />
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,16,0">
@@ -347,11 +367,12 @@
 
                 <TabItem x:Name="_fnqTabItem" Visibility="Collapsed">
                     <TabItem.Header>
-                        <TextBlock VerticalAlignment="Center" TextWrapping="NoWrap" Text="{x:Static resources:Resource.ITSModeConfigWindow_Title}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            Text="{x:Static resources:Resource.ITSModeConfigWindow_Title}"
+                            TextWrapping="NoWrap" />
                     </TabItem.Header>
-                    <dashboard:ITSModeLoopControl
-                        x:Name="_fnqLoopControl"
-                        Margin="0,0,16,0" />
+                    <dashboard:ITSModeLoopControl x:Name="_fnqLoopControl" Margin="0,0,16,0" />
                 </TabItem>
             </TabControl>
         </controls:LoadableControl>

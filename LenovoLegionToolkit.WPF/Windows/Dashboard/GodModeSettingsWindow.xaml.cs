@@ -96,6 +96,7 @@ public partial class GodModeSettingsWindow
             _vantageRunningWarningInfoBar.IsOpen = vantageTask.Result && await _vantageDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
             _legionSpaceRunningWarningInfoBar.IsOpen = legionSpace.Result && await _legionSpaceDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
             _legionZoneRunningWarningInfoBar.IsOpen = legionZoneTask.Result && await _legionZoneDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
+            _capabilityWarningInfoBar.IsOpen = _godModeController.HasCapabilityErrors();
 
             if (_state is null || _defaults is null)
             {

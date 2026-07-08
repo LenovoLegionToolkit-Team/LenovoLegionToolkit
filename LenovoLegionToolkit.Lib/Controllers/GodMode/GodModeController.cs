@@ -26,6 +26,9 @@ public class GodModeController(
 
     private GodModePlatformConfiguration? _config;
     private MachineInformation? _mi;
+    private bool _hasCapabilityErrors;
+
+    public bool HasCapabilityErrors() => _hasCapabilityErrors;
 
     #region Software Disablers
 
@@ -566,6 +569,10 @@ public class GodModeController(
                 catch (Exception ex)
                 {
                     Log.Instance.Trace($"Failed to read {cap.PropertyName} ({cap.RawId:X}), skipping.", ex);
+                    if (cap.PropertyName != nameof(GodModePreset.FanFullSpeed))
+                    {
+                        _hasCapabilityErrors = true;
+                    }
                 }
             }
         }
