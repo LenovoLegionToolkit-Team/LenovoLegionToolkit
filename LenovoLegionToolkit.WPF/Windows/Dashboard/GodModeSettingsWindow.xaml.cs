@@ -177,8 +177,7 @@ public partial class GodModeSettingsWindow
             };
 
             var mi = await Compatibility.GetMachineInformationAsync();
-            if (mi.Properties.GodModePlatform != GodModePlatform.NonGaming
-                && await _powerModeFeature.GetStateAsync() != PowerModeState.GodMode)
+            if (mi.Properties.GodModePlatform != GodModePlatform.NonGaming && await _powerModeFeature.GetStateAsync() != PowerModeState.GodMode)
             {
                 await _powerModeFeature.SetStateAsync(PowerModeState.GodMode);
             }
