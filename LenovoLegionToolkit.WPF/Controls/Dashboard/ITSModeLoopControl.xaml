@@ -9,8 +9,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <custom:InfoBar
@@ -21,19 +21,20 @@
             Severity="Informational"
             Title="{x:Static resources:Resource.ITSModeConfigWindow_Description}" />
 
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <StackPanel
-                x:Name="_modeCardsPanel"
-                Margin="0,4,4,12"
-                AllowDrop="True" />
-        </ScrollViewer>
-
         <wpfui:Button
-            Grid.Row="2"
+            Grid.Row="1"
             MinWidth="120"
-            HorizontalAlignment="Left"
+            Margin="0,0,0,8"
+            HorizontalAlignment="Right"
             Appearance="Secondary"
             Click="DefaultButton_Click"
             Content="{x:Static resources:Resource.Default}" />
+
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+            <StackPanel
+                x:Name="_modeCardsPanel"
+                Margin="0,4,4,0"
+                AllowDrop="True" />
+        </ScrollViewer>
     </Grid>
 </UserControl>
