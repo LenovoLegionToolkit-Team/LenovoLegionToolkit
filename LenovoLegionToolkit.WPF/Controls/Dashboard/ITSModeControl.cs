@@ -10,7 +10,7 @@ using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
-using LenovoLegionToolkit.WPF.Windows.Settings;
+using LenovoLegionToolkit.WPF.Windows.Dashboard;
 using Wpf.Ui.Common;
 using Button = Wpf.Ui.Controls.Button;
 
@@ -52,7 +52,7 @@ public class ITSModeControl : AbstractComboBoxFeatureCardControl<ITSMode>
 
     private void ConfigButton_Click(object sender, RoutedEventArgs e)
     {
-        var window = new ITSModeConfigWindow { Owner = Window.GetWindow(this) };
+        var window = new GodModeSettingsWindow { Owner = Window.GetWindow(this) };
         window.ShowDialog();
     }
 

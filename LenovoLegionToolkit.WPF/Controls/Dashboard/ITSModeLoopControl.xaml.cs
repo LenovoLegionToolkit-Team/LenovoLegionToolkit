@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -8,14 +9,13 @@ using System.Windows.Media;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Settings;
-using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Controls.Custom;
 using LenovoLegionToolkit.WPF.Extensions;
 using Wpf.Ui.Common;
 
-namespace LenovoLegionToolkit.WPF.Windows.Settings;
+namespace LenovoLegionToolkit.WPF.Controls.Dashboard;
 
-public partial class ITSModeConfigWindow
+public partial class ITSModeLoopControl
 {
     private readonly ITSModeFeature _feature = IoCContainer.Resolve<ITSModeFeature>();
     private readonly ITSModeSettings _settings = IoCContainer.Resolve<ITSModeSettings>();
@@ -25,14 +25,19 @@ public partial class ITSModeConfigWindow
     private Point _dragStartPoint;
     private CardControl? _draggedCard;
 
-    public ITSModeConfigWindow()
+    public ITSModeLoopControl()
     {
         InitializeComponent();
-        Loaded += ITSModeConfigWindow_Loaded;
+        Loaded += ITSModeLoopControl_Loaded;
         _modeCardsPanel.Drop += ModeCardsPanel_Drop;
     }
 
-    private async void ITSModeConfigWindow_Loaded(object sender, RoutedEventArgs e)
+    private async void ITSModeLoopControl_Loaded(object sender, RoutedEventArgs e)
+    {
+        await LoadAsync();
+    }
+
+    public async Task LoadAsync()
     {
         try
         {
@@ -55,6 +60,19 @@ public partial class ITSModeConfigWindow
         {
             Lib.Utils.Log.Instance.Trace($"Failed to load ITS mode config: {ex}");
         }
+    }
+
+    public void Save()
+    {
+        var order = GetCurrentOrder();
+        var disabled = _toggles
+            .Where(kv => kv.Value.IsChecked != true)
+            .Select(kv => kv.Key)
+            .ToList();
+
+        _settings.Store.FnQModeOrder = order;
+        _settings.Store.DisabledModes = disabled;
+        _settings.SynchronizeStore();
     }
 
     private void BuildModeCards(List<ITSMode> orderedModes, HashSet<ITSMode> disabledSet)
@@ -217,26 +235,6 @@ public partial class ITSModeConfigWindow
                 order.Add(mode);
         }
         return order;
-    }
-
-    private void ApplyButton_Click(object sender, RoutedEventArgs e)
-    {
-        var order = GetCurrentOrder();
-        var disabled = _toggles
-            .Where(kv => kv.Value.IsChecked != true)
-            .Select(kv => kv.Key)
-            .ToList();
-
-        _settings.Store.FnQModeOrder = order;
-        _settings.Store.DisabledModes = disabled;
-        _settings.SynchronizeStore();
-
-        Close();
-    }
-
-    private void CancelButton_Click(object sender, RoutedEventArgs e)
-    {
-        Close();
     }
 
     private void DefaultButton_Click(object sender, RoutedEventArgs e)

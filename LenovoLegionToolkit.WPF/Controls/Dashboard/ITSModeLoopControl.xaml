@@ -1,0 +1,39 @@
+<UserControl
+    x:Class="LenovoLegionToolkit.WPF.Controls.Dashboard.ITSModeLoopControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:resources="clr-namespace:LenovoLegionToolkit.WPF.Resources"
+    xmlns:custom="clr-namespace:LenovoLegionToolkit.WPF.Controls.Custom">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <custom:InfoBar
+            Grid.Row="0"
+            Margin="0,0,0,12"
+            IsClosable="False"
+            IsOpen="True"
+            Severity="Informational"
+            Title="{x:Static resources:Resource.ITSModeConfigWindow_Description}" />
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel
+                x:Name="_modeCardsPanel"
+                Margin="0,4,4,12"
+                AllowDrop="True" />
+        </ScrollViewer>
+
+        <wpfui:Button
+            Grid.Row="2"
+            MinWidth="120"
+            HorizontalAlignment="Left"
+            Appearance="Secondary"
+            Click="DefaultButton_Click"
+            Content="{x:Static resources:Resource.Default}" />
+    </Grid>
+</UserControl>

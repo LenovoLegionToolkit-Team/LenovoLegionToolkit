@@ -183,6 +183,12 @@ public partial class GodModeSettingsWindow
 
             await _godModeController.SetStateAsync(newState);
             await _godModeController.ApplyStateAsync();
+
+            if (_fnqTabItem.Visibility == Visibility.Visible)
+            {
+                _fnqLoopControl.Save();
+            }
+
             return true;
         }
         catch (Exception ex)
@@ -279,11 +285,12 @@ public partial class GodModeSettingsWindow
             bool fanVisible = _fanCurveCardControl.Visibility == Visibility.Visible || _fanFullSpeedCardControl.Visibility == Visibility.Visible;
             bool advVisible = _maxValueOffsetCardControl.Visibility == Visibility.Visible || _minValueOffsetCardControl.Visibility == Visibility.Visible;
 
-            _cpuSectionTitle.Visibility = cpuVisible ? Visibility.Visible : Visibility.Collapsed;
-            _gpuSectionTitle.Visibility = gpuVisible ? Visibility.Visible : Visibility.Collapsed;
-            _fanSectionTitle.Visibility = fanVisible ? Visibility.Visible : Visibility.Collapsed;
-            _advancedSectionTitle.Visibility = advVisible ? Visibility.Visible : Visibility.Collapsed;
-            _advancedSectionMessage.Visibility = advVisible ? Visibility.Visible : Visibility.Collapsed;
+            _cpuTabItem.Visibility = cpuVisible ? Visibility.Visible : Visibility.Collapsed;
+            _gpuTabItem.Visibility = gpuVisible ? Visibility.Visible : Visibility.Collapsed;
+            _fanTabItem.Visibility = fanVisible ? Visibility.Visible : Visibility.Collapsed;
+            _advancedTabItem.Visibility = advVisible ? Visibility.Visible : Visibility.Collapsed;
+
+            await UpdateFnQTabVisibilityAsync();
             _overclockingToggle.IsChecked = preset.EnableOverclocking;
             _coreCurveToggle.IsChecked = preset.EnableAllCoreCurveOptimizer;
 
@@ -300,11 +307,11 @@ public partial class GodModeSettingsWindow
     {
         var mi = await Compatibility.GetMachineInformationAsync();
         var isBiosOcEnabled = await IsBiosOcEnabledAsync();
-        _toggleOcCard.Visibility = (isBiosOcEnabled && mi.Properties.IsAmdDevice) ? Visibility.Visible : Visibility.Collapsed;
-        var ocVisible = (isBiosOcEnabled && mi.Properties.IsAmdDevice && _overclockingToggle.IsChecked == true) ? Visibility.Visible : Visibility.Collapsed;
-        _cpuPrecisionBoostOverdriveScaler.Visibility = ocVisible;
-        _cpuPrecisionBoostOverdriveBoostFrequency.Visibility = ocVisible;
-        _toggleCoreCurveCard.Visibility = ocVisible;
+        var pboVisible = isBiosOcEnabled && mi.Properties.IsAmdDevice;
+        _pboTabItem.Visibility = pboVisible ? Visibility.Visible : Visibility.Collapsed;
+        _cpuPrecisionBoostOverdriveScaler.Visibility = pboVisible && _overclockingToggle.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+        _cpuPrecisionBoostOverdriveBoostFrequency.Visibility = pboVisible && _overclockingToggle.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
+        _toggleCoreCurveCard.Visibility = pboVisible && _overclockingToggle.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
         await UpdateCoreCurveVisibilityAsync();
     }
 
@@ -562,5 +569,13 @@ public partial class GodModeSettingsWindow
         {
             return false;
         }
+    }
+
+    private async Task UpdateFnQTabVisibilityAsync()
+    {
+        var mi = await Compatibility.GetMachineInformationAsync();
+        _fnqTabItem.Visibility = mi.Properties.GodModePlatform == GodModePlatform.NonGaming
+            ? Visibility.Visible
+            : Visibility.Collapsed;
     }
 }
