@@ -463,7 +463,7 @@ public class GodModeController(
                 await WMI.LenovoCpuMethod.CPUSetOCDataAsync(17, (uint)CPUOverclockingID.AllCoreCurveOptimizer, coreCurve.Value).ConfigureAwait(false);
             }
         }
-        else
+        else if (isOcEnabled && preset.EnableOverclocking == false)
         {
             await WMI.LenovoOtherMethod.SetFeatureValueAsync((uint)CapabilityID.CPUOverclockingEnable, 0).ConfigureAwait(false);
             Log.Instance.Trace($"Overclocking is disabled.");
