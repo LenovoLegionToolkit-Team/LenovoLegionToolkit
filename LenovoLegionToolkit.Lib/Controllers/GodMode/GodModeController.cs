@@ -295,28 +295,25 @@ public class GodModeController(
     {
         var mi = await GetMachineInformationAsync().ConfigureAwait(false);
 
-        if (config.Platform == GodModePlatform.Legion)
+        if (await vantageDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
         {
-            if (await vantageDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+            Log.Instance.Trace($"Can't correctly apply state when Vantage is running.");
+            return;
+        }
+
+        if (mi.SmartFanVersion >= 8)
+        {
+            if (await legionSpaceDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
             {
-                Log.Instance.Trace($"Can't correctly apply state when Vantage is running.");
+                Log.Instance.Trace($"Can't correctly apply state when Legion Space is running.");
                 return;
             }
+        }
 
-            if (mi.SmartFanVersion >= 8)
-            {
-                if (await legionSpaceDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
-                {
-                    Log.Instance.Trace($"Can't correctly apply state when Legion Space is running.");
-                    return;
-                }
-            }
-
-            if (await legionZoneDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
-            {
-                Log.Instance.Trace($"Can't correctly apply state when Legion Zone is running.");
-                return;
-            }
+        if (await legionZoneDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+        {
+            Log.Instance.Trace($"Can't correctly apply state when Legion Zone is running.");
+            return;
         }
 
         Log.Instance.Trace($"Applying state...");
@@ -376,7 +373,10 @@ public class GodModeController(
             }
         }
 
-        await ApplyFanSettingsAsync(config, fanTable, fanFullSpeed).ConfigureAwait(false);
+        if (preset.FanTable != null)
+        {
+            await ApplyFanSettingsAsync(config, fanTable, fanFullSpeed).ConfigureAwait(false);
+        }
 
         if (config.Platform == GodModePlatform.Legion)
         {
@@ -567,7 +567,7 @@ public class GodModeController(
             }
         }
 
-        var fanTableData = config.Platform == GodModePlatform.Legion ? await GetFanTableDataLegionAsync().ConfigureAwait(false) : null;
+        var fanTableData = await TryGetFanTableDataAsync(config).ConfigureAwait(false);
 
         var (pboScaler, pboFreq, coreCurve) = CreateAmdOcDefaults(isAmdDevice);
         FanTableInfo? fanTableInfo = null;
@@ -600,7 +600,7 @@ public class GodModeController(
         GodModePlatformConfiguration config,
         Dictionary<uint, StepperValue> stepperValues,
         FanTableInfo? fanTableInfo,
-        bool fanFullSpeed,
+        bool? fanFullSpeed,
         int minValueOffset,
         int maxValueOffset,
         StepperValue? pboScaler,
@@ -886,6 +886,24 @@ public class GodModeController(
         };
     }
 
+    private static async Task<FanTableData[]?> TryGetFanTableDataAsync(GodModePlatformConfiguration config)
+    {
+        if (config.Platform is not (GodModePlatform.Legion or GodModePlatform.NonGaming))
+        {
+            return null;
+        }
+
+        try
+        {
+            return await GetFanTableDataLegionAsync().ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to read fan table data.", ex);
+            return null;
+        }
+    }
+
     private static async Task<FanTableData[]?> GetFanTableDataLegacyAsync()
     {
         Log.Instance.Trace($"Reading fan table data...");
@@ -997,7 +1015,7 @@ public class GodModeController(
 
     #region Fan Full Speed
 
-    private static async Task<bool> GetFanFullSpeedAsync(GodModePlatformConfiguration config)
+    private static async Task<bool?> GetFanFullSpeedAsync(GodModePlatformConfiguration config)
     {
         try
         {
@@ -1009,8 +1027,8 @@ public class GodModeController(
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"Failed to read FanFullSpeed, defaulting to false.", ex);
-            return false;
+            Log.Instance.Trace($"Failed to read FanFullSpeed.", ex);
+            return null;
         }
     }
 

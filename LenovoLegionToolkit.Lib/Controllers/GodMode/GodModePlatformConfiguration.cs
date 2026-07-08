@@ -48,11 +48,11 @@ public sealed record GodModePlatformConfiguration
             new() { RawId = (uint)NonGamingCapabilityID.CPULongTermPowerLimit, PropertyName = nameof(GodModePreset.CPULongTermPowerLimit), Min = 0, Max = 255, Step = 1, DefaultValue = 0 },
             new() { RawId = (uint)NonGamingCapabilityID.CPUTemperatureLimit, PropertyName = nameof(GodModePreset.CPUTemperatureLimit), Min = 0, Max = 100, Step = 1, DefaultValue = 100 },
             new() { RawId = (uint)NonGamingCapabilityID.CPUPL1Tau, PropertyName = nameof(GodModePreset.CPUPL1Tau), Min = 0, Max = 448, Step = 28, DefaultValue = 56 },
-            new() { RawId = (uint)NonGamingCapabilityID.GPUConfigurableTGP, PropertyName = nameof(GodModePreset.GPUConfigurableTGP), Min = 0, Max = 255, Step = 1, DefaultValue = 0 },
-            new() { RawId = (uint)NonGamingCapabilityID.GPUPowerBoost, PropertyName = nameof(GodModePreset.GPUPowerBoost), Min = 0, Max = 255, Step = 1, DefaultValue = 0 },
+            new() { RawId = (uint)NonGamingCapabilityID.GPUConfigurableTGP, PropertyName = nameof(GodModePreset.GPUConfigurableTGP), Min = 55, Max = 115, Step = 10, DefaultValue = 55 },
+            new() { RawId = (uint)NonGamingCapabilityID.GPUPowerBoost, PropertyName = nameof(GodModePreset.GPUPowerBoost), Min = 0, Max = 25, Step = 5, DefaultValue = 0 },
             new() { RawId = (uint)NonGamingCapabilityID.GPUTemperatureLimit, PropertyName = nameof(GodModePreset.GPUTemperatureLimit), Min = 0, Max = 100, Step = 1, DefaultValue = 100 },
             new() { RawId = (uint)NonGamingCapabilityID.GPUToCPUDynamicBoost, PropertyName = nameof(GodModePreset.GPUToCPUDynamicBoost), Min = 0, Max = 255, Step = 1, DefaultValue = 0 },
-            new() { RawId = (uint)NonGamingCapabilityID.FanFullSpeed, PropertyName = nameof(GodModePreset.FanFullSpeed), Min = 0, Max = 1, Step = 1, DefaultValue = 0 },
+            new() { RawId = (uint)NonGamingCapabilityID.FanFullSpeed, PropertyName = nameof(GodModePreset.FanFullSpeed), Min = 0, Max = 1, Step = 1, DefaultValue = 0, FailAllowed = true },
         ],
     };
 }
