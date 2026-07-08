@@ -999,19 +999,39 @@ public class GodModeController(
 
     private static async Task<bool> GetFanFullSpeedAsync(GodModePlatformConfiguration config)
     {
-        var fanFullSpeedCap = config.Capabilities.FirstOrDefault(c => c.PropertyName == nameof(GodModePreset.FanFullSpeed));
-        if (fanFullSpeedCap == null)
-            return await WMI.LenovoFanMethod.FanGetFullSpeedAsync().ConfigureAwait(false);
-        var value = await GetValueAsync(fanFullSpeedCap.RawId, config.CapabilityIdMask).ConfigureAwait(false);
-        return value != 0;
+        try
+        {
+            var fanFullSpeedCap = config.Capabilities.FirstOrDefault(c => c.PropertyName == nameof(GodModePreset.FanFullSpeed));
+            if (fanFullSpeedCap == null)
+                return await WMI.LenovoFanMethod.FanGetFullSpeedAsync().ConfigureAwait(false);
+            var value = await GetValueAsync(fanFullSpeedCap.RawId, config.CapabilityIdMask).ConfigureAwait(false);
+            return value != 0;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to read FanFullSpeed, defaulting to false.", ex);
+            return false;
+        }
     }
 
-    private static Task SetFanFullSpeedAsync(GodModePlatformConfiguration config, bool enabled)
+    private static async Task SetFanFullSpeedAsync(GodModePlatformConfiguration config, bool enabled)
     {
-        var fanFullSpeedCap = config.Capabilities.FirstOrDefault(c => c.PropertyName == nameof(GodModePreset.FanFullSpeed));
-        if (fanFullSpeedCap == null)
-            return WMI.LenovoFanMethod.FanSetFullSpeedAsync(enabled ? 1 : 0);
-        return SetValueAsync(fanFullSpeedCap.RawId, enabled ? 1 : 0, config.CapabilityIdMask);
+        try
+        {
+            var fanFullSpeedCap = config.Capabilities.FirstOrDefault(c => c.PropertyName == nameof(GodModePreset.FanFullSpeed));
+            if (fanFullSpeedCap == null)
+            {
+                await WMI.LenovoFanMethod.FanSetFullSpeedAsync(enabled ? 1 : 0).ConfigureAwait(false);
+            }
+            else
+            {
+                await SetValueAsync(fanFullSpeedCap.RawId, enabled ? 1 : 0, config.CapabilityIdMask).ConfigureAwait(false);
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to set FanFullSpeed.", ex);
+        }
     }
 
     #endregion
