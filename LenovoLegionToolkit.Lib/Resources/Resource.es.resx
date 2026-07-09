@@ -376,6 +376,9 @@
   <data name="OsdItem_Utilization" xml:space="preserve">
     <value>Uso</value>
   </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>Voltage</value>
+  </data>
   <data name="OsdItem_VramTemperature" xml:space="preserve">
     <value>Temperatura VRAM</value>
   </data>
@@ -425,6 +428,9 @@
   </data>
   <data name="PowerModeState_Quiet" xml:space="preserve">
     <value>Tranquilo</value>
+  </data>
+  <data name="RefreshRate_Dynamic" xml:space="preserve">
+    <value>Dynamic ({0} Hz)</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>Alto</value>
@@ -660,8 +666,5 @@
   <data name="WinKeyState_On" xml:space="preserve">
     <value>Encendido</value>
     <comment>Informs the user that WinLock is or will be turned on.</comment>
-  </data>
-  <data name="RefreshRate_Dynamic" xml:space="preserve">
-    <value>Dynamic ({0} Hz)</value>
   </data>
 </root>
