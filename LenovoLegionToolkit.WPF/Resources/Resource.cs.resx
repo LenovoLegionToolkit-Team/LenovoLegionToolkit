@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -812,6 +812,9 @@ Přepínání režimů může vyžadovat restart.</value>
   <data name="CopyAll" xml:space="preserve">
     <value>Kopírovat vše</value>
   </data>
+  <data name="Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
   </data>
@@ -1257,11 +1260,11 @@ Některé notebooky mohou akceptovat nižší limity výkonu, než uvádějí, a
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
     <value>Maximální okamžitá spotřeba CPU, která může být dosažena.</value>
   </data>
-  <data name="GodModeSettingsWindow_CPU_PL1Tau" xml:space="preserve">
-    <value>Doba krátkodobého limitu výkonu</value>
+  <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
+    <value>Short Term Power Limit Duration</value>
   </data>
-  <data name="GodModeSettingsWindow_CPU_PL1Tau_Description" xml:space="preserve">
-    <value>Doba, po kterou může CPU zvýšit a používat krátkodobý limit výkonu. Když čas vyprší, použije se dlouhodobý limit výkonu.</value>
+  <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
+    <value>The amount of time the CPU is allowed to boost and use Short Term Power Limit for. When Tau expires, Long Term Power Limit is used.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Krátkodobý limit výkonu</value>
@@ -2027,6 +2030,9 @@ Nebude to mít vliv na ostatní celoobrazovková okna, ale nebudete moci kliknou
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>OSD</value>
+  </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>Voltage</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Nastavte stav pozice zámku OSD.</value>
@@ -2800,6 +2806,21 @@ Režim můžeš přepínat pomocí Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Použitá/celková paměť (GB)</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>Choose how voltage is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>Voltage Display Mode</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Pořadové číslo</value>
