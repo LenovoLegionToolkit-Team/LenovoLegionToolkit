@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -812,6 +812,9 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
   <data name="CopyAll" xml:space="preserve">
     <value>Alles kopiëren</value>
   </data>
+  <data name="Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
   </data>
@@ -1257,11 +1260,11 @@ Sommige laptops accepteren lagere waarden dan aangegeven. Deze optie kan onvoors
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
     <value>Het maximale directe stroomverbruik dat door de CPU kan worden bereikt.</value>
   </data>
-  <data name="GodModeSettingsWindow_CPU_PL1Tau" xml:space="preserve">
-    <value>Vermogenslimiet op korte termijn</value>
+  <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
+    <value>Short Term Power Limit Duration</value>
   </data>
-  <data name="GodModeSettingsWindow_CPU_PL1Tau_Description" xml:space="preserve">
-    <value>De hoeveelheid tijd die de CPU mag boosten en de Korte Termijn Vermogenslimiet mag gebruiken. Als Tau verloopt, wordt Lange Termijn Vermogenslimiet gebruikt.</value>
+  <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
+    <value>The amount of time the CPU is allowed to boost and use Short Term Power Limit for. When Tau expires, Long Term Power Limit is used.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Vermogenslimiet op korte termijn</value>
@@ -2026,6 +2029,9 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>Zwevende Gadget</value>
+  </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>Voltage</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Stel de vergrendelingsstatus van de OSD in.</value>
@@ -2800,6 +2806,21 @@ U kunt van modus wisselen met Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Gebruikt/Totaal Geheugen (GB)</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>Choose how voltage is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>Voltage Display Mode</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Serienummer</value>
