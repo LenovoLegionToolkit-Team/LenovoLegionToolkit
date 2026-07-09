@@ -393,7 +393,7 @@ public readonly struct GodModeDefaults
     public int? CPUShortTermPowerLimit { get; init; }
     public int? CPUPeakPowerLimit { get; init; }
     public int? CPUCrossLoadingPowerLimit { get; init; }
-    public int? CPUPL1Tau { get; init; }
+    public int? CPUPL2Tau { get; init; }
     public int? APUsPPTPowerLimit { get; init; }
     public int? CPUTemperatureLimit { get; init; }
     public int? PrecisionBoostOverdriveScaler { get; init; }
@@ -415,7 +415,7 @@ public readonly struct GodModeDefaults
                $" {nameof(CPUShortTermPowerLimit)}: {CPUShortTermPowerLimit}," +
                $" {nameof(CPUPeakPowerLimit)}: {CPUPeakPowerLimit}," +
                $" {nameof(CPUCrossLoadingPowerLimit)}: {CPUCrossLoadingPowerLimit}," +
-               $" {nameof(CPUPL1Tau)}: {CPUPL1Tau}," +
+               $" {nameof(CPUPL2Tau)}: {CPUPL2Tau}," +
                $" {nameof(APUsPPTPowerLimit)}: {APUsPPTPowerLimit}," +
                $" {nameof(CPUTemperatureLimit)}: {CPUTemperatureLimit}," +
                $" {nameof(GPUPowerBoost)}: {GPUPowerBoost}," +
@@ -441,7 +441,7 @@ public readonly struct GodModePreset
     public StepperValue? CPUShortTermPowerLimit { get; init; }
     public StepperValue? CPUPeakPowerLimit { get; init; }
     public StepperValue? CPUCrossLoadingPowerLimit { get; init; }
-    public StepperValue? CPUPL1Tau { get; init; }
+    public StepperValue? CPUPL2Tau { get; init; }
     public StepperValue? APUsPPTPowerLimit { get; init; }
     public StepperValue? CPUTemperatureLimit { get; init; }
     public StepperValue? PrecisionBoostOverdriveScaler { get; init; }
@@ -468,7 +468,7 @@ public readonly struct GodModePreset
                $" {nameof(CPUShortTermPowerLimit)}: {CPUShortTermPowerLimit}," +
                $" {nameof(CPUPeakPowerLimit)}: {CPUPeakPowerLimit}," +
                $" {nameof(CPUCrossLoadingPowerLimit)}: {CPUCrossLoadingPowerLimit}," +
-               $" {nameof(CPUPL1Tau)}: {CPUPL1Tau}," +
+               $" {nameof(CPUPL2Tau)}: {CPUPL2Tau}," +
                $" {nameof(APUsPPTPowerLimit)}: {APUsPPTPowerLimit}," +
                $" {nameof(CPUTemperatureLimit)}: {CPUTemperatureLimit}," +
                $" {nameof(GPUPowerBoost)}: {GPUPowerBoost}," +

@@ -146,7 +146,7 @@ public partial class GodModeSettingsWindow
                 CPUShortTermPowerLimit = preset.CPUShortTermPowerLimit?.WithValue(_cpuShortTermPowerLimitControl.Value),
                 CPUPeakPowerLimit = preset.CPUPeakPowerLimit?.WithValue(_cpuPeakPowerLimitControl.Value),
                 CPUCrossLoadingPowerLimit = preset.CPUCrossLoadingPowerLimit?.WithValue(_cpuCrossLoadingLimitControl.Value),
-                CPUPL1Tau = preset.CPUPL1Tau?.WithValue(_cpuPL1TauControl.Value),
+                CPUPL2Tau = preset.CPUPL2Tau?.WithValue(_cpuPL2TauControl.Value),
                 APUsPPTPowerLimit = preset.APUsPPTPowerLimit?.WithValue(_apuSPPTPowerLimitControl.Value),
                 CPUTemperatureLimit = preset.CPUTemperatureLimit?.WithValue(_cpuTemperatureLimitControl.Value),
                 GPUPowerBoost = preset.GPUPowerBoost?.WithValue(_gpuPowerBoostControl.Value),
@@ -218,7 +218,7 @@ public partial class GodModeSettingsWindow
             _cpuShortTermPowerLimitControl.Set(preset.CPUShortTermPowerLimit);
             _cpuPeakPowerLimitControl.Set(preset.CPUPeakPowerLimit);
             _cpuCrossLoadingLimitControl.Set(preset.CPUCrossLoadingPowerLimit);
-            _cpuPL1TauControl.Set(preset.CPUPL1Tau);
+            _cpuPL2TauControl.Set(preset.CPUPL2Tau);
             _apuSPPTPowerLimitControl.Set(preset.APUsPPTPowerLimit);
             _cpuTemperatureLimitControl.Set(preset.CPUTemperatureLimit);
             _cpuPrecisionBoostOverdriveScaler.Set(preset.PrecisionBoostOverdriveScaler);
@@ -282,7 +282,7 @@ public partial class GodModeSettingsWindow
                 _minValueOffsetCardControl.Visibility = Visibility.Collapsed;
             }
 
-            bool cpuVisible = _cpuLongTermPowerLimitControl.Visibility == Visibility.Visible || _cpuShortTermPowerLimitControl.Visibility == Visibility.Visible || _cpuPeakPowerLimitControl.Visibility == Visibility.Visible || _cpuCrossLoadingLimitControl.Visibility == Visibility.Visible || _cpuPL1TauControl.Visibility == Visibility.Visible || _apuSPPTPowerLimitControl.Visibility == Visibility.Visible || _cpuTemperatureLimitControl.Visibility == Visibility.Visible;
+            bool cpuVisible = _cpuLongTermPowerLimitControl.Visibility == Visibility.Visible || _cpuShortTermPowerLimitControl.Visibility == Visibility.Visible || _cpuPeakPowerLimitControl.Visibility == Visibility.Visible || _cpuCrossLoadingLimitControl.Visibility == Visibility.Visible || _cpuPL2TauControl.Visibility == Visibility.Visible || _apuSPPTPowerLimitControl.Visibility == Visibility.Visible || _cpuTemperatureLimitControl.Visibility == Visibility.Visible;
             bool gpuVisible = _gpuPowerBoostControl.Visibility == Visibility.Visible || _gpuConfigurableTGPControl.Visibility == Visibility.Visible || _gpuTemperatureLimitControl.Visibility == Visibility.Visible || _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Visibility == Visibility.Visible || _gpuToCpuDynamicBoostControl.Visibility == Visibility.Visible;
             bool fanVisible = _fanCurveCardControl.Visibility == Visibility.Visible || _fanFullSpeedCardControl.Visibility == Visibility.Visible;
             bool advVisible = _maxValueOffsetCardControl.Visibility == Visibility.Visible || _minValueOffsetCardControl.Visibility == Visibility.Visible;
@@ -330,7 +330,7 @@ public partial class GodModeSettingsWindow
         SetVal(_cpuShortTermPowerLimitControl, defaults.CPUShortTermPowerLimit, v => { _cpuShortTermPowerLimitControl.Value = v; });
         SetVal(_cpuPeakPowerLimitControl, defaults.CPUPeakPowerLimit, v => { _cpuPeakPowerLimitControl.Value = v; });
         SetVal(_cpuCrossLoadingLimitControl, defaults.CPUCrossLoadingPowerLimit, v => { _cpuCrossLoadingLimitControl.Value = v; });
-        SetVal(_cpuPL1TauControl, defaults.CPUPL1Tau, v => { _cpuPL1TauControl.Value = v; });
+        SetVal(_cpuPL2TauControl, defaults.CPUPL2Tau, v => { _cpuPL2TauControl.Value = v; });
         SetVal(_apuSPPTPowerLimitControl, defaults.APUsPPTPowerLimit, v => { _apuSPPTPowerLimitControl.Value = v; });
         SetVal(_cpuTemperatureLimitControl, defaults.CPUTemperatureLimit, v => { _cpuTemperatureLimitControl.Value = v; });
         SetVal(_cpuPrecisionBoostOverdriveScaler, defaults.PrecisionBoostOverdriveScaler, v => { _cpuPrecisionBoostOverdriveScaler.Value = v; });

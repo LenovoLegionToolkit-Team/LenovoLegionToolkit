@@ -3473,18 +3473,18 @@ namespace LenovoLegionToolkit.WPF.Resources {
         /// <summary>
         ///   查找类似 Short Term Power Limit Duration 的本地化字符串。
         /// </summary>
-        public static string GodModeSettingsWindow_CPU_PL1Tau {
+        public static string GodModeSettingsWindow_CPU_PL2Tau {
             get {
-                return ResourceManager.GetString("GodModeSettingsWindow_CPU_PL1Tau", resourceCulture);
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_PL2Tau", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 The amount of time the CPU is allowed to boost and use Short Term Power Limit for. When Tau expires, Long Term Power Limit is used. 的本地化字符串。
         /// </summary>
-        public static string GodModeSettingsWindow_CPU_PL1Tau_Description {
+        public static string GodModeSettingsWindow_CPU_PL2Tau_Description {
             get {
-                return ResourceManager.GetString("GodModeSettingsWindow_CPU_PL1Tau_Description", resourceCulture);
+                return ResourceManager.GetString("GodModeSettingsWindow_CPU_PL2Tau_Description", resourceCulture);
             }
         }
         

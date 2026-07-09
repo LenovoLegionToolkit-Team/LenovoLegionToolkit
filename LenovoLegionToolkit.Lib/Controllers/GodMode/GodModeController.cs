@@ -136,7 +136,7 @@ public class GodModeController(
                 CPUShortTermPowerLimit = preset.CPUShortTermPowerLimit,
                 CPUPeakPowerLimit = preset.CPUPeakPowerLimit,
                 CPUCrossLoadingPowerLimit = preset.CPUCrossLoadingPowerLimit,
-                CPUPL1Tau = preset.CPUPL1Tau,
+                CPUPL2Tau = preset.CPUPL2Tau,
                 APUsPPTPowerLimit = preset.APUsPPTPowerLimit,
                 CPUTemperatureLimit = preset.CPUTemperatureLimit,
                 GPUPowerBoost = preset.GPUPowerBoost,
@@ -559,7 +559,13 @@ public class GodModeController(
 
                     if (cap.Steps.Length > 0)
                     {
-                        stepperValues[cap.RawId] = new StepperValue(rawValue, 0, 0, 0, cap.Steps, cap.DefaultValue);
+                        var value = rawValue;
+                        if (!cap.Steps.Contains(value))
+                        {
+                            value = cap.Steps.MinBy(v => Math.Abs((long)v - value));
+                        }
+
+                        stepperValues[cap.RawId] = new StepperValue(value, 0, 0, 0, cap.Steps, cap.DefaultValue);
                     }
                     else
                     {
@@ -628,7 +634,7 @@ public class GodModeController(
             CPUShortTermPowerLimit = Sv(config, sv, nameof(GodModePreset.CPUShortTermPowerLimit)),
             CPUPeakPowerLimit = Sv(config, sv, nameof(GodModePreset.CPUPeakPowerLimit)),
             CPUCrossLoadingPowerLimit = Sv(config, sv, nameof(GodModePreset.CPUCrossLoadingPowerLimit)),
-            CPUPL1Tau = Sv(config, sv, nameof(GodModePreset.CPUPL1Tau)),
+            CPUPL2Tau = Sv(config, sv, nameof(GodModePreset.CPUPL2Tau)),
             APUsPPTPowerLimit = Sv(config, sv, nameof(GodModePreset.APUsPPTPowerLimit)),
             CPUTemperatureLimit = Sv(config, sv, nameof(GodModePreset.CPUTemperatureLimit)),
             GPUPowerBoost = Sv(config, sv, nameof(GodModePreset.GPUPowerBoost)),
@@ -679,7 +685,7 @@ public class GodModeController(
             nameof(GodModePreset.CPUShortTermPowerLimit) => preset.CPUShortTermPowerLimit,
             nameof(GodModePreset.CPUPeakPowerLimit) => preset.CPUPeakPowerLimit,
             nameof(GodModePreset.CPUCrossLoadingPowerLimit) => preset.CPUCrossLoadingPowerLimit,
-            nameof(GodModePreset.CPUPL1Tau) => preset.CPUPL1Tau,
+            nameof(GodModePreset.CPUPL2Tau) => preset.CPUPL2Tau,
             nameof(GodModePreset.APUsPPTPowerLimit) => preset.APUsPPTPowerLimit,
             nameof(GodModePreset.CPUTemperatureLimit) => preset.CPUTemperatureLimit,
             nameof(GodModePreset.GPUPowerBoost) => preset.GPUPowerBoost,
@@ -702,7 +708,7 @@ public class GodModeController(
             nameof(GodModeDefaults.CPUShortTermPowerLimit) => d.CPUShortTermPowerLimit,
             nameof(GodModeDefaults.CPUPeakPowerLimit) => d.CPUPeakPowerLimit,
             nameof(GodModeDefaults.CPUCrossLoadingPowerLimit) => d.CPUCrossLoadingPowerLimit,
-            nameof(GodModeDefaults.CPUPL1Tau) => d.CPUPL1Tau,
+            nameof(GodModeDefaults.CPUPL2Tau) => d.CPUPL2Tau,
             nameof(GodModeDefaults.APUsPPTPowerLimit) => d.APUsPPTPowerLimit,
             nameof(GodModeDefaults.CPUTemperatureLimit) => d.CPUTemperatureLimit,
             nameof(GodModeDefaults.GPUPowerBoost) => d.GPUPowerBoost,
@@ -847,7 +853,7 @@ public class GodModeController(
                     CPUShortTermPowerLimit = GetDefVal(allCapabilityData, CapabilityID.CPUShortTermPowerLimit, powerMode),
                     CPUPeakPowerLimit = GetDefVal(allCapabilityData, CapabilityID.CPUPeakPowerLimit, powerMode),
                     CPUCrossLoadingPowerLimit = GetDefVal(allCapabilityData, CapabilityID.CPUCrossLoadingPowerLimit, powerMode),
-                    CPUPL1Tau = GetDefVal(allCapabilityData, CapabilityID.CPUPL1Tau, powerMode),
+                    CPUPL2Tau = GetDefVal(allCapabilityData, CapabilityID.CPUPL2Tau, powerMode),
                     APUsPPTPowerLimit = GetDefVal(allCapabilityData, CapabilityID.APUsPPTPowerLimit, powerMode),
                     CPUTemperatureLimit = GetDefVal(allCapabilityData, CapabilityID.CPUTemperatureLimit, powerMode),
                     GPUPowerBoost = GetDefVal(allCapabilityData, CapabilityID.GPUPowerBoost, powerMode),
@@ -1133,14 +1139,13 @@ public class GodModeController(
                 CPUShortTermPowerLimit = CreateStepperValue(defaultState.CPUShortTermPowerLimit, preset.CPUShortTermPowerLimit, preset.MinValueOffset, preset.MaxValueOffset),
                 CPUPeakPowerLimit = CreateStepperValue(defaultState.CPUPeakPowerLimit, preset.CPUPeakPowerLimit, preset.MinValueOffset, preset.MaxValueOffset),
                 CPUCrossLoadingPowerLimit = CreateStepperValue(defaultState.CPUCrossLoadingPowerLimit, preset.CPUCrossLoadingPowerLimit, preset.MinValueOffset, preset.MaxValueOffset),
-                CPUPL1Tau = CreateStepperValue(defaultState.CPUPL1Tau, preset.CPUPL1Tau, preset.MinValueOffset, preset.MaxValueOffset),
+                CPUPL2Tau = CreateStepperValue(defaultState.CPUPL2Tau, preset.CPUPL2Tau, preset.MinValueOffset, preset.MaxValueOffset),
                 APUsPPTPowerLimit = CreateStepperValue(defaultState.APUsPPTPowerLimit, preset.APUsPPTPowerLimit, preset.MinValueOffset, preset.MaxValueOffset),
                 CPUTemperatureLimit = CreateStepperValue(defaultState.CPUTemperatureLimit, preset.CPUTemperatureLimit, preset.MinValueOffset, preset.MaxValueOffset),
                 GPUPowerBoost = CreateStepperValue(defaultState.GPUPowerBoost, preset.GPUPowerBoost, preset.MinValueOffset, preset.MaxValueOffset),
                 GPUConfigurableTGP = CreateStepperValue(defaultState.GPUConfigurableTGP, preset.GPUConfigurableTGP, preset.MinValueOffset, preset.MaxValueOffset),
                 GPUTemperatureLimit = CreateStepperValue(defaultState.GPUTemperatureLimit, preset.GPUTemperatureLimit, preset.MinValueOffset, preset.MaxValueOffset),
-                GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = CreateStepperValue(defaultState.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline,
-                    preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, preset.MinValueOffset, preset.MaxValueOffset),
+                GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = CreateStepperValue(defaultState.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, preset.MinValueOffset, preset.MaxValueOffset),
                 GPUToCPUDynamicBoost = CreateStepperValue(defaultState.GPUToCPUDynamicBoost, preset.GPUToCPUDynamicBoost),
                 FanTableInfo = await GetFanTableInfoAsync(preset, defaultState.FanTableInfo?.Data).ConfigureAwait(false),
                 FanFullSpeed = preset.FanFullSpeed,

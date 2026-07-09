@@ -114,7 +114,13 @@ public partial class GodModeValueControl
 
             _sliderLabel.ContentStringFormat = null;
 
-            _comboBox.SetItems(value.Steps, value.Value, v => $"{v} {Unit}");
+            var targetValue = value.Value;
+            if (!value.Steps.Contains(targetValue))
+            {
+                targetValue = value.Steps.MinBy(v => Math.Abs((long)v - targetValue));
+            }
+
+            _comboBox.SetItems(value.Steps, targetValue, v => $"{v} {Unit}");
 
             _defaultValue = value.DefaultValue;
             _resetToDefaultButton.Visibility = _defaultValue.HasValue ? Visibility.Visible : Visibility.Collapsed;

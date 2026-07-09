@@ -158,10 +158,10 @@
                                 Description="{x:Static resources:Resource.GodModeSettingsWindow_CPU_CrossLoading_Description}"
                                 Unit="{x:Static resources:Resource.Watt}" />
                             <godMode:GodModeValueControl
-                                x:Name="_cpuPL1TauControl"
-                                Title="{x:Static resources:Resource.GodModeSettingsWindow_CPU_PL1Tau}"
+                                x:Name="_cpuPL2TauControl"
+                                Title="{x:Static resources:Resource.GodModeSettingsWindow_CPU_PL2Tau}"
                                 Margin="0,0,0,8"
-                                Description="{x:Static resources:Resource.GodModeSettingsWindow_CPU_PL1Tau_Description}"
+                                Description="{x:Static resources:Resource.GodModeSettingsWindow_CPU_PL2Tau_Description}"
                                 Unit="s" />
                             <godMode:GodModeValueControl
                                 x:Name="_apuSPPTPowerLimitControl"

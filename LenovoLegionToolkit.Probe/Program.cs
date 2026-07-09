@@ -327,7 +327,7 @@ await TryGetCapability(CapabilityID.CPUPeakPowerLimit, "CPU Peak Power Limit", s
 await TryGetCapability(CapabilityID.CPUTemperatureLimit, "CPU Temperature Limit", supportedCapabilities);
 await TryGetCapability(CapabilityID.APUsPPTPowerLimit, "APU sPPT Power Limit", supportedCapabilities);
 await TryGetCapability(CapabilityID.CPUCrossLoadingPowerLimit, "CPU Cross Loading Power Limit", supportedCapabilities);
-await TryGetCapability(CapabilityID.CPUPL1Tau, "CPU PL1 Tau", supportedCapabilities);
+await TryGetCapability(CapabilityID.CPUPL2Tau, "CPU PL2 Tau", supportedCapabilities);
 await TryGetCapability(CapabilityID.CPUOverclockingEnable, "CPU Overclocking Enable", supportedCapabilities);
 await TryGetCapability(CapabilityID.GPUPowerBoost, "GPU Power Boost", supportedCapabilities);
 await TryGetCapability(CapabilityID.GPUConfigurableTGP, "GPU Configurable TGP", supportedCapabilities);

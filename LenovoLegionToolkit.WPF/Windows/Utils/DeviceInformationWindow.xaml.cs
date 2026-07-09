@@ -146,7 +146,7 @@ public partial class DeviceInformationWindow
                 { CapabilityID.CPUTemperatureLimit, "CPU Thermal Limit Control" },
                 { CapabilityID.APUsPPTPowerLimit, "APU PPT Power Limit Control" },
                 { CapabilityID.CPUCrossLoadingPowerLimit, "CPU Cross Loading Power Limit Control" },
-                { CapabilityID.CPUPL1Tau, "CPU PL1 Tau Control" },
+                { CapabilityID.CPUPL2Tau, "CPU PL2 Tau Control" },
                 { CapabilityID.CPUOverclockingEnable, "CPU Overclocking Support" },
                 { CapabilityID.GPUPowerBoost, "GPU Dynamic Boost Control" },
                 { CapabilityID.GPUConfigurableTGP, "GPU Configurable TGP Control" },

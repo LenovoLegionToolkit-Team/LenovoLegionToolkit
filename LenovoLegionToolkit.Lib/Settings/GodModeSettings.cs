@@ -17,7 +17,7 @@ public class GodModeSettings() : AbstractSettings<GodModeSettingsStore>("godmode
             public StepperValue? CPUShortTermPowerLimit { get; init; }
             public StepperValue? CPUPeakPowerLimit { get; init; }
             public StepperValue? CPUCrossLoadingPowerLimit { get; init; }
-            public StepperValue? CPUPL1Tau { get; init; }
+            public StepperValue? CPUPL2Tau { get; init; }
             public StepperValue? APUsPPTPowerLimit { get; init; }
             public StepperValue? CPUTemperatureLimit { get; init; }
             public StepperValue? PrecisionBoostOverdriveScaler { get; init; }
