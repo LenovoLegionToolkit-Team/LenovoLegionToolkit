@@ -34,7 +34,7 @@
 加入 Legion Series Discord 频道：https://discord.com/invite/legionseries<br>
 加入 LOQ Series Discord 频道：https://discord.gg/3GKzQtwdNf
 
-~~**中文用户可加入拯救者工具箱 QQ 交流群 259701112 ，频道内推送正式版/测试版更新并附带国内镜像加速下载链接。**~~
+**中文用户可加入拯救者工具箱 QQ 交流群 259701112 ，频道内推送正式版/测试版更新并附带国内镜像加速下载链接。**
 
 # 本地化
 本分支已接入 Crowdin：[LenovoLegionToolkit](https://crowdin.com/project/lenovolegiontoolkit-unofficial)。
