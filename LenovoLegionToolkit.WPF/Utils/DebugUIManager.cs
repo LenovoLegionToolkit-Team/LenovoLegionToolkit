@@ -7,34 +7,35 @@ using System.Windows.Media;
 using System.Windows.Threading;
 using LenovoLegionToolkit.Lib.Utils;
 using Wpf.Ui.Controls;
+using Button = Wpf.Ui.Controls.Button;
 
 namespace LenovoLegionToolkit.WPF.Utils;
 
 public static class DebugUIManager
 {
     private static DispatcherTimer? _timer;
-    private static readonly HashSet<Type> ExcludedTypes = new()
-    {
-        typeof(System.Windows.Controls.ProgressBar),
-        typeof(Wpf.Ui.Controls.ProgressRing),
+    private static readonly HashSet<Type> ExcludedTypes =
+    [
+        typeof(ProgressBar),
+        typeof(ProgressRing),
         typeof(Popup),
         typeof(ToolTip),
         typeof(ScrollViewer),
         typeof(ContentPresenter),
-        typeof(Wpf.Ui.Controls.Snackbar),
+        typeof(Snackbar),
         typeof(Border),
-        typeof(Wpf.Ui.Controls.SymbolIcon),
-        typeof(Wpf.Ui.Controls.FontIcon),
-        typeof(System.Windows.Controls.Primitives.TickBar)
-    };
+        typeof(SymbolIcon),
+        typeof(FontIcon),
+        typeof(TickBar)
+    ];
 
-    private static readonly HashSet<Type> SkipChildrenTypes = new()
-    {
-        typeof(LenovoLegionToolkit.WPF.Controls.LampArray.LampArrayKeyboardControl),
-        typeof(LenovoLegionToolkit.WPF.Controls.LampArray.LampArrayRearAmbientControl),
-        typeof(LenovoLegionToolkit.WPF.Controls.LampArray.LampArrayAftAmbientControl),
-        typeof(LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.Spectrum.Device.SpectrumDeviceControl)
-    };
+    private static readonly HashSet<Type> SkipChildrenTypes =
+    [
+        typeof(Controls.LampArray.LampArrayKeyboardControl),
+        typeof(Controls.LampArray.LampArrayRearAmbientControl),
+        typeof(Controls.LampArray.LampArrayAftAmbientControl),
+        typeof(Controls.KeyboardBacklight.Spectrum.Device.SpectrumDeviceControl)
+    ];
 
     public static void Start()
     {
@@ -57,9 +58,14 @@ public static class DebugUIManager
                 var windows = System.Linq.Enumerable.ToList(System.Linq.Enumerable.OfType<Window>(Application.Current.Windows));
                 foreach (Window window in windows)
                 {
+                    if (window.GetType().Assembly != typeof(App).Assembly)
+                    {
+                        continue;
+                    }
+
                     WalkAndForce(window);
 
-                    if (window is LenovoLegionToolkit.WPF.Windows.Overclocking.Amd.AmdOverclocking amdWindow)
+                    if (window is Windows.Overclocking.Amd.AmdOverclocking amdWindow)
                     {
                         if (amdWindow.CcdList.Count == 0)
                         {
@@ -70,7 +76,7 @@ public static class DebugUIManager
                                 int currentCcdIndex = coreIndex / coresPerCcd;
                                 if (amdWindow.CcdList.Count <= currentCcdIndex)
                                 {
-                                    amdWindow.CcdList.Add(new LenovoLegionToolkit.WPF.AmdCcdGroup
+                                    amdWindow.CcdList.Add(new AmdCcdGroup
                                     {
                                         HeaderTitle = $"CCD {currentCcdIndex}",
                                         IsExpanded = true
@@ -78,10 +84,10 @@ public static class DebugUIManager
                                 }
 
                                 var currentGroup = amdWindow.CcdList[currentCcdIndex];
-                                currentGroup.Cores.Add(new LenovoLegionToolkit.WPF.AmdCoreItem
+                                currentGroup.Cores.Add(new AmdCoreItem
                                 {
                                     Index = coreIndex,
-                                    DisplayName = $"{LenovoLegionToolkit.WPF.Resources.Resource.AmdOverclocking_Core_Title} {coreIndex}",
+                                    DisplayName = $"{Resources.Resource.AmdOverclocking_Core_Title} {coreIndex}",
                                     OffsetValue = 0,
                                     IsActive = true,
                                     IsEnabled = true
@@ -94,7 +100,7 @@ public static class DebugUIManager
         }
         catch (Exception ex)
         {
-            LenovoLegionToolkit.Lib.Utils.Log.Instance.Trace($"[DebugUIManager] Exception during tick: {ex}");
+            Log.Instance.Trace($"Exception during tick: {ex}");
         }
     }
 
@@ -103,14 +109,14 @@ public static class DebugUIManager
         if (root == null || SkipChildrenTypes.Contains(root.GetType()))
             return;
 
-        if (root is LenovoLegionToolkit.WPF.Controls.Dashboard.DashboardGroupControl dgc)
+        if (root is Controls.Dashboard.DashboardGroupControl dgc)
         {
-            if (dgc.Content is StackPanel sp && sp.Children.Count > 0 && sp.Children[0] is TextBlock tb && tb.Text == LenovoLegionToolkit.WPF.Resources.Resource.DashboardPage_Power_Title)
+            if (dgc.Content is StackPanel sp && sp.Children.Count > 0 && sp.Children[0] is TextBlock tb && tb.Text == Resources.Resource.DashboardPage_Power_Title)
             {
                 bool hasItsMode = false;
                 foreach (var child in sp.Children)
                 {
-                    if (child is LenovoLegionToolkit.WPF.Controls.Dashboard.ITSModeControl)
+                    if (child is Controls.Dashboard.ITSModeControl)
                     {
                         hasItsMode = true;
                         break;
@@ -118,7 +124,7 @@ public static class DebugUIManager
                 }
                 if (!hasItsMode)
                 {
-                    var itsControl = new LenovoLegionToolkit.WPF.Controls.Dashboard.ITSModeControl();
+                    var itsControl = new Controls.Dashboard.ITSModeControl();
                     if (sp.Children.Count > 1)
                         sp.Children.Insert(1, itsControl);
                     else
@@ -127,26 +133,26 @@ public static class DebugUIManager
             }
         }
 
-        if (root is LenovoLegionToolkit.WPF.Controls.Settings.SettingsUpdateControl suc)
+        if (root is Controls.Settings.SettingsUpdateControl suc)
         {
-            var comboBox = (System.Windows.Controls.ComboBox)suc.FindName("_updateChannelComboBox");
+            var comboBox = (ComboBox)suc.FindName("_updateChannelComboBox");
             if (comboBox != null && comboBox.Items.Count > 0)
             {
-                int totalChannels = Enum.GetValues<LenovoLegionToolkit.Lib.UpdateChannel>().Length;
+                int totalChannels = Enum.GetValues<Lib.UpdateChannel>().Length;
                 if (comboBox.Items.Count < totalChannels)
                 {
-                    if (LenovoLegionToolkit.WPF.Extensions.ComboBoxExtensions.TryGetSelectedItem<LenovoLegionToolkit.Lib.UpdateChannel>(comboBox, out var selected))
+                    if (Extensions.ComboBoxExtensions.TryGetSelectedItem<Lib.UpdateChannel>(comboBox, out var selected))
                     {
-                        var allChannels = Enum.GetValues<LenovoLegionToolkit.Lib.UpdateChannel>();
-                        LenovoLegionToolkit.WPF.Extensions.ComboBoxExtensions.SetItems(comboBox, allChannels, selected, t => LenovoLegionToolkit.Lib.Extensions.EnumExtensions.GetDisplayName(t));
+                        var allChannels = Enum.GetValues<Lib.UpdateChannel>();
+                        Extensions.ComboBoxExtensions.SetItems(comboBox, allChannels, selected, t => Lib.Extensions.EnumExtensions.GetDisplayName(t));
                     }
                 }
             }
         }
 
-        if (root is LenovoLegionToolkit.WPF.Pages.KeyboardBacklightPage kbPage)
+        if (root is Pages.KeyboardBacklightPage kbPage)
         {
-            var contentPanel = (System.Windows.Controls.StackPanel)kbPage.FindName("_content");
+            var contentPanel = (StackPanel)kbPage.FindName("_content");
             if (contentPanel != null)
             {
                 if (kbPage.Tag == null)
@@ -154,7 +160,7 @@ public static class DebugUIManager
                     kbPage.Tag = "DebugInjected";
                     contentPanel.Children.Clear();
 
-                var header = new System.Windows.Controls.TextBlock
+                var header = new TextBlock
                 {
                     Text = "Debug UI Selector",
                     FontSize = 20,
@@ -163,7 +169,7 @@ public static class DebugUIManager
                 };
                 contentPanel.Children.Add(header);
 
-                var comboBox = new System.Windows.Controls.ComboBox
+                var comboBox = new ComboBox
                 {
                     Margin = new Thickness(0, 0, 0, 20),
                     FontSize = 16
@@ -172,28 +178,28 @@ public static class DebugUIManager
                 comboBox.Items.Add("Spectrum (24-Zone)");
                 comboBox.Items.Add("RGB (4-Zone)");
 
-                var container = new System.Windows.Controls.ContentControl();
+                var container = new ContentControl();
 
                 comboBox.SelectionChanged += (s, e) =>
                 {
                     container.Content = null;
                     if (comboBox.SelectedIndex == 0)
                     {
-                        var settings = LenovoLegionToolkit.Lib.IoCContainer.Resolve<LenovoLegionToolkit.Lib.Settings.SpectrumKeyboardSettings>();
-                        settings.Store.KeyboardLayout = LenovoLegionToolkit.Lib.KeyboardLayout.Ansi;
+                        var settings = Lib.IoCContainer.Resolve<Lib.Settings.SpectrumKeyboardSettings>();
+                        settings.Store.KeyboardLayout = Lib.KeyboardLayout.Ansi;
                         settings.SynchronizeStore();
-                        container.Content = new LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl();
+                        container.Content = new Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl();
                     }
                     else if (comboBox.SelectedIndex == 1)
                     {
-                        var settings = LenovoLegionToolkit.Lib.IoCContainer.Resolve<LenovoLegionToolkit.Lib.Settings.SpectrumKeyboardSettings>();
-                        settings.Store.KeyboardLayout = LenovoLegionToolkit.Lib.KeyboardLayout.Keyboard24Zone;
+                        var settings = Lib.IoCContainer.Resolve<Lib.Settings.SpectrumKeyboardSettings>();
+                        settings.Store.KeyboardLayout = Lib.KeyboardLayout.Keyboard24Zone;
                         settings.SynchronizeStore();
-                        container.Content = new LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl();
+                        container.Content = new Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl();
                     }
                     else if (comboBox.SelectedIndex == 2)
                     {
-                        container.Content = new LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB.RGBKeyboardBacklightControl();
+                        container.Content = new Controls.KeyboardBacklight.RGB.RGBKeyboardBacklightControl();
                     }
                 };
 
@@ -207,7 +213,7 @@ public static class DebugUIManager
 
                 if (kbPage.Tag is List<UIElement> allowedElements)
                 {
-                    var toRemove = new System.Collections.Generic.List<UIElement>();
+                    var toRemove = new List<UIElement>();
                     foreach (UIElement child in contentPanel.Children)
                     {
                         if (!allowedElements.Contains(child))
@@ -223,20 +229,20 @@ public static class DebugUIManager
             }
         }
 
-        if (root is LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl spectrumControl)
+        if (root is Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl spectrumControl)
         {
-            var device = (LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.Spectrum.Device.SpectrumDeviceControl)spectrumControl.FindName("_device");
+            var device = (Controls.KeyboardBacklight.Spectrum.Device.SpectrumDeviceControl)spectrumControl.FindName("_device");
             if (device != null)
             {
                 if (System.Linq.Enumerable.Count(device.GetVisibleKeyboardButtons()) == 0)
                 {
-                    var dummyKeys = new System.Collections.Generic.HashSet<ushort>();
+                    var dummyKeys = new HashSet<ushort>();
                     for (ushort i = 1; i <= 2000; i++) dummyKeys.Add(i);
                     
-                    var settings = LenovoLegionToolkit.Lib.IoCContainer.Resolve<LenovoLegionToolkit.Lib.Settings.SpectrumKeyboardSettings>();
-                    var currentLayout = settings.Store.KeyboardLayout ?? LenovoLegionToolkit.Lib.KeyboardLayout.Ansi;
+                    var settings = Lib.IoCContainer.Resolve<Lib.Settings.SpectrumKeyboardSettings>();
+                    var currentLayout = settings.Store.KeyboardLayout ?? Lib.KeyboardLayout.Ansi;
                     
-                    device.SetLayout(LenovoLegionToolkit.Lib.SpectrumLayout.Full, currentLayout, dummyKeys);
+                    device.SetLayout(Lib.SpectrumLayout.Full, currentLayout, dummyKeys);
                 }
             }
         }
@@ -247,11 +253,11 @@ public static class DebugUIManager
             {
                 var name = fe.Name;
                 bool hasValidName = !string.IsNullOrEmpty(name) && !name.StartsWith("PART_");
-                bool isSettingsButton = fe is Wpf.Ui.Controls.Button btn && btn.Icon == Wpf.Ui.Common.SymbolRegular.Settings24;
+                bool isSettingsButton = fe is Button btn && btn.Icon == Wpf.Ui.Common.SymbolRegular.Settings24;
                 bool isAlwaysShowType = fe is UserControl 
-                    || fe is Wpf.Ui.Controls.CardControl || fe is LenovoLegionToolkit.WPF.Controls.Custom.CardControl
-                    || fe is Wpf.Ui.Controls.CardAction || fe is LenovoLegionToolkit.WPF.Controls.Custom.CardAction
-                    || fe is Wpf.Ui.Controls.CardExpander || fe is LenovoLegionToolkit.WPF.Controls.Custom.CardExpander;
+                    || fe is CardControl || fe is Controls.Custom.CardControl
+                    || fe is CardAction || fe is Controls.Custom.CardAction
+                    || fe is CardExpander || fe is Controls.Custom.CardExpander;
 
                 if (hasValidName || isAlwaysShowType || isSettingsButton)
                 {
@@ -262,9 +268,9 @@ public static class DebugUIManager
                 if (!fe.IsEnabled)
                     fe.IsEnabled = true;
 
-                if (fe is Wpf.Ui.Controls.InfoBar infoBar && !infoBar.IsOpen)
+                if (fe is InfoBar infoBar && !infoBar.IsOpen)
                     infoBar.IsOpen = true;
-                if (fe is System.Windows.Controls.Expander expander && !expander.IsExpanded)
+                if (fe is Expander expander && !expander.IsExpanded)
                     expander.IsExpanded = true;
             }
         }
