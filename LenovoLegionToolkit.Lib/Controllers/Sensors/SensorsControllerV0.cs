@@ -9,35 +9,34 @@ public class SensorsControllerV0(GPUController gpuController) : AbstractSensorsC
 {
     private const int CPU_FAN_ID = 1;
     private const int GPU_FAN_ID = 2;
-    private const int PCH_FAN_ID = 4;
 
     public override async Task<bool> IsSupportedAsync()
     {
         try
         {
-            var cpuFanExists = await WMI.LenovoFanTestData.ExistsAsync(CPU_FAN_ID).ConfigureAwait(false) || await WMI.LenovoFanTestData.ExistsAsync(GPU_FAN_ID).ConfigureAwait(false);
-            if (!cpuFanExists)
+            var anyFanExists = await WMI.LenovoFanTestData.ExistsAsync(CPU_FAN_ID).ConfigureAwait(false) || await WMI.LenovoFanTestData.ExistsAsync(GPU_FAN_ID).ConfigureAwait(false);
+            if (!anyFanExists)
             {
                 return false;
             }
 
             return true;
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            Log.Instance.Trace($"Error checking support. [type={GetType().Name}]", ex);
+            Log.Instance.Trace($"Error checking support. [type={GetType().Name}]");
             return false;
         }
     }
 
     protected override async Task<int> GetCpuCurrentTemperatureAsync()
     {
-        return 0;
+        return -1;
     }
 
     protected override async Task<int> GetGpuCurrentTemperatureAsync()
     {
-        return 0;
+        return -1;
     }
 
     protected override Task<int> GetCpuCurrentFanSpeedAsync() => WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.CpuCurrentFanSpeed);
