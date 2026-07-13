@@ -80,6 +80,7 @@ public enum CapabilityID
     GPUDidVid = 0x02090000,
     InstantBootAc = 0x03010001,
     InstantBootUsbPowerDelivery = 0x03010002,
+    FanTable = 0x4010000,
     FanFullSpeed = 0x04020000,
     CpuCurrentFanSpeed = 0x04030001,
     GpuCurrentFanSpeed = 0x04030002,

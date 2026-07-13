@@ -230,35 +230,24 @@ public partial class App
 
         Log.Instance.Trace($"Starting... [version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTimeString()}, os={Environment.OSVersion}, dotnet={Environment.Version}]");
 
-        var initTasks = new List<Task>
-        {
-            SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode"),
-            SafeInitAsync(InitAIControllerAsync, "AI Controller"),
-            SafeInitAsync(InitAutomationProcessorAsync, "Automation Processor"),
-            SafeInitAsync(InitSensorsGroupControllerFeatureAsync, "Sensors Group"),
-            SafeInitAsync(LogSoftwareStatusAsync, "Software Status"),
-            SafeInitAsync(InitAMDOverclocking, "AMD Overclocking"),
-            SafeInitAsync(InitItsModeFeatureAsync, "ITS Mode"),
-            SafeInitAsync(InitBatteryFeatureAsync, "Battery Feature"),
-            SafeInitAsync(InitRgbKeyboardControllerAsync, "RGB Keyboard"),
-            SafeInitAsync(InitSpectrumKeyboardControllerAsync, "Spectrum Keyboard"),
-            SafeInitAsync(InitGpuOverclockControllerAsync, "GPU Overclock"),
-            SafeInitAsync(InitLampArrayControllerAsync, "LampArray"),
-            SafeInitAsync(InitHybridModeAsync, "Hybrid Mode"),
-            SafeInitAsync(InitAutomationLocalization, "Automation Localization"),
-        };
+        // Hardware init
+        await SafeInitAsync(LogSoftwareStatusAsync, "Software Status");
+        await SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode");
+        await SafeInitAsync(InitItsModeFeatureAsync, "ITS Mode");
+        await SafeInitAsync(InitBatteryFeatureAsync, "Battery Feature");
+        await SafeInitAsync(InitRgbKeyboardControllerAsync, "RGB Keyboard");
+        await SafeInitAsync(InitSpectrumKeyboardControllerAsync, "Spectrum Keyboard");
+        await SafeInitAsync(InitGpuOverclockControllerAsync, "GPU Overclock");
+        await SafeInitAsync(InitHybridModeAsync, "Hybrid Mode");
+        await SafeInitAsync(InitAutomationProcessorAsync, "Automation Processor");
+        await SafeInitAsync(InitLampArrayControllerAsync, "LampArray");
 
-        foreach (var task in initTasks)
-        {
-            await task;
-        }
-
-        var postTasks = new List<Task>
-        {
-            SafeInitAsync(PostApplyAmdOverclockingProfileAsync, "AMD Overclocking Profile"),
-        };
-
-        await Task.WhenAll(postTasks);
+        // Post-init services
+        await SafeInitAsync(InitAIControllerAsync, "AI Controller");
+        await SafeInitAsync(InitSensorsGroupControllerFeatureAsync, "Sensors Group");
+        await SafeInitAsync(InitAMDOverclocking, "AMD Overclocking");
+        await SafeInitAsync(InitAutomationLocalization, "Automation Localization");
+        await SafeInitAsync(PostApplyAmdOverclockingProfileAsync, "AMD Overclocking Profile");
     }
 
     private Task StartBackgroundServicesAsync()
