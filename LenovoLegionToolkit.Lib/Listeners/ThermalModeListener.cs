@@ -42,6 +42,8 @@ public class ThermalModeListener(
             return;
         }
 
+        Log.Instance.Trace($"ThermalModeListener.OnChangedAsync: state={state}");
+
         if (state == ThermalModeState.Unknown)
             return;
 
@@ -54,6 +56,8 @@ public class ThermalModeListener(
             ThermalModeState.GodMode => PowerModeState.GodMode,
             _ => throw new ArgumentOutOfRangeException(nameof(state), state, null)
         };
+
+        Log.Instance.Trace($"ThermalModeListener mapping: ThermalMode={state} -> PowerMode={powerModeState}");
 
         await windowsPowerModeController.SetPowerModeAsync(powerModeState).ConfigureAwait(false);
         await windowsPowerPlanController.SetPowerPlanAsync(powerModeState).ConfigureAwait(false);

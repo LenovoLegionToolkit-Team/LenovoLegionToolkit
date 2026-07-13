@@ -230,10 +230,9 @@ public partial class App
 
         Log.Instance.Trace($"Starting... [version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTimeString()}, os={Environment.OSVersion}, dotnet={Environment.Version}]");
 
-        await SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode");
-
         var initTasks = new List<Task>
         {
+            SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode"),
             SafeInitAsync(InitAIControllerAsync, "AI Controller"),
             SafeInitAsync(InitAutomationProcessorAsync, "Automation Processor"),
             SafeInitAsync(InitSensorsGroupControllerFeatureAsync, "Sensors Group"),
@@ -249,7 +248,10 @@ public partial class App
             SafeInitAsync(InitAutomationLocalization, "Automation Localization"),
         };
 
-        await Task.WhenAll(initTasks);
+        foreach (var task in initTasks)
+        {
+            await task;
+        }
 
         var postTasks = new List<Task>
         {

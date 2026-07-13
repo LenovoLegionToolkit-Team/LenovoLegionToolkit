@@ -335,10 +335,11 @@ public static partial class Compatibility
 
             var value = await WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.SupportedPowerModes).ConfigureAwait(false);
 
+            // Value mapping from Legion Zone main.js(Line: 11429-11451)
             // 0    Quiet
             // 1    Balance
             // 2    Performance
-            // 3    Extreme
+            // 4    Extreme
             // 16   Custom
 
             if (value.IsBitSet(0))
@@ -347,7 +348,7 @@ public static partial class Compatibility
                 powerModes.Add(PowerModeState.Balance);
             if (value.IsBitSet(2))
                 powerModes.Add(PowerModeState.Performance);
-            if (value.IsBitSet(3))
+            if (value.IsBitSet(4))
                 powerModes.Add(PowerModeState.Extreme);
             if (value.IsBitSet(16))
                 powerModes.Add(PowerModeState.GodMode);
@@ -362,10 +363,10 @@ public static partial class Compatibility
 
             var result = await WMI.LenovoOtherMethod.GetSupportThermalModeAsync().ConfigureAwait(false);
 
+            // Value mapping from Legion Zone main.js(Line: 10406-10433)
             // 0    Quiet
             // 1    Balance
             // 2    Performance
-            // 3    Extreme
             // 16   Custom
 
             if (result.IsBitSet(0))
@@ -374,8 +375,6 @@ public static partial class Compatibility
                 powerModes.Add(PowerModeState.Balance);
             if (result.IsBitSet(2))
                 powerModes.Add(PowerModeState.Performance);
-            if (result.IsBitSet(3))
-                powerModes.Add(PowerModeState.Extreme);
             if (result.IsBitSet(16))
                 powerModes.Add(PowerModeState.GodMode);
 

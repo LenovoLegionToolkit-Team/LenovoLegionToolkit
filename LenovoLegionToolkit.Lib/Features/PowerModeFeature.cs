@@ -6,9 +6,9 @@ using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using static LenovoLegionToolkit.Lib.Settings.GodModeSettings;
 
 namespace LenovoLegionToolkit.Lib.Features;
@@ -66,10 +66,13 @@ public class PowerModeFeature(
 
         var currentState = await GetStateAsync().ConfigureAwait(false);
 
+        Log.Instance.Trace($"Switching power mode: {currentState} -> {state}");
+
         var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
 
         if (mi.Properties.HasQuietToPerformanceModeSwitchingBug && currentState == PowerModeState.Quiet && state == PowerModeState.Performance)
         {
+            Log.Instance.Trace($"Workaround: Quiet->Performance bug, routing via Balance");
             thermalModeListener.SuppressNext();
             await base.SetStateAsync(PowerModeState.Balance).ConfigureAwait(false);
             await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
@@ -77,6 +80,7 @@ public class PowerModeFeature(
 
         if (mi.Properties.HasGodModeToOtherModeSwitchingBug && currentState == PowerModeState.GodMode && state != PowerModeState.GodMode)
         {
+            Log.Instance.Trace($"Workaround: GodMode->other bug, routing via {state} intermediate");
             thermalModeListener.SuppressNext();
 
             switch (state)
@@ -98,12 +102,18 @@ public class PowerModeFeature(
             await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
         }
 
+        var sw = Stopwatch.StartNew();
         thermalModeListener.SuppressNext();
+        Log.Instance.Trace($"Calling SetSmartFanModeAsync({(int)(object)state + 1})...");
         await base.SetStateAsync(state).ConfigureAwait(false);
+        Log.Instance.Trace($"SetSmartFanModeAsync completed [elapsed={sw.ElapsedMilliseconds}ms]");
+
+        Log.Instance.Trace($"Calling PowerModeListener.NotifyAsync({state})...");
         await powerModeListener.NotifyAsync(state).ConfigureAwait(false);
+        Log.Instance.Trace($"PowerModeListener.NotifyAsync completed");
 
         var thermalMode = await WMI.LenovoGameZoneData.GetThermalModeAsync().ConfigureAwait(false);
-        Log.Instance.Trace($"Thermal Mode: {(ThermalModeState)thermalMode}");
+        Log.Instance.Trace($"Thermal Mode after switch: {(ThermalModeState)thermalMode} [expected={(ThermalModeState)(int)(object)state}]");
     }
 
     public async Task SuspendMode(PowerModeState state)

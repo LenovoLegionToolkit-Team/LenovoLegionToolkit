@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
@@ -32,13 +33,19 @@ public class PowerModeListener(
 
     protected override async Task OnChangedAsync(PowerModeState value)
     {
+        Log.Instance.Trace($"PowerModeListener.OnChangedAsync (WMI event path): value={value}");
+        var sw = Stopwatch.StartNew();
         await ChangeDependenciesAsync(value).ConfigureAwait(false);
+        Log.Instance.Trace($"ChangeDependenciesAsync completed [elapsed={sw.ElapsedMilliseconds}ms]");
         PublishNotification(value);
     }
 
     public async Task NotifyAsync(PowerModeState value)
     {
+        Log.Instance.Trace($"PowerModeListener.NotifyAsync (explicit path): value={value}");
+        var sw = Stopwatch.StartNew();
         await ChangeDependenciesAsync(value).ConfigureAwait(false);
+        Log.Instance.Trace($"ChangeDependenciesAsync completed [elapsed={sw.ElapsedMilliseconds}ms]");
         RaiseChanged(value);
     }
 
@@ -50,15 +57,24 @@ public class PowerModeListener(
 
     private async Task ChangeDependenciesAsync(PowerModeState value)
     {
+        var sw = Stopwatch.StartNew();
+
         if (value is PowerModeState.GodMode)
+        {
+            Log.Instance.Trace($"Calling GodModeController.ApplyStateAsync...");
+            var godSw = Stopwatch.StartNew();
             await godModeController.ApplyStateAsync().ConfigureAwait(false);
+            Log.Instance.Trace($"ApplyStateAsync completed [elapsed={godSw.ElapsedMilliseconds}ms]");
+        }
 
         await windowsPowerModeController.SetPowerModeAsync(value).ConfigureAwait(false);
         await windowsPowerPlanController.SetPowerPlanAsync(value).ConfigureAwait(false);
 
         var gpuOverclockController = IoCContainer.Resolve<GPUOverclockController>();
+        Log.Instance.Trace($"Checking GPUOverclock IsSupportedAsync...");
         if (await gpuOverclockController.IsSupportedAsync().ConfigureAwait(false))
         {
+            Log.Instance.Trace($"GPU overclock supported, scheduling re-apply after 1s");
             _ = Task.Run(async () =>
             {
                 await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
@@ -69,8 +85,11 @@ public class PowerModeListener(
         var amdOverclockingController = IoCContainer.Resolve<AmdOverclockingController>();
         if (amdOverclockingController.IsActive() && !amdOverclockingController.AllowInAllPowerModes)
         {
+            Log.Instance.Trace($"Applying AMD OC default profile...");
             await amdOverclockingController.ApplyDefaultProfileAsync().ConfigureAwait(false);
         }
+
+        Log.Instance.Trace($"ChangeDependenciesAsync total [elapsed={sw.ElapsedMilliseconds}ms]");
     }
 
     private static void PublishNotification(PowerModeState value)
