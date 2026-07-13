@@ -211,7 +211,6 @@ public partial class App
 
         CardControl.IsCompact = settings.Store.CompactMode;
 
-        MigrateSettingsToNew();
         ConfigureFeatureFlags();
     }
 
@@ -688,15 +687,6 @@ public partial class App
 
             e.SetObserved();
         };
-    }
-
-    #endregion
-
-    #region Utils
-
-    private static void MigrateSettingsToNew()
-    {
-        _ = IoCContainer.Resolve<OsdSettings>().Store;
     }
 
     #endregion
