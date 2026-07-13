@@ -1258,7 +1258,7 @@ public class GodModeController(
         var mi = await GetMachineInformationAsync().ConfigureAwait(false);
         _config = mi.Properties.GodModePlatform switch
         {
-            GodModePlatform.LegacyLegion => GodModePlatformConfiguration.Legion,
+            GodModePlatform.LegacyLegion => GodModePlatformConfiguration.LegacyLegion,
             GodModePlatform.Legion => GodModePlatformConfiguration.Legion,
             GodModePlatform.NonGaming => GodModePlatformConfiguration.NonGaming,
             _ => throw new InvalidOperationException("Unsupported GodMode platform"),

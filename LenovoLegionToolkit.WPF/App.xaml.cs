@@ -230,6 +230,8 @@ public partial class App
 
         Log.Instance.Trace($"Starting... [version={Assembly.GetEntryAssembly()?.GetName().Version}, build={Assembly.GetEntryAssembly()?.GetBuildDateTimeString()}, os={Environment.OSVersion}, dotnet={Environment.Version}]");
 
+        await SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode");
+
         var initTasks = new List<Task>
         {
             SafeInitAsync(InitAIControllerAsync, "AI Controller"),
@@ -237,7 +239,6 @@ public partial class App
             SafeInitAsync(InitSensorsGroupControllerFeatureAsync, "Sensors Group"),
             SafeInitAsync(LogSoftwareStatusAsync, "Software Status"),
             SafeInitAsync(InitAMDOverclocking, "AMD Overclocking"),
-            SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode"),
             SafeInitAsync(InitItsModeFeatureAsync, "ITS Mode"),
             SafeInitAsync(InitBatteryFeatureAsync, "Battery Feature"),
             SafeInitAsync(InitRgbKeyboardControllerAsync, "RGB Keyboard"),

@@ -12,6 +12,11 @@ public sealed record GodModePlatformConfiguration
     public bool UseCapabilityDataForDefaults { get; init; } = true;
     public bool SupportsPerModeDefaults { get; init; } = true;
 
+    public static GodModePlatformConfiguration LegacyLegion { get; } = new()
+    {
+        Platform = GodModePlatform.LegacyLegion,
+    };
+
     public static GodModePlatformConfiguration Legion { get; } = new()
     {
         Platform = GodModePlatform.Legion,
