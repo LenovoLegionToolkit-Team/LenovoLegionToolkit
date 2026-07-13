@@ -49,16 +49,16 @@ ConfirmTitle=确认
 ErrorTitle=错误
 
 ; *** SetupLdr messages
-SetupLdrStartupMessage=现在将安装 %1。您想要继续吗？
-LdrCannotCreateTemp=无法创建临时文件。安装程序已中止
-LdrCannotExecTemp=无法执行临时目录中的文件。安装程序已中止
+SetupLdrStartupMessage=即将安装 %1，您想要继续吗？
+LdrCannotCreateTemp=无法创建临时文件，安装程序已中止。
+LdrCannotExecTemp=无法执行临时目录中的文件，安装程序已中止。
 HelpTextNote=
 
 ; *** 启动错误消息
 LastErrorMessage=%1。%n%n错误 %2: %3
-SetupFileMissing=安装目录中缺少文件 %1。请修正这个问题或者获取程序的新副本。
-SetupFileCorrupt=安装文件已损坏。请获取程序的新副本。
-SetupFileCorruptOrWrongVer=安装文件已损坏，或是与这个安装程序的版本不兼容。请修正这个问题或获取新的程序副本。
+SetupFileMissing=安装目录中缺少文件 %1，请修复这个问题或者获取程序的新副本。
+SetupFileCorrupt=安装文件已损坏，请获取程序的新副本。
+SetupFileCorruptOrWrongVer=安装文件已损坏，或是与这个安装程序的版本不兼容；请修正这个问题或获取新的程序副本。
 InvalidParameter=无效的命令行参数：%n%n%1
 SetupAlreadyRunning=安装程序正在运行。
 WindowsVersionNotSupported=此程序不支持当前计算机运行的 Windows 版本。
@@ -124,7 +124,7 @@ NewFolderName=新建文件夹
 
 ; *** “欢迎”向导页
 WelcomeLabel1=欢迎使用 [name] 安装向导
-WelcomeLabel2=现在将安装 [name/ver] 到您的电脑中。%n%n建议您在继续安装前关闭所有其他应用程序。
+WelcomeLabel2=现在将安装 [name/ver] 到您的电脑中，%n%n建议您在继续安装前关闭所有其他应用程序。
 
 ; *** “密码”向导页
 WizardPassword=密码

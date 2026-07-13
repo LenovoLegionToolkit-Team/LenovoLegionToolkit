@@ -455,8 +455,9 @@ vi.VisitGitHub=Tru cập kho lưu trữ GitHub
 zhhans.JoinLOQDiscord=加入 LOQ 系列 Discord 社区
 zhhans.JoinLegionDiscord=加入 Legion 系列 Discord 社区
 zhhans.JoinOfficialDiscord=加入官方 Discord 社区
-zhhans.SecurePathPageNote=安装在受保护的文件夹例如 Program Files 之外，在 Windows 11 23H2 及以下版本中将禁用 UIAccess 功能，包括 OSD 覆盖和通知提升。在较新的 Windows 版本中，这会导致 Windows 完全阻止应用程序启动。
-zhhans.SecurePathWarning=安装在受保护的文件夹例如 Program Files 之外，在 Windows 11 23H2 及以下版本中将禁用依赖 UIAccess 的功能，包括 OSD 覆盖和通知提升。在较新的 Windows 版本中，由于更严格的安全策略，这会导致 Windows 完全阻止应用程序启动。%n%n您确定仍要安装到此文件夹吗？
+zhhans.SecurePathPageNote=在 Windows 11 23H2 及更低版本中，若将应用安装到受保护文件夹（如 Program Files）之外，将禁用 UIAccess 功能（包括 OSD 覆盖和通知置顶显示）。而在较新的 Windows 版本中，此举会导致 Windows 完全阻止该应用程序启动。
+zhhans.SecurePathWarning=安装在受保护的文件夹例如 Program Files 之外，在 Windows 11 23H2 及以下版本中将禁用依赖 UIAccess 的功能，包括 OSD 覆盖和通知提升。在较新的 Windows 版本中，由于更严格的安全策略，这会导致 Windows 完全阻止应用程序启动。
+%n%n您确定仍要安装到此文件夹吗？
 zhhans.UninstallKeepSettings=您是否要删除所有 Lenovo Legion Toolkit 设置、自定义和配置？
 zhhans.VisitGitHub=访问 GitHub 仓库
 
