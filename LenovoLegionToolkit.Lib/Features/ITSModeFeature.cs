@@ -146,6 +146,44 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         }
     }
 
+    public async Task<bool> RestoreStateAsync()
+    {
+        try
+        {
+            if (!await IsSupportedAsync().ConfigureAwait(false))
+            {
+                return false;
+            }
+
+            var currentState = await GetStateAsync().ConfigureAwait(false);
+            var settings = IoCContainer.Resolve<ITSModeSettings>();
+            var savedState = settings.Store.LastState;
+
+            if (savedState != ITSMode.None && savedState != currentState)
+            {
+                Log.Instance.Trace($"Restoring saved ITS mode: {savedState}");
+                await SetStateAsync(savedState).ConfigureAwait(false);
+            }
+            else
+            {
+                await SetStateAsync(currentState).ConfigureAwait(false);
+
+                if (savedState != currentState)
+                {
+                    settings.Store.LastState = currentState;
+                    settings.SynchronizeStore();
+                }
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Couldn't ensure ITS mode state.", ex);
+            return false;
+        }
+    }
+
     public async Task<ITSMode> ToggleItsMode()
     {
         try

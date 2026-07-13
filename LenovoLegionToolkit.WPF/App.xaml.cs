@@ -228,7 +228,7 @@ public partial class App
         // Init
         await SafeInitAsync(LogSoftwareStatusAsync, "Software Status");
         await SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode");
-        await SafeInitAsync(InitItsModeFeatureAsync, "ITS Mode");
+        await SafeInitAsync(InitITSModeFeatureAsync, "ITS Mode");
         await SafeInitAsync(InitBatteryFeatureAsync, "Battery Feature");
         await SafeInitAsync(InitRgbKeyboardControllerAsync, "RGB Keyboard");
         await SafeInitAsync(InitSpectrumKeyboardControllerAsync, "Spectrum Keyboard");
@@ -693,46 +693,9 @@ public partial class App
 
     #region Feature Initialization
 
-    private static async Task<bool> InitItsModeFeatureAsync()
+    private static Task<bool> InitITSModeFeatureAsync()
     {
-        try
-        {
-            var feature = IoCContainer.Resolve<ITSModeFeature>();
-            var settings = IoCContainer.Resolve<ITSModeSettings>();
-
-            if (await feature.IsSupportedAsync())
-            {
-                var currentState = await feature.GetStateAsync();
-                var savedState = settings.Store.LastState;
-
-                if (savedState != ITSMode.None && savedState != currentState)
-                {
-                    Log.Instance.Trace($"Restoring saved ITS mode: {savedState}");
-                    await feature.SetStateAsync(savedState);
-                }
-                else
-                {
-                    await feature.SetStateAsync(currentState);
-
-                    if (savedState != currentState)
-                    {
-                        settings.Store.LastState = currentState;
-                        settings.SynchronizeStore();
-                    }
-                }
-            }
-            else
-            {
-                return false;
-            }
-
-            return true;
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Couldn't ensure its mode state.", ex);
-            return false;
-        }
+        return IoCContainer.Resolve<ITSModeFeature>().RestoreStateAsync();
     }
 
     private static async Task<bool> InitPowerModeFeatureAsync()
