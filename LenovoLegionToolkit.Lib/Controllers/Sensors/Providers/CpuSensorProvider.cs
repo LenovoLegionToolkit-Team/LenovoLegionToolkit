@@ -9,7 +9,7 @@ public class CpuSensorProvider : ISensorProvider
 {
     private static readonly SensorSlot[] Slots =
     [
-        new(SensorItem.CpuTemperature, SensorType.Temperature, "Package"),
+        new(SensorItem.CpuTemperature, SensorType.Temperature, "Tctl"),
         new(SensorItem.CpuUtilization, SensorType.Load,        "Total"),
         new(SensorItem.CpuPower,       SensorType.Power,       "Package"),
     ];
@@ -67,6 +67,7 @@ public class CpuSensorProvider : ISensorProvider
             _sensors[slot.Item] = cpu.Sensors.FirstOrDefault(s => s.SensorType == slot.Type && s.Name.Contains(slot.NamePattern))!;
         }
 
+        _sensors[SensorItem.CpuTemperature] ??= cpu.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Temperature && s.Name.Contains("Package"))!;
         _sensors[SensorItem.CpuTemperature] ??= cpu.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Temperature)!;
         _sensors[SensorItem.CpuUtilization] ??= cpu.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Load)!;
         _sensors[SensorItem.CpuPower] ??= cpu.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Power)!;
