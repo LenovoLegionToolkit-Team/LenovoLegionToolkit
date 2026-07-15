@@ -1,15 +1,3 @@
-using System;
-using System.Collections.Concurrent;
-using System.Diagnostics;
-using System.Linq;
-using System.Management;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Interop;
-using System.Windows.Media;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Controllers;
@@ -40,6 +28,19 @@ using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows;
 using LenovoLegionToolkit.WPF.Windows.Osd;
 using LenovoLegionToolkit.WPF.Windows.Utils;
+using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Management;
+using System.Reflection;
+using System.Runtime.InteropServices;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Interop;
+using System.Windows.Media;
 using Application = System.Windows.Application;
 using MessageBox = System.Windows.MessageBox;
 using WinFormsApp = System.Windows.Forms.Application;
@@ -226,23 +227,34 @@ public partial class App
 
         var totalSw = Stopwatch.StartNew();
 
-        // Init
-        await SafeInitAsync(LogSoftwareStatusAsync, "Software Status");
-        await SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode");
-        await SafeInitAsync(InitITSModeFeatureAsync, "ITS Mode");
-        await SafeInitAsync(InitBatteryFeatureAsync, "Battery Feature");
-        await SafeInitAsync(InitRgbKeyboardControllerAsync, "RGB Keyboard");
-        await SafeInitAsync(InitSpectrumKeyboardControllerAsync, "Spectrum Keyboard");
-        await SafeInitAsync(InitGpuOverclockControllerAsync, "GPU Overclock");
-        await SafeInitAsync(InitSensorsGroupControllerFeatureAsync, "Sensors Group");
-        await SafeInitAsync(InitHybridModeAsync, "Hybrid Mode");
-        await SafeInitAsync(InitAutomationProcessorAsync, "Automation Processor");
-        await SafeInitAsync(InitLampArrayControllerAsync, "LampArray");
+        var initTasks = new List<Task>
+        {
+            SafeInitAsync(LogSoftwareStatusAsync, "Software Status"),
+            SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode"),
+            SafeInitAsync(InitITSModeFeatureAsync, "ITS Mode"),
+            SafeInitAsync(InitBatteryFeatureAsync, "Battery Feature"),
+            SafeInitAsync(InitRgbKeyboardControllerAsync, "RGB Keyboard"),
+            SafeInitAsync(InitSpectrumKeyboardControllerAsync, "Spectrum Keyboard"),
+            SafeInitAsync(InitGpuOverclockControllerAsync, "GPU Overclock"),
+            SafeInitAsync(InitSensorsGroupControllerFeatureAsync, "Sensors Group"),
+            SafeInitAsync(InitHybridModeAsync, "Hybrid Mode"),
+            SafeInitAsync(InitAutomationProcessorAsync, "Automation Processor"),
+            SafeInitAsync(InitLampArrayControllerAsync, "LampArray"),
+            SafeInitAsync(InitAMDOverclocking, "AMD Overclocking"),
+        };
 
-        // Post-init
-        await SafeInitAsync(InitAMDOverclocking, "AMD Overclocking");
-        await SafeInitAsync(InitAutomationLocalization, "Automation Localization");
-        await SafeInitAsync(PostApplyAmdOverclockingProfileAsync, "AMD Overclocking Profile");
+        foreach (var task in initTasks)
+        {
+            await task;
+        }
+
+        var postTasks = new List<Task>
+        {
+            SafeInitAsync(InitAutomationLocalization, "Automation Localization"),
+            SafeInitAsync(PostApplyAmdOverclockingProfileAsync, "AMD Overclocking Profile"),
+        };
+
+        await Task.WhenAll(postTasks);
 
         Log.Instance.Trace($"InitializeHardwareAndFeatures completed [elapsed={totalSw.ElapsedMilliseconds}ms]");
     }
