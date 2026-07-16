@@ -349,7 +349,7 @@ public class GodModeController(
             {
                 try
                 {
-                    Log.Instance.Trace($"Applying {cap.PropertyName} ({cap.RawId:X}): {value}...");
+                    Log.Instance.Trace($"Applying {cap.PropertyName} (0x{cap.RawId:X}): {value}...");
                     await SetValueAsync(cap.RawId, value.Value, config.CapabilityIdMask).ConfigureAwait(false);
                 }
                 catch (Exception ex)
