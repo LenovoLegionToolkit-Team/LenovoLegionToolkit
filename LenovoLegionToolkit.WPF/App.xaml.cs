@@ -946,9 +946,11 @@ public partial class App
             {
                 await feature.InitializeAsync().ConfigureAwait(false);
                 Log.Instance.Trace($"AMD Overclocking Controller initialized.");
+
+                return true;
             }
 
-            return true;
+            return false;
         }
         catch (InvalidOperationException)
         {
@@ -1101,7 +1103,9 @@ public partial class App
         {
             var sw = Stopwatch.StartNew();
             if (await action())
+            {
                 Log.Instance.Trace($"{taskName} initialized successfully. [elapsed={sw.ElapsedMilliseconds}ms]");
+            }
         }
         catch (Exception ex)
         {
