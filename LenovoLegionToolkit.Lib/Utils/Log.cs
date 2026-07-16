@@ -47,7 +47,9 @@ public class Log
         [CallerMemberName] string? caller = null)
     {
         if (!IsTraceEnabled)
+        {
             return;
+        }
 
         LogInternal(_logPath, message, ex, file, lineNumber, caller);
     }
@@ -63,14 +65,18 @@ public class Log
         {
             var lines = new List<string>
             {
-                $"[{DateTime.Now:dd/MM/yyyy HH:mm:ss.fff}] [{Environment.CurrentManagedThreadId}] [{Path.GetFileName(file)}#{lineNumber}:{caller}] {message}"
+                $"[{DateTime.Now:dd/MM/yyyy HH:mm:ss.fff}] [Thread Id: {Environment.CurrentManagedThreadId}] [{Path.GetFileName(file)}#{lineNumber}:{caller}] {message}"
             };
             if (ex is not null)
+            {
                 lines.Add(Serialize(ex));
+            }
 
 #if DEBUG
             foreach (var line in lines)
+            {
                 Debug.WriteLine(line);
+            }
 #endif
 
             File.AppendAllLines(path, lines);
