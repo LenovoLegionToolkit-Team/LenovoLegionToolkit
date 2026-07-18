@@ -331,6 +331,15 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   查找类似 Fan table verify failed. 的本地化字符串。
+        /// </summary>
+        public static string GodModeController_FanSetTableError_Message {
+            get {
+                return ResourceManager.GetString("GodModeController_FanSetTableError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Powered Off 的本地化字符串。
         /// </summary>
         public static string GPUController_PoweredOff {

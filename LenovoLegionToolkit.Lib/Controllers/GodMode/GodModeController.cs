@@ -1,10 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
+using LenovoLegionToolkit.Lib.Resources;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.System.Management;
@@ -225,7 +227,7 @@ public class GodModeController(
 
         await ApplyFanLegacyAsync(fanTable, fanFullSpeed).ConfigureAwait(false);
 
-        await RaisePresetChanged(presetId);
+        await RaisePresetChanged(presetId).ConfigureAwait(false);
         Log.Instance.Trace($"State applied. [name={preset.Name}, id={presetId}]");
     }
 
@@ -389,7 +391,7 @@ public class GodModeController(
             await ApplyOcIfNeededAsync(preset).ConfigureAwait(false);
         }
 
-        await RaisePresetChanged(presetId);
+        await RaisePresetChanged(presetId).ConfigureAwait(false);
         Log.Instance.Trace($"State applied. [name={preset.Name}, id={presetId}]");
     }
 
@@ -423,7 +425,7 @@ public class GodModeController(
 
             try
             {
-                Log.Instance.Trace($"Waiting for EC...");
+                Log.Instance.Trace($"Waiting for power mode set successfully...");
                 await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
 
                 Log.Instance.Trace($"Applying Fan Table {fanTable}...");
@@ -433,27 +435,7 @@ public class GodModeController(
                     fanTable = await GetDefaultFanTableAsync().ConfigureAwait(false);
                 }
 
-                var fanTableBytes = fanTable.GetBytes();
-                await WMI.LenovoFanMethod.FanSetTableAsync(fanTableBytes).ConfigureAwait(false);
-
-                var tableOk = true;
-                var expected = fanTable.GetTable();
-                for (var i = 0; i < 2; i++)
-                {
-                    try
-                    {
-                        var readBack = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
-                        var match = readBack.Length == 10 && readBack.Select(u => (ushort)u).SequenceEqual(expected);
-                        Log.Instance.Trace($"Fan table verify #{i + 1}: {(match ? "OK" : "Mismatch")}");
-                        tableOk &= match;
-                    }
-                    catch (Exception ex)
-                    {
-                        Log.Instance.Trace($"Fan table verify #{i + 1} failed.", ex);
-                        tableOk = false;
-                    }
-                }
-                Log.Instance.Trace($"Fan table verified: {(tableOk ? "OK" : "Mismatch")}");
+                await SetFanTableWithVerifyAsync(fanTable).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -911,6 +893,56 @@ public class GodModeController(
     #endregion
 
     #region Fan Tables
+
+    public async Task<bool> SetFanTableWithVerifyAsync(FanTable fanTable)
+    {
+        var expected = fanTable.GetTable();
+        int maxAttempts = 3;
+        int delayMs = 100;
+
+        for (int attempt = 1; attempt <= maxAttempts; attempt++)
+        {
+            try
+            {
+                var fanTableBytes = fanTable.GetBytes();
+                await WMI.LenovoFanMethod.FanSetTableAsync(fanTableBytes).ConfigureAwait(false);
+                await Task.Delay(delayMs).ConfigureAwait(false);
+
+                var readBack1 = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
+                bool firstMatch = readBack1.Length == 10 && readBack1.Select(b => (ushort)b).SequenceEqual(expected);
+                Log.Instance.Trace($"Fan table verify attempt {attempt}, read 1: {(firstMatch ? "OK" : "Mismatch")}");
+
+                await Task.Delay(delayMs).ConfigureAwait(false);
+                var readBack2 = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
+                bool secondMatch = readBack2.Length == 10 && readBack2.Select(b => (ushort)b).SequenceEqual(expected);
+                Log.Instance.Trace($"Fan table verify attempt {attempt}, read 2: {(secondMatch ? "OK" : "Mismatch")}");
+
+                if (firstMatch && secondMatch)
+                {
+                    Log.Instance.Trace($"Fan table verification succeeded on attempt {attempt}.");
+                    return true;
+                }
+
+                Log.Instance.Trace($"Fan table verification attempt {attempt} failed (mismatch), retrying write...");
+            }
+            catch (Exception ex) when (ex is TimeoutException || ex is COMException)
+            {
+                Log.Instance.Trace($"Fan table verify attempt {attempt} transient error: {ex.Message}. Retrying...");
+                if (attempt == maxAttempts)
+                {
+                    throw new Exception(Resource.GodModeController_FanSetTableError_Message);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Fan table verify attempt {attempt} fatal error: {ex.Message}.");
+                throw new Exception(Resource.GodModeController_FanSetTableError_Message);
+            }
+        }
+
+        Log.Instance.Trace($"Fan table verification failed after {maxAttempts} attempts.");
+        throw new Exception(Resource.GodModeController_FanSetTableError_Message);
+    }
 
     public Task<FanTable> GetDefaultFanTableAsync()
     {
