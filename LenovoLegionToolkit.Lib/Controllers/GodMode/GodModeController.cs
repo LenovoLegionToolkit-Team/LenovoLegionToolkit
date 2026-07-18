@@ -387,6 +387,7 @@ public class GodModeController(
         if (config.Platform == GodModePlatform.Legion)
         {
             await ApplyOcIfNeededAsync(preset).ConfigureAwait(false);
+            await WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.ReevaluatePowerBudgets);
         }
 
         await RaisePresetChanged(presetId);
@@ -429,6 +430,7 @@ public class GodModeController(
                     Log.Instance.Trace($"Fan table invalid, replacing with default...");
                     fanTable = await GetDefaultFanTableAsync().ConfigureAwait(false);
                 }
+
                 await WMI.LenovoFanMethod.FanSetTableAsync(fanTable.GetBytes()).ConfigureAwait(false);
             }
             catch (Exception ex)

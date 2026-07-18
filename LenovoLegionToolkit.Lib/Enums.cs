@@ -77,6 +77,7 @@ public enum CapabilityID
     GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = 0x0204FF00,
     GPUToCPUDynamicBoost = 0x020BFF00,
     GPUStatus = 0x02070000,
+    ReevaluatePowerBudgets = 0x02080000,
     GPUDidVid = 0x02090000,
     InstantBootAc = 0x03010001,
     InstantBootUsbPowerDelivery = 0x03010002,
