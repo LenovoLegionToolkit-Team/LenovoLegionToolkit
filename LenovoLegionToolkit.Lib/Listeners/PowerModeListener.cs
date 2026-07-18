@@ -61,6 +61,9 @@ public class PowerModeListener(
 
         if (value is PowerModeState.GodMode)
         {
+            Log.Instance.Trace($"Delaying GodMode apply...");
+            await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(false);
+
             Log.Instance.Trace($"Calling GodModeController.ApplyStateAsync...");
             var godSw = Stopwatch.StartNew();
             await godModeController.ApplyStateAsync().ConfigureAwait(false);

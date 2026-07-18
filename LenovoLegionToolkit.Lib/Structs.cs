@@ -1,8 +1,3 @@
-using LenovoLegionToolkit.Lib.Extensions;
-using LenovoLegionToolkit.Lib.Station.Core;
-using LibreHardwareMonitor.Hardware;
-using Newtonsoft.Json;
-using Octokit;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -12,6 +7,11 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Station.Core;
+using LibreHardwareMonitor.Hardware;
+using Newtonsoft.Json;
+using Octokit;
 using Windows.Devices.Lights;
 
 
@@ -264,7 +264,7 @@ public readonly struct FanTable
 
         FSTM = 1;
         FSID = 0;
-        FSTL = 0;
+        FSTL = 10;
         FSS0 = fanTable[0];
         FSS1 = fanTable[1];
         FSS2 = fanTable[2];
@@ -350,7 +350,7 @@ public readonly struct GPUOverclockInfo(int coreDeltaMhz, int memoryDeltaMhz, in
 
     public override bool Equals(object? obj)
     {
-        return obj is GPUOverclockInfo other && 
+        return obj is GPUOverclockInfo other &&
                CoreDeltaMhz == other.CoreDeltaMhz &&
                MemoryDeltaMhz == other.MemoryDeltaMhz &&
                VoltageLockMv == other.VoltageLockMv;

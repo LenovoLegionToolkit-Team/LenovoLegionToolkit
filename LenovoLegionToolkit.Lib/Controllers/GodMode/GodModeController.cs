@@ -387,7 +387,6 @@ public class GodModeController(
         if (config.Platform == GodModePlatform.Legion)
         {
             await ApplyOcIfNeededAsync(preset).ConfigureAwait(false);
-            await WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.ReevaluatePowerBudgets);
         }
 
         await RaisePresetChanged(presetId);
@@ -845,7 +844,9 @@ public class GodModeController(
 
             var powerModes = new List<PowerModeState> { PowerModeState.Quiet, PowerModeState.Balance, PowerModeState.Performance };
             if (mi.Properties.SupportsExtremeMode)
+            {
                 powerModes.Add(PowerModeState.Extreme);
+            }
 
             foreach (var powerMode in powerModes)
             {

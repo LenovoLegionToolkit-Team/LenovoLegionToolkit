@@ -1,3 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Extensions;
@@ -10,14 +18,6 @@ using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 
 namespace LenovoLegionToolkit.WPF.Windows.Dashboard;
 
