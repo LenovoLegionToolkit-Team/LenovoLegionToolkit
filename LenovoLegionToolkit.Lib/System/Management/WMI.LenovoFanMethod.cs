@@ -16,6 +16,21 @@ public static partial class WMI
             "Fan_Set_Table",
             new() { { "FanTable", fanTable } });
 
+        public static Task<uint[]> FanGetTableAsync(int fanId, int sensorId) => CallAsync("root\\WMI",
+            $"SELECT * FROM LENOVO_FAN_METHOD",
+            "Fan_Get_Table",
+            new()
+            {
+                { "FanID", (byte)fanId },
+                { "SensorID", (byte)sensorId }
+            },
+            pdc =>
+            {
+                var table = (uint[])pdc["FanTable"].Value;
+                var size = Convert.ToUInt32(pdc["FanTableSize"].Value);
+                return table.Take((int)size).ToArray();
+            });
+
         public static Task<bool> FanGetFullSpeedAsync() => CallAsync("root\\WMI",
             $"SELECT * FROM LENOVO_FAN_METHOD",
             "Fan_Get_FullSpeed",

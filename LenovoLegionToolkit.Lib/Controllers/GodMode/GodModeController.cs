@@ -423,6 +423,9 @@ public class GodModeController(
 
             try
             {
+                Log.Instance.Trace($"Waiting for EC...");
+                await Task.Delay(TimeSpan.FromMilliseconds(500)).ConfigureAwait(false);
+
                 Log.Instance.Trace($"Applying Fan Table {fanTable}...");
                 if (!await IsValidFanTableAsync(fanTable).ConfigureAwait(false))
                 {
@@ -430,7 +433,27 @@ public class GodModeController(
                     fanTable = await GetDefaultFanTableAsync().ConfigureAwait(false);
                 }
 
-                await WMI.LenovoFanMethod.FanSetTableAsync(fanTable.GetBytes()).ConfigureAwait(false);
+                var fanTableBytes = fanTable.GetBytes();
+                await WMI.LenovoFanMethod.FanSetTableAsync(fanTableBytes).ConfigureAwait(false);
+
+                var tableOk = true;
+                var expected = fanTable.GetTable();
+                for (var i = 0; i < 2; i++)
+                {
+                    try
+                    {
+                        var readBack = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
+                        var match = readBack.Length == 10 && readBack.Select(u => (ushort)u).SequenceEqual(expected);
+                        Log.Instance.Trace($"Fan table verify #{i + 1}: {(match ? "OK" : "Mismatch")}");
+                        tableOk &= match;
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Instance.Trace($"Fan table verify #{i + 1} failed.", ex);
+                        tableOk = false;
+                    }
+                }
+                Log.Instance.Trace($"Fan table verified: {(tableOk ? "OK" : "Mismatch")}");
             }
             catch (Exception ex)
             {
