@@ -4,14 +4,14 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.System.Power;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
+using Windows.Win32;
+using Windows.Win32.Foundation;
+using Windows.Win32.System.Power;
 using static LenovoLegionToolkit.Lib.Settings.GodModeSettings;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
@@ -407,7 +407,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         return list;
     }
 
-    private static string GetPowerPlanName(Guid powerPlanGuid)
+    public static string GetPowerPlanName(Guid powerPlanGuid)
     {
         var nameSize = 2048u;
         var buffer = new byte[nameSize];

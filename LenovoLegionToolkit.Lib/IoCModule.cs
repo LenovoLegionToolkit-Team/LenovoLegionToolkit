@@ -17,14 +17,13 @@ using LenovoLegionToolkit.Lib.Integrations;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Overclocking.Amd;
 using LenovoLegionToolkit.Lib.PackageDownloader;
+using LenovoLegionToolkit.Lib.Scripting;
 using LenovoLegionToolkit.Lib.Services;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.Lib.Utils.Warranty;
-
-using LenovoLegionToolkit.Lib.Scripting;
-using LenovoLegionToolkit.Lib.System;
 
 namespace LenovoLegionToolkit.Lib;
 
@@ -110,6 +109,7 @@ public class IoCModule : Module
         builder.Register<NativeWindowsMessageListener>().AutoActivateListener();
         builder.Register<PowerModeListener>().AutoActivateListener();
         builder.Register<PowerStateListener>().AutoActivateListener();
+        builder.Register<PowerListener>().AutoActivateListener();
         builder.Register<RGBKeyboardBacklightListener>().AutoActivateListener();
         builder.Register<SessionLockUnlockListener>().AutoActivateListener();
         builder.Register<SpecialKeyListener>().SingleInstance().AutoActivateListener();

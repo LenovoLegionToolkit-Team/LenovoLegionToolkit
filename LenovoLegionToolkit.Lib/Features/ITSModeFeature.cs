@@ -1,3 +1,11 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Management;
+using System.Runtime.InteropServices;
+using System.ServiceProcess;
+using System.Threading;
+using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Messaging;
@@ -7,15 +15,6 @@ using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Management;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using System.ServiceProcess;
-using System.Threading;
-using System.Threading.Tasks;
 using Windows.Win32;
 using Windows.Win32.Foundation;
 using Windows.Win32.Storage.FileSystem;
@@ -45,13 +44,18 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     #endregion
 
     private readonly ITSModeListener _listener;
-    private bool? _supportsGeekMode;
+    private readonly PowerListener _powerListener;
+    private bool _supportsGeekMode;
+    private bool _supportsGeekModeInitialized;
+    private volatile bool _pendingOverlaySync;
 
     public ITSMode LastItsMode { get; set; } = ITSMode.None;
 
-    public ITSModeFeature(ITSModeListener listener)
+    public ITSModeFeature(ITSModeListener listener, PowerListener powerListener)
     {
         _listener = listener;
+        _powerListener = powerListener;
+        _powerListener.Changed += OnPowerChanged;
         MessagingCenter.Subscribe<ITSModeToggleRequestMessage>(this, OnToggleRequestAsync);
     }
 
@@ -60,16 +64,36 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         try
         {
             if (!await IsSupportedAsync().ConfigureAwait(false))
+            {
                 return;
+            }
 
-            var result = await ToggleItsMode().ConfigureAwait(false);
-
-            if (result != ITSMode.None)
-                await _listener.OnChangedAsync(result).ConfigureAwait(false);
+            await ToggleItsMode().ConfigureAwait(false);
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Error handling ITS mode toggle request", ex);
+        }
+    }
+
+    private async void OnPowerChanged(object? sender, PowerListener.ChangedEventArgs e)
+    {
+        Log.Instance.Trace($"Power overlay changed: AC={e.ActiveOverlayAc}, DC={e.ActiveOverlayDc}, Plan={e.ActivePowerPlan}");
+
+        if (!_pendingOverlaySync)
+        {
+            return;
+        }
+
+        _pendingOverlaySync = false;
+
+        try
+        {
+            await _listener.OnChangedAsync(LastItsMode, false).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to notify ITS mode change.", ex);
         }
     }
 
@@ -96,7 +120,9 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         var modes = Enum.GetValues<ITSMode>().Cast<ITSMode>();
 
         if (!SupportsGeekMode())
+        {
             modes = modes.Where(mode => mode != ITSMode.MmcGeek);
+        }
 
         return Task.FromResult(modes.Where(mode => mode != ITSMode.None).ToArray());
     }
@@ -115,6 +141,11 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     }
 
     public async Task SetStateAsync(ITSMode state)
+    {
+        await SetStateAsync(state, showNotification: false).ConfigureAwait(false);
+    }
+
+    public async Task SetStateAsync(ITSMode state, bool showNotification)
     {
         if (state == ITSMode.None)
         {
@@ -137,6 +168,13 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
             Log.Instance.Trace($"ITS mode set successfully to: {state}");
 
+            _pendingOverlaySync = true;
+
+            if (showNotification)
+            {
+                ITSModeListener.PublishNotification(state);
+            }
+
             SaveCurrentStateToSettings(state);
         }
         catch (Exception ex)
@@ -154,6 +192,9 @@ public partial class ITSModeFeature : IFeature<ITSMode>
             {
                 return false;
             }
+
+            _powerListener.TrackPowerPlan = true;
+            _powerListener.Enable();
 
             var currentState = await GetStateAsync().ConfigureAwait(false);
             var settings = IoCContainer.Resolve<ITSModeSettings>();
@@ -196,16 +237,20 @@ public partial class ITSModeFeature : IFeature<ITSMode>
             var settings = IoCContainer.Resolve<ITSModeSettings>();
             var userOrder = settings.Store.FnQModeOrder;
             if (userOrder == null || userOrder.Count == 0)
+            {
                 userOrder = [ITSMode.MmcCool, ITSMode.ItsAuto, ITSMode.MmcPerformance, ITSMode.MmcGeek];
+            }
+
             var disabledSet = new HashSet<ITSMode>(settings.Store.DisabledModes ?? []);
 
             var isConnected = await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) == PowerAdapterStatus.Connected;
 
-            var availableStates = userOrder
-                .Where(s => supportedSet.Contains(s) && !disabledSet.Contains(s) && (isConnected || s != ITSMode.MmcGeek))
-                .ToArray();
+            var availableStates = userOrder.Where(s => supportedSet.Contains(s) && !disabledSet.Contains(s) && (isConnected || s != ITSMode.MmcGeek)).ToArray();
 
-            if (availableStates.Length == 0) return ITSMode.None;
+            if (availableStates.Length == 0)
+            {
+                return ITSMode.None;
+            }
 
             ITSMode nextState;
 
@@ -222,9 +267,7 @@ public partial class ITSModeFeature : IFeature<ITSMode>
                     Log.Instance.Trace($"Currently in MMC Geek mode but on battery. Resetting to fallback state.");
                 }
 
-                nextState = (LastItsMode != ITSMode.None && availableStates.Contains(LastItsMode))
-                    ? LastItsMode
-                    : availableStates[0];
+                nextState = (LastItsMode != ITSMode.None && availableStates.Contains(LastItsMode)) ? LastItsMode : availableStates[0];
             }
 
             if (currentState == nextState)
@@ -233,7 +276,7 @@ public partial class ITSModeFeature : IFeature<ITSMode>
             }
 
             Log.Instance.Trace($"Toggling ITS mode: {currentState} -> {nextState}");
-            await SetStateAsync(nextState).ConfigureAwait(false);
+            await SetStateAsync(nextState, showNotification: true).ConfigureAwait(false);
 
             return nextState;
         }
@@ -246,8 +289,13 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
     private bool SupportsGeekMode()
     {
-        _supportsGeekMode ??= GetDispatcherVersionEx() >= DISPATCHER_VERSION_3;
-        return _supportsGeekMode.Value;
+        if (!_supportsGeekModeInitialized)
+        {
+            _supportsGeekMode = GetDispatcherVersionEx() >= DISPATCHER_VERSION_3;
+            _supportsGeekModeInitialized = true;
+        }
+
+        return _supportsGeekMode;
     }
 
     private bool ShowGeekAsCreatorMode()
@@ -271,7 +319,10 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     public string GetITSModeDisplayName(ITSMode mode)
     {
         if (mode == ITSMode.MmcGeek && ShowGeekAsCreatorMode())
+        {
             return Resource.ITSMode_Intelligent_Creator;
+        }
+
         return mode.GetDisplayName();
     }
 
@@ -297,9 +348,13 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
                     int currentSetting = ReadRegistryInt(key, useVersioned ? VAL_ITS_CUR_SET_V : VAL_ITS_CUR_SET, -1);
                     if (currentSetting == -1 && useVersioned)
+                    {
                         currentSetting = ReadRegistryInt(key, VAL_ITS_CUR_SET, -1);
+                    }
                     else if (currentSetting == -1 && !useVersioned)
+                    {
                         currentSetting = ReadRegistryInt(key, VAL_ITS_CUR_SET_V, -1);
+                    }
 
                     Log.Instance.Trace($"ITS mode check: {(useVersioned ? VAL_ITS_CUR_SET_V : VAL_ITS_CUR_SET)}={currentSetting}");
 
@@ -394,23 +449,6 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
     private int GetITSVersionEx() => ReadRegistryVersion(REG_KEY_LITSSVC_BASE, nameof(GetITSVersionEx));
 
-    private bool HasDispatcherDeviceNodeEx()
-    {
-        try
-        {
-            string query = "SELECT PNPDeviceID FROM Win32_PnPEntity WHERE PNPDeviceID LIKE 'ACPI\\IDEA200C%'";
-
-            using ManagementObjectSearcher searcher = new ManagementObjectSearcher(query);
-            using ManagementObjectCollection collection = searcher.Get();
-            return collection.Count > 0;
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"HasDispatcherDeviceNodeEx failed", ex);
-        }
-        return false;
-    }
-
     private bool IsEnergyDriverPresentEx()
     {
         try
@@ -443,7 +481,7 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     {
         try
         {
-            using ServiceController serviceController = new ServiceController(serviceName);
+            using ServiceController serviceController = new(serviceName);
             Log.Instance.Trace($"Service {serviceName} status: {serviceController.Status}");
 
             serviceController.ExecuteCommand((int)message);
@@ -474,9 +512,20 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     {
         var value = key.GetValue(valueName, defaultValue);
 
-        if (value is int i) return i;
-        if (value is long l) return (int)l;
-        if (value is uint u) return (int)u;
+        if (value is int i)
+        {
+            return i;
+        }
+
+        if (value is long l)
+        {
+            return (int)l;
+        }
+
+        if (value is uint u)
+        {
+            return (int)u;
+        }
 
         try
         {

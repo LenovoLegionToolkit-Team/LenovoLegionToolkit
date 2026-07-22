@@ -226,6 +226,17 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
         _ => throw new ArgumentOutOfRangeException(nameof(windowsPowerMode), windowsPowerMode, null)
     };
 
+    public static string? WindowsPowerModeNameFromGuid(Guid guid)
+    {
+        if (guid == BestPerformance)
+            return nameof(WindowsPowerMode.BestPerformance);
+        if (guid == BestPowerEfficiency)
+            return nameof(WindowsPowerMode.BestPowerEfficiency);
+        if (guid == Guid.Empty)
+            return nameof(WindowsPowerMode.Balanced);
+        return null;
+    }
+
     public static void ApplyActiveOverlayScheme(Guid guid)
     {
         var result = PowerSetActiveOverlayScheme(guid);
@@ -251,4 +262,10 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
     [LibraryImport("powrprof.dll", EntryPoint = "PowerSetActiveOverlayScheme")]
     private static partial uint PowerSetActiveOverlayScheme(Guid guid);
+
+    [LibraryImport("powrprof.dll", EntryPoint = "PowerGetUserConfiguredACPowerMode")]
+    internal static partial uint PowerGetUserConfiguredACPowerMode(out Guid guid);
+
+    [LibraryImport("powrprof.dll", EntryPoint = "PowerGetUserConfiguredDCPowerMode")]
+    internal static partial uint PowerGetUserConfiguredDCPowerMode(out Guid guid);
 }

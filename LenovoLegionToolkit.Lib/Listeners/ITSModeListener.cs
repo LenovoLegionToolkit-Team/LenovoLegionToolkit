@@ -48,16 +48,19 @@ public class ITSModeListener(
         MessagingCenter.Publish(new ITSModeToggleRequestMessage());
     }
 
-    public async Task NotifyAsync(ITSMode value)
+    public Task NotifyAsync(ITSMode value)
     {
-        await ChangeDependenciesAsync(value).ConfigureAwait(false);
-        RaiseChanged(value);
+        return OnChangedAsync(value, false);
     }
 
-    public virtual async Task OnChangedAsync(ITSMode value)
+    internal virtual async Task OnChangedAsync(ITSMode value, bool showNotification)
     {
         await ChangeDependenciesAsync(value).ConfigureAwait(false);
-        PublishNotification(value);
+        if (showNotification)
+        {
+            PublishNotification(value);
+        }
+
         RaiseChanged(value);
     }
 
@@ -67,7 +70,7 @@ public class ITSModeListener(
         await windowsPowerPlanController.SetPowerPlanAsync(value, true).ConfigureAwait(false);
     }
 
-    private static void PublishNotification(ITSMode value)
+    internal static void PublishNotification(ITSMode value)
     {
         var displayName = IoCContainer.Resolve<ITSModeFeature>().GetITSModeDisplayName(value);
 
