@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Management;
 using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using System.Threading;
@@ -43,11 +42,18 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     private const uint DISPATCHER_VERSION_3 = 8192U;
     #endregion
 
+    private static readonly ITSMode[] _allStatesWithGeek = [ITSMode.ItsAuto, ITSMode.MmcCool, ITSMode.MmcPerformance, ITSMode.MmcGeek];
+    private static readonly ITSMode[] _allStatesWithoutGeek = [ITSMode.ItsAuto, ITSMode.MmcCool, ITSMode.MmcPerformance];
+
     private readonly ITSModeListener _listener;
     private readonly PowerListener _powerListener;
-    private bool _supportsGeekMode;
-    private bool _supportsGeekModeInitialized;
+    private readonly ITSModeSettings _settings = IoCContainer.Resolve<ITSModeSettings>();
+
+    private int? _dispatcherVersion;
+    private bool? _showGeekAsCreatorMode;
+    private bool? _energyDriverPresent;
     private volatile bool _pendingOverlaySync;
+    private CancellationTokenSource? _overlayTimeoutCts;
 
     public ITSMode LastItsMode { get; set; } = ITSMode.None;
 
@@ -86,22 +92,15 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         }
 
         _pendingOverlaySync = false;
+        _overlayTimeoutCts?.Cancel();
 
-        try
-        {
-            await _listener.OnChangedAsync(LastItsMode, false).ConfigureAwait(false);
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Failed to notify ITS mode change.", ex);
-        }
+        await ApplyPowerChanges().ConfigureAwait(false);
     }
 
     private void SaveCurrentStateToSettings(ITSMode state)
     {
-        var settings = IoCContainer.Resolve<ITSModeSettings>();
-        settings.Store.LastState = state;
-        settings.SynchronizeStore();
+        _settings.Store.LastState = state;
+        _settings.SynchronizeStore();
     }
 
     public async Task<bool> IsSupportedAsync()
@@ -117,14 +116,7 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
     public Task<ITSMode[]> GetAllStatesAsync()
     {
-        var modes = Enum.GetValues<ITSMode>().Cast<ITSMode>();
-
-        if (!SupportsGeekMode())
-        {
-            modes = modes.Where(mode => mode != ITSMode.MmcGeek);
-        }
-
-        return Task.FromResult(modes.Where(mode => mode != ITSMode.None).ToArray());
+        return Task.FromResult(GetDispatcherVersionEx() >= DISPATCHER_VERSION_3 ? _allStatesWithGeek : _allStatesWithoutGeek);
     }
 
     public async Task<ITSMode> GetStateAsync()
@@ -169,6 +161,10 @@ public partial class ITSModeFeature : IFeature<ITSMode>
             Log.Instance.Trace($"ITS mode set successfully to: {state}");
 
             _pendingOverlaySync = true;
+            _overlayTimeoutCts?.Cancel();
+            _overlayTimeoutCts?.Dispose();
+            _overlayTimeoutCts = new CancellationTokenSource();
+            _ = WaitForOverlayOrTimeoutAsync(_overlayTimeoutCts.Token);
 
             if (showNotification)
             {
@@ -197,8 +193,7 @@ public partial class ITSModeFeature : IFeature<ITSMode>
             _powerListener.Enable();
 
             var currentState = await GetStateAsync().ConfigureAwait(false);
-            var settings = IoCContainer.Resolve<ITSModeSettings>();
-            var savedState = settings.Store.LastState;
+            var savedState = _settings.Store.LastState;
 
             if (savedState != ITSMode.None && savedState != currentState)
             {
@@ -211,8 +206,8 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
                 if (savedState != currentState)
                 {
-                    settings.Store.LastState = currentState;
-                    settings.SynchronizeStore();
+                    _settings.Store.LastState = currentState;
+                    _settings.SynchronizeStore();
                 }
             }
 
@@ -234,18 +229,18 @@ public partial class ITSModeFeature : IFeature<ITSMode>
             var supportedStates = await GetAllStatesAsync().ConfigureAwait(false);
             var supportedSet = new HashSet<ITSMode>(supportedStates);
 
-            var settings = IoCContainer.Resolve<ITSModeSettings>();
-            var userOrder = settings.Store.FnQModeOrder;
+            var userOrder = _settings.Store.FnQModeOrder;
             if (userOrder == null || userOrder.Count == 0)
             {
                 userOrder = [ITSMode.MmcCool, ITSMode.ItsAuto, ITSMode.MmcPerformance, ITSMode.MmcGeek];
             }
 
-            var disabledSet = new HashSet<ITSMode>(settings.Store.DisabledModes ?? []);
+            var disabledModes = _settings.Store.DisabledModes;
+            var disabledSet = disabledModes is { Count: > 0 } ? new HashSet<ITSMode>(disabledModes) : null;
 
             var isConnected = await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) == PowerAdapterStatus.Connected;
 
-            var availableStates = userOrder.Where(s => supportedSet.Contains(s) && !disabledSet.Contains(s) && (isConnected || s != ITSMode.MmcGeek)).ToArray();
+            var availableStates = userOrder.Where(s => supportedSet.Contains(s) && (disabledSet == null || !disabledSet.Contains(s)) && (isConnected || s != ITSMode.MmcGeek)).ToArray();
 
             if (availableStates.Length == 0)
             {
@@ -287,33 +282,31 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         }
     }
 
-    private bool SupportsGeekMode()
-    {
-        if (!_supportsGeekModeInitialized)
-        {
-            _supportsGeekMode = GetDispatcherVersionEx() >= DISPATCHER_VERSION_3;
-            _supportsGeekModeInitialized = true;
-        }
-
-        return _supportsGeekMode;
-    }
 
     private bool ShowGeekAsCreatorMode()
     {
+        if (_showGeekAsCreatorMode.HasValue)
+        {
+            return _showGeekAsCreatorMode.Value;
+        }
+
+        _showGeekAsCreatorMode = false;
+
         try
         {
             using var key = Registry.LocalMachine.OpenSubKey(REG_KEY_DISPATCHER, false);
             if (key != null)
             {
                 int capability = ReadRegistryInt(key, VAL_ITS_FN_CAP, 0);
-                return (capability & 0x20) != 0;
+                _showGeekAsCreatorMode = (capability & 0x20) != 0;
             }
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"ShowGeekAsCreatorMode() failed", ex);
         }
-        return false;
+
+        return _showGeekAsCreatorMode.Value;
     }
 
     public string GetITSModeDisplayName(ITSMode mode)
@@ -445,11 +438,31 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         }
     }
 
-    private int GetDispatcherVersionEx() => ReadRegistryVersion(REG_KEY_DISPATCHER, nameof(GetDispatcherVersionEx));
+    private int GetDispatcherVersionEx()
+    {
+        if (_dispatcherVersion.HasValue)
+        {
+            return _dispatcherVersion.Value;
+        }
 
-    private int GetITSVersionEx() => ReadRegistryVersion(REG_KEY_LITSSVC_BASE, nameof(GetITSVersionEx));
+        _dispatcherVersion = ReadRegistryVersion(REG_KEY_DISPATCHER, nameof(GetDispatcherVersionEx));
+        return _dispatcherVersion.Value;
+    }
+
 
     private bool IsEnergyDriverPresentEx()
+    {
+        if (_energyDriverPresent.HasValue)
+        {
+            return _energyDriverPresent.Value;
+        }
+
+        _energyDriverPresent = CheckEnergyDriver();
+
+        return _energyDriverPresent.Value;
+    }
+
+    private static bool CheckEnergyDriver()
     {
         try
         {
@@ -508,34 +521,18 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         }
     }
 
-    private int ReadRegistryInt(RegistryKey key, string valueName, int defaultValue)
+    private static int ReadRegistryInt(RegistryKey key, string valueName, int defaultValue)
     {
-        var value = key.GetValue(valueName, defaultValue);
-
-        if (value is int i)
+        return key.GetValue(valueName, defaultValue) switch
         {
-            return i;
-        }
-
-        if (value is long l)
-        {
-            return (int)l;
-        }
-
-        if (value is uint u)
-        {
-            return (int)u;
-        }
-
-        try
-        {
-            return Convert.ToInt32(value);
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Unexpected type for registry value {valueName}: {value?.GetType().Name ?? "null"}", ex);
-            return defaultValue;
-        }
+            int i => i,
+            long l => (int)l,
+            uint u => (int)u,
+            short s => s,
+            ushort us => us,
+            byte b => b,
+            _ => defaultValue
+        };
     }
 
     private async Task<bool> WaitForITSModeAsync(ITSMode expected, CancellationToken token)
@@ -554,5 +551,38 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         while (DateTimeOffset.UtcNow < deadline && !token.IsCancellationRequested);
 
         return false;
+    }
+
+    private async Task ApplyPowerChanges()
+    {
+        try
+        {
+            await _listener.OnChangedAsync(LastItsMode, false).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to notify ITS mode change.", ex);
+        }
+    }
+
+    private async Task WaitForOverlayOrTimeoutAsync(CancellationToken token)
+    {
+        try
+        {
+            await Task.Delay(2000, token).ConfigureAwait(false);
+        }
+        catch (OperationCanceledException)
+        {
+            return;
+        }
+
+        if (!_pendingOverlaySync)
+        {
+            return;
+        }
+
+        Log.Instance.Trace($"Overlay timeout, force overriding.");
+        _pendingOverlaySync = false;
+        await ApplyPowerChanges().ConfigureAwait(false);
     }
 }
