@@ -1,12 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using LenovoLegionToolkit.Lib.Extensions;
 using LibreHardwareMonitor.Hardware;
 
 namespace LenovoLegionToolkit.Lib.Controllers.Sensors.Providers;
 
 public class CpuSensorProvider : ISensorProvider
 {
+    private const float MinTemp = 0f;
+    private const float MaxTemp = 150f;
+
+    private static readonly string[] TempFallback = ["Average", "Package", "Tdie", "Core"];
+    private static readonly string[] PowerFallback = ["CPU Package", "CPU PPT", "PPT"];
+
     private static readonly SensorSlot[] Slots =
     [
         new(SensorItem.CpuTemperature, SensorType.Temperature, "Tctl"),
@@ -67,10 +74,9 @@ public class CpuSensorProvider : ISensorProvider
             _sensors[slot.Item] = cpu.Sensors.FirstOrDefault(s => s.SensorType == slot.Type && s.Name.Contains(slot.NamePattern))!;
         }
 
-        _sensors[SensorItem.CpuTemperature] ??= cpu.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Temperature && s.Name.Contains("Package"))!;
-        _sensors[SensorItem.CpuTemperature] ??= cpu.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Temperature)!;
+        _sensors[SensorItem.CpuTemperature] ??= cpu.Sensors.FindByKeyword(SensorType.Temperature, TempFallback)!;
+        _sensors[SensorItem.CpuPower]       ??= cpu.Sensors.FindPowerSensor(PowerFallback)!;
         _sensors[SensorItem.CpuUtilization] ??= cpu.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Load)!;
-        _sensors[SensorItem.CpuPower] ??= cpu.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Power)!;
 
         _avgVoltageSensor = null;
         _coreVoltageSensors = [];
@@ -122,11 +128,14 @@ public class CpuSensorProvider : ISensorProvider
             {
                 val = _powerMonitor.Read(val);
             }
-                
+            else if (slot.Item == SensorItem.CpuTemperature)
+            {
+                val = val > MinTemp && val < MaxTemp ? val : -1;
+            }
+
             values[slot.Item] = val;
         }
 
-        // 电压：根据模式选择值
         values[SensorItem.CpuVoltage] = VoltageMode switch
         {
             CpuVoltageMode.Maximum when _coreVoltageSensors.Count > 0 => _coreVoltageSensors.Max(s => s.Value) ?? -1,
@@ -135,9 +144,9 @@ public class CpuSensorProvider : ISensorProvider
             _ => _avgVoltageSensor?.Value ?? -1,
         };
 
-        Accum(values, _coreClocks, SensorItem.CpuMaxFrequency, SensorItem.CpuAverageFrequency);
-        Accum(values, _pCoreClocks, SensorItem.CpuPMaxFrequency, SensorItem.CpuPAverageFrequency);
-        Accum(values, _eCoreClocks, SensorItem.CpuEMaxFrequency, SensorItem.CpuEAverageFrequency);
+        _coreClocks.Accum(values, SensorItem.CpuMaxFrequency, SensorItem.CpuAverageFrequency);
+        _pCoreClocks.Accum(values, SensorItem.CpuPMaxFrequency, SensorItem.CpuPAverageFrequency);
+        _eCoreClocks.Accum(values, SensorItem.CpuEMaxFrequency, SensorItem.CpuEAverageFrequency);
 
         values[SensorItem.CpuFrequency] = IsHybrid
             ? values.GetValueOrDefault(SensorItem.CpuPMaxFrequency, -1)
@@ -146,19 +155,10 @@ public class CpuSensorProvider : ISensorProvider
         Values = values;
     }
 
-    private static void Accum(Dictionary<SensorItem, float> values, List<ISensor> sensors, SensorItem maxKey, SensorItem avgKey)
-    {
-        if (sensors.Count == 0) return;
-        float max = sensors.Max(s => s.Value) ?? -1;
-        float avg = sensors.Average(s => s.Value) ?? -1;
-        values[maxKey] = max > 0 ? (float)Math.Round(max) : max;
-        values[avgKey] = avg > 0 ? (float)Math.Round(avg) : avg;
-    }
-
     public void Reset()
     {
         _sensors.Clear();
-        _coreClocks = []; 
+        _coreClocks = [];
         _pCoreClocks = [];
         _eCoreClocks = [];
         _powerMonitor.Reset();
@@ -167,4 +167,5 @@ public class CpuSensorProvider : ISensorProvider
         IsAvailable = false; IsHybrid = false;
         Values = new Dictionary<SensorItem, float>();
     }
+
 }

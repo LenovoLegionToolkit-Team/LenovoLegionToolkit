@@ -7,9 +7,14 @@ namespace LenovoLegionToolkit.Lib.Controllers.Sensors.Providers;
 
 public class MemorySensorProvider : ISensorProvider
 {
+    private const float MinTemp = 0f;
+    private const float MaxTemp = 150f;
+
     private const string MEM_TOTAL = "Total Memory";
     private const string MEM_USED = "Memory Used";
     private const string MEM_AVAILABLE = "Memory Available";
+
+    private static readonly string[] TempKeywords = ["DIMM", "SPD", "Temperature"];
 
     private ISensor? _loadSensor, _usedSensor, _availableSensor;
     private readonly List<ISensor> _tempSensors = [];
@@ -30,19 +35,13 @@ public class MemorySensorProvider : ISensorProvider
 
     public void Discover(IReadOnlyList<IHardware> hardware)
     {
-        _loadSensor = null; 
-        _usedSensor = null; 
-        _availableSensor = null;
+        _loadSensor = null; _usedSensor = null; _availableSensor = null;
         _tempSensors.Clear();
         _cachedTotal = -1;
         IsAvailable = false;
 
         var mem = hardware.FirstOrDefault(h => h is { HardwareType: HardwareType.Memory, Name: MEM_TOTAL });
-        if (mem?.Sensors == null)
-        {
-            return;
-        }
-
+        if (mem?.Sensors == null) return;
         IsAvailable = true;
 
         _loadSensor = mem.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Load);
@@ -51,12 +50,19 @@ public class MemorySensorProvider : ISensorProvider
 
         foreach (var hw in hardware.Where(h => h.HardwareType == HardwareType.Memory))
         {
-            if (hw.Sensors == null)
+            if (hw.Sensors == null) continue;
+            foreach (var s in hw.Sensors)
             {
-                continue;
+                if (s.SensorType != SensorType.Temperature) continue;
+                for (int ki = 0; ki < TempKeywords.Length; ki++)
+                {
+                    if (s.Name.Contains(TempKeywords[ki], StringComparison.OrdinalIgnoreCase))
+                    {
+                        _tempSensors.Add(s);
+                        break;
+                    }
+                }
             }
-
-            _tempSensors.AddRange(hw.Sensors.Where(s => s.SensorType == SensorType.Temperature && s.Name.Contains("DIMM")));
         }
     }
 
@@ -80,7 +86,8 @@ public class MemorySensorProvider : ISensorProvider
         }
 
         double maxTemp = _tempSensors.Count > 0
-            ? (double)(_tempSensors.Max(s => s.Value) ?? 0) : -1.0;
+            ? (double)_tempSensors.Max(s => { var v = s.Value ?? 0; return v > MinTemp && v < MaxTemp ? v : -1; })
+            : -1.0;
 
         values[SensorItem.MemoryUtilization] = usage;
         values[SensorItem.MemoryUsed] = used;
@@ -92,11 +99,8 @@ public class MemorySensorProvider : ISensorProvider
 
     public void Reset()
     {
-        _loadSensor = null; 
-        _usedSensor = null; 
-        _availableSensor = null;
-        _tempSensors.Clear(); 
-        _cachedTotal = -1;
+        _loadSensor = null; _usedSensor = null; _availableSensor = null;
+        _tempSensors.Clear(); _cachedTotal = -1;
         IsAvailable = false;
         Values = new Dictionary<SensorItem, float>();
     }

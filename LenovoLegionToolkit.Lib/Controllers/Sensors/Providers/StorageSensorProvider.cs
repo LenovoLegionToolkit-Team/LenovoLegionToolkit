@@ -6,6 +6,9 @@ namespace LenovoLegionToolkit.Lib.Controllers.Sensors.Providers;
 
 public class StorageSensorProvider : ISensorProvider
 {
+    private const float MinTemp = 0f;
+    private const float MaxTemp = 150f;
+
     private readonly List<ISensor> _sensors = [];
 
     public HardwareUpdateScope Scope => HardwareUpdateScope.Storage;
@@ -31,9 +34,7 @@ public class StorageSensorProvider : ISensorProvider
         {
             var t = storage.Sensors?.FirstOrDefault(s => s.SensorType == SensorType.Temperature);
             if (t != null)
-            {
                 _sensors.Add(t);
-            }
         }
     }
 
@@ -47,7 +48,8 @@ public class StorageSensorProvider : ISensorProvider
 
         for (int i = 0; i < DiskItems.Length && i < _sensors.Count; i++)
         {
-            values[DiskItems[i]] = _sensors[i].Value ?? -1;
+            var v = _sensors[i].Value ?? -1;
+            values[DiskItems[i]] = v > MinTemp && v < MaxTemp ? v : -1;
         }
 
         Values = values;
