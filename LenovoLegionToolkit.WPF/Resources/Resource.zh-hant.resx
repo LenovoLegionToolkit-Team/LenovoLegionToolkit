@@ -175,6 +175,12 @@
   <data name="AddNew" xml:space="preserve">
     <value>新增</value>
   </data>
+  <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
+    <value>Dynamically shifts power between the CPU and GPU to maximize performance in compatible games.</value>
+  </data>
+  <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
+    <value>AI 引擎</value>
+  </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>飛航模式</value>
   </data>
@@ -191,16 +197,16 @@
     <value>保持 USB 供電</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options over all power mode.</value>
+    <value>在所有電源模式下套用 Curve Optimizer 和進階選項。</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Title" xml:space="preserve">
-    <value>Allow in all power modes</value>
+    <value>允許在所有電源模式下</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
+    <value>即使在電池供電的情況下，也應套用 Curve Optimizer 和進階選項。</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
-    <value>Allow on battery</value>
+    <value>允許在電池模式下</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
     <value>套用變更</value>
@@ -215,7 +221,31 @@
     <value>核心</value>
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
-    <value>Current Limits</value>
+    <value>電流限制</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
+    <value>高溫</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
+    <value>低溫</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
+    <value>最大值</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
+    <value>中</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
+    <value>中溫</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
+    <value>最小值</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>由於多次異常重新啟動，已取消套用的設定檔。</value>
@@ -233,7 +263,7 @@
     <value>啟用 AMD 超頻</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz).</value>
+    <value>CPU 最高加速頻率 (Mhz)。</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
     <value>最高頻率</value>
@@ -251,16 +281,16 @@
     <value>分核調優</value>
   </data>
   <data name="AmdOverclocking_PowerLimits" xml:space="preserve">
-    <value>Power Limits</value>
+    <value>功率限制</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Long" xml:space="preserve">
-    <value>Power Limit (Long)</value>
+    <value>功率限制（長時）</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Peak" xml:space="preserve">
-    <value>Power Limit (Peak)</value>
+    <value>功率限制（峰值）</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Short" xml:space="preserve">
-    <value>Power Limit (Short)</value>
+    <value>功率限制（短時）</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
     <value>狀態</value>
@@ -272,13 +302,16 @@
     <value>成功</value>
   </data>
   <data name="AmdOverclocking_Tab_Advanced" xml:space="preserve">
-    <value>Advanced</value>
+    <value>進階</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
     <value>Curve Optimizer</value>
   </data>
+  <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
+    <value>Curve Shaper Optimizer</value>
+  </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>設定</value>
   </data>
   <data name="AmdOverclocking_TDC_SoC" xml:space="preserve">
     <value>TDC SoC</value>
@@ -286,8 +319,11 @@
   <data name="AmdOverclocking_TDC_VDD" xml:space="preserve">
     <value>TDC VDD</value>
   </data>
+  <data name="AmdOverclocking_Title" xml:space="preserve">
+    <value>AMD 精準頻率提升</value>
+  </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures.</value>
+    <value>停用 CCD 1 以獲得更穩定的 FPS 與溫度。</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
     <value>X3D 遊戲模式</value>
@@ -416,13 +452,13 @@
     <value>遊戲偵測</value>
   </data>
   <data name="AutomationPage_QuickActions_Empty" xml:space="preserve">
-    <value>尚未定義快捷功能。點擊「新增」以建立新的快捷功能。</value>
+    <value>尚未定義快速操作。點擊「新增」以建立新的快速操作。</value>
   </data>
   <data name="AutomationPage_QuickActions_Message" xml:space="preserve">
-    <value>提供系統匣選單圖示的快捷功能。</value>
+    <value>提供系統匣選單圖示的快速操作。</value>
   </data>
   <data name="AutomationPage_QuickActions_Title" xml:space="preserve">
-    <value>快捷功能</value>
+    <value>快速操作</value>
   </data>
   <data name="AutomationPage_RenamePipeline_Placeholder" xml:space="preserve">
     <value>名稱……</value>
@@ -518,7 +554,7 @@
     <value>組態設定</value>
   </data>
   <data name="Automation_SupportedAvailableCount" xml:space="preserve">
-    <value>Supported: {0} / Available: {1}</value>
+    <value>支援：{0}／可用：{1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>返回</value>
@@ -675,11 +711,11 @@
     <value>已設定為預設啟動商標</value>
   </data>
   <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Custom boot logo must within {0} pixels large.
-Supported formats are: {1}.</value>
+    <value>客製化啟動商標必須恰好為 {0} 像素。
+支援的格式有：{1}。</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
-    <value>Disable Windows Startup Animation</value>
+    <value>停用 Windows 啟動動畫</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>客製化商標無法被設定：{0}</value>
@@ -742,7 +778,7 @@ Supported formats are: {1}.</value>
     <value>紅色（R）</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Select GPU operating mode based on your computer's usage and power conditions.</value>
+    <value>根據您的電腦的使用狀況及電源狀況選擇 GPU 運作模式。</value>
   </data>
   <data name="ComboBoxHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>GPU 運作模式</value>
@@ -775,6 +811,9 @@ Supported formats are: {1}.</value>
   <data name="CopyAll" xml:space="preserve">
     <value>複製全部</value>
   </data>
+  <data name="Core" xml:space="preserve">
+    <value>核心</value>
+  </data>
   <data name="Cores" xml:space="preserve">
     <value>核心</value>
   </data>
@@ -794,7 +833,7 @@ Supported formats are: {1}.</value>
     <value>Cycle through available Custom Mode presets.</value>
   </data>
   <data name="CycleGodModePresetAutomationStepControl_Title" xml:space="preserve">
-    <value>Cycle Custom Mode preset</value>
+    <value>循環自訂模式預設</value>
   </data>
   <data name="DashboardBattery_AcConnected" xml:space="preserve">
     <value>交流電</value>
@@ -926,13 +965,13 @@ Supported formats are: {1}.</value>
     <value>Polling Interval</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDefault" xml:space="preserve">
-    <value>Let Windows decide</value>
+    <value>讓 Windows 決定</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceDiscrete" xml:space="preserve">
     <value>獨立 GPU</value>
   </data>
   <data name="DiscreteGPUControl_PreferenceIntegrated" xml:space="preserve">
-    <value>Integrated GPU</value>
+    <value>內建顯示卡</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>處理程序</value>
@@ -1045,7 +1084,7 @@ Supported formats are: {1}.</value>
     <value>Excluded Processes</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
-    <value>使用 Fn+R 快捷鍵時，取消選擇您不想使用的更新率。</value>
+    <value>使用 Fn+R 快速鍵時，取消選擇您不想使用的更新率。</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_NoRefreshRatesFound_Message" xml:space="preserve">
     <value>請確保筆記型電腦顯示器已開啟。否則 Lenovo Legion 工具套件無法載入顯示器資訊。</value>
@@ -1120,10 +1159,10 @@ Supported formats are: {1}.</value>
     <value>PCH</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
-    <value>Set fan to maximum speed.</value>
+    <value>設定風扇為最大轉速。</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Title" xml:space="preserve">
-    <value>Fan Max Speed</value>
+    <value>最大風扇轉速</value>
   </data>
   <data name="Filter" xml:space="preserve">
     <value>篩選……</value>
@@ -1191,10 +1230,10 @@ Supported formats are: {1}.</value>
     <value>進階</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>All Core Curve Optimizer.</value>
+    <value>所有核心 Curve Optimizer。</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
-    <value>All Core Curve Optimizer</value>
+    <value>所有核心 Curve Optimizer</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL" xml:space="preserve">
     <value>APU 功率限制（SPPT）</value>
@@ -1242,11 +1281,11 @@ Supported formats are: {1}.</value>
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+    <value>自訂模式可讓您存取關鍵系統參數，例如功率限制和風扇曲線。
 
-Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+設定錯誤可能造成嚴重的系統不穩定、過熱降頻或永久性硬體損壞。在此處進行的修改可能會使您的製造商保固失效。
 
-Do not proceed unless you possess the necessary technical expertise.</value>
+如果您不具備必要的專業技術知識，請勿繼續操作。</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
     <value>名稱</value>
@@ -1316,6 +1355,9 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>當 LegionZone 或其他服務正在執行時，客製化模式設定將無法被正確地套用。</value>
   </data>
+  <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
+    <value>Your device may not support the full feature set of Custom Mode.</value>
+  </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>精準頻率提升加速頻率。</value>
   </data>
@@ -1335,7 +1377,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>啟用／停用核心電壓調整。</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
-    <value>Core Curve Adjustment</value>
+    <value>核心曲線調整</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
     <value>啟用／停用進階超頻選項。</value>
@@ -1434,6 +1476,12 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
     <value>IdeaPad 電源模式</value>
   </data>
+  <data name="ITSModeConfigWindow_Description" xml:space="preserve">
+    <value>Modify the Fn+Q switching order and configure the switching mode.</value>
+  </data>
+  <data name="ITSModeConfigWindow_Title" xml:space="preserve">
+    <value>Configure ITS Mode</value>
+  </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
     <value>變更 IdeaPad 電源模式</value>
   </data>
@@ -1476,31 +1524,31 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>未知的按鍵 - 可新增</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
-    <value>Aft Ambient</value>
+    <value>尾部氣氛</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_All" xml:space="preserve">
     <value>全選</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aurora_Sync" xml:space="preserve">
-    <value>Aurora Sync</value>
+    <value>Aurora 同步</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Bottom_to_Top" xml:space="preserve">
-    <value>Bottom to Top</value>
+    <value>由下到上</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Breathe" xml:space="preserve">
-    <value>Breathe</value>
+    <value>呼吸</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Brightness" xml:space="preserve">
     <value>亮度</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Clear_Colors" xml:space="preserve">
-    <value>Clear Colors</value>
+    <value>清除顏色</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Custom" xml:space="preserve">
-    <value>Custom</value>
+    <value>自訂</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Direction" xml:space="preserve">
-    <value>Direction</value>
+    <value>方向</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Effect" xml:space="preserve">
     <value>特效</value>
@@ -1509,25 +1557,25 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>匯出設定檔</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Gradient" xml:space="preserve">
-    <value>Gradient</value>
+    <value>漸變</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Import_Profile" xml:space="preserve">
     <value>匯入設定檔</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Keyboard" xml:space="preserve">
-    <value>Keyboard</value>
+    <value>鍵盤</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Left_to_Right" xml:space="preserve">
-    <value>Left to Right</value>
+    <value>由左到右</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Meteor" xml:space="preserve">
-    <value>Meteor</value>
+    <value>流星</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_None" xml:space="preserve">
     <value>無</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_No_Selection" xml:space="preserve">
-    <value>No Selection</value>
+    <value>未選取</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Probe_Indices" xml:space="preserve">
     <value>Probe Indices</value>
@@ -1539,40 +1587,40 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>彩虹波浪</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Rear_Ambient" xml:space="preserve">
-    <value>Rear Ambient</value>
+    <value>沉浸氣氛</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Right_to_Left" xml:space="preserve">
-    <value>Right to Left</value>
+    <value>從右到左</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Ripple" xml:space="preserve">
-    <value>Ripple</value>
+    <value>波紋</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selected_Key" xml:space="preserve">
-    <value>Selected {0} keys with {1} effect</value>
+    <value>已選取 {0} 個按鍵，效果 {1}</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Selection" xml:space="preserve">
-    <value>Selection</value>
+    <value>選取</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Smooth_Transition" xml:space="preserve">
-    <value>Smooth Transition</value>
+    <value>平滑過渡</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Sparkle" xml:space="preserve">
-    <value>Sparkle</value>
+    <value>火花</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Speed" xml:space="preserve">
-    <value>Speed</value>
+    <value>速度</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Spiral_Rainbow" xml:space="preserve">
     <value>螺旋彩虹</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Static" xml:space="preserve">
-    <value>Static</value>
+    <value>靜態</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Target_Zone" xml:space="preserve">
-    <value>Target Zone</value>
+    <value>目標區域</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Top_to_Bottom" xml:space="preserve">
-    <value>Top to Bottom</value>
+    <value>從上到下</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Wave" xml:space="preserve">
     <value>波浪</value>
@@ -1741,13 +1789,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <comment>Allows the user to merge multiple triggers for the execution of selected actions.</comment>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_And" xml:space="preserve">
-    <value>Match All (And)</value>
+    <value>符合全部（和）</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_None" xml:space="preserve">
     <value>無判斷邏輯（分離）</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Or" xml:space="preserve">
-    <value>Match Any (Or)</value>
+    <value>符合任何（或）</value>
   </data>
   <data name="MultipleTriggersAutomationPipelineTrigger_Logic_Title" xml:space="preserve">
     <value>判斷邏輯</value>
@@ -1905,7 +1953,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>開啟介面指示燈</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightChanged" xml:space="preserve">
-    <value>RGB Changed</value>
+    <value>已變更 RGB</value>
   </data>
   <data name="Notification_RGBKeyboardBacklightOff" xml:space="preserve">
     <value>RGB Off</value>
@@ -1917,13 +1965,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Single Press</value>
   </data>
   <data name="Notification_SpectrumBacklightChanged" xml:space="preserve">
-    <value>Spectrum Changed</value>
+    <value>已變更 Spectrum</value>
   </data>
   <data name="Notification_SpectrumBacklightOff" xml:space="preserve">
     <value>Spectrum Off</value>
   </data>
   <data name="Notification_SpectrumBacklightPresetChanged" xml:space="preserve">
-    <value>Spectrum Preset</value>
+    <value>Spectrum 預設</value>
   </data>
   <data name="Notification_SpectrumKeyboardBacklight_Backlight" xml:space="preserve">
     <value>背光 {0}</value>
@@ -1947,13 +1995,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>背光 {0}</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightChanged" xml:space="preserve">
-    <value>White Changed</value>
+    <value>已變更背光</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightOff" xml:space="preserve">
     <value>White Off</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
-    <value>Backlight changed</value>
+    <value>已變更背光</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>關閉</value>
@@ -1982,6 +2030,9 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>OSD</value>
   </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>電壓</value>
+  </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Set the lock position state of the OSD.</value>
   </data>
@@ -2004,25 +2055,25 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Top</value>
   </data>
   <data name="OsdSettings_Appearance_CriticalColor" xml:space="preserve">
-    <value>Critical Color</value>
+    <value>關鍵點顏色</value>
   </data>
   <data name="OsdSettings_Appearance_FontSize" xml:space="preserve">
     <value>字型大小</value>
   </data>
   <data name="OsdSettings_Appearance_LabelColor" xml:space="preserve">
-    <value>Label Color</value>
+    <value>標籤顏色</value>
   </data>
   <data name="OsdSettings_Appearance_Opacity" xml:space="preserve">
     <value>透明度</value>
   </data>
   <data name="OsdSettings_Appearance_ValueColor" xml:space="preserve">
-    <value>Value Color</value>
+    <value>數值顏色</value>
   </data>
   <data name="OsdSettings_Appearance_WarningColor" xml:space="preserve">
-    <value>Warning Color</value>
+    <value>警告顏色</value>
   </data>
   <data name="OsdSettings_General_LockPosition" xml:space="preserve">
-    <value>Lock Position</value>
+    <value>鎖定位置</value>
   </data>
   <data name="OsdSettings_General_OverlayStyle" xml:space="preserve">
     <value>Overlay Style</value>
@@ -2043,31 +2094,31 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>外觀</value>
   </data>
   <data name="OsdSettings_Tabs_General" xml:space="preserve">
-    <value>General</value>
+    <value>一般</value>
   </data>
   <data name="OsdSettings_Tabs_SensorItems" xml:space="preserve">
     <value>感測器</value>
   </data>
   <data name="OsdSettings_Tabs_Thresholds" xml:space="preserve">
-    <value>Thresholds</value>
+    <value>臨界點</value>
   </data>
   <data name="OsdSettings_Thresholds_Critical" xml:space="preserve">
-    <value>Critical</value>
+    <value>關鍵點</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline" xml:space="preserve">
     <value>FPS 紅線</value>
   </data>
   <data name="OsdSettings_Thresholds_FpsRedline_Description" xml:space="preserve">
-    <value>The minimum acceptable frame rate. Below this, the color turns critical.</value>
+    <value>最低可接受幀率。低於此值，顏色變為關鍵點顏色。</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta" xml:space="preserve">
-    <value>Low FPS Delta</value>
+    <value>最低 FPS 差值</value>
   </data>
   <data name="OsdSettings_Thresholds_LowFpsDelta_Description" xml:space="preserve">
-    <value>The maximum difference between average FPS and 1% Low. Above this, the counter turns critical.</value>
+    <value>平均 FPS 與最低 1% FPS 之間的最大差值。超過此值，計數器將變為關鍵點。</value>
   </data>
   <data name="OsdSettings_Thresholds_Performance" xml:space="preserve">
-    <value>Performance</value>
+    <value>效能</value>
   </data>
   <data name="OsdSettings_Thresholds_Temperature" xml:space="preserve">
     <value>溫度</value>
@@ -2148,7 +2199,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>GPU 超頻</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
-    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
+    <value>調整 GPU 核心頻率，使其運轉速度高於或低於出廠設定速度。</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>核心頻率偏移</value>
@@ -2169,10 +2220,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>降壓</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
-    <value>Voltage Lock</value>
+    <value>鎖定電壓</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
+    <value>鎖定 GPU 電壓與頻率，以實現一致的效能表現。</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>點擊 {0} 次後解鎖……</value>
@@ -2366,8 +2417,8 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>電源模式</value>
   </data>
   <data name="PowerModeControl_Message" xml:space="preserve">
-    <value>選擇效能模式。
-您可以透過快捷鍵 Fn+Q 快速變更。</value>
+    <value>變更效能模式。
+您可以透過 Fn+Q 快速變更。</value>
   </data>
   <data name="PowerModeControl_Settings" xml:space="preserve">
     <value>設定</value>
@@ -2395,10 +2446,10 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>偵測到 S0 Lower Power Model</value>
   </data>
   <data name="QuickActionAutomationStepControl_Message" xml:space="preserve">
-    <value>執行已儲存的快捷功能。</value>
+    <value>執行已儲存的快速操作。</value>
   </data>
   <data name="QuickActionAutomationStepControl_Title" xml:space="preserve">
-    <value>快捷功能</value>
+    <value>快速操作</value>
   </data>
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
@@ -2588,7 +2639,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>{0} 秒</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_Configure_Title" xml:space="preserve">
-    <value>Configure {0}</value>
+    <value>設定 {0}</value>
   </data>
   <data name="SelectSpecialKeyPipelinesWindow_List_Description" xml:space="preserve">
     <value>選擇一個或更多快速操作來循環執行。</value>
@@ -2755,6 +2806,21 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>已使用／總計記憶體 (GB)</value>
   </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>平均</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>核心</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>最大值</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>選擇電壓在儀錶板和 OSD 上的顯示方式。</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>電壓顯示模式</value>
+  </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>序號</value>
   </data>
@@ -2774,7 +2840,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>未選取任何檔案。</value>
   </data>
   <data name="SettingsBackupWindow_NoMatchingFiles" xml:space="preserve">
-    <value>No matching files found in selected folder.</value>
+    <value>選擇的資料夾中沒有找到符合的檔案。</value>
   </data>
   <data name="SettingsBackupWindow_Restore" xml:space="preserve">
     <value>復原</value>
@@ -2945,7 +3011,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
     <value>在不解除安裝 Lenovo Hotkeys 及相關服務的情況下停用它們。
-如果停用，此應用程式將處理 Fn 快捷鍵。
+如果停用，此應用程式將處理 Fn 快速鍵。
 變更此選項後建議重新啟動。</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
@@ -3247,7 +3313,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>按鍵探索</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Message" xml:space="preserve">
-    <value>Find key that is not defined in LLT.</value>
+    <value>按下 Fn 快速鍵，即可探索哪些快速鍵可以新增和自訂為 Smart Key。</value>
   </data>
   <data name="SpecialKeyDetailWindow_KeyDiscovery_Start" xml:space="preserve">
     <value>開始</value>
@@ -3463,7 +3529,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>時間</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Allow switching between integrated and discrete GPU.</value>
+    <value>混合模式允許在內建顯示卡和獨立顯示卡之間切換。</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Title" xml:space="preserve">
     <value>混合模式（Hybrid）</value>

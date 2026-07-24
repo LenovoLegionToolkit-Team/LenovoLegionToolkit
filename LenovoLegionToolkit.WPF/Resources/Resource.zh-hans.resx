@@ -175,6 +175,12 @@
   <data name="AddNew" xml:space="preserve">
     <value>新建</value>
   </data>
+  <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
+    <value>在兼容的游戏中，动态调配 CPU 与 GPU 的功耗，以最大限度提升性能。</value>
+  </data>
+  <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
+    <value>AI 引擎</value>
+  </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>飞行模式</value>
   </data>
@@ -218,6 +224,30 @@
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
     <value>电流限制</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
+    <value>高</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
+    <value>高温</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
+    <value>低</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
+    <value>低温</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
+    <value>中等</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
+    <value>中温</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
+    <value>最小</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>配置文件未被应用由于多次异常重启。</value>
@@ -279,6 +309,9 @@
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
     <value>电压曲线调优</value>
   </data>
+  <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
+    <value>曲线塑形优化器</value>
+  </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
     <value>设置</value>
   </data>
@@ -287,6 +320,9 @@
   </data>
   <data name="AmdOverclocking_TDC_VDD" xml:space="preserve">
     <value>TDC VDD</value>
+  </data>
+  <data name="AmdOverclocking_Title" xml:space="preserve">
+    <value>AMD PBO 超频</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
     <value>关闭 CCD 1 以获取更平滑的帧数与更低的待机温度。</value>
@@ -777,6 +813,9 @@
   <data name="CopyAll" xml:space="preserve">
     <value>复制全部</value>
   </data>
+  <data name="Core" xml:space="preserve">
+    <value>核心</value>
+  </data>
   <data name="Cores" xml:space="preserve">
     <value>核心</value>
   </data>
@@ -826,7 +865,7 @@
     <value>剩余天数</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>禁用离散的 GPU 如果它是不必要的。</value>
+    <value>在不需要时停用独立显卡。</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>休眠独立显卡</value>
@@ -1325,6 +1364,9 @@
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>自定义设置在 Legion Zone 及其服务运行时将不会生效。</value>
   </data>
+  <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
+    <value>您的设备可能不支持自定义模式的完整功能。</value>
+  </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>调整 Precision Boost Overdrive 提高频率。</value>
   </data>
@@ -1442,6 +1484,12 @@
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
     <value>性能模式</value>
+  </data>
+  <data name="ITSModeConfigWindow_Description" xml:space="preserve">
+    <value>修改 Fn+Q 切换顺序并配置切换模式。</value>
+  </data>
+  <data name="ITSModeConfigWindow_Title" xml:space="preserve">
+    <value>配置 ITS 模式</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
     <value>更改性能模式</value>
@@ -1989,6 +2037,9 @@
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>OSD</value>
+  </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>电压</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>设置 OSD 的锁定位置状态。</value>
@@ -2764,6 +2815,21 @@
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>已使用/总内存 (GB)</value>
   </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>平均</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>核心</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>最大</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>选择电压在仪表盘和 OSD 上的显示方式。</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>电压显示模式</value>
+  </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>序列号</value>
   </data>
@@ -3161,7 +3227,7 @@
     <value>温度</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>设置浅色模式、神色模式或跟随系统主题。</value>
+    <value>设置浅色模式、深色模式或跟随系统主题。</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>主题</value>

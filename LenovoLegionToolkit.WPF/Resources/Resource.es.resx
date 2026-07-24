@@ -175,6 +175,12 @@
   <data name="AddNew" xml:space="preserve">
     <value>Añadir nueva</value>
   </data>
+  <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
+    <value>Distribuye dinámicamente la potencia entre la CPU y la GPU para maximizar el rendimiento en los juegos compatibles.</value>
+  </data>
+  <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
+    <value>Motor de IA</value>
+  </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>Modo avión</value>
   </data>
@@ -191,16 +197,16 @@
     <value>USB siempre encendido</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options over all power mode.</value>
+    <value>Aplica el optimizador de curvas y las opciones avanzadas en todos los modos de potencia.</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Title" xml:space="preserve">
-    <value>Allow in all power modes</value>
+    <value>Permitir en todos los modos de energía</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
     <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
-    <value>Allow on battery</value>
+    <value>Permitir al usar la batería</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
     <value>Aplicar cambios</value>
@@ -215,7 +221,31 @@
     <value>Núcleo</value>
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
-    <value>Current Limits</value>
+    <value>Límites actuales</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
+    <value>Alto</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
+    <value>Temperatura alta</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
+    <value>Bajo</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
+    <value>Temperatura baja</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
+    <value>Máximo</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
+    <value>Medio</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
+    <value>Temperatura media</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
+    <value>Mínimo</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>La aplicación del perfil se ha cancelado debido a un reinicio anormal.</value>
@@ -233,7 +263,7 @@
     <value>Habilitar el overclocking de AMD</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz).</value>
+    <value>Frecuencia máxima de overclocking de la CPU (MHz).</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
     <value>Frecuencia FMax</value>
@@ -251,16 +281,16 @@
     <value>Optimización por núcleo</value>
   </data>
   <data name="AmdOverclocking_PowerLimits" xml:space="preserve">
-    <value>Power Limits</value>
+    <value>Límites de energía</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Long" xml:space="preserve">
-    <value>Power Limit (Long)</value>
+    <value>Límite de energía (largo)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Peak" xml:space="preserve">
-    <value>Power Limit (Peak)</value>
+    <value>Límite de energía (pico)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Short" xml:space="preserve">
-    <value>Power Limit (Short)</value>
+    <value>Límite de energía (corto)</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
     <value>Estado</value>
@@ -272,13 +302,16 @@
     <value>Éxito</value>
   </data>
   <data name="AmdOverclocking_Tab_Advanced" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Avanzado</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
-    <value>Curve Optimizer</value>
+    <value>Optimizador de curvas</value>
+  </data>
+  <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
+    <value>Optimizador de Curve Shaper</value>
   </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Configuración</value>
   </data>
   <data name="AmdOverclocking_TDC_SoC" xml:space="preserve">
     <value>TDC SoC</value>
@@ -286,8 +319,11 @@
   <data name="AmdOverclocking_TDC_VDD" xml:space="preserve">
     <value>TDC VDD</value>
   </data>
+  <data name="AmdOverclocking_Title" xml:space="preserve">
+    <value>AMD Precision Boost Overclocking</value>
+  </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures.</value>
+    <value>Desactiva el CCD 1 para conseguir estabilidad tanto en los FPS como en las temperaturas.</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
     <value>Modo de juego X3D</value>
@@ -676,11 +712,11 @@ Esta hora puede no ser correcta si el portátil se ha cargado mientras estaba su
     <value>Logo de arranque predefinido está configurado</value>
   </data>
   <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Custom boot logo must within {0} pixels large.
-Supported formats are: {1}.</value>
+    <value>El logotipo personalizado de arranque debe tener un tamaño máximo de {0} píxeles.
+Los formatos admitidos son: {1}.</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
-    <value>Disable Windows Startup Animation</value>
+    <value>Desactivar la animación de inicio de Windows</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>No se ha podido establecer el logo personalizado: {0}</value>
@@ -775,6 +811,9 @@ El cambio de modo puede requerir un reinicio.</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
     <value>Copiar todo</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Núcleo</value>
   </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
@@ -1319,6 +1358,9 @@ En serio, ¡tenga cuidado con esta opción!</value>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>Los ajustes del modo personalizado no se aplicarán correctamente, si Legion Zone o sus servicios se están ejecutando.</value>
   </data>
+  <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
+    <value>Es posible que tu dispositivo no sea compatible con todas las funciones del modo personalizado.</value>
+  </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Incremento de frecuencia para Precision Boost Overdrive.</value>
   </data>
@@ -1436,6 +1478,12 @@ Si la dGPU no responde del todo, reinicie su portátil.</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
     <value>Modo de energía del IdeaPad</value>
+  </data>
+  <data name="ITSModeConfigWindow_Description" xml:space="preserve">
+    <value>Modifica el orden de cambio Fn+Q y configura el modo de cambio.</value>
+  </data>
+  <data name="ITSModeConfigWindow_Title" xml:space="preserve">
+    <value>Configurar el modo ITS</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
     <value>Cambiar el modo de energía del IdeaPad</value>
@@ -1984,6 +2032,9 @@ No afectará a otras ventanas a pantalla completa, pero no podrá hacer clic en 
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>Widget flotante</value>
+  </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>Voltaje</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Establece el estado de posición de bloqueo del OSD.</value>
@@ -2758,6 +2809,21 @@ Puede cambiar de modo con Fn+Q.</value>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Memoria Usada/Total (GB)</value>
   </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>Medio</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>Núcleo</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>Máximo</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>Elige cómo se muestra el voltaje en el panel de control y en el menú en pantalla (OSD).</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>Modo de visualización del voltaje</value>
+  </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Número de serie</value>
   </data>
@@ -3061,8 +3127,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Bloquear el tamaño de ventana</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
-    <value>Minimizar siempre en la bandeja. Haciendo clic derecho en el icono de la bandeja, podrá cerrar el programa.
-</value>
+    <value>Minimizar a la bandeja del sistema en lugar de cerrar.</value>
   </data>
   <data name="SettingsPage_MinimizeOnClose_Title" xml:space="preserve">
     <value>Minimizar al cerrar</value>
@@ -3074,7 +3139,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Minimizar en la bandeja</value>
   </data>
   <data name="SettingsPage_Notifications_Message" xml:space="preserve">
-    <value>Configurar qué notificaciones se muestran</value>
+    <value>Configurar qué notificaciones se muestran.</value>
   </data>
   <data name="SettingsPage_Notifications_Title" xml:space="preserve">
     <value>Notificaciones</value>
@@ -3098,7 +3163,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Cambiar automáticamente el plan de energía o el modo de energía de Windows al cambiar los modos de energía.</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
-    <value>Sincronización del modo de alimentación</value>
+    <value>Sincronización del modo de energía</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>¿Está seguro que desea restablecer todos los ajustes a los predeterminados? Esta acción no se puede deshacer y la aplicación se reiniciará.</value>
@@ -3131,7 +3196,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Configuración de los sensores</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Message" xml:space="preserve">
-    <value>El bloqueo Fn se desactivará temporalmente al pulsar las teclas Mayús, Ctrl o Alt.</value>
+    <value>Desactivar temporalmente la tecla Fn mientras se mantienen pulsadas las teclas Alt, Ctrl o Shift.</value>
   </data>
   <data name="SettingsPage_SmartFnLock_Title" xml:space="preserve">
     <value>Bloqueo Fn inteligente</value>
@@ -3143,7 +3208,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Teclas Inteligentes</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Message" xml:space="preserve">
-    <value>Si está activado, se aplicará el mismo nivel de brillo a todos los planes de energía de Windows cada vez que lo cambie.</value>
+    <value>Aplica el mismo nivel de brillo en todos los planes de energía de Windows.</value>
   </data>
   <data name="SettingsPage_SynchronizeBrightnessToAllPowerPlans_Title" xml:space="preserve">
     <value>Un solo brillo de pantalla</value>
@@ -3218,10 +3283,10 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Cambiar al modo personalizado con Fn+Q</value>
   </data>
   <data name="ShowAppAutomationStepControl_Message" xml:space="preserve">
-    <value>Mostrar el Toolkit de Legión Lena</value>
+    <value>Mostrar Lenovo Legion Toolkit</value>
   </data>
   <data name="ShowAppAutomationStepControl_Title" xml:space="preserve">
-    <value>Mostrar App</value>
+    <value>Mostrar aplicación</value>
   </data>
   <data name="ShowLess" xml:space="preserve">
     <value>Mostrar menos</value>
@@ -3278,7 +3343,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Mostrar teclas ocultas {0}</value>
   </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
-    <value>(Drío)</value>
+    <value>(Driver)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>Llave {0}</value>
@@ -3311,16 +3376,16 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Efectos</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Message" xml:space="preserve">
-    <value>Perfil no puede ser importado</value>
+    <value>No se ha podido exportar el perfil</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ExportProfileError_Title" xml:space="preserve">
-    <value>No se pudo exportar el perfil</value>
+    <value>No se ha podido exportar el perfil</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Message" xml:space="preserve">
-    <value>Perfil no se puede importar</value>
+    <value>No se ha podido importar el perfil</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_ImportProfileError_Title" xml:space="preserve">
-    <value>No se pudo importar el perfil</value>
+    <value>No se ha podido importar el perfil</value>
   </data>
   <data name="SpectrumKeyboardBacklightControl_NoEffects_Text" xml:space="preserve">
     <value>Ningún efecto añadido.</value>
@@ -3398,7 +3463,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Perfil de retroiluminación del teclado</value>
   </data>
   <data name="SpectrumKeyboardEffectControl_Description_AllZones" xml:space="preserve">
-    <value>Cualquier tecla</value>
+    <value>Todas las teclas</value>
   </data>
   <data name="SpectrumKeyboardEffectControl_Description_Zones" xml:space="preserve">
     <value>{0} zonas</value>
@@ -3458,7 +3523,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Hilos</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunrise" xml:space="preserve">
-    <value>Al amanecer</value>
+    <value>Amanecer</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Sunset" xml:space="preserve">
     <value>Atardecer</value>
@@ -3521,7 +3586,7 @@ Al mover el ratón o pulsar el teclado se activarán las pantallas.</value>
 {0}</value>
   </data>
   <data name="Unhide" xml:space="preserve">
-    <value>Unhide</value>
+    <value>Volver a mostrar</value>
   </data>
   <data name="Unknown" xml:space="preserve">
     <value>Desconocido</value>
@@ -3538,10 +3603,10 @@ El registro de sucesos se activará automáticamente, si decide continuar.</valu
     <value>Consultar la página del proyecto en GitHub para obtener más información.</value>
   </data>
   <data name="UnsupportedWindow_MachineType" xml:space="preserve">
-    <value>Tipo</value>
+    <value>Tipo de máquina</value>
   </data>
   <data name="UnsupportedWindow_Message" xml:space="preserve">
-    <value>Lenovo Legion Toolkit no ha sido testeado en su dispositivo.</value>
+    <value>Lenovo Legion Toolkit no se ha probado con tu dispositivo.</value>
   </data>
   <data name="UnsupportedWindow_Model" xml:space="preserve">
     <value>Modelo</value>
@@ -3556,7 +3621,7 @@ El registro de sucesos se activará automáticamente, si decide continuar.</valu
     <value>Actualización</value>
   </data>
   <data name="UpdateWindow_DownloadError_Title" xml:space="preserve">
-    <value>Error al actualizar la descarga</value>
+    <value>Error al descargar la actualización</value>
   </data>
   <data name="UpdateWindow_SecurityError_Title" xml:space="preserve">
     <value>Error al verificar la actualización</value>
@@ -3571,10 +3636,10 @@ El registro de sucesos se activará automáticamente, si decide continuar.</valu
     <value>Usado</value>
   </data>
   <data name="Valid" xml:space="preserve">
-    <value>Valid</value>
+    <value>Válida</value>
   </data>
   <data name="Warning" xml:space="preserve">
-    <value>Aviso</value>
+    <value>Advertencia</value>
   </data>
   <data name="Warranty" xml:space="preserve">
     <value>Garantía</value>
@@ -3610,10 +3675,10 @@ El registro de sucesos se activará automáticamente, si decide continuar.</valu
     <value>Predefinido</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_AC" xml:space="preserve">
-    <value>AC</value>
+    <value>Enchufado</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_DC" xml:space="preserve">
-    <value>DC</value>
+    <value>Con batería</value>
   </data>
   <data name="WindowsPowerPlansWindow_PowerMode_Title" xml:space="preserve">
     <value>Modo de energía</value>
@@ -3637,6 +3702,6 @@ El registro de sucesos se activará automáticamente, si decide continuar.</valu
     <value>Bloqueo de la tecla Windows</value>
   </data>
   <data name="Yes" xml:space="preserve">
-    <value>Si</value>
+    <value>Sí</value>
   </data>
 </root>

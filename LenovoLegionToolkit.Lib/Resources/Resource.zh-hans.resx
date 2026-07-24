@@ -211,6 +211,9 @@
   <data name="GB" xml:space="preserve">
     <value>GB</value>
   </data>
+  <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
+    <value>风扇曲线表验证失败。</value>
+  </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
     <value>关闭</value>
   </data>
@@ -341,7 +344,7 @@
     <value>磁盘 2 温度</value>
   </data>
   <data name="OsdItem_E_Core_Frequency" xml:space="preserve">
-    <value>性能核频率</value>
+    <value>能效核频率</value>
   </data>
   <data name="OsdItem_Fan" xml:space="preserve">
     <value>风扇转速</value>
@@ -368,13 +371,16 @@
     <value>功耗</value>
   </data>
   <data name="OsdItem_P_Core_Frequency" xml:space="preserve">
-    <value>能效核频率</value>
+    <value>性能核频率</value>
   </data>
   <data name="OsdItem_Temperature" xml:space="preserve">
     <value>温度</value>
   </data>
   <data name="OsdItem_Utilization" xml:space="preserve">
     <value>利用率</value>
+  </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>电压</value>
   </data>
   <data name="OsdItem_VramTemperature" xml:space="preserve">
     <value>显存温度</value>
@@ -425,6 +431,9 @@
   </data>
   <data name="PowerModeState_Quiet" xml:space="preserve">
     <value>安静模式</value>
+  </data>
+  <data name="RefreshRate_Dynamic" xml:space="preserve">
+    <value>动态（{0} Hz）</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>高亮度</value>

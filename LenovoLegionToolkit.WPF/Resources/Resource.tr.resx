@@ -175,6 +175,12 @@
   <data name="AddNew" xml:space="preserve">
     <value>Yeni ekle</value>
   </data>
+  <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
+    <value>Uyumlu oyunlarda CPU ve GPU arasında dinamik güç değişikleri yaparak performansı maksimuma çıkarır.</value>
+  </data>
+  <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
+    <value>AI Motoru</value>
+  </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>Uçak modu</value>
   </data>
@@ -191,16 +197,16 @@
     <value>Her zaman açık USB</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options over all power mode.</value>
+    <value>Curve Optimizer ve gelişmiş seçenekleri tüm güç modlarına uygula.</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Title" xml:space="preserve">
-    <value>Allow in all power modes</value>
+    <value>Tüm güç modlarında izin ver</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
     <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
-    <value>Allow on battery</value>
+    <value>Batarya'da izin ver</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
     <value>Değişiklikleri Uygula</value>
@@ -215,7 +221,31 @@
     <value>Çekirdek</value>
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
-    <value>Current Limits</value>
+    <value>Güncel Limitler</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
+    <value>Yüksek</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
+    <value>Yüksek Isı</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
+    <value>Düşük</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
+    <value>Düşük Isı</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
+    <value>Maksimum</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
+    <value>Orta</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
+    <value>Orta Sıcaklık</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
+    <value>En düşük</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Anormal yeniden başlatma nedeniyle profil uygulaması iptal edildi.</value>
@@ -233,7 +263,7 @@
     <value>AMD Overclock'u Etkinleştir</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz).</value>
+    <value>Maksimum CPU boost frekansını geçersiz kılma (MHz)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
     <value>FMax Frekansı</value>
@@ -251,16 +281,16 @@
     <value>Çekirdek Başına Optimizasyon</value>
   </data>
   <data name="AmdOverclocking_PowerLimits" xml:space="preserve">
-    <value>Power Limits</value>
+    <value>Güç Limitleri</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Long" xml:space="preserve">
-    <value>Power Limit (Long)</value>
+    <value>Güç Limiti (Uzun)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Peak" xml:space="preserve">
-    <value>Power Limit (Peak)</value>
+    <value>Güç Limiti (Tepe)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Short" xml:space="preserve">
-    <value>Power Limit (Short)</value>
+    <value>Güç Limiti (Kısa)</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
     <value>Durum</value>
@@ -272,13 +302,16 @@
     <value>Başarılı</value>
   </data>
   <data name="AmdOverclocking_Tab_Advanced" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Gelişmiş</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
     <value>Curve Optimizer</value>
   </data>
+  <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
+    <value>Curve Shaper Optimizer</value>
+  </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Ayarlar</value>
   </data>
   <data name="AmdOverclocking_TDC_SoC" xml:space="preserve">
     <value>TDC SoC</value>
@@ -286,8 +319,11 @@
   <data name="AmdOverclocking_TDC_VDD" xml:space="preserve">
     <value>TDC VDD</value>
   </data>
+  <data name="AmdOverclocking_Title" xml:space="preserve">
+    <value>AMD Precision Boost Overclocking</value>
+  </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures.</value>
+    <value>FPS ve sıcaklıklarda stabilite sağlamak için CCD 1'i devre dışı bırak</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
     <value>X3D Oyun Modu</value>
@@ -676,11 +712,11 @@ Dizüstü bilgisayar uyurken veya kapalıyken şarj edildiyse bu süre doğru ol
     <value>Varsayılan Başlangıç Logosu ayarla</value>
   </data>
   <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Custom boot logo must within {0} pixels large.
-Supported formats are: {1}.</value>
+    <value>Özel açılış logosu en fazla {0} piksel boyutunda olmalıdır.
+Desteklenen biçimler: {1}.</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
-    <value>Disable Windows Startup Animation</value>
+    <value>Windows Başlangıç Animasyonunu Devre Dışı Bırak</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>Özel logo ayarlanamadı: {0}</value>
@@ -775,6 +811,9 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
     <value>Tümünü kopyala</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Çekirdek</value>
   </data>
   <data name="Cores" xml:space="preserve">
     <value>Çekirdekler</value>
@@ -1317,6 +1356,9 @@ Cidden, bu seçeneğe dikkat edin!</value>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>Legion Zone veya hizmetleri çalışırken Özel Mod ayarları doğru uygulanmayacaktır.</value>
   </data>
+  <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
+    <value>Cihazınız, Özel Mod'un tüm özelliklerini desteklemiyor olabilir.</value>
+  </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Precision Boost Overdrive Boost Frekansı.</value>
   </data>
@@ -1434,6 +1476,12 @@ GPU hiç yanıt vermiyorsa, lütfen dizüstü bilgisayarınızı yeniden başlat
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
     <value>IdeaPad Güç Modu</value>
+  </data>
+  <data name="ITSModeConfigWindow_Description" xml:space="preserve">
+    <value>Fn+Q geçiş sırasını değiştirin ve geçiş modunu yapılandırın.</value>
+  </data>
+  <data name="ITSModeConfigWindow_Title" xml:space="preserve">
+    <value>ITS Modunu Konfigre Et</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
     <value>IdeaPad Güç Modunu Değiştir</value>
@@ -1982,6 +2030,9 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>Yüzen Gadget</value>
+  </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>Voltaj</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>OSD'nin kilit konumunu ayarlayın.</value>
@@ -2755,6 +2806,21 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Kullanılan/Toplam Bellek (GB)</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>Averaj</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>Çekirdek</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>Maksimum</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>Gerilimin Denetim Paneli ve Ekran Üstü Göstergede (OSD) nasıl görüntüleneceğini seçin.</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>Voltaj Gösterme Modu</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Seri numarası</value>

@@ -175,6 +175,12 @@
   <data name="AddNew" xml:space="preserve">
     <value>Toevoegen</value>
   </data>
+  <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
+    <value>Dynamically shifts power between the CPU and GPU to maximize performance in compatible games.</value>
+  </data>
+  <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
+    <value>AI Engine</value>
+  </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>Vliegtuigmodus</value>
   </data>
@@ -217,6 +223,30 @@
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
     <value>Current Limits</value>
   </data>
+  <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
+    <value>High Temperature</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
+    <value>Low Temperature</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
+    <value>Medium Temperature</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
+    <value>Minium</value>
+  </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Profiel toepassen is geannuleerd vanwege de abnormale herstart</value>
   </data>
@@ -233,7 +263,7 @@
     <value>Enable AMD Overclocking</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz).</value>
+    <value>Maximale CPU boost frequentie overschrijving (MHz)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
     <value>FMax frequentie</value>
@@ -277,6 +307,9 @@
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
     <value>Curve Optimizer</value>
   </data>
+  <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
+    <value>Curve Shaper Optimizer</value>
+  </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -286,8 +319,11 @@
   <data name="AmdOverclocking_TDC_VDD" xml:space="preserve">
     <value>TDC VDD</value>
   </data>
+  <data name="AmdOverclocking_Title" xml:space="preserve">
+    <value>AMD Precision Boost Overclocking</value>
+  </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures.</value>
+    <value>Schakel CCD 1 uit om stabiliteit te krijgen op zowel FPS als temperaturen</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
     <value>X3D spelmodus</value>
@@ -775,6 +811,9 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
     <value>Alles kopiëren</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Core</value>
   </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
@@ -1317,6 +1356,9 @@ Serieus, wees voorzichtig met deze optie!</value>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>De instellingen van de aangepaste modus wordt niet correct toegepast als Legion Zone of diens services actief zijn.</value>
   </data>
+  <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
+    <value>Your device may not support the full feature set of Custom Mode.</value>
+  </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Precisie Boost Overdrive Boost Frequentie.</value>
   </data>
@@ -1433,6 +1475,12 @@ Serieus, wees voorzichtig met deze optie!</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
     <value>IdeaPad Power Modus</value>
+  </data>
+  <data name="ITSModeConfigWindow_Description" xml:space="preserve">
+    <value>Modify the Fn+Q switching order and configure the switching mode.</value>
+  </data>
+  <data name="ITSModeConfigWindow_Title" xml:space="preserve">
+    <value>Configure ITS Mode</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
     <value>Verander IdeaPad Power Modus</value>
@@ -1981,6 +2029,9 @@ Dit heeft geen invloed op andere schermvensters, maar je kunt niet op de notific
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>Zwevende Gadget</value>
+  </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>Voltage</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Stel de vergrendelingsstatus van de OSD in.</value>
@@ -2755,6 +2806,21 @@ U kunt van modus wisselen met Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Gebruikt/Totaal Geheugen (GB)</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>Choose how voltage is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>Voltage Display Mode</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Serienummer</value>

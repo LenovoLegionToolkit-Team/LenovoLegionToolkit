@@ -175,6 +175,12 @@
   <data name="AddNew" xml:space="preserve">
     <value>Ajouter une Action</value>
   </data>
+  <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
+    <value>Alloue dynamiquement la puissance entre le CPU et le GPU pour maximiser les performances dans les jeux compatibles.</value>
+  </data>
+  <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
+    <value>Moteur IA</value>
+  </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>Mode avion</value>
   </data>
@@ -191,16 +197,16 @@
     <value>Always on USB</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options over all power mode.</value>
+    <value>Appliquer Curve Oprimizer et les options avancées sur tous les modes d'alimentation.</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Title" xml:space="preserve">
-    <value>Allow in all power modes</value>
+    <value>Autoriser dans tous les modes d'alimentation</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
     <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
-    <value>Allow on battery</value>
+    <value>Autoriser sur batterie</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
     <value>Appliquer les modifications</value>
@@ -215,25 +221,49 @@
     <value>Noyau</value>
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
-    <value>Current Limits</value>
+    <value>Limites de Courant</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
+    <value>Élevée</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
+    <value>Température élevée</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
+    <value>Basse</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
+    <value>Température basse</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
+    <value>Moyenne</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
+    <value>Température moyenne</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
+    <value>Minimum</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>La demande de profil a été annulée en raison d'un redémarrage anormal.</value>
   </data>
   <data name="AmdOverclocking_EDC_SoC" xml:space="preserve">
-    <value>EDC SoC</value>
+    <value>SoC EDC</value>
   </data>
   <data name="AmdOverclocking_EDC_VDD" xml:space="preserve">
-    <value>EDC VDD</value>
+    <value>VDD EDC</value>
   </data>
   <data name="AmdOverclocking_Enable_Message" xml:space="preserve">
-    <value>Enable AMD overclocking features.</value>
+    <value>Activer les fonctionnalités d'overclocking AMD.</value>
   </data>
   <data name="AmdOverclocking_Enable_Title" xml:space="preserve">
-    <value>Enable AMD Overclocking</value>
+    <value>Activer l'overclocking AMD</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz).</value>
+    <value>Surcharge maximale de la fréquence d'amplification du CPU (MHz)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
     <value>Fréquence Fmax</value>
@@ -251,16 +281,16 @@
     <value>Optimisation par noyau</value>
   </data>
   <data name="AmdOverclocking_PowerLimits" xml:space="preserve">
-    <value>Power Limits</value>
+    <value>Limites de puissance</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Long" xml:space="preserve">
-    <value>Power Limit (Long)</value>
+    <value>Limite de puissance (longue)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Peak" xml:space="preserve">
-    <value>Power Limit (Peak)</value>
+    <value>Limite de puissance (pic)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Short" xml:space="preserve">
-    <value>Power Limit (Short)</value>
+    <value>Limite de puissance (courte)</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
     <value>Statut</value>
@@ -272,13 +302,16 @@
     <value>Succès</value>
   </data>
   <data name="AmdOverclocking_Tab_Advanced" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Avancé</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
     <value>Curve Optimizer</value>
   </data>
+  <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
+    <value>Optimiseur de la forme de courbe</value>
+  </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Paramètres</value>
   </data>
   <data name="AmdOverclocking_TDC_SoC" xml:space="preserve">
     <value>TDC SoC</value>
@@ -286,8 +319,11 @@
   <data name="AmdOverclocking_TDC_VDD" xml:space="preserve">
     <value>TDC VDD</value>
   </data>
+  <data name="AmdOverclocking_Title" xml:space="preserve">
+    <value>Overclocking AMD Precision Boost</value>
+  </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures.</value>
+    <value>Désactiver CCD 1 pour obtenir de la stabilité à la fois sur les FPS et sur les températures.</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
     <value>Mode jeu X3D</value>
@@ -504,7 +540,7 @@ Seules les actions qui correspondent à l'état actuel seront exécutées.</valu
     <value>À {0:D2}:{1:D2}:{2:D2}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
-    <value>GPU Working Mode</value>
+    <value>Mode de fonctionnement du GPU</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
     <value>Mode d'alimentation</value>
@@ -519,7 +555,7 @@ Seules les actions qui correspondent à l'état actuel seront exécutées.</valu
     <value>Configurer</value>
   </data>
   <data name="Automation_SupportedAvailableCount" xml:space="preserve">
-    <value>Supported: {0} / Available: {1}</value>
+    <value>Pris en charge : {0} / Disponible: {1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Précédent</value>
@@ -677,11 +713,10 @@ Cette valeur peut être imprécise si l'appareil a été chargé en veille ou é
     <value>Le logo de démarrage par défaut est enregistré</value>
   </data>
   <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Custom boot logo must within {0} pixels large.
-Supported formats are: {1}.</value>
+    <value>Le logo de démarrage personnalisé doit faire exactement {0} pixels de large. Les formats supportés sont : {1}.</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
-    <value>Disable Windows Startup Animation</value>
+    <value>Désactiver l'animation de démarrage de Windows</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>Le logo personnalisé n'a pas pu être appliqué : {0}</value>
@@ -776,6 +811,9 @@ Le changement de mode peut nécessiter un redémarrage.</value>
   </data>
   <data name="CopyAll" xml:space="preserve">
     <value>Tout copier</value>
+  </data>
+  <data name="Core" xml:space="preserve">
+    <value>Noyau</value>
   </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
@@ -874,7 +912,7 @@ Le changement de mode peut nécessiter un redémarrage.</value>
     <value>Désactiver</value>
   </data>
   <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
-    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+    <value>Gère les processus actifs en modifiant leurs préférences graphiques, cliquez avec le bouton droit de la souris pour les arrêter, ou configurez les paramètres avancés.</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>Forcer le processus d'arrêt</value>
@@ -883,19 +921,19 @@ Le changement de mode peut nécessiter un redémarrage.</value>
     <value>Préférences graphiques</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
-    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+    <value>Maintient une connexion active avec le GPU dédié pour éviter les saccades.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
-    <value>This increases power consumption and reduces battery life.</value>
+    <value>Cela augmente la consommation d'énergie et réduit la durée de vie de la batterie.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
-    <value>Keep dGPU awake</value>
+    <value>Garder le GPU dédié allumé</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Fermer les applications</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the apps list after terminating a process.</value>
+    <value>Temps d'attente avant d'actualiser la liste des applications après avoir terminé un processus.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Délai de rafraîchissement de la mise à jour forcée</value>
@@ -922,7 +960,7 @@ Le changement de mode peut nécessiter un redémarrage.</value>
     <value>Inconnu</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>How often to check the discrete GPU for active processes.</value>
+    <value>Fréquence de vérification du GPU dédié pour les processus actifs.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Intervalle de vote</value>
@@ -943,7 +981,7 @@ Le changement de mode peut nécessiter un redémarrage.</value>
     <value>Redémarrer le GPU</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Wait time before starting the discrete GPU monitoring service.</value>
+    <value>Temps d'attente avant de démarrer le service de surveillance GPU dédié.</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>Délai de démarrage</value>
@@ -1244,11 +1282,11 @@ Certaines machines peuvent accepter des valeurs plus faibles à celles indiquée
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+    <value>Le mode personnalisé permet d'accéder à des paramètres système critiques, tels que les limites de puissance et les courbes de fonctionnement des ventilateurs. 
 
-Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+Une mauvaise configuration peut entraîner une instabilité grave du système, un ralentissement dû à la surchauffe ou des dommages matériels irréversibles. Les modifications effectuées ici peuvent entraîner l'annulation de la garantie du fabricant. 
 
-Do not proceed unless you possess the necessary technical expertise.</value>
+Ne poursuivez pas cette opération si vous ne disposez pas des compétences techniques nécessaires.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
     <value>Nom</value>
@@ -1317,6 +1355,9 @@ Soyez très prudent avec cette option !</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>Les paramètres du mode personnalisé ne seront pas appliqués correctement lorsque Legion Zone ou ses services sont en cours d'exécution.</value>
+  </data>
+  <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
+    <value>Il est possible que votre appareil ne prenne pas en charge l'ensemble des fonctionnalités du Mode Personnalisé.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Fréquence de Boost de Surcharge de Précision.</value>
@@ -1434,6 +1475,12 @@ Soyez très prudent avec cette option !</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
     <value>Mode de puissance IdeaPad</value>
+  </data>
+  <data name="ITSModeConfigWindow_Description" xml:space="preserve">
+    <value>Modifie l'ordre de commutation Fn+Q et configure le mode de commutation.</value>
+  </data>
+  <data name="ITSModeConfigWindow_Title" xml:space="preserve">
+    <value>Configurer le mode ITS</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
     <value>Changer le mode de puissance IdeaPad</value>
@@ -1983,6 +2030,9 @@ Cela n'affectera pas les autres fenêtres en plein écran, mais vous ne pourrez 
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>OSD</value>
   </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>Tension</value>
+  </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Définit l'état de la position de verrouillage de l'OSD.</value>
   </data>
@@ -2149,13 +2199,13 @@ Cela n'affectera pas les autres fenêtres en plein écran, mais vous ne pourrez 
     <value>Overclock GPU</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
-    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
+    <value>Ajuste la fréquence du noyau GPU pour qu'il fonctionne plus rapidement ou plus lentement que la vitesse d'origine.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>Offset de la Fréquence du Cœur</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
-    <value>Adjust VRAM speed to modify memory bandwidth.</value>
+    <value>Ajuste la vitesse de la VRAM pour modifier la bande passante mémoire.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>Offset de la fréquence de la mémoire</value>
@@ -2170,10 +2220,10 @@ Cela n'affectera pas les autres fenêtres en plein écran, mais vous ne pourrez 
     <value>Undervolting</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
-    <value>Voltage Lock</value>
+    <value>Verrouillage de tension</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
+    <value>Verrouille la tension et la fréquence du GPU pour une performance parfaitement cohérente.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Déverrouillage dans {0}...</value>
@@ -2405,7 +2455,7 @@ Vous pouvez changer de mode avec Fn+Q.</value>
     <value>RAM</value>
   </data>
   <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
+    <value>Prêt</value>
   </data>
   <data name="Refresh" xml:space="preserve">
     <value>Actualiser</value>
@@ -2507,7 +2557,7 @@ Vous pouvez changer de mode avec Fn+Q.</value>
     <value>Tr/min</value>
   </data>
   <data name="Run" xml:space="preserve">
-    <value>Run</value>
+    <value>Exécuter</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
     <value>Arguments</value>
@@ -2549,37 +2599,37 @@ Vous pouvez changer de mode avec Fn+Q.</value>
     <value>Sauvegarde en cours...</value>
   </data>
   <data name="ScriptConsole_Code_Title" xml:space="preserve">
-    <value>Code Block</value>
+    <value>Bloc de code</value>
   </data>
   <data name="ScriptConsole_Output_Title" xml:space="preserve">
-    <value>Output</value>
+    <value>Sortie</value>
   </data>
   <data name="ScriptConsole_Section_Elapsed" xml:space="preserve">
-    <value>Elapsed: {0} ms</value>
+    <value>Écoulé : {0} ms</value>
   </data>
   <data name="ScriptConsole_Section_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Erreur</value>
   </data>
   <data name="ScriptConsole_Section_ReturnValue" xml:space="preserve">
-    <value>Return Value</value>
+    <value>Valeur de Retour</value>
   </data>
   <data name="ScriptConsole_Status_Error" xml:space="preserve">
-    <value>Execution failed: {0} ms</value>
+    <value>Échec de l'exécution : {0} ms</value>
   </data>
   <data name="ScriptConsole_Status_Ok" xml:space="preserve">
-    <value>Execution succeeded: {0} ms</value>
+    <value>Exécution réussie: {0} ms</value>
   </data>
   <data name="ScriptConsole_Status_Running" xml:space="preserve">
-    <value>Running...</value>
+    <value>En cours...</value>
   </data>
   <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
-    <value>Unexpected error</value>
+    <value>Erreur inattendue</value>
   </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>Console de script</value>
   </data>
   <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
-    <value>Unexpected Error:
+    <value>Erreur inattendue :
 {0}</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
@@ -2755,6 +2805,21 @@ Vous pouvez changer de mode avec Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Mémoire utilisée/totale (GB)</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>Moyenne</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>Noyau</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>Choisir comment la tension est affichée sur le tableau de bord et l'OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>Mode d'affichage de la tension</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Numéro de série</value>
@@ -3110,10 +3175,10 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
     <value>Redémarrer pour appliquer les modifications.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
-    <value>Execute C# scripts in the application runtime.</value>
+    <value>Exécutez des scripts C# dans le runtime de l'application.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>Console de script</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
     <value>Tous les fichiers</value>
@@ -3230,7 +3295,7 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
     <value>Emplacement</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
-    <value>Settings applied successfully.</value>
+    <value>Paramètres appliqués avec succès.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Lorsque la fonction muet est activée, tous les dispositifs de sortie audio actifs sont mis en sourdine.</value>
