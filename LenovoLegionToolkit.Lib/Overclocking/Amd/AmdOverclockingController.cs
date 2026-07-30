@@ -79,12 +79,18 @@ public sealed class AmdOverclockingController : IDisposable
 
     public async Task InitializeAsync()
     {
-        if (_isInitialized) return;
+        if (_isInitialized)
+        {
+            return;
+        }
 
         await _lock.WaitAsync().ConfigureAwait(false);
         try
         {
-            if (_isInitialized) return;
+            if (_isInitialized)
+            {
+                return;
+            }
 
             _machineInformation = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
             _cpu = new Cpu();
@@ -93,6 +99,12 @@ public sealed class AmdOverclockingController : IDisposable
             FetchCommands();
 
             _isInitialized = true;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"AmdOverclockingController initialization failed: {ex.Message}");
+            _isInitialized = true;
+            _cpu = null;
         }
         finally
         {
@@ -106,7 +118,9 @@ public sealed class AmdOverclockingController : IDisposable
         var count = info.Status == "Running" ? info.AbnormalCount + 1 : info.AbnormalCount;
 
         if (count > info.AbnormalCount)
+        {
             Log.Instance.Trace($"Abnormal shutdown detected, count: {count}");
+        }
 
         if (count >= THRESHOLD)
         {
