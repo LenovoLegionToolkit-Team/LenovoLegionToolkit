@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Windows.Win32;
 using Windows.Win32.Foundation;
+using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
@@ -40,9 +41,14 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
             Log.Instance.Trace($"Activating... [powerModeState={powerModeState}]");
 
+            var activeGodModePreset = preset ?? (powerModeState == PowerModeState.GodMode ? await GetActiveGodModePresetAsync().ConfigureAwait(false) : null);
+
+            if (preset is null && powerModeState == PowerModeState.GodMode && activeGodModePreset is not null)
+                Log.Instance.Trace($"Resolving power mode from active GodMode preset. [preset={activeGodModePreset.Name}]");
+
             var defaultMode = settings.Store.PowerModes.GetValueOrDefault(powerModeState, WindowsPowerMode.Balanced);
-            var powerModeOnAc = preset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnAc) ?? settings.Store.Overrides.GetPowerModeOnAc(powerModeState) ?? defaultMode;
-            var powerModeOnDc = preset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnDc) ?? settings.Store.Overrides.GetPowerModeOnDc(powerModeState) ?? defaultMode;
+            var powerModeOnAc = activeGodModePreset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnAc) ?? settings.Store.Overrides.GetPowerModeOnAc(powerModeState) ?? defaultMode;
+            var powerModeOnDc = activeGodModePreset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnDc) ?? settings.Store.Overrides.GetPowerModeOnDc(powerModeState) ?? defaultMode;
 
             var acGuid = GuidForWindowsPowerMode(powerModeOnAc);
             var dcGuid = GuidForWindowsPowerMode(powerModeOnDc);
@@ -215,6 +221,20 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
         catch (Exception ex)
         {
             Log.Instance.Trace($"Failed to set {ACTIVE_OVERLAY_DC_POWER_SCHEME_KEY} registry value.", ex);
+        }
+    }
+
+    private static async Task<GodModeSettingsStore.Preset?> GetActiveGodModePresetAsync()
+    {
+        try
+        {
+            var (_, preset) = await IoCContainer.Resolve<GodModeController>().GetActivePresetAsync().ConfigureAwait(false);
+            return preset;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to get active GodMode preset.", ex);
+            return null;
         }
     }
 

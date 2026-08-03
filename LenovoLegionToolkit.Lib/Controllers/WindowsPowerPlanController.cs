@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
@@ -46,7 +47,12 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
             Log.Instance.Trace($"Activating... [powerModeState={powerModeState}, alwaysActivateDefaults={alwaysActivateDefaults}]");
 
-            var powerPlanId = preset?.Overrides.TryGetGuid(PowerOverrideKey.PowerPlan) ?? settings.Store.PowerPlans.GetValueOrDefault(powerModeState);
+            var activeGodModePreset = preset ?? (powerModeState == PowerModeState.GodMode ? await GetActiveGodModePresetAsync().ConfigureAwait(false) : null);
+
+            if (preset is null && powerModeState == PowerModeState.GodMode && activeGodModePreset is not null)
+                Log.Instance.Trace($"Resolving power plan from active GodMode preset. [preset={activeGodModePreset.Name}]");
+
+            var powerPlanId = activeGodModePreset?.Overrides.TryGetGuid(PowerOverrideKey.PowerPlan) ?? settings.Store.PowerPlans.GetValueOrDefault(powerModeState);
 
             var isDefault = false;
 
@@ -83,7 +89,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
             {
                 Log.Instance.Trace($"Power plan {powerPlanToActivate.Guid} is already active. [name={powerPlanToActivate.Name}]");
 
-                await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, powerModeState, isDefault, preset, skipThrottle).ConfigureAwait(false);
+                await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, powerModeState, isDefault, activeGodModePreset, skipThrottle).ConfigureAwait(false);
                 return;
             }
 
@@ -98,7 +104,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
                 return;
             }
 
-            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, powerModeState, isDefault, preset).ConfigureAwait(false);
+            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, powerModeState, isDefault, activeGodModePreset).ConfigureAwait(false);
         }
         finally
         {
@@ -373,6 +379,20 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
         Log.Instance.Trace($"Criteria for activation not met [isDefault={isDefault}, alwaysActivateDefaults={alwaysActivateDefaults}, status={status}]");
         return false;
+    }
+
+    private static async Task<GodModeSettingsStore.Preset?> GetActiveGodModePresetAsync()
+    {
+        try
+        {
+            var (_, preset) = await IoCContainer.Resolve<GodModeController>().GetActivePresetAsync().ConfigureAwait(false);
+            return preset;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to get active GodMode preset.", ex);
+            return null;
+        }
     }
 
     private static List<Guid> GetPowerPlanGuids()
