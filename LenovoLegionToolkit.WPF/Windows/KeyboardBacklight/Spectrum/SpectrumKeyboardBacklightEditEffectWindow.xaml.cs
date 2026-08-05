@@ -20,13 +20,16 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
     
     private readonly ushort[] _keyCodes;
     private readonly ushort[] _allKeyboardKeyCodes;
+    private readonly IReadOnlyList<SpectrumKeyboardBacklightEffectType> _hiddenEffectTypes;
 
     public event EventHandler<SpectrumKeyboardBacklightEffect>? Apply;
 
-    public SpectrumKeyboardBacklightEditEffectWindow(ushort[] keyCodes, ushort[] allKeyboardKeyCodes)
+    public SpectrumKeyboardBacklightEditEffectWindow(ushort[] keyCodes, ushort[] allKeyboardKeyCodes,
+        IReadOnlyList<SpectrumKeyboardBacklightEffectType> hiddenEffectTypes)
     {
         _keyCodes = keyCodes;
         _allKeyboardKeyCodes = allKeyboardKeyCodes;
+        _hiddenEffectTypes = hiddenEffectTypes;
 
         InitializeComponent();
 
@@ -38,10 +41,12 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
         _singleColorPicker.ColorChangedContinuous += (s, e) => UpdatePreview();
     }
 
-    public SpectrumKeyboardBacklightEditEffectWindow(SpectrumKeyboardBacklightEffect effect, ushort[] keyCodes, ushort[] allKeyboardKeyCodes)
+    public SpectrumKeyboardBacklightEditEffectWindow(SpectrumKeyboardBacklightEffect effect, ushort[] keyCodes, ushort[] allKeyboardKeyCodes,
+        IReadOnlyList<SpectrumKeyboardBacklightEffectType> hiddenEffectTypes)
     {
         _keyCodes = effect.Type.IsAllLightsEffect() ? keyCodes : effect.Keys;
         _allKeyboardKeyCodes = allKeyboardKeyCodes;
+        _hiddenEffectTypes = hiddenEffectTypes;
 
         InitializeComponent();
 
@@ -155,7 +160,8 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
     private void SetInitialValues()
     {
         _effectTypeComboBox.SetItems(
-            [
+            new[]
+            {
                 SpectrumKeyboardBacklightEffectType.Always,
                 SpectrumKeyboardBacklightEffectType.RainbowScrew,
                 SpectrumKeyboardBacklightEffectType.RainbowWave,
@@ -169,7 +175,7 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
                 SpectrumKeyboardBacklightEffectType.AudioBounce,
                 SpectrumKeyboardBacklightEffectType.AudioRipple,
                 SpectrumKeyboardBacklightEffectType.AuroraSync
-            ],
+            }.Where(t => !_hiddenEffectTypes.Contains(t)),
             SpectrumKeyboardBacklightEffectType.Always,
             e => e.GetDisplayName());
 

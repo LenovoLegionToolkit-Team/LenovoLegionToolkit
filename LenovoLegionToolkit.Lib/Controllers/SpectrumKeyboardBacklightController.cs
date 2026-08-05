@@ -96,6 +96,22 @@ public class SpectrumKeyboardBacklightController
         return await _deviceFactory.GetHandleAsync().ConfigureAwait(false) is not null;
     }
 
+    public async Task<IReadOnlyList<SpectrumKeyboardBacklightEffectType>> GetHiddenEffectTypesAsync()
+    {
+        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        return GetHiddenEffectTypes(mi);
+    }
+
+    private static IReadOnlyList<SpectrumKeyboardBacklightEffectType> GetHiddenEffectTypes(MachineInformation mi)
+    {
+        if (mi.Generation >= 10)
+        {
+            return [SpectrumKeyboardBacklightEffectType.AuroraSync];
+        }
+
+        return [];
+    }
+
     public async Task<(SpectrumLayout, KeyboardLayout, HashSet<ushort>)> GetKeyboardLayoutAsync()
     {
         Log.Instance.Trace($"Checking keyboard layout...");
@@ -430,7 +446,7 @@ public class SpectrumKeyboardBacklightController
             await SetFeatureAsync(handle, new LENOVO_SPECTRUM_AURORA_START_STOP_REQUEST(true, (byte)profile)).ConfigureAwait(false);
 
             var useBoost = settings.Store.AuroraVantageColorBoost;
-            
+
             while (!token.IsCancellationRequested)
             {
                 var delay = Task.Delay(_auroraRefreshInterval, token);
@@ -463,10 +479,10 @@ public class SpectrumKeyboardBacklightController
                             continue;
 
                         var color = colorBuffer[x, y];
-                        
+
                         if (useBoost)
                             color = ApplyVantageColorBoost(color, settings);
-                        
+
                         avgR += color.R;
                         avgG += color.G;
                         avgB += color.B;
@@ -637,8 +653,8 @@ public class SpectrumKeyboardBacklightController
             LENOVO_SPECTRUM_EFFECT_TYPE.TypeLighting => SpectrumKeyboardBacklightEffectType.Type,
             _ => throw new ArgumentException("Unsupported Lenovo Spectrum Effect Preset.")
         };
-        
-        var useVantageColorBoost = effectType == SpectrumKeyboardBacklightEffectType.AuroraSync 
+
+        var useVantageColorBoost = effectType == SpectrumKeyboardBacklightEffectType.AuroraSync
                                    && effect.EffectHeader.Speed == LENOVO_SPECTRUM_SPEED.Speed3;
 
         var speed = effect.EffectHeader.Speed switch
@@ -727,7 +743,7 @@ public class SpectrumKeyboardBacklightController
             SpectrumKeyboardBacklightSpeed.Speed3 => LENOVO_SPECTRUM_SPEED.Speed3,
             _ => LENOVO_SPECTRUM_SPEED.None
         };
-        
+
         if (effect is { Type: SpectrumKeyboardBacklightEffectType.AuroraSync, UseVantageColorBoost: true })
             speed = LENOVO_SPECTRUM_SPEED.Speed3;
 
@@ -773,7 +789,7 @@ public class SpectrumKeyboardBacklightController
         var result = new LENOVO_SPECTRUM_EFFECT(header, index + 1, colors, keys);
         return result;
     }
-    
+
     private static RGBColor ApplyVantageColorBoost(RGBColor color, SpectrumKeyboardSettings settings)
     {
         var vWhite = settings.Store.AuroraVantageColorBoostWhite;
@@ -792,7 +808,7 @@ public class SpectrumKeyboardBacklightController
         {
             return new RGBColor(0, 0, 0);
         }
-        
+
         var originalMaxC = maxC;
 
         if (maxC < boostTarget)
@@ -811,8 +827,8 @@ public class SpectrumKeyboardBacklightController
         if (delta * 8 < maxC)
         {
             var grayValue = Math.Max(originalMaxC, boostFloor);
-            return grayValue >= vWhite 
-                ? new RGBColor(255, 255, 255) 
+            return grayValue >= vWhite
+                ? new RGBColor(255, 255, 255)
                 : new RGBColor((byte)grayValue, (byte)grayValue, (byte)grayValue);
         }
 
@@ -833,7 +849,7 @@ public class SpectrumKeyboardBacklightController
 
         var hIdx = (int)Math.Clamp(Math.Round(h), 0, 360);
         var saturatedColor = AuroraColorUtils.HueToRGBLut[hIdx];
-        
+
         double outputBrightness;
         if (originalMaxC >= boostTarget)
         {
@@ -845,7 +861,7 @@ public class SpectrumKeyboardBacklightController
             var t = (double)(originalMaxC - boostFloor) / (boostTarget - boostFloor);
             outputBrightness = minOutput + t * (255 - minOutput);
         }
-        
+
         var scaleFactor = outputBrightness / 255.0;
         return new RGBColor(
             (byte)Math.Round(saturatedColor.R * scaleFactor),

@@ -285,7 +285,7 @@ public partial class SpectrumKeyboardBacklightControl
         }
     }
 
-    private void AddEffectButton_Click(object sender, RoutedEventArgs e)
+    private async void AddEffectButton_Click(object sender, RoutedEventArgs e)
     {
         var visibleButtons = _device.GetVisibleButtons().ToList();
         var ambientButton = _device.GetAmbientButton();
@@ -307,7 +307,7 @@ public partial class SpectrumKeyboardBacklightControl
 
         var keyboardKeyCodes = _device.GetVisibleKeyboardButtons().Select(b => b.KeyCode).ToArray();
 
-        CreateEffect(selectedKeyCodes, keyboardKeyCodes);
+        await CreateEffectAsync(selectedKeyCodes, keyboardKeyCodes);
     }
 
     private async void ResetToDefaultButton_Click(object sender, RoutedEventArgs e) => await ResetToDefaultAsync();
@@ -609,9 +609,11 @@ public partial class SpectrumKeyboardBacklightControl
     }
 
 
-    private void CreateEffect(ushort[] keyCodes, ushort[] allKeyboardKeyCodes)
+    private async Task CreateEffectAsync(ushort[] keyCodes, ushort[] allKeyboardKeyCodes)
     {
-        var window = new SpectrumKeyboardBacklightEditEffectWindow(keyCodes, allKeyboardKeyCodes)
+        var hiddenEffectTypes = await _controller.GetHiddenEffectTypesAsync();
+
+        var window = new SpectrumKeyboardBacklightEditEffectWindow(keyCodes, allKeyboardKeyCodes, hiddenEffectTypes)
             { Owner = Window.GetWindow(this) };
         window.Apply += async (_, e) => await AddEffect(e);
         window.ShowDialog();
@@ -623,7 +625,7 @@ public partial class SpectrumKeyboardBacklightControl
     {
         var control = new SpectrumKeyboardEffectControl(effect);
         control.Click += (_, _) => SelectButtons(effect);
-        control.Edit += (_, _) => EditEffect(control);
+        control.Edit += async (_, _) => await EditEffectAsync(control);
         control.Delete += async (_, _) => await DeleteEffectAsync(control);
         return control;
     }
@@ -638,7 +640,7 @@ public partial class SpectrumKeyboardBacklightControl
         await ApplyProfileAsync();
     }
 
-    private void EditEffect(SpectrumKeyboardEffectControl effectControl)
+    private async Task EditEffectAsync(SpectrumKeyboardEffectControl effectControl)
     {
         var keyCodes = _device.GetVisibleButtons()
             .Select(b => b.KeyCode)
@@ -647,7 +649,9 @@ public partial class SpectrumKeyboardBacklightControl
             .Select(b => b.KeyCode)
             .ToArray();
 
-        var window = new SpectrumKeyboardBacklightEditEffectWindow(effectControl.Effect, keyCodes, allKeyboardKeyCodes)
+        var hiddenEffectTypes = await _controller.GetHiddenEffectTypesAsync();
+
+        var window = new SpectrumKeyboardBacklightEditEffectWindow(effectControl.Effect, keyCodes, allKeyboardKeyCodes, hiddenEffectTypes)
             { Owner = Window.GetWindow(this) };
         window.Apply += async (_, e) => await ReplaceEffectAsync(effectControl, e);
         window.ShowDialog();
@@ -661,7 +665,7 @@ public partial class SpectrumKeyboardBacklightControl
 
         var control = new SpectrumKeyboardEffectControl(effect);
         control.Click += (_, _) => SelectButtons(effect);
-        control.Edit += (_, _) => EditEffect(control);
+        control.Edit += async (_, _) => await EditEffectAsync(control);
         control.Delete += async (_, _) => await DeleteEffectAsync(control);
 
         var index = _effects.Children.IndexOf(effectControl);
