@@ -102,11 +102,54 @@ public class SpectrumKeyboardBacklightController
         return GetHiddenEffectTypes(mi);
     }
 
+    private static bool Is24ZoneKeyboard(MachineInformation mi)
+    {
+        var machineTypes = new[]
+        {
+            "83F2",
+            "83LT",
+            "83F3",
+            "83F0",
+            "83LY",
+            "83M0",
+            "83F1",
+            "83NX",
+            "83N2",
+            "83LU",
+            "83NN",
+            "83JE",
+            "83JF",
+            "83JG",
+            "83JH",
+            "83Q1"
+        };
+
+        return machineTypes.Contains(mi.MachineType);
+    }
+
     private static IReadOnlyList<SpectrumKeyboardBacklightEffectType> GetHiddenEffectTypes(MachineInformation mi)
     {
+        // Aurora Sync has been moved into Dynamic Lighting start from Gen 10.
         if (mi.Generation >= 10)
         {
             return [SpectrumKeyboardBacklightEffectType.AuroraSync];
+        }
+
+        // The 24 Zone keyboard does not support the following effects.
+        // Therefore, they are hidden from the UI.
+        if (Is24ZoneKeyboard(mi))
+        {
+            return
+            [
+                SpectrumKeyboardBacklightEffectType.AuroraSync,
+                SpectrumKeyboardBacklightEffectType.AudioRipple,
+                SpectrumKeyboardBacklightEffectType.ColorChange,
+                SpectrumKeyboardBacklightEffectType.Rain,
+                SpectrumKeyboardBacklightEffectType.RainbowScrew,
+                SpectrumKeyboardBacklightEffectType.RainbowWave,
+                SpectrumKeyboardBacklightEffectType.Ripple,
+                SpectrumKeyboardBacklightEffectType.Type
+            ];
         }
 
         return [];
