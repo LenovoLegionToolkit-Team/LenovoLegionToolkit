@@ -105,14 +105,4 @@
 		<EmbeddedResource Update="Resources\Resource.*.resx" />
 	</ItemGroup>
 
-	<ItemGroup>
-		<None Include="External\inpoutx64.dll">
-			<Link>inpoutx64.dll</Link>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-		<None Include="External\InpOut.LICENSE.txt">
-			<Link>InpOut.LICENSE.txt</Link>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
 </Project>
