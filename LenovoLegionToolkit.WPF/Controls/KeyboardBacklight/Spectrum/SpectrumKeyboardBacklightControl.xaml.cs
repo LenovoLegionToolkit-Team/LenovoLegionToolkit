@@ -138,8 +138,17 @@ public partial class SpectrumKeyboardBacklightControl
                     or SpecialKey.SpectrumPreset4
                     or SpecialKey.SpectrumPreset5
                     or SpecialKey.SpectrumPreset6:
-                    await RefreshProfileAsync();
+                {
+                    var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+                    var is24Zone = mi.Properties.HasSpectrumProfileSwitchingBug;
+                    var presetProfile = e.SpecialKey - SpecialKey.SpectrumPreset1 + 1;
+                    Log.Instance.Trace($"Spectrum preset key: profile {presetProfile}, is24Zone={is24Zone}.");
+                    if (is24Zone && await _controller.GetProfileAsync() != presetProfile)
+                        await _controller.SetProfileAsync(presetProfile);
+                    else
+                        await RefreshProfileAsync();
                     break;
+                }
             }
         });
 

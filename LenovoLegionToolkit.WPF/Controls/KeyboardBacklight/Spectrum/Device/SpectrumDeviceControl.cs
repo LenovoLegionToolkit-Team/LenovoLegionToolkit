@@ -57,8 +57,11 @@ public class SpectrumDeviceControl : UserControl
 
         UpdateLayout();
 
+        var is24Zone = keyboardLayout == KeyboardLayout.Keyboard24Zone;
         foreach (var button in GetButtons())
-            button.Visibility = keys.Contains(button.KeyCode) ? Visibility.Visible : Visibility.Hidden;
+        {
+            button.Visibility = is24Zone || keys.Contains(button.KeyCode) ? Visibility.Visible : Visibility.Hidden;
+        }
     }
 
     public IEnumerable<SpectrumZoneControl> GetVisibleButtons() =>

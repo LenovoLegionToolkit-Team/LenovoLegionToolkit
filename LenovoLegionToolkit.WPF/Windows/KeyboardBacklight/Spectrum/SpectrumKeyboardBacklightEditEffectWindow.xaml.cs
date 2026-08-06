@@ -17,7 +17,7 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
 {
     private readonly SpectrumKeyboardSettings _settings = IoCContainer.Resolve<SpectrumKeyboardSettings>();
     private readonly LampArrayController _previewController = IoCContainer.Resolve<LampArrayController>();
-    
+
     private readonly ushort[] _keyCodes;
     private readonly ushort[] _allKeyboardKeyCodes;
     private readonly IReadOnlyList<SpectrumKeyboardBacklightEffectType> _hiddenEffectTypes;
@@ -68,12 +68,12 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
     {
         if (!_previewController.IsAvailable)
             return;
-            
+
         if (_singleColor.Visibility != Visibility.Visible)
             return;
 
         var color = _singleColorPicker.SelectedColor.ToRGBColor();
-        
+
         IEnumerable<ushort> keys = _keyCodes;
         if (_effectTypeComboBox.TryGetSelectedItem(out SpectrumKeyboardBacklightEffectType effectType))
         {
@@ -89,7 +89,7 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
     }
 
     private void VantageColorBoost_Changed(object sender, RoutedEventArgs e) => RefreshVisibility();
-    
+
     private void RestoreDefaults_Click(object sender, RoutedEventArgs e)
     {
         _floorSlider.Value = 20;
@@ -97,7 +97,7 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
         _whiteSlider.Value = 224;
         _brightnessFactorSlider.Value = 50;
     }
-    
+
     private void Apply_Click(object sender, RoutedEventArgs e)
     {
         var effectType = SpectrumKeyboardBacklightEffectType.Always;
@@ -128,14 +128,14 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
 
         if (_multiColors.Visibility == Visibility.Visible)
             colors = _multiColorPicker.SelectedColors.Select(c => c.ToRGBColor()).ToArray();
-        
+
         _settings.Store.AuroraVantageColorBoost = _vantageColorBoostToggle.IsChecked == true;
         _settings.Store.AuroraVantageColorBoostFloor = (int)_floorSlider.Value;
         _settings.Store.AuroraVantageColorBoostTarget = (int)_targetSlider.Value;
         _settings.Store.AuroraVantageColorBoostWhite = (int)_whiteSlider.Value;
         _settings.Store.AuroraVantageColorBoostBrightnessFactor = (int)_brightnessFactorSlider.Value;
         _settings.SynchronizeStore();
-        
+
         var keys = _keyCodes;
 
         if (effectType.IsAllLightsEffect())
@@ -221,7 +221,7 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
 
         if (_speedComboBox.GetItems<SpectrumKeyboardBacklightSpeed>().Contains(effect.Speed))
             _speedComboBox.SelectItem(effect.Speed);
-        
+
         _vantageColorBoostToggle.IsChecked = _settings.Store.AuroraVantageColorBoost;
         _floorSlider.Value = _settings.Store.AuroraVantageColorBoostFloor;
         _targetSlider.Value = _settings.Store.AuroraVantageColorBoostTarget;
@@ -290,11 +290,11 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
             SpectrumKeyboardBacklightEffectType.Type => Visibility.Visible,
             _ => Visibility.Collapsed
         };
-        
+
         var isAurora = effect == SpectrumKeyboardBacklightEffectType.AuroraSync;
         _vantageColorBoostCard.Visibility = isAurora ? Visibility.Visible : Visibility.Collapsed;
-        _vantageSettingsCard.Visibility = isAurora && _vantageColorBoostToggle.IsChecked == true 
-            ? Visibility.Visible 
+        _vantageSettingsCard.Visibility = isAurora && _vantageColorBoostToggle.IsChecked == true
+            ? Visibility.Visible
             : Visibility.Collapsed;
     }
 }
