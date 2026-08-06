@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers.Sensors.Providers;
+using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
@@ -49,6 +50,7 @@ public class SensorsGroupController : IDisposable
 
     private volatile bool _isResetting;
     private volatile bool _needRefreshGpuHardware;
+    private bool _dgpuHardwareSkipped;
 
     private bool _selectedGpuIsIgpu;
     public bool SelectedGpuIsIgpu
@@ -148,6 +150,8 @@ public class SensorsGroupController : IDisposable
     }
 
     private static readonly IDisposable NoOpDisposable = new LambdaDisposable(() => { });
+
+    private static bool IsDgpuEjectInProgress() => IoCContainer.Resolve<HybridModeFeature>().ShouldKeepDGPUAsleep();
 
     public SensorsGroupController()
     {
@@ -259,12 +263,19 @@ public class SensorsGroupController : IDisposable
                 };
 
                 _computer.Open();
-                _computer.Accept(new UpdateVisitor());
+                if (!IsDgpuEjectInProgress())
+                    _computer.Accept(new UpdateVisitor());
 
                 foreach (var h in _computer.Hardware)
                 {
                     try
                     {
+                        if (h.HardwareType == HardwareType.GpuNvidia && IsDgpuEjectInProgress())
+                        {
+                            _dgpuHardwareSkipped = true;
+                            _hardware.Add(h);
+                            continue;
+                        }
                         h.Update();
                         _hardware.Add(h);
                     }
@@ -417,7 +428,8 @@ public class SensorsGroupController : IDisposable
                 return;
 
             var gpuState = await _gpuController.GetLastKnownStateAsync().ConfigureAwait(false);
-            bool gpuInactive = IsGpuInActive(gpuState);
+            var dgpuEjectInProgress = IsDgpuEjectInProgress();
+            bool gpuInactive = IsGpuInActive(gpuState) || dgpuEjectInProgress;
 
             await Task.Run(() =>
             {
@@ -445,6 +457,12 @@ public class SensorsGroupController : IDisposable
                         foreach (var h in brokenHardware)
                         {
                             _hardware.Remove(h);
+                        }
+
+                        if (!dgpuEjectInProgress && _dgpuHardwareSkipped)
+                        {
+                            DiscoverHardware();
+                            _dgpuHardwareSkipped = false;
                         }
 
                         // Read from providers — each populates provider.Values
@@ -511,12 +529,24 @@ public class SensorsGroupController : IDisposable
                 {
                     return;
                 }
-                _computer.Accept(new UpdateVisitor());
+
+                if (!IsDgpuEjectInProgress())
+                {
+                    _computer.Accept(new UpdateVisitor());
+                }
 
                 foreach (var h in _computer.Hardware)
                 {
                     try
                     {
+                        if (h.HardwareType == HardwareType.GpuNvidia && IsDgpuEjectInProgress())
+                        {
+                            _dgpuHardwareSkipped = true;
+                            _hardware.Add(h);
+
+                            continue;
+                        }
+
                         h.Update();
                         _hardware.Add(h);
                     }

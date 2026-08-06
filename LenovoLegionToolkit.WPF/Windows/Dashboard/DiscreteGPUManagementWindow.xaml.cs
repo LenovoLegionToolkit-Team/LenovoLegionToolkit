@@ -216,9 +216,9 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
 
         var preference = tag switch
         {
-            "Integrated" => GPUController.GpuPreference.Integrated,
-            "Discrete" => GPUController.GpuPreference.Discrete,
-            _ => GPUController.GpuPreference.Default
+            "Integrated" => GpuPreference.Integrated,
+            "Discrete" => GpuPreference.Discrete,
+            _ => GpuPreference.Default
         };
 
         try

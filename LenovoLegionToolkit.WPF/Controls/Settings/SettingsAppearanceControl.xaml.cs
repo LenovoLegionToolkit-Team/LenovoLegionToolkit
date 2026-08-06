@@ -88,8 +88,8 @@ public partial class SettingsAppearanceControl
             var pref = IoCContainer.Resolve<GPUController>().GetGpuPreference(exePath);
             _gpuPreferenceComboBox.SelectedIndex = pref switch
             {
-                GPUController.GpuPreference.Integrated => 1,
-                GPUController.GpuPreference.Discrete => 2,
+                GpuPreference.Integrated => 1,
+                GpuPreference.Discrete => 2,
                 _ => 0
             };
         }
@@ -316,9 +316,9 @@ public partial class SettingsAppearanceControl
 
         var preference = _gpuPreferenceComboBox.SelectedIndex switch
         {
-            1 => GPUController.GpuPreference.Integrated,
-            2 => GPUController.GpuPreference.Discrete,
-            _ => GPUController.GpuPreference.Default
+            1 => GpuPreference.Integrated,
+            2 => GpuPreference.Discrete,
+            _ => GpuPreference.Default
         };
 
         IoCContainer.Resolve<GPUController>().SetGpuPreference(exePath, preference);

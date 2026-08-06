@@ -37,12 +37,12 @@ public sealed class DgpuAwakeManager : IAsyncDisposable, IDisposable
 
     private async void PowerStateListener_Changed(object? sender, PowerStateListener.ChangedEventArgs e)
     {
-        if (e.PowerStateEvent == LenovoLegionToolkit.Lib.PowerStateEvent.Suspend)
+        if (e.PowerStateEvent == PowerStateEvent.Suspend)
         {
             Log.Instance.Trace($"System suspending: tearing down dGPU awake manager.");
             await StopInternalAsync().ConfigureAwait(false);
         }
-        else if (e.PowerStateEvent == LenovoLegionToolkit.Lib.PowerStateEvent.Resume)
+        else if (e.PowerStateEvent == PowerStateEvent.Resume)
         {
             Log.Instance.Trace($"System resumed: restoring dGPU awake manager.");
             await UpdateStateAsync().ConfigureAwait(false);

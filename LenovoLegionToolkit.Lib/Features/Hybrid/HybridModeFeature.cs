@@ -13,7 +13,7 @@ namespace LenovoLegionToolkit.Lib.Features.Hybrid;
 public class HybridModeFeature(GSyncFeature gSyncFeature, IGPUModeFeature igpuModeFeature, DGPUNotify dgpuNotify, BiosHybridModeFeature biosHybridMode) : IFeature<HybridModeState>
 {
     private readonly CancellationTokenSource _ensureDGPUEjectedIfNeededCancellationTokenSource = new();
-    private bool _isEnsuringEjected;
+    private int _isEnsuringEjected;
 
     private HybridModeState? _lastState;
 
@@ -151,10 +151,21 @@ public class HybridModeFeature(GSyncFeature gSyncFeature, IGPUModeFeature igpuMo
 
     public async Task EnsureDGPUEjectedIfNeededAsync()
     {
-        if (_isEnsuringEjected || !await igpuModeFeature.IsSupportedAsync().ConfigureAwait(false) || !await dgpuNotify.IsSupportedAsync().ConfigureAwait(false))
+        if (Volatile.Read(ref _isEnsuringEjected) != 0)
+        {
             return;
+        }
 
-        _isEnsuringEjected = true;
+        if (!await igpuModeFeature.IsSupportedAsync().ConfigureAwait(false) || !await dgpuNotify.IsSupportedAsync().ConfigureAwait(false))
+        {
+            return;
+        }
+
+        if (Interlocked.CompareExchange(ref _isEnsuringEjected, 1, 0) != 0)
+        {
+            return;
+        }
+
         _ = Task.Run(async () =>
         {
             try
@@ -212,10 +223,12 @@ public class HybridModeFeature(GSyncFeature gSyncFeature, IGPUModeFeature igpuMo
             }
             finally
             {
-                _isEnsuringEjected = false;
+                Interlocked.Exchange(ref _isEnsuringEjected, 0);
             }
         });
     }
+
+    public bool ShouldKeepDGPUAsleep() => Volatile.Read(ref _isEnsuringEjected) != 0;
 
     private async Task<bool> NeedsGraphicsDeviceSwitchAsync(HybridModeState target)
     {

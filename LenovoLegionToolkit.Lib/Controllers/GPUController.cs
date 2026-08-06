@@ -1,20 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features.Hybrid;
-using LenovoLegionToolkit.Lib.Resources;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using NeoSmart.AsyncLock;
-using NvAPIWrapper;
 using NvAPIWrapper.GPU;
-using NvAPIWrapper.DRS;
 using NvAPIWrapper.Native.Exceptions;
 using Resource = LenovoLegionToolkit.Lib.Resources.Resource;
 
@@ -26,13 +22,6 @@ public class GPUController
     private readonly SemaphoreSlim _refreshGate = new(1, 1);
 
     public int Interval { get; set; } = 5000;
-
-    public enum GpuPreference
-    {
-        Default = 0,
-        Integrated = 1,
-        Discrete = 2
-    }
 
     private CancellationTokenSource? _refreshCancellationTokenSource;
 
@@ -62,7 +51,9 @@ public class GPUController
     public async Task<GPUState> GetLastKnownStateAsync()
     {
         using (await _stateLock.LockAsync().ConfigureAwait(false))
+        {
             return _state;
+        }
     }
 
     public async Task<GPUStatus> RefreshNowAsync()
@@ -86,7 +77,9 @@ public class GPUController
     public Task StartAsync(int delay = -1, int interval = 5_000)
     {
         if (IsStarted)
+        {
             return Task.CompletedTask;
+        }
 
         Interval = interval;
 
@@ -102,7 +95,9 @@ public class GPUController
     public async Task StopAsync(bool waitForFinish = false)
     {
         if (_refreshCancellationTokenSource is null)
+        {
             return;
+        }
 
         await _refreshCancellationTokenSource.CancelAsync().ConfigureAwait(false);
 
@@ -119,13 +114,17 @@ public class GPUController
         using (await _stateLock.LockAsync().ConfigureAwait(false))
         {
             if (_state is not GPUState.Active and not GPUState.Inactive)
+            {
                 return;
+            }
 
             gpuInstanceId = _gpuInstanceId;
         }
 
         if (string.IsNullOrEmpty(gpuInstanceId))
+        {
             return;
+        }
 
         Log.Instance.Trace($"Restarting GPU... [gpuInstanceId={gpuInstanceId}]");
 
@@ -140,14 +139,18 @@ public class GPUController
         using (await _stateLock.LockAsync().ConfigureAwait(false))
         {
             if (_state is not GPUState.Active)
+            {
                 return;
+            }
 
             processes = [.. _processes];
             gpuInstanceId = _gpuInstanceId;
         }
 
         if (string.IsNullOrEmpty(gpuInstanceId) || processes.Count == 0)
+        {
             return;
+        }
 
         Log.Instance.Trace($"Killing GPU processes... [gpuInstanceId={gpuInstanceId}]");
 
@@ -187,7 +190,9 @@ public class GPUController
                     await DoRefreshAsync(token).ConfigureAwait(false);
 
                     using (await _stateLock.LockAsync(token).ConfigureAwait(false))
+                    {
                         Refreshed?.Invoke(this, new GPUStatus(_state, _performanceState, _processes));
+                    }
                 }
                 finally
                 {
@@ -195,7 +200,9 @@ public class GPUController
                 }
 
                 if (Interval > 0)
+                {
                     await Task.Delay(Interval, token).ConfigureAwait(false);
+                }
             }
         }
         catch (OperationCanceledException) { }
@@ -208,9 +215,27 @@ public class GPUController
 
     private async Task DoRefreshAsync(CancellationToken token)
     {
+        var hybridModeFeature = IoCContainer.Resolve<HybridModeFeature>();
+        if (hybridModeFeature.ShouldKeepDGPUAsleep())
+        {
+            using (await _stateLock.LockAsync(token).ConfigureAwait(false))
+            {
+                _state = GPUState.PoweredOff;
+                _performanceState = Resource.GPUController_PoweredOff;
+                _processes = [];
+                _allProcesses = [];
+                _gpuInstanceId = null;
+            }
+            Log.Instance.Trace($"dGPU eject is being ensured — skipping NVAPI refresh.");
+
+            return;
+        }
+
         string? cachedGpuInstanceId;
         using (await _stateLock.LockAsync(token).ConfigureAwait(false))
+        {
             cachedGpuInstanceId = _gpuInstanceId;
+        }
 
         var gpu = NVAPI.GetGPU();
         if (gpu is null)
@@ -223,6 +248,7 @@ public class GPUController
                 _allProcesses = [];
                 _gpuInstanceId = null;
             }
+
             return;
         }
 
@@ -237,7 +263,9 @@ public class GPUController
             var stateId = gpu.PerformanceStatesInfo.CurrentPerformanceState.StateId.ToString().GetUntilOrEmpty("_");
             newPerformanceState = Resource.GPUController_PoweredOn;
             if (!string.IsNullOrWhiteSpace(stateId))
+            {
                 newPerformanceState += $", {stateId}";
+            }
         }
         catch (NVIDIAApiException ex) when ((int)ex.Status == -105 || (int)ex.Status == -220)
         {
@@ -249,6 +277,7 @@ public class GPUController
                 _allProcesses = [];
                 _gpuInstanceId = null;
             }
+
             return;
         }
         catch (Exception ex)
@@ -262,7 +291,10 @@ public class GPUController
         {
             var pnpDeviceIdPart = NVAPI.GetGPUId(gpu);
             if (!string.IsNullOrEmpty(pnpDeviceIdPart))
+            {
                 newGpuInstanceId = await WMI.Win32.PnpEntity.GetDeviceIDAsync(pnpDeviceIdPart).ConfigureAwait(false);
+            }
+
         }
 
         List<Process> processNames;
@@ -284,6 +316,7 @@ public class GPUController
                 _allProcesses = [];
                 _gpuInstanceId = null;
             }
+
             return;
         }
 
@@ -338,6 +371,7 @@ public class GPUController
 
         if (prefString.Contains("GpuPreference=1")) return GpuPreference.Integrated;
         if (prefString.Contains("GpuPreference=2")) return GpuPreference.Discrete;
+
         return GpuPreference.Default;
     }
 
@@ -354,7 +388,9 @@ public class GPUController
                 key?.DeleteValue(exePath, false);
 
                 if (!string.IsNullOrEmpty(aumid))
+                {
                     key?.DeleteValue(aumid, false);
+                }
             }
             else
             {
@@ -362,7 +398,9 @@ public class GPUController
                 Registry.SetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", exePath, value, false, Microsoft.Win32.RegistryValueKind.String);
 
                 if (!string.IsNullOrEmpty(aumid))
+                {
                     Registry.SetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", aumid, value, false, Microsoft.Win32.RegistryValueKind.String);
+                }
             }
         }
         catch (Exception ex)

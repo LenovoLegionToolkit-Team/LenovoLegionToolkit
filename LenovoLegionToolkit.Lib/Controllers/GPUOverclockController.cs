@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
@@ -46,6 +47,11 @@ public class GPUOverclockController
             if (AppFlags.Instance.Debug)
             {
                 return true;
+            }
+
+            if (IoCContainer.Resolve<HybridModeFeature>().ShouldKeepDGPUAsleep())
+            {
+                return false;
             }
 
             NVAPI.Initialize();
@@ -114,6 +120,14 @@ public class GPUOverclockController
         if (await _legionZoneDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
         {
             Log.Instance.Trace($"Can't correctly apply state when Legion Zone is running.");
+
+            Changed?.Invoke(this, EventArgs.Empty);
+            return;
+        }
+
+        if (IoCContainer.Resolve<HybridModeFeature>().ShouldKeepDGPUAsleep())
+        {
+            Log.Instance.Trace($"dGPU eject is being ensured — skipping overclock apply.");
 
             Changed?.Invoke(this, EventArgs.Empty);
             return;
@@ -201,7 +215,7 @@ public class GPUOverclockController
     public static int GetMaxMemoryDeltaMhz() => 3000;
 
     public static int GetMinVoltageLockMv() => 700;
-    
+
     public static int GetMaxVoltageLockMv() => 1200;
 
     private static void SetOverclockInfo(PhysicalGPU gpu, GPUOverclockInfo info)

@@ -4,13 +4,14 @@ using System.Management;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Win32;
-using Windows.Win32.System.Power;
+using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using NvAPIWrapper.Native;
 using NvAPIWrapper.Native.GPU;
+using Windows.Win32;
+using Windows.Win32.System.Power;
 
 namespace LenovoLegionToolkit.Lib.Controllers.Sensors;
 
@@ -231,6 +232,13 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
 
     protected async Task<GPUInfo> GetGPUInfoAsync()
     {
+        var hybridModeFeature = IoCContainer.Resolve<HybridModeFeature>();
+        if (hybridModeFeature.ShouldKeepDGPUAsleep())
+        {
+            Log.Instance.Trace($"dGPU eject is being ensured — skipping NVAPI query.");
+            return GPUInfo.Empty;
+        }
+
         if (gpuController.IsSupported())
             await gpuController.StartAsync().ConfigureAwait(false);
 
