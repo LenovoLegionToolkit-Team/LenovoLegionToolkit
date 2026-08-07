@@ -476,9 +476,7 @@
                                     Margin="0,0,5,0"
                                     Click="CurveShaperGlobalDecrement_Click"
                                     Icon="Subtract24" />
-                                <ui:Button
-                                    Click="CurveShaperGlobalIncrement_Click"
-                                    Icon="Add24" />
+                                <ui:Button Click="CurveShaperGlobalIncrement_Click" Icon="Add24" />
                             </StackPanel>
                         </Grid>
 
@@ -1130,13 +1128,14 @@
                         Appearance="Transparent"
                         Click="OnLoadClick"
                         Content="{x:Static resources:Resource.Import}"
-                        Icon="ArrowImport24" />
+                        Icon="ArrowExportRtl24" />
                     <ui:Button
                         x:Name="_saveButton"
+                        Margin="0,0,5,0"
                         Appearance="Transparent"
                         Click="OnSaveClick"
                         Content="{x:Static resources:Resource.Export}"
-                        Icon="ArrowExport24" />
+                        Icon="ArrowExportLtr24" />
                 </StackPanel>
 
                 <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
