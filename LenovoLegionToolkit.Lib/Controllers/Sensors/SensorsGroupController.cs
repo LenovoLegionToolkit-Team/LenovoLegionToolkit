@@ -10,12 +10,14 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using DiskInfoToolkit;
 using LenovoLegionToolkit.Lib.Controllers.Sensors.Providers;
 using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LibreHardwareMonitor.Hardware;
+using LhmStorageDevice = LibreHardwareMonitor.Hardware.Storage.StorageDevice;
 
 namespace LenovoLegionToolkit.Lib.Controllers.Sensors;
 
@@ -242,6 +244,41 @@ public class SensorsGroupController : IDisposable
         return LibreHardwareMonitorInitialState.Fail;
     }
 
+    private static bool IsExternalStorageDevice(IHardware hardware) =>
+        hardware is LhmStorageDevice storage &&
+        (storage.Storage.TransportKind == StorageTransportKind.Usb || storage.Storage.IsRemovable);
+
+    private void PopulateHardware()
+    {
+        if (_computer is null)
+        {
+            return;
+        }
+
+        foreach (var h in _computer.Hardware)
+        {
+            if (IsExternalStorageDevice(h))
+            {
+                Log.Instance.Trace($"External storage hardware skipped to allow device removal. [name={h.Name}]");
+                continue;
+            }
+
+            try
+            {
+                if (h.HardwareType == HardwareType.GpuNvidia && IsDgpuEjectInProgress())
+                {
+                    _dgpuHardwareSkipped = true;
+                    _hardware.Add(h);
+                    continue;
+                }
+
+                h.Update();
+                _hardware.Add(h);
+            }
+            catch { /* Ignore */ }
+        }
+    }
+
     private void GetHardware()
     {
         lock (_hardwareLock)
@@ -264,23 +301,11 @@ public class SensorsGroupController : IDisposable
 
                 _computer.Open();
                 if (!IsDgpuEjectInProgress())
-                    _computer.Accept(new UpdateVisitor());
-
-                foreach (var h in _computer.Hardware)
                 {
-                    try
-                    {
-                        if (h.HardwareType == HardwareType.GpuNvidia && IsDgpuEjectInProgress())
-                        {
-                            _dgpuHardwareSkipped = true;
-                            _hardware.Add(h);
-                            continue;
-                        }
-                        h.Update();
-                        _hardware.Add(h);
-                    }
-                    catch { /* Ignore */ }
+                    _computer.Accept(new UpdateVisitor());
                 }
+
+                PopulateHardware();
                 DiscoverHardware();
             }
             catch (Exception ex)
@@ -535,25 +560,7 @@ public class SensorsGroupController : IDisposable
                     _computer.Accept(new UpdateVisitor());
                 }
 
-                foreach (var h in _computer.Hardware)
-                {
-                    try
-                    {
-                        if (h.HardwareType == HardwareType.GpuNvidia && IsDgpuEjectInProgress())
-                        {
-                            _dgpuHardwareSkipped = true;
-                            _hardware.Add(h);
-
-                            continue;
-                        }
-
-                        h.Update();
-                        _hardware.Add(h);
-                    }
-                    catch
-                    {
-                    }
-                }
+                PopulateHardware();
                 DiscoverHardware();
             }
         }
