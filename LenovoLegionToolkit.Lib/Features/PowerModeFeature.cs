@@ -130,6 +130,19 @@ public class PowerModeFeature(
         await windowsPowerPlanController.SetPowerPlanAsync(state, true, preset, skipThrottle).ConfigureAwait(false);
     }
 
+    public async Task EnsureCorrectPowerModeIsSetForActivePowerPlanAsync()
+    {
+        var state = windowsPowerPlanController.GetPowerModeStateForActivePowerPlan();
+        if (!state.HasValue)
+            return;
+
+        var currentState = await GetStateAsync().ConfigureAwait(false);
+        if (currentState == state.Value)
+            return;
+
+        await SetStateAsync(state.Value).ConfigureAwait(false);
+    }
+
     public async Task EnsureGodModeStateIsAppliedAsync()
     {
         var state = await GetStateAsync().ConfigureAwait(false);

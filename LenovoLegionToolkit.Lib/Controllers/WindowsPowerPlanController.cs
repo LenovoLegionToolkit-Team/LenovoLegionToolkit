@@ -34,6 +34,20 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
+    public PowerModeState? GetPowerModeStateForActivePowerPlan()
+    {
+        if (settings.Store.PowerModeMappingMode is not PowerModeMappingMode.WindowsPowerPlan)
+            return null;
+
+        var activePowerPlanGuid = GetActivePowerPlanGuid();
+        foreach (var powerPlan in settings.Store.PowerPlans)
+            if (powerPlan.Value == activePowerPlanGuid)
+                return powerPlan.Key;
+
+        Log.Instance.Trace($"Active power plan is not mapped to a power mode. [guid={activePowerPlanGuid}]");
+        return null;
+    }
+
     public async Task SetPowerPlanAsync(PowerModeState powerModeState, bool alwaysActivateDefaults = false, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
     {
         await _lock.WaitAsync().ConfigureAwait(false);
