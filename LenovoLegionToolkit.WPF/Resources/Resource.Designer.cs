@@ -10286,6 +10286,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 Total 的本地化字符串。
+        /// </summary>
+        public static string Total {
+            get {
+                return ResourceManager.GetString("Total", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Disable touchpad. 的本地化字符串。
         /// </summary>
         public static string TouchpadLockAutomationStepControl_Message {

@@ -898,12 +898,19 @@
                                                 Margin="0"
                                                 FontSize="12"
                                                 Foreground="{DynamicResource TextFillColorSecondaryBrush}">
-                                                <Run Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="SemiBold" Text="{Binding UsedGb, StringFormat=\{0:F1\}, Mode=OneWay}" />
-                                                <Run Foreground="{DynamicResource TextFillColorPrimaryBrush}" FontWeight="SemiBold" Text="{x:Static resources:Resource.GB}" />
+                                                <Run
+                                                    FontWeight="SemiBold"
+                                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                                    Text="{Binding UsedGb, StringFormat=\{0:F1\}, Mode=OneWay}" />
+                                                <Run
+                                                    FontWeight="SemiBold"
+                                                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                                                    Text="{x:Static resources:Resource.GB}" />
                                                 <Run Text="{x:Static resources:Resource.Used}" />
                                                 <Run Text="/" />
                                                 <Run Text="{Binding SizeGb, StringFormat=\{0:F1\}, Mode=OneWay}" />
                                                 <Run Text="{x:Static resources:Resource.GB}" />
+                                                <Run Text="{x:Static resources:Resource.Total}" />
                                             </TextBlock>
                                             <TextBlock
                                                 FontSize="11"

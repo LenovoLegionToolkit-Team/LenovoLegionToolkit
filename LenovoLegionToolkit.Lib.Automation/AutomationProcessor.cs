@@ -103,7 +103,7 @@ public class AutomationProcessor(
     {
         using (await _ioLock.LockAsync().ConfigureAwait(false))
         {
-             await UpdateListenersAsync().ConfigureAwait(false);
+            await UpdateListenersAsync().ConfigureAwait(false);
         }
     }
 
@@ -127,6 +127,11 @@ public class AutomationProcessor(
 
     public async Task RunNowAsync(AutomationPipeline pipeline)
     {
+        await Task.Run(() => RunNowCoreAsync(pipeline)).ConfigureAwait(false);
+    }
+
+    private async Task RunNowCoreAsync(AutomationPipeline pipeline)
+    {
         Log.Instance.Trace($"Pipeline run now pending...");
 
         using (await _runLock.LockAsync().ConfigureAwait(false))
@@ -137,7 +142,9 @@ public class AutomationProcessor(
             {
                 List<AutomationPipeline> pipelines;
                 using (await _ioLock.LockAsync().ConfigureAwait(false))
+                {
                     pipelines = _pipelines.ToList();
+                }
 
                 var otherPipelines = pipelines.Where(p => p.Id != pipeline.Id).ToList();
                 await pipeline.DeepCopy().RunAsync(otherPipelines).ConfigureAwait(false);
@@ -166,6 +173,11 @@ public class AutomationProcessor(
     }
 
     private async Task RunAsync(IAutomationEvent automationEvent)
+    {
+        await Task.Run(() => RunCoreAsync(automationEvent)).ConfigureAwait(false);
+    }
+
+    private async Task RunCoreAsync(IAutomationEvent automationEvent)
     {
         Log.Instance.Trace($"Run pending...");
 
@@ -196,33 +208,33 @@ public class AutomationProcessor(
 
                 try
                 {
-                if (automationEvent is StartupAutomationEvent && 
-                    !pipeline.RunOnStartup && 
-                    pipeline.Trigger is not OnStartupAutomationPipelineTrigger)
+                    if (automationEvent is StartupAutomationEvent &&
+                        !pipeline.RunOnStartup &&
+                        pipeline.Trigger is not OnStartupAutomationPipelineTrigger)
+                    {
+                        Log.Instance.Trace($"Pipeline configured to skip startup. [name={pipeline.Name}]");
+                        continue;
+                    }
+
+                    if (pipeline.Trigger is null || !await pipeline.Trigger.IsMatchingEvent(automationEvent).ConfigureAwait(false))
+                    {
+                        Log.Instance.Trace($"Pipeline triggers not satisfied. [name={pipeline.Name}, trigger={pipeline.Trigger}, steps.Count={pipeline.Steps.Count}]");
+                        continue;
+                    }
+
+                    Log.Instance.Trace($"Running pipeline... [name={pipeline.Name}, trigger={pipeline.Trigger}, steps.Count={pipeline.Steps.Count}]");
+
+                    var otherPipelines = pipelines.Where(p => p.Id != pipeline.Id).ToList();
+                    await pipeline.RunAsync(otherPipelines, ct).ConfigureAwait(false);
+
+                    Log.Instance.Trace($"Pipeline completed successfully. [name={pipeline.Name}, trigger={pipeline.Trigger}]");
+                }
+                catch (Exception ex)
                 {
-                    Log.Instance.Trace($"Pipeline configured to skip startup. [name={pipeline.Name}]");
-                    continue;
+                    Log.Instance.Trace($"Pipeline run failed. [name={pipeline.Name}, trigger={pipeline.Trigger}]", ex);
                 }
 
-                if (pipeline.Trigger is null || !await pipeline.Trigger.IsMatchingEvent(automationEvent).ConfigureAwait(false))
-                {
-                    Log.Instance.Trace($"Pipeline triggers not satisfied. [name={pipeline.Name}, trigger={pipeline.Trigger}, steps.Count={pipeline.Steps.Count}]");
-                    continue;
-                }
-
-                Log.Instance.Trace($"Running pipeline... [name={pipeline.Name}, trigger={pipeline.Trigger}, steps.Count={pipeline.Steps.Count}]");
-
-                var otherPipelines = pipelines.Where(p => p.Id != pipeline.Id).ToList();
-                await pipeline.RunAsync(otherPipelines, ct).ConfigureAwait(false);
-
-                Log.Instance.Trace($"Pipeline completed successfully. [name={pipeline.Name}, trigger={pipeline.Trigger}]");
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Pipeline run failed. [name={pipeline.Name}, trigger={pipeline.Trigger}]", ex);
-            }
-
-            if (pipeline.IsExclusive)
+                if (pipeline.IsExclusive)
                 {
                     Log.Instance.Trace($"Pipeline is exclusive. Breaking. [name={pipeline.Name}, trigger={pipeline.Trigger}, steps.Count={pipeline.Steps.Count}]");
                     break;
@@ -315,14 +327,14 @@ public class AutomationProcessor(
 
     private async Task ProcessEvent(IAutomationEvent e)
     {
-        var potentialMatch = _pipelines.SelectMany(p => p.AllTriggers)
-            .Select(async t => await t.IsMatchingEvent(e).ConfigureAwait(false))
-            .Select(t => t.Result)
-            .Where(t => t)
-            .Any();
+        var triggerMatches = await Task.WhenAll(_pipelines.SelectMany(p => p.AllTriggers)
+                .Select(async t => await t.IsMatchingEvent(e).ConfigureAwait(false)))
+            .ConfigureAwait(false);
 
-        if (!potentialMatch)
+        if (!triggerMatches.Any(t => t))
+        {
             return;
+        }
 
         Log.Instance.Trace($"Processing event {e}... [type={e.GetType().Name}]");
 
@@ -340,7 +352,9 @@ public class AutomationProcessor(
         Log.Instance.Trace($"Current Game Listener State: Running={wasRunning}");
 
         if (wasRunning)
+        {
             gameAutoListener.PreserveStateOnRestart();
+        }
 
         await batteryAutoListener.UnsubscribeChangedAsync(BatteryAutoListener_Changed).ConfigureAwait(false);
         await gameAutoListener.UnsubscribeChangedAsync(GameAutoListener_Changed).ConfigureAwait(false);
