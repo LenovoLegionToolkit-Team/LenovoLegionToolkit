@@ -24,11 +24,11 @@
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
 		<PackageReference Include="Octokit" Version="14.0.0" />
 		<PackageReference Include="TaskScheduler" Version="2.12.2" />
-		<PackageReference Include="LLT.WindowsDisplayAPI" Version="[1.3.1, )" />
-		<PackageReference Include="LLT.LibreHardwareMonitorLib" Version="[0.9.7, )" />
-		<PackageReference Include="LLT.NvAPIWrapper.Net" Version="[0.8.2, )" />
-		<PackageReference Include="LLT.PresentMonFps" Version="[2.0.7, )" />
-		<PackageReference Include="LLT.ZenStates-Core" Version="[1.92.1, )" />
+		<PackageReference Include="LLT.WindowsDisplayAPI" Version="*" />
+		<PackageReference Include="LLT.LibreHardwareMonitorLib" Version="*" />
+		<PackageReference Include="LLT.NvAPIWrapper.Net" Version="*" />
+		<PackageReference Include="LLT.PresentMonFps" Version="*" />
+		<PackageReference Include="LLT.ZenStates-Core" Version="*" />
 		<PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7705" PrivateAssets="all" />
 	</ItemGroup>
 

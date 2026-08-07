@@ -1,0 +1,8 @@
+<Project>
+  <Target Name="PrintPackageVersions" AfterTargets="Restore">
+    <Message Importance="high" Text="PKG-DIRECT: %(PackageReference.Identity) -> %(PackageReference.Version)" />
+    <Exec Condition="Exists('$(BaseIntermediateOutputPath)project.assets.json')"
+          IgnoreExitCode="true"
+          Command="powershell -NoProfile -Command &quot;$a = Get-Content '$(BaseIntermediateOutputPath)project.assets.json' -Raw | ConvertFrom-Json; $a.libraries.PSObject.Properties.Name | Sort-Object -Unique | ForEach-Object { Write-Output ('PKG-ALL: ' + $_) }&quot;" />
+  </Target>
+</Project>
