@@ -22,14 +22,10 @@ public partial class ITSModeLoopControl
     private readonly Dictionary<ITSMode, CardControl> _modeCards = [];
     private readonly Dictionary<ITSMode, Wpf.Ui.Controls.ToggleSwitch> _toggles = [];
 
-    private Point _dragStartPoint;
-    private CardControl? _draggedCard;
-
     public ITSModeLoopControl()
     {
         InitializeComponent();
         Loaded += ITSModeLoopControl_Loaded;
-        _modeCardsPanel.Drop += ModeCardsPanel_Drop;
     }
 
     private async void ITSModeLoopControl_Loaded(object sender, RoutedEventArgs e)
@@ -106,6 +102,7 @@ public partial class ITSModeLoopControl
 
         var dragHandle = new Border
         {
+            Name = "DragHandle",
             Width = 20,
             Margin = new Thickness(0, 0, 12, 0),
             VerticalAlignment = VerticalAlignment.Center,
@@ -157,72 +154,7 @@ public partial class ITSModeLoopControl
             card.Opacity = toggle.IsChecked == true ? 1.0 : 0.45;
         };
 
-        dragHandle.MouseLeftButtonDown += (_, e) =>
-        {
-            _dragStartPoint = e.GetPosition(null);
-            _draggedCard = card;
-            dragHandle.CaptureMouse();
-            e.Handled = true;
-        };
-
-        dragHandle.MouseMove += (_, e) =>
-        {
-            if (_draggedCard == null || e.LeftButton != MouseButtonState.Pressed)
-                return;
-
-            var currentPoint = e.GetPosition(null);
-            if (Math.Abs(currentPoint.X - _dragStartPoint.X) < SystemParameters.MinimumHorizontalDragDistance &&
-                Math.Abs(currentPoint.Y - _dragStartPoint.Y) < SystemParameters.MinimumVerticalDragDistance)
-                return;
-
-            var dragged = _draggedCard;
-            _draggedCard = null;
-            dragHandle.ReleaseMouseCapture();
-            DragDrop.DoDragDrop(dragged, dragged, DragDropEffects.Move);
-        };
-
-        dragHandle.MouseLeftButtonUp += (_, _) =>
-        {
-            _draggedCard = null;
-            dragHandle.ReleaseMouseCapture();
-        };
-
         return card;
-    }
-
-    private void ModeCardsPanel_Drop(object sender, DragEventArgs e)
-    {
-        if (e.Data.GetData(typeof(CardControl)) is not CardControl droppedCard)
-            return;
-        if (!_modeCardsPanel.Children.Contains(droppedCard))
-            return;
-
-        var dropPosition = e.GetPosition(_modeCardsPanel);
-        int newIndex = -1;
-
-        for (var i = 0; i < _modeCardsPanel.Children.Count; i++)
-        {
-            if (_modeCardsPanel.Children[i] is not FrameworkElement child || child == droppedCard)
-                continue;
-
-            var childCenter = child.TransformToAncestor(_modeCardsPanel)
-                .Transform(new Point(child.ActualWidth / 2, child.ActualHeight / 2));
-
-            if (dropPosition.Y < childCenter.Y)
-            {
-                newIndex = i;
-                break;
-            }
-        }
-
-        var currentIndex = _modeCardsPanel.Children.IndexOf(droppedCard);
-        if (newIndex < 0 || currentIndex < 0 || newIndex == currentIndex)
-            return;
-
-        _modeCardsPanel.Children.RemoveAt(currentIndex);
-        if (newIndex > currentIndex)
-            newIndex--;
-        _modeCardsPanel.Children.Insert(newIndex, droppedCard);
     }
 
     private List<ITSMode> GetCurrentOrder()
@@ -235,27 +167,5 @@ public partial class ITSModeLoopControl
                 order.Add(mode);
         }
         return order;
-    }
-
-    private void DefaultButton_Click(object sender, RoutedEventArgs e)
-    {
-        var defaultOrder = new List<ITSMode>
-        {
-            ITSMode.MmcCool,
-            ITSMode.ItsAuto,
-            ITSMode.MmcPerformance,
-            ITSMode.MmcGeek,
-        };
-
-        _modeCardsPanel.Children.Clear();
-        _modeCards.Clear();
-        _toggles.Clear();
-
-        foreach (var mode in defaultOrder)
-        {
-            var card = CreateModeCard(mode, true);
-            _modeCards[mode] = card;
-            _modeCardsPanel.Children.Add(card);
-        }
     }
 }

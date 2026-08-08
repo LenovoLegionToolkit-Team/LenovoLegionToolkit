@@ -4,37 +4,45 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     xmlns:resources="clr-namespace:LenovoLegionToolkit.WPF.Resources"
-    xmlns:custom="clr-namespace:LenovoLegionToolkit.WPF.Controls.Custom">
+    xmlns:custom="clr-namespace:LenovoLegionToolkit.WPF.Controls.Custom"
+    xmlns:behaviors="clr-namespace:LenovoLegionToolkit.WPF.Behaviors">
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <custom:InfoBar
-            Grid.Row="0"
-            Margin="0,0,0,12"
-            IsClosable="False"
-            IsOpen="True"
-            Severity="Informational"
-            Title="{x:Static resources:Resource.ITSModeConfigWindow_Description}" />
+        <Grid Grid.Row="0" Margin="0,0,0,12">
+            <Grid.Resources>
+                <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource SystemAccentColorSecondary}" />
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <wpfui:SymbolIcon
+                Grid.Column="0"
+                Margin="0,0,8,0"
+                VerticalAlignment="Center"
+                Filled="False"
+                Foreground="{StaticResource AccentBrush}"
+                Symbol="Info24" />
+            <TextBlock
+                Grid.Column="1"
+                FontSize="12"
+                VerticalAlignment="Center"
+                Foreground="{StaticResource AccentBrush}"
+                Text="{x:Static resources:Resource.ITSModeConfigWindow_Description}"
+                TextWrapping="Wrap" />
+        </Grid>
 
-        <wpfui:Button
-            Grid.Row="1"
-            MinWidth="120"
-            Margin="0,0,0,8"
-            HorizontalAlignment="Right"
-            Appearance="Secondary"
-            Click="DefaultButton_Click"
-            Content="{x:Static resources:Resource.Default}" />
-
-        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <StackPanel
                 x:Name="_modeCardsPanel"
                 Margin="0,4,4,0"
-                AllowDrop="True" />
+                behaviors:DragDropBehavior.IsEnabled="True"
+                behaviors:DragDropBehavior.DragHandleName="DragHandle" />
         </ScrollViewer>
     </Grid>
 </UserControl>

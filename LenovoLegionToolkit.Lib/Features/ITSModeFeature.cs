@@ -116,6 +116,11 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
     public Task<ITSMode[]> GetAllStatesAsync()
     {
+        if (AppFlags.Instance.Debug)
+        {
+            return Task.FromResult(_allStatesWithGeek);
+        }
+
         return Task.FromResult(GetDispatcherVersionEx() >= DISPATCHER_VERSION_3 ? _allStatesWithGeek : _allStatesWithoutGeek);
     }
 
