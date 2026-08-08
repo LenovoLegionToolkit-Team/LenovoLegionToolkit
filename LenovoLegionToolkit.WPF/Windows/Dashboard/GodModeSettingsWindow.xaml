@@ -126,10 +126,13 @@
 
                 <TabItem x:Name="_cpuTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Text="{x:Static resources:Resource.GodModeSettingsWindow_CPU_Title}"
-                            TextWrapping="NoWrap" />
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <wpfui:SymbolIcon Symbol="DeveloperBoard24" Margin="0,0,8,0" Filled="False" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Text="{x:Static resources:Resource.GodModeSettingsWindow_CPU_Title}"
+                                TextWrapping="NoWrap" />
+                        </StackPanel>
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,16,0">
@@ -179,12 +182,119 @@
                     </ScrollViewer>
                 </TabItem>
 
+                <TabItem x:Name="_gpuTabItem" Visibility="Visible">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <wpfui:SymbolIcon Symbol="Desktop24" Margin="0,0,8,0" Filled="False" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Text="{x:Static resources:Resource.GodModeSettingsWindow_GPU_Title}"
+                                TextWrapping="NoWrap" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,16,0">
+                            <godMode:GodModeValueControl
+                                x:Name="_gpuPowerBoostControl"
+                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_DynamicBoost}"
+                                Margin="0,0,0,12"
+                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_DynamicBoost_Description}"
+                                Unit="{x:Static resources:Resource.Watt}" />
+                            <godMode:GodModeValueControl
+                                x:Name="_gpuConfigurableTGPControl"
+                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_CTGP}"
+                                Margin="0,0,0,12"
+                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_CTGP_Description}"
+                                Unit="{x:Static resources:Resource.Watt}" />
+                            <godMode:GodModeValueControl
+                                x:Name="_gpuTemperatureLimitControl"
+                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TempLimit}"
+                                Margin="0,0,0,12"
+                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TempLimit_Description}"
+                                Unit="{x:Static resources:Resource.Celsius}" />
+                            <godMode:GodModeValueControl
+                                x:Name="_gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl"
+                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl}"
+                                Margin="0,0,0,12"
+                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description}"
+                                Unit="{x:Static resources:Resource.Watt}" />
+                            <godMode:GodModeValueControl
+                                x:Name="_gpuToCpuDynamicBoostControl"
+                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl}"
+                                Margin="0,0,0,12"
+                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description}"
+                                Unit="{x:Static resources:Resource.Watt}" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem x:Name="_fanTabItem" Visibility="Visible">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <wpfui:SymbolIcon Symbol="WeatherBlowingSnow24" Margin="0,0,8,0" Filled="False" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Text="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Title}"
+                                TextWrapping="NoWrap" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,16,0">
+                            <custom:CardControl
+                                x:Name="_fanCurveCardControl"
+                                Margin="0,0,0,12"
+                                AutomationProperties.Name="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Title}">
+                                <custom:CardControl.Header>
+                                    <StackPanel x:Name="_fanCurveControlStackPanel">
+                                        <controls:CardHeaderControl Title="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Title}" Subtitle="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Message}" />
+                                        <wpfui:Button
+                                            x:Name="_fanCurveButton"
+                                            MinWidth="120"
+                                            Margin="0,16,0,0"
+                                            HorizontalAlignment="Right"
+                                            Click="DefaultFanCurve_Click"
+                                            Content="{x:Static resources:Resource.Default}"
+                                            Icon="ArrowClockwise24" />
+                                    </StackPanel>
+                                </custom:CardControl.Header>
+                            </custom:CardControl>
+
+                            <custom:CardControl x:Name="_fanFullSpeedCardControl" Margin="0,0,0,12">
+                                <custom:CardControl.Header>
+                                    <controls:CardHeaderControl Title="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Max_Title}" Subtitle="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Max_Message}" />
+                                </custom:CardControl.Header>
+                                <wpfui:ToggleSwitch
+                                    x:Name="_fanFullSpeedToggle"
+                                    Margin="0,0,0,8"
+                                    AutomationProperties.Name="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Max_Title}"
+                                    Click="FanFullSpeedToggle_Click" />
+                            </custom:CardControl>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem x:Name="_fnqTabItem" Visibility="Collapsed">
+                    <TabItem.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <wpfui:SymbolIcon Symbol="Gauge24" Margin="0,0,8,0" Filled="False" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Text="{x:Static resources:Resource.ITSModeConfigWindow_Title}"
+                                TextWrapping="NoWrap" />
+                        </StackPanel>
+                    </TabItem.Header>
+                    <dashboard:ITSModeLoopControl x:Name="_fnqLoopControl" Margin="0,0,16,0" />
+                </TabItem>
+
                 <TabItem x:Name="_pboTabItem" Visibility="Collapsed">
                     <TabItem.Header>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Text="{x:Static resources:Resource.GodModeSettingsWindow_Toggle_OC_Title}"
-                            TextWrapping="NoWrap" />
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <wpfui:SymbolIcon Symbol="TopSpeed24" Margin="0,0,8,0" Filled="False" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Text="{x:Static resources:Resource.GodModeSettingsWindow_Toggle_OC_Title}"
+                                TextWrapping="NoWrap" />
+                        </StackPanel>
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,16,0">
@@ -233,104 +343,40 @@
                     </ScrollViewer>
                 </TabItem>
 
-                <TabItem x:Name="_gpuTabItem" Visibility="Visible">
-                    <TabItem.Header>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Text="{x:Static resources:Resource.GodModeSettingsWindow_GPU_Title}"
-                            TextWrapping="NoWrap" />
-                    </TabItem.Header>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="0,0,16,0">
-                            <godMode:GodModeValueControl
-                                x:Name="_gpuPowerBoostControl"
-                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_DynamicBoost}"
-                                Margin="0,0,0,12"
-                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_DynamicBoost_Description}"
-                                Unit="{x:Static resources:Resource.Watt}" />
-                            <godMode:GodModeValueControl
-                                x:Name="_gpuConfigurableTGPControl"
-                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_CTGP}"
-                                Margin="0,0,0,12"
-                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_CTGP_Description}"
-                                Unit="{x:Static resources:Resource.Watt}" />
-                            <godMode:GodModeValueControl
-                                x:Name="_gpuTemperatureLimitControl"
-                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TempLimit}"
-                                Margin="0,0,0,12"
-                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TempLimit_Description}"
-                                Unit="{x:Static resources:Resource.Celsius}" />
-                            <godMode:GodModeValueControl
-                                x:Name="_gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl"
-                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl}"
-                                Margin="0,0,0,12"
-                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description}"
-                                Unit="{x:Static resources:Resource.Watt}" />
-                            <godMode:GodModeValueControl
-                                x:Name="_gpuToCpuDynamicBoostControl"
-                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl}"
-                                Margin="0,0,0,12"
-                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description}"
-                                Unit="{x:Static resources:Resource.Watt}" />
-                        </StackPanel>
-                    </ScrollViewer>
-                </TabItem>
-
-                <TabItem x:Name="_fanTabItem" Visibility="Visible">
-                    <TabItem.Header>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Text="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Title}"
-                            TextWrapping="NoWrap" />
-                    </TabItem.Header>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="0,0,16,0">
-                            <custom:CardControl
-                                x:Name="_fanCurveCardControl"
-                                Margin="0,0,0,12"
-                                AutomationProperties.Name="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Title}">
-                                <custom:CardControl.Header>
-                                    <StackPanel x:Name="_fanCurveControlStackPanel">
-                                        <controls:CardHeaderControl Title="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Title}" Subtitle="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Message}" />
-                                        <wpfui:Button
-                                            x:Name="_fanCurveButton"
-                                            MinWidth="120"
-                                            Margin="0,16,0,0"
-                                            HorizontalAlignment="Right"
-                                            Click="DefaultFanCurve_Click"
-                                            Content="{x:Static resources:Resource.Default}"
-                                            Icon="ArrowClockwise24" />
-                                    </StackPanel>
-                                </custom:CardControl.Header>
-                            </custom:CardControl>
-
-                            <custom:CardControl x:Name="_fanFullSpeedCardControl" Margin="0,0,0,12">
-                                <custom:CardControl.Header>
-                                    <controls:CardHeaderControl Title="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Max_Title}" Subtitle="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Max_Message}" />
-                                </custom:CardControl.Header>
-                                <wpfui:ToggleSwitch
-                                    x:Name="_fanFullSpeedToggle"
-                                    Margin="0,0,0,8"
-                                    AutomationProperties.Name="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Max_Title}"
-                                    Click="FanFullSpeedToggle_Click" />
-                            </custom:CardControl>
-                        </StackPanel>
-                    </ScrollViewer>
-                </TabItem>
-
                 <TabItem x:Name="_advancedTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Title}"
-                            TextWrapping="NoWrap" />
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <wpfui:SymbolIcon Symbol="WrenchScrewdriver24" Margin="0,0,8,0" Filled="False" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Title}"
+                                TextWrapping="NoWrap" />
+                        </StackPanel>
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,16,0">
-                            <TextBlock
-                                Margin="0,0,0,12"
-                                FontSize="12"
-                                Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Message}" />
+                            <Grid Margin="0,0,0,12">
+                                <Grid.Resources>
+                                    <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource SystemAccentColorSecondary}" />
+                                </Grid.Resources>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <wpfui:SymbolIcon
+                                    Grid.Column="0"
+                                    Margin="0,2,8,0"
+                                    VerticalAlignment="Top"
+                                    Filled="False"
+                                    Foreground="{StaticResource AccentBrush}"
+                                    Symbol="Info24" />
+                                <TextBlock
+                                    Grid.Column="1"
+                                    FontSize="12"
+                                    Foreground="{StaticResource AccentBrush}"
+                                    Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Message}"
+                                    TextWrapping="Wrap" />
+                            </Grid>
 
                             <custom:CardControl x:Name="_maxValueOffsetCardControl" Margin="0,0,0,12">
                                 <custom:CardControl.Header>
@@ -363,16 +409,6 @@
                             </custom:CardControl>
                         </StackPanel>
                     </ScrollViewer>
-                </TabItem>
-
-                <TabItem x:Name="_fnqTabItem" Visibility="Collapsed">
-                    <TabItem.Header>
-                        <TextBlock
-                            VerticalAlignment="Center"
-                            Text="{x:Static resources:Resource.ITSModeConfigWindow_Title}"
-                            TextWrapping="NoWrap" />
-                    </TabItem.Header>
-                    <dashboard:ITSModeLoopControl x:Name="_fnqLoopControl" Margin="0,0,16,0" />
                 </TabItem>
             </TabControl>
         </controls:LoadableControl>
