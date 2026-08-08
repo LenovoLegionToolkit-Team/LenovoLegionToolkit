@@ -16,6 +16,7 @@ public class CardHeaderControl : UserControl
         FontSize = 14,
         FontWeight = FontWeights.Medium,
         VerticalAlignment = VerticalAlignment.Center,
+        TextWrapping = TextWrapping.Wrap,
         TextTrimming = TextTrimming.CharacterEllipsis,
     };
 

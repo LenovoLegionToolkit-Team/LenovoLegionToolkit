@@ -1,4 +1,4 @@
-﻿<UserControl
+<UserControl
     x:Class="LenovoLegionToolkit.WPF.Controls.Dashboard.GodMode.GodModeValueControl"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -16,9 +16,9 @@
         <custom:CardControl.Header>
             <controls:CardHeaderControl x:Name="_cardControlHeader" />
         </custom:CardControl.Header>
-        <Grid Width="350" Margin="16,0,0,0">
+        <Grid Margin="16,0,0,0" HorizontalAlignment="Right">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
@@ -27,12 +27,12 @@
             <Slider
                 x:Name="_slider"
                 Grid.Column="0"
+                Width="180"
                 VerticalAlignment="Center"
                 IsSnapToTickEnabled="True" />
             <Label
                 x:Name="_sliderLabel"
                 Grid.Column="1"
-                Width="60"
                 Margin="8,0,0,0"
                 HorizontalContentAlignment="Right"
                 VerticalContentAlignment="Center"
@@ -42,7 +42,7 @@
             <ComboBox
                 x:Name="_comboBox"
                 Grid.Column="2"
-                MinWidth="100" />
+                Width="120" />
             <wpfui:Button
                 x:Name="_resetToDefaultButton"
                 Grid.Column="3"
