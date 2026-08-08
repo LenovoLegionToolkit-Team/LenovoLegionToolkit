@@ -1,8 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using DiskInfoToolkit;
 using LibreHardwareMonitor.Hardware;
 
 namespace LenovoLegionToolkit.Lib.Utils
@@ -15,6 +12,11 @@ namespace LenovoLegionToolkit.Lib.Utils
         }
         public void VisitHardware(IHardware hardware)
         {
+            if (IsExternalStorageDevice(hardware))
+            {
+                return;
+            }
+
             try
             {
                 hardware.Update();
@@ -28,6 +30,13 @@ namespace LenovoLegionToolkit.Lib.Utils
                 Log.Instance.Trace($"Safety visit failed for hardware {hardware.Name}: {ex.Message}", ex);
             }
         }
+
+        private static bool IsExternalStorageDevice(IHardware hardware) =>
+            hardware is LibreHardwareMonitor.Hardware.Storage.StorageDevice storage &&
+            (storage.Storage.TransportKind == StorageTransportKind.Usb ||
+             storage.Storage.BusType == StorageBusType.Usb ||
+             storage.Storage.IsRemovable);
+
         public void VisitSensor(ISensor sensor) { }
         public void VisitParameter(IParameter parameter) { }
     }
