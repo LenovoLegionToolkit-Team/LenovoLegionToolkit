@@ -129,12 +129,6 @@ public class SpectrumKeyboardBacklightController
 
     private static IReadOnlyList<SpectrumKeyboardBacklightEffectType> GetHiddenEffectTypes(MachineInformation mi)
     {
-        // Aurora Sync has been moved into Dynamic Lighting start from Gen 10.
-        if (mi.Generation >= 10)
-        {
-            return [SpectrumKeyboardBacklightEffectType.AuroraSync];
-        }
-
         // The 24 Zone keyboard does not support the following effects.
         // Therefore, they are hidden from the UI.
         if (Is24ZoneKeyboard(mi))
@@ -150,6 +144,12 @@ public class SpectrumKeyboardBacklightController
                 SpectrumKeyboardBacklightEffectType.Ripple,
                 SpectrumKeyboardBacklightEffectType.Type
             ];
+        }
+
+        // Aurora Sync has been moved into Dynamic Lighting start from Gen 10.
+        if (mi.Generation >= 10)
+        {
+            return [SpectrumKeyboardBacklightEffectType.AuroraSync];
         }
 
         return [];
