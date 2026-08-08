@@ -99,7 +99,6 @@ namespace LenovoLegionToolkit.WPF.Behaviors
                 {
                     _draggedElement = element;
                     panel.CaptureMouse();
-                    Console.WriteLine($"Element to drag: {_draggedElement}");
                     e.Handled = true;
                 }
                 else if (e.OriginalSource is Visual visual)
@@ -109,7 +108,6 @@ namespace LenovoLegionToolkit.WPF.Behaviors
                     {
                         _draggedElement = parent;
                         panel.CaptureMouse();
-                        Console.WriteLine($"Element to drag: {_draggedElement}");
                         e.Handled = true;
                     }
                 }
