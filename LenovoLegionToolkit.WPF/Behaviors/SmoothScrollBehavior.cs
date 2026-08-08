@@ -60,12 +60,27 @@ public static class SmoothScrollBehavior
         if (scrollViewer.ScrollableHeight <= 0)
             return;
 
+        if (e.OriginalSource is DependencyObject source && IsInsideOpenComboBox(source))
+            return;
+
         var data = GetScrollData(scrollViewer);
         if (data == null)
             return;
 
         data.Scroll(e.Delta);
         e.Handled = true;
+    }
+
+    private static bool IsInsideOpenComboBox(DependencyObject source)
+    {
+        var current = source;
+        while (current != null)
+        {
+            if (current is ComboBox { IsDropDownOpen: true })
+                return true;
+            current = VisualTreeHelper.GetParent(current) ?? LogicalTreeHelper.GetParent(current!);
+        }
+        return false;
     }
 
     private class ScrollViewerScrollData
