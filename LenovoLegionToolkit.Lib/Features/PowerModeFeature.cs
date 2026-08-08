@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using static LenovoLegionToolkit.Lib.Settings.GodModeSettings;
 
@@ -26,6 +27,8 @@ public class PowerModeFeature(
     PowerModeListener powerModeListener)
     : AbstractWmiFeature<PowerModeState>(WMI.LenovoGameZoneData.GetSmartFanModeAsync, WMI.LenovoGameZoneData.SetSmartFanModeAsync, WMI.LenovoGameZoneData.IsSupportSmartFanAsync, 1)
 {
+    private readonly SemaphoreSlim _activePowerPlanSyncLock = new(1, 1);
+
     public bool AllowAllPowerModesOnBattery { get; set; }
     public PowerModeState LastPowerModeState { get; set; }
 
@@ -132,15 +135,23 @@ public class PowerModeFeature(
 
     public async Task EnsureCorrectPowerModeIsSetForActivePowerPlanAsync()
     {
-        var state = windowsPowerPlanController.GetPowerModeStateForActivePowerPlan();
-        if (!state.HasValue)
-            return;
+        await _activePowerPlanSyncLock.WaitAsync().ConfigureAwait(false);
+        try
+        {
+            var state = windowsPowerPlanController.GetPowerModeStateForActivePowerPlan();
+            if (!state.HasValue)
+                return;
 
-        var currentState = await GetStateAsync().ConfigureAwait(false);
-        if (currentState == state.Value)
-            return;
+            var currentState = await GetStateAsync().ConfigureAwait(false);
+            if (currentState == state.Value)
+                return;
 
-        await SetStateAsync(state.Value).ConfigureAwait(false);
+            await SetStateAsync(state.Value).ConfigureAwait(false);
+        }
+        finally
+        {
+            _activePowerPlanSyncLock.Release();
+        }
     }
 
     public async Task EnsureGodModeStateIsAppliedAsync()

@@ -9567,6 +9567,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
                 return ResourceManager.GetString("SettingsPage_WindowsPowerPlans_Title", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Change Power Mode when the active Windows Power Plan changes..
+        /// </summary>
+        public static string SettingsPage_WindowsPowerPlanSync_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_WindowsPowerPlanSync_Message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sync Power Mode from Windows Power Plan.
+        /// </summary>
+        public static string SettingsPage_WindowsPowerPlanSync_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_WindowsPowerPlanSync_Title", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Power Plan options in Windows Control Panel.

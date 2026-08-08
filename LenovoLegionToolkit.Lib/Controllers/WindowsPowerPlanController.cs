@@ -36,10 +36,13 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
     public PowerModeState? GetPowerModeStateForActivePowerPlan()
     {
-        if (settings.Store.PowerModeMappingMode is not PowerModeMappingMode.WindowsPowerPlan)
+        if (settings.Store.PowerModeMappingMode is not PowerModeMappingMode.WindowsPowerPlan ||
+            !settings.Store.SynchronizePowerModeWithWindowsPowerPlan)
             return null;
 
-        var activePowerPlanGuid = GetActivePowerPlanGuid();
+        if (!TryGetActivePowerPlanGuid(out var activePowerPlanGuid))
+            return null;
+
         foreach (var powerPlan in settings.Store.PowerPlans)
             if (powerPlan.Value == activePowerPlanGuid)
                 return powerPlan.Key;
@@ -459,19 +462,30 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
-    private static unsafe Guid GetActivePowerPlanGuid()
+    private static Guid GetActivePowerPlanGuid() => TryGetActivePowerPlanGuid(out var guid) ? guid : DefaultPowerPlan;
+
+    private static bool TryGetActivePowerPlanGuid(out Guid activePowerPlanGuid)
     {
         try
         {
-            if (PInvoke.PowerGetActiveScheme(null, out var guid) != WIN32_ERROR.ERROR_SUCCESS)
+            if (PowerGetActiveScheme(IntPtr.Zero, out var guid) != 0)
                 PInvokeExtensions.ThrowIfWin32Error("PowerGetActiveScheme");
 
-            return *guid;
+            try
+            {
+                activePowerPlanGuid = Marshal.PtrToStructure<Guid>(guid);
+                return true;
+            }
+            finally
+            {
+                LocalFree(guid);
+            }
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Failed to get active power plan guid.", ex);
-            return DefaultPowerPlan;
+            activePowerPlanGuid = Guid.Empty;
+            return false;
         }
     }
 
@@ -480,4 +494,10 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         if (PInvoke.PowerSetActiveScheme(null, powerPlanGuid) != WIN32_ERROR.ERROR_SUCCESS)
             PInvokeExtensions.ThrowIfWin32Error("PowerSetActiveScheme");
     }
+
+    [DllImport("kernel32.dll")]
+    private static extern IntPtr LocalFree(IntPtr hMem);
+
+    [DllImport("PowrProf.dll")]
+    private static extern uint PowerGetActiveScheme(IntPtr rootPowerKey, out IntPtr activePolicyGuid);
 }

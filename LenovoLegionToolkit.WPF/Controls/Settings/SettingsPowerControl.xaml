@@ -56,6 +56,21 @@
                 Visibility="Collapsed">
                 <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_WindowsPowerPlans_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_WindowsPowerPlans_Message}" />
             </custom:CardAction>
+            <custom:CardControl
+                x:Name="_windowsPowerPlanSyncCard"
+                Margin="0,0,0,8"
+                Icon="Flash24"
+                Visibility="Collapsed">
+                <custom:CardControl.Header>
+                    <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_WindowsPowerPlanSync_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_WindowsPowerPlanSync_Message}" />
+                </custom:CardControl.Header>
+                <wpfui:ToggleSwitch
+                    x:Name="_windowsPowerPlanSyncToggle"
+                    Margin="0,0,0,8"
+                    AutomationProperties.Name="{x:Static resources:Resource.SettingsPage_WindowsPowerPlanSync_Title}"
+                    Click="WindowsPowerPlanSyncToggle_Click"
+                    Visibility="Hidden" />
+            </custom:CardControl>
             <custom:CardAction
                 x:Name="_windowsPowerPlansControlPanelCard"
                 Margin="0,0,0,8"
