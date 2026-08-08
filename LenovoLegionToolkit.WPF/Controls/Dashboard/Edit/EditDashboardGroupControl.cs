@@ -1,16 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
+using System.Windows.Input;
+using LenovoLegionToolkit.WPF.Behaviors;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Dashboard;
 using Wpf.Ui.Common;
 using Button = Wpf.Ui.Controls.Button;
 using CardExpander = LenovoLegionToolkit.WPF.Controls.Custom.CardExpander;
+using SymbolIcon = Wpf.Ui.Controls.SymbolIcon;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard.Edit;
 
@@ -106,12 +109,37 @@ public class EditDashboardGroupControl : UserControl
         foreach (var item in dashboardGroup.Items)
             _itemsStackPanel.Children.Add(CreateGroupControl(item));
 
+        DragDropBehavior.SetIsEnabled(_itemsStackPanel, true);
+        DragDropBehavior.SetDragHandleName(_itemsStackPanel, "DragHandle");
+        _itemsStackPanel.AddHandler(UIElement.DropEvent, new DragEventHandler((_, _) => Changed?.Invoke(this, EventArgs.Empty)), true);
+
         _stackPanel.Children.Add(_itemsStackPanel);
         _stackPanel.Children.Add(_addItemButton);
 
         _cardHeaderControl.Title = dashboardGroup.GetName();
         _cardHeaderControl.Accessory = _buttonsStackPanel;
-        _cardExpander.Header = _cardHeaderControl;
+
+        var dragHandle = new SymbolIcon
+        {
+            Name = "DragHandle",
+            Symbol = SymbolRegular.ReOrderDotsVertical24,
+            Cursor = Cursors.SizeAll,
+            Margin = new Thickness(-8, 0, 8, 0),
+            VerticalAlignment = VerticalAlignment.Center,
+            Opacity = 0.55
+        };
+
+        var headerGrid = new Grid();
+        headerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        headerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+        Grid.SetColumn(dragHandle, 0);
+        Grid.SetColumn(_cardHeaderControl, 1);
+
+        headerGrid.Children.Add(dragHandle);
+        headerGrid.Children.Add(_cardHeaderControl);
+
+        _cardExpander.Header = headerGrid;
         _cardExpander.Content = _stackPanel;
 
         AutomationProperties.SetName(_cardExpander, _cardHeaderControl.Title);

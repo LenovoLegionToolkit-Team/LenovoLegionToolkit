@@ -1,4 +1,4 @@
-﻿<local:BaseWindow
+<local:BaseWindow
     x:Class="LenovoLegionToolkit.WPF.Windows.Dashboard.EditDashboardWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,6 +8,7 @@
     xmlns:resources="clr-namespace:LenovoLegionToolkit.WPF.Resources"
     xmlns:utils="clr-namespace:LenovoLegionToolkit.WPF.Utils"
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
+    xmlns:behaviors="clr-namespace:LenovoLegionToolkit.WPF.Behaviors"
     Title="{x:Static resources:Resource.EditDashboardWindow_Title}"
     Width="700"
     Height="700"
@@ -50,14 +51,32 @@
                 Text="{x:Static resources:Resource.EditDashboardWindow_Title}" />
         </Grid>
 
-        <custom:InfoBar
+        <Grid
             x:Name="_infoBar"
-            Title="{x:Static resources:Resource.EditDashboardWindow_Disclaimer_Message}"
             Grid.Row="1"
-            Margin="12,0,16,16"
-            IsClosable="False"
-            IsOpen="True"
-            Severity="Informational" />
+            Margin="12,0,16,16">
+            <Grid.Resources>
+                <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource SystemAccentColorSecondary}" />
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <wpfui:SymbolIcon
+                Grid.Column="0"
+                Margin="0,0,8,0"
+                VerticalAlignment="Center"
+                Filled="False"
+                Foreground="{StaticResource AccentBrush}"
+                Symbol="Info24" />
+            <TextBlock
+                Grid.Column="1"
+                FontSize="12"
+                VerticalAlignment="Center"
+                Foreground="{StaticResource AccentBrush}"
+                Text="{x:Static resources:Resource.EditDashboardWindow_Disclaimer_Message}"
+                TextWrapping="Wrap" />
+        </Grid>
 
         <controls:LoadableControl
             x:Name="_loader"
@@ -72,7 +91,11 @@
                         </custom:CardControl.Header>
                         <wpfui:ToggleSwitch x:Name="_sensorsSwitch" AutomationProperties.Name="{x:Static resources:Resource.EditDashboardWindow_Sensors}" />
                     </custom:CardControl>
-                    <StackPanel x:Name="_groupsStackPanel" Margin="0,0,16,0" />
+                    <StackPanel
+                        x:Name="_groupsStackPanel"
+                        Margin="0,0,16,0"
+                        behaviors:DragDropBehavior.IsEnabled="True"
+                        behaviors:DragDropBehavior.DragHandleName="DragHandle" />
                 </StackPanel>
             </wpfui:DynamicScrollViewer>
         </controls:LoadableControl>

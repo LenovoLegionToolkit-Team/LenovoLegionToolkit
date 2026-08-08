@@ -70,6 +70,9 @@ namespace LenovoLegionToolkit.WPF.Behaviors
                     {
                         if (current is FrameworkElement fe)
                         {
+                            if (fe != panel && GetIsEnabled(fe))
+                                return;
+
                             if (panel.Children.Contains(fe))
                             {
                                 directChild = fe;
@@ -288,9 +291,15 @@ namespace LenovoLegionToolkit.WPF.Behaviors
             DependencyObject? parent = VisualTreeHelper.GetParent(child);
             while (parent != null)
             {
-                if (parent is FrameworkElement frameworkElement && panel.Children.Contains(frameworkElement))
+                if (parent is FrameworkElement frameworkElement)
                 {
-                    return frameworkElement;
+                    if (frameworkElement != panel && GetIsEnabled(frameworkElement))
+                        return null;
+
+                    if (panel.Children.Contains(frameworkElement))
+                    {
+                        return frameworkElement;
+                    }
                 }
                 parent = VisualTreeHelper.GetParent(parent);
             }

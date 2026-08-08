@@ -1,11 +1,14 @@
-﻿using System;
+using System;
+using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Controls;
+using System.Windows.Input;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using Wpf.Ui.Common;
 using Button = Wpf.Ui.Controls.Button;
 using CardControl = LenovoLegionToolkit.WPF.Controls.Custom.CardControl;
+using SymbolIcon = Wpf.Ui.Controls.SymbolIcon;
 
 namespace LenovoLegionToolkit.WPF.Controls.Dashboard.Edit;
 
@@ -70,8 +73,39 @@ public class EditDashboardItemControl : UserControl
 
         _cardHeaderControl.Title = DashboardItem.GetTitle();
         _cardHeaderControl.Accessory = _stackPanel;
-        _cardControl.Icon = DashboardItem.GetIcon();
-        _cardControl.Header = _cardHeaderControl;
+
+        var dragHandle = new SymbolIcon
+        {
+            Name = "DragHandle",
+            Symbol = SymbolRegular.ReOrderDotsVertical24,
+            Cursor = Cursors.SizeAll,
+            Margin = new Thickness(-8, 0, 0, 0),
+            VerticalAlignment = VerticalAlignment.Center,
+            Opacity = 0.55
+        };
+
+        var featureIcon = new SymbolIcon
+        {
+            Symbol = DashboardItem.GetIcon(),
+            FontSize = 24,
+            Margin = new Thickness(4, 0, 12, 0),
+            VerticalAlignment = VerticalAlignment.Center
+        };
+
+        var headerGrid = new Grid();
+        headerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        headerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        headerGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+
+        Grid.SetColumn(dragHandle, 0);
+        Grid.SetColumn(featureIcon, 1);
+        Grid.SetColumn(_cardHeaderControl, 2);
+
+        headerGrid.Children.Add(dragHandle);
+        headerGrid.Children.Add(featureIcon);
+        headerGrid.Children.Add(_cardHeaderControl);
+
+        _cardControl.Header = headerGrid;
 
         AutomationProperties.SetName(_moveUpButton, _cardHeaderControl.Title);
         AutomationProperties.SetName(_moveDownButton, _cardHeaderControl.Title);
