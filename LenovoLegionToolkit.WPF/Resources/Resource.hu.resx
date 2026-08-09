@@ -1211,18 +1211,22 @@ Thank you for your support!</value>
     <value>Aktív előbeállítás</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>FIGYELEM!
-Egyes laptopok nagyobb értékeket is elfogadnak, mint amennyit jeleznek, de legyen óvatos. Ez az opció kiszámíthatatlan viselkedést eredményezhet. Ha nem biztos benne, hogy mit csinál, hagyja ezt 0-án.</value>
+    <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
+    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Maximum eltolás</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>These offsets expand or restrict the selectable range limits of the CPU/GPU power and temperature sliders. Modifying them may result in unpredictable behavior or limits reverting if they exceed hardware boundaries.</value>
+    <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>FIGYELEM!
-Egyes laptopok alacsonyabb értékeket is elfogadnak, mint amennyit jeleznek, de legyen óvatos. Ez az opció kiszámíthatatlan viselkedést eredményezhet. Ha nem biztos benne, hogy mit csinál, hagyja ezt 0-án.</value>
+    <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
+    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Minimális eltolás</value>
@@ -1231,7 +1235,10 @@ Egyes laptopok alacsonyabb értékeket is elfogadnak, mint amennyit jeleznek, de
     <value>Haladó</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>All Core Curve Optimizer.</value>
+    <value>Apply a negative voltage offset curve to reduce power consumption, heat, and thermal throttling.</value>
+  </data>
+  <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
+    <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
     <value>All Core Curve Optimizer</value>
@@ -1240,43 +1247,52 @@ Egyes laptopok alacsonyabb értékeket is elfogadnak, mint amennyit jeleznek, de
     <value>APU sPPT teljesítményhatár</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>A CPU által kisebb késleltetéssel elérhető maximális energiafogyasztás.</value>
+    <value>The Slow Package Power Tracking limit governing the slow-response power budget for AMD APU packages.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>Hosszú távú teljesítménykorlátozás (keresztterhelés)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>A maximális energiafogyasztás, amelyet a CPU elérhet, ha a CPU és a GPU teljes mértékben ki van használva.</value>
+    <value>The sustained power limit applied to the CPU when the GPU is also under heavy load.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
+    <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>Hosszú távú teljesítménykorlátozás</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>A CPU által elérhető folyamatos energiafogyasztás.</value>
+    <value>The maximum power the CPU is allowed to sustain indefinitely under long workloads.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>Csúcsteljesítmény-határérték</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>A CPU által elérhető maximális pillanatnyi energiafogyasztás.</value>
+    <value>The absolute limit for instantaneous power spikes to protect the voltage regulator.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
+    <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
     <value>Rövid távú teljesítménykorlátozás időtartama</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
-    <value>Az az időtartam, ameddig a CPU növelheti és használhatja a rövid távú teljesítménykorlátozást. Ha a Tau lejár, a hosszú távú teljesítménykorlátozás kerül használatba.</value>
+    <value>The maximum time the CPU can stay at the Short Term Power Limit before dropping back to the Long Term Power Limit.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Rövid távú teljesítménykorlátozás</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>A CPU által rövid időn belül elérhető maximális energiafogyasztás.</value>
+    <value>The maximum power the CPU is allowed to draw for brief bursts of high activity.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>CPU hőmérséklet-határ</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>A maximális hőmérséklet, amelyet a CPU elérhet, mielőtt a frekvencia és a teljesítmény csökkenne.</value>
+    <value>The target temperature threshold at which the CPU will begin thermal throttling.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>CPU</value>
@@ -1301,15 +1317,19 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Beállítás betöltése sikertelen.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>A ventillátor sebességét nem minden esetben csak egy hőmérséklet szenzor határozza meg. A processzor, videókártya és a hűtőborda szenzorai közüli legmelegebb értékhez képest változik a ventillátor sebessége. A pontos értékek megjeleníthetők az egér mozgatásával.</value>
+    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
+    <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>Ventilátor görbe</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>FIGYELEM!
-Ennek az opciónak a hosszan tartó használata károsítja a ventilátorokat, csökkentve azok élettartamát.
-Komolyan, legyen óvatos ezzel az opcióval!</value>
+    <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
+    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Maximális ventilátor sebesség</value>
@@ -1321,19 +1341,22 @@ Komolyan, legyen óvatos ezzel az opcióval!</value>
     <value>Konfigurálható TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>A GPU-nak az alap energiafogyasztáson felül kiosztható további teljesítmény.</value>
+    <value>The base sustained power limit allocated to the GPU, excluding dynamic boost headroom.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>Dinamikus Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>A GPU-nak a CPU energiafogyasztása alapján kiosztható további maximális teljesítmény.</value>
+    <value>The maximum additional power allocated dynamically to the GPU from the CPU's budget during high graphics demand.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>GPU hőmérsékleti határérték</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>Az a maximális hőmérséklet, amelyet a GPU elérhet, mielőtt a frekvencia és a teljesítmény csökkenne.</value>
+    <value>The target temperature threshold at which the GPU will begin thermal throttling.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>Videókártya</value>
@@ -1342,13 +1365,19 @@ Komolyan, legyen óvatos ezzel az opcióval!</value>
     <value>GPU és CPU közötti dinamikus boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>Ez az a maximális többletteljesítmény, amely a CPU-nak a GPU-tól a CPU-használat alapján kiosztható. Minél magasabb az érték, annál jobb a CPU-t használó alkalmazások teljesítménye.</value>
+    <value>The maximum additional power the CPU is allowed to dynamically borrow from the GPU's budget.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
+    <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
     <value>Teljes processzor teljesítménycél AC-ben</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>Az a pont, amikor a CPU elindítja a GPU dinamikus energiafogyasztásának beállítását.</value>
+    <value>The CPU power threshold that triggers dynamic power adjustments for the GPU while running on AC power.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
+    <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
     <value>Custom Mode settings will not be applied correctly when Legion Space or its services are running.</value>
@@ -1360,13 +1389,13 @@ Komolyan, legyen óvatos ezzel az opcióval!</value>
     <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Boost Frequency.</value>
+    <value>Set the maximum frequency offset allowed beyond the factory default boost clock specification.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
     <value>Precision Boost Overdrive Boost Frequency</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Precision Boost Overdrive Scaler.</value>
+    <value>Configure the frequency boost aggressiveness by adjusting the processor's silicon health safety margins.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
     <value>Precision Boost Overdrive Scaler</value>
@@ -1375,13 +1404,16 @@ Komolyan, legyen óvatos ezzel az opcióval!</value>
     <value>Egyéni üzemmód-beállítások</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Enable / Disable Core Curve Adjustment.</value>
+    <value>Enable or disable voltage offset optimization across all CPU cores.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
     <value>Core Curve Adjustment</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Enable / Disable Advanced Overclocking options.</value>
+    <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
+    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
     <value>Overclocking</value>
@@ -1478,7 +1510,7 @@ Ha a dGPU egyáltalán nem reagál, kérjük, indítsa újra a laptopját.</valu
     <value>IdeaPad Power Mode</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
-    <value>Modify the Fn+Q switching order and configure the switching mode.</value>
+    <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
   </data>
   <data name="ITSModeConfigWindow_Title" xml:space="preserve">
     <value>ITS Mode</value>
