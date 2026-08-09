@@ -1211,18 +1211,22 @@ Supported formats are: {1}.</value>
     <value>Активный пресет</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>ВНИМАНИЕ!
-Некоторые ноутбуки могут допускать более высокие пределы мощности, чем они указывают, однако будьте осторожны. Этот параметр может привести к непредсказуемому поведению, поэтому, если вы не уверены в своих действиях, оставьте значение 0.</value>
+    <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
+    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Максимальное смещение</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>These offsets expand or restrict the selectable range limits of the CPU/GPU power and temperature sliders. Modifying them may result in unpredictable behavior or limits reverting if they exceed hardware boundaries.</value>
+    <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>ВНИМАНИЕ!
-Некоторые ноутбуки могут допускать более низкие пределы мощности, чем они указывают, однако будьте осторожны. Этот параметр может привести к непредсказуемому поведению, поэтому, если вы не уверены в своих действиях, оставьте значение 0.</value>
+    <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
+    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Минимальное смещение</value>
@@ -1231,7 +1235,10 @@ Supported formats are: {1}.</value>
     <value>Доп. настройки</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>Оптимизатор кривой все ядра.</value>
+    <value>Apply a negative voltage offset curve to reduce power consumption, heat, and thermal throttling.</value>
+  </data>
+  <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
+    <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
     <value>Оптимизатор кривой все ядра</value>
@@ -1240,43 +1247,52 @@ Supported formats are: {1}.</value>
     <value>Предельная мощность APU sPPT</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>Пиковая потребляемая мощность, которая может быть достигнута процессором при незначительной задержке.</value>
+    <value>The Slow Package Power Tracking limit governing the slow-response power budget for AMD APU packages.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>Долгосрочное ограничение мощности (перекрестная загрузка)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>Максимальное энергопотребление, которое может быть достигнуто CPU при полной загрузке CPU и GPU.</value>
+    <value>The sustained power limit applied to the CPU when the GPU is also under heavy load.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
+    <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>Долгосрочное ограничение мощности</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>Непрерывное потребление энергии, которое может быть достигнуто процессором.</value>
+    <value>The maximum power the CPU is allowed to sustain indefinitely under long workloads.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>Предельная пиковая мощность</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>Максимальное значение потребляемой мощности, которое может быть достигнуто процессором.</value>
+    <value>The absolute limit for instantaneous power spikes to protect the voltage regulator.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
+    <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
     <value>Срок краткосрочного ограничения мощности</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
-    <value>Количество времени, в течение которого процессору разрешено увеличивать и использовать краткосрочное ограничение мощности. Когда Тау истекает, используется долгосрочное ограничение мощности.</value>
+    <value>The maximum time the CPU can stay at the Short Term Power Limit before dropping back to the Long Term Power Limit.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Краткосрочное ограничение мощности</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>Пиковая потребляемая мощность, которая может быть достигнута процессором за короткое время.</value>
+    <value>The maximum power the CPU is allowed to draw for brief bursts of high activity.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>Ограничение температуры ЦП</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>Максимальная температура, которая может быть достигнута процессором до снижения частоты и мощности.</value>
+    <value>The target temperature threshold at which the CPU will begin thermal throttling.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>ЦП</value>
@@ -1301,15 +1317,19 @@ Supported formats are: {1}.</value>
     <value>Не удалось загрузить настройки.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Скорость вращения вентилятора не определяется одним температурным датчиком. Он будет увеличивать или уменьшать скорость в зависимости от наибольшего датчика между температурой CPU, GPU и кулера. Точные значения будут отображаться при наведении курсора мыши на каждый шаг.</value>
+    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
+    <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>Кривая вентилятора</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>ВНИМАНИЕ!
-Длительное использование этой опции приводит к деградации вентиляторов, снижая их срок службы.
-Серьезно, будьте осторожны с этой опцией!</value>
+    <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
+    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Максимальная скорость вентилятора</value>
@@ -1321,19 +1341,22 @@ Supported formats are: {1}.</value>
     <value>Настраиваемый TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>Дополнительное количество энергии, которое может быть выделено на GPU сверх базового энергопотребления.</value>
+    <value>The base sustained power limit allocated to the GPU, excluding dynamic boost headroom.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>Dynamic Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>Дополнительная максимальная мощность, которая может быть выделена GPU на основе энергопотребления CPU.</value>
+    <value>The maximum additional power allocated dynamically to the GPU from the CPU's budget during high graphics demand.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>Ограничение температуры GPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>Максимальная температура, которая может быть достигнута графическим процессором до снижения частоты и мощности.</value>
+    <value>The target temperature threshold at which the GPU will begin thermal throttling.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>Граф. процессор</value>
@@ -1342,13 +1365,19 @@ Supported formats are: {1}.</value>
     <value>Dynamic Boost GPU на CPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>Это максимальная дополнительная мощность, которая может быть выделена на GPU из CPU в зависимости от загрузки процессора. Чем выше это значение, тем выше производительность приложений, использующих GPU.</value>
+    <value>The maximum additional power the CPU is allowed to dynamically borrow from the GPU's budget.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
+    <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
     <value>Общая целевая мощность процессора в сети переменного тока</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>Точка при которой процессор запускает динамическую регулировку энергопотребления для GPU.</value>
+    <value>The CPU power threshold that triggers dynamic power adjustments for the GPU while running on AC power.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
+    <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
     <value>Настройки пользовательского режима не будут применяться корректно при работе Legion Space или его служб.</value>
@@ -1360,13 +1389,13 @@ Supported formats are: {1}.</value>
     <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Частота ускорения Precision Boost Overdrive.</value>
+    <value>Set the maximum frequency offset allowed beyond the factory default boost clock specification.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
     <value>Частота ускорения Precision Boost Overdrive</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Множитель Precision Boost Overdrive.</value>
+    <value>Configure the frequency boost aggressiveness by adjusting the processor's silicon health safety margins.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
     <value>Множитель Precision Boost Overdrive</value>
@@ -1375,13 +1404,16 @@ Supported formats are: {1}.</value>
     <value>Настройки пользовательского режима</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Включить /Выключить настройку кривой ядер.</value>
+    <value>Enable or disable voltage offset optimization across all CPU cores.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
     <value>Регулировка кривой ядер</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Включить /Выключить расширенные параметры разгона.</value>
+    <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
+    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
     <value>Overclocking</value>
@@ -1478,7 +1510,7 @@ Supported formats are: {1}.</value>
     <value>Режим питания IdeaPad</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
-    <value>Modify the Fn+Q switching order and configure the switching mode.</value>
+    <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
   </data>
   <data name="ITSModeConfigWindow_Title" xml:space="preserve">
     <value>ITS Mode</value>
