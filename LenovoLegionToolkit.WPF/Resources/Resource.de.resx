@@ -1210,18 +1210,22 @@ Vielen Dank für Ihre Unterstützung!</value>
     <value>Aktive Vorlage</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>WARNUNG!
-Einige Laptops können höhere Werte akzeptieren, als sie angeben, aber seien Sie vorsichtig. Diese Option kann zu unvorhersehbarem Verhalten führen. Wenn Sie also nicht sicher sind, was Sie tun, lassen Sie diese Option auf 0.</value>
+    <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
+    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Maximaler Offset</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>These offsets expand or restrict the selectable range limits of the CPU/GPU power and temperature sliders. Modifying them may result in unpredictable behavior or limits reverting if they exceed hardware boundaries.</value>
+    <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>WARNUNG!
-Einige Laptops können niedrigere Werte akzeptieren, als sie angeben, aber seien Sie vorsichtig. Diese Option kann zu unvorhersehbarem Verhalten führen. Wenn Sie also nicht sicher sind, was Sie tun, lassen Sie diese Option auf 0.</value>
+    <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
+    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Minimaler Offset</value>
@@ -1230,7 +1234,10 @@ Einige Laptops können niedrigere Werte akzeptieren, als sie angeben, aber seien
     <value>Erweitert</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>Alle Kerne Kurven-Optimierer.</value>
+    <value>Apply a negative voltage offset curve to reduce power consumption, heat, and thermal throttling.</value>
+  </data>
+  <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
+    <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
     <value>Alle Kerne Kurven-Optimierer</value>
@@ -1239,43 +1246,52 @@ Einige Laptops können niedrigere Werte akzeptieren, als sie angeben, aber seien
     <value>APU sPPT-Leistungsgrenze</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>Die maximale Leistungsaufnahme, die von der CPU mit einer geringen Verzögerung erreicht werden kann.</value>
+    <value>The Slow Package Power Tracking limit governing the slow-response power budget for AMD APU packages.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>Langzeit Leistungslimit (Querbelastung)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>Der maximale Stromverbrauch, der von der CPU erreicht werden kann, wenn sowohl CPU als auch GPU voll ausgelastet sind.</value>
+    <value>The sustained power limit applied to the CPU when the GPU is also under heavy load.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
+    <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>Langzeit Leistungslimit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>Die kontinuierliche Leistungsaufnahme, die von der CPU erreicht werden kann.</value>
+    <value>The maximum power the CPU is allowed to sustain indefinitely under long workloads.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>Spitzenleistungsgrenze</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>Die maximale sofortige Leistungsaufnahme, die von der CPU erreicht werden kann.</value>
+    <value>The absolute limit for instantaneous power spikes to protect the voltage regulator.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
+    <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
     <value>Dauer des kurzzeitigen Leistungslimits</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
-    <value>Die Zeitspanne, für die die CPU das kurzfristige Leistungslimit erhöhen und verwenden darf. Wenn die Zeit abläuft, wird das langfristige Leistungslimit verwendet.</value>
+    <value>The maximum time the CPU can stay at the Short Term Power Limit before dropping back to the Long Term Power Limit.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Kurzzeit Leistungslimit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>Die maximale Leistungsaufnahme, die von der CPU innerhalb eines kurzen Zeitraums erreicht werden kann.</value>
+    <value>The maximum power the CPU is allowed to draw for brief bursts of high activity.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>CPU Temperatur-Grenzwert</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>Die maximale Temperatur, die von der CPU erreicht werden kann, bevor Frequenz und Leistung reduziert werden.</value>
+    <value>The target temperature threshold at which the CPU will begin thermal throttling.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>CPU</value>
@@ -1300,15 +1316,19 @@ Es sei denn, Sie verfügen über die erforderliche technische Expertise.</value>
     <value>Einstellung konnte nicht geladen werden.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Die Lüfterdrehzahl wird nicht strikt von einem Temperatursensor bestimmt. Er erhöht oder senkt die Geschwindigkeit entsprechend dem höchsten Sensor zwischen CPU, GPU und Kühlkörpertemperatur. Die genauen Werte werden angezeigt, wenn Sie mit der Maus über jede Stufe fahren.</value>
+    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
+    <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>Lüfterkurve</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>WARNUNG!
-Längerer Gebrauch dieser Option verringert die Lebensdauer der Lüfter.
-Ernsthaft, seien Sie vorsichtig mit dieser Option!</value>
+    <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
+    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Maximale Lüfterdrehzahl</value>
@@ -1320,19 +1340,22 @@ Ernsthaft, seien Sie vorsichtig mit dieser Option!</value>
     <value>Konfigurierbare TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>Die zusätzliche Energiemenge, die der GPU zusätzlich zum Basisstromverbrauch zugewiesen werden kann.</value>
+    <value>The base sustained power limit allocated to the GPU, excluding dynamic boost headroom.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>Dynamischer Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>Die zusätzliche maximale Leistung, die der GPU auf der Grundlage des Stromverbrauchs der CPU zugewiesen werden kann.</value>
+    <value>The maximum additional power allocated dynamically to the GPU from the CPU's budget during high graphics demand.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>GPU Temperatur-Grenzwert</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>Die maximale Temperatur, die von der GPU erreicht werden kann, bevor Frequenz und Leistung reduziert werden.</value>
+    <value>The target temperature threshold at which the GPU will begin thermal throttling.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>GPU</value>
@@ -1341,13 +1364,19 @@ Ernsthaft, seien Sie vorsichtig mit dieser Option!</value>
     <value>GPU zu CPU Dynamischer Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>Dies ist die maximale zusätzliche Leistung, die der CPU von der GPU auf der Grundlage der CPU-Nutzung zugewiesen werden kann. Je höher der Wert, desto besser die Leistung von Anwendungen, die die CPU nutzen.</value>
+    <value>The maximum additional power the CPU is allowed to dynamically borrow from the GPU's budget.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
+    <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
     <value>Gesamtes Prozessorleistungsziel bei eingestecktem Netzteil</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>Der Punkt, an dem die CPU die dynamische Anpassung des Stromverbrauchs für die GPU auslöst.</value>
+    <value>The CPU power threshold that triggers dynamic power adjustments for the GPU while running on AC power.</value>
+  </data>
+  <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
+    <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
     <value>Die Einstellungen des benutzerdefinierten Modus werden nicht korrekt angewendet, wenn Legion Space oder dessen Dienste ausgeführt werden.</value>
@@ -1359,13 +1388,13 @@ Ernsthaft, seien Sie vorsichtig mit dieser Option!</value>
     <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Präzisions-Boost Overdrive Boost Frequenz.</value>
+    <value>Set the maximum frequency offset allowed beyond the factory default boost clock specification.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
     <value>Präzisions-Boost Overdrive Boost Frequenz</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Präzisions-Boost Overdrive Scaler.</value>
+    <value>Configure the frequency boost aggressiveness by adjusting the processor's silicon health safety margins.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
     <value>Präzisions-Boost Overdrive Scaler</value>
@@ -1374,13 +1403,16 @@ Ernsthaft, seien Sie vorsichtig mit dieser Option!</value>
     <value>Benutzerdefinierter Modus Einstellungen</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Aktiviere / Deaktiviere Core-Kurvenanpassung.</value>
+    <value>Enable or disable voltage offset optimization across all CPU cores.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
     <value>Anpassung der Kernkurve</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Erweiterte Overclocking Optionen aktivieren/deaktivieren.</value>
+    <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
+    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
     <value>Overclocking</value>
@@ -1477,7 +1509,7 @@ Wenn die dGPU überhaupt nicht reagiert, starten Sie bitte Ihren Laptop neu.</va
     <value>IdeaPad Energiemodus</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
-    <value>Modify the Fn+Q switching order and configure the switching mode.</value>
+    <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
   </data>
   <data name="ITSModeConfigWindow_Title" xml:space="preserve">
     <value>ITS Mode</value>
