@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Automation;
@@ -29,6 +29,30 @@ public partial class GodModeValueControl
     {
         get => _cardControlHeader.Subtitle;
         set => _cardControlHeader.Subtitle = value;
+    }
+
+    public string Warning
+    {
+        get => _cardControlHeader.Warning;
+        set => _cardControlHeader.Warning = value;
+    }
+
+    public string Info
+    {
+        get => _cardControlHeader.Info;
+        set => _cardControlHeader.Info = value;
+    }
+
+    public string Error
+    {
+        get => _cardControlHeader.Error;
+        set => _cardControlHeader.Error = value;
+    }
+
+    public string Success
+    {
+        get => _cardControlHeader.Success;
+        set => _cardControlHeader.Success = value;
     }
 
     public string Unit { get; set; } = string.Empty;
