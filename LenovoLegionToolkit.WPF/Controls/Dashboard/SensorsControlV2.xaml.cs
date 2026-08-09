@@ -37,6 +37,7 @@ public partial class SensorsControlV2
     private readonly HashSet<SensorItem> _activeSensorItems = [];
     private static readonly double[] AvailableRefreshIntervals = [0.5, 1, 2, 3, 4, 5];
     private readonly Dictionary<SensorItem, FrameworkElement> _sensorItemToControlMap;
+    private readonly Dictionary<SensorCardType, FrameworkElement> _cardTypeMap;
     private int _lastVisibleCardCount = -1;
     private double _lastAdjustedWidth = -1;
 
@@ -50,6 +51,13 @@ public partial class SensorsControlV2
         _sensorsGroupControllers.SelectedGpuIsIgpu = _hardwareSensorSettings.Store.SelectedGpuIsIgpu;
 
         _cpuNameTask = GetProcessedCpuName();
+        _cardTypeMap = new Dictionary<SensorCardType, FrameworkElement>
+        {
+            { SensorCardType.CPU, _cpuCard },
+            { SensorCardType.GPU, _gpuCard },
+            { SensorCardType.Motherboard, _motherboardCard },
+            { SensorCardType.MemoryDisk, _memoryDiskCard }
+        };
         _sensorItemToControlMap = new Dictionary<SensorItem, FrameworkElement>
         {
             { SensorItem.CpuUtilization, _cpuUtilizationGrid! },
@@ -119,6 +127,8 @@ public partial class SensorsControlV2
                 }
             });
         });
+
+        _cardWrapPanel.Drop += (s, e) => SaveCardOrder();
     }
 
     private void UpdateControlsVisibility()
@@ -196,6 +206,7 @@ public partial class SensorsControlV2
                 }
             }
 
+            RestoreCardOrder();
             UpdateControlsVisibility();
 
             if (!_applicationSettings.Store.EnableHardwareSensors)
@@ -210,6 +221,38 @@ public partial class SensorsControlV2
             _sensorSubscription?.Dispose();
             _sensorsGroupControllers.SensorsUpdated -= OnSensorsUpdated;
         }
+    }
+
+    private void RestoreCardOrder()
+    {
+        var order = _sensorsControlSettings.Store.CardOrder;
+        if (order == null || order.Length == 0) return;
+
+        var cards = _cardWrapPanel.Children.Cast<FrameworkElement>().ToList();
+        _cardWrapPanel.Children.Clear();
+        foreach (var cardType in order)
+        {
+            if (_cardTypeMap.TryGetValue(cardType, out var card) && cards.Remove(card))
+            {
+                _cardWrapPanel.Children.Add(card);
+            }
+        }
+        foreach (var card in cards)
+        {
+            _cardWrapPanel.Children.Add(card);
+        }
+    }
+
+    private void SaveCardOrder()
+    {
+        var reverseMap = _cardTypeMap.ToDictionary(kv => kv.Value, kv => kv.Key);
+        var cardOrder = _cardWrapPanel.Children
+            .Cast<FrameworkElement>()
+            .Where(c => reverseMap.ContainsKey(c))
+            .Select(c => reverseMap[c])
+            .ToArray();
+        _sensorsControlSettings.Store.CardOrder = cardOrder;
+        _sensorsControlSettings.SynchronizeStore();
     }
 
     private void StartSensorUpdates(double? intervalSeconds = null)

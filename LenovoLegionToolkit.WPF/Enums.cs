@@ -1,4 +1,4 @@
-﻿using LenovoLegionToolkit.WPF.Resources;
+using LenovoLegionToolkit.WPF.Resources;
 using System.ComponentModel.DataAnnotations;
 
 namespace LenovoLegionToolkit.WPF;
@@ -87,6 +87,14 @@ public enum SensorGroupType
     Battery,
     Memory,
     Disk
+}
+
+public enum SensorCardType
+{
+    CPU,
+    GPU,
+    Motherboard,
+    MemoryDisk
 }
 
 public enum SnackbarType
