@@ -11,9 +11,9 @@
     xmlns:utils="clr-namespace:LenovoLegionToolkit.WPF.Utils"
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="{x:Static resources:Resource.GodModeSettingsWindow_Title}"
-    Width="910"
+    Width="905"
     Height="700"
-    MinWidth="910"
+    MinWidth="905"
     MinHeight="500"
     FlowDirection="{x:Static utils:LocalizationHelper.Direction}"
     ResizeMode="CanResize"
@@ -134,7 +134,7 @@
                 <TabItem x:Name="_cpuTabItem" Visibility="Visible">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="DeveloperBoard24" Margin="0,0,8,0" Filled="False" />
+                            <wpfui:SymbolIcon Symbol="DeveloperBoard24" Margin="0,0,8,0" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_CPU_Title}"
@@ -142,7 +142,7 @@
                         </StackPanel>
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="0,0,16,0">
+                        <StackPanel Margin="0,0,8,0">
                             <godMode:GodModeValueControl
                                 x:Name="_cpuLongTermPowerLimitControl"
                                 Title="{x:Static resources:Resource.GodModeSettingsWindow_CPU_LongTermPL}"
@@ -188,7 +188,7 @@
                 <TabItem x:Name="_gpuTabItem" Visibility="Visible">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="Desktop24" Margin="0,0,8,0" Filled="False" />
+                            <wpfui:SymbolIcon Symbol="Desktop24" Margin="0,0,8,0" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_GPU_Title}"
@@ -196,7 +196,7 @@
                         </StackPanel>
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="0,0,16,0">
+                        <StackPanel Margin="0,0,8,0">
                             <godMode:GodModeValueControl
                                 x:Name="_gpuPowerBoostControl"
                                 Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_DynamicBoost}"
@@ -232,7 +232,7 @@
                 <TabItem x:Name="_fanTabItem" Visibility="Visible">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="WeatherBlowingSnow24" Margin="0,0,8,0" Filled="False" />
+                            <wpfui:SymbolIcon Symbol="WeatherBlowingSnow24" Margin="0,0,8,0" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Title}"
@@ -240,7 +240,7 @@
                         </StackPanel>
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="0,0,16,0">
+                        <StackPanel Margin="0,0,8,0">
                             <custom:CardControl
                                 x:Name="_fanCurveCardControl"
                                 Margin="0,0,0,8"
@@ -283,20 +283,20 @@
                 <TabItem x:Name="_fnqTabItem" Visibility="Collapsed">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="Gauge24" Margin="0,0,8,0" Filled="False" />
+                            <wpfui:SymbolIcon Symbol="Gauge24" Margin="0,0,8,0" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.ITSModeConfigWindow_Title}"
                                 TextWrapping="NoWrap" />
                         </StackPanel>
                     </TabItem.Header>
-                    <dashboard:ITSModeLoopControl x:Name="_fnqLoopControl" Margin="0,0,16,0" />
+                    <dashboard:ITSModeLoopControl x:Name="_fnqLoopControl" Margin="0,0,8,0" />
                 </TabItem>
 
                 <TabItem x:Name="_pboTabItem" Visibility="Collapsed">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="TopSpeed24" Margin="0,0,8,0" Filled="False" />
+                            <wpfui:SymbolIcon Symbol="TopSpeed24" Margin="0,0,8,0" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_Toggle_OC_Title}"
@@ -304,7 +304,7 @@
                         </StackPanel>
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="0,0,16,0">
+                        <StackPanel Margin="0,0,8,0">
                             <custom:CardControl x:Name="_toggleOcCard" Margin="0,0,0,8">
                                 <custom:CardControl.Header>
                                     <controls:CardHeaderControl
@@ -354,7 +354,7 @@
                 <TabItem x:Name="_advancedTabItem" Visibility="Visible">
                     <TabItem.Header>
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="WrenchScrewdriver24" Margin="0,0,8,0" Filled="False" />
+                            <wpfui:SymbolIcon Symbol="WrenchScrewdriver24" Margin="0,0,8,0" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Title}"
@@ -362,7 +362,7 @@
                         </StackPanel>
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
-                        <StackPanel Margin="0,0,16,0">
+                        <StackPanel Margin="0,0,8,0">
                             <Grid Margin="0,0,0,8">
                                 <Grid.Resources>
                                     <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource SystemAccentColorSecondary}" />
@@ -444,9 +444,24 @@
                 x:Name="_loadButton"
                 Grid.Column="0"
                 MinWidth="120"
-                Click="LoadButton_Click"
-                Content="{x:Static resources:Resource.Load}"
-                Icon="ChevronDown24" />
+                Click="LoadButton_Click">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock
+                        Grid.Column="0"
+                        VerticalAlignment="Center"
+                        Text="{x:Static resources:Resource.Load}" />
+                    <wpfui:SymbolIcon
+                        x:Name="_loadButtonIcon"
+                        Grid.Column="1"
+                        Margin="8,0,0,0"
+                        VerticalAlignment="Center"
+                        Symbol="ChevronDown24" />
+                </Grid>
+            </wpfui:Button>
 
             <wpfui:Button
                 Grid.Column="2"

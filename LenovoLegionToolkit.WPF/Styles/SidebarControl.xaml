@@ -1,11 +1,12 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml">
 
     <Style x:Key="SidebarTabControlStyle" TargetType="TabControl">
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Padding" Value="16,0,0,0" />
+        <Setter Property="Padding" Value="8,0,0,0" />
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
@@ -22,7 +23,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         
-                        <StackPanel Grid.Column="0" Margin="0,0,16,0">
+                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
                             <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.TabIndex="1" />
                         </StackPanel>
                         
@@ -38,6 +39,11 @@
     </Style>
 
     <Style x:Key="SidebarTabItemStyle" TargetType="TabItem">
+        <Style.Resources>
+            <Style TargetType="{x:Type wpfui:SymbolIcon}" BasedOn="{StaticResource {x:Type wpfui:SymbolIcon}}">
+                <Setter Property="Filled" Value="{Binding IsSelected, RelativeSource={RelativeSource AncestorType=TabItem}}" />
+            </Style>
+        </Style.Resources>
         <Setter Property="Background" Value="Transparent" />
         <Setter Property="BorderThickness" Value="0" />
         <Setter Property="Foreground" Value="{DynamicResource TextFillColorSecondaryBrush}" />
@@ -87,7 +93,6 @@
                             <Setter TargetName="BackgroundBorder" Property="Background" Value="{DynamicResource SubtleFillColorSecondaryBrush}" />
                             <Setter TargetName="ActiveIndicator" Property="Visibility" Value="Visible" />
                             <Setter Property="Foreground" Value="{DynamicResource TextFillColorPrimaryBrush}" />
-                            <Setter Property="FontWeight" Value="SemiBold" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Foreground" Value="{DynamicResource TextFillColorDisabledBrush}" />

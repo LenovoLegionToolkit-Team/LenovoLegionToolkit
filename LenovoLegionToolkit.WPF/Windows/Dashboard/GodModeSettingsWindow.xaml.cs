@@ -18,6 +18,7 @@ using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
+using Wpf.Ui.Common;
 
 namespace LenovoLegionToolkit.WPF.Windows.Dashboard;
 
@@ -494,6 +495,13 @@ public partial class GodModeSettingsWindow
             item.Click += (_, _) => { SetDefaults(d.Value); };
             menu.Items.Add(item);
         }
+
+        _loadButtonIcon.Symbol = SymbolRegular.ChevronUp24;
+        menu.Closed += (_, _) =>
+        {
+            _loadButtonIcon.Symbol = SymbolRegular.ChevronDown24;
+        };
+
         _loadButton.ContextMenu = menu;
         _loadButton.ContextMenu.IsOpen = true;
     }

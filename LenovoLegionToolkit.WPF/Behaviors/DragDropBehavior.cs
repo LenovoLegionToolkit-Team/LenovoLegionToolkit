@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 
 namespace LenovoLegionToolkit.WPF.Behaviors
 {
@@ -82,7 +83,9 @@ namespace LenovoLegionToolkit.WPF.Behaviors
                                 foundHandle = true;
                             }
                         }
-                        current = VisualTreeHelper.GetParent(current);
+                        current = current is Visual || current is Visual3D
+                            ? VisualTreeHelper.GetParent(current)
+                            : LogicalTreeHelper.GetParent(current);
                     }
 
                     if (foundHandle && directChild != null)

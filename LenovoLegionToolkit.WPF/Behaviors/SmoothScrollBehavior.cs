@@ -4,6 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Media3D;
 
 namespace LenovoLegionToolkit.WPF.Behaviors;
 
@@ -78,7 +79,9 @@ public static class SmoothScrollBehavior
         {
             if (current is ComboBox { IsDropDownOpen: true })
                 return true;
-            current = VisualTreeHelper.GetParent(current) ?? LogicalTreeHelper.GetParent(current!);
+            current = current is Visual || current is Visual3D
+                ? VisualTreeHelper.GetParent(current) ?? LogicalTreeHelper.GetParent(current)
+                : LogicalTreeHelper.GetParent(current);
         }
         return false;
     }
