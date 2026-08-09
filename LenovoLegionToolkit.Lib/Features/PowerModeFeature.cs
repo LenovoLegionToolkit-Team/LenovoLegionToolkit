@@ -146,7 +146,14 @@ public class PowerModeFeature(
             if (currentState == state.Value)
                 return;
 
-            await SetStateAsync(state.Value).ConfigureAwait(false);
+            try
+            {
+                await SetStateAsync(state.Value).ConfigureAwait(false);
+            }
+            catch (PowerModeUnavailableWithoutACException)
+            {
+                Log.Instance.Trace($"Mapped power mode is unavailable. [state={state.Value}]");
+            }
         }
         finally
         {

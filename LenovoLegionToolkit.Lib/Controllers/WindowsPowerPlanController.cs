@@ -468,8 +468,9 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
     {
         try
         {
-            if (PowerGetActiveScheme(IntPtr.Zero, out var guid) != 0)
-                PInvokeExtensions.ThrowIfWin32Error("PowerGetActiveScheme");
+            var result = PowerGetActiveScheme(IntPtr.Zero, out var guid);
+            if (result != 0)
+                PInvokeExtensions.ThrowIfWin32Error((int)result, "PowerGetActiveScheme");
 
             try
             {
@@ -491,8 +492,9 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
     private static void SetActivePowerPlan(Guid powerPlanGuid)
     {
-        if (PInvoke.PowerSetActiveScheme(null, powerPlanGuid) != WIN32_ERROR.ERROR_SUCCESS)
-            PInvokeExtensions.ThrowIfWin32Error("PowerSetActiveScheme");
+        var result = PInvoke.PowerSetActiveScheme(null, powerPlanGuid);
+        if (result != WIN32_ERROR.ERROR_SUCCESS)
+            PInvokeExtensions.ThrowIfWin32Error((int)result, "PowerSetActiveScheme");
     }
 
     [DllImport("kernel32.dll")]
