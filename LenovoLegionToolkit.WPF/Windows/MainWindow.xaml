@@ -133,7 +133,7 @@
                         PageType="{x:Type pages:BatteryPage}" />
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Actions}"
-                        Icon="Rocket24"
+                        Icon="Flash24"
                         PageTag="automation"
                         PageType="{x:Type pages:AutomationPage}" />
                     <custom:NavigationItem
@@ -156,9 +156,16 @@
                         PageType="{x:Type pages:SettingsPage}" />
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Donate}"
-                        Icon="Money24"
+                        Icon="Heart24"
                         PageTag="donate"
-                        PageType="{x:Type pages:DonatePage}" />
+                        PageType="{x:Type pages:DonatePage}">
+                        <custom:NavigationItem.Foreground>
+                            <SolidColorBrush Color="{DynamicResource SystemAccentColorSecondary}" />
+                        </custom:NavigationItem.Foreground>
+                        <custom:NavigationItem.IconForeground>
+                            <SolidColorBrush Color="{DynamicResource SystemAccentColorSecondary}" />
+                        </custom:NavigationItem.IconForeground>
+                    </custom:NavigationItem>
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_About}"
                         Icon="Info24"
