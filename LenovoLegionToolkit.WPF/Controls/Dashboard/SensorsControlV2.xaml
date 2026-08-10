@@ -51,7 +51,12 @@
             <Setter Property="Margin" Value="4,0,0,0" />
             <Setter Property="VerticalAlignment" Value="Center" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Foreground" Value="#0288D1" />
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource SystemAccentColorSecondary}" />
+                </Setter.Value>
+            </Setter>
+            <Setter Property="behaviors:ProgressBarAnimateBehavior.IsEnabled" Value="True" />
         </Style>
     </UserControl.Resources>
 
