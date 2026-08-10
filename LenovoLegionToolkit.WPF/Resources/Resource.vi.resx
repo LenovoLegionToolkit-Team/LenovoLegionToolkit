@@ -245,7 +245,7 @@
     <value>Nhiệt độ trung bình</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
-    <value>Tối thiểu</value>
+    <value>Minimum</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Việc áp dụng cấu hình đã bị hủy do quá trình khởi động lại không bình thường.</value>
@@ -1213,11 +1213,11 @@ Cảm ơn bạn đã ủng hộ!</value>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
     <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
   </data>
-  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
-    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
-  </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Mức tăng tối đa</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
+    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
@@ -1225,11 +1225,11 @@ Cảm ơn bạn đã ủng hộ!</value>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
     <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
   </data>
-  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
-    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
-  </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Mức tăng thấp nhất</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
+    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
     <value>Nâng cao</value>
@@ -1317,11 +1317,11 @@ Vui lòng không tiếp tục trừ khi bạn có kiến thức và chuyên môn
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
     <value>Không để tải cài đặt trước đó.</value>
   </data>
-  <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
-  </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
     <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
+    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>Cài đặt tốc độ quạt</value>
@@ -1329,11 +1329,11 @@ Vui lòng không tiếp tục trừ khi bạn có kiến thức và chuyên môn
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
     <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
   </data>
-  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
-    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
-  </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Tốc độ quạt tối đa</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
+    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
     <value>Quạt</value>
@@ -1413,11 +1413,11 @@ Vui lòng không tiếp tục trừ khi bạn có kiến thức và chuyên môn
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
     <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
   </data>
-  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
-    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
-  </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
     <value>Overclocking</value>
+  </data>
+  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
+    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>Cài đặt của Chế độ Custom sẽ không được áp dụng chính xác khi Lenovo Vantage hoặc các dịch vụ của nó đang chạy.</value>
@@ -1505,10 +1505,10 @@ Nếu GPU rời hoàn toàn không phản hồi, hãy khởi động lại máy 
     <value>Khởi động tức thì</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Thay đổi chế độ nguồn của IdeaPad</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Chế độ nguồn của IdeaPad</value>
+    <value>ITS Mode</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
     <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
@@ -1517,10 +1517,10 @@ Nếu GPU rời hoàn toàn không phản hồi, hãy khởi động lại máy 
     <value>ITS Mode</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Thay đổi chế độ nguồn của IdeaPad</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>Chế độ nguồn của IdeaPad</value>
+    <value>ITS Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows Dynamic Lighting đang bật.
@@ -2062,7 +2062,7 @@ Chức năng này không ảnh hưởng các cửa sổ ở chế độ toàn m�
     <value>Hiện hoặc Ẩn Gadget nổi</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>Gadget nổi</value>
+    <value>On-Screen Display</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
     <value>Vôn</value>
@@ -2488,9 +2488,6 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
   </data>
-  <data name="Ready" xml:space="preserve">
-    <value>Sẵn sàng</value>
-  </data>
   <data name="Refresh" xml:space="preserve">
     <value>Làm mới</value>
   </data>
@@ -2808,7 +2805,7 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>Tần suất trung bình</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Xác định loại tần số CPU được hiển thị trên Bảng điều khiển và Osd.</value>
+    <value>Determine the type of CPU frequency displayed on the Dashboard and OSD.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Xung nhịp CPU</value>
@@ -3185,7 +3182,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Lớp phủ nổi hiển thị dữ liệu cảm biến trực tiếp.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>Bật OSD</value>
+    <value>On-Screen Display</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
     <value>Chế độ ITS đồng bộ hóa cài đặt nguồn nguyên bản, vì vậy việc ghi đè nó ở đây có thể gây ra xung đột.</value>
