@@ -245,7 +245,7 @@
     <value>Medium Temperature</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
-    <value>Minium</value>
+    <value>Minimum</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>A inscrição do perfil foi cancelada devido a reinicialização anormal.</value>
@@ -1213,11 +1213,11 @@ Obrigado por seu apoio!</value>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
     <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
   </data>
-  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
-    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
-  </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Deslocamento máximo</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
+    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
@@ -1225,11 +1225,11 @@ Obrigado por seu apoio!</value>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
     <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
   </data>
-  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
-    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
-  </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Deslocamento mínimo</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
+    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
     <value>Avançado</value>
@@ -1316,11 +1316,11 @@ Não prossiga a menos que você possua os conhecimentos técnicos necessários.<
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
     <value>Não foi possível carregar as configurações.</value>
   </data>
-  <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
-  </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
     <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
+    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>Curva dos Coolers</value>
@@ -1328,11 +1328,11 @@ Não prossiga a menos que você possua os conhecimentos técnicos necessários.<
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
     <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
   </data>
-  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
-    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
-  </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Velocidade máxima dos coolers</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
+    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
     <value>Coolers</value>
@@ -1412,11 +1412,11 @@ Não prossiga a menos que você possua os conhecimentos técnicos necessários.<
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
     <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
   </data>
-  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
-    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
-  </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
     <value>Overclocking</value>
+  </data>
+  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
+    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>As configurações do modo personalizado não serão aplicadas corretamente quando o Lenovo Vantage ou seus serviços estiverem em execução.</value>
@@ -1503,10 +1503,10 @@ Não prossiga a menos que você possua os conhecimentos técnicos necessários.<
     <value>Inicialização instantânea</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Alterar Modo de Poder IdeaPad</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Modo de Energia IdeaPad</value>
+    <value>ITS Mode</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
     <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
@@ -1515,10 +1515,10 @@ Não prossiga a menos que você possua os conhecimentos técnicos necessários.<
     <value>ITS Mode</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Alterar Modo de Poder IdeaPad</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>Modo de Energia IdeaPad</value>
+    <value>ITS Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>A iluminação dinâmica do Windows está ativada.
@@ -2060,7 +2060,7 @@ Isso não afetará outras janelas em tela cheia, mas você não poderá clicar n
     <value>Mostrar ou ocultar OSD</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>OSD</value>
+    <value>On-Screen Display</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
     <value>Voltage</value>
@@ -2486,9 +2486,6 @@ Você pode alternar entre os modos pressionando Fn+Q.</value>
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
   </data>
-  <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
-  </data>
   <data name="Refresh" xml:space="preserve">
     <value>Atualizar</value>
   </data>
@@ -2806,7 +2803,7 @@ Você pode alternar entre os modos pressionando Fn+Q.</value>
     <value>Frequência Média</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine o tipo de frequência da CPU exibida no Painel e Osd.</value>
+    <value>Determine the type of CPU frequency displayed on the Dashboard and OSD.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Frequência da CPU</value>
@@ -3183,7 +3180,7 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
     <value>Sobreposição flutuante mostrando dados de sensor ao vivo.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>Habilitar OSD</value>
+    <value>On-Screen Display</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
     <value>Modo ITS nativamente sincroniza configurações de energia, então sobrescrevê-lo aqui pode causar conflitos.</value>
