@@ -245,7 +245,7 @@
     <value>Orta Sıcaklık</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
-    <value>En düşük</value>
+    <value>Minimum</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Anormal yeniden başlatma nedeniyle profil uygulaması iptal edildi.</value>
@@ -1213,11 +1213,11 @@ Desteğiniz için teşekkür ederiz!</value>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
     <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
   </data>
-  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
-    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
-  </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Maksimum ofset</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
+    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
@@ -1225,11 +1225,11 @@ Desteğiniz için teşekkür ederiz!</value>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
     <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
   </data>
-  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
-    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
-  </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Minimum ofset</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
+    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
     <value>Gelişmiş</value>
@@ -1316,11 +1316,11 @@ Gerekli teknik uzmanlığa sahip değilseniz devam etmeyin.</value>
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
     <value>Ayar yüklenemedi.</value>
   </data>
-  <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
-  </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
     <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
+    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>Fan eğrisi</value>
@@ -1328,11 +1328,11 @@ Gerekli teknik uzmanlığa sahip değilseniz devam etmeyin.</value>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
     <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
   </data>
-  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
-    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
-  </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Azami Çalışma Hızı</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
+    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
     <value>Fanlar</value>
@@ -1412,11 +1412,11 @@ Gerekli teknik uzmanlığa sahip değilseniz devam etmeyin.</value>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
     <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
   </data>
-  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
-    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
-  </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
     <value>Overclocking</value>
+  </data>
+  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
+    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>Özel Mod ayarları, Lenovo Vantage veya hizmetleri çalışırken doğru şekilde uygulanmayacaktır.</value>
@@ -1504,10 +1504,10 @@ GPU hiç yanıt vermiyorsa, lütfen dizüstü bilgisayarınızı yeniden başlat
     <value>Anında Önyükleme</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>IdeaPad Güç Modunu Değiştir</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>IdeaPad Güç Modu</value>
+    <value>ITS Mode</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
     <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
@@ -1516,10 +1516,10 @@ GPU hiç yanıt vermiyorsa, lütfen dizüstü bilgisayarınızı yeniden başlat
     <value>ITS Mode</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>IdeaPad Güç Modunu Değiştir</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>IdeaPad Güç Modu</value>
+    <value>ITS Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows Dinamik aydınlatma etkinleştirildi.
@@ -2061,7 +2061,7 @@ Diğer tam ekran pencereleri etkilemeyecek, ancak bildirimlere tıklayamayacaks�
     <value>Yüzen Gadget'ı Göster veya Gizle</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>Yüzen Gadget</value>
+    <value>On-Screen Display</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
     <value>Voltaj</value>
@@ -2487,9 +2487,6 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
   </data>
-  <data name="Ready" xml:space="preserve">
-    <value>Hazır</value>
-  </data>
   <data name="Refresh" xml:space="preserve">
     <value>Yenile</value>
   </data>
@@ -2807,7 +2804,7 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Ortalama Frekans</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Gösterge Paneli ve OSD'de görüntülenen CPU frekansının türünü belirleyin.</value>
+    <value>Determine the type of CPU frequency displayed on the Dashboard and OSD.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU Frekansı</value>
@@ -3184,7 +3181,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Canlı sensör verilerini gösteren yüzen bindirme.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>OSD'yi Etkinleştir</value>
+    <value>On-Screen Display</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
     <value>ITS Modu, güç ayarlarını varsayılan olarak senkronize eder; bu nedenle bu ayarı burada geçersiz kılmak çakışmalara neden olabilir.</value>
