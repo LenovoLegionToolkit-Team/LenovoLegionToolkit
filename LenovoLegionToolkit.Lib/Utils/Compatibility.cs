@@ -8,15 +8,15 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.System.Power;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
 using Newtonsoft.Json;
+using Windows.Win32;
+using Windows.Win32.Foundation;
+using Windows.Win32.System.Power;
 
 // ReSharper disable StringLiteralTypo
 
@@ -47,6 +47,7 @@ public static partial class Compatibility
         "17ARH",
         "17ITH",
         "17IMH",
+        "17ITL",
 
         "16ACH",
         "16ADR",
@@ -571,8 +572,9 @@ public static partial class Compatibility
         {
             return false;
         }
+
         return lower.Contains("IdeaPad", StringComparison.OrdinalIgnoreCase)
-            || lower.Contains("ThinkBook", StringComparison.OrdinalIgnoreCase) 
+            || lower.Contains("ThinkBook", StringComparison.OrdinalIgnoreCase)
             || lower.Contains("Lenovo Slim", StringComparison.OrdinalIgnoreCase)
             || lower.Contains("Motobook", StringComparison.OrdinalIgnoreCase)
             || lower.Contains("XiaoXin", StringComparison.OrdinalIgnoreCase)
