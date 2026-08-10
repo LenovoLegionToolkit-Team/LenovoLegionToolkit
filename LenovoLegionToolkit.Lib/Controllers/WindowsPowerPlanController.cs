@@ -23,6 +23,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
     private readonly ThrottleLastDispatcher _overlayDispatcher = new(TimeSpan.FromSeconds(2), nameof(WindowsPowerPlanController));
     private readonly SemaphoreSlim _lock = new(1, 1);
+    private int _skipNextPowerModeSync;
 
     public IEnumerable<WindowsPowerPlan> GetPowerPlans()
     {
@@ -36,6 +37,12 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
     public PowerModeState? GetPowerModeStateForActivePowerPlan()
     {
+        if (Interlocked.Exchange(ref _skipNextPowerModeSync, 0) == 1)
+        {
+            Log.Instance.Trace("Ignoring power plan change initiated by Lenovo Legion Toolkit.");
+            return null;
+        }
+
         if (settings.Store.PowerModeMappingMode is not PowerModeMappingMode.WindowsPowerPlan ||
             !settings.Store.SynchronizePowerModeWithWindowsPowerPlan)
             return null;
@@ -112,11 +119,13 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
             try
             {
+                Interlocked.Exchange(ref _skipNextPowerModeSync, 1);
                 SetActivePowerPlan(powerPlanToActivate.Guid);
                 Log.Instance.Trace($"Power plan {powerPlanToActivate.Guid} activated. [name={powerPlanToActivate.Name}]");
             }
             catch (Exception ex)
             {
+                Interlocked.Exchange(ref _skipNextPowerModeSync, 0);
                 Log.Instance.Trace($"Failed to set active power plan. [guid={powerPlanToActivate.Guid}]", ex);
                 return;
             }
