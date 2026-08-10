@@ -286,7 +286,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hybrid Mode.
+        ///   Looks up a localized string similar to When GPU Working Mode is changed.
         /// </summary>
         public static string HybridModeAutomationPipelineTrigger_DisplayName {
             get {
@@ -295,7 +295,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to When IdeaPad Power Mode is changed.
+        ///   Looks up a localized string similar to When ITS Mode is changed.
         /// </summary>
         public static string ITSModeAutomationPipelineTrigger_DisplayName {
             get {

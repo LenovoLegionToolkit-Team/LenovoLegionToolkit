@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -175,6 +175,12 @@
   <data name="AddNew" xml:space="preserve">
     <value>Přidat nový</value>
   </data>
+  <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
+    <value>Dynamically shifts power between the CPU and GPU to maximize performance in compatible games.</value>
+  </data>
+  <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
+    <value>AI Engine</value>
+  </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>Režim Letadlo</value>
   </data>
@@ -216,6 +222,30 @@
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
     <value>Current Limits</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
+    <value>High Temperature</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
+    <value>Low Temperature</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
+    <value>Medium Temperature</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
+    <value>Minimum</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Použití profilu bylo zrušeno z důvodu abnormálního restartu.</value>
@@ -277,6 +307,9 @@
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
     <value>Curve Optimizer</value>
   </data>
+  <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
+    <value>Curve Shaper Optimizer</value>
+  </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -285,6 +318,9 @@
   </data>
   <data name="AmdOverclocking_TDC_VDD" xml:space="preserve">
     <value>TDC VDD</value>
+  </data>
+  <data name="AmdOverclocking_Title" xml:space="preserve">
+    <value>AMD Precision Boost Overclocking</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
     <value>Disable CCD 1 to get stability on both FPS and temperatures.</value>
@@ -776,6 +812,9 @@ Přepínání režimů může vyžadovat restart.</value>
   <data name="CopyAll" xml:space="preserve">
     <value>Kopírovat vše</value>
   </data>
+  <data name="Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
   </data>
@@ -1178,6 +1217,9 @@ Některé notebooky mohou akceptovat vyšší limity výkonu, než uvádějí, a
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Maximální offset</value>
   </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
+    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
+  </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>Neměň níže uvedené možnosti, pokud opravdu nevíš, co děláš.</value>
   </data>
@@ -1188,11 +1230,17 @@ Některé notebooky mohou akceptovat nižší limity výkonu, než uvádějí, a
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Minimální offset</value>
   </data>
+  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
+    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
+  </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
     <value>Pokročilé</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
     <value>Optimizér všech kurzů jádra.</value>
+  </data>
+  <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
+    <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
     <value>Optimalizace všech kurzů jádra</value>
@@ -1209,6 +1257,9 @@ Některé notebooky mohou akceptovat nižší limity výkonu, než uvádějí, a
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
     <value>Maximální spotřeba CPU, když se plně využívá CPU a GPU současně.</value>
   </data>
+  <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
+    <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
+  </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>Dlouhodobý limit výkonu</value>
   </data>
@@ -1220,6 +1271,9 @@ Některé notebooky mohou akceptovat nižší limity výkonu, než uvádějí, a
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
     <value>Maximální okamžitá spotřeba CPU, která může být dosažena.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
+    <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
     <value>Doba krátkodobého limitu výkonu</value>
@@ -1238,6 +1292,9 @@ Některé notebooky mohou akceptovat nižší limity výkonu, než uvádějí, a
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
     <value>Maximalní teplota CPU předtím, než se limituje frekvence a spotřeba.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>Procesor</value>
@@ -1261,6 +1318,9 @@ Nepokračujte, pokud nemáte potřebné technické znalosti.</value>
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
     <value>Nastavení se nepodařilo načíst.</value>
   </data>
+  <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
+    <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
+  </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
     <value>Otáčky ventilátoru nejsou striktně určeny jedním teplotním čidlem. Zvýší nebo sníží rychlost podle nejvyššího snímače mezi teplotou CPU, GPU a chladiče. Přesné hodnoty se zobrazí, když najedeš myší na každý krok.</value>
   </data>
@@ -1274,6 +1334,9 @@ Vážně, buď opatrný s touto možností!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Maximální rychlost ventilátorů</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
+    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
     <value>Ventilátory</value>
@@ -1296,6 +1359,9 @@ Vážně, buď opatrný s touto možností!</value>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
     <value>Maximalní teplota GPU předtím, než se limituje frekvence a spotřeba.</value>
   </data>
+  <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
+  </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>GPU</value>
   </data>
@@ -1305,17 +1371,26 @@ Vážně, buď opatrný s touto možností!</value>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
     <value>Toto je maximální dodatečný výkon, který lze přidělit CPU z grafické karty. Čím vyšší hodnota, tím lepší výkon aplikací, které používají CPU.</value>
   </data>
+  <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
+    <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
+  </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
     <value>Cíl celkového výkonu procesoru v AC</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
     <value>Bod, ve kterém CPU spouští dynamickou úpravu spotřeby energie pro GPU.</value>
   </data>
+  <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
+    <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
+  </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
     <value>Nastavení vlastního reimu nebude správně použito, pokud Legion Space nebo jeho sluby běží.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>Nastavení vlastního reimu nebude správně použito, pokud Legion Zone nebo jeho sluby běží.</value>
+  </data>
+  <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
+    <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Zesílení přesahu Zesílení</value>
@@ -1343,6 +1418,9 @@ Vážně, buď opatrný s touto možností!</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
     <value>Pokročilé možnosti přepisování</value>
+  </data>
+  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
+    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>Nastavení vlastního režimu nebude správně použito, pokud Lenovo Vantage nebo jeho služby běží.</value>
@@ -1430,16 +1508,22 @@ Pokud dGPU vůbec nereaguje, prosím restartujte svůj notebook.</value>
     <value>Okamžité spuštění</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Změnit režim spotřeby pro IdeaPad</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Režim napájení pro IdeaPad</value>
+    <value>ITS Mode</value>
+  </data>
+  <data name="ITSModeConfigWindow_Description" xml:space="preserve">
+    <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
+  </data>
+  <data name="ITSModeConfigWindow_Title" xml:space="preserve">
+    <value>ITS Mode</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Změnit režim spotřeby pro IdeaPad</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>Režim napájení pro IdeaPad</value>
+    <value>ITS Power Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows Dynamic lighting is enabled.
@@ -1983,6 +2067,9 @@ Nebude to mít vliv na ostatní celoobrazovková okna, ale nebudete moci kliknou
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>OSD</value>
   </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>Voltage</value>
+  </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Nastavte stav pozice zámku OSD.</value>
   </data>
@@ -2404,9 +2491,6 @@ Režim můžeš přepínat pomocí Fn+Q.</value>
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
   </data>
-  <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
-  </data>
   <data name="Refresh" xml:space="preserve">
     <value>Obnovit</value>
   </data>
@@ -2755,6 +2839,21 @@ Režim můžeš přepínat pomocí Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Použitá/celková paměť (GB)</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>Choose how voltage is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>Voltage Display Mode</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Pořadové číslo</value>
@@ -3481,6 +3580,9 @@ Vyžaduje restart.</value>
   </data>
   <data name="ToggleHybridModeControl_Title" xml:space="preserve">
     <value>Hybridní mód</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
     <value>Deaktivovat touchpad.</value>

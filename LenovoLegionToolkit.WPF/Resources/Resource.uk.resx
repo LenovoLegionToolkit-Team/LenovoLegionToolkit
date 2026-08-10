@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -175,6 +175,12 @@
   <data name="AddNew" xml:space="preserve">
     <value>Додати нову</value>
   </data>
+  <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
+    <value>Dynamically shifts power between the CPU and GPU to maximize performance in compatible games.</value>
+  </data>
+  <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
+    <value>AI Engine</value>
+  </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>Режим польоту</value>
   </data>
@@ -216,6 +222,30 @@
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
     <value>Current Limits</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
+    <value>High</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
+    <value>High Temperature</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
+    <value>Low</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
+    <value>Low Temperature</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
+    <value>Medium</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
+    <value>Medium Temperature</value>
+  </data>
+  <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
+    <value>Minimum</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Застосування профілю скасовано через ненормальний перезапуск.</value>
@@ -277,6 +307,9 @@
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
     <value>Curve Optimizer</value>
   </data>
+  <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
+    <value>Curve Shaper Optimizer</value>
+  </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -285,6 +318,9 @@
   </data>
   <data name="AmdOverclocking_TDC_VDD" xml:space="preserve">
     <value>TDC VDD</value>
+  </data>
+  <data name="AmdOverclocking_Title" xml:space="preserve">
+    <value>AMD Precision Boost Overclocking</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
     <value>Disable CCD 1 to get stability on both FPS and temperatures.</value>
@@ -775,6 +811,9 @@ Supported formats are: {1}.</value>
   <data name="CopyAll" xml:space="preserve">
     <value>Скопіювати все</value>
   </data>
+  <data name="Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
   </data>
@@ -1177,6 +1216,9 @@ Thank you for your support!</value>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Максимальний зсув</value>
   </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
+    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
+  </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>Не змінюйте налаштування знизу, поки ви дійсно не зрозумієте, що вони роблять.</value>
   </data>
@@ -1187,11 +1229,17 @@ Thank you for your support!</value>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Мінімальний зсув</value>
   </data>
+  <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
+    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
+  </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
     <value>Розширені</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
     <value>Оптимізатор всіх основних кривих.</value>
+  </data>
+  <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
+    <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
     <value>Оптимізатор всіх основних кривих</value>
@@ -1208,6 +1256,9 @@ Thank you for your support!</value>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
     <value>Максимальне енергоспоживання, яке може бути досягнуте ЦП, коли обидва ЦП та ГП повністю навантажені.</value>
   </data>
+  <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
+    <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
+  </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>Довгострокове обмеження потужності</value>
   </data>
@@ -1219,6 +1270,9 @@ Thank you for your support!</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
     <value>Максимальне миттєве енергоспоживання, якого може досягти ЦП.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
+    <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
     <value>Короткострокове обмеження потужності</value>
@@ -1237,6 +1291,9 @@ Thank you for your support!</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
     <value>Максимальна температура, яка може бути досягнута ЦП до зниження частоти та потужності.</value>
+  </data>
+  <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>ЦП</value>
@@ -1260,6 +1317,9 @@ Thank you for your support!</value>
   <data name="GodModeSettingsWindow_Error_Load_Title" xml:space="preserve">
     <value>Не вдалося завантажити налаштування.</value>
   </data>
+  <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
+    <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
+  </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
     <value>Швидкість кулерів не визначається строго одним датчиком температури. Вона буде підвищуватись або знижуватись за найвищим датчиком між температурою процесора, графічного процесора та радіатора. Точні значення з'являтимуться, коли ви наведете курсор миші на кожен крок.</value>
   </data>
@@ -1273,6 +1333,9 @@ Thank you for your support!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Максимальна швидкість кулерів</value>
+  </data>
+  <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
+    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
     <value>Кулери</value>
@@ -1295,6 +1358,9 @@ Thank you for your support!</value>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
     <value>Максимальна температура, яка може бути досягнути ГП до зниження частоти та потужності.</value>
   </data>
+  <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
+    <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
+  </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>ГП</value>
   </data>
@@ -1304,17 +1370,26 @@ Thank you for your support!</value>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
     <value>Це максимальне додаткове живлення, яке може бути виділене центральному процесору від графічного процесора, на основі використання центрального процесора. Чим вище значення, тим краща продуктивність програм, які використовують ЦП.</value>
   </data>
+  <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
+    <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
+  </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
     <value>Загальна потужність ЦП в змінному струмі</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
     <value>Точка з якої ЦП запускає динамічне регулювання енергоспоживання ГП.</value>
   </data>
+  <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
+    <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
+  </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
     <value>Користувацький режим налаштувань не застосується належним чином, коли запущено Legion Space або його служби.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>Налаштування користувальницького режиму не буде застосовано правильно, коли запущено Legion Zone або його служби.</value>
+  </data>
+  <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
+    <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Частота прискорення Precision Boost Overdrive.</value>
@@ -1342,6 +1417,9 @@ Thank you for your support!</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
     <value>Розширені параметри розгону</value>
+  </data>
+  <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
+    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>Налаштування користувальницького режиму не застосовуватимуться правильно, коли запущено Lenovo Vantage або його служби.</value>
@@ -1429,16 +1507,22 @@ Thank you for your support!</value>
     <value>Миттєве ввімкнення</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Зміна режиму живлення IdeaPad</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>Режим живлення IdeaPad</value>
+    <value>ITS Mode</value>
+  </data>
+  <data name="ITSModeConfigWindow_Description" xml:space="preserve">
+    <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
+  </data>
+  <data name="ITSModeConfigWindow_Title" xml:space="preserve">
+    <value>ITS Mode</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Зміна режиму живлення IdeaPad</value>
+    <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>Режим живлення IdeaPad</value>
+    <value>ITS Power Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Динамічне підсвічування Windows увімкнено.
@@ -1982,6 +2066,9 @@ Thank you for your support!</value>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
     <value>Плаваючий ґаджет</value>
   </data>
+  <data name="OsdItem_Voltage" xml:space="preserve">
+    <value>Voltage</value>
+  </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Встановлення положення ОП.</value>
   </data>
@@ -2403,9 +2490,6 @@ Thank you for your support!</value>
   <data name="RAM" xml:space="preserve">
     <value>RAM</value>
   </data>
-  <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
-  </data>
   <data name="Refresh" xml:space="preserve">
     <value>Оновлення</value>
   </data>
@@ -2754,6 +2838,21 @@ Thank you for your support!</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Використано / Всього пам'яті (GB)</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
+    <value>Core</value>
+  </data>
+  <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
+    <value>Choose how voltage is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
+    <value>Voltage Display Mode</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Серійний номер</value>
@@ -3480,6 +3579,9 @@ Thank you for your support!</value>
   </data>
   <data name="ToggleHybridModeControl_Title" xml:space="preserve">
     <value>Гібридний режим</value>
+  </data>
+  <data name="Total" xml:space="preserve">
+    <value>Total</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
     <value>Вимкнути тачпад.</value>
