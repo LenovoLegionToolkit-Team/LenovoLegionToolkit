@@ -51,32 +51,11 @@
                 Text="{x:Static resources:Resource.EditDashboardWindow_Title}" />
         </Grid>
 
-        <Grid
+        <custom:HintText
             x:Name="_infoBar"
             Grid.Row="1"
-            Margin="12,0,16,16">
-            <Grid.Resources>
-                <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource SystemAccentColorSecondary}" />
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <wpfui:SymbolIcon
-                Grid.Column="0"
-                Margin="0,0,8,0"
-                VerticalAlignment="Center"
-                Filled="False"
-                Foreground="{StaticResource AccentBrush}"
-                Symbol="Info24" />
-            <TextBlock
-                Grid.Column="1"
-                FontSize="12"
-                VerticalAlignment="Center"
-                Foreground="{StaticResource AccentBrush}"
-                Text="{x:Static resources:Resource.EditDashboardWindow_Disclaimer_Message}"
-                TextWrapping="Wrap" />
-        </Grid>
+            Margin="12,0,16,16"
+            Text="{x:Static resources:Resource.EditDashboardWindow_Disclaimer_Message}" />
 
         <controls:LoadableControl
             x:Name="_loader"

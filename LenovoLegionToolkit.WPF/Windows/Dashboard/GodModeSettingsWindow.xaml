@@ -290,7 +290,11 @@
                                 TextWrapping="NoWrap" />
                         </StackPanel>
                     </TabItem.Header>
-                    <dashboard:ITSModeLoopControl x:Name="_fnqLoopControl" Margin="0,0,8,0" />
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel Margin="0,0,8,0">
+                            <dashboard:ITSModeLoopControl x:Name="_fnqLoopControl" Margin="0,0,0,8" />
+                        </StackPanel>
+                    </ScrollViewer>
                 </TabItem>
 
                 <TabItem x:Name="_pboTabItem" Visibility="Collapsed">
@@ -363,29 +367,7 @@
                     </TabItem.Header>
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <StackPanel Margin="0,0,8,0">
-                            <Grid Margin="0,0,0,8">
-                                <Grid.Resources>
-                                    <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource SystemAccentColorSecondary}" />
-                                </Grid.Resources>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                </Grid.ColumnDefinitions>
-                                <wpfui:SymbolIcon
-                                    Grid.Column="0"
-                                    Margin="0,0,8,0"
-                                    VerticalAlignment="Center"
-                                    Filled="False"
-                                    Foreground="{StaticResource AccentBrush}"
-                                    Symbol="Info24" />
-                                <TextBlock
-                                    Grid.Column="1"
-                                    FontSize="12"
-                                    VerticalAlignment="Center"
-                                    Foreground="{StaticResource AccentBrush}"
-                                    Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Message}"
-                                    TextWrapping="Wrap" />
-                            </Grid>
+                            <custom:HintText Margin="0,0,0,8" Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Message}" />
 
                              <custom:CardControl x:Name="_maxValueOffsetCardControl" Margin="0,0,0,8">
                                 <custom:CardControl.Header>

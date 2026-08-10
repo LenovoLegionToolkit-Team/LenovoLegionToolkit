@@ -63,14 +63,10 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <custom:CardControl
+                <custom:HintText
                     Grid.Row="0"
                     Margin="0,8,0,8"
-                    Icon="Info24">
-                    <custom:CardControl.Header>
-                        <TextBlock Text="{x:Static resources:Resource.ExcludeProcessesWindow_Description}" TextWrapping="Wrap" />
-                    </custom:CardControl.Header>
-                </custom:CardControl>
+                    Text="{x:Static resources:Resource.ExcludeProcessesWindow_Description}" />
 
                 <Border Grid.Row="1" CornerRadius="8">
                     <Border.Background>

@@ -7,42 +7,15 @@
     xmlns:custom="clr-namespace:LenovoLegionToolkit.WPF.Controls.Custom"
     xmlns:behaviors="clr-namespace:LenovoLegionToolkit.WPF.Behaviors">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <StackPanel>
+        <custom:HintText
+            Margin="0,0,0,8"
+            Text="{x:Static resources:Resource.ITSModeConfigWindow_Description}" />
 
-        <Grid Grid.Row="0" Margin="0,0,0,12">
-            <Grid.Resources>
-                <SolidColorBrush x:Key="AccentBrush" Color="{DynamicResource SystemAccentColorSecondary}" />
-            </Grid.Resources>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <wpfui:SymbolIcon
-                Grid.Column="0"
-                Margin="0,0,8,0"
-                VerticalAlignment="Center"
-                Filled="False"
-                Foreground="{StaticResource AccentBrush}"
-                Symbol="Info24" />
-            <TextBlock
-                Grid.Column="1"
-                FontSize="12"
-                VerticalAlignment="Center"
-                Foreground="{StaticResource AccentBrush}"
-                Text="{x:Static resources:Resource.ITSModeConfigWindow_Description}"
-                TextWrapping="Wrap" />
-        </Grid>
-
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
-            <StackPanel
-                x:Name="_modeCardsPanel"
-                Margin="0,4,4,0"
-                behaviors:DragDropBehavior.IsEnabled="True"
-                behaviors:DragDropBehavior.DragHandleName="DragHandle" />
-        </ScrollViewer>
-    </Grid>
+        <StackPanel
+            x:Name="_modeCardsPanel"
+            Margin="0,0,8,0"
+            behaviors:DragDropBehavior.IsEnabled="True"
+            behaviors:DragDropBehavior.DragHandleName="DragHandle" />
+    </StackPanel>
 </UserControl>
