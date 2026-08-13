@@ -881,6 +881,9 @@ Přepínání režimů může vyžadovat restart.</value>
   <data name="Delete" xml:space="preserve">
     <value>Smazat</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="Device" xml:space="preserve">
     <value>Zařízení</value>
   </data>
@@ -1076,10 +1079,16 @@ Děkujeme za vaši podporu!</value>
     <value>Chyba</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Procesy v tomto seznamu budou ignorovány spuštěním/zastavením spouštěčů hry a Lenovoova AI/Inteligentní režim. Zadejte název procesu bez cesty (např. "discord" nebo "blender").</value>
+    <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Název procesu (např. discord)</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Vyloučené procesy</value>
