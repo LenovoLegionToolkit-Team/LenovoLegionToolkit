@@ -880,6 +880,9 @@ Supported formats are: {1}.</value>
   <data name="Delete" xml:space="preserve">
     <value>Видалити</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="Device" xml:space="preserve">
     <value>Пристрій</value>
   </data>
@@ -1075,10 +1078,16 @@ Thank you for your support!</value>
     <value>Помилка</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Процеси з цього списку будуть ігноруватися тригерами запуску/зупинки гри ШІ/Інтелектуальним режимом Lenovo. Введіть назву процесу без шляху (наприклад, «discord» або «blender»).</value>
+    <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Назва процесу (наприклад, discord)</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Виключені процеси</value>
