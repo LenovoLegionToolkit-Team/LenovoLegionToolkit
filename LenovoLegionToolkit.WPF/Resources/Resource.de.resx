@@ -880,6 +880,9 @@ Ein Wechsel des Modus kann einen Neustart erfordern.</value>
   <data name="Delete" xml:space="preserve">
     <value>Löschen</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="Device" xml:space="preserve">
     <value>Gerät</value>
   </data>
@@ -1075,10 +1078,16 @@ Vielen Dank für Ihre Unterstützung!</value>
     <value>Fehler</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Prozesse in dieser Liste werden von Spielstart/Stop-Triggern und Lenovos AI/Intelligent Mode ignoriert. Geben Sie den Prozessnamen ohne den Pfad ein (z.B. "discord" oder "blender").</value>
+    <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Prozessname (z.B. Diskord)</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Ausgeschlossene Prozesse</value>
