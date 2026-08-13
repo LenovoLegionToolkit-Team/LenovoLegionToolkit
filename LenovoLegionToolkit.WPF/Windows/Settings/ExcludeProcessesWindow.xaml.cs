@@ -1,27 +1,41 @@
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Automation;
 using System.Windows.Controls;
-using System.Windows.Input;
+using System.Windows.Data;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.WPF.Resources;
-using LenovoLegionToolkit.WPF.Utils;
-using Wpf.Ui.Common;
-using Wpf.Ui.Controls;
-using Button = Wpf.Ui.Controls.Button;
 
 namespace LenovoLegionToolkit.WPF.Windows.Settings;
 
 public partial class ExcludeProcessesWindow
 {
     private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
+    private readonly ObservableCollection<ExcludeProcessViewModel> _excludedProcesses = [];
+    private readonly ObservableCollection<ExcludeProcessViewModel> _runningProcesses = [];
+    private ICollectionView _runningView = null!;
 
     public ExcludeProcessesWindow()
     {
         InitializeComponent();
+
+        _excludedList.ItemsSource = _excludedProcesses;
+
+        _runningView = CollectionViewSource.GetDefaultView(_runningProcesses);
+        _runningView.Filter = FilterRunningProcess;
+        _runningList.ItemsSource = _runningView;
+
         IsVisibleChanged += ExcludeProcessesWindow_IsVisibleChanged;
     }
 
@@ -36,60 +50,164 @@ public partial class ExcludeProcessesWindow
         _loader.IsLoading = true;
         var loadingTask = Task.Delay(200);
 
-        _list.Items.Clear();
+        _excludedProcesses.Clear();
+        _runningProcesses.Clear();
 
-        foreach (var process in _settings.Store.ExcludedProcesses.OrderBy(x => x))
+        var savedExcluded = _settings.Store.ExcludedProcesses.ToHashSet(StringComparer.OrdinalIgnoreCase);
+
+        var data = await Task.Run(() =>
         {
-            AddProcessToList(process);
-        }
+            var currentSessionId = Process.GetCurrentProcess().SessionId;
+            var allProcesses = Process.GetProcesses();
 
-        await loadingTask;
-        _loader.IsLoading = false;
-        _inputBox.Focus();
-    }
-
-    private void AddProcessToList(string processName)
-    {
-        var item = new ListItem(processName);
-        item.RemoveRequested += (s, e) => _list.Items.Remove(item);
-        _list.Items.Add(item);
-    }
-
-    private void AddButton_Click(object sender, RoutedEventArgs e)
-    {
-        SubmitInput();
-    }
-
-    private void InputBox_KeyDown(object sender, KeyEventArgs e)
-    {
-        if (e.Key == Key.Enter)
-        {
-            SubmitInput();
-        }
-    }
-
-    private void SubmitInput()
-    {
-        var text = _inputBox.Text.Trim();
-        if (string.IsNullOrWhiteSpace(text)) return;
-
-        foreach (ListItem item in _list.Items)
-        {
-            if (item.ProcessName.Equals(text, StringComparison.OrdinalIgnoreCase))
+            var sessionProcesses = new List<Process>();
+            foreach (var p in allProcesses)
             {
-                _inputBox.Text = string.Empty;
-                return;
+                try
+                {
+                    if (p.SessionId == currentSessionId)
+                    {
+                        sessionProcesses.Add(p);
+                        continue;
+                    }
+                }
+                catch { }
+                p.Dispose();
+            }
+
+            var processGroups = sessionProcesses.GroupBy(p => p.ProcessName, StringComparer.OrdinalIgnoreCase).ToList();
+            var results = new List<ExcludeProcessViewModel>();
+
+            foreach (var group in processGroups)
+            {
+                var name = group.Key;
+                string? path = null;
+
+                foreach (var p in group)
+                {
+                    if (string.IsNullOrEmpty(path))
+                    {
+                        try
+                        {
+                            path = p.GetFileName();
+                        }
+                        catch { }
+                    }
+                    p.Dispose();
+                }
+
+                ImageSource? icon = null;
+                if (!string.IsNullOrEmpty(path))
+                {
+                    icon = ExtractIcon(path);
+                }
+
+                results.Add(new ExcludeProcessViewModel
+                {
+                    Name = name,
+                    Path = path ?? string.Empty,
+                    Icon = icon
+                });
+            }
+
+            return results;
+        });
+
+        foreach (var name in savedExcluded.OrderBy(n => n))
+        {
+            var match = data.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (match != null)
+            {
+                _excludedProcesses.Add(match);
+                data.Remove(match);
+            }
+            else
+            {
+                _excludedProcesses.Add(new ExcludeProcessViewModel { Name = name });
             }
         }
 
-        AddProcessToList(text);
-        _inputBox.Text = string.Empty;
-        _inputBox.Focus();
+        foreach (var p in data.OrderBy(p => p.Name))
+        {
+            _runningProcesses.Add(p);
+        }
+
+        UpdateHeaders();
+
+        await loadingTask;
+        _loader.IsLoading = false;
+        _searchBox.Focus();
+    }
+
+    private bool FilterRunningProcess(object obj)
+    {
+        if (obj is not ExcludeProcessViewModel vm)
+            return false;
+
+        var query = _searchBox.Text;
+        if (string.IsNullOrWhiteSpace(query))
+            return true;
+
+        return vm.Name.Contains(query, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private void UpdateHeaders()
+    {
+        _excludedExpander.Header = string.Format(Resource.ExcludeProcessesWindow_ExcludedProcesses_Format, _excludedProcesses.Count);
+        _noExcludedProcessesText.Visibility = _excludedProcesses.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+        _excludedList.Visibility = _excludedProcesses.Count == 0 ? Visibility.Collapsed : Visibility.Visible;
+
+        var runningCount = _runningView?.Cast<object>().Count() ?? _runningProcesses.Count;
+        _runningExpander.Header = string.Format(Resource.ExcludeProcessesWindow_RunningProcesses_Format, runningCount);
+    }
+
+    private void AddProcess_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button el && el.CommandParameter is ExcludeProcessViewModel vm)
+        {
+            _runningProcesses.Remove(vm);
+
+            var insertIndex = 0;
+            while (insertIndex < _excludedProcesses.Count && string.Compare(_excludedProcesses[insertIndex].Name, vm.Name, StringComparison.OrdinalIgnoreCase) < 0)
+            {
+                insertIndex++;
+            }
+            _excludedProcesses.Insert(insertIndex, vm);
+
+            UpdateHeaders();
+        }
+    }
+
+    private void RemoveProcess_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button el && el.CommandParameter is ExcludeProcessViewModel vm)
+        {
+            _excludedProcesses.Remove(vm);
+
+            if (!string.IsNullOrEmpty(vm.Path))
+            {
+                var insertIndex = 0;
+                while (insertIndex < _runningProcesses.Count && string.Compare(_runningProcesses[insertIndex].Name, vm.Name, StringComparison.OrdinalIgnoreCase) < 0)
+                {
+                    insertIndex++;
+                }
+                _runningProcesses.Insert(insertIndex, vm);
+                _runningView.Refresh();
+            }
+
+            UpdateHeaders();
+        }
+    }
+
+    private void SearchBox_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        _runningView.Refresh();
+        UpdateHeaders();
     }
 
     private void SaveButton_Click(object sender, RoutedEventArgs e)
     {
-        var processes = _list.Items.OfType<ListItem>().Select(x => x.ProcessName).ToList();
+        var processes = _excludedProcesses.Select(x => x.Name).ToList();
 
         _settings.Store.ExcludedProcesses = processes;
         _settings.SynchronizeStore();
@@ -102,49 +220,24 @@ public partial class ExcludeProcessesWindow
         Close();
     }
 
-    private class ListItem : UserControl
+    private static ImageSource? ExtractIcon(string path)
     {
-        public event EventHandler? RemoveRequested;
-        public string ProcessName { get; }
-
-        public ListItem(string processName)
+        try
         {
-            ProcessName = processName;
-            
-            var grid = new Grid
-            {
-                Margin = new Thickness(8, 4, 0, 16),
-                ColumnDefinitions =
-                {
-                    new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) },
-                    new ColumnDefinition { Width = GridLength.Auto }
-                }
-            };
-
-            var textBlock = new TextBlock
-            {
-                Text = processName,
-                VerticalAlignment = VerticalAlignment.Center,
-                FontSize = 14
-            };
-
-            var removeButton = new Button
-            {
-                Icon = SymbolRegular.Dismiss24,
-                ToolTip = Resource.Delete,
-                Margin = new Thickness(8, 0, 0, 0),
-                Padding = new Thickness(8, 2, 8, 2),
-                Appearance = ControlAppearance.Transparent
-            };
-            removeButton.Click += (s, e) => RemoveRequested?.Invoke(this, EventArgs.Empty);
-
-            Grid.SetColumn(textBlock, 0);
-            Grid.SetColumn(removeButton, 1);
-
-            grid.Children.Add(textBlock);
-            grid.Children.Add(removeButton);
-
-            Content = grid;
+            if (!File.Exists(path)) return null;
+            using var icon = System.Drawing.Icon.ExtractAssociatedIcon(path);
+            if (icon == null) return null;
+            var imageSource = Imaging.CreateBitmapSourceFromHIcon(icon.Handle, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            imageSource.Freeze();
+            return imageSource;
         }
+        catch { return null; }
     }
+}
+
+public class ExcludeProcessViewModel
+{
+    public string Name { get; set; } = string.Empty;
+    public string Path { get; set; } = string.Empty;
+    public ImageSource? Icon { get; set; }
 }

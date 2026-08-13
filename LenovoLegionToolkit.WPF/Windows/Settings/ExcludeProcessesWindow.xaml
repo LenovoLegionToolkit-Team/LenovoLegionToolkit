@@ -58,39 +58,110 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <custom:HintText
                     Grid.Row="0"
-                    Margin="0,8,0,8"
+                    Margin="0,0,0,8"
                     Text="{x:Static resources:Resource.ExcludeProcessesWindow_Description}" />
 
-                <Border Grid.Row="1" CornerRadius="8">
-                    <Border.Background>
-                        <SolidColorBrush Color="{DynamicResource ControlFillColorDefault}" />
-                    </Border.Background>
-                    <wpfui:DynamicScrollViewer>
-                        <ItemsControl
-                            x:Name="_list"
-                            Margin="8,8,16,0"
-                            HorizontalContentAlignment="Stretch"
-                            ScrollViewer.HorizontalScrollBarVisibility="Disabled" />
-                    </wpfui:DynamicScrollViewer>
-                </Border>
+                <wpfui:TextBox
+                    x:Name="_searchBox"
+                    Grid.Row="1"
+                    Margin="0,0,0,12"
+                    Icon="Search24"
+                    PlaceholderText="{x:Static resources:Resource.Filter}"
+                    TextChanged="SearchBox_TextChanged" />
 
-                  <Grid Grid.Row="2" Margin="0,8,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-                    <wpfui:TextBox x:Name="_inputBox" Grid.Column="0" Margin="0,0,8,0" PlaceholderText="{x:Static resources:Resource.ExcludeProcessesWindow_ProcessNamePlaceholder}" KeyDown="InputBox_KeyDown" />
-                    <wpfui:Button Grid.Column="1" Click="AddButton_Click" Content="{x:Static resources:Resource.Add}" />
-                </Grid>
+                <wpfui:DynamicScrollViewer Grid.Row="2">
+                    <StackPanel Margin="0,0,16,0">
+                        <Expander
+                            x:Name="_excludedExpander"
+                            Margin="0,0,0,12"
+                            Header="{x:Static resources:Resource.ExcludeProcessesWindow_Title}"
+                            Style="{StaticResource SectionExpanderStyle}"
+                            IsExpanded="True">
+                            <Border CornerRadius="8">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource ControlFillColorDefault}" />
+                                </Border.Background>
+                                <Grid>
+                                    <TextBlock
+                                        x:Name="_noExcludedProcessesText"
+                                        Margin="12"
+                                        FontStyle="Italic"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                        Text="{x:Static resources:Resource.ExcludeProcessesWindow_NoExcludedProcesses}"
+                                        Visibility="Collapsed" />
+                                    <ItemsControl
+                                        x:Name="_excludedList"
+                                        Margin="8,8,8,0"
+                                        HorizontalContentAlignment="Stretch"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Margin="0,0,0,8">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Column="0" Width="24" Height="24" Margin="0,0,12,0">
+                                                        <wpfui:SymbolIcon Symbol="AppGeneric24" FontSize="18" Foreground="{DynamicResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                        <Image Source="{Binding Icon}" Width="24" Height="24" RenderOptions.BitmapScalingMode="HighQuality" />
+                                                    </Grid>
+                                                    <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" FontWeight="Medium" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" />
+                                                    <wpfui:Button Grid.Column="2" Appearance="Transparent" Icon="Dismiss24" CommandParameter="{Binding}" Click="RemoveProcess_Click" ToolTip="{x:Static resources:Resource.Remove}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Grid>
+                            </Border>
+                        </Expander>
 
-                <Grid Grid.Row="3" Margin="0,8,0,0">
+                        <Expander
+                            x:Name="_runningExpander"
+                            Margin="0,0,0,8"
+                            Header="{x:Static resources:Resource.ExcludeProcessesWindow_Title}"
+                            Style="{StaticResource SectionExpanderStyle}"
+                            IsExpanded="True">
+                            <Border CornerRadius="8">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource ControlFillColorDefault}" />
+                                </Border.Background>
+                                <ItemsControl
+                                    x:Name="_runningList"
+                                    Margin="8,8,8,0"
+                                    HorizontalContentAlignment="Stretch"
+                                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid Margin="0,0,0,8">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0" Width="24" Height="24" Margin="0,0,12,0">
+                                                    <wpfui:SymbolIcon Symbol="AppGeneric24" FontSize="18" Foreground="{DynamicResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                    <Image Source="{Binding Icon}" Width="24" Height="24" RenderOptions.BitmapScalingMode="HighQuality" />
+                                                </Grid>
+                                                <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" FontWeight="Medium" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" />
+                                                <wpfui:Button Grid.Column="2" Appearance="Transparent" Icon="Add24" CommandParameter="{Binding}" Click="AddProcess_Click" ToolTip="{x:Static resources:Resource.Add}" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Border>
+                        </Expander>
+                    </StackPanel>
+                </wpfui:DynamicScrollViewer>
+
+                <Grid Grid.Row="3" Margin="0,8,16,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
