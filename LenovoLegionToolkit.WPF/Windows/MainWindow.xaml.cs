@@ -479,7 +479,7 @@ public partial class MainWindow
 
         var desktopWorkingArea = primaryScreen.Value.WorkArea;
 
-        if (_applicationSettings.Store.WindowPosition.HasValue)
+        if (_applicationSettings.Store.RememberWindowPosition && _applicationSettings.Store.WindowPosition.HasValue)
         {
             var pos = _applicationSettings.Store.WindowPosition.Value;
             Left = Math.Max(desktopWorkingArea.Left, Math.Min(pos.Left, desktopWorkingArea.Right - Width));
@@ -497,9 +497,9 @@ public partial class MainWindow
         _applicationSettings.Store.WindowSize = WindowState != WindowState.Normal
             ? new(RestoreBounds.Width, RestoreBounds.Height)
             : new(Width, Height);
-        _applicationSettings.Store.WindowPosition = WindowState != WindowState.Normal
-            ? new(RestoreBounds.Left, RestoreBounds.Top)
-            : new(Left, Top);
+        _applicationSettings.Store.WindowPosition = _applicationSettings.Store.RememberWindowPosition
+            ? (WindowState != WindowState.Normal ? new(RestoreBounds.Left, RestoreBounds.Top) : new(Left, Top))
+            : null;
         _applicationSettings.SynchronizeStore();
     }
 

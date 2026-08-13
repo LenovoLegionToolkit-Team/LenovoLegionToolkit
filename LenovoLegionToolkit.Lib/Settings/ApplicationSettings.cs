@@ -36,6 +36,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public bool AlwaysOnTop { get; set; }
         public bool CompactMode { get; set; }
         public WindowPosition? WindowPosition { get; set; }
+        public bool RememberWindowPosition { get; set; } = true;
         public bool EnableLogging { get; set; }
         public string BackGroundImageFilePath { get; set; } = string.Empty;
         public double Opacity { get; set; } = 0.3;

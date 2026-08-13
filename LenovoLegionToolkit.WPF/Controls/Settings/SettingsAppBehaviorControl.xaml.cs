@@ -52,6 +52,7 @@ public partial class SettingsAppBehaviorControl
         _minimizeOnCloseToggle.IsChecked = _settings.Store.MinimizeOnClose;
         _useNewSensorDashboardToggle.IsChecked = _settings.Store.UseNewSensorDashboard;
         _lockWindowSizeToggle.IsChecked = _settings.Store.LockWindowSize;
+        _rememberWindowPositionToggle.IsChecked = _settings.Store.RememberWindowPosition;
         _alwaysOnTopToggle.IsChecked = _settings.Store.AlwaysOnTop;
         _compactModeToggle.IsChecked = _settings.Store.CompactMode;
         _enableLoggingToggle.IsChecked = _settings.Store.EnableLogging;
@@ -83,6 +84,7 @@ public partial class SettingsAppBehaviorControl
         _useNewSensorDashboardToggle.Visibility = Visibility.Visible;
         _hardwareSensorsToggle.Visibility = Visibility.Visible;
         _lockWindowSizeToggle.Visibility = Visibility.Visible;
+        _rememberWindowPositionToggle.Visibility = Visibility.Visible;
         _alwaysOnTopToggle.Visibility = Visibility.Visible;
         _compactModeToggle.Visibility = Visibility.Visible;
         _osdToggle.Visibility = Visibility.Visible;
@@ -166,6 +168,22 @@ public partial class SettingsAppBehaviorControl
         _settings.SynchronizeStore();
 
         App.MainWindowInstance?.ApplyWindowLock(state.Value);
+    }
+
+    private void RememberWindowPositionToggle_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing || !IsLoaded)
+            return;
+
+        var state = _rememberWindowPositionToggle.IsChecked;
+        if (state is null)
+            return;
+
+        _settings.Store.RememberWindowPosition = state.Value;
+        if (!state.Value)
+            _settings.Store.WindowPosition = null;
+
+        _settings.SynchronizeStore();
     }
 
     private void CompactModeToggle_Click(object sender, RoutedEventArgs e)
