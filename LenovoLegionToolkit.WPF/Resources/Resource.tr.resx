@@ -881,6 +881,9 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   <data name="Delete" xml:space="preserve">
     <value>Sil</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="Device" xml:space="preserve">
     <value>Cihaz</value>
   </data>
@@ -1076,10 +1079,16 @@ Desteğiniz için teşekkür ederiz!</value>
     <value>Hata</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Bu listedeki işlemler, oyun başlatma/durdurma tetikleyicileri ve Lenovo'nun AI/Akıllı Modu tarafından yok sayılacaktır. Dosya yol bilgisi olmadan işlem adını girin (ör. “discord” veya “blender”).</value>
+    <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>İşlem Adı (ör. discord)</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Hariç Tutulan İşlemler</value>
