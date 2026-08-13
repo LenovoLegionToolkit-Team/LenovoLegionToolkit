@@ -482,8 +482,12 @@ public partial class MainWindow
         if (_applicationSettings.Store.RememberWindowPosition && _applicationSettings.Store.WindowPosition.HasValue)
         {
             var pos = _applicationSettings.Store.WindowPosition.Value;
-            Left = Math.Max(desktopWorkingArea.Left, Math.Min(pos.Left, desktopWorkingArea.Right - Width));
-            Top = Math.Max(desktopWorkingArea.Top, Math.Min(pos.Top, desktopWorkingArea.Bottom - Height));
+            var windowRect = new Rect(pos.Left, pos.Top, Width, Height);
+            var screen = ScreenHelper.Screens.FirstOrDefault(s => s.WorkArea.IntersectsWith(windowRect));
+            var targetWorkingArea = screen.WorkArea != default ? screen.WorkArea : desktopWorkingArea;
+
+            Left = Math.Max(targetWorkingArea.Left, Math.Min(pos.Left, targetWorkingArea.Right - Width));
+            Top = Math.Max(targetWorkingArea.Top, Math.Min(pos.Top, targetWorkingArea.Bottom - Height));
         }
         else
         {
