@@ -880,6 +880,9 @@ Cambiare questa impostazione richiede il riavvio.</value>
   <data name="Delete" xml:space="preserve">
     <value>Elimina</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="Device" xml:space="preserve">
     <value>Dispositivo</value>
   </data>
@@ -1075,10 +1078,16 @@ Grazie per il tuo supporto!</value>
     <value>Errore</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>I processi in questa lista saranno ignorati dai trigger di partita/stop di gioco e dalla modalità AI/Intelligent di Lenovo. Inserisci il nome del processo senza il percorso (ad es. "discord" o "blender").</value>
+    <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Nome del processo (es. discord)</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Processi Esclusi</value>
