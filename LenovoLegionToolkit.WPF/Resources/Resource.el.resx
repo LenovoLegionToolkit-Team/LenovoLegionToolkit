@@ -882,6 +882,9 @@ Supported formats are: {1}.</value>
   <data name="Delete" xml:space="preserve">
     <value>Διαγραφή</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="Device" xml:space="preserve">
     <value>Συσκευή</value>
   </data>
@@ -1077,10 +1080,16 @@ Thank you for your support!</value>
     <value>Σφάλμα</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Οι διεργασίες σε αυτή τη λίστα θα αγνοηθούν από τα εναύσματα εκκίνησης/διακοπής του παιχνιδιού και τη λειτουργία AI/Intelligent Mode. Εισάγετε το όνομα της διαδικασίας χωρίς τη διαδρομή (π.χ. "discord" ή "blender").</value>
+    <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Όνομα διεργασίας (π.χ. διχόνοια)</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Εξαιρούμενες Διαδικασίες</value>
