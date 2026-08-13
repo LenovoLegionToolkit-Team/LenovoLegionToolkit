@@ -881,6 +881,9 @@ Schimbarea modurilor poate necesita repornirea.</value>
   <data name="Delete" xml:space="preserve">
     <value>Ștergere</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="Device" xml:space="preserve">
     <value>Dispozitiv</value>
   </data>
@@ -1076,10 +1079,16 @@ Vă mulţumim pentru sprijin!</value>
     <value>Eroare</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Procesele din această listă vor fi ignorate de declanșatoarele de la pornirea jocului/opririi și de la Lenovo's AI/Intelligent Mode. Introduceți numele procesului fără cale (de exemplu, "discord" sau "blender").</value>
+    <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Numele procesului (de ex. discord)</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Procese excluse</value>
