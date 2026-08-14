@@ -57,7 +57,7 @@ public partial class DashboardPage
         {
             sensorControl = new SensorsControl();
         }
-        else if (PawnIOHelper.IsPawnIOInstalled())
+        else if (PawnIOHelper.GetPawnIOState() == PawnIOState.Installed)
         {
             sensorControl = new SensorsControlV2();
         }

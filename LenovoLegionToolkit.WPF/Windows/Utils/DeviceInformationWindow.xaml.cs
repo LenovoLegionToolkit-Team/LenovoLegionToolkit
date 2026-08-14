@@ -408,7 +408,7 @@ public partial class DeviceInformationWindow
         {
             _count = 0;
 
-            if (!PawnIOHelper.IsPawnIOInstalled())
+            if (PawnIOHelper.GetPawnIOState() != PawnIOState.Installed)
             {
                 PawnIOHelper.ShowPawnIONotify();
             }

@@ -304,7 +304,12 @@ public partial class App
         IoCContainer.Resolve<ThemeManager>().Apply();
         InitSetLogIndicator();
 
-        PawnIOHelper.RequestShowDialogAsync = async () => await MessageBoxHelper.ShowAsync(Current.MainWindow!, Resource.MainWindow_PawnIO_Warning_Title, Resource.MainWindow_PawnIO_Warning_Message, Resource.Yes, Resource.No);
+        PawnIOHelper.RequestShowDialogAsync = state => state switch
+        {
+            PawnIOState.UpdateRequired => MessageBoxHelper.ShowAsync(Current.MainWindow!, Resource.Notify_PawnIO_Update_Title, string.Format(Resource.Notify_PawnIO_Update_Message, PawnIOHelper.GetInstalledVersion(), PawnIOHelper.RequiredPawnIOVersion), Resource.Yes, Resource.No),
+            PawnIOState.ServiceNotRunning => MessageBoxHelper.ShowAsync(Current.MainWindow!, Resource.Notify_PawnIO_ServiceNotRunning_Title, Resource.Notify_PawnIO_ServiceNotRunning_Message, Resource.Yes, Resource.No),
+            _ => MessageBoxHelper.ShowAsync(Current.MainWindow!, Resource.Warning, Resource.Notify_PawnIO_Warning_Message, Resource.Yes, Resource.No),
+        };
 
         if (AppFlags.Instance.Minimized)
         {
@@ -857,6 +862,10 @@ public partial class App
             var state = await IoCContainer.Resolve<SensorsGroupController>().IsSupportedAsync();
 
             if (state is not (LibreHardwareMonitorInitialState.Initialized or LibreHardwareMonitorInitialState.Success))
+            {
+                Current._showPawnIONotify = true;
+            }
+            else if (PawnIOHelper.GetPawnIOState() is PawnIOState.UpdateRequired or PawnIOState.ServiceNotRunning)
             {
                 Current._showPawnIONotify = true;
             }

@@ -271,8 +271,15 @@ public class SensorsGroupController : IDisposable
     {
         lock (_hardwareLock)
         {
-            if (_hardwareInitialized) return;
-            if (!PawnIOHelper.IsPawnIOInstalled()) return;
+            if (_hardwareInitialized)
+            {
+                return;
+            }
+
+            if (PawnIOHelper.GetPawnIOState() != PawnIOState.Installed)
+            {
+                return;
+            }
 
             try
             {

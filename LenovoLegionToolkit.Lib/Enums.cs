@@ -615,6 +615,8 @@ public enum PawnIOState
 {
     NotInstalled,
     Installed,
+    UpdateRequired,
+    ServiceNotRunning,
 }
 
 public enum PortsBacklightState

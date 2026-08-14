@@ -43,7 +43,7 @@ public partial class SettingsAppBehaviorControl
         InitializeComponent();
     }
 
-    public Task RefreshAsync()
+    public async Task RefreshAsync()
     {
         _isRefreshing = true;
 
@@ -102,20 +102,20 @@ public partial class SettingsAppBehaviorControl
             _osdCardControl.Visibility = Visibility.Collapsed;
         }
 
-        if (PawnIOHelper.IsPawnIOInstalled())
+        var pawnIOState = PawnIOHelper.GetPawnIOState();
+
+        if (pawnIOState is PawnIOState.UpdateRequired or PawnIOState.ServiceNotRunning)
         {
-            _hardwareSensorsCardHeader.Warning = string.Empty;
+            await PawnIOHelper.TryShowPawnIODialogAsync(pawnIOState, true);
         }
         else
         {
-            _hardwareSensorsCardHeader.Warning = Resource.SettingsPage_HardwareSensors_PawnIOWarning;
+            _hardwareSensorsCardHeader.Warning = pawnIOState == PawnIOState.Installed ? string.Empty : Resource.SettingsPage_HardwareSensors_PawnIOWarning;
         }
 
         _scriptConsoleCard.Visibility = Visibility.Collapsed;
 
         _isRefreshing = false;
-
-        return Task.CompletedTask;
     }
 
     private void AutorunComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -287,9 +287,10 @@ public partial class SettingsAppBehaviorControl
 
         if (state.Value)
         {
-            if (!PawnIOHelper.IsPawnIOInstalled())
+            var pawnIOState = PawnIOHelper.GetPawnIOState();
+            if (pawnIOState != PawnIOState.Installed)
             {
-                await PawnIOHelper.TryShowPawnIONotFoundDialogAsync().ConfigureAwait(false);
+                await PawnIOHelper.TryShowPawnIODialogAsync(pawnIOState, true);
 
                 _hardwareSensorsToggle.IsChecked = false;
                 return;
@@ -305,13 +306,10 @@ public partial class SettingsAppBehaviorControl
         {
             _useNewSensorDashboardToggle.IsChecked = false;
             _settings.Store.UseNewSensorDashboard = false;
-            
+
             _osdToggle.IsChecked = false;
             _OsdSettings.Store.ShowOsd = false;
-            if (App.Current.OsdWindow != null)
-            {
-                App.Current.OsdWindow.Hide();
-            }
+            App.Current.OsdWindow?.Hide();
             _OsdSettings.SynchronizeStore();
         }
 
@@ -325,7 +323,7 @@ public partial class SettingsAppBehaviorControl
 
         _useNewSensorDashboardCardControl.Visibility = state.Value ? Visibility.Visible : Visibility.Collapsed;
         _osdCardControl.Visibility = state.Value ? Visibility.Visible : Visibility.Collapsed;
-        
+
         MessagingCenter.Publish(new SensorDashboardSwappedMessage());
     }
 
@@ -339,6 +337,20 @@ public partial class SettingsAppBehaviorControl
         var state = _useNewSensorDashboardToggle.IsChecked;
         if (state is null)
             return;
+
+        if (state.Value)
+        {
+            var pawnIOState = PawnIOHelper.GetPawnIOState();
+            if (pawnIOState != PawnIOState.Installed)
+            {
+                await PawnIOHelper.TryShowPawnIODialogAsync(pawnIOState, true);
+
+                _useNewSensorDashboardToggle.IsChecked = false;
+                _settings.Store.UseNewSensorDashboard = false;
+                _settings.SynchronizeStore();
+                return;
+            }
+        }
 
         _settings.Store.UseNewSensorDashboard = state.Value;
         _settings.SynchronizeStore();
@@ -522,7 +534,7 @@ public partial class SettingsAppBehaviorControl
 
         OsdSettingsAlias.ShowInstance();
     }
-    
+
     private void SensorSettingsButton_Click(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing || !IsLoaded)

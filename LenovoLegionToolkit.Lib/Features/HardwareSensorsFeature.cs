@@ -10,7 +10,7 @@ namespace LenovoLegionToolkit.Lib.Features;
 
 public class HardwareSensorsFeature(ApplicationSettings settings, OsdSettings osdSettings, SensorsGroupController sensorsGroupController) : IFeature<HardwareSensorsState>
 {
-    public Task<bool> IsSupportedAsync() => Task.FromResult(PawnIOHelper.IsPawnIOInstalled());
+    public Task<bool> IsSupportedAsync() => Task.FromResult(PawnIOHelper.GetPawnIOState() == PawnIOState.Installed);
 
     public Task<HardwareSensorsState[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<HardwareSensorsState>());
 
