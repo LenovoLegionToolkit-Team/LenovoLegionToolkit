@@ -707,13 +707,10 @@ Cette valeur peut être imprécise si l'appareil a été chargé en veille ou é
     <value>Personnaliser</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>Le logo de démarrage personnalisé est enregistré</value>
+    <value>Custom Logo</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>Le logo de démarrage par défaut est enregistré</value>
-  </data>
-  <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Le logo de démarrage personnalisé doit faire exactement {0} pixels de large. Les formats supportés sont : {1}.</value>
+    <value>Default Logo</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
     <value>Désactiver l'animation de démarrage de Windows</value>
@@ -745,8 +742,26 @@ Cette valeur peut être imprécise si l'appareil a été chargé en veille ou é
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>Pas assez d'espace libre sur la partition EFI.</value>
   </data>
-  <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>État</value>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
+    <value>Current Status</value>
+  </data>
+  <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
+    <value>Status of the UEFI boot logo</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>Image Requirements</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>Supported formats and dimensions</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>Max {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>Boot Options</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>Logo de démarrage</value>
@@ -1077,6 +1092,9 @@ Merci pour votre soutien !</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
