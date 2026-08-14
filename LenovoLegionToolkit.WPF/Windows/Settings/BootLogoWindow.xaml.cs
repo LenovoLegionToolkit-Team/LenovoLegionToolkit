@@ -10,18 +10,26 @@ using LenovoLegionToolkit.WPF.Resources;
 using Microsoft.Win32;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
+using XamlAnimatedGif;
 
 namespace LenovoLegionToolkit.WPF.Windows.Settings;
 
 public partial class BootLogoWindow
 {
     private static BitmapImage? _defaultLogo;
+    private MemoryStream? _activeCustomLogoStream;
 
     public BootLogoWindow()
     {
         InitializeComponent();
 
         Loaded += BootLogoWindow_Loaded;
+        Closed += BootLogoWindow_Closed;
+    }
+
+    private void BootLogoWindow_Closed(object? sender, EventArgs e)
+    {
+        ClearActivePreview();
     }
 
     private async void BootLogoWindow_Loaded(object sender, RoutedEventArgs e)
@@ -43,6 +51,14 @@ public partial class BootLogoWindow
         }
 
         return _defaultLogo;
+    }
+
+    private void ClearActivePreview()
+    {
+        AnimationBehavior.SetSourceStream(_previewImage, null);
+        _previewImage.Source = null;
+        _activeCustomLogoStream?.Dispose();
+        _activeCustomLogoStream = null;
     }
 
     private async Task RefreshAsync()
@@ -71,6 +87,8 @@ public partial class BootLogoWindow
 
     private async Task UpdatePreviewAsync(bool enabled)
     {
+        ClearActivePreview();
+
         if (enabled)
         {
             try
@@ -78,15 +96,8 @@ public partial class BootLogoWindow
                 var bytes = await BootLogo.GetActiveCustomLogoBytesAsync();
                 if (bytes is { Length: > 0 })
                 {
-                    using var stream = new MemoryStream(bytes);
-                    var image = new BitmapImage();
-                    image.BeginInit();
-                    image.CacheOption = BitmapCacheOption.OnLoad;
-                    image.StreamSource = stream;
-                    image.EndInit();
-                    image.Freeze();
-
-                    _previewImage.Source = image;
+                    _activeCustomLogoStream = new MemoryStream(bytes);
+                    AnimationBehavior.SetSourceStream(_previewImage, _activeCustomLogoStream);
                     return;
                 }
             }

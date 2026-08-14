@@ -393,7 +393,7 @@ public static class BootLogo
             [0xFF, 0xD8, ..] => ".jpg",
             [0x89, 0x50, 0x4E, 0x47] => ".png",
             [0x42, 0x4D, ..] => ".bmp",
-            [0x47, 0x49, 0x46, 0x38, 0x37, 0x61] => ".gif",
+            [0x47, 0x49, 0x46, 0x38, ..] => ".gif",
             _ => Path.GetExtension(sourcePath)
         };
     }
@@ -404,7 +404,7 @@ public static class BootLogo
 
         var actualExtension = DetectActualExtension(sourcePath);
 
-        if (!info.SupportedFormat.ExtensionFilters().Contains($"*{actualExtension}"))
+        if (!info.SupportedFormat.ExtensionFilters().Contains($"*{actualExtension}", StringComparer.OrdinalIgnoreCase))
         {
             Log.Instance.Trace($"Invalid image format. [actualExtension={actualExtension}]");
 
