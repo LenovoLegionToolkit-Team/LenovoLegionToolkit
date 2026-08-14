@@ -1,7 +1,9 @@
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media.Imaging;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
@@ -13,6 +15,8 @@ namespace LenovoLegionToolkit.WPF.Windows.Settings;
 
 public partial class BootLogoWindow
 {
+    private static BitmapImage? _defaultLogo;
+
     public BootLogoWindow()
     {
         InitializeComponent();
@@ -20,14 +24,35 @@ public partial class BootLogoWindow
         Loaded += BootLogoWindow_Loaded;
     }
 
-    private void BootLogoWindow_Loaded(object sender, RoutedEventArgs e)
+    private async void BootLogoWindow_Loaded(object sender, RoutedEventArgs e)
     {
-        Refresh();
+        await RefreshAsync();
     }
 
-    private void Refresh()
+    private static BitmapImage GetDefaultLogo()
+    {
+        if (_defaultLogo == null)
+        {
+            var image = new BitmapImage();
+            image.BeginInit();
+            image.UriSource = new Uri("pack://application:,,,/Assets/Lenovo_logo.png", UriKind.Absolute);
+            image.CacheOption = BitmapCacheOption.OnLoad;
+            image.EndInit();
+            image.Freeze();
+            _defaultLogo = image;
+        }
+
+        return _defaultLogo;
+    }
+
+    private async Task RefreshAsync()
     {
         var (enabled, resolution, formats, _) = BootLogo.GetStatus();
+
+        var ratio = resolution.Height > 0 ? (double)resolution.Width / resolution.Height : 16.0 / 10.0;
+        var innerWidth = 448.0;
+        var innerHeight = innerWidth / ratio;
+        _previewScreenBorder.Height = Math.Round(innerHeight + 22.0);
 
         _statusBadge.Content = enabled ? Resource.BootLogoWindow_CustomLogoSet : Resource.BootLogoWindow_DefaultLogoSet;
         _statusBadge.Appearance = enabled ? ControlAppearance.Primary : ControlAppearance.Secondary;
@@ -35,9 +60,49 @@ public partial class BootLogoWindow
         _resolutionBadge.Content = string.Format(Resource.BootLogoWindow_Requirements_MaxResolution, resolution.DisplayName);
         _formatsBadge.Content = string.Format(Resource.BootLogoWindow_Requirements_Formats, string.Join(", ", formats.Select(f => f.ToString().ToUpper())));
 
-        _customizeButton.Visibility = enabled ? Visibility.Collapsed : Visibility.Visible;
         _revertToDefaultButton.Visibility = enabled ? Visibility.Visible : Visibility.Collapsed;
-        _disableAnimationToggle.IsEnabled = !enabled;
+        _customizeButton.Visibility = Visibility.Visible;
+
+        _disableAnimationToggle.IsChecked = await BootLogo.IsWindowsBootAnimationDisabledAsync();
+        _previewSpinner.Visibility = _disableAnimationToggle.IsChecked == true ? Visibility.Collapsed : Visibility.Visible;
+
+        await UpdatePreviewAsync(enabled);
+    }
+
+    private async Task UpdatePreviewAsync(bool enabled)
+    {
+        if (enabled)
+        {
+            try
+            {
+                var bytes = await BootLogo.GetActiveCustomLogoBytesAsync();
+                if (bytes is { Length: > 0 })
+                {
+                    using var stream = new MemoryStream(bytes);
+                    var image = new BitmapImage();
+                    image.BeginInit();
+                    image.CacheOption = BitmapCacheOption.OnLoad;
+                    image.StreamSource = stream;
+                    image.EndInit();
+                    image.Freeze();
+
+                    _previewImage.Source = image;
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to load custom boot logo for preview.", ex);
+            }
+        }
+
+        _previewImage.Source = GetDefaultLogo();
+    }
+
+    private async void DisableAnimationToggle_Click(object sender, RoutedEventArgs e)
+    {
+        _previewSpinner.Visibility = _disableAnimationToggle.IsChecked == true ? Visibility.Collapsed : Visibility.Visible;
+        await HandleAnimationAsync();
     }
 
     private async void RevertToDefaultButton_Click(object sender, RoutedEventArgs e)
@@ -54,7 +119,7 @@ public partial class BootLogoWindow
             _resultInfoBar.Severity = InfoBarSeverity.Success;
             _resultInfoBar.IsOpen = true;
 
-            Refresh();
+            await RefreshAsync();
         }
         catch (Exception ex)
         {
@@ -99,7 +164,7 @@ public partial class BootLogoWindow
             _resultInfoBar.Severity = InfoBarSeverity.Success;
             _resultInfoBar.IsOpen = true;
 
-            Refresh();
+            await RefreshAsync();
         }
         catch (Exception ex)
         {

@@ -50,6 +50,57 @@
         </Grid>
 
         <StackPanel Grid.Row="1" Margin="12,4,12,0">
+            <Border
+                x:Name="_previewScreenBorder"
+                Margin="0,0,0,8"
+                Padding="8,8,8,12"
+                Background="{DynamicResource ControlFillColorDefaultBrush}"
+                BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                BorderThickness="1"
+                CornerRadius="8">
+                <Border
+                    Background="#000000"
+                    BorderBrush="{DynamicResource ControlStrokeColorDefaultBrush}"
+                    BorderThickness="1"
+                    CornerRadius="3"
+                    ClipToBounds="True">
+                    <Grid>
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="764*" />
+                                <RowDefinition Height="236*" />
+                            </Grid.RowDefinitions>
+
+                            <Image
+                                x:Name="_previewImage"
+                                Grid.Row="0"
+                                MaxHeight="60"
+                                MaxWidth="200"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Stretch="Uniform" />
+                        </Grid>
+
+                        <Grid HorizontalAlignment="Center" VerticalAlignment="Stretch">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="360*" />
+                                <RowDefinition Height="640*" />
+                            </Grid.RowDefinitions>
+
+                            <wpfui:ProgressRing
+                                x:Name="_previewSpinner"
+                                Grid.Row="1"
+                                Width="22"
+                                Height="22"
+                                Foreground="#E0E0E0"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                IsIndeterminate="True" />
+                        </Grid>
+                    </Grid>
+                </Border>
+            </Border>
+
             <custom:CardControl Margin="0,0,0,8" Icon="Image24">
                 <custom:CardControl.Header>
                     <controls:CardHeaderControl Title="{x:Static resources:Resource.BootLogoWindow_Status_Title}" Subtitle="{x:Static resources:Resource.BootLogoWindow_Status_Subtitle}" />
@@ -85,7 +136,7 @@
                 </StackPanel>
             </custom:CardControl>
 
-            <custom:CardControl Margin="0,0,0,8" Icon="Flash24">
+            <custom:CardControl Margin="0,0,0,8" Icon="ArrowClockwise24">
                 <custom:CardControl.Header>
                     <controls:CardHeaderControl Title="{x:Static resources:Resource.BootLogoWindow_Options_Title}" Subtitle="{x:Static resources:Resource.BootLogoWindow_Disable_Windows_Animation}" />
                 </custom:CardControl.Header>
@@ -93,6 +144,7 @@
                     x:Name="_disableAnimationToggle"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Center"
+                    Click="DisableAnimationToggle_Click"
                     AutomationProperties.Name="{x:Static resources:Resource.BootLogoWindow_Disable_Windows_Animation}" />
             </custom:CardControl>
 

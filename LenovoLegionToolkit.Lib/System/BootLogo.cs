@@ -63,6 +63,41 @@ public static class BootLogo
         return (info.Enabled == 1, new(info.SupportedWidth, info.SupportedHeight), info.SupportedFormat.ImageFormats().ToArray(), info.SupportedFormat.ExtensionFilters().ToArray());
     }
 
+    public static async Task<byte[]?> GetActiveCustomLogoBytesAsync()
+    {
+        var (enabled, _, _, _) = GetStatus();
+        if (!enabled)
+            return null;
+
+        char? drive = null;
+        try
+        {
+            drive = await MountEfiPartitionAsync().ConfigureAwait(false);
+            if (!drive.HasValue)
+                return null;
+
+            var directoryPath = $@"{drive.Value}:\EFI\Lenovo\Logo";
+            if (!Directory.Exists(directoryPath))
+                return null;
+
+            var file = Directory.GetFiles(directoryPath).FirstOrDefault();
+            if (file == null || !File.Exists(file))
+                return null;
+
+            return await File.ReadAllBytesAsync(file).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to read custom logo from EFI partition.", ex);
+            return null;
+        }
+        finally
+        {
+            if (drive.HasValue)
+                await UnMountEfiPartitionAsync(drive.Value).ConfigureAwait(false);
+        }
+    }
+
     public static async Task EnableAsync(string sourcePath)
     {
         Log.Instance.Trace($"Enabling logo... [sourcePath={sourcePath}]");
@@ -377,6 +412,32 @@ public static class BootLogo
         }
 
         Log.Instance.Trace($"Image valid. [sourcePath={sourcePath}, actualExtension={actualExtension}]");
+    }
+
+    public static async Task<bool> IsWindowsBootAnimationDisabledAsync()
+    {
+        try
+        {
+            var (result, output) = await CMD.RunAsync("bcdedit", "/enum {current}").ConfigureAwait(false);
+            if (result == 0 && output != null)
+            {
+                var lines = output.Split(['\r', '\n'], StringSplitOptions.RemoveEmptyEntries);
+                var line = lines.FirstOrDefault(l => l.TrimStart().StartsWith("bootuxdisabled", StringComparison.OrdinalIgnoreCase));
+                if (line != null)
+                {
+                    return line.Contains("Yes", StringComparison.OrdinalIgnoreCase) ||
+                           line.Contains("on", StringComparison.OrdinalIgnoreCase) ||
+                           line.Contains("true", StringComparison.OrdinalIgnoreCase) ||
+                           line.Contains("1");
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to query boot animation status.", ex);
+        }
+
+        return false;
     }
 
     public static async Task SetWindowsBootAnimationAsync(bool disable)
