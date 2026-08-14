@@ -1855,6 +1855,51 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Boot Options.
+        /// </summary>
+        public static string BootLogoWindow_Options_Title {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Options_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}.
+        /// </summary>
+        public static string BootLogoWindow_Requirements_Formats {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Requirements_Formats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max {0}.
+        /// </summary>
+        public static string BootLogoWindow_Requirements_MaxResolution {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Requirements_MaxResolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Supported format and dimension constraints.
+        /// </summary>
+        public static string BootLogoWindow_Requirements_Subtitle {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Requirements_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image Requirements.
+        /// </summary>
+        public static string BootLogoWindow_Requirements_Title {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Requirements_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Custom logo could not be set: {0}.
         /// </summary>
         public static string BootLogoWindow_SetCustomFailed {
@@ -1941,6 +1986,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string BootLogoWindow_Status {
             get {
                 return ResourceManager.GetString("BootLogoWindow_Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status of the UEFI boot logo.
+        /// </summary>
+        public static string BootLogoWindow_Status_Subtitle {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Status_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Status.
+        /// </summary>
+        public static string BootLogoWindow_Status_Title {
+            get {
+                return ResourceManager.GetString("BootLogoWindow_Status_Title", resourceCulture);
             }
         }
         
@@ -10314,6 +10377,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string Storage {
             get {
                 return ResourceManager.GetString("Storage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Success.
+        /// </summary>
+        public static string Success {
+            get {
+                return ResourceManager.GetString("Success", resourceCulture);
             }
         }
         

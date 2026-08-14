@@ -6,6 +6,8 @@ using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using Microsoft.Win32;
+using Wpf.Ui.Common;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Windows.Settings;
 
@@ -27,13 +29,15 @@ public partial class BootLogoWindow
     {
         var (enabled, resolution, formats, _) = BootLogo.GetStatus();
 
-        _descriptionTextBlock.Text = string.Format(Resource.BootLogoWindow_Description, resolution.DisplayName, string.Join(", ", formats.Select(f => f.ToString().ToUpper())));
+        _statusBadge.Content = enabled ? Resource.BootLogoWindow_CustomLogoSet : Resource.BootLogoWindow_DefaultLogoSet;
+        _statusBadge.Appearance = enabled ? ControlAppearance.Primary : ControlAppearance.Secondary;
 
-        _defaultStatus.Visibility = enabled ? Visibility.Collapsed : Visibility.Visible;
-        _customStatus.Visibility = enabled ? Visibility.Visible : Visibility.Collapsed;
+        _resolutionBadge.Content = string.Format(Resource.BootLogoWindow_Requirements_MaxResolution, resolution.DisplayName);
+        _formatsBadge.Content = string.Format(Resource.BootLogoWindow_Requirements_Formats, string.Join(", ", formats.Select(f => f.ToString().ToUpper())));
+
         _customizeButton.Visibility = enabled ? Visibility.Collapsed : Visibility.Visible;
         _revertToDefaultButton.Visibility = enabled ? Visibility.Visible : Visibility.Collapsed;
-        _disableAnimationCheckBox.Visibility = enabled ? Visibility.Collapsed : Visibility.Visible;
+        _disableAnimationToggle.IsEnabled = !enabled;
     }
 
     private async void RevertToDefaultButton_Click(object sender, RoutedEventArgs e)
@@ -45,14 +49,20 @@ public partial class BootLogoWindow
             await BootLogo.DisableAsync();
             await HandleAnimationAsync();
 
-            _resultTextBlock.Text = Resource.BootLogoWindow_SetDefaultSuccess;
+            _resultInfoBar.Title = Resource.Success;
+            _resultInfoBar.Message = Resource.BootLogoWindow_SetDefaultSuccess;
+            _resultInfoBar.Severity = InfoBarSeverity.Success;
+            _resultInfoBar.IsOpen = true;
 
             Refresh();
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Default logo could not be set.", ex);
-            _resultTextBlock.Text = string.Format(Resource.BootLogoWindow_SetDefaultFailed, GetDescription(ex));
+            _resultInfoBar.Title = Resource.Error;
+            _resultInfoBar.Message = string.Format(Resource.BootLogoWindow_SetDefaultFailed, GetDescription(ex));
+            _resultInfoBar.Severity = InfoBarSeverity.Error;
+            _resultInfoBar.IsOpen = true;
         }
         finally
         {
@@ -84,7 +94,10 @@ public partial class BootLogoWindow
             await BootLogo.EnableAsync(file);
             await HandleAnimationAsync();
 
-            _resultTextBlock.Text = Resource.BootLogoWindow_SetCustomSuccess;
+            _resultInfoBar.Title = Resource.Success;
+            _resultInfoBar.Message = Resource.BootLogoWindow_SetCustomSuccess;
+            _resultInfoBar.Severity = InfoBarSeverity.Success;
+            _resultInfoBar.IsOpen = true;
 
             Refresh();
         }
@@ -92,7 +105,10 @@ public partial class BootLogoWindow
         {
             Log.Instance.Trace($"Custom logo could not be set.", ex);
 
-            _resultTextBlock.Text = string.Format(Resource.BootLogoWindow_SetCustomFailed, GetDescription(ex));
+            _resultInfoBar.Title = Resource.Error;
+            _resultInfoBar.Message = string.Format(Resource.BootLogoWindow_SetCustomFailed, GetDescription(ex));
+            _resultInfoBar.Severity = InfoBarSeverity.Error;
+            _resultInfoBar.IsOpen = true;
         }
         finally
         {
@@ -104,7 +120,7 @@ public partial class BootLogoWindow
     {
         try
         {
-            var disable = _disableAnimationCheckBox.IsChecked == true;
+            var disable = _disableAnimationToggle.IsChecked == true;
             await BootLogo.SetWindowsBootAnimationAsync(disable).ConfigureAwait(false);
         }
         catch (Exception ex)
