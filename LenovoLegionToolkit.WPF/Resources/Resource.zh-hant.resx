@@ -705,14 +705,10 @@
     <value>客製化</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>已設定為預設啟動商標</value>
+    <value>Custom Logo</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>已設定為預設啟動商標</value>
-  </data>
-  <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>客製化啟動商標必須恰好為 {0} 像素。
-支援的格式有：{1}。</value>
+    <value>Default Logo</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
     <value>停用 Windows 啟動動畫</value>
@@ -744,8 +740,26 @@
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>EFI 分割區空間不足。</value>
   </data>
-  <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>狀態</value>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
+    <value>Current Status</value>
+  </data>
+  <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
+    <value>Status of the UEFI boot logo</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>Image Requirements</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>Supported formats and dimensions</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>Max {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>Boot Options</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>啟動商標</value>
@@ -1076,6 +1090,9 @@
   </data>
   <data name="Error" xml:space="preserve">
     <value>錯誤</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
