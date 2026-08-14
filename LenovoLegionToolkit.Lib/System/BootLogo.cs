@@ -1,4 +1,6 @@
 using System;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -376,9 +378,74 @@ public static class BootLogo
         Log.Instance.Trace($"Destination path: {destinationPath}");
 
         Directory.CreateDirectory(destinationDirectory);
-        File.Copy(sourcePath, destinationPath, true);
+
+        if (sourceExtension.Equals(".gif", StringComparison.OrdinalIgnoreCase))
+        {
+            File.Copy(sourcePath, destinationPath, true);
+        }
+        else
+        {
+            ProcessAndSaveStaticImage(sourcePath, destinationPath, sourceExtension, info.SupportedWidth, info.SupportedHeight);
+        }
 
         return destinationPath;
+    }
+
+    private static void ProcessAndSaveStaticImage(string sourcePath, string destinationPath, string sourceExtension, int maxWidth, int maxHeight)
+    {
+        using var fs = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+        using var srcImg = Image.FromStream(fs);
+
+        var (targetWidth, targetHeight) = CalculateFitDimensions(srcImg.Width, srcImg.Height, maxWidth, maxHeight);
+        var needsResize = targetWidth != srcImg.Width || targetHeight != srcImg.Height;
+        var hasAlpha = Image.IsAlphaPixelFormat(srcImg.PixelFormat);
+        var isNot24Bpp = srcImg.PixelFormat != PixelFormat.Format24bppRgb;
+
+        if (needsResize || hasAlpha || isNot24Bpp)
+        {
+            Log.Instance.Trace($"Processing static image... [src={srcImg.Width}x{srcImg.Height}, format={srcImg.PixelFormat}, target={targetWidth}x{targetHeight}, hasAlpha={hasAlpha}, needsResize={needsResize}]");
+
+            using var destBmp = new Bitmap(targetWidth, targetHeight, PixelFormat.Format24bppRgb);
+            using (var g = Graphics.FromImage(destBmp))
+            {
+                g.Clear(Color.Black);
+                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = SmoothingMode.AntiAlias;
+                g.CompositingQuality = CompositingQuality.HighQuality;
+                g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                g.DrawImage(srcImg, new Rectangle(0, 0, targetWidth, targetHeight));
+            }
+
+            var outputFormat = sourceExtension.ToLowerInvariant() switch
+            {
+                ".bmp" => ImageFormat.Bmp,
+                ".jpg" or ".jpeg" => ImageFormat.Jpeg,
+                _ => ImageFormat.Png
+            };
+
+            destBmp.Save(destinationPath, outputFormat);
+            Log.Instance.Trace($"Processed and saved static image to EFI partition. [path={destinationPath}, format={outputFormat}]");
+        }
+        else
+        {
+            File.Copy(sourcePath, destinationPath, true);
+            Log.Instance.Trace($"Copied untouched static image to EFI partition. [path={destinationPath}]");
+        }
+    }
+
+    private static (int Width, int Height) CalculateFitDimensions(int originalWidth, int originalHeight, int maxWidth, int maxHeight)
+    {
+        if (originalWidth <= maxWidth && originalHeight <= maxHeight)
+            return (originalWidth, originalHeight);
+
+        var ratioX = (double)maxWidth / originalWidth;
+        var ratioY = (double)maxHeight / originalHeight;
+        var ratio = Math.Min(ratioX, ratioY);
+
+        var newWidth = Math.Max(1, (int)Math.Round(originalWidth * ratio));
+        var newHeight = Math.Max(1, (int)Math.Round(originalHeight * ratio));
+
+        return (newWidth, newHeight);
     }
 
     private static string DetectActualExtension(string sourcePath)
@@ -409,6 +476,17 @@ public static class BootLogo
             Log.Instance.Trace($"Invalid image format. [actualExtension={actualExtension}]");
 
             throw new InvalidBootLogoImageFormatException();
+        }
+
+        if (actualExtension.Equals(".gif", StringComparison.OrdinalIgnoreCase))
+        {
+            using var fs = new FileStream(sourcePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            using var img = Image.FromStream(fs);
+            if (img.Width > info.SupportedWidth || img.Height > info.SupportedHeight)
+            {
+                Log.Instance.Trace($"GIF dimensions ({img.Width}x{img.Height}) exceed maximum supported ({info.SupportedWidth}x{info.SupportedHeight}).");
+                throw new InvalidBootLogoImageSizeException();
+            }
         }
 
         Log.Instance.Trace($"Image valid. [sourcePath={sourcePath}, actualExtension={actualExtension}]");
