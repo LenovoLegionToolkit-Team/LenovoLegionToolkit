@@ -715,6 +715,21 @@ Cette valeur peut être imprécise si l'appareil a été chargé en veille ou é
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
     <value>Désactiver l'animation de démarrage de Windows</value>
   </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>Boot Options</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>Max {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>Supported formats and dimensions</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>Image Requirements</value>
+  </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>Le logo personnalisé n'a pas pu être appliqué : {0}</value>
   </data>
@@ -742,26 +757,11 @@ Cette valeur peut être imprécise si l'appareil a été chargé en veille ou é
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>Pas assez d'espace libre sur la partition EFI.</value>
   </data>
-  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
-    <value>Current Status</value>
-  </data>
   <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
     <value>Status of the UEFI boot logo</value>
   </data>
-  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
-    <value>Image Requirements</value>
-  </data>
-  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
-    <value>Supported formats and dimensions</value>
-  </data>
-  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
-    <value>Max {0}</value>
-  </data>
-  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
-    <value>{0}</value>
-  </data>
-  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
-    <value>Boot Options</value>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
+    <value>Current Status</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>Logo de démarrage</value>
@@ -895,9 +895,6 @@ Le changement de mode peut nécessiter un redémarrage.</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Supprimer</value>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
   </data>
   <data name="Device" xml:space="preserve">
     <value>Appareil</value>
@@ -1092,9 +1089,6 @@ Merci pour votre soutien !</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
-  </data>
-  <data name="Success" xml:space="preserve">
-    <value>Success</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
@@ -2062,6 +2056,35 @@ Cela n'affectera pas les autres fenêtres en plein écran, mais vous ne pourrez 
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
     <value>Rétro-éclairage modifié</value>
   </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
+    <value>The PawnIO driver service is not running. 
+
+Please start the service or update/reinstall PawnIO to use this feature!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
+    <value>PawnIO driver not running</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
+    <value>Your PawnIO version is too old.
+
+Current: {0} Required: {1}. 
+Please update PawnIO to continue using this feature!
+    
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
+    <value>PawnIO update required</value>
+  </data>
+  <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
+    <value>You need to install PawnIO first to use hardware sensors!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
   <data name="Off" xml:space="preserve">
     <value>Désactivé</value>
   </data>
@@ -2527,6 +2550,9 @@ Vous pouvez changer de mode avec Fn+Q.</value>
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
     <value>Taux de rafraîchissement</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Renommer</value>
@@ -3179,12 +3205,6 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Taille de la fenêtre de verrouillage</value>
   </data>
-  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
-    <value>Restore previous window position on application launch.</value>
-  </data>
-  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
-    <value>Remember Window Position</value>
-  </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
     <value>Toujours minimiser dans la barre des tâches. Fermez avec un clic droit sur l'icône de la barre des tâches.</value>
   </data>
@@ -3223,6 +3243,12 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
     <value>Synchronisation de mode d'alimentation</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
+    <value>Restore previous window position on application launch.</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
+    <value>Remember Window Position</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir réinitialiser tous les paramètres par défaut ? Cette action ne peut pas être annulée et l'application redémarrera.</value>
@@ -3571,6 +3597,9 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
   </data>
   <data name="Storage" xml:space="preserve">
     <value>Stockage</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Choisir une icône</value>
