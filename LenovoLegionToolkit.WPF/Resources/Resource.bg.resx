@@ -713,6 +713,21 @@
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
     <value>Disable Windows Startup Animation</value>
   </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>Boot Options</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>Max {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>Supported formats and dimensions</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>Image Requirements</value>
+  </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>Потребителското лого не беше зададено успешно: {0}</value>
   </data>
@@ -740,26 +755,11 @@
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>Няма достатъчно свободно място в EFI дяла.</value>
   </data>
-  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
-    <value>Current Status</value>
-  </data>
   <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
     <value>Status of the UEFI boot logo</value>
   </data>
-  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
-    <value>Image Requirements</value>
-  </data>
-  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
-    <value>Supported formats and dimensions</value>
-  </data>
-  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
-    <value>Max {0}</value>
-  </data>
-  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
-    <value>{0}</value>
-  </data>
-  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
-    <value>Boot Options</value>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
+    <value>Current Status</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>Лого при стартиране</value>
@@ -893,9 +893,6 @@
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Изтрий</value>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
   </data>
   <data name="Device" xml:space="preserve">
     <value>Device</value>
@@ -1090,9 +1087,6 @@ Thank you for your support!</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
-  </data>
-  <data name="Success" xml:space="preserve">
-    <value>Success</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
@@ -2061,6 +2055,35 @@ It won't affect other full screen windows, but you will not be able to click on 
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
     <value>Backlight changed</value>
   </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
+    <value>The PawnIO driver service is not running. 
+
+Please start the service or update/reinstall PawnIO to use this feature!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
+    <value>PawnIO driver not running</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
+    <value>Your PawnIO version is too old.
+
+Current: {0} Required: {1}. 
+Please update PawnIO to continue using this feature!
+    
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
+    <value>PawnIO update required</value>
+  </data>
+  <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
+    <value>You need to install PawnIO first to use hardware sensors!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
   <data name="Off" xml:space="preserve">
     <value>Изключено</value>
   </data>
@@ -2526,6 +2549,9 @@ It won't affect other full screen windows, but you will not be able to click on 
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
     <value>Честота на опресняване</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Преименувай</value>
@@ -3178,12 +3204,6 @@ It won't affect other full screen windows, but you will not be able to click on 
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>Lock Window Size</value>
   </data>
-  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
-    <value>Restore previous window position on application launch.</value>
-  </data>
-  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
-    <value>Remember Window Position</value>
-  </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
     <value>Приложението се минимизира в лентата на задачите, когато затворите основния прозорец. Може да го спрете от менюто, което се отваря при натискането на десен бутон върху иконката му.</value>
   </data>
@@ -3222,6 +3242,12 @@ It won't affect other full screen windows, but you will not be able to click on 
   </data>
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
     <value>Power Mode Synchronization</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
+    <value>Restore previous window position on application launch.</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
+    <value>Remember Window Position</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>Are you sure you want to reset all settings to defaults? This action cannot be undone and the application will restart.</value>
@@ -3570,6 +3596,9 @@ It won't affect other full screen windows, but you will not be able to click on 
   </data>
   <data name="Storage" xml:space="preserve">
     <value>Storage</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Изберете икона</value>
