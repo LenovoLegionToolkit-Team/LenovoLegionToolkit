@@ -369,7 +369,8 @@ public partial class SettingsAppBehaviorControl
         if (_isRefreshing || !IsLoaded)
             return;
 
-        EditSensorGroupWindow.ShowInstance();
+        var window = new EditSensorGroupWindow { Owner = Window.GetWindow(this) };
+        window.ShowDialog();
     }
 
     private void DetectionModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -532,7 +533,8 @@ public partial class SettingsAppBehaviorControl
         if (_isRefreshing || !IsLoaded)
             return;
 
-        OsdSettingsAlias.ShowInstance();
+        var window = new OsdSettingsAlias { Owner = Window.GetWindow(this) };
+        window.ShowDialog();
     }
 
     private void SensorSettingsButton_Click(object sender, RoutedEventArgs e)

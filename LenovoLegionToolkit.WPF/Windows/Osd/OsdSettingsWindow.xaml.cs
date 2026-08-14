@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -25,8 +25,6 @@ public class OsdItemGroup
 
 public partial class OsdSettingsWindow
 {
-    private static OsdSettingsWindow? _instance;
-
     private readonly OsdSettings _OsdSettings = IoCContainer.Resolve<OsdSettings>();
     private readonly SensorsGroupController _controller = IoCContainer.Resolve<SensorsGroupController>();
     private bool _isInitializing = true;
@@ -35,22 +33,6 @@ public partial class OsdSettingsWindow
     {
         InitializeComponent();
         this.Loaded += OsdSettingsWindow_Loaded;
-    }
-
-    public static void ShowInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new OsdSettingsWindow();
-            _instance.Closed += (s, e) => _instance = null;
-            _instance.Show();
-        }
-        else
-        {
-            if (_instance.WindowState == WindowState.Minimized)
-                _instance.WindowState = WindowState.Normal;
-            _instance.Activate();
-        }
     }
 
     private void OsdSettingsWindow_Loaded(object sender, RoutedEventArgs e)

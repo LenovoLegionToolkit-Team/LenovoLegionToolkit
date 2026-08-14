@@ -186,7 +186,11 @@ public partial class SensorsControlV2
             Header = Resource.DashboardPage_Customize,
             SymbolIcon = SymbolRegular.Settings24
         };
-        customizeItem.Click += (_, _) => EditSensorGroupWindow.ShowInstance();
+        customizeItem.Click += (_, _) =>
+        {
+            var window = new EditSensorGroupWindow { Owner = Window.GetWindow(this) };
+            window.ShowDialog();
+        };
         ContextMenu.Items.Add(customizeItem);
     }
 

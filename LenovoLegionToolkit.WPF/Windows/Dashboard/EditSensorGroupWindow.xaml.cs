@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -14,8 +14,6 @@ namespace LenovoLegionToolkit.WPF.Windows.Dashboard;
 
 public partial class EditSensorGroupWindow
 {
-    private static EditSensorGroupWindow? _instance;
-
     private readonly SensorsControlSettings _settings = IoCContainer.Resolve<SensorsControlSettings>();
     public event EventHandler? Apply;
 
@@ -23,22 +21,6 @@ public partial class EditSensorGroupWindow
     {
         InitializeComponent();
         InitializeCheckboxes();
-    }
-
-    public static void ShowInstance()
-    {
-        if (_instance == null)
-        {
-            _instance = new EditSensorGroupWindow();
-            _instance.Closed += (s, e) => _instance = null;
-            _instance.Show();
-        }
-        else
-        {
-            if (_instance.WindowState == WindowState.Minimized)
-                _instance.WindowState = WindowState.Normal;
-            _instance.Activate();
-        }
     }
 
     private void InitializeCheckboxes()
