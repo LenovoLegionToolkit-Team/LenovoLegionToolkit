@@ -79,8 +79,9 @@ public partial class BootLogoWindow
         _revertToDefaultButton.Visibility = enabled ? Visibility.Visible : Visibility.Collapsed;
         _customizeButton.Visibility = Visibility.Visible;
 
-        _disableAnimationToggle.IsChecked = await BootLogo.IsWindowsBootAnimationDisabledAsync();
-        _previewSpinner.Visibility = _disableAnimationToggle.IsChecked == true ? Visibility.Collapsed : Visibility.Visible;
+        var isAnimationDisabled = await BootLogo.IsWindowsBootAnimationDisabledAsync();
+        _animationToggle.IsChecked = !isAnimationDisabled;
+        _previewSpinner.Visibility = _animationToggle.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
 
         await UpdatePreviewAsync(enabled);
     }
@@ -110,9 +111,9 @@ public partial class BootLogoWindow
         _previewImage.Source = GetDefaultLogo();
     }
 
-    private async void DisableAnimationToggle_Click(object sender, RoutedEventArgs e)
+    private async void AnimationToggle_Click(object sender, RoutedEventArgs e)
     {
-        _previewSpinner.Visibility = _disableAnimationToggle.IsChecked == true ? Visibility.Collapsed : Visibility.Visible;
+        _previewSpinner.Visibility = _animationToggle.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
         await HandleAnimationAsync();
     }
 
@@ -196,7 +197,8 @@ public partial class BootLogoWindow
     {
         try
         {
-            var disable = _disableAnimationToggle.IsChecked == true;
+            var isAnimationEnabled = _animationToggle.IsChecked == true;
+            var disable = !isAnimationEnabled;
             await BootLogo.SetWindowsBootAnimationAsync(disable).ConfigureAwait(false);
         }
         catch (Exception ex)
