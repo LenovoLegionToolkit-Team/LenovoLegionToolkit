@@ -706,14 +706,10 @@ Ez az idő nem biztos, hogy pontos, ha a laptopot alvó vagy kikapcsolt állapot
     <value>Testreszabás</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>Testreszabott boot logó beállítva</value>
+    <value>Custom Logo</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>Alapértelmezett boot logó beállítva</value>
-  </data>
-  <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Az egyéni boot logónak pontosan {0} pixel méretűnek kell lennie.
-A támogatott formátumok a következők: {1}.</value>
+    <value>Default Logo</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
     <value>Disable Windows Startup Animation</value>
@@ -745,8 +741,26 @@ A támogatott formátumok a következők: {1}.</value>
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>Nincs elég szabad hely az EFI partíción.</value>
   </data>
-  <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>Státusz</value>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
+    <value>Current Status</value>
+  </data>
+  <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
+    <value>Status of the UEFI boot logo</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>Image Requirements</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>Supported formats and dimensions</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>Max {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>Boot Options</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>Boot logó</value>
@@ -1077,6 +1091,9 @@ Thank you for your support!</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
