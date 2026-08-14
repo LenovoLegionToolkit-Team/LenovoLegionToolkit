@@ -715,6 +715,21 @@
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
     <value>禁用 Windows 启动动画</value>
   </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>Boot Options</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>Max {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>Supported formats and dimensions</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>Image Requirements</value>
+  </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>自定义开机画面设置失败：{0}</value>
   </data>
@@ -742,26 +757,11 @@
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>EFI 分区空间不足。</value>
   </data>
-  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
-    <value>Current Status</value>
-  </data>
   <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
     <value>Status of the UEFI boot logo</value>
   </data>
-  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
-    <value>Image Requirements</value>
-  </data>
-  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
-    <value>Supported formats and dimensions</value>
-  </data>
-  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
-    <value>Max {0}</value>
-  </data>
-  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
-    <value>{0}</value>
-  </data>
-  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
-    <value>Boot Options</value>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
+    <value>Current Status</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>自定义开机画面</value>
@@ -895,9 +895,6 @@
   </data>
   <data name="Delete" xml:space="preserve">
     <value>删除</value>
-  </data>
-  <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
   </data>
   <data name="Device" xml:space="preserve">
     <value>设备</value>
@@ -1093,9 +1090,6 @@
   </data>
   <data name="Error" xml:space="preserve">
     <value>错误</value>
-  </data>
-  <data name="Success" xml:space="preserve">
-    <value>Success</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
@@ -2069,6 +2063,35 @@
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
     <value>背光状态改变</value>
   </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
+    <value>The PawnIO driver service is not running. 
+
+Please start the service or update/reinstall PawnIO to use this feature!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
+    <value>PawnIO driver not running</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
+    <value>Your PawnIO version is too old.
+
+Current: {0} Required: {1}. 
+Please update PawnIO to continue using this feature!
+    
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
+    <value>PawnIO update required</value>
+  </data>
+  <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
+    <value>You need to install PawnIO first to use hardware sensors!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
   <data name="Off" xml:space="preserve">
     <value>关闭</value>
   </data>
@@ -2536,6 +2559,9 @@
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
     <value>刷新率</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>重命名</value>
@@ -3188,12 +3214,6 @@
   <data name="SettingsPage_LockWindowSize_Title" xml:space="preserve">
     <value>锁定窗口大小</value>
   </data>
-  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
-    <value>Restore previous window position on application launch.</value>
-  </data>
-  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
-    <value>Remember Window Position</value>
-  </data>
   <data name="SettingsPage_MinimizeOnClose_Message" xml:space="preserve">
     <value>最小化到系统托盘而不是关闭。</value>
   </data>
@@ -3232,6 +3252,12 @@
   </data>
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
     <value>电源模式同步</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
+    <value>Restore previous window position on application launch.</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
+    <value>Remember Window Position</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>您确定要将所有设置重置为默认值吗？此操作不能撤消，并且应用程序将重新启动。</value>
@@ -3580,6 +3606,9 @@
   </data>
   <data name="Storage" xml:space="preserve">
     <value>存储</value>
+  </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>选择图标</value>
