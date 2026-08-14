@@ -228,7 +228,6 @@ public static partial class Compatibility
                 SupportsITSMode = GetSupportITSMode(model),
                 HasQuietToPerformanceModeSwitchingBug = GetHasQuietToPerformanceModeSwitchingBug(biosVersion),
                 HasGodModeToOtherModeSwitchingBug = GetHasGodModeToOtherModeSwitchingBug(biosVersion),
-                HasSpectrumProfileSwitchingBug = GetHasSpectrumProfileSwitchingBug(model, machineType),
                 IsExcludedFromLenovoLighting = GetIsExcludedFromLenovoLighting(biosVersion, generation, legionSeries),
                 IsExcludedFromPanelLogoLenovoLighting = GetIsExcludedFromPanelLenovoLighting(machineType, model),
                 HasAlternativeFullSpectrumLayout = GetHasAlternativeFullSpectrumLayout(machineType),
@@ -639,34 +638,6 @@ public static partial class Compatibility
         };
 
         return affectedBiosVersions.Any(bv => biosVersion?.IsHigherOrEqualThan(bv) ?? false);
-    }
-
-    private static bool GetHasSpectrumProfileSwitchingBug(string? machineModel, string machineType)
-    {
-        if (string.IsNullOrEmpty(machineModel))
-        {
-            return false;
-        }
-
-        var affectedSeries = new LegionSeries[]
-        {
-            LegionSeries.Legion_5,
-            LegionSeries.Legion_Pro_5,
-        };
-
-        var affectedModel = new List<string>
-        {
-            "16IRX10",
-            "16IAX10",
-            "16IAX10H",
-            "15IRX10",
-            "15AHP10"
-        };
-
-        bool isAffectedModel = affectedModel.Any(m => machineModel.Contains(m, StringComparison.OrdinalIgnoreCase));
-        bool isAffectedSeries = affectedSeries.Any(s => GetLegionSeries(machineModel, machineType) == s);
-
-        return isAffectedModel && isAffectedSeries;
     }
 
     // Legion 7 Gen 6 uses firmware-controlled RGB. I'm trying to add support but no luck. 

@@ -2,6 +2,7 @@ using System.Management;
 using System.Text;
 
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
 
 Console.OutputEncoding = Encoding.UTF8;
@@ -554,6 +555,67 @@ try
 catch (ManagementException)
 {
     LogWarning("  LENOVO_INTELLIGENT_OP_LIST: Not available");
+}
+catch (Exception ex) { LogError(ex); }
+
+// Spectrum Keyboard
+Console.WriteLine();
+Console.WriteLine(@">>> Section 15: Spectrum Keyboard");
+Console.WriteLine(@"----------------------------------------------------------------------------");
+
+try
+{
+    var keyMap = await SpectrumKeyboardProbe.GetKeyMapAsync().ConfigureAwait(false);
+
+    if (keyMap is null)
+    {
+        LogWarning("  Spectrum keyboard: not detected");
+    }
+    else if (keyMap.Value.Width == 0 || keyMap.Value.Height == 0)
+    {
+        LogWarning("  Spectrum keyboard: detected, but key map could not be read");
+    }
+    else
+    {
+        LogSuccess("  Spectrum keyboard: detected");
+
+        var width = keyMap.Value.Width;
+        var height = keyMap.Value.Height;
+        Console.WriteLine($"  Grid: {width} x {height}");
+
+        Console.WriteLine("  Key codes (grid):");
+        for (var y = 0; y < height; y++)
+        {
+            var row = new string[width];
+            for (var x = 0; x < width; x++)
+            {
+                var keyCode = keyMap.Value.KeyCodes[x, y];
+                row[x] = keyCode == 0 ? "--" : $"0x{keyCode:X2}";
+            }
+            Console.WriteLine($"    [{string.Join(" ", row)}]");
+        }
+
+        var additionalKeyCodes = keyMap.Value.AdditionalKeyCodes.Where(k => k > 0).Select(k => $"0x{k:X2}").ToArray();
+        Console.WriteLine($"  Additional key codes: {(additionalKeyCodes.Length > 0 ? string.Join(", ", additionalKeyCodes) : "none")}");
+
+        var allKeyCodes = new HashSet<ushort>();
+        foreach (var keyCode in keyMap.Value.KeyCodes)
+        {
+            if (keyCode > 0)
+            {
+                allKeyCodes.Add(keyCode);
+            }
+        }
+        foreach (var keyCode in keyMap.Value.AdditionalKeyCodes)
+        {
+            if (keyCode > 0)
+            {
+                allKeyCodes.Add(keyCode);
+            }
+        }
+
+        Console.WriteLine($"  Distinct key codes ({allKeyCodes.Count}): {string.Join(", ", allKeyCodes.OrderBy(k => k).Select(k => $"0x{k:X2}"))}");
+    }
 }
 catch (Exception ex) { LogError(ex); }
 

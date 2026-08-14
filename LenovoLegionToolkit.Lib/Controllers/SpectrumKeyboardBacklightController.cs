@@ -102,6 +102,18 @@ public class SpectrumKeyboardBacklightController
         return GetHiddenEffectTypes(mi);
     }
 
+    public async Task<bool> Is1ZoneKeyboardAsync()
+    {
+        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        return Is1ZoneKeyboard(mi);
+    }
+
+    public async Task<bool> IsFixedZoneKeyboardAsync()
+    {
+        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        return Is24ZoneKeyboard(mi);
+    }
+
     private static bool Is24ZoneKeyboard(MachineInformation mi)
     {
         var machineTypes = new[]
@@ -126,6 +138,27 @@ public class SpectrumKeyboardBacklightController
 
         return machineTypes.Contains(mi.MachineType);
     }
+
+    private static bool IsPerKeyKeyboard(MachineInformation mi)
+    {
+        var machineTypes = new[]
+        {
+            "83KY",
+            "83F5",
+            "83LV",
+            "83F6",
+            "83F4",
+            "83RU",
+            "83RV"
+        };
+
+        return machineTypes.Contains(mi.MachineType);
+    }
+
+    private static bool Is1ZoneKeyboard(MachineInformation mi) =>
+        !Is24ZoneKeyboard(mi) &&
+        !IsPerKeyKeyboard(mi) &&
+        mi.Generation >= 10;
 
     private static IReadOnlyList<SpectrumKeyboardBacklightEffectType> GetHiddenEffectTypes(MachineInformation mi)
     {
@@ -164,8 +197,9 @@ public class SpectrumKeyboardBacklightController
 
         Log.Instance.Trace($"Width: {width} Height: {height} Keys: {string.Join(", ", keys)}");
 
-        if (mi.Properties.HasSpectrumProfileSwitchingBug)
+        if (Is24ZoneKeyboard(mi))
         {
+            Log.Instance.Trace($"Using 24-zone keyboard layout.");
             return (SpectrumLayout.KeyboardOnly, KeyboardLayout.Keyboard24Zone, keys);
         }
 

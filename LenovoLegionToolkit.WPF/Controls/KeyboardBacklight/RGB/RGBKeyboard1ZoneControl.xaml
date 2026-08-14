@@ -1,0 +1,170 @@
+<controls:AbstractRefreshingControl
+    x:Class="LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB.RGBKeyboard1ZoneControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:LenovoLegionToolkit.WPF.Controls"
+    xmlns:custom="clr-namespace:LenovoLegionToolkit.WPF.Controls.Custom"
+    xmlns:lib="clr-namespace:LenovoLegionToolkit.Lib;assembly=LenovoLegionToolkit.Lib"
+    xmlns:resources="clr-namespace:LenovoLegionToolkit.WPF.Resources"
+    xmlns:rgb="clr-namespace:LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB"
+    xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" SharedSizeGroup="A" />
+            <ColumnDefinition Width="*" SharedSizeGroup="A" />
+            <ColumnDefinition Width="*" SharedSizeGroup="A" />
+            <ColumnDefinition Width="*" SharedSizeGroup="A" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <custom:InfoBar
+            x:Name="_vantageWarningInfoBar"
+            Title="{x:Static resources:Resource.Keyboard_VantageEnabledWarning_Title}"
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="0,0,8,24"
+            IsClosable="False"
+            IsOpen="False"
+            Message="{x:Static resources:Resource.Keyboard_VantageEnabledWarning_Message}"
+            Severity="Error" />
+
+        <TextBlock
+            x:Name="_previewIndicator"
+            Grid.Row="0"
+            Grid.Column="3"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0,0,16,24"
+            Visibility="Collapsed"
+            Foreground="{DynamicResource TextFillColorTertiaryBrush}">
+            <Run Text="🔴" />
+            <Run Text="{x:Static resources:Resource.LivePreview}" />
+        </TextBlock>
+
+        <Grid
+            Grid.Row="1"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="0,0,0,24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" SharedSizeGroup="A" />
+                <ColumnDefinition Width="*" SharedSizeGroup="A" />
+                <ColumnDefinition Width="*" SharedSizeGroup="A" />
+                <ColumnDefinition Width="*" SharedSizeGroup="A" />
+                <ColumnDefinition Width="*" SharedSizeGroup="A" />
+            </Grid.ColumnDefinitions>
+
+            <wpfui:Button
+                x:Name="_offPresetButton"
+                Grid.Column="0"
+                Height="36"
+                Margin="0,0,8,0"
+                HorizontalAlignment="Stretch"
+                Click="PresetButton_Click"
+                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_PresetOff}"
+                Tag="{x:Static lib:RGBKeyboardBacklightPreset.Off}" />
+            <wpfui:Button
+                x:Name="_preset1Button"
+                Grid.Column="1"
+                Height="36"
+                Margin="0,0,8,0"
+                HorizontalAlignment="Stretch"
+                Click="PresetButton_Click"
+                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset1}"
+                Tag="{x:Static lib:RGBKeyboardBacklightPreset.One}" />
+            <wpfui:Button
+                x:Name="_preset2Button"
+                Grid.Column="2"
+                Height="36"
+                Margin="0,0,8,0"
+                HorizontalAlignment="Stretch"
+                Click="PresetButton_Click"
+                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset2}"
+                Tag="{x:Static lib:RGBKeyboardBacklightPreset.Two}" />
+            <wpfui:Button
+                x:Name="_preset3Button"
+                Grid.Column="3"
+                Height="36"
+                Margin="0,0,8,0"
+                HorizontalAlignment="Stretch"
+                Click="PresetButton_Click"
+                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset3}"
+                Tag="{x:Static lib:RGBKeyboardBacklightPreset.Three}" />
+            <wpfui:Button
+                x:Name="_preset4Button"
+                Grid.Column="4"
+                Height="36"
+                Margin="0,0,8,0"
+                HorizontalAlignment="Stretch"
+                Click="PresetButton_Click"
+                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset4}"
+                Tag="{x:Static lib:RGBKeyboardBacklightPreset.Four}" />
+        </Grid>
+
+        <rgb:RGBKeyboardBacklightBrightnessCardControl
+            x:Name="_brightnessControl"
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="0,0,8,0"
+            OnChanged="CardControl_Changed" />
+        <rgb:RGBKeyboardBacklightEffectCardControl
+            x:Name="_effectControl"
+            Grid.Row="3"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="0,0,8,0"
+            OnChanged="CardControl_Changed" />
+        <rgb:RGBKeyboardBacklightSpeedCardControl
+            x:Name="_speedControl"
+            Grid.Row="4"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="0,0,8,0"
+            OnChanged="CardControl_Changed" />
+
+        <custom:CardControl
+            x:Name="_zone1Control"
+            Grid.Row="5"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Margin="0,0,8,8"
+            VerticalAlignment="Top"
+            Icon="Color24">
+            <custom:CardControl.Header>
+                <controls:CardHeaderControl Title="{x:Static resources:Resource.RGBKeyboardBacklightControl_Zone1}" />
+            </custom:CardControl.Header>
+            <controls:ColorPickerControl x:Name="_zone1ColorPicker" ColorChangedDelayed="CardControl_Changed" />
+        </custom:CardControl>
+
+        <wpfui:Button
+            x:Name="_applyButton"
+            Grid.Row="9"
+            Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Height="40"
+            Margin="0,16,8,0"
+            HorizontalAlignment="Stretch"
+            Appearance="Primary"
+            Click="ApplyButton_Click"
+            Content="{x:Static resources:Resource.Apply}"
+            IsEnabled="False" />
+
+    </Grid>
+
+</controls:AbstractRefreshingControl>

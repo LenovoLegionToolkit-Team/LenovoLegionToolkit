@@ -1,3 +1,7 @@
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Windows;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Settings;
@@ -8,10 +12,6 @@ using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Utils;
 using Microsoft.Win32;
-using System;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace LenovoLegionToolkit.WPF.Pages;
 
@@ -135,6 +135,16 @@ public partial class KeyboardBacklightPage
             bool anyAdded = false;
 
             var spectrumController = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();
+            var rgbController = IoCContainer.Resolve<RGBKeyboardBacklightController>();
+
+            if (await spectrumController.Is1ZoneKeyboardAsync() && await rgbController.IsSupportedAsync())
+            {
+                var control = new RGBKeyboard1ZoneControl();
+                _content.Children.Add(control);
+                anyAdded = true;
+                return;
+            }
+
             if (await spectrumController.IsSupportedAsync())
             {
                 var control = new SpectrumKeyboardBacklightControl();
@@ -143,7 +153,6 @@ public partial class KeyboardBacklightPage
                 return;
             }
 
-            var rgbController = IoCContainer.Resolve<RGBKeyboardBacklightController>();
             if (await rgbController.IsSupportedAsync())
             {
                 var control = new RGBKeyboardBacklightControl();

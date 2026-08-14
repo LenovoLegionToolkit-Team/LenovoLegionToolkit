@@ -95,7 +95,7 @@ public static class DebugUIManager
                             }
                         }
                     }
-            }
+                }
             }
         }
         catch (Exception ex)
@@ -160,55 +160,60 @@ public static class DebugUIManager
                     kbPage.Tag = "DebugInjected";
                     contentPanel.Children.Clear();
 
-                var header = new TextBlock
-                {
-                    Text = "Debug UI Selector",
-                    FontSize = 20,
-                    Margin = new Thickness(0, 0, 0, 10),
-                    FontWeight = FontWeights.Bold
-                };
-                contentPanel.Children.Add(header);
-
-                var comboBox = new ComboBox
-                {
-                    Margin = new Thickness(0, 0, 0, 20),
-                    FontSize = 16
-                };
-                comboBox.Items.Add("Spectrum (Per-Key)");
-                comboBox.Items.Add("Spectrum (24-Zone)");
-                comboBox.Items.Add("RGB (4-Zone)");
-
-                var container = new ContentControl();
-
-                comboBox.SelectionChanged += (s, e) =>
-                {
-                    container.Content = null;
-                    if (comboBox.SelectedIndex == 0)
+                    var header = new TextBlock
                     {
-                        var settings = Lib.IoCContainer.Resolve<Lib.Settings.SpectrumKeyboardSettings>();
-                        settings.Store.KeyboardLayout = Lib.KeyboardLayout.Ansi;
-                        settings.SynchronizeStore();
-                        container.Content = new Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl();
-                    }
-                    else if (comboBox.SelectedIndex == 1)
-                    {
-                        var settings = Lib.IoCContainer.Resolve<Lib.Settings.SpectrumKeyboardSettings>();
-                        settings.Store.KeyboardLayout = Lib.KeyboardLayout.Keyboard24Zone;
-                        settings.SynchronizeStore();
-                        container.Content = new Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl();
-                    }
-                    else if (comboBox.SelectedIndex == 2)
-                    {
-                        container.Content = new Controls.KeyboardBacklight.RGB.RGBKeyboardBacklightControl();
-                    }
-                };
+                        Text = "Debug UI Selector",
+                        FontSize = 20,
+                        Margin = new Thickness(0, 0, 0, 10),
+                        FontWeight = FontWeights.Bold
+                    };
+                    contentPanel.Children.Add(header);
 
-                contentPanel.Children.Add(comboBox);
-                contentPanel.Children.Add(container);
-                
-                kbPage.Tag = new List<UIElement> { header, comboBox, container };
-                
-                comboBox.SelectedIndex = 0;
+                    var comboBox = new ComboBox
+                    {
+                        Margin = new Thickness(0, 0, 0, 20),
+                        FontSize = 16
+                    };
+                    comboBox.Items.Add("Spectrum (Per-Key)");
+                    comboBox.Items.Add("Spectrum (24-Zone)");
+                    comboBox.Items.Add("RGB (1-Zone)");
+                    comboBox.Items.Add("RGB (4-Zone)");
+
+                    var container = new ContentControl();
+
+                    comboBox.SelectionChanged += (s, e) =>
+                    {
+                        container.Content = null;
+                        if (comboBox.SelectedIndex == 0)
+                        {
+                            var settings = Lib.IoCContainer.Resolve<Lib.Settings.SpectrumKeyboardSettings>();
+                            settings.Store.KeyboardLayout = Lib.KeyboardLayout.Ansi;
+                            settings.SynchronizeStore();
+                            container.Content = new Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl();
+                        }
+                        else if (comboBox.SelectedIndex == 1)
+                        {
+                            var settings = Lib.IoCContainer.Resolve<Lib.Settings.SpectrumKeyboardSettings>();
+                            settings.Store.KeyboardLayout = Lib.KeyboardLayout.Keyboard24Zone;
+                            settings.SynchronizeStore();
+                            container.Content = new Controls.KeyboardBacklight.Spectrum.SpectrumKeyboardBacklightControl();
+                        }
+                        else if (comboBox.SelectedIndex == 2)
+                        {
+                            container.Content = new Controls.KeyboardBacklight.RGB.RGBKeyboard1ZoneControl();
+                        }
+                        else if (comboBox.SelectedIndex == 3)
+                        {
+                            container.Content = new Controls.KeyboardBacklight.RGB.RGBKeyboardBacklightControl();
+                        }
+                    };
+
+                    contentPanel.Children.Add(comboBox);
+                    contentPanel.Children.Add(container);
+
+                    kbPage.Tag = new List<UIElement> { header, comboBox, container };
+
+                    comboBox.SelectedIndex = 0;
                 }
 
                 if (kbPage.Tag is List<UIElement> allowedElements)
@@ -238,10 +243,10 @@ public static class DebugUIManager
                 {
                     var dummyKeys = new HashSet<ushort>();
                     for (ushort i = 1; i <= 2000; i++) dummyKeys.Add(i);
-                    
+
                     var settings = Lib.IoCContainer.Resolve<Lib.Settings.SpectrumKeyboardSettings>();
                     var currentLayout = settings.Store.KeyboardLayout ?? Lib.KeyboardLayout.Ansi;
-                    
+
                     device.SetLayout(Lib.SpectrumLayout.Full, currentLayout, dummyKeys);
                 }
             }
@@ -254,7 +259,7 @@ public static class DebugUIManager
                 var name = fe.Name;
                 bool hasValidName = !string.IsNullOrEmpty(name) && !name.StartsWith("PART_");
                 bool isSettingsButton = fe is Button btn && btn.Icon == Wpf.Ui.Common.SymbolRegular.Settings24;
-                bool isAlwaysShowType = fe is UserControl 
+                bool isAlwaysShowType = fe is UserControl
                     || fe is CardControl || fe is Controls.Custom.CardControl
                     || fe is CardAction || fe is Controls.Custom.CardAction
                     || fe is CardExpander || fe is Controls.Custom.CardExpander;
