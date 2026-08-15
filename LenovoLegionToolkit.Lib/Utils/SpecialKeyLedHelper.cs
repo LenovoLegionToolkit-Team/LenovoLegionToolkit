@@ -10,9 +10,10 @@ public static class SpecialKeyLedHelper
 
     public static async Task SetLedAsync(SpecialKeyLedState state)
     {
+        _cachedMachineInformation ??= await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+
         try
         {
-            _cachedMachineInformation ??= await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
             if (_cachedMachineInformation.Value.LegionSeries > LegionSeries.Legion_Legacy)
             {
                 await WMI.LenovoUtilityData.SetFeatureAsync(state).ConfigureAwait(false);
@@ -20,7 +21,10 @@ public static class SpecialKeyLedHelper
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"LED sync failed [state={state}]", ex);
+            if (_cachedMachineInformation.Value.LegionSeries > LegionSeries.Legion_Legacy)
+            {
+                Log.Instance.Trace($"LED sync failed [state={state}]", ex);
+            }
         }
     }
 }
