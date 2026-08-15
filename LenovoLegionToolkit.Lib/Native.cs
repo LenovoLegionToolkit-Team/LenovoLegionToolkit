@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -28,7 +28,7 @@ internal readonly struct LENOVO_BATTERY_INFORMATION
 #region RGB Keyboard
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-internal struct LENOVO_RGB_KEYBOARD_STATE
+public struct LENOVO_RGB_KEYBOARD_STATE
 {
     [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)]
     public byte[] Header;
@@ -54,7 +54,7 @@ internal struct LENOVO_RGB_KEYBOARD_STATE
 
 #region Spectrum Keyboard
 
-internal enum LENOVO_SPECTRUM_OPERATION_TYPE : byte
+public enum LENOVO_SPECTRUM_OPERATION_TYPE : byte
 {
     Compatibility = 0xD1,
     KeyCount = 0xC4,
@@ -72,7 +72,7 @@ internal enum LENOVO_SPECTRUM_OPERATION_TYPE : byte
     LogoStatus = 0xA6
 }
 
-internal enum LENOVO_SPECTRUM_EFFECT_TYPE : byte
+public enum LENOVO_SPECTRUM_EFFECT_TYPE : byte
 {
     ScrewRainbow = 1,
     RainbowWave = 2,
@@ -89,14 +89,14 @@ internal enum LENOVO_SPECTRUM_EFFECT_TYPE : byte
     LegionAuraSync = 13,
 }
 
-internal enum LENOVO_SPECTRUM_COLOR_MODE : byte
+public enum LENOVO_SPECTRUM_COLOR_MODE : byte
 {
     None = 0,
     RandomColor = 1,
     ColorList = 2
 }
 
-internal enum LENOVO_SPECTRUM_SPEED : byte
+public enum LENOVO_SPECTRUM_SPEED : byte
 {
     None = 0,
     Speed1 = 1,
@@ -104,14 +104,14 @@ internal enum LENOVO_SPECTRUM_SPEED : byte
     Speed3 = 3
 }
 
-internal enum LENOVO_SPECTRUM_CLOCKWISE_DIRECTION : byte
+public enum LENOVO_SPECTRUM_CLOCKWISE_DIRECTION : byte
 {
     None = 0,
     Clockwise = 1,
     CounterClockwise = 2
 }
 
-internal enum LENOVO_SPECTRUM_DIRECTION : byte
+public enum LENOVO_SPECTRUM_DIRECTION : byte
 {
     None = 0,
     BottomToTop = 1,
@@ -121,7 +121,7 @@ internal enum LENOVO_SPECTRUM_DIRECTION : byte
 }
 
 [StructLayout(LayoutKind.Sequential)]
-internal readonly struct LENOVO_SPECTRUM_COLOR(byte r, byte g, byte b)
+public readonly struct LENOVO_SPECTRUM_COLOR(byte r, byte g, byte b)
 {
     public readonly byte R = r;
     public readonly byte G = g;
@@ -129,21 +129,21 @@ internal readonly struct LENOVO_SPECTRUM_COLOR(byte r, byte g, byte b)
 }
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-internal struct LENOVO_SPECTRUM_KEY_STATE
+public struct LENOVO_SPECTRUM_KEY_STATE
 {
     public readonly ushort KeyCode;
     public LENOVO_SPECTRUM_COLOR Color;
 }
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-internal readonly struct LENOVO_SPECTRUM_KEY_PAGE_ITEM
+public readonly struct LENOVO_SPECTRUM_KEY_PAGE_ITEM
 {
     private readonly byte Index;
     public readonly ushort KeyCode;
 }
 
 [StructLayout(LayoutKind.Sequential)]
-internal readonly struct LENOVO_SPECTRUM_HEADER(LENOVO_SPECTRUM_OPERATION_TYPE type, int size)
+public readonly struct LENOVO_SPECTRUM_HEADER(LENOVO_SPECTRUM_OPERATION_TYPE type, int size)
 {
     public readonly byte Head = 7;
     public readonly LENOVO_SPECTRUM_OPERATION_TYPE Type = type;
@@ -152,7 +152,7 @@ internal readonly struct LENOVO_SPECTRUM_HEADER(LENOVO_SPECTRUM_OPERATION_TYPE t
 }
 
 [StructLayout(LayoutKind.Sequential)]
-internal readonly struct LENOVO_SPECTRUM_EFFECT_HEADER(
+public readonly struct LENOVO_SPECTRUM_EFFECT_HEADER(
     LENOVO_SPECTRUM_EFFECT_TYPE effectType,
     LENOVO_SPECTRUM_SPEED speed,
     LENOVO_SPECTRUM_DIRECTION direction,
@@ -175,7 +175,7 @@ internal readonly struct LENOVO_SPECTRUM_EFFECT_HEADER(
 }
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-internal readonly struct LENOVO_SPECTRUM_EFFECT(
+public readonly struct LENOVO_SPECTRUM_EFFECT(
     LENOVO_SPECTRUM_EFFECT_HEADER effectHeader,
     int effectNo,
     LENOVO_SPECTRUM_COLOR[] colors,
@@ -190,20 +190,20 @@ internal readonly struct LENOVO_SPECTRUM_EFFECT(
 }
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
-internal readonly struct LENOVO_SPECTRUM_AURORA_ITEM(ushort keyCode, LENOVO_SPECTRUM_COLOR color)
+public readonly struct LENOVO_SPECTRUM_AURORA_ITEM(ushort keyCode, LENOVO_SPECTRUM_COLOR color)
 {
     public readonly ushort KeyCode = keyCode;
     public readonly LENOVO_SPECTRUM_COLOR Color = color;
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_COMPATIBILITY_REQUEST()
+public readonly struct LENOVO_SPECTRUM_GET_COMPATIBILITY_REQUEST()
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.Compatibility, 0xC0);
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_COMPATIBILITY_RESPONSE
+public readonly struct LENOVO_SPECTRUM_GET_COMPATIBILITY_RESPONSE
 {
     private readonly byte ReportId;
     private readonly LENOVO_SPECTRUM_OPERATION_TYPE Type;
@@ -215,14 +215,14 @@ internal readonly struct LENOVO_SPECTRUM_GET_COMPATIBILITY_RESPONSE
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_KEY_COUNT_REQUEST()
+public readonly struct LENOVO_SPECTRUM_GET_KEY_COUNT_REQUEST()
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.KeyCount, 0xC0);
     private readonly byte Parameter = 7;
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_KEY_COUNT_RESPONSE
+public readonly struct LENOVO_SPECTRUM_GET_KEY_COUNT_RESPONSE
 {
     private readonly byte ReportId;
     private readonly LENOVO_SPECTRUM_OPERATION_TYPE Type;
@@ -234,7 +234,7 @@ internal readonly struct LENOVO_SPECTRUM_GET_KEY_COUNT_RESPONSE
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_KEY_PAGE_REQUEST(byte index, bool secondary = false)
+public readonly struct LENOVO_SPECTRUM_GET_KEY_PAGE_REQUEST(byte index, bool secondary = false)
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.KeyPage, 0xC0);
     private readonly byte Parameter = secondary ? (byte)8 : (byte)7;
@@ -242,7 +242,7 @@ internal readonly struct LENOVO_SPECTRUM_GET_KEY_PAGE_REQUEST(byte index, bool s
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_KEY_PAGE_RESPONSE
+public readonly struct LENOVO_SPECTRUM_GET_KEY_PAGE_RESPONSE
 {
     private readonly byte ReportId;
     private readonly LENOVO_SPECTRUM_OPERATION_TYPE Type;
@@ -255,13 +255,13 @@ internal readonly struct LENOVO_SPECTRUM_GET_KEY_PAGE_RESPONSE
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_BRIGHTNESS_REQUEST()
+public readonly struct LENOVO_SPECTRUM_GET_BRIGHTNESS_REQUEST()
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.GetBrightness, 0xC0);
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_BRIGHTNESS_RESPONSE
+public readonly struct LENOVO_SPECTRUM_GET_BRIGHTNESS_RESPONSE
 {
     private readonly byte ReportId;
     private readonly LENOVO_SPECTRUM_OPERATION_TYPE Type;
@@ -271,20 +271,20 @@ internal readonly struct LENOVO_SPECTRUM_GET_BRIGHTNESS_RESPONSE
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_SET_BRIGHTNESS_REQUEST(byte brightness)
+public readonly struct LENOVO_SPECTRUM_SET_BRIGHTNESS_REQUEST(byte brightness)
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.Brightness, 0xC0);
     private readonly byte Brightness = brightness;
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_LOGO_STATUS()
+public readonly struct LENOVO_SPECTRUM_GET_LOGO_STATUS()
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.GetLogoStatus, 0xC0);
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_LOGO_STATUS_RESPONSE
+public readonly struct LENOVO_SPECTRUM_GET_LOGO_STATUS_RESPONSE
 {
     private readonly byte ReportId;
     private readonly LENOVO_SPECTRUM_OPERATION_TYPE Type;
@@ -296,20 +296,20 @@ internal readonly struct LENOVO_SPECTRUM_GET_LOGO_STATUS_RESPONSE
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_SET_LOGO_STATUS_REQUEST(bool isOn)
+public readonly struct LENOVO_SPECTRUM_SET_LOGO_STATUS_REQUEST(bool isOn)
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.LogoStatus, 0xC0);
     private readonly byte Status = (byte)(isOn ? 1 : 0);
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_PROFILE_REQUEST()
+public readonly struct LENOVO_SPECTRUM_GET_PROFILE_REQUEST()
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.Profile, 0xC0);
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_PROFILE_RESPONSE
+public readonly struct LENOVO_SPECTRUM_GET_PROFILE_RESPONSE
 {
     private readonly byte ReportId;
     private readonly LENOVO_SPECTRUM_OPERATION_TYPE Type;
@@ -319,27 +319,27 @@ internal readonly struct LENOVO_SPECTRUM_GET_PROFILE_RESPONSE
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_SET_PROFILE_REQUEST(byte profile)
+public readonly struct LENOVO_SPECTRUM_SET_PROFILE_REQUEST(byte profile)
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.ProfileChange, 0xC0);
     private readonly byte Profile = profile;
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_SET_PROFILE_DEFAULT_REQUEST(byte profile)
+public readonly struct LENOVO_SPECTRUM_SET_PROFILE_DEFAULT_REQUEST(byte profile)
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.ProfileDefault, 0xC0);
     private readonly byte Profile = profile;
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_GET_EFFECT_REQUEST(byte profile)
+public readonly struct LENOVO_SPECTRUM_GET_EFFECT_REQUEST(byte profile)
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.Effect, 0xC0);
     private readonly byte Profile = profile;
 }
 
-internal readonly struct LENOVO_SPECTRUM_EFFECT_DESCRIPTION(
+public readonly struct LENOVO_SPECTRUM_EFFECT_DESCRIPTION(
     LENOVO_SPECTRUM_HEADER header,
     byte profile,
     LENOVO_SPECTRUM_EFFECT[] effects)
@@ -473,14 +473,14 @@ internal readonly struct LENOVO_SPECTRUM_EFFECT_DESCRIPTION(
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_AURORA_START_STOP_REQUEST(bool start, byte profile)
+public readonly struct LENOVO_SPECTRUM_AURORA_START_STOP_REQUEST(bool start, byte profile)
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.AuroraStartStop, 0xC0);
     private readonly byte StartStop = start ? (byte)1 : (byte)2;
     private readonly byte Profile = profile;
 }
 
-internal readonly struct LENOVO_SPECTRUM_AURORA_SEND_BITMAP_REQUEST(LENOVO_SPECTRUM_AURORA_ITEM[] items)
+public readonly struct LENOVO_SPECTRUM_AURORA_SEND_BITMAP_REQUEST(LENOVO_SPECTRUM_AURORA_ITEM[] items)
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.AuroraSendBitmap, 0xC0);
 
@@ -507,7 +507,7 @@ internal readonly struct LENOVO_SPECTRUM_AURORA_SEND_BITMAP_REQUEST(LENOVO_SPECT
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
-internal readonly struct LENOVO_SPECTRUM_STATE_RESPONSE
+public readonly struct LENOVO_SPECTRUM_STATE_RESPONSE
 {
     private readonly byte ReportId;
     private readonly LENOVO_SPECTRUM_OPERATION_TYPE Type;
