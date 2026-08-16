@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Linq;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features.Hybrid;
 using LenovoLegionToolkit.Lib.Settings;
@@ -12,6 +13,8 @@ using LenovoLegionToolkit.Lib.Utils;
 using NeoSmart.AsyncLock;
 using NvAPIWrapper.GPU;
 using NvAPIWrapper.Native.Exceptions;
+using NvAPIWrapper.Native.General;
+using NvAPIWrapper.Native.GPU;
 using Resource = LenovoLegionToolkit.Lib.Resources.Resource;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
@@ -30,6 +33,8 @@ public class GPUController
     private List<Process> _allProcesses = [];
     private string? _gpuInstanceId;
     private string? _performanceState;
+
+    public PerformanceStateId? CurrentPerformanceState { get; private set; }
 
     public event EventHandler<GPUStatus>? Refreshed;
     public bool IsStarted => _refreshCancellationTokenSource is not null;
@@ -178,6 +183,12 @@ public class GPUController
 
             Log.Instance.Trace($"Initialized NVAPI");
 
+            var settings = IoCContainer.Resolve<ApplicationSettings>();
+            if (settings.Store.LockedPStateId >= 0)
+            {
+                await ApplyPStateAsync(settings.Store.LockedPStateId).ConfigureAwait(false);
+            }
+
             await Task.Delay(delay, token).ConfigureAwait(false);
 
             while (true)
@@ -260,15 +271,18 @@ public class GPUController
 
         try
         {
-            var stateId = gpu.PerformanceStatesInfo.CurrentPerformanceState.StateId.ToString().GetUntilOrEmpty("_");
+            CurrentPerformanceState = NVAPI.GetCurrentPerformanceState(gpu);
+            var pState = CurrentPerformanceState ?? gpu.PerformanceStatesInfo?.CurrentPerformanceState?.StateId;
+            var stateId = pState != null ? $"P{(uint)pState}" : null;
             newPerformanceState = Resource.GPUController_PoweredOn;
             if (!string.IsNullOrWhiteSpace(stateId))
             {
                 newPerformanceState += $", {stateId}";
             }
         }
-        catch (NVIDIAApiException ex) when ((int)ex.Status == -105 || (int)ex.Status == -220)
+        catch (NVIDIAApiException ex) when (ex.Status == Status.PortIdNotFound || ex.Status == Status.GpuNotPowered)
         {
+            CurrentPerformanceState = null;
             using (await _stateLock.LockAsync(token).ConfigureAwait(false))
             {
                 _state = GPUState.PoweredOff;
@@ -406,6 +420,57 @@ public class GPUController
         catch (Exception ex)
         {
             Log.Instance.Trace($"Failed to set GPU preference for {exePath}.", ex);
+        }
+    }
+
+    public List<PerformanceStateId> GetSupportedPerformanceStates()
+    {
+        try
+        {
+            var gpu = NVAPI.GetGPU();
+            if (gpu is null)
+                return [];
+
+            return NVAPI.GetSupportedPerformanceStates(gpu);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to get supported performance states.", ex);
+            return [];
+        }
+    }
+
+    public async Task<bool> SetPStateAsync(int pStateId)
+    {
+        var settings = IoCContainer.Resolve<ApplicationSettings>();
+        settings.Store.LockedPStateId = pStateId;
+        settings.SynchronizeStore();
+
+        return await ApplyPStateAsync(pStateId).ConfigureAwait(false);
+    }
+
+    public Task<bool> ApplyPStateAsync(int pStateId)
+    {
+        try
+        {
+            var gpu = NVAPI.GetGPU();
+            if (gpu is null)
+                return Task.FromResult(false);
+
+            if (pStateId < 0)
+            {
+                Log.Instance.Trace($"Resetting GPU to dynamic P-State mode.");
+                return Task.FromResult(NVAPI.ResetDynamicPerformanceStates(gpu));
+            }
+
+            var targetState = (PerformanceStateId)(uint)pStateId;
+            Log.Instance.Trace($"Setting GPU P-State lock to: {targetState}");
+            return Task.FromResult(NVAPI.SetPerformanceState(gpu, targetState));
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to apply P-State {pStateId}.", ex);
+            return Task.FromResult(false);
         }
     }
 

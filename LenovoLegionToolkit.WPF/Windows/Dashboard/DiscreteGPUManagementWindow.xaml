@@ -191,6 +191,45 @@
                             <wpfui:ToggleSwitch x:Name="_keepDgpuAwakeToggle" VerticalAlignment="Center" Checked="KeepDgpuAwakeToggle_CheckedChanged" Unchecked="KeepDgpuAwakeToggle_CheckedChanged" />
                         </custom:CardControl>
 
+                        <custom:CardControl Margin="0,0,0,8" Icon="Flash24">
+                            <custom:CardControl.Header>
+                                <controls:CardHeaderControl
+                                    Title="{x:Static resources:Resource.DiscreteGPUControl_PStateLockTitle}"
+                                    Subtitle="{x:Static resources:Resource.DiscreteGPUControl_PStateLockDescription}"
+                                    Info="{x:Static resources:Resource.DiscreteGPUControl_PStateLockInfo}" />
+                            </custom:CardControl.Header>
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <Ellipse
+                                    x:Name="_pStateActiveIndicator"
+                                    Width="10"
+                                    Height="10"
+                                    Margin="0,0,6,0"
+                                    VerticalAlignment="Center"
+                                    Fill="#FF8BC34A"
+                                    Visibility="Collapsed" />
+                                <Ellipse
+                                    x:Name="_pStatePoweredOffIndicator"
+                                    Width="10"
+                                    Height="10"
+                                    Margin="0,0,6,0"
+                                    VerticalAlignment="Center"
+                                    Fill="#BF360C"
+                                    Visibility="Collapsed" />
+                                <TextBlock 
+                                    x:Name="_currentPStateText" 
+                                    Margin="0,0,12,0" 
+                                    VerticalAlignment="Center" 
+                                    FontSize="12"
+                                    FontWeight="Medium"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                                <ComboBox 
+                                    x:Name="_pStateComboBox" 
+                                    Width="160" 
+                                    VerticalAlignment="Center" 
+                                    SelectionChanged="PStateComboBox_SelectionChanged" />
+                            </StackPanel>
+                        </custom:CardControl>
+
 
                         <custom:CardControl Margin="0,0,0,8" Icon="Timer24">
                             <custom:CardControl.Header>

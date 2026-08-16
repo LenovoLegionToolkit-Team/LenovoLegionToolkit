@@ -23,6 +23,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Drawing;
 using System.Windows.Interop;
+using NvAPIWrapper.Native.GPU;
 
 namespace LenovoLegionToolkit.WPF.Windows.Dashboard;
 
@@ -38,6 +39,8 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
         InitializeComponent();
 
         _keepDgpuAwakeToggle.IsChecked = _settings.Store.KeepDgpuAwake;
+
+        InitializePStateOptions();
 
         _intervalSlider.Value = _settings.Store.GPUMonitoringInterval / 1000.0;
         _intervalText.Text = string.Format(Resource.Seconds, (int)_intervalSlider.Value);
@@ -57,6 +60,46 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
         _isInitializing = false;
     }
 
+    private void InitializePStateOptions()
+    {
+        var items = new List<PStateItemViewModel>
+        {
+            new() { Id = -1, DisplayName = Resource.DiscreteGPUControl_PStateAuto }
+        };
+
+        var supportedStates = _gpuController.GetSupportedPerformanceStates();
+        foreach (var state in supportedStates)
+        {
+            items.Add(new PStateItemViewModel { Id = (int)state, DisplayName = $"P{(uint)state}" });
+        }
+
+        _pStateComboBox.ItemsSource = items;
+        _pStateComboBox.DisplayMemberPath = nameof(PStateItemViewModel.DisplayName);
+        _pStateComboBox.SelectedValuePath = nameof(PStateItemViewModel.Id);
+
+        var lockedId = _settings.Store.LockedPStateId;
+        var selected = items.FirstOrDefault(i => i.Id == lockedId) ?? items[0];
+        _pStateComboBox.SelectedItem = selected;
+
+        UpdateCurrentPStateText();
+    }
+
+    private void UpdateCurrentPStateText()
+    {
+        if (_gpuController.CurrentPerformanceState is { } pState)
+        {
+            _pStateActiveIndicator.Visibility = Visibility.Visible;
+            _pStatePoweredOffIndicator.Visibility = Visibility.Collapsed;
+            _currentPStateText.Text = string.Format(Resource.DiscreteGPUControl_PStateCurrent, $"P{(uint)pState}");
+        }
+        else
+        {
+            _pStateActiveIndicator.Visibility = Visibility.Collapsed;
+            _pStatePoweredOffIndicator.Visibility = Visibility.Visible;
+            _currentPStateText.Text = Resource.PoweredOff;
+        }
+    }
+
     private void DiscreteGPUManagementWindow_Loaded(object sender, RoutedEventArgs e)
     {
         _ = RefreshAppListAsync();
@@ -64,7 +107,11 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
 
     private void GpuController_Refreshed(object? sender, GPUStatus e)
     {
-        Dispatcher.Invoke(() => _ = RefreshAppListAsync());
+        Dispatcher.Invoke(() =>
+        {
+            UpdateCurrentPStateText();
+            _ = RefreshAppListAsync();
+        });
     }
 
     private bool _isRefreshing;
@@ -200,6 +247,14 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
         _settings.SynchronizeStore();
         
         _ = IoCContainer.Resolve<DgpuAwakeManager>().UpdateStateAsync();
+    }
+
+    private void PStateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (_isInitializing || _pStateComboBox.SelectedItem is not PStateItemViewModel item)
+            return;
+
+        _ = _gpuController.SetPStateAsync(item.Id);
     }
 
 
@@ -370,6 +425,14 @@ public class DiscreteGPUAppViewModel : INotifyPropertyChanged
     public event PropertyChangedEventHandler? PropertyChanged;
     protected void OnPropertyChanged([CallerMemberName] string? binding = null)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(binding));
+}
+
+public class PStateItemViewModel
+{
+    public int Id { get; set; }
+    public string DisplayName { get; set; } = string.Empty;
+
+    public override string ToString() => DisplayName;
 }
 
 
