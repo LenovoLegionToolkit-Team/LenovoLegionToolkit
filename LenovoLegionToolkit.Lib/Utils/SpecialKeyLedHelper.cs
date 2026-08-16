@@ -14,17 +14,17 @@ public static class SpecialKeyLedHelper
 
         try
         {
-            if (_cachedMachineInformation.Value.LegionSeries > LegionSeries.Legion_Legacy)
+            if (_cachedMachineInformation.Value.LegionSeries == LegionSeries.ThinkBook ||
+                _cachedMachineInformation.Value.LegionSeries == LegionSeries.IdeaPad ||
+                _cachedMachineInformation.Value.LegionSeries == LegionSeries.Motorola ||
+                _cachedMachineInformation.Value.LegionSeries == LegionSeries.YOGA)
             {
                 await WMI.LenovoUtilityData.SetFeatureAsync(state).ConfigureAwait(false);
             }
         }
         catch (Exception ex)
         {
-            if (_cachedMachineInformation.Value.LegionSeries > LegionSeries.Legion_Legacy)
-            {
-                Log.Instance.Trace($"LED sync failed [state={state}]", ex);
-            }
+            Log.Instance.Trace($"LED sync failed [state={state}]", ex);
         }
     }
 }
