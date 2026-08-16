@@ -47,12 +47,19 @@ public class RefreshRateFeature : IFeature<RefreshRate>
             var maxFreq = result.Max(r => r.Frequency);
             if (maxFreq > MinimumDrrFrequency)
             {
-                var displaySource = display.DisplayScreen.ToPathDisplaySource();
-                var pathInfos = WindowsDisplayAPI.DisplayConfig.PathInfo.GetActivePaths(virtualModeAware: true);
-                var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource);
-                if (activePath is not null && activePath.TargetsInfo.Any(t => t.IsVirtualModeSupportedByPath))
+                try
                 {
-                    result.Add(new RefreshRate(maxFreq, isDynamic: true));
+                    var displaySource = display.DisplayScreen.ToPathDisplaySource();
+                    var pathInfos = WindowsDisplayAPI.DisplayConfig.PathInfo.GetActivePaths(virtualModeAware: true);
+                    var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource);
+                    if (activePath is not null && activePath.TargetsInfo.Any(t => t.IsVirtualModeSupportedByPath))
+                    {
+                        result.Add(new RefreshRate(maxFreq, isDynamic: true));
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.Instance.Trace($"Failed to query virtual mode support for DRR: {ex.Message}");
                 }
             }
         }
@@ -74,34 +81,41 @@ public class RefreshRateFeature : IFeature<RefreshRate>
             return default(RefreshRate);
         }
 
-        var displaySource = display.DisplayScreen.ToPathDisplaySource();
-        var pathInfos = WindowsDisplayAPI.DisplayConfig.PathInfo.GetActivePaths(virtualModeAware: true);
-        var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource);
-        if (activePath is not null)
+        try
         {
-            var target = activePath.TargetsInfo.FirstOrDefault(t => t.IsCurrentlyInUse || t.IsPathActive);
-            if (target is not null)
+            var displaySource = display.DisplayScreen.ToPathDisplaySource();
+            var pathInfos = WindowsDisplayAPI.DisplayConfig.PathInfo.GetActivePaths(virtualModeAware: true);
+            var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource);
+            if (activePath is not null)
             {
-                if (target.IsBoostRefreshRate)
+                var target = activePath.TargetsInfo.FirstOrDefault(t => t.IsCurrentlyInUse || t.IsPathActive);
+                if (target is not null)
                 {
-                    var currentSettings = display.DisplayScreen.CurrentSetting;
-                    var maxFreq = display.DisplayScreen.GetPossibleSettings()
-                        .Where(dps => Match(dps, currentSettings))
-                        .Select(dps => dps.Frequency)
-                        .DefaultIfEmpty(MinimumDrrFrequency)
-                        .Max();
-                    var drrResult = new RefreshRate(maxFreq, isDynamic: true);
-                    Log.Instance.Trace($"Dynamic Refresh Rate (DRR) is active. Reporting rate: {drrResult}");
-                    return drrResult;
+                    if (target.IsBoostRefreshRate)
+                    {
+                        var currentSettings = display.DisplayScreen.CurrentSetting;
+                        var maxFreq = display.DisplayScreen.GetPossibleSettings()
+                            .Where(dps => Match(dps, currentSettings))
+                            .Select(dps => dps.Frequency)
+                            .DefaultIfEmpty(MinimumDrrFrequency)
+                            .Max();
+                        var drrResult = new RefreshRate(maxFreq, isDynamic: true);
+                        Log.Instance.Trace($"Dynamic Refresh Rate (DRR) is active. Reporting rate: {drrResult}");
+                        return drrResult;
+                    }
+
+                    var freq = (int)(target.FrequencyInMillihertz / 1000);
+                    var result = new RefreshRate(freq);
+
+                    Log.Instance.Trace($"Current refresh rate is {result}");
+
+                    return result;
                 }
-
-                var freq = (int)(target.FrequencyInMillihertz / 1000);
-                var result = new RefreshRate(freq);
-
-                Log.Instance.Trace($"Current refresh rate is {result}");
-
-                return result;
             }
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to query active path refresh rate: {ex.Message}");
         }
 
         var currentSettingsFallback = display.DisplayScreen.CurrentSetting;

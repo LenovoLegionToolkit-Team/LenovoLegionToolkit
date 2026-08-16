@@ -1,9 +1,10 @@
-﻿ using System;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib.Automation.Steps;
+using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
@@ -154,8 +155,15 @@ public abstract class AbstractAutomationStepControl : UserControl
 
     private async void RefreshingControl_Loaded(object sender, RoutedEventArgs e)
     {
-        await RefreshAsync();
-        OnFinishedLoading();
+        try
+        {
+            await RefreshAsync();
+            OnFinishedLoading();
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Error loading automation step control {GetType().Name}", ex);
+        }
     }
 
     public abstract IAutomationStep CreateAutomationStep();

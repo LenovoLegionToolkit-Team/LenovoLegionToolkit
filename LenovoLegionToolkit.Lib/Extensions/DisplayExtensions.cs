@@ -18,133 +18,133 @@ public static class DisplayExtensions
 
     public static async Task SetSettingsUsingPathInfoAsync(this Display display, DisplaySetting displaySetting, bool enableDrr = false, int physicalFrequency = 0)
     {
-        var displaySource = display.DisplayScreen.ToPathDisplaySource();
-        var pathInfos = PathInfo.GetActivePaths(virtualModeAware: true);
-
-        var targetInfo = pathInfos
-            .Where(p => p.DisplaySource == displaySource)
-            .SelectMany(p => p.TargetsInfo)
-            .FirstOrDefault();
-
-        var maxFrequency = display.DisplayScreen.GetPossibleSettings()
-            .Select(dps => dps.Frequency)
-            .DefaultIfEmpty(0)
-            .Max();
-        var targetPhysicalFreq = physicalFrequency > 0 ? physicalFrequency : maxFrequency;
-
-        var currentPhysicalFreq = targetInfo != null
-            ? (targetInfo.IsSignalInformationAvailable
-                ? (int)(targetInfo.SignalInfo.VerticalSyncFrequencyInMillihertz / 1000)
-                : (int)(targetInfo.FrequencyInMillihertz / 1000))
-            : 0;
-
-        var needsPreInit = enableDrr && maxFrequency > 0 && (
-            targetInfo == null ||
-            !targetInfo.IsDesktopImageInformationAvailable ||
-            (physicalFrequency > 0 && (!targetInfo.IsBoostRefreshRate || currentPhysicalFreq != physicalFrequency))
-        );
-
-        if (needsPreInit)
+        try
         {
-            Log.Instance.Trace($"DRR pre-initialization required. Setting display to physical frequency {targetPhysicalFreq}Hz...");
-            var physicalSetting = new DisplaySetting(
-                displaySetting.Resolution,
-                displaySetting.Position,
-                displaySetting.ColorDepth,
-                targetPhysicalFreq,
-                displaySetting.IsInterlaced,
-                displaySetting.Orientation,
-                displaySetting.OutputScalingMode
+            var displaySource = display.DisplayScreen.ToPathDisplaySource();
+            var pathInfos = PathInfo.GetActivePaths(virtualModeAware: true);
+
+            var targetInfo = pathInfos
+                .Where(p => p.DisplaySource == displaySource)
+                .SelectMany(p => p.TargetsInfo)
+                .FirstOrDefault();
+
+            var maxFrequency = display.DisplayScreen.GetPossibleSettings()
+                .Select(dps => dps.Frequency)
+                .DefaultIfEmpty(0)
+                .Max();
+            var targetPhysicalFreq = physicalFrequency > 0 ? physicalFrequency : maxFrequency;
+
+            var currentPhysicalFreq = targetInfo != null
+                ? (targetInfo.IsSignalInformationAvailable
+                    ? (int)(targetInfo.SignalInfo.VerticalSyncFrequencyInMillihertz / 1000)
+                    : (int)(targetInfo.FrequencyInMillihertz / 1000))
+                : 0;
+
+            var needsPreInit = enableDrr && maxFrequency > 0 && (
+                targetInfo == null ||
+                !targetInfo.IsDesktopImageInformationAvailable ||
+                (physicalFrequency > 0 && (!targetInfo.IsBoostRefreshRate || currentPhysicalFreq != physicalFrequency))
             );
-            display.DisplayScreen.SetSettings(physicalSetting, apply: true);
 
-            var stabilized = false;
-            for (var attempt = 0; attempt < DrrPreInitAttempts; attempt++)
+            if (needsPreInit)
             {
-                await Task.Delay(DrrPreInitDelayMs).ConfigureAwait(false);
-                pathInfos = PathInfo.GetActivePaths(virtualModeAware: true);
-                targetInfo = pathInfos
-                    .Where(p => p.DisplaySource == displaySource)
-                    .SelectMany(p => p.TargetsInfo)
-                    .FirstOrDefault();
+                Log.Instance.Trace($"DRR pre-initialization required. Setting display to physical frequency {targetPhysicalFreq}Hz...");
+                var physicalSetting = new DisplaySetting(
+                    displaySetting.Resolution,
+                    displaySetting.Position,
+                    displaySetting.ColorDepth,
+                    targetPhysicalFreq,
+                    displaySetting.IsInterlaced,
+                    displaySetting.Orientation,
+                    displaySetting.OutputScalingMode
+                );
+                display.DisplayScreen.SetSettings(physicalSetting, apply: true);
 
-                var isSignalAvailable = targetInfo?.IsSignalInformationAvailable == true;
-                var loopPhysicalFreq = isSignalAvailable ? (int)(targetInfo!.SignalInfo!.VerticalSyncFrequencyInMillihertz / 1000) : 0;
-
-                if (targetInfo != null && isSignalAvailable && loopPhysicalFreq == targetPhysicalFreq)
+                var stabilized = false;
+                for (var attempt = 0; attempt < DrrPreInitAttempts; attempt++)
                 {
-                    Log.Instance.Trace($"DRR pre-initialization stabilized at {loopPhysicalFreq}Hz in {(attempt + 1) * DrrPreInitDelayMs}ms.");
-                    stabilized = true;
-                    break;
+                    await Task.Delay(DrrPreInitDelayMs).ConfigureAwait(false);
+                    pathInfos = PathInfo.GetActivePaths(virtualModeAware: true);
+                    targetInfo = pathInfos
+                        .Where(p => p.DisplaySource == displaySource)
+                        .SelectMany(p => p.TargetsInfo)
+                        .FirstOrDefault();
+
+                    var isSignalAvailable = targetInfo?.IsSignalInformationAvailable == true;
+                    var loopPhysicalFreq = isSignalAvailable ? (int)(targetInfo!.SignalInfo!.VerticalSyncFrequencyInMillihertz / 1000) : 0;
+
+                    if (targetInfo != null && isSignalAvailable && loopPhysicalFreq == targetPhysicalFreq)
+                    {
+                        Log.Instance.Trace($"DRR pre-initialization stabilized at {loopPhysicalFreq}Hz in {(attempt + 1) * DrrPreInitDelayMs}ms.");
+                        stabilized = true;
+                        break;
+                    }
+                }
+
+                if (!stabilized)
+                {
+                    Log.Instance.Trace($"DRR pre-initialization stabilization timed out after 1 second.");
                 }
             }
 
-            if (!stabilized)
+            for (var i = 0; i < pathInfos.Length; i++)
             {
-                Log.Instance.Trace($"DRR pre-initialization stabilization timed out after 1 second.");
-            }
-        }
+                var pathInfo = pathInfos[i];
 
-        for (var i = 0; i < pathInfos.Length; i++)
-        {
-            var pathInfo = pathInfos[i];
-
-            if (pathInfo.DisplaySource == displaySource)
-            {
-                var targetsInfo = pathInfo.TargetsInfo;
-                var pathTargetInfos = targetsInfo
-                    .Select(target =>
-                    {
-                        if (enableDrr && target.IsVirtualModeSupportedByPath)
+                if (pathInfo.DisplaySource == displaySource)
+                {
+                    var targetsInfo = pathInfo.TargetsInfo;
+                    var pathTargetInfos = targetsInfo
+                        .Select(target =>
                         {
-                            var virtualFreqMillihertz = (ulong)(displaySetting.Frequency * 1000);
-                            var size = new global::System.Drawing.Size(displaySetting.Resolution.Width, displaySetting.Resolution.Height);
-                            var rect = new global::System.Drawing.Rectangle(0, 0, displaySetting.Resolution.Width, displaySetting.Resolution.Height);
-                            var desktopImage = new PathTargetDesktopImage(size, rect, rect);
+                            if (enableDrr && target.IsVirtualModeSupportedByPath)
+                            {
+                                var virtualFreqMillihertz = (ulong)(displaySetting.Frequency * 1000);
+                                var size = new global::System.Drawing.Size(displaySetting.Resolution.Width, displaySetting.Resolution.Height);
+                                var rect = new global::System.Drawing.Rectangle(0, 0, displaySetting.Resolution.Width, displaySetting.Resolution.Height);
+                                var desktopImage = new PathTargetDesktopImage(size, rect, rect);
 
-                            return new PathTargetInfo(
-                                target.DisplayTarget,
-                                target.SignalInfo!,
-                                desktopImage,
-                                target.Rotation,
-                                target.Scaling,
-                                target.IsVirtualModeSupportedByPath,
-                                true,
-                                virtualFreqMillihertz
-                            );
-                        }
-                        else
-                        {
-                            var staticSignalInfo = new PathTargetSignalInfo(displaySetting, displaySetting.Resolution);
-                            return new PathTargetInfo(
-                                target.DisplayTarget,
-                                staticSignalInfo,
-                                target.Rotation,
-                                target.Scaling,
-                                target.IsVirtualModeSupportedByPath,
-                                false
-                            );
-                        }
-                    })
-                    .ToArray();
+                                return new PathTargetInfo(
+                                    target.DisplayTarget,
+                                    target.SignalInfo!,
+                                    desktopImage,
+                                    target.Rotation,
+                                    target.Scaling,
+                                    target.IsVirtualModeSupportedByPath,
+                                    true,
+                                    virtualFreqMillihertz
+                                );
+                            }
+                            else
+                            {
+                                var staticSignalInfo = new PathTargetSignalInfo(displaySetting, displaySetting.Resolution);
+                                return new PathTargetInfo(
+                                    target.DisplayTarget,
+                                    staticSignalInfo,
+                                    target.Rotation,
+                                    target.Scaling,
+                                    target.IsVirtualModeSupportedByPath,
+                                    false
+                                );
+                            }
+                        })
+                        .ToArray();
 
-                pathInfos[i] = new PathInfo(
-                    pathInfo.DisplaySource,
-                    pathInfo.Position,
-                    displaySetting.Resolution,
-                    pathInfo.PixelFormat,
-                    pathTargetInfos
-                );
+                    pathInfos[i] = new PathInfo(
+                        pathInfo.DisplaySource,
+                        pathInfo.Position,
+                        displaySetting.Resolution,
+                        pathInfo.PixelFormat,
+                        pathTargetInfos
+                    );
+                }
             }
-        }
 
-        try
-        {
             PathInfo.ApplyPathInfos(pathInfos, saveToDatabase: true);
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"ApplyPathInfos failed: {ex.Message}. Falling back to DisplayScreen.SetSettings.");
+            Log.Instance.Trace($"SetSettingsUsingPathInfoAsync failed: {ex.Message}. Falling back to DisplayScreen.SetSettings.");
             display.DisplayScreen.SetSettings(displaySetting, apply: true);
         }
     }
