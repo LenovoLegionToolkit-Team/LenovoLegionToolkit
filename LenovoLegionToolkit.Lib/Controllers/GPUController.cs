@@ -15,6 +15,7 @@ using NvAPIWrapper.GPU;
 using NvAPIWrapper.Native.Exceptions;
 using NvAPIWrapper.Native.General;
 using NvAPIWrapper.Native.GPU;
+using NvAPIWrapper.Native.GPU.Structures;
 using Resource = LenovoLegionToolkit.Lib.Resources.Resource;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
