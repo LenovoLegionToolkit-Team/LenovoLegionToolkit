@@ -73,12 +73,13 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
             items.Add(new PStateItemViewModel { Id = (int)state, DisplayName = $"P{(uint)state}" });
         }
 
+        var previouslySelectedId = (_pStateComboBox.SelectedItem as PStateItemViewModel)?.Id ?? _settings.Store.LockedPStateId;
+
         _pStateComboBox.ItemsSource = items;
         _pStateComboBox.DisplayMemberPath = nameof(PStateItemViewModel.DisplayName);
         _pStateComboBox.SelectedValuePath = nameof(PStateItemViewModel.Id);
 
-        var lockedId = _settings.Store.LockedPStateId;
-        var selected = items.FirstOrDefault(i => i.Id == lockedId) ?? items[0];
+        var selected = items.FirstOrDefault(i => i.Id == previouslySelectedId) ?? items[0];
         _pStateComboBox.SelectedItem = selected;
 
         UpdateCurrentPStateText();
@@ -110,6 +111,14 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
         Dispatcher.Invoke(() =>
         {
             UpdateCurrentPStateText();
+            if (_pStateComboBox.ItemsSource is not List<PStateItemViewModel> items || items.Count <= 1)
+            {
+                var supported = _gpuController.GetSupportedPerformanceStates();
+                if (supported.Count > 0)
+                {
+                    InitializePStateOptions();
+                }
+            }
             _ = RefreshAppListAsync();
         });
     }
@@ -252,6 +261,9 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
     private void PStateComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (_isInitializing || _pStateComboBox.SelectedItem is not PStateItemViewModel item)
+            return;
+
+        if (item.Id == _settings.Store.LockedPStateId)
             return;
 
         _ = _gpuController.SetPStateAsync(item.Id);

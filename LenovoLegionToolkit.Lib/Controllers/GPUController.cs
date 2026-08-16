@@ -243,8 +243,10 @@ public class GPUController
         }
 
         string? cachedGpuInstanceId;
+        GPUState oldState;
         using (await _stateLock.LockAsync(token).ConfigureAwait(false))
         {
+            oldState = _state;
             cachedGpuInstanceId = _gpuInstanceId;
         }
 
@@ -368,6 +370,16 @@ public class GPUController
             _allProcesses = newAllProcesses;
             _gpuInstanceId = newGpuInstanceId;
         }
+
+        if ((oldState is GPUState.PoweredOff or GPUState.Unknown or GPUState.NvidiaGpuNotFound) &&
+            (newState is GPUState.Active or GPUState.Inactive or GPUState.MonitorConnected))
+        {
+            var lockedPState = IoCContainer.Resolve<ApplicationSettings>().Store.LockedPStateId;
+            if (lockedPState >= 0)
+            {
+                _ = ApplyPStateAsync(lockedPState);
+            }
+        }
     }
 
     public IReadOnlyList<Process> ActiveProcesses => _processes;
@@ -423,15 +435,26 @@ public class GPUController
         }
     }
 
+    private List<PerformanceStateId>? _cachedSupportedPerformanceStates;
+
     public List<PerformanceStateId> GetSupportedPerformanceStates()
     {
+        if (_cachedSupportedPerformanceStates is { Count: > 0 } cached)
+            return cached;
+
         try
         {
             var gpu = NVAPI.GetGPU();
             if (gpu is null)
                 return [];
 
-            return NVAPI.GetSupportedPerformanceStates(gpu);
+            var states = NVAPI.GetSupportedPerformanceStates(gpu);
+            if (states.Count > 0)
+            {
+                _cachedSupportedPerformanceStates = states;
+            }
+
+            return states;
         }
         catch (Exception ex)
         {

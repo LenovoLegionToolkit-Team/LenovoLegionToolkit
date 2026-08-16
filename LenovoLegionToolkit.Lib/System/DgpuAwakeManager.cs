@@ -100,6 +100,11 @@ public sealed class DgpuAwakeManager : IAsyncDisposable, IDisposable
             CreateD3D11Device();
             _isActive = true;
             Log.Instance.Trace($"dGPU awake manager started.");
+
+            if (_settings.Store.LockedPStateId >= 0)
+            {
+                _ = IoCContainer.Resolve<Controllers.GPUController>().ApplyPStateAsync(_settings.Store.LockedPStateId);
+            }
         }
         catch (Exception ex)
         {
