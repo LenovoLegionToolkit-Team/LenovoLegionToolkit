@@ -957,6 +957,21 @@ Switching modes may require restart.</value>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>Disable discrete GPU, if it is active unnecessarily.</value>
   </data>
+  <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
+    <value>Auto (Dynamic)</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
+    <value>Current: {0}</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
+    <value>Lock the discrete GPU to a specific performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
+    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
+    <value>P-State Control</value>
+  </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
     <value>Miscellaneous</value>
   </data>
