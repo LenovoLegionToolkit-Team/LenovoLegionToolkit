@@ -59,7 +59,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
                 }
                 catch (Exception ex)
                 {
-                    Log.Instance.Trace($"Failed to query virtual mode support for DRR: {ex.Message}");
+                    Log.Instance.Trace($"Failed to query virtual mode support for DRR", ex);
                 }
             }
         }
@@ -115,7 +115,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"Failed to query active path refresh rate: {ex.Message}");
+            Log.Instance.Trace($"Failed to query active path refresh rate", ex);
         }
 
         var currentSettingsFallback = display.DisplayScreen.CurrentSetting;

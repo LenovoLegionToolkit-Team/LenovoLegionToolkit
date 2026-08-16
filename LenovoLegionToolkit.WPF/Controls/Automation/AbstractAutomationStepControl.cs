@@ -158,11 +158,14 @@ public abstract class AbstractAutomationStepControl : UserControl
         try
         {
             await RefreshAsync();
-            OnFinishedLoading();
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Error loading automation step control {GetType().Name}", ex);
+        }
+        finally
+        {
+            OnFinishedLoading();
         }
     }
 

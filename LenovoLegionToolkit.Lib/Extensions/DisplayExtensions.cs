@@ -144,7 +144,7 @@ public static class DisplayExtensions
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"SetSettingsUsingPathInfoAsync failed: {ex.Message}. Falling back to DisplayScreen.SetSettings.");
+            Log.Instance.Trace($"SetSettingsUsingPathInfoAsync failed. Falling back to DisplayScreen.SetSettings.", ex);
             display.DisplayScreen.SetSettings(displaySetting, apply: true);
         }
     }
