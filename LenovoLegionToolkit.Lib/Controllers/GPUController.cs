@@ -33,6 +33,7 @@ public class GPUController
     private List<Process> _allProcesses = [];
     private string? _gpuInstanceId;
     private string? _performanceState;
+    private string? _sleepBlockerReason;
 
     public PerformanceStateId? CurrentPerformanceState { get; private set; }
 
@@ -75,7 +76,7 @@ public class GPUController
 
         using (await _stateLock.LockAsync().ConfigureAwait(false))
         {
-            return new GPUStatus(_state, _performanceState, _processes);
+            return new GPUStatus(_state, _performanceState, _processes, _sleepBlockerReason);
         }
     }
 
@@ -202,7 +203,7 @@ public class GPUController
 
                     using (await _stateLock.LockAsync(token).ConfigureAwait(false))
                     {
-                        Refreshed?.Invoke(this, new GPUStatus(_state, _performanceState, _processes));
+                        Refreshed?.Invoke(this, new GPUStatus(_state, _performanceState, _processes, _sleepBlockerReason));
                     }
                 }
                 finally
@@ -231,11 +232,7 @@ public class GPUController
         {
             using (await _stateLock.LockAsync(token).ConfigureAwait(false))
             {
-                _state = GPUState.PoweredOff;
-                _performanceState = Resource.GPUController_PoweredOff;
-                _processes = [];
-                _allProcesses = [];
-                _gpuInstanceId = null;
+                SetPoweredOffState();
             }
             Log.Instance.Trace($"dGPU eject is being ensured — skipping NVAPI refresh.");
 
@@ -260,6 +257,19 @@ public class GPUController
                 _processes = [];
                 _allProcesses = [];
                 _gpuInstanceId = null;
+                _sleepBlockerReason = null;
+            }
+
+            return;
+        }
+
+        var coprocInfo = NVAPI.GetCoprocInfo(gpu);
+        if (coprocInfo.HasValue && coprocInfo.Value.PowerState is CoprocPowerState.Gc6 or CoprocPowerState.GcOff)
+        {
+            CurrentPerformanceState = null;
+            using (await _stateLock.LockAsync(token).ConfigureAwait(false))
+            {
+                SetPoweredOffState();
             }
 
             return;
@@ -287,11 +297,7 @@ public class GPUController
             CurrentPerformanceState = null;
             using (await _stateLock.LockAsync(token).ConfigureAwait(false))
             {
-                _state = GPUState.PoweredOff;
-                _performanceState = Resource.GPUController_PoweredOff;
-                _processes = [];
-                _allProcesses = [];
-                _gpuInstanceId = null;
+                SetPoweredOffState();
             }
 
             return;
@@ -362,6 +368,20 @@ public class GPUController
             newState = GPUState.Inactive;
         }
 
+        string? newSleepBlockerReason = null;
+        if (newState == GPUState.Inactive)
+        {
+            var gc6Debug = NVAPI.GetGC6DebugInfo(gpu);
+            if (gc6Debug.HasValue)
+            {
+                var reason = FormatBlockerReason(gc6Debug.Value);
+                if (!string.IsNullOrWhiteSpace(reason))
+                {
+                    newSleepBlockerReason = reason;
+                }
+            }
+        }
+
         using (await _stateLock.LockAsync(token).ConfigureAwait(false))
         {
             _state = newState;
@@ -369,6 +389,7 @@ public class GPUController
             _processes = newProcesses;
             _allProcesses = newAllProcesses;
             _gpuInstanceId = newGpuInstanceId;
+            _sleepBlockerReason = newSleepBlockerReason;
         }
 
         if ((oldState is GPUState.PoweredOff or GPUState.Unknown or GPUState.NvidiaGpuNotFound) &&
@@ -495,6 +516,63 @@ public class GPUController
             Log.Instance.Trace($"Failed to apply P-State {pStateId}.", ex);
             return Task.FromResult(false);
         }
+    }
+
+    private void SetPoweredOffState()
+    {
+        _state = GPUState.PoweredOff;
+        _performanceState = Resource.GPUController_PoweredOff;
+        _processes = [];
+        _allProcesses = [];
+        _gpuInstanceId = null;
+        _sleepBlockerReason = null;
+    }
+
+    private static string FormatBlockerReason(GC6DebugInfoV2 debugInfo)
+    {
+        if (!debugInfo.HasVbiosSupport)
+        {
+            return Resource.GPUController_GC6_NoVbiosSupport;
+        }
+
+        if (!debugInfo.HasSbiosSupport)
+        {
+            return Resource.GPUController_GC6_NoSbiosSupport;
+        }
+
+        var flags = debugInfo.BlockerReasons;
+        if (flags == GC6BlockerReason.None)
+        {
+            return string.Empty;
+        }
+
+        var reasons = new List<string>();
+        if (flags.HasFlag(GC6BlockerReason.AudioMonitor))
+            reasons.Add(Resource.GPUController_GC6_Blocker_Audio);
+        if (flags.HasFlag(GC6BlockerReason.RefMsHybrid))
+            reasons.Add(Resource.GPUController_GC6_Blocker_HybridGraphics);
+        if (flags.HasFlag(GC6BlockerReason.CpuVisibleSurface))
+            reasons.Add(Resource.GPUController_GC6_Blocker_CpuSharedSurface);
+        if (flags.HasFlag(GC6BlockerReason.OutstandingLock))
+            reasons.Add(Resource.GPUController_GC6_Blocker_ResourceLock);
+        if (flags.HasFlag(GC6BlockerReason.DdiAcquire) || flags.HasFlag(GC6BlockerReason.SrlessMonitor))
+            reasons.Add(Resource.GPUController_GC6_Blocker_Display);
+        if (flags.HasFlag(GC6BlockerReason.SoftwareDisabled))
+            reasons.Add(Resource.GPUController_GC6_Blocker_SoftwareDisabled);
+        if (flags.HasFlag(GC6BlockerReason.BusScan))
+            reasons.Add(Resource.GPUController_GC6_Blocker_BusScan);
+        if (flags.HasFlag(GC6BlockerReason.PowerEvent))
+            reasons.Add(Resource.GPUController_GC6_Blocker_PowerEvent);
+        if (flags.HasFlag(GC6BlockerReason.Acpi))
+            reasons.Add(Resource.GPUController_GC6_Blocker_Acpi);
+        if (flags.HasFlag(GC6BlockerReason.Device) || flags.HasFlag(GC6BlockerReason.RefResourceManager) || flags.HasFlag(GC6BlockerReason.Misc))
+            reasons.Add(Resource.GPUController_GC6_Blocker_DriverHold);
+
+        var reasonText = reasons.Count > 0
+            ? string.Join(", ", reasons.Distinct())
+            : $"0x{debugInfo.BlockerFlags:X}";
+
+        return string.Format(Resource.GPUController_GC6_SleepBlocked, reasonText);
     }
 
     private static string? GetAppUserModelId()

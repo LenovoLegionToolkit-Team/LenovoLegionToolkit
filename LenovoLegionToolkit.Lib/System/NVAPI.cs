@@ -324,6 +324,30 @@ internal static class NVAPI
         }
     }
 
+    public static CoprocInfoV8? GetCoprocInfo(PhysicalGPU gpu)
+    {
+        try
+        {
+            return gpu.GetCoprocInfo();
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    public static GC6DebugInfoV2? GetGC6DebugInfo(PhysicalGPU gpu)
+    {
+        try
+        {
+            return gpu.GetGC6DebugInfo();
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
     private class PhysicalGPUEqualityComparer : IEqualityComparer<PhysicalGPU>
     {
         public static readonly PhysicalGPUEqualityComparer Instance = new();

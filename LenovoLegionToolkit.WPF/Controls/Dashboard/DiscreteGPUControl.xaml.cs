@@ -125,6 +125,10 @@ public partial class DiscreteGPUControl
             _discreteGPUStatusInactiveIndicator.Visibility = Visibility.Visible;
             _discreteGPUStatusPoweredOffIndicator.Visibility = Visibility.Collapsed;
             _discreteGPUStatusDescription.Text = Resource.Inactive;
+            if (!string.IsNullOrEmpty(e.SleepBlockerReason))
+            {
+                tooltipStringBuilder.AppendLine().AppendLine().Append(e.SleepBlockerReason);
+            }
             _gpuInfoButton.ToolTip = tooltipStringBuilder.ToString();
             _gpuInfoButton.IsEnabled = true;
         }

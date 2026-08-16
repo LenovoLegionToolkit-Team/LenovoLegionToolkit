@@ -485,11 +485,12 @@ public readonly struct GodModePreset
     }
 }
 
-public readonly struct GPUStatus(GPUState state, string? performanceState, List<Process> processes)
+public readonly struct GPUStatus(GPUState state, string? performanceState, List<Process> processes, string? sleepBlockerReason = null)
 {
     public GPUState State { get; } = state;
     public string? PerformanceState { get; } = performanceState;
     public List<Process> Processes { get; } = processes;
+    public string? SleepBlockerReason { get; } = sleepBlockerReason;
     public int ProcessCount => Processes.Count;
 }
 
