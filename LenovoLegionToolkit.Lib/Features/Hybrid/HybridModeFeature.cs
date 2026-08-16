@@ -156,13 +156,32 @@ public class HybridModeFeature(GSyncFeature gSyncFeature, IGPUModeFeature igpuMo
             return;
         }
 
-        if (!await igpuModeFeature.IsSupportedAsync().ConfigureAwait(false) || !await dgpuNotify.IsSupportedAsync().ConfigureAwait(false))
+        try
         {
-            return;
-        }
+            if (!await igpuModeFeature.IsSupportedAsync().ConfigureAwait(false) || !await dgpuNotify.IsSupportedAsync().ConfigureAwait(false))
+            {
+                return;
+            }
 
-        if (Interlocked.CompareExchange(ref _isEnsuringEjected, 1, 0) != 0)
+            var initialMode = await igpuModeFeature.GetStateAsync().ConfigureAwait(false);
+            if (initialMode != IGPUModeState.IGPUOnly && initialMode != IGPUModeState.Auto)
+            {
+                return;
+            }
+
+            if (initialMode == IGPUModeState.Auto && await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) == PowerAdapterStatus.Connected)
+            {
+                return;
+            }
+
+            if (Interlocked.CompareExchange(ref _isEnsuringEjected, 1, 0) != 0)
+            {
+                return;
+            }
+        }
+        catch (Exception ex)
         {
+            Log.Instance.Trace($"Failed to check initial dGPU eject state.", ex);
             return;
         }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
@@ -144,9 +144,9 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
                 if (devBroadcastDeviceInterface.dbcc_classguid == PInvoke.GUID_DISPLAY_DEVICE_ARRIVAL)
                 {
-                    Log.Instance.Trace($"Event received: Display Device Arrival");
+                    Log.Instance.Trace($"Event received: Display Device Changed");
 
-                    OnDisplayDeviceArrival();
+                    OnDisplayDeviceChanged();
                 }
 
                 if (devBroadcastDeviceInterface.dbcc_classguid == PInvoke.GUID_DEVINTERFACE_MONITOR)
@@ -354,7 +354,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
             RaiseChanged(NativeWindowsMessage.ExternalMonitorDisconnected);
     }
 
-    private void OnDisplayDeviceArrival()
+    private void OnDisplayDeviceChanged()
     {
         Task.Run(async () =>
         {
@@ -362,7 +362,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
                 await _dgpuNotify.NotifyAsync().ConfigureAwait(false);
         });
 
-        RaiseChanged(NativeWindowsMessage.OnDisplayDeviceArrival);
+        RaiseChanged(NativeWindowsMessage.DisplayDeviceChanged);
     }
 
     private void RaiseChanged(NativeWindowsMessage message, object? data = null) => Changed?.Invoke(this, new ChangedEventArgs(message, data));

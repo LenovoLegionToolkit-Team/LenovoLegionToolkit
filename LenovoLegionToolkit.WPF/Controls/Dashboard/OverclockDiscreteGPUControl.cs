@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Automation;
@@ -91,7 +91,7 @@ public class OverclockDiscreteGPUControl : AbstractRefreshingControl
 
     private async void NativeWindowsMessageListener_Changed(object? sender, NativeWindowsMessageListener.ChangedEventArgs e)
     {
-        if (e.Message != NativeWindowsMessage.OnDisplayDeviceArrival)
+        if (e.Message != NativeWindowsMessage.DisplayDeviceChanged)
             return;
 
         Visibility = Visibility.Visible;

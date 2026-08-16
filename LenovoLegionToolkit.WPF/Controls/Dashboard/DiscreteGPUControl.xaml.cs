@@ -46,7 +46,7 @@ public partial class DiscreteGPUControl
 
     private async void NativeWindowsMessageListener_Changed(object? sender, NativeWindowsMessageListener.ChangedEventArgs e)
     {
-        if (e.Message != NativeWindowsMessage.OnDisplayDeviceArrival)
+        if (e.Message != NativeWindowsMessage.DisplayDeviceChanged)
             return;
 
         if (Window.GetWindow(this)?.WindowState == WindowState.Minimized)

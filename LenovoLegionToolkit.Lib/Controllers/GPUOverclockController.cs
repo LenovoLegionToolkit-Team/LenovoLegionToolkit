@@ -49,11 +49,6 @@ public class GPUOverclockController
                 return true;
             }
 
-            if (IoCContainer.Resolve<HybridModeFeature>().ShouldKeepDGPUAsleep())
-            {
-                return false;
-            }
-
             NVAPI.Initialize();
             isSupported = NVAPI.GetGPU() is not null;
         }
@@ -199,7 +194,7 @@ public class GPUOverclockController
 
     private async void NativeWindowsMessageListenerOnChanged(object? sender, NativeWindowsMessageListener.ChangedEventArgs e)
     {
-        if (e.Message is not NativeWindowsMessage.OnDisplayDeviceArrival and not NativeWindowsMessage.MonitorOn)
+        if (e.Message is not NativeWindowsMessage.DisplayDeviceChanged and not NativeWindowsMessage.MonitorOn)
             return;
 
         if (await IsSupportedAsync().ConfigureAwait(false))

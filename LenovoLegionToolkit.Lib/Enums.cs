@@ -421,7 +421,7 @@ public enum NativeWindowsMessage
     MonitorDisconnected,
     ExternalMonitorConnected,
     ExternalMonitorDisconnected,
-    OnDisplayDeviceArrival,
+    DisplayDeviceChanged,
     BatterySaverEnabled
 }
 
