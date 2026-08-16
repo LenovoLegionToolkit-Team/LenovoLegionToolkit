@@ -106,7 +106,9 @@ public partial class DiscreteGPUControl
             _discreteGPUStatusActiveIndicator.Visibility = Visibility.Visible;
             _discreteGPUStatusInactiveIndicator.Visibility = Visibility.Collapsed;
             _discreteGPUStatusPoweredOffIndicator.Visibility = Visibility.Collapsed;
-            _discreteGPUStatusDescription.Text = Resource.Active;
+            _discreteGPUStatusDescription.Text = _gpuController.CurrentPerformanceState is { } pState
+                ? $"{Resource.Active} (P{(uint)pState})"
+                : Resource.Active;
             _gpuInfoButton.ToolTip = tooltipStringBuilder.AppendLine().AppendLine().Append(processesStringBuilder).ToString();
             _gpuInfoButton.IsEnabled = true;
         }
@@ -124,7 +126,9 @@ public partial class DiscreteGPUControl
             _discreteGPUStatusActiveIndicator.Visibility = Visibility.Collapsed;
             _discreteGPUStatusInactiveIndicator.Visibility = Visibility.Visible;
             _discreteGPUStatusPoweredOffIndicator.Visibility = Visibility.Collapsed;
-            _discreteGPUStatusDescription.Text = Resource.Inactive;
+            _discreteGPUStatusDescription.Text = _gpuController.CurrentPerformanceState is { } pState
+                ? $"{Resource.Inactive} (P{(uint)pState})"
+                : Resource.Inactive;
             if (!string.IsNullOrEmpty(e.SleepBlockerReason))
             {
                 tooltipStringBuilder.AppendLine().AppendLine().Append(e.SleepBlockerReason);

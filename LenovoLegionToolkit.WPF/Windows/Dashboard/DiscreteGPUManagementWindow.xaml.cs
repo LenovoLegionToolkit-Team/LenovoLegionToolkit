@@ -81,24 +81,6 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
 
         var selected = items.FirstOrDefault(i => i.Id == previouslySelectedId) ?? items[0];
         _pStateComboBox.SelectedItem = selected;
-
-        UpdateCurrentPStateText();
-    }
-
-    private void UpdateCurrentPStateText()
-    {
-        if (_gpuController.CurrentPerformanceState is { } pState)
-        {
-            _pStateActiveIndicator.Visibility = Visibility.Visible;
-            _pStatePoweredOffIndicator.Visibility = Visibility.Collapsed;
-            _currentPStateText.Text = string.Format(Resource.DiscreteGPUControl_PStateCurrent, $"P{(uint)pState}");
-        }
-        else
-        {
-            _pStateActiveIndicator.Visibility = Visibility.Collapsed;
-            _pStatePoweredOffIndicator.Visibility = Visibility.Visible;
-            _currentPStateText.Text = Resource.PoweredOff;
-        }
     }
 
     private void DiscreteGPUManagementWindow_Loaded(object sender, RoutedEventArgs e)
@@ -110,7 +92,6 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
     {
         Dispatcher.Invoke(() =>
         {
-            UpdateCurrentPStateText();
             if (_pStateComboBox.ItemsSource is not List<PStateItemViewModel> items || items.Count <= 1)
             {
                 var supported = _gpuController.GetSupportedPerformanceStates();

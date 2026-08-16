@@ -198,36 +198,11 @@
                                     Subtitle="{x:Static resources:Resource.DiscreteGPUControl_PStateLockDescription}"
                                     Info="{x:Static resources:Resource.DiscreteGPUControl_PStateLockInfo}" />
                             </custom:CardControl.Header>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Ellipse
-                                    x:Name="_pStateActiveIndicator"
-                                    Width="10"
-                                    Height="10"
-                                    Margin="0,0,6,0"
-                                    VerticalAlignment="Center"
-                                    Fill="#FF8BC34A"
-                                    Visibility="Collapsed" />
-                                <Ellipse
-                                    x:Name="_pStatePoweredOffIndicator"
-                                    Width="10"
-                                    Height="10"
-                                    Margin="0,0,6,0"
-                                    VerticalAlignment="Center"
-                                    Fill="#BF360C"
-                                    Visibility="Collapsed" />
-                                <TextBlock 
-                                    x:Name="_currentPStateText" 
-                                    Margin="0,0,12,0" 
-                                    VerticalAlignment="Center" 
-                                    FontSize="12"
-                                    FontWeight="Medium"
-                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
-                                <ComboBox 
-                                    x:Name="_pStateComboBox" 
-                                    Width="160" 
-                                    VerticalAlignment="Center" 
-                                    SelectionChanged="PStateComboBox_SelectionChanged" />
-                            </StackPanel>
+                            <ComboBox 
+                                x:Name="_pStateComboBox" 
+                                Width="160" 
+                                VerticalAlignment="Center" 
+                                SelectionChanged="PStateComboBox_SelectionChanged" />
                         </custom:CardControl>
 
 
