@@ -274,7 +274,7 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
     {
         if (await _powerModeFeature.IsSupportedAsync().ConfigureAwait(false))
         {
-            await _powerModeFeature.EnsureGodModeStateIsAppliedAsync().ConfigureAwait(false);
+            await _powerModeFeature.EnsureGodModeStateIsAppliedAsync(preserveUnmappedActivePlan: true).ConfigureAwait(false);
         }
 
         _ = NotifyDgpuAsync();

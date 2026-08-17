@@ -60,6 +60,7 @@ public partial class SettingsPowerControl
         _powerModeMappingCard.Visibility = isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
         _powerModesCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
         _windowsPowerPlansCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        _preserveUnmappedPowerPlanCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isPowerModeFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
         _windowsPowerPlansControlPanelCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
 
         if (isITSModeFeatureSupported && _settings.Store.PowerModeMappingMode != PowerModeMappingMode.Disabled)
@@ -69,6 +70,9 @@ public partial class SettingsPowerControl
 
         _onBatterySinceResetToggle.IsChecked = _settings.Store.ResetBatteryOnSinceTimerOnReboot;
         _onBatterySinceResetToggle.Visibility = Visibility.Visible;
+
+        _preserveUnmappedPowerPlanToggle.IsChecked = _settings.Store.PreserveUnmappedPowerPlanOnAcDcChange;
+        _preserveUnmappedPowerPlanToggle.Visibility = Visibility.Visible;
 
         _godModeFnQSwitchableToggle.Visibility = Visibility.Visible;
         _powerModeMappingComboBox.Visibility = Visibility.Visible;
@@ -108,6 +112,7 @@ public partial class SettingsPowerControl
         var isAnyPowerFeatureSupported = isPowerModeFeatureSupported || isITSModeFeatureSupported;
         _powerModesCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
         _windowsPowerPlansCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        _preserveUnmappedPowerPlanCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isPowerModeFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
         _windowsPowerPlansControlPanelCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
 
         if (isITSModeFeatureSupported && powerModeMappingMode != PowerModeMappingMode.Disabled)
@@ -152,6 +157,19 @@ public partial class SettingsPowerControl
             return;
 
         _settings.Store.ResetBatteryOnSinceTimerOnReboot = state.Value;
+        _settings.SynchronizeStore();
+    }
+
+    private void PreserveUnmappedPowerPlanToggle_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        var state = _preserveUnmappedPowerPlanToggle.IsChecked;
+        if (state is null)
+            return;
+
+        _settings.Store.PreserveUnmappedPowerPlanOnAcDcChange = state.Value;
         _settings.SynchronizeStore();
     }
 }

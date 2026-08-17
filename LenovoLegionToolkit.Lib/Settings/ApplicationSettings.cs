@@ -16,6 +16,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public Dictionary<PowerModeState, Guid> PowerPlans { get; set; } = [];
         public Dictionary<PowerModeState, WindowsPowerMode> PowerModes { get; set; } = [];
         public Dictionary<PowerModeState, Dictionary<PowerOverrideKey, string>> Overrides { get; set; } = [];
+        public bool PreserveUnmappedPowerPlanOnAcDcChange { get; set; }
 
         public Dictionary<ITSMode, Guid> ITSPowerPlans { get; set; } = [];
         public Dictionary<ITSMode, WindowsPowerMode> ITSPowerModes { get; set; } = [];

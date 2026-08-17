@@ -34,7 +34,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
-    public async Task SetPowerPlanAsync(PowerModeState powerModeState, bool alwaysActivateDefaults = false, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
+    public async Task SetPowerPlanAsync(PowerModeState powerModeState, bool alwaysActivateDefaults = false, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false, bool preserveUnmappedActivePlan = false)
     {
         await _lock.WaitAsync().ConfigureAwait(false);
         try
@@ -74,6 +74,9 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
             var powerPlans = GetPowerPlans().ToArray();
 
+            if (preserveUnmappedActivePlan && ShouldPreserveUnmappedActivePlan(powerPlans))
+                return;
+
             Log.Instance.Trace($"Available power plans:");
             foreach (var powerPlan in powerPlans)
                 Log.Instance.Trace($" - {powerPlan}");
@@ -110,6 +113,24 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         {
             _lock.Release();
         }
+    }
+
+    private bool ShouldPreserveUnmappedActivePlan(IEnumerable<WindowsPowerPlan> powerPlans)
+    {
+        if (!settings.Store.PreserveUnmappedPowerPlanOnAcDcChange)
+            return false;
+
+        var activePowerPlan = powerPlans.FirstOrDefault(powerPlan => powerPlan.IsActive);
+        if (activePowerPlan.Guid == Guid.Empty || activePowerPlan.Guid == DefaultPowerPlan)
+            return false;
+
+        var isMapped = settings.Store.PowerPlans.ContainsValue(activePowerPlan.Guid) ||
+                       settings.Store.ITSPowerPlans.ContainsValue(activePowerPlan.Guid);
+        if (isMapped)
+            return false;
+
+        Log.Instance.Trace($"Preserving active unmapped power plan. [guid={activePowerPlan.Guid}, name={activePowerPlan.Name}]");
+        return true;
     }
 
     private async Task ApplyBalanceOverlayIfNeededAsync(Guid activePowerPlanGuid, PowerModeState powerModeState, bool isDefault, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
