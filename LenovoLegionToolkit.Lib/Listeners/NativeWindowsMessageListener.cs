@@ -213,7 +213,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 
             if (str.PowerSetting == ActivePowerSchemeGuid)
             {
-                Log.Instance.Trace($"Event received: Active Power Scheme changed");
+                Log.Instance.Trace($"Event received: Active Power Scheme Changed");
 
                 OnActivePowerSchemeChanged();
             }
@@ -341,7 +341,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
             }
             catch (Exception ex)
             {
-                Log.Instance.Trace($"Failed to sync power mode from active power plan.", ex);
+                Log.Instance.Trace($"Failed to synchronize power mode with active power plan.", ex);
             }
         });
     }

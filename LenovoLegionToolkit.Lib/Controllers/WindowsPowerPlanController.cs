@@ -39,7 +39,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
     {
         if (Interlocked.Exchange(ref _skipNextPowerModeSync, 0) == 1)
         {
-            Log.Instance.Trace("Ignoring power plan change initiated by Lenovo Legion Toolkit.");
+            Log.Instance.Trace("Skipping power mode synchronization. [reason=power plan change initiated by LLT]");
             return null;
         }
 
@@ -54,7 +54,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
             if (powerPlan.Value == activePowerPlanGuid)
                 return powerPlan.Key;
 
-        Log.Instance.Trace($"Active power plan is not mapped to a power mode. [guid={activePowerPlanGuid}]");
+        Log.Instance.Trace($"Skipping power mode synchronization. [reason=active power plan is not mapped, guid={activePowerPlanGuid}]");
         return null;
     }
 

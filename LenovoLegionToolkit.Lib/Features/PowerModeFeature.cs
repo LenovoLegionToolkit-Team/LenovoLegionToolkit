@@ -152,7 +152,7 @@ public class PowerModeFeature(
             }
             catch (PowerModeUnavailableWithoutACException)
             {
-                Log.Instance.Trace($"Mapped power mode is unavailable. [state={state.Value}]");
+                Log.Instance.Trace($"Skipping power mode synchronization. [reason=mapped power mode is unavailable, state={state.Value}]");
             }
         }
         finally
