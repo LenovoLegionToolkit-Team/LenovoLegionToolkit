@@ -154,17 +154,6 @@ public readonly struct DiscreteCapability(CapabilityID id, int value)
     public int Value { get; } = value;
 }
 
-public readonly struct DisplayAdvancedColorInfo(
-    bool advancedColorSupported,
-    bool advancedColorEnabled,
-    bool wideColorEnforced,
-    bool advancedColorForceDisabled)
-{
-    public bool AdvancedColorSupported { get; } = advancedColorSupported;
-    public bool AdvancedColorEnabled { get; } = advancedColorEnabled;
-    public bool WideColorEnforced { get; } = wideColorEnforced;
-    public bool AdvancedColorForceDisabled { get; } = advancedColorForceDisabled;
-}
 
 public struct Device(
     string name,
