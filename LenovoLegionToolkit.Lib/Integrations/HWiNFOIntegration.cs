@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
@@ -18,8 +18,9 @@ public class HWiNFOIntegration(SensorsController sensorController, IntegrationsS
     private const string SENSOR_TYPE_TEMP = "Temp";
     private const string CPU_FAN_SENSOR_NAME = "CPU Fan";
     private const string GPU_FAN_SENSOR_NAME = "GPU Fan";
-    private static string PCH_FAN_SENSOR_NAME = "PCH Fan";
     private const string BATTERY_TEMP_SENSOR_NAME = "Battery Temperature";
+
+    private string? _pchFanSensorName;
 
     private readonly TimeSpan _refreshInterval = TimeSpan.FromSeconds(1);
 
@@ -77,22 +78,19 @@ public class HWiNFOIntegration(SensorsController sensorController, IntegrationsS
 
     private async Task SetSensorValuesAsync(bool firstRun = true)
     {
-        var sensorControllerWrapper = await sensorController.GetControllerAsync();
+        _ = await sensorController.GetControllerAsync().ConfigureAwait(false);
 
         FanSpeedTable fanSpeedTable = await sensorController.GetFanSpeedsAsync().ConfigureAwait(false);
 
-        if (fanSpeedTable.PchFanSpeed > 0)
+        if (fanSpeedTable.PchFanSpeed >= 0)
         {
-            var mi = Compatibility.GetMachineInformationAsync().Result;
-            if (mi.Properties.IsAmdDevice)
+            if (_pchFanSensorName is null)
             {
-                PCH_FAN_SENSOR_NAME = "System Fan";
-                SetValue(SENSOR_TYPE_FAN, 2, PCH_FAN_SENSOR_NAME, fanSpeedTable.PchFanSpeed, firstRun);
+                var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+                _pchFanSensorName = mi.Properties.IsAmdDevice ? "System Fan" : "PCH Fan";
             }
-            else
-            {
-                SetValue(SENSOR_TYPE_FAN, 2, PCH_FAN_SENSOR_NAME, fanSpeedTable.PchFanSpeed, firstRun);
-            }
+
+            SetValue(SENSOR_TYPE_FAN, 2, _pchFanSensorName, fanSpeedTable.PchFanSpeed, firstRun);
         }
 
         var batteryTemp = Battery.GetBatteryTemperatureC();
