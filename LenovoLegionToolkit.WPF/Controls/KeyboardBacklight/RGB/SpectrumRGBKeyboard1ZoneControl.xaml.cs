@@ -6,7 +6,6 @@ using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Extensions;
-using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
@@ -17,17 +16,13 @@ using Button = Wpf.Ui.Controls.Button;
 
 namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB;
 
-public partial class RGBKeyboard1ZoneControl
+public partial class SpectrumRGBKeyboard1ZoneControl
 {
     private Button[] PresetButtons => [_offPresetButton, _preset1Button, _preset2Button, _preset3Button, _preset4Button];
 
-    private ColorPickerControl[] Zones => [_zone1ColorPicker];
-
-    private readonly RGBKeyboardBacklightController _controller = IoCContainer.Resolve<RGBKeyboardBacklightController>();
-    private readonly RGBKeyboardBacklightListener _listener = IoCContainer.Resolve<RGBKeyboardBacklightListener>();
+    private readonly SpectrumKeyboardBacklightController _controller = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
 
-    private RGBColor[]? _pendingZoneColors;
     private RGBKeyboardBacklightEffect? _pendingEffect;
     private RGBKeyboardBacklightSpeed? _pendingSpeed;
     private RGBKeyboardBacklightBrightness? _pendingBrightness;
@@ -35,13 +30,11 @@ public partial class RGBKeyboard1ZoneControl
 
     protected override bool DisablesWhileRefreshing => false;
 
-    public RGBKeyboard1ZoneControl()
+    public SpectrumRGBKeyboard1ZoneControl()
     {
         InitializeComponent();
 
-        _listener.Changed += Listener_Changed;
-
-        MessagingCenter.Subscribe<RGBKeyboardBacklightChangedMessage>(this, () => Dispatcher.InvokeTask(async () =>
+        MessagingCenter.Subscribe<SpectrumBacklightChangedMessage>(this, () => Dispatcher.InvokeTask(async () =>
         {
             if (!IsVisible)
                 return;
@@ -55,18 +48,8 @@ public partial class RGBKeyboard1ZoneControl
         _applyButton.IsEnabled = _hasPendingChanges;
     }
 
-    private void Listener_Changed(object? sender, EventArgs e) => Dispatcher.Invoke(async () =>
-    {
-        if (!IsLoaded || !IsVisible)
-            return;
-
-        ClearPendingChanges();
-        await RefreshAsync();
-    });
-
     private void ClearPendingChanges()
     {
-        _pendingZoneColors = null;
         _pendingEffect = null;
         _pendingSpeed = null;
         _pendingBrightness = null;
@@ -81,9 +64,8 @@ public partial class RGBKeyboard1ZoneControl
 
         ClearPendingChanges();
 
-        var selectedPreset = (RGBKeyboardBacklightPreset)presetButton.Tag;
-        var state = await _controller.GetStateAsync();
-        await _controller.SetStateAsync(new(selectedPreset, state.Presets));
+        var selectedPreset = (int)presetButton.Tag;
+        await _controller.SetProfileAsync(selectedPreset);
 
         await RefreshAsync();
     }
@@ -122,7 +104,6 @@ public partial class RGBKeyboard1ZoneControl
 
     private void UpdatePendingZoneColors()
     {
-        _pendingZoneColors = [_zone1ColorPicker.SelectedColor.ToRGBColor()];
         _hasPendingChanges = true;
         UpdateApplyButtonState();
     }
@@ -130,7 +111,7 @@ public partial class RGBKeyboard1ZoneControl
     protected override async Task OnRefreshAsync()
     {
         if (!await _controller.IsSupportedAsync())
-            throw new InvalidOperationException("RGB Keyboard does not seem to be supported");
+            throw new InvalidOperationException("Spectrum Keyboard does not seem to be supported");
 
         var vantageStatus = await _vantageDisabler.GetStatusAsync();
         if (vantageStatus == SoftwareStatus.Enabled)
@@ -155,12 +136,12 @@ public partial class RGBKeyboard1ZoneControl
             return;
         }
 
-        var state = await _controller.GetStateAsync();
+        var profile = await _controller.GetProfileAsync();
 
         foreach (var presetButton in PresetButtons)
         {
-            var buttonPreset = (RGBKeyboardBacklightPreset)presetButton.Tag;
-            var selected = state.SelectedPreset == buttonPreset;
+            var buttonPreset = (int)presetButton.Tag;
+            var selected = profile == buttonPreset;
             presetButton.Appearance = selected ? ControlAppearance.Primary : ControlAppearance.Secondary;
         }
 
@@ -169,7 +150,7 @@ public partial class RGBKeyboard1ZoneControl
         foreach (var presetButton in PresetButtons)
             presetButton.IsEnabled = true;
 
-        if (state.SelectedPreset == RGBKeyboardBacklightPreset.Off)
+        if (profile == 0)
         {
             _effectControl.IsEnabled = false;
             _speedControl.IsEnabled = false;
@@ -184,7 +165,17 @@ public partial class RGBKeyboard1ZoneControl
             return;
         }
 
-        var preset = state.Presets.GetValueOrDefault(state.SelectedPreset, RGBKeyboardBacklightBacklightPresetDescription.Default);
+        var (_, effects) = await _controller.GetProfileDescriptionAsync(profile);
+        var effect = effects.Length > 0 ? effects[0] : new SpectrumKeyboardBacklightEffect(
+            SpectrumKeyboardBacklightEffectType.Always,
+            SpectrumKeyboardBacklightSpeed.None,
+            SpectrumKeyboardBacklightDirection.None,
+            SpectrumKeyboardBacklightClockwiseDirection.None,
+            [new RGBColor(255, 255, 255)],
+            [0x65]);
+
+        var brightness = await _controller.GetBrightnessAsync();
+        var preset = ToRgbPreset(effect, brightness);
 
         var speedEnabled = preset.Effect is not RGBKeyboardBacklightEffect.Static;
         var zonesEnabled = preset.Effect is RGBKeyboardBacklightEffect.Static or RGBKeyboardBacklightEffect.Breath;
@@ -218,23 +209,77 @@ public partial class RGBKeyboard1ZoneControl
 
     private async Task SaveState()
     {
-        var state = await _controller.GetStateAsync();
-
-        var selectedPreset = state.SelectedPreset;
-        var presets = state.Presets;
-
-        if (selectedPreset == RGBKeyboardBacklightPreset.Off)
+        var profile = await _controller.GetProfileAsync();
+        if (profile == 0)
             return;
 
         var color = _zone1ColorPicker.SelectedColor.ToRGBColor();
-        presets[selectedPreset] = new(_effectControl.SelectedItem,
+        await _controller.SetBrightnessAsync(_brightnessControl.SelectedItem == RGBKeyboardBacklightBrightness.High ? 9 : 3);
+        await _controller.SetProfileDescriptionAsync(profile, [ToSpectrumEffect(
+            _effectControl.SelectedItem,
             _speedControl.SelectedItem,
-            _brightnessControl.SelectedItem,
-            color,
-            color,
-            color,
-            color);
-
-        await _controller.SetStateAsync(new(selectedPreset, presets));
+            color)]);
     }
+
+    private static RGBKeyboardBacklightEffectDescription ToRgbPreset(SpectrumKeyboardBacklightEffect effect, int brightness)
+    {
+        var type = effect.Type switch
+        {
+            SpectrumKeyboardBacklightEffectType.Always => RGBKeyboardBacklightEffect.Static,
+            SpectrumKeyboardBacklightEffectType.ColorPulse => RGBKeyboardBacklightEffect.Breath,
+            SpectrumKeyboardBacklightEffectType.Smooth => RGBKeyboardBacklightEffect.Smooth,
+            SpectrumKeyboardBacklightEffectType.ColorWave when effect.Direction == SpectrumKeyboardBacklightDirection.LeftToRight => RGBKeyboardBacklightEffect.WaveLTR,
+            _ => RGBKeyboardBacklightEffect.WaveRTL
+        };
+
+        var speed = effect.Speed switch
+        {
+            SpectrumKeyboardBacklightSpeed.Speed1 => RGBKeyboardBacklightSpeed.Slowest,
+            SpectrumKeyboardBacklightSpeed.Speed2 => RGBKeyboardBacklightSpeed.Slow,
+            _ => RGBKeyboardBacklightSpeed.Fastest
+        };
+
+        var color = effect.Colors.Length > 0 ? effect.Colors[0] : new RGBColor(255, 255, 255);
+        var rgbBrightness = brightness < 5
+            ? RGBKeyboardBacklightBrightness.Low
+            : RGBKeyboardBacklightBrightness.High;
+
+        return new(type, speed, rgbBrightness, color);
+    }
+
+    private static SpectrumKeyboardBacklightEffect ToSpectrumEffect(
+        RGBKeyboardBacklightEffect? effect,
+        RGBKeyboardBacklightSpeed? speed,
+        RGBColor color)
+    {
+        var effectType = effect switch
+        {
+            RGBKeyboardBacklightEffect.Breath => SpectrumKeyboardBacklightEffectType.ColorPulse,
+            RGBKeyboardBacklightEffect.Smooth => SpectrumKeyboardBacklightEffectType.Smooth,
+            RGBKeyboardBacklightEffect.WaveLTR or RGBKeyboardBacklightEffect.WaveRTL => SpectrumKeyboardBacklightEffectType.ColorWave,
+            _ => SpectrumKeyboardBacklightEffectType.Always
+        };
+
+        var spectrumSpeed = effect switch
+        {
+            RGBKeyboardBacklightEffect.Static => SpectrumKeyboardBacklightSpeed.None,
+            _ when speed == RGBKeyboardBacklightSpeed.Slowest => SpectrumKeyboardBacklightSpeed.Speed1,
+            _ when speed == RGBKeyboardBacklightSpeed.Slow => SpectrumKeyboardBacklightSpeed.Speed2,
+            _ => SpectrumKeyboardBacklightSpeed.Speed3
+        };
+
+        var direction = effect == RGBKeyboardBacklightEffect.WaveLTR
+            ? SpectrumKeyboardBacklightDirection.LeftToRight
+            : effect == RGBKeyboardBacklightEffect.WaveRTL
+                ? SpectrumKeyboardBacklightDirection.RightToLeft
+                : SpectrumKeyboardBacklightDirection.None;
+
+        return new(effectType, spectrumSpeed, direction, SpectrumKeyboardBacklightClockwiseDirection.None, [color], [1]);
+    }
+
+    private readonly record struct RGBKeyboardBacklightEffectDescription(
+        RGBKeyboardBacklightEffect Effect,
+        RGBKeyboardBacklightSpeed Speed,
+        RGBKeyboardBacklightBrightness Brightness,
+        RGBColor Zone1);
 }

@@ -141,7 +141,7 @@ public partial class KeyboardBacklightPage
 
             if (await spectrumController.Is1ZoneKeyboardAsync() && await spectrumController.IsSupportedAsync())
             {
-                var control = new RGBKeyboard1ZoneControl();
+                var control = new SpectrumRGBKeyboard1ZoneControl();
                 _content.Children.Add(control);
                 anyAdded = true;
                 Log.Instance.Trace($"Added 1-zone RGB keyboard control.");

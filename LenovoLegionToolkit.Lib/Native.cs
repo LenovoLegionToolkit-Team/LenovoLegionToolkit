@@ -87,6 +87,8 @@ public enum LENOVO_SPECTRUM_EFFECT_TYPE : byte
     Always = 11,
     TypeLighting = 12,
     LegionAuraSync = 13,
+    OneZoneDynamic = 21,
+
 }
 
 public enum LENOVO_SPECTRUM_COLOR_MODE : byte
@@ -470,6 +472,7 @@ public readonly struct LENOVO_SPECTRUM_EFFECT_DESCRIPTION(
 
         return ms.ToArray();
     }
+
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
