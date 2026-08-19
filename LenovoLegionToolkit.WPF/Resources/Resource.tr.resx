@@ -1246,7 +1246,8 @@ Desteğiniz için teşekkür ederiz!</value>
     <value>Etkin Ön Ayar</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
+    <value>UYARI!
+Bazı bilgisayarlar, belirtilenden daha yüksek değerleri kabul edebilir, ancak dikkatli olun. Bu seçenek öngörülemeyen davranışlara neden olabilir, bu nedenle ne yaptığınızdan emin değilseniz, bunu 0'da bırakın.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Maksimum ofset</value>
@@ -1255,10 +1256,11 @@ Desteğiniz için teşekkür ederiz!</value>
     <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
+    <value>Ne yaptığınızı gerçekten bilmiyorsanız aşağıdaki seçenekler ile oynamayın.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
+    <value>UYARI!
+Bazı bilgisayarlar, belirtilenden daha düşük değerleri kabul edebilir, ancak dikkatli olun. Bu seçenek öngörülemeyen davranışlara neden olabilir, bu nedenle ne yaptığınızdan emin değilseniz, bunu 0'da bırakın.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Minimum ofset</value>
@@ -1270,7 +1272,7 @@ Desteğiniz için teşekkür ederiz!</value>
     <value>Gelişmiş</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>Apply a negative voltage offset curve to reduce power consumption, heat, and thermal throttling.</value>
+    <value>Tüm Çekirdekler Eğrisi Optimize Edici.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
     <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
@@ -1282,13 +1284,13 @@ Desteğiniz için teşekkür ederiz!</value>
     <value>APU sPPT Güç Limiti</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>The Slow Package Power Tracking limit governing the slow-response power budget for AMD APU packages.</value>
+    <value>CPU tarafından küçük bir gecikmeyle ulaşılabilen en yüksek güç tüketimi.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>Uzun Vadeli Güç Limiti (Çapraz Yükleme)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>The sustained power limit applied to the CPU when the GPU is also under heavy load.</value>
+    <value>Hem CPU hem de GPU tamamen kullanıldığında CPU tarafından ulaşılabilen maksimum güç tüketimi.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
     <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
@@ -1297,13 +1299,13 @@ Desteğiniz için teşekkür ederiz!</value>
     <value>Uzun Vadeli Güç Limiti</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to sustain indefinitely under long workloads.</value>
+    <value>CPU tarafından ulaşılabilen sürekli güç tüketimi.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>Tepe Güç Sınırı</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>The absolute limit for instantaneous power spikes to protect the voltage regulator.</value>
+    <value>CPU tarafından ulaşılabilen maksimum anlık güç tüketimi.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
     <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
@@ -1312,19 +1314,19 @@ Desteğiniz için teşekkür ederiz!</value>
     <value>Kısa Vadeli Güç Sınırı</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
-    <value>The maximum time the CPU can stay at the Short Term Power Limit before dropping back to the Long Term Power Limit.</value>
+    <value>CPU'nun Kısa Süreli Güç Sınırını artırmasına ve kullanmasına izin verilen süre. Tau sona erdiğinde, Uzun Süreli Güç Limiti kullanılır.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Kısa Vadeli Güç Limiti</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to draw for brief bursts of high activity.</value>
+    <value>CPU tarafından kısa bir süre içinde ulaşılabilen en yüksek güç tüketimi.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>CPU Sıcaklık Limiti</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the CPU will begin thermal throttling.</value>
+    <value>Frekans ve güç düşürülmeden önce CPU'nun ulaşabileceği maksimum sıcaklık.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
     <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
@@ -1355,13 +1357,15 @@ Gerekli teknik uzmanlığa sahip değilseniz devam etmeyin.</value>
     <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
+    <value>Fan hızı kesin olarak 1 sıcaklık sensörü tarafından belirlenmemektedir. CPU, GPU ve Soğutucu sıcaklığı arasındaki en yüksek sensör başına hızı artıracak veya azaltacaktır. Fareyi her adımın üzerine getirdiğinizde tam değerler görünecektir.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>Fan eğrisi</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
+    <value>UYARI!
+Bu seçeneğin uzun süreli kullanımı, fanların ömrünü azaltabilir.
+Cidden, bu seçeneğe dikkat edin!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Azami Çalışma Hızı</value>
@@ -1376,19 +1380,19 @@ Gerekli teknik uzmanlığa sahip değilseniz devam etmeyin.</value>
     <value>Yapılandırılabilir TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>The base sustained power limit allocated to the GPU, excluding dynamic boost headroom.</value>
+    <value>Temel güç tüketimine ek olarak GPU'ya tahsis edilebilecek ek güç miktarı.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>Dynamic Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>The maximum additional power allocated dynamically to the GPU from the CPU's budget during high graphics demand.</value>
+    <value>CPU'nun güç tüketimine bağlı olarak GPU'ya tahsis edilebilecek ek maksimum güç.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>GPU Sıcaklık Limiti</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the GPU will begin thermal throttling.</value>
+    <value>Frekans ve güç düşürülmeden önce GPU'nun ulaşabileceği maksimum sıcaklık.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
     <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
@@ -1400,7 +1404,7 @@ Gerekli teknik uzmanlığa sahip değilseniz devam etmeyin.</value>
     <value>GPU Üstünden CPU Üstüne Dinamik Güç</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>The maximum additional power the CPU is allowed to dynamically borrow from the GPU's budget.</value>
+    <value>Bu CPU kullanımına bağlı olarak GPU üstünden CPU üstüne tahsis edilebilecek azami ek güçtür. Değer ne kadar yüksek olursa CPU kullanan uygulamaların performansı da o kadar iyi olur.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
     <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
@@ -1409,7 +1413,7 @@ Gerekli teknik uzmanlığa sahip değilseniz devam etmeyin.</value>
     <value>AC'de Toplam İşlemci Gücü Hedefi</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>The CPU power threshold that triggers dynamic power adjustments for the GPU while running on AC power.</value>
+    <value>CPU'nun GPU için dinamik güç tüketimi ayarını tetiklediği nokta.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
     <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
@@ -1424,13 +1428,13 @@ Gerekli teknik uzmanlığa sahip değilseniz devam etmeyin.</value>
     <value>Cihazınız, Özel Mod'un tüm özelliklerini desteklemiyor olabilir.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Set the maximum frequency offset allowed beyond the factory default boost clock specification.</value>
+    <value>Precision Boost Overdrive Boost Frekansı.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
     <value>Precision Boost Overdrive Boost Frekansı</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Configure the frequency boost aggressiveness by adjusting the processor's silicon health safety margins.</value>
+    <value>Precision Boost Overdrive Scaler.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
     <value>Precision Boost Overdrive Scaler</value>
@@ -1439,16 +1443,16 @@ Gerekli teknik uzmanlığa sahip değilseniz devam etmeyin.</value>
     <value>Özel Kipi Ayarları</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Enable or disable voltage offset optimization across all CPU cores.</value>
+    <value>Çekirdek Eğri Ayarını Etkinleştir / Devre Dışı Bırak.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
     <value>Çekirdek Eğri Ayarı</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
+    <value>Gelişmiş Overclock seçeneklerini Etkinleştirin / Devre Dışı Bırakın.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Overclocking</value>
+    <value>Gelişmiş Overclock Seçenekleri</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
     <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
@@ -1554,7 +1558,7 @@ GPU hiç yanıt vermiyorsa, lütfen dizüstü bilgisayarınızı yeniden başlat
     <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITS Power Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows Dinamik aydınlatma etkinleştirildi.
@@ -2125,7 +2129,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Yüzen Gadget'ı Göster veya Gizle</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>Yüzen Gadget</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
     <value>Voltaj</value>
@@ -2871,7 +2875,7 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
     <value>Ortalama Frekans</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and OSD.</value>
+    <value>Gösterge Paneli ve OSD'de görüntülenen CPU frekansının türünü belirleyin.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU Frekansı</value>
@@ -3248,7 +3252,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Canlı sensör verilerini gösteren yüzen bindirme.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>OSD'yi Etkinleştir</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
     <value>ITS Modu, güç ayarlarını varsayılan olarak senkronize eder; bu nedenle bu ayarı burada geçersiz kılmak çakışmalara neden olabilir.</value>
