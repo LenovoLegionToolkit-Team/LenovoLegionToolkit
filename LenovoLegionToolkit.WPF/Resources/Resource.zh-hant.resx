@@ -934,13 +934,13 @@
     <value>圖形偏好設定</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
-    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+    <value>保持與獨立顯示卡的連接，以防止出現卡頓。</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
     <value>This increases power consumption and reduces battery life.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
-    <value>Keep dGPU awake</value>
+    <value>維持獨立顯示卡 (dGPU) 喚醒</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>強制關閉應用程式</value>
@@ -1245,7 +1245,8 @@
     <value>活動預設</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
+    <value>警告！
+一些筆記型電腦可能接受較高的功率限制。請小心，此選項可能導致未知的後果，因此如果您不確定自己在做什麼，請將其保留為 0。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>最大偏移</value>
@@ -1254,10 +1255,11 @@
     <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
+    <value>除非您真的知道自己在做什麼，否則請不要變更下面的選項。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
+    <value>警告！
+一些筆記型電腦可能接受較低的功率限制。請小心，此選項可能導致未知的後果，因此如果您不確定自己在做什麼，請將其保留為 0。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>最小偏移</value>
@@ -1269,7 +1271,7 @@
     <value>進階</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>Apply a negative voltage offset curve to reduce power consumption, heat, and thermal throttling.</value>
+    <value>All Core Curve Optimizer.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
     <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
@@ -1281,13 +1283,13 @@
     <value>APU 功率限制（SPPT）</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>The Slow Package Power Tracking limit governing the slow-response power budget for AMD APU packages.</value>
+    <value>CPU 在一定的延遲後可以達到的最大功率限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>長時間功率限制 (Cross Loading)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>The sustained power limit applied to the CPU when the GPU is also under heavy load.</value>
+    <value>CPU 和 GPU 達到最大負載時，CPU 可以達到的最大功率。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
     <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
@@ -1296,13 +1298,13 @@
     <value>長時間功率限制（PL1）</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to sustain indefinitely under long workloads.</value>
+    <value>CPU 持續功率限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>峰值功率限制</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>The absolute limit for instantaneous power spikes to protect the voltage regulator.</value>
+    <value>CPU 瞬間功率限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
     <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
@@ -1311,19 +1313,19 @@
     <value>短時間功率持續時間限制</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
-    <value>The maximum time the CPU can stay at the Short Term Power Limit before dropping back to the Long Term Power Limit.</value>
+    <value>允許 CPU 使用短時間功率限制進行加速的時間量。當 Tau 到期時，將使用長時間功率限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>短時間功率限制（PL2）</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to draw for brief bursts of high activity.</value>
+    <value>CPU 短時間峰值功率限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>CPU 溫度限制</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the CPU will begin thermal throttling.</value>
+    <value>在降低頻率和功率之前，CPU 可以達到的最高溫度。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
     <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
@@ -1354,13 +1356,15 @@
     <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
+    <value>風扇轉速不僅僅由一個溫度感測器決定的。它根據 CPU、GPU 和散熱器溫度之間的最高值決定轉速。將滑鼠懸停在方塊上可以查看精確的數值。</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>風扇曲線</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
+    <value>警告！
+長時間使用此選項會降低風扇的效能，從而縮短其使用壽命。
+請謹慎使用此選項！</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>最大風扇轉速</value>
@@ -1375,19 +1379,19 @@
     <value>可設定 TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>The base sustained power limit allocated to the GPU, excluding dynamic boost headroom.</value>
+    <value>基本功率上，最大可以分配給 GPU 的額外功率。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>動態加速</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>The maximum additional power allocated dynamically to the GPU from the CPU's budget during high graphics demand.</value>
+    <value>基於 CPU 的功率，最大可以借用 GPU 的額外功率。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>GPU 溫度限制</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the GPU will begin thermal throttling.</value>
+    <value>在降低頻率和功率之前，GPU 可以達到的最高溫度。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
     <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
@@ -1399,7 +1403,7 @@
     <value>GPU 到 CPU Dynamic Boost</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>The maximum additional power the CPU is allowed to dynamically borrow from the GPU's budget.</value>
+    <value>這是根據 GPU 使用情況可以從 GPU 分配給 CPU 的最大額外功率。該值越高，使用此 CPU 的應用程式的效能越好。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
     <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
@@ -1408,7 +1412,7 @@
     <value>連接電源時的總處理器功率目標。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>The CPU power threshold that triggers dynamic power adjustments for the GPU while running on AC power.</value>
+    <value>CPU 觸發 GPU 動態功率調整點。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
     <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
@@ -1423,13 +1427,13 @@
     <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Set the maximum frequency offset allowed beyond the factory default boost clock specification.</value>
+    <value>精準頻率提升加速頻率。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
     <value>精準頻率提升加速頻率</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Configure the frequency boost aggressiveness by adjusting the processor's silicon health safety margins.</value>
+    <value>精準頻率提升倍數。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
     <value>精準頻率提升倍數</value>
@@ -1438,16 +1442,16 @@
     <value>客製化模式設定</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Enable or disable voltage offset optimization across all CPU cores.</value>
+    <value>啟用／停用核心電壓調整。</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
     <value>核心曲線調整</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
+    <value>啟用／停用進階超頻選項。</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Overclocking</value>
+    <value>進階超頻選項</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
     <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
@@ -1553,7 +1557,7 @@
     <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITS Power Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows 動態光效功能已啓用。
@@ -2124,7 +2128,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>顯示或隱藏 OSD</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>OSD</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
     <value>電壓</value>
@@ -2301,7 +2305,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>核心頻率偏移</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
-    <value>Adjust VRAM speed to modify memory bandwidth.</value>
+    <value>調整 VRAM 速度以修改記憶體頻寬。</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>記憶體頻率偏移</value>
@@ -2662,7 +2666,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>執行路徑</value>
   </data>
   <data name="RunAutomationStepControl_Message" xml:space="preserve">
-    <value>Run a script or a program.</value>
+    <value>執行指令碼或程式。</value>
   </data>
   <data name="RunAutomationStepControl_ProcessCheckInstance" xml:space="preserve">
     <value>Check Instance</value>
@@ -2710,7 +2714,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Return Value</value>
   </data>
   <data name="ScriptConsole_Status_Error" xml:space="preserve">
-    <value>Execution failed: {0} ms</value>
+    <value>無法執行：{0} 毫秒</value>
   </data>
   <data name="ScriptConsole_Status_Ok" xml:space="preserve">
     <value>Execution succeeded: {0} ms</value>
@@ -2870,7 +2874,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Average Frequency</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and OSD.</value>
+    <value>Determine the type of CPU frequency displayed on the Dashboard and Osd.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU 頻率</value>
@@ -3247,7 +3251,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Floating overlay showing live sensor data.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>啟用 OSD</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
     <value>ITS Mode natively synchronizes power settings, so overriding it here may cause conflicts.</value>
