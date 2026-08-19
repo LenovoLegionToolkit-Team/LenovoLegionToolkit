@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -176,10 +176,10 @@
     <value>新建</value>
   </data>
   <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
-    <value>Dynamically shifts power between the CPU and GPU to maximize performance in compatible games.</value>
+    <value>在兼容的游戏中，动态调配 CPU 与 GPU 的功耗，以最大限度提升性能。</value>
   </data>
   <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
-    <value>AI Engine</value>
+    <value>AI 引擎</value>
   </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>飞行模式</value>
@@ -226,28 +226,28 @@
     <value>电流限制</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
-    <value>High</value>
+    <value>高</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
-    <value>High Temperature</value>
+    <value>高温</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
-    <value>Low</value>
+    <value>低</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
-    <value>Low Temperature</value>
+    <value>低温</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
-    <value>Maximum</value>
+    <value>最大</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
-    <value>Medium</value>
+    <value>中等</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
-    <value>Medium Temperature</value>
+    <value>中温</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
-    <value>Minimum</value>
+    <value>最低</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>配置文件未被应用由于多次异常重启。</value>
@@ -310,7 +310,7 @@
     <value>电压曲线调优</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
-    <value>Curve Shaper Optimizer</value>
+    <value>曲线塑形优化器</value>
   </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
     <value>设置</value>
@@ -322,7 +322,7 @@
     <value>TDC VDD</value>
   </data>
   <data name="AmdOverclocking_Title" xml:space="preserve">
-    <value>AMD Precision Boost Overclocking</value>
+    <value>AMD PBO 超频</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
     <value>关闭 CCD 1 以获取更平滑的帧数与更低的待机温度。</value>
@@ -707,17 +707,28 @@
     <value>自定义</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>已设置为自定义开机画面</value>
+    <value>自定义 Logo</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>已设置为默认开机画面</value>
-  </data>
-  <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>替换的自定义开机画面图标的图片文件分辨率必须在 {0} 范围内 。
-支持的图片文件格式为：{1}。</value>
+    <value>默认 Logo</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
-    <value>禁用 Windows 启动动画</value>
+    <value>在启动时显示加载动画</value>
+  </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>开机动画</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>最大 {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>支持的格式和尺寸</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>图片要求</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>自定义开机画面设置失败：{0}</value>
@@ -746,7 +757,10 @@
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>EFI 分区空间不足。</value>
   </data>
-  <data name="BootLogoWindow_Status" xml:space="preserve">
+  <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
+    <value>UEFI 启动 Logo 状态</value>
+  </data>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
     <value>当前状态</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
@@ -814,7 +828,7 @@
     <value>复制全部</value>
   </data>
   <data name="Core" xml:space="preserve">
-    <value>Core</value>
+    <value>核心</value>
   </data>
   <data name="Cores" xml:space="preserve">
     <value>核心</value>
@@ -865,7 +879,7 @@
     <value>剩余天数</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Message" xml:space="preserve">
-    <value>禁用离散的 GPU 如果它是不必要的。</value>
+    <value>在不需要时停用独立显卡。</value>
   </data>
   <data name="DeactivateGPUAutomationStepControl_Title" xml:space="preserve">
     <value>休眠独立显卡</value>
@@ -945,6 +959,21 @@
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>在不需要时强制休眠显卡，可能会导致应用崩溃。
 请尽可能通过手动关闭占用进程来解除独立显卡占用。</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
+    <value>自动 (动态)</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
+    <value>当前：{0}</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
+    <value>锁定独立显卡为指定的性能状态。</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
+    <value>防止频率下降，降低延迟，但是增加了功耗。</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
+    <value>性能状态控制</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
     <value>其他</value>
@@ -1078,10 +1107,16 @@
     <value>错误</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>此列表内的所有进程将会被 游戏启动，游戏关闭 以及联想 AI 模式所忽略。请输入进程名而不是进程目录。（如 QQ）</value>
+    <value>排除进程列表中的进程将被游戏开始 / 停止触发器和联想的 AI / Intelligence 模式忽略。</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>进程名称（如：QQ）</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>排除的应用 ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>没有被排除的应用</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>正在运行的应用 ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>排除应用</value>
@@ -1222,7 +1257,7 @@
     <value>最大功耗限制偏移量</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
-    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
+    <value>设置高于硬件安全限制的偏移可能会影响系统稳定性，或导致设置被恢复。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>请谨慎修改下方选项！在你不知道下方选项的准确意义前，请勿修改！</value>
@@ -1235,7 +1270,7 @@
     <value>最小功耗限制偏移量</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
-    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
+    <value>设置低于硬件安全限制的偏移可能会降低系统稳定性，或导致设置被恢复。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
     <value>高级选项</value>
@@ -1244,7 +1279,7 @@
     <value>调整全核电压曲线，在开启拯救者性能调优时默认为负压。</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
-    <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
+    <value>通过设置负值对 CPU 进行降压从而提高散热效率，稳定性可能需要额外测试。</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
     <value>全核电压曲线调节</value>
@@ -1253,7 +1288,7 @@
     <value>APU 慢速功耗追踪限制（sPPT）</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>CPU 在一定的延迟后可以达到的最大功耗限制。</value>
+    <value>CPU 在一定的时间后可以达到的最大功耗限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>长时负载功耗限制 (Cross Loading)</value>
@@ -1262,7 +1297,7 @@
     <value>当 CPU 与 GPU 同时最大负载时，CPU 的最大功耗限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
-    <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
+    <value>在混合工作负载时限制CPU功率，以优化GPU的散热及功率分配。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>长时负载功耗限制 (PL1)</value>
@@ -1274,22 +1309,22 @@
     <value>峰值功耗限制</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>CPU瞬时功耗限制。</value>
+    <value>CPU 瞬时功耗限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
-    <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
+    <value>超过硬件限制可能会导致系统突然关闭，或在短时间内工作负担突增时影响系统稳定性。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
     <value>短时睿频功耗限制</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
-    <value>CPU 被允许使用短期功率限制进行加速的时间量。当 Tau 过期时，将使用长期功率限制。</value>
+    <value>CPU 被允许使用短时功耗限制现在进行加速的时间量。当 Tau 过期时，将使用长时功耗限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>短时睿频功耗限制 (PL2)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>CPU 短时峰值功耗限制。</value>
+    <value>CPU 短时功耗限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>CPU 温度限制</value>
@@ -1298,7 +1333,7 @@
     <value>在降频之前 CPU 的温度限制。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
-    <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
+    <value>较高的温度阈值会增加散热压力和风扇噪音。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>CPU</value>
@@ -1327,7 +1362,7 @@
     <value>无法加载设置</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
-    <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
+    <value>悬停鼠标悬停在单个节点上以查看确切的温度阈值和转速百分比。</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
     <value>风扇速度不是仅仅由一个温度传感器决定的。它将根据 CPU、GPU 和散热器温度之间的最高值决定转速。把鼠标悬停在滑块上时，可以看到准确的数值。</value>
@@ -1344,7 +1379,7 @@
     <value>使风扇满转速</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
-    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
+    <value>以最大速度长时间工作会增加机械磨损和风扇噪音。</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
     <value>风扇</value>
@@ -1368,7 +1403,7 @@
     <value>在降频前，GPU 的温度限制。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
-    <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
+    <value>提升温度上限会导致GPU散热压力上升。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>显卡</value>
@@ -1380,16 +1415,16 @@
     <value>此为根据 CPU 的使用情况，能从 GPU 借用给 CPU 的额外功率。值越大，则使用 CPU 计算较多的应用性能越好。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
-    <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
+    <value>将此设置为 0W 会阻止 CPU 在 GPU 高压运作时额外分配电力，以此减少热量和风扇噪音。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
     <value>插电情况下总处理器功耗目标</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>CPU 触发 GPU 动态功耗调整的点。</value>
+    <value>CPU 触发 GPU 动态功耗调整的点，当 CPU 达到设置的功耗后，显卡的 DB 功耗会分配给 CPU 。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
-    <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
+    <value>适合限制 CPU 设置最大功耗以降低 GPU 散热压力。</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
     <value>自定义模式无法在 Legion Space 或其服务运行时正确生效</value>
@@ -1398,7 +1433,7 @@
     <value>自定义设置在 Legion Zone 及其服务运行时将不会生效。</value>
   </data>
   <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
-    <value>Your device may not support the full feature set of Custom Mode.</value>
+    <value>您的设备可能不支持自定义模式的完整功能。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>调整 Precision Boost Overdrive 提高频率。</value>
@@ -1428,7 +1463,7 @@
     <value>高级超频选项</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
-    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
+    <value>错误的设置可能导致系统不稳定、崩溃或启动失败。</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>自定义设置在 Lenovo Vantage 及其服务运行时将不会生效。</value>
@@ -1516,22 +1551,22 @@
     <value>通电自启</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change ITS Mode</value>
+    <value>更改 ITS 性能模式</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITS 性能模式</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
-    <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
+    <value>自定义 Fn + Q 快捷键模式循环顺序，或启用 / 禁用特定性能模式。</value>
   </data>
   <data name="ITSModeConfigWindow_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITS 性能模式</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Change ITS Mode</value>
+    <value>切换 ITS 性能模式</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>ITS Power Mode</value>
+    <value>性能模式</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows 动态光效功能已启用，此功能可能会阻止 LLT 控制键盘灯效。
@@ -2047,6 +2082,35 @@
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
     <value>背光状态改变</value>
   </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
+    <value>PawnIO 驱动程序服务未运行。
+
+请启动服务或更新/重新安装PawnIO以使用此功能！
+
+单击“是”在浏览器中打开下载链接。
+单击“否”禁用硬件传感器功能。</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
+    <value>PawnIO 驱动程序未运行</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
+    <value>您的PawnIO版本太旧了。
+
+当前：{0} 需要：{1}。
+请更新PawnIO以继续使用此功能！
+
+单击“是”在浏览器中打开下载链接。
+单击“否”禁用硬件传感器功能。</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
+    <value>需要更新 PawnIO</value>
+  </data>
+  <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
+    <value>您需要安装PawnIO才能使用硬件传感器！
+
+单击“是”在浏览器中打开下载链接。
+单击“否”禁用硬件传感器功能。</value>
+  </data>
   <data name="Off" xml:space="preserve">
     <value>关闭</value>
   </data>
@@ -2072,10 +2136,10 @@
     <value>显示或隐藏 OSD</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>OSD</value>
+    <value>屏幕显示 (OSD)</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
-    <value>Voltage</value>
+    <value>电压</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>设置 OSD 的锁定位置状态。</value>
@@ -2515,6 +2579,9 @@
   <data name="RefreshRateControl_Title" xml:space="preserve">
     <value>刷新率</value>
   </data>
+  <data name="Remove" xml:space="preserve">
+    <value>删除</value>
+  </data>
   <data name="Rename" xml:space="preserve">
     <value>重命名</value>
   </data>
@@ -2849,19 +2916,19 @@
     <value>已使用/总内存 (GB)</value>
   </data>
   <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
-    <value>Average</value>
+    <value>平均</value>
   </data>
   <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
-    <value>Core</value>
+    <value>核心</value>
   </data>
   <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
-    <value>Maximum</value>
+    <value>最大</value>
   </data>
   <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
-    <value>Choose how voltage is displayed on the Dashboard and OSD.</value>
+    <value>选择电压在仪表盘和 OSD 上的显示方式。</value>
   </data>
   <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
-    <value>Voltage Display Mode</value>
+    <value>电压显示模式</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>序列号</value>
@@ -3205,6 +3272,12 @@
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
     <value>电源模式同步</value>
   </data>
+  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
+    <value>应用程序启动时还原最后的窗口位置。</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
+    <value>记住窗口位置</value>
+  </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>您确定要将所有设置重置为默认值吗？此操作不能撤消，并且应用程序将重新启动。</value>
   </data>
@@ -3260,7 +3333,7 @@
     <value>温度</value>
   </data>
   <data name="SettingsPage_Theme_Description" xml:space="preserve">
-    <value>设置浅色模式、神色模式或跟随系统主题。</value>
+    <value>设置浅色模式、深色模式或跟随系统主题。</value>
   </data>
   <data name="SettingsPage_Theme_Title" xml:space="preserve">
     <value>主题</value>
@@ -3553,6 +3626,9 @@
   <data name="Storage" xml:space="preserve">
     <value>存储</value>
   </data>
+  <data name="Success" xml:space="preserve">
+    <value>成功</value>
+  </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>选择图标</value>
   </data>
@@ -3591,7 +3667,7 @@
     <value>混合模式</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Total</value>
+    <value>总计</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
     <value>停止使用触摸板</value>
