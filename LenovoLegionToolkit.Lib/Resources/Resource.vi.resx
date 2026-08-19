@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -212,7 +212,46 @@
     <value>GB</value>
   </data>
   <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
-    <value>Fan table verification failed.</value>
+    <value>Xác minh bảng quạt không thành công.</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_Acpi" xml:space="preserve">
+    <value>ACPI</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_Audio" xml:space="preserve">
+    <value>Âm thanh hoạt động</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_BusScan" xml:space="preserve">
+    <value>Quét bus</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_CpuSharedSurface" xml:space="preserve">
+    <value>Bộ nhớ CPU được chia sẻ</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_Display" xml:space="preserve">
+    <value>Hiển thị hoạt động</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_DriverHold" xml:space="preserve">
+    <value>Duy trì driver</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_HybridGraphics" xml:space="preserve">
+    <value>Đồ họa hỗn hợp</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_PowerEvent" xml:space="preserve">
+    <value>Sự kiện nguồn</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_ResourceLock" xml:space="preserve">
+    <value>Khóa tài nguyên</value>
+  </data>
+  <data name="GPUController_GC6_Blocker_SoftwareDisabled" xml:space="preserve">
+    <value>Phần mềm đã tắt</value>
+  </data>
+  <data name="GPUController_GC6_NoSbiosSupport" xml:space="preserve">
+    <value>SBIOS không hỗ trợ ngủ GC6</value>
+  </data>
+  <data name="GPUController_GC6_NoVbiosSupport" xml:space="preserve">
+    <value>VBIOS không hỗ trợ ngủ GC6</value>
+  </data>
+  <data name="GPUController_GC6_SleepBlocked" xml:space="preserve">
+    <value>Chế độ ngủ bị chặn ({0})</value>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
     <value>Ngắt kích hoạt</value>
@@ -380,7 +419,7 @@
     <value>Mức sử dụng</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
-    <value>Voltage</value>
+    <value>Vôn</value>
   </data>
   <data name="OsdItem_VramTemperature" xml:space="preserve">
     <value>Nhiệt độ VRAM</value>
@@ -433,7 +472,7 @@
     <value>Im Lặng</value>
   </data>
   <data name="RefreshRate_Dynamic" xml:space="preserve">
-    <value>Dynamic ({0} Hz)</value>
+    <value>Động ({0} Hz)</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>Cao</value>
