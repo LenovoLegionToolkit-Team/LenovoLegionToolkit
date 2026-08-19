@@ -707,28 +707,28 @@
     <value>自定义</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>Custom Logo</value>
+    <value>自定义 Logo</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>Default Logo</value>
+    <value>默认 Logo</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
-    <value>Show the circular loading animation during boot</value>
+    <value>在启动时显示加载动画</value>
   </data>
   <data name="BootLogoWindow_Options_Title" xml:space="preserve">
-    <value>Startup Animation</value>
+    <value>开机动画</value>
   </data>
   <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
     <value>{0}</value>
   </data>
   <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
-    <value>Max {0}</value>
+    <value>最大 {0}</value>
   </data>
   <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
-    <value>Supported formats and dimensions</value>
+    <value>支持的格式和尺寸</value>
   </data>
   <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
-    <value>Image Requirements</value>
+    <value>图片要求</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>自定义开机画面设置失败：{0}</value>
@@ -758,10 +758,10 @@
     <value>EFI 分区空间不足。</value>
   </data>
   <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
-    <value>Status of the UEFI boot logo</value>
+    <value>UEFI 启动 Logo 状态</value>
   </data>
   <data name="BootLogoWindow_Status_Title" xml:space="preserve">
-    <value>Current Status</value>
+    <value>当前状态</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>自定义开机画面</value>
@@ -961,19 +961,19 @@
 请尽可能通过手动关闭占用进程来解除独立显卡占用。</value>
   </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
-    <value>Auto (Dynamic)</value>
+    <value>自动 (动态)</value>
   </data>
   <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
-    <value>Current: {0}</value>
+    <value>当前：{0}</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Lock the discrete GPU to a specific performance state.</value>
+    <value>锁定独立显卡为指定的性能状态。</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+    <value>防止频率下降，降低延迟，但是增加了功耗。</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
-    <value>P-State Control</value>
+    <value>性能状态控制</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
     <value>其他</value>
@@ -1107,16 +1107,16 @@
     <value>错误</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
+    <value>排除进程列表中的进程将被游戏开始 / 停止触发器和联想的 AI / Intelligence 模式忽略。</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
-    <value>Excluded Processes ({0})</value>
+    <value>排除的应用 ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
-    <value>No excluded processes</value>
+    <value>没有被排除的应用</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
-    <value>Running Processes ({0})</value>
+    <value>正在运行的应用 ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>排除应用</value>
@@ -2083,33 +2083,33 @@
     <value>背光状态改变</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
-    <value>The PawnIO driver service is not running. 
+    <value>PawnIO 驱动程序服务未运行。
 
-Please start the service or update/reinstall PawnIO to use this feature!
+请启动服务或更新/重新安装PawnIO以使用此功能！
 
-Click Yes to open download link in browser.
-Click No to disable Hardware Sensor feature.</value>
+单击“是”在浏览器中打开下载链接。
+单击“否”禁用硬件传感器功能。</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
-    <value>PawnIO driver not running</value>
+    <value>PawnIO 驱动程序未运行</value>
   </data>
   <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
-    <value>Your PawnIO version is too old.
+    <value>您的PawnIO版本太旧了。
 
-Current: {0} Required: {1}. 
-Please update PawnIO to continue using this feature!
-    
-Click Yes to open download link in browser.
-Click No to disable Hardware Sensor feature.</value>
+当前：{0} 需要：{1}。
+请更新PawnIO以继续使用此功能！
+
+单击“是”在浏览器中打开下载链接。
+单击“否”禁用硬件传感器功能。</value>
   </data>
   <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
-    <value>PawnIO update required</value>
+    <value>需要更新 PawnIO</value>
   </data>
   <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!
+    <value>您需要安装PawnIO才能使用硬件传感器！
 
-Click Yes to open download link in browser.
-Click No to disable Hardware Sensor feature.</value>
+单击“是”在浏览器中打开下载链接。
+单击“否”禁用硬件传感器功能。</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>关闭</value>
@@ -2580,7 +2580,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>刷新率</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
+    <value>删除</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>重命名</value>
@@ -3273,10 +3273,10 @@ Click No to disable Hardware Sensor feature.</value>
     <value>电源模式同步</value>
   </data>
   <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
-    <value>Restore previous window position on application launch.</value>
+    <value>应用程序启动时还原最后的窗口位置。</value>
   </data>
   <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
-    <value>Remember Window Position</value>
+    <value>记住窗口位置</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>您确定要将所有设置重置为默认值吗？此操作不能撤消，并且应用程序将重新启动。</value>
@@ -3627,7 +3627,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>存储</value>
   </data>
   <data name="Success" xml:space="preserve">
-    <value>Success</value>
+    <value>成功</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>选择图标</value>
