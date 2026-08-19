@@ -1247,7 +1247,8 @@ Thank you for your support!</value>
     <value>Ενεργό προφίλ</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
+    <value>ΠΡΟΕΙΔΟΠΟΙΗΣΗ:
+Μερικοί υπολογιστές μπορεί να αποδέχονται υψηλότερες τιμές από αυτές που υποδεικνύουν, αλλά να είστε προσεκτικοί. Αυτή η επιλογή μπορεί να οδηγήσει σε απρόβλεπτη συμπεριφορά. Εάν δεν είστε βέβαιοι για το τι κάνετε, αφήστε τη στο 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Μέγιστο αντιστάθμισμα</value>
@@ -1256,10 +1257,11 @@ Thank you for your support!</value>
     <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
+    <value>Μην αλλάξετε τις παρακάτω επιλογές εκτός και εάν γνωρίζετε πραγματικά τι κάνετε.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
+    <value>ΠΡΟΕΙΔΟΠΟΙΗΣΗ:
+Μερικοί υπολογιστές μπορεί να αποδέχονται χαμηλότερες τιμές από αυτές που υποδεικνύουν, αλλά να είστε προσεκτικοί. Αυτή η επιλογή μπορεί να οδηγήσει σε απρόβλεπτη συμπεριφορά. Εάν δεν είστε βέβαιοι για το τι κάνετε, αφήστε τη στο 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Ελάχιστο αντιστάθμισμα</value>
@@ -1271,7 +1273,7 @@ Thank you for your support!</value>
     <value>Για προχωρημένους</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>Apply a negative voltage offset curve to reduce power consumption, heat, and thermal throttling.</value>
+    <value>Βελτιστοποιητής Καμπύλης Πυρήνα.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
     <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
@@ -1283,13 +1285,13 @@ Thank you for your support!</value>
     <value>Όριο Ισχύος APU sPPT</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>The Slow Package Power Tracking limit governing the slow-response power budget for AMD APU packages.</value>
+    <value>Η κορυφαία κατανάλωση ισχύος που μπορεί να φτάσει η CPU με μικρή καθυστέρηση.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>Μακροπρόθεσμο Όριο Ισχύος (Διασταυρούμενη Επιβάρυνση)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>The sustained power limit applied to the CPU when the GPU is also under heavy load.</value>
+    <value>Η μέγιστη κατανάλωση ισχύος που μπορεί να επιτευχθεί από τη CPU όταν χρησιμοποιούνται πλήρως τόσο η CPU όσο και η GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
     <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
@@ -1298,13 +1300,13 @@ Thank you for your support!</value>
     <value>Μακροπρόθεσμο Όριο Ισχύος</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to sustain indefinitely under long workloads.</value>
+    <value>Η συνεχής κατανάλωση ενέργειας που μπορεί να φτάσει η CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>Όριο Κορυφαίας Ισχύος</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>The absolute limit for instantaneous power spikes to protect the voltage regulator.</value>
+    <value>Η μέγιστη στιγμιαία κατανάλωση ενέργειας που μπορεί να φτάσει η CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
     <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
@@ -1313,19 +1315,19 @@ Thank you for your support!</value>
     <value>Διάρκεια Βραχυπρόθεσμου Ορίου Ισχύος</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
-    <value>The maximum time the CPU can stay at the Short Term Power Limit before dropping back to the Long Term Power Limit.</value>
+    <value>Το χρονικό διάστημα για το οποίο επιτρέπεται στη CPU να χρησιμοποιήσει το Βραχυπρόθεσμο Όριο Ισχύος για ώθηση. Όταν λήξει το Tau, θα χρησιμοποιηθεί το Μακροπρόθεσμο Όριο Ισχύος.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Βραχυπρόθεσμο Όριο Ισχύος</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to draw for brief bursts of high activity.</value>
+    <value>Η κορυφαία κατανάλωση ενέργειας που μπορεί να φτάσει η CPU μέσα σε σύντομο χρονικό διάστημα.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>Όριο Θερμοκρασίας CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the CPU will begin thermal throttling.</value>
+    <value>Η μέγιστη θερμοκρασία που μπορεί να φτάσει η CPU πριν μειωθεί η συχνότητα και η ισχύς της.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
     <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
@@ -1356,13 +1358,15 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
+    <value>Η ταχύτητα του ανεμιστήρα δεν καθορίζεται αυστηρά από έναν αισθητήρα θερμοκρασίας. Η ταχύτητα αυξομειώνεται με βάση την υψηλότερη θερμοκρασία μεταξύ των αισθητήρων της CPU, της GPU και της ψύκτρας. Οι ακριβείς τιμές θα εμφανιστούν όταν τοποθετείτε το ποντίκι πάνω από κάθε βήμα.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>Καμπύλη ανεμιστήρα</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
+    <value>ΠΡΟΕΙΔΟΠΟΙΗΣΗ!
+Η παρατεταμένη χρήση αυτής της επιλογής θα επιβαρύνει τους ανεμιστήρες μειώνοντας τη μακροζωία τους.
+Σοβαρά, να είστε προσεκτικοί με αυτήν την επιλογή!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Μέγιστη ταχύτητα ανεμιστήρα</value>
@@ -1377,19 +1381,19 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Ρύθμιση TGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>The base sustained power limit allocated to the GPU, excluding dynamic boost headroom.</value>
+    <value>Η επιπρόσθετη ποσότητα ισχύος που μπορεί να κατανεμηθεί στην GPU πέρα από τη βασική κατανάλωση ισχύος.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>Δυναμική Ώθηση</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>The maximum additional power allocated dynamically to the GPU from the CPU's budget during high graphics demand.</value>
+    <value>Η επιπρόσθετη μέγιστη ισχύς που μπορεί να κατανεμηθεί στην GPU με βάση την κατανάλωση ισχύος της CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>Όριο Θερμοκρασίας GPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the GPU will begin thermal throttling.</value>
+    <value>Η μέγιστη θερμοκρασία που μπορεί να φτάσει η GPU πριν μειωθεί η συχνότητα και η ισχύς της.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
     <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
@@ -1401,7 +1405,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Δυναμική Ώθηση GPU προς CPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>The maximum additional power the CPU is allowed to dynamically borrow from the GPU's budget.</value>
+    <value>Αυτή είναι η μέγιστη επιπρόσθετη ισχύς που μπορεί να κατανεμηθεί στη CPU από την GPU με βάση τη χρήση CPU. Όσο υψηλότερη η τιμή, τόσο καλύτερη η απόδοση εφαρμογών που χρησιμοποιούν τη CPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
     <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
@@ -1410,7 +1414,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Στόχος Συνολικής Ισχύος Επεξεργαστή Κατά Τη Φόρτιση</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>The CPU power threshold that triggers dynamic power adjustments for the GPU while running on AC power.</value>
+    <value>Το σημείο στο οποίο η CPU ενεργοποιεί τη δυναμική προσαρμογή κατανάλωσης ισχύος για την GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
     <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
@@ -1425,13 +1429,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Set the maximum frequency offset allowed beyond the factory default boost clock specification.</value>
+    <value>Συχνότητα Ώθησης Υπερκίνησης Ακρίβειας.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
     <value>Αυξήστε Την Υπερκίνηση Αυξήσεων Συχνότητα Ακρίβειας</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Configure the frequency boost aggressiveness by adjusting the processor's silicon health safety margins.</value>
+    <value>Υπερκινητική Κλίμακα Ώθησης Ακρίβειας.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
     <value>Ώθηση Ακριβείας Υπερκίνησης Κλίμακα</value>
@@ -1440,16 +1444,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Ρυθμίσεις Προσαρμοσμένης Λειτουργίας</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Enable or disable voltage offset optimization across all CPU cores.</value>
+    <value>Ενεργοποίηση / Απενεργοποίηση Ρυθμίσεων Καμπύλης Πυρήνα.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
     <value>Ρύθμιση Καμπύλης Πυρήνα</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
+    <value>Ενεργοποίηση / απενεργοποίηση προηγμένων επιλογών Overclock.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Overclocking</value>
+    <value>Προηγμένες Επιλογές Υπερκλειδώματος</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
     <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
@@ -1555,7 +1559,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITS Power Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Ο Δυναμικός Φωτισμός Windows είναι ενεργοποιημένος.
@@ -2126,7 +2130,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Εμφάνιση ή απόκρυψη του OSD</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>OSD</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
     <value>Voltage</value>
@@ -2872,7 +2876,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Μέση Συχνότητα</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and OSD.</value>
+    <value>Προσδιορίστε τον τύπο της συχνότητας της CPU που εμφανίζεται στον πίνακα ελέγχου και Osd.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Συχνότητα Επεξεργαστή</value>
@@ -3249,7 +3253,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Επιπλέουσα επικάλυψη που δείχνει ζωντανά στοιχεία αισθητήρων.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>Ενεργοποίηση OSD</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
     <value>Η λειτουργία ITS συγχρονίζει εγγενώς τις ρυθμίσεις ισχύος, οπότε η παράκαμψή της εδώ μπορεί να προκαλέσει συγκρούσεις.</value>
