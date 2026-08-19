@@ -64,7 +64,7 @@ public partial class SpectrumRGBKeyboard1ZoneControl
 
         ClearPendingChanges();
 
-        var selectedPreset = (int)presetButton.Tag;
+        var selectedPreset = Convert.ToInt32(presetButton.Tag);
         await _controller.SetProfileAsync(selectedPreset);
 
         await RefreshAsync();
@@ -140,7 +140,7 @@ public partial class SpectrumRGBKeyboard1ZoneControl
 
         foreach (var presetButton in PresetButtons)
         {
-            var buttonPreset = (int)presetButton.Tag;
+            var buttonPreset = Convert.ToInt32(presetButton.Tag);
             var selected = profile == buttonPreset;
             presetButton.Appearance = selected ? ControlAppearance.Primary : ControlAppearance.Secondary;
         }
@@ -172,7 +172,7 @@ public partial class SpectrumRGBKeyboard1ZoneControl
             SpectrumKeyboardBacklightDirection.None,
             SpectrumKeyboardBacklightClockwiseDirection.None,
             [new RGBColor(255, 255, 255)],
-            [0x65]);
+            [1]);
 
         var brightness = await _controller.GetBrightnessAsync();
         var preset = ToRgbPreset(effect, brightness);
