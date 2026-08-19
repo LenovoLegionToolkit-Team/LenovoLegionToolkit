@@ -245,7 +245,7 @@
     <value>Nhiệt độ trung bình</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
-    <value>Minimum</value>
+    <value>Tối thiểu</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>Việc áp dụng cấu hình đã bị hủy do quá trình khởi động lại không bình thường.</value>
@@ -706,28 +706,28 @@ Thời gian có thể không chính xác nếu laptop được sạc khi Ngủ h
     <value>Tùy chỉnh</value>
   </data>
   <data name="BootLogoWindow_CustomLogoSet" xml:space="preserve">
-    <value>Custom Logo</value>
+    <value>Logo tùy chỉnh</value>
   </data>
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
-    <value>Default Logo</value>
+    <value>Logo mặc định</value>
   </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
-    <value>Show the circular loading animation during boot</value>
+    <value>Hiển thị hiệu ứng vòng tròn tải khi khởi động</value>
   </data>
   <data name="BootLogoWindow_Options_Title" xml:space="preserve">
-    <value>Startup Animation</value>
+    <value>Hoạt ảnh khởi động</value>
   </data>
   <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
     <value>{0}</value>
   </data>
   <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
-    <value>Max {0}</value>
+    <value>Tối đa {0}</value>
   </data>
   <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
-    <value>Supported formats and dimensions</value>
+    <value>Các định dạng và kích thước được hỗ trợ</value>
   </data>
   <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
-    <value>Image Requirements</value>
+    <value>Yêu cầu hình ảnh</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>Logo tùy chỉnh không thể được đặt: {0}</value>
@@ -757,10 +757,10 @@ Thời gian có thể không chính xác nếu laptop được sạc khi Ngủ h
     <value>Không đủ chỗ trống trên phân vùng EFI.</value>
   </data>
   <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
-    <value>Status of the UEFI boot logo</value>
+    <value>Trạng thái của logo khởi động UEFI</value>
   </data>
   <data name="BootLogoWindow_Status_Title" xml:space="preserve">
-    <value>Current Status</value>
+    <value>Trạng thái hiện tại</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>Logo khởi động</value>
@@ -959,19 +959,19 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Tắt GPU rời nếu nó bị kích hoạt không cần thiết.</value>
   </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
-    <value>Auto (Dynamic)</value>
+    <value>Tự động (Động)</value>
   </data>
   <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
-    <value>Current: {0}</value>
+    <value>Hiện tại: {0}</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Lock the discrete GPU to a specific performance state.</value>
+    <value>Khóa GPU rời ở trạng thái hiệu suất cụ thể.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+    <value>Ngăn chặn việc ép xung và loại bỏ độ trễ chuyển tiếp nhưng làm tăng mức tiêu thụ điện năng.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
-    <value>P-State Control</value>
+    <value>Điều khiển P-State</value>
   </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
     <value>Tuỳ chọn khác</value>
@@ -1105,16 +1105,16 @@ Cảm ơn bạn đã ủng hộ!</value>
     <value>Lỗi</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Processes in the Excluded Processes list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode.</value>
+    <value>Các tiến trình trong danh sách Tiến trình bị loại trừ sẽ bị bỏ qua bởi trình kích hoạt bắt đầu/dừng trò chơi và Chế độ thông minh/AI của Lenovo.</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
-    <value>Excluded Processes ({0})</value>
+    <value>Tiến trình bị loại trừ ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
-    <value>No excluded processes</value>
+    <value>Không có tiến trình bị loại trừ</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
-    <value>Running Processes ({0})</value>
+    <value>Tiến trình đang chạy({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Tiến trình bị loại trừ</value>
@@ -1246,34 +1246,36 @@ Cảm ơn bạn đã ủng hộ!</value>
     <value>Thiết lập đang được sử dụng</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
+    <value>CẢNH BÁO!
+Một số laptop có thể nhận giá trị thấp hơn mức cho phép, nên bạn hãy cẩn thận. Chức năng này có thể khiến laptop hoạt động không ổn định. Nếu bạn không biết bạn đang làm gì, hãy giữ nguyên giá trị này tại 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Mức tăng tối đa</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
-    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
+    <value>Việc đặt độ lệch cao hơn giới hạn an toàn phần cứng có thể khiến hệ thống mất ổn định hoặc cài đặt bị hoàn nguyên.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
+    <value>KHÔNG THAY ĐỔI BẤT CỨ GIÁ TRỊ NÀO DƯỚI ĐÂY NẾU BẠN KHÔNG BIẾT CÔNG DỤNG CỦA CHÚNG!</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
+    <value>CẢNH BÁO!
+Một số laptop có thể nhận giá trị thấp hơn mức cho phép, nên bạn hãy cẩn thận. Chức năng này có thể khiến laptop hoạt động không ổn định. Nếu bạn không biết bạn đang làm gì, hãy giữ nguyên giá trị này tại 0.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>Mức tăng thấp nhất</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
-    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
+    <value>Việc đặt độ lệch thấp hơn giới hạn an toàn phần cứng có thể khiến hệ thống mất ổn định hoặc cài đặt bị hoàn nguyên.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
     <value>Nâng cao</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>Apply a negative voltage offset curve to reduce power consumption, heat, and thermal throttling.</value>
+    <value>Tối ưu hóa mức điện áp cho tất cả các nhân CPU cùng lúc để giảm nhiệt độ hoặc tăng hiệu năng.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
-    <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
+    <value>Việc đặt giá trị âm sẽ giảm điện áp CPU để cải thiện hiệu suất nhiệt nhưng có thể yêu cầu kiểm tra độ ổn định.</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
     <value>Tối ưu Curve toàn nhân</value>
@@ -1282,52 +1284,52 @@ Cảm ơn bạn đã ủng hộ!</value>
     <value>Giới hạn điện năng cho APU sPPT</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>The Slow Package Power Tracking limit governing the slow-response power budget for AMD APU packages.</value>
+    <value>Lượng điện năng tối đa CPU có thể sử dụng với một độ trễ nhất định.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>Giới hạn công suất thời gian dài (Khi cả CPU và GPU chịu tải lớn)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>The sustained power limit applied to the CPU when the GPU is also under heavy load.</value>
+    <value>Lượng điện năng tối đa CPU có thể sử dụng khi cả CPU và GPU cùng được sử dụng hết công suất.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
-    <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
+    <value>Giới hạn sức mạnh của CPU trong khối lượng công việc kết hợp để tối ưu hóa việc phân bổ nhiệt và năng lượng cho GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>Giới hạn công suất thời gian dài</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to sustain indefinitely under long workloads.</value>
+    <value>Lượng điện năng tối đa CPU có thể sử dụng liên tục.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>Giới hạn điện năng đỉnh</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>The absolute limit for instantaneous power spikes to protect the voltage regulator.</value>
+    <value>Lượng điện năng tối đa CPU có thể sử dụng tức thì.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
-    <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
+    <value>Vượt quá giới hạn phần cứng có thể khiến hệ thống tắt đột ngột hoặc mất ổn định khi tải nặng tức thời.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
     <value>Giới hạn công suất thời gian ngắn</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
-    <value>The maximum time the CPU can stay at the Short Term Power Limit before dropping back to the Long Term Power Limit.</value>
+    <value>Thời gian CPU được phép tăng tốc và công suất được giới hạn bởi Giới hạn công suất thời gian ngắn. Khi hết thời gian, công suất CPU sẽ được giới hạn bởi Giới hạn công suất thời gian dài.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Giới hạn công suất thời gian ngắn</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to draw for brief bursts of high activity.</value>
+    <value>Lượng điện năng tối đa CPU có thể sử dụng trong thời gian ngắn.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>Giới hạn nhiệt độ CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the CPU will begin thermal throttling.</value>
+    <value>Nhiệt độ tối đa CPU có thể đạt trước khi giảm xung và giảm điện năng tiêu thụ.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
-    <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
+    <value>Ngưỡng nhiệt độ cao hơn làm tăng ứng suất nhiệt và tiếng ồn của quạt.</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>CPU</value>
@@ -1353,22 +1355,24 @@ Vui lòng không tiếp tục trừ khi bạn có kiến thức và chuyên môn
     <value>Không để tải cài đặt trước đó.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
-    <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
+    <value>Di chuột qua các nút riêng lẻ để xem ngưỡng nhiệt độ chính xác và phần trăm PWM.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
+    <value>Tốc độ quạt không chỉ được quyết định bởi 1 cảm biến nhiệt độ. Nó sẽ tự điều chỉnh tùy theo nhiệt độ cao nhất giữa CPU, GPU và nhiệt độ tản nhiệt. Giá trị nhiệt độ chính xác sẽ xuất hiện khi rê chuột trên mỗi mốc cài đặt.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>Cài đặt tốc độ quạt</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
+    <value>CẢNH BÁO!
+Cho quạt chạy 100% tốc độ trong thời gian dài có khả năng cao gây hư hỏng vòng bi quạt và ảnh hưởng tuổi thọ quạt.
+THẬT CẨN THẬN KHI SỬ DỤNG LỰA CHỌN NÀY!!! KHÔNG NÊN SỬ DỤNG TÍNH NĂNG NÀY KHI CHƠI GAME!!</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>Tốc độ quạt tối đa</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
-    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
+    <value>Hoạt động kéo dài ở tốc độ tối đa làm tăng độ mòn của quạt và tiếng ồn âm thanh.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
     <value>Quạt</value>
@@ -1377,22 +1381,22 @@ Vui lòng không tiếp tục trừ khi bạn có kiến thức và chuyên môn
     <value>TDP tùy chỉnh cho GPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>The base sustained power limit allocated to the GPU, excluding dynamic boost headroom.</value>
+    <value>Lượng điện năng GPU có thể sử dụng thêm vượt mức công suất cơ bản.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>Tăng tốc năng động</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>The maximum additional power allocated dynamically to the GPU from the CPU's budget during high graphics demand.</value>
+    <value>Lượng điện năng GPU có thể sử dụng thêm vượt mức công suất tối đa tùy thuộc vào mức tiêu thụ điện của CPU cao hay thấp.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>Giới hạn nhiệt độ GPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the GPU will begin thermal throttling.</value>
+    <value>Nhiệt độ tối đa GPU có thể đạt trước khi giảm xung và giảm điện năng tiêu thụ.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
-    <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
+    <value>Giới hạn nhiệt độ cao hơn sẽ làm tăng áp lực nhiệt lên bộ xử lý đồ họa.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>GPU</value>
@@ -1401,19 +1405,19 @@ Vui lòng không tiếp tục trừ khi bạn có kiến thức và chuyên môn
     <value>Công suất Dynamic Boost nhường từ GPU sang CPU</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>The maximum additional power the CPU is allowed to dynamically borrow from the GPU's budget.</value>
+    <value>Đây là công suất bổ sung tối đa có thể được đưa cho CPU từ GPU dựa trên mức sử dụng CPU. Giá trị càng cao thì hiệu suất của các ứng dụng sử dụng CPU càng cao.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
-    <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
+    <value>Đặt giá trị này thành 0W sẽ ngăn CPU tiêu thụ thêm năng lượng, giảm nhiệt và tiếng ồn của quạt trong khối lượng công việc liên quan đến GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
     <value>Công suất tối đa khi có nguồn điện AC</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>The CPU power threshold that triggers dynamic power adjustments for the GPU while running on AC power.</value>
+    <value>Điểm kích hoạt việc chia sẻ công suất tối đa giữa CPU và GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
-    <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
+    <value>Hữu ích trong việc giới hạn mức tiêu thụ điện năng của CPU nhằm quản lý nhiệt độ và tối ưu hóa khoảng trống nhiệt cho GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
     <value>Các cài đặt trong Chế độ Tùy chỉnh sẽ không được áp dụng chính xác khi Legion Space hoặc các dịch vụ liên quan đang chạy.</value>
@@ -1425,13 +1429,13 @@ Vui lòng không tiếp tục trừ khi bạn có kiến thức và chuyên môn
     <value>Thiết bị của bạn có thể không hỗ trợ bộ tính năng đầy đủ của Chế độ tùy chỉnh.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Set the maximum frequency offset allowed beyond the factory default boost clock specification.</value>
+    <value>Tăng giới hạn xung nhịp tối đa khi CPU ở trạng thái Boost.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
     <value>Xung nhịp tăng cường Precision Boost Overdrive</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Configure the frequency boost aggressiveness by adjusting the processor's silicon health safety margins.</value>
+    <value>Tăng giới hạn điện áp và dòng điện để duy trì xung nhịp cao lâu hơn.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
     <value>Bộ định tỷ lệ Precision Boost Overdrive</value>
@@ -1440,19 +1444,19 @@ Vui lòng không tiếp tục trừ khi bạn có kiến thức và chuyên môn
     <value>Cài đặt Chế độ Tùy Chỉnh</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Enable or disable voltage offset optimization across all CPU cores.</value>
+    <value>Bật / Tắt điều chỉnh Curve nhân.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
     <value>Chỉnh Curve nhân</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
+    <value>Bật / Tắt các tùy chọn ép xung nâng cao.</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Overclocking</value>
+    <value>Tùy chọn ép xung nâng cao</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
-    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
+    <value>Cài đặt không chính xác có thể khiến hệ thống mất ổn định, treo máy hoặc không khởi động được.</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>Cài đặt của Chế độ Custom sẽ không được áp dụng chính xác khi Lenovo Vantage hoặc các dịch vụ của nó đang chạy.</value>
@@ -1540,22 +1544,22 @@ Nếu GPU rời hoàn toàn không phản hồi, hãy khởi động lại máy 
     <value>Khởi động tức thì</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change ITS Mode</value>
+    <value>Thay đổi chế độ ITS</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>Chế độ ITS</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
-    <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
+    <value>Tùy chỉnh thứ tự chuyển đổi chế độ nguồn điện bằng tổ hợp phím Fn+Q và bật hoặc tắt các cấu hình hiệu năng cụ thể.</value>
   </data>
   <data name="ITSModeConfigWindow_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>Chế độ ITS</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Change ITS Mode</value>
+    <value>Thay đổi chế độ ITS</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITS Power Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows Dynamic Lighting đang bật.
@@ -2073,33 +2077,33 @@ Chức năng này không ảnh hưởng các cửa sổ ở chế độ toàn m�
     <value>Đèn nền bàn phím đã thay đổi</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
-    <value>The PawnIO driver service is not running. 
+    <value>Dịch vụ trình điều khiển PawnIO không chạy.
 
-Please start the service or update/reinstall PawnIO to use this feature!
+Vui lòng khởi động dịch vụ hoặc cập nhật/cài đặt lại PawnIO để sử dụng tính năng này!
 
-Click Yes to open download link in browser.
-Click No to disable Hardware Sensor feature.</value>
+Nhấp Có để mở link tải trên trình duyệt.
+Nhấp vào Không để tắt tính năng Cảm biến phần cứng.</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
-    <value>PawnIO driver not running</value>
+    <value>Trình điều khiển PawnIO không chạy</value>
   </data>
   <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
-    <value>Your PawnIO version is too old.
+    <value>Phiên bản PawnIO của bạn quá cũ.
 
-Current: {0} Required: {1}. 
-Please update PawnIO to continue using this feature!
+Hiện tại: {0} Được yêu cầu: {1}. 
+Vui lòng cập nhật PawnIO để tiếp tục sử dụng tính năng này!
     
-Click Yes to open download link in browser.
-Click No to disable Hardware Sensor feature.</value>
+Nhấp vào Có để mở link tải trên trình duyệt.
+Nhấp vào Không để tắt tính năng Cảm biến phần cứng.</value>
   </data>
   <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
-    <value>PawnIO update required</value>
+    <value>Yêu cầu cập nhật PawnIO</value>
   </data>
   <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!
+    <value>Bạn cần cài đặt PawnIO trước để sử dụng cảm biến phần cứng!
 
-Click Yes to open download link in browser.
-Click No to disable Hardware Sensor feature.</value>
+Nhấp vào Có để mở link tải trên trình duyệt.
+Nhấp vào Không để tắt tính năng Cảm biến phần cứng.</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>Tắt</value>
@@ -2126,7 +2130,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Hiện hoặc Ẩn Gadget nổi</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>Gadget nổi</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
     <value>Vôn</value>
@@ -2568,7 +2572,7 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>Tần số quét</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
+    <value>Loại bỏ</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Đặt lại tên</value>
@@ -2872,7 +2876,7 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>Tần suất trung bình</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and OSD.</value>
+    <value>Xác định loại tần số CPU được hiển thị trên Bảng điều khiển và Osd.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Xung nhịp CPU</value>
@@ -3249,7 +3253,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Lớp phủ nổi hiển thị dữ liệu cảm biến trực tiếp.</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>Bật OSD</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
     <value>Chế độ ITS đồng bộ hóa cài đặt nguồn nguyên bản, vì vậy việc ghi đè nó ở đây có thể gây ra xung đột.</value>
@@ -3261,10 +3265,10 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Đồng bộ hóa Chế độ Năng lượng</value>
   </data>
   <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
-    <value>Restore previous window position on application launch.</value>
+    <value>Khôi phục vị trí cửa sổ trước đó khi khởi chạy ứng dụng.</value>
   </data>
   <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
-    <value>Remember Window Position</value>
+    <value>Ghi nhớ vị trí cửa sổ</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>Bạn có chắc khôi phục lại cài đặt gốc không? Thao tác này không thể hoàn tác và ứng dụng sẽ khởi động lại.</value>
@@ -3615,7 +3619,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Bộ nhớ</value>
   </data>
   <data name="Success" xml:space="preserve">
-    <value>Success</value>
+    <value>Thành công</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Chọn biểu tượng</value>
@@ -3655,7 +3659,7 @@ Yêu cầu khởi động lại.</value>
     <value>Chế độ Hybrid</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Total</value>
+    <value>Tổng</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
     <value>Tắt Touchpad.</value>
