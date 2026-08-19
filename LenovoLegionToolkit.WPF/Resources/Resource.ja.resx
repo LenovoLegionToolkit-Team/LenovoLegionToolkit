@@ -1246,7 +1246,8 @@
     <value>アクティブプリセット</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Message" xml:space="preserve">
-    <value>Increase the upper limits of the power and temperature adjustment ranges.</value>
+    <value>警告！
+一部のデバイスは、表示されるよりも高い値を受け付ける場合がありますが、注意が必要です。このオプションにより、予測不能な動作が発生する可能性があります。これがなにかわからない場合は、0に設定してください。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>最大オフセット</value>
@@ -1255,10 +1256,11 @@
     <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
-    <value>Adjust boundaries to expand or restrict the selectable ranges of the CPU and GPU power and temperature sliders.</value>
+    <value>以下に示すオプションは、何を操作しているのかをよく理解している場合にのみ変更してください。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Message" xml:space="preserve">
-    <value>Decrease the lower bounds of the power and temperature adjustment ranges.</value>
+    <value>警告！
+一部のデバイスは、表示されるよりも低い値を受け付ける場合がありますが、注意が必要です。このオプションにより、予測不能な動作が発生する可能性があります。これがなにかわからない場合は、0に設定してください。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Title" xml:space="preserve">
     <value>最小オフセット</value>
@@ -1270,7 +1272,7 @@
     <value>高度</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Description" xml:space="preserve">
-    <value>Apply a negative voltage offset curve to reduce power consumption, heat, and thermal throttling.</value>
+    <value>すべてのコアカーブオプティマイザ。</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
     <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
@@ -1282,13 +1284,13 @@
     <value>APU sPPTの電力制限</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_APUsPPT_PL_Description" xml:space="preserve">
-    <value>The Slow Package Power Tracking limit governing the slow-response power budget for AMD APU packages.</value>
+    <value>CPUによって遅延を軽減することができるピーク消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading" xml:space="preserve">
     <value>Long Term Power Limit (Cross Loading)</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Description" xml:space="preserve">
-    <value>The sustained power limit applied to the CPU when the GPU is also under heavy load.</value>
+    <value>CPUとGPUの両方が完全に使用されている場合、CPUによって達成できる最大消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
     <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
@@ -1297,13 +1299,13 @@
     <value>Long Term Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to sustain indefinitely under long workloads.</value>
+    <value>CPUによって達成することができる連続消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL" xml:space="preserve">
     <value>ピークパワー制限</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Description" xml:space="preserve">
-    <value>The absolute limit for instantaneous power spikes to protect the voltage regulator.</value>
+    <value>CPUによって達成することができる最大瞬時消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
     <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
@@ -1312,19 +1314,19 @@
     <value>短期パワーリミット時間</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau_Description" xml:space="preserve">
-    <value>The maximum time the CPU can stay at the Short Term Power Limit before dropping back to the Long Term Power Limit.</value>
+    <value>CPUのブーストと使用時間の長さは、短期パワーリミットです。 Tauの有効期限が切れると、長期パワーリミットが使用されます。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL" xml:space="preserve">
     <value>Short Term Power Limit</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_ShortTermPL_Description" xml:space="preserve">
-    <value>The maximum power the CPU is allowed to draw for brief bursts of high activity.</value>
+    <value>CPUによって短時間で達成できるピーク消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit" xml:space="preserve">
     <value>CPUの温度制限</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the CPU will begin thermal throttling.</value>
+    <value>周波数と電力が減少する前にCPUによって達することができる最大温度。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
     <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
@@ -1355,13 +1357,15 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
-    <value>Configure custom fan speed curves that dynamically scale based on the highest temperature among CPU, GPU, and heatsink sensors.</value>
+    <value>ファンの速度は、1つの温度センサーによって厳密に決まるわけではありません。CPU、GPU、ヒートシンクの温度の最も高いセンサーに応じて速度を上げたり下げたりします。正確な値は各ステップにマウスを合わせると表示されます。</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Title" xml:space="preserve">
     <value>ファンの速度</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Message" xml:space="preserve">
-    <value>Bypass all sensor-based fan curves and force both fans to run continuously at their maximum rated RPM.</value>
+    <value>警告！
+このオプションを長時間使用すると、ファンが劣化して寿命が短くなります。
+このオプションを使用する際は 本当に 注意してください。</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Title" xml:space="preserve">
     <value>最大ファン速度</value>
@@ -1376,19 +1380,19 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>構成可能なTGP</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_CTGP_Description" xml:space="preserve">
-    <value>The base sustained power limit allocated to the GPU, excluding dynamic boost headroom.</value>
+    <value>ベース消費電力の上にGPUに割り当てることができる追加電力量。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost" xml:space="preserve">
     <value>ダイナミックブースト</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_DynamicBoost_Description" xml:space="preserve">
-    <value>The maximum additional power allocated dynamically to the GPU from the CPU's budget during high graphics demand.</value>
+    <value>CPUの消費電力に基づいてGPUに割り当てることができる追加の最大電力。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit" xml:space="preserve">
     <value>GPUの温度制限</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Description" xml:space="preserve">
-    <value>The target temperature threshold at which the GPU will begin thermal throttling.</value>
+    <value>周波数と電力が減少する前にGPUによって達することができる最大温度。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
     <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
@@ -1400,7 +1404,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>GPU から CPU の動的ブースト</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Description" xml:space="preserve">
-    <value>The maximum additional power the CPU is allowed to dynamically borrow from the GPU's budget.</value>
+    <value>これは、CPU使用率に基づいてGPUからCPUに割り当てることができる最大追加電力です。 値が高いほど、CPUを使用するアプリケーションのパフォーマンスが向上します。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
     <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
@@ -1409,7 +1413,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>AC内の合計プロセッサ電源ターゲット</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
-    <value>The CPU power threshold that triggers dynamic power adjustments for the GPU while running on AC power.</value>
+    <value>CPUがGPUの動的消費電力調整をトリガーするポイント。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
     <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
@@ -1424,13 +1428,13 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
-    <value>Set the maximum frequency offset allowed beyond the factory default boost clock specification.</value>
+    <value>精密ブーストオーバードライブブースト周波数</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Title" xml:space="preserve">
     <value>精密ブーストオーバードライブブースト周波数</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Description" xml:space="preserve">
-    <value>Configure the frequency boost aggressiveness by adjusting the processor's silicon health safety margins.</value>
+    <value>精度ブーストオーバードライブスケーラー。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveScaler_Title" xml:space="preserve">
     <value>高精度ブーストオーバードライブスカラー</value>
@@ -1439,16 +1443,16 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>カスタムモード設定</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Message" xml:space="preserve">
-    <value>Enable or disable voltage offset optimization across all CPU cores.</value>
+    <value>コアカーブ調整の有効/無効を切り替えます。</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_CoreCurve_Title" xml:space="preserve">
     <value>コアカーブ調整</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Message" xml:space="preserve">
-    <value>Enable or disable advanced AMD Precision Boost Overdrive and Curve Optimizer tuning.</value>
+    <value>高度なオーバークロックオプションを有効/無効にします。</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Title" xml:space="preserve">
-    <value>Overclocking</value>
+    <value>高度なオーバークロックオプション</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
     <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
@@ -1554,7 +1558,7 @@ dGPU がまったく応答しない場合は、ラップトップを再起動し
     <value>Change ITS Mode</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITS Power Mode</value>
   </data>
   <data name="KeyboardBacklightPage_DynamicLightingEnabled" xml:space="preserve">
     <value>Windows Dynamic lighting is enabled.
@@ -2125,7 +2129,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>OSDを表示または非表示</value>
   </data>
   <data name="OsdAutomationStepControl_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>OSD</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
     <value>Voltage</value>
@@ -2871,7 +2875,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>平均周波数</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Message" xml:space="preserve">
-    <value>Determine the type of CPU frequency displayed on the Dashboard and OSD.</value>
+    <value>ダッシュボードとOSDに表示されるCPU周波数の種類を指定します。</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU周波数</value>
@@ -3248,7 +3252,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>ライブセンサーデータを表示するオーバーレイを表示します。</value>
   </data>
   <data name="SettingsPage_Osd_Title" xml:space="preserve">
-    <value>On-Screen Display</value>
+    <value>OSDを有効にする</value>
   </data>
   <data name="SettingsPage_PowerModeMapping_ITSWarning" xml:space="preserve">
     <value>ITSモードは電源設定をネイティブに同期させるため、ここでオーバーライドすると競合が発生する可能性があります。</value>
