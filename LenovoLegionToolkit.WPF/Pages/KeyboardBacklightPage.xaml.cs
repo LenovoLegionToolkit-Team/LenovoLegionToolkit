@@ -54,7 +54,9 @@ public partial class KeyboardBacklightPage
         {
             bool isDynamicLightingEnabled = IsDynamicLightingEnabled();
             if (!isDynamicLightingEnabled)
+            {
                 return;
+            }
 
             var result = await ShowDynamicLightingWarningDialogAsync();
             if (result.ShouldDisable)
@@ -137,11 +139,13 @@ public partial class KeyboardBacklightPage
             var spectrumController = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();
             var rgbController = IoCContainer.Resolve<RGBKeyboardBacklightController>();
 
-            if (await spectrumController.Is1ZoneKeyboardAsync() && await rgbController.IsSupportedAsync())
+            if (await spectrumController.Is1ZoneKeyboardAsync() && await spectrumController.IsSupportedAsync())
             {
                 var control = new RGBKeyboard1ZoneControl();
                 _content.Children.Add(control);
                 anyAdded = true;
+                Log.Instance.Trace($"Added 1-zone RGB keyboard control.");
+
                 return;
             }
 
@@ -150,6 +154,8 @@ public partial class KeyboardBacklightPage
                 var control = new SpectrumKeyboardBacklightControl();
                 _content.Children.Add(control);
                 anyAdded = true;
+                Log.Instance.Trace($"Added Spectrum keyboard control.");
+
                 return;
             }
 
@@ -158,6 +164,8 @@ public partial class KeyboardBacklightPage
                 var control = new RGBKeyboardBacklightControl();
                 _content.Children.Add(control);
                 anyAdded = true;
+                Log.Instance.Trace($"Added RGB keyboard control.");
+
                 return;
             }
 
