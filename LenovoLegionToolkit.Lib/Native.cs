@@ -87,7 +87,7 @@ public enum LENOVO_SPECTRUM_EFFECT_TYPE : byte
     Always = 11,
     TypeLighting = 12,
     LegionAuraSync = 13,
-    OneZoneDynamic = 21,
+    ColorPulseOneZone = 21,
 
 }
 

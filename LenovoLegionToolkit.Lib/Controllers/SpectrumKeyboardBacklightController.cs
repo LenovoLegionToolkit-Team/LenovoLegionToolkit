@@ -830,13 +830,10 @@ public class SpectrumKeyboardBacklightController
             SpectrumKeyboardBacklightEffectType.AudioBounce => LENOVO_SPECTRUM_EFFECT_TYPE.AudioBounceLighting,
             SpectrumKeyboardBacklightEffectType.AudioRipple => LENOVO_SPECTRUM_EFFECT_TYPE.AudioRippleLighting,
             SpectrumKeyboardBacklightEffectType.ColorChange => LENOVO_SPECTRUM_EFFECT_TYPE.ColorChange,
-            SpectrumKeyboardBacklightEffectType.ColorPulse or
-            SpectrumKeyboardBacklightEffectType.Smooth or
-            SpectrumKeyboardBacklightEffectType.ColorWave => effect.Type == SpectrumKeyboardBacklightEffectType.ColorPulse
-                    ? effect.Keys is [1] ? LENOVO_SPECTRUM_EFFECT_TYPE.OneZoneDynamic : LENOVO_SPECTRUM_EFFECT_TYPE.ColorPulse
-                    : effect.Type == SpectrumKeyboardBacklightEffectType.Smooth
-                        ? LENOVO_SPECTRUM_EFFECT_TYPE.Smooth
-                        : LENOVO_SPECTRUM_EFFECT_TYPE.ColorWave,
+            SpectrumKeyboardBacklightEffectType.ColorPulse when effect.Keys is [1] => LENOVO_SPECTRUM_EFFECT_TYPE.ColorPulseOneZone,
+            SpectrumKeyboardBacklightEffectType.ColorPulse => LENOVO_SPECTRUM_EFFECT_TYPE.ColorPulse,
+            SpectrumKeyboardBacklightEffectType.Smooth => LENOVO_SPECTRUM_EFFECT_TYPE.Smooth,
+            SpectrumKeyboardBacklightEffectType.ColorWave => LENOVO_SPECTRUM_EFFECT_TYPE.ColorWave,
             SpectrumKeyboardBacklightEffectType.Rain => LENOVO_SPECTRUM_EFFECT_TYPE.Rain,
             SpectrumKeyboardBacklightEffectType.RainbowScrew => LENOVO_SPECTRUM_EFFECT_TYPE.ScrewRainbow,
             SpectrumKeyboardBacklightEffectType.RainbowWave => LENOVO_SPECTRUM_EFFECT_TYPE.RainbowWave,
@@ -875,6 +872,7 @@ public class SpectrumKeyboardBacklightController
         var colorMode = effect.Type switch
         {
             SpectrumKeyboardBacklightEffectType.Always => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
+            SpectrumKeyboardBacklightEffectType.ColorPulse when effect.Keys is [1] => LENOVO_SPECTRUM_COLOR_MODE.RandomColor,
             SpectrumKeyboardBacklightEffectType.ColorChange when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
             SpectrumKeyboardBacklightEffectType.ColorPulse when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
             SpectrumKeyboardBacklightEffectType.ColorWave when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,

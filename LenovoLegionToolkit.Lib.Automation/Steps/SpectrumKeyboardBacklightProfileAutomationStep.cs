@@ -13,7 +13,7 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps;
 public class SpectrumKeyboardBacklightProfileAutomationStep(int state)
     : IAutomationStep<int>
 {
-    private static readonly int[] OneZoneProfiles = [0, 1, 2, 3, 4];
+    private static readonly int[] OneZoneProfiles = [1, 2, 3];
     private static readonly int[] FullLayoutProfiles = [1, 2, 3, 4, 5, 6];
 
     private readonly SpectrumKeyboardBacklightController _controller = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();

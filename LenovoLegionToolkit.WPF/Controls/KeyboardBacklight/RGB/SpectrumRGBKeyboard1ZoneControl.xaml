@@ -14,7 +14,6 @@
             <ColumnDefinition Width="*" SharedSizeGroup="A" />
             <ColumnDefinition Width="*" SharedSizeGroup="A" />
             <ColumnDefinition Width="*" SharedSizeGroup="A" />
-            <ColumnDefinition Width="*" SharedSizeGroup="A" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -24,6 +23,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
 
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
@@ -56,72 +56,12 @@
             <Run Text="{x:Static resources:Resource.LivePreview}" />
         </TextBlock>
 
-        <Grid
-            Grid.Row="1"
-            Grid.Column="0"
-            Grid.ColumnSpan="4"
-            Margin="0,0,0,24">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" SharedSizeGroup="A" />
-                <ColumnDefinition Width="*" SharedSizeGroup="A" />
-                <ColumnDefinition Width="*" SharedSizeGroup="A" />
-                <ColumnDefinition Width="*" SharedSizeGroup="A" />
-                <ColumnDefinition Width="*" SharedSizeGroup="A" />
-            </Grid.ColumnDefinitions>
-
-            <wpfui:Button
-                x:Name="_offPresetButton"
-                Grid.Column="0"
-                Height="36"
-                Margin="0,0,8,0"
-                HorizontalAlignment="Stretch"
-                Click="PresetButton_Click"
-                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_PresetOff}"
-                Tag="0" />
-            <wpfui:Button
-                x:Name="_preset1Button"
-                Grid.Column="1"
-                Height="36"
-                Margin="0,0,8,0"
-                HorizontalAlignment="Stretch"
-                Click="PresetButton_Click"
-                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset1}"
-                Tag="1" />
-            <wpfui:Button
-                x:Name="_preset2Button"
-                Grid.Column="2"
-                Height="36"
-                Margin="0,0,8,0"
-                HorizontalAlignment="Stretch"
-                Click="PresetButton_Click"
-                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset2}"
-                Tag="2" />
-            <wpfui:Button
-                x:Name="_preset3Button"
-                Grid.Column="3"
-                Height="36"
-                Margin="0,0,8,0"
-                HorizontalAlignment="Stretch"
-                Click="PresetButton_Click"
-                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset3}"
-                Tag="3" />
-            <wpfui:Button
-                x:Name="_preset4Button"
-                Grid.Column="4"
-                Height="36"
-                Margin="0,0,8,0"
-                HorizontalAlignment="Stretch"
-                Click="PresetButton_Click"
-                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset4}"
-                Tag="4" />
-        </Grid>
-
         <custom:CardControl
             x:Name="_brightnessControl"
-            Grid.Row="2"
+            Grid.Row="1"
             Grid.Column="0"
-            Grid.ColumnSpan="4"
-            Margin="0,0,8,0"
+            Grid.ColumnSpan="3"
+            Margin="0,0,8,24"
             Icon="BrightnessHigh24">
             <custom:CardControl.Header>
                 <controls:CardHeaderControl Title="{x:Static resources:Resource.RGBKeyboardBacklightBrightnessCardControl_Brightness}" />
@@ -139,26 +79,67 @@
                 IsMoveToPointEnabled="True"
                 ValueChanged="BrightnessSlider_ValueChanged" />
         </custom:CardControl>
+
+        <Grid
+            Grid.Row="2"
+            Grid.Column="0"
+            Grid.ColumnSpan="3"
+            Margin="0,0,0,24">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" SharedSizeGroup="A" />
+                <ColumnDefinition Width="*" SharedSizeGroup="A" />
+                <ColumnDefinition Width="*" SharedSizeGroup="A" />
+            </Grid.ColumnDefinitions>
+
+            <wpfui:Button
+                x:Name="_preset1Button"
+                Grid.Column="0"
+                Height="36"
+                Margin="0,0,8,0"
+                HorizontalAlignment="Stretch"
+                Click="PresetButton_Click"
+                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset1}"
+                Tag="1" />
+            <wpfui:Button
+                x:Name="_preset2Button"
+                Grid.Column="1"
+                Height="36"
+                Margin="0,0,8,0"
+                HorizontalAlignment="Stretch"
+                Click="PresetButton_Click"
+                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset2}"
+                Tag="2" />
+            <wpfui:Button
+                x:Name="_preset3Button"
+                Grid.Column="2"
+                Height="36"
+                Margin="0,0,8,0"
+                HorizontalAlignment="Stretch"
+                Click="PresetButton_Click"
+                Content="{x:Static resources:Resource.RGBKeyboardBacklightControl_Preset3}"
+                Tag="3" />
+        </Grid>
+
         <rgb:RGBKeyboardBacklightEffectCardControl
             x:Name="_effectControl"
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.Column="0"
-            Grid.ColumnSpan="4"
+            Grid.ColumnSpan="3"
             Margin="0,0,8,0"
             OnChanged="CardControl_Changed" />
         <rgb:RGBKeyboardBacklightSpeedCardControl
             x:Name="_speedControl"
-            Grid.Row="4"
+            Grid.Row="5"
             Grid.Column="0"
-            Grid.ColumnSpan="4"
+            Grid.ColumnSpan="3"
             Margin="0,0,8,0"
             OnChanged="CardControl_Changed" />
 
         <custom:CardControl
             x:Name="_zone1Control"
-            Grid.Row="5"
+            Grid.Row="6"
             Grid.Column="0"
-            Grid.ColumnSpan="4"
+            Grid.ColumnSpan="3"
             Margin="0,0,8,8"
             VerticalAlignment="Top"
             Icon="Color24">
@@ -170,9 +151,9 @@
 
         <wpfui:Button
             x:Name="_applyButton"
-            Grid.Row="9"
+            Grid.Row="10"
             Grid.Column="0"
-            Grid.ColumnSpan="4"
+            Grid.ColumnSpan="3"
             Height="40"
             Margin="0,16,8,0"
             HorizontalAlignment="Stretch"

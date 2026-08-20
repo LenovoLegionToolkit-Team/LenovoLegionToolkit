@@ -18,7 +18,7 @@ namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB;
 
 public partial class SpectrumRGBKeyboard1ZoneControl
 {
-    private Button[] PresetButtons => [_offPresetButton, _preset1Button, _preset2Button, _preset3Button, _preset4Button];
+    private Button[] PresetButtons => [_preset1Button, _preset2Button, _preset3Button];
 
     private readonly SpectrumKeyboardBacklightController _controller = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
@@ -141,6 +141,7 @@ public partial class SpectrumRGBKeyboard1ZoneControl
         }
 
         var profile = await _controller.GetProfileAsync();
+        var brightness = await _controller.GetBrightnessAsync();
 
         foreach (var presetButton in PresetButtons)
         {
@@ -154,18 +155,6 @@ public partial class SpectrumRGBKeyboard1ZoneControl
         foreach (var presetButton in PresetButtons)
             presetButton.IsEnabled = true;
 
-        if (profile == 0)
-        {
-            _brightnessControl.IsEnabled = false;
-            _effectControl.IsEnabled = false;
-            _speedControl.Visibility = Visibility.Collapsed;
-            _speedControl.IsEnabled = false;
-            _zone1Control.Visibility = Visibility.Collapsed;
-            _zone1Control.IsEnabled = false;
-            _applyButton.IsEnabled = false;
-            return;
-        }
-
         var (_, effects) = await _controller.GetProfileDescriptionAsync(profile);
         var effect = effects.Length > 0 ? effects[0] : new SpectrumKeyboardBacklightEffect(
             SpectrumKeyboardBacklightEffectType.Always,
@@ -175,7 +164,6 @@ public partial class SpectrumRGBKeyboard1ZoneControl
             [new RGBColor(255, 255, 255)],
             [1]);
 
-        var brightness = await _controller.GetBrightnessAsync();
         var preset = ToRgbPreset(effect);
 
         _isUpdatingControls = true;
@@ -210,9 +198,6 @@ public partial class SpectrumRGBKeyboard1ZoneControl
     private async Task SaveState()
     {
         var profile = await _controller.GetProfileAsync();
-        if (profile == 0)
-            return;
-
         var color = _zone1ColorPicker.SelectedColor.ToRGBColor();
         await _controller.SetBrightnessAsync((int)_brightnessSlider.Value);
         await _controller.SetProfileDescriptionAsync(profile, [ToSpectrumEffect(
@@ -262,7 +247,7 @@ public partial class SpectrumRGBKeyboard1ZoneControl
             _ => SpectrumKeyboardBacklightEffectType.Always
         };
 
-        RGBColor[] colors = effect == RGBKeyboardBacklightEffect.Breath ? [] : [color];
+        RGBColor[] colors = [color];
         var spectrumSpeed = speed switch
         {
             RGBKeyboardBacklightSpeed.Slowest => SpectrumKeyboardBacklightSpeed.Speed1,
