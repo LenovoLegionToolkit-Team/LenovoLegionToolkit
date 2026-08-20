@@ -13,13 +13,18 @@ namespace LenovoLegionToolkit.Lib.Automation.Steps;
 public class SpectrumKeyboardBacklightProfileAutomationStep(int state)
     : IAutomationStep<int>
 {
-    private readonly SpectrumKeyboardBacklightController _controller = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();
+    private static readonly int[] OneZoneProfiles = [0, 1, 2, 3, 4];
+    private static readonly int[] FullLayoutProfiles = [1, 2, 3, 4, 5, 6];
 
-    private readonly int[] _allStates = Enumerable.Range(1, 6).ToArray();
+    private readonly SpectrumKeyboardBacklightController _controller = IoCContainer.Resolve<SpectrumKeyboardBacklightController>();
 
     public int State { get; } = state;
 
-    public Task<int[]> GetAllStatesAsync() => Task.FromResult(_allStates);
+    public async Task<int[]> GetAllStatesAsync()
+    {
+        var result = await _controller.Is1ZoneKeyboardAsync().ConfigureAwait(false);
+        return result ? OneZoneProfiles : FullLayoutProfiles;
+    }
 
     public Task<bool> IsSupportedAsync() => _controller.IsSupportedAsync();
 
@@ -28,7 +33,7 @@ public class SpectrumKeyboardBacklightProfileAutomationStep(int state)
         if (!await _controller.IsSupportedAsync().ConfigureAwait(false))
             return;
 
-        if (!_allStates.Contains(State))
+        if (!(await GetAllStatesAsync().ConfigureAwait(false)).Contains(State))
             throw new InvalidOperationException(nameof(State));
 
         await _controller.SetProfileAsync(State).ConfigureAwait(false);

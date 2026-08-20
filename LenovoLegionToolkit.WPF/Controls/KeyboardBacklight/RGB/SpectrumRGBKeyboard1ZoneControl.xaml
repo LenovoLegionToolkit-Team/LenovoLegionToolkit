@@ -116,13 +116,29 @@
                 Tag="4" />
         </Grid>
 
-        <rgb:RGBKeyboardBacklightBrightnessCardControl
+        <custom:CardControl
             x:Name="_brightnessControl"
             Grid.Row="2"
             Grid.Column="0"
             Grid.ColumnSpan="4"
             Margin="0,0,8,0"
-            OnChanged="CardControl_Changed" />
+            Icon="BrightnessHigh24">
+            <custom:CardControl.Header>
+                <controls:CardHeaderControl Title="{x:Static resources:Resource.RGBKeyboardBacklightBrightnessCardControl_Brightness}" />
+            </custom:CardControl.Header>
+            <Slider
+                x:Name="_brightnessSlider"
+                Width="200"
+                Minimum="0"
+                Maximum="9"
+                TickFrequency="1"
+                TickPlacement="BottomRight"
+                SmallChange="1"
+                LargeChange="1"
+                IsSnapToTickEnabled="True"
+                IsMoveToPointEnabled="True"
+                ValueChanged="BrightnessSlider_ValueChanged" />
+        </custom:CardControl>
         <rgb:RGBKeyboardBacklightEffectCardControl
             x:Name="_effectControl"
             Grid.Row="3"
