@@ -11,6 +11,7 @@ using NvAPIWrapper.Native.Exceptions;
 using NvAPIWrapper.Native.General;
 using NvAPIWrapper.Native.GPU;
 using NvAPIWrapper.Native.GPU.Structures;
+using NvAPIWrapper.Native.Interfaces.GPU;
 
 namespace LenovoLegionToolkit.Lib.System;
 
@@ -324,7 +325,7 @@ internal static class NVAPI
         }
     }
 
-    public static CoprocInfoV8? GetCoprocInfo(PhysicalGPU gpu)
+    public static ICoprocInfo? GetCoprocInfo(PhysicalGPU gpu)
     {
         try
         {

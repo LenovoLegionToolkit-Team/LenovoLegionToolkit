@@ -265,7 +265,7 @@ public class GPUController
         }
 
         var coprocInfo = NVAPI.GetCoprocInfo(gpu);
-        if (coprocInfo.HasValue && coprocInfo.Value.PowerState is CoprocPowerState.Gc6 or CoprocPowerState.GcOff)
+        if (coprocInfo != null && coprocInfo.PowerState is CoprocPowerState.Gc6 or CoprocPowerState.GcOff)
         {
             CurrentPerformanceState = null;
             using (await _stateLock.LockAsync(token).ConfigureAwait(false))
