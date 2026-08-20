@@ -140,8 +140,24 @@ public static class DisplayExtensions
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"ApplyPathInfos failed: {ex.Message}. Falling back to DisplayScreen.SetSettings.");
-            display.DisplayScreen.SetSettings(displaySetting, apply: true);
+            Log.Instance.Trace($"ApplyPathInfos failed: {ex.Message}. Falling back to DisplayScreen.SetSettings.", ex);
+            if (enableDrr && targetPhysicalFreq > 0)
+            {
+                var fallbackPhysicalSetting = new DisplaySetting(
+                    displaySetting.Resolution,
+                    displaySetting.Position,
+                    displaySetting.ColorDepth,
+                    targetPhysicalFreq,
+                    displaySetting.IsInterlaced,
+                    displaySetting.Orientation,
+                    displaySetting.OutputScalingMode
+                );
+                display.DisplayScreen.SetSettings(fallbackPhysicalSetting, apply: true);
+            }
+            else
+            {
+                display.DisplayScreen.SetSettings(displaySetting, apply: true);
+            }
         }
     }
 

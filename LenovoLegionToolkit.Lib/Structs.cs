@@ -1035,20 +1035,21 @@ public readonly struct DpiScale(int scale) : IDisplayName, IEquatable<DpiScale>
 }
 
 [method: JsonConstructor]
-public readonly struct RefreshRate(int frequency, bool isDynamic = false) : IDisplayName, IEquatable<RefreshRate>
+public readonly struct RefreshRate(int frequency, bool isDynamic = false, int baseFrequency = 0) : IDisplayName, IEquatable<RefreshRate>
 {
     public int Frequency { get; } = frequency;
     public bool IsDynamic { get; } = isDynamic;
+    public int BaseFrequency { get; } = baseFrequency > 0 ? baseFrequency : (frequency > 120 && frequency % 2 == 0 ? frequency / 2 : 60);
 
     [JsonIgnore]
     public string DisplayName => IsDynamic
-        ? string.Format(Resources.Resource.RefreshRate_Dynamic, Frequency)
+        ? string.Format(Resources.Resource.RefreshRate_Dynamic, BaseFrequency, Frequency)
         : $"{Frequency} Hz";
 
     public override string ToString()
     {
         return IsDynamic
-            ? string.Format(Resources.Resource.RefreshRate_Dynamic, Frequency)
+            ? string.Format(Resources.Resource.RefreshRate_Dynamic, BaseFrequency, Frequency)
             : $"{Frequency}Hz";
     }
 
@@ -1061,12 +1062,12 @@ public readonly struct RefreshRate(int frequency, bool isDynamic = false) : IDis
 
     public bool Equals(RefreshRate other)
     {
-        return Frequency == other.Frequency && IsDynamic == other.IsDynamic;
+        return Frequency == other.Frequency && IsDynamic == other.IsDynamic && (!IsDynamic || BaseFrequency == other.BaseFrequency);
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Frequency, IsDynamic);
+        return HashCode.Combine(Frequency, IsDynamic, IsDynamic ? BaseFrequency : 0);
     }
 
     public static bool operator ==(RefreshRate left, RefreshRate right)

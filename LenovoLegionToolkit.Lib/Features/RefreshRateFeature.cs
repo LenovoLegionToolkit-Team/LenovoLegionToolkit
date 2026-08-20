@@ -48,11 +48,13 @@ public class RefreshRateFeature : IFeature<RefreshRate>
             if (maxFreq > MinimumDrrFrequency)
             {
                 var displaySource = display.DisplayScreen.ToPathDisplaySource();
+                var displayTarget = display.ToPathDisplayTarget();
                 var pathInfos = WindowsDisplayAPI.DisplayConfig.PathInfo.GetActivePaths(virtualModeAware: true);
-                var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource);
+                var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource && (displayTarget is null || p.TargetsInfo.Any(t => t.DisplayTarget == displayTarget)));
                 if (activePath is not null && activePath.TargetsInfo.Any(t => t.IsVirtualModeSupportedByPath))
                 {
-                    result.Add(new RefreshRate(maxFreq, isDynamic: true));
+                    var lowFreq = GetDynamicLowFrequency(maxFreq, result.Select(r => r.Frequency));
+                    result.Add(new RefreshRate(maxFreq, isDynamic: true, baseFrequency: lowFreq));
                 }
             }
         }
@@ -75,8 +77,9 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         }
 
         var displaySource = display.DisplayScreen.ToPathDisplaySource();
+        var displayTarget = display.ToPathDisplayTarget();
         var pathInfos = WindowsDisplayAPI.DisplayConfig.PathInfo.GetActivePaths(virtualModeAware: true);
-        var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource);
+        var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource && (displayTarget is null || p.TargetsInfo.Any(t => t.DisplayTarget == displayTarget)));
         if (activePath is not null)
         {
             var target = activePath.TargetsInfo.FirstOrDefault(t => t.IsCurrentlyInUse || t.IsPathActive);
@@ -85,12 +88,13 @@ public class RefreshRateFeature : IFeature<RefreshRate>
                 if (target.IsBoostRefreshRate)
                 {
                     var currentSettings = display.DisplayScreen.CurrentSetting;
-                    var maxFreq = display.DisplayScreen.GetPossibleSettings()
+                    var possibleFreqs = display.DisplayScreen.GetPossibleSettings()
                         .Where(dps => Match(dps, currentSettings))
                         .Select(dps => dps.Frequency)
-                        .DefaultIfEmpty(MinimumDrrFrequency)
-                        .Max();
-                    var drrResult = new RefreshRate(maxFreq, isDynamic: true);
+                        .ToArray();
+                    var maxFreq = possibleFreqs.DefaultIfEmpty(MinimumDrrFrequency).Max();
+                    var lowFreq = GetDynamicLowFrequency(maxFreq, possibleFreqs);
+                    var drrResult = new RefreshRate(maxFreq, isDynamic: true, baseFrequency: lowFreq);
                     Log.Instance.Trace($"Dynamic Refresh Rate (DRR) is active. Reporting rate: {drrResult}");
                     return drrResult;
                 }
