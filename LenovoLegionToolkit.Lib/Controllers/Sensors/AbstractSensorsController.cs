@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
@@ -242,7 +242,7 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
         if (gpuController.IsSupported())
             await gpuController.StartAsync().ConfigureAwait(false);
 
-        if (await gpuController.GetLastKnownStateAsync().ConfigureAwait(false) is GPUState.PoweredOff or GPUState.Unknown)
+        if (await gpuController.GetLastKnownStateAsync().ConfigureAwait(false) is GPUState.PoweredOff)
             return GPUInfo.Empty;
 
         try

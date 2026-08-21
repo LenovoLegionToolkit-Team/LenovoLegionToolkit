@@ -347,21 +347,18 @@ public class GPUController
 
         if (await feature.GetStateAsync().ConfigureAwait(false) == HybridModeState.Off)
         {
-            if (NVAPI.IsDisplayConnected(gpu))
-            {
-                newProcesses = processNames;
-                newState = GPUState.MonitorConnected;
-            }
-            else
-            {
-                newProcesses = [];
-                newState = GPUState.Unknown;
-            }
+            newProcesses = processNames;
+            newState = GPUState.MonitorConnected;
         }
         else if (processNames.Count != 0)
         {
             newProcesses = processNames;
             newState = GPUState.Active;
+        }
+        else if (NVAPI.IsDisplayConnected(gpu))
+        {
+            newProcesses = processNames;
+            newState = GPUState.MonitorConnected;
         }
         else
         {

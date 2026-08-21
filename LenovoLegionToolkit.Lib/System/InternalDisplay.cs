@@ -1,16 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Win32;
-using Windows.Win32.Devices.Display;
-using Windows.Win32.Foundation;
-using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Utils;
 using WindowsDisplayAPI;
-using WindowsDisplayAPI.DisplayConfig;
 
 namespace LenovoLegionToolkit.Lib.System;
 
@@ -74,6 +68,13 @@ public static class InternalDisplay
             return aoDisplay;
         }
 
+        var primaryDisplay = displays.FirstOrDefault(d => d.DisplayScreen?.IsPrimary == true && !d.IsIndirect);
+        if (primaryDisplay is not null)
+        {
+            Log.Instance.Trace($"Found primary fallback display: {primaryDisplay.DevicePath}");
+            return primaryDisplay;
+        }
+
         Log.Instance.Trace($"No internal displays found.");
         return DisplayHolder.Empty;
     }
@@ -86,18 +87,21 @@ public static class InternalDisplay
 
     private static Display? FindInternalDisplay(IEnumerable<Display> displays)
     {
-        return displays.FirstOrDefault(d => d.GetVideoOutputTechnology().IsInternalOutput());
+        return displays.FirstOrDefault(d => d.IsInternal);
     }
 
     private static async Task<Display?> FindInternalAdvancedOptimusDisplayAsync(IEnumerable<Display> displays)
     {
-        var exDpDisplays = displays.Where(di => di.GetVideoOutputTechnology().IsExternalDisplayPortOutput()).ToArray();
+        var exDpDisplays = displays.Where(di => di.IsExternalDisplayPort).ToArray();
 
         if (exDpDisplays.Length < 1)
             return null;
 
         var exDpDisplay = exDpDisplays[0];
         var exDpPathDisplayTarget = exDpDisplay.ToPathDisplayTarget();
+        if (exDpPathDisplayTarget is null)
+            return null;
+
         var exDpPortDisplayEdid = exDpPathDisplayTarget.EDIDManufactureId;
 
         var otherAdapters = DisplayAdapter.GetDisplayAdapters()
@@ -122,65 +126,8 @@ public static class InternalDisplay
         var sameDeviceIsOnAnotherAdapter = allDevicesResults
             .SelectMany(devices => devices)
             .Select(dd => dd.ToPathDisplayTarget())
-            .Any(pdt => pdt.EDIDManufactureId == exDpPortDisplayEdid && pdt.GetVideoOutputTechnology().IsInternalOutput());
+            .Any(pdt => pdt is not null && pdt.EDIDManufactureId == exDpPortDisplayEdid && pdt.IsInternal);
 
         return sameDeviceIsOnAnotherAdapter ? exDpDisplay : null;
-    }
-
-    private static DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY GetVideoOutputTechnology(this DisplayDevice displayDevice)
-    {
-        return GetVideoOutputTechnology(displayDevice.ToPathDisplayTarget());
-    }
-
-    private static unsafe DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY GetVideoOutputTechnology(this PathDisplayTarget pathDisplayTarget)
-    {
-        var intPtr = IntPtr.Zero;
-        try
-        {
-            var deviceName = new DISPLAYCONFIG_TARGET_DEVICE_NAME
-            {
-                header = new DISPLAYCONFIG_DEVICE_INFO_HEADER
-                {
-                    type = DISPLAYCONFIG_DEVICE_INFO_TYPE.DISPLAYCONFIG_DEVICE_INFO_GET_TARGET_NAME,
-                    id = pathDisplayTarget.TargetId,
-                    adapterId = new LUID
-                    {
-                        HighPart = pathDisplayTarget.Adapter.AdapterId.HighPart,
-                        LowPart = pathDisplayTarget.Adapter.AdapterId.LowPart,
-                    },
-                    size = (uint)Marshal.SizeOf<DISPLAYCONFIG_TARGET_DEVICE_NAME>()
-                }
-            };
-
-            intPtr = Marshal.AllocHGlobal((int)deviceName.header.size);
-            Marshal.StructureToPtr(deviceName, intPtr, false);
-
-            var success = PInvoke.DisplayConfigGetDeviceInfo((DISPLAYCONFIG_DEVICE_INFO_HEADER*)intPtr.ToPointer());
-            if (success != PInvokeExtensions.ERROR_SUCCESS)
-                PInvokeExtensions.ThrowIfWin32Error("DisplayConfigGetDeviceInfo");
-
-            var deviceNameResponse = Marshal.PtrToStructure<DISPLAYCONFIG_TARGET_DEVICE_NAME>(intPtr);
-            return deviceNameResponse.outputTechnology;
-        }
-        catch
-        {
-            return DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY.DISPLAYCONFIG_OUTPUT_TECHNOLOGY_OTHER;
-        }
-        finally
-        {
-            Marshal.FreeHGlobal(intPtr);
-        }
-    }
-
-    private static bool IsInternalOutput(this DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY outputTechnology)
-    {
-        var result = outputTechnology is DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY.DISPLAYCONFIG_OUTPUT_TECHNOLOGY_INTERNAL;
-        result |= outputTechnology is DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY.DISPLAYCONFIG_OUTPUT_TECHNOLOGY_DISPLAYPORT_EMBEDDED;
-        return result;
-    }
-
-    private static bool IsExternalDisplayPortOutput(this DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY outputTechnology)
-    {
-        return outputTechnology is DISPLAYCONFIG_VIDEO_OUTPUT_TECHNOLOGY.DISPLAYCONFIG_OUTPUT_TECHNOLOGY_DISPLAYPORT_EXTERNAL;
     }
 }

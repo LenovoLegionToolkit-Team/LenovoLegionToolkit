@@ -170,9 +170,23 @@ internal static class NVAPI
     {
         try
         {
-            return Display.GetDisplays().Any(d => d.PhysicalGPUs.Contains(gpu, PhysicalGPUEqualityComparer.Instance));
+            if (Display.GetDisplays().Any(d => d.PhysicalGPUs.Contains(gpu, PhysicalGPUEqualityComparer.Instance)))
+            {
+                return true;
+            }
         }
         catch (NVIDIAApiException)
+        {
+        }
+        catch (Exception)
+        {
+        }
+
+        try
+        {
+            return gpu.GetConnectedDisplayDevices(ConnectedIdsFlag.None).Length > 0;
+        }
+        catch
         {
             return false;
         }
