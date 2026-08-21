@@ -9969,6 +9969,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 Customize 的本地化字符串。
+        /// </summary>
+        public static string Spectrum_Color_Mode_Customize {
+            get {
+                return ResourceManager.GetString("Spectrum_Color_Mode_Customize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Random Color 的本地化字符串。
+        /// </summary>
+        public static string Spectrum_Color_Mode_Random_Color {
+            get {
+                return ResourceManager.GetString("Spectrum_Color_Mode_Random_Color", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Adjust keyboard backlight brightness. 的本地化字符串。
         /// </summary>
         public static string SpectrumKeyboardBacklightBrightnessAutomationStepControl_Message {

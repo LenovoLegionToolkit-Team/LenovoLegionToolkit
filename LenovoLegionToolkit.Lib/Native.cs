@@ -88,7 +88,6 @@ public enum LENOVO_SPECTRUM_EFFECT_TYPE : byte
     TypeLighting = 12,
     LegionAuraSync = 13,
     ColorPulseOneZone = 21,
-
 }
 
 public enum LENOVO_SPECTRUM_COLOR_MODE : byte
@@ -423,19 +422,10 @@ public readonly struct LENOVO_SPECTRUM_EFFECT_DESCRIPTION(
     {
         using var ms = new MemoryStream(new byte[960]);
         using var bf = new BinaryWriter(ms);
-        var usesOneZoneProfileEncoding = Array.Exists(Effects, effect => effect.EffectHeader.EffectType == LENOVO_SPECTRUM_EFFECT_TYPE.ColorPulseOneZone);
 
         bf.Write(header.Head);
         bf.Write((byte)header.Type);
-        if (usesOneZoneProfileEncoding)
-        {
-            bf.Write((ushort)0);
-        }
-        else
-        {
-            bf.Write(header.Size);
-            bf.Write(header.Tail);
-        }
+        bf.Write((ushort)0);
 
         bf.Write(Profile);
         bf.Write(Unknown1);
@@ -475,17 +465,8 @@ public readonly struct LENOVO_SPECTRUM_EFFECT_DESCRIPTION(
         }
 
         var position = ms.Position;
-        if (usesOneZoneProfileEncoding)
-        {
-            bf.Seek(2, SeekOrigin.Begin);
-            bf.Write(checked((ushort)(position - 4)));
-            bf.Seek((int)position, SeekOrigin.Begin);
-        }
-        else
-        {
-            bf.Seek(2, SeekOrigin.Begin);
-            bf.Write((byte)(position % 255));
-        }
+        bf.Seek(2, SeekOrigin.Begin);
+        bf.Write(checked((ushort)(position - 4)));
 
         return ms.ToArray();
     }

@@ -200,7 +200,7 @@ public static class DebugUIManager
                         }
                         else if (comboBox.SelectedIndex == 2)
                         {
-                            container.Content = new Controls.KeyboardBacklight.RGB.SpectrumRGBKeyboard1ZoneControl();
+                            container.Content = new Controls.KeyboardBacklight.Spectrum.SpectrumRGBKeyboard1ZoneControl();
                         }
                         else if (comboBox.SelectedIndex == 3)
                         {

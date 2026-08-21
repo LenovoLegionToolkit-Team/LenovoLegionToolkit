@@ -359,11 +359,12 @@ public class SpectrumKeyboardBacklightController
     public async Task SetProfileDescriptionAsync(int profile, SpectrumKeyboardBacklightEffect[] effects)
     {
         var handle = await GetHandleOrThrow().ConfigureAwait(false);
+        var isOneZone = await Is1ZoneKeyboardAsync().ConfigureAwait(false);
 
         Log.Instance.Trace($"Setting {effects.Length} effect to keyboard profile {profile}...");
 
         effects = Compress(effects);
-        var bytes = Convert(profile, effects).ToBytes();
+        var bytes = Convert(profile, effects, isOneZone).ToBytes();
         await SetFeatureAsync(handle, bytes).ConfigureAwait(false);
 
         Log.Instance.Trace($"Set {effects.Length} effect to keyboard profile {profile}.");
@@ -709,7 +710,9 @@ public class SpectrumKeyboardBacklightController
                 effect.Direction,
                 effect.ClockwiseDirection,
                 effect.Colors,
-                newKeyCodes);
+                newKeyCodes,
+                effect.UseVantageColorBoost,
+                effect.ColorMode);
 
             newEffects.Add(newEffect);
         }
@@ -787,15 +790,16 @@ public class SpectrumKeyboardBacklightController
         };
 
         var colors = effect.Colors.Select(c => new RGBColor(c.R, c.G, c.B)).ToArray();
+        var colorMode = effect.EffectHeader.ColorMode;
 
         var keys = effect.KeyCodes;
         if (effect.KeyCodes is [0x65])
             keys = [];
 
-        return new(effectType, speed, direction, clockwiseDirection, colors, keys, useVantageColorBoost);
+        return new(effectType, speed, direction, clockwiseDirection, colors, keys, useVantageColorBoost, colorMode);
     }
 
-    private static LENOVO_SPECTRUM_EFFECT_DESCRIPTION Convert(int profile, SpectrumKeyboardBacklightEffect[] effects)
+    private static LENOVO_SPECTRUM_EFFECT_DESCRIPTION Convert(int profile, SpectrumKeyboardBacklightEffect[] effects, bool isOneZone)
     {
         var header = new LENOVO_SPECTRUM_HEADER(LENOVO_SPECTRUM_OPERATION_TYPE.EffectChange, 0);
         var convertedEffects = new List<LENOVO_SPECTRUM_EFFECT>();
@@ -807,7 +811,7 @@ public class SpectrumKeyboardBacklightController
                 var effect = effects[i];
                 try
                 {
-                    var convertedEffect = Convert(i, effect);
+                    var convertedEffect = Convert(i, effect, isOneZone);
                     convertedEffects.Add(convertedEffect);
                 }
                 catch (ArgumentException ex)
@@ -821,9 +825,9 @@ public class SpectrumKeyboardBacklightController
         return result;
     }
 
-    private static LENOVO_SPECTRUM_EFFECT Convert(int index, SpectrumKeyboardBacklightEffect effect)
+    private static LENOVO_SPECTRUM_EFFECT Convert(int index, SpectrumKeyboardBacklightEffect effect, bool isOneZone)
     {
-        var isOneZoneBreath = effect.Type == SpectrumKeyboardBacklightEffectType.ColorPulse && effect.Keys is [1];
+        var isOneZoneBreath = isOneZone && effect.Type == SpectrumKeyboardBacklightEffectType.ColorPulse;
 
         var effectType = effect.Type switch
         {
@@ -855,7 +859,7 @@ public class SpectrumKeyboardBacklightController
         if (effect is { Type: SpectrumKeyboardBacklightEffectType.AuroraSync, UseVantageColorBoost: true })
             speed = LENOVO_SPECTRUM_SPEED.Speed3;
 
-        var direction = isOneZoneBreath ? LENOVO_SPECTRUM_DIRECTION.LeftToRight : effect.Direction switch
+        var direction = effect.Direction switch
         {
             SpectrumKeyboardBacklightDirection.LeftToRight => LENOVO_SPECTRUM_DIRECTION.LeftToRight,
             SpectrumKeyboardBacklightDirection.RightToLeft => LENOVO_SPECTRUM_DIRECTION.RightToLeft,
@@ -871,30 +875,19 @@ public class SpectrumKeyboardBacklightController
             _ => LENOVO_SPECTRUM_CLOCKWISE_DIRECTION.None
         };
 
-        var colorMode = effect.Type switch
-        {
-            SpectrumKeyboardBacklightEffectType.Always => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
-            SpectrumKeyboardBacklightEffectType.ColorPulse when isOneZoneBreath => LENOVO_SPECTRUM_COLOR_MODE.RandomColor,
-            SpectrumKeyboardBacklightEffectType.ColorChange when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
-            SpectrumKeyboardBacklightEffectType.ColorPulse when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
-            SpectrumKeyboardBacklightEffectType.ColorWave when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
-            SpectrumKeyboardBacklightEffectType.Rain when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
-            SpectrumKeyboardBacklightEffectType.Smooth when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
-            SpectrumKeyboardBacklightEffectType.Ripple when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
-            SpectrumKeyboardBacklightEffectType.Type when effect.Colors.Length != 0 => LENOVO_SPECTRUM_COLOR_MODE.ColorList,
-            SpectrumKeyboardBacklightEffectType.ColorChange => LENOVO_SPECTRUM_COLOR_MODE.RandomColor,
-            SpectrumKeyboardBacklightEffectType.ColorPulse => LENOVO_SPECTRUM_COLOR_MODE.RandomColor,
-            SpectrumKeyboardBacklightEffectType.ColorWave => LENOVO_SPECTRUM_COLOR_MODE.RandomColor,
-            SpectrumKeyboardBacklightEffectType.Rain => LENOVO_SPECTRUM_COLOR_MODE.RandomColor,
-            SpectrumKeyboardBacklightEffectType.Smooth => LENOVO_SPECTRUM_COLOR_MODE.RandomColor,
-            SpectrumKeyboardBacklightEffectType.Ripple => LENOVO_SPECTRUM_COLOR_MODE.RandomColor,
-            SpectrumKeyboardBacklightEffectType.Type => LENOVO_SPECTRUM_COLOR_MODE.RandomColor,
-            _ => LENOVO_SPECTRUM_COLOR_MODE.None
-        };
+        var colorMode = effect.ColorMode != LENOVO_SPECTRUM_COLOR_MODE.None
+            ? effect.ColorMode
+            : effect.Type.SupportsColorMode()
+                ? effect.Colors.Length != 0
+                    ? LENOVO_SPECTRUM_COLOR_MODE.ColorList
+                    : LENOVO_SPECTRUM_COLOR_MODE.RandomColor
+                : LENOVO_SPECTRUM_COLOR_MODE.None;
 
         var header = new LENOVO_SPECTRUM_EFFECT_HEADER(effectType, speed, direction, clockwiseDirection, colorMode);
-        var colors = colorMode == LENOVO_SPECTRUM_COLOR_MODE.ColorList ? effect.Colors.Select(c => new LENOVO_SPECTRUM_COLOR(c.R, c.G, c.B)).ToArray() : [];
-        var keys = effect.Type.IsAllLightsEffect() ? [0x65] : effect.Keys;
+        var colors = colorMode == LENOVO_SPECTRUM_COLOR_MODE.ColorList || isOneZoneBreath
+            ? effect.Colors.Select(c => new LENOVO_SPECTRUM_COLOR(c.R, c.G, c.B)).Take(isOneZoneBreath ? 1 : int.MaxValue).ToArray()
+            : [];
+        ushort[] keys = isOneZone ? [1] : effect.Type.IsAllLightsEffect() ? [0x65] : effect.Keys;
         var result = new LENOVO_SPECTRUM_EFFECT(header, index + 1, colors, keys);
         return result;
     }

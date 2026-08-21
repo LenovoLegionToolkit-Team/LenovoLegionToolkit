@@ -10,11 +10,12 @@ using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.WPF.Extensions;
+using LenovoLegionToolkit.WPF.Resources;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
 
-namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.RGB;
+namespace LenovoLegionToolkit.WPF.Controls.KeyboardBacklight.Spectrum;
 
 public partial class SpectrumRGBKeyboard1ZoneControl
 {
@@ -126,11 +127,12 @@ public partial class SpectrumRGBKeyboard1ZoneControl
                 presetButton.IsEnabled = false;
 
             _brightnessControl.IsEnabled = false;
-            _effectControl.IsEnabled = false;
+            _effectCard.IsEnabled = false;
+            _colorModeCard.IsEnabled = false;
 
             _zone1ColorPicker.Visibility = Visibility.Hidden;
 
-            _speedControl.IsEnabled = false;
+            _speedCard.IsEnabled = false;
             _zone1Control.IsEnabled = false;
 
             _applyButton.IsEnabled = false;
@@ -162,23 +164,48 @@ public partial class SpectrumRGBKeyboard1ZoneControl
             SpectrumKeyboardBacklightDirection.None,
             SpectrumKeyboardBacklightClockwiseDirection.None,
             [new RGBColor(255, 255, 255)],
-            [1]);
+            [1],
+            colorMode: LENOVO_SPECTRUM_COLOR_MODE.ColorList);
 
-        var preset = ToRgbPreset(effect);
+        var effectType = effect.Type is SpectrumKeyboardBacklightEffectType.Always or SpectrumKeyboardBacklightEffectType.ColorPulse
+            ? effect.Type
+            : SpectrumKeyboardBacklightEffectType.Always;
+        var speed = effect.Speed is SpectrumKeyboardBacklightSpeed.Speed1 or SpectrumKeyboardBacklightSpeed.Speed2 or SpectrumKeyboardBacklightSpeed.Speed3
+            ? effect.Speed
+            : SpectrumKeyboardBacklightSpeed.Speed2;
+        var colorMode = effect.ColorMode is LENOVO_SPECTRUM_COLOR_MODE.RandomColor or LENOVO_SPECTRUM_COLOR_MODE.ColorList
+            ? effect.ColorMode
+            : effect.Colors.Length > 0
+                ? LENOVO_SPECTRUM_COLOR_MODE.ColorList
+                : LENOVO_SPECTRUM_COLOR_MODE.RandomColor;
+        var color = effect.Colors.Length > 0 ? effect.Colors[0] : new RGBColor(255, 255, 255);
 
         _isUpdatingControls = true;
         try
         {
             _brightnessSlider.Value = Math.Clamp(brightness, 0, 9);
-            _effectControl.SetItems(
-                [RGBKeyboardBacklightEffect.Static, RGBKeyboardBacklightEffect.Breath],
-                preset.Effect,
+            _effectComboBox.SetItems(
+                [SpectrumKeyboardBacklightEffectType.Always, SpectrumKeyboardBacklightEffectType.ColorPulse],
+                effectType,
+                v => v == SpectrumKeyboardBacklightEffectType.ColorPulse
+                    ? Resource.ResourceManager.GetString("Breath_Breath") ?? "Breath"
+                    : v.GetDisplayName());
+            _speedComboBox.SetItems(
+                [SpectrumKeyboardBacklightSpeed.Speed1, SpectrumKeyboardBacklightSpeed.Speed2, SpectrumKeyboardBacklightSpeed.Speed3],
+                speed,
                 v => v.GetDisplayName());
-            _speedControl.SetItems(
-                [RGBKeyboardBacklightSpeed.Slowest, RGBKeyboardBacklightSpeed.Slow, RGBKeyboardBacklightSpeed.Fast],
-                preset.Speed,
-                v => v.GetDisplayName());
-            _zone1ColorPicker.SelectedColor = preset.Zone1.ToColor();
+            _colorModeComboBox.SetItems(
+                [LENOVO_SPECTRUM_COLOR_MODE.ColorList, LENOVO_SPECTRUM_COLOR_MODE.RandomColor],
+                colorMode,
+                v => v switch
+                {
+                    LENOVO_SPECTRUM_COLOR_MODE.RandomColor =>
+                        Resource.ResourceManager.GetString("Random_Color") ?? "Random color",
+                    LENOVO_SPECTRUM_COLOR_MODE.ColorList =>
+                        Resource.ResourceManager.GetString("Setting_Customize") ?? "Customize",
+                    _ => string.Empty
+                });
+            _zone1ColorPicker.SelectedColor = color.ToColor();
         }
         finally
         {
@@ -188,7 +215,8 @@ public partial class SpectrumRGBKeyboard1ZoneControl
         UpdateEffectEditorVisibility();
 
         _brightnessControl.IsEnabled = true;
-        _effectControl.IsEnabled = true;
+        _effectCard.IsEnabled = true;
+        _colorModeCard.IsEnabled = true;
 
         UpdateApplyButtonState();
     }
@@ -200,71 +228,46 @@ public partial class SpectrumRGBKeyboard1ZoneControl
         var profile = await _controller.GetProfileAsync();
         var color = _zone1ColorPicker.SelectedColor.ToRGBColor();
         await _controller.SetBrightnessAsync((int)_brightnessSlider.Value);
-        await _controller.SetProfileDescriptionAsync(profile, [ToSpectrumEffect(
-            _effectControl.SelectedItem,
-            _speedControl.SelectedItem,
-            color)]);
+        var effectType = _effectComboBox.TryGetSelectedItem(out SpectrumKeyboardBacklightEffectType selectedEffectType)
+            ? selectedEffectType
+            : SpectrumKeyboardBacklightEffectType.Always;
+        var speed = effectType == SpectrumKeyboardBacklightEffectType.ColorPulse
+            && _speedComboBox.TryGetSelectedItem(out SpectrumKeyboardBacklightSpeed selectedSpeed)
+                ? selectedSpeed
+                : effectType == SpectrumKeyboardBacklightEffectType.ColorPulse
+                    ? SpectrumKeyboardBacklightSpeed.Speed2
+                    : SpectrumKeyboardBacklightSpeed.None;
+        var colorMode = _colorModeComboBox.TryGetSelectedItem(out LENOVO_SPECTRUM_COLOR_MODE selectedColorMode)
+            ? selectedColorMode
+            : LENOVO_SPECTRUM_COLOR_MODE.ColorList;
+        var effect = new SpectrumKeyboardBacklightEffect(
+            effectType,
+            speed,
+            SpectrumKeyboardBacklightDirection.None,
+            SpectrumKeyboardBacklightClockwiseDirection.None,
+            [color],
+            [1],
+            colorMode: colorMode);
+        await _controller.SetProfileDescriptionAsync(profile, [effect]);
     }
 
     private void UpdateEffectEditorVisibility()
     {
-        var showColor = _effectControl.SelectedItem == RGBKeyboardBacklightEffect.Static;
-        var showSpeed = _effectControl.SelectedItem == RGBKeyboardBacklightEffect.Breath;
-        _zone1Control.Visibility = showColor ? Visibility.Visible : Visibility.Collapsed;
-        _zone1ColorPicker.Visibility = showColor ? Visibility.Visible : Visibility.Collapsed;
-        _zone1Control.IsEnabled = showColor;
-        _speedControl.Visibility = showSpeed ? Visibility.Visible : Visibility.Collapsed;
-        _speedControl.IsEnabled = showSpeed;
+        var effectType = _effectComboBox.TryGetSelectedItem(out SpectrumKeyboardBacklightEffectType selectedEffectType)
+            ? selectedEffectType
+            : SpectrumKeyboardBacklightEffectType.Always;
+        var showColor = effectType is SpectrumKeyboardBacklightEffectType.Always or SpectrumKeyboardBacklightEffectType.ColorPulse;
+        var showSpeed = effectType == SpectrumKeyboardBacklightEffectType.ColorPulse;
+        var showColorPicker = showColor
+            && _colorModeComboBox.TryGetSelectedItem(out LENOVO_SPECTRUM_COLOR_MODE colorMode)
+            && colorMode == LENOVO_SPECTRUM_COLOR_MODE.ColorList;
+        _colorModeCard.Visibility = showColor ? Visibility.Visible : Visibility.Collapsed;
+        _colorModeCard.IsEnabled = showColor;
+        _zone1Control.Visibility = showColorPicker ? Visibility.Visible : Visibility.Collapsed;
+        _zone1ColorPicker.Visibility = showColorPicker ? Visibility.Visible : Visibility.Collapsed;
+        _zone1Control.IsEnabled = showColorPicker;
+        _speedCard.Visibility = showSpeed ? Visibility.Visible : Visibility.Collapsed;
+        _speedCard.IsEnabled = showSpeed;
     }
 
-    private static RGBKeyboardBacklightEffectDescription ToRgbPreset(SpectrumKeyboardBacklightEffect effect)
-    {
-        var type = effect.Type switch
-        {
-            SpectrumKeyboardBacklightEffectType.Always => RGBKeyboardBacklightEffect.Static,
-            SpectrumKeyboardBacklightEffectType.ColorPulse => RGBKeyboardBacklightEffect.Breath,
-            _ => RGBKeyboardBacklightEffect.Static
-        };
-
-        var color = effect.Colors.Length > 0 ? effect.Colors[0] : new RGBColor(255, 255, 255);
-        var speed = effect.Speed switch
-        {
-            SpectrumKeyboardBacklightSpeed.Speed1 => RGBKeyboardBacklightSpeed.Slowest,
-            SpectrumKeyboardBacklightSpeed.Speed2 => RGBKeyboardBacklightSpeed.Slow,
-            _ => RGBKeyboardBacklightSpeed.Fast
-        };
-        return new(type, speed, color);
-    }
-
-    private static SpectrumKeyboardBacklightEffect ToSpectrumEffect(
-        RGBKeyboardBacklightEffect? effect,
-        RGBKeyboardBacklightSpeed? speed,
-        RGBColor color)
-    {
-        var effectType = effect switch
-        {
-            RGBKeyboardBacklightEffect.Breath => SpectrumKeyboardBacklightEffectType.ColorPulse,
-            _ => SpectrumKeyboardBacklightEffectType.Always
-        };
-
-        RGBColor[] colors = [color];
-        var spectrumSpeed = speed switch
-        {
-            RGBKeyboardBacklightSpeed.Slowest => SpectrumKeyboardBacklightSpeed.Speed1,
-            RGBKeyboardBacklightSpeed.Slow => SpectrumKeyboardBacklightSpeed.Speed2,
-            _ => SpectrumKeyboardBacklightSpeed.Speed3
-        };
-        return new(
-            effectType,
-            effect == RGBKeyboardBacklightEffect.Breath ? spectrumSpeed : SpectrumKeyboardBacklightSpeed.None,
-            SpectrumKeyboardBacklightDirection.None,
-            SpectrumKeyboardBacklightClockwiseDirection.None,
-            colors,
-            [1]);
-    }
-
-    private readonly record struct RGBKeyboardBacklightEffectDescription(
-        RGBKeyboardBacklightEffect Effect,
-        RGBKeyboardBacklightSpeed Speed,
-        RGBColor Zone1);
 }

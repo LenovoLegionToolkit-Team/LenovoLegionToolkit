@@ -17,4 +17,17 @@ public static class SpectrumKeyboardBacklightEffectTypeExtensions
         SpectrumKeyboardBacklightEffectType.Ripple => true,
         _ => false
     };
+
+    public static bool SupportsColorMode(this SpectrumKeyboardBacklightEffectType type) => type switch
+    {
+        SpectrumKeyboardBacklightEffectType.Always => true,
+        SpectrumKeyboardBacklightEffectType.ColorChange => true,
+        SpectrumKeyboardBacklightEffectType.ColorPulse => true,
+        SpectrumKeyboardBacklightEffectType.ColorWave => true,
+        SpectrumKeyboardBacklightEffectType.Smooth => true,
+        SpectrumKeyboardBacklightEffectType.Rain => true,
+        SpectrumKeyboardBacklightEffectType.Ripple => true,
+        SpectrumKeyboardBacklightEffectType.Type => true,
+        _ => false
+    };
 }

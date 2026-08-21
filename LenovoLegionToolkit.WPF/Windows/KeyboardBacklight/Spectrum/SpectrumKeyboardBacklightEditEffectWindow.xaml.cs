@@ -88,6 +88,8 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
         UpdatePreview();
     }
 
+    private void ColorModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e) => RefreshVisibility();
+
     private void VantageColorBoost_Changed(object sender, RoutedEventArgs e) => RefreshVisibility();
 
     private void RestoreDefaults_Click(object sender, RoutedEventArgs e)
@@ -104,6 +106,7 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
         var direction = SpectrumKeyboardBacklightDirection.None;
         var clockwiseDirection = SpectrumKeyboardBacklightClockwiseDirection.None;
         var speed = SpectrumKeyboardBacklightSpeed.None;
+        var colorMode = LENOVO_SPECTRUM_COLOR_MODE.None;
         var colors = Array.Empty<RGBColor>();
         var useVantageColorBoost = _vantageColorBoostCard.Visibility == Visibility.Visible && _vantageColorBoostToggle.IsChecked == true;
 
@@ -123,11 +126,25 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
             _speedComboBox.TryGetSelectedItem(out SpectrumKeyboardBacklightSpeed speedTemp))
             speed = speedTemp;
 
-        if (_singleColor.Visibility == Visibility.Visible)
-            colors = [_singleColorPicker.SelectedColor.ToRGBColor()];
+        if (_colorModeCard.Visibility == Visibility.Visible && _colorModeComboBox.TryGetSelectedItem(out LENOVO_SPECTRUM_COLOR_MODE colorModeTemp))
+        {
+            colorMode = colorModeTemp;
+        }
 
-        if (_multiColors.Visibility == Visibility.Visible)
+        if (colorMode == LENOVO_SPECTRUM_COLOR_MODE.ColorList && _singleColor.Visibility == Visibility.Visible)
+        {
+            colors = [_singleColorPicker.SelectedColor.ToRGBColor()];
+        }
+
+        if (colorMode == LENOVO_SPECTRUM_COLOR_MODE.ColorList && _multiColors.Visibility == Visibility.Visible)
+        {
             colors = _multiColorPicker.SelectedColors.Select(c => c.ToRGBColor()).ToArray();
+        }
+
+        if (colorMode == LENOVO_SPECTRUM_COLOR_MODE.ColorList && colors.Length == 0)
+        {
+            colors = [RGBColor.White];
+        }
 
         _settings.Store.AuroraVantageColorBoost = _vantageColorBoostToggle.IsChecked == true;
         _settings.Store.AuroraVantageColorBoostFloor = (int)_floorSlider.Value;
@@ -149,7 +166,8 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
             clockwiseDirection,
             colors,
             keys,
-            useVantageColorBoost);
+            useVantageColorBoost,
+            colorMode);
 
         Apply?.Invoke(this, effect);
         Close();
@@ -205,6 +223,17 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
             ],
             SpectrumKeyboardBacklightSpeed.Speed2,
             e => e.GetDisplayName());
+
+        _colorModeComboBox.SetItems(
+            [LENOVO_SPECTRUM_COLOR_MODE.ColorList, LENOVO_SPECTRUM_COLOR_MODE.RandomColor],
+            LENOVO_SPECTRUM_COLOR_MODE.ColorList,
+            e => e switch
+            {
+                LENOVO_SPECTRUM_COLOR_MODE.ColorList => Resource.Spectrum_Color_Mode_Customize,
+                LENOVO_SPECTRUM_COLOR_MODE.RandomColor => Resource.Spectrum_Color_Mode_Random_Color,
+                _ => string.Empty
+            });
+        _multiColorPicker.SelectedColors = [Colors.White];
     }
 
     private void Update(SpectrumKeyboardBacklightEffect effect)
@@ -221,6 +250,13 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
 
         if (_speedComboBox.GetItems<SpectrumKeyboardBacklightSpeed>().Contains(effect.Speed))
             _speedComboBox.SelectItem(effect.Speed);
+
+        var colorMode = effect.ColorMode is LENOVO_SPECTRUM_COLOR_MODE.ColorList or LENOVO_SPECTRUM_COLOR_MODE.RandomColor
+            ? effect.ColorMode
+            : effect.Colors.Length != 0
+                ? LENOVO_SPECTRUM_COLOR_MODE.ColorList
+                : LENOVO_SPECTRUM_COLOR_MODE.RandomColor;
+        _colorModeComboBox.SelectItem(colorMode);
 
         _vantageColorBoostToggle.IsChecked = _settings.Store.AuroraVantageColorBoost;
         _floorSlider.Value = _settings.Store.AuroraVantageColorBoostFloor;
@@ -273,21 +309,27 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
             _ => Visibility.Collapsed
         };
 
+        var supportsColorMode = effect.SupportsColorMode();
+        _colorModeCard.Visibility = supportsColorMode ? Visibility.Visible : Visibility.Collapsed;
+        var usesCustomColors = supportsColorMode
+            && _colorModeComboBox.TryGetSelectedItem(out LENOVO_SPECTRUM_COLOR_MODE colorMode)
+            && colorMode == LENOVO_SPECTRUM_COLOR_MODE.ColorList;
+
         _singleColor.Visibility = effect switch
         {
-            SpectrumKeyboardBacklightEffectType.Always => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Always when usesCustomColors => Visibility.Visible,
             _ => Visibility.Collapsed
         };
 
         _multiColors.Visibility = effect switch
         {
-            SpectrumKeyboardBacklightEffectType.ColorChange => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.ColorPulse => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.ColorWave => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Rain => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Ripple => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Smooth => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Type => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.ColorChange when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.ColorPulse when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.ColorWave when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Rain when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Ripple when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Smooth when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Type when usesCustomColors => Visibility.Visible,
             _ => Visibility.Collapsed
         };
 

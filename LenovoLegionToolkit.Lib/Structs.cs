@@ -1160,7 +1160,8 @@ public readonly struct SpectrumKeyboardBacklightEffect(
     SpectrumKeyboardBacklightClockwiseDirection clockwiseDirection,
     RGBColor[] colors,
     ushort[] keys,
-    bool useVantageColorBoost = false)
+    bool useVantageColorBoost = false,
+    LENOVO_SPECTRUM_COLOR_MODE colorMode = LENOVO_SPECTRUM_COLOR_MODE.None)
 {
     public SpectrumKeyboardBacklightEffectType Type { get; } = type;
     public SpectrumKeyboardBacklightSpeed Speed { get; } = speed;
@@ -1169,6 +1170,7 @@ public readonly struct SpectrumKeyboardBacklightEffect(
     public RGBColor[] Colors { get; } = colors;
     public ushort[] Keys { get; } = type.IsAllLightsEffect() ? [] : keys;
     public bool UseVantageColorBoost { get; } = useVantageColorBoost;
+    public LENOVO_SPECTRUM_COLOR_MODE ColorMode { get; } = colorMode;
 }
 
 public readonly struct StepperValue(int value, int min, int max, int step, int[] steps, int? defaultValue)
