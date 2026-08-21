@@ -24,6 +24,7 @@ public static class AutomationPipelineTriggerExtensions
         ISessionLockPipelineTrigger => SymbolRegular.LockClosed24,
         ISessionUnlockPipelineTrigger => SymbolRegular.LockOpen24,
         ITimeAutomationPipelineTrigger => SymbolRegular.HourglassHalf24,
+        ITimeRangeAutomationPipelineTrigger => SymbolRegular.HourglassHalf24,
         IDeviceAutomationPipelineTrigger => SymbolRegular.UsbPlug24,
         INativeWindowsMessagePipelineTrigger => SymbolRegular.Desktop24,
         IOnStartupAutomationPipelineTrigger => SymbolRegular.Flash24,

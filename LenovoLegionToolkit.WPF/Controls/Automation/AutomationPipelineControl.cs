@@ -441,6 +441,29 @@ public class AutomationPipelineControl : UserControl
             }
         }
 
+        if (AutomationPipeline.Trigger is ITimeRangeAutomationPipelineTrigger trt)
+        {
+            if (trt.IsSunriseToSunset)
+                result += $" | {Resource.TimeRangeAutomationPipelineTriggerTabItemContent_SunriseToSunset}";
+            if (trt.IsSunsetToSunrise)
+                result += $" | {Resource.TimeRangeAutomationPipelineTriggerTabItemContent_SunsetToSunrise}";
+            if (trt.StartTime is not null && trt.EndTime is not null)
+            {
+                var startLocal = DateTimeExtensions.UtcFrom(trt.StartTime.Value.Hour, trt.StartTime.Value.Minute, trt.StartTime.Value.Second).ToLocalTime();
+                var endLocal = DateTimeExtensions.UtcFrom(trt.EndTime.Value.Hour, trt.EndTime.Value.Minute, trt.EndTime.Value.Second).ToLocalTime();
+                var timeRangeStr = $"{startLocal:HH:mm:ss} - {endLocal:HH:mm:ss}";
+                if (trt.Days.IsEmpty() || trt.Days.OrderBy(x => x).SequenceEqual(Enum.GetValues<DayOfWeek>()))
+                {
+                    result += $" | {timeRangeStr}";
+                }
+                else
+                {
+                    var localizedDayStrings = trt.Days.Select(day => Resource.Culture.DateTimeFormat.GetDayName(day));
+                    result += $" | {string.Join(", ", localizedDayStrings)} ({timeRangeStr})";
+                }
+            }
+        }
+
         if (AutomationPipeline.Trigger is IUserInactivityPipelineTrigger ut && ut.InactivityTimeSpan > TimeSpan.Zero)
             result += $" | {string.Format(Resource.AutomationPipelineControl_SubtitlePart_After, ut.InactivityTimeSpan.Humanize(culture: Resource.Culture))}";
 
