@@ -9438,6 +9438,23 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Keep an active Windows power plan that is not mapped to a power mode when AC adapter state changes..
+        /// </summary>
+        public static string SettingsPage_PreserveUnmappedPowerPlan_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_PreserveUnmappedPowerPlan_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preserve custom power plan.
+        /// </summary>
+        public static string SettingsPage_PreserveUnmappedPowerPlan_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_PreserveUnmappedPowerPlan_Title", resourceCulture);
+            }
+        }
+                /// <summary>
         ///   查找类似 Are you sure you want to reset all settings to defaults? This action cannot be undone and the application will restart. 的本地化字符串。
         /// </summary>
         public static string SettingsPage_ResetSettings_Confirm {
