@@ -101,6 +101,17 @@ public interface ITimeAutomationPipelineTrigger : IAutomationPipelineTrigger
     ITimeAutomationPipelineTrigger DeepCopy(bool isSunrise, bool isSunset, Time? time, DayOfWeek[] day);
 }
 
+public interface ITimeRangeAutomationPipelineTrigger : IAutomationPipelineTrigger
+{
+    bool IsSunriseToSunset { get; }
+    bool IsSunsetToSunrise { get; }
+    Time? StartTime { get; }
+    Time? EndTime { get; }
+    DayOfWeek[] Days { get; }
+
+    ITimeRangeAutomationPipelineTrigger DeepCopy(bool isSunriseToSunset, bool isSunsetToSunrise, Time? startTime, Time? endTime, DayOfWeek[] days);
+}
+
 public interface IUserInactivityPipelineTrigger : IAutomationPipelineTrigger
 {
     TimeSpan InactivityTimeSpan { get; }

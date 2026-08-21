@@ -54,6 +54,7 @@ public partial class CreateAutomationPipelineWindow
         new WiFiConnectedAutomationPipelineTrigger([]),
         new WiFiDisconnectedAutomationPipelineTrigger(),
         new TimeAutomationPipelineTrigger(false, false, TimeExtensions.UtcNow, Enum.GetValues<DayOfWeek>()),
+        new TimeRangeAutomationPipelineTrigger(false, false, TimeExtensions.UtcNow, TimeExtensions.UtcNow, Enum.GetValues<DayOfWeek>()),
         new PeriodicAutomationPipelineTrigger(TimeSpan.FromMinutes(1)),
         new OnStartupAutomationPipelineTrigger(),
         new OnResumeAutomationPipelineTrigger()

@@ -1196,38 +1196,37 @@ public readonly struct StepperValue(int value, int min, int max, int step, int[]
     }
 }
 
-public readonly struct Time(int hour, int minute, int second)
+public readonly struct Time(int hour, int minute, int second) : IComparable<Time>, IEquatable<Time>
 {
     public int Hour { get; } = hour;
     public int Minute { get; } = minute;
     public int Second { get; } = second;
 
+    public int TotalSeconds => Hour * 3600 + Minute * 60 + Second;
+
+    public int CompareTo(Time other) => TotalSeconds.CompareTo(other.TotalSeconds);
+
     #region Equality / Overrides
 
-    public override bool Equals(object? obj)
-    {
-        return obj is Time time && Hour == time.Hour && Minute == time.Minute && Second == time.Second;
-    }
+    public bool Equals(Time other) => Hour == other.Hour && Minute == other.Minute && Second == other.Second;
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Hour, Minute, Second);
-    }
+    public override bool Equals(object? obj) => obj is Time time && Equals(time);
 
-    public static bool operator ==(Time left, Time right)
-    {
-        return left.Equals(right);
-    }
+    public override int GetHashCode() => HashCode.Combine(Hour, Minute, Second);
 
-    public static bool operator !=(Time left, Time right)
-    {
-        return !(left == right);
-    }
+    public static bool operator ==(Time left, Time right) => left.Equals(right);
 
-    public override string ToString()
-    {
-        return $"{Hour}:{Minute}:{Second}";
-    }
+    public static bool operator !=(Time left, Time right) => !left.Equals(right);
+
+    public static bool operator <(Time left, Time right) => left.CompareTo(right) < 0;
+
+    public static bool operator <=(Time left, Time right) => left.CompareTo(right) <= 0;
+
+    public static bool operator >(Time left, Time right) => left.CompareTo(right) > 0;
+
+    public static bool operator >=(Time left, Time right) => left.CompareTo(right) >= 0;
+
+    public override string ToString() => $"{Hour}:{Minute}:{Second}";
 
     #endregion
 }

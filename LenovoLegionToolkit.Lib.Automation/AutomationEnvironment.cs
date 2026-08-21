@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,7 +25,11 @@ public class AutomationEnvironment
     private const string DEVICE_INSTANCE_IDS = "LLT_DEVICE_INSTANCE_IDS";
     private const string IS_SUNSET = "LLT_IS_SUNSET";
     private const string IS_SUNRISE = "LLT_IS_SUNRISE";
+    private const string IS_SUNRISE_TO_SUNSET = "LLT_IS_SUNRISE_TO_SUNSET";
+    private const string IS_SUNSET_TO_SUNRISE = "LLT_IS_SUNSET_TO_SUNRISE";
     private const string TIME = "LLT_TIME";
+    private const string START_TIME = "LLT_START_TIME";
+    private const string END_TIME = "LLT_END_TIME";
     private const string DAYS = "LLT_DAYS";
     private const string PERIOD = "LLT_PERIOD";
     private const string USER_ACTIVE = "LLT_IS_USER_ACTIVE";
@@ -143,7 +147,15 @@ public class AutomationEnvironment
 
     public bool IsSunrise { set => _dictionary[IS_SUNRISE] = value ? VALUE_TRUE : VALUE_FALSE; }
 
+    public bool IsSunriseToSunset { set => _dictionary[IS_SUNRISE_TO_SUNSET] = value ? VALUE_TRUE : VALUE_FALSE; }
+
+    public bool IsSunsetToSunrise { set => _dictionary[IS_SUNSET_TO_SUNRISE] = value ? VALUE_TRUE : VALUE_FALSE; }
+
     public Time? Time { set => _dictionary[TIME] = value is null ? null : $"{value.Value.Hour}:{value.Value.Minute}.{value.Value.Second}"; }
+
+    public Time? StartTime { set => _dictionary[START_TIME] = value is null ? null : $"{value.Value.Hour}:{value.Value.Minute}:{value.Value.Second}"; }
+
+    public Time? EndTime { set => _dictionary[END_TIME] = value is null ? null : $"{value.Value.Hour}:{value.Value.Minute}:{value.Value.Second}"; }
 
     public DayOfWeek[] Days { set => _dictionary[DAYS] = value.Length < 1 ? null : string.Join(",", value.Select(v => v.ToString().ToUpperInvariant())); }
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -389,7 +389,7 @@ public class AutomationProcessor(
             await processAutoListener.SubscribeChangedAsync(ProcessAutoListener_Changed).ConfigureAwait(false);
         }
 
-        if (triggers.OfType<ITimeAutomationPipelineTrigger>().Any() || triggers.OfType<IPeriodicAutomationPipelineTrigger>().Any())
+        if (triggers.OfType<ITimeAutomationPipelineTrigger>().Any() || triggers.OfType<ITimeRangeAutomationPipelineTrigger>().Any() || triggers.OfType<IPeriodicAutomationPipelineTrigger>().Any())
         {
             Log.Instance.Trace($"Starting time listener...");
 

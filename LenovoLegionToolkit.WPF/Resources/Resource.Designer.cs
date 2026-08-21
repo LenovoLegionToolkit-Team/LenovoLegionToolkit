@@ -10529,6 +10529,51 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Time range.
+        /// </summary>
+        public static string TimeRangeAutomationPipelineTriggerTabItemContent_CustomRange {
+            get {
+                return ResourceManager.GetString("TimeRangeAutomationPipelineTriggerTabItemContent_CustomRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From:.
+        /// </summary>
+        public static string TimeRangeAutomationPipelineTriggerTabItemContent_From {
+            get {
+                return ResourceManager.GetString("TimeRangeAutomationPipelineTriggerTabItemContent_From", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Between sunrise and sunset.
+        /// </summary>
+        public static string TimeRangeAutomationPipelineTriggerTabItemContent_SunriseToSunset {
+            get {
+                return ResourceManager.GetString("TimeRangeAutomationPipelineTriggerTabItemContent_SunriseToSunset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Between sunset and sunrise.
+        /// </summary>
+        public static string TimeRangeAutomationPipelineTriggerTabItemContent_SunsetToSunrise {
+            get {
+                return ResourceManager.GetString("TimeRangeAutomationPipelineTriggerTabItemContent_SunsetToSunrise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To:.
+        /// </summary>
+        public static string TimeRangeAutomationPipelineTriggerTabItemContent_To {
+            get {
+                return ResourceManager.GetString("TimeRangeAutomationPipelineTriggerTabItemContent_To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Allow switching between integrated and discrete GPU. 的本地化字符串。
         /// </summary>
         public static string ToggleHybridModeAutomationStepControl_Message {
