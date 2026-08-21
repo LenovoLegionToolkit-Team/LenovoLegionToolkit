@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using Windows.Win32;
@@ -7,84 +7,97 @@ using Windows.Win32.UI.WindowsAndMessaging;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
-using NeoSmart.AsyncLock;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
 
 public class SmartFnLockController(FnLockFeature feature, ApplicationSettings settings)
 {
-    private readonly AsyncLock _lock = new();
+    private readonly object _stateLock = new();
+    private CancellationTokenSource? _debounceCts;
 
     private bool _ctrlDepressed;
     private bool _shiftDepressed;
     private bool _altDepressed;
     private bool _restoreFnLock;
     private bool _wasModifierActive;
-    private long _latestEventId;
 
     public void OnKeyboardEvent(nuint wParam, KBDLLHOOKSTRUCT kbStruct)
     {
         if (settings.Store.SmartFnLockFlags == 0)
             return;
 
-        long currentEventId = Interlocked.Increment(ref _latestEventId);
-
-        Task.Run(async () =>
-        {
-            try
-            {
-                using (await _lock.LockAsync().ConfigureAwait(false))
-                    await OnKeyboardEventAsync(wParam, kbStruct, currentEventId).ConfigureAwait(false);
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Failed to handle keyboard event.", ex);
-            }
-        });
-    }
-
-    private async Task OnKeyboardEventAsync(nuint wParam, KBDLLHOOKSTRUCT kbStruct, long eventId)
-    {
         bool isModifierActive = IsModifierKeyPressed(wParam, kbStruct);
 
-        if (isModifierActive == _wasModifierActive)
-            return;
-
-        Log.Instance.Trace($"Modifier key state changed. Active: {isModifierActive} [ctrl={_ctrlDepressed}, shift={_shiftDepressed}, alt={_altDepressed}, flags={settings.Store.SmartFnLockFlags}]");
-
-        _wasModifierActive = isModifierActive;
-
-        bool isLatestEvent = Interlocked.Read(ref _latestEventId) == eventId;
-
-        if (isModifierActive)
+        lock (_stateLock)
         {
-            if (_restoreFnLock)
+            if (isModifierActive == _wasModifierActive)
                 return;
 
-            if (!isLatestEvent)
-                return;
+            _wasModifierActive = isModifierActive;
 
-            var state = await feature.GetStateAsync().ConfigureAwait(false);
-            if (state == FnLockState.Off)
-                return;
+            _debounceCts?.Cancel();
+            _debounceCts?.Dispose();
+            _debounceCts = new CancellationTokenSource();
+            var ct = _debounceCts.Token;
 
-            if (Interlocked.Read(ref _latestEventId) != eventId)
-                return;
+            if (isModifierActive)
+            {
+                if (_restoreFnLock)
+                    return;
 
-            Log.Instance.Trace($"Disabling Fn Lock temporarily...");
+                Task.Run(async () =>
+                {
+                    try
+                    {
+                        await Task.Delay(40, ct).ConfigureAwait(false);
+                        if (ct.IsCancellationRequested)
+                            return;
 
-            await feature.SetStateAsync(FnLockState.Off).ConfigureAwait(false);
-            _restoreFnLock = true;
-        }
-        else if (_restoreFnLock)
-        {
-            if (!isLatestEvent)
-                return;
+                        var state = await feature.GetStateAsync().ConfigureAwait(false);
+                        if (state == FnLockState.Off || ct.IsCancellationRequested)
+                            return;
 
-            Log.Instance.Trace($"Re-enabling Fn Lock...");
+                        lock (_stateLock)
+                        {
+                            if (ct.IsCancellationRequested)
+                                return;
 
-            await feature.SetStateAsync(FnLockState.On).ConfigureAwait(false);
-            _restoreFnLock = false;
+                            _restoreFnLock = true;
+                        }
+
+                        if (Log.Instance.IsTraceEnabled)
+                            Log.Instance.Trace($"Disabling Fn Lock temporarily...");
+
+                        await feature.SetStateAsync(FnLockState.Off, verify: false).ConfigureAwait(false);
+                    }
+                    catch (OperationCanceledException) { }
+                    catch (Exception ex)
+                    {
+                        if (Log.Instance.IsTraceEnabled)
+                            Log.Instance.Trace($"Failed to handle keyboard event: {ex.Message}");
+                    }
+                }, ct);
+            }
+            else if (_restoreFnLock)
+            {
+                _restoreFnLock = false;
+
+                Task.Run(async () =>
+                {
+                    try
+                    {
+                        if (Log.Instance.IsTraceEnabled)
+                            Log.Instance.Trace($"Re-enabling Fn Lock...");
+
+                        await feature.SetStateAsync(FnLockState.On, verify: false).ConfigureAwait(false);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (Log.Instance.IsTraceEnabled)
+                            Log.Instance.Trace($"Failed to handle keyboard event: {ex.Message}");
+                    }
+                });
+            }
         }
     }
 
@@ -93,13 +106,13 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
         var isKeyDown = wParam is PInvoke.WM_KEYDOWN or PInvoke.WM_SYSKEYDOWN;
         var vkKeyCode = (VIRTUAL_KEY)kbStruct.vkCode;
 
-        if (vkKeyCode is VIRTUAL_KEY.VK_LCONTROL or VIRTUAL_KEY.VK_RCONTROL)
+        if (vkKeyCode is VIRTUAL_KEY.VK_LCONTROL or VIRTUAL_KEY.VK_RCONTROL or VIRTUAL_KEY.VK_CONTROL)
             _ctrlDepressed = isKeyDown;
 
-        if (vkKeyCode is VIRTUAL_KEY.VK_LSHIFT or VIRTUAL_KEY.VK_RSHIFT)
+        if (vkKeyCode is VIRTUAL_KEY.VK_LSHIFT or VIRTUAL_KEY.VK_RSHIFT or VIRTUAL_KEY.VK_SHIFT)
             _shiftDepressed = isKeyDown;
 
-        if (vkKeyCode is VIRTUAL_KEY.VK_LMENU or VIRTUAL_KEY.VK_RMENU)
+        if (vkKeyCode is VIRTUAL_KEY.VK_LMENU or VIRTUAL_KEY.VK_RMENU or VIRTUAL_KEY.VK_MENU)
             _altDepressed = isKeyDown;
 
         if (!_ctrlDepressed && !_shiftDepressed && !_altDepressed)

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -60,7 +60,9 @@ public abstract class AbstractDriverFeature<T>(
         return state;
     }
 
-    public virtual async Task SetStateAsync(T state)
+    public virtual Task SetStateAsync(T state) => SetStateAsync(state, verify: true);
+
+    public virtual async Task SetStateAsync(T state, bool verify)
     {
         _lastSetCts?.Cancel();
         _lastSetCts = new CancellationTokenSource();
@@ -79,7 +81,8 @@ public abstract class AbstractDriverFeature<T>(
 
             LastState = state;
 
-            await VerifyStateSetAsync(state, ct).ConfigureAwait(false);
+            if (verify)
+                await VerifyStateSetAsync(state, ct).ConfigureAwait(false);
 
             Log.Instance.Trace($"State set to {state} [feature={GetType().Name}]");
         }
