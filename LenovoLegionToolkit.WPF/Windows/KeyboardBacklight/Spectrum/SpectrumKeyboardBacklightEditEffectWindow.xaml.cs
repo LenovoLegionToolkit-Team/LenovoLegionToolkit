@@ -227,12 +227,7 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
         _colorModeComboBox.SetItems(
             [LENOVO_SPECTRUM_COLOR_MODE.ColorList, LENOVO_SPECTRUM_COLOR_MODE.RandomColor],
             LENOVO_SPECTRUM_COLOR_MODE.ColorList,
-            e => e switch
-            {
-                LENOVO_SPECTRUM_COLOR_MODE.ColorList => Resource.Spectrum_Color_Mode_Customize,
-                LENOVO_SPECTRUM_COLOR_MODE.RandomColor => Resource.Spectrum_Color_Mode_Random_Color,
-                _ => string.Empty
-            });
+            e => e.GetDisplayName());
         _multiColorPicker.SelectedColors = [Colors.White];
     }
 

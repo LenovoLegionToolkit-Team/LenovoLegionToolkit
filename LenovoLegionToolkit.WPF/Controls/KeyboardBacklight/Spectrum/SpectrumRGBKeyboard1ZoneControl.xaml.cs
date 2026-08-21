@@ -10,7 +10,6 @@ using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.WPF.Extensions;
-using LenovoLegionToolkit.WPF.Resources;
 using Wpf.Ui.Common;
 using Wpf.Ui.Controls;
 using Button = Wpf.Ui.Controls.Button;
@@ -187,9 +186,7 @@ public partial class SpectrumRGBKeyboard1ZoneControl
             _effectComboBox.SetItems(
                 [SpectrumKeyboardBacklightEffectType.Always, SpectrumKeyboardBacklightEffectType.ColorPulse],
                 effectType,
-                v => v == SpectrumKeyboardBacklightEffectType.ColorPulse
-                    ? Resource.ResourceManager.GetString("Breath_Breath") ?? "Breath"
-                    : v.GetDisplayName());
+                v => v.GetDisplayName());
             _speedComboBox.SetItems(
                 [SpectrumKeyboardBacklightSpeed.Speed1, SpectrumKeyboardBacklightSpeed.Speed2, SpectrumKeyboardBacklightSpeed.Speed3],
                 speed,
@@ -197,14 +194,7 @@ public partial class SpectrumRGBKeyboard1ZoneControl
             _colorModeComboBox.SetItems(
                 [LENOVO_SPECTRUM_COLOR_MODE.ColorList, LENOVO_SPECTRUM_COLOR_MODE.RandomColor],
                 colorMode,
-                v => v switch
-                {
-                    LENOVO_SPECTRUM_COLOR_MODE.RandomColor =>
-                        Resource.ResourceManager.GetString("Random_Color") ?? "Random color",
-                    LENOVO_SPECTRUM_COLOR_MODE.ColorList =>
-                        Resource.ResourceManager.GetString("Setting_Customize") ?? "Customize",
-                    _ => string.Empty
-                });
+                v => v.GetDisplayName());
             _zone1ColorPicker.SelectedColor = color.ToColor();
         }
         finally

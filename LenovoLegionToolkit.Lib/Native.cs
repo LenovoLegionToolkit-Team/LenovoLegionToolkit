@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.IO;
 using System.Runtime.InteropServices;
+using LenovoLegionToolkit.Lib.Resources;
 
 namespace LenovoLegionToolkit.Lib;
 
@@ -93,7 +95,9 @@ public enum LENOVO_SPECTRUM_EFFECT_TYPE : byte
 public enum LENOVO_SPECTRUM_COLOR_MODE : byte
 {
     None = 0,
+    [Display(ResourceType = typeof(Resource), Name = nameof(Resource.Spectrum_Color_Mode_Random_Color))]
     RandomColor = 1,
+    [Display(ResourceType = typeof(Resource), Name = nameof(Resource.Spectrum_Color_Mode_Customize))]
     ColorList = 2
 }
 
