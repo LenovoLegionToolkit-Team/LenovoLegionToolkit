@@ -959,21 +959,6 @@
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>Απενεργοποίηση της διακριτής GPU εάν είναι άσκοπα ενεργή.</value>
   </data>
-  <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
-    <value>Auto (Dynamic)</value>
-  </data>
-  <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
-    <value>Current: {0}</value>
-  </data>
-  <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Lock the discrete GPU to a specific performance state.</value>
-  </data>
-  <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
-  </data>
-  <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
-    <value>P-State Control</value>
-  </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
     <value>Διάφορα</value>
   </data>
@@ -1006,6 +991,21 @@
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Διεργασίες</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
+    <value>Auto (Dynamic)</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
+    <value>Current: {0}</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
+    <value>Lock the discrete GPU to a specific performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
+    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
+    <value>P-State Control</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Επανεκκίνηση GPU</value>
@@ -1472,6 +1472,18 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
     <value>Αισθητήρες Υλικού</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
+    <value>Enable auto color management (ACM) on the built-in display.</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
+  <data name="AutoColorManagementControl_Message" xml:space="preserve">
+    <value>Enable auto color management (ACM) on the built-in display.</value>
+  </data>
+  <data name="AutoColorManagementControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
     <value>Ενεργοποίηση υψηλού δυναμικού εύρους (HDR) στην ενσωματωμένη οθόνη.</value>
