@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.System;
@@ -27,7 +27,7 @@ public class HDRFeature(RefreshRateFeature refreshRateFeature) : IFeature<HDRSta
                 return false;
             }
 
-            var isSupported = display.GetAdvancedColorInfo().AdvancedColorSupported;
+            var isSupported = display.GetAdvancedColorInfo().HighDynamicRangeSupported;
 
             Log.Instance.Trace($"HDR support: {isSupported}");
 
@@ -63,7 +63,7 @@ public class HDRFeature(RefreshRateFeature refreshRateFeature) : IFeature<HDRSta
         if (display is null)
             throw new InvalidOperationException("Built in display not found");
 
-        var result = display.GetAdvancedColorInfo().AdvancedColorEnabled ? HDRState.On : HDRState.Off;
+        var result = display.GetAdvancedColorInfo().HighDynamicRangeEnabled ? HDRState.On : HDRState.Off;
 
         Log.Instance.Trace($"HDR is {result}");
 
@@ -89,7 +89,7 @@ public class HDRFeature(RefreshRateFeature refreshRateFeature) : IFeature<HDRSta
 
         Log.Instance.Trace($"Setting display HDR to {state}");
 
-        display.SetAdvancedColorState(state == HDRState.On);
+        display.SetHdrState(state == HDRState.On);
 
         await refreshRateFeature.SetStateAsync(currentRefreshRate).ConfigureAwait(false);
     }

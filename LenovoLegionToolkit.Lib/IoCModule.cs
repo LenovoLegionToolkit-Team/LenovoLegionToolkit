@@ -64,6 +64,7 @@ public class IoCModule : Module
         builder.Register<FlipToStartUEFIFeature>(true);
         builder.Register<FnLockFeature>();
         builder.Register<GSyncFeature>();
+        builder.Register<AutoColorManagementFeature>();
         builder.Register<HDRFeature>();
         builder.Register<BiosHybridModeFeature>(true);
         builder.Register<HybridModeFeature>();

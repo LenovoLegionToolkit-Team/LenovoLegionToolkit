@@ -181,6 +181,7 @@ public partial class AutomationPage
             new GodModePresetAutomationStep(default),
             new HardwareSensorsAutomationStep(default),
             new HDRAutomationStep(default),
+            new AutoColorManagementAutomationStep(default),
             new ITSModeAutomationStep(default),
             new HybridModeAutomationStep(default),
             new InstantBootAutomationStep(default),

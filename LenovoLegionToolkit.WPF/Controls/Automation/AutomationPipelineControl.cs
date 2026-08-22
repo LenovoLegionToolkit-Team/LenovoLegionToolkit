@@ -591,6 +591,7 @@ public class AutomationPipelineControl : UserControl
                 GodModePresetAutomationStep s => new GodModePresetAutomationStepControl(s),
                 HardwareSensorsAutomationStep s => new HardwareSensorsAutomationStepControl(s),
                 HDRAutomationStep s => new HDRAutomationStepControl(s),
+                AutoColorManagementAutomationStep s => new AutoColorManagementAutomationStepControl(s),
                 HybridModeAutomationStep s => await HybridModeAutomationStepControlFactory.GetControlAsync(s),
                 ITSModeAutomationStep s => new ITSModeAutomationStepControl(s),
                 InstantBootAutomationStep s => new InstantBootAutomationStepControl(s),

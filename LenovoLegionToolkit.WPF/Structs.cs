@@ -1,4 +1,4 @@
-﻿using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using System;
@@ -115,6 +115,7 @@ public readonly struct DashboardGroup(DashboardGroupType type, string? customNam
                 DashboardItem.RefreshRate,
                 DashboardItem.DpiScale,
                 DashboardItem.Hdr,
+                DashboardItem.AutoColorManagement,
                 DashboardItem.OverDrive,
                 DashboardItem.TurnOffMonitors),
             new(DashboardGroupType.Other, null,

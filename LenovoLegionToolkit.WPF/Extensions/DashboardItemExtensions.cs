@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.WPF.Controls;
@@ -24,6 +24,7 @@ public static class DashboardItemExtensions
         DashboardItem.RefreshRate => SymbolRegular.DesktopPulse24,
         DashboardItem.DpiScale => SymbolRegular.TextFontSize24,
         DashboardItem.Hdr => SymbolRegular.Hdr24,
+        DashboardItem.AutoColorManagement => SymbolRegular.Color24,
         DashboardItem.OverDrive => SymbolRegular.TopSpeed24,
         DashboardItem.PanelLogoBacklight => SymbolRegular.LightbulbCircle24,
         DashboardItem.PortsBacklight => SymbolRegular.UsbPlug24,
@@ -52,6 +53,7 @@ public static class DashboardItemExtensions
         DashboardItem.RefreshRate => Resource.RefreshRateControl_Title,
         DashboardItem.DpiScale => Resource.DpiScaleControl_Title,
         DashboardItem.Hdr => Resource.HDRControl_Title,
+        DashboardItem.AutoColorManagement => Resource.AutoColorManagementControl_Title,
         DashboardItem.OverDrive => Resource.OverDriveControl_Title,
         DashboardItem.PanelLogoBacklight => Resource.PanelLogoBacklightControl_Title,
         DashboardItem.PortsBacklight => Resource.PortsBacklightControl_Title,
@@ -80,6 +82,7 @@ public static class DashboardItemExtensions
         DashboardItem.RefreshRate => [new RefreshRateControl()],
         DashboardItem.DpiScale => [new DpiScaleControl()],
         DashboardItem.Hdr => [new HDRControl()],
+        DashboardItem.AutoColorManagement => [new AutoColorManagementControl()],
         DashboardItem.OverDrive => [new OverDriveControl()],
         DashboardItem.PanelLogoBacklight => [new PanelLogoBacklightControl()],
         DashboardItem.PortsBacklight => [new PortsBacklightControl()],

@@ -241,6 +241,14 @@ public enum HardwareUpdateScope
     All = AllNonStorage | Storage
 }
 
+public enum AutoColorManagementState
+{
+    [Display(ResourceType = typeof(Resource), Name = "AutoColorManagementState_Off")]
+    Off,
+    [Display(ResourceType = typeof(Resource), Name = "AutoColorManagementState_On")]
+    On
+}
+
 public enum HDRState
 {
     [Display(ResourceType = typeof(Resource), Name = "HDRState_Off")]

@@ -1,0 +1,28 @@
+using System;
+using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Automation.Steps;
+using LenovoLegionToolkit.Lib.Listeners;
+using LenovoLegionToolkit.WPF.Resources;
+using Wpf.Ui.Common;
+
+namespace LenovoLegionToolkit.WPF.Controls.Automation.Steps;
+
+public class AutoColorManagementAutomationStepControl : AbstractComboBoxAutomationStepCardControl<AutoColorManagementState>
+{
+    private readonly DisplayConfigurationListener _listener = IoCContainer.Resolve<DisplayConfigurationListener>();
+
+    public AutoColorManagementAutomationStepControl(IAutomationStep<AutoColorManagementState> step) : base(step)
+    {
+        Icon = SymbolRegular.Color24;
+        Title = Resource.AutoColorManagementAutomationStepControl_Title;
+        Subtitle = Resource.AutoColorManagementAutomationStepControl_Message;
+
+        _listener.Changed += Listener_Changed;
+    }
+
+    private void Listener_Changed(object? sender, EventArgs e) => Dispatcher.Invoke(async () =>
+    {
+        if (IsLoaded)
+            await RefreshAsync();
+    });
+}

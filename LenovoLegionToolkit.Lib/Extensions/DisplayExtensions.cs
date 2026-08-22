@@ -175,4 +175,16 @@ public static class DisplayExtensions
         var pathDisplayTarget = display.ToPathDisplayTarget();
         pathDisplayTarget?.SetAdvancedColorState(state);
     }
+
+    public static void SetHdrState(this Display display, bool state)
+    {
+        var pathDisplayTarget = display.ToPathDisplayTarget();
+        pathDisplayTarget?.SetHdrState(state);
+    }
+
+    public static void SetWcgState(this Display display, bool state)
+    {
+        var pathDisplayTarget = display.ToPathDisplayTarget();
+        pathDisplayTarget?.SetWcgState(state);
+    }
 }
