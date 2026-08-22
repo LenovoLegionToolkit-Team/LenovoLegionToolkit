@@ -958,21 +958,6 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   <data name="DiscreteGPUControl_Message" xml:space="preserve">
     <value>Gereksiz yere etkinse harici GPU'yu devre dışı bırakın.</value>
   </data>
-  <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
-    <value>Auto (Dynamic)</value>
-  </data>
-  <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
-    <value>Current: {0}</value>
-  </data>
-  <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Lock the discrete GPU to a specific performance state.</value>
-  </data>
-  <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
-  </data>
-  <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
-    <value>P-State Control</value>
-  </data>
   <data name="DiscreteGPUControl_MiscellaneousTabLabel" xml:space="preserve">
     <value>Diğer</value>
   </data>
@@ -1005,6 +990,21 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   </data>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>İşlemler</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
+    <value>Auto (Dynamic)</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
+    <value>Current: {0}</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
+    <value>Lock the discrete GPU to a specific performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
+    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
+    <value>P-State Control</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>GPU'yu yeniden başlat</value>
@@ -1471,6 +1471,18 @@ Cidden, bu seçeneğe dikkat edin!</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
     <value>Donanım Sensörleri</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
+    <value>Enable auto color management (ACM) on the built-in display.</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
+  <data name="AutoColorManagementControl_Message" xml:space="preserve">
+    <value>Enable auto color management (ACM) on the built-in display.</value>
+  </data>
+  <data name="AutoColorManagementControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
     <value>Dahili ekranda yüksek dinamik aralığı (HDR) etkinleştirin.</value>
