@@ -267,8 +267,7 @@ public class SpecialKeyListener(
     private static void ToggleAirplaneMode()
     {
         var isAirplaneModeOn = AirplaneMode.Toggle();
-        MessagingCenter.Publish(new NotificationMessage(
-            isAirplaneModeOn ? NotificationType.AirplaneModeOn : NotificationType.AirplaneModeOff));
+        MessagingCenter.Publish(new NotificationMessage(isAirplaneModeOn ? NotificationType.AirplaneModeOn : NotificationType.AirplaneModeOff));
     }
 
     public async Task TogglePrecisionTouchPad()
