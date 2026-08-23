@@ -23,16 +23,16 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         var display = await InternalDisplay.GetAsync().ConfigureAwait(true);
         if (display is null)
         {
-            Log.Instance.Trace($"Built in display not found");
+            Log.Instance.Trace($"Display not found");
 
             return [];
         }
 
-        Log.Instance.Trace($"Built in display found: {display}");
+        Log.Instance.Trace($"Display found: {display}");
 
         var currentSettings = display.DisplayScreen.CurrentSetting;
 
-        Log.Instance.Trace($"Current built in display settings: {currentSettings.ToExtendedString()}");
+        Log.Instance.Trace($"Current display settings: {currentSettings.ToExtendedString()}");
 
         var result = display.DisplayScreen.GetPossibleSettings()
             .Where(dps => Match(dps, currentSettings))
@@ -71,7 +71,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         var display = await InternalDisplay.GetAsync().ConfigureAwait(true);
         if (display is null)
         {
-            Log.Instance.Trace($"Built in display not found");
+            Log.Instance.Trace($"Display not found");
 
             return default(RefreshRate);
         }
@@ -121,14 +121,14 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         var display = await InternalDisplay.GetAsync().ConfigureAwait(true);
         if (display is null)
         {
-            Log.Instance.Trace($"Built in display not found");
-            throw new InvalidOperationException("Built in display not found");
+            Log.Instance.Trace($"Display not found");
+            throw new InvalidOperationException("Display not found");
         }
 
         var currentSettings = display.DisplayScreen.CurrentSetting;
         var currentState = await GetStateAsync();
 
-        Log.Instance.Trace($"Current built in display settings: {currentSettings.ToExtendedString()} (reported: {currentState})");
+        Log.Instance.Trace($"Current display settings: {currentSettings.ToExtendedString()} (reported: {currentState})");
 
         if (currentState == state)
         {

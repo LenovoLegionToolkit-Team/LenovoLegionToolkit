@@ -6,7 +6,7 @@ using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Features;
 
-public class AutoColorManagementFeature : IFeature<AutoColorManagementState>
+public class AutoColorManagementFeature(RefreshRateFeature refreshRateFeature) : IFeature<AutoColorManagementState>
 {
     public async Task<bool> IsSupportedAsync()
     {
@@ -22,7 +22,7 @@ public class AutoColorManagementFeature : IFeature<AutoColorManagementState>
             var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
             if (display is null)
             {
-                Log.Instance.Trace($"Built in display not found");
+                Log.Instance.Trace($"Display not found");
 
                 return false;
             }
@@ -50,7 +50,7 @@ public class AutoColorManagementFeature : IFeature<AutoColorManagementState>
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
 
         if (display is null)
-            throw new InvalidOperationException("Built in display not found");
+            throw new InvalidOperationException("Display not found");
 
         var result = display.GetAdvancedColorInfo().AutoColorManagementEnabled ? AutoColorManagementState.On : AutoColorManagementState.Off;
 
@@ -72,10 +72,14 @@ public class AutoColorManagementFeature : IFeature<AutoColorManagementState>
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
 
         if (display is null)
-            throw new InvalidOperationException("Built in display not found");
+            throw new InvalidOperationException("Display not found");
+
+        var currentRefreshRate = await refreshRateFeature.GetStateAsync().ConfigureAwait(false);
 
         Log.Instance.Trace($"Setting display Auto Color Management to {state}");
 
         display.SetWcgState(state == AutoColorManagementState.On);
+
+        await refreshRateFeature.SetStateAsync(currentRefreshRate).ConfigureAwait(false);
     }
 }

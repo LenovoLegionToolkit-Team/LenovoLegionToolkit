@@ -19,7 +19,7 @@ public class DpiScaleFeature : IFeature<DpiScale>
         var pds = display?.DisplayScreen?.ToPathDisplaySource();
         if (pds is null)
         {
-            Log.Instance.Trace($"Built in display not found");
+            Log.Instance.Trace($"Display not found");
 
             return [];
         }
@@ -48,7 +48,7 @@ public class DpiScaleFeature : IFeature<DpiScale>
         var pds = display?.DisplayScreen?.ToPathDisplaySource();
         if (pds is null)
         {
-            Log.Instance.Trace($"Built in display not found");
+            Log.Instance.Trace($"Display not found");
 
             return default(DpiScale);
         }
@@ -66,8 +66,8 @@ public class DpiScaleFeature : IFeature<DpiScale>
         var pds = display?.DisplayScreen?.ToPathDisplaySource();
         if (pds is null)
         {
-            Log.Instance.Trace($"Built in display not found");
-            throw new InvalidOperationException("Built in display not found");
+            Log.Instance.Trace($"Display not found");
+            throw new InvalidOperationException("Display not found");
         }
 
         if ((int)pds.CurrentDPIScale == state.Scale)

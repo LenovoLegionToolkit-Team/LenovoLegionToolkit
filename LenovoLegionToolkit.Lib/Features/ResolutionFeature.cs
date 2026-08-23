@@ -20,16 +20,16 @@ public class ResolutionFeature : IFeature<Resolution>
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
         if (display is null)
         {
-            Log.Instance.Trace($"Built in display not found");
+            Log.Instance.Trace($"Display not found");
 
             return [];
         }
 
-        Log.Instance.Trace($"Built in display found: {display}");
+        Log.Instance.Trace($"Display found: {display}");
 
         var currentSettings = display.DisplayScreen.CurrentSetting;
 
-        Log.Instance.Trace($"Current built in display settings: {currentSettings.ToExtendedString()}");
+        Log.Instance.Trace($"Current display settings: {currentSettings.ToExtendedString()}");
 
         var result = display.DisplayScreen.GetPossibleSettings()
             .Where(dps => Match(dps, currentSettings))
@@ -51,7 +51,7 @@ public class ResolutionFeature : IFeature<Resolution>
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
         if (display is null)
         {
-            Log.Instance.Trace($"Built in display not found");
+            Log.Instance.Trace($"Display not found");
 
             return default(Resolution);
         }
@@ -69,8 +69,8 @@ public class ResolutionFeature : IFeature<Resolution>
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
         if (display is null)
         {
-            Log.Instance.Trace($"Built in display not found");
-            throw new InvalidOperationException("Built in display not found");
+            Log.Instance.Trace($"Display not found");
+            throw new InvalidOperationException("Display not found");
         }
 
         var currentSettings = display.DisplayScreen.CurrentSetting;
@@ -83,7 +83,7 @@ public class ResolutionFeature : IFeature<Resolution>
 
         var possibleSettings = display.DisplayScreen.GetPossibleSettings();
 
-        Log.Instance.Trace($"Current built in display settings: {currentSettings.ToExtendedString()}");
+        Log.Instance.Trace($"Current display settings: {currentSettings.ToExtendedString()}");
 
         var newSettings = possibleSettings
             .Where(dps => Match(dps, currentSettings))

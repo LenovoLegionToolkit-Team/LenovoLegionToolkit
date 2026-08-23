@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
@@ -61,7 +61,7 @@ public class DisplayConfigurationListener : IListener<DisplayConfigurationListen
     {
         try
         {
-            return Displays.Get().FirstOrDefault()?.GetAdvancedColorInfo().AdvancedColorEnabled;
+            return InternalDisplay.Get()?.GetAdvancedColorInfo().HighDynamicRangeEnabled;
         }
         catch (Exception ex)
         {

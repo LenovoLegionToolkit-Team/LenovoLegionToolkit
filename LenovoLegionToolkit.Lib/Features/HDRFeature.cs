@@ -22,7 +22,7 @@ public class HDRFeature(RefreshRateFeature refreshRateFeature) : IFeature<HDRSta
             var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
             if (display is null)
             {
-                Log.Instance.Trace($"Built in display not found");
+                Log.Instance.Trace($"Display not found");
 
                 return false;
             }
@@ -46,7 +46,7 @@ public class HDRFeature(RefreshRateFeature refreshRateFeature) : IFeature<HDRSta
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
 
         if (display is null)
-            throw new InvalidOperationException("Built in display not found");
+            throw new InvalidOperationException("Display not found");
 
         var result = display.GetAdvancedColorInfo().AdvancedColorForceDisabled;
         return result;
@@ -61,7 +61,7 @@ public class HDRFeature(RefreshRateFeature refreshRateFeature) : IFeature<HDRSta
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
 
         if (display is null)
-            throw new InvalidOperationException("Built in display not found");
+            throw new InvalidOperationException("Display not found");
 
         var result = display.GetAdvancedColorInfo().HighDynamicRangeEnabled ? HDRState.On : HDRState.Off;
 
@@ -83,7 +83,7 @@ public class HDRFeature(RefreshRateFeature refreshRateFeature) : IFeature<HDRSta
         var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
 
         if (display is null)
-            throw new InvalidOperationException("Built in display not found");
+            throw new InvalidOperationException("Display not found");
 
         var currentRefreshRate = await refreshRateFeature.GetStateAsync().ConfigureAwait(false);
 
