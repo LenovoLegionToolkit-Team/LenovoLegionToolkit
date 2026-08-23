@@ -20,7 +20,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
     {
         Log.Instance.Trace($"Getting all refresh rates...");
 
-        var display = await InternalDisplay.GetAsync().ConfigureAwait(true);
+        var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
         if (display is null)
         {
             Log.Instance.Trace($"Display not found");
@@ -51,7 +51,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
                 var displayTarget = display.ToPathDisplayTarget();
                 var pathInfos = WindowsDisplayAPI.DisplayConfig.PathInfo.GetActivePaths(virtualModeAware: true);
                 var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource && (displayTarget is null || p.TargetsInfo.Any(t => t.DisplayTarget == displayTarget)));
-                if (activePath is not null && activePath.TargetsInfo.Any(t => t.IsVirtualModeSupportedByPath))
+                if (activePath is not null && activePath.TargetsInfo.Where(t => displayTarget is null || t.DisplayTarget == displayTarget).Any(t => t.IsVirtualModeSupportedByPath))
                 {
                     var lowFreq = GetDynamicLowFrequency(maxFreq, result.Select(r => r.Frequency));
                     result.Add(new RefreshRate(maxFreq, isDynamic: true, baseFrequency: lowFreq));
@@ -68,7 +68,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
     {
         Log.Instance.Trace($"Getting current refresh rate...");
 
-        var display = await InternalDisplay.GetAsync().ConfigureAwait(true);
+        var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
         if (display is null)
         {
             Log.Instance.Trace($"Display not found");
@@ -82,7 +82,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource && (displayTarget is null || p.TargetsInfo.Any(t => t.DisplayTarget == displayTarget)));
         if (activePath is not null)
         {
-            var target = activePath.TargetsInfo.FirstOrDefault(t => t.IsCurrentlyInUse || t.IsPathActive);
+            var target = activePath.TargetsInfo.FirstOrDefault(t => (displayTarget is null || t.DisplayTarget == displayTarget) && (t.IsCurrentlyInUse || t.IsPathActive));
             if (target is not null)
             {
                 if (target.IsBoostRefreshRate)
@@ -118,7 +118,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
 
     public async Task SetStateAsync(RefreshRate state)
     {
-        var display = await InternalDisplay.GetAsync().ConfigureAwait(true);
+        var display = await InternalDisplay.GetAsync().ConfigureAwait(false);
         if (display is null)
         {
             Log.Instance.Trace($"Display not found");
@@ -126,7 +126,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         }
 
         var currentSettings = display.DisplayScreen.CurrentSetting;
-        var currentState = await GetStateAsync();
+        var currentState = await GetStateAsync().ConfigureAwait(false);
 
         Log.Instance.Trace($"Current display settings: {currentSettings.ToExtendedString()} (reported: {currentState})");
 
