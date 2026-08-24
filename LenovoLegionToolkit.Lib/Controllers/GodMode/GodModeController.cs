@@ -529,7 +529,7 @@ public class GodModeController(
             allCapabilityData = allCapabilityData.ToArray();
 
             var knownIds = config.Capabilities
-                .Where(c => !c.UseNvApiWrapper)
+                .Where(c => !IsNvApiCapability(c))
                 .Select(c => c.RawId)
                 .ToHashSet();
             var capabilityData = allCapabilityData
@@ -560,7 +560,7 @@ public class GodModeController(
                 stepperValues[rawId] = new StepperValue(value, c.Min, c.Max, c.Step, steps, c.DefaultValue);
             }
 
-            foreach (var cap in config.Capabilities.Where(c => c.UseNvApiWrapper))
+            foreach (var cap in config.Capabilities.Where(IsNvApiCapability))
             {
                 try
                 {
@@ -577,10 +577,10 @@ public class GodModeController(
         {
             foreach (var cap in config.Capabilities)
             {
-                if (cap.OnlyWhenNativeCapabilityIsUnavailable)
+                if (config.Platform == GodModePlatform.NonGaming && IsNvApiCapability(cap))
                 {
                     var nativeCapability = config.Capabilities.FirstOrDefault(c =>
-                        !c.UseNvApiWrapper &&
+                        !IsNvApiCapability(c) &&
                         c.PropertyName == nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline));
 
                     if (nativeCapability != null && stepperValues.ContainsKey(nativeCapability.RawId))
@@ -1162,13 +1162,18 @@ public class GodModeController(
         return WMI.LenovoOtherMethod.SetFeatureValueAsync(idRaw, value);
     }
 
+    private static bool IsNvApiCapability(GodModeCapabilityEntry capability)
+    {
+        return capability.CapabilityId.GetType() == typeof(NvApiCapabilityID);
+    }
+
     private static Task<int> GetCapabilityValueAsync(GodModeCapabilityEntry capability, uint mask) =>
-        capability.UseNvApiWrapper
+        IsNvApiCapability(capability)
             ? GetPcfTotalProcessingPowerTargetOffsetAsync()
             : GetValueAsync(capability.RawId, mask);
 
     private static Task SetCapabilityValueAsync(GodModeCapabilityEntry capability, int value, uint mask) =>
-        capability.UseNvApiWrapper
+        IsNvApiCapability(capability)
             ? SetPcfTotalProcessingPowerTargetOffsetAsync(value)
             : SetValueAsync(capability.RawId, value, mask);
 
