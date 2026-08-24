@@ -45,7 +45,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         if (OSExtensions.GetCurrent() == OS.Windows11 && result.Count > 0)
         {
             var maxFreq = result.Max(r => r.Frequency);
-            if (maxFreq > MinimumDrrFrequency)
+            if (maxFreq >= 120 && display.IsInternal)
             {
                 var displaySource = display.DisplayScreen.ToPathDisplaySource();
                 var displayTarget = display.ToPathDisplayTarget();
@@ -53,10 +53,13 @@ public class RefreshRateFeature : IFeature<RefreshRate>
                 var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource && (displayTarget is null || p.TargetsInfo.Any(t => t.DisplayTarget == displayTarget)));
                 var targetInfo = activePath?.TargetsInfo.FirstOrDefault(t => displayTarget is null || t.DisplayTarget == displayTarget);
 
-                if (targetInfo is not null && targetInfo.IsVirtualModeSupportedByPath && (targetInfo.IsBoostRefreshRate || targetInfo.IsDynamicRefreshRateSupported))
+                if (targetInfo is not null && (targetInfo.IsVirtualModeSupportedByPath || targetInfo.IsBoostRefreshRate) && targetInfo.IsDynamicRefreshRateSupported)
                 {
                     var lowFreq = GetDynamicLowFrequency(maxFreq, result.Select(r => r.Frequency));
-                    result.Add(new RefreshRate(maxFreq, isDynamic: true, baseFrequency: lowFreq));
+                    if (lowFreq < maxFreq)
+                    {
+                        result.Add(new RefreshRate(maxFreq, isDynamic: true, baseFrequency: lowFreq));
+                    }
                 }
             }
         }
@@ -90,7 +93,12 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         if (target is not null && target.IsBoostRefreshRate)
         {
             var allStates = await GetAllStatesAsync().ConfigureAwait(false);
-            var dynamicState = allStates.FirstOrDefault(r => r.IsDynamic && r.Frequency == reportedFrequency);
+            var dynamicState = allStates.FirstOrDefault(r => r.IsDynamic && (r.BaseFrequency == reportedFrequency || r.Frequency == reportedFrequency));
+            if (!dynamicState.IsDynamic)
+            {
+                dynamicState = allStates.FirstOrDefault(r => r.IsDynamic);
+            }
+
             if (dynamicState.IsDynamic)
             {
                 Log.Instance.Trace($"Current refresh rate is {dynamicState}");
