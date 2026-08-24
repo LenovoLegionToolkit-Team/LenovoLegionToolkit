@@ -409,6 +409,18 @@
   <data name="ArgumentWindow_Title" xml:space="preserve">
     <value>Ventana de argumentos</value>
   </data>
+  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
+  <data name="AutoColorManagementControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>Activar</value>
   </data>
@@ -994,9 +1006,6 @@ El cambio de modo puede requerir un reinicio.</value>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Automático (dinámico)</value>
   </data>
-  <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
-    <value>Actual: {0}</value>
-  </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
     <value>Fija la GPU dedicada a un estado de rendimiento específico.</value>
   </data>
@@ -1412,7 +1421,7 @@ En serio, ¡tenga cuidado con esta opción!</value>
     <value>Si se establece este valor en 0 W, se evita que la CPU consuma energía adicional, lo que reduce el calor y el ruido del ventilador durante las cargas de trabajo en las que la GPU es el componente limitante.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
-    <value>Potencia total del procesador en corriente alterna</value>
+    <value>Total Processing Power Target on AC</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
     <value>El punto en el que la CPU activa el ajuste dinámico de consumo de energía de la GPU.</value>
@@ -1473,18 +1482,6 @@ En serio, ¡tenga cuidado con esta opción!</value>
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
     <value>Sensores de hardware</value>
-  </data>
-  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
-  </data>
-  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
-  </data>
-  <data name="AutoColorManagementControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
-  </data>
-  <data name="AutoColorManagementControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
     <value>Enable High Dynamic Range (HDR) for enhanced contrast and color accuracy.</value>
@@ -1827,12 +1824,6 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
     <value>Ajustes</value>
-  </data>
-  <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>¡Necesitas instalar primero PawnIO para poder usar el nuevo panel de control!</value>
-  </data>
-  <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>Aviso</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
     <value>¡Actualización disponible!</value>
