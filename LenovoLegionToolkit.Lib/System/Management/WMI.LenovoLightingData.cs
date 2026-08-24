@@ -22,7 +22,9 @@ public static partial class WMI
             foreach (var (lightingId, lightingType) in rows)
             {
                 if ((lightingId & 7) != 0)
+                {
                     return (lightingType >> 1) & 7;
+                }
             }
 
             return null;

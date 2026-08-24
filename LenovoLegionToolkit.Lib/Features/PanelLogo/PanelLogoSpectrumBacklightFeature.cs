@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Features.PanelLogo;
@@ -14,9 +15,17 @@ public class PanelLogoSpectrumBacklightFeature(SpectrumKeyboardBacklightControll
             return true;
         }
 
+        var keyboardType = await WMI.LenovoLightingData.GetKeyboardTypeAsync().ConfigureAwait(false);
+        if (keyboardType is null or 4)
+        {
+            return false;
+        }
+
         var isSupported = await controller.IsSupportedAsync().ConfigureAwait(false);
         if (!isSupported)
+        {
             return false;
+        }
 
         var (layout, _, _) = await controller.GetKeyboardLayoutAsync().ConfigureAwait(false);
         return layout == SpectrumLayout.Full;
