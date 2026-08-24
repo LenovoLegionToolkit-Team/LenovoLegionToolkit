@@ -12,8 +12,6 @@ namespace LenovoLegionToolkit.Lib.Features;
 
 public class RefreshRateFeature : IFeature<RefreshRate>
 {
-    private const int MinimumDrrFrequency = 60;
-
     public Task<bool> IsSupportedAsync() => Task.FromResult(true);
 
     public async Task<RefreshRate[]> GetAllStatesAsync()
@@ -53,10 +51,10 @@ public class RefreshRateFeature : IFeature<RefreshRate>
                 var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource && (displayTarget is null || p.TargetsInfo.Any(t => t.DisplayTarget == displayTarget)));
                 var targetInfo = activePath?.TargetsInfo.FirstOrDefault(t => displayTarget is null || t.DisplayTarget == displayTarget);
 
-                if (targetInfo is not null && (targetInfo.IsVirtualModeSupportedByPath || targetInfo.IsBoostRefreshRate) && targetInfo.IsDynamicRefreshRateSupported)
+                if (targetInfo is not null && (targetInfo.IsVirtualModeSupportedByPath || targetInfo.IsBoostRefreshRate))
                 {
                     var lowFreq = GetDynamicLowFrequency(maxFreq, result.Select(r => r.Frequency));
-                    if (lowFreq < maxFreq)
+                    if (lowFreq > 0 && lowFreq < maxFreq)
                     {
                         result.Add(new RefreshRate(maxFreq, isDynamic: true, baseFrequency: lowFreq));
                     }
@@ -162,15 +160,8 @@ public class RefreshRateFeature : IFeature<RefreshRate>
 
     private static int GetDynamicLowFrequency(int maxFrequency, IEnumerable<int> availableFrequencies)
     {
-        if (availableFrequencies.Contains(maxFrequency / 2))
-        {
-            return maxFrequency / 2;
-        }
-        if (availableFrequencies.Contains(MinimumDrrFrequency))
-        {
-            return MinimumDrrFrequency;
-        }
-        return availableFrequencies.Min();
+        var halfRate = maxFrequency / 2;
+        return availableFrequencies.FirstOrDefault(f => Math.Abs(f - halfRate) <= 1);
     }
 
     private static bool Match(DisplayPossibleSetting dps, DisplayPossibleSetting ds)
