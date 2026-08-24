@@ -11,6 +11,7 @@ using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
+using NvAPIWrapper.GPU;
 
 namespace LenovoLegionToolkit.Lib.Controllers.GodMode;
 
@@ -145,6 +146,7 @@ public class GodModeController(
                 GPUConfigurableTGP = preset.GPUConfigurableTGP,
                 GPUTemperatureLimit = preset.GPUTemperatureLimit,
                 GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline,
+                GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI = preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI,
                 GPUToCPUDynamicBoost = preset.GPUToCPUDynamicBoost,
                 FanTable = preset.FanTableInfo?.Table,
                 FanFullSpeed = preset.FanFullSpeed,
@@ -352,7 +354,7 @@ public class GodModeController(
                 try
                 {
                     Log.Instance.Trace($"Applying {cap.PropertyName} (0x{cap.RawId:X}): {value}...");
-                    await SetValueAsync(cap.RawId, value.Value, config.CapabilityIdMask).ConfigureAwait(false);
+                    await SetCapabilityValueAsync(cap, value.Value, config.CapabilityIdMask).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
@@ -368,7 +370,7 @@ public class GodModeController(
                 try
                 {
                     Log.Instance.Trace($"Applying default {cap.PropertyName} ({cap.RawId:X}): {defaultValue}...");
-                    await SetValueAsync(cap.RawId, defaultValue.Value, config.CapabilityIdMask).ConfigureAwait(false);
+                    await SetCapabilityValueAsync(cap, defaultValue.Value, config.CapabilityIdMask).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
@@ -526,7 +528,10 @@ public class GodModeController(
             var allCapabilityData = await WMI.LenovoCapabilityData01.ReadAsync().ConfigureAwait(false);
             allCapabilityData = allCapabilityData.ToArray();
 
-            var knownIds = config.Capabilities.Select(c => c.RawId).ToHashSet();
+            var knownIds = config.Capabilities
+                .Where(c => !c.UseNvApiWrapper)
+                .Select(c => c.RawId)
+                .ToHashSet();
             var capabilityData = allCapabilityData
                 .Where(d => knownIds.Contains((uint)d.Id))
                 .ToArray();
@@ -554,34 +559,47 @@ public class GodModeController(
                 Log.Instance.Trace($"Creating StepperValue {rawId:X}... [defaultValue={c.DefaultValue}, min={c.Min}, max={c.Max}, step={c.Step}, steps={string.Join(", ", steps)}]");
                 stepperValues[rawId] = new StepperValue(value, c.Min, c.Max, c.Step, steps, c.DefaultValue);
             }
+
+            foreach (var cap in config.Capabilities.Where(c => c.UseNvApiWrapper))
+            {
+                try
+                {
+                    var value = await GetCapabilityValueAsync(cap, config.CapabilityIdMask).ConfigureAwait(false);
+                    stepperValues[cap.RawId] = CreateCapabilityStepperValue(cap, value);
+                }
+                catch (Exception ex)
+                {
+                    Log.Instance.Trace($"Failed to read {cap.PropertyName} via NVAPI, skipping.", ex);
+                }
+            }
         }
         else
         {
             foreach (var cap in config.Capabilities)
             {
+                if (cap.OnlyWhenNativeCapabilityIsUnavailable)
+                {
+                    var nativeCapability = config.Capabilities.FirstOrDefault(c =>
+                        !c.UseNvApiWrapper &&
+                        c.PropertyName == nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline));
+
+                    if (nativeCapability != null && stepperValues.ContainsKey(nativeCapability.RawId))
+                    {
+                        Log.Instance.Trace($"Skipping {cap.PropertyName}; native capability is available.");
+                        continue;
+                    }
+                }
+
                 try
                 {
-                    var rawValue = await GetValueAsync(cap.RawId, config.CapabilityIdMask).ConfigureAwait(false);
+                    var rawValue = await GetCapabilityValueAsync(cap, config.CapabilityIdMask).ConfigureAwait(false);
 
-                    if (cap.Steps.Length > 0)
-                    {
-                        var value = rawValue;
-                        if (!cap.Steps.Contains(value))
-                        {
-                            value = cap.Steps.MinBy(v => Math.Abs((long)v - value));
-                        }
-
-                        stepperValues[cap.RawId] = new StepperValue(value, 0, 0, 0, cap.Steps, cap.DefaultValue);
-                    }
-                    else
-                    {
-                        stepperValues[cap.RawId] = new StepperValue(rawValue, cap.Min, cap.Max, cap.Step, [], cap.DefaultValue);
-                    }
+                    stepperValues[cap.RawId] = CreateCapabilityStepperValue(cap, rawValue);
                 }
                 catch (Exception ex)
                 {
                     Log.Instance.Trace($"Failed to read {cap.PropertyName} ({cap.RawId:X}), skipping.", ex);
-                    if (cap.PropertyName != nameof(GodModePreset.FanFullSpeed))
+                    if (!cap.FailAllowed)
                     {
                         _hasCapabilityErrors = true;
                     }
@@ -647,6 +665,7 @@ public class GodModeController(
             GPUConfigurableTGP = Sv(config, sv, nameof(GodModePreset.GPUConfigurableTGP)),
             GPUTemperatureLimit = Sv(config, sv, nameof(GodModePreset.GPUTemperatureLimit)),
             GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = Sv(config, sv, nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline)),
+            GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI = Sv(config, sv, nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI)),
             GPUToCPUDynamicBoost = Sv(config, sv, nameof(GodModePreset.GPUToCPUDynamicBoost)),
             FanTableInfo = fanTableInfo,
             FanFullSpeed = fanFullSpeed,
@@ -698,6 +717,7 @@ public class GodModeController(
             nameof(GodModePreset.GPUConfigurableTGP) => preset.GPUConfigurableTGP,
             nameof(GodModePreset.GPUTemperatureLimit) => preset.GPUTemperatureLimit,
             nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline) => preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline,
+            nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI) => preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI,
             nameof(GodModePreset.GPUToCPUDynamicBoost) => preset.GPUToCPUDynamicBoost,
             nameof(GodModePreset.FanFullSpeed) when preset.FanFullSpeed != null => new StepperValue(preset.FanFullSpeed.Value ? 1 : 0, 0, 1, 1, [], 0),
             _ => null,
@@ -1142,6 +1162,59 @@ public class GodModeController(
         return WMI.LenovoOtherMethod.SetFeatureValueAsync(idRaw, value);
     }
 
+    private static Task<int> GetCapabilityValueAsync(GodModeCapabilityEntry capability, uint mask) =>
+        capability.UseNvApiWrapper
+            ? GetPcfTotalProcessingPowerTargetOffsetAsync()
+            : GetValueAsync(capability.RawId, mask);
+
+    private static Task SetCapabilityValueAsync(GodModeCapabilityEntry capability, int value, uint mask) =>
+        capability.UseNvApiWrapper
+            ? SetPcfTotalProcessingPowerTargetOffsetAsync(value)
+            : SetValueAsync(capability.RawId, value, mask);
+
+    private static StepperValue CreateCapabilityStepperValue(GodModeCapabilityEntry capability, int value)
+    {
+        if (capability.Steps.Length == 0)
+            return new StepperValue(value, capability.Min, capability.Max, capability.Step, [], capability.DefaultValue);
+
+        var closestValue = capability.Steps.Contains(value)
+            ? value
+            : capability.Steps.MinBy(step => Math.Abs((long)step - value));
+        return new StepperValue(closestValue, 0, 0, 0, capability.Steps, capability.DefaultValue);
+    }
+
+    private static Task<int> GetPcfTotalProcessingPowerTargetOffsetAsync() => Task.Run(() =>
+    {
+        using var controller = new PcfPowerController();
+        var values = controller.GetPowerValues();
+        var offsetInMilliwatts = (long)values.Field2CInMilliwatts - values.Field30InMilliwatts;
+
+        if (offsetInMilliwatts < 0)
+            throw new InvalidOperationException("PCF Field2C is lower than Field30.");
+
+        var offsetInWatts = checked((int)(offsetInMilliwatts / 1000));
+        Log.Instance.Trace($"Read GPU TPP target offset through NVAPI PCF. [field2C={values.Field2CInMilliwatts}mW, field30={values.Field30InMilliwatts}mW, offset={offsetInWatts}W]");
+        return offsetInWatts;
+    });
+
+    private static Task SetPcfTotalProcessingPowerTargetOffsetAsync(int offsetInWatts) => Task.Run(() =>
+    {
+        if (offsetInWatts < 0)
+            throw new ArgumentOutOfRangeException(nameof(offsetInWatts));
+
+        using var controller = new PcfPowerController();
+        var values = controller.GetPowerValues();
+        var field2CInMilliwatts = checked((uint)((long)values.Field30InMilliwatts + offsetInWatts * 1000L));
+        var updatedValues = new PcfPowerValues(
+            field2CInMilliwatts,
+            values.Field30InMilliwatts,
+            values.Field34InMilliwatts,
+            values.Field38InMilliwatts);
+
+        Log.Instance.Trace($"Writing GPU TPP target offset through NVAPI PCF. [field2C={values.Field2CInMilliwatts}->{field2CInMilliwatts}mW, field30={values.Field30InMilliwatts}mW, offset={offsetInWatts}W]");
+        controller.SetPowerValues(PcfPowerFields.Field2C, updatedValues);
+    });
+
     private static CapabilityID AdjustCapabilityIdForPowerMode(CapabilityID id, PowerModeState powerMode)
     {
         var idRaw = (uint)id & CAPABILITY_ID_MASK;
@@ -1204,6 +1277,7 @@ public class GodModeController(
                 GPUConfigurableTGP = CreateStepperValue(defaultState.GPUConfigurableTGP, preset.GPUConfigurableTGP, preset.MinValueOffset, preset.MaxValueOffset),
                 GPUTemperatureLimit = CreateStepperValue(defaultState.GPUTemperatureLimit, preset.GPUTemperatureLimit, preset.MinValueOffset, preset.MaxValueOffset),
                 GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = CreateStepperValue(defaultState.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, preset.MinValueOffset, preset.MaxValueOffset),
+                GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI = CreateStepperValue(defaultState.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI, preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI, preset.MinValueOffset, preset.MaxValueOffset),
                 GPUToCPUDynamicBoost = CreateStepperValue(defaultState.GPUToCPUDynamicBoost, preset.GPUToCPUDynamicBoost),
                 FanTableInfo = await GetFanTableInfoAsync(preset, defaultState.FanTableInfo?.Data).ConfigureAwait(false),
                 FanFullSpeed = preset.FanFullSpeed,

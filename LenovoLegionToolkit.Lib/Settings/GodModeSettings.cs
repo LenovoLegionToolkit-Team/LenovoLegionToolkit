@@ -29,6 +29,7 @@ public class GodModeSettings() : AbstractSettings<GodModeSettingsStore>("godmode
             public StepperValue? GPUConfigurableTGP { get; init; }
             public StepperValue? GPUTemperatureLimit { get; init; }
             public StepperValue? GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline { get; init; }
+            public StepperValue? GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI { get; init; }
             public StepperValue? GPUToCPUDynamicBoost { get; init; }
             public FanTable? FanTable { get; init; }
             public bool? FanFullSpeed { get; init; }

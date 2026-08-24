@@ -10,4 +10,6 @@ public sealed class GodModeCapabilityEntry
     public int[] Steps { get; init; } = [];
     public int DefaultValue { get; init; }
     public bool FailAllowed { get; init; }
+    public bool UseNvApiWrapper { get; init; }
+    public bool OnlyWhenNativeCapabilityIsUnavailable { get; init; }
 }

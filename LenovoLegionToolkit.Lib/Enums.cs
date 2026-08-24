@@ -442,8 +442,14 @@ public enum NonGamingCapabilityID
     GPUConfigurableTGP = 0x02010000,
     GPUPowerBoost = 0x02020000,
     GPUTemperatureLimit = 0x02030000,
+    GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = 0x02040000,
     GPUToCPUDynamicBoost = 0x020B0000,
     FanFullSpeed = 0x04020000,
+}
+
+public enum NvApiCapabilityID : uint
+{
+    GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = 0xF0040000,
 }
 
 public enum NotificationDuration

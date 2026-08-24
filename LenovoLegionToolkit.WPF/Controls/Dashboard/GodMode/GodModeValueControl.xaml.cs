@@ -12,6 +12,8 @@ public partial class GodModeValueControl
 {
     private int? _defaultValue;
 
+    public bool AllowValuesAbove255 { get; set; }
+
     public string Title
     {
         get => _cardControlHeader.Title;
@@ -160,7 +162,7 @@ public partial class GodModeValueControl
             _comboBox.Visibility = Visibility.Collapsed;
 
             _slider.Minimum = value.Min;
-            _slider.Maximum = Math.Min(value.Max, 255);
+            _slider.Maximum = AllowValuesAbove255 ? value.Max : Math.Min(value.Max, 255);
             _slider.TickFrequency = value.Step;
             _slider.Value = value.Value;
 

@@ -133,8 +133,8 @@
 
                 <TabItem x:Name="_cpuTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="DeveloperBoard24" Margin="0,0,8,0" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <wpfui:SymbolIcon Margin="0,0,8,0" Symbol="DeveloperBoard24" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_CPU_Title}"
@@ -157,8 +157,8 @@
                                 x:Name="_cpuPeakPowerLimitControl"
                                 Title="{x:Static resources:Resource.GodModeSettingsWindow_CPU_PeakPL}"
                                 Description="{x:Static resources:Resource.GodModeSettingsWindow_CPU_PeakPL_Description}"
-                                Warning="{x:Static resources:Resource.GodModeSettingsWindow_CPU_PeakPL_Warning}"
-                                Unit="{x:Static resources:Resource.Watt}" />
+                                Unit="{x:Static resources:Resource.Watt}"
+                                Warning="{x:Static resources:Resource.GodModeSettingsWindow_CPU_PeakPL_Warning}" />
                             <godMode:GodModeValueControl
                                 x:Name="_cpuCrossLoadingLimitControl"
                                 Title="{x:Static resources:Resource.GodModeSettingsWindow_CPU_CrossLoading}"
@@ -179,16 +179,16 @@
                                 x:Name="_cpuTemperatureLimitControl"
                                 Title="{x:Static resources:Resource.GodModeSettingsWindow_CPU_TempLimit}"
                                 Description="{x:Static resources:Resource.GodModeSettingsWindow_CPU_TempLimit_Description}"
-                                Warning="{x:Static resources:Resource.GodModeSettingsWindow_CPU_TempLimit_Warning}"
-                                Unit="{x:Static resources:Resource.Celsius}" />
+                                Unit="{x:Static resources:Resource.Celsius}"
+                                Warning="{x:Static resources:Resource.GodModeSettingsWindow_CPU_TempLimit_Warning}" />
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>
 
                 <TabItem x:Name="_gpuTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="Desktop24" Margin="0,0,8,0" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <wpfui:SymbolIcon Margin="0,0,8,0" Symbol="Desktop24" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_GPU_Title}"
@@ -211,13 +211,20 @@
                                 x:Name="_gpuTemperatureLimitControl"
                                 Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TempLimit}"
                                 Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TempLimit_Description}"
-                                Warning="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TempLimit_Warning}"
-                                Unit="{x:Static resources:Resource.Celsius}" />
+                                Unit="{x:Static resources:Resource.Celsius}"
+                                Warning="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TempLimit_Warning}" />
                             <godMode:GodModeValueControl
                                 x:Name="_gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl"
                                 Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl}"
                                 Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description}"
                                 Info="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info}"
+                                Unit="{x:Static resources:Resource.Watt}" />
+                            <godMode:GodModeValueControl
+                                x:Name="_pcfGpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl"
+                                Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl}"
+                                Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description}"
+                                Info="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info}"
+                                AllowValuesAbove255="True"
                                 Unit="{x:Static resources:Resource.Watt}" />
                             <godMode:GodModeValueControl
                                 x:Name="_gpuToCpuDynamicBoostControl"
@@ -231,8 +238,8 @@
 
                 <TabItem x:Name="_fanTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="WeatherBlowingSnow24" Margin="0,0,8,0" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <wpfui:SymbolIcon Margin="0,0,8,0" Symbol="WeatherBlowingSnow24" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Title}"
@@ -249,8 +256,8 @@
                                     <StackPanel x:Name="_fanCurveControlStackPanel">
                                         <controls:CardHeaderControl
                                             Title="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Title}"
-                                            Subtitle="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Message}"
-                                            Info="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Info}" />
+                                            Info="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Info}"
+                                            Subtitle="{x:Static resources:Resource.GodModeSettingsWindow_Fans_Curve_Message}" />
                                         <wpfui:Button
                                             x:Name="_fanCurveButton"
                                             MinWidth="120"
@@ -282,8 +289,8 @@
 
                 <TabItem x:Name="_fnqTabItem" Visibility="Collapsed">
                     <TabItem.Header>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="Gauge24" Margin="0,0,8,0" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <wpfui:SymbolIcon Margin="0,0,8,0" Symbol="Gauge24" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.ITSModeConfigWindow_Title}"
@@ -299,8 +306,8 @@
 
                 <TabItem x:Name="_pboTabItem" Visibility="Collapsed">
                     <TabItem.Header>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="TopSpeed24" Margin="0,0,8,0" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <wpfui:SymbolIcon Margin="0,0,8,0" Symbol="TopSpeed24" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_Toggle_OC_Title}"
@@ -357,8 +364,8 @@
 
                 <TabItem x:Name="_advancedTabItem" Visibility="Visible">
                     <TabItem.Header>
-                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                            <wpfui:SymbolIcon Symbol="WrenchScrewdriver24" Margin="0,0,8,0" />
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                            <wpfui:SymbolIcon Margin="0,0,8,0" Symbol="WrenchScrewdriver24" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Title}"
@@ -369,7 +376,7 @@
                         <StackPanel Margin="0,0,8,0">
                             <custom:HintText Margin="0,0,0,8" Text="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_Message}" />
 
-                             <custom:CardControl x:Name="_maxValueOffsetCardControl" Margin="0,0,0,8">
+                            <custom:CardControl x:Name="_maxValueOffsetCardControl" Margin="0,0,0,8">
                                 <custom:CardControl.Header>
                                     <controls:CardHeaderControl
                                         Title="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_MaxOffset_Title}"

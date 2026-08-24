@@ -154,6 +154,7 @@ public partial class GodModeSettingsWindow
                 GPUConfigurableTGP = preset.GPUConfigurableTGP?.WithValue(_gpuConfigurableTGPControl.Value),
                 GPUTemperatureLimit = preset.GPUTemperatureLimit?.WithValue(_gpuTemperatureLimitControl.Value),
                 GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline = preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline?.WithValue(_gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Value),
+                GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI = preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI?.WithValue(_pcfGpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Value),
                 GPUToCPUDynamicBoost = preset.GPUToCPUDynamicBoost?.WithValue(_gpuToCpuDynamicBoostControl.Value),
                 FanFullSpeed = preset.FanFullSpeed is not null ? _fanFullSpeedToggle.IsChecked : null,
                 MaxValueOffset = preset.MaxValueOffset is not null ? (int?)_maxValueOffsetNumberBox.Value : null,
@@ -229,6 +230,7 @@ public partial class GodModeSettingsWindow
             _gpuConfigurableTGPControl.Set(preset.GPUConfigurableTGP);
             _gpuTemperatureLimitControl.Set(preset.GPUTemperatureLimit);
             _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Set(preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline);
+            _pcfGpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Set(preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI);
             _gpuToCpuDynamicBoostControl.Set(preset.GPUToCPUDynamicBoost);
 
             if (preset.FanTableInfo.HasValue)
@@ -284,7 +286,7 @@ public partial class GodModeSettingsWindow
             }
 
             bool cpuVisible = _cpuLongTermPowerLimitControl.Visibility == Visibility.Visible || _cpuShortTermPowerLimitControl.Visibility == Visibility.Visible || _cpuPeakPowerLimitControl.Visibility == Visibility.Visible || _cpuCrossLoadingLimitControl.Visibility == Visibility.Visible || _cpuPL2TauControl.Visibility == Visibility.Visible || _apuSPPTPowerLimitControl.Visibility == Visibility.Visible || _cpuTemperatureLimitControl.Visibility == Visibility.Visible;
-            bool gpuVisible = _gpuPowerBoostControl.Visibility == Visibility.Visible || _gpuConfigurableTGPControl.Visibility == Visibility.Visible || _gpuTemperatureLimitControl.Visibility == Visibility.Visible || _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Visibility == Visibility.Visible || _gpuToCpuDynamicBoostControl.Visibility == Visibility.Visible;
+            bool gpuVisible = _gpuPowerBoostControl.Visibility == Visibility.Visible || _gpuConfigurableTGPControl.Visibility == Visibility.Visible || _gpuTemperatureLimitControl.Visibility == Visibility.Visible || _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Visibility == Visibility.Visible || _pcfGpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Visibility == Visibility.Visible || _gpuToCpuDynamicBoostControl.Visibility == Visibility.Visible;
             bool fanVisible = _fanCurveCardControl.Visibility == Visibility.Visible || _fanFullSpeedCardControl.Visibility == Visibility.Visible;
             bool advVisible = _maxValueOffsetCardControl.Visibility == Visibility.Visible || _minValueOffsetCardControl.Visibility == Visibility.Visible;
 

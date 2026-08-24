@@ -56,6 +56,8 @@ public sealed record GodModePlatformConfiguration
             new() { RawId = (uint)NonGamingCapabilityID.GPUConfigurableTGP, PropertyName = nameof(GodModePreset.GPUConfigurableTGP), Steps = [55, 65, 75, 85, 95, 105, 115], DefaultValue = 55 },
             new() { RawId = (uint)NonGamingCapabilityID.GPUPowerBoost, PropertyName = nameof(GodModePreset.GPUPowerBoost), Steps = [0, 5, 10, 15, 20, 25], DefaultValue = 0 },
             new() { RawId = (uint)NonGamingCapabilityID.GPUTemperatureLimit, PropertyName = nameof(GodModePreset.GPUTemperatureLimit), Min = 0, Max = 100, Step = 1, DefaultValue = 100 },
+            new() { RawId = (uint)NonGamingCapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, PropertyName = nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline), Min = 0, Max = 255, Step = 1, DefaultValue = 0, FailAllowed = true },
+            new() { RawId = (uint)NvApiCapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, PropertyName = nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI), Min = 0, Max = 500, Step = 1, DefaultValue = 0, FailAllowed = true, UseNvApiWrapper = true, OnlyWhenNativeCapabilityIsUnavailable = true },
             new() { RawId = (uint)NonGamingCapabilityID.GPUToCPUDynamicBoost, PropertyName = nameof(GodModePreset.GPUToCPUDynamicBoost), Min = 0, Max = 255, Step = 1, DefaultValue = 0 },
             new() { RawId = (uint)NonGamingCapabilityID.FanFullSpeed, PropertyName = nameof(GodModePreset.FanFullSpeed), Min = 0, Max = 1, Step = 1, DefaultValue = 0, FailAllowed = true },
         ],

@@ -443,6 +443,7 @@ public readonly struct GodModePreset
     public StepperValue? GPUConfigurableTGP { get; init; }
     public StepperValue? GPUTemperatureLimit { get; init; }
     public StepperValue? GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline { get; init; }
+    public StepperValue? GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI { get; init; }
     public StepperValue? GPUToCPUDynamicBoost { get; init; }
     public FanTableInfo? FanTableInfo { get; init; }
     public bool? FanFullSpeed { get; init; }
@@ -465,6 +466,7 @@ public readonly struct GodModePreset
                $" {nameof(GPUConfigurableTGP)}: {GPUConfigurableTGP}," +
                $" {nameof(GPUTemperatureLimit)}: {GPUTemperatureLimit}," +
                $" {nameof(GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline)}: {GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline}," +
+               $" {nameof(GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI)}: {GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI}," +
                $" {nameof(GPUToCPUDynamicBoost)}: {GPUToCPUDynamicBoost}," +
                $" {nameof(FanTableInfo)}: {FanTableInfo}," +
                $" {nameof(FanFullSpeed)}: {FanFullSpeed}," +
