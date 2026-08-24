@@ -411,6 +411,18 @@
   <data name="ArgumentWindow_Title" xml:space="preserve">
     <value>启动参数编辑</value>
   </data>
+  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
+  <data name="AutoColorManagementControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>启用自动化</value>
   </data>
@@ -712,12 +724,23 @@
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
     <value>已设置为默认开机画面</value>
   </data>
-  <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>替换的自定义开机画面图标的图片文件分辨率必须在 {0} 范围内 。
-支持的图片文件格式为：{1}。</value>
-  </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
     <value>禁用 Windows 启动动画</value>
+  </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>Startup Animation</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>Max {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>Supported formats and dimensions</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>Image Requirements</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>自定义开机画面设置失败：{0}</value>
@@ -746,8 +769,11 @@
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>EFI 分区空间不足。</value>
   </data>
-  <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>当前状态</value>
+  <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
+    <value>Status of the UEFI boot logo</value>
+  </data>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
+    <value>Current Status</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>自定义开机画面</value>
@@ -979,6 +1005,18 @@
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>正在使用显卡的进程</value>
   </data>
+  <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
+    <value>Auto (Dynamic)</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
+    <value>Lock the discrete GPU to a specific performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
+    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
+    <value>P-State Control</value>
+  </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>重启显卡</value>
   </data>
@@ -1080,8 +1118,14 @@
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>此列表内的所有进程将会被 游戏启动，游戏关闭 以及联想 AI 模式所忽略。请输入进程名而不是进程目录。（如 QQ）</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>进程名称（如：QQ）</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>排除应用</value>
@@ -1786,12 +1830,6 @@
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
     <value>设置</value>
   </data>
-  <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>需要先安装 PawnIO 来获取高级传感器数据！</value>
-  </data>
-  <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>警告</value>
-  </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
     <value>新版本可用！</value>
   </data>
@@ -2046,6 +2084,35 @@
   </data>
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
     <value>背光状态改变</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
+    <value>The PawnIO driver service is not running. 
+
+Please start the service or update/reinstall PawnIO to use this feature!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
+    <value>PawnIO driver not running</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
+    <value>Your PawnIO version is too old.
+
+Current: {0} Required: {1}. 
+Please update PawnIO to continue using this feature!
+    
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
+    <value>PawnIO update required</value>
+  </data>
+  <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
+    <value>You need to install PawnIO first to use hardware sensors!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>关闭</value>
@@ -2514,6 +2581,9 @@
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
     <value>刷新率</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>重命名</value>
@@ -3205,6 +3275,12 @@
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
     <value>电源模式同步</value>
   </data>
+  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
+    <value>Restore previous window position on application launch.</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
+    <value>Remember Window Position</value>
+  </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>您确定要将所有设置重置为默认值吗？此操作不能撤消，并且应用程序将重新启动。</value>
   </data>
@@ -3553,6 +3629,9 @@
   <data name="Storage" xml:space="preserve">
     <value>存储</value>
   </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>选择图标</value>
   </data>
@@ -3570,6 +3649,21 @@
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Time" xml:space="preserve">
     <value>时间</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_CustomRange" xml:space="preserve">
+    <value>Time range</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_From" xml:space="preserve">
+    <value>From:</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunriseToSunset" xml:space="preserve">
+    <value>Between sunrise and sunset</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunsetToSunrise" xml:space="preserve">
+    <value>Between sunset and sunrise</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_To" xml:space="preserve">
+    <value>To:</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
     <value>允许在集成和离散GPU之间切换。</value>

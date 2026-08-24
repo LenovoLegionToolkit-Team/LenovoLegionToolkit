@@ -409,6 +409,18 @@
   <data name="ArgumentWindow_Title" xml:space="preserve">
     <value>Παράθυρο Ορίσματος</value>
   </data>
+  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
+  <data name="AutoColorManagementControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>Ενεργοποιημένες</value>
   </data>
@@ -711,12 +723,23 @@
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
     <value>Το προκαθορισμένο Λογότυπο Εκκίνησης είναι ρυθμισμένο</value>
   </data>
-  <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Custom boot logo must within {0} pixels large.
-Supported formats are: {1}.</value>
-  </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
     <value>Disable Windows Startup Animation</value>
+  </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>Startup Animation</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>Max {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>Supported formats and dimensions</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>Image Requirements</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>Αδυναμία ορισμού προσαρμοσμένου λογότυπου: {0}</value>
@@ -746,8 +769,11 @@ Supported formats are: {1}.</value>
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>Ανεπαρκής ελεύθερος χώρος στο διαμέρισμα EFI.</value>
   </data>
-  <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>Κατάσταση</value>
+  <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
+    <value>Status of the UEFI boot logo</value>
+  </data>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
+    <value>Current Status</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>Λογότυπο Εκκίνησης</value>
@@ -978,6 +1004,18 @@ Supported formats are: {1}.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Διεργασίες</value>
   </data>
+  <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
+    <value>Auto (Dynamic)</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
+    <value>Lock the discrete GPU to a specific performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
+    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
+    <value>P-State Control</value>
+  </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Επανεκκίνηση GPU</value>
   </data>
@@ -1079,8 +1117,14 @@ Thank you for your support!</value>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>Οι διεργασίες σε αυτή τη λίστα θα αγνοηθούν από τα εναύσματα εκκίνησης/διακοπής του παιχνιδιού και τη λειτουργία AI/Intelligent Mode. Εισάγετε το όνομα της διαδικασίας χωρίς τη διαδρομή (π.χ. "discord" ή "blender").</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Όνομα διεργασίας (π.χ. διχόνοια)</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Εξαιρούμενες Διαδικασίες</value>
@@ -1780,12 +1824,6 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
     <value>Ρυθμίσεις</value>
   </data>
-  <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>Πρέπει να εγκαταστήσετε το PawnIΟ προτού χρησιμοποιήσετε τον νέο πίνακα!</value>
-  </data>
-  <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>Προειδοποίηση</value>
-  </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
     <value>Διαθέσιμη ενημέρωση!</value>
   </data>
@@ -2040,6 +2078,35 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
     <value>Ο οπίσθιος φωτισμός άλλαξε</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
+    <value>The PawnIO driver service is not running. 
+
+Please start the service or update/reinstall PawnIO to use this feature!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
+    <value>PawnIO driver not running</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
+    <value>Your PawnIO version is too old.
+
+Current: {0} Required: {1}. 
+Please update PawnIO to continue using this feature!
+    
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
+    <value>PawnIO update required</value>
+  </data>
+  <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
+    <value>You need to install PawnIO first to use hardware sensors!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>Ανενεργό</value>
@@ -2506,6 +2573,9 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
     <value>Ρυθμός ανανέωσης</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Μετονομασία</value>
@@ -3197,6 +3267,12 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
     <value>Συγχρονισμός Λειτουργίας Ισχύος</value>
   </data>
+  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
+    <value>Restore previous window position on application launch.</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
+    <value>Remember Window Position</value>
+  </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>Είστε βέβαιοι ότι θέλετε να επαναφέρετε όλες τις ρυθμίσεις στις προεπιλεγμένες? Αυτή η ενέργεια δεν μπορεί να αναιρεθεί και η εφαρμογή θα κάνει επανεκκίνηση.</value>
   </data>
@@ -3545,6 +3621,9 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="Storage" xml:space="preserve">
     <value>Αποθήκευση</value>
   </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Επιλογή εικονιδίου</value>
   </data>
@@ -3562,6 +3641,21 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Time" xml:space="preserve">
     <value>Ώρα</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_CustomRange" xml:space="preserve">
+    <value>Time range</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_From" xml:space="preserve">
+    <value>From:</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunriseToSunset" xml:space="preserve">
+    <value>Between sunrise and sunset</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunsetToSunrise" xml:space="preserve">
+    <value>Between sunset and sunrise</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_To" xml:space="preserve">
+    <value>To:</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
     <value>Να επιτρέπεται η εναλλαγή μεταξύ ενσωματωμένης και διακριτής GPU.</value>

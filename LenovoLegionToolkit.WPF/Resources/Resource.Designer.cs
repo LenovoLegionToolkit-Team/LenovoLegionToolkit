@@ -934,7 +934,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable auto color management (ACM) on the built-in display..
+        ///   Looks up a localized string similar to Automatically manage color profiles for accurate and consistent color reproduction..
         /// </summary>
         public static string AutoColorManagementAutomationStepControl_Message {
             get {
@@ -952,7 +952,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable auto color management (ACM) on the built-in display..
+        ///   Looks up a localized string similar to Automatically manage color profiles for accurate and consistent color reproduction..
         /// </summary>
         public static string AutoColorManagementControl_Message {
             get {
@@ -2719,15 +2719,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Current: {0}.
-        /// </summary>
-        public static string DiscreteGPUControl_PStateCurrent {
-            get {
-                return ResourceManager.GetString("DiscreteGPUControl_PStateCurrent", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Lock the discrete GPU to a specific performance state..
         /// </summary>
         public static string DiscreteGPUControl_PStateLockDescription {
@@ -2791,7 +2782,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change display brightness of the built-in display..
+        ///   Looks up a localized string similar to Adjust the display backlight brightness level..
         /// </summary>
         public static string DisplayBrightnessAutomationStepControl_Message {
             get {
@@ -2910,7 +2901,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change scaling of the built-in display..
+        ///   Looks up a localized string similar to Adjust display scaling for text, icons, and UI elements..
         /// </summary>
         public static string DpiScaleAutomationStepControl_Message {
             get {
@@ -2928,7 +2919,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change scale of the built-in display..
+        ///   Looks up a localized string similar to Adjust display scaling for text, icons, and UI elements..
         /// </summary>
         public static string DpiScaleControl_Message {
             get {
@@ -3940,7 +3931,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Total Processor Power Target In AC.
+        ///   Looks up a localized string similar to Total Processing Power Target on AC.
         /// </summary>
         public static string GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl {
             get {
@@ -4132,7 +4123,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable high dynamic range (HDR) on the built-in display..
+        ///   Looks up a localized string similar to Enable High Dynamic Range (HDR) for enhanced contrast and color accuracy..
         /// </summary>
         public static string HDRAutomationStepControl_Message {
             get {
@@ -4150,7 +4141,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable high dynamic range (HDR) on the built-in display..
+        ///   Looks up a localized string similar to Enable High Dynamic Range (HDR) for enhanced contrast and color accuracy..
         /// </summary>
         public static string HDRControl_Message {
             get {
@@ -5130,24 +5121,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string MainWindow_NavigationItem_Settings {
             get {
                 return ResourceManager.GetString("MainWindow_NavigationItem_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to You need to install PawnIO first to use hardware sensors!.
-        /// </summary>
-        public static string MainWindow_PawnIO_Warning_Message {
-            get {
-                return ResourceManager.GetString("MainWindow_PawnIO_Warning_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Warning.
-        /// </summary>
-        public static string MainWindow_PawnIO_Warning_Title {
-            get {
-                return ResourceManager.GetString("MainWindow_PawnIO_Warning_Title", resourceCulture);
             }
         }
         
@@ -7339,7 +7312,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change refresh rate of the built-in display..
+        ///   Looks up a localized string similar to Adjust the display refresh rate for smoother motion or power savings..
         /// </summary>
         public static string RefreshRateAutomationStepControl_Message {
             get {
@@ -7357,7 +7330,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change refresh rate of the built-in display..
+        ///   Looks up a localized string similar to Adjust the display refresh rate for smoother motion or power savings..
         /// </summary>
         public static string RefreshRateControl_Message {
             get {
@@ -7402,7 +7375,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change resolution of the built-in display..
+        ///   Looks up a localized string similar to Change the active display resolution..
         /// </summary>
         public static string ResolutionAutomationStepControl_Message {
             get {
@@ -7420,7 +7393,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Change resolution of the built-in display..
+        ///   Looks up a localized string similar to Change the active display resolution..
         /// </summary>
         public static string ResolutionControl_Message {
             get {

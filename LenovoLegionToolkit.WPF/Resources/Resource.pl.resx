@@ -409,6 +409,18 @@
   <data name="ArgumentWindow_Title" xml:space="preserve">
     <value>Okno argumentu</value>
   </data>
+  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
+  <data name="AutoColorManagementControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>Włącz</value>
   </data>
@@ -711,12 +723,23 @@ Ta wartość może być niedokładna, jeżeli komputer był wtedy uśpiony lub w
   <data name="BootLogoWindow_DefaultLogoSet" xml:space="preserve">
     <value>Jest ustawione domyślne logo rozruchowe</value>
   </data>
-  <data name="BootLogoWindow_Description" xml:space="preserve">
-    <value>Custom boot logo must within {0} pixels large.
-Supported formats are: {1}.</value>
-  </data>
   <data name="BootLogoWindow_Disable_Windows_Animation" xml:space="preserve">
     <value>Disable Windows Startup Animation</value>
+  </data>
+  <data name="BootLogoWindow_Options_Title" xml:space="preserve">
+    <value>Startup Animation</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
+    <value>{0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
+    <value>Max {0}</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
+    <value>Supported formats and dimensions</value>
+  </data>
+  <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
+    <value>Image Requirements</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>Logo użytkownika nie mogło zostać ustawione: {0}</value>
@@ -745,8 +768,11 @@ Supported formats are: {1}.</value>
   <data name="BootLogoWindow_SetError_Not_Enough_Free_Space_On_EFI_Partition" xml:space="preserve">
     <value>Nie ma wystarczającej ilości przestrzeni na partycji EFI.</value>
   </data>
-  <data name="BootLogoWindow_Status" xml:space="preserve">
-    <value>Stan</value>
+  <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
+    <value>Status of the UEFI boot logo</value>
+  </data>
+  <data name="BootLogoWindow_Status_Title" xml:space="preserve">
+    <value>Current Status</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>Logo rozruchowe</value>
@@ -977,6 +1003,18 @@ Zmiana trybu może wymagać ponownego uruchomienia.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Procesy</value>
   </data>
+  <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
+    <value>Auto (Dynamic)</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
+    <value>Lock the discrete GPU to a specific performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
+    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
+    <value>P-State Control</value>
+  </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Zrestartuj GPU</value>
   </data>
@@ -1078,8 +1116,14 @@ Dziękujemy za wsparcie!</value>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
     <value>Procesy z tej listy zostaną zignorowane przez uruchamianie / zatrzymywanie gry i tryb AI/Inteligentny Lenovo. Wprowadź nazwę procesu bez ścieżki (np. "discord" lub "blend").</value>
   </data>
-  <data name="ExcludeProcessesWindow_ProcessNamePlaceholder" xml:space="preserve">
-    <value>Nazwa procesu (np. discord)</value>
+  <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
+    <value>Excluded Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
+    <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
+    <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Wykluczone procesy</value>
@@ -1780,12 +1824,6 @@ Kliknij Tak, aby wyłączyć i nie ignorować.</value>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
     <value>Ustawienia</value>
   </data>
-  <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need install PawnIO first to use the new dashboard!</value>
-  </data>
-  <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>Ostrzeżenie</value>
-  </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
     <value>Dostępna aktualizacja!</value>
   </data>
@@ -2040,6 +2078,35 @@ Nie wpłynie to na inne okna pełnoekranowe, ale nie będziesz mógł kliknąć 
   </data>
   <data name="Notification_WhiteKeyboardBacklightSpecial" xml:space="preserve">
     <value>Zmieniono podświetlenie</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
+    <value>The PawnIO driver service is not running. 
+
+Please start the service or update/reinstall PawnIO to use this feature!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
+    <value>PawnIO driver not running</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
+    <value>Your PawnIO version is too old.
+
+Current: {0} Required: {1}. 
+Please update PawnIO to continue using this feature!
+    
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
+  </data>
+  <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
+    <value>PawnIO update required</value>
+  </data>
+  <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
+    <value>You need to install PawnIO first to use hardware sensors!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>Wyłączone</value>
@@ -2506,6 +2573,9 @@ Możesz też zmienić tryb wydajności klawiszami Fn+Q.</value>
   </data>
   <data name="RefreshRateControl_Title" xml:space="preserve">
     <value>Częstotliwość odświeżania</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Remove</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Zmień nazwę</value>
@@ -3197,6 +3267,12 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
   <data name="SettingsPage_PowerModeMapping_Title" xml:space="preserve">
     <value>Synchronizacja trybu wydajności</value>
   </data>
+  <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
+    <value>Restore previous window position on application launch.</value>
+  </data>
+  <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
+    <value>Remember Window Position</value>
+  </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>Czy na pewno chcesz zresetować wszystkie ustawienia do domyślnych? Tej akcji nie można cofnąć, a aplikacja zrestartuje ustawienia.</value>
   </data>
@@ -3545,6 +3621,9 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
   <data name="Storage" xml:space="preserve">
     <value>Pamięć</value>
   </data>
+  <data name="Success" xml:space="preserve">
+    <value>Success</value>
+  </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Wybierz ikonę</value>
   </data>
@@ -3562,6 +3641,21 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
   </data>
   <data name="TimeAutomationPipelineTriggerTabItemContent_Time" xml:space="preserve">
     <value>Czas</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_CustomRange" xml:space="preserve">
+    <value>Time range</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_From" xml:space="preserve">
+    <value>From:</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunriseToSunset" xml:space="preserve">
+    <value>Between sunrise and sunset</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunsetToSunrise" xml:space="preserve">
+    <value>Between sunset and sunrise</value>
+  </data>
+  <data name="TimeRangeAutomationPipelineTriggerTabItemContent_To" xml:space="preserve">
+    <value>To:</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
     <value>Zezwól na przełączanie między zintegrowanym i dyskretnym GPU.</value>
