@@ -411,6 +411,18 @@
   <data name="ArgumentWindow_Title" xml:space="preserve">
     <value>启动参数编辑</value>
   </data>
+  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
+  <data name="AutoColorManagementControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>启用自动化</value>
   </data>
@@ -996,9 +1008,6 @@
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>自动 (动态)</value>
   </data>
-  <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
-    <value>当前：{0}</value>
-  </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
     <value>锁定独立显卡为指定的性能状态。</value>
   </data>
@@ -1418,7 +1427,7 @@
     <value>将此设置为 0W 会阻止 CPU 在 GPU 高压运作时额外分配电力，以此减少热量和风扇噪音。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
-    <value>插电情况下总处理器功耗目标</value>
+    <value>Total Processing Power Target on AC</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
     <value>CPU 触发 GPU 动态功耗调整的点，当 CPU 达到设置的功耗后，显卡的 DB 功耗会分配给 CPU 。</value>
@@ -1479,18 +1488,6 @@
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
     <value>硬件传感器</value>
-  </data>
-  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
-  </data>
-  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
-  </data>
-  <data name="AutoColorManagementControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
-  </data>
-  <data name="AutoColorManagementControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
     <value>Enable High Dynamic Range (HDR) for enhanced contrast and color accuracy.</value>
@@ -1832,12 +1829,6 @@
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
     <value>设置</value>
-  </data>
-  <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>需要先安装 PawnIO 来获取高级传感器数据！</value>
-  </data>
-  <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>警告</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
     <value>新版本可用！</value>
