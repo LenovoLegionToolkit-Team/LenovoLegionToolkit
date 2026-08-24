@@ -409,6 +409,18 @@
   <data name="ArgumentWindow_Title" xml:space="preserve">
     <value>Cửa sổ đối số</value>
   </data>
+  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
+  <data name="AutoColorManagementControl_Message" xml:space="preserve">
+    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+  </data>
+  <data name="AutoColorManagementControl_Title" xml:space="preserve">
+    <value>Auto Color Management</value>
+  </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>Kích hoạt</value>
   </data>
@@ -994,9 +1006,6 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Tự động (Động)</value>
   </data>
-  <data name="DiscreteGPUControl_PStateCurrent" xml:space="preserve">
-    <value>Hiện tại: {0}</value>
-  </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
     <value>Khóa GPU rời ở trạng thái hiệu suất cụ thể.</value>
   </data>
@@ -1411,7 +1420,7 @@ THẬT CẨN THẬN KHI SỬ DỤNG LỰA CHỌN NÀY!!! KHÔNG NÊN SỬ DỤNG
     <value>Đặt giá trị này thành 0W sẽ ngăn CPU tiêu thụ thêm năng lượng, giảm nhiệt và tiếng ồn của quạt trong khối lượng công việc liên quan đến GPU.</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
-    <value>Công suất tối đa khi có nguồn điện AC</value>
+    <value>Total Processing Power Target on AC</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description" xml:space="preserve">
     <value>Điểm kích hoạt việc chia sẻ công suất tối đa giữa CPU và GPU.</value>
@@ -1472,18 +1481,6 @@ THẬT CẨN THẬN KHI SỬ DỤNG LỰA CHỌN NÀY!!! KHÔNG NÊN SỬ DỤNG
   </data>
   <data name="HardwareSensorsAutomationStepControl_Title" xml:space="preserve">
     <value>Cảm biến hệ thống</value>
-  </data>
-  <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
-  </data>
-  <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
-  </data>
-  <data name="AutoColorManagementControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
-  </data>
-  <data name="AutoColorManagementControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
   </data>
   <data name="HDRAutomationStepControl_Message" xml:space="preserve">
     <value>Enable High Dynamic Range (HDR) for enhanced contrast and color accuracy.</value>
@@ -1826,12 +1823,6 @@ Chọn Có để tắt và Không để bỏ qua.</value>
   </data>
   <data name="MainWindow_NavigationItem_Settings" xml:space="preserve">
     <value>Cài đặt</value>
-  </data>
-  <data name="MainWindow_PawnIO_Warning_Message" xml:space="preserve">
-    <value>Bạn cần cài đặt PawnIO trước để sử dụng bảng cảm biến mới!</value>
-  </data>
-  <data name="MainWindow_PawnIO_Warning_Title" xml:space="preserve">
-    <value>Cảnh báo</value>
   </data>
   <data name="MainWindow_UpdateAvailable" xml:space="preserve">
     <value>Có bản cập nhật mới!</value>
