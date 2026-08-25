@@ -272,6 +272,8 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
 
     private async Task HandleConnectedStatusChangeAsync()
     {
+        await Task.Delay(TimeSpan.FromSeconds(1)).ConfigureAwait(false);
+
         if (await _powerModeFeature.IsSupportedAsync().ConfigureAwait(false))
         {
             await _powerModeFeature.EnsureGodModeStateIsAppliedAsync().ConfigureAwait(false);
