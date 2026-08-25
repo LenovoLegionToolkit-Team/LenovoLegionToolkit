@@ -354,6 +354,13 @@ public class GodModeController(
                 try
                 {
                     Log.Instance.Trace($"Applying {cap.PropertyName} (0x{cap.RawId:X}): {value}...");
+
+                    // Non-Gaming will not auto convert cTGP as offset.
+                    if (cap.CapabilityId.Equals(NonGamingCapabilityID.GPUConfigurableTGP) && config.Platform == GodModePlatform.NonGaming)
+                    {
+                        value -= 55;
+                    }
+
                     await SetCapabilityValueAsync(cap, value.Value, config.CapabilityIdMask).ConfigureAwait(false);
                 }
                 catch (Exception ex)
