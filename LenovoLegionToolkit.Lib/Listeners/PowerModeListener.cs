@@ -69,6 +69,16 @@ public class PowerModeListener(
             await godModeController.ApplyStateAsync().ConfigureAwait(false);
             Log.Instance.Trace($"ApplyStateAsync completed [elapsed={godSw.ElapsedMilliseconds}ms]");
         }
+        else
+        {
+            Log.Instance.Trace($"Delaying restore defaults in other power mode...");
+            await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(false);
+
+            Log.Instance.Trace($"Calling GodModeController.RestoreDefaultsInOtherPowerModeAsync({value})...");
+            var restSw = Stopwatch.StartNew();
+            await godModeController.RestoreDefaultsInOtherPowerModeAsync(value).ConfigureAwait(false);
+            Log.Instance.Trace($"RestoreDefaultsInOtherPowerModeAsync completed [elapsed={restSw.ElapsedMilliseconds}ms]");
+        }
 
         await windowsPowerModeController.SetPowerModeAsync(value).ConfigureAwait(false);
         await windowsPowerPlanController.SetPowerPlanAsync(value).ConfigureAwait(false);

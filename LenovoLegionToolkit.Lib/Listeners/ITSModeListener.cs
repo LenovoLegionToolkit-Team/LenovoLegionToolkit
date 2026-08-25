@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
@@ -68,6 +69,12 @@ public class ITSModeListener(
     {
         await windowsPowerModeController.SetPowerModeAsync(value).ConfigureAwait(false);
         await windowsPowerPlanController.SetPowerPlanAsync(value, true).ConfigureAwait(false);
+
+        if (IoCContainer.TryResolve<GodModeController>() is { } godModeController)
+        {
+            await Task.Delay(TimeSpan.FromMilliseconds(100)).ConfigureAwait(false);
+            await godModeController.RestoreDefaultsInOtherPowerModeAsync(PowerModeState.Balance).ConfigureAwait(false);
+        }
     }
 
     internal static void PublishNotification(ITSMode value)

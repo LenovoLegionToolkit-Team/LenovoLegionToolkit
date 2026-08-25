@@ -14,6 +14,7 @@ using System.Windows.Media;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
@@ -405,6 +406,7 @@ public partial class App
         await SafeExecuteAsync<IpcServer>(c => c.StopAsync());
         await SafeExecuteAsync<BatteryDischargeRateMonitorService>(c => c.StopAsync());
         await SafeExecuteAsync<ExtensionManager>(c => c.StopAsync());
+        await SafeExecuteAsync<GodModeController>(c => c.RestoreDefaultsInOtherPowerModeAsync(PowerModeState.Balance));
 
         var feature = IoCContainer.Resolve<AmdOverclockingController>();
 

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
@@ -355,7 +355,6 @@ public class GodModeController(
                 {
                     Log.Instance.Trace($"Applying {cap.PropertyName} (0x{cap.RawId:X}): {value}...");
 
-                    // Non-Gaming will not auto convert cTGP as offset.
                     if (cap.CapabilityId.Equals(NonGamingCapabilityID.GPUConfigurableTGP) && config.Platform == GodModePlatform.NonGaming)
                     {
                         value -= 55;
@@ -774,9 +773,29 @@ public class GodModeController(
     public async Task RestoreDefaultsInOtherPowerModeAsync(PowerModeState state)
     {
         var config = await GetConfigAsync().ConfigureAwait(false);
-        if (config.Platform != GodModePlatform.LegacyLegion)
-            return;
 
+        if (config.Platform == GodModePlatform.LegacyLegion)
+        {
+            await RestoreDefaultsLegacyAsync(state).ConfigureAwait(false);
+            return;
+        }
+
+        if (config.Capabilities.Any(IsNvApiCapability))
+        {
+            try
+            {
+                Log.Instance.Trace($"Resetting PCF power target offset for power mode {state}...");
+                await SetPcfTotalProcessingPowerTargetOffsetAsync(0).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to reset PCF power target offset for {state}.", ex);
+            }
+        }
+    }
+
+    private async Task RestoreDefaultsLegacyAsync(PowerModeState state)
+    {
         try
         {
             Log.Instance.Trace($"Restoring defaults for {state}...");
@@ -1198,33 +1217,16 @@ public class GodModeController(
     private static Task<int> GetPcfTotalProcessingPowerTargetOffsetAsync() => Task.Run(() =>
     {
         using var controller = new PcfPowerController();
-        var values = controller.GetPowerValues();
-        var offsetInMilliwatts = (long)values.Field2CInMilliwatts - values.Field30InMilliwatts;
-
-        if (offsetInMilliwatts < 0)
-            throw new InvalidOperationException("PCF Field2C is lower than Field30.");
-
-        var offsetInWatts = checked((int)(offsetInMilliwatts / 1000));
-        Log.Instance.Trace($"Read GPU TPP target offset through NVAPI PCF. [field2C={values.Field2CInMilliwatts}mW, field30={values.Field30InMilliwatts}mW, offset={offsetInWatts}W]");
+        var offsetInWatts = controller.GetTargetProcessingPowerOffsetInWatts();
+        Log.Instance.Trace($"Read GPU TPP target offset through NVAPI PCF. [offset={offsetInWatts}W]");
         return offsetInWatts;
     });
 
     private static Task SetPcfTotalProcessingPowerTargetOffsetAsync(int offsetInWatts) => Task.Run(() =>
     {
-        if (offsetInWatts < 0)
-            throw new ArgumentOutOfRangeException(nameof(offsetInWatts));
-
         using var controller = new PcfPowerController();
-        var values = controller.GetPowerValues();
-        var field2CInMilliwatts = checked((uint)((long)values.Field30InMilliwatts + offsetInWatts * 1000L));
-        var updatedValues = new PcfPowerValues(
-            field2CInMilliwatts,
-            values.Field30InMilliwatts,
-            values.Field34InMilliwatts,
-            values.Field38InMilliwatts);
-
-        Log.Instance.Trace($"Writing GPU TPP target offset through NVAPI PCF. [field2C={values.Field2CInMilliwatts}->{field2CInMilliwatts}mW, field30={values.Field30InMilliwatts}mW, offset={offsetInWatts}W]");
-        controller.SetPowerValues(PcfPowerFields.Field2C, updatedValues);
+        Log.Instance.Trace($"Writing GPU TPP target offset through NVAPI PCF. [offset={offsetInWatts}W]");
+        controller.SetTargetProcessingPowerOffsetInWatts(offsetInWatts);
     });
 
     private static CapabilityID AdjustCapabilityIdForPowerMode(CapabilityID id, PowerModeState powerMode)
