@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -143,9 +143,11 @@
   </data>
   <data name="AutoColorManagementState_Off" xml:space="preserve">
     <value>Off</value>
+    <comment>Informs the user that Auto Color Management is or will be turned off.</comment>
   </data>
   <data name="AutoColorManagementState_On" xml:space="preserve">
     <value>On</value>
+    <comment>Informs the user that Auto Color Management is or will be turned on.</comment>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
     <value>Warning: For safety, these steps will be skipped on startup: {0}. All other steps will execute normally.</value>
@@ -169,7 +171,7 @@
     <value>On</value>
   </data>
   <data name="BatteryState_Conservation" xml:space="preserve">
-    <value>Conservation</value>
+    <value>संरक्षण</value>
   </data>
   <data name="BatteryState_Normal" xml:space="preserve">
     <value>Normal</value>
@@ -283,7 +285,7 @@
     <value>dGPU</value>
   </data>
   <data name="HybridModeState_On" xml:space="preserve">
-    <value>Hybrid</value>
+    <value>संकर</value>
   </data>
   <data name="HybridModeState_OnAuto" xml:space="preserve">
     <value>Hybrid-Auto</value>
@@ -383,16 +385,16 @@
     <comment>Informs the user that One Level White Keyboard Backlight is or will be turned on.</comment>
   </data>
   <data name="OsdItem_Disk1Temperature" xml:space="preserve">
-    <value>Disk 1 Temperature</value>
+    <value>डिस्क 1 तापमान</value>
   </data>
   <data name="OsdItem_Disk2Temperature" xml:space="preserve">
-    <value>Disk 2 Temperature</value>
+    <value>डिस्क 2 तापमान</value>
   </data>
   <data name="OsdItem_E_Core_Frequency" xml:space="preserve">
     <value>E-Core Clock</value>
   </data>
   <data name="OsdItem_Fan" xml:space="preserve">
-    <value>Fan</value>
+    <value>पंखा</value>
   </data>
   <data name="OsdItem_Fps" xml:space="preserve">
     <value>FPS</value>
@@ -422,7 +424,7 @@
     <value>Temperature</value>
   </data>
   <data name="OsdItem_Utilization" xml:space="preserve">
-    <value>Utilization</value>
+    <value>उपयोग</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
     <value>Voltage</value>
@@ -431,7 +433,7 @@
     <value>VRAM Temperature</value>
   </data>
   <data name="OsdItem_VramUtilization" xml:space="preserve">
-    <value>VRAM Utilization</value>
+    <value>वी-रैम उपयोग</value>
   </data>
   <data name="OverdriveState_Off" xml:space="preserve">
     <value>Off</value>
@@ -463,7 +465,7 @@
     <value>Windows Power Plan</value>
   </data>
   <data name="PowerModeState_Balance" xml:space="preserve">
-    <value>Balance</value>
+    <value>संतुलित</value>
   </data>
   <data name="PowerModeState_Extreme" xml:space="preserve">
     <value>Extreme</value>
