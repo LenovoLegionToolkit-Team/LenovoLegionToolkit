@@ -1217,23 +1217,38 @@ public class GodModeController(
     private static Task<int> GetPcfTotalProcessingPowerTargetOffsetAsync() => Task.Run(() =>
     {
         using var controller = new PcfPowerController();
-        var offsetInWatts = controller.GetTargetProcessingPowerOffsetInWatts();
+        var offsetInWatts = CalculatePcfTotalProcessingPowerTargetOffsetInWatts(controller.GetPowerValues());
         Log.Instance.Trace($"Read GPU TPP target offset through NVAPI PCF. [offset={offsetInWatts}W]");
         return offsetInWatts;
     });
+
+    private static int CalculatePcfTotalProcessingPowerTargetOffsetInWatts(PcfPowerValues values)
+    {
+        var targetInMilliwatts = values.ACTargetTPPLimitInMilliwatts;
+        var baselineInMilliwatts = values.ACDefaultGPULimitInMilliwatts;
+
+        if (targetInMilliwatts == uint.MaxValue || targetInMilliwatts <= baselineInMilliwatts)
+        {
+            return 0;
+        }
+
+        return checked((int)(((long)targetInMilliwatts - baselineInMilliwatts) / 1000));
+    }
 
     private static Task SetPcfTotalProcessingPowerTargetOffsetAsync(int offsetInWatts) => Task.Run(() =>
     {
         using var controller = new PcfPowerController();
         Log.Instance.Trace($"Writing GPU TPP target offset through NVAPI PCF. [offset={offsetInWatts}W]");
-        controller.SetTargetProcessingPowerOffsetInWatts(offsetInWatts);
+        var values = controller.GetPowerValues();
+        var targetInMilliwatts = checked((uint)(values.ACDefaultGPULimitInMilliwatts + offsetInWatts * 1000));
+        controller.SetPowerField(PcfPowerFields.ACTargetTPPLimit, targetInMilliwatts);
     });
 
     private static Task ResetTotalProcessingPowerTargetOffsetAsync() => Task.Run(() =>
     {
         using var controller = new PcfPowerController();
         Log.Instance.Trace($"Resetting GPU TPP target offset through NVAPI PCF.");
-        controller.ResetTargetProcessingPowerOffset();
+        controller.ResetPowerField(PcfPowerFields.ACTargetTPPLimit);
     });
 
     private static CapabilityID AdjustCapabilityIdForPowerMode(CapabilityID id, PowerModeState powerMode)
