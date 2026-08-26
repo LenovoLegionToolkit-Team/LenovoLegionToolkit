@@ -120,7 +120,7 @@ public class GodModeController(
         }
 
         Log.Instance.Trace($"Loading state from store...");
-        return await LoadStateFromStoreAsync(store, defaultState, config).ConfigureAwait(false);
+        return await LoadStateFromStoreAsync(store, defaultState).ConfigureAwait(false);
     }
 
     public Task SetStateAsync(GodModeState state)
@@ -1275,7 +1275,7 @@ public class GodModeController(
 
     private static bool IsValidStore(GodModeSettings.GodModeSettingsStore store) => store.Presets.Count != 0 && store.Presets.ContainsKey(store.ActivePresetId);
 
-    private async Task<GodModeState> LoadStateFromStoreAsync(GodModeSettings.GodModeSettingsStore store, GodModePreset defaultState, GodModePlatformConfiguration config)
+    private async Task<GodModeState> LoadStateFromStoreAsync(GodModeSettings.GodModeSettingsStore store, GodModePreset defaultState)
     {
         var states = new Dictionary<Guid, GodModePreset>();
         var mi = await GetMachineInformationAsync().ConfigureAwait(false);
