@@ -785,7 +785,7 @@ public class GodModeController(
             try
             {
                 Log.Instance.Trace($"Resetting PCF power target offset for power mode {state}...");
-                await SetPcfTotalProcessingPowerTargetOffsetAsync(0).ConfigureAwait(false);
+                await ResetTotalProcessingPowerTargetOffsetAsync().ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -1227,6 +1227,13 @@ public class GodModeController(
         using var controller = new PcfPowerController();
         Log.Instance.Trace($"Writing GPU TPP target offset through NVAPI PCF. [offset={offsetInWatts}W]");
         controller.SetTargetProcessingPowerOffsetInWatts(offsetInWatts);
+    });
+
+    private static Task ResetTotalProcessingPowerTargetOffsetAsync() => Task.Run(() =>
+    {
+        using var controller = new PcfPowerController();
+        Log.Instance.Trace($"Resetting GPU TPP target offset through NVAPI PCF.");
+        controller.ResetTargetProcessingPowerOffset();
     });
 
     private static CapabilityID AdjustCapabilityIdForPowerMode(CapabilityID id, PowerModeState powerMode)
