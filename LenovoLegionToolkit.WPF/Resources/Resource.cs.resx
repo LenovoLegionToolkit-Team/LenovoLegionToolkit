@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -176,7 +176,7 @@
     <value>Přidat nový</value>
   </data>
   <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
-    <value>Dynamically shifts power between the CPU and GPU to maximize performance in compatible games.</value>
+    <value>Dynamicky přesouvá výkon mezi CPU a GPU k maximalizaci výkonu v kompatibilních hrách.</value>
   </data>
   <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
     <value>AI Engine</value>
@@ -197,16 +197,16 @@
     <value>Vždy napájené USB</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options over all power mode.</value>
+    <value>Použít optimalizátor křivky a pokročilé možnosti ve všech režimech napájení.</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Title" xml:space="preserve">
-    <value>Allow in all power modes</value>
+    <value>Povolit ve všech režimech napájení</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
     <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
-    <value>Allow on battery</value>
+    <value>Povolit na baterii</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
     <value>Použít změny</value>
@@ -221,7 +221,7 @@
     <value>Jádro</value>
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
-    <value>Current Limits</value>
+    <value>Limit proudu</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
     <value>High</value>
@@ -257,13 +257,13 @@
     <value>EDC VDD</value>
   </data>
   <data name="AmdOverclocking_Enable_Message" xml:space="preserve">
-    <value>Enable AMD overclocking features.</value>
+    <value>Povolit funkce AMD přetaktování.</value>
   </data>
   <data name="AmdOverclocking_Enable_Title" xml:space="preserve">
-    <value>Enable AMD Overclocking</value>
+    <value>Povolit AMD přetaktování</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
-    <value>Maximum CPU boost frequency override (MHz).</value>
+    <value>Maximální frekvence zesílení CPU (MHz)</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Title" xml:space="preserve">
     <value>FMax frekvence</value>
@@ -281,7 +281,7 @@
     <value>Optimalizace per-Core</value>
   </data>
   <data name="AmdOverclocking_PowerLimits" xml:space="preserve">
-    <value>Power Limits</value>
+    <value>Limity napájení</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Long" xml:space="preserve">
     <value>Power Limit (Long)</value>
@@ -302,16 +302,16 @@
     <value>Úspěšně</value>
   </data>
   <data name="AmdOverclocking_Tab_Advanced" xml:space="preserve">
-    <value>Advanced</value>
+    <value>Pokročilé</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
-    <value>Curve Optimizer</value>
+    <value>Optimalizátor křivky</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
     <value>Curve Shaper Optimizer</value>
   </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>Nastavení</value>
   </data>
   <data name="AmdOverclocking_TDC_SoC" xml:space="preserve">
     <value>TDC SoC</value>
@@ -323,7 +323,7 @@
     <value>AMD Precision Boost Overclocking</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
-    <value>Disable CCD 1 to get stability on both FPS and temperatures.</value>
+    <value>Zakažte CCD 1, abyste získali stabilitu jak při FPS, tak při teplotách</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Title" xml:space="preserve">
     <value>Herní režim X3D</value>
@@ -410,16 +410,16 @@
     <value>Okno argumentů</value>
   </data>
   <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+    <value>Automaticky spravovat barevné profily pro přesnou a konzistentní reprodukci barev.</value>
   </data>
   <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
+    <value>Automatická správa barev</value>
   </data>
   <data name="AutoColorManagementControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+    <value>Automaticky spravovat barevné profily pro přesnou a konzistentní reprodukci barev.</value>
   </data>
   <data name="AutoColorManagementControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
+    <value>Automatická správa barev</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>Povolit</value>
@@ -552,7 +552,7 @@ Spustí se pouze akce, které odpovídají aktuálnímu stavu.</value>
     <value>V {0:D2}:{1:D2}:{2:D2}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
-    <value>GPU Working Mode</value>
+    <value>Pracovní režim GPU</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
     <value>Režim výkonu</value>
@@ -567,7 +567,7 @@ Spustí se pouze akce, které odpovídají aktuálnímu stavu.</value>
     <value>Nastavit</value>
   </data>
   <data name="Automation_SupportedAvailableCount" xml:space="preserve">
-    <value>Supported: {0} / Available: {1}</value>
+    <value>Podporováno: {0} / Dostupné: {1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>Zpět</value>
@@ -727,7 +727,7 @@ Tento čas nemusí být přesný, pokud byl notebook nabíjen ve spánku nebo ve
     <value>Disable Windows Startup Animation</value>
   </data>
   <data name="BootLogoWindow_Options_Title" xml:space="preserve">
-    <value>Startup Animation</value>
+    <value>Bootovací animace</value>
   </data>
   <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
     <value>{0}</value>
@@ -736,10 +736,10 @@ Tento čas nemusí být přesný, pokud byl notebook nabíjen ve spánku nebo ve
     <value>Max {0}</value>
   </data>
   <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
-    <value>Supported formats and dimensions</value>
+    <value>Podporované formáty a rozměry</value>
   </data>
   <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
-    <value>Image Requirements</value>
+    <value>Požadavky na obrázek</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>Vlastní logo nebylo možné nastavit: {0}</value>
@@ -769,10 +769,10 @@ Tento čas nemusí být přesný, pokud byl notebook nabíjen ve spánku nebo ve
     <value>Nedostatek volného místa na oddílu EFI.</value>
   </data>
   <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
-    <value>Status of the UEFI boot logo</value>
+    <value>Stav bootovacího loga UEFI</value>
   </data>
   <data name="BootLogoWindow_Status_Title" xml:space="preserve">
-    <value>Current Status</value>
+    <value>Aktuální stav</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>Logo při spuštění</value>
@@ -839,7 +839,7 @@ Přepínání režimů může vyžadovat restart.</value>
     <value>Kopírovat vše</value>
   </data>
   <data name="Core" xml:space="preserve">
-    <value>Core</value>
+    <value>Jádro</value>
   </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
@@ -938,7 +938,7 @@ Přepínání režimů může vyžadovat restart.</value>
     <value>Deaktivovat</value>
   </data>
   <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
-    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+    <value>Spravujte aktivní procesy změnou jejich předvoleb grafiky, kliknutím pravým tlačítkem myši je násilně ukončíte nebo nastavte pokročilá nastavení.</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>Vynutit ukončení procesu</value>
@@ -947,19 +947,19 @@ Přepínání režimů může vyžadovat restart.</value>
     <value>Předvolby grafiky</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
-    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+    <value>Udržuje aktivní připojení k diskrétní grafické kartě, aby se zabránilo zásekům.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
-    <value>This increases power consumption and reduces battery life.</value>
+    <value>Toto zvýší spotřebu energie a sníží životnost baterie.</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
-    <value>Keep dGPU awake</value>
+    <value>Ponechat dGPU aktivní</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>Ukončit aplikace</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the apps list after terminating a process.</value>
+    <value>Zpoždění před obnovením seznamu aplikací po ukončení procesu.</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>Vynutit ukončení aktualizace</value>
@@ -986,7 +986,7 @@ Přepínání režimů může vyžadovat restart.</value>
     <value>Neznámý</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>How often to check the discrete GPU for active processes.</value>
+    <value>Jak často kontrolovat samostatnou GPU pro aktivní procesy.</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>Interval dotazování</value>
@@ -1004,10 +1004,10 @@ Přepínání režimů může vyžadovat restart.</value>
     <value>Procesy</value>
   </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
-    <value>Auto (Dynamic)</value>
+    <value>Auto (Dynamické)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Lock the discrete GPU to a specific performance state.</value>
+    <value>Uzamknout diskrétní GPU do konkrétního stavu výkonu.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
     <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
@@ -1117,13 +1117,13 @@ Děkujeme za vaši podporu!</value>
     <value>Procesy v tomto seznamu budou ignorovány spuštěním/zastavením spouštěčů hry a Lenovoova AI/Inteligentní režim. Zadejte název procesu bez cesty (např. "discord" nebo "blender").</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
-    <value>Excluded Processes ({0})</value>
+    <value>Vyloučené procesy ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
-    <value>No excluded processes</value>
+    <value>Žádné vyloučené procesy</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
-    <value>Running Processes ({0})</value>
+    <value>Běžící proces ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>Vyloučené procesy</value>
@@ -1434,7 +1434,7 @@ Vážně, buď opatrný s touto možností!</value>
     <value>Nastavení vlastního reimu nebude správně použito, pokud Legion Zone nebo jeho sluby běží.</value>
   </data>
   <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
-    <value>Your device may not support the full feature set of Custom Mode.</value>
+    <value>Vaše zařízení nemusí podporovat celou sadu funkcí vlastního režimu.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Zesílení přesahu Zesílení</value>
@@ -1464,7 +1464,7 @@ Vážně, buď opatrný s touto možností!</value>
     <value>Pokročilé možnosti přepisování</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
-    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
+    <value>Nesprávná nastavení mohou způsobit nestabilitu, pády nebo selhání systému.</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>Nastavení vlastního režimu nebude správně použito, pokud Lenovo Vantage nebo jeho služby běží.</value>
@@ -1552,19 +1552,19 @@ Pokud dGPU vůbec nereaguje, prosím restartujte svůj notebook.</value>
     <value>Okamžité spuštění</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change ITS Mode</value>
+    <value>Změnit režim ITS</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>Režim ITS</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
-    <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
+    <value>Přizpůsobte si sekvenci Fn+Q a povolte nebo deaktivujte specifické profily napájení.</value>
   </data>
   <data name="ITSModeConfigWindow_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>Režim ITS</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Change ITS Mode</value>
+    <value>Změnit režim ITS</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
     <value>ITS Power Mode</value>
@@ -2087,7 +2087,7 @@ Click Yes to open download link in browser.
 Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
-    <value>PawnIO driver not running</value>
+    <value>PawnIO ovladač není spuštěn</value>
   </data>
   <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
     <value>Your PawnIO version is too old.
@@ -2099,7 +2099,7 @@ Click Yes to open download link in browser.
 Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
-    <value>PawnIO update required</value>
+    <value>PawnIO vyžaduje aktualizaci</value>
   </data>
   <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
     <value>You need to install PawnIO first to use hardware sensors!
@@ -2135,7 +2135,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>OSD</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
-    <value>Voltage</value>
+    <value>Napětí</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>Nastavte stav pozice zámku OSD.</value>
@@ -2303,31 +2303,31 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Přetaktovat GPU</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
-    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
+    <value>Upravte základní frekvenci GPU pro rychlejší nebo pomalejší než tovární rychlost.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>Odsazení frekvence jádra</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
-    <value>Adjust VRAM speed to modify memory bandwidth.</value>
+    <value>Upravit rychlost VRAM pro upravení šířky pásma paměti.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>Odsazení frekvence paměti</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
-    <value>Overclocking</value>
+    <value>Přetaktování</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>Nastavení přetaktování GPU</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
-    <value>Undervolting</value>
+    <value>Podvoltování</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
-    <value>Voltage Lock</value>
+    <value>Zámek napětí</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
+    <value>Zamkne napětí a frekvenci GPU pro konzistentní výkon.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Odemkuji {0}...</value>
@@ -2574,7 +2574,7 @@ Režim můžeš přepínat pomocí Fn+Q.</value>
     <value>Obnovovací frekvence</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
+    <value>Odstranit</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>Přejmenovat</value>
@@ -2661,7 +2661,7 @@ Režim můžeš přepínat pomocí Fn+Q.</value>
     <value>Ot./m</value>
   </data>
   <data name="Run" xml:space="preserve">
-    <value>Run</value>
+    <value>Běh</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
     <value>Parametry</value>
@@ -2703,38 +2703,37 @@ Režim můžeš přepínat pomocí Fn+Q.</value>
     <value>Ukládání...</value>
   </data>
   <data name="ScriptConsole_Code_Title" xml:space="preserve">
-    <value>Code Block</value>
+    <value>Blok kódu</value>
   </data>
   <data name="ScriptConsole_Output_Title" xml:space="preserve">
-    <value>Output</value>
+    <value>Výstup</value>
   </data>
   <data name="ScriptConsole_Section_Elapsed" xml:space="preserve">
-    <value>Elapsed: {0} ms</value>
+    <value>Uplynulo: {0} ms</value>
   </data>
   <data name="ScriptConsole_Section_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>Chyba</value>
   </data>
   <data name="ScriptConsole_Section_ReturnValue" xml:space="preserve">
-    <value>Return Value</value>
+    <value>Návratová hodnota</value>
   </data>
   <data name="ScriptConsole_Status_Error" xml:space="preserve">
-    <value>Execution failed: {0} ms</value>
+    <value>Provedení se nezdařilo: {0} ms</value>
   </data>
   <data name="ScriptConsole_Status_Ok" xml:space="preserve">
-    <value>Execution succeeded: {0} ms</value>
+    <value>Provedení bylo úspěšné: {0} ms</value>
   </data>
   <data name="ScriptConsole_Status_Running" xml:space="preserve">
-    <value>Running...</value>
+    <value>Spuštěn...</value>
   </data>
   <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
-    <value>Unexpected error</value>
+    <value>Neočekávaná chyba</value>
   </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
     <value>Script Console</value>
   </data>
   <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
-    <value>Unexpected Error:
-{0}</value>
+    <value>Neočekávaná chyba: {0}</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
     <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
@@ -2911,19 +2910,19 @@ Režim můžeš přepínat pomocí Fn+Q.</value>
     <value>Použitá/celková paměť (GB)</value>
   </data>
   <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
-    <value>Average</value>
+    <value>Průměr</value>
   </data>
   <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
-    <value>Core</value>
+    <value>Jádro</value>
   </data>
   <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
     <value>Maximum</value>
   </data>
   <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
-    <value>Choose how voltage is displayed on the Dashboard and OSD.</value>
+    <value>Zvolte, jak se napětí zobrazí na nástěnce a OSD.</value>
   </data>
   <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
-    <value>Voltage Display Mode</value>
+    <value>Režim zobrazení napětí</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>Pořadové číslo</value>
@@ -3267,10 +3266,10 @@ Po změně této volby je doporučen restart.</value>
     <value>Synchronizace režimu napájení</value>
   </data>
   <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
-    <value>Restore previous window position on application launch.</value>
+    <value>Obnov předchozí pozici okna při zapnutí aplikace.</value>
   </data>
   <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
-    <value>Remember Window Position</value>
+    <value>Zapamatuj si pozici okna</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>Jste si jisti, že chcete obnovit všechna nastavení na výchozí hodnoty? Tuto akci nelze vrátit zpět a aplikace se restartuje.</value>
@@ -3285,7 +3284,7 @@ Po změně této volby je doporučen restart.</value>
     <value>Restartovat pro použití změn.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
-    <value>Execute C# scripts in the application runtime.</value>
+    <value>Spusťte C# skripty za běh aplikace.</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Title" xml:space="preserve">
     <value>Script Console</value>
@@ -3405,7 +3404,7 @@ Po změně této volby je doporučen restart.</value>
     <value>Slot</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
-    <value>Settings applied successfully.</value>
+    <value>Nastavení úspěšně aplikována.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Po ztlumení, všechna aktivní zvuková zařízení budou ztlumena.</value>
@@ -3621,7 +3620,7 @@ Po změně této volby je doporučen restart.</value>
     <value>Úložiště</value>
   </data>
   <data name="Success" xml:space="preserve">
-    <value>Success</value>
+    <value>Úspěch</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>Zvol ikonu</value>
@@ -3642,19 +3641,19 @@ Po změně této volby je doporučen restart.</value>
     <value>Čas</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_CustomRange" xml:space="preserve">
-    <value>Time range</value>
+    <value>Rozsah času</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_From" xml:space="preserve">
-    <value>From:</value>
+    <value>Z:</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunriseToSunset" xml:space="preserve">
-    <value>Between sunrise and sunset</value>
+    <value>Mezi východem a západem slunce</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunsetToSunrise" xml:space="preserve">
-    <value>Between sunset and sunrise</value>
+    <value>Mezi západem a východem slunce</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_To" xml:space="preserve">
-    <value>To:</value>
+    <value>Do:</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
     <value>Povolit přepínání mezi integrovaným a samostatným grafickým procesem.</value>
@@ -3676,7 +3675,7 @@ Vyžaduje restart.</value>
     <value>Hybridní mód</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Total</value>
+    <value>Celkem</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
     <value>Deaktivovat touchpad.</value>
@@ -3773,7 +3772,7 @@ Pokud se rozhodneš pokračovat, protokolování bude automaticky povoleno.</val
     <value>Záruka</value>
   </data>
   <data name="Watt" xml:space="preserve">
-    <value>ZA</value>
+    <value>W</value>
   </data>
   <data name="WhiteKeyboardBacklightAutomationStepControl_Message" xml:space="preserve">
     <value>Upravit jas podsvícení klávesnice.</value>
