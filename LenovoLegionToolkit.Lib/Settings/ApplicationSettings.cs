@@ -13,6 +13,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public RGBColor? AccentColor { get; set; }
         public AccentColorSource AccentColorSource { get; set; }
         public PowerModeMappingMode PowerModeMappingMode { get; set; } = PowerModeMappingMode.Disabled;
+        public bool SynchronizePowerModeWithWindowsPowerPlan { get; set; }
         public Dictionary<PowerModeState, Guid> PowerPlans { get; set; } = [];
         public Dictionary<PowerModeState, WindowsPowerMode> PowerModes { get; set; } = [];
         public Dictionary<PowerModeState, Dictionary<PowerOverrideKey, string>> Overrides { get; set; } = [];

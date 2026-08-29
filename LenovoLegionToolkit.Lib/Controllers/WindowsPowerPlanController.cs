@@ -23,6 +23,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
     private readonly ThrottleLastDispatcher _overlayDispatcher = new(TimeSpan.FromSeconds(2), nameof(WindowsPowerPlanController));
     private readonly SemaphoreSlim _lock = new(1, 1);
+    private int _skipNextPowerModeSync;
 
     public IEnumerable<WindowsPowerPlan> GetPowerPlans()
     {
@@ -32,6 +33,29 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
             var powerPlanName = GetPowerPlanName(powerPlanGuid);
             yield return new WindowsPowerPlan(powerPlanGuid, powerPlanName, powerPlanGuid == activePowerPlanGuid);
         }
+    }
+
+    public PowerModeState? GetPowerModeStateForActivePowerPlan()
+    {
+        if (Interlocked.Exchange(ref _skipNextPowerModeSync, 0) == 1)
+        {
+            Log.Instance.Trace("Skipping power mode synchronization. [reason=power plan change initiated by LLT]");
+            return null;
+        }
+
+        if (settings.Store.PowerModeMappingMode is not PowerModeMappingMode.WindowsPowerPlan ||
+            !settings.Store.SynchronizePowerModeWithWindowsPowerPlan)
+            return null;
+
+        if (!TryGetActivePowerPlanGuid(out var activePowerPlanGuid))
+            return null;
+
+        foreach (var powerPlan in settings.Store.PowerPlans)
+            if (powerPlan.Value == activePowerPlanGuid)
+                return powerPlan.Key;
+
+        Log.Instance.Trace($"Skipping power mode synchronization. [reason=active power plan is not mapped, guid={activePowerPlanGuid}]");
+        return null;
     }
 
     public async Task SetPowerPlanAsync(PowerModeState powerModeState, bool alwaysActivateDefaults = false, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
@@ -95,11 +119,13 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
             try
             {
+                Interlocked.Exchange(ref _skipNextPowerModeSync, 1);
                 SetActivePowerPlan(powerPlanToActivate.Guid);
                 Log.Instance.Trace($"Power plan {powerPlanToActivate.Guid} activated. [name={powerPlanToActivate.Name}]");
             }
             catch (Exception ex)
             {
+                Interlocked.Exchange(ref _skipNextPowerModeSync, 0);
                 Log.Instance.Trace($"Failed to set active power plan. [guid={powerPlanToActivate.Guid}]", ex);
                 return;
             }
@@ -445,25 +471,44 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
-    private static unsafe Guid GetActivePowerPlanGuid()
+    private static Guid GetActivePowerPlanGuid() => TryGetActivePowerPlanGuid(out var guid) ? guid : DefaultPowerPlan;
+
+    private static bool TryGetActivePowerPlanGuid(out Guid activePowerPlanGuid)
     {
         try
         {
-            if (PInvoke.PowerGetActiveScheme(null, out var guid) != WIN32_ERROR.ERROR_SUCCESS)
-                PInvokeExtensions.ThrowIfWin32Error("PowerGetActiveScheme");
+            var result = PowerGetActiveScheme(IntPtr.Zero, out var guid);
+            if (result != 0)
+                PInvokeExtensions.ThrowIfWin32Error((int)result, "PowerGetActiveScheme");
 
-            return *guid;
+            try
+            {
+                activePowerPlanGuid = Marshal.PtrToStructure<Guid>(guid);
+                return true;
+            }
+            finally
+            {
+                LocalFree(guid);
+            }
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Failed to get active power plan guid.", ex);
-            return DefaultPowerPlan;
+            activePowerPlanGuid = Guid.Empty;
+            return false;
         }
     }
 
     private static void SetActivePowerPlan(Guid powerPlanGuid)
     {
-        if (PInvoke.PowerSetActiveScheme(null, powerPlanGuid) != WIN32_ERROR.ERROR_SUCCESS)
-            PInvokeExtensions.ThrowIfWin32Error("PowerSetActiveScheme");
+        var result = PInvoke.PowerSetActiveScheme(null, powerPlanGuid);
+        if (result != WIN32_ERROR.ERROR_SUCCESS)
+            PInvokeExtensions.ThrowIfWin32Error((int)result, "PowerSetActiveScheme");
     }
+
+    [DllImport("kernel32.dll")]
+    private static extern IntPtr LocalFree(IntPtr hMem);
+
+    [DllImport("PowrProf.dll")]
+    private static extern uint PowerGetActiveScheme(IntPtr rootPowerKey, out IntPtr activePolicyGuid);
 }

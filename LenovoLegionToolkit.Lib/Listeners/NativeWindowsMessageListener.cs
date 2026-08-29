@@ -23,6 +23,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
 {
     private const uint WM_APP_CHECK_CAPS = PInvoke.WM_APP + 0;
     private const uint WM_APP_CHECK_NUMLOCK = PInvoke.WM_APP + 1;
+    private static readonly Guid ActivePowerSchemeGuid = Guid.Parse("31f9f286-5084-42fe-b720-2b0264993763");
 
     public class ChangedEventArgs(NativeWindowsMessage message, object? data = null) : EventArgs
     {
@@ -44,6 +45,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
     private HPOWERNOTIFY _consoleDisplayStateNotificationHandle;
     private HPOWERNOTIFY _lidSwitchStateChangeNotificationHandle;
     private HPOWERNOTIFY _powerSavingStateChangeNotificationHandle;
+    private HPOWERNOTIFY _activePowerSchemeNotificationHandle;
     private HHOOK _kbHook;
 
     private bool _lastCapslockState;
@@ -90,6 +92,7 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         _consoleDisplayStateNotificationHandle = RegisterPowerNotification(PInvoke.GUID_CONSOLE_DISPLAY_STATE);
         _lidSwitchStateChangeNotificationHandle = RegisterPowerNotification(PInvoke.GUID_LIDSWITCH_STATE_CHANGE);
         _powerSavingStateChangeNotificationHandle = RegisterPowerNotification(PInvoke.GUID_POWER_SAVING_STATUS);
+        _activePowerSchemeNotificationHandle = RegisterPowerNotification(ActivePowerSchemeGuid);
 
         return EnsureInitializedAsync();
     });
@@ -102,10 +105,12 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         PInvoke.UnregisterPowerSettingNotification(_consoleDisplayStateNotificationHandle);
         PInvoke.UnregisterPowerSettingNotification(_lidSwitchStateChangeNotificationHandle);
         PInvoke.UnregisterPowerSettingNotification(_powerSavingStateChangeNotificationHandle);
+        PInvoke.UnregisterPowerSettingNotification(_activePowerSchemeNotificationHandle);
 
         _kbHook = default;
         _deviceNotificationHandle = default;
         _consoleDisplayStateNotificationHandle = default;
+        _activePowerSchemeNotificationHandle = default;
 
         ReleaseHandle();
 
@@ -204,6 +209,13 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
                 Log.Instance.Trace($"Event received: Battery Saver enabled");
 
                 OnBatterySaverEnabled();
+            }
+
+            if (str.PowerSetting == ActivePowerSchemeGuid)
+            {
+                Log.Instance.Trace($"Event received: Active Power Scheme Changed");
+
+                OnActivePowerSchemeChanged();
             }
         }
 
@@ -317,6 +329,21 @@ public class NativeWindowsMessageListener : NativeWindow, IListener<NativeWindow
         Task.Run(async () => await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync().ConfigureAwait(false));
 
         RaiseChanged(NativeWindowsMessage.BatterySaverEnabled);
+    }
+
+    private void OnActivePowerSchemeChanged()
+    {
+        Task.Run(async () =>
+        {
+            try
+            {
+                await _powerModeFeature.EnsureCorrectPowerModeIsSetForActivePowerPlanAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to synchronize power mode with active power plan.", ex);
+            }
+        });
     }
 
     private void OnDeviceConnected(string name)

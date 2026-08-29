@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using static LenovoLegionToolkit.Lib.Settings.GodModeSettings;
 
@@ -26,6 +27,8 @@ public class PowerModeFeature(
     PowerModeListener powerModeListener)
     : AbstractWmiFeature<PowerModeState>(WMI.LenovoGameZoneData.GetSmartFanModeAsync, WMI.LenovoGameZoneData.SetSmartFanModeAsync, WMI.LenovoGameZoneData.IsSupportSmartFanAsync, 1)
 {
+    private readonly SemaphoreSlim _activePowerPlanSyncLock = new(1, 1);
+
     public bool AllowAllPowerModesOnBattery { get; set; }
     public PowerModeState LastPowerModeState { get; set; }
 
@@ -128,6 +131,34 @@ public class PowerModeFeature(
         var state = await GetStateAsync().ConfigureAwait(false);
         await windowsPowerModeController.SetPowerModeAsync(state, preset, skipThrottle).ConfigureAwait(false);
         await windowsPowerPlanController.SetPowerPlanAsync(state, true, preset, skipThrottle).ConfigureAwait(false);
+    }
+
+    public async Task EnsureCorrectPowerModeIsSetForActivePowerPlanAsync()
+    {
+        await _activePowerPlanSyncLock.WaitAsync().ConfigureAwait(false);
+        try
+        {
+            var state = windowsPowerPlanController.GetPowerModeStateForActivePowerPlan();
+            if (!state.HasValue)
+                return;
+
+            var currentState = await GetStateAsync().ConfigureAwait(false);
+            if (currentState == state.Value)
+                return;
+
+            try
+            {
+                await SetStateAsync(state.Value).ConfigureAwait(false);
+            }
+            catch (PowerModeUnavailableWithoutACException)
+            {
+                Log.Instance.Trace($"Skipping power mode synchronization. [reason=mapped power mode is unavailable, state={state.Value}]");
+            }
+        }
+        finally
+        {
+            _activePowerPlanSyncLock.Release();
+        }
     }
 
     public async Task EnsureGodModeStateIsAppliedAsync()
