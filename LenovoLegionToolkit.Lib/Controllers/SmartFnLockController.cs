@@ -10,16 +10,21 @@ using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
 
-public class SmartFnLockController(FnLockFeature feature, ApplicationSettings settings)
+public class SmartFnLockController(FnLockFeature feature, ApplicationSettings settings) : IDisposable
 {
+    private const int HOLD_THRESHOLD_MS = 180;
+    private const int HARDWARE_SETTLE_MS = 150;
+
+    private readonly SemaphoreSlim _hardwareGate = new(1, 1);
     private readonly object _stateLock = new();
-    private CancellationTokenSource? _debounceCts;
+    private CancellationTokenSource? _holdCts;
 
     private bool _ctrlDepressed;
     private bool _shiftDepressed;
     private bool _altDepressed;
-    private bool _restoreFnLock;
     private bool _wasModifierActive;
+    private bool _hardwareToggledOff;
+    private bool _isDisposed;
 
     public void OnKeyboardEvent(nuint wParam, KBDLLHOOKSTRUCT kbStruct)
     {
@@ -30,75 +35,125 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
 
         lock (_stateLock)
         {
-            if (isModifierActive == _wasModifierActive)
+            if (_isDisposed || isModifierActive == _wasModifierActive)
                 return;
 
             _wasModifierActive = isModifierActive;
 
-            _debounceCts?.Cancel();
-            _debounceCts?.Dispose();
-            _debounceCts = new CancellationTokenSource();
-            var ct = _debounceCts.Token;
+            _holdCts?.Cancel();
+            _holdCts?.Dispose();
+            _holdCts = new CancellationTokenSource();
+            var ct = _holdCts.Token;
 
             if (isModifierActive)
             {
-                if (_restoreFnLock)
-                    return;
-
                 Task.Run(async () =>
                 {
                     try
                     {
-                        await Task.Delay(40, ct).ConfigureAwait(false);
+                        await Task.Delay(HOLD_THRESHOLD_MS, ct).ConfigureAwait(false);
                         if (ct.IsCancellationRequested)
                             return;
 
-                        var state = await feature.GetStateAsync().ConfigureAwait(false);
-                        if (state == FnLockState.Off || ct.IsCancellationRequested)
-                            return;
-
-                        lock (_stateLock)
+                        await _hardwareGate.WaitAsync(ct).ConfigureAwait(false);
+                        var didWrite = false;
+                        try
                         {
                             if (ct.IsCancellationRequested)
                                 return;
 
-                            _restoreFnLock = true;
+                            var state = await feature.GetStateAsync().ConfigureAwait(false);
+                            if (state == FnLockState.Off || ct.IsCancellationRequested)
+                                return;
+
+                            lock (_stateLock)
+                            {
+                                if (_isDisposed || ct.IsCancellationRequested)
+                                    return;
+
+                                _hardwareToggledOff = true;
+                            }
+
+                            if (Log.Instance.IsTraceEnabled)
+                                Log.Instance.Trace($"Modifier held past threshold, disabling Fn Lock temporarily...");
+
+                            await feature.SetStateAsync(FnLockState.Off, verify: false).ConfigureAwait(false);
+                            didWrite = true;
                         }
-
-                        if (Log.Instance.IsTraceEnabled)
-                            Log.Instance.Trace($"Disabling Fn Lock temporarily...");
-
-                        await feature.SetStateAsync(FnLockState.Off, verify: false).ConfigureAwait(false);
+                        finally
+                        {
+                            if (didWrite)
+                                await Task.Delay(HARDWARE_SETTLE_MS).ConfigureAwait(false);
+                            _hardwareGate.Release();
+                        }
                     }
                     catch (OperationCanceledException) { }
                     catch (Exception ex)
                     {
                         if (Log.Instance.IsTraceEnabled)
-                            Log.Instance.Trace($"Failed to handle keyboard event: {ex.Message}");
+                            Log.Instance.Trace($"Failed to handle keyboard event, {ex.Message}");
                     }
                 }, ct);
             }
-            else if (_restoreFnLock)
+            else
             {
-                _restoreFnLock = false;
+                var needRestore = _hardwareToggledOff;
+                _hardwareToggledOff = false;
 
-                Task.Run(async () =>
+                if (needRestore)
                 {
-                    try
+                    Task.Run(async () =>
                     {
-                        if (Log.Instance.IsTraceEnabled)
-                            Log.Instance.Trace($"Re-enabling Fn Lock...");
+                        try
+                        {
+                            await _hardwareGate.WaitAsync().ConfigureAwait(false);
+                            try
+                            {
+                                if (Log.Instance.IsTraceEnabled)
+                                    Log.Instance.Trace($"Modifier released, re-enabling Fn Lock...");
 
-                        await feature.SetStateAsync(FnLockState.On, verify: false).ConfigureAwait(false);
-                    }
-                    catch (Exception ex)
-                    {
-                        if (Log.Instance.IsTraceEnabled)
-                            Log.Instance.Trace($"Failed to handle keyboard event: {ex.Message}");
-                    }
-                });
+                                await feature.SetStateAsync(FnLockState.On, verify: false).ConfigureAwait(false);
+                            }
+                            finally
+                            {
+                                await Task.Delay(HARDWARE_SETTLE_MS).ConfigureAwait(false);
+                                _hardwareGate.Release();
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            if (Log.Instance.IsTraceEnabled)
+                                Log.Instance.Trace($"Failed to handle keyboard event, {ex.Message}");
+                        }
+                    });
+                }
             }
         }
+    }
+
+    public void Dispose()
+    {
+        bool needRestore;
+        lock (_stateLock)
+        {
+            if (_isDisposed)
+                return;
+
+            _isDisposed = true;
+            needRestore = _hardwareToggledOff;
+            _hardwareToggledOff = false;
+            _holdCts?.Cancel();
+            _holdCts?.Dispose();
+        }
+
+        if (needRestore)
+        {
+            try { feature.SetStateAsync(FnLockState.On, verify: false).GetAwaiter().GetResult(); }
+            catch { }
+        }
+
+        _hardwareGate.Dispose();
+        GC.SuppressFinalize(this);
     }
 
     private bool IsModifierKeyPressed(nuint wParam, KBDLLHOOKSTRUCT kbStruct)
