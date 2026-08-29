@@ -6,6 +6,7 @@ using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
@@ -165,11 +166,14 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
             Log.Instance.Trace($"ITS mode set successfully to: {state}");
 
-            _pendingOverlaySync = true;
-            _overlayTimeoutCts?.Cancel();
-            _overlayTimeoutCts?.Dispose();
-            _overlayTimeoutCts = new CancellationTokenSource();
-            _ = WaitForOverlayOrTimeoutAsync(_overlayTimeoutCts.Token);
+            if (WindowsPowerModeController.IsOverlaySupported)
+            {
+                _pendingOverlaySync = true;
+                _overlayTimeoutCts?.Cancel();
+                _overlayTimeoutCts?.Dispose();
+                _overlayTimeoutCts = new CancellationTokenSource();
+                _ = WaitForOverlayOrTimeoutAsync(_overlayTimeoutCts.Token);
+            }
 
             if (showNotification)
             {

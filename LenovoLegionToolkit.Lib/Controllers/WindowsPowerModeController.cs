@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Win32;
-using Windows.Win32.Foundation;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
+using Windows.Win32;
+using Windows.Win32.Foundation;
 using static LenovoLegionToolkit.Lib.Settings.GodModeSettings;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
@@ -28,6 +28,8 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
     private readonly ThrottleLastDispatcher _dispatcher = new(TimeSpan.FromSeconds(2), nameof(WindowsPowerModeController));
     private readonly SemaphoreSlim _lock = new(1, 1);
 
+    public static bool IsOverlaySupported => OSExtensions.GetCurrent() == OS.Windows11;
+
     public async Task SetPowerModeAsync(PowerModeState powerModeState, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
     {
         await _lock.WaitAsync().ConfigureAwait(false);
@@ -36,6 +38,12 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
             if (settings.Store.PowerModeMappingMode is not PowerModeMappingMode.WindowsPowerMode)
             {
                 Log.Instance.Trace($"Ignoring... [powerModeMappingMode={settings.Store.PowerModeMappingMode}]");
+                return;
+            }
+
+            if (!IsOverlaySupported)
+            {
+                Log.Instance.Trace($"Ignoring Windows power mode overlay on unsupported Windows version.");
                 return;
             }
 
@@ -90,6 +98,12 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
                 return;
             }
 
+            if (!IsOverlaySupported)
+            {
+                Log.Instance.Trace($"Ignoring Windows power mode overlay on unsupported Windows version.");
+                return;
+            }
+
             Log.Instance.Trace($"Activating... [itsMode={itsMode}]");
 
             var defaultMode = settings.Store.ITSPowerModes.GetValueOrDefault(itsMode, WindowsPowerMode.Balanced);
@@ -136,6 +150,12 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
         await _lock.WaitAsync().ConfigureAwait(false);
         try
         {
+            if (!IsOverlaySupported)
+            {
+                Log.Instance.Trace($"Ignoring Windows power mode overlay on unsupported Windows version.");
+                return;
+            }
+
             if (Power.IsBatterySaverEnabled())
             {
                 Log.Instance.Trace($"Battery saver is on - will not set overlay scheme.");
@@ -163,6 +183,11 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
     private Task ExecuteOverlayDispatch(Guid activeGuid, Guid acGuid, Guid dcGuid)
     {
+        if (!IsOverlaySupported)
+        {
+            return Task.CompletedTask;
+        }
+
         try
         {
             ActivateDefaultPowerPlanIfNeeded();
@@ -200,6 +225,11 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
     public static void SetActiveOverlayRegistryForAc(Guid guid)
     {
+        if (!IsOverlaySupported)
+        {
+            return;
+        }
+
         try
         {
             Registry.SetValue(POWER_SCHEMES_HIVE, POWER_SCHEMES_SUBKEY, ACTIVE_OVERLAY_AC_POWER_SCHEME_KEY, guid, true);
@@ -213,6 +243,11 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
     public static void SetActiveOverlayRegistryForDc(Guid guid)
     {
+        if (!IsOverlaySupported)
+        {
+            return;
+        }
+
         try
         {
             Registry.SetValue(POWER_SCHEMES_HIVE, POWER_SCHEMES_SUBKEY, ACTIVE_OVERLAY_DC_POWER_SCHEME_KEY, guid, true);
@@ -259,6 +294,11 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
     public static void ApplyActiveOverlayScheme(Guid guid)
     {
+        if (!IsOverlaySupported)
+        {
+            return;
+        }
+
         var result = PowerSetActiveOverlayScheme(guid);
         Log.Instance.Trace($"Overlay scheme set. [result={result}, guid={guid}]");
     }

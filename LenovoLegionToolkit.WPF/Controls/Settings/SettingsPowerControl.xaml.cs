@@ -1,9 +1,11 @@
 using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Settings;
@@ -52,15 +54,28 @@ public partial class SettingsPowerControl
             Log.Instance.Trace($"Failed to get GodModeFnQSwitchable status.", ex);
         }
 
-        _powerModeMappingComboBox.SetItems(Enum.GetValues<PowerModeMappingMode>(), _settings.Store.PowerModeMappingMode, t => t.GetDisplayName());
-
         var isPowerModeFeatureSupported = await _powerModeFeature.IsSupportedAsync();
         var isITSModeFeatureSupported = await _itsModeFeature.IsSupportedAsync();
         var isAnyPowerFeatureSupported = isPowerModeFeatureSupported || isITSModeFeatureSupported;
+        var isWindowsPowerModeSupported = WindowsPowerModeController.IsOverlaySupported;
+        var powerModeMappingMode = _settings.Store.PowerModeMappingMode;
+
+        if (!isWindowsPowerModeSupported && powerModeMappingMode == PowerModeMappingMode.WindowsPowerMode)
+        {
+            powerModeMappingMode = PowerModeMappingMode.Disabled;
+            _settings.Store.PowerModeMappingMode = powerModeMappingMode;
+            _settings.SynchronizeStore();
+        }
+
+        var mappingModes = Enum.GetValues<PowerModeMappingMode>();
+        if (!isWindowsPowerModeSupported)
+            mappingModes = mappingModes.Where(t => t != PowerModeMappingMode.WindowsPowerMode).ToArray();
+
+        _powerModeMappingComboBox.SetItems(mappingModes, powerModeMappingMode, t => t.GetDisplayName());
         _powerModeMappingCard.Visibility = isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _powerModesCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _windowsPowerPlansCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _windowsPowerPlansControlPanelCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        _powerModesCard.Visibility = isWindowsPowerModeSupported && powerModeMappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        _windowsPowerPlansCard.Visibility = powerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        _windowsPowerPlansControlPanelCard.Visibility = powerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
 
         if (isITSModeFeatureSupported && _settings.Store.PowerModeMappingMode != PowerModeMappingMode.Disabled)
             _powerModeMappingCardHeader.Warning = Resource.SettingsPage_PowerModeMapping_ITSWarning;
@@ -79,11 +94,15 @@ public partial class SettingsPowerControl
     private async void GodModeFnQSwitchableToggle_Click(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing)
+        {
             return;
+        }
 
         var state = _godModeFnQSwitchableToggle.IsChecked;
         if (state is null)
+        {
             return;
+        }
 
         _godModeFnQSwitchableToggle.IsEnabled = false;
 
@@ -95,28 +114,44 @@ public partial class SettingsPowerControl
     private async void PowerModeMappingComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (_isRefreshing)
+        {
             return;
+        }
 
         if (!_powerModeMappingComboBox.TryGetSelectedItem(out PowerModeMappingMode powerModeMappingMode))
+        {
             return;
-
-        _settings.Store.PowerModeMappingMode = powerModeMappingMode;
-        _settings.SynchronizeStore();
+        }
 
         var isPowerModeFeatureSupported = await _powerModeFeature.IsSupportedAsync();
         var isITSModeFeatureSupported = await _itsModeFeature.IsSupportedAsync();
         var isAnyPowerFeatureSupported = isPowerModeFeatureSupported || isITSModeFeatureSupported;
-        _powerModesCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _windowsPowerPlansCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _windowsPowerPlansControlPanelCard.Visibility = _settings.Store.PowerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        var isWindowsPowerModeSupported = WindowsPowerModeController.IsOverlaySupported;
+        if (!isWindowsPowerModeSupported && powerModeMappingMode == PowerModeMappingMode.WindowsPowerMode)
+        {
+            powerModeMappingMode = PowerModeMappingMode.Disabled;
+        }
+
+        _settings.Store.PowerModeMappingMode = powerModeMappingMode;
+        _settings.SynchronizeStore();
+
+        _powerModesCard.Visibility = isWindowsPowerModeSupported && powerModeMappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        _windowsPowerPlansCard.Visibility = powerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        _windowsPowerPlansControlPanelCard.Visibility = powerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
 
         if (isITSModeFeatureSupported && powerModeMappingMode != PowerModeMappingMode.Disabled)
+        {
             _powerModeMappingCardHeader.Warning = Resource.SettingsPage_PowerModeMapping_ITSWarning;
+        }
         else
+        {
             _powerModeMappingCardHeader.Warning = string.Empty;
+        }
 
         if (powerModeMappingMode != PowerModeMappingMode.Disabled)
+        {
             await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync();
+        }
     }
 
     private void WindowsPowerPlans_Click(object sender, RoutedEventArgs e)

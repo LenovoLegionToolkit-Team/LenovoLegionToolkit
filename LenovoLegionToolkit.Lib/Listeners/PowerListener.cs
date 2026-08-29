@@ -39,6 +39,12 @@ public class PowerListener(IMainThreadDispatcher mainThreadDispatcher) : NativeW
 
     public void Enable()
     {
+        if (!WindowsPowerModeController.IsOverlaySupported)
+        {
+            Log.Instance.Trace($"Power overlay listener is unavailable on this Windows version.");
+            return;
+        }
+
         _ = mainThreadDispatcher.DispatchAsync(() =>
         {
             if (_enabled)
