@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -44,6 +44,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     private readonly HashSet<ProcessInfo> _detectedGamePathsCache = [];
     private readonly HashSet<Process> _processCache = new(new ProcessEqualityComparer());
+    private readonly HashSet<Process> _gameModePinnedProcesses = new(new ProcessEqualityComparer());
 
     private bool _lastState;
     private bool _preserveStateOnNextStart;
@@ -85,9 +86,18 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 {
                     try
                     {
+                        if (process.HasExited)
+                        {
+                            DisposeProcess(process);
+                            continue;
+                        }
+
                         var processPath = process.GetFileName();
                         if (string.IsNullOrEmpty(processPath))
+                        {
+                            DisposeProcess(process);
                             continue;
+                        }
 
                         var processInfo = ProcessInfo.FromPath(processPath);
                         if (_detectedGamePathsCache.Contains(processInfo))
@@ -97,10 +107,15 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                             _processCache.Add(process);
                             RaiseChangedIfNeeded(true);
                         }
+                        else
+                        {
+                            DisposeProcess(process);
+                        }
                     }
                     catch (Exception ex)
                     {
                         Log.Instance.Trace($"Failed to check process {process.Id}.", ex);
+                        DisposeProcess(process);
                     }
                 }
             }
@@ -186,10 +201,14 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             if (!_preserveStateOnNextStart)
             {
                 foreach (var process in _processCache)
+                {
                     Detach(process);
+                    DisposeProcess(process);
+                }
 
                 _processCache.Clear();
                 _detectedGamePathsCache.Clear();
+                _gameModePinnedProcesses.Clear();
                 if (_lastState)
                 {
                     _lastState = false;
@@ -267,13 +286,20 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                         var processPath = process.GetFileName();
 
                         if (processPath is not null && game.ExecutablePath is not null &&
-                            !game.ExecutablePath.Equals(processPath, StringComparison.CurrentCultureIgnoreCase))
+                            !game.ExecutablePath.Equals(processPath, StringComparison.OrdinalIgnoreCase))
+                        {
+                            DisposeProcess(process);
                             continue;
+                        }
 
                         if (!_processCache.Contains(process))
                         {
                             Attach(process);
                             _processCache.Add(process);
+                        }
+                        else
+                        {
+                            DisposeProcess(process);
                         }
 
                         RaiseChangedIfNeeded(true);
@@ -281,6 +307,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     catch (Exception)
                     {
                         Log.Instance.Trace($"Can't get game \"{game}\" details.");
+                        DisposeProcess(process);
                     }
                 }
             }
@@ -294,6 +321,45 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             if (e)
             {
                 TryPinForegroundProcess();
+            }
+            else
+            {
+                if (_gameModePinnedProcesses.Count > 0)
+                {
+                    var toRelease = new List<Process>();
+                    foreach (var process in _gameModePinnedProcesses)
+                    {
+                        try
+                        {
+                            var processPath = process.GetFileName();
+                            var isKnownGame = !string.IsNullOrEmpty(processPath) && _detectedGamePathsCache.Contains(ProcessInfo.FromPath(processPath));
+                            var isGpuActive = _gpuController.ActiveProcesses.Any(p => p.Id == process.Id);
+
+                            if (!isKnownGame && !isGpuActive)
+                            {
+                                toRelease.Add(process);
+                            }
+                        }
+                        catch
+                        {
+                            toRelease.Add(process);
+                        }
+                    }
+
+                    foreach (var process in toRelease)
+                    {
+                        Log.Instance.Trace($"Game Mode ended. Releasing non-game foreground process {process.Id} ({process.ProcessName}).");
+                        _gameModePinnedProcesses.Remove(process);
+                        _processCache.Remove(process);
+                        Detach(process);
+                        DisposeProcess(process);
+                    }
+
+                    if (_processCache.Count == 0)
+                    {
+                        RaiseChangedIfNeeded(false);
+                    }
+                }
             }
 
             if (_processCache.Count != 0)
@@ -323,22 +389,39 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             }
 
             var process = Process.GetProcessById((int)processId);
-            if (_processCache.Contains(process))
+            try
             {
-                return;
-            }
+                if (process.HasExited)
+                {
+                    DisposeProcess(process);
+                    return;
+                }
 
-            var processName = process.ProcessName;
-            if (IsBlacklisted(processName))
+                if (_processCache.Contains(process))
+                {
+                    DisposeProcess(process);
+                    return;
+                }
+
+                var processName = process.ProcessName;
+                if (IsBlacklisted(processName))
+                {
+                    Log.Instance.Trace($"Ignoring blacklisted process {processName} ({process.Id}).");
+                    DisposeProcess(process);
+                    return;
+                }
+
+                Log.Instance.Trace($"Game Mode detected. Pinning process {process.Id} ({processName}).");
+                Attach(process);
+                _processCache.Add(process);
+                _gameModePinnedProcesses.Add(process);
+                RaiseChangedIfNeeded(true);
+            }
+            catch
             {
-                Log.Instance.Trace($"Ignoring blacklisted process {processName} ({process.Id}).");
-                return;
+                DisposeProcess(process);
+                throw;
             }
-
-            Log.Instance.Trace($"Game Mode detected. Pinning process {process.Id} ({processName}).");
-            Attach(process);
-            _processCache.Add(process);
-            RaiseChangedIfNeeded(true);
         }
         catch (Exception ex)
         {
@@ -364,7 +447,19 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                || processName.Equals("WmiApSrv", StringComparison.OrdinalIgnoreCase)
                || processName.Equals("HWiNFO64", StringComparison.OrdinalIgnoreCase)
                || processName.Equals("HWiNFO32", StringComparison.OrdinalIgnoreCase)
-               || processName.Equals("nvidia-smi", StringComparison.OrdinalIgnoreCase);
+               || processName.Equals("nvidia-smi", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("steamwebhelper", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("EpicWebHelper", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("GalaxyCommunicationService", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("GalaxyClientHelper", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("EABackgroundService", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("Link2EA", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("RiotClientCrashHandler", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("CrashReportClient", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("UnityCrashHandler64", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("UnityCrashHandler32", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("UE4-CrashTracker", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("cefsharp.browsersubprocess", StringComparison.OrdinalIgnoreCase);
     }
 
     private void InstanceStartedEventAutoAutoListener_Changed(object? sender,
@@ -391,8 +486,11 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                                     $"Child process {e.ProcessId} ({processName}) spawned by tracked game {e.ParentProcessId}. Pinning.");
                                 Attach(process);
                                 _processCache.Add(process);
+                                RaiseChangedIfNeeded(true);
                                 return;
                             }
+
+                            DisposeProcess(process);
                         }
                     }
                 }
@@ -406,36 +504,41 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 return;
 
             if (!_detectedGamePathsCache.Any(p =>
-                    e.ProcessName.Equals(p.Name, StringComparison.CurrentCultureIgnoreCase)))
+                    e.ProcessName.Equals(p.Name, StringComparison.OrdinalIgnoreCase)))
                 return;
 
+            Process? startedProcess = null;
             try
             {
-                var process = Process.GetProcessById(e.ProcessId);
-                var processPath = process.GetFileName();
+                startedProcess = Process.GetProcessById(e.ProcessId);
+                var processPath = startedProcess.GetFileName();
 
                 if (string.IsNullOrEmpty(processPath))
                 {
                     Log.Instance.Trace($"Can't get path for {e.ProcessName}. [processId={e.ProcessId}]");
-
+                    DisposeProcess(startedProcess);
                     return;
                 }
 
                 var processInfo = ProcessInfo.FromPath(processPath);
                 if (!_detectedGamePathsCache.Contains(processInfo))
+                {
+                    DisposeProcess(startedProcess);
                     return;
+                }
 
                 Log.Instance.Trace(
                     $"Game {processInfo} is running. [processId={e.ProcessId}, processPath={processPath}]");
 
-                Attach(process);
-                _processCache.Add(process);
+                Attach(startedProcess);
+                _processCache.Add(startedProcess);
 
                 RaiseChangedIfNeeded(true);
             }
             catch (Exception ex)
             {
                 Log.Instance.Trace($"Failed to attach to {e.ProcessName}. [processId={e.ProcessId}]", ex);
+                DisposeProcess(startedProcess);
             }
         }
     }
@@ -463,36 +566,63 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     private void Detach(Process process)
     {
-        process.EnableRaisingEvents = false;
-        process.Exited -= Process_Exited;
+        try
+        {
+            process.EnableRaisingEvents = false;
+            process.Exited -= Process_Exited;
+        }
+        catch { /* Ignore */ }
 
         Log.Instance.Trace($"Detached from process {process.Id}.");
+    }
+
+    private static void DisposeProcess(Process? process)
+    {
+        if (process is null)
+            return;
+
+        try
+        {
+            process.Dispose();
+        }
+        catch { /* Ignore */ }
     }
 
     private void Process_Exited(object? o, EventArgs args)
     {
         lock (Lock)
         {
-            if (o is not Process process)
-                return;
+            if (o is Process exitedProc)
+            {
+                Log.Instance.Trace($"Process {exitedProc.Id} exited.");
+                Detach(exitedProc);
+            }
 
-            Log.Instance.Trace($"Process {process.Id} exited.");
-
-            var staleProcesses = _processCache.RemoveWhere(p =>
+            var deadProcesses = new List<Process>();
+            foreach (var p in _processCache)
             {
                 try
                 {
-                    return p.HasExited;
+                    if (p.HasExited)
+                        deadProcesses.Add(p);
                 }
                 catch
                 {
-                    return true;
+                    deadProcesses.Add(p);
                 }
-            });
+            }
 
-            if (staleProcesses > 1)
+            foreach (var p in deadProcesses)
             {
-                Log.Instance.Trace($"Removed {staleProcesses} stale processes.");
+                _processCache.Remove(p);
+                _gameModePinnedProcesses.Remove(p);
+                Detach(p);
+                DisposeProcess(p);
+            }
+
+            if (deadProcesses.Count > 0)
+            {
+                Log.Instance.Trace($"Removed {deadProcesses.Count} exited processes.");
             }
 
             if (_processCache.Count != 0)

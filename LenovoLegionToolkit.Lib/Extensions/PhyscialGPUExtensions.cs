@@ -28,7 +28,7 @@ public static class NVAPIExtensions
                 var process = Process.GetProcessById(app.ProcessId);
                 allProcesses.Add(process);
                 
-                if (!Exclusions.Contains(app.ProcessName, StringComparer.InvariantCultureIgnoreCase))
+                if (!Exclusions.Contains(app.ProcessName, StringComparer.OrdinalIgnoreCase))
                 {
                     filteredProcesses.Add(process);
                 }

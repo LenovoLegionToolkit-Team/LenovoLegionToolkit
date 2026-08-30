@@ -13,8 +13,10 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
+using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 
 namespace LenovoLegionToolkit.WPF.Windows.Settings;
@@ -211,6 +213,19 @@ public partial class ExcludeProcessesWindow
 
         _settings.Store.ExcludedProcesses = processes;
         _settings.SynchronizeStore();
+
+        Task.Run(async () =>
+        {
+            try
+            {
+                var automationProcessor = IoCContainer.Resolve<AutomationProcessor>();
+                await automationProcessor.RestartListenersAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to restart listeners after updating excluded processes.", ex);
+            }
+        });
 
         Close();
     }

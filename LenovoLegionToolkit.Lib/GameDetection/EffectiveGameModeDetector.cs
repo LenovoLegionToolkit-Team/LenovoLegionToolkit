@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using Windows.Win32;
 using Windows.Win32.System.Power;
@@ -32,8 +32,13 @@ internal unsafe class EffectiveGameModeDetector
 
     public Task StopAsync()
     {
-        PInvoke.PowerUnregisterFromEffectivePowerModeNotifications(_handle.ToPointer());
-        _handle = IntPtr.Zero;
+        if (_handle != IntPtr.Zero)
+        {
+            PInvoke.PowerUnregisterFromEffectivePowerModeNotifications(_handle.ToPointer());
+            _handle = IntPtr.Zero;
+        }
+
+        _lastState = null;
         return Task.CompletedTask;
     }
 
@@ -43,9 +48,7 @@ internal unsafe class EffectiveGameModeDetector
 
         var state = mode == EFFECTIVE_POWER_MODE.EffectivePowerModeGameMode;
 
-        _lastState ??= state;
-
-        if (_lastState == state)
+        if (_lastState.HasValue && _lastState.Value == state)
             return;
 
         _lastState = state;

@@ -737,7 +737,7 @@ public class ProcessEqualityComparer : IEqualityComparer<Process>
 }
 
 [method: JsonConstructor]
-public readonly struct ProcessInfo(string name, string? executablePath) : IComparable
+public readonly struct ProcessInfo(string name, string? executablePath) : IComparable<ProcessInfo>, IComparable, IEquatable<ProcessInfo>
 {
     public static ProcessInfo FromPath(string path)
     {
@@ -755,23 +755,37 @@ public readonly struct ProcessInfo(string name, string? executablePath) : ICompa
 
     #region Equality
 
+    public int CompareTo(ProcessInfo other)
+    {
+        var result = string.Compare(Name, other.Name, StringComparison.OrdinalIgnoreCase);
+        return result != 0
+            ? result
+            : string.Compare(ExecutablePath, other.ExecutablePath, StringComparison.OrdinalIgnoreCase);
+    }
+
     public int CompareTo(object? obj)
     {
         var other = obj is null ? default : (ProcessInfo)obj;
-        var result = string.Compare(Name, other.Name, StringComparison.InvariantCultureIgnoreCase);
-        return result != 0
-            ? result
-            : string.Compare(ExecutablePath, other.ExecutablePath, StringComparison.InvariantCultureIgnoreCase);
+        return CompareTo(other);
+    }
+
+    public bool Equals(ProcessInfo other)
+    {
+        return string.Equals(Name, other.Name, StringComparison.OrdinalIgnoreCase) &&
+               string.Equals(ExecutablePath, other.ExecutablePath, StringComparison.OrdinalIgnoreCase);
     }
 
     public override bool Equals(object? obj)
     {
-        return obj is ProcessInfo info && Name == info.Name && ExecutablePath == info.ExecutablePath;
+        return obj is ProcessInfo info && Equals(info);
     }
 
     public override int GetHashCode()
     {
-        return HashCode.Combine(Name, ExecutablePath);
+        var hash = new HashCode();
+        hash.Add(Name, StringComparer.OrdinalIgnoreCase);
+        hash.Add(ExecutablePath, StringComparer.OrdinalIgnoreCase);
+        return hash.ToHashCode();
     }
 
     public static bool operator ==(ProcessInfo left, ProcessInfo right)
