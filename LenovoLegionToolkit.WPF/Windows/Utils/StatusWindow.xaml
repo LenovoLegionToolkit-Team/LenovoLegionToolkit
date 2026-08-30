@@ -1,4 +1,4 @@
-﻿<wpfui:UiWindow
+<wpfui:UiWindow
     x:Class="LenovoLegionToolkit.WPF.Windows.Utils.StatusWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -475,14 +475,14 @@
         <Border
             x:Name="_updateIndicator"
             Padding="8,4,8,4"
-            Background="{DynamicResource SystemFillColorSuccessBrush}"
+            Background="{DynamicResource SystemFillColorSuccessBackgroundBrush}"
             CornerRadius="0,0,8,8"
             Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <wpfui:SymbolIcon
                     Margin="0,0,4,0"
                     FontSize="{StaticResource PrimaryFontSize}"
-                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    Foreground="{DynamicResource SystemFillColorSuccessBrush}"
                     Symbol="ArrowSync24" />
                 <TextBlock
                     FontSize="{StaticResource SecondaryFontSize}"

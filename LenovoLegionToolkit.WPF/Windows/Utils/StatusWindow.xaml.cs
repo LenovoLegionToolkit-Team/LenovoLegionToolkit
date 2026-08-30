@@ -287,8 +287,21 @@ public partial class StatusWindow
             }, token),
             Task.Run(async () => { try { if (_gpuController.IsSupported()) gpuStatus = await _gpuController.RefreshNowAsync().WaitAsync(token); } catch { } }, token),
             Task.Run(() => { try { batteryInfo = Battery.GetBatteryInformation(); } catch { } }, token),
-            Task.Run(async () => { try { if (await _batteryFeature.IsSupportedAsync().WaitAsync(token)) batteryState = await _batteryFeature.GetStateAsync().WaitAsync(token); } catch { } }, token),
-            Task.Run(async () => { try { if (_updateSettings.Store.UpdateCheckFrequency != UpdateCheckFrequency.Never) hasUpdate = await _updateChecker.CheckAsync(false).WaitAsync(token) is not null; } catch { } }, token)
+            Task.Run(async () =>
+            {
+                try
+                {
+                    if (_updateChecker.UpdateFromServer is not null || (await _updateChecker.GetUpdatesAsync().WaitAsync(token)).Length > 0)
+                    {
+                        hasUpdate = true;
+                    }
+                    else if (_updateSettings.Store.UpdateCheckFrequency != UpdateCheckFrequency.Never)
+                    {
+                        hasUpdate = await _updateChecker.CheckAsync(false).WaitAsync(token) is not null;
+                    }
+                }
+                catch { }
+            }, token)
         };
 
         await Task.WhenAll(tasks).ConfigureAwait(false);

@@ -215,18 +215,18 @@
             x:Name="_vantageIndicator"
             Grid.Row="2"
             Padding="8,4,8,6"
-            Background="Orange"
+            Background="{DynamicResource SystemFillColorCautionBackgroundBrush}"
             Cursor="Hand"
             MouseLeftButtonDown="SoftwareIndicator_MouseLeftButtonDown"
             Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <wpfui:SymbolIcon
                     Margin="0,0,4,0"
-                    Foreground="Black"
+                    Foreground="{DynamicResource SystemFillColorCautionBrush}"
                     Symbol="Warning24" />
                 <TextBlock
                     Focusable="True"
-                    Foreground="Black"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                     Text="{x:Static resources:Resource.MainWindows_VantageRunning}" />
             </StackPanel>
         </Border>
@@ -235,18 +235,18 @@
             x:Name="_legionZoneIndicator"
             Grid.Row="3"
             Padding="8,4,8,6"
-            Background="Orange"
+            Background="{DynamicResource SystemFillColorCautionBackgroundBrush}"
             Cursor="Hand"
             MouseLeftButtonDown="SoftwareIndicator_MouseLeftButtonDown"
             Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <wpfui:SymbolIcon
                     Margin="0,0,4,0"
-                    Foreground="Black"
+                    Foreground="{DynamicResource SystemFillColorCautionBrush}"
                     Symbol="Warning24" />
                 <TextBlock
                     Focusable="True"
-                    Foreground="Black"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                     Text="{x:Static resources:Resource.MainWindow_LegionZoneRunning}" />
             </StackPanel>
         </Border>
@@ -255,18 +255,18 @@
             x:Name="_legionSpaceIndicator"
             Grid.Row="4"
             Padding="8,4,8,6"
-            Background="Orange"
+            Background="{DynamicResource SystemFillColorCautionBackgroundBrush}"
             Cursor="Hand"
             MouseLeftButtonDown="SoftwareIndicator_MouseLeftButtonDown"
             Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <wpfui:SymbolIcon
                     Margin="0,0,4,0"
-                    Foreground="Black"
+                    Foreground="{DynamicResource SystemFillColorCautionBrush}"
                     Symbol="Warning24" />
                 <TextBlock
                     Focusable="True"
-                    Foreground="Black"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                     Text="{x:Static resources:Resource.MainWindow_LegionSpaceRunning}" />
             </StackPanel>
         </Border>
@@ -275,18 +275,18 @@
             x:Name="_fnKeysIndicator"
             Grid.Row="5"
             Padding="8,4,8,6"
-            Background="Orange"
+            Background="{DynamicResource SystemFillColorCautionBackgroundBrush}"
             Cursor="Hand"
             MouseLeftButtonDown="SoftwareIndicator_MouseLeftButtonDown"
             Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
                 <wpfui:SymbolIcon
                     Margin="0,0,4,0"
-                    Foreground="Black"
+                    Foreground="{DynamicResource SystemFillColorCautionBrush}"
                     Symbol="Warning24" />
                 <TextBlock
                     Focusable="True"
-                    Foreground="Black"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                     Text="{x:Static resources:Resource.MainWindows_FnKeysRunning}" />
             </StackPanel>
         </Border>
@@ -295,16 +295,20 @@
             x:Name="_updateIndicator"
             Grid.Row="6"
             Padding="8,4,8,6"
-            Background="{DynamicResource SystemFillColorSuccessBrush}"
+            Background="{DynamicResource SystemFillColorSuccessBackgroundBrush}"
             Cursor="Hand"
             MouseLeftButtonDown="UpdateIndicator_Click"
             MouseRightButtonDown="UpdateIndicator_Click"
             Visibility="Collapsed">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <wpfui:SymbolIcon Margin="0,0,4,0" Symbol="ArrowSync24" />
+                <wpfui:SymbolIcon
+                    Margin="0,0,4,0"
+                    Foreground="{DynamicResource SystemFillColorSuccessBrush}"
+                    Symbol="ArrowSync24" />
                 <TextBlock
                     x:Name="_updateIndicatorText"
                     Focusable="True"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                     KeyDown="UpdateIndicator_KeyDown"
                     Text="{x:Static resources:Resource.MainWindow_UpdateAvailable}" />
             </StackPanel>
