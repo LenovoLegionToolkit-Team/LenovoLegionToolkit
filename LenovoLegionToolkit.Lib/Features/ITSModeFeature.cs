@@ -214,6 +214,10 @@ public partial class ITSModeFeature : IFeature<ITSMode>
                 _overlayTimeoutCts = new CancellationTokenSource();
                 _ = WaitForOverlayOrTimeoutAsync(_overlayTimeoutCts.Token);
             }
+            else
+            {
+                await ApplyPowerChanges().ConfigureAwait(false);
+            }
 
             if (showNotification)
             {

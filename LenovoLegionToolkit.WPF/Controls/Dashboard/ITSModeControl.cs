@@ -98,11 +98,8 @@ public class ITSModeControl : AbstractComboBoxFeatureCardControl<ITSMode>
 
         if (newValue.Value != oldValue.Value)
         {
-            await _itsModeFeature.SetStateAsync(newValue.Value);
-            await _iTSModeListener.NotifyAsync(newValue.Value);
+            await base.OnStateChangeAsync(comboBox, feature, newValue, oldValue);
         }
-
-        await base.OnStateChangeAsync(comboBox, feature, newValue, oldValue);
     }
 
     protected override void OnStateChangeException(Exception exception)

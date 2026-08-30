@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using Microsoft.Win32;
@@ -31,6 +32,9 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
     private const uint GEEK_CAPABILITY_MASK = 0x00020001;
     private const uint GEEK_DISABLED = 0x000F100B;
     private const uint GEEK_ENABLED = 0x001F100B;
+    private const int GEEK_ENABLE_REPEAT_COUNT = 2;
+    private const int GEEK_STATE_POLL_INTERVAL_MS = 100;
+    private const int GEEK_STATE_TIMEOUT_MS = 3000;
 
     private const string REG_KEY_DISPATCHER = @"SYSTEM\CurrentControlSet\Services\LenovoProcessManagement\Performance\PowerSlider";
     private const string VAL_VERSION = "Version";
@@ -40,10 +44,14 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
     private static readonly ITSMode[] _allStatesWithGeek = [ITSMode.ItsAuto, ITSMode.MmcCool, ITSMode.MmcPerformance, ITSMode.MmcGeek];
     private static readonly ITSMode[] _allStatesWithoutGeek = [ITSMode.ItsAuto, ITSMode.MmcCool, ITSMode.MmcPerformance];
 
+    private readonly ITSModeListener _listener;
     private volatile int _geekModeState = -1;
 
-    public ITSModeFeatureDriver()
-        : base(Drivers.GetEnergy, Drivers.IOCTL_ENERGY_SMART_POWER, useDriverQueue: true) { }
+    public ITSModeFeatureDriver(ITSModeListener listener)
+        : base(Drivers.GetEnergy, Drivers.IOCTL_ENERGY_SMART_POWER, useDriverQueue: true)
+    {
+        _listener = listener;
+    }
 
     public override async Task<bool> IsSupportedAsync()
     {
@@ -141,9 +149,15 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
 
         Log.Instance.Trace($"Setting ITS mode to: {state} [EnergyDrv]");
 
-        if (state != ITSMode.MmcGeek && IsGeekModeActive())
+        var geekModeActive = IsGeekModeActive();
+        if (geekModeActive)
         {
             await SendCodeAsync(DriverHandle(), ControlCode, GEEK_DISABLED).ConfigureAwait(false);
+            _geekModeState = 0;
+        }
+
+        if (state == ITSMode.MmcGeek)
+        {
             _geekModeState = 0;
         }
 
@@ -159,16 +173,41 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
 
         if (state == ITSMode.MmcGeek)
         {
-            await SendCodeAsync(DriverHandle(), ControlCode, GEEK_ENABLED).ConfigureAwait(false);
-            _geekModeState = 1;
-        }
+            if (!await WaitForModeAsync(ITSMode.MmcPerformance, CancellationToken.None).ConfigureAwait(false))
+            {
+                throw new InvalidOperationException("ITS mode did not change to MmcPerformance before enabling Geek mode.");
+            }
 
-        if (!await WaitForModeAsync(state, CancellationToken.None).ConfigureAwait(false))
+            if (await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) != PowerAdapterStatus.Connected)
+            {
+                throw new InvalidOperationException("Geek mode is unavailable without an AC power adapter.");
+            }
+
+            try
+            {
+                for (var i = 0; i < GEEK_ENABLE_REPEAT_COUNT; i++)
+                {
+                    await SendCodeAsync(DriverHandle(), ControlCode, GEEK_ENABLED).ConfigureAwait(false);
+                }
+
+                if (!await WaitForGeekModeStateAsync(expected: true, CancellationToken.None).ConfigureAwait(false))
+                {
+                    throw new InvalidOperationException("Geek mode did not become active.");
+                }
+            }
+            catch
+            {
+                await TryDisableGeekModeAsync().ConfigureAwait(false);
+                throw;
+            }
+        }
+        else if (!await WaitForModeAsync(state, CancellationToken.None).ConfigureAwait(false))
         {
             throw new InvalidOperationException($"ITS mode did not change to {state}.");
         }
 
         LastState = state;
+        await NotifyListenerAsync(state).ConfigureAwait(false);
         Log.Instance.Trace($"ITS mode set successfully to: {state} [EnergyDrv]");
     }
 
@@ -190,26 +229,89 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
     public async Task<bool> IsGeekModeAdvertisedAsync()
     {
         var capability = await GetExtendedCapabilitiesAsync().ConfigureAwait(false);
-        var supported = (capability & GEEK_CAPABILITY_MASK) == GEEK_CAPABILITY_MASK;
-        Log.Instance.Trace($"EnergyDrv Geek capability checked. [capability=0x{capability:X8}, supported={supported}]");
+        var capabilitySupported = (capability & GEEK_CAPABILITY_MASK) == GEEK_CAPABILITY_MASK;
+        var stateReadable = TryReadGeekModeState(out _);
+        var supported = capabilitySupported && stateReadable;
+        Log.Instance.Trace($"EnergyDrv Geek capability checked. [capability=0x{capability:X8}, capabilitySupported={capabilitySupported}, stateReadable={stateReadable}, supported={supported}]");
         return supported;
     }
 
     private bool IsGeekModeActive()
     {
-        if (_geekModeState >= 0)
+        if (TryReadGeekModeState(out var active))
         {
-            return _geekModeState == 1;
+            _geekModeState = active ? 1 : 0;
+            return active;
         }
 
+        return _geekModeState == 1;
+    }
+
+    private static bool TryReadGeekModeState(out bool active)
+    {
         try
         {
             using var key = Registry.LocalMachine.OpenSubKey(REG_KEY_DISPATCHER, writable: false);
-            return key?.GetValue(VAL_ITS_CUR_SET_V) is int value && value == 4;
+            if (key?.GetValue(VAL_ITS_CUR_SET_V) is int value)
+            {
+                active = value == 4;
+                return true;
+            }
         }
-        catch
+        catch (Exception ex)
         {
-            return false;
+            Log.Instance.Trace($"Failed to read EnergyDrv Geek mode state.", ex);
+        }
+
+        active = false;
+        return false;
+    }
+
+    private async Task<bool> WaitForGeekModeStateAsync(bool expected, CancellationToken token)
+    {
+        var deadline = DateTimeOffset.UtcNow.AddMilliseconds(GEEK_STATE_TIMEOUT_MS);
+        do
+        {
+            token.ThrowIfCancellationRequested();
+
+            if (TryReadGeekModeState(out var active) && active == expected)
+            {
+                _geekModeState = active ? 1 : 0;
+                return true;
+            }
+
+            await Task.Delay(GEEK_STATE_POLL_INTERVAL_MS, token).ConfigureAwait(false);
+        }
+        while (DateTimeOffset.UtcNow < deadline);
+
+        return false;
+    }
+
+    private async Task NotifyListenerAsync(ITSMode state)
+    {
+        try
+        {
+            await _listener.NotifyAsync(state).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to notify ITS mode change. [state={state}]", ex);
+        }
+    }
+
+    private async Task TryDisableGeekModeAsync()
+    {
+        try
+        {
+            await SendCodeAsync(DriverHandle(), ControlCode, GEEK_DISABLED).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to roll back EnergyDrv Geek mode.", ex);
+        }
+        finally
+        {
+            _geekModeState = 0;
         }
     }
 
