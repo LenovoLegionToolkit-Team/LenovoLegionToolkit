@@ -31,7 +31,7 @@ internal class GameConfigStoreDetector
 
         _listener = Registry.ObserveKey(GAME_CONFIG_STORE_HIVE, GAME_CONFIG_STORE_PATH, true, () =>
         {
-            Log.Instance.Trace($"Registry changed...");
+            Log.Instance.Trace($"GameConfigStore registry changed...");
 
             var newPaths = GetDetectedGamePaths();
 

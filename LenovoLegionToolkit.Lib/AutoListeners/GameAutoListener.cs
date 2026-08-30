@@ -459,7 +459,27 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                || processName.Equals("UnityCrashHandler64", StringComparison.OrdinalIgnoreCase)
                || processName.Equals("UnityCrashHandler32", StringComparison.OrdinalIgnoreCase)
                || processName.Equals("UE4-CrashTracker", StringComparison.OrdinalIgnoreCase)
-               || processName.Equals("cefsharp.browsersubprocess", StringComparison.OrdinalIgnoreCase);
+               || processName.Equals("crs-handler", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("cefsharp.browsersubprocess", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("conhost", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("nvngx_update", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("GameGuard", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("GameGuard.des", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("GameMon", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("GameMon64", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("EasyAntiCheat", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("EasyAntiCheat_EOS", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("BEService", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("BEService_x64", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("vgc", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("vgtray", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("EAAntiCheat.GameService", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("EAAntiCheat.GameServiceLauncher", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("ACE-Base", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("UbisoftConnect", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("UbisoftGameLauncher", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("Battle.net Helper", StringComparison.OrdinalIgnoreCase)
+               || processName.Equals("Agent", StringComparison.OrdinalIgnoreCase);
     }
 
     private void InstanceStartedEventAutoAutoListener_Changed(object? sender,
@@ -469,36 +489,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         {
             if (e.ProcessId < 0)
                 return;
-
-            try
-            {
-                if (_processCache.Count > 0 && e.ParentProcessId > 0)
-                {
-                    if (_processCache.Any(p => p.Id == e.ParentProcessId))
-                    {
-                        var process = Process.GetProcessById(e.ProcessId);
-                        if (process != null)
-                        {
-                            var processName = process.ProcessName;
-                            if (!IsBlacklisted(processName))
-                            {
-                                Log.Instance.Trace(
-                                    $"Child process {e.ProcessId} ({processName}) spawned by tracked game {e.ParentProcessId}. Pinning.");
-                                Attach(process);
-                                _processCache.Add(process);
-                                RaiseChangedIfNeeded(true);
-                                return;
-                            }
-
-                            DisposeProcess(process);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Failed to check parent process for {e.ProcessName} ({e.ProcessId}).", ex);
-            }
 
             if (!_settings.Store.GameDetection.UseGameConfigStore)
                 return;
@@ -560,8 +550,15 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
     {
         Log.Instance.Trace($"Attaching to process {process.Id}...");
 
-        process.EnableRaisingEvents = true;
-        process.Exited += Process_Exited;
+        try
+        {
+            process.EnableRaisingEvents = true;
+            process.Exited += Process_Exited;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to enable events for process {process.Id}.", ex);
+        }
     }
 
     private void Detach(Process process)
