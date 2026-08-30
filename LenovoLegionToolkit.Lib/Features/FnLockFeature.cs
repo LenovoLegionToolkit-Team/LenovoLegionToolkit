@@ -2,29 +2,46 @@
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.System;
+using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Features;
 
-public class FnLockFeature() : AbstractDriverFeature<FnLockState>(Drivers.GetEnergy, Drivers.IOCTL_ENERGY_SETTINGS, useDriverQueue:true)
+public class FnLockFeature() : AbstractDriverFeature<FnLockState>(Drivers.GetEnergy, Drivers.IOCTL_ENERGY_SETTINGS, useDriverQueue: true)
 {
     protected override uint GetInBufferValue() => 0x2;
 
-    protected override Task<uint[]> ToInternalAsync(FnLockState state)
+    protected override async Task<uint[]> ToInternalAsync(FnLockState state)
     {
-        var lockOn = state switch
+        var hardwareState = await TranslateStateAsync(state).ConfigureAwait(false);
+        var lockOn = hardwareState switch
         {
             FnLockState.On => true,
             FnLockState.Off => false,
             _ => throw new InvalidOperationException("Invalid state"),
         };
 
-        var value = lockOn ? new uint[] { 0xE } : [0xF];
-        return Task.FromResult(value);
+        return lockOn ? [0xE] : [0xF];
     }
 
-    protected override Task<FnLockState> FromInternalAsync(uint state)
+    protected override async Task<FnLockState> FromInternalAsync(uint state)
     {
-        var value = state.GetNthBit(10) ? FnLockState.On : FnLockState.Off;
-        return Task.FromResult(value);
+        var hardwareState = state.GetNthBit(10) ? FnLockState.On : FnLockState.Off;
+        return await TranslateStateAsync(hardwareState).ConfigureAwait(false);
+    }
+
+    private static async Task<FnLockState> TranslateStateAsync(FnLockState state)
+    {
+        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        if (mi.LegionSeries <= LegionSeries.Legion_Legacy || mi.LegionSeries == LegionSeries.LOQ)
+        {
+            return state;
+        }
+
+        return state switch
+        {
+            FnLockState.On => FnLockState.Off,
+            FnLockState.Off => FnLockState.On,
+            _ => throw new InvalidOperationException("Invalid state"),
+        };
     }
 }
