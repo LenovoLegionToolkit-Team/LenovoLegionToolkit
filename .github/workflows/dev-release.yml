@@ -50,11 +50,12 @@ jobs:
           $latestJson = gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --exclude-pre-releases --limit 1 --json tagName | ConvertFrom-Json
           if ($latestJson -and $latestJson.Count -gt 0) {
             $cleanTag = $latestJson[0].tagName.TrimStart('v', 'V')
-            if ([Version]::TryParse($cleanTag, out $stableVer)) {
+            $stableVer = $null
+            if ([Version]::TryParse($cleanTag, [ref]$stableVer)) {
               $baseMajor = $stableVer.Major
               $baseMinor = $stableVer.Minor + 1
               $basePatch = 0
-              Write-Host "Found latest stable release: $cleanTag. Target Dev base: $baseMajor.$baseMinor.$basePatch"
+              Write-Host "Found latest stable release: $cleanTag. Target Dev base: $($baseMajor).$($baseMinor).$($basePatch)"
             }
           }
         } catch {
@@ -65,17 +66,18 @@ jobs:
         if (Test-Path "Directory.Build.props") {
           $propsXml = [xml](Get-Content "Directory.Build.props")
           $propsVerStr = $propsXml.Project.PropertyGroup.Version
-          if ([Version]::TryParse($propsVerStr, out $propsVer)) {
+          $propsVer = $null
+          if ([Version]::TryParse($propsVerStr, [ref]$propsVer)) {
             if ($propsVer.Major -gt $baseMajor -or ($propsVer.Major -eq $baseMajor -and $propsVer.Minor -gt $baseMinor)) {
               $baseMajor = $propsVer.Major
               $baseMinor = $propsVer.Minor
-              $basePatch = $propsVer.Build -ge 0 ? $propsVer.Build : 0
-              Write-Host "Overriding Dev base with Directory.Build.props version: $baseMajor.$baseMinor.$basePatch"
+              $basePatch = if ($propsVer.Build -ge 0) { $propsVer.Build } else { 0 }
+              Write-Host "Overriding Dev base with Directory.Build.props version: $($baseMajor).$($baseMinor).$($basePatch)"
             }
           }
         }
 
-        $devVersion = "$baseMajor.$baseMinor.$basePatch.$env:GITHUB_RUN_NUMBER"
+        $devVersion = "$($baseMajor).$($baseMinor).$($basePatch).$($env:GITHUB_RUN_NUMBER)"
         $tagName = "v$devVersion"
         Write-Host "Resolved Dev Version: $devVersion, Tag: $tagName"
 
