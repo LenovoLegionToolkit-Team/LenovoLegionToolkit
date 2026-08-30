@@ -1,0 +1,168 @@
+name: Dev Release
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  push:
+    branches: [ dev ]
+    paths-ignore:
+      - '**.md'
+      - 'crowdin.yml'
+      - '.github/workflows/stale.yml'
+      - '.github/workflows/review.yml*'
+  workflow_dispatch:
+
+concurrency:
+  group: dev-release-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release-dev:
+    runs-on: windows-2022
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v5
+      with:
+        fetch-depth: 0
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v5
+      with:
+        dotnet-version: 9.0.x
+        cache: true
+        cache-dependency-path: '**/*.csproj'
+
+    - name: Resolve Dev Version
+      id: resolve_version
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        $baseMajor = 2
+        $baseMinor = 35
+        $basePatch = 0
+
+        try {
+          $latestJson = gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --exclude-pre-releases --limit 1 --json tagName | ConvertFrom-Json
+          if ($latestJson -and $latestJson.Count -gt 0) {
+            $cleanTag = $latestJson[0].tagName.TrimStart('v', 'V')
+            if ([Version]::TryParse($cleanTag, out $stableVer)) {
+              $baseMajor = $stableVer.Major
+              $baseMinor = $stableVer.Minor + 1
+              $basePatch = 0
+              Write-Host "Found latest stable release: $cleanTag. Target Dev base: $baseMajor.$baseMinor.$basePatch"
+            }
+          }
+        } catch {
+          Write-Warning "Could not query GitHub releases directly, falling back to default base version."
+        }
+
+        # Check Directory.Build.props if it defines a higher base version
+        if (Test-Path "Directory.Build.props") {
+          $propsXml = [xml](Get-Content "Directory.Build.props")
+          $propsVerStr = $propsXml.Project.PropertyGroup.Version
+          if ([Version]::TryParse($propsVerStr, out $propsVer)) {
+            if ($propsVer.Major -gt $baseMajor -or ($propsVer.Major -eq $baseMajor -and $propsVer.Minor -gt $baseMinor)) {
+              $baseMajor = $propsVer.Major
+              $baseMinor = $propsVer.Minor
+              $basePatch = $propsVer.Build -ge 0 ? $propsVer.Build : 0
+              Write-Host "Overriding Dev base with Directory.Build.props version: $baseMajor.$baseMinor.$basePatch"
+            }
+          }
+        }
+
+        $devVersion = "$baseMajor.$baseMinor.$basePatch.$env:GITHUB_RUN_NUMBER"
+        $tagName = "v$devVersion"
+        Write-Host "Resolved Dev Version: $devVersion, Tag: $tagName"
+
+        "version=$devVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+      shell: powershell
+
+    - name: Restore
+      run: dotnet restore
+
+    - name: Restore identity package signing key
+      env:
+        LLT_CERT_PFX: ${{ secrets.LLT_CERT_PFX }}
+      run: |
+        if (-not $env:LLT_CERT_PFX) {
+          Write-Error "Missing LLT_CERT_PFX secret. The identity MSIX package cannot be signed."
+          exit 1
+        }
+
+        [IO.File]::WriteAllBytes("LenovoLegionToolkit.pfx", [Convert]::FromBase64String($env:LLT_CERT_PFX))
+      shell: powershell
+
+    - name: Build
+      env:
+        LLT_CERT_PASSWORD: ${{ secrets.LLT_CERT_PASSWORD }}
+      run: .\make_action.bat ${{ steps.resolve_version.outputs.version }}
+
+    - name: Rename installer
+      run: |
+        $oldPath = "build_installer\LenovoLegionToolkitSetup.exe"
+        $newPath = "build_installer\LenovoLegionToolkitSetup-v${{ steps.resolve_version.outputs.version }}.exe"
+        
+        if (Test-Path $oldPath) {
+            Rename-Item -Path $oldPath -NewName (Split-Path $newPath -Leaf)
+        } else {
+            Write-Error "Build artifact not found at $oldPath"
+            exit 1
+        }
+      shell: powershell
+
+    - name: Verify installer
+      run: |
+        $installerPath = "build_installer\LenovoLegionToolkitSetup-v${{ steps.resolve_version.outputs.version }}.exe"
+        if (-not (Test-Path $installerPath)) {
+          Write-Error "Installer file not found at $installerPath"
+          exit 1
+        }
+      shell: powershell
+
+    - name: Prune Old Dev Releases
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        try {
+          $releasesJson = gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --limit 30 --json tagName,name,isPrerelease,isLatest | ConvertFrom-Json
+          foreach ($rel in $releasesJson) {
+            if ($rel.name -like '*(Dev)*' -or ($rel.tagName -match '^v\d+\.\d+\.\d+\.\d+$' -and -not $rel.isPrerelease -and -not $rel.isLatest)) {
+              if ($rel.tagName -ne '${{ steps.resolve_version.outputs.tag_name }}') {
+                Write-Host "Pruning older Dev release: $($rel.tagName) ($($rel.name))"
+                gh release delete $rel.tagName --repo $env:GITHUB_REPOSITORY --cleanup-tag --yes
+              }
+            }
+          }
+        } catch {
+          Write-Warning "Could not prune older Dev releases: $_"
+        }
+      shell: powershell
+
+    - name: Publish Dev Release
+      uses: softprops/action-gh-release@v2.0.8
+      with:
+        tag_name: ${{ steps.resolve_version.outputs.tag_name }}
+        target_commitish: dev
+        prerelease: false
+        make_latest: false
+        generate_release_notes: true
+        name: Lenovo Legion Toolkit v${{ steps.resolve_version.outputs.version }} (Dev)
+        body: |
+          ## Dev Build Update
+          - **Version**: ${{ steps.resolve_version.outputs.version }}
+          - **Commit**: ${{ github.sha }}
+          - **Channel**: Dev
+        files: build_installer/LenovoLegionToolkitSetup-v${{ steps.resolve_version.outputs.version }}.exe
+        token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: installer-v${{ steps.resolve_version.outputs.version }}-Dev
+        path: build_installer/LenovoLegionToolkitSetup-v${{ steps.resolve_version.outputs.version }}.exe

@@ -6,9 +6,23 @@ env:
 on:
   workflow_dispatch:
   push:
-    branches: [ master, dev ]
+    branches: [ master ]
+    paths-ignore:
+      - '**.md'
+      - 'crowdin.yml'
+      - '.github/workflows/stale.yml'
+      - '.github/workflows/review.yml*'
   pull_request:
     branches: [ master, dev ]
+    paths-ignore:
+      - '**.md'
+      - 'crowdin.yml'
+      - '.github/workflows/stale.yml'
+      - '.github/workflows/review.yml*'
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:

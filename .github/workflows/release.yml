@@ -21,6 +21,10 @@ on:
   release:
     types: [published]
 
+concurrency:
+  group: release-${{ github.ref }}-${{ github.event.inputs.version || github.event.release.tag_name }}
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
@@ -101,9 +105,11 @@ jobs:
         }
 
         # 3. Output for the Release step
+        $makeLatest = if ($channel -eq "Stable") { "true" } else { "false" }
         "version=$version" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
         "channel=$channel" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
         "prerelease=$prerelease" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        "make_latest=$makeLatest" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
         "target_commitish=$targetCommitish" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
         "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
       shell: powershell
@@ -157,6 +163,7 @@ jobs:
         tag_name: ${{ steps.release_meta.outputs.tag_name }}
         target_commitish: ${{ steps.release_meta.outputs.target_commitish }}
         prerelease: ${{ steps.release_meta.outputs.prerelease }}
+        make_latest: ${{ steps.release_meta.outputs.make_latest }}
         name: Lenovo Legion Toolkit v${{ steps.release_meta.outputs.version }} (${{ steps.release_meta.outputs.channel }})
         files: build_installer/LenovoLegionToolkitSetup-v${{ steps.release_meta.outputs.version }}.exe
         token: ${{ secrets.GITHUB_TOKEN }}
@@ -169,6 +176,7 @@ jobs:
         tag_name: ${{ steps.release_meta.outputs.tag_name }}
         target_commitish: ${{ steps.release_meta.outputs.target_commitish }}
         prerelease: ${{ steps.release_meta.outputs.prerelease }}
+        make_latest: ${{ steps.release_meta.outputs.make_latest }}
         name: Lenovo Legion Toolkit v${{ steps.release_meta.outputs.version }} (${{ steps.release_meta.outputs.channel }})
         body: |
           ## Release Notes
