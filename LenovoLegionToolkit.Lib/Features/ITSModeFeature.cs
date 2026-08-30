@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 using System.ServiceProcess;
 using System.Threading;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
@@ -25,12 +25,10 @@ namespace LenovoLegionToolkit.Lib.Features;
 public partial class ITSModeFeature : IFeature<ITSMode>
 {
     #region Magic Constants
-    private const string REG_KEY_LITSSVC_BASE = @"SYSTEM\CurrentControlSet\Services\LITSSVC\LNBITS\IC";
     private const string REG_KEY_LITSSVC_MMC = @"SYSTEM\CurrentControlSet\Services\LITSSVC\LNBITS\IC\MMC";
     private const string REG_KEY_DISPATCHER = @"SYSTEM\CurrentControlSet\Services\LenovoProcessManagement\Performance\PowerSlider";
 
     private const string VAL_VERSION = "Version";
-    private const string VAL_CAPABILITY = "Capability";
     private const string VAL_AUTO_SETTING = "AutomaticModeSetting";
     private const string VAL_CURRENT_SETTING = "CurrentSetting";
     private const string VAL_ITS_FN_CAP = "ITS_FN_Capability";
@@ -41,6 +39,10 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     private const string ITS_SERVICE_NAME = "LITSSVC";
 
     private const uint DISPATCHER_VERSION_3 = 8192U;
+    private const uint LEGACY_GEEK_MODE_CAPABILITY_QUERY = 10;
+    private const uint LEGACY_GEEK_MODE_CAPABILITY_MASK = 0x00020001;
+    private const uint LEGACY_GEEK_MODE_DISABLED = 0x000F100B;
+    private const uint LEGACY_GEEK_MODE_ENABLED = 0x001F100B;
     #endregion
 
     private static readonly ITSMode[] _allStatesWithGeek = [ITSMode.ItsAuto, ITSMode.MmcCool, ITSMode.MmcPerformance, ITSMode.MmcGeek];
@@ -53,6 +55,8 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     private int? _dispatcherVersion;
     private bool? _showGeekAsCreatorMode;
     private bool? _energyDriverPresent;
+    private bool? _legacyGeekModeSupported;
+    private volatile bool _legacyGeekModeActive;
     private volatile bool _pendingOverlaySync;
     private CancellationTokenSource? _overlayTimeoutCts;
 
@@ -117,12 +121,12 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
     public Task<ITSMode[]> GetAllStatesAsync()
     {
-        if (AppFlags.Instance.Debug)
+        if (AppFlags.Instance.Debug || GetDispatcherVersionEx() >= DISPATCHER_VERSION_3 || IsLegacyGeekModeSupported())
         {
             return Task.FromResult(_allStatesWithGeek);
         }
 
-        return Task.FromResult(GetDispatcherVersionEx() >= DISPATCHER_VERSION_3 ? _allStatesWithGeek : _allStatesWithoutGeek);
+        return Task.FromResult(_allStatesWithoutGeek);
     }
 
     public async Task<ITSMode> GetStateAsync()
@@ -149,6 +153,11 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         {
             Log.Instance.Trace($"Can't set ITS mode to None, operation aborted.");
             return;
+        }
+
+        if (!(await GetAllStatesAsync().ConfigureAwait(false)).Contains(state))
+        {
+            throw new InvalidOperationException($"Unsupported ITS mode {state}.");
         }
 
         Log.Instance.Trace($"Setting ITS mode to: {state}");
@@ -390,7 +399,7 @@ public partial class ITSModeFeature : IFeature<ITSMode>
                     }
                     else if (autoSetting == 1 && currentSetting == 3)
                     {
-                        return ITSMode.MmcPerformance;
+                        return _legacyGeekModeActive ? ITSMode.MmcGeek : ITSMode.MmcPerformance;
                     }
                 }
             }
@@ -409,13 +418,9 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         {
             var dispatcherVersion = GetDispatcherVersionEx();
 
-            string targetServiceName;
-            ITSModeServiceControlMessage targetMessage;
-
             if (dispatcherVersion >= DISPATCHER_VERSION_3)
             {
-                targetServiceName = DISPATCHER_SERVICE_NAME;
-                targetMessage = mode switch
+                var targetMessage = mode switch
                 {
                     ITSMode.ItsAuto => ITSModeServiceControlMessage.IntelligentCoolingIntelligent,
                     ITSMode.MmcCool => ITSModeServiceControlMessage.IntelligentCoolingBsm,
@@ -423,21 +428,15 @@ public partial class ITSModeFeature : IFeature<ITSMode>
                     ITSMode.MmcGeek => ITSModeServiceControlMessage.IntelligentCoolingGeek,
                     _ => throw new ArgumentOutOfRangeException(nameof(mode))
                 };
+
+                Log.Instance.Trace($"Setting ITS mode via service: {DISPATCHER_SERVICE_NAME} ({targetMessage})");
+                ControlService(DISPATCHER_SERVICE_NAME, targetMessage);
             }
             else
             {
-                targetServiceName = ITS_SERVICE_NAME;
-                targetMessage = mode switch
-                {
-                    ITSMode.ItsAuto => ITSModeServiceControlMessage.IntelligentCoolingEnable,
-                    ITSMode.MmcCool => ITSModeServiceControlMessage.IntelligentCoolingCool,
-                    ITSMode.MmcPerformance => ITSModeServiceControlMessage.IntelligentCoolingHighPerformance,
-                    _ => throw new ArgumentOutOfRangeException(nameof(mode))
-                };
+                SetLegacyITSMode(mode);
             }
 
-            Log.Instance.Trace($"Setting ITS mode via service: {targetServiceName} ({targetMessage})");
-            ControlService(targetServiceName, targetMessage);
             return Task.CompletedTask;
         }
         catch (Exception ex)
@@ -445,6 +444,80 @@ public partial class ITSModeFeature : IFeature<ITSMode>
             Log.Instance.Trace($"{nameof(SetITSModeExAsync)} failed", ex);
             throw;
         }
+    }
+
+    private void SetLegacyITSMode(ITSMode mode)
+    {
+        ITSModeServiceControlMessage[] messages = mode switch
+        {
+            ITSMode.ItsAuto => [ITSModeServiceControlMessage.IntelligentCoolingEnable],
+            ITSMode.MmcCool => [ITSModeServiceControlMessage.IntelligentCoolingDisable, ITSModeServiceControlMessage.IntelligentCoolingCool],
+            ITSMode.MmcPerformance or ITSMode.MmcGeek => [ITSModeServiceControlMessage.IntelligentCoolingDisable, ITSModeServiceControlMessage.IntelligentCoolingHighPerformance],
+            _ => throw new ArgumentOutOfRangeException(nameof(mode))
+        };
+
+        if (mode != ITSMode.MmcGeek)
+        {
+            TryDisableLegacyGeekMode();
+        }
+
+        ControlService(ITS_SERVICE_NAME, messages);
+
+        if (mode == ITSMode.MmcGeek)
+        {
+            SetLegacyGeekMode(true);
+            _legacyGeekModeActive = true;
+        }
+    }
+
+    private bool IsLegacyGeekModeSupported()
+    {
+        if (_legacyGeekModeSupported.HasValue)
+        {
+            return _legacyGeekModeSupported.Value;
+        }
+
+        try
+        {
+            var success = PInvokeExtensions.DeviceIoControl(
+                Drivers.GetEnergy(),
+                Drivers.IOCTL_ENERGY_SMART_POWER,
+                LEGACY_GEEK_MODE_CAPABILITY_QUERY,
+                out uint capability);
+            _legacyGeekModeSupported = success && (capability & LEGACY_GEEK_MODE_CAPABILITY_MASK) == LEGACY_GEEK_MODE_CAPABILITY_MASK;
+            Log.Instance.Trace($"Legacy Geek mode capability checked. [capability=0x{capability:X}, supported={_legacyGeekModeSupported}]");
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to check legacy Geek mode capability.", ex);
+            _legacyGeekModeSupported = false;
+        }
+
+        return _legacyGeekModeSupported.Value;
+    }
+
+    private void TryDisableLegacyGeekMode()
+    {
+        try
+        {
+            SetLegacyGeekMode(false);
+            _legacyGeekModeActive = false;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to disable legacy Geek mode. Continuing with the ITS mode transition.", ex);
+        }
+    }
+
+    private static void SetLegacyGeekMode(bool enabled)
+    {
+        var value = enabled ? LEGACY_GEEK_MODE_ENABLED : LEGACY_GEEK_MODE_DISABLED;
+        if (!PInvokeExtensions.DeviceIoControl(Drivers.GetEnergy(), Drivers.IOCTL_ENERGY_SMART_POWER, value, out uint result))
+        {
+            PInvokeExtensions.ThrowIfWin32Error($"DeviceIoControl, {nameof(Drivers.IOCTL_ENERGY_SMART_POWER)}");
+        }
+
+        Log.Instance.Trace($"Legacy Geek mode command sent. [value=0x{value:X8}, result=0x{result:X8}]");
     }
 
     private int GetDispatcherVersionEx()
@@ -499,15 +572,18 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         }
     }
 
-    private void ControlService(string serviceName, ITSModeServiceControlMessage message)
+    private void ControlService(string serviceName, params ITSModeServiceControlMessage[] messages)
     {
         try
         {
             using ServiceController serviceController = new(serviceName);
             Log.Instance.Trace($"Service {serviceName} status: {serviceController.Status}");
 
-            serviceController.ExecuteCommand((int)message);
-            Log.Instance.Trace($"Service {serviceName} successfully executed command: {message}");
+            foreach (var message in messages)
+            {
+                serviceController.ExecuteCommand((int)message);
+                Log.Instance.Trace($"Service {serviceName} successfully executed command: {message}");
+            }
         }
         catch (Exception ex)
         {
