@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using Windows.Win32;
 using Windows.Win32.Foundation;
@@ -199,14 +200,50 @@ public class PowerListener(IMainThreadDispatcher mainThreadDispatcher) : NativeW
 
     private static Guid ReadOverlayAc()
     {
-        var result = WindowsPowerModeController.PowerGetUserConfiguredACPowerMode(out var guid);
-        return result == 0 ? guid : Guid.Empty;
+        try
+        {
+            var result = WindowsPowerModeController.PowerGetUserConfiguredACPowerMode(out var guid);
+            if (result == 0 && guid != Guid.Empty)
+                return guid;
+        }
+        catch { }
+
+        try
+        {
+            return Registry.GetValue(
+                "HKEY_LOCAL_MACHINE",
+                @"SYSTEM\CurrentControlSet\Control\Power\User\PowerSchemes",
+                "ActiveOverlayAcPowerScheme",
+                Guid.Empty);
+        }
+        catch
+        {
+            return Guid.Empty;
+        }
     }
 
     private static Guid ReadOverlayDc()
     {
-        var result = WindowsPowerModeController.PowerGetUserConfiguredDCPowerMode(out var guid);
-        return result == 0 ? guid : Guid.Empty;
+        try
+        {
+            var result = WindowsPowerModeController.PowerGetUserConfiguredDCPowerMode(out var guid);
+            if (result == 0 && guid != Guid.Empty)
+                return guid;
+        }
+        catch { }
+
+        try
+        {
+            return Registry.GetValue(
+                "HKEY_LOCAL_MACHINE",
+                @"SYSTEM\CurrentControlSet\Control\Power\User\PowerSchemes",
+                "ActiveOverlayDcPowerScheme",
+                Guid.Empty);
+        }
+        catch
+        {
+            return Guid.Empty;
+        }
     }
 
     private unsafe HPOWERNOTIFY RegisterPowerNotification(Guid guid)

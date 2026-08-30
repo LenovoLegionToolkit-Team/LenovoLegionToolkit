@@ -39,9 +39,7 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
         try
         {
-            return NativeLibrary.TryGetExport(module, "PowerSetActiveOverlayScheme", out _)
-                && NativeLibrary.TryGetExport(module, "PowerGetUserConfiguredACPowerMode", out _)
-                && NativeLibrary.TryGetExport(module, "PowerGetUserConfiguredDCPowerMode", out _);
+            return NativeLibrary.TryGetExport(module, "PowerSetActiveOverlayScheme", out _);
         }
         finally
         {
