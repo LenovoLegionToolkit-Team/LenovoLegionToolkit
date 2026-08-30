@@ -4,12 +4,15 @@ using System.Diagnostics;
 using System.Text;
 using System.Threading;
 using System.Windows;
+using System.Windows.Input;
 using BlackSharp.Core.Extensions;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
+using Markdig;
+using Markdig.Wpf;
 using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Windows.Utils;
@@ -23,6 +26,16 @@ public partial class UpdateWindow : IProgress<float>
     public UpdateWindow()
     {
         InitializeComponent();
+        _markdownViewer.Pipeline = new MarkdownPipelineBuilder().UseSupportedExtensions().Build();
+    }
+
+    private void Hyperlink_Executed(object sender, ExecutedRoutedEventArgs e)
+    {
+        if (e.Parameter is string url && Uri.TryCreate(url, UriKind.Absolute, out var uri))
+        {
+            uri.Open();
+            e.Handled = true;
+        }
     }
 
     private async void UpdateWindow_Loaded(object sender, RoutedEventArgs e)

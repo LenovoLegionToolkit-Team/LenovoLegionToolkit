@@ -87,19 +87,16 @@ jobs:
 
         # Extract all commits since last stable tag for changelog
         $commits = @()
+        $repoUrl = "https://github.com/$($env:GITHUB_REPOSITORY)"
         if ($cleanTag -and (git tag -l "v$cleanTag")) {
-          $commits = git log "v$cleanTag..HEAD" --pretty=format:"* %s (%h)" --no-merges
+          $commits = git log "v$cleanTag..HEAD" --pretty=format:"* %s ([%h]($repoUrl/commit/%H))" --no-merges
         } elseif ($cleanTag -and (git tag -l "$cleanTag")) {
-          $commits = git log "$cleanTag..HEAD" --pretty=format:"* %s (%h)" --no-merges
+          $commits = git log "$cleanTag..HEAD" --pretty=format:"* %s ([%h]($repoUrl/commit/%H))" --no-merges
         } else {
-          $commits = git log --pretty=format:"* %s (%h)" --no-merges
+          $commits = git log --pretty=format:"* %s ([%h]($repoUrl/commit/%H))" --no-merges
         }
 
         $notes = if ($commits -and $commits.Count -gt 0) { ($commits -join "`n") } else { "* General stability improvements and bug fixes" }
-
-        if ($cleanTag) {
-          $notes += "`n`n**Full Changelog**: https://github.com/$($env:GITHUB_REPOSITORY)/compare/v$($cleanTag)...$($tagName)"
-        }
 
         "version=$devVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
         "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
@@ -181,8 +178,7 @@ jobs:
         generate_release_notes: false
         name: Lenovo Legion Toolkit v${{ steps.resolve_version.outputs.version }} (Dev)
         body: |
-          > [!NOTE]
-          > Automated development build compiled from the `dev` branch.
+          > **Note**: Automated development build compiled from the `dev` branch.
 
           ### What's Changed
           ${{ steps.resolve_version.outputs.changelog }}
