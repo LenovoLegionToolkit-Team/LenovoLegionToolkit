@@ -42,24 +42,12 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        # 1. Read base version dynamically from Directory.Build.props
         $baseMajor = 0
         $baseMinor = 0
         $basePatch = 0
         $cleanTag = $null
 
-        if (Test-Path "Directory.Build.props") {
-          $propsXml = [xml](Get-Content "Directory.Build.props")
-          $propsVerStr = $propsXml.Project.PropertyGroup.Version
-          $propsVer = $null
-          if ([Version]::TryParse($propsVerStr, [ref]$propsVer)) {
-            $baseMajor = $propsVer.Major
-            $baseMinor = $propsVer.Minor
-            $basePatch = if ($propsVer.Build -ge 0) { $propsVer.Build } else { 0 }
-          }
-        }
-
-        # 2. Check GitHub for latest Stable release to dynamically advance to next minor
+        # 1. Primary: Query GitHub for latest Stable release to advance to next minor
         try {
           $releasesList = gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --limit 30 --json tagName,name,isLatest | ConvertFrom-Json
           if ($releasesList -and $releasesList.Count -gt 0) {
@@ -68,17 +56,29 @@ jobs:
               $cleanTag = $latestStable.tagName.TrimStart('v', 'V')
               $stableVer = $null
               if ([Version]::TryParse($cleanTag, [ref]$stableVer)) {
-                if ($stableVer.Major -gt $baseMajor -or ($stableVer.Major -eq $baseMajor -and $stableVer.Minor -ge $baseMinor)) {
-                  $baseMajor = $stableVer.Major
-                  $baseMinor = $stableVer.Minor + 1
-                  $basePatch = 0
-                  Write-Host "Found latest stable release: $cleanTag. Advanced Dev base: $($baseMajor).$($baseMinor).$($basePatch)"
-                }
+                $baseMajor = $stableVer.Major
+                $baseMinor = $stableVer.Minor + 1
+                $basePatch = 0
+                Write-Host "Found latest stable release: $cleanTag. Advanced Dev base: $($baseMajor).$($baseMinor).$($basePatch)"
               }
             }
           }
         } catch {
           Write-Warning "Could not query GitHub releases directly: $_"
+        }
+
+        # 2. Fallback: Directory.Build.props if GitHub query yielded nothing
+        if ($baseMajor -eq 0 -and $baseMinor -eq 0 -and (Test-Path "Directory.Build.props")) {
+          $propsXml = [xml](Get-Content "Directory.Build.props")
+          $propsVerStr = $propsXml.Project.PropertyGroup.Version
+          $propsVer = $null
+          if ([Version]::TryParse($propsVerStr, [ref]$propsVer)) {
+            $baseMajor = $propsVer.Major
+            $baseMinor = $propsVer.Minor + 1
+            $basePatch = 0
+            $cleanTag = $propsVerStr
+            Write-Host "Fallback to Directory.Build.props base: $($baseMajor).$($baseMinor).$($basePatch)"
+          }
         }
 
         $devVersion = "$($baseMajor).$($baseMinor).$($basePatch).$($env:GITHUB_RUN_NUMBER)"
@@ -96,6 +96,10 @@ jobs:
         }
 
         $notes = if ($commits -and $commits.Count -gt 0) { ($commits -join "`n") } else { "* General stability improvements and bug fixes" }
+
+        if ($cleanTag) {
+          $notes += "`n`n**Full Changelog**: https://github.com/$($env:GITHUB_REPOSITORY)/compare/v$($cleanTag)...$($tagName)"
+        }
 
         "version=$devVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
         "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
@@ -177,12 +181,10 @@ jobs:
         generate_release_notes: false
         name: Lenovo Legion Toolkit v${{ steps.resolve_version.outputs.version }} (Dev)
         body: |
-          ## Dev Build Update
-          - **Version**: ${{ steps.resolve_version.outputs.version }}
-          - **Commit**: ${{ github.sha }}
-          - **Channel**: Dev
+          > [!NOTE]
+          > Automated development build compiled from the `dev` branch.
 
-          ### Recent Changes
+          ### What's Changed
           ${{ steps.resolve_version.outputs.changelog }}
         files: build_installer/LenovoLegionToolkitSetup-v${{ steps.resolve_version.outputs.version }}.exe
         token: ${{ secrets.GITHUB_TOKEN }}
