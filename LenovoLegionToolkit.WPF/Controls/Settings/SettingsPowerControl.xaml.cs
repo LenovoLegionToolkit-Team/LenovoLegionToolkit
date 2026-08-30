@@ -67,15 +67,7 @@ public partial class SettingsPowerControl
             _settings.SynchronizeStore();
         }
 
-        var mappingModes = Enum.GetValues<PowerModeMappingMode>();
-        if (!isWindowsPowerModeSupported)
-            mappingModes = mappingModes.Where(t => t != PowerModeMappingMode.WindowsPowerMode).ToArray();
-
-        _powerModeMappingComboBox.SetItems(mappingModes, powerModeMappingMode, t => t.GetDisplayName());
-        _powerModeMappingCard.Visibility = isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _powerModesCard.Visibility = isWindowsPowerModeSupported && powerModeMappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _windowsPowerPlansCard.Visibility = powerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _windowsPowerPlansControlPanelCard.Visibility = powerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        UpdatePowerModeMappingUi(powerModeMappingMode, isWindowsPowerModeSupported, isAnyPowerFeatureSupported);
 
         if (isITSModeFeatureSupported && _settings.Store.PowerModeMappingMode != PowerModeMappingMode.Disabled)
             _powerModeMappingCardHeader.Warning = Resource.SettingsPage_PowerModeMapping_ITSWarning;
@@ -135,9 +127,7 @@ public partial class SettingsPowerControl
         _settings.Store.PowerModeMappingMode = powerModeMappingMode;
         _settings.SynchronizeStore();
 
-        _powerModesCard.Visibility = isWindowsPowerModeSupported && powerModeMappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _windowsPowerPlansCard.Visibility = powerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
-        _windowsPowerPlansControlPanelCard.Visibility = powerModeMappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        UpdatePowerModeMappingUi(powerModeMappingMode, isWindowsPowerModeSupported, isAnyPowerFeatureSupported, updateItems: false);
 
         if (isITSModeFeatureSupported && powerModeMappingMode != PowerModeMappingMode.Disabled)
         {
@@ -152,6 +142,24 @@ public partial class SettingsPowerControl
         {
             await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync();
         }
+    }
+
+    private void UpdatePowerModeMappingUi(PowerModeMappingMode mappingMode, bool isWindowsPowerModeSupported, bool isAnyPowerFeatureSupported, bool updateItems = true)
+    {
+        _powerModeMappingCard.Visibility = isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        if (updateItems)
+        {
+            var mappingModes = Enum.GetValues<PowerModeMappingMode>();
+            if (!isWindowsPowerModeSupported)
+            {
+                mappingModes = mappingModes.Where(t => t != PowerModeMappingMode.WindowsPowerMode).ToArray();
+            }
+
+            _powerModeMappingComboBox.SetItems(mappingModes, mappingMode, t => t.GetDisplayName());
+        }
+        _powerModesCard.Visibility = isWindowsPowerModeSupported && mappingMode == PowerModeMappingMode.WindowsPowerMode && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        _windowsPowerPlansCard.Visibility = mappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
+        _windowsPowerPlansControlPanelCard.Visibility = mappingMode == PowerModeMappingMode.WindowsPowerPlan && isAnyPowerFeatureSupported ? Visibility.Visible : Visibility.Collapsed;
     }
 
     private void WindowsPowerPlans_Click(object sender, RoutedEventArgs e)

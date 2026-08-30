@@ -28,7 +28,26 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
     private readonly ThrottleLastDispatcher _dispatcher = new(TimeSpan.FromSeconds(2), nameof(WindowsPowerModeController));
     private readonly SemaphoreSlim _lock = new(1, 1);
 
-    public static bool IsOverlaySupported => OSExtensions.GetCurrent() == OS.Windows11;
+    public static bool IsOverlaySupported { get; } = HasOverlayApi();
+
+    private static bool HasOverlayApi()
+    {
+        if (!NativeLibrary.TryLoad("powrprof.dll", out var module))
+        {
+            return false;
+        }
+
+        try
+        {
+            return NativeLibrary.TryGetExport(module, "PowerSetActiveOverlayScheme", out _)
+                && NativeLibrary.TryGetExport(module, "PowerGetUserConfiguredACPowerMode", out _)
+                && NativeLibrary.TryGetExport(module, "PowerGetUserConfiguredDCPowerMode", out _);
+        }
+        finally
+        {
+            NativeLibrary.Free(module);
+        }
+    }
 
     public async Task SetPowerModeAsync(PowerModeState powerModeState, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
     {
