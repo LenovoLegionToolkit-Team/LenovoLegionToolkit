@@ -61,16 +61,19 @@ jobs:
 
         # 2. Check GitHub for latest Stable release to dynamically advance to next minor
         try {
-          $latestJson = gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --exclude-pre-releases --limit 1 --json tagName | ConvertFrom-Json
-          if ($latestJson -and $latestJson.Count -gt 0) {
-            $cleanTag = $latestJson[0].tagName.TrimStart('v', 'V')
-            $stableVer = $null
-            if ([Version]::TryParse($cleanTag, [ref]$stableVer)) {
-              if ($stableVer.Major -gt $baseMajor -or ($stableVer.Major -eq $baseMajor -and $stableVer.Minor -ge $baseMinor)) {
-                $baseMajor = $stableVer.Major
-                $baseMinor = $stableVer.Minor + 1
-                $basePatch = 0
-                Write-Host "Found latest stable release: $cleanTag. Advanced Dev base: $($baseMajor).$($baseMinor).$($basePatch)"
+          $releasesList = gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --limit 30 --json tagName,name,isLatest | ConvertFrom-Json
+          if ($releasesList -and $releasesList.Count -gt 0) {
+            $latestStable = $releasesList | Where-Object { $_.isLatest -or ($_.name -notlike '*(Dev)*' -and $_.name -notlike '*(Beta)*') } | Select-Object -First 1
+            if ($latestStable) {
+              $cleanTag = $latestStable.tagName.TrimStart('v', 'V')
+              $stableVer = $null
+              if ([Version]::TryParse($cleanTag, [ref]$stableVer)) {
+                if ($stableVer.Major -gt $baseMajor -or ($stableVer.Major -eq $baseMajor -and $stableVer.Minor -ge $baseMinor)) {
+                  $baseMajor = $stableVer.Major
+                  $baseMinor = $stableVer.Minor + 1
+                  $basePatch = 0
+                  Write-Host "Found latest stable release: $cleanTag. Advanced Dev base: $($baseMajor).$($baseMinor).$($basePatch)"
+                }
               }
             }
           }
