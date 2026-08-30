@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -103,6 +104,12 @@ public partial class ArgumentWindow
     {
         Loaded -= ArgumentWindow_Loaded;
 
+        await AddMachineSpecificFlagsAsync();
+        GenerateUi();
+    }
+
+    private async Task AddMachineSpecificFlagsAsync()
+    {
         try
         {
             var machineInformation = await Compatibility.GetMachineInformationAsync();
@@ -112,14 +119,12 @@ public partial class ArgumentWindow
                 "--experimental-its-mode",
                 Resource.ArgumentWindow_Category_Hardware_Automation,
                 SymbolRegular.Gauge24,
-                "Experimental ITS Mode");
+                Resource.ArgumentWindow_Flag_Experimental_ITS_Mode);
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Failed to determine whether Experimental ITS Mode should be shown.", ex);
         }
-
-        GenerateUi();
     }
 
     public static void ShowInstance()

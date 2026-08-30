@@ -198,12 +198,9 @@ public class AppFlags
             if (ForceDisableRgbKeyboardSupport) args.Add("--force-disable-rgbkb");
             if (ForceDisableSpectrumKeyboardSupport) args.Add("--force-disable-spectrumkb");
             if (ForceDisableLenovoLighting) args.Add("--force-disable-lenovolighting");
-            if (EnableLampArray) args.Add("--enable-lamp-array"); 
+            if (EnableLampArray) args.Add("--enable-lamp-array");
             if (ExperimentalGPUWorkingMode) args.Add("--experimental-gpu-working-mode");
-            if (ExperimentalITSMode)
-            {
-                args.Add("--experimental-its-mode");
-            }
+            if (ExperimentalITSMode) args.Add("--experimental-its-mode");
             if (ProxyUrl != null) args.Add($"--proxy-url={ProxyUrl}");
             if (!string.IsNullOrEmpty(ProxyUsername)) args.Add($"--proxy-username={ProxyUsername}");
             if (!string.IsNullOrEmpty(ProxyPassword)) args.Add($"--proxy-password={ProxyPassword}");
