@@ -39,8 +39,8 @@ public partial class ITSModeFeature : IFeature<ITSMode>
     private const string ITS_SERVICE_NAME = "LITSSVC";
 
     private const uint DISPATCHER_VERSION_3 = 8192U;
-    private const uint LEGACY_GEEK_MODE_CAPABILITY_QUERY = 10;
-    private const uint LEGACY_GEEK_MODE_CAPABILITY_MASK = 0x00020001;
+    private const uint GEEK_MODE_CAPABILITY_QUERY = 10;
+    private const uint GEEK_MODE_CAPABILITY_MASK = 0x00020001;
     private const uint LEGACY_GEEK_MODE_DISABLED = 0x000F100B;
     private const uint LEGACY_GEEK_MODE_ENABLED = 0x001F100B;
     #endregion
@@ -50,22 +50,24 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
     private readonly ITSModeListener _listener;
     private readonly PowerListener _powerListener;
+    private readonly ITSModeFeatureDriver _driverFeature;
     private readonly ITSModeSettings _settings = IoCContainer.Resolve<ITSModeSettings>();
 
     private int? _dispatcherVersion;
     private bool? _showGeekAsCreatorMode;
     private bool? _energyDriverPresent;
-    private bool? _legacyGeekModeSupported;
+    private bool? _geekModeSupported;
     private volatile bool _legacyGeekModeActive;
     private volatile bool _pendingOverlaySync;
     private CancellationTokenSource? _overlayTimeoutCts;
 
     public ITSMode LastItsMode { get; set; } = ITSMode.None;
 
-    public ITSModeFeature(ITSModeListener listener, PowerListener powerListener)
+    public ITSModeFeature(ITSModeListener listener, PowerListener powerListener, ITSModeFeatureDriver driverFeature)
     {
         _listener = listener;
         _powerListener = powerListener;
+        _driverFeature = driverFeature;
         _powerListener.Changed += OnPowerChanged;
         MessagingCenter.Subscribe<ITSModeToggleRequestMessage>(this, OnToggleRequestAsync);
     }
@@ -110,6 +112,11 @@ public partial class ITSModeFeature : IFeature<ITSMode>
 
     public async Task<bool> IsSupportedAsync()
     {
+        if (await UseExperimentalDriverAsync().ConfigureAwait(false))
+        {
+            return await _driverFeature.IsSupportedAsync().ConfigureAwait(false);
+        }
+
         if (AppFlags.Instance.Debug)
         {
             return true;
@@ -119,20 +126,30 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         return machineInfo.Properties.SupportsITSMode;
     }
 
-    public Task<ITSMode[]> GetAllStatesAsync()
+    public async Task<ITSMode[]> GetAllStatesAsync()
     {
-        if (AppFlags.Instance.Debug || GetDispatcherVersionEx() >= DISPATCHER_VERSION_3 || IsLegacyGeekModeSupported())
+        if (await UseExperimentalDriverAsync().ConfigureAwait(false))
         {
-            return Task.FromResult(_allStatesWithGeek);
+            return await _driverFeature.GetAllStatesAsync().ConfigureAwait(false);
         }
 
-        return Task.FromResult(_allStatesWithoutGeek);
+        if (AppFlags.Instance.Debug || IsGeekModeSupported())
+        {
+            return _allStatesWithGeek;
+        }
+
+        return _allStatesWithoutGeek;
     }
 
     public async Task<ITSMode> GetStateAsync()
     {
         try
         {
+            if (await UseExperimentalDriverAsync().ConfigureAwait(false))
+            {
+                return await _driverFeature.GetStateAsync().ConfigureAwait(false);
+            }
+
             return await GetITSModeEx().ConfigureAwait(false);
         }
         catch (Exception ex)
@@ -152,6 +169,20 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         if (state == ITSMode.None)
         {
             Log.Instance.Trace($"Can't set ITS mode to None, operation aborted.");
+            return;
+        }
+
+        if (await UseExperimentalDriverAsync().ConfigureAwait(false))
+        {
+            await _driverFeature.SetStateAsync(state).ConfigureAwait(false);
+            LastItsMode = state;
+
+            if (showNotification)
+            {
+                ITSModeListener.PublishNotification(state);
+            }
+
+            SaveCurrentStateToSettings(state);
             return;
         }
 
@@ -446,6 +477,17 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         }
     }
 
+    private static async Task<bool> UseExperimentalDriverAsync()
+    {
+        if (!AppFlags.Instance.ExperimentalITSMode)
+        {
+            return false;
+        }
+
+        var machineInformation = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        return machineInformation.LegionSeries == LegionSeries.ThinkBook;
+    }
+
     private void SetLegacyITSMode(ITSMode mode)
     {
         ITSModeServiceControlMessage[] messages = mode switch
@@ -470,11 +512,11 @@ public partial class ITSModeFeature : IFeature<ITSMode>
         }
     }
 
-    private bool IsLegacyGeekModeSupported()
+    private bool IsGeekModeSupported()
     {
-        if (_legacyGeekModeSupported.HasValue)
+        if (_geekModeSupported.HasValue)
         {
-            return _legacyGeekModeSupported.Value;
+            return _geekModeSupported.Value;
         }
 
         try
@@ -482,18 +524,18 @@ public partial class ITSModeFeature : IFeature<ITSMode>
             var success = PInvokeExtensions.DeviceIoControl(
                 Drivers.GetEnergy(),
                 Drivers.IOCTL_ENERGY_SMART_POWER,
-                LEGACY_GEEK_MODE_CAPABILITY_QUERY,
+                GEEK_MODE_CAPABILITY_QUERY,
                 out uint capability);
-            _legacyGeekModeSupported = success && (capability & LEGACY_GEEK_MODE_CAPABILITY_MASK) == LEGACY_GEEK_MODE_CAPABILITY_MASK;
-            Log.Instance.Trace($"Legacy Geek mode capability checked. [capability=0x{capability:X}, supported={_legacyGeekModeSupported}]");
+            _geekModeSupported = success && (capability & GEEK_MODE_CAPABILITY_MASK) == GEEK_MODE_CAPABILITY_MASK;
+            Log.Instance.Trace($"Geek mode capability checked. [capability=0x{capability:X}, supported={_geekModeSupported}]");
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"Failed to check legacy Geek mode capability.", ex);
-            _legacyGeekModeSupported = false;
+            Log.Instance.Trace($"Failed to check Geek mode capability.", ex);
+            _geekModeSupported = false;
         }
 
-        return _legacyGeekModeSupported.Value;
+        return _geekModeSupported.Value;
     }
 
     private void TryDisableLegacyGeekMode()

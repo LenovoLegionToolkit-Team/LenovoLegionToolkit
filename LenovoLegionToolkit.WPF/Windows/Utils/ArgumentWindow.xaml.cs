@@ -96,6 +96,29 @@ public partial class ArgumentWindow
     private ArgumentWindow()
     {
         InitializeComponent();
+        Loaded += ArgumentWindow_Loaded;
+    }
+
+    private async void ArgumentWindow_Loaded(object sender, RoutedEventArgs e)
+    {
+        Loaded -= ArgumentWindow_Loaded;
+
+        try
+        {
+            var machineInformation = await Compatibility.GetMachineInformationAsync();
+            AddFlagIf(
+                machineInformation.LegionSeries == LegionSeries.ThinkBook,
+                nameof(AppFlags.Instance.ExperimentalITSMode),
+                "--experimental-its-mode",
+                Resource.ArgumentWindow_Category_Hardware_Automation,
+                SymbolRegular.Gauge24,
+                "Experimental ITS Mode");
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to determine whether Experimental ITS Mode should be shown.", ex);
+        }
+
         GenerateUi();
     }
 

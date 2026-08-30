@@ -47,7 +47,7 @@ public abstract class AbstractDriverFeature<T>(
         }
     }
 
-    public Task<T[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<T>());
+    public virtual Task<T[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<T>());
 
     public virtual Task<T> GetStateAsync() => GetStateInternalAsync(bypassQueue: false);
 

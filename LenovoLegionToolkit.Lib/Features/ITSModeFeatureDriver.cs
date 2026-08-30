@@ -1,78 +1,66 @@
-using LenovoLegionToolkit.Lib.Extensions;
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using Microsoft.Win32;
-using System;
-using System.Runtime.InteropServices;
-using System.ServiceProcess;
-using System.Threading;
-using System.Threading.Tasks;
-using Windows.Win32;
-using Windows.Win32.Foundation;
-using Windows.Win32.Storage.FileSystem;
 using Registry = Microsoft.Win32.Registry;
 
 namespace LenovoLegionToolkit.Lib.Features;
 
 public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
 {
-    private const uint DYTC_CMD_GET_DISPATCHER_MODE = 14;
-    private const uint DYTC_REG_ITSSETTING = 0x10;
-    private const uint DYTC_FLAG_ITS_MODE = 0x2000;
-    private const uint DYTC_FLAG_EPM_MODE = 0x4000;
+    private const uint GET_CURRENT_MODE = 2;
+    private const uint GET_EXTENDED_CAPABILITIES = 10;
+    private const uint RESET_MODE = 0x000001FF;
 
-    private const uint DYTC_MODE_EPM = 0;
-    private const uint DYTC_MODE_INTELLIGENT = 1;
-    private const uint DYTC_MODE_BSM = 5;
+    private const uint COMMAND_VALID = 0x1;
+    private const uint SET_COMMAND_VALID = 0x100000;
+    private const int SET_FUNCTION_SHIFT = 12;
+    private const int SET_MODE_SHIFT = 16;
+    private const int GET_FUNCTION_SHIFT = 8;
+    private const int GET_MODE_SHIFT = 12;
 
-    private const uint MODE_SHIFT = 20;
+    private const uint FUNCTION_INTELLIGENT = 5;
+    private const uint FUNCTION_ITS = 11;
+    private const uint MODE_INTELLIGENT = 15;
+    private const uint MODE_PERFORMANCE = 2;
+    private const uint MODE_COOL = 3;
+
+    private const uint GEEK_CAPABILITY_MASK = 0x00020001;
+    private const uint GEEK_DISABLED = 0x000F100B;
+    private const uint GEEK_ENABLED = 0x001F100B;
 
     private const string REG_KEY_DISPATCHER = @"SYSTEM\CurrentControlSet\Services\LenovoProcessManagement\Performance\PowerSlider";
-    private const string REG_KEY_LITSSVC_MMC = @"SYSTEM\CurrentControlSet\Services\LITSSVC\LNBITS\IC\MMC";
-
     private const string VAL_VERSION = "Version";
-    private const string VAL_AUTO_SETTING = "AutomaticModeSetting";
-    private const string VAL_CURRENT_SETTING = "CurrentSetting";
-    private const string VAL_ITS_FN_CAP = "ITS_FN_Capability";
-    private const string VAL_ITS_CUR_SET = "ITS_CurrentSetting";
     private const string VAL_ITS_CUR_SET_V = "ITS_CurrentSettingV";
-
     private const uint DISPATCHER_VERSION_3 = 8192U;
 
-    private const string DISPATCHER_SERVICE_NAME = "LenovoProcessManagement";
-    private const string ITS_SERVICE_NAME = "LITSSVC";
+    private static readonly ITSMode[] _allStatesWithGeek = [ITSMode.ItsAuto, ITSMode.MmcCool, ITSMode.MmcPerformance, ITSMode.MmcGeek];
+    private static readonly ITSMode[] _allStatesWithoutGeek = [ITSMode.ItsAuto, ITSMode.MmcCool, ITSMode.MmcPerformance];
 
-    private enum ServiceControlCode : int
-    {
-        LegacyDisable = 134,
-        LegacyEnable = 135,
-        LegacyCool = 146,
-        LegacyHighPerformance = 148,
-
-        ModernIntelligent = 163,
-        ModernBsm = 164,
-        ModernEpm = 165,
-        ModernGeek = 172,
-    }
-
-    private bool? _isModern;
-    private ITSMode _lastMode;
+    private volatile int _geekModeState = -1;
 
     public ITSModeFeatureDriver()
-        : base(Drivers.GetEnergy, Drivers.IOCTL_DYTC, useDriverQueue: true) { }
+        : base(Drivers.GetEnergy, Drivers.IOCTL_ENERGY_SMART_POWER, useDriverQueue: true) { }
 
     public override async Task<bool> IsSupportedAsync()
     {
         try
         {
             if (AppFlags.Instance.Debug)
+            {
                 return true;
+            }
 
-            if (!IsEnergyDriverPresent())
+            if (ReadDispatcherVersion() < DISPATCHER_VERSION_3)
+            {
                 return false;
+            }
 
-            _ = await GetStateInternalAsync(bypassQueue: true).ConfigureAwait(false);
-            return true;
+            var raw = await SendCodeAsync(DriverHandle(), ControlCode, GET_CURRENT_MODE, bypassQueue: true).ConfigureAwait(false);
+            return (raw & COMMAND_VALID) != 0;
         }
         catch
         {
@@ -80,16 +68,56 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
         }
     }
 
-    protected override Task<ITSMode> GetStateInternalAsync(bool bypassQueue)
+    public override async Task<ITSMode[]> GetAllStatesAsync()
     {
-        return Task.FromResult(GetStateFromRegistry());
+        if (AppFlags.Instance.Debug)
+        {
+            return _allStatesWithGeek;
+        }
+
+        return await IsGeekModeAdvertisedAsync().ConfigureAwait(false) ? _allStatesWithGeek : _allStatesWithoutGeek;
     }
 
-    protected override uint GetInBufferValue() => DYTC_CMD_GET_DISPATCHER_MODE;
+    protected override async Task<ITSMode> GetStateInternalAsync(bool bypassQueue)
+    {
+        var raw = await SendCodeAsync(DriverHandle(), ControlCode, GET_CURRENT_MODE, bypassQueue).ConfigureAwait(false);
+        var state = await FromInternalAsync(raw).ConfigureAwait(false);
+        LastState = state;
+        return state;
+    }
+
+    protected override uint GetInBufferValue() => GET_CURRENT_MODE;
 
     protected override Task<ITSMode> FromInternalAsync(uint raw)
     {
-        return Task.FromResult(ITSMode.None);
+        if ((raw & COMMAND_VALID) == 0)
+        {
+            return Task.FromResult(ITSMode.None);
+        }
+
+        var function = (raw >> GET_FUNCTION_SHIFT) & 0xF;
+        var mode = (raw >> GET_MODE_SHIFT) & 0xF;
+
+        ITSMode state;
+        if (function == FUNCTION_ITS && mode == MODE_COOL)
+        {
+            state = ITSMode.MmcCool;
+        }
+        else if (function == FUNCTION_ITS && mode == MODE_PERFORMANCE)
+        {
+            state = IsGeekModeActive() ? ITSMode.MmcGeek : ITSMode.MmcPerformance;
+        }
+        else if (IsIntelligentFunction(function))
+        {
+            state = ITSMode.ItsAuto;
+        }
+        else
+        {
+            state = ITSMode.None;
+        }
+
+        Log.Instance.Trace($"EnergyDrv ITS mode read. [raw=0x{raw:X8}, function={function}, mode={mode}, state={state}]");
+        return Task.FromResult(state);
     }
 
     public override async Task SetStateAsync(ITSMode state)
@@ -100,158 +128,115 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
             return;
         }
 
-        Log.Instance.Trace($"Setting ITS mode to: {state} [driver path]");
+        if (!(await GetAllStatesAsync().ConfigureAwait(false)).Contains(state))
+        {
+            throw new InvalidOperationException($"Unsupported ITS mode {state}.");
+        }
 
-        if (GetIsModern())
-            await SetStateViaEnergyDrvAsync(state).ConfigureAwait(false);
-        else
-            SetStateViaLegacyService(state);
+        if (state == ITSMode.MmcGeek &&
+            await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) != PowerAdapterStatus.Connected)
+        {
+            throw new InvalidOperationException("Geek mode is unavailable without an AC power adapter.");
+        }
+
+        Log.Instance.Trace($"Setting ITS mode to: {state} [EnergyDrv]");
+
+        if (state != ITSMode.MmcGeek && IsGeekModeActive())
+        {
+            await SendCodeAsync(DriverHandle(), ControlCode, GEEK_DISABLED).ConfigureAwait(false);
+            _geekModeState = 0;
+        }
+
+        if (state == ITSMode.ItsAuto)
+        {
+            await SendCodeAsync(DriverHandle(), ControlCode, RESET_MODE).ConfigureAwait(false);
+        }
+
+        foreach (var command in await ToInternalAsync(state).ConfigureAwait(false))
+        {
+            await SendCodeAsync(DriverHandle(), ControlCode, command).ConfigureAwait(false);
+        }
+
+        if (state == ITSMode.MmcGeek)
+        {
+            await SendCodeAsync(DriverHandle(), ControlCode, GEEK_ENABLED).ConfigureAwait(false);
+            _geekModeState = 1;
+        }
 
         if (!await WaitForModeAsync(state, CancellationToken.None).ConfigureAwait(false))
+        {
             throw new InvalidOperationException($"ITS mode did not change to {state}.");
+        }
 
-        _lastMode = state;
-        Log.Instance.Trace($"ITS mode set successfully to: {state}");
+        LastState = state;
+        Log.Instance.Trace($"ITS mode set successfully to: {state} [EnergyDrv]");
     }
 
     protected override Task<uint[]> ToInternalAsync(ITSMode state)
     {
-        return Task.FromResult(Array.Empty<uint>());
-    }
-
-    private async Task SetStateViaEnergyDrvAsync(ITSMode state)
-    {
-        uint modeValue = MapITSModeToDYTC(state);
-        uint command = DYTC_FLAG_ITS_MODE | (modeValue << (int)MODE_SHIFT) | DYTC_REG_ITSSETTING;
-
-        Log.Instance.Trace($"EnergyDrv DYTC SET: modeValue={modeValue}, command=0x{command:X8}");
-        await SendCodeAsync(DriverHandle(), ControlCode, command, bypassQueue: false).ConfigureAwait(false);
-    }
-
-    private static void SetStateViaLegacyService(ITSMode state)
-    {
-        ServiceControlCode code = state switch
+        var command = state switch
         {
-            ITSMode.ItsAuto => ServiceControlCode.LegacyEnable,
-            ITSMode.MmcCool => ServiceControlCode.LegacyCool,
-            ITSMode.MmcPerformance => ServiceControlCode.LegacyHighPerformance,
-            _ => throw new ArgumentOutOfRangeException(nameof(state), $"Legacy path does not support {state}")
+            ITSMode.ItsAuto => BuildSetCommand(FUNCTION_INTELLIGENT, MODE_INTELLIGENT),
+            ITSMode.MmcCool => BuildSetCommand(FUNCTION_ITS, MODE_COOL),
+            ITSMode.MmcPerformance or ITSMode.MmcGeek => BuildSetCommand(FUNCTION_ITS, MODE_PERFORMANCE),
+            _ => throw new ArgumentOutOfRangeException(nameof(state))
         };
-
-        Log.Instance.Trace($"Legacy ControlService: {ITS_SERVICE_NAME} → {code} ({(int)code})");
-        using var sc = new ServiceController(ITS_SERVICE_NAME);
-        sc.ExecuteCommand((int)code);
+        return Task.FromResult(new[] { command });
     }
 
-    private ITSMode GetStateFromRegistry()
-    {
-        uint dispatcherVersion = ReadRegistryVersion(REG_KEY_DISPATCHER);
+    public async Task<uint> GetExtendedCapabilitiesAsync() =>
+        await SendCodeAsync(DriverHandle(), ControlCode, GET_EXTENDED_CAPABILITIES, bypassQueue: true).ConfigureAwait(false);
 
-        if (dispatcherVersion >= DISPATCHER_VERSION_3)
+    public async Task<bool> IsGeekModeAdvertisedAsync()
+    {
+        var capability = await GetExtendedCapabilitiesAsync().ConfigureAwait(false);
+        var supported = (capability & GEEK_CAPABILITY_MASK) == GEEK_CAPABILITY_MASK;
+        Log.Instance.Trace($"EnergyDrv Geek capability checked. [capability=0x{capability:X8}, supported={supported}]");
+        return supported;
+    }
+
+    private bool IsGeekModeActive()
+    {
+        if (_geekModeState >= 0)
+        {
+            return _geekModeState == 1;
+        }
+
+        try
         {
             using var key = Registry.LocalMachine.OpenSubKey(REG_KEY_DISPATCHER, writable: false);
-            if (key != null)
-            {
-                int capability = ReadRegistryInt(key, VAL_ITS_FN_CAP, 0);
-                bool useVersioned = (capability & 0x10) != 0;
-                string settingKey = useVersioned ? VAL_ITS_CUR_SET_V : VAL_ITS_CUR_SET;
-
-                int current = ReadRegistryInt(key, settingKey, -1);
-                Log.Instance.Trace($"ITS mode read (modern): {settingKey}={current}");
-
-                return current switch
-                {
-                    0 => ITSMode.ItsAuto,
-                    1 => ITSMode.MmcCool,
-                    3 => ITSMode.MmcPerformance,
-                    4 => ITSMode.MmcGeek,
-                    _ => ITSMode.None
-                };
-            }
+            return key?.GetValue(VAL_ITS_CUR_SET_V) is int value && value == 4;
         }
-        else
+        catch
         {
-            using var key = Registry.LocalMachine.OpenSubKey(REG_KEY_LITSSVC_MMC, writable: false);
-            if (key != null)
-            {
-                int auto = ReadRegistryInt(key, VAL_AUTO_SETTING, -1);
-                int current = ReadRegistryInt(key, VAL_CURRENT_SETTING, -1);
-                Log.Instance.Trace($"ITS mode read (legacy): Auto={auto}, Current={current}");
-
-                if (auto == 2 && current == 0) return ITSMode.ItsAuto;
-                if (auto == 1 && current == 1) return ITSMode.MmcCool;
-                if (auto == 1 && current == 3) return ITSMode.MmcPerformance;
-            }
-        }
-
-        return ITSMode.None;
-    }
-
-    private static uint MapITSModeToDYTC(ITSMode state)
-    {
-        return state switch
-        {
-            ITSMode.MmcPerformance => DYTC_MODE_EPM,
-            ITSMode.ItsAuto => DYTC_MODE_INTELLIGENT,
-            ITSMode.MmcCool => DYTC_MODE_BSM,
-            ITSMode.MmcGeek => DYTC_MODE_EPM,
-            _ => throw new ArgumentOutOfRangeException(nameof(state), $"No DYTC mapping for {state}")
-        };
-    }
-
-    private bool GetIsModern()
-    {
-        _isModern ??= ReadRegistryVersion(REG_KEY_DISPATCHER) >= DISPATCHER_VERSION_3;
-        return _isModern.Value;
-    }
-
-    private static uint ReadRegistryVersion(string subKey)
-    {
-        try
-        {
-            using var key = Registry.LocalMachine.OpenSubKey(subKey, writable: false);
-            return key != null ? (uint)ReadRegistryInt(key, VAL_VERSION, 0) : 0;
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"ReadRegistryVersion({subKey}) failed", ex);
-            return 0;
-        }
-    }
-
-    private static int ReadRegistryInt(RegistryKey key, string valueName, int defaultValue)
-    {
-        var value = key.GetValue(valueName, defaultValue);
-        if (value is int i) return i;
-        if (value is long l) return (int)l;
-        if (value is uint u) return (int)u;
-        try { return Convert.ToInt32(value); }
-        catch { return defaultValue; }
-    }
-
-    private static bool IsEnergyDriverPresent()
-    {
-        try
-        {
-            using var handle = PInvoke.CreateFile(
-                @"\\.\EnergyDrv",
-                0,
-                FILE_SHARE_MODE.FILE_SHARE_READ | FILE_SHARE_MODE.FILE_SHARE_WRITE,
-                null,
-                FILE_CREATION_DISPOSITION.OPEN_EXISTING,
-                FILE_FLAGS_AND_ATTRIBUTES.FILE_ATTRIBUTE_NORMAL,
-                null);
-
-            if (!handle.IsInvalid)
-                return true;
-
-            var error = Marshal.GetLastWin32Error();
-            return error == (int)WIN32_ERROR.ERROR_ACCESS_DENIED;
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"IsEnergyDriverPresent failed", ex);
             return false;
+        }
+    }
+
+    private static uint BuildSetCommand(uint function, uint mode) =>
+        COMMAND_VALID |
+        (function << SET_FUNCTION_SHIFT) |
+        (mode << SET_MODE_SHIFT) |
+        SET_COMMAND_VALID;
+
+    private static bool IsIntelligentFunction(uint function) => function is 0 or 3 or 5 or 6 or 7 or 8;
+
+    private static uint ReadDispatcherVersion()
+    {
+        try
+        {
+            using var key = Registry.LocalMachine.OpenSubKey(REG_KEY_DISPATCHER, writable: false);
+            return key?.GetValue(VAL_VERSION) switch
+            {
+                int value => (uint)value,
+                uint value => value,
+                _ => 0
+            };
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to read Dispatcher version.", ex);
+            return 0;
         }
     }
 
@@ -260,8 +245,10 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
         var deadline = DateTimeOffset.UtcNow.AddSeconds(3);
         do
         {
-            if (GetStateFromRegistry() == expected)
+            if (await GetStateInternalAsync(bypassQueue: true).ConfigureAwait(false) == expected)
+            {
                 return true;
+            }
 
             await Task.Delay(200, token).ConfigureAwait(false);
         }

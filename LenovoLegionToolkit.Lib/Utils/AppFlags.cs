@@ -87,6 +87,13 @@ public class AppFlags
         set { _experimentalGPUWorkingMode = value; Save(); }
     }
 
+    private bool _experimentalITSMode;
+    public bool ExperimentalITSMode
+    {
+        get => _experimentalITSMode;
+        set { _experimentalITSMode = value; Save(); }
+    }
+
     private Uri? _proxyUrl;
     public Uri? ProxyUrl
     {
@@ -167,6 +174,7 @@ public class AppFlags
         _forceDisableLenovoLighting = BoolValue(args, "--force-disable-lenovolighting");
         _enableLampArray = BoolValue(args, "--enable-lamp-array");
         _experimentalGPUWorkingMode = BoolValue(args, "--experimental-gpu-working-mode");
+        _experimentalITSMode = BoolValue(args, "--experimental-its-mode");
         _proxyUrl = Uri.TryCreate(StringValue(args, "--proxy-url"), UriKind.Absolute, out var uri) ? uri : null;
         _proxyUsername = StringValue(args, "--proxy-username");
         _proxyPassword = StringValue(args, "--proxy-password");
@@ -192,6 +200,10 @@ public class AppFlags
             if (ForceDisableLenovoLighting) args.Add("--force-disable-lenovolighting");
             if (EnableLampArray) args.Add("--enable-lamp-array"); 
             if (ExperimentalGPUWorkingMode) args.Add("--experimental-gpu-working-mode");
+            if (ExperimentalITSMode)
+            {
+                args.Add("--experimental-its-mode");
+            }
             if (ProxyUrl != null) args.Add($"--proxy-url={ProxyUrl}");
             if (!string.IsNullOrEmpty(ProxyUsername)) args.Add($"--proxy-username={ProxyUsername}");
             if (!string.IsNullOrEmpty(ProxyPassword)) args.Add($"--proxy-password={ProxyPassword}");
@@ -242,6 +254,7 @@ public class AppFlags
         $" {nameof(ForceDisableLenovoLighting)}: {ForceDisableLenovoLighting}," +
         $" {nameof(EnableLampArray)}: {EnableLampArray}," +
         $" {nameof(ExperimentalGPUWorkingMode)}: {ExperimentalGPUWorkingMode}," +
+        $" {nameof(ExperimentalITSMode)}: {ExperimentalITSMode}," +
         $" {nameof(ProxyUrl)}: {ProxyUrl}," +
         $" {nameof(ProxyUsername)}: {ProxyUsername}," +
         $" {nameof(ProxyPassword)}: {ProxyPassword}," +

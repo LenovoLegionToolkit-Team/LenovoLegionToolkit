@@ -72,6 +72,7 @@ public class IoCModule : Module
         builder.Register<IGPUModeCapabilityFeature>(true);
         builder.Register<IGPUModeFeatureFlagsFeature>(true);
         builder.Register<IGPUModeGamezoneFeature>(true);
+        builder.Register<ITSModeFeatureDriver>();
         builder.Register<ITSModeFeature>();
         builder.Register<InstantBootFeature>();
         builder.Register<InstantBootFeatureFlagsFeature>(true);
