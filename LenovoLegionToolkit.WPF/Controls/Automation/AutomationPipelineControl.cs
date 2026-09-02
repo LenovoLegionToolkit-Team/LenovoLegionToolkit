@@ -191,107 +191,115 @@ public class AutomationPipelineControl : UserControl
 
     private async void AutomationPipelineControl_Initialized(object? sender, EventArgs e)
     {
-        _cardExpander.Header = _cardHeaderControl;
-
-        foreach (var step in AutomationPipeline.Steps)
+        try
         {
-            var control = await GenerateStepControlAsync(step);
-            _stepsStackPanel.Children.Add(control);
-        }
+            _cardExpander.Header = _cardHeaderControl;
 
-        if (AutomationPipeline.Trigger is not null)
-        {
-            _isExclusiveCheckBox.IsChecked = AutomationPipeline.IsExclusive;
-            _isExclusiveCheckBox.Checked += (_, _) =>
+            foreach (var step in AutomationPipeline.Steps)
             {
-                AutomationPipeline.IsExclusive = _isExclusiveCheckBox.IsChecked ?? false;
-                OnChanged?.Invoke(this, EventArgs.Empty);
-            };
-            _isExclusiveCheckBox.Unchecked += (_, _) =>
+                var control = await GenerateStepControlAsync(step);
+                _stepsStackPanel.Children.Add(control);
+            }
+
+            if (AutomationPipeline.Trigger is not null)
             {
-                AutomationPipeline.IsExclusive = _isExclusiveCheckBox.IsChecked ?? false;
-                OnChanged?.Invoke(this, EventArgs.Empty);
-            };
+                _isExclusiveCheckBox.IsChecked = AutomationPipeline.IsExclusive;
+                _isExclusiveCheckBox.Checked += (_, _) =>
+                {
+                    AutomationPipeline.IsExclusive = _isExclusiveCheckBox.IsChecked ?? false;
+                    OnChanged?.Invoke(this, EventArgs.Empty);
+                };
+                _isExclusiveCheckBox.Unchecked += (_, _) =>
+                {
+                    AutomationPipeline.IsExclusive = _isExclusiveCheckBox.IsChecked ?? false;
+                    OnChanged?.Invoke(this, EventArgs.Empty);
+                };
 
-            _runOnStartupCheckBox.IsChecked = AutomationPipeline.RunOnStartup;
-            _runOnStartupCheckBox.Checked += (_, _) =>
+                _runOnStartupCheckBox.IsChecked = AutomationPipeline.RunOnStartup;
+                _runOnStartupCheckBox.Checked += (_, _) =>
+                {
+                    AutomationPipeline.RunOnStartup = _runOnStartupCheckBox.IsChecked ?? false;
+                    OnChanged?.Invoke(this, EventArgs.Empty);
+                };
+                _runOnStartupCheckBox.Unchecked += (_, _) =>
+                {
+                    AutomationPipeline.RunOnStartup = _runOnStartupCheckBox.IsChecked ?? false;
+                    OnChanged?.Invoke(this, EventArgs.Empty);
+                };
+            }
+            else
             {
-                AutomationPipeline.RunOnStartup = _runOnStartupCheckBox.IsChecked ?? false;
-                OnChanged?.Invoke(this, EventArgs.Empty);
-            };
-            _runOnStartupCheckBox.Unchecked += (_, _) =>
+                _isExclusiveCheckBox.Visibility = Visibility.Hidden;
+                _runOnStartupCheckBox.Visibility = Visibility.Hidden;
+                _leftButtonsPanel.Visibility = Visibility.Collapsed;
+            }
+
+            if (AutomationPipeline.Trigger is GamesAreRunningAutomationPipelineTrigger
+                or ProcessesStopRunningAutomationPipelineTrigger
+                or SessionLockAutomationPipelineTrigger
+                or OnResumeAutomationPipelineTrigger
+                or OnStartupAutomationPipelineTrigger
+                or PeriodicAutomationPipelineTrigger
+                or TimeAutomationPipelineTrigger)
             {
-                AutomationPipeline.RunOnStartup = _runOnStartupCheckBox.IsChecked ?? false;
-                OnChanged?.Invoke(this, EventArgs.Empty);
+                _runOnStartupCheckBox.Visibility = Visibility.Collapsed;
+            }
+
+            _runNowButton.Click += async (_, _) => await RunAsync();
+
+            _addStepButton.Click += async (_, _) =>
+            {
+                var stepControls = new List<AbstractAutomationStepControl>();
+                foreach (var step in _supportedAutomationSteps)
+                    stepControls.Add(await GenerateStepControlAsync(step));
+
+                var window = new AddAutomationStepWindow(stepControls, AddStep, _totalAutomationStepsCount) { Owner = Window.GetWindow(this) };
+                window.ShowDialog();
             };
+
+            _deletePipelineButton.Click += (_, _) => OnDelete?.Invoke(this, EventArgs.Empty);
+
+            _leftButtonsPanel.Children.Add(_isExclusiveCheckBox);
+            _leftButtonsPanel.Children.Add(_runOnStartupCheckBox);
+
+            _rightButtonsPanel.Children.Add(_runNowButton);
+            _rightButtonsPanel.Children.Add(_addStepButton);
+            _rightButtonsPanel.Children.Add(_deletePipelineButton);
+
+            Grid.SetColumn(_leftButtonsPanel, 0);
+            Grid.SetColumn(_rightButtonsPanel, 1);
+            _buttonsStackPanel.Children.Add(_leftButtonsPanel);
+            _buttonsStackPanel.Children.Add(_rightButtonsPanel);
+
+            _stackPanel.Children.Add(_stepsStackPanel);
+            _stackPanel.Children.Add(_validationWarningTextBlock);
+            _stackPanel.Children.Add(_buttonsStackPanel);
+
+            RefreshValidationWarnings();
+
+            _cardExpander.Icon = GenerateIcon();
+            _cardHeaderControl.Title = GenerateHeader();
+            _cardHeaderControl.Subtitle = GenerateSubtitle();
+            _cardHeaderControl.Accessory = GenerateAccessory();
+            _cardHeaderControl.SubtitleToolTip = _cardHeaderControl.Subtitle;
+            _cardExpander.Content = _stackPanel;
+            _cardExpander.Header = _cardHeaderControl;
+
+            Content = _cardExpander;
+
+            AllowDrop = true;
+            Drop += HandlePipelineDrop;
+            PreviewDragOver += Control_PreviewDragOver;
+            DragLeave += (_, _) => CleanupAdorner();
         }
-        else
+        catch (Exception ex)
         {
-            _isExclusiveCheckBox.Visibility = Visibility.Hidden;
-            _runOnStartupCheckBox.Visibility = Visibility.Hidden;
-            _leftButtonsPanel.Visibility = Visibility.Collapsed;
+            Log.Instance.Trace($"Error initializing automation pipeline control. [name={AutomationPipeline.Name}]", ex);
         }
-
-        if (AutomationPipeline.Trigger is GamesAreRunningAutomationPipelineTrigger
-            or ProcessesStopRunningAutomationPipelineTrigger
-            or SessionLockAutomationPipelineTrigger
-            or OnResumeAutomationPipelineTrigger
-            or OnStartupAutomationPipelineTrigger
-            or PeriodicAutomationPipelineTrigger
-            or TimeAutomationPipelineTrigger)
+        finally
         {
-            _runOnStartupCheckBox.Visibility = Visibility.Collapsed;
+            _initializedTaskCompletionSource.TrySetResult();
         }
-
-        _runNowButton.Click += async (_, _) => await RunAsync();
-
-        _addStepButton.Click += async (_, _) =>
-        {
-            var stepControls = new List<AbstractAutomationStepControl>();
-            foreach (var step in _supportedAutomationSteps)
-                stepControls.Add(await GenerateStepControlAsync(step));
-
-            var window = new AddAutomationStepWindow(stepControls, AddStep, _totalAutomationStepsCount) { Owner = Window.GetWindow(this) };
-            window.ShowDialog();
-        };
-
-        _deletePipelineButton.Click += (_, _) => OnDelete?.Invoke(this, EventArgs.Empty);
-
-
-        _leftButtonsPanel.Children.Add(_isExclusiveCheckBox);
-        _leftButtonsPanel.Children.Add(_runOnStartupCheckBox);
-
-        _rightButtonsPanel.Children.Add(_runNowButton);
-        _rightButtonsPanel.Children.Add(_addStepButton);
-        _rightButtonsPanel.Children.Add(_deletePipelineButton);
-
-        Grid.SetColumn(_leftButtonsPanel, 0);
-        Grid.SetColumn(_rightButtonsPanel, 1);
-        _buttonsStackPanel.Children.Add(_leftButtonsPanel);
-        _buttonsStackPanel.Children.Add(_rightButtonsPanel);
-
-        _stackPanel.Children.Add(_stepsStackPanel);
-        _stackPanel.Children.Add(_validationWarningTextBlock);
-        _stackPanel.Children.Add(_buttonsStackPanel);
-
-        RefreshValidationWarnings();
-
-        _cardExpander.Icon = GenerateIcon();
-        _cardHeaderControl.Title = GenerateHeader();
-        _cardHeaderControl.Subtitle = GenerateSubtitle();
-        _cardHeaderControl.Accessory = GenerateAccessory();
-        _cardHeaderControl.SubtitleToolTip = _cardHeaderControl.Subtitle;
-        _cardExpander.Content = _stackPanel;
-        _cardExpander.Header = _cardHeaderControl;
-
-        Content = _cardExpander;
-
-        AllowDrop = true;
-        Drop += HandlePipelineDrop;
-        PreviewDragOver += Control_PreviewDragOver;
-        DragLeave += (_, _) => CleanupAdorner();
-
-        _initializedTaskCompletionSource.TrySetResult();
     }
 
 

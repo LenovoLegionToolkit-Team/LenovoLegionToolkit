@@ -229,7 +229,17 @@ public partial class AutomationPage
 
         for (var index = steps.Count - 1; index >= 0; index--)
         {
-            if (!await steps[index].IsSupportedAsync())
+            var isSupported = false;
+            try
+            {
+                isSupported = await steps[index].IsSupportedAsync();
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to check if automation step is supported. [step={steps[index].GetType().Name}]", ex);
+            }
+
+            if (!isSupported)
                 steps.RemoveAt(index);
         }
 
