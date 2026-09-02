@@ -63,11 +63,15 @@ public partial class DiscreteGPUControl
 
         _content.Visibility = Visibility.Hidden;
 
-        await _gpuController.StopAsync();
+        if (!_settings.Store.GameDetection.UseDiscreteGPU)
+            await _gpuController.StopAsync();
     }
 
     private void GpuController_Refreshed(object? sender, GPUStatus e) => Dispatcher.Invoke(() =>
     {
+        if (!IsVisible)
+            return;
+
         var tooltipStringBuilder = new StringBuilder(Resource.DiscreteGPUControl_PerformanceState);
         tooltipStringBuilder.AppendLine().Append(" · ").Append(e.PerformanceState ?? Resource.DiscreteGPUControl_PerformanceState_Unknown);
 
