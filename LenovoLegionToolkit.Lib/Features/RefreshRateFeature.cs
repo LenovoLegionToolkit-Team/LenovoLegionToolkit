@@ -6,6 +6,7 @@ using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using WindowsDisplayAPI;
+using WindowsDisplayAPI.DisplayConfig;
 using WindowsDisplayAPI.Native.DeviceContext;
 
 namespace LenovoLegionToolkit.Lib.Features;
@@ -51,9 +52,9 @@ public class RefreshRateFeature : IFeature<RefreshRate>
                 var activePath = pathInfos.FirstOrDefault(p => p.DisplaySource == displaySource && (displayTarget is null || p.TargetsInfo.Any(t => t.DisplayTarget == displayTarget)));
                 var targetInfo = activePath?.TargetsInfo.FirstOrDefault(t => displayTarget is null || t.DisplayTarget == displayTarget);
 
-                if (targetInfo is not null && (targetInfo.IsVirtualModeSupportedByPath || targetInfo.IsBoostRefreshRate))
+                if (targetInfo is not null && (targetInfo.IsBoostRefreshRate || targetInfo.IsDynamicRefreshRateSupported))
                 {
-                    var lowFreq = GetDynamicLowFrequency(maxFreq, result.Select(r => r.Frequency));
+                    var lowFreq = PathDisplayTarget.GetDynamicLowFrequency(maxFreq, result.Select(r => r.Frequency));
                     if (lowFreq > 0 && lowFreq < maxFreq)
                     {
                         result.Add(new RefreshRate(maxFreq, isDynamic: true, baseFrequency: lowFreq));
@@ -103,7 +104,7 @@ public class RefreshRateFeature : IFeature<RefreshRate>
                 return dynamicState;
             }
 
-            var defaultLowFreq = GetDynamicLowFrequency(reportedFrequency, allStates.Where(r => !r.IsDynamic).Select(r => r.Frequency));
+            var defaultLowFreq = PathDisplayTarget.GetDynamicLowFrequency(reportedFrequency, allStates.Where(r => !r.IsDynamic).Select(r => r.Frequency));
             var inferredDynamicState = new RefreshRate(reportedFrequency, isDynamic: true, baseFrequency: defaultLowFreq);
             Log.Instance.Trace($"Current refresh rate is {inferredDynamicState}");
             return inferredDynamicState;
@@ -156,12 +157,6 @@ public class RefreshRateFeature : IFeature<RefreshRate>
         {
             Log.Instance.Trace($"Could not find matching settings for frequency {state}");
         }
-    }
-
-    private static int GetDynamicLowFrequency(int maxFrequency, IEnumerable<int> availableFrequencies)
-    {
-        var halfRate = maxFrequency / 2;
-        return availableFrequencies.FirstOrDefault(f => Math.Abs(f - halfRate) <= 1);
     }
 
     private static bool Match(DisplayPossibleSetting dps, DisplayPossibleSetting ds)
