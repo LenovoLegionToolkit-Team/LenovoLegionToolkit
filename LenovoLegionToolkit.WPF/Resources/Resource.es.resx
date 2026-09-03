@@ -462,7 +462,7 @@ Sólo se ejecutarán las acciones que coincidan con el estado actual.</value>
     <value>Lista de juegos conocida</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configurar métodos de detección y exclusiones.</value>
+    <value>Configure how games are detected and manage process rules.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
     <value>Detección de juegos</value>
@@ -1117,19 +1117,31 @@ El cambio de modo puede requerir un reinicio.</value>
     <value>Error</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Los procesos que figuren en la lista de Procesos Excluidos serán ignorados por los activadores de inicio y parada del juego y por el modo IA/Inteligente de Lenovo.</value>
+    <value>Included processes are always treated as games, while excluded processes are ignored by game detection and Lenovo's AI/Intelligent Mode.</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
     <value>Procesos excluidos ({0})</value>
   </data>
+  <data name="ExcludeProcessesWindow_ExcludeTooltip" xml:space="preserve">
+    <value>Add to Excluded Processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_IncludedProcesses_Format" xml:space="preserve">
+    <value>Included Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_IncludeTooltip" xml:space="preserve">
+    <value>Add to Included Processes</value>
+  </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
     <value>No hay procesos excluidos</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoIncludedProcesses" xml:space="preserve">
+    <value>No included processes</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
     <value>Procesos en ejecución ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Procesos excluidos</value>
+    <value>Process Rules</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Desmarcar las tasas de actualización que no desea utilizar al usar las teclas Fn+R.</value>
@@ -3170,7 +3182,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>No se ha podido activar Lenovo Vantage y/o ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Procesos excluidos</value>
+    <value>Process Rules</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Puede excluir las tasas de refresco, para que el acceso rápido Fn+R sea más útil.</value>
