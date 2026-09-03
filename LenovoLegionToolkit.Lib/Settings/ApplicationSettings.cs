@@ -43,6 +43,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public int BackgroundImageBlur { get; set; } = 0;
         public BackgroundImageStretchMode BackgroundImageStretch { get; set; } = BackgroundImageStretchMode.Crop;
         public List<string> ExcludedProcesses { get; set; } = [];
+        public List<string> IncludedProcesses { get; set; } = [];
         public GameDetectionSettings GameDetection { get; set; } = new();
         public bool DynamicLightingWarningDontShowAgain { get; set; }
         public bool CustomModeWarningDontShowAgain { get; set; }

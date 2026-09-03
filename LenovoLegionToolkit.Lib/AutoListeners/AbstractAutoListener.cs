@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Utils;
 using NeoSmart.AsyncLock;
@@ -23,6 +23,20 @@ public abstract class AbstractAutoListener<TEventArgs> : IAutoListener<TEventArg
     {
         Changed -= eventHandler;
         await StartStopAsync().ConfigureAwait(false);
+    }
+
+    public async Task RestartAsync()
+    {
+        using (await _startStopLock.LockAsync().ConfigureAwait(false))
+        {
+            if (!_started)
+                return;
+
+            Log.Instance.Trace($"Restarting... [type={GetType().Name}]");
+            await StopInternalAsync().ConfigureAwait(false);
+            await StartInternalAsync().ConfigureAwait(false);
+            Log.Instance.Trace($"Restarted. [type={GetType().Name}]");
+        }
     }
 
     private async Task StartStopAsync()

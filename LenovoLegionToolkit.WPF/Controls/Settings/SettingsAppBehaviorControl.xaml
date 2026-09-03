@@ -17,7 +17,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <StackPanel Grid.Column="0" Margin="0,0,16,0">
+                    <StackPanel Grid.Column="0" Margin="0,0,8,0">
                         <ComboBox x:Name="_detectionModeComboBox" SelectionChanged="DetectionModeComboBox_SelectionChanged">
                             <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_Auto}" Tag="Auto" />
                             <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_Discrete_GPU}" Tag="Gpu" />

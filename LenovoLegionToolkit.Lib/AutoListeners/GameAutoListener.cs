@@ -77,10 +77,20 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
         lock (Lock)
         {
-            if (_settings.Store.GameDetection.UseGameConfigStore)
+            var checkIncluded = _settings.Store.IncludedProcesses.Count > 0;
+            var checkGameConfigStore = _settings.Store.GameDetection.UseGameConfigStore;
+
+            if (checkGameConfigStore)
             {
                 foreach (var gamePath in GameConfigStoreDetector.GetDetectedGamePaths())
                     _detectedGamePathsCache.Add(gamePath);
+            }
+
+            if (checkIncluded || checkGameConfigStore)
+            {
+                var included = checkIncluded
+                    ? _settings.Store.IncludedProcesses.ToHashSet(StringComparer.OrdinalIgnoreCase)
+                    : null;
 
                 foreach (var process in Process.GetProcesses())
                 {
@@ -92,17 +102,29 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                             continue;
                         }
 
-                        var processPath = process.GetFileName();
-                        if (string.IsNullOrEmpty(processPath))
+                        if (_processCache.Contains(process))
                         {
                             DisposeProcess(process);
                             continue;
                         }
 
-                        var processInfo = ProcessInfo.FromPath(processPath);
-                        if (_detectedGamePathsCache.Contains(processInfo))
+                        var processName = process.ProcessName;
+                        var isIncludedGame = included?.Contains(processName) ?? false;
+
+                        var isConfigStoreGame = false;
+                        if (!isIncludedGame && checkGameConfigStore && !IsBlacklisted(processName))
                         {
-                            Log.Instance.Trace($"Found already running game: {processInfo.Name} ({process.Id})");
+                            var processPath = process.GetFileName();
+                            if (!string.IsNullOrEmpty(processPath))
+                            {
+                                var processInfo = ProcessInfo.FromPath(processPath);
+                                isConfigStoreGame = _detectedGamePathsCache.Contains(processInfo);
+                            }
+                        }
+
+                        if (isIncludedGame || isConfigStoreGame)
+                        {
+                            Log.Instance.Trace($"Found already running game: {processName} ({process.Id})");
                             Attach(process);
                             _processCache.Add(process);
                             RaiseChangedIfNeeded(true);
@@ -283,6 +305,12 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 {
                     try
                     {
+                        if (IsBlacklisted(process.ProcessName))
+                        {
+                            DisposeProcess(process);
+                            continue;
+                        }
+
                         var processPath = process.GetFileName();
 
                         if (processPath is not null && game.ExecutablePath is not null &&
@@ -331,11 +359,12 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     {
                         try
                         {
+                            var isIncluded = _settings.Store.IncludedProcesses.Contains(process.ProcessName, StringComparer.OrdinalIgnoreCase);
                             var processPath = process.GetFileName();
                             var isKnownGame = !string.IsNullOrEmpty(processPath) && _detectedGamePathsCache.Contains(ProcessInfo.FromPath(processPath));
                             var isGpuActive = _gpuController.ActiveProcesses.Any(p => p.Id == process.Id);
 
-                            if (!isKnownGame && !isGpuActive)
+                            if (!isIncluded && !isKnownGame && !isGpuActive)
                             {
                                 toRelease.Add(process);
                             }
@@ -431,6 +460,9 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     private bool IsBlacklisted(string processName)
     {
+        if (_settings.Store.IncludedProcesses.Contains(processName, StringComparer.OrdinalIgnoreCase))
+            return false;
+
         if (_settings.Store.ExcludedProcesses.Contains(processName, StringComparer.OrdinalIgnoreCase))
             return true;
 
@@ -490,28 +522,43 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             if (e.ProcessId < 0)
                 return;
 
-            if (!_settings.Store.GameDetection.UseGameConfigStore)
-                return;
+            var isIncluded = _settings.Store.IncludedProcesses.Contains(e.ProcessName, StringComparer.OrdinalIgnoreCase);
+            var isGameConfigStore = _settings.Store.GameDetection.UseGameConfigStore &&
+                                    _detectedGamePathsCache.Any(p =>
+                                        e.ProcessName.Equals(p.Name, StringComparison.OrdinalIgnoreCase));
 
-            if (!_detectedGamePathsCache.Any(p =>
-                    e.ProcessName.Equals(p.Name, StringComparison.OrdinalIgnoreCase)))
+            if (!isIncluded && !isGameConfigStore)
                 return;
 
             Process? startedProcess = null;
             try
             {
                 startedProcess = Process.GetProcessById(e.ProcessId);
-                var processPath = startedProcess.GetFileName();
+                if (_processCache.Contains(startedProcess))
+                {
+                    DisposeProcess(startedProcess);
+                    return;
+                }
 
-                if (string.IsNullOrEmpty(processPath))
+                var processPath = startedProcess.GetFileName();
+                if (!isIncluded && string.IsNullOrEmpty(processPath))
                 {
                     Log.Instance.Trace($"Can't get path for {e.ProcessName}. [processId={e.ProcessId}]");
                     DisposeProcess(startedProcess);
                     return;
                 }
 
-                var processInfo = ProcessInfo.FromPath(processPath);
-                if (!_detectedGamePathsCache.Contains(processInfo))
+                var processInfo = string.IsNullOrEmpty(processPath)
+                    ? new ProcessInfo(e.ProcessName, null)
+                    : ProcessInfo.FromPath(processPath);
+
+                if (!isIncluded && !_detectedGamePathsCache.Contains(processInfo))
+                {
+                    DisposeProcess(startedProcess);
+                    return;
+                }
+
+                if (IsBlacklisted(e.ProcessName))
                 {
                     DisposeProcess(startedProcess);
                     return;

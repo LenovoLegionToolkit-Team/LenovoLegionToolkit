@@ -13,6 +13,7 @@ using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.AutoListeners;
 using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
@@ -24,6 +25,7 @@ namespace LenovoLegionToolkit.WPF.Windows.Settings;
 public partial class ExcludeProcessesWindow
 {
     private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
+    private readonly ObservableCollection<ExcludeProcessViewModel> _includedProcesses = [];
     private readonly ObservableCollection<ExcludeProcessViewModel> _excludedProcesses = [];
     private readonly ObservableCollection<ExcludeProcessViewModel> _runningProcesses = [];
     private ICollectionView _runningView = null!;
@@ -32,6 +34,7 @@ public partial class ExcludeProcessesWindow
     {
         InitializeComponent();
 
+        _includedList.ItemsSource = _includedProcesses;
         _excludedList.ItemsSource = _excludedProcesses;
 
         _runningView = CollectionViewSource.GetDefaultView(_runningProcesses);
@@ -52,10 +55,13 @@ public partial class ExcludeProcessesWindow
         _loader.IsLoading = true;
         var loadingTask = Task.Delay(200);
 
+        _includedProcesses.Clear();
         _excludedProcesses.Clear();
         _runningProcesses.Clear();
 
+        var savedIncluded = _settings.Store.IncludedProcesses.ToHashSet(StringComparer.OrdinalIgnoreCase);
         var savedExcluded = _settings.Store.ExcludedProcesses.ToHashSet(StringComparer.OrdinalIgnoreCase);
+        savedExcluded.ExceptWith(savedIncluded);
 
         var data = await Task.Run(() =>
         {
@@ -115,6 +121,20 @@ public partial class ExcludeProcessesWindow
             return results;
         });
 
+        foreach (var name in savedIncluded.OrderBy(n => n))
+        {
+            var match = data.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+            if (match != null)
+            {
+                _includedProcesses.Add(match);
+                data.Remove(match);
+            }
+            else
+            {
+                _includedProcesses.Add(new ExcludeProcessViewModel { Name = name });
+            }
+        }
+
         foreach (var name in savedExcluded.OrderBy(n => n))
         {
             var match = data.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
@@ -155,6 +175,10 @@ public partial class ExcludeProcessesWindow
 
     private void UpdateHeaders()
     {
+        _includedExpander.Header = string.Format(Resource.ExcludeProcessesWindow_IncludedProcesses_Format, _includedProcesses.Count);
+        _noIncludedProcessesText.Visibility = _includedProcesses.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
+        _includedList.Visibility = _includedProcesses.Count == 0 ? Visibility.Collapsed : Visibility.Visible;
+
         _excludedExpander.Header = string.Format(Resource.ExcludeProcessesWindow_ExcludedProcesses_Format, _excludedProcesses.Count);
         _noExcludedProcessesText.Visibility = _excludedProcesses.Count == 0 ? Visibility.Visible : Visibility.Collapsed;
         _excludedList.Visibility = _excludedProcesses.Count == 0 ? Visibility.Collapsed : Visibility.Visible;
@@ -163,7 +187,24 @@ public partial class ExcludeProcessesWindow
         _runningExpander.Header = string.Format(Resource.ExcludeProcessesWindow_RunningProcesses_Format, runningCount);
     }
 
-    private void AddProcess_Click(object sender, RoutedEventArgs e)
+    private void IncludeProcess_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button el && el.CommandParameter is ExcludeProcessViewModel vm)
+        {
+            _runningProcesses.Remove(vm);
+
+            var insertIndex = 0;
+            while (insertIndex < _includedProcesses.Count && string.Compare(_includedProcesses[insertIndex].Name, vm.Name, StringComparison.OrdinalIgnoreCase) < 0)
+            {
+                insertIndex++;
+            }
+            _includedProcesses.Insert(insertIndex, vm);
+
+            UpdateHeaders();
+        }
+    }
+
+    private void ExcludeProcess_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button el && el.CommandParameter is ExcludeProcessViewModel vm)
         {
@@ -180,7 +221,28 @@ public partial class ExcludeProcessesWindow
         }
     }
 
-    private void RemoveProcess_Click(object sender, RoutedEventArgs e)
+    private void RemoveIncludedProcess_Click(object sender, RoutedEventArgs e)
+    {
+        if (sender is Button el && el.CommandParameter is ExcludeProcessViewModel vm)
+        {
+            _includedProcesses.Remove(vm);
+
+            if (!string.IsNullOrEmpty(vm.Path))
+            {
+                var insertIndex = 0;
+                while (insertIndex < _runningProcesses.Count && string.Compare(_runningProcesses[insertIndex].Name, vm.Name, StringComparison.OrdinalIgnoreCase) < 0)
+                {
+                    insertIndex++;
+                }
+                _runningProcesses.Insert(insertIndex, vm);
+                _runningView.Refresh();
+            }
+
+            UpdateHeaders();
+        }
+    }
+
+    private void RemoveExcludedProcess_Click(object sender, RoutedEventArgs e)
     {
         if (sender is Button el && el.CommandParameter is ExcludeProcessViewModel vm)
         {
@@ -209,21 +271,26 @@ public partial class ExcludeProcessesWindow
 
     private void SaveButton_Click(object sender, RoutedEventArgs e)
     {
-        var processes = _excludedProcesses.Select(x => x.Name).ToList();
+        var included = _includedProcesses.Select(x => x.Name).ToList();
+        var excluded = _excludedProcesses.Select(x => x.Name).ToList();
 
-        _settings.Store.ExcludedProcesses = processes;
+        _settings.Store.IncludedProcesses = included;
+        _settings.Store.ExcludedProcesses = excluded;
         _settings.SynchronizeStore();
 
         Task.Run(async () =>
         {
             try
             {
+                var gameAutoListener = IoCContainer.Resolve<GameAutoListener>();
+                await gameAutoListener.RestartAsync().ConfigureAwait(false);
+
                 var automationProcessor = IoCContainer.Resolve<AutomationProcessor>();
                 await automationProcessor.RestartListenersAsync().ConfigureAwait(false);
             }
             catch (Exception ex)
             {
-                Log.Instance.Trace($"Failed to restart listeners after updating excluded processes.", ex);
+                Log.Instance.Trace($"Failed to restart listeners after updating process rules.", ex);
             }
         });
 

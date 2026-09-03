@@ -79,6 +79,51 @@
                 <wpfui:DynamicScrollViewer Grid.Row="2">
                     <StackPanel Margin="0,0,16,0">
                         <Expander
+                            x:Name="_includedExpander"
+                            Margin="0,0,0,12"
+                            Header="{x:Static resources:Resource.ExcludeProcessesWindow_Title}"
+                            Style="{StaticResource SectionExpanderStyle}"
+                            IsExpanded="True">
+                            <Border CornerRadius="8">
+                                <Border.Background>
+                                    <SolidColorBrush Color="{DynamicResource ControlFillColorDefault}" />
+                                </Border.Background>
+                                <Grid>
+                                    <TextBlock
+                                        x:Name="_noIncludedProcessesText"
+                                        Margin="12"
+                                        FontStyle="Italic"
+                                        Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                        Text="{x:Static resources:Resource.ExcludeProcessesWindow_NoIncludedProcesses}"
+                                        Visibility="Collapsed" />
+                                    <ItemsControl
+                                        x:Name="_includedList"
+                                        Margin="8,8,8,0"
+                                        HorizontalContentAlignment="Stretch"
+                                        ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid Margin="0,0,0,8">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid Grid.Column="0" Width="24" Height="24" Margin="0,0,12,0">
+                                                        <wpfui:SymbolIcon Symbol="AppGeneric24" FontSize="18" Foreground="{DynamicResource TextFillColorTertiaryBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                        <Image Source="{Binding Icon}" Width="24" Height="24" RenderOptions.BitmapScalingMode="HighQuality" />
+                                                    </Grid>
+                                                    <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" FontWeight="Medium" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" />
+                                                    <wpfui:Button Grid.Column="2" Appearance="Transparent" Icon="Dismiss24" CommandParameter="{Binding}" Click="RemoveIncludedProcess_Click" ToolTip="{x:Static resources:Resource.Remove}" />
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Grid>
+                            </Border>
+                        </Expander>
+
+                        <Expander
                             x:Name="_excludedExpander"
                             Margin="0,0,0,12"
                             Header="{x:Static resources:Resource.ExcludeProcessesWindow_Title}"
@@ -114,7 +159,7 @@
                                                         <Image Source="{Binding Icon}" Width="24" Height="24" RenderOptions.BitmapScalingMode="HighQuality" />
                                                     </Grid>
                                                     <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" FontWeight="Medium" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" />
-                                                    <wpfui:Button Grid.Column="2" Appearance="Transparent" Icon="Dismiss24" CommandParameter="{Binding}" Click="RemoveProcess_Click" ToolTip="{x:Static resources:Resource.Remove}" />
+                                                    <wpfui:Button Grid.Column="2" Appearance="Transparent" Icon="Dismiss24" CommandParameter="{Binding}" Click="RemoveExcludedProcess_Click" ToolTip="{x:Static resources:Resource.Remove}" />
                                                 </Grid>
                                             </DataTemplate>
                                         </ItemsControl.ItemTemplate>
@@ -151,7 +196,10 @@
                                                     <Image Source="{Binding Icon}" Width="24" Height="24" RenderOptions.BitmapScalingMode="HighQuality" />
                                                 </Grid>
                                                 <TextBlock Grid.Column="1" Text="{Binding Name}" VerticalAlignment="Center" FontWeight="Medium" TextWrapping="NoWrap" TextTrimming="CharacterEllipsis" />
-                                                <wpfui:Button Grid.Column="2" Appearance="Transparent" Icon="Add24" CommandParameter="{Binding}" Click="AddProcess_Click" ToolTip="{x:Static resources:Resource.Add}" />
+                                                <StackPanel Grid.Column="2" Orientation="Horizontal">
+                                                    <wpfui:Button Margin="0,0,4,0" Appearance="Transparent" Icon="Add24" CommandParameter="{Binding}" Click="IncludeProcess_Click" ToolTip="{x:Static resources:Resource.ExcludeProcessesWindow_IncludeTooltip}" />
+                                                    <wpfui:Button Appearance="Transparent" Icon="Subtract24" CommandParameter="{Binding}" Click="ExcludeProcess_Click" ToolTip="{x:Static resources:Resource.ExcludeProcessesWindow_ExcludeTooltip}" />
+                                                </StackPanel>
                                             </Grid>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
