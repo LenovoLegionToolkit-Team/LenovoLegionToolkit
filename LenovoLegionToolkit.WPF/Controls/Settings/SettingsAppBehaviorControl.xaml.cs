@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.AutoListeners;
 using LenovoLegionToolkit.Lib.Automation;
 using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Extensions;
@@ -399,6 +400,13 @@ public partial class SettingsAppBehaviorControl
         {
             try
             {
+                var gameAutoListener = IoCContainer.Resolve<GameAutoListener>();
+                if (gameAutoListener.AreGamesRunning())
+                {
+                    gameAutoListener.PreserveStateOnRestart();
+                }
+
+                await gameAutoListener.RestartAsync().ConfigureAwait(false);
                 await _automationProcessor.RestartListenersAsync().ConfigureAwait(false);
             }
             catch (Exception ex)
