@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace LenovoLegionToolkit.Lib.Automation;
 
@@ -60,6 +60,8 @@ public readonly struct CustomModePresetAutomationEvent(Guid id) : IAutomationEve
 public readonly struct GameAutomationEvent(bool running) : IAutomationEvent
 {
     public bool Running { get; } = running;
+
+    public override string ToString() => $"Running={Running}";
 }
 
 public readonly struct ProcessAutomationEvent(ProcessEventInfoType type, ProcessInfo processInfo) : IAutomationEvent

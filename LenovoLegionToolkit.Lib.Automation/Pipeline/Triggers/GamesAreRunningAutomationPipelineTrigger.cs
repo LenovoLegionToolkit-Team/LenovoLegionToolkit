@@ -1,4 +1,4 @@
-﻿using System.Threading.Tasks;
+using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.AutoListeners;
 using LenovoLegionToolkit.Lib.Automation.Resources;
 
@@ -24,4 +24,6 @@ public class GamesAreRunningAutomationPipelineTrigger : IGameAutomationPipelineT
     public void UpdateEnvironment(AutomationEnvironment environment) => environment.GameRunning = true;
 
     public IAutomationPipelineTrigger DeepCopy() => new GamesAreRunningAutomationPipelineTrigger();
+
+    public override string ToString() => DisplayName;
 }

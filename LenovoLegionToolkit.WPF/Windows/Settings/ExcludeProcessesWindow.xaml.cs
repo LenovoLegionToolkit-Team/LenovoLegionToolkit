@@ -283,6 +283,11 @@ public partial class ExcludeProcessesWindow
             try
             {
                 var gameAutoListener = IoCContainer.Resolve<GameAutoListener>();
+                if (gameAutoListener.AreGamesRunning())
+                {
+                    gameAutoListener.PreserveStateOnRestart();
+                }
+
                 await gameAutoListener.RestartAsync().ConfigureAwait(false);
 
                 var automationProcessor = IoCContainer.Resolve<AutomationProcessor>();

@@ -396,6 +396,8 @@ public partial class SettingsAppBehaviorControl
         _settings.Store.GameDetection.UseEffectiveGameMode = useGameMode;
         _settings.SynchronizeStore();
 
+        Log.Instance.Trace($"Game detection mode changed to '{tag}'. [useGpu={useGpu}, useStore={useStore}, useGameMode={useGameMode}]");
+
         Task.Run(async () =>
         {
             try

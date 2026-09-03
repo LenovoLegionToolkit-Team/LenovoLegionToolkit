@@ -22,12 +22,12 @@ internal class GameConfigStoreDetector
 
     private IAsyncDisposable? _listener;
 
-    public Task StartAsync()
+    public Task StartAsync(HashSet<ProcessInfo>? initialPaths = null)
     {
         if (_listener is not null)
             return Task.CompletedTask;
 
-        var lastPaths = GetDetectedGamePaths();
+        var lastPaths = initialPaths is not null ? new HashSet<ProcessInfo>(initialPaths) : GetDetectedGamePaths();
 
         _listener = Registry.ObserveKey(GAME_CONFIG_STORE_HIVE, GAME_CONFIG_STORE_PATH, true, () =>
         {
