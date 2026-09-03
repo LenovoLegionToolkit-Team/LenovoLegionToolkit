@@ -461,7 +461,7 @@
     <value>Known Game List</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configure detection methods and exclusions.</value>
+    <value>Configure how games are detected and manage process rules.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
     <value>Game Detection</value>
@@ -1116,19 +1116,31 @@ Thank you for your support!</value>
     <value>Error</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Processes in this list will be ignored by game start/stop triggers and Lenovo's AI/Intelligent Mode. Enter the process name without the path (e.g., "discord" or "blender").</value>
+    <value>Included processes are always treated as games, while excluded processes are ignored by game detection and Lenovo's AI/Intelligent Mode.</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
     <value>Excluded Processes ({0})</value>
   </data>
+  <data name="ExcludeProcessesWindow_ExcludeTooltip" xml:space="preserve">
+    <value>Add to Excluded Processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_IncludedProcesses_Format" xml:space="preserve">
+    <value>Included Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_IncludeTooltip" xml:space="preserve">
+    <value>Add to Included Processes</value>
+  </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
     <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoIncludedProcesses" xml:space="preserve">
+    <value>No included processes</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
     <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>Process Rules</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Uncheck refresh rates that you do not want to use when Fn+R shortcut is used.</value>
@@ -3163,7 +3175,7 @@ If disabled, this app will handle Fn shortcuts.</value>
     <value>Couldn't enable Lenovo Vantage and/or ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Excluded Processes</value>
+    <value>Process Rules</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Hide specific refresh rates from the Fn+R cycle.</value>
