@@ -96,7 +96,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 {
                     try
                     {
-                        if (process.HasExited)
+                        if (process.Id <= 4 || process.HasExited)
                         {
                             DisposeProcess(process);
                             continue;
