@@ -29,6 +29,7 @@ public partial class ExcludeProcessesWindow
     private readonly ObservableCollection<ExcludeProcessViewModel> _excludedProcesses = [];
     private readonly ObservableCollection<ExcludeProcessViewModel> _runningProcesses = [];
     private ICollectionView _runningView = null!;
+    private bool _isRefreshing;
 
     public ExcludeProcessesWindow()
     {
@@ -50,114 +51,180 @@ public partial class ExcludeProcessesWindow
             await RefreshAsync();
     }
 
-    private async Task RefreshAsync()
+    private async void RefreshButton_Click(object sender, RoutedEventArgs e)
     {
+        await RefreshAsync(preserveStaged: true);
+    }
+
+    private async Task RefreshAsync(bool preserveStaged = false)
+    {
+        if (_isRefreshing)
+            return;
+
+        _isRefreshing = true;
         _loader.IsLoading = true;
-        var loadingTask = Task.Delay(200);
+        if (_refreshButton is not null)
+            _refreshButton.IsEnabled = false;
 
-        _includedProcesses.Clear();
-        _excludedProcesses.Clear();
-        _runningProcesses.Clear();
-
-        var savedIncluded = _settings.Store.IncludedProcesses.ToHashSet(StringComparer.OrdinalIgnoreCase);
-        var savedExcluded = _settings.Store.ExcludedProcesses.ToHashSet(StringComparer.OrdinalIgnoreCase);
-        savedExcluded.ExceptWith(savedIncluded);
-
-        var data = await Task.Run(() =>
+        try
         {
-            var currentSessionId = Process.GetCurrentProcess().SessionId;
-            var allProcesses = Process.GetProcesses();
+            var loadingTask = Task.Delay(200);
 
-            var sessionProcesses = new List<Process>();
-            foreach (var p in allProcesses)
+            HashSet<string> includedNames;
+            HashSet<string> excludedNames;
+
+            if (preserveStaged)
             {
-                try
-                {
-                    if (p.SessionId == currentSessionId)
-                    {
-                        sessionProcesses.Add(p);
-                        continue;
-                    }
-                }
-                catch { }
-                p.Dispose();
+                includedNames = _includedProcesses.Select(p => p.Name).ToHashSet(StringComparer.OrdinalIgnoreCase);
+                excludedNames = _excludedProcesses.Select(p => p.Name).ToHashSet(StringComparer.OrdinalIgnoreCase);
+                _runningProcesses.Clear();
+            }
+            else
+            {
+                _includedProcesses.Clear();
+                _excludedProcesses.Clear();
+                _runningProcesses.Clear();
+
+                includedNames = _settings.Store.IncludedProcesses.ToHashSet(StringComparer.OrdinalIgnoreCase);
+                excludedNames = _settings.Store.ExcludedProcesses.ToHashSet(StringComparer.OrdinalIgnoreCase);
+                excludedNames.ExceptWith(includedNames);
             }
 
-            var processGroups = sessionProcesses.GroupBy(p => p.ProcessName, StringComparer.OrdinalIgnoreCase).ToList();
-            var results = new List<ExcludeProcessViewModel>();
-
-            foreach (var group in processGroups)
+            var data = await Task.Run(() =>
             {
-                var name = group.Key;
-                string? path = null;
+                var currentSessionId = Process.GetCurrentProcess().SessionId;
+                var allProcesses = Process.GetProcesses();
 
-                foreach (var p in group)
+                var sessionProcesses = new List<Process>();
+                foreach (var p in allProcesses)
                 {
-                    if (string.IsNullOrEmpty(path))
+                    try
                     {
-                        try
+                        if (p.SessionId == currentSessionId)
                         {
-                            path = p.GetFileName();
+                            sessionProcesses.Add(p);
+                            continue;
                         }
-                        catch { }
                     }
+                    catch { }
                     p.Dispose();
                 }
 
-                ImageSource? icon = null;
-                if (!string.IsNullOrEmpty(path))
+                var processGroups = sessionProcesses.GroupBy(p => p.ProcessName, StringComparer.OrdinalIgnoreCase).ToList();
+                var results = new List<ExcludeProcessViewModel>();
+
+                foreach (var group in processGroups)
                 {
-                    icon = ExtractIcon(path);
+                    var name = group.Key;
+                    string? path = null;
+
+                    foreach (var p in group)
+                    {
+                        if (string.IsNullOrEmpty(path))
+                        {
+                            try
+                            {
+                                path = p.GetFileName();
+                            }
+                            catch { }
+                        }
+                        p.Dispose();
+                    }
+
+                    ImageSource? icon = null;
+                    if (!string.IsNullOrEmpty(path))
+                    {
+                        icon = ExtractIcon(path);
+                    }
+
+                    results.Add(new ExcludeProcessViewModel
+                    {
+                        Name = name,
+                        Path = path ?? string.Empty,
+                        Icon = icon
+                    });
                 }
 
-                results.Add(new ExcludeProcessViewModel
+                return results;
+            });
+
+            if (preserveStaged)
+            {
+                for (var i = 0; i < _includedProcesses.Count; i++)
                 {
-                    Name = name,
-                    Path = path ?? string.Empty,
-                    Icon = icon
-                });
-            }
+                    if (string.IsNullOrEmpty(_includedProcesses[i].Path))
+                    {
+                        var match = data.FirstOrDefault(p => p.Name.Equals(_includedProcesses[i].Name, StringComparison.OrdinalIgnoreCase));
+                        if (match != null)
+                        {
+                            _includedProcesses[i] = match;
+                        }
+                    }
+                }
 
-            return results;
-        });
+                for (var i = 0; i < _excludedProcesses.Count; i++)
+                {
+                    if (string.IsNullOrEmpty(_excludedProcesses[i].Path))
+                    {
+                        var match = data.FirstOrDefault(p => p.Name.Equals(_excludedProcesses[i].Name, StringComparison.OrdinalIgnoreCase));
+                        if (match != null)
+                        {
+                            _excludedProcesses[i] = match;
+                        }
+                    }
+                }
 
-        foreach (var name in savedIncluded.OrderBy(n => n))
-        {
-            var match = data.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-            if (match != null)
-            {
-                _includedProcesses.Add(match);
-                data.Remove(match);
-            }
-            else
-            {
-                _includedProcesses.Add(new ExcludeProcessViewModel { Name = name });
-            }
-        }
-
-        foreach (var name in savedExcluded.OrderBy(n => n))
-        {
-            var match = data.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-            if (match != null)
-            {
-                _excludedProcesses.Add(match);
-                data.Remove(match);
+                data.RemoveAll(p => includedNames.Contains(p.Name) || excludedNames.Contains(p.Name));
             }
             else
             {
-                _excludedProcesses.Add(new ExcludeProcessViewModel { Name = name });
+                foreach (var name in includedNames.OrderBy(n => n))
+                {
+                    var match = data.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+                    if (match != null)
+                    {
+                        _includedProcesses.Add(match);
+                        data.Remove(match);
+                    }
+                    else
+                    {
+                        _includedProcesses.Add(new ExcludeProcessViewModel { Name = name });
+                    }
+                }
+
+                foreach (var name in excludedNames.OrderBy(n => n))
+                {
+                    var match = data.FirstOrDefault(p => p.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
+                    if (match != null)
+                    {
+                        _excludedProcesses.Add(match);
+                        data.Remove(match);
+                    }
+                    else
+                    {
+                        _excludedProcesses.Add(new ExcludeProcessViewModel { Name = name });
+                    }
+                }
             }
-        }
 
-        foreach (var p in data.OrderBy(p => p.Name))
+            foreach (var p in data.OrderBy(p => p.Name))
+            {
+                _runningProcesses.Add(p);
+            }
+
+            _runningView.Refresh();
+            UpdateHeaders();
+
+            await loadingTask;
+        }
+        finally
         {
-            _runningProcesses.Add(p);
+            _loader.IsLoading = false;
+            if (_refreshButton is not null)
+                _refreshButton.IsEnabled = true;
+            _isRefreshing = false;
         }
 
-        UpdateHeaders();
-
-        await loadingTask;
-        _loader.IsLoading = false;
         _searchBox.Focus();
     }
 
