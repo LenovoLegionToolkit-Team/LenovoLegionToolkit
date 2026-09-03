@@ -461,7 +461,7 @@
     <value>Elenco Delle Partite Conosciuto</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configurare i metodi di rilevamento ed esclusioni.</value>
+    <value>Configure how games are detected and manage process rules.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
     <value>Rilevamento Partita</value>
@@ -1116,19 +1116,31 @@ Grazie per il tuo supporto!</value>
     <value>Errore</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>I processi in questa lista saranno ignorati dai trigger di partita/stop di gioco e dalla modalità AI/Intelligent di Lenovo. Inserisci il nome del processo senza il percorso (ad es. "discord" o "blender").</value>
+    <value>Included processes are always treated as games, while excluded processes are ignored by game detection and Lenovo's AI/Intelligent Mode.</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
     <value>Excluded Processes ({0})</value>
   </data>
+  <data name="ExcludeProcessesWindow_ExcludeTooltip" xml:space="preserve">
+    <value>Add to Excluded Processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_IncludedProcesses_Format" xml:space="preserve">
+    <value>Included Processes ({0})</value>
+  </data>
+  <data name="ExcludeProcessesWindow_IncludeTooltip" xml:space="preserve">
+    <value>Add to Included Processes</value>
+  </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
     <value>No excluded processes</value>
+  </data>
+  <data name="ExcludeProcessesWindow_NoIncludedProcesses" xml:space="preserve">
+    <value>No included processes</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
     <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Processi Esclusi</value>
+    <value>Process Rules</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Deseleziona le frequenze di aggiornamento che non desideri utilizzare quando viene utilizzata la scorciatoia Fn+R.</value>
@@ -3165,7 +3177,7 @@ Il riavvio è consigliabile dopo aver cambiato questa impostazione.</value>
     <value>Impossibile abilitare Lenovo Vantage e/o ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Processi Esclusi</value>
+    <value>Process Rules</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Puoi escludere le frequenze di aggiornamento per rendere più comoda la scorciatoia Fn+R.</value>
