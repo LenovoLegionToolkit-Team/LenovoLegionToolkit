@@ -359,12 +359,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     {
                         try
                         {
-                            var isIncluded = _settings.Store.IncludedProcesses.Contains(process.ProcessName, StringComparer.OrdinalIgnoreCase);
-                            var processPath = process.GetFileName();
-                            var isKnownGame = !string.IsNullOrEmpty(processPath) && _detectedGamePathsCache.Contains(ProcessInfo.FromPath(processPath));
-                            var isGpuActive = _gpuController.ActiveProcesses.Any(p => p.Id == process.Id);
-
-                            if (!isIncluded && !isKnownGame && !isGpuActive)
+                            if (process.HasExited)
                             {
                                 toRelease.Add(process);
                             }
@@ -377,7 +372,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
                     foreach (var process in toRelease)
                     {
-                        Log.Instance.Trace($"Game Mode ended. Releasing non-game foreground process {process.Id} ({process.ProcessName}).");
+                        Log.Instance.Trace($"Game Mode ended and process exited {process.Id} ({process.ProcessName}).");
                         _gameModePinnedProcesses.Remove(process);
                         _processCache.Remove(process);
                         Detach(process);
