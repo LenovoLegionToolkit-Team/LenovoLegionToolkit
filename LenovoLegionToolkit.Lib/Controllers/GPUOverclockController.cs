@@ -241,23 +241,35 @@ public class GPUOverclockController
             if (info.VoltageLockMv > 0)
             {
                 var voltageLock = Math.Clamp(info.VoltageLockMv, GetMinVoltageLockMv(), GetMaxVoltageLockMv());
-                var lockEntry = new PrivateClockBoostLockV2.ClockBoostLock(
-                    PublicClockDomain.Graphics,
+                var voltageLockEntry = new PrivateClockBoostLockV2.ClockBoostLock(
+                    PublicClockDomain.Voltage,
                     ClockLockMode.Manual,
                     (uint)(voltageLock * 1000)
                 );
-                var boostLock = new PrivateClockBoostLockV2(new[] { lockEntry });
-                GPUApi.SetClockBoostLock(gpu.Handle, boostLock);
-            }
-            else
-            {
-                var lockEntry = new PrivateClockBoostLockV2.ClockBoostLock(
+                var graphicsResetEntry = new PrivateClockBoostLockV2.ClockBoostLock(
                     PublicClockDomain.Graphics,
                     ClockLockMode.None,
                     0
                 );
-                var boostLock = new PrivateClockBoostLockV2(new[] { lockEntry });
-                GPUApi.SetClockBoostLock(gpu.Handle, boostLock);
+
+                GPUApi.SetClockBoostLock(gpu.Handle, new PrivateClockBoostLockV2(new[] { voltageLockEntry }));
+                GPUApi.SetClockBoostLock(gpu.Handle, new PrivateClockBoostLockV2(new[] { graphicsResetEntry }));
+            }
+            else
+            {
+                var voltageResetEntry = new PrivateClockBoostLockV2.ClockBoostLock(
+                    PublicClockDomain.Voltage,
+                    ClockLockMode.None,
+                    0
+                );
+                var graphicsResetEntry = new PrivateClockBoostLockV2.ClockBoostLock(
+                    PublicClockDomain.Graphics,
+                    ClockLockMode.None,
+                    0
+                );
+
+                GPUApi.SetClockBoostLock(gpu.Handle, new PrivateClockBoostLockV2(new[] { voltageResetEntry }));
+                GPUApi.SetClockBoostLock(gpu.Handle, new PrivateClockBoostLockV2(new[] { graphicsResetEntry }));
             }
         }
         catch (Exception ex)
@@ -275,7 +287,7 @@ public class GPUOverclockController
         int voltageLock = 0;
         try
         {
-            var clockLock = GPUApi.GetClockBoostLock(gpu.Handle);
+            var clockLock = GPUApi.GetClockBoostLock(gpu.Handle, PublicClockDomain.Voltage);
             if (clockLock.ClockBoostLocks.Length > 0 && clockLock.ClockBoostLocks[0].LockMode == ClockLockMode.Manual)
             {
                 voltageLock = (int)(clockLock.ClockBoostLocks[0].VoltageInMicroV / 1000);

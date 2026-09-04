@@ -364,7 +364,7 @@ public readonly struct GPUOverclockInfo(int coreDeltaMhz, int memoryDeltaMhz, in
 
     public override string ToString()
     {
-        return $"{nameof(CoreDeltaMhz)}: {CoreDeltaMhz}, {nameof(MemoryDeltaMhz)}: {MemoryDeltaMhz}";
+        return $"{nameof(CoreDeltaMhz)}: {CoreDeltaMhz}, {nameof(MemoryDeltaMhz)}: {MemoryDeltaMhz}, {nameof(VoltageLockMv)}: {VoltageLockMv}";
     }
 }
 
