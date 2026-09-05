@@ -3,8 +3,19 @@
   
   # Lenovo Legion Toolkit
 
-  [![Build Status](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
+  [![Latest Release](https://img.shields.io/github/v/release/LenovoLegionToolkit-Team/LenovoLegionToolkit?logo=github&logoColor=white&color=blue&label=version)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases/latest)
+  [![Release Date](https://img.shields.io/github/release-date/LenovoLegionToolkit-Team/LenovoLegionToolkit?logo=github&logoColor=white&label=updated)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases)
   [![Downloads](https://img.shields.io/github/downloads/LenovoLegionToolkit-Team/LenovoLegionToolkit/total?color=brightgreen)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases)
+  [![Stable](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white&label=stable)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions/workflows/build.yml)
+  [![Dev](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/dev-release.yml?branch=dev&logo=github&logoColor=white&label=dev)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions/workflows/dev-release.yml)
+  <br>
+  [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?logo=windows&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit)
+  [![Target](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+  [![Architecture](https://img.shields.io/badge/Arch-x64-informational?logo=intel&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit)
+  [![License](https://img.shields.io/github/license/LenovoLegionToolkit-Team/LenovoLegionToolkit?color=informational&logo=open-source-initiative&logoColor=white)](LICENSE)
+  <br>
+  [![GitHub Stars](https://img.shields.io/github/stars/LenovoLegionToolkit-Team/LenovoLegionToolkit?logo=github&style=flat)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/stargazers)
+  [![Contributors](https://img.shields.io/github/contributors/LenovoLegionToolkit-Team/LenovoLegionToolkit?logo=github)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/graphs/contributors)
   [![Translation Status](https://badges.crowdin.net/lenovolegiontoolkit-unofficial/localized.svg)](https://crowdin.com/project/lenovolegiontoolkit-unofficial)
   [![Discord Official](https://img.shields.io/badge/Discord-Official-5865F2?logo=discord&logoColor=white)](https://discord.gg/TB3ER8ZVdt)
   [![Discord Legion Series](https://img.shields.io/badge/Discord-Legion%20Series-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/legionseries)
@@ -84,12 +95,20 @@ _Присоединяйтесь к LOQ Series Discord: [https://discord.gg/3GKzQ
 
 ## Скачивание
 
-Программу можно скачать следующими способами:
+[![Download](https://img.shields.io/badge/Download-Latest%20Installer-success?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases/latest)
 
-- Со страницы [официальных релизов](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases/latest)
-  
 > [!TIP] 💡 Совет
 > Если вы ищете альтернативу Vantage для Linux, ознакомьтесь с проектом [LenovoLegionLinux](https://github.com/johnfanv2/LenovoLegionLinux).
+
+#### Обновление приложения
+
+Lenovo Legion Toolkit поддерживает как автоматическое, так и ручное обновление:
+
+* **Автоматические обновления в приложении**: Настраиваются в **Настройки $\rightarrow$ Обновления**:
+  * **Канал обновлений**: Выбор между **Stable**, **Beta** или **Dev** релизами.
+  * **Периодичность**: Проверка ежедневно, еженедельно или с заданным интервалом.
+* **Бесшовное обновление поверх**: Нет необходимости удалять предыдущую версию. Установка поверх сохраняет все ваши настройки, пользовательские режимы, действия и макросы.
+* **Проверка подлинности**: Все обновления проверяются цифровой подписью Authenticode перед установкой для защиты от подделки.
 
 #### Следующие шаги
 

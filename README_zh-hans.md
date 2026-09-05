@@ -3,8 +3,19 @@
   
   # 拯救者工具箱 Lenovo Legion Toolkit
 
-  [![Build Status](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions)
+  [![Latest Release](https://img.shields.io/github/v/release/LenovoLegionToolkit-Team/LenovoLegionToolkit?logo=github&logoColor=white&color=blue&label=version)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases/latest)
+  [![Release Date](https://img.shields.io/github/release-date/LenovoLegionToolkit-Team/LenovoLegionToolkit?logo=github&logoColor=white&label=updated)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases)
   [![Downloads](https://img.shields.io/github/downloads/LenovoLegionToolkit-Team/LenovoLegionToolkit/total?color=brightgreen)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases)
+  [![Stable](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/build.yml?branch=master&logo=github&logoColor=white&label=stable)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions/workflows/build.yml)
+  [![Dev](https://img.shields.io/github/actions/workflow/status/LenovoLegionToolkit-Team/LenovoLegionToolkit/dev-release.yml?branch=dev&logo=github&logoColor=white&label=dev)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/actions/workflows/dev-release.yml)
+  <br>
+  [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?logo=windows&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit)
+  [![Target](https://img.shields.io/badge/.NET-9.0-512BD4?logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/)
+  [![Architecture](https://img.shields.io/badge/Arch-x64-informational?logo=intel&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit)
+  [![License](https://img.shields.io/github/license/LenovoLegionToolkit-Team/LenovoLegionToolkit?color=informational&logo=open-source-initiative&logoColor=white)](LICENSE)
+  <br>
+  [![GitHub Stars](https://img.shields.io/github/stars/LenovoLegionToolkit-Team/LenovoLegionToolkit?logo=github&style=flat)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/stargazers)
+  [![Contributors](https://img.shields.io/github/contributors/LenovoLegionToolkit-Team/LenovoLegionToolkit?logo=github)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/graphs/contributors)
   [![Translation Status](https://badges.crowdin.net/lenovolegiontoolkit-unofficial/localized.svg)](https://crowdin.com/project/lenovolegiontoolkit-unofficial)
   [![Discord Official](https://img.shields.io/badge/Discord-Official-5865F2?logo=discord&logoColor=white)](https://discord.gg/TB3ER8ZVdt)
   [![Discord Community](https://img.shields.io/badge/Discord-Legion%20Series-5865F2?logo=discord&logoColor=white)](https://discord.com/invite/legionseries)
@@ -83,10 +94,20 @@
 
 ## 下载
 
-- 你可以在这里下载最新版本：[发行版页面 Releases page](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases/latest)。
+[![Download](https://img.shields.io/badge/Download-Latest%20Installer-success?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit/releases/latest)
 
 > [!TIP]
 > 如果你正在寻找一个 Lenovo Vantage 在 Linux 系统下的替代品，请查看 [LenovoLegionLinux](https://github.com/johnfanv2/LenovoLegionLinux) 项目。
+
+#### 更新应用
+
+拯救者工具箱支持自动检查更新与手动更新：
+
+* **应用内自动更新**：在 **设置 $\rightarrow$ 更新** 中配置：
+  * **更新通道**：可选 **正式版 (Stable)**、**测试版 (Beta)** 或 **开发版 (Dev)**。
+  * **检查频率**：可设置为每天、每周、每小时等自动检查。
+* **无缝覆盖升级**：无需先卸载旧版本，直接安装即可平滑升级，所有配置、自定义模式、动作与宏均完整保留。
+* **签名安全校验**：所有自动下载的更新包均经过 Authenticode 数字签名校验，确保安全可靠。
 
 #### 接下来的步骤
 

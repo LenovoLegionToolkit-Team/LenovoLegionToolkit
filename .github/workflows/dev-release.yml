@@ -48,23 +48,27 @@ jobs:
         $cleanTag = $null
 
         # 1. Primary: Query GitHub for latest Stable release to advance to next minor
-        try {
-          $releasesList = gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --limit 30 --json tagName,name,isLatest | ConvertFrom-Json
-          if ($releasesList -and $releasesList.Count -gt 0) {
-            $latestStable = $releasesList | Where-Object { $_.isLatest -or ($_.name -notlike '*(Dev)*' -and $_.name -notlike '*(Beta)*') } | Select-Object -First 1
-            if ($latestStable) {
-              $cleanTag = $latestStable.tagName.TrimStart('v', 'V')
-              $stableVer = $null
-              if ([Version]::TryParse($cleanTag, [ref]$stableVer)) {
-                $baseMajor = $stableVer.Major
-                $baseMinor = $stableVer.Minor + 1
-                $basePatch = 0
-                Write-Host "Found latest stable release: $cleanTag. Advanced Dev base: $($baseMajor).$($baseMinor).$($basePatch)"
+        $candidateRepos = @($env:GITHUB_REPOSITORY, "LenovoLegionToolkit-Team/LenovoLegionToolkit") | Select-Object -Unique
+        foreach ($repo in $candidateRepos) {
+          if ($cleanTag) { break }
+          try {
+            $releasesList = gh release list --repo $repo --exclude-drafts --limit 30 --json tagName,name,isPrerelease,isLatest | ConvertFrom-Json
+            if ($releasesList -and $releasesList.Count -gt 0) {
+              $latestStable = $releasesList | Where-Object { -not $_.isPrerelease -and $_.name -notlike '*(Dev)*' -and $_.name -notlike '*(Beta)*' } | Select-Object -First 1
+              if ($latestStable) {
+                $cleanTag = $latestStable.tagName.TrimStart('v', 'V')
+                $stableVer = $null
+                if ([Version]::TryParse($cleanTag, [ref]$stableVer)) {
+                  $baseMajor = $stableVer.Major
+                  $baseMinor = $stableVer.Minor + 1
+                  $basePatch = 0
+                  Write-Host "Found latest stable release in $($repo): $cleanTag. Advanced Dev base: $($baseMajor).$($baseMinor).$($basePatch)"
+                }
               }
             }
+          } catch {
+            Write-Warning "Could not query GitHub releases directly for $($repo): $_"
           }
-        } catch {
-          Write-Warning "Could not query GitHub releases directly: $_"
         }
 
         # 2. Fallback: Directory.Build.props if GitHub query yielded nothing
@@ -81,9 +85,38 @@ jobs:
           }
         }
 
-        $devVersion = "$($baseMajor).$($baseMinor).$($basePatch).$($env:GITHUB_RUN_NUMBER)"
+        # Calculate version rollover based on runner number (Build cap: 20, Patch cap: 10, Minor cap: 100)
+        $runNumber = if ($env:GITHUB_RUN_NUMBER) { [int]$env:GITHUB_RUN_NUMBER } else { 0 }
+        $buildCap = 20
+        $patchCap = 10
+        $minorCap = 100
+
+        $build = $runNumber % $buildCap
+        $carriedPatches = [Math]::Floor($runNumber / $buildCap)
+
+        $totalPatch = $basePatch + $carriedPatches
+        $patch = $totalPatch % $patchCap
+        $carriedMinors = [Math]::Floor($totalPatch / $patchCap)
+
+        $totalMinor = $baseMinor + $carriedMinors
+        $minor = $totalMinor % $minorCap
+        $carriedMajors = [Math]::Floor($totalMinor / $minorCap)
+
+        $major = $baseMajor + $carriedMajors
+
+        $devVersion = "$($major).$($minor).$($patch).$($build)"
         $tagName = "v$devVersion"
-        Write-Host "Resolved Dev Version: $devVersion, Tag: $tagName"
+        Write-Host "Resolved Dev Version: $devVersion (from Run #$runNumber, Base: $($baseMajor).$($baseMinor).$($basePatch)), Tag: $tagName"
+
+        # Ensure the base tag exists locally for diffing (handles forks where tags are not mirrored)
+        if ($cleanTag -and -not (git tag -l "v$cleanTag") -and -not (git tag -l "$cleanTag")) {
+          try {
+            Write-Host "Tag v$cleanTag not found in local clone. Fetching from upstream..."
+            git fetch --force https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit.git "refs/tags/v$cleanTag:refs/tags/v$cleanTag" 2>$null
+          } catch {
+            Write-Warning "Could not fetch tag from upstream: $_"
+          }
+        }
 
         # Extract all commits since last stable tag for changelog
         $commits = @()
@@ -97,6 +130,9 @@ jobs:
         }
 
         $notes = if ($commits -and $commits.Count -gt 0) { ($commits -join "`n") } else { "* General stability improvements and bug fixes" }
+        if ($notes.Length -gt 100000) {
+          $notes = $notes.Substring(0, 100000) + "`n`n... (changelog truncated)"
+        }
 
         "version=$devVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
         "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
@@ -154,8 +190,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         try {
-          $releasesJson = gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --limit 30 --json tagName,name,isPrerelease,isLatest | ConvertFrom-Json
-          foreach ($rel in $releasesJson) {
+          $releasesJson = gh release list --repo $env:GITHUB_REPOSITORY --exclude-drafts --limit 100 --json tagName,name,isPrerelease,isLatest | ConvertFrom-Json
+          foreach ($rel in @($releasesJson)) {
             if ($rel.name -like '*(Dev)*') {
               if ($rel.tagName -ne '${{ steps.resolve_version.outputs.tag_name }}') {
                 Write-Host "Pruning older Dev release: $($rel.tagName) ($($rel.name))"
