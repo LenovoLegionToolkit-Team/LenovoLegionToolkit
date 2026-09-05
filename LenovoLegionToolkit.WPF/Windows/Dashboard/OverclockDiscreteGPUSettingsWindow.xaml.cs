@@ -29,6 +29,18 @@ public partial class OverclockDiscreteGPUSettingsWindow
         _memorySlider.Maximum = GPUOverclockController.GetMaxMemoryDeltaMhz();
         _memorySlider.Value = info.MemoryDeltaMhz;
         
+        int minCap = GPUOverclockController.GetMinVoltageCapMv();
+        _voltageCapSlider.Minimum = minCap - _voltageCapSlider.TickFrequency;
+        _voltageCapSlider.Maximum = GPUOverclockController.GetMaxVoltageCapMv();
+        if (info.VoltageCapMv >= minCap)
+        {
+            _voltageCapSlider.Value = info.VoltageCapMv;
+        }
+        else
+        {
+            _voltageCapSlider.Value = _voltageCapSlider.Minimum;
+        }
+
         int minLock = GPUOverclockController.GetMinVoltageLockMv();
         _voltageLockSlider.Minimum = minLock - _voltageLockSlider.TickFrequency;
         _voltageLockSlider.Maximum = GPUOverclockController.GetMaxVoltageLockMv();
@@ -43,6 +55,7 @@ public partial class OverclockDiscreteGPUSettingsWindow
 
         _coreLabel.Content = $"{(int)_coreSlider.Value:+0;-0;0} {Resource.MHz}";
         _memoryLabel.Content = $"{(int)_memorySlider.Value:+0;-0;0} {Resource.MHz}";
+        _voltageCapLabel.Content = _voltageCapSlider.Value <= _voltageCapSlider.Minimum ? Resource.Off : $"{(int)_voltageCapSlider.Value} {Resource.mV}";
         _voltageLockLabel.Content = _voltageLockSlider.Value <= _voltageLockSlider.Minimum ? Resource.Off : $"{(int)_voltageLockSlider.Value} {Resource.mV}";
     }
 
@@ -58,17 +71,41 @@ public partial class OverclockDiscreteGPUSettingsWindow
             _memoryLabel.Content = $"{(int)_memorySlider.Value:+0;-0;0} {Resource.MHz}";
     }
 
+    private void VoltageCapSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    {
+        if (_voltageCapLabel == null || _voltageCapSlider == null) return;
+
+        if (_voltageCapSlider.Value <= _voltageCapSlider.Minimum)
+        {
+            _voltageCapLabel.Content = Resource.Off;
+        }
+        else
+        {
+            _voltageCapLabel.Content = $"{(int)_voltageCapSlider.Value} {Resource.mV}";
+            if (_voltageLockSlider != null && _voltageLockSlider.Value > _voltageLockSlider.Minimum)
+            {
+                _voltageLockSlider.Value = _voltageLockSlider.Minimum;
+            }
+        }
+    }
+
     private void VoltageLockSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
         if (_voltageLockLabel == null || _voltageLockSlider == null) return;
 
         if (_voltageLockSlider.Value <= _voltageLockSlider.Minimum)
+        {
             _voltageLockLabel.Content = Resource.Off;
+        }
         else
+        {
             _voltageLockLabel.Content = $"{(int)_voltageLockSlider.Value} {Resource.mV}";
+            if (_voltageCapSlider != null && _voltageCapSlider.Value > _voltageCapSlider.Minimum)
+            {
+                _voltageCapSlider.Value = _voltageCapSlider.Minimum;
+            }
+        }
     }
-
-
 
     private async void ApplyButton_Click(object sender, RoutedEventArgs e)
     {
@@ -96,7 +133,8 @@ public partial class OverclockDiscreteGPUSettingsWindow
     {
         var (enabled, _) = _gpuOverclockController.GetState();
         int voltageLock = _voltageLockSlider.Value <= _voltageLockSlider.Minimum ? 0 : (int)_voltageLockSlider.Value;
-        var info = new GPUOverclockInfo((int)_coreSlider.Value, (int)_memorySlider.Value, voltageLock);
+        int voltageCap = _voltageCapSlider.Value <= _voltageCapSlider.Minimum ? 0 : (int)_voltageCapSlider.Value;
+        var info = new GPUOverclockInfo((int)_coreSlider.Value, (int)_memorySlider.Value, voltageLock, voltageCap);
 
         _gpuOverclockController.SaveState(enabled, info);
     }

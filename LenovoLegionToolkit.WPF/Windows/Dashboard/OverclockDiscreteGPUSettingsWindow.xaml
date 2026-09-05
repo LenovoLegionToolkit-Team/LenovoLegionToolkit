@@ -109,6 +109,29 @@
                     <!-- Undervolting Section -->
                     <TextBlock Text="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_Undervolting}" FontWeight="SemiBold" FontSize="14" Margin="0,0,0,8" />
 
+                    <custom:CardControl Margin="0,0,0,8" Icon="ArrowDown24">
+                        <custom:CardControl.Header>
+                            <controls:CardHeaderControl
+                                Title="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_VoltageCap}"
+                                Subtitle="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_VoltageCapDesc}" />
+                        </custom:CardControl.Header>
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <Slider
+                                x:Name="_voltageCapSlider"
+                                Width="180"
+                                AutomationProperties.Name="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_VoltageCap}"
+                                IsSnapToTickEnabled="True"
+                                TickFrequency="1"
+                                ValueChanged="VoltageCapSlider_OnValueChanged" />
+                            <Label
+                                x:Name="_voltageCapLabel"
+                                Width="60"
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                FontWeight="Medium" />
+                        </StackPanel>
+                    </custom:CardControl>
+
                     <custom:CardControl Margin="0,0,0,8" Icon="LockClosed24">
                         <custom:CardControl.Header>
                             <controls:CardHeaderControl
