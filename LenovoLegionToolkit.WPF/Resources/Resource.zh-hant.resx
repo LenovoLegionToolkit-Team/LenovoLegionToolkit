@@ -2337,11 +2337,17 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
     <value>降壓</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageCap" xml:space="preserve">
+    <value>Voltage Cap</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageCapDesc" xml:space="preserve">
+    <value>Cap maximum voltage under load while allowing dynamic downclocking at idle.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
     <value>鎖定電壓</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Limits maximum GPU voltage for consistent performance and lower temperatures.</value>
+    <value>Lock GPU voltage and frequency continuously for consistent performance.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>點擊 {0} 次後解鎖……</value>
