@@ -213,12 +213,17 @@ jobs:
             if ($rel.name -like '*(Dev)*') {
               if ($rel.tagName -ne '${{ steps.resolve_version.outputs.tag_name }}') {
                 Write-Host "Pruning older Dev release: $($rel.tagName) ($($rel.name))"
-                gh release delete $rel.tagName --repo $env:GITHUB_REPOSITORY --cleanup-tag --yes
+                gh release delete $rel.tagName --repo $env:GITHUB_REPOSITORY --cleanup-tag --yes 2>$null
+                if ($LASTEXITCODE -ne 0) {
+                  gh release delete $rel.tagName --repo $env:GITHUB_REPOSITORY --yes 2>$null
+                }
               }
             }
           }
         } catch {
           Write-Warning "Could not prune older Dev releases: $_"
+        } finally {
+          $global:LASTEXITCODE = 0
         }
       shell: powershell
 
