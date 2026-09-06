@@ -154,6 +154,19 @@ public sealed class AmdOverclockingController : IDisposable
 
     public void SaveShutdownInfo(ShutdownInfo info)
     {
+        var isAmd = _machineInformation?.Properties.IsAmdDevice
+            ?? Compatibility.GetMachineInformationAsync().Result.Properties.IsAmdDevice;
+
+        if (!isAmd && !AppFlags.Instance.Debug)
+        {
+            return;
+        }
+
+        if (!IsActive() && !AppFlags.Instance.Debug && !File.Exists(_statusFilePath))
+        {
+            return;
+        }
+
         try
         {
             Folders.EnsureParentDirectoryExists(_statusFilePath);
