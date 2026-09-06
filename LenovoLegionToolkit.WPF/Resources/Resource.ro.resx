@@ -462,7 +462,7 @@ Se vor rula numai acțiunile care se potrivesc cu starea actuală.</value>
     <value>Listă de jocuri cunoscute</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configurați metodele de detectare și excluderile.</value>
+    <value>Configure how games are detected and manage process rules.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
     <value>Detectare joc</value>
@@ -1141,7 +1141,7 @@ Vă mulţumim pentru sprijin!</value>
     <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Procese excluse</value>
+    <value>Process Rules</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Debifați ratele de reîmprospătare pe care nu doriți să le utilizați pentru comanda rapidă Fn+R.</value>
@@ -2338,11 +2338,17 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
     <value>Undervolting</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageCap" xml:space="preserve">
+    <value>Voltage Cap</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageCapDesc" xml:space="preserve">
+    <value>Cap maximum voltage under load while allowing dynamic downclocking at idle.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
     <value>Voltage Lock</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
+    <value>Lock GPU voltage and frequency continuously for consistent performance.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Deblocarea în {0}...</value>
@@ -3180,7 +3186,7 @@ Restart is recommended after changing this option.</value>
     <value>Nu s-a putut activa Vantage Lenovo și/sau ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Procese excluse</value>
+    <value>Process Rules</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Puteți exclude rate de reîmprospătare pentru a face comanda rapidă Fn+R mai utilă.</value>

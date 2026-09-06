@@ -461,7 +461,7 @@
     <value>Elenco Delle Partite Conosciuto</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configurare i metodi di rilevamento ed esclusioni.</value>
+    <value>Configure how games are detected and manage process rules.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
     <value>Rilevamento Partita</value>
@@ -1140,7 +1140,7 @@ Grazie per il tuo supporto!</value>
     <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Processi Esclusi</value>
+    <value>Process Rules</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Deseleziona le frequenze di aggiornamento che non desideri utilizzare quando viene utilizzata la scorciatoia Fn+R.</value>
@@ -2335,11 +2335,17 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
     <value>Undervolting</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageCap" xml:space="preserve">
+    <value>Voltage Cap</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageCapDesc" xml:space="preserve">
+    <value>Cap maximum voltage under load while allowing dynamic downclocking at idle.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
     <value>Voltage Lock</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
+    <value>Lock GPU voltage and frequency continuously for consistent performance.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Sblocco in {0}...</value>
@@ -3177,7 +3183,7 @@ Il riavvio è consigliabile dopo aver cambiato questa impostazione.</value>
     <value>Impossibile abilitare Lenovo Vantage e/o ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Processi Esclusi</value>
+    <value>Process Rules</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Puoi escludere le frequenze di aggiornamento per rendere più comoda la scorciatoia Fn+R.</value>

@@ -463,7 +463,7 @@ Apenas as ações que corresponderem ao estado atual irão ser executadas.</valu
     <value>Lista de Jogos Conhecida</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configurar métodos de detecção e exclusões.</value>
+    <value>Configure how games are detected and manage process rules.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
     <value>Detecção de jogo</value>
@@ -1142,7 +1142,7 @@ Obrigado por seu apoio!</value>
     <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Processos Excluídos</value>
+    <value>Process Rules</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Desmarca as taxas de atualização que não quiseres usar quando o atalho Fn+R é usado.</value>
@@ -2339,11 +2339,17 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
     <value>Undervolting</value>
   </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageCap" xml:space="preserve">
+    <value>Voltage Cap</value>
+  </data>
+  <data name="OverclockDiscreteGPUSettingsWindow_VoltageCapDesc" xml:space="preserve">
+    <value>Cap maximum voltage under load while allowing dynamic downclocking at idle.</value>
+  </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
     <value>Voltage Lock</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
+    <value>Lock GPU voltage and frequency continuously for consistent performance.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Desbloqueando em {0}...</value>
@@ -3181,7 +3187,7 @@ Se desativado, esta app irá executar os atalhos Fn.
     <value>Não foi possível ativar o Lenovo Vantage e/ou o ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Processos Excluídos</value>
+    <value>Process Rules</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Podes excluir taxas de atualização para tornar o atalho Fn+R mais útil.</value>
