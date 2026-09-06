@@ -90,6 +90,8 @@ public class GPUOverclockController
 
     public void SaveState(bool enabled, GPUOverclockInfo info)
     {
+        Log.Instance.Trace($"Saved GPU overclock settings: [enabled={enabled}, info={info}].");
+
         _settings.Store.Enabled = enabled;
         _settings.Store.Info = info;
         _settings.SynchronizeStore();
@@ -289,6 +291,8 @@ public class GPUOverclockController
                 if (targetIndex >= 0)
                 {
                     var targetPoint = points[targetIndex];
+                    Log.Instance.Trace($"Voltage cap {voltageCap} mV matched curve point #{targetIndex} ({targetPoint.VoltageInMilliV} mV @ {targetPoint.FrequencyInkHz / 1000} MHz).");
+
                     var gpuDeltas = new PrivateClockBoostTableV1.GPUDelta[points.Length];
                     for (var i = 0; i < points.Length; i++)
                     {
@@ -300,6 +304,10 @@ public class GPUOverclockController
                     }
 
                     GPUApi.SetClockBoostTable(gpu.Handle, new PrivateClockBoostTableV1(gpuDeltas));
+                }
+                else
+                {
+                    Log.Instance.Trace($"No matching V/F curve point found for voltage cap {voltageCap} mV.");
                 }
             }
             else if (info.VoltageLockMv > 0)
@@ -361,8 +369,9 @@ public class GPUOverclockController
                 voltageLock = (int)(clockLock.ClockBoostLocks[0].VoltageInMicroV / 1000);
             }
         }
-        catch
+        catch (Exception ex)
         {
+            Log.Instance.Trace($"Failed to read active voltage lock.", ex);
         }
 
         int voltageCap = 0;
@@ -385,8 +394,9 @@ public class GPUOverclockController
                 }
             }
         }
-        catch
+        catch (Exception ex)
         {
+            Log.Instance.Trace($"Failed to read active voltage cap.", ex);
         }
 
         return new(core, memory, voltageLock, voltageCap);

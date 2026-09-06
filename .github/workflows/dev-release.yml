@@ -47,7 +47,7 @@ jobs:
         $basePatch = 0
         $cleanTag = $null
 
-        # 1. Primary: Query GitHub for latest Stable release to advance to next minor
+        # 1. Primary: Query GitHub for latest Stable release as baseline for odometer
         $candidateRepos = @($env:GITHUB_REPOSITORY, "LenovoLegionToolkit-Team/LenovoLegionToolkit") | Select-Object -Unique
         foreach ($repo in $candidateRepos) {
           if ($cleanTag) { break }
@@ -60,9 +60,9 @@ jobs:
                 $stableVer = $null
                 if ([Version]::TryParse($cleanTag, [ref]$stableVer)) {
                   $baseMajor = $stableVer.Major
-                  $baseMinor = $stableVer.Minor + 1
-                  $basePatch = 0
-                  Write-Host "Found latest stable release in $($repo): $cleanTag. Advanced Dev base: $($baseMajor).$($baseMinor).$($basePatch)"
+                  $baseMinor = $stableVer.Minor
+                  $basePatch = if ($stableVer.Build -ge 0) { $stableVer.Build } else { 0 }
+                  Write-Host "Found latest stable release in $($repo): $cleanTag. Base: $($baseMajor).$($baseMinor).$($basePatch)"
                 }
               }
             }
@@ -78,15 +78,45 @@ jobs:
           $propsVer = $null
           if ([Version]::TryParse($propsVerStr, [ref]$propsVer)) {
             $baseMajor = $propsVer.Major
-            $baseMinor = $propsVer.Minor + 1
-            $basePatch = 0
+            $baseMinor = $propsVer.Minor
+            $basePatch = if ($propsVer.Build -ge 0) { $propsVer.Build } else { 0 }
             $cleanTag = $propsVerStr
             Write-Host "Fallback to Directory.Build.props base: $($baseMajor).$($baseMinor).$($basePatch)"
           }
         }
 
-        # Calculate version rollover based on runner number (Build cap: 20, Patch cap: 10, Minor cap: 100)
-        $runNumber = if ($env:GITHUB_RUN_NUMBER) { [int]$env:GITHUB_RUN_NUMBER } else { 0 }
+        # Ensure the base tag exists locally for versioning and diffing (handles forks where tags are not mirrored)
+        if ($cleanTag -and -not (git tag -l "v$cleanTag") -and -not (git tag -l "$cleanTag")) {
+          try {
+            Write-Host "Tag v$cleanTag not found in local clone. Fetching from upstream..."
+            git fetch --force https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit.git "refs/tags/v$cleanTag:refs/tags/v$cleanTag" 2>$null
+          } catch {
+            Write-Warning "Could not fetch tag from upstream: $_"
+          }
+        }
+
+        $tagRef = if ($cleanTag -and (git tag -l "v$cleanTag")) { "v$cleanTag" } elseif ($cleanTag -and (git tag -l "$cleanTag")) { "$cleanTag" } else { $null }
+
+        # Calculate version rollover based on commit count since stable release (Build cap: 20, Patch cap: 10, Minor cap: 100)
+        $runNumber = 0
+        $counted = $false
+        if ($tagRef) {
+          try {
+            $commitCount = git rev-list --count "$tagRef..HEAD" 2>$null
+            if ($commitCount -match '^\d+$') {
+              $runNumber = [int]$commitCount
+              $counted = $true
+              Write-Host "Counted $runNumber commits since base tag $tagRef"
+            }
+          } catch {
+            Write-Warning "Could not count commits from $tagRef : $_"
+          }
+        }
+        if (-not $counted -and $env:GITHUB_RUN_NUMBER) {
+          $runNumber = [int]$env:GITHUB_RUN_NUMBER
+          Write-Host "Fallback to runner number: $runNumber"
+        }
+
         $buildCap = 20
         $patchCap = 10
         $minorCap = 100
@@ -106,25 +136,13 @@ jobs:
 
         $devVersion = "$($major).$($minor).$($patch).$($build)"
         $tagName = "v$devVersion"
-        Write-Host "Resolved Dev Version: $devVersion (from Run #$runNumber, Base: $($baseMajor).$($baseMinor).$($basePatch)), Tag: $tagName"
-
-        # Ensure the base tag exists locally for diffing (handles forks where tags are not mirrored)
-        if ($cleanTag -and -not (git tag -l "v$cleanTag") -and -not (git tag -l "$cleanTag")) {
-          try {
-            Write-Host "Tag v$cleanTag not found in local clone. Fetching from upstream..."
-            git fetch --force https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit.git "refs/tags/v$cleanTag:refs/tags/v$cleanTag" 2>$null
-          } catch {
-            Write-Warning "Could not fetch tag from upstream: $_"
-          }
-        }
+        Write-Host "Resolved Dev Version: $devVersion (from Commit Count $runNumber, Base: $($baseMajor).$($baseMinor).$($basePatch)), Tag: $tagName"
 
         # Extract all commits since last stable tag for changelog
         $commits = @()
         $repoUrl = "https://github.com/$($env:GITHUB_REPOSITORY)"
-        if ($cleanTag -and (git tag -l "v$cleanTag")) {
-          $commits = git log "v$cleanTag..HEAD" --pretty=format:"* %s ([%h]($repoUrl/commit/%H))" --no-merges
-        } elseif ($cleanTag -and (git tag -l "$cleanTag")) {
-          $commits = git log "$cleanTag..HEAD" --pretty=format:"* %s ([%h]($repoUrl/commit/%H))" --no-merges
+        if ($tagRef) {
+          $commits = git log "$tagRef..HEAD" --pretty=format:"* %s ([%h]($repoUrl/commit/%H))" --no-merges
         } else {
           $commits = git log --pretty=format:"* %s ([%h]($repoUrl/commit/%H))" --no-merges
         }
