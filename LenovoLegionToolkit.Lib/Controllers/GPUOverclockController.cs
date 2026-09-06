@@ -289,10 +289,8 @@ public class GPUOverclockController
                 if (targetIndex >= 0)
                 {
                     var targetPoint = points[targetIndex];
-                    var boostTable = GPUApi.GetClockBoostTable(gpu.Handle);
-                    var deltaCount = Math.Min(points.Length, boostTable.GPUDeltas.Length);
-                    var gpuDeltas = new PrivateClockBoostTableV1.GPUDelta[deltaCount];
-                    for (var i = 0; i < deltaCount; i++)
+                    var gpuDeltas = new PrivateClockBoostTableV1.GPUDelta[points.Length];
+                    for (var i = 0; i < points.Length; i++)
                     {
                         var p = points[i];
                         var delta = (p.VoltageInMicroV > targetPoint.VoltageInMicroV && p.FrequencyInkHz > targetPoint.FrequencyInkHz)
