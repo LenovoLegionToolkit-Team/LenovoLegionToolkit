@@ -406,7 +406,6 @@ public class SpectrumKeyboardBacklightController
     {
         var (_, effects) = await GetProfileDescriptionAsync(profile).ConfigureAwait(false);
         var json = JsonConvert.SerializeObject(effects, _jsonSerializerSettings);
-        Folders.EnsureParentDirectoryExists(jsonPath);
         await File.WriteAllTextAsync(jsonPath, json).ConfigureAwait(false);
     }
 

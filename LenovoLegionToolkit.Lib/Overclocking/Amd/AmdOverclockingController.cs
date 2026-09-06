@@ -192,7 +192,6 @@ public sealed class AmdOverclockingController : IDisposable
             try
             {
                 var options = new JsonSerializerOptions { WriteIndented = true };
-                Folders.EnsureParentDirectoryExists(path);
                 File.WriteAllText(path, JsonSerializer.Serialize(profile, options));
             }
             catch (Exception ex)

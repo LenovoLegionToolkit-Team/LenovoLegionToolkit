@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -254,8 +254,7 @@ public partial class ArgumentWindow
             }
 
             var argsFile = Path.Combine(Folders.AppData, "args.txt");
-            var dir = Path.GetDirectoryName(argsFile);
-            if (dir != null && !Directory.Exists(dir)) Directory.CreateDirectory(dir);
+            Folders.EnsureParentDirectoryExists(argsFile);
 
             File.WriteAllLines(argsFile, newArgs);
 
