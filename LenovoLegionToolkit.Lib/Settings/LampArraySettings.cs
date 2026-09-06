@@ -28,6 +28,7 @@ public class LampArraySettings : AbstractSettings<LampArraySettings.LampArraySet
     public void ExportToFile(string path)
     {
         var json = JsonConvert.SerializeObject(Store, JsonSerializerSettings);
+        Folders.EnsureParentDirectoryExists(path);
         File.WriteAllText(path, json);
     }
 

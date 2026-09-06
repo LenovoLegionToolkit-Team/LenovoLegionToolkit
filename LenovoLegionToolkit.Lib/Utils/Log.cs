@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -36,8 +36,16 @@ public class Log
 
     public void ErrorReport(string header, Exception ex)
     {
-        var errorReportPath = Path.Combine(_folderPath, $"error_{DateTime.UtcNow:yyyy_MM_dd_HH_mm_ss}.txt");
-        File.AppendAllLines(errorReportPath, [header, Serialize(ex)]);
+        try
+        {
+            var errorReportPath = Path.Combine(_folderPath, $"error_{DateTime.UtcNow:yyyy_MM_dd_HH_mm_ss}.txt");
+            Folders.EnsureParentDirectoryExists(errorReportPath);
+            File.AppendAllLines(errorReportPath, [header, Serialize(ex)]);
+        }
+        catch
+        {
+            // Ignored
+        }
     }
 
     public void Trace(FormattableString message,
@@ -79,7 +87,26 @@ public class Log
             }
 #endif
 
-            File.AppendAllLines(path, lines);
+            try
+            {
+                File.AppendAllLines(path, lines);
+            }
+            catch (DirectoryNotFoundException)
+            {
+                try
+                {
+                    Directory.CreateDirectory(_folderPath);
+                    File.AppendAllLines(path, lines);
+                }
+                catch
+                {
+                    // Ignored
+                }
+            }
+            catch
+            {
+                // Ignored
+            }
         }
     }
 

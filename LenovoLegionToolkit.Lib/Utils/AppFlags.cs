@@ -210,6 +210,7 @@ public class AppFlags
 
 
             var argsFile = Path.Combine(Folders.AppData, "args.txt");
+            Folders.EnsureParentDirectoryExists(argsFile);
             File.WriteAllLines(argsFile, args);
         }
         catch (Exception ex)

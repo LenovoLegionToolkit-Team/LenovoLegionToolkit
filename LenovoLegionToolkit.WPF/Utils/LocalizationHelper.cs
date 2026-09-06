@@ -156,7 +156,11 @@ public static class LocalizationHelper
         }
     }
 
-    private static Task SaveLanguageToFileAsync(CultureInfo cultureInfo) => File.WriteAllTextAsync(LanguagePath, cultureInfo.Name);
+    private static Task SaveLanguageToFileAsync(CultureInfo cultureInfo)
+    {
+        Folders.EnsureParentDirectoryExists(LanguagePath);
+        return File.WriteAllTextAsync(LanguagePath, cultureInfo.Name);
+    }
 
     private static void SetLanguageInternal(CultureInfo cultureInfo)
     {

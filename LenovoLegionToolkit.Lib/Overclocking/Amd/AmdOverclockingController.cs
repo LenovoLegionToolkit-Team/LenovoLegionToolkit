@@ -156,6 +156,7 @@ public sealed class AmdOverclockingController : IDisposable
     {
         try
         {
+            Folders.EnsureParentDirectoryExists(_statusFilePath);
             File.WriteAllText(_statusFilePath, JsonSerializer.Serialize(info));
         }
         catch (Exception ex)
@@ -191,6 +192,7 @@ public sealed class AmdOverclockingController : IDisposable
             try
             {
                 var options = new JsonSerializerOptions { WriteIndented = true };
+                Folders.EnsureParentDirectoryExists(path);
                 File.WriteAllText(path, JsonSerializer.Serialize(profile, options));
             }
             catch (Exception ex)
@@ -226,6 +228,7 @@ public sealed class AmdOverclockingController : IDisposable
         try
         {
             var options = new JsonSerializerOptions { WriteIndented = true };
+            Folders.EnsureParentDirectoryExists(_defaultProfilePath);
             File.WriteAllText(_defaultProfilePath, JsonSerializer.Serialize(profile, options));
             Log.Instance.Trace($"Default profile saved.");
         }
