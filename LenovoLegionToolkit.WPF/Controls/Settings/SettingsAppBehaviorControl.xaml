@@ -18,11 +18,15 @@
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Grid.Column="0" Margin="0,0,8,0">
-                        <ComboBox x:Name="_detectionModeComboBox" SelectionChanged="DetectionModeComboBox_SelectionChanged">
+                        <ComboBox
+                            x:Name="_detectionModeComboBox"
+                            MinWidth="160"
+                            SelectionChanged="DetectionModeComboBox_SelectionChanged">
                             <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_Auto}" Tag="Auto" />
                             <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_Discrete_GPU}" Tag="Gpu" />
                             <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_List}" Tag="Store" />
                             <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_Game_Mode}" Tag="GameMode" />
+                            <ComboBoxItem Content="{x:Static resources:Resource.AutomationPage_Game_Detection_Method_Manual}" Tag="Manual" />
                         </ComboBox>
                     </StackPanel>
                     <wpfui:Button

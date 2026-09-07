@@ -1061,7 +1061,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatic (All Methods).
+        ///   Looks up a localized string similar to Automatic.
         /// </summary>
         public static string AutomationPage_Game_Detection_Method_Auto {
             get {
@@ -1070,7 +1070,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Discrete GPU Activity.
+        ///   Looks up a localized string similar to Discrete GPU.
         /// </summary>
         public static string AutomationPage_Game_Detection_Method_Discrete_GPU {
             get {
@@ -1079,7 +1079,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Windows Game Mode.
+        ///   Looks up a localized string similar to Game Mode.
         /// </summary>
         public static string AutomationPage_Game_Detection_Method_Game_Mode {
             get {
@@ -1088,11 +1088,20 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Known Game List.
+        ///   Looks up a localized string similar to Known Games.
         /// </summary>
         public static string AutomationPage_Game_Detection_Method_List {
             get {
                 return ResourceManager.GetString("AutomationPage_Game_Detection_Method_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manual.
+        /// </summary>
+        public static string AutomationPage_Game_Detection_Method_Manual {
+            get {
+                return ResourceManager.GetString("AutomationPage_Game_Detection_Method_Manual", resourceCulture);
             }
         }
         

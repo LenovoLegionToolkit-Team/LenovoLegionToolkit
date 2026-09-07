@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -62,19 +63,20 @@ public partial class SettingsAppBehaviorControl
         var useStore = _settings.Store.GameDetection.UseGameConfigStore;
         var useGameMode = _settings.Store.GameDetection.UseEffectiveGameMode;
 
-        ComboBoxItem? selectedItem;
-        if (useGpu && useStore && useGameMode)
-            selectedItem = _detectionModeComboBox.Items[0] as ComboBoxItem;
-        else if (useGpu && !useStore && !useGameMode)
-            selectedItem = _detectionModeComboBox.Items[1] as ComboBoxItem;
-        else if (!useGpu && useStore && !useGameMode)
-            selectedItem = _detectionModeComboBox.Items[2] as ComboBoxItem;
-        else if (!useGpu && !useStore && useGameMode)
-            selectedItem = _detectionModeComboBox.Items[3] as ComboBoxItem;
-        else
-            selectedItem = _detectionModeComboBox.Items[0] as ComboBoxItem;
+        var targetTag = (useGpu, useStore, useGameMode) switch
+        {
+            (true, true, true) => "Auto",
+            (true, false, false) => "Gpu",
+            (false, true, false) => "Store",
+            (false, false, true) => "GameMode",
+            (false, false, false) => "Manual",
+            _ => "Auto"
+        };
 
-        _detectionModeComboBox.SelectedItem = selectedItem;
+        _detectionModeComboBox.SelectedItem = _detectionModeComboBox.Items
+            .OfType<ComboBoxItem>()
+            .FirstOrDefault(item => (string?)item.Tag == targetTag)
+            ?? _detectionModeComboBox.Items[0];
 
         _osdToggle.IsChecked = _OsdSettings.Store.ShowOsd;
 
@@ -388,6 +390,7 @@ public partial class SettingsAppBehaviorControl
             "Gpu" => (true, false, false),
             "Store" => (false, true, false),
             "GameMode" => (false, false, true),
+            "Manual" => (false, false, false),
             _ => (true, true, true)
         };
 
