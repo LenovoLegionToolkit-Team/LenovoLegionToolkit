@@ -110,7 +110,11 @@
                     Text="{x:Static resources:Resource.UnsupportedWindow_Disclaimer}"
                     TextWrapping="Wrap" />
 
-                <wpfui:Hyperlink Click="Hyperlink_Click" Content="{x:Static resources:Resource.UnsupportedWindow_Disclaimer_GitHub}" Tag="https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit#contribution" />
+                <wpfui:Hyperlink
+                    Margin="-11,0,0,0"
+                    Click="Hyperlink_Click"
+                    Content="{x:Static resources:Resource.UnsupportedWindow_Disclaimer_GitHub}"
+                    Tag="https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit#contribution" />
 
             </StackPanel>
 
