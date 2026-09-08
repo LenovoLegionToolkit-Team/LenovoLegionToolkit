@@ -46,6 +46,7 @@ jobs:
         $baseMajor = 0
         $baseMinor = 0
         $basePatch = 0
+        $baseBuild = 0
         $cleanTag = $null
 
         # 1. Primary: Query GitHub for latest Stable release as baseline for odometer
@@ -63,7 +64,8 @@ jobs:
                   $baseMajor = $stableVer.Major
                   $baseMinor = $stableVer.Minor
                   $basePatch = if ($stableVer.Build -ge 0) { $stableVer.Build } else { 0 }
-                  Write-Host "Found latest stable release in $($repo): $cleanTag. Base: $($baseMajor).$($baseMinor).$($basePatch)"
+                  $baseBuild = if ($stableVer.Revision -ge 0) { $stableVer.Revision } else { 0 }
+                  Write-Host "Found latest stable release in $($repo): $cleanTag. Base: $($baseMajor).$($baseMinor).$($basePatch).$($baseBuild)"
                 }
               }
             }
@@ -81,8 +83,9 @@ jobs:
             $baseMajor = $propsVer.Major
             $baseMinor = $propsVer.Minor
             $basePatch = if ($propsVer.Build -ge 0) { $propsVer.Build } else { 0 }
+            $baseBuild = if ($propsVer.Revision -ge 0) { $propsVer.Revision } else { 0 }
             $cleanTag = $propsVerStr
-            Write-Host "Fallback to Directory.Build.props base: $($baseMajor).$($baseMinor).$($basePatch)"
+            Write-Host "Fallback to Directory.Build.props base: $($baseMajor).$($baseMinor).$($basePatch).$($baseBuild)"
           }
         }
 
@@ -122,8 +125,9 @@ jobs:
         $patchCap = 10
         $minorCap = 100
 
-        $build = $runNumber % $buildCap
-        $carriedPatches = [Math]::Floor($runNumber / $buildCap)
+        $totalBuild = $baseBuild + $runNumber
+        $build = $totalBuild % $buildCap
+        $carriedPatches = [Math]::Floor($totalBuild / $buildCap)
 
         $totalPatch = $basePatch + $carriedPatches
         $patch = $totalPatch % $patchCap
@@ -137,7 +141,7 @@ jobs:
 
         $devVersion = "$($major).$($minor).$($patch).$($build)"
         $tagName = "v$devVersion"
-        Write-Host "Resolved Dev Version: $devVersion (from Commit Count $runNumber, Base: $($baseMajor).$($baseMinor).$($basePatch)), Tag: $tagName"
+        Write-Host "Resolved Dev Version: $devVersion (from Commit Count $runNumber, Base: $($baseMajor).$($baseMinor).$($basePatch).$($baseBuild)), Tag: $tagName"
 
         # Extract all commits since last stable tag for changelog
         $commits = @()
