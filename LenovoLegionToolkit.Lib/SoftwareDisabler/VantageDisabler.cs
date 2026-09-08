@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace LenovoLegionToolkit.Lib.SoftwareDisabler;
 
@@ -23,7 +23,10 @@ public class VantageDisabler : AbstractSoftwareDisabler
 
     protected override IEnumerable<string> ProcessNames =>
     [
+        "Lenovo.Modern.ImController",
+        "Lenovo.Vantage",
         "LenovoVantage",
-        "Lenovo.Modern.ImController"
+        "ScheduleEventAction",
+        "TaskbarAssistant"
     ];
 }
