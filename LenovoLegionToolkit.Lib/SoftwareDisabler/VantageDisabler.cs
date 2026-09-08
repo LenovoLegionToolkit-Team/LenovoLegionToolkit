@@ -23,10 +23,12 @@ public class VantageDisabler : AbstractSoftwareDisabler
 
     protected override IEnumerable<string> ProcessNames =>
     [
+        "BatteryWidgetHost",
+        "BGHelper",
         "Lenovo.Modern.ImController",
         "Lenovo.Vantage",
         "LenovoVantage",
-        "ScheduleEventAction",
-        "TaskbarAssistant"
+        "QSHelper",
+        "ScheduleEventAction"
     ];
 }
