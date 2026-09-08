@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -238,10 +238,10 @@
     <value>低温</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
-    <value>最大</value>
+    <value>最高</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
-    <value>中等</value>
+    <value>中</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
     <value>中温</value>
@@ -385,7 +385,7 @@
     <value>启用 Lamp Array</value>
   </data>
   <data name="ArgumentWindow_Flag_Experimental_ITS_Mode" xml:space="preserve">
-    <value>Experimental ITS Mode</value>
+    <value>实验性 ITS 模式</value>
   </data>
   <data name="ArgumentWindow_Flag_ExpGpuMode" xml:space="preserve">
     <value>实验性 GPU 工作模式</value>
@@ -463,7 +463,7 @@
     <value>已知游戏列表</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>手动添加</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
     <value>配置检测方法与黑名单。</value>
@@ -1018,7 +1018,7 @@
     <value>锁定独立显卡为指定的性能状态。</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>防止频率下降，降低延迟，但是增加了功耗。</value>
+    <value>防止频率下降并降低延迟，但是会增加待机功耗。</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>性能状态控制</value>
@@ -1122,31 +1122,31 @@
     <value>错误</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Included processes always trigger game detection and Lenovo's AI/Intelligent Mode, while excluded processes are ignored.</value>
+    <value>在包含的进程列表中，任何进程都会触发游戏检测以及联想 AI / 智能模式；而排除在外的进程则会被忽略。</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
     <value>排除的应用 ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludeTooltip" xml:space="preserve">
-    <value>Add to Excluded Processes</value>
+    <value>添加进排除的应用列表</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludedProcesses_Format" xml:space="preserve">
-    <value>Included Processes ({0})</value>
+    <value>包含的应用 ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludeTooltip" xml:space="preserve">
-    <value>Add to Included Processes</value>
+    <value>添加进包含的应用列表</value>
   </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
     <value>没有被排除的应用</value>
   </data>
   <data name="ExcludeProcessesWindow_NoIncludedProcesses" xml:space="preserve">
-    <value>No included processes</value>
+    <value>没有被包含的应用</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
     <value>正在运行的应用 ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>排除应用</value>
+    <value>排除规则</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>取消选择某个刷新率你在使用 Fn + R 快捷键时不想使用的刷新率。</value>
@@ -1938,7 +1938,7 @@
 如果弹窗与全屏应用有冲突，请启用此选项。</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
-    <value>不要显示弹窗</value>
+    <value>关闭通知</value>
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>锁定Fn键</value>
@@ -2349,10 +2349,10 @@
     <value>降压</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCap" xml:space="preserve">
-    <value>Voltage Cap</value>
+    <value>电压上限</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCapDesc" xml:space="preserve">
-    <value>Cap maximum voltage under load while allowing dynamic downclocking at idle.</value>
+    <value>在负载状态下限制最高电压上限，同时在空闲时允许动态降频。</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
     <value>锁定电压</value>
@@ -3198,7 +3198,7 @@
     <value>无法启用 Lenovo Vantage 与 ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>排除应用</value>
+    <value>排除规则</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>在 Fn + R 循环中隐藏特定的刷新率。</value>
