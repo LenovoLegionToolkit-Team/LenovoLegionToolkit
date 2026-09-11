@@ -21,6 +21,18 @@
                     SelectionChanged="SmartFnLockComboBox_SelectionChanged"
                     Visibility="Hidden" />
             </custom:CardControl>
+            <custom:CardControl Margin="0,0,0,8" Icon="ArrowMaximize24">
+                <custom:CardControl.Header>
+                    <controls:CardHeaderControl x:Name="_fullscreenFnLockHeader" />
+                </custom:CardControl.Header>
+                <ComboBox
+                    x:Name="_fullscreenFnLockModeComboBox"
+                    MinWidth="180"
+                    Margin="0,0,0,8"
+                    MaxDropDownHeight="Auto"
+                    SelectionChanged="FullscreenFnLockModeComboBox_SelectionChanged"
+                    Visibility="Hidden" />
+            </custom:CardControl>
             <custom:CardAction
                 x:Name="_excludeRefreshRatesCard"
                 Margin="0,0,0,8"

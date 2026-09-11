@@ -190,6 +190,13 @@ public enum FnLockState
     On
 }
 
+public enum FullscreenFnLockMode
+{
+    Off,
+    Media,
+    AnyApplication
+}
+
 public enum GodModePlatform
 {
     LegacyLegion,

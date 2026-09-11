@@ -23,8 +23,44 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
     private bool _shiftDepressed;
     private bool _altDepressed;
     private bool _wasModifierActive;
+    private bool _modifierHoldActive;
     private bool _hardwareToggledOff;
+    private bool? _fullscreenActive;
     private bool _isDisposed;
+
+    public async Task SetFullscreenStateAsync(bool? fullscreenActive)
+    {
+        FnLockState? desiredState;
+
+        lock (_stateLock)
+        {
+            if (_isDisposed)
+                return;
+
+            var wasFullscreenControlEnabled = _fullscreenActive.HasValue;
+            _fullscreenActive = fullscreenActive;
+
+            if (fullscreenActive.HasValue)
+            {
+                var modifierTemporarilyDisablesFnLock = settings.Store.SmartFnLockFlags != ModifierKey.None && _modifierHoldActive;
+                desiredState = fullscreenActive.Value && !modifierTemporarilyDisablesFnLock
+                    ? FnLockState.On
+                    : FnLockState.Off;
+            }
+            else
+            {
+                desiredState = wasFullscreenControlEnabled ? FnLockState.Off : null;
+            }
+
+            if (fullscreenActive is not true)
+            {
+                _hardwareToggledOff = false;
+            }
+        }
+
+        if (desiredState.HasValue)
+            await SetStateIfNeededAsync(desiredState.Value).ConfigureAwait(false);
+    }
 
     public void OnKeyboardEvent(nuint wParam, KBDLLHOOKSTRUCT kbStruct)
     {
@@ -47,6 +83,8 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
 
             if (isModifierActive)
             {
+                _modifierHoldActive = false;
+
                 Task.Run(async () =>
                 {
                     try
@@ -54,6 +92,14 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
                         await Task.Delay(HOLD_THRESHOLD_MS, ct).ConfigureAwait(false);
                         if (ct.IsCancellationRequested)
                             return;
+
+                        lock (_stateLock)
+                        {
+                            if (_isDisposed || ct.IsCancellationRequested || !_wasModifierActive)
+                                return;
+
+                            _modifierHoldActive = true;
+                        }
 
                         await _hardwareGate.WaitAsync(ct).ConfigureAwait(false);
                         var didWrite = false;
@@ -97,7 +143,8 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
             }
             else
             {
-                var needRestore = _hardwareToggledOff;
+                _modifierHoldActive = false;
+                var needRestore = _fullscreenActive is true || (_fullscreenActive is null && _hardwareToggledOff);
                 _hardwareToggledOff = false;
 
                 if (needRestore)
@@ -106,19 +153,10 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
                     {
                         try
                         {
-                            await _hardwareGate.WaitAsync().ConfigureAwait(false);
-                            try
-                            {
-                                if (Log.Instance.IsTraceEnabled)
-                                    Log.Instance.Trace($"Modifier released, re-enabling Fn Lock...");
+                            if (Log.Instance.IsTraceEnabled)
+                                Log.Instance.Trace($"Modifier released, re-enabling Fn Lock...");
 
-                                await feature.SetStateAsync(FnLockState.On, verify: false).ConfigureAwait(false);
-                            }
-                            finally
-                            {
-                                await Task.Delay(HARDWARE_SETTLE_MS).ConfigureAwait(false);
-                                _hardwareGate.Release();
-                            }
+                            await SetStateIfNeededAsync(FnLockState.On).ConfigureAwait(false);
                         }
                         catch (Exception ex)
                         {
@@ -128,6 +166,32 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
                     });
                 }
             }
+        }
+    }
+
+    private async Task SetStateIfNeededAsync(FnLockState state, CancellationToken token = default)
+    {
+        await _hardwareGate.WaitAsync(token).ConfigureAwait(false);
+        var didWrite = false;
+
+        try
+        {
+            token.ThrowIfCancellationRequested();
+
+            if (await feature.GetStateAsync().ConfigureAwait(false) == state)
+                return;
+
+            if (Log.Instance.IsTraceEnabled)
+                Log.Instance.Trace($"Automatically setting Fn Lock to {state}...");
+
+            await feature.SetStateAsync(state, verify: false).ConfigureAwait(false);
+            didWrite = true;
+        }
+        finally
+        {
+            if (didWrite)
+                await Task.Delay(HARDWARE_SETTLE_MS).ConfigureAwait(false);
+            _hardwareGate.Release();
         }
     }
 
@@ -142,6 +206,8 @@ public class SmartFnLockController(FnLockFeature feature, ApplicationSettings se
             _isDisposed = true;
             needRestore = _hardwareToggledOff;
             _hardwareToggledOff = false;
+            _modifierHoldActive = false;
+            _fullscreenActive = null;
             _holdCts?.Cancel();
             _holdCts?.Dispose();
         }

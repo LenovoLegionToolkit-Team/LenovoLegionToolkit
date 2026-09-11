@@ -20,6 +20,7 @@ public class IoCModule : Module
 
         builder.Register<ThemeManager>().AutoActivate();
         builder.Register<NotificationsManager>().AutoActivate();
+        builder.Register<FullscreenFnLockController>().AutoActivate();
         builder.Register<SpecialKeyActionManager>();
 
         builder.Register<DashboardSettings>();

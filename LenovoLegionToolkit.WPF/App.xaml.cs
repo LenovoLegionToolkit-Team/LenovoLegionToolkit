@@ -405,6 +405,7 @@ public partial class App
         await SafeExecuteAsync<HWiNFOIntegration>(c => c.StopAsync());
         await SafeExecuteAsync<IpcServer>(c => c.StopAsync());
         await SafeExecuteAsync<BatteryDischargeRateMonitorService>(c => c.StopAsync());
+        await SafeExecuteAsync<FullscreenFnLockController>(c => c.StopAsync());
         await SafeExecuteAsync<ExtensionManager>(c => c.StopAsync());
         await SafeExecuteAsync<GodModeController>(c => c.RestoreDefaultsInOtherPowerModeAsync(PowerModeState.Balance));
 

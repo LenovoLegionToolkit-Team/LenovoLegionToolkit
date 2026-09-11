@@ -32,6 +32,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public bool ResetBatteryOnSinceTimerOnReboot { get; set; }
         public bool UseNewSensorDashboard { get; set; }
         public bool EnableHardwareSensors { get; set; }
+        public FullscreenFnLockMode FullscreenFnLockMode { get; set; }
         public bool LockWindowSize { get; set; }
         public bool AlwaysOnTop { get; set; }
         public bool CompactMode { get; set; }
