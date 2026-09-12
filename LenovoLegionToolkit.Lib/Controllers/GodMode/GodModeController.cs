@@ -772,6 +772,14 @@ public class GodModeController(
 
     public async Task RestoreDefaultsInOtherPowerModeAsync(PowerModeState state)
     {
+        var mi = await GetMachineInformationAsync().ConfigureAwait(false);
+
+        if (!mi.Properties.SupportsGodMode)
+        {
+            Log.Instance.Trace($"God Mode not supported. Skipping restoring defaults for {state}...");
+            return;
+        }
+
         var config = await GetConfigAsync().ConfigureAwait(false);
 
         if (config.Platform == GodModePlatform.LegacyLegion)
