@@ -11,18 +11,18 @@ public static partial class WMI
         {
             try
             {
-                var rows = await WMI.ReadAsync("root\\WMI", $"SELECT Lighting_Id, Lighting_Type FROM LENOVO_LIGHTING_DATA", properties =>
+                var rows = await WMI.ReadAsync("root\\WMI", $"SELECT Lighting_Type FROM LENOVO_LIGHTING_DATA", properties =>
                 {
-                    var lightingId = Convert.ToInt32(properties["Lighting_Id"].Value);
                     var lightingType = Convert.ToInt32(properties["Lighting_Type"].Value);
-                    return (lightingId, lightingType);
+                    return lightingType;
                 }).ConfigureAwait(false);
 
-                foreach (var (lightingId, lightingType) in rows)
+                foreach (var lightingType in rows)
                 {
-                    if ((lightingId & 7) != 0)
+                    var keyboardType = (lightingType >> 1) & 7;
+                    if (keyboardType != 0)
                     {
-                        return (lightingType >> 1) & 7;
+                        return keyboardType;
                     }
                 }
 
