@@ -4033,11 +4033,29 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Custom Mode settings will not be applied correctly when Lenovo PCManager or its services are running..
+        /// </summary>
+        public static string GodModeSettingsWindow_PCManagerWarning_Title {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_PCManagerWarning_Title", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Your device may not support the full feature set of Custom Mode..
         /// </summary>
         public static string GodModeSettingsWindow_PartialSupport_Message {
             get {
                 return ResourceManager.GetString("GodModeSettingsWindow_PartialSupport_Message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Custom Mode settings will not be applied correctly when Lenovo SmartEngine or its services are running..
+        /// </summary>
+        public static string GodModeSettingsWindow_SmartEngineWarning_Title {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_SmartEngineWarning_Title", resourceCulture);
             }
         }
         
@@ -4438,6 +4456,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
             }
         }
         
+        /// <summary>
+        ///   Looks up a localized string similar to Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running..
+        /// </summary>
+        public static string Keyboard_SoftwareEnabledWarning_Message {
+            get {
+                return ResourceManager.GetString("Keyboard_SoftwareEnabledWarning_Message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Another Lenovo app or its services are running.
+        /// </summary>
+        public static string Keyboard_SoftwareEnabledWarning_Title {
+            get {
+                return ResourceManager.GetString("Keyboard_SoftwareEnabledWarning_Title", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Keyboard backlight cannot be controlled in here when Lenovo Vantage or its services are running..
         /// </summary>
@@ -5094,6 +5130,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string MainWindow_LegionZoneRunning {
             get {
                 return ResourceManager.GetString("MainWindow_LegionZoneRunning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Lenovo PCManager is running in the background..
+        /// </summary>
+        public static string MainWindow_PCManagerRunning {
+            get {
+                return ResourceManager.GetString("MainWindow_PCManagerRunning", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Lenovo SmartEngine is running in the background..
+        /// </summary>
+        public static string MainWindow_SmartEngineRunning {
+            get {
+                return ResourceManager.GetString("MainWindow_SmartEngineRunning", resourceCulture);
             }
         }
         
@@ -9067,6 +9121,78 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lenovo PCManager may have not been disabled correctly.
+        /// </summary>
+        public static string SettingsPage_DisablePCManager_Error_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_DisablePCManager_Error_Message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t disable Lenovo PCManager.
+        /// </summary>
+        public static string SettingsPage_DisablePCManager_Error_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_DisablePCManager_Error_Title", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Lenovo PCManager and its services without uninstalling it..
+        /// </summary>
+        public static string SettingsPage_DisablePCManager_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_DisablePCManager_Message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Lenovo PCManager.
+        /// </summary>
+        public static string SettingsPage_DisablePCManager_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_DisablePCManager_Title", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Lenovo SmartEngine may have not been disabled correctly.
+        /// </summary>
+        public static string SettingsPage_DisableSmartEngine_Error_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_DisableSmartEngine_Error_Message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t disable Lenovo SmartEngine.
+        /// </summary>
+        public static string SettingsPage_DisableSmartEngine_Error_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_DisableSmartEngine_Error_Title", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disable the SmartEngine components shared by Lenovo PCManager, Legion Space and Legion Zone without uninstalling them..
+        /// </summary>
+        public static string SettingsPage_DisableSmartEngine_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_DisableSmartEngine_Message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Lenovo SmartEngine.
+        /// </summary>
+        public static string SettingsPage_DisableSmartEngine_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_DisableSmartEngine_Title", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to Lenovo Vantage and/or ImController may have not been disabled correctly.
         /// </summary>
         public static string SettingsPage_DisableVantage_Error_Message {
@@ -9173,7 +9299,43 @@ namespace LenovoLegionToolkit.WPF.Resources {
                 return ResourceManager.GetString("SettingsPage_EnableLogging_Title", resourceCulture);
             }
         }
-        
+
+        /// <summary>
+        ///   Looks up a localized string similar to Lenovo SmartEngine may have not been enabled correctly.
+        /// </summary>
+        public static string SettingsPage_EnableSmartEngine_Error_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_EnableSmartEngine_Error_Message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t enable Lenovo SmartEngine.
+        /// </summary>
+        public static string SettingsPage_EnableSmartEngine_Error_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_EnableSmartEngine_Error_Title", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Lenovo PCManager may have not been enabled correctly.
+        /// </summary>
+        public static string SettingsPage_EnablePCManager_Error_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_EnablePCManager_Error_Message", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t enable Lenovo PCManager.
+        /// </summary>
+        public static string SettingsPage_EnablePCManager_Error_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_EnablePCManager_Error_Title", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Lenovo Vantage and/or ImController may have not been enabled correctly.
         /// </summary>

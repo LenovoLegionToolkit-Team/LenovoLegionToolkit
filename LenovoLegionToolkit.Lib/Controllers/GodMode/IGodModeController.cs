@@ -11,6 +11,8 @@ public interface IGodModeController
     Task<bool> NeedsVantageDisabledAsync();
     Task<bool> NeedsLegionZoneDisabledAsync();
     Task<bool> NeedsLegionSpaceDisabledAsync();
+    Task<bool> NeedsPCManagerDisabledAsync();
+    Task<bool> NeedsSmartEngineDisabledAsync();
     Task<(Guid, GodModeSettings.GodModeSettingsStore.Preset)> GetActivePresetAsync();
     Task<Guid> GetActivePresetIdAsync();
     Task<string?> GetActivePresetNameAsync();

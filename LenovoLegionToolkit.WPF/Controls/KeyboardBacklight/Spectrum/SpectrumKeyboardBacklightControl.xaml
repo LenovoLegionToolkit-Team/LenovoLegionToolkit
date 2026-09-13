@@ -11,12 +11,12 @@
     <StackPanel Margin="0,0,8,0">
 
         <custom:InfoBar
-            x:Name="_vantageWarningInfoBar"
-            Title="{x:Static resources:Resource.Keyboard_VantageEnabledWarning_Title}"
+            x:Name="_softwareWarningInfoBar"
+            Title="{x:Static resources:Resource.Keyboard_SoftwareEnabledWarning_Title}"
             Margin="0,0,0,16"
             IsClosable="False"
             IsOpen="False"
-            Message="{x:Static resources:Resource.Keyboard_VantageEnabledWarning_Message}"
+            Message="{x:Static resources:Resource.Keyboard_SoftwareEnabledWarning_Message}"
             Severity="Error" />
 
         <TextBlock

@@ -15,6 +15,8 @@ public partial class SettingsSoftwareControlControl
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
     private readonly LegionSpaceDisabler _legionSpaceDisabler = IoCContainer.Resolve<LegionSpaceDisabler>();
     private readonly LegionZoneDisabler _legionZoneDisabler = IoCContainer.Resolve<LegionZoneDisabler>();
+    private readonly PCManagerDisabler _pcManagerDisabler = IoCContainer.Resolve<PCManagerDisabler>();
+    private readonly SmartEngineDisabler _smartEngineDisabler = IoCContainer.Resolve<SmartEngineDisabler>();
     private readonly FnKeysDisabler _fnKeysDisabler = IoCContainer.Resolve<FnKeysDisabler>();
     private readonly RGBKeyboardBacklightController _rgbKeyboardBacklightController = IoCContainer.Resolve<RGBKeyboardBacklightController>();
 
@@ -43,6 +45,14 @@ public partial class SettingsSoftwareControlControl
         _legionZoneCard.Visibility = legionZoneStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
         _legionZoneToggle.IsChecked = legionZoneStatus == SoftwareStatus.Disabled;
 
+        var pcManagerStatus = await _pcManagerDisabler.GetStatusAsync();
+        _pcManagerCard.Visibility = pcManagerStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
+        _pcManagerToggle.IsChecked = pcManagerStatus == SoftwareStatus.Disabled;
+
+        var smartEngineStatus = await _smartEngineDisabler.GetStatusAsync();
+        _smartEngineCard.Visibility = smartEngineStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
+        _smartEngineToggle.IsChecked = smartEngineStatus == SoftwareStatus.Disabled;
+
         var fnKeysStatus = await _fnKeysDisabler.GetStatusAsync();
         _fnKeysCard.Visibility = fnKeysStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
         _fnKeysToggle.IsChecked = fnKeysStatus == SoftwareStatus.Disabled;
@@ -50,6 +60,8 @@ public partial class SettingsSoftwareControlControl
         _vantageToggle.Visibility = Visibility.Visible;
         _legionSpaceToggle.Visibility = Visibility.Visible;
         _legionZoneToggle.Visibility = Visibility.Visible;
+        _pcManagerToggle.Visibility = Visibility.Visible;
+        _smartEngineToggle.Visibility = Visibility.Visible;
         _fnKeysToggle.Visibility = Visibility.Visible;
 
         _isRefreshing = false;
@@ -238,6 +250,84 @@ public partial class SettingsSoftwareControlControl
         }
 
         _legionSpaceToggle.IsEnabled = true;
+    }
+
+    private async void PCManagerToggle_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        _pcManagerToggle.IsEnabled = false;
+
+        var state = _pcManagerToggle.IsChecked;
+        if (state is null)
+            return;
+
+        if (state.Value)
+        {
+            try
+            {
+                await _pcManagerDisabler.DisableAsync();
+            }
+            catch
+            {
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisablePCManager_Error_Title, Resource.SettingsPage_DisablePCManager_Error_Message, SnackbarType.Error);
+                return;
+            }
+        }
+        else
+        {
+            try
+            {
+                await _pcManagerDisabler.EnableAsync();
+            }
+            catch
+            {
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnablePCManager_Error_Title, Resource.SettingsPage_EnablePCManager_Error_Message, SnackbarType.Error);
+                return;
+            }
+        }
+
+        _pcManagerToggle.IsEnabled = true;
+    }
+
+    private async void SmartEngineToggle_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing)
+            return;
+
+        _smartEngineToggle.IsEnabled = false;
+
+        var state = _smartEngineToggle.IsChecked;
+        if (state is null)
+            return;
+
+        if (state.Value)
+        {
+            try
+            {
+                await _smartEngineDisabler.DisableAsync();
+            }
+            catch
+            {
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableSmartEngine_Error_Title, Resource.SettingsPage_DisableSmartEngine_Error_Message, SnackbarType.Error);
+                return;
+            }
+        }
+        else
+        {
+            try
+            {
+                await _smartEngineDisabler.EnableAsync();
+            }
+            catch
+            {
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableSmartEngine_Error_Title, Resource.SettingsPage_EnableSmartEngine_Error_Message, SnackbarType.Error);
+                return;
+            }
+        }
+
+        _smartEngineToggle.IsEnabled = true;
     }
 
     private async void FnKeysToggle_Click(object sender, RoutedEventArgs e)

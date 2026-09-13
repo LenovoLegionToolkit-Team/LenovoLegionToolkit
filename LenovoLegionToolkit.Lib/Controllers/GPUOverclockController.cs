@@ -22,6 +22,8 @@ public class GPUOverclockController
     private readonly VantageDisabler _vantageDisabler;
     private readonly LegionSpaceDisabler _legionSpaceDisabler;
     private readonly LegionZoneDisabler _legionZoneDisabler;
+    private readonly PCManagerDisabler _pcManagerDisabler;
+    private readonly SmartEngineDisabler _smartEngineDisabler;
     private readonly NativeWindowsMessageListener _nativeWindowsMessageListener;
 
     public event EventHandler? Changed;
@@ -30,12 +32,16 @@ public class GPUOverclockController
         VantageDisabler vantageDisabler,
         LegionSpaceDisabler legionSpaceDisabler,
         LegionZoneDisabler legionZoneDisabler,
+        PCManagerDisabler pcManagerDisabler,
+        SmartEngineDisabler smartEngineDisabler,
         NativeWindowsMessageListener nativeWindowsMessageListener)
     {
         _settings = settings;
         _vantageDisabler = vantageDisabler;
         _legionSpaceDisabler = legionSpaceDisabler;
         _legionZoneDisabler = legionZoneDisabler;
+        _pcManagerDisabler = pcManagerDisabler;
+        _smartEngineDisabler = smartEngineDisabler;
         _nativeWindowsMessageListener = nativeWindowsMessageListener;
         _nativeWindowsMessageListener.Changed += NativeWindowsMessageListenerOnChanged;
     }
@@ -119,6 +125,22 @@ public class GPUOverclockController
         if (await _legionZoneDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
         {
             Log.Instance.Trace($"Can't correctly apply state when Legion Zone is running.");
+
+            Changed?.Invoke(this, EventArgs.Empty);
+            return;
+        }
+
+        if (await _pcManagerDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+        {
+            Log.Instance.Trace($"Can't correctly apply state when PCManager is running.");
+
+            Changed?.Invoke(this, EventArgs.Empty);
+            return;
+        }
+
+        if (await _smartEngineDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
+        {
+            Log.Instance.Trace($"Can't correctly apply state when SmartEngine is running.");
 
             Changed?.Invoke(this, EventArgs.Empty);
             return;

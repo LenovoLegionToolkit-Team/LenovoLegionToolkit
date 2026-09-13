@@ -1447,8 +1447,14 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>Custom Mode settings will not be applied correctly when Legion Zone or its services are running.</value>
   </data>
+  <data name="GodModeSettingsWindow_PCManagerWarning_Title" xml:space="preserve">
+    <value>Custom Mode settings will not be applied correctly when Lenovo PCManager or its services are running.</value>
+  </data>
   <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
     <value>Your device may not support the full feature set of Custom Mode.</value>
+  </data>
+  <data name="GodModeSettingsWindow_SmartEngineWarning_Title" xml:space="preserve">
+    <value>Custom Mode settings will not be applied correctly when Lenovo SmartEngine or its services are running.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Set the maximum frequency offset allowed beyond the factory default boost clock specification.</value>
@@ -1593,6 +1599,12 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Keyboard Backlight</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Keyboard backlight cannot be controlled in here when Lenovo Vantage or its services are running.</value>
@@ -1809,6 +1821,12 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
     <value>Legion Zone is running in the background.</value>
+  </data>
+  <data name="MainWindow_PCManagerRunning" xml:space="preserve">
+    <value>Lenovo PCManager is running in the background.</value>
+  </data>
+  <data name="MainWindow_SmartEngineRunning" xml:space="preserve">
+    <value>Lenovo SmartEngine is running in the background.</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>About</value>
@@ -3136,6 +3154,30 @@ If disabled, this app will handle Fn shortcuts.</value>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Disable Lenovo Hotkeys</value>
   </data>
+  <data name="SettingsPage_DisablePCManager_Error_Message" xml:space="preserve">
+    <value>Lenovo PCManager may have not been disabled correctly</value>
+  </data>
+  <data name="SettingsPage_DisablePCManager_Error_Title" xml:space="preserve">
+    <value>Couldn't disable Lenovo PCManager</value>
+  </data>
+  <data name="SettingsPage_DisablePCManager_Message" xml:space="preserve">
+    <value>Disable Lenovo PCManager and its services without uninstalling it.</value>
+  </data>
+  <data name="SettingsPage_DisablePCManager_Title" xml:space="preserve">
+    <value>Disable Lenovo PCManager</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Error_Message" xml:space="preserve">
+    <value>Lenovo SmartEngine may have not been disabled correctly</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Error_Title" xml:space="preserve">
+    <value>Couldn't disable Lenovo SmartEngine</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Message" xml:space="preserve">
+    <value>Disable the SmartEngine components shared by Lenovo PCManager, Legion Space and Legion Zone without uninstalling them.</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Title" xml:space="preserve">
+    <value>Disable Lenovo SmartEngine</value>
+  </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage and/or ImController may have not been disabled correctly</value>
   </data>
@@ -3166,11 +3208,23 @@ If disabled, this app will handle Fn shortcuts.</value>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Couldn't enable Lenovo Hotkeys Keys</value>
   </data>
+  <data name="SettingsPage_EnablePCManager_Error_Message" xml:space="preserve">
+    <value>Lenovo PCManager may have not been enabled correctly</value>
+  </data>
+  <data name="SettingsPage_EnablePCManager_Error_Title" xml:space="preserve">
+    <value>Couldn't enable Lenovo PCManager</value>
+  </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Enable logging for debug.</value>
   </data>
   <data name="SettingsPage_EnableLogging_Title" xml:space="preserve">
     <value>Enable Logging</value>
+  </data>
+  <data name="SettingsPage_EnableSmartEngine_Error_Message" xml:space="preserve">
+    <value>Lenovo SmartEngine may have not been enabled correctly</value>
+  </data>
+  <data name="SettingsPage_EnableSmartEngine_Error_Title" xml:space="preserve">
+    <value>Couldn't enable Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage and/or ImController may have not been enabled correctly</value>

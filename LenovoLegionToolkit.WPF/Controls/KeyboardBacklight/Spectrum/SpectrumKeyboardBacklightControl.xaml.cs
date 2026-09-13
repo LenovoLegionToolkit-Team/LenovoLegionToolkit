@@ -40,6 +40,8 @@ public partial class SpectrumKeyboardBacklightControl
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
     private readonly LegionSpaceDisabler _legionSpaceDisabler = IoCContainer.Resolve<LegionSpaceDisabler>();
     private readonly LegionZoneDisabler _legionZoneDisabler = IoCContainer.Resolve<LegionZoneDisabler>();
+    private readonly PCManagerDisabler _pcManagerDisabler = IoCContainer.Resolve<PCManagerDisabler>();
+    private readonly SmartEngineDisabler _smartEngineDisabler = IoCContainer.Resolve<SmartEngineDisabler>();
 
     private readonly SpectrumKeyboardSettings _settings = IoCContainer.Resolve<SpectrumKeyboardSettings>();
 
@@ -341,18 +343,21 @@ public partial class SpectrumKeyboardBacklightControl
         var vantageStatus = await _vantageDisabler.GetStatusAsync();
         var legionSpaceStatus = await _legionSpaceDisabler.GetStatusAsync();
         var legionZoneStatus = await _legionZoneDisabler.GetStatusAsync();
+        var pcManagerStatus = await _pcManagerDisabler.GetStatusAsync();
+        var smartEngineStatus = await _smartEngineDisabler.GetStatusAsync();
 
         if (vantageStatus is SoftwareStatus.Enabled || legionSpaceStatus is SoftwareStatus.Enabled ||
-            legionZoneStatus is SoftwareStatus.Enabled)
+            legionZoneStatus is SoftwareStatus.Enabled || pcManagerStatus is SoftwareStatus.Enabled ||
+            smartEngineStatus is SoftwareStatus.Enabled)
         {
-            _vantageWarningInfoBar.IsOpen = true;
+            _softwareWarningInfoBar.IsOpen = true;
             _device.SetLayout(spectrumLayout, keyboardLayout, keys);
             _content.IsEnabled = false;
             _noEffectsText.Visibility = Visibility.Collapsed;
             return;
         }
 
-        _vantageWarningInfoBar.IsOpen = false;
+        _softwareWarningInfoBar.IsOpen = false;
 
         if (!isFixedZoneLayout)
         {
