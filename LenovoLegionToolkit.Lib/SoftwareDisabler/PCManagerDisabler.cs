@@ -10,8 +10,6 @@ public class PCManagerDisabler : AbstractSoftwareDisabler
 
     protected override IEnumerable<string> ServiceNames =>
     [
-        "HRWSCCtrl",
-        "LAVService",
         "LenovoPcManagerService",
         "LnvSvcFdn"
     ];

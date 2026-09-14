@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -378,11 +377,11 @@ public abstract class AbstractSoftwareDisabler
                 service.Close();
             }
         }
-        catch (InvalidOperationException ex) when (ex.InnerException is Win32Exception { NativeErrorCode: 1060 })
+        catch (Exception ex)
         {
-            Log.Instance.Trace($"Service {serviceName} could not be set to {enabled}");
+            Log.Instance.Trace($"Failed to set service {serviceName} to {enabled}.", ex);
 
-            throw new SoftwareDisablerException(serviceName, ex);
+            throw new SoftwareDisablerException($"{serviceName} [type={GetType().Name}]", ex);
         }
     }
 

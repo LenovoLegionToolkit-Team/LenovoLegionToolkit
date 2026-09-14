@@ -78,7 +78,10 @@ public partial class SettingsSoftwareControlControl
 
         var state = _vantageToggle.IsChecked;
         if (state is null)
+        {
+            _vantageToggle.IsEnabled = true;
             return;
+        }
 
         if (state.Value)
         {
@@ -88,6 +91,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _vantageToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableVantage_Error_Title, Resource.SettingsPage_DisableVantage_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -166,6 +170,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _vantageToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableVantage_Error_Title, Resource.SettingsPage_EnableVantage_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -183,7 +188,10 @@ public partial class SettingsSoftwareControlControl
 
         var state = _legionZoneToggle.IsChecked;
         if (state is null)
+        {
+            _legionZoneToggle.IsEnabled = true;
             return;
+        }
 
         if (state.Value)
         {
@@ -193,6 +201,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _legionZoneToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLegionZone_Error_Title, Resource.SettingsPage_DisableLegionZone_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -205,6 +214,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _legionZoneToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLegionZone_Error_Title, Resource.SettingsPage_EnableLegionZone_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -222,7 +232,10 @@ public partial class SettingsSoftwareControlControl
 
         var state = _legionSpaceToggle.IsChecked;
         if (state is null)
+        {
+            _legionSpaceToggle.IsEnabled = true;
             return;
+        }
 
         if (state.Value)
         {
@@ -232,6 +245,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _legionSpaceToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLegionSpace_Error_Title, Resource.SettingsPage_DisableLegionSpace_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -244,6 +258,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _legionSpaceToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLegionSpace_Error_Title, Resource.SettingsPage_EnableLegionSpace_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -261,7 +276,10 @@ public partial class SettingsSoftwareControlControl
 
         var state = _pcManagerToggle.IsChecked;
         if (state is null)
+        {
+            _pcManagerToggle.IsEnabled = true;
             return;
+        }
 
         if (state.Value)
         {
@@ -271,6 +289,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _pcManagerToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisablePCManager_Error_Title, Resource.SettingsPage_DisablePCManager_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -283,6 +302,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _pcManagerToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnablePCManager_Error_Title, Resource.SettingsPage_EnablePCManager_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -300,7 +320,10 @@ public partial class SettingsSoftwareControlControl
 
         var state = _smartEngineToggle.IsChecked;
         if (state is null)
+        {
+            _smartEngineToggle.IsEnabled = true;
             return;
+        }
 
         if (state.Value)
         {
@@ -310,6 +333,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _smartEngineToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableSmartEngine_Error_Title, Resource.SettingsPage_DisableSmartEngine_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -322,6 +346,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _smartEngineToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableSmartEngine_Error_Title, Resource.SettingsPage_EnableSmartEngine_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -339,7 +364,10 @@ public partial class SettingsSoftwareControlControl
 
         var state = _fnKeysToggle.IsChecked;
         if (state is null)
+        {
+            _fnKeysToggle.IsEnabled = true;
             return;
+        }
 
         if (state.Value)
         {
@@ -349,6 +377,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _fnKeysToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLenovoHotkeys_Error_Title, Resource.SettingsPage_DisableLenovoHotkeys_Error_Message, SnackbarType.Error);
                 return;
             }
@@ -361,6 +390,7 @@ public partial class SettingsSoftwareControlControl
             }
             catch
             {
+                _fnKeysToggle.IsEnabled = true;
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLenovoHotkeys_Error_Title, Resource.SettingsPage_EnableLenovoHotkeys_Error_Message, SnackbarType.Error);
                 return;
             }
