@@ -29,7 +29,7 @@
         </Grid.RowDefinitions>
 
         <Rectangle
-            Grid.RowSpan="7"
+            Grid.RowSpan="9"
             IsHitTestVisible="False">
             <Rectangle.Fill>
                 <ImageBrush x:Name="_backgroundImage" />
@@ -41,7 +41,7 @@
 
         <Rectangle
             x:Name="_backgroundDimOverlay"
-            Grid.RowSpan="7"
+            Grid.RowSpan="9"
             Fill="{DynamicResource ApplicationBackgroundBrush}"
             IsHitTestVisible="False" />
 

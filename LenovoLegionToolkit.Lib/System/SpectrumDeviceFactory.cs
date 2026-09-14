@@ -22,7 +22,12 @@ public class SpectrumDeviceFactory : IDisposable
 
     public async Task<SafeFileHandle?> GetHandleAsync()
     {
-        if (ForceDisable) return null;
+        if (ForceDisable)
+        {
+            Log.Instance.Trace($"Skipping Spectrum keyboard.");
+
+            return null;
+        }
 
         if (_cachedHandle is not null && !_cachedHandle.IsInvalid && !_cachedHandle.IsClosed)
         {
@@ -40,6 +45,8 @@ public class SpectrumDeviceFactory : IDisposable
                 {
                     return _cachedHandle;
                 }
+
+                Log.Instance.Trace($"Cached Spectrum keyboard is not responsive, reopening.");
             }
 
             _cachedHandle?.Dispose();
@@ -48,6 +55,8 @@ public class SpectrumDeviceFactory : IDisposable
             _cachedHandle = await Task.Run(async () =>
             {
                 var candidates = await Devices.GetSpectrumRGBKeyboardsAsync(true).ConfigureAwait(false);
+
+                Log.Instance.Trace($"Found Spectrum keyboard candidates. [count={candidates.Count}]");
 
                 foreach (var candidate in candidates.Where(candidate => candidate is { IsInvalid: false, IsClosed: false }))
                 {
@@ -62,6 +71,8 @@ public class SpectrumDeviceFactory : IDisposable
                     }
                     candidate.Dispose();
                 }
+
+                Log.Instance.Trace($"No usable Spectrum keyboard found.");
 
                 return null;
             }).ConfigureAwait(false);
@@ -94,11 +105,36 @@ public class SpectrumDeviceFactory : IDisposable
             try
             {
                 var input = new LENOVO_SPECTRUM_GET_COMPATIBILITY_REQUEST();
-                if (!HidUtils.SetFeature(handle, input)) return false;
-                return HidUtils.GetFeature(handle, out LENOVO_SPECTRUM_GET_COMPATIBILITY_RESPONSE output) && output.IsCompatible;
+
+                if (!HidUtils.SetFeature(handle, input))
+                {
+                    Log.Instance.Trace($"Spectrum keyboard initialization failed. [stage=SetFeature]");
+
+                    return false;
+                }
+
+                if (!HidUtils.GetFeature(handle, out LENOVO_SPECTRUM_GET_COMPATIBILITY_RESPONSE output))
+                {
+                    Log.Instance.Trace($"Spectrum keyboard initialization failed. [stage=GetFeature]");
+
+                    return false;
+                }
+
+                if (!output.IsCompatible)
+                {
+                    Log.Instance.Trace($"Spectrum keyboard is not compatible.");
+
+                    return false;
+                }
+
+                Log.Instance.Trace($"Spectrum keyboard initialized.");
+
+                return true;
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Instance.Trace($"Failed to initialize Spectrum keyboard.", ex);
+
                 return false;
             }
         }).ConfigureAwait(false);

@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.System.Management;
 
@@ -26,10 +27,14 @@ public static partial class WMI
                     }
                 }
 
+                Log.Instance.Trace($"No keyboard type found in lighting data. [lightingTypes={string.Join(", ", rows)}]");
+
                 return null;
             }
-            catch
+            catch (Exception ex)
             {
+                Log.Instance.Trace($"Failed to get keyboard type. [query=LENOVO_LIGHTING_DATA]", ex);
+
                 return null;
             }
         }
