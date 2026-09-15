@@ -17,10 +17,17 @@ namespace LenovoLegionToolkit.Lib.System;
 
 internal static class NVAPI
 {
+    private const int MAX_NVAPI_INIT_RETRIES = 3;
+
     public static bool IsInitialized { get; set; }
     private static bool? _hasNvidiaCache = null;
+    private static int _nvApiInitRetries;
 
-    public static void SetCache(bool? value) => _hasNvidiaCache = value;
+    public static void SetCache(bool? value)
+    {
+        _hasNvidiaCache = value;
+        _nvApiInitRetries = 0;
+    }
 
     public static void Initialize()
     {
@@ -51,16 +58,31 @@ internal static class NVAPI
             NVIDIA.Initialize();
             IsInitialized = true;
             _hasNvidiaCache = true;
+            _nvApiInitRetries = 0;
         }
         catch (NVIDIAApiException ex)
         {
-            _hasNvidiaCache = false;
-
-            if ((int)ex.Status != -101 && (int)ex.Status != -6)
+            if ((ex.Status is Status.NvidiaDeviceNotFound or Status.ExpectedPhysicalGPUHandle)
+                && _nvApiInitRetries++ < MAX_NVAPI_INIT_RETRIES)
             {
-                Log.Instance.Trace($"Exception in Initialize. Status: {(int)ex.Status}", ex);
+                _hasNvidiaCache = null;
+                return;
             }
+
+            _hasNvidiaCache = false;
+            Log.Instance.Trace($"Exception in Initialize. Status: {(int)ex.Status}", ex);
         }
+        catch (Exception ex)
+        {
+            _hasNvidiaCache = false;
+            Log.Instance.Trace($"Failed to initialize NVAPI.", ex);
+        }
+    }
+
+    public static bool IsAvailable()
+    {
+        Initialize();
+        return GetGPU() is not null;
     }
 
     public static void Unload() => NVIDIA.Unload();
