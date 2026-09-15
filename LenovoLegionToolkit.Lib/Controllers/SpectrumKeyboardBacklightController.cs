@@ -147,6 +147,7 @@ public class SpectrumKeyboardBacklightController
             "83JG",
             "83JH",
             "83Q1",
+            "83Q6",
             "83RW"
         };
 
