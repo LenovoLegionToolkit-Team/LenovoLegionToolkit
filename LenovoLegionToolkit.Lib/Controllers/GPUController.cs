@@ -11,7 +11,6 @@ using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using NeoSmart.AsyncLock;
-using NvAPIWrapper.GPU;
 using NvAPIWrapper.Native.Exceptions;
 using NvAPIWrapper.Native.General;
 using NvAPIWrapper.Native.GPU;
@@ -41,19 +40,7 @@ public class GPUController
     public event EventHandler<GPUStatus>? Refreshed;
     public bool IsStarted => _refreshCancellationTokenSource is not null;
 
-    public bool IsSupported()
-    {
-        try
-        {
-            NVAPI.Initialize();
-            PhysicalGPU? gpu = NVAPI.GetGPU();
-            return gpu is not null;
-        }
-        catch
-        {
-            return false;
-        }
-    }
+    public bool IsSupported() => NVAPI.IsAvailable();
 
     public async Task<GPUState> GetLastKnownStateAsync()
     {

@@ -45,22 +45,12 @@ public class GPUOverclockController
 
     public async Task<bool> IsSupportedAsync()
     {
-        bool isSupported;
-
-        try
+        if (AppFlags.Instance.Debug)
         {
-            if (AppFlags.Instance.Debug)
-            {
-                return true;
-            }
+            return true;
+        }
 
-            NVAPI.Initialize();
-            isSupported = NVAPI.GetGPU() is not null;
-        }
-        catch
-        {
-            isSupported = false;
-        }
+        var isSupported = NVAPI.IsAvailable();
 
         Log.Instance.Trace($"NVAPI status: {isSupported}.");
 
