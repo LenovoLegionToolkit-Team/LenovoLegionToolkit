@@ -1454,6 +1454,9 @@ Cidden, bu seçeneğe dikkat edin!</value>
   <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
     <value>Cihazınız, Özel Mod'un tüm özelliklerini desteklemiyor olabilir.</value>
   </data>
+  <data name="GodModeSettingsWindow_SmartEngineWarning_Title" xml:space="preserve">
+    <value>Custom Mode settings will not be applied correctly when Lenovo SmartEngine or its services are running.</value>
+  </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Precision Boost Overdrive Boost Frekansı.</value>
   </data>
@@ -1597,6 +1600,12 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Klavye Işığı</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Lenovo Vantage veya servisleri çalışırken klavye ışığı burada kontrol edilemez.</value>
@@ -1813,6 +1822,9 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
     <value>Legion Zone arka planda çalışıyor.</value>
+  </data>
+  <data name="MainWindow_SmartEngineRunning" xml:space="preserve">
+    <value>Lenovo SmartEngine is running in the background.</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Hakkında</value>
@@ -3145,6 +3157,18 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Lenovo Hotkeys'i Devre Dışı Bırak</value>
   </data>
+  <data name="SettingsPage_DisableSmartEngine_Error_Message" xml:space="preserve">
+    <value>Lenovo SmartEngine may have not been disabled correctly</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Error_Title" xml:space="preserve">
+    <value>Couldn't disable Lenovo SmartEngine</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Message" xml:space="preserve">
+    <value>Disable the SmartEngine components shared by Legion Space and Legion Zone without uninstalling them.</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Title" xml:space="preserve">
+    <value>Disable Lenovo SmartEngine</value>
+  </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage ve/veya ImController doğru şekilde devre dışı bırakılmamış olabilir</value>
   </data>
@@ -3181,6 +3205,12 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   </data>
   <data name="SettingsPage_EnableLogging_Title" xml:space="preserve">
     <value>Kayıt Tutmayı Etkinleştir</value>
+  </data>
+  <data name="SettingsPage_EnableSmartEngine_Error_Message" xml:space="preserve">
+    <value>Lenovo SmartEngine may have not been enabled correctly</value>
+  </data>
+  <data name="SettingsPage_EnableSmartEngine_Error_Title" xml:space="preserve">
+    <value>Couldn't enable Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage ve/veya ImController doğru şekilde etkinleştirilmemiş olabilir</value>
