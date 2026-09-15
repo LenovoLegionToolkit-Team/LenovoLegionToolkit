@@ -29,7 +29,6 @@ public partial class GodModeSettingsWindow
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
     private readonly LegionSpaceDisabler _legionSpaceDisabler = IoCContainer.Resolve<LegionSpaceDisabler>();
     private readonly LegionZoneDisabler _legionZoneDisabler = IoCContainer.Resolve<LegionZoneDisabler>();
-    private readonly PCManagerDisabler _pcManagerDisabler = IoCContainer.Resolve<PCManagerDisabler>();
     private readonly SmartEngineDisabler _smartEngineDisabler = IoCContainer.Resolve<SmartEngineDisabler>();
 
     private Control? FanControl;
@@ -93,15 +92,13 @@ public partial class GodModeSettingsWindow
             var vantageTask = _godModeController.NeedsVantageDisabledAsync();
             var legionSpace = _godModeController.NeedsLegionSpaceDisabledAsync();
             var legionZoneTask = _godModeController.NeedsLegionZoneDisabledAsync();
-            var pcManagerTask = _godModeController.NeedsPCManagerDisabledAsync();
             var smartEngineTask = _godModeController.NeedsSmartEngineDisabledAsync();
 
-            await Task.WhenAll(tasks.Concat([vantageTask, legionSpace, legionZoneTask, pcManagerTask, smartEngineTask]));
+            await Task.WhenAll(tasks.Concat([vantageTask, legionSpace, legionZoneTask, smartEngineTask]));
 
             _vantageRunningWarningInfoBar.IsOpen = vantageTask.Result && await _vantageDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
             _legionSpaceRunningWarningInfoBar.IsOpen = legionSpace.Result && await _legionSpaceDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
             _legionZoneRunningWarningInfoBar.IsOpen = legionZoneTask.Result && await _legionZoneDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
-            _pcManagerRunningWarningInfoBar.IsOpen = pcManagerTask.Result && await _pcManagerDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
             _smartEngineRunningWarningInfoBar.IsOpen = smartEngineTask.Result && await _smartEngineDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
             _capabilityWarningInfoBar.IsOpen = _godModeController.HasCapabilityErrors();
 

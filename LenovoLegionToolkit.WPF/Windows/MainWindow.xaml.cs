@@ -45,7 +45,6 @@ public partial class MainWindow
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
     private readonly LegionSpaceDisabler _legionSpaceDisabler = IoCContainer.Resolve<LegionSpaceDisabler>();
     private readonly LegionZoneDisabler _legionZoneDisabler = IoCContainer.Resolve<LegionZoneDisabler>();
-    private readonly PCManagerDisabler _pcManagerDisabler = IoCContainer.Resolve<PCManagerDisabler>();
     private readonly SmartEngineDisabler _smartEngineDisabler = IoCContainer.Resolve<SmartEngineDisabler>();
     private readonly FnKeysDisabler _fnKeysDisabler = IoCContainer.Resolve<FnKeysDisabler>();
     private readonly INavigationService _extensionNavigationService = IoCContainer.Resolve<INavigationService>();
@@ -394,11 +393,6 @@ public partial class MainWindow
             _legionZoneIndicator.Visibility = e.Status == SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
         });
 
-        _pcManagerDisabler.OnRefreshed += async (_, e) => await Dispatcher.InvokeAsync(() =>
-        {
-            _pcManagerIndicator.Visibility = e.Status == SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
-        });
-
         _smartEngineDisabler.OnRefreshed += async (_, e) => await Dispatcher.InvokeAsync(() =>
         {
             _smartEngineIndicator.Visibility = e.Status == SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
@@ -414,7 +408,6 @@ public partial class MainWindow
             _ = await _vantageDisabler.GetStatusAsync().ConfigureAwait(false);
             _ = await _legionSpaceDisabler.GetStatusAsync().ConfigureAwait(false);
             _ = await _legionZoneDisabler.GetStatusAsync().ConfigureAwait(false);
-            _ = await _pcManagerDisabler.GetStatusAsync().ConfigureAwait(false);
             _ = await _smartEngineDisabler.GetStatusAsync().ConfigureAwait(false);
             _ = await _fnKeysDisabler.GetStatusAsync().ConfigureAwait(false);
         });

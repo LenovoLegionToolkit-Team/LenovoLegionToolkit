@@ -70,13 +70,6 @@
                 IsOpen="False"
                 Severity="Error" />
             <custom:InfoBar
-                x:Name="_pcManagerRunningWarningInfoBar"
-                Title="{x:Static resources:Resource.GodModeSettingsWindow_PCManagerWarning_Title}"
-                Margin="0,8,0,0"
-                IsClosable="False"
-                IsOpen="False"
-                Severity="Error" />
-            <custom:InfoBar
                 x:Name="_smartEngineRunningWarningInfoBar"
                 Title="{x:Static resources:Resource.GodModeSettingsWindow_SmartEngineWarning_Title}"
                 Margin="0,8,0,0"

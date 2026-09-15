@@ -4033,15 +4033,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom Mode settings will not be applied correctly when Lenovo PCManager or its services are running..
-        /// </summary>
-        public static string GodModeSettingsWindow_PCManagerWarning_Title {
-            get {
-                return ResourceManager.GetString("GodModeSettingsWindow_PCManagerWarning_Title", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Your device may not support the full feature set of Custom Mode..
         /// </summary>
         public static string GodModeSettingsWindow_PartialSupport_Message {
@@ -5130,15 +5121,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string MainWindow_LegionZoneRunning {
             get {
                 return ResourceManager.GetString("MainWindow_LegionZoneRunning", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Lenovo PCManager is running in the background..
-        /// </summary>
-        public static string MainWindow_PCManagerRunning {
-            get {
-                return ResourceManager.GetString("MainWindow_PCManagerRunning", resourceCulture);
             }
         }
 
@@ -9121,42 +9103,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lenovo PCManager may have not been disabled correctly.
-        /// </summary>
-        public static string SettingsPage_DisablePCManager_Error_Message {
-            get {
-                return ResourceManager.GetString("SettingsPage_DisablePCManager_Error_Message", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t disable Lenovo PCManager.
-        /// </summary>
-        public static string SettingsPage_DisablePCManager_Error_Title {
-            get {
-                return ResourceManager.GetString("SettingsPage_DisablePCManager_Error_Title", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Disable Lenovo PCManager and its services without uninstalling it..
-        /// </summary>
-        public static string SettingsPage_DisablePCManager_Message {
-            get {
-                return ResourceManager.GetString("SettingsPage_DisablePCManager_Message", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Disable Lenovo PCManager.
-        /// </summary>
-        public static string SettingsPage_DisablePCManager_Title {
-            get {
-                return ResourceManager.GetString("SettingsPage_DisablePCManager_Title", resourceCulture);
-            }
-        }
-
-        /// <summary>
         ///   Looks up a localized string similar to Lenovo SmartEngine may have not been disabled correctly.
         /// </summary>
         public static string SettingsPage_DisableSmartEngine_Error_Message {
@@ -9175,7 +9121,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Disable the SmartEngine components shared by Lenovo PCManager, Legion Space and Legion Zone without uninstalling them..
+        ///   Looks up a localized string similar to Disable the SmartEngine components shared by Legion Space and Legion Zone without uninstalling them..
         /// </summary>
         public static string SettingsPage_DisableSmartEngine_Message {
             get {
@@ -9315,24 +9261,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_EnableSmartEngine_Error_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_EnableSmartEngine_Error_Title", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Lenovo PCManager may have not been enabled correctly.
-        /// </summary>
-        public static string SettingsPage_EnablePCManager_Error_Message {
-            get {
-                return ResourceManager.GetString("SettingsPage_EnablePCManager_Error_Message", resourceCulture);
-            }
-        }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t enable Lenovo PCManager.
-        /// </summary>
-        public static string SettingsPage_EnablePCManager_Error_Title {
-            get {
-                return ResourceManager.GetString("SettingsPage_EnablePCManager_Error_Title", resourceCulture);
             }
         }
 

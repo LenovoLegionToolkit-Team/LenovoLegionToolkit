@@ -102,9 +102,12 @@ public abstract class AbstractSoftwareDisabler
         SetDriversEnabled(false);
         SetStartupEntriesEnabled(false);
 
-        _ = await GetStatusAsync().ConfigureAwait(false);
+        var status = await GetStatusAsync().ConfigureAwait(false);
 
-        Log.Instance.Trace($"Disabled [type={GetType().Name}]");
+        if (status == SoftwareStatus.Enabled)
+            Log.Instance.Trace($"Disabled, restart required. [type={GetType().Name}]");
+        else
+            Log.Instance.Trace($"Disabled [type={GetType().Name}]");
     });
 
     private static IEnumerable<ServiceController> AllServices() =>

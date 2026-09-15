@@ -20,7 +20,6 @@ public class GodModeController(
     VantageDisabler vantageDisabler,
     LegionZoneDisabler legionZoneDisabler,
     LegionSpaceDisabler legionSpaceDisabler,
-    PCManagerDisabler pcManagerDisabler,
     SmartEngineDisabler smartEngineDisabler)
     : IGodModeController
 {
@@ -55,8 +54,6 @@ public class GodModeController(
         var mi = await GetMachineInformationAsync().ConfigureAwait(false);
         return mi.SmartFanVersion >= 8;
     }
-
-    public Task<bool> NeedsPCManagerDisabledAsync() => Task.FromResult(true);
 
     public Task<bool> NeedsSmartEngineDisabledAsync() => Task.FromResult(true);
 
@@ -200,12 +197,6 @@ public class GodModeController(
             return;
         }
 
-        if (await pcManagerDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
-        {
-            Log.Instance.Trace($"Can't correctly apply state when PCManager is running.");
-            return;
-        }
-
         if (await smartEngineDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
         {
             Log.Instance.Trace($"Can't correctly apply state when SmartEngine is running.");
@@ -323,12 +314,6 @@ public class GodModeController(
         if (await vantageDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
         {
             Log.Instance.Trace($"Can't correctly apply state when Vantage is running.");
-            return;
-        }
-
-        if (await pcManagerDisabler.GetStatusAsync().ConfigureAwait(false) == SoftwareStatus.Enabled)
-        {
-            Log.Instance.Trace($"Can't correctly apply state when PCManager is running.");
             return;
         }
 
