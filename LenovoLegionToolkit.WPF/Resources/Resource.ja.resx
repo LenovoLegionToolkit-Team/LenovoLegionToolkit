@@ -1451,9 +1451,6 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="GodModeSettingsWindow_LegionZoneWarning_Title" xml:space="preserve">
     <value>レジオンゾーンまたはそのサービスが実行されている場合、カスタムモードの設定は正しく適用されません。</value>
   </data>
-  <data name="GodModeSettingsWindow_PCManagerWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Lenovo PCManager or its services are running.</value>
-  </data>
   <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
     <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
@@ -1825,9 +1822,6 @@ format@@2 無効にするには「はい」をクリックし、無視するに�
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
     <value>軍団ゾーンはバックグラウンドで実行されています。</value>
-  </data>
-  <data name="MainWindow_PCManagerRunning" xml:space="preserve">
-    <value>Lenovo PCManager is running in the background.</value>
   </data>
   <data name="MainWindow_SmartEngineRunning" xml:space="preserve">
     <value>Lenovo SmartEngine is running in the background.</value>
@@ -3163,18 +3157,6 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Lenovo Hotkeys を無効化</value>
   </data>
-  <data name="SettingsPage_DisablePCManager_Error_Message" xml:space="preserve">
-    <value>Lenovo PCManager may have not been disabled correctly</value>
-  </data>
-  <data name="SettingsPage_DisablePCManager_Error_Title" xml:space="preserve">
-    <value>Couldn't disable Lenovo PCManager</value>
-  </data>
-  <data name="SettingsPage_DisablePCManager_Message" xml:space="preserve">
-    <value>Disable Lenovo PCManager and its services without uninstalling it.</value>
-  </data>
-  <data name="SettingsPage_DisablePCManager_Title" xml:space="preserve">
-    <value>Disable Lenovo PCManager</value>
-  </data>
   <data name="SettingsPage_DisableSmartEngine_Error_Message" xml:space="preserve">
     <value>Lenovo SmartEngine may have not been disabled correctly</value>
   </data>
@@ -3182,7 +3164,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Couldn't disable Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Message" xml:space="preserve">
-    <value>Disable the SmartEngine components shared by Lenovo PCManager, Legion Space and Legion Zone without uninstalling them.</value>
+    <value>Disable the SmartEngine components shared by Legion Space and Legion Zone without uninstalling them.</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Title" xml:space="preserve">
     <value>Disable Lenovo SmartEngine</value>
@@ -3217,12 +3199,6 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Lenovoホットキーを有効にできませんでした</value>
-  </data>
-  <data name="SettingsPage_EnablePCManager_Error_Message" xml:space="preserve">
-    <value>Lenovo PCManager may have not been enabled correctly</value>
-  </data>
-  <data name="SettingsPage_EnablePCManager_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Lenovo PCManager</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>デバッグのログを有効にします。</value>
