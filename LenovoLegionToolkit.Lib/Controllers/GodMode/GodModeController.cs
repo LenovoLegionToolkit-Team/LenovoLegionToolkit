@@ -9,6 +9,7 @@ using LenovoLegionToolkit.Lib.Features;
 using LenovoLegionToolkit.Lib.Resources;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.SoftwareDisabler;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using NvAPIWrapper.GPU;
@@ -1441,20 +1442,27 @@ public class GodModeController(
 
     private async Task<GodModePlatformConfiguration> GetConfigAsync()
     {
-        if (_config != null)
+        if (_config is null)
         {
-            return _config;
+            var mi = await GetMachineInformationAsync().ConfigureAwait(false);
+            _config = mi.Properties.GodModePlatform switch
+            {
+                GodModePlatform.LegacyLegion => GodModePlatformConfiguration.LegacyLegion,
+                GodModePlatform.Legion => GodModePlatformConfiguration.Legion,
+                GodModePlatform.NonGaming => GodModePlatformConfiguration.NonGaming,
+                _ => throw new InvalidOperationException("Unsupported GodMode platform"),
+            };
         }
 
-        var mi = await GetMachineInformationAsync().ConfigureAwait(false);
-        _config = mi.Properties.GodModePlatform switch
-        {
-            GodModePlatform.LegacyLegion => GodModePlatformConfiguration.LegacyLegion,
-            GodModePlatform.Legion => GodModePlatformConfiguration.Legion,
-            GodModePlatform.NonGaming => GodModePlatformConfiguration.NonGaming,
-            _ => throw new InvalidOperationException("Unsupported GodMode platform"),
-        };
-        return _config;
+        var config = _config;
+        var useNvApiCapabilities = !config.Capabilities.Any(IsNvApiCapability) || NVAPI.IsAvailable();
+
+        if (useNvApiCapabilities)
+            return config;
+
+        Log.Instance.Trace($"NVAPI is not available, removing NVAPI capabilities...");
+
+        return config with { Capabilities = config.Capabilities.Where(c => !IsNvApiCapability(c)).ToList() };
     }
 
     private async Task<MachineInformation> GetMachineInformationAsync()
