@@ -6,22 +6,26 @@ This project uses `.resx` resource files for all user-visible strings.
 
 ## Resource Files
 
-There are two separate resource projects:
+There are four resource projects:
 
 | Project | File | Used for |
 |---------|------|----------|
 | `LenovoLegionToolkit.WPF` | `LenovoLegionToolkit.WPF/Resources/Resource.resx` | All UI strings — window titles, labels, buttons, messages |
 | `LenovoLegionToolkit.Lib` | `LenovoLegionToolkit.Lib/Resources/Resource.resx` | Enum display names, shared non-UI strings |
+| `LenovoLegionToolkit.Lib.Automation` | `LenovoLegionToolkit.Lib.Automation/Resources/Resource.resx` | Automation step, trigger and pipeline display names |
+| `LenovoLegionToolkit.Lib.Macro` | `LenovoLegionToolkit.Lib.Macro/Resources/Resource.resx` | Macro source names |
 
-Both have auto-generated `Resource.Designer.cs` files. **Never edit the `.Designer.cs` files directly** — edit the `.resx` file, then rebuild.
+Each has an auto-generated `Resource.Designer.cs` file. **Never edit the `.Designer.cs` files directly** — edit the `.resx` file, then rebuild.
 
 ---
 
 ## Supported Languages
 
-26 translation files exist alongside the default (English) `.resx`:
+28 translation files exist alongside the default (English) `.resx`:
 
-`ar`, `bg`, `bs`, `cs`, `de`, `el`, `es`, `fr`, `hu`, `it`, `ja`, `ko`, `lv`, `nl-nl`, `pl`, `pt`, `pt-br`, `ro`, `ru`, `sk`, `tr`, `uk`, `uz-latn-uz`, `vi`, `zh-hans`, `zh-hant`
+`ar`, `bg`, `bs`, `cs`, `de`, `el`, `es`, `fr`, `hi`, `hu`, `id`, `it`, `ja`, `ko`, `lv`, `nl-nl`, `pl`, `pt`, `pt-br`, `ro`, `ru`, `sk`, `tr`, `uk`, `uz-latn-uz`, `vi`, `zh-hans`, `zh-hant`
+
+> **Note:** Only the cultures listed in `LenovoLegionToolkit.WPF/Utils/LocalizationHelper.cs` can be selected in the app. The rest are synced from Crowdin and are not yet exposed in the language picker.
 
 ---
 

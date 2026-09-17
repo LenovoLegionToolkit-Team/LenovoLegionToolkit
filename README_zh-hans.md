@@ -32,6 +32,7 @@
 #### 此 README 的其他语言版本：
 * [English README](README.md)
 * [日本語版のREADME](README_ja-JP.md)
+* [Русская версия README](README_ru-RU.md)
 
 ---
 
@@ -409,6 +410,13 @@ LLT 会自动在进程运行环境内添加一些可被访问的环境变量。�
 
 </details>
 
+### C# 脚本控制台
+
+以 `--debug` 参数启动 LLT（见[命令行参数](#命令行参数)）后，即可在**设置 → 应用行为**中使用脚本控制台。它会在应用进程内运行 C# 代码片段，并可访问 `LenovoLegionToolkit.Lib`、其控制器和应用状态。输出、返回值、执行耗时以及编译或运行时错误都会显示在窗口中。
+
+> [!WARNING]
+> 仅供高级调试使用。脚本在应用进程内执行，因此有问题的脚本可能导致程序不稳定。脚本校验器会拦截文件系统、网络、注册表、WMI、反射和进程相关 API，并拒绝 `#r` 指令。
+
 ## 赞助
 
 开发不易，如果你觉得拯救者工具箱不错的话，可以考虑通过 GitHub 赞助按钮来支持开发。
@@ -599,20 +607,23 @@ Windows 可能无法正确识别所有的游戏，但你可以在 Xbox Game Bar 
 一些并不常用的功能在 GUI 中没有对应的启动开关。这些功能需要通过在启动 LLT 时添加命令行参数，或将参数添加到 `args.txt` 中的方式启用。
 
 * `--trace` - 启用日志记录并将日志保存到 `%LOCALAPPDATA%\LenovoLegionToolkit\log`
+* `--debug` - 启用调试模式和脚本控制台 _（使用该参数时 LLT 不保证能够正常运行，也不会为此参数造成的问题提供技术支持）_
 * `--minimized` - 以最小化到托盘的方式启动 LLT
 * `--skip-compat-check` - 在启动 LLT 时不检查设备兼容性 _（使用该参数时 LLT 不保证能够正常运行，也不会为此参数造成的问题提供技术支持）_
 * `--disable-tray-tooltip` - 当鼠标悬停在托盘图标上方时不显示 LLT 托盘自定义工具提示
 * `--allow-all-power-modes-on-battery` - 允许在未接通外部电源的情况下启用所有性能模式 _（使用该参数时 LLT 不保证能够正常运行，也不会为此参数造成的问题提供技术支持）_
-* `--enable-hybrid-mode-automation` - 允许使用 LLT 自动化操作切换混合模式或其他显卡工作模式 _（使用该参数时 LLT 不保证能够正常运行，也不会为此参数造成的问题提供技术支持）_
 * `--force-disable-rgbkb` - 禁用四分区 RGB 键盘的所有光效控制功能
 * `--force-disable-spectrumkb` - 禁用 Spectrum 单键 RGB 的所有光效控制功能
 * `--force-disable-lenovolighting` - 禁用拯救者 Logo，白色键盘背光，和其他如端口背光的光效控制功能
+* `--enable-lamp-array` - 为兼容键盘启用 Lamp Array（Windows 动态照明）支持
 * `--experimental-gpu-working-mode` - 将显卡工作模式切换至和 LegionZone 相同的实验性模式 _（使用该参数时 LLT 不保证能够正常运行，也不会为此参数造成的问题提供技术支持）_
+* `--experimental-its-mode` - 在 ThinkBook 设备上使用实验性 ITS 模式驱动 _（使用该参数时 LLT 不保证能够正常运行，也不会为此参数造成的问题提供技术支持）_
 * `--proxy-url=example.com` - 指定 LLT 应该使用的代理服务器地址
 * `--proxy-username=some_username` - 如果需要，指定 LLT 使用的代理服务器的用户名
 * `--proxy-password=some_password` - 如果需要，指定 LLT 使用的代理服务器的密码
 * `--proxy-allow-all-certs` - 如果需要，放宽通过代理服务器建立 HTTPS/SSL 连接的所需标准
 * `--disable-update-checker` - 禁用 LLT 自动新版本检测 _（若你希望依赖于 winget，scoop 等等软件更新 LLT，你可以启用此选项）_
+* `--disable-conflicting-software-warning` - 禁用检测到冲突软件时显示的警告横幅
 
 如果你希望将所需参数保存至 `args.txt` 文件内：
 1. 进入 `%LOCALAPPDATA%\LenovoLegionToolkit` 文件夹

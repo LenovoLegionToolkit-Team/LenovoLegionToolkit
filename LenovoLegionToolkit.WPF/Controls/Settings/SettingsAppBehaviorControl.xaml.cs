@@ -116,7 +116,7 @@ public partial class SettingsAppBehaviorControl
             _hardwareSensorsCardHeader.Warning = pawnIOState == PawnIOState.Installed ? string.Empty : Resource.SettingsPage_HardwareSensors_PawnIOWarning;
         }
 
-        _scriptConsoleCard.Visibility = Visibility.Collapsed;
+        _scriptConsoleCard.Visibility = AppFlags.Instance.Debug ? Visibility.Visible : Visibility.Collapsed;
 
         _isRefreshing = false;
     }

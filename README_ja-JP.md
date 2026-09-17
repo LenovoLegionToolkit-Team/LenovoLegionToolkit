@@ -32,6 +32,7 @@
 #### 他の言語バージョンのこのREADMEファイル：
 * [英語版のREADME](README.md)
 * [簡体字中国語版のREADME](README_zh-hans.md)
+* [Русская версия README](README_ru-RU.md)
 
 ---
 
@@ -419,6 +420,13 @@ CLIは管理者として実行する必要はありません。
 
 </details>
 
+### C# スクリプトコンソール
+
+`--debug` 引数を付けて LLT を起動すると（[引数](#引数)を参照）Script Console が有効になり、**設定 → アプリの動作** から利用できます。アプリのプロセス内で C# スニペットを実行し、`LenovoLegionToolkit.Lib`、そのコントローラー、アプリケーションの状態にアクセスできます。出力、戻り値、実行時間、コンパイル/実行時エラーがウィンドウに表示されます。
+
+> [!WARNING]
+> 上級者向けのデバッグ専用です。スクリプトはアプリ自身のプロセス内で実行されるため、問題のあるスクリプトはアプリを不安定にする可能性があります。スクリプト検証により、ファイルシステム、ネットワーク、レジストリ、WMI、リフレクション、プロセス関連の API はブロックされ、`#r` ディレクティブは拒否されます。
+
 ## 寄付
 
 Lenovo Legion Toolkitを楽しんで使用している場合は、リポジトリページの上部にある GitHub Sponsors ボタンを使用してプロジェクトを支援することを検討してください。
@@ -575,20 +583,24 @@ Lenovo の保証 API や地域ごとの制限により、保証情報を取得�
 
 LLT は以下のコマンドライン引数をサポートしています。
 
-* `--minimized` - LLT を最小化して起動します
-* `--skip-welcome` - 初回起動ウィザードをスキップします
 * `--trace` - 詳細ログを有効にします
-* `--disable-actions` - アクションを無効にします
-* `--disable-tooltips` - ツールチップを無効にします
-* `--force-disable-vantage` - Lenovo Vantage 関連の検出と統合を無効にします
-* `--force-disable-lenovohotkeys` - Lenovo Hotkeys 関連機能を無効にします
-* `--force-disable-lenovolighting` - Lenovo Lighting 関連機能を無効にします
-* `--experimental-gpu-working-mode` - Legion Zone と同じ実験的な GPU Working Mode 切り替えを使用します
+* `--debug` - デバッグモードと Script Console を有効にします _（この引数を使用した場合、サポートは提供されません）_
+* `--minimized` - LLT を最小化して起動します
+* `--skip-compat-check` - 起動時の互換性チェックを無効にします _（この引数を使用した場合、サポートは提供されません）_
+* `--disable-tray-tooltip` - トレイアイコンのツールチップを無効にします
+* `--allow-all-power-modes-on-battery` - AC アダプターなしですべての電源モードを使用できるようにします _（この引数を使用した場合、サポートは提供されません）_
+* `--force-disable-rgbkb` - 4ゾーン RGB キーボードのすべてのライティング機能を無効にします
+* `--force-disable-spectrumkb` - Spectrum パーキー RGB キーボードのすべてのライティング機能を無効にします
+* `--force-disable-lenovolighting` - パネルロゴやポートライトなどの Lenovo ライティング機能を無効にします
+* `--enable-lamp-array` - 対応キーボードで Lamp Array（Windows ダイナミック ライティング）を有効にします
+* `--experimental-gpu-working-mode` - Legion Zone と同じ実験的な GPU Working Mode 切り替えを使用します _（この引数を使用した場合、サポートは提供されません）_
+* `--experimental-its-mode` - ThinkBook デバイスで実験的な ITS モードドライバーを使用します _（この引数を使用した場合、サポートは提供されません）_
 * `--proxy-url=example.com` - LLT が使用するプロキシサーバーを指定します
 * `--proxy-username=some_username` - 必要に応じてプロキシのユーザー名を指定します
 * `--proxy-password=some_password` - 必要に応じてプロキシのパスワードを指定します
 * `--proxy-allow-all-certs` - 必要に応じてプロキシ経由の HTTPS/SSL 証明書検証を緩和します
 * `--disable-update-checker` - LLT の更新確認を無効にします
+* `--disable-conflicting-software-warning` - 競合するソフトウェアが実行中の警告バナーを無効にします
 
 引数を `args.txt` に保存する場合：
 1. `%LOCALAPPDATA%\LenovoLegionToolkit` を開きます

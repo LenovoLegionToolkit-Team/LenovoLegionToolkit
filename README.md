@@ -25,13 +25,14 @@
 ## 🚨 Project Status Notice
 
 > [!IMPORTANT]
-> + This project is actively developed by the **LenovoLegionToolkit-Team**
-> + Source repository [BartoszCichecki/LenovoLegionToolkit](https://github.com/BartoszCichecki/LenovoLegionToolkit) is archived
+> - This project is actively developed by the **LenovoLegionToolkit-Team**
+> - Source repository [BartoszCichecki/LenovoLegionToolkit](https://github.com/BartoszCichecki/LenovoLegionToolkit) is archived
 > - Not officially affiliated with Lenovo
 
 #### Other language versions of this README file:
 * [简体中文版简介](README_zh-hans.md)
 * [日本語版のREADME](README_ja-JP.md)
+* [Русская версия README](README_ru-RU.md)
 
 ---
 
@@ -429,6 +430,13 @@ CLI does not need to be run as Administrator.
 
 </details>
 
+### C# Script Console
+
+The Script Console is enabled by starting LLT with `--debug` (see [Arguments](#arguments)) and is available in **Settings → App Behavior**. It executes C# snippets inside the running application, with access to `LenovoLegionToolkit.Lib`, its controllers and the application state. Output, return value, execution time and any compilation or runtime errors are shown in the window.
+
+> [!WARNING]
+> Intended for advanced debugging only. Scripts run in the application's own process, so a misbehaving script can destabilize it. The script validator blocks file system, network, registry, WMI, reflection and process APIs, and rejects `#r` directives.
+
 ## Donate
 
 If you enjoy using the Lenovo Legion Toolkit, consider sponsoring the project using the GitHub Sponsors button at the top of the repository page.
@@ -448,7 +456,7 @@ Special thanks to:
 
 ### Third-party libraries
 
-LLT makes use of several open-source libraries:
+LLT makes use of several open-source libraries. Components hosted under the [LenovoLegionToolkit-Team](https://github.com/LenovoLegionToolkit-Team) organisation are forks maintained by this project.
 
 **Core UI & Framework**
 * **WPF-UI** ([lepoco/wpfui](https://github.com/lepoco/wpfui))
@@ -458,11 +466,13 @@ LLT makes use of several open-source libraries:
 
 **Systems & Hardware**
 * **RAMSPDToolkit** ([Blacktempel/RAMSPDToolkit](https://github.com/Blacktempel/RAMSPDToolkit))
-* **LibreHardwareMonitor** ([LibreHardwareMonitor/LibreHardwareMonitor](https://github.com/LibreHardwareMonitor/LibreHardwareMonitor))
+* **LibreHardwareMonitor** ([LenovoLegionToolkit-Team/LibreHardwareMonitor](https://github.com/LenovoLegionToolkit-Team/LibreHardwareMonitor))
 * **PawnIO** ([namazso/PawnIO](https://github.com/namazso/PawnIO))
 * **CoordinateSharp** ([Tronald/CoordinateSharp](https://github.com/Tronald/CoordinateSharp))
-* **ZenStates-Core** ([irusanov/ZenStates-Core](https://github.com/irusanov/ZenStates-Core))
-* **PresentMonFps** ([lemutec/PresentMonFps](https://github.com/lemutec/PresentMonFps))
+* **ZenStates-Core** ([LenovoLegionToolkit-Team/ZenStates-Core](https://github.com/LenovoLegionToolkit-Team/ZenStates-Core))
+* **PresentMonFps** ([LenovoLegionToolkit-Team/PresentMonFps](https://github.com/LenovoLegionToolkit-Team/PresentMonFps))
+* **NvAPIWrapper** ([LenovoLegionToolkit-Team/NvAPIWrapper](https://github.com/LenovoLegionToolkit-Team/NvAPIWrapper))
+* **WindowsDisplayAPI** ([LenovoLegionToolkit-Team/WindowsDisplayAPI](https://github.com/LenovoLegionToolkit-Team/WindowsDisplayAPI))
 
 **Utilities**
 * **Newtonsoft.Json** ([JamesNK/Newtonsoft.Json](https://github.com/JamesNK/Newtonsoft.Json))
@@ -478,6 +488,11 @@ LLT makes use of several open-source libraries:
 **Visuals & UI Helpers**
 * **PixiEditor.ColorPicker** ([PixiEditor/ColorPicker](https://github.com/PixiEditor/ColorPicker))
 * **WpfScreenHelper** ([micdenny/WpfScreenHelper](https://github.com/micdenny/WpfScreenHelper))
+* **XamlAnimatedGif** ([thomaslevesque/XamlAnimatedGif](https://github.com/thomaslevesque/XamlAnimatedGif))
+
+**Scripting & Editors**
+* **AvalonEdit** ([icsharpcode/AvalonEdit](https://github.com/icsharpcode/AvalonEdit))
+* **Roslyn scripting** ([dotnet/roslyn](https://github.com/dotnet/roslyn))
 
 For a full list of third-party components and license notices, see the [NOTICE](NOTICE) file.
 
@@ -620,16 +635,17 @@ Check the model number. Example model numbers are `16ACH6H` or `16IAX7`. The las
 Some, less frequently needed, features or options can be enabled by using additional arguments. These arguments can either be passed as parameters or added to `args.txt` file.
 
 * `--trace` - enables logging to `%LOCALAPPDATA%\LenovoLegionToolkit\log`
+* `--debug` - enables debug mode and the Script Console _(No support is provided when this argument is used)_
 * `--minimized` - starts LLT minimized to tray
 * `--skip-compat-check` - disables compatibility check on startup _(No support is provided when this argument is used)_
 * `--disable-tray-tooltip` - disables tray tooltip that is shown when you hover the cursor over tray icon
 * `--allow-all-power-modes-on-battery` - allows using all Power Modes without AC adapter _(No support is provided when this argument is used)_
-* `--enable-hybrid-mode-automation` - allows changing Hybrid Mode/GPU Working Mode with actions _(No support is provided when this argument is used)_
 * `--force-disable-rgbkb` - disables all lighting features for 4-zone RGB keyboards
 * `--force-disable-spectrumkb` - disables all lighting features for Spectrum per-key RGB keyboards
 * `--force-disable-lenovolighting` - disables all lighting features related to panel logo, ports backlight and some white backlit keyboards
 * `--enable-lamp-array` - enables Lamp Array (Windows Dynamic Lighting) support for compatible keyboards
 * `--experimental-gpu-working-mode` - changes GPU Working Mode switch to use experimental method, that is used by LegionZone _(No support is provided when this argument is used)_
+* `--experimental-its-mode` - uses the experimental ITS mode driver on ThinkBook devices _(No support is provided when this argument is used)_
 * `--proxy-url=example.com` - specifies proxy server URL that LLT should use
 * `--proxy-username=some_username` - if applicable, specifies proxy server username to use
 * `--proxy-password=some_password` - if applicable, specifies proxy server password to use
