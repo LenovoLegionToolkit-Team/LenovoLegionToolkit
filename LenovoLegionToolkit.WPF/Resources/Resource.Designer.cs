@@ -9994,6 +9994,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings were saved but not applied to the GPU..
+        /// </summary>
+        public static string Snackbar_SettingsNotApplied_Message {
+            get {
+                return ResourceManager.GetString("Snackbar_SettingsNotApplied_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When mute, all active audio output devices will be muted..
         /// </summary>
         public static string SpeakerAutomationStepControl_Message {

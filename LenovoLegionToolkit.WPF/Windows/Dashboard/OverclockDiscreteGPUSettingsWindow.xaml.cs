@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -22,36 +23,29 @@ public partial class OverclockDiscreteGPUSettingsWindow
         _applyCloseGrid.Visibility = enabled ? Visibility.Visible : Visibility.Collapsed;
         _saveGrid.Visibility = enabled ? Visibility.Collapsed : Visibility.Visible;
 
-        _coreSlider.Minimum = GPUOverclockController.GetMinCoreDeltaMhz();
-        _coreSlider.Maximum = GPUOverclockController.GetMaxCoreDeltaMhz();
-        _coreSlider.Value = info.CoreDeltaMhz;
-        _memorySlider.Minimum = GPUOverclockController.GetMinMemoryDeltaMhz();
-        _memorySlider.Maximum = GPUOverclockController.GetMaxMemoryDeltaMhz();
-        _memorySlider.Value = info.MemoryDeltaMhz;
-        
-        int minCap = GPUOverclockController.GetMinVoltageCapMv();
-        _voltageCapSlider.Minimum = minCap - _voltageCapSlider.TickFrequency;
-        _voltageCapSlider.Maximum = GPUOverclockController.GetMaxVoltageCapMv();
-        if (info.VoltageCapMv >= minCap)
-        {
-            _voltageCapSlider.Value = info.VoltageCapMv;
-        }
-        else
-        {
-            _voltageCapSlider.Value = _voltageCapSlider.Minimum;
-        }
+        var (minCoreDeltaMhz, maxCoreDeltaMhz) = _gpuOverclockController.GetCoreDeltaRangeMhz();
+        _coreSlider.Minimum = minCoreDeltaMhz;
+        _coreSlider.Maximum = maxCoreDeltaMhz;
+        _coreSlider.Value = Math.Clamp(info.CoreDeltaMhz, minCoreDeltaMhz, maxCoreDeltaMhz);
 
-        int minLock = GPUOverclockController.GetMinVoltageLockMv();
-        _voltageLockSlider.Minimum = minLock - _voltageLockSlider.TickFrequency;
-        _voltageLockSlider.Maximum = GPUOverclockController.GetMaxVoltageLockMv();
-        if (info.VoltageLockMv >= minLock)
-        {
-            _voltageLockSlider.Value = info.VoltageLockMv;
-        }
-        else
-        {
-            _voltageLockSlider.Value = _voltageLockSlider.Minimum;
-        }
+        var (minMemoryDeltaMhz, maxMemoryDeltaMhz) = _gpuOverclockController.GetMemoryDeltaRangeMhz();
+        _memorySlider.Minimum = minMemoryDeltaMhz;
+        _memorySlider.Maximum = maxMemoryDeltaMhz;
+        _memorySlider.Value = Math.Clamp(info.MemoryDeltaMhz, minMemoryDeltaMhz, maxMemoryDeltaMhz);
+        
+        var (minVoltageMv, maxVoltageMv) = _gpuOverclockController.GetVoltageRangeMv();
+
+        _voltageCapSlider.Minimum = minVoltageMv - _voltageCapSlider.TickFrequency;
+        _voltageCapSlider.Maximum = maxVoltageMv;
+        _voltageCapSlider.Value = info.VoltageCapMv >= minVoltageMv
+            ? Math.Min(info.VoltageCapMv, maxVoltageMv)
+            : _voltageCapSlider.Minimum;
+
+        _voltageLockSlider.Minimum = minVoltageMv - _voltageLockSlider.TickFrequency;
+        _voltageLockSlider.Maximum = maxVoltageMv;
+        _voltageLockSlider.Value = info.VoltageLockMv >= minVoltageMv
+            ? Math.Min(info.VoltageLockMv, maxVoltageMv)
+            : _voltageLockSlider.Minimum;
 
         _coreLabel.Content = $"{(int)_coreSlider.Value:+0;-0;0} {Resource.MHz}";
         _memoryLabel.Content = $"{(int)_memorySlider.Value:+0;-0;0} {Resource.MHz}";
@@ -110,16 +104,22 @@ public partial class OverclockDiscreteGPUSettingsWindow
     private async void ApplyButton_Click(object sender, RoutedEventArgs e)
     {
         Save();
-        await ApplyAsync();
-        SnackbarHelper.Show(Resource.OverclockDiscreteGPUSettingsWindow_Title, Resource.Snackbar_SettingsApplied_Message, SnackbarType.Success);
+        ShowApplyResult(await ApplyAsync());
     }
 
     private async void ApplyAndCloseButton_Click(object sender, RoutedEventArgs e)
     {
         Save();
-        await ApplyAsync();
-        SnackbarHelper.Show(Resource.OverclockDiscreteGPUSettingsWindow_Title, Resource.Snackbar_SettingsApplied_Message, SnackbarType.Success);
+        ShowApplyResult(await ApplyAsync());
         Close();
+    }
+
+    private static void ShowApplyResult(bool applied)
+    {
+        var message = applied ? Resource.Snackbar_SettingsApplied_Message : Resource.Snackbar_SettingsNotApplied_Message;
+        var type = applied ? SnackbarType.Success : SnackbarType.Warning;
+
+        SnackbarHelper.Show(Resource.OverclockDiscreteGPUSettingsWindow_Title, message, type);
     }
 
     private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -139,5 +139,5 @@ public partial class OverclockDiscreteGPUSettingsWindow
         _gpuOverclockController.SaveState(enabled, info);
     }
 
-    private async Task ApplyAsync() => await _gpuOverclockController.ApplyStateAsync();
+    private async Task<bool> ApplyAsync() => await _gpuOverclockController.ApplyStateAsync();
 }
