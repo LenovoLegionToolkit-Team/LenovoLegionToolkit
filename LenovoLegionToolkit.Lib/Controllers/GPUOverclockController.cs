@@ -314,10 +314,18 @@ public class GPUOverclockController
         if (memoryDeltaMhz != info.MemoryDeltaMhz)
             Log.Instance.Trace($"Clamped memory offset {info.MemoryDeltaMhz} MHz to {memoryDeltaMhz} MHz (driver range {minMemoryDeltaMhz}..{maxMemoryDeltaMhz} MHz).");
 
-        var offsetsApplied = ApplyPerformanceStates(gpu, coreDeltaMhz * 1000, memoryDeltaMhz * 1000);
-        var voltageApplied = ApplyVoltageCurve(gpu, info, maxCoreDeltaMhz * 1000);
+        var (graphicsRange, memoryRange) = GetCurveRanges(gpu);
+        if (graphicsRange is null)
+        {
+            Log.Instance.Trace($"V/F curve is not available, applying offsets through performance states.");
 
-        return offsetsApplied && voltageApplied;
+            var legacyApplied = ApplyPerformanceStates(gpu, coreDeltaMhz * 1000, memoryDeltaMhz * 1000);
+            var voltageRequested = info.VoltageLockMv > 0 || info.VoltageCapMv > 0;
+
+            return legacyApplied && !voltageRequested;
+        }
+
+        return ApplyClockCurve(gpu, info, graphicsRange.Value, memoryRange, coreDeltaMhz * 1000, memoryDeltaMhz * 1000, maxCoreDeltaMhz * 1000);
     }
 
     private static bool ApplyPerformanceStates(PhysicalGPU gpu, int coreDeltaKhz, int memoryDeltaKhz)
@@ -353,37 +361,46 @@ public class GPUOverclockController
         }
     }
 
-    private static bool ApplyVoltageCurve(PhysicalGPU gpu, GPUOverclockInfo info, int maxCoreDeltaKhz)
+    private static bool ApplyClockCurve(PhysicalGPU gpu, GPUOverclockInfo info, PrivateClockBoostRangesV1.ClockBoostRange graphicsRange,
+        PrivateClockBoostRangesV1.ClockBoostRange? memoryRange, int coreDeltaKhz, int memoryDeltaKhz, int maxCoreDeltaKhz)
     {
         var voltageMv = info.VoltageLockMv > 0 ? info.VoltageLockMv : info.VoltageCapMv;
+        var offsetsRequested = coreDeltaKhz != 0 || memoryDeltaKhz != 0;
 
         try
         {
-            var (graphicsRange, memoryRange) = GetCurveRanges(gpu);
-            if (graphicsRange is null)
-            {
-                Log.Instance.Trace($"V/F curve is not available, skipping voltage cap/lock.");
-                return voltageMv <= 0;
-            }
-
-            var firstIndex = graphicsRange.Value.FirstPointIndex;
-            var lastIndex = graphicsRange.Value.LastPointIndex;
-            var minDeltaKhz = graphicsRange.Value.MinimumInkHz;
+            var firstIndex = graphicsRange.FirstPointIndex;
+            var lastIndex = graphicsRange.LastPointIndex;
+            var minDeltaKhz = graphicsRange.MinimumInkHz;
 
             var (points, structVersion) = ReadCurvePoints(gpu);
             var currentDeltas = GPUApi.GetClockBoostTable(gpu.Handle, structVersion).GPUDeltas;
+
+            var coreOffsetApplied = coreDeltaKhz == 0 || ReadSettableDeltaMhz(currentDeltas, graphicsRange) is not null;
+            var memoryOffsetApplied = memoryDeltaKhz == 0 || (memoryRange is not null && ReadSettableDeltaMhz(currentDeltas, memoryRange.Value) is not null);
+            var offsetsApplied = coreOffsetApplied && memoryOffsetApplied;
+
+            if (!coreOffsetApplied)
+                Log.Instance.Trace($"No V/F curve point accepts a core offset on this GPU, core offset not applied.");
+
+            if (memoryDeltaKhz != 0 && memoryRange is null)
+                Log.Instance.Trace($"The driver reported no memory V/F curve range, memory offset not applied.");
+            else if (!memoryOffsetApplied)
+                Log.Instance.Trace($"No V/F curve point accepts a memory offset on this GPU, memory offset not applied.");
 
             var available = Math.Min(points.Length, currentDeltas.Length);
             if (firstIndex >= available || lastIndex >= available)
             {
                 Log.Instance.Trace($"Unexpected V/F curve size: {points.Length} points, {currentDeltas.Length} deltas, graphics range {firstIndex}..{lastIndex}.");
-                return voltageMv <= 0;
+                return !offsetsRequested && voltageMv <= 0;
             }
 
-            var clockMultiplier = structVersion == AdjustedClockCurveStructVersion || graphicsRange.Value.MaximumInkHz != 2 * maxCoreDeltaKhz ? 1 : 2;
+            var clockMultiplier = structVersion == AdjustedClockCurveStructVersion || graphicsRange.MaximumInkHz != 2 * maxCoreDeltaKhz ? 1 : 2;
+            var coreOffsetKhz = coreDeltaKhz * clockMultiplier;
 
             var anchorIndex = voltageMv > 0 ? FindCurvePoint(points, firstIndex, lastIndex, voltageMv) : -1;
-            var anchorFrequencyKhz = anchorIndex >= 0 ? GetStockFrequencyKhz(points, currentDeltas, anchorIndex) : 0;
+            var anchorStockKhz = anchorIndex >= 0 ? GetStockFrequencyKhz(points, currentDeltas, anchorIndex) : 0;
+            var anchorTargetKhz = anchorStockKhz + coreOffsetKhz;
 
             if (voltageMv > 0 && anchorIndex < 0)
                 Log.Instance.Trace($"No V/F curve point at or above {voltageMv} mV in the {firstIndex}..{lastIndex} range, voltage cap/lock not applied.");
@@ -398,20 +415,20 @@ public class GPUOverclockController
 
                 if (memoryRange is not null && i >= memoryRange.Value.FirstPointIndex && i <= memoryRange.Value.LastPointIndex)
                 {
-                    deltaKhz = 0;
+                    deltaKhz = memoryDeltaKhz;
                 }
                 else if (i >= firstIndex && i <= lastIndex)
                 {
-                    deltaKhz = 0;
+                    deltaKhz = coreOffsetKhz;
 
                     if (anchorIndex >= 0)
                     {
                         var stockFrequencyKhz = GetStockFrequencyKhz(points, currentDeltas, i);
-                        if (stockFrequencyKhz > anchorFrequencyKhz)
+                        if (stockFrequencyKhz > anchorStockKhz)
                         {
-                            deltaKhz = Math.Max(anchorFrequencyKhz - stockFrequencyKhz, minDeltaKhz);
+                            deltaKhz = Math.Max(anchorTargetKhz - stockFrequencyKhz, minDeltaKhz);
                             flattenedCount++;
-                            flattenDepthKhz = Math.Min(flattenDepthKhz, deltaKhz);
+                            flattenDepthKhz = Math.Min(flattenDepthKhz, deltaKhz - coreOffsetKhz);
                         }
                     }
                 }
@@ -422,24 +439,24 @@ public class GPUOverclockController
             GPUApi.SetClockBoostTable(gpu.Handle, new PrivateClockBoostTableV1(deltas), structVersion);
 
             if (anchorIndex >= 0)
-                Log.Instance.Trace($"Flattened V/F curve at point #{anchorIndex} ({points[anchorIndex].VoltageInMilliV} mV, {anchorFrequencyKhz / (1000 * clockMultiplier)} MHz): {flattenedCount} points, depth {flattenDepthKhz / (1000 * clockMultiplier)} MHz.");
+                Log.Instance.Trace($"Flattened V/F curve at point #{anchorIndex} ({points[anchorIndex].VoltageInMilliV} mV, {anchorTargetKhz / (1000 * clockMultiplier)} MHz): {flattenedCount} points, depth {flattenDepthKhz / (1000 * clockMultiplier)} MHz.");
 
             var lockRequested = info.VoltageLockMv > 0 && anchorIndex >= 0;
             var lockApplied = SetVoltageLock(gpu.Handle, lockRequested ? points[anchorIndex].VoltageInMicroV : 0, lockRequested);
 
             if (voltageMv <= 0)
-                return true;
+                return offsetsApplied;
 
             if (anchorIndex < 0)
                 return false;
 
-            return !lockRequested || lockApplied;
+            return offsetsApplied && (!lockRequested || lockApplied);
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Failed to apply the voltage cap/lock.", ex);
 
-            return voltageMv <= 0;
+            return !offsetsRequested && voltageMv <= 0;
         }
     }
 
@@ -485,6 +502,19 @@ public class GPUOverclockController
     private static int GetStockFrequencyKhz(PrivateClientClkVFPointsStatusV1.VFPoint[] points, PrivateClockBoostTableV1.GPUDelta[] deltas, int index)
         => (int)points[index].FrequencyInkHz - deltas[index].FrequencyDeltaInkHz;
 
+    private static int? ReadSettableDeltaMhz(PrivateClockBoostTableV1.GPUDelta[] deltas, PrivateClockBoostRangesV1.ClockBoostRange range)
+    {
+        var lastIndex = Math.Min(range.LastPointIndex, deltas.Length - 1);
+
+        for (var i = range.FirstPointIndex; i <= lastIndex; i++)
+        {
+            if (deltas[i].PointMode == 0)
+                return deltas[i].FrequencyDeltaInkHz / 1000;
+        }
+
+        return null;
+    }
+
     private static bool SetVoltageLock(PhysicalGPUHandle gpuHandle, uint voltageInMicroV, bool lockVoltage)
     {
         try
@@ -507,13 +537,37 @@ public class GPUOverclockController
 
     private static GPUOverclockInfo GetOverclockInfo(PhysicalGPU gpu)
     {
-        var states = GPUApi.GetPerformanceStates20(gpu.Handle);
-        var p0Clocks = states.Clocks.TryGetValue(PerformanceStateId.P0_3DPerformance, out var clocks)
-            ? clocks
-            : Array.Empty<IPerformanceStates20ClockEntry>();
+        var core = 0;
+        var memory = 0;
 
-        var memory = p0Clocks.FirstOrDefault(c => c.DomainId == PublicClockDomain.Memory)?.FrequencyDeltaInkHz.DeltaValue / 1000 ?? 0;
-        var core = p0Clocks.FirstOrDefault(c => c.DomainId == PublicClockDomain.Graphics)?.FrequencyDeltaInkHz.DeltaValue / 1000 ?? 0;
+        try
+        {
+            var (graphicsRange, memoryRange) = GetCurveRanges(gpu);
+            if (graphicsRange is not null)
+            {
+                var (_, structVersion) = ReadCurvePoints(gpu);
+                var deltas = GPUApi.GetClockBoostTable(gpu.Handle, structVersion).GPUDeltas;
+
+                core = ReadSettableDeltaMhz(deltas, graphicsRange.Value) ?? 0;
+
+                if (memoryRange is not null)
+                    memory = ReadSettableDeltaMhz(deltas, memoryRange.Value) ?? 0;
+            }
+            else
+            {
+                var states = GPUApi.GetPerformanceStates20(gpu.Handle);
+                var p0Clocks = states.Clocks.TryGetValue(PerformanceStateId.P0_3DPerformance, out var clocks)
+                    ? clocks
+                    : Array.Empty<IPerformanceStates20ClockEntry>();
+
+                memory = p0Clocks.FirstOrDefault(c => c.DomainId == PublicClockDomain.Memory)?.FrequencyDeltaInkHz.DeltaValue / 1000 ?? 0;
+                core = p0Clocks.FirstOrDefault(c => c.DomainId == PublicClockDomain.Graphics)?.FrequencyDeltaInkHz.DeltaValue / 1000 ?? 0;
+            }
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to read the active offsets.", ex);
+        }
 
         int voltageLock = 0;
         try
