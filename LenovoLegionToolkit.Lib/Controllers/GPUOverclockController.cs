@@ -217,13 +217,14 @@ public class GPUOverclockController
     private const int FallbackMinVoltageMv = 700;
     private const int FallbackMaxVoltageMv = 1200;
 
-    public (int Min, int Max) GetCoreDeltaRangeMhz()
-        => GetClockDeltaRangesMhz().Core;
+    public ((int Min, int Max) Core, (int Min, int Max) Memory, (int Min, int Max) Voltage) GetRanges()
+    {
+        var (core, memory) = GetClockDeltaRangesMhz();
 
-    public (int Min, int Max) GetMemoryDeltaRangeMhz()
-        => GetClockDeltaRangesMhz().Memory;
+        return (core, memory, GetVoltageRangeMv());
+    }
 
-    public (int Min, int Max) GetVoltageRangeMv()
+    private (int Min, int Max) GetVoltageRangeMv()
     {
         try
         {

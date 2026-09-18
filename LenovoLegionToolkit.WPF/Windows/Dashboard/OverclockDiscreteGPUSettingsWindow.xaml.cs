@@ -22,18 +22,23 @@ public partial class OverclockDiscreteGPUSettingsWindow
 
         _applyCloseGrid.Visibility = enabled ? Visibility.Visible : Visibility.Collapsed;
         _saveGrid.Visibility = enabled ? Visibility.Collapsed : Visibility.Visible;
+        _contentGrid.IsEnabled = false;
 
-        var (minCoreDeltaMhz, maxCoreDeltaMhz) = _gpuOverclockController.GetCoreDeltaRangeMhz();
+        Loaded += async (_, _) => await PopulateAsync(info);
+    }
+
+    private async Task PopulateAsync(GPUOverclockInfo info)
+    {
+        var ((minCoreDeltaMhz, maxCoreDeltaMhz), (minMemoryDeltaMhz, maxMemoryDeltaMhz), (minVoltageMv, maxVoltageMv)) =
+            await Task.Run(_gpuOverclockController.GetRanges);
+
         _coreSlider.Minimum = minCoreDeltaMhz;
         _coreSlider.Maximum = maxCoreDeltaMhz;
         _coreSlider.Value = Math.Clamp(info.CoreDeltaMhz, minCoreDeltaMhz, maxCoreDeltaMhz);
 
-        var (minMemoryDeltaMhz, maxMemoryDeltaMhz) = _gpuOverclockController.GetMemoryDeltaRangeMhz();
         _memorySlider.Minimum = minMemoryDeltaMhz;
         _memorySlider.Maximum = maxMemoryDeltaMhz;
         _memorySlider.Value = Math.Clamp(info.MemoryDeltaMhz, minMemoryDeltaMhz, maxMemoryDeltaMhz);
-        
-        var (minVoltageMv, maxVoltageMv) = _gpuOverclockController.GetVoltageRangeMv();
 
         _voltageCapSlider.Minimum = minVoltageMv - _voltageCapSlider.TickFrequency;
         _voltageCapSlider.Maximum = maxVoltageMv;
@@ -51,6 +56,8 @@ public partial class OverclockDiscreteGPUSettingsWindow
         _memoryLabel.Content = $"{(int)_memorySlider.Value:+0;-0;0} {Resource.MHz}";
         _voltageCapLabel.Content = _voltageCapSlider.Value <= _voltageCapSlider.Minimum ? Resource.Off : $"{(int)_voltageCapSlider.Value} {Resource.mV}";
         _voltageLockLabel.Content = _voltageLockSlider.Value <= _voltageLockSlider.Minimum ? Resource.Off : $"{(int)_voltageLockSlider.Value} {Resource.mV}";
+
+        _contentGrid.IsEnabled = true;
     }
 
     private void CoreSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

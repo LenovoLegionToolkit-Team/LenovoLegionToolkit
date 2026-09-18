@@ -49,7 +49,10 @@
                 Text="{x:Static resources:Resource.OverclockDiscreteGPUSettingsWindow_Title}" />
         </Grid>
 
-        <Grid Grid.Row="1" Margin="16,16,16,16">
+        <Grid
+            x:Name="_contentGrid"
+            Grid.Row="1"
+            Margin="16,16,16,16">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
