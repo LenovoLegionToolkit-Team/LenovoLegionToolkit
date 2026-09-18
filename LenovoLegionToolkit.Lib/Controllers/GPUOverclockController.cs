@@ -586,12 +586,15 @@ public class GPUOverclockController
         int voltageCap = 0;
         try
         {
+            var (graphicsRange, _) = GetCurveRanges(gpu);
             var (points, structVersion) = ReadCurvePoints(gpu);
             var deltas = GPUApi.GetClockBoostTable(gpu.Handle, structVersion).GPUDeltas;
-            if (deltas is not null && deltas.Length > 1)
-            {
 
-                for (var i = 1; i < Math.Min(points.Length, deltas.Length); i++)
+            if (graphicsRange is not null && deltas is not null)
+            {
+                var lastIndex = Math.Min(graphicsRange.Value.LastPointIndex, Math.Min(points.Length, deltas.Length) - 1);
+
+                for (var i = graphicsRange.Value.FirstPointIndex + 1; i <= lastIndex; i++)
                 {
                     if (deltas[i].FrequencyDeltaInkHz < deltas[i - 1].FrequencyDeltaInkHz && points[i - 1].VoltageInMicroV > 0)
                     {
