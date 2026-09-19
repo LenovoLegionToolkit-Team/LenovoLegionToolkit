@@ -73,6 +73,18 @@
 
                 <custom:CardControl Margin="0,0,0,8">
                     <custom:CardControl.Header>
+                        <controls:CardHeaderControl Title="{x:Static resources:Resource.SensorSettingsPage_CPU_Temperature_Source_Title}" Subtitle="{x:Static resources:Resource.SensorSettingsPage_CPU_Temperature_Source_Message}" />
+                    </custom:CardControl.Header>
+                    <ComboBox x:Name="_cpuTemperatureSourceSelector" MinWidth="140">
+                        <ComboBoxItem Content="{x:Static resources:Resource.SensorSettingsPage_TemperatureSource_Auto}" />
+                        <ComboBoxItem Content="{x:Static resources:Resource.SensorSettingsPage_TemperatureSource_Average}" />
+                        <ComboBoxItem Content="{x:Static resources:Resource.SensorSettingsPage_TemperatureSource_Package}" />
+                        <ComboBoxItem Content="{x:Static resources:Resource.SensorSettingsPage_TemperatureSource_CoreMax}" />
+                    </ComboBox>
+                </custom:CardControl>
+
+                <custom:CardControl Margin="0,0,0,8">
+                    <custom:CardControl.Header>
                         <controls:CardHeaderControl Title="{x:Static resources:Resource.SensorSettingsPage_Voltage_Title}" Subtitle="{x:Static resources:Resource.SensorSettingsPage_Voltage_Message}" />
                     </custom:CardControl.Header>
                     <StackPanel Orientation="Horizontal">

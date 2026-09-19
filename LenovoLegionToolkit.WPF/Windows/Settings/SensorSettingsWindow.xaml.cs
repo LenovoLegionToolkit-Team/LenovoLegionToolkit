@@ -35,6 +35,8 @@ public partial class SensorSettingsWindow
         _voltageSelector.SelectedIndex = (int)_sensorsSettings.Store.CpuVoltageMode;
         UpdateCoreSelectorVisibility();
 
+        _cpuTemperatureSourceSelector.SelectedIndex = (int)_sensorsSettings.Store.CpuTemperatureSource;
+
         if (Displays.HasMultipleGpus())
         {
             _gpuSelectionCard.Visibility = Visibility.Visible;
@@ -67,11 +69,13 @@ public partial class SensorSettingsWindow
         _sensorsSettings.Store.DisplayMemoryInGigabytes = false;
         _sensorsSettings.Store.CpuVoltageMode = CpuVoltageMode.Average;
         _sensorsSettings.Store.CpuVoltageCoreIndex = 0;
+        _sensorsSettings.Store.CpuTemperatureSource = CpuTemperatureSource.Auto;
         _appSettings.Store.TemperatureUnit = TemperatureUnit.C;
         _cpuFrequencySelector.SelectedIndex = 0;
         _voltageSelector.SelectedIndex = 0;
         _voltageCoreSelector.SelectedIndex = 0;
         UpdateCoreSelectorVisibility();
+        _cpuTemperatureSourceSelector.SelectedIndex = 0;
         _gpuSelector.SelectedIndex = 0;
         _memoryDisplayModeSelector.SelectedIndex = 0;
         _temperatureUnitSelector.SelectedIndex = 0;
@@ -91,6 +95,7 @@ public partial class SensorSettingsWindow
         _sensorsSettings.Store.ShowCpuAverageFrequency = _cpuFrequencySelector.SelectedIndex == 1;
         _sensorsSettings.Store.CpuVoltageMode = (CpuVoltageMode)_voltageSelector.SelectedIndex;
         _sensorsSettings.Store.CpuVoltageCoreIndex = _voltageCoreSelector.SelectedIndex;
+        _sensorsSettings.Store.CpuTemperatureSource = (CpuTemperatureSource)_cpuTemperatureSourceSelector.SelectedIndex;
         if (Displays.HasMultipleGpus())
         {
             _sensorsSettings.Store.SelectedGpuIsIgpu = _gpuSelector.SelectedIndex == 1;

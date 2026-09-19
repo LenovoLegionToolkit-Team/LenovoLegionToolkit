@@ -32,6 +32,11 @@ public class CpuSensorProvider : ISensorProvider
     public CpuVoltageMode VoltageMode { get; set; }
     public int VoltageCoreIndex { get; set; }
 
+    private ISensor? _averageTemperatureSensor;
+    private ISensor? _packageTemperatureSensor;
+    private List<ISensor> _coreTemperatureSensors = [];
+    public CpuTemperatureSource TemperatureSource { get; set; }
+
     public int AvailableCoreCount => _coreVoltageSensors.Count;
 
     public HardwareUpdateScope Scope => HardwareUpdateScope.Cpu;
@@ -77,6 +82,14 @@ public class CpuSensorProvider : ISensorProvider
         _sensors[SensorItem.CpuTemperature] ??= cpu.Sensors.FindByKeyword(SensorType.Temperature, TempFallback)!;
         _sensors[SensorItem.CpuPower]       ??= cpu.Sensors.FindPowerSensor(PowerFallback)!;
         _sensors[SensorItem.CpuUtilization] ??= cpu.Sensors.FirstOrDefault(s => s.SensorType == SensorType.Load)!;
+
+        _averageTemperatureSensor = null;
+        _packageTemperatureSensor = null;
+        _coreTemperatureSensors = [];
+        var temperatureSensors = cpu.Sensors.Where(s => s.SensorType == SensorType.Temperature).ToList();
+        _averageTemperatureSensor = temperatureSensors.FirstOrDefault(s => s.Name.Contains("Average", StringComparison.OrdinalIgnoreCase));
+        _packageTemperatureSensor = temperatureSensors.FirstOrDefault(s => s.Name.Contains("Package", StringComparison.OrdinalIgnoreCase));
+        _coreTemperatureSensors = temperatureSensors.Where(s => s.Name.Contains("Core", StringComparison.OrdinalIgnoreCase)).ToList();
 
         _avgVoltageSensor = null;
         _coreVoltageSensors = [];
@@ -130,6 +143,13 @@ public class CpuSensorProvider : ISensorProvider
             }
             else if (slot.Item == SensorItem.CpuTemperature)
             {
+                val = TemperatureSource switch
+                {
+                    CpuTemperatureSource.Average => _averageTemperatureSensor?.Value ?? val,
+                    CpuTemperatureSource.Package => _packageTemperatureSensor?.Value ?? val,
+                    CpuTemperatureSource.CoreMax when _coreTemperatureSensors.Count > 0 => _coreTemperatureSensors.Max(s => s.Value) ?? val,
+                    _ => val,
+                };
                 val = val > MinTemp && val < MaxTemp ? val : -1;
             }
 
@@ -164,6 +184,9 @@ public class CpuSensorProvider : ISensorProvider
         _powerMonitor.Reset();
         _avgVoltageSensor = null;
         _coreVoltageSensors = [];
+        _averageTemperatureSensor = null;
+        _packageTemperatureSensor = null;
+        _coreTemperatureSensors = [];
         IsAvailable = false; IsHybrid = false;
         Values = new Dictionary<SensorItem, float>();
     }

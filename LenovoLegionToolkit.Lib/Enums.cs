@@ -121,6 +121,14 @@ public enum CpuVoltageMode
     Core,
 }
 
+public enum CpuTemperatureSource
+{
+    Auto,
+    Average,
+    Package,
+    CoreMax,
+}
+
 public enum CurveShapeLevel
 {
     Min,

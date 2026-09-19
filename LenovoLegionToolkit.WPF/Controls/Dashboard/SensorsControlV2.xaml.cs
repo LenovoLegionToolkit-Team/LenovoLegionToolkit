@@ -200,6 +200,7 @@ public partial class SensorsControlV2
         {
             _sensorsGroupControllers.SelectedGpuIsIgpu = _hardwareSensorSettings.Store.SelectedGpuIsIgpu;
             _sensorsGroupControllers.ShowAverageCpuFrequency = _hardwareSensorSettings.Store.ShowCpuAverageFrequency;
+            _sensorsGroupControllers.CpuTemperatureSource = _hardwareSensorSettings.Store.CpuTemperatureSource;
 
             _activeSensorItems.Clear();
             if (_sensorsControlSettings.Store.VisibleItems != null)

@@ -12,6 +12,7 @@ public class HardwareSensorSettings() : AbstractSettings<HardwareSensorSettings.
         public bool DisplayMemoryInGigabytes { get; set; }
         public CpuVoltageMode CpuVoltageMode { get; set; }
         public int CpuVoltageCoreIndex { get; set; }
+        public CpuTemperatureSource CpuTemperatureSource { get; set; }
     }
 
     public new void Reset()
