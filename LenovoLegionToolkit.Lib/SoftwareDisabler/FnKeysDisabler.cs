@@ -27,23 +27,26 @@ public class FnKeysDisabler : AbstractSoftwareDisabler
     {
         var result = base.RunningProcesses().ToList();
 
-        try
+        foreach (var process in Process.GetProcessesByName("utility"))
         {
-            foreach (var process in Process.GetProcessesByName("utility"))
+            try
             {
-                var description = process.MainModule?.FileVersionInfo.FileDescription;
-                if (description is null)
+                using (process)
                 {
-                    continue;
-                }
+                    var description = process.MainModule?.FileVersionInfo.FileDescription;
+                    if (description is null)
+                    {
+                        continue;
+                    }
 
-                if (description.Equals("Lenovo Hotkeys", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    result.Add(process.ProcessName);
+                    if (description.Equals("Lenovo Hotkeys", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        result.Add(process.ProcessName);
+                    }
                 }
             }
+            catch {  /* Ignore */ }
         }
-        catch {  /* Ignore */ }
 
         return result;
     }
@@ -52,26 +55,29 @@ public class FnKeysDisabler : AbstractSoftwareDisabler
     {
         await base.KillProcessesAsync().ConfigureAwait(false);
 
-        try
+        foreach (var process in Process.GetProcessesByName("utility"))
         {
-            foreach (var process in Process.GetProcessesByName("utility"))
+            try
             {
-                var description = process.MainModule?.FileVersionInfo.FileDescription;
-                if (description is null)
+                using (process)
                 {
-                    continue;
-                }
+                    var description = process.MainModule?.FileVersionInfo.FileDescription;
+                    if (description is null)
+                    {
+                        continue;
+                    }
 
-                if (!description.Equals("Lenovo Hotkeys", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    continue;
-                }
+                    if (!description.Equals("Lenovo Hotkeys", StringComparison.InvariantCultureIgnoreCase))
+                    {
+                        continue;
+                    }
 
-                process.Kill();
-                await process.WaitForExitAsync().ConfigureAwait(false);
+                    process.Kill();
+                    await process.WaitForExitAsync().ConfigureAwait(false);
+                }
             }
+            catch {  /* Ignore */ }
         }
-        catch {  /* Ignore */ }
     }
 
     private static void SetUwpStartup(string appPattern, string subKeyName, bool enabled)
