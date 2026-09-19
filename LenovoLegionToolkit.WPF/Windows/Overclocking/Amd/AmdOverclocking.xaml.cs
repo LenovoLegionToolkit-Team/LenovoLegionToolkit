@@ -371,7 +371,7 @@ public partial class AmdOverclocking : UiWindow
             }
         }
         _fMaxNumberBox.Value = 0;
-        _fMaxToggle.IsChecked = true;
+        _fMaxToggle.IsChecked = false;
     }
 
     private void OnGlobalDecrementClick(object sender, RoutedEventArgs e)
