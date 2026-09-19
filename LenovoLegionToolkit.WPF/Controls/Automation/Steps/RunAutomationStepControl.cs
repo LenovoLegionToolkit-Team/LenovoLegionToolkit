@@ -113,6 +113,11 @@ public class RunAutomationStepControl : AbstractAutomationStepControl<RunAutomat
             if (_checkBoxProcessWaitUntilFinished.IsChecked != AutomationStep.WaitUntilFinished)
                 RaiseChanged();
         };
+        _checkBoxProcessCheckInstance.Checked += (_, _) =>
+        {
+            if (_checkBoxProcessCheckInstance.IsChecked != AutomationStep.CheckInstance)
+                RaiseChanged();
+        };
         _checkBoxProcessCheckInstance.Unchecked += (_, _) =>
         {
             if (_checkBoxProcessCheckInstance.IsChecked != AutomationStep.CheckInstance)
@@ -136,6 +141,7 @@ public class RunAutomationStepControl : AbstractAutomationStepControl<RunAutomat
         _scriptArguments.Text = AutomationStep.ScriptArguments ?? string.Empty;
         _checkBoxProcessRunSilently.IsChecked = AutomationStep.RunSilently;
         _checkBoxProcessWaitUntilFinished.IsChecked = AutomationStep.WaitUntilFinished;
+        _checkBoxProcessCheckInstance.IsChecked = AutomationStep.CheckInstance;
         return Task.CompletedTask;
     }
 }

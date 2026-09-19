@@ -39,7 +39,11 @@ public class QuickActionAutomationStepControl : AbstractAutomationStepControl<Qu
 
     protected override UIElement GetCustomControl()
     {
-        _comboBox.SelectionChanged += (_, _) => { RaiseChanged(); };
+        _comboBox.SelectionChanged += (_, _) =>
+        {
+            if (_comboBox.TryGetSelectedItem(out AutomationPipeline? pipeline) && pipeline?.Id != AutomationStep.PipelineId)
+                RaiseChanged();
+        };
         _stackPanel.Children.Add(_comboBox);
         return _stackPanel;
     }
