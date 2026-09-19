@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -40,4 +40,12 @@ public class VantageDisabler : AbstractSoftwareDisabler
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Lenovo", "Vantage")
     ];
 
+    protected override IEnumerable<string> OwnershipRoots =>
+    [
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Lenovo", "VantageService"),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData), "Lenovo", "Vantage"),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "Lenovo", "ImController")
+    ];
+
+    protected override IEnumerable<string> OwnershipPathMarkers => ["Vantage", "ImController"];
 }

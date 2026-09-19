@@ -14,16 +14,13 @@ public class FnKeysDisabler : AbstractSoftwareDisabler
     protected override IEnumerable<string> ServiceNames => ["LenovoFnAndFunctionKeys"];
     protected override IEnumerable<string> ProcessNames => ["LenovoUtilityUI", "LenovoUtilityService", "LenovoSmartKey"];
 
-    public override async Task EnableAsync()
-    {
-        await base.EnableAsync().ConfigureAwait(false);
-        SetUwpStartup("LenovoUtility", "LenovoUtilityID", true);
-    }
+    protected override IEnumerable<string> OwnershipPathMarkers => ["LenovoUtilityService", "LenovoUtilityUI", "LenovoSmartKey", "LenovoFnAndFunctionKeys"];
 
-    public override async Task DisableAsync()
+    protected override async Task ApplyStateAsync(bool enabled)
     {
-        await base.DisableAsync().ConfigureAwait(false);
-        SetUwpStartup("LenovoUtility", "LenovoUtilityID", false);
+        await base.ApplyStateAsync(enabled).ConfigureAwait(false);
+
+        SetUwpStartup("LenovoUtility", "LenovoUtilityID", enabled);
     }
 
     protected override IEnumerable<string> RunningProcesses()
@@ -36,10 +33,14 @@ public class FnKeysDisabler : AbstractSoftwareDisabler
             {
                 var description = process.MainModule?.FileVersionInfo.FileDescription;
                 if (description is null)
+                {
                     continue;
+                }
 
                 if (description.Equals("Lenovo Hotkeys", StringComparison.InvariantCultureIgnoreCase))
+                {
                     result.Add(process.ProcessName);
+                }
             }
         }
         catch {  /* Ignore */ }
@@ -57,10 +58,14 @@ public class FnKeysDisabler : AbstractSoftwareDisabler
             {
                 var description = process.MainModule?.FileVersionInfo.FileDescription;
                 if (description is null)
+                {
                     continue;
+                }
 
                 if (!description.Equals("Lenovo Hotkeys", StringComparison.InvariantCultureIgnoreCase))
+                {
                     continue;
+                }
 
                 process.Kill();
                 await process.WaitForExitAsync().ConfigureAwait(false);
@@ -77,7 +82,9 @@ public class FnKeysDisabler : AbstractSoftwareDisabler
 
         var startupKey = Registry.GetSubKeys(hive, subKey).FirstOrDefault(s => s.Contains(appPattern, StringComparison.CurrentCultureIgnoreCase));
         if (startupKey is null)
+        {
             return;
+        }
 
         startupKey = Path.Combine(startupKey, subKeyName);
 

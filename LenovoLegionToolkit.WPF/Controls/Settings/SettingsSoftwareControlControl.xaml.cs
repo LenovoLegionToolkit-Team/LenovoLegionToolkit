@@ -7,6 +7,7 @@ using LenovoLegionToolkit.Lib.SoftwareDisabler;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
+using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Controls.Settings;
 
@@ -34,24 +35,24 @@ public partial class SettingsSoftwareControlControl
 
         var vantageStatus = await _vantageDisabler.GetStatusAsync();
         _vantageCard.Visibility = vantageStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
-        _vantageToggle.IsChecked = vantageStatus == SoftwareStatus.Disabled;
+        _vantageToggle.IsChecked = GetToggleState(vantageStatus, _vantageDisabler);
 
         var legionSpaceStatus = await _legionSpaceDisabler.GetStatusAsync();
         _legionSpaceCard.Visibility = legionSpaceStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
-        _legionSpaceToggle.IsChecked = legionSpaceStatus == SoftwareStatus.Disabled;
+        _legionSpaceToggle.IsChecked = GetToggleState(legionSpaceStatus, _legionSpaceDisabler);
 
         var legionZoneStatus = await _legionZoneDisabler.GetStatusAsync();
         _legionZoneCard.Visibility = legionZoneStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
-        _legionZoneToggle.IsChecked = legionZoneStatus == SoftwareStatus.Disabled;
+        _legionZoneToggle.IsChecked = GetToggleState(legionZoneStatus, _legionZoneDisabler);
 
 
         var smartEngineStatus = await _smartEngineDisabler.GetStatusAsync();
         _smartEngineCard.Visibility = smartEngineStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
-        _smartEngineToggle.IsChecked = smartEngineStatus == SoftwareStatus.Disabled;
+        _smartEngineToggle.IsChecked = GetToggleState(smartEngineStatus, _smartEngineDisabler);
 
         var fnKeysStatus = await _fnKeysDisabler.GetStatusAsync();
         _fnKeysCard.Visibility = fnKeysStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
-        _fnKeysToggle.IsChecked = fnKeysStatus == SoftwareStatus.Disabled;
+        _fnKeysToggle.IsChecked = GetToggleState(fnKeysStatus, _fnKeysDisabler);
 
         _vantageToggle.Visibility = Visibility.Visible;
         _legionSpaceToggle.Visibility = Visibility.Visible;
@@ -64,10 +65,21 @@ public partial class SettingsSoftwareControlControl
         FnKeysStatusChanged?.Invoke(this, fnKeysStatus);
     }
 
+    private static bool GetToggleState(SoftwareStatus status, AbstractSoftwareDisabler disabler) =>
+        SoftwareDisablerStateStore.ResolveToggleState(disabler.GetType().Name, status);
+
+    private static async Task SyncToggleAsync(ToggleSwitch toggle, AbstractSoftwareDisabler disabler)
+    {
+        toggle.IsChecked = GetToggleState(await disabler.GetStatusAsync(), disabler);
+        toggle.IsEnabled = true;
+    }
+
     private async void VantageToggle_Click(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing)
+        {
             return;
+        }
 
         _vantageToggle.IsEnabled = false;
 
@@ -84,10 +96,12 @@ public partial class SettingsSoftwareControlControl
             {
                 await _vantageDisabler.DisableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _vantageToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change Vantage.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableVantage_Error_Title, Resource.SettingsPage_DisableVantage_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_vantageToggle, _vantageDisabler);
                 return;
             }
 
@@ -151,7 +165,9 @@ public partial class SettingsSoftwareControlControl
                     Log.Instance.Trace($"Making sure Aurora is stopped...");
 
                     if (await spectrumKeyboardBacklightController.IsSupportedAsync())
+                    {
                         await spectrumKeyboardBacklightController.StopAuroraIfNeededAsync();
+                    }
                 }
             }
             catch (Exception ex)
@@ -163,21 +179,25 @@ public partial class SettingsSoftwareControlControl
             {
                 await _vantageDisabler.EnableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _vantageToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change Vantage.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableVantage_Error_Title, Resource.SettingsPage_EnableVantage_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_vantageToggle, _vantageDisabler);
                 return;
             }
         }
 
-        _vantageToggle.IsEnabled = true;
+        await SyncToggleAsync(_vantageToggle, _vantageDisabler);
     }
 
     private async void LegionZoneToggle_Click(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing)
+        {
             return;
+        }
 
         _legionZoneToggle.IsEnabled = false;
 
@@ -194,10 +214,12 @@ public partial class SettingsSoftwareControlControl
             {
                 await _legionZoneDisabler.DisableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _legionZoneToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change LegionZone.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLegionZone_Error_Title, Resource.SettingsPage_DisableLegionZone_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_legionZoneToggle, _legionZoneDisabler);
                 return;
             }
         }
@@ -207,21 +229,25 @@ public partial class SettingsSoftwareControlControl
             {
                 await _legionZoneDisabler.EnableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _legionZoneToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change LegionZone.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLegionZone_Error_Title, Resource.SettingsPage_EnableLegionZone_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_legionZoneToggle, _legionZoneDisabler);
                 return;
             }
         }
 
-        _legionZoneToggle.IsEnabled = true;
+        await SyncToggleAsync(_legionZoneToggle, _legionZoneDisabler);
     }
 
     private async void LegionSpaceToggle_Click(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing)
+        {
             return;
+        }
 
         _legionSpaceToggle.IsEnabled = false;
 
@@ -238,10 +264,12 @@ public partial class SettingsSoftwareControlControl
             {
                 await _legionSpaceDisabler.DisableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _legionSpaceToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change LegionSpace.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLegionSpace_Error_Title, Resource.SettingsPage_DisableLegionSpace_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_legionSpaceToggle, _legionSpaceDisabler);
                 return;
             }
         }
@@ -251,21 +279,25 @@ public partial class SettingsSoftwareControlControl
             {
                 await _legionSpaceDisabler.EnableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _legionSpaceToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change LegionSpace.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLegionSpace_Error_Title, Resource.SettingsPage_EnableLegionSpace_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_legionSpaceToggle, _legionSpaceDisabler);
                 return;
             }
         }
 
-        _legionSpaceToggle.IsEnabled = true;
+        await SyncToggleAsync(_legionSpaceToggle, _legionSpaceDisabler);
     }
 
     private async void SmartEngineToggle_Click(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing)
+        {
             return;
+        }
 
         _smartEngineToggle.IsEnabled = false;
 
@@ -282,10 +314,12 @@ public partial class SettingsSoftwareControlControl
             {
                 await _smartEngineDisabler.DisableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _smartEngineToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change SmartEngine.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableSmartEngine_Error_Title, Resource.SettingsPage_DisableSmartEngine_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_smartEngineToggle, _smartEngineDisabler);
                 return;
             }
         }
@@ -295,21 +329,25 @@ public partial class SettingsSoftwareControlControl
             {
                 await _smartEngineDisabler.EnableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _smartEngineToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change SmartEngine.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableSmartEngine_Error_Title, Resource.SettingsPage_EnableSmartEngine_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_smartEngineToggle, _smartEngineDisabler);
                 return;
             }
         }
 
-        _smartEngineToggle.IsEnabled = true;
+        await SyncToggleAsync(_smartEngineToggle, _smartEngineDisabler);
     }
 
     private async void FnKeysToggle_Click(object sender, RoutedEventArgs e)
     {
         if (_isRefreshing)
+        {
             return;
+        }
 
         _fnKeysToggle.IsEnabled = false;
 
@@ -326,10 +364,12 @@ public partial class SettingsSoftwareControlControl
             {
                 await _fnKeysDisabler.DisableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _fnKeysToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change FnKeys.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLenovoHotkeys_Error_Title, Resource.SettingsPage_DisableLenovoHotkeys_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_fnKeysToggle, _fnKeysDisabler);
                 return;
             }
         }
@@ -339,15 +379,17 @@ public partial class SettingsSoftwareControlControl
             {
                 await _fnKeysDisabler.EnableAsync();
             }
-            catch
+            catch (Exception ex)
             {
-                _fnKeysToggle.IsEnabled = true;
+                Log.Instance.Trace($"Couldn't change FnKeys.", ex);
+
                 await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLenovoHotkeys_Error_Title, Resource.SettingsPage_EnableLenovoHotkeys_Error_Message, SnackbarType.Error);
+                await SyncToggleAsync(_fnKeysToggle, _fnKeysDisabler);
                 return;
             }
         }
 
-        _fnKeysToggle.IsEnabled = true;
+        await SyncToggleAsync(_fnKeysToggle, _fnKeysDisabler);
 
         var fnKeysStatus = state.Value ? SoftwareStatus.Disabled : SoftwareStatus.Enabled;
         FnKeysStatusChanged?.Invoke(this, fnKeysStatus);

@@ -1,4 +1,6 @@
+﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace LenovoLegionToolkit.Lib.SoftwareDisabler;
 
@@ -33,4 +35,12 @@ public class SmartEngineDisabler : AbstractSoftwareDisabler
         "seworker",
         "SmartEngineHost"
     ];
+
+    protected override IEnumerable<string> OwnershipRoots =>
+    [
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Lenovo", "SmartEngine"),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Lenovo", "SmartEngine")
+    ];
+
+    protected override IEnumerable<string> OwnershipPathMarkers => ["SmartEngine"];
 }

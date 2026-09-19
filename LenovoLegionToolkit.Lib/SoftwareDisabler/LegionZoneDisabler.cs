@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 
@@ -38,4 +38,12 @@ public class LegionZoneDisabler : AbstractSoftwareDisabler
     [
         Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Lenovo", "LegionZone")
     ];
+
+    protected override IEnumerable<string> OwnershipRoots =>
+    [
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Lenovo", "LegionZone"),
+        Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Lenovo", "LegionZone")
+    ];
+
+    protected override IEnumerable<string> OwnershipPathMarkers => ["LegionZone"];
 }
