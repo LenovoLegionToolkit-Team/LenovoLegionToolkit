@@ -219,7 +219,6 @@ public partial class AmdOverclocking : UiWindow
             });
 
             _fMaxNumberBox.Value = result.FMax;
-            _fMaxToggle.IsChecked = true;
 
             if (_x3dGamingToggle != null)
             {
@@ -259,10 +258,11 @@ public partial class AmdOverclocking : UiWindow
     {
         if (profile == null) return;
 
+        _fMaxToggle.IsChecked = profile.Value.FMax.HasValue;
+
         if (profile.Value.FMax.HasValue)
         {
             _fMaxNumberBox.Value = profile.Value.FMax.Value;
-            _fMaxToggle.IsChecked = true;
         }
 
         if (profile.Value.PowerLimit1.HasValue) _powerLimit1Box.Value = profile.Value.PowerLimit1.Value;
