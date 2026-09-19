@@ -59,11 +59,26 @@ public abstract class AbstractSoftwareDisabler
         ServiceNames.Select(s => s.ToLowerInvariant()).ToArray(),
         ScheduledTasksPaths.Select(NormalizeTaskFolder).ToArray());
 
-    public Task<SoftwareStatus> GetStatusAsync() => Task.Run(() =>
+    public async Task<SoftwareStatus> GetStatusAsync()
     {
-        bool isEnabled;
-        bool isInstalled;
+        var (status, _, _) = await GetStateAsync().ConfigureAwait(false);
 
+        return status;
+    }
+
+    private async Task<(SoftwareStatus Status, string[] Services, string[] Processes)> GetStateAsync()
+    {
+        var state = await Task.Run(EvaluateState).ConfigureAwait(false);
+
+        Log.Instance.Trace($"Status: {state.Status} [type={GetType().Name}]");
+
+        OnRefreshed?.Invoke(this, new() { Status = state.Status });
+
+        return state;
+    }
+
+    private (SoftwareStatus Status, string[] Services, string[] Processes) EvaluateState()
+    {
         try
         {
             var allServices = AllServices().ToArray();
@@ -73,38 +88,22 @@ public abstract class AbstractSoftwareDisabler
             Log.Instance.Trace($"Running services count: {services.Length}. [type={GetType().Name}, services={string.Join(",", services)}]");
             Log.Instance.Trace($"Running processes count: {processes.Length}. [type={GetType().Name}, processes={string.Join(",", processes)}]");
 
-            isEnabled = services.Length != 0 || processes.Length != 0;
-            isInstalled = IsInstalled(allServices);
+            if (services.Length != 0 || processes.Length != 0)
+            {
+                return (SoftwareStatus.Enabled, services, processes);
+            }
+
+            var status = IsInstalled(allServices) ? SoftwareStatus.Disabled : SoftwareStatus.NotFound;
+
+            return (status, services, processes);
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Exception while getting status. [type={GetType().Name}]", ex);
 
-            isEnabled = false;
-            isInstalled = false;
+            return (SoftwareStatus.NotFound, [], []);
         }
-
-        Log.Instance.Trace($"Status: {isEnabled},{isInstalled} [type={GetType().Name}]");
-
-        SoftwareStatus status;
-
-        if (isEnabled)
-        {
-            status = SoftwareStatus.Enabled;
-        }
-        else if (!isInstalled)
-        {
-            status = SoftwareStatus.NotFound;
-        }
-        else
-        {
-            status = SoftwareStatus.Disabled;
-        }
-
-        OnRefreshed?.Invoke(this, new() { Status = status });
-
-        return status;
-    });
+    }
 
     public Task EnableAsync() => RunAsync(true);
 
@@ -149,14 +148,10 @@ public abstract class AbstractSoftwareDisabler
 
             SoftwareDisablerOwnership.Invalidate();
 
-            var status = await GetStatusAsync().ConfigureAwait(false);
+            var (status, runningServices, runningProcesses) = await GetStateAsync().ConfigureAwait(false);
 
             if (!enabled && status == SoftwareStatus.Enabled)
             {
-                var services = AllServices().ToArray();
-                var runningServices = RunningServices(services).ToArray();
-                var runningProcesses = RunningProcesses().ToArray();
-
                 LastFailureReason = BuildFailureReason(runningServices, runningProcesses);
 
                 Log.Instance.Trace($"Disabled, restart required. [type={GetType().Name}, services={string.Join(",", runningServices)}, processes={string.Join(",", runningProcesses)}, notStopped={string.Join(",", _notStoppedServices)}, keptEnabled={string.Join(",", _blockedResources)}, reason={LastFailureReason}]");
@@ -194,11 +189,6 @@ public abstract class AbstractSoftwareDisabler
         if (_blockedResources.Count > 0)
         {
             reasons.Add($"services kept enabled because another software still uses them: {string.Join(", ", _blockedResources)}");
-        }
-
-        if (reasons.Count == 0)
-        {
-            return "nothing was left behind by this app, it was started again from the outside";
         }
 
         return string.Join("; ", reasons);
@@ -450,6 +440,8 @@ public abstract class AbstractSoftwareDisabler
 
     private void SetServicesEnabled(bool enabled)
     {
+        var services = AllServices().ToArray();
+
         foreach (var serviceName in OwnedServiceNames())
         {
             if (!enabled && !SoftwareDisablerOwnership.CanDisable($"service:{serviceName}", SelfName))
@@ -461,25 +453,27 @@ public abstract class AbstractSoftwareDisabler
                 continue;
             }
 
-            SetServiceEnabled(serviceName, enabled);
+            SetServiceEnabled(serviceName, enabled, services);
         }
     }
 
     private void SetDriversEnabled(bool enabled)
     {
-        foreach (var driverName in MatchingDriverNames(AllServices().ToArray()))
+        var services = AllServices().ToArray();
+
+        foreach (var driverName in MatchingDriverNames(services))
         {
-            SetServiceEnabled(driverName, enabled);
+            SetServiceEnabled(driverName, enabled, services);
         }
     }
 
-    private void SetServiceEnabled(string serviceName, bool enabled)
+    private void SetServiceEnabled(string serviceName, bool enabled, IEnumerable<ServiceController> services)
     {
         try
         {
             Log.Instance.Trace($"Setting service {serviceName} to {enabled}. [type={GetType().Name}]");
 
-            if (!ServiceExists(serviceName, AllServices().ToArray()))
+            if (!ServiceExists(serviceName, services))
             {
                 Log.Instance.Trace($"Service {serviceName} not found. [type={GetType().Name}]");
 
