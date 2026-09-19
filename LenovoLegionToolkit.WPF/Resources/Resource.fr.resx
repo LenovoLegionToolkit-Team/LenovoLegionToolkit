@@ -2919,6 +2919,12 @@ Vous pouvez changer de mode avec Fn+Q.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Fréquence CPU</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2942,6 +2948,18 @@ Vous pouvez changer de mode avec Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU préféré</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Mémoire utilisée/totale (GB)</value>
@@ -3168,6 +3186,9 @@ Il est recommandé de redémarrer l'ordinateur après avoir modifié cette optio
   </data>
   <data name="SettingsPage_DisableSmartEngine_Title" xml:space="preserve">
     <value>Disable Lenovo SmartEngine</value>
+  </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage et/ou ImController ont peut-être été mal désactivés</value>
