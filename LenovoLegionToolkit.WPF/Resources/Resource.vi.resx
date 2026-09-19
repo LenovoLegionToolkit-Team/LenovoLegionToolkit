@@ -462,7 +462,7 @@ Chỉ có các Hành động thỏa điều kiện hiện tại sẽ được ch
     <value>Danh sách trò chơi đã biết</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Thủ công</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
     <value>Định cấu hình phương pháp phát hiện và loại trừ.</value>
@@ -1456,7 +1456,7 @@ THẬT CẨN THẬN KHI SỬ DỤNG LỰA CHỌN NÀY!!! KHÔNG NÊN SỬ DỤNG
     <value>Thiết bị của bạn có thể không hỗ trợ bộ tính năng đầy đủ của Chế độ tùy chỉnh.</value>
   </data>
   <data name="GodModeSettingsWindow_SmartEngineWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Lenovo SmartEngine or its services are running.</value>
+    <value>Cài đặt Chế độ tùy chỉnh sẽ không được áp dụng chính xác khi Lenovo SmartEngine hoặc các dịch vụ của nó đang chạy.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Tăng giới hạn xung nhịp tối đa khi CPU ở trạng thái Boost.</value>
@@ -1603,10 +1603,10 @@ Chọn Có để tắt và Không để bỏ qua.</value>
     <value>Đèn nền bàn phím</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
-    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+    <value>Không thể điều khiển đèn nền bàn phím ở đây khi một ứng dụng Lenovo khác hoặc các dịch vụ của ứng dụng đó đang chạy.</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
-    <value>Another Lenovo app or its services are running</value>
+    <value>Một ứng dụng khác của Lenovo hoặc các dịch vụ của nó đang chạy</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Đèn nền bàn phím không thể được tùy chỉnh nếu Lenovo Vantage hoặc các chương trình con của nó đang chạy.</value>
@@ -1825,7 +1825,7 @@ Chọn Có để tắt và Không để bỏ qua.</value>
     <value>Legion Zone đang chạy ngầm.</value>
   </data>
   <data name="MainWindow_SmartEngineRunning" xml:space="preserve">
-    <value>Lenovo SmartEngine is running in the background.</value>
+    <value>Lenovo SmartEngine đang chạy ở chế độ nền.</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Thông tin</value>
@@ -3159,16 +3159,16 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Ngắt kích hoạt Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Error_Message" xml:space="preserve">
-    <value>Lenovo SmartEngine may have not been disabled correctly</value>
+    <value>Lenovo SmartEngine có thể chưa được tắt đúng cách</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Error_Title" xml:space="preserve">
-    <value>Couldn't disable Lenovo SmartEngine</value>
+    <value>Không thể tắt Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Message" xml:space="preserve">
-    <value>Disable the SmartEngine components shared by Legion Space and Legion Zone without uninstalling them.</value>
+    <value>Vô hiệu hóa các thành phần SmartEngine được chia sẻ bởi Legion Space và Legion Zone mà không cần gỡ cài đặt chúng.</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Title" xml:space="preserve">
-    <value>Disable Lenovo SmartEngine</value>
+    <value>Tắt Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage và/hoặc ImController đã không được ngắt đúng cách</value>
@@ -3208,10 +3208,10 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Bật ghi nhật ký</value>
   </data>
   <data name="SettingsPage_EnableSmartEngine_Error_Message" xml:space="preserve">
-    <value>Lenovo SmartEngine may have not been enabled correctly</value>
+    <value>Lenovo SmartEngine có thể chưa được bật đúng cách</value>
   </data>
   <data name="SettingsPage_EnableSmartEngine_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Lenovo SmartEngine</value>
+    <value>Không thể kích hoạt Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage và/hoặc ImController có thể đã không được kích hoạt đúng cách</value>
@@ -3463,7 +3463,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Đã áp dụng cài đặt thành công.</value>
   </data>
   <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
-    <value>Settings were saved but not applied to the GPU.</value>
+    <value>Cài đặt đã được lưu nhưng không được áp dụng cho GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Khi tắt tiếng, tất cả các đầu ra âm thanh đang sử dụng cũng sẽ bị tắt.</value>
