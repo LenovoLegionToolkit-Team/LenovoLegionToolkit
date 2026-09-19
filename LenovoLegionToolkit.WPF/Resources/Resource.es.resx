@@ -1120,25 +1120,25 @@ El cambio de modo puede requerir un reinicio.</value>
     <value>Error</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Included processes always trigger game detection and Lenovo's AI/Intelligent Mode, while excluded processes are ignored.</value>
+    <value>Los procesos incluidos siempre activan la detección de juegos y el modo IA/inteligente de Lenovo, mientras que los procesos excluidos se ignoran.</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
     <value>Procesos excluidos ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludeTooltip" xml:space="preserve">
-    <value>Add to Excluded Processes</value>
+    <value>Añadir a Procesos Excluidos</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludedProcesses_Format" xml:space="preserve">
-    <value>Included Processes ({0})</value>
+    <value>Procesos Incluidos ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludeTooltip" xml:space="preserve">
-    <value>Add to Included Processes</value>
+    <value>Añadir a Procesos Incluidos</value>
   </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
     <value>No hay procesos excluidos</value>
   </data>
   <data name="ExcludeProcessesWindow_NoIncludedProcesses" xml:space="preserve">
-    <value>No included processes</value>
+    <value>Procesos no incluidos</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
     <value>Procesos en ejecución ({0})</value>
@@ -1457,7 +1457,7 @@ En serio, ¡tenga cuidado con esta opción!</value>
     <value>Es posible que tu dispositivo no sea compatible con todas las funciones del modo personalizado.</value>
   </data>
   <data name="GodModeSettingsWindow_SmartEngineWarning_Title" xml:space="preserve">
-    <value>Custom Mode settings will not be applied correctly when Lenovo SmartEngine or its services are running.</value>
+    <value>La configuración del modo personalizado no se aplicará correctamente mientras Lenovo SmartEngine o sus servicios estén en ejecución.</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>Incremento de frecuencia para Precision Boost Overdrive.</value>
@@ -1604,10 +1604,10 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
     <value>Retroiluminación del teclado</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
-    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+    <value>La retroiluminación del teclado no se puede controlar desde aquí cuando hay otra aplicación de Lenovo o sus servicios en ejecución.</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
-    <value>Another Lenovo app or its services are running</value>
+    <value>Hay otra aplicación de Lenovo o alguno de sus servicios en ejecución</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>La retroiluminación del teclado no puede ser controlada aquí, si Lenovo Vantage o sus servicios están funcionando.</value>
@@ -1826,7 +1826,7 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
     <value>Legion Zone se está ejecutando en segundo plano.</value>
   </data>
   <data name="MainWindow_SmartEngineRunning" xml:space="preserve">
-    <value>Lenovo SmartEngine is running in the background.</value>
+    <value>Lenovo SmartEngine se está ejecutando en segundo plano.</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>Acerca de</value>
@@ -2356,10 +2356,10 @@ Haz clic en No para desactivar la función de sensores de hardware.</value>
     <value>Reducción de voltaje</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCap" xml:space="preserve">
-    <value>Voltage Cap</value>
+    <value>Límite de voltaje</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCapDesc" xml:space="preserve">
-    <value>Cap maximum voltage under load while allowing dynamic downclocking at idle.</value>
+    <value>Limitar el voltaje máximo bajo carga permitiendo al mismo tiempo una reducción dinámica de la frecuencia en reposo.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
     <value>Fijar voltaje</value>
@@ -3160,16 +3160,16 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Desactivar las teclas de acceso rápido de Lenovo</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Error_Message" xml:space="preserve">
-    <value>Lenovo SmartEngine may have not been disabled correctly</value>
+    <value>Es posible que Lenovo SmartEngine no se haya desactivado correctamente</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Error_Title" xml:space="preserve">
-    <value>Couldn't disable Lenovo SmartEngine</value>
+    <value>No se ha podido desactivar Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Message" xml:space="preserve">
-    <value>Disable the SmartEngine components shared by Legion Space and Legion Zone without uninstalling them.</value>
+    <value>Desactiva los componentes de SmartEngine que comparten Legion Space y Legion Zone sin desinstalarlos.</value>
   </data>
   <data name="SettingsPage_DisableSmartEngine_Title" xml:space="preserve">
-    <value>Disable Lenovo SmartEngine</value>
+    <value>Desactivar Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage y/o ImController pueden no haber sido desactivados correctamente</value>
@@ -3209,10 +3209,10 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Habilitar registros de depuración</value>
   </data>
   <data name="SettingsPage_EnableSmartEngine_Error_Message" xml:space="preserve">
-    <value>Lenovo SmartEngine may have not been enabled correctly</value>
+    <value>Es posible que Lenovo SmartEngine no se haya activado correctamente</value>
   </data>
   <data name="SettingsPage_EnableSmartEngine_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Lenovo SmartEngine</value>
+    <value>No se ha podido activar Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage y/o ImController pueden no haber sido activados correctamente</value>
@@ -3464,7 +3464,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Configuración aplicada con éxito.</value>
   </data>
   <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
-    <value>Settings were saved but not applied to the GPU.</value>
+    <value>La configuración se ha guardado, pero no se ha aplicado a la GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Al silenciar, se silenciarán todos los dispositivos de salida de audio activos.</value>
