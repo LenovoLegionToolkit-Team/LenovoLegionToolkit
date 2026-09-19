@@ -19,20 +19,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         public bool Running { get; } = running;
     }
 
-    private class ProcessEqualityComparer : IEqualityComparer<Process>
-    {
-        public bool Equals(Process? x, Process? y)
-        {
-            if (ReferenceEquals(x, y)) return true;
-            if (x is null) return false;
-            if (y is null) return false;
-            if (x.GetType() != y.GetType()) return false;
-            return x.Id == y.Id;
-        }
-
-        public int GetHashCode(Process obj) => obj.Id;
-    }
-
     private static readonly Lock Lock = new();
 
     private readonly InstanceStartedEventAutoAutoListener _instanceStartedEventAutoAutoListener;
@@ -43,8 +29,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
     private readonly ApplicationSettings _settings;
 
     private readonly HashSet<ProcessInfo> _detectedGamePathsCache = [];
-    private readonly HashSet<Process> _processCache = new(new ProcessEqualityComparer());
-    private readonly HashSet<Process> _gameModePinnedProcesses = new(new ProcessEqualityComparer());
+    private readonly Dictionary<int, Process> _processCache = [];
+    private readonly Dictionary<int, Process> _gameModePinnedProcesses = [];
 
     private bool _lastState;
     private bool _preserveStateOnNextStart;
@@ -81,37 +67,40 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 _preserveStateOnNextStart = false;
                 Log.Instance.Trace($"Validating preserved process cache against current rules ({_processCache.Count} process(es))...");
 
-                var disqualified = new List<Process>();
-                foreach (var process in _processCache)
+                var disqualified = new List<int>();
+                foreach (var pair in _processCache)
                 {
                     try
                     {
-                        if (process.HasExited)
+                        if (pair.Value.HasExited)
                         {
-                            disqualified.Add(process);
+                            disqualified.Add(pair.Key);
                             continue;
                         }
 
-                        var processName = process.ProcessName;
+                        var processName = pair.Value.ProcessName;
                         if (IsBlacklisted(processName))
                         {
-                            Log.Instance.Trace($"Preserved process is now blacklisted: {processName} [pid={process.Id}].");
-                            disqualified.Add(process);
+                            Log.Instance.Trace($"Preserved process is now blacklisted: {processName} [pid={pair.Key}].");
+                            disqualified.Add(pair.Key);
                         }
                     }
                     catch (Exception ex)
                     {
-                        Log.Instance.Trace($"Failed to validate preserved process {process.Id}.", ex);
-                        disqualified.Add(process);
+                        Log.Instance.Trace($"Failed to validate preserved process {pair.Key}.", ex);
+                        disqualified.Add(pair.Key);
                     }
                 }
 
-                foreach (var process in disqualified)
+                foreach (var id in disqualified)
                 {
-                    _processCache.Remove(process);
-                    _gameModePinnedProcesses.Remove(process);
-                    Detach(process);
-                    DisposeProcess(process);
+                    if (_processCache.Remove(id, out var process))
+                    {
+                        Detach(process);
+                        DisposeProcess(process);
+                    }
+
+                    _gameModePinnedProcesses.Remove(id);
                 }
 
                 if (disqualified.Count > 0)
@@ -144,7 +133,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                             continue;
                         }
 
-                        if (_processCache.Contains(process))
+                        if (_processCache.ContainsKey(process.Id))
                         {
                             DisposeProcess(process);
                             continue;
@@ -171,7 +160,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                             var source = isIncludedGame ? "Included" : "Known Game List";
                             Log.Instance.Trace($"Found already running game: {processName} [Source: {source}] [pid={process.Id}, path={processPath ?? "Unknown"}]");
                             Attach(process);
-                            _processCache.Add(process);
+                            _processCache.TryAdd(process.Id, process);
                             RaiseChangedIfNeeded(true);
                         }
                         else
@@ -210,13 +199,13 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                             if (IsBlacklisted(processName))
                                 continue;
 
-                            if (!_processCache.Contains(process))
+                            if (!_processCache.ContainsKey(process.Id))
                             {
                                 var processPath = process.GetFileName();
                                 Log.Instance.Trace(
                                     $"Found already running game: {processName} [Source: Discrete GPU] [pid={process.Id}, path={processPath ?? "Unknown"}]");
                                 Attach(process);
-                                _processCache.Add(process);
+                                _processCache.TryAdd(process.Id, process);
                                 RaiseChangedIfNeeded(true);
                             }
                         }
@@ -268,7 +257,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         {
             if (!_preserveStateOnNextStart)
             {
-                foreach (var process in _processCache)
+                foreach (var process in _processCache.Values)
                 {
                     Detach(process);
                     DisposeProcess(process);
@@ -324,12 +313,12 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     if (IsBlacklisted(processName))
                         continue;
 
-                    if (!_processCache.Contains(process))
+                    if (!_processCache.ContainsKey(process.Id))
                     {
                         var processPath = process.GetFileName();
                         Log.Instance.Trace($"Game detected: {processName} [Source: Discrete GPU] [pid={process.Id}, path={processPath ?? "Unknown"}]");
                         Attach(process);
-                        _processCache.Add(process);
+                        _processCache.TryAdd(process.Id, process);
                         RaiseChangedIfNeeded(true);
                     }
                 }
@@ -368,11 +357,11 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                             continue;
                         }
 
-                        if (!_processCache.Contains(process))
+                        if (!_processCache.ContainsKey(process.Id))
                         {
                             Log.Instance.Trace($"Game detected: {process.ProcessName} [Source: Known Game List] [pid={process.Id}, path={processPath ?? game.ExecutablePath ?? "Unknown"}]");
                             Attach(process);
-                            _processCache.Add(process);
+                            _processCache.TryAdd(process.Id, process);
                         }
                         else
                         {
@@ -403,29 +392,40 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             {
                 if (_gameModePinnedProcesses.Count > 0)
                 {
-                    var toRelease = new List<Process>();
-                    foreach (var process in _gameModePinnedProcesses)
+                    var toRelease = new List<int>();
+                    foreach (var pair in _gameModePinnedProcesses)
                     {
                         try
                         {
-                            if (process.HasExited)
+                            if (pair.Value.HasExited)
                             {
-                                toRelease.Add(process);
+                                toRelease.Add(pair.Key);
                             }
                         }
                         catch
                         {
-                            toRelease.Add(process);
+                            toRelease.Add(pair.Key);
                         }
                     }
 
-                    foreach (var process in toRelease)
+                    foreach (var id in toRelease)
                     {
-                        Log.Instance.Trace($"Game Mode ended and process exited: {process.ProcessName} [Source: Windows Game Mode] [pid={process.Id}].");
-                        _gameModePinnedProcesses.Remove(process);
-                        _processCache.Remove(process);
-                        Detach(process);
-                        DisposeProcess(process);
+                        _gameModePinnedProcesses.Remove(id, out var pinned);
+                        _processCache.Remove(id, out var cached);
+
+                        var released = pinned ?? cached;
+                        if (released is not null)
+                        {
+                            Log.Instance.Trace($"Game Mode ended and process exited: {GetProcessName(released)} [Source: Windows Game Mode] [pid={id}].");
+                            Detach(released);
+                            DisposeProcess(released);
+                        }
+
+                        if (cached is not null && !ReferenceEquals(cached, released))
+                        {
+                            Detach(cached);
+                            DisposeProcess(cached);
+                        }
                     }
 
                     if (_processCache.Count == 0)
@@ -470,7 +470,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     return;
                 }
 
-                if (_processCache.Contains(process))
+                if (_processCache.ContainsKey(process.Id))
                 {
                     DisposeProcess(process);
                     return;
@@ -487,8 +487,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
                 Log.Instance.Trace($"Game detected: {processName} [Source: Windows Game Mode] [pid={process.Id}, path={processPath ?? "Unknown"}].");
                 Attach(process);
-                _processCache.Add(process);
-                _gameModePinnedProcesses.Add(process);
+                _processCache.TryAdd(process.Id, process);
+                _gameModePinnedProcesses.TryAdd(process.Id, process);
                 RaiseChangedIfNeeded(true);
             }
             catch
@@ -579,7 +579,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             try
             {
                 startedProcess = Process.GetProcessById(e.ProcessId);
-                if (_processCache.Contains(startedProcess))
+                if (_processCache.ContainsKey(startedProcess.Id))
                 {
                     DisposeProcess(startedProcess);
                     return;
@@ -616,7 +616,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     $"Game detected: {e.ProcessName} [Source: {source}] [pid={e.ProcessId}, path={processPath ?? "Unknown"}].");
 
                 Attach(startedProcess);
-                _processCache.Add(startedProcess);
+                _processCache.TryAdd(startedProcess.Id, startedProcess);
 
                 RaiseChangedIfNeeded(true);
             }
@@ -644,9 +644,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     private void Attach(Process process)
     {
-        string processName;
-        try { processName = process.ProcessName; } catch { processName = "Unknown"; }
-        Log.Instance.Trace($"Attaching to process: {processName} [pid={process.Id}]...");
+        Log.Instance.Trace($"Attaching to process: {GetProcessName(process)} [pid={TryGetId(process)?.ToString() ?? "Unknown"}]...");
 
         try
         {
@@ -655,15 +653,12 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"Failed to enable events for process: {processName} [pid={process.Id}].", ex);
+            Log.Instance.Trace($"Failed to enable events for process: {GetProcessName(process)} [pid={TryGetId(process)?.ToString() ?? "Unknown"}].", ex);
         }
     }
 
     private void Detach(Process process)
     {
-        string processName;
-        try { processName = process.ProcessName; } catch { processName = "Unknown"; }
-
         try
         {
             process.EnableRaisingEvents = false;
@@ -671,7 +666,31 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         }
         catch { /* Ignore */ }
 
-        Log.Instance.Trace($"Detached from process: {processName} [pid={process.Id}].");
+        Log.Instance.Trace($"Detached from process: {GetProcessName(process)} [pid={TryGetId(process)?.ToString() ?? "Unknown"}].");
+    }
+
+    private static string GetProcessName(Process process)
+    {
+        try
+        {
+            return process.ProcessName;
+        }
+        catch
+        {
+            return "Unknown";
+        }
+    }
+
+    private static int? TryGetId(Process process)
+    {
+        try
+        {
+            return process.Id;
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     private static void DisposeProcess(Process? process)
@@ -692,43 +711,48 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         {
             if (o is Process exitedProc)
             {
-                string procName;
-                try { procName = exitedProc.ProcessName; } catch { procName = "Unknown"; }
-                Log.Instance.Trace($"Process exited: {procName} [pid={exitedProc.Id}].");
+                var exitedId = TryGetId(exitedProc);
+                Log.Instance.Trace($"Process exited: {GetProcessName(exitedProc)} [pid={exitedId?.ToString() ?? "Unknown"}].");
 
-                if (!_processCache.Contains(exitedProc))
+                if (exitedId is not null && !_processCache.ContainsKey(exitedId.Value))
                 {
-                    _gameModePinnedProcesses.Remove(exitedProc);
+                    _gameModePinnedProcesses.Remove(exitedId.Value);
                     Detach(exitedProc);
                     DisposeProcess(exitedProc);
                 }
             }
 
-            var deadProcesses = new List<Process>();
-            foreach (var p in _processCache)
+            var deadIds = new List<int>();
+            foreach (var pair in _processCache)
             {
                 try
                 {
-                    if (p.HasExited)
-                        deadProcesses.Add(p);
+                    if (pair.Value.HasExited)
+                    {
+                        deadIds.Add(pair.Key);
+                    }
                 }
                 catch
                 {
-                    deadProcesses.Add(p);
+                    deadIds.Add(pair.Key);
                 }
             }
 
-            foreach (var p in deadProcesses)
+            foreach (var id in deadIds)
             {
-                _processCache.Remove(p);
-                _gameModePinnedProcesses.Remove(p);
-                Detach(p);
-                DisposeProcess(p);
+                _processCache.Remove(id, out var process);
+                _gameModePinnedProcesses.Remove(id);
+
+                if (process is not null)
+                {
+                    Detach(process);
+                    DisposeProcess(process);
+                }
             }
 
-            if (deadProcesses.Count > 0)
+            if (deadIds.Count > 0)
             {
-                Log.Instance.Trace($"Removed {deadProcesses.Count} exited process(es) from cache. Remaining: {_processCache.Count}.");
+                Log.Instance.Trace($"Removed {deadIds.Count} exited process(es) from cache. Remaining: {_processCache.Count}.");
             }
 
             if (_processCache.Count != 0)
