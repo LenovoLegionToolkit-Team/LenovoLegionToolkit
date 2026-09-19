@@ -22,6 +22,11 @@ public abstract class AbstractSoftwareDisabler
         public SoftwareStatus Status { get; init; }
     }
 
+    public string? LastFailureReason { get; private set; }
+
+    private readonly List<string> _blockedResources = [];
+    private readonly List<string> _notStoppedServices = [];
+
     private const string RUN_KEY = @"Software\Microsoft\Windows\CurrentVersion\Run";
     private const string STARTUP_APPROVED_RUN_KEY = @"Software\Microsoft\Windows\CurrentVersion\Explorer\StartupApproved\Run";
 
@@ -134,6 +139,10 @@ public abstract class AbstractSoftwareDisabler
 
         try
         {
+            LastFailureReason = null;
+            _blockedResources.Clear();
+            _notStoppedServices.Clear();
+
             Log.Instance.Trace($"{(enabled ? "Enabling" : "Disabling")}... [type={GetType().Name}]");
 
             await ApplyStateAsync(enabled).ConfigureAwait(false);
@@ -145,8 +154,12 @@ public abstract class AbstractSoftwareDisabler
             if (!enabled && status == SoftwareStatus.Enabled)
             {
                 var services = AllServices().ToArray();
+                var runningServices = RunningServices(services).ToArray();
+                var runningProcesses = RunningProcesses().ToArray();
 
-                Log.Instance.Trace($"Disabled, restart required. [type={GetType().Name}, services={string.Join(",", RunningServices(services))}, processes={string.Join(",", RunningProcesses())}]");
+                LastFailureReason = BuildFailureReason(runningServices, runningProcesses);
+
+                Log.Instance.Trace($"Disabled, restart required. [type={GetType().Name}, services={string.Join(",", runningServices)}, processes={string.Join(",", runningProcesses)}, notStopped={string.Join(",", _notStoppedServices)}, keptEnabled={string.Join(",", _blockedResources)}, reason={LastFailureReason}]");
             }
             else
             {
@@ -157,6 +170,38 @@ public abstract class AbstractSoftwareDisabler
         {
             _operationLock.Release();
         }
+    }
+
+    private string BuildFailureReason(IReadOnlyList<string> runningServices, IReadOnlyList<string> runningProcesses)
+    {
+        var reasons = new List<string>();
+
+        if (runningServices.Count > 0)
+        {
+            reasons.Add($"services still running: {string.Join(", ", runningServices)}");
+        }
+
+        if (runningProcesses.Count > 0)
+        {
+            reasons.Add($"processes still running: {string.Join(", ", runningProcesses)}");
+        }
+
+        if (_notStoppedServices.Count > 0)
+        {
+            reasons.Add($"services that do not accept stop and need a restart: {string.Join(", ", _notStoppedServices)}");
+        }
+
+        if (_blockedResources.Count > 0)
+        {
+            reasons.Add($"services kept enabled because another software still uses them: {string.Join(", ", _blockedResources)}");
+        }
+
+        if (reasons.Count == 0)
+        {
+            return "nothing was left behind by this app, it was started again from the outside";
+        }
+
+        return string.Join("; ", reasons);
     }
 
     private static IEnumerable<ServiceController> AllServices() =>
@@ -409,6 +454,10 @@ public abstract class AbstractSoftwareDisabler
         {
             if (!enabled && !SoftwareDisablerOwnership.CanDisable($"service:{serviceName}", SelfName))
             {
+                _blockedResources.Add(serviceName);
+
+                Log.Instance.Trace($"Service {serviceName} kept enabled, it is still used by another software. [type={GetType().Name}]");
+
                 continue;
             }
 
@@ -441,17 +490,21 @@ public abstract class AbstractSoftwareDisabler
 
             try
             {
-                Log.Instance.Trace($"Changing service {serviceName} start mode to {enabled}.  [type={GetType().Name}]");
+                Log.Instance.Trace($"Changing service {serviceName} start mode to {enabled}. [startType={service.StartType}, status={service.Status}, type={GetType().Name}]");
 
                 service.ChangeStartMode(enabled);
+                service.Refresh();
 
                 if (enabled)
                 {
                     if (service.Status != ServiceControllerStatus.Running)
                     {
                         Log.Instance.Trace($"Starting service {serviceName}... [type={GetType().Name}]");
+
                         service.Start();
                         service.WaitForStatus(ServiceControllerStatus.Running);
+
+                        Log.Instance.Trace($"Service {serviceName} started. [startType={service.StartType}, status={service.Status}, type={GetType().Name}]");
                     }
                     else
                     {
@@ -462,13 +515,18 @@ public abstract class AbstractSoftwareDisabler
                 {
                     if (service.CanStop)
                     {
-                        Log.Instance.Trace($"Stopping service {serviceName}... [type={GetType().Name}]");
+                        Log.Instance.Trace($"Stopping service {serviceName}... [status={service.Status}, type={GetType().Name}]");
+
                         service.Stop();
                         service.WaitForStatus(ServiceControllerStatus.Stopped);
+
+                        Log.Instance.Trace($"Service {serviceName} stopped. [startType={service.StartType}, status={service.Status}, type={GetType().Name}]");
                     }
                     else
                     {
-                        Log.Instance.Trace($"Will not stop service {serviceName}. [status={service.Status}, canStop={service.CanStop}, type={GetType().Name}]]");
+                        _notStoppedServices.Add(serviceName);
+
+                        Log.Instance.Trace($"Will not stop service {serviceName}, it does not accept stop and requires a restart. [status={service.Status}, canStop={service.CanStop}, type={GetType().Name}]]");
                     }
                 }
             }
@@ -481,7 +539,7 @@ public abstract class AbstractSoftwareDisabler
         {
             Log.Instance.Trace($"Failed to set service {serviceName} to {enabled}.", ex);
 
-            throw new SoftwareDisablerException($"{serviceName} [type={GetType().Name}]", ex);
+            throw new SoftwareDisablerException($"Couldn't set service {serviceName} to {enabled}. [type={GetType().Name}]", ex);
         }
     }
 

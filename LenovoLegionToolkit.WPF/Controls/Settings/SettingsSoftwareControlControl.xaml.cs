@@ -72,6 +72,13 @@ public partial class SettingsSoftwareControlControl
     {
         toggle.IsChecked = GetToggleState(await disabler.GetStatusAsync(), disabler);
         toggle.IsEnabled = true;
+
+        if (disabler.LastFailureReason is null)
+        {
+            return;
+        }
+
+        await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableIncomplete_Title, disabler.LastFailureReason, SnackbarType.Warning);
     }
 
     private async void VantageToggle_Click(object sender, RoutedEventArgs e)

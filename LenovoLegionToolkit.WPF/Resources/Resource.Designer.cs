@@ -9048,6 +9048,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t fully disable, it may still be running.
+        /// </summary>
+        public static string SettingsPage_DisableIncomplete_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_DisableIncomplete_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Legion Space may have not been disabled correctly.
         /// </summary>
         public static string SettingsPage_DisableLegionSpace_Error_Message {
