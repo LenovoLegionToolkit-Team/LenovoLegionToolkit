@@ -9,10 +9,14 @@ public class SystemThemeListener : IListener<EventArgs>
 {
     public event EventHandler<EventArgs>? Changed;
 
+    public event EventHandler<DarkModeChangedEventArgs>? DarkModeChanged;
+
     private IDisposable? _darkModeListener;
     private IDisposable? _colorizationColorListener;
 
     private RGBColor? _currentRegColor;
+
+    private bool? _isDarkMode;
 
     private bool _started;
 
@@ -20,6 +24,14 @@ public class SystemThemeListener : IListener<EventArgs>
     {
         if (_started)
             return Task.CompletedTask;
+        try
+        {
+            _isDarkMode = SystemTheme.IsDarkMode();
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Couldn't determine the current app mode.", ex);
+        }
 
         _darkModeListener = SystemTheme.GetDarkModeListener(OnDarkModeChanged);
         _colorizationColorListener = SystemTheme.GetColorizationColorListener(OnColorizationColorChanged);
@@ -32,6 +44,21 @@ public class SystemThemeListener : IListener<EventArgs>
     private void OnDarkModeChanged()
     {
         Changed?.Invoke(this, EventArgs.Empty);
+
+        try
+        {
+            var isDarkMode = SystemTheme.IsDarkMode();
+            if (_isDarkMode == isDarkMode)
+                return;
+
+            _isDarkMode = isDarkMode;
+
+            DarkModeChanged?.Invoke(this, new DarkModeChangedEventArgs(isDarkMode));
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Couldn't determine the current app mode.", ex);
+        }
     }
 
     private void OnColorizationColorChanged()
@@ -62,5 +89,10 @@ public class SystemThemeListener : IListener<EventArgs>
         _started = false;
 
         return Task.CompletedTask;
+    }
+
+    public class DarkModeChangedEventArgs(bool isDarkMode) : EventArgs
+    {
+        public bool IsDarkMode { get; } = isDarkMode;
     }
 }

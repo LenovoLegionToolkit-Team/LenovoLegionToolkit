@@ -7,6 +7,7 @@ namespace LenovoLegionToolkit.Lib.Automation;
 public class AutomationEnvironment
 {
     private const string AC_ADAPTER_CONNECTED = "LLT_IS_AC_ADAPTER_CONNECTED";
+    private const string APP_DARK_MODE = "LLT_IS_APP_DARK_MODE";
     private const string LOW_POWER_AC_ADAPTER = "LLT_IS_AC_ADAPTER_LOW_POWER";
     private const string DISPLAY_ON = "LLT_IS_DISPLAY_ON";
     private const string EXTERNAL_DISPLAY_CONNECTED = "LLT_IS_EXTERNAL_DISPLAY_CONNECTED";
@@ -41,6 +42,8 @@ public class AutomationEnvironment
     private const string VALUE_FALSE = "FALSE";
 
     public bool AcAdapterConnected { set => _dictionary[AC_ADAPTER_CONNECTED] = value ? VALUE_TRUE : VALUE_FALSE; }
+
+    public bool AppDarkMode { set => _dictionary[APP_DARK_MODE] = value ? VALUE_TRUE : VALUE_FALSE; }
 
     public bool LowPowerAcAdapter { set => _dictionary[LOW_POWER_AC_ADAPTER] = value ? VALUE_TRUE : VALUE_FALSE; }
 

@@ -9,6 +9,11 @@ public readonly struct HDRAutomationEvent(bool? isHDROn) : IAutomationEvent
     public bool? IsHDROn { get; } = isHDROn;
 }
 
+public readonly struct SystemThemeAutomationEvent(bool isDarkMode) : IAutomationEvent
+{
+    public bool IsDarkMode { get; } = isDarkMode;
+}
+
 public readonly struct NativeWindowsMessageEvent(NativeWindowsMessage message, object? data) : IAutomationEvent
 {
     public NativeWindowsMessage Message { get; } = message;

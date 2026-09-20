@@ -27,6 +27,8 @@ public interface ICompositeAutomationPipelineTrigger : IAutomationPipelineTrigge
 
 public interface IHDRPipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger;
 
+public interface ISystemThemePipelineTrigger : IDisallowDuplicatesAutomationPipelineTrigger;
+
 public interface INativeWindowsMessagePipelineTrigger : IAutomationPipelineTrigger;
 
 public interface IDeviceAutomationPipelineTrigger : INativeWindowsMessagePipelineTrigger

@@ -46,6 +46,8 @@ public partial class CreateAutomationPipelineWindow
         new DisplayOffAutomationPipelineTrigger(),
         new HDROnAutomationPipelineTrigger(),
         new HDROffAutomationPipelineTrigger(),
+        new AppLightModeAutomationPipelineTrigger(),
+        new AppDarkModeAutomationPipelineTrigger(),
         new HybridModeAutomationPipelineTrigger(HybridModeState.On),
         new DeviceConnectedAutomationPipelineTrigger([]),
         new DeviceDisconnectedAutomationPipelineTrigger([]),

@@ -17,6 +17,7 @@ namespace LenovoLegionToolkit.Lib.Automation;
 public class AutomationProcessor(
     AutomationSettings settings,
     DisplayConfigurationListener displayConfigurationListener,
+    SystemThemeListener systemThemeListener,
     NativeWindowsMessageListener nativeWindowsMessageListener,
     PowerStateListener powerStateListener,
     PowerModeListener powerModeListener,
@@ -46,6 +47,7 @@ public class AutomationProcessor(
         using (await _ioLock.LockAsync().ConfigureAwait(false))
         {
             displayConfigurationListener.Changed += DisplayConfigurationListener_Changed;
+            systemThemeListener.DarkModeChanged += SystemThemeListener_DarkModeChanged;
             nativeWindowsMessageListener.Changed += NativeWindowsMessageListener_Changed;
             powerStateListener.Changed += PowerStateListener_Changed;
             powerModeListener.Changed += PowerModeListener_Changed;
@@ -252,6 +254,12 @@ public class AutomationProcessor(
     private async void DisplayConfigurationListener_Changed(object? sender, DisplayConfigurationListener.ChangedEventArgs args)
     {
         var e = new HDRAutomationEvent(args.HDR);
+        await ProcessEvent(e).ConfigureAwait(false);
+    }
+
+    private async void SystemThemeListener_DarkModeChanged(object? sender, SystemThemeListener.DarkModeChangedEventArgs args)
+    {
+        var e = new SystemThemeAutomationEvent(args.IsDarkMode);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
