@@ -107,7 +107,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change Vantage.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableVantage_Error_Title, Resource.SettingsPage_DisableVantage_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableVantage_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_vantageToggle, _vantageDisabler);
                 return;
             }
@@ -190,7 +190,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change Vantage.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableVantage_Error_Title, Resource.SettingsPage_EnableVantage_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableVantage_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_vantageToggle, _vantageDisabler);
                 return;
             }
@@ -225,7 +225,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change LegionZone.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLegionZone_Error_Title, Resource.SettingsPage_DisableLegionZone_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLegionZone_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_legionZoneToggle, _legionZoneDisabler);
                 return;
             }
@@ -240,7 +240,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change LegionZone.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLegionZone_Error_Title, Resource.SettingsPage_EnableLegionZone_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLegionZone_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_legionZoneToggle, _legionZoneDisabler);
                 return;
             }
@@ -275,7 +275,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change LegionSpace.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLegionSpace_Error_Title, Resource.SettingsPage_DisableLegionSpace_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLegionSpace_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_legionSpaceToggle, _legionSpaceDisabler);
                 return;
             }
@@ -290,7 +290,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change LegionSpace.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLegionSpace_Error_Title, Resource.SettingsPage_EnableLegionSpace_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLegionSpace_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_legionSpaceToggle, _legionSpaceDisabler);
                 return;
             }
@@ -325,7 +325,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change SmartEngine.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableSmartEngine_Error_Title, Resource.SettingsPage_DisableSmartEngine_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableSmartEngine_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_smartEngineToggle, _smartEngineDisabler);
                 return;
             }
@@ -340,7 +340,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change SmartEngine.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableSmartEngine_Error_Title, Resource.SettingsPage_EnableSmartEngine_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableSmartEngine_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_smartEngineToggle, _smartEngineDisabler);
                 return;
             }
@@ -375,7 +375,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change FnKeys.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLenovoHotkeys_Error_Title, Resource.SettingsPage_DisableLenovoHotkeys_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableLenovoHotkeys_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_fnKeysToggle, _fnKeysDisabler);
                 return;
             }
@@ -390,7 +390,7 @@ public partial class SettingsSoftwareControlControl
             {
                 Log.Instance.Trace($"Couldn't change FnKeys.", ex);
 
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLenovoHotkeys_Error_Title, Resource.SettingsPage_EnableLenovoHotkeys_Error_Message, SnackbarType.Error);
+                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableLenovoHotkeys_Error_Title, ex.Message, SnackbarType.Error);
                 await SyncToggleAsync(_fnKeysToggle, _fnKeysDisabler);
                 return;
             }
