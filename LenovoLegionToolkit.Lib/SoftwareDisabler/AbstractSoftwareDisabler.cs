@@ -9,11 +9,12 @@ using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
+using Resource = LenovoLegionToolkit.Lib.Resources.Resource;
 using TaskService = Microsoft.Win32.TaskScheduler.TaskService;
 
 namespace LenovoLegionToolkit.Lib.SoftwareDisabler;
 
-public class SoftwareDisablerException(string message, Exception innerException) : Exception(message, innerException);
+public class SoftwareDisablerException(string message, Exception? innerException = null) : Exception(message, innerException);
 
 public abstract class AbstractSoftwareDisabler
 {
@@ -111,11 +112,10 @@ public abstract class AbstractSoftwareDisabler
 
     protected virtual async Task ApplyStateAsync(bool enabled)
     {
-        SetScheduledTasksEnabled(enabled);
-        SetServicesEnabled(enabled);
-
         if (enabled)
         {
+            SetScheduledTasksEnabled(true);
+            SetServicesEnabled(true);
             SetDriversEnabled(true);
             SetStartupEntriesEnabled(true);
 
@@ -126,6 +126,14 @@ public abstract class AbstractSoftwareDisabler
 
         await KillProcessesAsync().ConfigureAwait(false);
 
+        var stillRunning = RunningProcesses().ToArray();
+        if (stillRunning.Length > 0)
+        {
+            throw new SoftwareDisablerException(string.Format(Resource.SoftwareDisabler_ProcessError_Message, string.Join(", ", stillRunning)));
+        }
+
+        SetScheduledTasksEnabled(false);
+        SetServicesEnabled(false);
         SetDriversEnabled(false);
         SetStartupEntriesEnabled(false);
 
@@ -368,7 +376,7 @@ public abstract class AbstractSoftwareDisabler
         {
             Log.Instance.Trace($"Failed to set autorun entry {name} in {hive}.", ex);
 
-            throw new SoftwareDisablerException($"Failed to set autorun entry {name} in {hive} [type={GetType().Name}]", ex);
+            throw new SoftwareDisablerException(string.Format(Resource.SoftwareDisabler_StartupEntryError_Message, name), ex);
         }
     }
 
@@ -419,7 +427,7 @@ public abstract class AbstractSoftwareDisabler
             {
                 Log.Instance.Trace($"Failed to register changes on task {task.Name} in {task.Path}.", ex);
 
-                throw new SoftwareDisablerException($"Failed to register changes on task {task.Name} in {task.Path} [type={GetType().Name}]", ex);
+                throw new SoftwareDisablerException(string.Format(Resource.SoftwareDisabler_ScheduledTaskError_Message, task.Name), ex);
             }
         }
     }
@@ -533,7 +541,7 @@ public abstract class AbstractSoftwareDisabler
         {
             Log.Instance.Trace($"Failed to set service {serviceName} to {enabled}.", ex);
 
-            throw new SoftwareDisablerException($"Couldn't set service {serviceName} to {enabled}. [type={GetType().Name}]", ex);
+            throw new SoftwareDisablerException(string.Format(Resource.SoftwareDisabler_ServiceError_Message, serviceName), ex);
         }
     }
 
@@ -541,7 +549,7 @@ public abstract class AbstractSoftwareDisabler
     {
         for (var attempt = 1; attempt <= 3; attempt++)
         {
-            var killed = 0;
+            var remaining = 0;
 
             foreach (var process in OwnedProcesses())
             {
@@ -553,13 +561,15 @@ public abstract class AbstractSoftwareDisabler
 
                     Log.Instance.Trace($"Killing process {name}... [attempt={attempt}, type={GetType().Name}]");
 
-                    process.Kill(true);
-                    await process.WaitForExitAsync().ConfigureAwait(false);
+                    using var cts = new CancellationTokenSource(TimeSpan.FromSeconds(5));
 
-                    killed++;
+                    process.Kill(true);
+                    await process.WaitForExitAsync(cts.Token).ConfigureAwait(false);
                 }
                 catch (Exception ex)
                 {
+                    remaining++;
+
                     Log.Instance.Trace($"Couldn't kill process {name}. [attempt={attempt}, type={GetType().Name}]", ex);
                 }
                 finally
@@ -568,7 +578,7 @@ public abstract class AbstractSoftwareDisabler
                 }
             }
 
-            if (killed == 0)
+            if (remaining == 0)
             {
                 return;
             }

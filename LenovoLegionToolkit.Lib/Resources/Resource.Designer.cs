@@ -1267,6 +1267,51 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t close {0}. It is still running, close it manually and try again..
+        /// </summary>
+        public static string SoftwareDisabler_ProcessError_Message {
+            get {
+                return ResourceManager.GetString("SoftwareDisabler_ProcessError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t change the scheduled task {0}..
+        /// </summary>
+        public static string SoftwareDisabler_ScheduledTaskError_Message {
+            get {
+                return ResourceManager.GetString("SoftwareDisabler_ScheduledTaskError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t change the service {0}..
+        /// </summary>
+        public static string SoftwareDisabler_ServiceError_Message {
+            get {
+                return ResourceManager.GetString("SoftwareDisabler_ServiceError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t change the startup entry {0}..
+        /// </summary>
+        public static string SoftwareDisabler_StartupEntryError_Message {
+            get {
+                return ResourceManager.GetString("SoftwareDisabler_StartupEntryError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Couldn&apos;t save which apps should stay disabled..
+        /// </summary>
+        public static string SoftwareDisabler_StateError_Message {
+            get {
+                return ResourceManager.GetString("SoftwareDisabler_StateError_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mute.
         /// </summary>
         public static string SpeakerState_Mute {

@@ -4,6 +4,7 @@ using System.IO;
 using System.Threading;
 using LenovoLegionToolkit.Lib.Utils;
 using Newtonsoft.Json;
+using Resource = LenovoLegionToolkit.Lib.Resources.Resource;
 
 namespace LenovoLegionToolkit.Lib.SoftwareDisabler;
 
@@ -122,7 +123,7 @@ public static class SoftwareDisablerStateStore
 
                 DeleteTemp(tempPath);
 
-                throw new SoftwareDisablerException($"Failed to save software disabler state [type={disablerName}]", ex);
+                throw new SoftwareDisablerException(Resource.SoftwareDisabler_StateError_Message, ex);
             }
         }
     }
