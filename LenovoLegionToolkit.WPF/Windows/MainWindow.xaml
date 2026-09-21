@@ -107,7 +107,9 @@
                 Cursor=""
                 Frame="{Binding ElementName=_rootFrame}"
                 Navigated="NavigationStore_Navigated"
-                SelectedPageIndex="0">
+                SelectedPageIndex="0"
+                TransitionDuration="100"
+                TransitionType="FadeIn">
 
                 <wpfui:NavigationStore.Items>
                     <custom:NavigationItem
