@@ -18,8 +18,12 @@ public static partial class WMI
                     return lightingType;
                 }).ConfigureAwait(false);
 
+                var hasRows = false;
+
                 foreach (var lightingType in rows)
                 {
+                    hasRows = true;
+
                     var keyboardType = (lightingType >> 1) & 7;
                     if (keyboardType != 0)
                     {
@@ -27,7 +31,14 @@ public static partial class WMI
                     }
                 }
 
-                Log.Instance.Trace($"No keyboard type found in lighting data. [lightingTypes={string.Join(", ", rows)}]");
+                if (hasRows)
+                {
+                    Log.Instance.Trace($"No keyboard type reported in lighting data. [lightingTypes={string.Join(", ", rows)}]");
+
+                    return 0;
+                }
+
+                Log.Instance.Trace($"No lighting data found. [query=LENOVO_LIGHTING_DATA]");
 
                 return null;
             }
