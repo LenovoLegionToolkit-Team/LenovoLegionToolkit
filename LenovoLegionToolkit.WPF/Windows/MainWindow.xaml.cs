@@ -58,6 +58,9 @@ public partial class MainWindow
     private TrayHelper? _trayHelper;
     private bool _windowSizeLocked;
 
+    private string? _cachedBackgroundImagePath;
+    private BitmapImage? _cachedBackgroundImage;
+
     public bool TrayTooltipEnabled { get; init; } = true;
     public bool DisableConflictingSoftwareWarning { get; set; }
     public bool SuppressClosingEventHandler { get; set; }
@@ -555,11 +558,22 @@ public partial class MainWindow
 
     public void SetMainWindowBackgroundImage(string filePath)
     {
+        if (_cachedBackgroundImage is not null && _cachedBackgroundImagePath == filePath)
+        {
+            _backgroundImage.ImageSource = _cachedBackgroundImage;
+            return;
+        }
+
         BitmapImage bitmap = new BitmapImage();
         bitmap.BeginInit();
         bitmap.UriSource = new Uri(filePath);
         bitmap.CacheOption = BitmapCacheOption.OnLoad;
         bitmap.EndInit();
+        bitmap.Freeze();
+
+        _cachedBackgroundImagePath = filePath;
+        _cachedBackgroundImage = bitmap;
+
         _backgroundImage.ImageSource = bitmap;
     }
 
