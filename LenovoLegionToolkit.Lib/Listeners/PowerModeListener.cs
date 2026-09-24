@@ -34,10 +34,10 @@ public class PowerModeListener(
     protected override async Task OnChangedAsync(PowerModeState value)
     {
         Log.Instance.Trace($"PowerModeListener.OnChangedAsync (WMI event path): value={value}");
+        PublishNotification(value);
         var sw = Stopwatch.StartNew();
         await ChangeDependenciesAsync(value).ConfigureAwait(false);
         Log.Instance.Trace($"ChangeDependenciesAsync completed [elapsed={sw.ElapsedMilliseconds}ms]");
-        PublishNotification(value);
     }
 
     public async Task NotifyAsync(PowerModeState value)

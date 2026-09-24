@@ -726,7 +726,7 @@ public partial class App
 
             if (await feature.IsSupportedAsync())
             {
-                await feature.EnsureGodModeStateIsAppliedAsync();
+                await feature.EnsureGodModeStateIsAppliedAsync(skipThrottle: true);
             }
 
             return true;
