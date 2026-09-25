@@ -419,7 +419,12 @@ LLT 会自动在进程运行环境内添加一些可被访问的环境变量。�
 
 ## 赞助
 
-开发不易，如果你觉得拯救者工具箱不错的话，可以考虑通过 GitHub 赞助按钮来支持开发。
+开发不易，如果你觉得拯救者工具箱不错的话，可以考虑支持开发者：
+
+* **Dr. Skinner**：[GitHub Sponsors](https://github.com/sponsors/Metanome) · [Buy Me a Coffee](https://buymeacoffee.com/metanome)
+* **Kaguya**：[爱发电 (Ifdian)](https://ifdian.net/a/XKaguya)
+
+你也可以点击仓库页面顶部的 **Sponsor** 赞助按钮。
 
 ## 贡献者
 

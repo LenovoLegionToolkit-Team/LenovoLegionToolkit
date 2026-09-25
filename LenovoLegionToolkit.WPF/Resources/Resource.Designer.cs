@@ -2854,11 +2854,29 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Buy Me a Coffee.
+        /// </summary>
+        public static string DonatePage_DrSkinner_BuyMeACoffee {
+            get {
+                return ResourceManager.GetString("DonatePage_DrSkinner_BuyMeACoffee", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Responsible for core feature development, quality assurance, UI/UX design, and overall project direction as the current project lead..
         /// </summary>
         public static string DonatePage_DrSkinner_Description {
             get {
                 return ResourceManager.GetString("DonatePage_DrSkinner_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GitHub Sponsors.
+        /// </summary>
+        public static string DonatePage_DrSkinner_GitHubSponsors {
+            get {
+                return ResourceManager.GetString("DonatePage_DrSkinner_GitHubSponsors", resourceCulture);
             }
         }
         

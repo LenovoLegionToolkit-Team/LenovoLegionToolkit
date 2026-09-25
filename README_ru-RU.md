@@ -431,7 +431,12 @@ Script Console включается при запуске LLT с аргумен�
 
 ## Пожертвования
 
-Если вам нравится использовать LLT, поддержите проект через кнопку GitHub Sponsors на странице репозитория.
+Если вам нравится использовать LLT, вы можете поддержать разработчиков:
+
+* **Dr. Skinner**: [GitHub Sponsors](https://github.com/sponsors/Metanome) · [Buy Me a Coffee](https://buymeacoffee.com/metanome)
+* **Kaguya**: [Ifdian](https://ifdian.net/a/XKaguya)
+
+Вы также можете использовать кнопку **Sponsor** в верхней части страницы репозитория.
 
 ## Благодарности
 

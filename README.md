@@ -439,7 +439,12 @@ The Script Console is enabled by starting LLT with `--debug` (see [Arguments](#a
 
 ## Donate
 
-If you enjoy using the Lenovo Legion Toolkit, consider sponsoring the project using the GitHub Sponsors button at the top of the repository page.
+If you enjoy using the Lenovo Legion Toolkit, consider supporting the developers who make it possible:
+
+* **Dr. Skinner**: [GitHub Sponsors](https://github.com/sponsors/Metanome) · [Buy Me a Coffee](https://buymeacoffee.com/metanome)
+* **Kaguya**: [Ifdian](https://ifdian.net/a/XKaguya)
+
+You can also use the **Sponsor** button at the top of the repository page.
 
 ## Credits
 

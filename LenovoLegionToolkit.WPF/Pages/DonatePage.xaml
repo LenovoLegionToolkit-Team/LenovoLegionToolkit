@@ -253,11 +253,27 @@
                             TextWrapping="Wrap" />
 
                         <wpfui:Button
+                            x:Name="_drSkinnerButton"
                             HorizontalAlignment="Center"
                             Appearance="Primary"
-                            Click="DrSkinnerGitHub_Click"
+                            Click="DrSkinnerSponsor_Click"
                             Content="{x:Static resources:Resource.DonatePage_Sponsor}"
-                            Icon="Heart24" />
+                            Icon="Heart24">
+                            <wpfui:Button.ContextMenu>
+                                <ContextMenu MinWidth="160">
+                                    <ContextMenu.Items>
+                                        <wpfui:MenuItem
+                                            Click="DrSkinnerBuyMeACoffee_Click"
+                                            Header="{x:Static resources:Resource.DonatePage_DrSkinner_BuyMeACoffee}"
+                                            SymbolIcon="DrinkCoffee24" />
+                                        <wpfui:MenuItem
+                                            Click="DrSkinnerGitHub_Click"
+                                            Header="{x:Static resources:Resource.DonatePage_DrSkinner_GitHubSponsors}"
+                                            SymbolIcon="Heart24" />
+                                    </ContextMenu.Items>
+                                </ContextMenu>
+                            </wpfui:Button.ContextMenu>
+                        </wpfui:Button>
                     </StackPanel>
 
                     <!--  Active badge  -->

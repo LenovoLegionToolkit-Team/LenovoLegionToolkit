@@ -429,7 +429,12 @@ CLIは管理者として実行する必要はありません。
 
 ## 寄付
 
-Lenovo Legion Toolkitを楽しんで使用している場合は、リポジトリページの上部にある GitHub Sponsors ボタンを使用してプロジェクトを支援することを検討してください。
+Lenovo Legion Toolkitを楽しんで使用している場合は、開発者の支援をご検討ください：
+
+* **Dr. Skinner**: [GitHub Sponsors](https://github.com/sponsors/Metanome) · [Buy Me a Coffee](https://buymeacoffee.com/metanome)
+* **Kaguya**: [Ifdian](https://ifdian.net/a/XKaguya)
+
+リポジトリページの上部にある **Sponsor** ボタンからも支援できます。
 
 ## クレジット
 
