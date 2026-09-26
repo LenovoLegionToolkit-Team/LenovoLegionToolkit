@@ -1,12 +1,15 @@
 ﻿using System.Windows;
 using System.Windows.Automation;
 using System.Windows.Automation.Peers;
+using System.Windows.Media;
 using UiBadge = Wpf.Ui.Controls.Badge;
 
 namespace LenovoLegionToolkit.WPF.Controls.Custom;
 
 public class Badge : UiBadge
 {
+    protected override Geometry? GetLayoutClip(Size layoutSlotSize) => null;
+
     protected override AutomationPeer OnCreateAutomationPeer() => new BadgeAutomationPeer(this);
 
     private class BadgeAutomationPeer(Badge owner) : FrameworkElementAutomationPeer(owner)

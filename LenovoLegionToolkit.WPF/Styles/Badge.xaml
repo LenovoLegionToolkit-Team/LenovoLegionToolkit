@@ -31,7 +31,7 @@
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="1"
                         CornerRadius="4">
-                        <ContentPresenter />
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="Appearance" Value="Primary">
@@ -44,7 +44,16 @@
                         <Trigger Property="Appearance" Value="Transparent">
                             <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
                             <Setter TargetName="Border" Property="Background" Value="Transparent" />
+                            <Setter TargetName="Border" Property="BorderThickness" Value="1,0,1,1" />
+                            <Setter TargetName="Border" Property="CornerRadius" Value="0,0,4,4" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Appearance" Value="Transparent" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource ControlFillColorSecondaryBrush}" />
+                        </MultiTrigger>
                         <Trigger Property="Appearance" Value="Secondary">
                             <Setter Property="BorderBrush" Value="{DynamicResource ControlElevationBorderBrush}" />
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource ControlFillColorDefaultBrush}" />
@@ -53,8 +62,23 @@
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PaletteLightBlueBrush}" />
                         </Trigger>
                         <Trigger Property="Appearance" Value="Caution">
-                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource PaletteOrangeBrush}" />
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource SystemFillColorCautionBackgroundBrush}" />
+                            <Setter Property="Foreground" Value="{DynamicResource SystemFillColorCautionBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource SystemFillColorCautionBrush}" />
+                            <Setter TargetName="Border" Property="BorderThickness" Value="1,0,1,1" />
+                            <Setter TargetName="Border" Property="CornerRadius" Value="0,0,4,4" />
                         </Trigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="Appearance" Value="Caution" />
+                                <Condition Property="IsMouseOver" Value="True" />
+                            </MultiTrigger.Conditions>
+                            <Setter TargetName="Border" Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{DynamicResource SystemFillColorCaution}" Opacity="0.3" />
+                                </Setter.Value>
+                            </Setter>
+                        </MultiTrigger>
                         <Trigger Property="Appearance" Value="Danger">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource PaletteRedBrush}" />
                         </Trigger>

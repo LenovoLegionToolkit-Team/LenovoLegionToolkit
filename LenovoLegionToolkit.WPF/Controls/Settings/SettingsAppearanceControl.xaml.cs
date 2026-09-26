@@ -34,8 +34,14 @@ public partial class SettingsAppearanceControl
 
     private void ThemeManager_ThemeApplied(object? sender, EventArgs e)
     {
-        if (!_isRefreshing)
-            UpdateAccentColorPicker();
+        if (_isRefreshing)
+            return;
+
+        UpdateAccentColorPicker();
+
+        _isRefreshing = true;
+        _themeComboBox.SelectItem(_settings.Store.Theme);
+        _isRefreshing = false;
     }
 
     public async Task RefreshAsync()
