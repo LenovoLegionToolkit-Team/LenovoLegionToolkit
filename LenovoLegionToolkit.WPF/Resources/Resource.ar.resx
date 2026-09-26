@@ -1050,8 +1050,14 @@
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>حتى لو كنت لا تستطيع التبرع ، ببساطة إستخدام، مشاركة، وبدء المشروع على GitHub يذهب إلى طريق طويل. كل جزء من الدعم يحظى بتقدير حقيقي</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>مسؤول عن تطوير المعالم الأساسية، وضمان الجودة، وتصميم UI/UX، والتوجيه العام للمشروع بوصفه الرائد الحالي للمشروع.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>المطور الأساسي و رائد المشروع</value>
@@ -1453,6 +1459,9 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
     <value>Your device may not support the full feature set of Custom Mode.</value>
   </data>
+  <data name="GodModeSettingsWindow_SmartEngineWarning_Title" xml:space="preserve">
+    <value>Custom Mode settings will not be applied correctly when Lenovo SmartEngine or its services are running.</value>
+  </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>تردد التعزيز الدقيق.</value>
   </data>
@@ -1596,6 +1605,12 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>الإضاءة الخلفية للوحة المفاتيح</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>لا يمكن التحكم في الإضاءة الخلفية لوحة المفاتيح هنا عندما يكون Lenovo Vantage أو خدماتها قيد التشغيل.</value>
@@ -1812,6 +1827,9 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
     <value>منطقة الفيلق تعمل في الخلفية.</value>
+  </data>
+  <data name="MainWindow_SmartEngineRunning" xml:space="preserve">
+    <value>Lenovo SmartEngine is running in the background.</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>حول البرنامج</value>
@@ -2906,6 +2924,12 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>تردد المعالج</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2929,6 +2953,18 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU المفضل</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>الذاكرة المستخدمة/الإجمالية (GB)</value>
@@ -3144,6 +3180,21 @@ Restart is recommended after changing this option.</value>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>تعطيل مفاتيح Lenovo الساخنة</value>
   </data>
+  <data name="SettingsPage_DisableSmartEngine_Error_Message" xml:space="preserve">
+    <value>Lenovo SmartEngine may have not been disabled correctly</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Error_Title" xml:space="preserve">
+    <value>Couldn't disable Lenovo SmartEngine</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Message" xml:space="preserve">
+    <value>Disable the SmartEngine components shared by Legion Space and Legion Zone without uninstalling them.</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Title" xml:space="preserve">
+    <value>Disable Lenovo SmartEngine</value>
+  </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
     <value>ربما لم يتم تعطيل Vantage بشكل صحيح</value>
   </data>
@@ -3180,6 +3231,12 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_EnableLogging_Title" xml:space="preserve">
     <value>تمكين تسجيل الدخول</value>
+  </data>
+  <data name="SettingsPage_EnableSmartEngine_Error_Message" xml:space="preserve">
+    <value>Lenovo SmartEngine may have not been enabled correctly</value>
+  </data>
+  <data name="SettingsPage_EnableSmartEngine_Error_Title" xml:space="preserve">
+    <value>Couldn't enable Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage و/أو غير مراقب ربما لم يتم تمكينه بشكل صحيح</value>
@@ -3429,6 +3486,9 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>تم تطبيق الإعدادات بنجاح.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>عند كتم، سيتم كتم جميع أجهزة إخراج الصوت النشطة.</value>

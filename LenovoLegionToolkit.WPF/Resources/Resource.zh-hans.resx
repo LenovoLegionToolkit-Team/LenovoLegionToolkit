@@ -1053,8 +1053,14 @@
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>即使您不能捐赠，只需使用 GitHub 上的项目，分享和启动项目也是很长的路程。每一点支持都是真正感激的。</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>负责核心功能开发、质量保证、UI/UX设计以及目前项目牵头的总体项目方向。</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>核心开发者 &amp; 项目负责人</value>
@@ -1462,6 +1468,9 @@
   <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
     <value>您的设备可能不支持自定义模式的完整功能。</value>
   </data>
+  <data name="GodModeSettingsWindow_SmartEngineWarning_Title" xml:space="preserve">
+    <value>Custom Mode settings will not be applied correctly when Lenovo SmartEngine or its services are running.</value>
+  </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>调整 Precision Boost Overdrive 提高频率。</value>
   </data>
@@ -1604,6 +1613,12 @@
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>键盘背光</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>由于 Lenovo Vantage 或其服务正在运行导致冲突，无法在此控制键盘背光。</value>
@@ -1820,6 +1835,9 @@
   </data>
   <data name="MainWindow_LegionZoneRunning" xml:space="preserve">
     <value>Legion Zone 正在后台运行。</value>
+  </data>
+  <data name="MainWindow_SmartEngineRunning" xml:space="preserve">
+    <value>Lenovo SmartEngine is running in the background.</value>
   </data>
   <data name="MainWindow_NavigationItem_About" xml:space="preserve">
     <value>关于</value>
@@ -2915,6 +2933,12 @@
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU 频率</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>独立显卡</value>
   </data>
@@ -2938,6 +2962,18 @@
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>首选显卡</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>已使用/总内存 (GB)</value>
@@ -3154,6 +3190,21 @@
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>禁用 Lenovo Hotkeys</value>
   </data>
+  <data name="SettingsPage_DisableSmartEngine_Error_Message" xml:space="preserve">
+    <value>Lenovo SmartEngine may have not been disabled correctly</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Error_Title" xml:space="preserve">
+    <value>Couldn't disable Lenovo SmartEngine</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Message" xml:space="preserve">
+    <value>Disable the SmartEngine components shared by Legion Space and Legion Zone without uninstalling them.</value>
+  </data>
+  <data name="SettingsPage_DisableSmartEngine_Title" xml:space="preserve">
+    <value>Disable Lenovo SmartEngine</value>
+  </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage 与 ImController 可能没有被正确禁用。</value>
   </data>
@@ -3190,6 +3241,12 @@
   </data>
   <data name="SettingsPage_EnableLogging_Title" xml:space="preserve">
     <value>启用日志</value>
+  </data>
+  <data name="SettingsPage_EnableSmartEngine_Error_Message" xml:space="preserve">
+    <value>Lenovo SmartEngine may have not been enabled correctly</value>
+  </data>
+  <data name="SettingsPage_EnableSmartEngine_Error_Title" xml:space="preserve">
+    <value>Couldn't enable Lenovo SmartEngine</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage 与 ImController 可能没有被正确禁用。</value>
@@ -3439,6 +3496,9 @@
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>成功应用配置。</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>静音此项将静音所有可用的音频输出设备。</value>
