@@ -140,10 +140,6 @@ public class IoCModule : Module
         builder.Register<RGBKeyboardBacklightController>();
         builder.Register<LampArrayController>();
         builder.Register<SensorsController>();
-        builder.Register<SensorsControllerV0>(true);
-        builder.Register<SensorsControllerV1>(true);
-        builder.Register<SensorsControllerV2>(true);
-        builder.Register<SensorsControllerV3>(true);
         builder.Register<CpuSensorProvider>(true);
         builder.Register<GpuSensorProvider>(true);
         builder.Register<MemorySensorProvider>(true);

@@ -112,7 +112,6 @@ public partial class App
                     Log.Instance.Trace($"Lenovo Legion Toolkit Version {Assembly.GetEntryAssembly()?.GetName().Version}");
                 }
 
-                Compatibility.PrintControllerVersionAsync().ConfigureAwait(false);
                 InitOsd();
                 InitAppMessages();
                 LogIdentityStatus();

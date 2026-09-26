@@ -848,23 +848,4 @@ public static partial class Compatibility
         lines.Add($"{prefix}{propertyName}: '{value}'");
         return lines;
     }
-
-    public static async Task PrintControllerVersionAsync()
-    {
-        SensorsController sensorsController = IoCContainer.Resolve<SensorsController>();
-
-        var sensorCtrl = await sensorsController.GetControllerAsync().ConfigureAwait(true);
-        var sensorsControllerTypeName = sensorCtrl?.GetType().Name ?? "Null SensorsController or Result";
-        Log.Instance.Trace($"Using {sensorsControllerTypeName}");
-
-        if (!_machineInformation!.Value.Properties.SupportsGodMode)
-        {
-            return;
-        }
-
-        GodModeController godModeController = IoCContainer.Resolve<GodModeController>();
-
-        var godModePlatform = _machineInformation!.Value.Properties.GodModePlatform?.ToString() ?? "None";
-        Log.Instance.Trace($"Using GodMode platform: {godModePlatform}");
-    }
 }
