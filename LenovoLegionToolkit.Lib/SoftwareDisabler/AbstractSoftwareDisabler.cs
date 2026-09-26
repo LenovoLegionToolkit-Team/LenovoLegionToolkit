@@ -9,8 +9,11 @@ using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
+using Windows.Management.Deployment;
+using DeploymentPackageStatus = Windows.Management.Deployment.PackageStatus;
 using Resource = LenovoLegionToolkit.Lib.Resources.Resource;
 using TaskService = Microsoft.Win32.TaskScheduler.TaskService;
+using WindowsPackage = Windows.ApplicationModel.Package;
 
 namespace LenovoLegionToolkit.Lib.SoftwareDisabler;
 
@@ -18,6 +21,15 @@ public class SoftwareDisablerException(string message, Exception? innerException
 
 public abstract class AbstractSoftwareDisabler
 {
+    private sealed record EvaluatedState(
+        SoftwareStatus Status,
+        string[] Services,
+        string[] Processes,
+        string[] ScheduledTasks,
+        string[] AppxPackages,
+        string[] StartupEntries,
+        string[] Errors);
+
     public class AbstractSoftwareDisablerEventArgs : EventArgs
     {
         public SoftwareStatus Status { get; init; }
@@ -36,18 +48,21 @@ public abstract class AbstractSoftwareDisabler
     private static readonly string[] Hives = ["HKEY_CURRENT_USER", "HKEY_LOCAL_MACHINE"];
     private static readonly byte[] EnabledStartupEntry = [0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00];
 
-    protected abstract IEnumerable<string> ScheduledTasksPaths { get; }
-    protected abstract IEnumerable<string> ServiceNames { get; }
-    protected abstract IEnumerable<string> ProcessNames { get; }
+    protected abstract SoftwareDisablerPolicy Policy { get; }
 
-    protected virtual IEnumerable<string> DriverNamePrefixes => [];
-    protected virtual IEnumerable<string> DriverPackageRoots => [];
-    protected virtual IEnumerable<string> StartupEntryNames => [];
-    protected virtual IEnumerable<string> StartupEntryRoots => [];
-
-    protected virtual IEnumerable<string> OwnershipRoots => [];
-
-    protected virtual IEnumerable<string> OwnershipPathMarkers => [];
+    private IEnumerable<string> ScheduledTasksPaths => Policy.ScheduledTaskPaths;
+    private IEnumerable<string> ServiceNames => Policy.ServiceNames;
+    private IEnumerable<string> ProcessNames => Policy.ProcessNames;
+    private IEnumerable<string> DriverNamePrefixes => Policy.DriverNamePrefixes;
+    private IEnumerable<string> DriverPackageRoots => Policy.DriverPackageRoots;
+    private IEnumerable<string> StartupEntryNames => Policy.StartupEntryNames;
+    private IEnumerable<string> StartupEntryRoots => Policy.StartupEntryRoots;
+    private IEnumerable<string> AppxPackageNames => Policy.AppxPackageNames;
+    private IEnumerable<string> RepairBlockingServiceNames => Policy.RepairBlockingServiceNames;
+    private IEnumerable<string> RepairBlockingProcessNames => Policy.RepairBlockingProcessNames;
+    private IEnumerable<string> OwnershipRoots => Policy.OwnershipRoots;
+    private IEnumerable<string> OwnershipPathMarkers => Policy.OwnershipPathMarkers;
+    private IEnumerable<string> OwnershipPriorityPathFragments => Policy.OwnershipPriorityPathFragments;
 
     public event EventHandler<AbstractSoftwareDisablerEventArgs>? OnRefreshed;
 
@@ -57,17 +72,18 @@ public abstract class AbstractSoftwareDisabler
         SelfName,
         GetRoots(OwnershipRoots).Select(r => r.ToLowerInvariant()).ToArray(),
         OwnershipPathMarkers.Select(m => m.ToLowerInvariant()).ToArray(),
+        OwnershipPriorityPathFragments.Select(f => f.ToLowerInvariant()).ToArray(),
         ServiceNames.Select(s => s.ToLowerInvariant()).ToArray(),
         ScheduledTasksPaths.Select(NormalizeTaskFolder).ToArray());
 
     public async Task<SoftwareStatus> GetStatusAsync()
     {
-        var (status, _, _) = await GetStateAsync().ConfigureAwait(false);
+        var status = (await GetStateAsync().ConfigureAwait(false)).Status;
 
         return status;
     }
 
-    private async Task<(SoftwareStatus Status, string[] Services, string[] Processes)> GetStateAsync()
+    private async Task<EvaluatedState> GetStateAsync()
     {
         var state = await Task.Run(EvaluateState).ConfigureAwait(false);
 
@@ -78,69 +94,210 @@ public abstract class AbstractSoftwareDisabler
         return state;
     }
 
-    private (SoftwareStatus Status, string[] Services, string[] Processes) EvaluateState()
+    private EvaluatedState EvaluateState()
     {
+        ServiceController[] allServices = [];
+
         try
         {
-            var allServices = AllServices().ToArray();
-            var services = RunningServices(allServices).ToArray();
-            var processes = RunningProcesses().ToArray();
+            allServices = AllServices().ToArray();
+            var serviceNames = AllServiceNames(allServices).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
+            var packages = MatchingAppxPackages();
+            var installed = IsInstalled(allServices, serviceNames, packages);
+            var services = EnabledServices(allServices, serviceNames, installed).ToArray();
+            var processes = RunningProcesses()
+                .Concat(installed ? RunningRepairBlockingProcesses() : [])
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToArray();
+            var scheduledTasks = EnabledScheduledTasks().ToArray();
+            var appxPackages = EnabledAppxPackages(packages).ToArray();
+            var startupEntries = EnabledStartupEntries()
+                .Concat(GetAdditionalEnabledResources())
+                .Distinct(StringComparer.OrdinalIgnoreCase)
+                .ToArray();
 
-            Log.Instance.Trace($"Running services count: {services.Length}. [type={GetType().Name}, services={string.Join(",", services)}]");
+            Log.Instance.Trace($"Enabled services count: {services.Length}. [type={GetType().Name}, services={string.Join(",", services)}]");
             Log.Instance.Trace($"Running processes count: {processes.Length}. [type={GetType().Name}, processes={string.Join(",", processes)}]");
+            Log.Instance.Trace($"Enabled launch sources. [type={GetType().Name}, tasks={string.Join(",", scheduledTasks)}, appx={string.Join(",", appxPackages)}, startup={string.Join(",", startupEntries)}]");
 
-            if (services.Length != 0 || processes.Length != 0)
+            if (services.Length != 0 || processes.Length != 0 || scheduledTasks.Length != 0 || appxPackages.Length != 0 || startupEntries.Length != 0)
             {
-                return (SoftwareStatus.Enabled, services, processes);
+                return new(SoftwareStatus.Enabled, services, processes, scheduledTasks, appxPackages, startupEntries, []);
             }
 
-            var status = IsInstalled(allServices) ? SoftwareStatus.Disabled : SoftwareStatus.NotFound;
+            var status = installed ? SoftwareStatus.Disabled : SoftwareStatus.NotFound;
 
-            return (status, services, processes);
+            return new(status, services, processes, scheduledTasks, appxPackages, startupEntries, []);
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Exception while getting status. [type={GetType().Name}]", ex);
 
-            return (SoftwareStatus.NotFound, [], []);
+            return new(SoftwareStatus.NotFound, [], [], [], [], [], [ex.Message]);
+        }
+        finally
+        {
+            DisposeServices(allServices);
         }
     }
 
-    public Task EnableAsync() => RunAsync(true);
+    public Task EnableAsync() => RunAsync(true, captureSnapshot: false);
 
-    public Task DisableAsync() => RunAsync(false);
+    public Task DisableAsync() => RunAsync(false, captureSnapshot: true);
 
-    protected virtual async Task ApplyStateAsync(bool enabled)
+    internal async Task ReconcileDisableIntentAsync()
+    {
+        if (!SoftwareDisablerStateStore.IsDisabledByUser(SelfName))
+        {
+            return;
+        }
+
+        var state = await Task.Run(EvaluateState).ConfigureAwait(false);
+        if (state.Status != SoftwareStatus.Enabled && state.Errors.Length == 0)
+        {
+            Log.Instance.Trace($"Software disable intent is already satisfied. [type={SelfName}, status={state.Status}]");
+            return;
+        }
+
+        await RunAsync(false, captureSnapshot: false).ConfigureAwait(false);
+    }
+
+    private SoftwareDisablerSnapshot CaptureSnapshot()
+    {
+        var snapshot = new SoftwareDisablerSnapshot();
+        var services = AllServices().ToArray();
+
+        try
+        {
+            var serviceNames = OwnedServiceNames()
+                .Concat(MatchingDriverNames(services))
+                .Concat(RepairBlockingServiceNames)
+                .Distinct(StringComparer.OrdinalIgnoreCase);
+
+            foreach (var serviceName in serviceNames)
+            {
+                if (SoftwareDisablerStateStore.TryGetCapturedServiceState(serviceName, out var capturedState))
+                {
+                    snapshot.Services[serviceName] = capturedState;
+                    continue;
+                }
+
+                var service = services.FirstOrDefault(s => s.ServiceName.Equals(serviceName, StringComparison.OrdinalIgnoreCase));
+                if (service is null)
+                {
+                    continue;
+                }
+
+                snapshot.Services[serviceName] = new SoftwareDisablerServiceSnapshot
+                {
+                    StartMode = service.StartType,
+                    Running = service.Status is not ServiceControllerStatus.Stopped
+                };
+            }
+        }
+        finally
+        {
+            DisposeServices(services);
+        }
+
+        var taskService = TaskService.Instance;
+        var processedTaskPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var folderPath in OwnedScheduledTaskFolderPaths())
+        {
+            var folder = taskService.GetFolder(folderPath);
+            if (folder is null)
+            {
+                continue;
+            }
+
+            foreach (var task in TasksInFolder(folder))
+            {
+                if (processedTaskPaths.Add(task.Path) && IsTaskOwnedBySelf(task))
+                {
+                    snapshot.ScheduledTasks[task.Path] = task.Definition.Settings.Enabled;
+                }
+            }
+        }
+
+        var startupEntryNames = StartupEntryNames.ToArray();
+        var startupEntryRoots = GetRoots(StartupEntryRoots);
+        foreach (var hive in Hives)
+        {
+            foreach (var name in GetStartupEntryNames(hive, startupEntryNames, startupEntryRoots))
+            {
+                var key = StartupEntryKey(hive, name);
+                var hadValue = Registry.ValueExists(hive, STARTUP_APPROVED_RUN_KEY, name);
+                snapshot.StartupEntries[key] = new SoftwareDisablerStartupEntrySnapshot
+                {
+                    HadValue = hadValue,
+                    Value = hadValue ? Registry.GetValue<byte[]>(hive, STARTUP_APPROVED_RUN_KEY, name, []) : null
+                };
+            }
+        }
+
+        foreach (var package in MatchingAppxPackages())
+        {
+            snapshot.AppxPackagesDisabled[package.Id.Name] = package.Status.Disabled;
+        }
+
+        CaptureAdditionalSnapshot(snapshot);
+
+        return snapshot;
+    }
+
+    private protected virtual void CaptureAdditionalSnapshot(SoftwareDisablerSnapshot snapshot) { }
+
+    private protected virtual IEnumerable<string> GetAdditionalEnabledResources() => [];
+
+    private protected virtual Task ApplyAdditionalStateAsync(bool enabled, SoftwareDisablerSnapshot? snapshot) => Task.CompletedTask;
+
+    private async Task ApplyStateAsync(bool enabled, SoftwareDisablerSnapshot? snapshot)
     {
         if (enabled)
         {
-            SetScheduledTasksEnabled(true);
-            SetServicesEnabled(true);
-            SetDriversEnabled(true);
-            SetStartupEntriesEnabled(true);
-
-            SoftwareDisablerStateStore.SetDisabledByUser(GetType().Name, false);
+            SetDriversEnabled(true, snapshot);
+            SetServicesEnabled(true, snapshot);
+            RestoreRepairBlockingServices(snapshot);
+            SetAppxPackagesEnabled(true, snapshot);
+            SetScheduledTasksEnabled(true, snapshot);
+            SetStartupEntriesEnabled(true, snapshot);
+            await ApplyAdditionalStateAsync(true, snapshot).ConfigureAwait(false);
 
             return;
         }
 
+        SetScheduledTasksEnabled(false, null);
+        SetStartupEntriesEnabled(false, null);
+        SetAppxPackagesEnabled(false, null);
+        await ApplyAdditionalStateAsync(false, null).ConfigureAwait(false);
+        DisableRepairBlockingServices();
+        SetServicesEnabled(false, null);
+        SetDriversEnabled(false, null);
+
         await KillProcessesAsync().ConfigureAwait(false);
 
-        var stillRunning = RunningProcesses().ToArray();
+        SetScheduledTasksEnabled(false, null);
+        SetStartupEntriesEnabled(false, null);
+        SetAppxPackagesEnabled(false, null);
+        await ApplyAdditionalStateAsync(false, null).ConfigureAwait(false);
+        DisableRepairBlockingServices();
+        SetServicesEnabled(false, null);
+        SetDriversEnabled(false, null);
+
+        await KillProcessesAsync().ConfigureAwait(false);
+
+        var stillRunning = RunningProcesses()
+            .Concat(RunningRepairBlockingProcesses())
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToArray();
         if (stillRunning.Length > 0)
         {
             throw new SoftwareDisablerException(string.Format(Resource.SoftwareDisabler_ProcessError_Message, string.Join(", ", stillRunning)));
         }
 
-        SetScheduledTasksEnabled(false);
-        SetServicesEnabled(false);
-        SetDriversEnabled(false);
-        SetStartupEntriesEnabled(false);
-
-        SoftwareDisablerStateStore.SetDisabledByUser(GetType().Name, true);
     }
 
-    private async Task RunAsync(bool enabled)
+    private async Task RunAsync(bool enabled, bool captureSnapshot)
     {
         await _operationLock.WaitAsync().ConfigureAwait(false);
 
@@ -152,17 +309,40 @@ public abstract class AbstractSoftwareDisabler
 
             Log.Instance.Trace($"{(enabled ? "Enabling" : "Disabling")}... [type={GetType().Name}]");
 
-            await ApplyStateAsync(enabled).ConfigureAwait(false);
+            SoftwareDisablerSnapshot? snapshot = null;
+
+            if (enabled)
+            {
+                SoftwareDisablerStateStore.TryGetSnapshot(SelfName, out snapshot);
+            }
+            else
+            {
+                if (captureSnapshot && !SoftwareDisablerStateStore.IsDisabledByUser(SelfName))
+                {
+                    snapshot = CaptureSnapshot();
+                    SoftwareDisablerStateStore.SetSnapshot(SelfName, snapshot);
+                }
+
+                SoftwareDisablerStateStore.SetDisabledByUser(SelfName, true);
+            }
+
+            await ApplyStateAsync(enabled, snapshot).ConfigureAwait(false);
+
+            if (enabled)
+            {
+                SoftwareDisablerStateStore.SetDisabledByUser(SelfName, false);
+                SoftwareDisablerStateStore.ClearSnapshot(SelfName);
+            }
 
             SoftwareDisablerOwnership.Invalidate();
 
-            var (status, runningServices, runningProcesses) = await GetStateAsync().ConfigureAwait(false);
+            var state = await GetStateAsync().ConfigureAwait(false);
 
-            if (!enabled && status == SoftwareStatus.Enabled)
+            if (!enabled && (state.Status == SoftwareStatus.Enabled || state.Errors.Length > 0))
             {
-                LastFailureReason = BuildFailureReason(runningServices, runningProcesses);
+                LastFailureReason = BuildFailureReason(state);
 
-                Log.Instance.Trace($"Disabled, restart required. [type={GetType().Name}, services={string.Join(",", runningServices)}, processes={string.Join(",", runningProcesses)}, notStopped={string.Join(",", _notStoppedServices)}, keptEnabled={string.Join(",", _blockedResources)}, reason={LastFailureReason}]");
+                Log.Instance.Trace($"Disabled, restart required. [type={GetType().Name}, services={string.Join(",", state.Services)}, processes={string.Join(",", state.Processes)}, tasks={string.Join(",", state.ScheduledTasks)}, appx={string.Join(",", state.AppxPackages)}, startup={string.Join(",", state.StartupEntries)}, notStopped={string.Join(",", _notStoppedServices)}, keptEnabled={string.Join(",", _blockedResources)}, reason={LastFailureReason}]");
             }
             else
             {
@@ -175,18 +355,38 @@ public abstract class AbstractSoftwareDisabler
         }
     }
 
-    private string BuildFailureReason(IReadOnlyList<string> runningServices, IReadOnlyList<string> runningProcesses)
+    private string BuildFailureReason(EvaluatedState state)
     {
         var reasons = new List<string>();
 
-        if (runningServices.Count > 0)
+        if (state.Services.Length > 0)
         {
-            reasons.Add($"services still running: {string.Join(", ", runningServices)}");
+            reasons.Add($"Services still enabled or running: {string.Join(", ", state.Services)}");
         }
 
-        if (runningProcesses.Count > 0)
+        if (state.Processes.Length > 0)
         {
-            reasons.Add($"processes still running: {string.Join(", ", runningProcesses)}");
+            reasons.Add($"Processes still running: {string.Join(", ", state.Processes)}");
+        }
+
+        if (state.ScheduledTasks.Length > 0)
+        {
+            reasons.Add($"Scheduled tasks still enabled: {string.Join(", ", state.ScheduledTasks)}");
+        }
+
+        if (state.AppxPackages.Length > 0)
+        {
+            reasons.Add($"AppX packages still enabled: {string.Join(", ", state.AppxPackages)}");
+        }
+
+        if (state.StartupEntries.Length > 0)
+        {
+            reasons.Add($"Startup entries still enabled: {string.Join(", ", state.StartupEntries)}");
+        }
+
+        if (state.Errors.Length > 0)
+        {
+            reasons.Add($"State inspection failed: {string.Join("; ", state.Errors)}");
         }
 
         if (_notStoppedServices.Count > 0)
@@ -205,8 +405,16 @@ public abstract class AbstractSoftwareDisabler
     private static IEnumerable<ServiceController> AllServices() =>
         ServiceController.GetServices().Concat(ServiceController.GetDevices());
 
+    private static void DisposeServices(IEnumerable<ServiceController> services)
+    {
+        foreach (var service in services)
+        {
+            service.Dispose();
+        }
+    }
+
     private static bool ServiceExists(string serviceName, IEnumerable<ServiceController> services) =>
-        services.Any(s => s.ServiceName == serviceName);
+        services.Any(s => s.ServiceName.Equals(serviceName, StringComparison.OrdinalIgnoreCase));
 
     private IEnumerable<string> ActiveDriverNamePrefixes()
     {
@@ -237,39 +445,47 @@ public abstract class AbstractSoftwareDisabler
     private IEnumerable<string> AllServiceNames(IEnumerable<ServiceController> services) =>
         OwnedServiceNames().Concat(MatchingDriverNames(services));
 
-    private bool IsInstalled(IEnumerable<ServiceController> services) =>
-        AllServiceNames(services).Any(s => ServiceExists(s, services));
+    private static bool IsInstalled(
+        IEnumerable<ServiceController> services,
+        IEnumerable<string> serviceNames,
+        IReadOnlyCollection<WindowsPackage> packages) =>
+        serviceNames.Any(s => ServiceExists(s, services)) || packages.Count > 0;
 
-    private IEnumerable<string> RunningServices(IEnumerable<ServiceController> services) =>
-        AllServiceNames(services).Where(s => IsServiceEnabled(s, services));
+    private IEnumerable<string> EnabledServices(
+        IEnumerable<ServiceController> services,
+        IEnumerable<string> serviceNames,
+        bool includeRepairBlockers) =>
+        serviceNames
+            .Concat(includeRepairBlockers ? RepairBlockingServiceNames : [])
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .Where(s => IsServiceEnabled(s, services));
 
     protected virtual IEnumerable<string> RunningProcesses()
     {
-        var names = ProcessNames.ToArray();
+        var ownedNames = ProcessNames.ToArray();
 
         foreach (var process in Process.GetProcesses())
         {
             using (process)
             {
                 var name = string.Empty;
+                string? path = null;
 
                 try
                 {
                     name = process.ProcessName;
-                    if (!names.Any(n => name.StartsWith(n, StringComparison.InvariantCultureIgnoreCase)))
-                    {
-                        continue;
-                    }
+                    path = SoftwareDisablerOwnership.TryGetProcessPath(process);
                 }
-                catch {  /* Ignore */ }
+                catch { }
 
                 if (string.IsNullOrEmpty(name))
                 {
                     continue;
                 }
 
-                var owner = SoftwareDisablerOwnership.ResolveOwner(SoftwareDisablerOwnership.TryGetProcessPath(process));
-                if (owner is not null && owner != SelfName)
+                var declared = ownedNames.Any(n => name.StartsWith(n, StringComparison.InvariantCultureIgnoreCase));
+                var owner = SoftwareDisablerOwnership.ResolveOwner(path);
+                if ((!declared && owner != SelfName) || (declared && owner is not null && owner != SelfName))
                 {
                     continue;
                 }
@@ -279,24 +495,23 @@ public abstract class AbstractSoftwareDisabler
         }
     }
 
-    private static bool IsUnderRoots(string? path, string[] roots) =>
-        path is not null && roots.Any(r => path.StartsWith(r, StringComparison.OrdinalIgnoreCase));
-
     private static bool IsServiceEnabled(string serviceName, IEnumerable<ServiceController> services)
     {
         try
         {
-            var service = services.FirstOrDefault(s => s.ServiceName == serviceName);
+            var service = services.FirstOrDefault(s => s.ServiceName.Equals(serviceName, StringComparison.OrdinalIgnoreCase));
             if (service is null)
             {
                 return false;
             }
 
-            return service.Status is not ServiceControllerStatus.Stopped;
+            return service.Status is not ServiceControllerStatus.Stopped ||
+                   service.StartType is not ServiceStartMode.Disabled;
         }
-        catch (InvalidOperationException)
+        catch (Exception ex)
         {
-            return false;
+            Log.Instance.Trace($"Failed to inspect service state. [service={serviceName}]", ex);
+            return true;
         }
     }
 
@@ -307,7 +522,7 @@ public abstract class AbstractSoftwareDisabler
     private static string[] GetRoots(IEnumerable<string> roots) =>
         roots.Where(r => !string.IsNullOrWhiteSpace(r)).Select(r => NormalizePath(r.Trim()).TrimEnd('\\') + '\\').ToArray();
 
-    private void SetStartupEntriesEnabled(bool enabled)
+    private void SetStartupEntriesEnabled(bool enabled, SoftwareDisablerSnapshot? snapshot)
     {
         var startupEntryNames = StartupEntryNames.ToArray();
         var startupEntryRoots = GetRoots(StartupEntryRoots);
@@ -320,8 +535,54 @@ public abstract class AbstractSoftwareDisabler
         foreach (var hive in Hives)
             foreach (var name in GetStartupEntryNames(hive, startupEntryNames, startupEntryRoots))
             {
-                SetStartupEntryEnabled(hive, name, enabled);
+                SetStartupEntryEnabled(hive, name, enabled, snapshot);
             }
+    }
+
+    private IEnumerable<string> EnabledStartupEntries()
+    {
+        var startupEntryNames = StartupEntryNames.ToArray();
+        var startupEntryRoots = GetRoots(StartupEntryRoots);
+
+        foreach (var hive in Hives)
+        {
+            foreach (var name in GetStartupEntryNames(hive, startupEntryNames, startupEntryRoots))
+            {
+                var state = Registry.GetValue<byte[]>(hive, STARTUP_APPROVED_RUN_KEY, name, []);
+                if (state.Length == 0 || state[0] != 0x03)
+                {
+                    yield return $"{hive}\\{name}";
+                }
+            }
+        }
+    }
+
+    private IEnumerable<string> RunningRepairBlockingProcesses()
+    {
+        var names = RepairBlockingProcessNames.ToArray();
+        if (names.Length == 0)
+        {
+            return [];
+        }
+
+        return Process.GetProcesses()
+            .Select(process =>
+            {
+                using (process)
+                {
+                    try
+                    {
+                        return process.ProcessName;
+                    }
+                    catch
+                    {
+                        return null;
+                    }
+                }
+            })
+            .Where(name => name is not null && names.Any(n => name.StartsWith(n, StringComparison.InvariantCultureIgnoreCase)))
+            .Cast<string>()
+            .ToArray();
     }
 
     private IEnumerable<string> GetStartupEntryNames(string hive, string[] startupEntryNames, string[] startupEntryRoots)
@@ -362,15 +623,30 @@ public abstract class AbstractSoftwareDisabler
         return result;
     }
 
-    private void SetStartupEntryEnabled(string hive, string name, bool enabled)
+    private static string StartupEntryKey(string hive, string name) => $"{hive}|{name}";
+
+    private void SetStartupEntryEnabled(string hive, string name, bool enabled, SoftwareDisablerSnapshot? snapshot)
     {
         Log.Instance.Trace($"Setting autorun entry {name} to {enabled}. [type={GetType().Name}]");
 
-        var value = enabled ? EnabledStartupEntry : CreateDisabledStartupEntry();
-
         try
         {
-            Registry.SetValue(hive, STARTUP_APPROVED_RUN_KEY, name, value, false, Microsoft.Win32.RegistryValueKind.Binary);
+            if (enabled && snapshot?.StartupEntries.TryGetValue(StartupEntryKey(hive, name), out var state) == true)
+            {
+                if (state.HadValue)
+                {
+                    Registry.SetValue(hive, STARTUP_APPROVED_RUN_KEY, name, state.Value ?? [], false, Microsoft.Win32.RegistryValueKind.Binary);
+                }
+                else
+                {
+                    Registry.DeleteValue(hive, STARTUP_APPROVED_RUN_KEY, name);
+                }
+            }
+            else
+            {
+                var value = enabled ? EnabledStartupEntry : CreateDisabledStartupEntry();
+                Registry.SetValue(hive, STARTUP_APPROVED_RUN_KEY, name, value, false, Microsoft.Win32.RegistryValueKind.Binary);
+            }
         }
         catch (Exception ex)
         {
@@ -382,9 +658,89 @@ public abstract class AbstractSoftwareDisabler
 
     private static byte[] CreateDisabledStartupEntry() => [0x03, 0x00, 0x00, 0x00, .. BitConverter.GetBytes(DateTime.Now.ToFileTime())];
 
-    private void SetScheduledTasksEnabled(bool enabled)
+    private WindowsPackage[] MatchingAppxPackages()
+    {
+        var names = AppxPackageNames.ToArray();
+        if (names.Length == 0)
+        {
+            return [];
+        }
+
+        return new PackageManager()
+            .FindPackagesForUser(string.Empty)
+            .Where(p => names.Any(n =>
+                p.Id.Name.Equals(n, StringComparison.OrdinalIgnoreCase) ||
+                p.Id.Name.EndsWith($".{n}", StringComparison.OrdinalIgnoreCase)))
+            .ToArray();
+    }
+
+    private static IEnumerable<string> EnabledAppxPackages(IEnumerable<WindowsPackage> packages)
+    {
+        foreach (var package in packages)
+        {
+            if (!package.Status.Disabled)
+            {
+                yield return package.Id.Name;
+            }
+        }
+    }
+
+    private void SetAppxPackagesEnabled(bool enabled, SoftwareDisablerSnapshot? snapshot)
+    {
+        WindowsPackage[] packages;
+        PackageManager packageManager;
+
+        try
+        {
+            packages = MatchingAppxPackages();
+            packageManager = new PackageManager();
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to enumerate AppX packages. [type={GetType().Name}]", ex);
+            throw new SoftwareDisablerException("Could not enumerate AppX packages.", ex);
+        }
+
+        if (packages.Length == 0)
+        {
+            return;
+        }
+
+        foreach (var package in packages)
+        {
+            try
+            {
+                Log.Instance.Trace($"Setting AppX package {package.Id.FullName} to {enabled}. [type={GetType().Name}]");
+
+                if (enabled)
+                {
+                    var wasDisabled = snapshot?.AppxPackagesDisabled.TryGetValue(package.Id.Name, out var disabled) == true && disabled;
+                    if (wasDisabled)
+                    {
+                        packageManager.SetPackageStatus(package.Id.FullName, DeploymentPackageStatus.Disabled);
+                    }
+                    else
+                    {
+                        packageManager.ClearPackageStatus(package.Id.FullName, DeploymentPackageStatus.Disabled);
+                    }
+                }
+                else
+                {
+                    packageManager.SetPackageStatus(package.Id.FullName, DeploymentPackageStatus.Disabled);
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to set AppX package {package.Id.FullName} to {enabled}. [type={GetType().Name}]", ex);
+                throw new SoftwareDisablerException($"Could not {(enabled ? "enable" : "disable")} AppX package {package.Id.Name}.", ex);
+            }
+        }
+    }
+
+    private void SetScheduledTasksEnabled(bool enabled, SoftwareDisablerSnapshot? snapshot)
     {
         var taskService = TaskService.Instance;
+        var processedTaskPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var path in OwnedScheduledTaskFolderPaths())
         {
@@ -393,11 +749,39 @@ public abstract class AbstractSoftwareDisabler
                 continue;
             }
 
-            SetTasksInFolderEnabled(taskService, path, enabled);
+            SetTasksInFolderEnabled(taskService, path, enabled, snapshot, processedTaskPaths);
         }
     }
 
-    private void SetTasksInFolderEnabled(TaskService taskService, string path, bool enabled)
+    private IEnumerable<string> EnabledScheduledTasks()
+    {
+        var taskService = TaskService.Instance;
+        var processedTaskPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (var path in OwnedScheduledTaskFolderPaths())
+        {
+            var folder = taskService.GetFolder(path);
+            if (folder is null)
+            {
+                continue;
+            }
+
+            foreach (var task in TasksInFolder(folder))
+            {
+                if (processedTaskPaths.Add(task.Path) && IsTaskOwnedBySelf(task) && task.Definition.Settings.Enabled)
+                {
+                    yield return task.Path;
+                }
+            }
+        }
+    }
+
+    private void SetTasksInFolderEnabled(
+        TaskService taskService,
+        string path,
+        bool enabled,
+        SoftwareDisablerSnapshot? snapshot,
+        HashSet<string> processedTaskPaths)
     {
         Log.Instance.Trace($"Setting tasks in folder {path} to {enabled}. [type={GetType().Name}]");
 
@@ -409,8 +793,13 @@ public abstract class AbstractSoftwareDisabler
             return;
         }
 
-        foreach (var task in folder.Tasks.ToArray())
+        foreach (var task in TasksInFolder(folder))
         {
+            if (!processedTaskPaths.Add(task.Path))
+            {
+                continue;
+            }
+
             if (!IsTaskOwnedBySelf(task))
             {
                 Log.Instance.Trace($"Skipping task {task.Name} in {task.Path}, owned by another product. [type={GetType().Name}]");
@@ -418,7 +807,13 @@ public abstract class AbstractSoftwareDisabler
                 continue;
             }
 
-            task.Definition.Settings.Enabled = enabled;
+            var targetEnabled = enabled;
+            if (enabled && snapshot?.ScheduledTasks.TryGetValue(task.Path, out var wasEnabled) == true)
+            {
+                targetEnabled = wasEnabled;
+            }
+
+            task.Definition.Settings.Enabled = targetEnabled;
             try
             {
                 task.RegisterChanges();
@@ -428,6 +823,22 @@ public abstract class AbstractSoftwareDisabler
                 Log.Instance.Trace($"Failed to register changes on task {task.Name} in {task.Path}.", ex);
 
                 throw new SoftwareDisablerException(string.Format(Resource.SoftwareDisabler_ScheduledTaskError_Message, task.Name), ex);
+            }
+        }
+    }
+
+    private static IEnumerable<Microsoft.Win32.TaskScheduler.Task> TasksInFolder(Microsoft.Win32.TaskScheduler.TaskFolder folder)
+    {
+        foreach (var task in folder.Tasks.ToArray())
+        {
+            yield return task;
+        }
+
+        foreach (var subFolder in folder.SubFolders.ToArray())
+        {
+            foreach (var task in TasksInFolder(subFolder))
+            {
+                yield return task;
             }
         }
     }
@@ -446,36 +857,106 @@ public abstract class AbstractSoftwareDisabler
         return owners.Length == 0 || owners.Contains(SelfName);
     }
 
-    private void SetServicesEnabled(bool enabled)
+    private void SetServicesEnabled(bool enabled, SoftwareDisablerSnapshot? snapshot)
     {
         var services = AllServices().ToArray();
-
-        foreach (var serviceName in OwnedServiceNames())
+        try
         {
-            if (!enabled && !SoftwareDisablerOwnership.CanDisable($"service:{serviceName}", SelfName))
+            foreach (var serviceName in OwnedServiceNames())
             {
-                _blockedResources.Add(serviceName);
+                if (!enabled && !SoftwareDisablerOwnership.CanDisable($"service:{serviceName}", SelfName))
+                {
+                    _blockedResources.Add(serviceName);
 
-                Log.Instance.Trace($"Service {serviceName} kept enabled, it is still used by another software. [type={GetType().Name}]");
+                    Log.Instance.Trace($"Service {serviceName} kept enabled, it is still used by another software. [type={GetType().Name}]");
 
-                continue;
+                    continue;
+                }
+
+                SoftwareDisablerServiceSnapshot? serviceSnapshot = null;
+                snapshot?.Services.TryGetValue(serviceName, out serviceSnapshot);
+                SetServiceEnabled(serviceName, enabled, services, serviceSnapshot);
             }
-
-            SetServiceEnabled(serviceName, enabled, services);
+        }
+        finally
+        {
+            DisposeServices(services);
         }
     }
 
-    private void SetDriversEnabled(bool enabled)
+    private void DisableRepairBlockingServices()
     {
         var services = AllServices().ToArray();
-
-        foreach (var driverName in MatchingDriverNames(services))
+        try
         {
-            SetServiceEnabled(driverName, enabled, services);
+            foreach (var serviceName in RepairBlockingServiceNames.Distinct(StringComparer.OrdinalIgnoreCase))
+            {
+                SetServiceEnabled(serviceName, false, services, null);
+            }
+        }
+        finally
+        {
+            DisposeServices(services);
         }
     }
 
-    private void SetServiceEnabled(string serviceName, bool enabled, IEnumerable<ServiceController> services)
+    private void RestoreRepairBlockingServices(SoftwareDisablerSnapshot? snapshot)
+    {
+        if (snapshot is null)
+        {
+            return;
+        }
+
+        var services = AllServices().ToArray();
+        try
+        {
+            foreach (var serviceName in RepairBlockingServiceNames.Distinct(StringComparer.OrdinalIgnoreCase))
+            {
+                if (!snapshot.Services.TryGetValue(serviceName, out var serviceSnapshot))
+                {
+                    continue;
+                }
+
+                var owner = SoftwareDisablerOwnership.Peers()
+                    .FirstOrDefault(p => p.Name != SelfName && p.Services.Contains(serviceName, StringComparer.OrdinalIgnoreCase));
+                if (owner is not null && SoftwareDisablerStateStore.IsDisabledByUser(owner.Name))
+                {
+                    Log.Instance.Trace($"Skipping repair-blocking service restore because its owner is disabled. [service={serviceName}, owner={owner.Name}, type={SelfName}]");
+                    continue;
+                }
+
+                SetServiceEnabled(serviceName, true, services, serviceSnapshot);
+            }
+        }
+        finally
+        {
+            DisposeServices(services);
+        }
+    }
+
+    private void SetDriversEnabled(bool enabled, SoftwareDisablerSnapshot? snapshot)
+    {
+        var services = AllServices().ToArray();
+        try
+        {
+            foreach (var driverName in MatchingDriverNames(services))
+            {
+                SoftwareDisablerServiceSnapshot? serviceSnapshot = null;
+                snapshot?.Services.TryGetValue(driverName, out serviceSnapshot);
+                SetServiceEnabled(driverName, enabled, services, serviceSnapshot);
+            }
+        }
+        finally
+        {
+            DisposeServices(services);
+        }
+    }
+
+    private void SetServiceEnabled(
+        string serviceName,
+        bool enabled,
+        IEnumerable<ServiceController> services,
+        SoftwareDisablerServiceSnapshot? snapshot)
     {
         try
         {
@@ -494,33 +975,63 @@ public abstract class AbstractSoftwareDisabler
             {
                 Log.Instance.Trace($"Changing service {serviceName} start mode to {enabled}. [startType={service.StartType}, status={service.Status}, type={GetType().Name}]");
 
-                service.ChangeStartMode(enabled);
+                var targetStartMode = enabled && snapshot is not null
+                    ? snapshot.StartMode
+                    : enabled ? ServiceStartMode.Automatic : ServiceStartMode.Disabled;
+                var restoreRunningDisabledService = enabled &&
+                                                    snapshot?.Running == true &&
+                                                    targetStartMode == ServiceStartMode.Disabled;
+
+                service.ChangeStartMode(restoreRunningDisabledService ? ServiceStartMode.Manual : targetStartMode);
                 service.Refresh();
 
                 if (enabled)
                 {
-                    if (service.Status != ServiceControllerStatus.Running)
+                    var shouldRun = snapshot?.Running ?? true;
+
+                    if (shouldRun && service.Status != ServiceControllerStatus.Running)
                     {
                         Log.Instance.Trace($"Starting service {serviceName}... [type={GetType().Name}]");
 
                         service.Start();
-                        service.WaitForStatus(ServiceControllerStatus.Running);
+                        service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(15));
 
                         Log.Instance.Trace($"Service {serviceName} started. [startType={service.StartType}, status={service.Status}, type={GetType().Name}]");
+                    }
+                    else if (!shouldRun && service.Status != ServiceControllerStatus.Stopped)
+                    {
+                        if (!service.CanStop)
+                        {
+                            throw new InvalidOperationException($"Service {serviceName} cannot be restored to its previous stopped state without a restart.");
+                        }
+
+                        Log.Instance.Trace($"Restoring stopped state for service {serviceName}... [type={GetType().Name}]");
+
+                        service.Stop();
+                        service.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(15));
                     }
                     else
                     {
                         Log.Instance.Trace($"Will not start service {serviceName}. [status={service.Status}, type={GetType().Name}]]");
                     }
+
+                    if (restoreRunningDisabledService)
+                    {
+                        service.ChangeStartMode(ServiceStartMode.Disabled);
+                    }
                 }
                 else
                 {
-                    if (service.CanStop)
+                    if (service.Status == ServiceControllerStatus.Stopped)
+                    {
+                        Log.Instance.Trace($"Service {serviceName} is already stopped. [type={GetType().Name}]");
+                    }
+                    else if (service.CanStop)
                     {
                         Log.Instance.Trace($"Stopping service {serviceName}... [status={service.Status}, type={GetType().Name}]");
 
                         service.Stop();
-                        service.WaitForStatus(ServiceControllerStatus.Stopped);
+                        service.WaitForStatus(ServiceControllerStatus.Stopped, TimeSpan.FromSeconds(15));
 
                         Log.Instance.Trace($"Service {serviceName} stopped. [startType={service.StartType}, status={service.Status}, type={GetType().Name}]");
                     }
@@ -590,7 +1101,7 @@ public abstract class AbstractSoftwareDisabler
     private IEnumerable<Process> OwnedProcesses()
     {
         var names = ProcessNames.ToArray();
-        var roots = GetRoots(OwnershipRoots);
+        var repairBlockingNames = RepairBlockingProcessNames.ToArray();
 
         foreach (var process in Process.GetProcesses())
         {
@@ -608,12 +1119,13 @@ public abstract class AbstractSoftwareDisabler
             }
 
             var declared = names.Any(n => name.StartsWith(n, StringComparison.InvariantCultureIgnoreCase));
+            var repairBlocking = repairBlockingNames.Any(n => name.StartsWith(n, StringComparison.InvariantCultureIgnoreCase));
             var path = SoftwareDisablerOwnership.TryGetProcessPath(process);
             var owner = SoftwareDisablerOwnership.ResolveOwner(path);
 
-            var isOwned = declared
+            var isOwned = repairBlocking || (declared
                 ? owner is null || owner == SelfName
-                : owner == SelfName && IsUnderRoots(path, roots);
+                : owner == SelfName);
 
             if (isOwned)
             {

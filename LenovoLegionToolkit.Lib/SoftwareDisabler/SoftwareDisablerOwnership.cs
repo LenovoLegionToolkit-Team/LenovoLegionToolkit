@@ -28,6 +28,7 @@ internal static class SoftwareDisablerOwnership
         string Name,
         string[] Roots,
         string[] Markers,
+        string[] PriorityPathFragments,
         string[] Services,
         string[] TaskFolders);
 
@@ -79,6 +80,27 @@ internal static class SoftwareDisablerOwnership
 
         var best = null as string;
         var bestLength = -1;
+
+        foreach (var peer in peers)
+        {
+            foreach (var fragment in peer.PriorityPathFragments)
+            {
+                if (fragment.Length <= bestLength || !path.Contains(fragment, StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                best = peer.Name;
+                bestLength = fragment.Length;
+            }
+        }
+
+        if (best is not null)
+        {
+            return best;
+        }
+
+        bestLength = -1;
 
         foreach (var peer in peers)
         {

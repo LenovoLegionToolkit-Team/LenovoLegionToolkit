@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using LenovoLegionToolkit.Lib.Utils;
 using Newtonsoft.Json;
@@ -13,6 +14,7 @@ public static class SoftwareDisablerStateStore
     private class Store
     {
         public Dictionary<string, bool> DisabledByUser { get; set; } = [];
+        public Dictionary<string, SoftwareDisablerSnapshot> Snapshots { get; set; } = [];
     }
 
     private static readonly object _lock = new();
@@ -50,6 +52,76 @@ public static class SoftwareDisablerStateStore
         }
     }
 
+    internal static bool TryGetSnapshot(string disablerName, out SoftwareDisablerSnapshot snapshot)
+    {
+        lock (_lock)
+        {
+            if (!LoadStore().Snapshots.TryGetValue(disablerName, out snapshot!))
+            {
+                return false;
+            }
+
+            NormalizeSnapshot(snapshot);
+            return true;
+        }
+    }
+
+    internal static void SetSnapshot(string disablerName, SoftwareDisablerSnapshot snapshot)
+    {
+        lock (_lock)
+        {
+            var store = LoadStore();
+            store.Snapshots[disablerName] = snapshot;
+            SaveStore(store, disablerName);
+        }
+    }
+
+    internal static bool TryGetCapturedServiceState(string serviceName, out SoftwareDisablerServiceSnapshot serviceSnapshot)
+    {
+        lock (_lock)
+        {
+            var store = LoadStore();
+            foreach (var (disablerName, snapshot) in store.Snapshots)
+            {
+                if (!store.DisabledByUser.TryGetValue(disablerName, out var disabled) || !disabled)
+                {
+                    continue;
+                }
+
+                NormalizeSnapshot(snapshot);
+                var state = snapshot.Services.FirstOrDefault(kv => kv.Key.Equals(serviceName, StringComparison.OrdinalIgnoreCase)).Value;
+                if (state is null)
+                {
+                    continue;
+                }
+
+                serviceSnapshot = new()
+                {
+                    StartMode = state.StartMode,
+                    Running = state.Running
+                };
+                return true;
+            }
+
+            serviceSnapshot = null!;
+            return false;
+        }
+    }
+
+    internal static void ClearSnapshot(string disablerName)
+    {
+        lock (_lock)
+        {
+            var store = LoadStore();
+            if (!store.Snapshots.Remove(disablerName))
+            {
+                return;
+            }
+
+            SaveStore(store, disablerName);
+        }
+    }
+
     public static bool ResolveToggleState(string disablerName, SoftwareStatus status)
     {
         if (!TryGetDisabledByUser(disablerName, out var disabledByUser))
@@ -77,6 +149,8 @@ public static class SoftwareDisablerStateStore
             if (File.Exists(StorePath))
             {
                 _store = JsonConvert.DeserializeObject<Store>(File.ReadAllText(StorePath)) ?? new Store();
+                _store.DisabledByUser ??= [];
+                _store.Snapshots ??= [];
             }
             else
             {
@@ -138,5 +212,14 @@ public static class SoftwareDisablerStateStore
         {
             Log.Instance.Trace($"Failed to delete temporary software disabler state. [path={tempPath}]", ex);
         }
+    }
+
+    private static void NormalizeSnapshot(SoftwareDisablerSnapshot snapshot)
+    {
+        snapshot.Services ??= [];
+        snapshot.ScheduledTasks ??= [];
+        snapshot.StartupEntries ??= [];
+        snapshot.AppxPackagesDisabled ??= [];
+        snapshot.AdditionalValues ??= [];
     }
 }

@@ -164,6 +164,13 @@ public static class Registry
         baseKey.DeleteSubKeyTree(subKey);
     }
 
+    public static void DeleteValue(string hive, string subKey, string valueName)
+    {
+        using var baseKey = GetBaseKey(hive);
+        using var key = baseKey.OpenSubKey(subKey, writable: true);
+        key?.DeleteValue(valueName, throwOnMissingValue: false);
+    }
+
     private static bool AddPermissions(string hive, string subKey)
     {
         IdentityReference? originalOwner = null;
