@@ -146,6 +146,7 @@ public class IoCModule : Module
         builder.Register<SensorsControllerV3>(true);
         builder.Register<SensorsControllerV4>(true);
         builder.Register<SensorsControllerV5>(true);
+        builder.Register<SensorsControllerV6>(true);
         builder.Register<CpuSensorProvider>(true);
         builder.Register<GpuSensorProvider>(true);
         builder.Register<MemorySensorProvider>(true);

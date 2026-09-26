@@ -9,7 +9,8 @@ public class SensorsController(
     SensorsControllerV2 controllerV2,
     SensorsControllerV3 controllerV3,
     SensorsControllerV4 controllerV4,
-    SensorsControllerV5 controllerV5)
+    SensorsControllerV5 controllerV5,
+    SensorsControllerV6 controllerV6)
     : ISensorsController
 {
     private ISensorsController? _controller;
@@ -39,6 +40,11 @@ public class SensorsController(
         if (_controller is not null)
             return _controller;
 
+        if (await controllerV6.IsSupportedAsync().ConfigureAwait(false))
+        {
+            return _controller = controllerV6;
+        }
+
         if (await controllerV5.IsSupportedAsync().ConfigureAwait(false))
         {
             return _controller = controllerV5;
@@ -64,7 +70,6 @@ public class SensorsController(
             return _controller = controllerV1;
         }
 
-        // SensorsControllerV0 mainly designed for non-gaming series. But also work for other laptops.
         if (await controllerV0.IsSupportedAsync().ConfigureAwait(false))
         {
             return _controller = controllerV0;
