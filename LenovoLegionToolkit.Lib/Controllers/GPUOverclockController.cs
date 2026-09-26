@@ -10,6 +10,8 @@ using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 using NvAPIWrapper.GPU;
 using NvAPIWrapper.Native;
+using NvAPIWrapper.Native.Exceptions;
+using NvAPIWrapper.Native.General;
 using NvAPIWrapper.Native.GPU;
 using NvAPIWrapper.Native.GPU.Structures;
 using NvAPIWrapper.Native.Interfaces.GPU;
@@ -174,6 +176,12 @@ public class GPUOverclockController
             Log.Instance.Trace($"Applied overclock: {info}, applied: {applied}, current: {GetOverclockInfo(gpu)}.");
 
             return applied;
+        }
+        catch (NVIDIAApiException ex) when (ex.Status is Status.GpuNotPowered or Status.PortIdNotFound)
+        {
+            Log.Instance.Trace($"dGPU is not powered, overclock not applied, keeping settings: {info}.", ex);
+
+            return false;
         }
         catch (Exception ex)
         {
