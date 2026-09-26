@@ -71,6 +71,8 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
     protected int? _gpuMaxFanSpeedCache;
     protected int? _pchMaxFanSpeedCache;
 
+    public virtual bool HasPchFan => false;
+
     public abstract Task<bool> IsSupportedAsync();
 
     public async Task PrepareAsync()

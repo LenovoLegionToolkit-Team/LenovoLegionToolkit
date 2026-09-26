@@ -7,13 +7,12 @@ public class SensorsController(
     SensorsControllerV0 controllerV0,
     SensorsControllerV1 controllerV1,
     SensorsControllerV2 controllerV2,
-    SensorsControllerV3 controllerV3,
-    SensorsControllerV4 controllerV4,
-    SensorsControllerV5 controllerV5,
-    SensorsControllerV6 controllerV6)
+    SensorsControllerV3 controllerV3)
     : ISensorsController
 {
     private ISensorsController? _controller;
+
+    public bool HasPchFan => _controller?.HasPchFan == true;
 
     public async Task<bool> IsSupportedAsync() => await GetControllerAsync().ConfigureAwait(false) is not null;
 
@@ -39,21 +38,6 @@ public class SensorsController(
     {
         if (_controller is not null)
             return _controller;
-
-        if (await controllerV6.IsSupportedAsync().ConfigureAwait(false))
-        {
-            return _controller = controllerV6;
-        }
-
-        if (await controllerV5.IsSupportedAsync().ConfigureAwait(false))
-        {
-            return _controller = controllerV5;
-        }
-
-        if (await controllerV4.IsSupportedAsync().ConfigureAwait(false))
-        {
-            return _controller = controllerV4;
-        }
 
         if (await controllerV3.IsSupportedAsync().ConfigureAwait(false))
         {

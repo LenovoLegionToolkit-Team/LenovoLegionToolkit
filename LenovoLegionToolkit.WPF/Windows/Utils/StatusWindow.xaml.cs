@@ -51,7 +51,7 @@ public partial class StatusWindow
     private IDisposable? _sensorSubscription;
 
     private MachineInformation? _machineInfo;
-    private Type? _cachedControllerType;
+    private bool _hasPchFan;
     private bool _isSpecialModel;
 
     private bool IsSpecialModel => _isSpecialModel;
@@ -159,8 +159,7 @@ public partial class StatusWindow
         _cpuFanAndPowerDesc.Visibility = sensorVis;
         _cpuFanAndPowerLabel.Visibility = sensorVis;
 
-        var isV5 = _cachedControllerType == typeof(SensorsControllerV5);
-        _systemFanGrid.Visibility = (useSensors && isV5 && !IsSpecialModel) ? Visibility.Visible : Visibility.Collapsed;
+        _systemFanGrid.Visibility = useSensors && _hasPchFan && !IsSpecialModel ? Visibility.Visible : Visibility.Collapsed;
 
         if (gpuStatus.HasValue)
         {
@@ -314,7 +313,7 @@ public partial class StatusWindow
                 if (!IsSpecialModel && await _sensorsController.IsSupportedAsync().WaitAsync(token))
                 {
                     var controller = await _sensorsController.GetControllerAsync().WaitAsync(token);
-                    _cachedControllerType = controller?.GetType();
+                    _hasPchFan = controller?.HasPchFan == true;
 
                     sensorsData = await _sensorsController.GetDataAsync().WaitAsync(token);
                 }
@@ -386,7 +385,7 @@ public partial class StatusWindow
             UpdateFanAndPower(_cpuFanAndPowerLabel, data.SensorsData?.CPU.FanSpeed ?? -1, data.CpuPower);
         }
 
-        if (_cachedControllerType == typeof(SensorsControllerV4) || _cachedControllerType == typeof(SensorsControllerV5))
+        if (_hasPchFan)
         {
             UpdateSystemFan(_systemFanLabel, data.SensorsData?.PCH.FanSpeed ?? -1);
         }
