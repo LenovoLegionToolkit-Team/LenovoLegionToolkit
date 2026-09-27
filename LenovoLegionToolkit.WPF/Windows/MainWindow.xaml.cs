@@ -217,9 +217,9 @@ public partial class MainWindow
 
         if (_applicationSettings.Store.MinimizeOnClose)
         {
-            Log.Instance.Trace($"Minimizing...");
+            Log.Instance.Trace($"Minimizing to tray...");
 
-            WindowState = WindowState.Minimized;
+            Hide();
             e.Cancel = true;
         }
         else
@@ -250,14 +250,15 @@ public partial class MainWindow
             return;
         }
 
+        UpdateEfficiencyMode();
+
         switch (WindowState)
         {
             case WindowState.Minimized:
-                SetEfficiencyMode(true);
-                SendToTray();
+                if (_applicationSettings.Store.MinimizeToTray)
+                    Hide();
                 break;
             case WindowState.Normal:
-                SetEfficiencyMode(false);
                 BringToForeground();
                 break;
         }
@@ -268,6 +269,8 @@ public partial class MainWindow
         var settings = IoCContainer.Resolve<ApplicationSettings>();
         ApplyWindowLock(settings.Store.LockWindowSize);
         Topmost = settings.Store.AlwaysOnTop;
+
+        UpdateEfficiencyMode();
 
         if (!IsVisible)
             return;
@@ -466,7 +469,7 @@ public partial class MainWindow
                             {
                                 _updateIndicator.Visibility = Visibility.Collapsed;
 
-                                if (manualCheck && WindowState != WindowState.Minimized)
+                                if (manualCheck && IsVisibleToUser)
                                 {
                                     switch (_updateChecker.Status)
                                     {
@@ -490,7 +493,7 @@ public partial class MainWindow
                                     string.Format(Resource.MainWindow_UpdateAvailableWithVersion, versionNumber);
                                 _updateIndicator.Visibility = Visibility.Visible;
 
-                                if (WindowState == WindowState.Minimized)
+                                if (!IsVisibleToUser)
                                     MessagingCenter.Publish(new NotificationMessage(NotificationType.UpdateAvailable, versionNumber));
                             }
                         }, TaskScheduler.FromCurrentSynchronizationContext());
@@ -583,16 +586,6 @@ public partial class MainWindow
         window.ShowDialog();
     }
 
-    public void SendToTray()
-    {
-        if (!_applicationSettings.Store.MinimizeToTray)
-            return;
-
-        SetEfficiencyMode(true);
-        Hide();
-        ShowInTaskbar = true;
-    }
-
     public void SetMainWindowBackgroundImage(string filePath)
     {
         if (_cachedBackgroundImage is not null && _cachedBackgroundImagePath == filePath)
@@ -613,6 +606,10 @@ public partial class MainWindow
 
         _backgroundImage.ImageSource = bitmap;
     }
+
+    private bool IsVisibleToUser => IsVisible && WindowState != WindowState.Minimized;
+
+    private void UpdateEfficiencyMode() => SetEfficiencyMode(!IsVisibleToUser);
 
     private static unsafe void SetEfficiencyMode(bool enabled)
     {

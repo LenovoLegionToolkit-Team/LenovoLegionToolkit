@@ -314,9 +314,13 @@ public partial class App
 
         if (AppFlags.Instance.Minimized)
         {
+            var minimizeToTray = IoCContainer.Resolve<ApplicationSettings>().Store.MinimizeToTray;
+
             mainWindow.WindowState = WindowState.Minimized;
             mainWindow.Show();
-            mainWindow.SendToTray();
+
+            if (minimizeToTray)
+                mainWindow.Hide();
         }
         else
         {

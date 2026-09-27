@@ -128,11 +128,11 @@ public static class WindowExtensions
     {
         window.ShowInTaskbar = true;
 
-        if (window.WindowState == WindowState.Minimized || window.Visibility == Visibility.Hidden)
-        {
+        if (window.Visibility == Visibility.Hidden)
             window.Show();
-            window.WindowState = WindowState.Normal;
-        }
+
+        if (window.WindowState == WindowState.Minimized)
+            SystemCommands.RestoreWindow(window);
 
         var wasTopmost = window.Topmost;
         window.Activate();
