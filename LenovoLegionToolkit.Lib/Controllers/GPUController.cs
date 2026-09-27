@@ -260,6 +260,9 @@ public class GPUController
                 SetPoweredOffState();
             }
 
+            if (oldState != GPUState.PoweredOff)
+                Log.Instance.Trace($"dGPU is powered off. [reason=coprocPowerState, powerState={coprocInfo.PowerState}]");
+
             return;
         }
 
@@ -287,6 +290,9 @@ public class GPUController
             {
                 SetPoweredOffState();
             }
+
+            if (oldState != GPUState.PoweredOff)
+                Log.Instance.Trace($"dGPU is powered off. [reason=nvapiException, status={ex.Status}]");
 
             return;
         }

@@ -16,6 +16,8 @@ namespace LenovoLegionToolkit.Lib.System;
 
 public sealed class DgpuAwakeManager : IAsyncDisposable, IDisposable
 {
+    private const uint NVIDIA_VENDOR_ID = 0x10DE;
+
     private readonly ApplicationSettings _settings;
     private readonly PowerStateListener _powerStateListener;
     private readonly SemaphoreSlim _lock = new(1, 1);
@@ -31,7 +33,7 @@ public sealed class DgpuAwakeManager : IAsyncDisposable, IDisposable
         _powerStateListener = powerStateListener;
 
         _powerStateListener.Changed += PowerStateListener_Changed;
-        
+
         _ = UpdateStateAsync();
     }
 
@@ -89,12 +91,31 @@ public sealed class DgpuAwakeManager : IAsyncDisposable, IDisposable
         }
     }
 
+    private bool IsDeviceUsable()
+    {
+        if (_d3dDevice is null)
+            return false;
+
+        try
+        {
+            _d3dDevice.GetDeviceRemovedReason();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     private async Task StartInternalAsync()
     {
         await _lock.WaitAsync().ConfigureAwait(false);
         try
         {
-            if (_isActive) return;
+            if (IsDeviceUsable())
+                return;
+
+            DisposeD3D11Device();
 
             Log.Instance.Trace($"Attempting to keep dGPU awake...");
             CreateD3D11Device();
@@ -141,19 +162,24 @@ public sealed class DgpuAwakeManager : IAsyncDisposable, IDisposable
         var factory = (IDXGIFactory6)factoryObj;
 
         IDXGIAdapter1? dgpuAdapter = null;
-        try
+        for (uint i = 0; ; i++)
         {
-            factory.EnumAdapterByGpuPreference(0, DXGI_GPU_PREFERENCE.DXGI_GPU_PREFERENCE_HIGH_PERFORMANCE, typeof(IDXGIAdapter1).GUID, out object adapterObj);
-            dgpuAdapter = (IDXGIAdapter1)adapterObj;
-        }
-        catch
-        {
+            if (factory.EnumAdapters1(i, out var adapter).Failed)
+                break;
+
+            if (adapter.GetDesc1().VendorId == NVIDIA_VENDOR_ID)
+            {
+                dgpuAdapter = adapter;
+                break;
+            }
+
+            Marshal.ReleaseComObject(adapter);
         }
 
-        if (dgpuAdapter == null)
+        if (dgpuAdapter is null)
         {
             Marshal.ReleaseComObject(factory);
-            Log.Instance.Trace($"Failed to find any HighPerformance adapter.");
+            Log.Instance.Trace($"Failed to find NVIDIA adapter.");
             throw new Exception("No suitable hardware adapter found.");
         }
 
