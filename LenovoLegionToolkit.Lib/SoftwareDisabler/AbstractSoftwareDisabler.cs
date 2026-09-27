@@ -993,10 +993,17 @@ public abstract class AbstractSoftwareDisabler
                     {
                         Log.Instance.Trace($"Starting service {serviceName}... [type={GetType().Name}]");
 
-                        service.Start();
-                        service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(15));
+                        try
+                        {
+                            service.Start();
+                            service.WaitForStatus(ServiceControllerStatus.Running, TimeSpan.FromSeconds(15));
 
-                        Log.Instance.Trace($"Service {serviceName} started. [startType={service.StartType}, status={service.Status}, type={GetType().Name}]");
+                            Log.Instance.Trace($"Service {serviceName} started. [startType={service.StartType}, status={service.Status}, type={GetType().Name}]");
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.Instance.Trace($"Could not start service {serviceName}, it may be missing its executable. Continuing. [type={GetType().Name}]", ex);
+                        }
                     }
                     else if (!shouldRun && service.Status != ServiceControllerStatus.Stopped)
                     {
