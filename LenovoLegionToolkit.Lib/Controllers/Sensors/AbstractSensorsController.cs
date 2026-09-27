@@ -160,7 +160,7 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
         return result;
     }
 
-    public async Task<FanSpeedTable> GetFanSpeedsAsync()
+    public virtual async Task<FanSpeedTable> GetFanSpeedsAsync()
     {
         var cpuFanSpeed = await GetCpuCurrentFanSpeedAsync().ConfigureAwait(false);
         var gpuFanSpeed = await GetGpuCurrentFanSpeedAsync().ConfigureAwait(false);
