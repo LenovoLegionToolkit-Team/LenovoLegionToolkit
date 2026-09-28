@@ -50,7 +50,6 @@ public static class PawnIOHelper
         if (disableHardwareSensors)
         {
             ApplicationSettings.Store.EnableHardwareSensors = false;
-            ApplicationSettings.Store.UseNewSensorDashboard = false;
             ApplicationSettings.SynchronizeStore();
         }
     }

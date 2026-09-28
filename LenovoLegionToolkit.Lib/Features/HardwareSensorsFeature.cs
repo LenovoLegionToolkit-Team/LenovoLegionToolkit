@@ -27,16 +27,17 @@ public class HardwareSensorsFeature(ApplicationSettings settings, OsdSettings os
         if (state == HardwareSensorsState.On && !sensorsGroupController.IsLibreHardwareMonitorInitialized())
             await sensorsGroupController.IsSupportedAsync().ConfigureAwait(false);
 
-        if (state == HardwareSensorsState.Off)
-        {
-            settings.Store.UseNewSensorDashboard = false;
-            osdSettings.Store.ShowOsd = false;
-            osdSettings.SynchronizeStore();
-            MessagingCenter.Publish(new OsdChangedMessage(ToggleState.Off));
-        }
-
         settings.Store.EnableHardwareSensors = state == HardwareSensorsState.On;
         settings.SynchronizeStore();
+
+        if (state == HardwareSensorsState.Off)
+        {
+            MessagingCenter.Publish(new OsdChangedMessage(ToggleState.Off, setPreference: false));
+        }
+        else if (osdSettings.Store.ShowOsd)
+        {
+            MessagingCenter.Publish(new OsdChangedMessage(ToggleState.On));
+        }
 
         MessagingCenter.Publish(new SensorDashboardSwappedMessage());
     }

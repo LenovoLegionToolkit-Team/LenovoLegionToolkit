@@ -305,16 +305,6 @@ public partial class SettingsAppBehaviorControl
                 await sensorsController.IsSupportedAsync();
             }
         }
-        else
-        {
-            _useNewSensorDashboardToggle.IsChecked = false;
-            _settings.Store.UseNewSensorDashboard = false;
-
-            _osdToggle.IsChecked = false;
-            _OsdSettings.Store.ShowOsd = false;
-            App.Current.OsdWindow?.Hide();
-            _OsdSettings.SynchronizeStore();
-        }
 
         _settings.Store.EnableHardwareSensors = state.Value;
         _settings.SynchronizeStore();
@@ -322,6 +312,15 @@ public partial class SettingsAppBehaviorControl
         if (state.Value)
         {
             _hardwareSensorSettings.EnsureFileExists();
+
+            if (_OsdSettings.Store.ShowOsd)
+            {
+                MessagingCenter.Publish(new OsdChangedMessage(ToggleState.On));
+            }
+        }
+        else
+        {
+            MessagingCenter.Publish(new OsdChangedMessage(ToggleState.Off, setPreference: false));
         }
 
         _useNewSensorDashboardCardControl.Visibility = state.Value ? Visibility.Visible : Visibility.Collapsed;

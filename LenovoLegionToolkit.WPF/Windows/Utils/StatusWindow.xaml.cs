@@ -211,6 +211,9 @@ public partial class StatusWindow
     {
         if (IsVisible)
         {
+            if (!_settings.Store.EnableHardwareSensors)
+                return;
+
             _sensorsGroupController.SensorsUpdated -= OnSensorsUpdated;
             _sensorsGroupController.SensorsUpdated += OnSensorsUpdated;
 

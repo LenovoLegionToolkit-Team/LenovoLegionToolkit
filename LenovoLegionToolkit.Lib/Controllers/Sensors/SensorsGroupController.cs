@@ -356,7 +356,6 @@ public class SensorsGroupController : IDisposable
     {
         var settings = IoCContainer.Resolve<ApplicationSettings>();
         settings.Store.EnableHardwareSensors = false;
-        settings.Store.UseNewSensorDashboard = false;
         settings.SynchronizeStore();
         InitialState = LibreHardwareMonitorInitialState.Fail;
     }

@@ -551,7 +551,7 @@ public partial class App
 
         var settingsStore = IoCContainer.Resolve<OsdSettings>().Store;
 
-        if (!settingsStore.ShowOsd)
+        if (!settingsStore.ShowOsd || !IoCContainer.Resolve<ApplicationSettings>().Store.EnableHardwareSensors)
         {
             return;
         }
@@ -1019,13 +1019,14 @@ public partial class App
         {
             Dispatcher.Invoke(() =>
             {
-                HandleOsdCommand(message.State);
+                HandleOsdCommand(message.State, message.SetPreference);
             });
         });
 
         var OsdSettings = IoCContainer.Resolve<OsdSettings>();
+        var settings = IoCContainer.Resolve<ApplicationSettings>();
 
-        if (OsdSettings.Store.ShowOsd)
+        if (OsdSettings.Store.ShowOsd && settings.Store.EnableHardwareSensors)
         {
             HandleOsdCommand(ToggleState.On);
         }
@@ -1045,7 +1046,7 @@ public partial class App
         });
     }
 
-    private void HandleOsdCommand(ToggleState command)
+    private void HandleOsdCommand(ToggleState command, bool setPreference = true)
     {
         var OsdSettings = IoCContainer.Resolve<OsdSettings>();
         bool shouldBeBar = OsdSettings.Store.SelectedStyleIndex == 1;
@@ -1068,8 +1069,11 @@ public partial class App
             OsdWindow?.Hide();
         }
 
-        OsdSettings.Store.ShowOsd = OsdWindow?.IsVisible ?? false;
-        OsdSettings.SynchronizeStore();
+        if (setPreference)
+        {
+            OsdSettings.Store.ShowOsd = OsdWindow?.IsVisible ?? false;
+            OsdSettings.SynchronizeStore();
+        }
     }
 
     private void EnsureCorrectOsdStyle(bool shouldBeBar)

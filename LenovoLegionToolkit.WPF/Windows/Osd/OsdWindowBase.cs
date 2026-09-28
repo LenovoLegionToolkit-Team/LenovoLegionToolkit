@@ -147,6 +147,15 @@ public abstract class OsdWindowBase : Window
         {
             Dispatcher.Invoke(ApplyAppearanceSettings);
         });
+
+        MessagingCenter.Subscribe<SensorDashboardSwappedMessage>(this, _ =>
+        {
+            Dispatcher.Invoke(() =>
+            {
+                if (IsVisible)
+                    StartHardwareSensorUpdates();
+            });
+        });
     }
 
     #endregion
