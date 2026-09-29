@@ -24,11 +24,10 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Rectangle
-            Grid.RowSpan="8"
+            Grid.RowSpan="7"
             IsHitTestVisible="False">
             <Rectangle.Fill>
                 <ImageBrush x:Name="_backgroundImage" />
@@ -40,7 +39,7 @@
 
         <Rectangle
             x:Name="_backgroundDimOverlay"
-            Grid.RowSpan="8"
+            Grid.RowSpan="7"
             Fill="{DynamicResource ApplicationBackgroundBrush}"
             IsHitTestVisible="False" />
 
@@ -293,30 +292,9 @@
             </StackPanel>
         </Border>
 
-
-        <Border
-            x:Name="_smartEngineIndicator"
-            Grid.Row="5"
-            Padding="8,4,8,6"
-            Background="{DynamicResource SystemFillColorCautionBackgroundBrush}"
-            Cursor="Hand"
-            MouseLeftButtonDown="SoftwareIndicator_MouseLeftButtonDown"
-            Visibility="Collapsed">
-            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                <wpfui:SymbolIcon
-                    Margin="0,0,4,0"
-                    Foreground="{DynamicResource SystemFillColorCautionBrush}"
-                    Symbol="Warning24" />
-                <TextBlock
-                    Focusable="True"
-                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-                    Text="{x:Static resources:Resource.MainWindow_SmartEngineRunning}" />
-            </StackPanel>
-        </Border>
-
         <Border
             x:Name="_fnKeysIndicator"
-            Grid.Row="6"
+            Grid.Row="5"
             Padding="8,4,8,6"
             Background="{DynamicResource SystemFillColorCautionBackgroundBrush}"
             Cursor="Hand"
@@ -336,7 +314,7 @@
 
         <Border
             x:Name="_updateIndicator"
-            Grid.Row="7"
+            Grid.Row="6"
             Padding="8,4,8,6"
             Background="{DynamicResource SystemFillColorSuccessBackgroundBrush}"
             Cursor="Hand"

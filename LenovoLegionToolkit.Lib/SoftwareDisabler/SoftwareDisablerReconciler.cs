@@ -7,7 +7,6 @@ namespace LenovoLegionToolkit.Lib.SoftwareDisabler;
 public sealed class SoftwareDisablerReconciler(
     VantageDisabler vantageDisabler,
     LegionSpaceDisabler legionSpaceDisabler,
-    SmartEngineDisabler smartEngineDisabler,
     LegionZoneDisabler legionZoneDisabler,
     FnKeysDisabler fnKeysDisabler)
 {
@@ -15,7 +14,6 @@ public sealed class SoftwareDisablerReconciler(
     [
         vantageDisabler,
         legionSpaceDisabler,
-        smartEngineDisabler,
         legionZoneDisabler,
         fnKeysDisabler
     ];

@@ -20,8 +20,7 @@ public class GodModeController(
     GodModeSettings settings,
     VantageDisabler vantageDisabler,
     LegionZoneDisabler legionZoneDisabler,
-    LegionSpaceDisabler legionSpaceDisabler,
-    SmartEngineDisabler smartEngineDisabler)
+    LegionSpaceDisabler legionSpaceDisabler)
     : IGodModeController
 {
     private const uint CAPABILITY_ID_MASK = 0xFFFF00FF;
@@ -43,7 +42,7 @@ public class GodModeController(
         var mi = await GetMachineInformationAsync().ConfigureAwait(false);
         var needsSpace = config.Platform == GodModePlatform.Legion && mi.SmartFanVersion >= 8;
         var needsZone = config.Platform != GodModePlatform.NonGaming;
-        var disablers = new List<AbstractSoftwareDisabler> { vantageDisabler, smartEngineDisabler };
+        var disablers = new List<AbstractSoftwareDisabler> { vantageDisabler };
 
         if (needsSpace)
         {
@@ -59,8 +58,7 @@ public class GodModeController(
 
         return new(
             Vantage: statuses[0],
-            SmartEngine: statuses[1],
-            LegionSpace: needsSpace ? statuses[2] : SoftwareStatus.NotFound,
+            LegionSpace: needsSpace ? statuses[1] : SoftwareStatus.NotFound,
             LegionZone: needsZone ? statuses[^1] : SoftwareStatus.NotFound);
     }
 
@@ -82,8 +80,6 @@ public class GodModeController(
         var mi = await GetMachineInformationAsync().ConfigureAwait(false);
         return mi.SmartFanVersion >= 8;
     }
-
-    public Task<bool> NeedsSmartEngineDisabledAsync() => Task.FromResult(true);
 
     #endregion
 
@@ -226,12 +222,6 @@ public class GodModeController(
             return false;
         }
 
-        if (statuses.SmartEngine == SoftwareStatus.Enabled)
-        {
-            Log.Instance.Trace($"Can't correctly apply state when SmartEngine is running.");
-            return false;
-        }
-
         Log.Instance.Trace($"Applying state...");
 
         var (presetId, preset) = await GetActivePresetAsync().ConfigureAwait(false);
@@ -341,17 +331,11 @@ public class GodModeController(
     {
         var mi = await GetMachineInformationAsync().ConfigureAwait(false);
 
-        var (vantageStatus, smartEngineStatus, legionSpaceStatus, legionZoneStatus) = statuses;
+        var (vantageStatus, legionSpaceStatus, legionZoneStatus) = statuses;
 
         if (vantageStatus == SoftwareStatus.Enabled)
         {
             Log.Instance.Trace($"Can't correctly apply state when Vantage is running.");
-            return false;
-        }
-
-        if (smartEngineStatus == SoftwareStatus.Enabled)
-        {
-            Log.Instance.Trace($"Can't correctly apply state when SmartEngine is running.");
             return false;
         }
 

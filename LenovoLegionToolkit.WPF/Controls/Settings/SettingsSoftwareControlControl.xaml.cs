@@ -16,7 +16,6 @@ public partial class SettingsSoftwareControlControl
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
     private readonly LegionSpaceDisabler _legionSpaceDisabler = IoCContainer.Resolve<LegionSpaceDisabler>();
     private readonly LegionZoneDisabler _legionZoneDisabler = IoCContainer.Resolve<LegionZoneDisabler>();
-    private readonly SmartEngineDisabler _smartEngineDisabler = IoCContainer.Resolve<SmartEngineDisabler>();
     private readonly FnKeysDisabler _fnKeysDisabler = IoCContainer.Resolve<FnKeysDisabler>();
     private readonly RGBKeyboardBacklightController _rgbKeyboardBacklightController = IoCContainer.Resolve<RGBKeyboardBacklightController>();
 
@@ -45,11 +44,6 @@ public partial class SettingsSoftwareControlControl
         _legionZoneCard.Visibility = legionZoneStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
         _legionZoneToggle.IsChecked = GetToggleState(legionZoneStatus, _legionZoneDisabler);
 
-
-        var smartEngineStatus = await _smartEngineDisabler.GetStatusAsync();
-        _smartEngineCard.Visibility = smartEngineStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
-        _smartEngineToggle.IsChecked = GetToggleState(smartEngineStatus, _smartEngineDisabler);
-
         var fnKeysStatus = await _fnKeysDisabler.GetStatusAsync();
         _fnKeysCard.Visibility = fnKeysStatus != SoftwareStatus.NotFound ? Visibility.Visible : Visibility.Collapsed;
         _fnKeysToggle.IsChecked = GetToggleState(fnKeysStatus, _fnKeysDisabler);
@@ -57,7 +51,6 @@ public partial class SettingsSoftwareControlControl
         _vantageToggle.Visibility = Visibility.Visible;
         _legionSpaceToggle.Visibility = Visibility.Visible;
         _legionZoneToggle.Visibility = Visibility.Visible;
-        _smartEngineToggle.Visibility = Visibility.Visible;
         _fnKeysToggle.Visibility = Visibility.Visible;
 
         _isRefreshing = false;
@@ -297,56 +290,6 @@ public partial class SettingsSoftwareControlControl
         }
 
         await SyncToggleAsync(_legionSpaceToggle, _legionSpaceDisabler);
-    }
-
-    private async void SmartEngineToggle_Click(object sender, RoutedEventArgs e)
-    {
-        if (_isRefreshing)
-        {
-            return;
-        }
-
-        _smartEngineToggle.IsEnabled = false;
-
-        var state = _smartEngineToggle.IsChecked;
-        if (state is null)
-        {
-            _smartEngineToggle.IsEnabled = true;
-            return;
-        }
-
-        if (state.Value)
-        {
-            try
-            {
-                await _smartEngineDisabler.DisableAsync();
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Couldn't change SmartEngine.", ex);
-
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_DisableSmartEngine_Error_Title, ex.Message, SnackbarType.Error);
-                await SyncToggleAsync(_smartEngineToggle, _smartEngineDisabler);
-                return;
-            }
-        }
-        else
-        {
-            try
-            {
-                await _smartEngineDisabler.EnableAsync();
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Couldn't change SmartEngine.", ex);
-
-                await SnackbarHelper.ShowAsync(Resource.SettingsPage_EnableSmartEngine_Error_Title, ex.Message, SnackbarType.Error);
-                await SyncToggleAsync(_smartEngineToggle, _smartEngineDisabler);
-                return;
-            }
-        }
-
-        await SyncToggleAsync(_smartEngineToggle, _smartEngineDisabler);
     }
 
     private async void FnKeysToggle_Click(object sender, RoutedEventArgs e)

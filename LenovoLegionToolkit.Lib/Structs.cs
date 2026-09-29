@@ -423,7 +423,6 @@ public readonly struct GodModeDefaults
 
 public sealed record SoftwareStatuses(
     SoftwareStatus Vantage,
-    SoftwareStatus SmartEngine,
     SoftwareStatus LegionSpace,
     SoftwareStatus LegionZone);
 

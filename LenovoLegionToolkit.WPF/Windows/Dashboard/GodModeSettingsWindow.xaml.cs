@@ -122,7 +122,6 @@ public partial class GodModeSettingsWindow
         _vantageRunningWarningInfoBar.IsOpen = statuses.Vantage == SoftwareStatus.Enabled;
         _legionSpaceRunningWarningInfoBar.IsOpen = statuses.LegionSpace == SoftwareStatus.Enabled;
         _legionZoneRunningWarningInfoBar.IsOpen = statuses.LegionZone == SoftwareStatus.Enabled;
-        _smartEngineRunningWarningInfoBar.IsOpen = statuses.SmartEngine == SoftwareStatus.Enabled;
     }
 
     private async Task<SoftwareStatuses?> ApplyAsync()

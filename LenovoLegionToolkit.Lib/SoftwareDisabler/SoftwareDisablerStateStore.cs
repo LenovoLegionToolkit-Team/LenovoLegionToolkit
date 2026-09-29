@@ -83,7 +83,8 @@ public static class SoftwareDisablerStateStore
             var store = LoadStore();
             foreach (var (disablerName, snapshot) in store.Snapshots)
             {
-                if (!store.DisabledByUser.TryGetValue(disablerName, out var disabled) || !disabled)
+                if (!SoftwareDisablerOwnership.Peers().Any(peer => peer.Name == disablerName) ||
+                    !store.DisabledByUser.TryGetValue(disablerName, out var disabled) || !disabled)
                 {
                     continue;
                 }

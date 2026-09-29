@@ -4096,15 +4096,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Custom Mode settings will not be applied correctly when Lenovo SmartEngine or its services are running..
-        /// </summary>
-        public static string GodModeSettingsWindow_SmartEngineWarning_Title {
-            get {
-                return ResourceManager.GetString("GodModeSettingsWindow_SmartEngineWarning_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Custom Mode Settings.
         /// </summary>
         public static string GodModeSettingsWindow_Title {
@@ -5220,15 +5211,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string MainWindow_NavigationItem_Settings {
             get {
                 return ResourceManager.GetString("MainWindow_NavigationItem_Settings", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lenovo SmartEngine is running in the background..
-        /// </summary>
-        public static string MainWindow_SmartEngineRunning {
-            get {
-                return ResourceManager.GetString("MainWindow_SmartEngineRunning", resourceCulture);
             }
         }
         
@@ -9184,42 +9166,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lenovo SmartEngine may have not been disabled correctly.
-        /// </summary>
-        public static string SettingsPage_DisableSmartEngine_Error_Message {
-            get {
-                return ResourceManager.GetString("SettingsPage_DisableSmartEngine_Error_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t disable Lenovo SmartEngine.
-        /// </summary>
-        public static string SettingsPage_DisableSmartEngine_Error_Title {
-            get {
-                return ResourceManager.GetString("SettingsPage_DisableSmartEngine_Error_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable the SmartEngine components shared by Legion Space and Legion Zone without uninstalling them..
-        /// </summary>
-        public static string SettingsPage_DisableSmartEngine_Message {
-            get {
-                return ResourceManager.GetString("SettingsPage_DisableSmartEngine_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable Lenovo SmartEngine.
-        /// </summary>
-        public static string SettingsPage_DisableSmartEngine_Title {
-            get {
-                return ResourceManager.GetString("SettingsPage_DisableSmartEngine_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Lenovo Vantage and/or ImController may have not been disabled correctly.
         /// </summary>
         public static string SettingsPage_DisableVantage_Error_Message {
@@ -9324,24 +9270,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_EnableLogging_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_EnableLogging_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lenovo SmartEngine may have not been enabled correctly.
-        /// </summary>
-        public static string SettingsPage_EnableSmartEngine_Error_Message {
-            get {
-                return ResourceManager.GetString("SettingsPage_EnableSmartEngine_Error_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t enable Lenovo SmartEngine.
-        /// </summary>
-        public static string SettingsPage_EnableSmartEngine_Error_Title {
-            get {
-                return ResourceManager.GetString("SettingsPage_EnableSmartEngine_Error_Title", resourceCulture);
             }
         }
         

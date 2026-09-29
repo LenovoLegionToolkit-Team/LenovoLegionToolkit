@@ -37,7 +37,6 @@ public class IoCModule : Module
         builder.Register<LegionSpaceDisabler>();
         builder.Register<LegionZoneDisabler>();
         builder.Register<SoftwareDisablerReconciler>();
-        builder.Register<SmartEngineDisabler>();
         builder.Register<VantageDisabler>();
 
         builder.Register<ApplicationSettings>();

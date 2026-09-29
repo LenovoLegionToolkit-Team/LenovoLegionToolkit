@@ -48,11 +48,21 @@ internal static class SoftwareDisablerOwnership
             new VantageDisabler(),
             new LegionZoneDisabler(),
             new LegionSpaceDisabler(),
-            new SmartEngineDisabler(),
             new FnKeysDisabler()
         ];
 
-        return instances.Select(i => i.ToOwnershipPeer()).ToArray();
+        var unmanagedOwner = new Peer(
+            "SmartEngine",
+            [
+                NormalizePath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles), "Lenovo", "SmartEngine")) + Path.DirectorySeparatorChar,
+                NormalizePath(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86), "Lenovo", "SmartEngine")) + Path.DirectorySeparatorChar
+            ],
+            ["SmartEngine"],
+            [@"\SESDK\", @"\SEGamingAI\", "LegionLightingController_"],
+            [],
+            []);
+
+        return instances.Select(i => i.ToOwnershipPeer()).Append(unmanagedOwner).ToArray();
     }
 
     internal static void Invalidate()
