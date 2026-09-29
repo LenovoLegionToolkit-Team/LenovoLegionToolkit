@@ -26,16 +26,13 @@ public partial class GodModeSettingsWindow
 {
     private readonly PowerModeFeature _powerModeFeature = IoCContainer.Resolve<PowerModeFeature>();
     private readonly GodModeController _godModeController = IoCContainer.Resolve<GodModeController>();
-    private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
-    private readonly LegionSpaceDisabler _legionSpaceDisabler = IoCContainer.Resolve<LegionSpaceDisabler>();
-    private readonly LegionZoneDisabler _legionZoneDisabler = IoCContainer.Resolve<LegionZoneDisabler>();
-    private readonly SmartEngineDisabler _smartEngineDisabler = IoCContainer.Resolve<SmartEngineDisabler>();
 
     private Control? FanControl;
 
     private GodModeState? _state;
     private Dictionary<PowerModeState, GodModeDefaults>? _defaults;
     private bool _isRefreshing;
+    private bool _isSaving;
 
     private const int BIOS_OC_MODE_ENABLED = 3;
 
@@ -64,12 +61,13 @@ public partial class GodModeSettingsWindow
         }
     }
 
-    private async Task RefreshAsync()
+    private async Task RefreshAsync(bool waitForHardware = true, SoftwareStatuses? knownSoftwareStatuses = null)
     {
         if (_isRefreshing)
         {
             return;
         }
+
         _isRefreshing = true;
 
         try
@@ -79,27 +77,22 @@ public partial class GodModeSettingsWindow
 
             if (FanControl is null)
             {
-                var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(true);
+                var mi = await Task.Run(Compatibility.GetMachineInformationAsync);
                 FanControl = InitializeFanControlContainer(mi);
             }
-            var tasks = new List<Task>
-            {
-                Task.Delay(500),
-                _godModeController.GetStateAsync().ContinueWith(t => _state = t.Result),
-                _godModeController.GetDefaultsInOtherPowerModesAsync().ContinueWith(t => _defaults = t.Result)
-            };
 
-            var vantageTask = _godModeController.NeedsVantageDisabledAsync();
-            var legionSpace = _godModeController.NeedsLegionSpaceDisabledAsync();
-            var legionZoneTask = _godModeController.NeedsLegionZoneDisabledAsync();
-            var smartEngineTask = _godModeController.NeedsSmartEngineDisabledAsync();
+            var stateTask = Task.Run(_godModeController.GetStateAsync);
+            var defaultsTask = Task.Run(_godModeController.GetDefaultsInOtherPowerModesAsync);
+            var softwareTask = knownSoftwareStatuses is null
+                ? Task.Run(_godModeController.GetSoftwareStatusesAsync)
+                : Task.FromResult(knownSoftwareStatuses);
+            var hardwareDelay = waitForHardware ? Task.Delay(500) : Task.CompletedTask;
 
-            await Task.WhenAll(tasks.Concat([vantageTask, legionSpace, legionZoneTask, smartEngineTask]));
+            await Task.WhenAll(stateTask, defaultsTask, softwareTask, hardwareDelay);
 
-            _vantageRunningWarningInfoBar.IsOpen = vantageTask.Result && await _vantageDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
-            _legionSpaceRunningWarningInfoBar.IsOpen = legionSpace.Result && await _legionSpaceDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
-            _legionZoneRunningWarningInfoBar.IsOpen = legionZoneTask.Result && await _legionZoneDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
-            _smartEngineRunningWarningInfoBar.IsOpen = smartEngineTask.Result && await _smartEngineDisabler.GetStatusAsync() == SoftwareStatus.Enabled;
+            _state = await stateTask;
+            _defaults = await defaultsTask;
+            UpdateSoftwareWarnings(await softwareTask);
             _capabilityWarningInfoBar.IsOpen = _godModeController.HasCapabilityErrors();
 
             if (_state is null || _defaults is null)
@@ -124,7 +117,15 @@ public partial class GodModeSettingsWindow
         }
     }
 
-    private async Task<bool> ApplyAsync()
+    private void UpdateSoftwareWarnings(SoftwareStatuses statuses)
+    {
+        _vantageRunningWarningInfoBar.IsOpen = statuses.Vantage == SoftwareStatus.Enabled;
+        _legionSpaceRunningWarningInfoBar.IsOpen = statuses.LegionSpace == SoftwareStatus.Enabled;
+        _legionZoneRunningWarningInfoBar.IsOpen = statuses.LegionZone == SoftwareStatus.Enabled;
+        _smartEngineRunningWarningInfoBar.IsOpen = statuses.SmartEngine == SoftwareStatus.Enabled;
+    }
+
+    private async Task<SoftwareStatuses?> ApplyAsync()
     {
         try
         {
@@ -182,28 +183,40 @@ public partial class GodModeSettingsWindow
                 Presets = newPresets.AsReadOnlyDictionary(),
             };
 
-            var mi = await Compatibility.GetMachineInformationAsync();
-            if (mi.Properties.GodModePlatform != GodModePlatform.NonGaming && await _powerModeFeature.GetStateAsync() != PowerModeState.GodMode)
-            {
-                await _powerModeFeature.SetStateAsync(PowerModeState.GodMode);
-            }
+            var result = await Task.Run(() => ApplySettingsAsync(newState));
+            UpdateSoftwareWarnings(result.Software);
 
-            await _godModeController.SetStateAsync(newState);
-            await _godModeController.ApplyStateAsync();
+            if (!result.Applied)
+            {
+                return null;
+            }
 
             if (_fnqTabItem.Visibility == Visibility.Visible)
             {
-                _fnqLoopControl.Save();
+                await _fnqLoopControl.SaveAsync();
             }
 
-            return true;
+            return result.Software;
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Couldn't apply settings", ex);
             await _snackBar.ShowAsync(Resource.GodModeSettingsWindow_Error_Apply_Title, ex.Message);
-            return false;
+            return null;
         }
+    }
+
+    private async Task<(bool Applied, SoftwareStatuses Software)> ApplySettingsAsync(GodModeState state)
+    {
+        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        if (mi.Properties.GodModePlatform != GodModePlatform.NonGaming &&
+            await _powerModeFeature.GetStateAsync().ConfigureAwait(false) != PowerModeState.GodMode)
+        {
+            await _powerModeFeature.SetStateAsync(PowerModeState.GodMode).ConfigureAwait(false);
+        }
+
+        await _godModeController.SetStateAsync(state).ConfigureAwait(false);
+        return await _godModeController.ApplyStateWithResultAsync().ConfigureAwait(false);
     }
 
     private async Task SetStateAsync(GodModeState state)
@@ -238,7 +251,7 @@ public partial class GodModeSettingsWindow
 
             if (preset.FanTableInfo.HasValue)
             {
-                FanTable minimum = await _godModeController.GetMinimumFanTableAsync();
+                FanTable minimum = await Task.Run(_godModeController.GetMinimumFanTableAsync);
 
                 if (FanControl is Controls.FanCurveControl v1)
                 {
@@ -314,7 +327,7 @@ public partial class GodModeSettingsWindow
     private async Task UpdateOverclockingVisibilityAsync()
     {
         var mi = await Compatibility.GetMachineInformationAsync();
-        var isBiosOcEnabled = await IsBiosOcEnabledAsync();
+        var isBiosOcEnabled = await Task.Run(IsBiosOcEnabledAsync);
         var pboVisible = isBiosOcEnabled && mi.Properties.IsAmdDevice;
         _pboTabItem.Visibility = pboVisible ? Visibility.Visible : Visibility.Collapsed;
         _cpuPrecisionBoostOverdriveScaler.Visibility = pboVisible && _overclockingToggle.IsChecked == true ? Visibility.Visible : Visibility.Collapsed;
@@ -512,17 +525,51 @@ public partial class GodModeSettingsWindow
     }
 
     private async void SaveAndCloseButton_Click(object sender, RoutedEventArgs e)
+        => await SaveAsync(closeAfterSave: true);
+
+    private async void SaveButton_Click(object sender, RoutedEventArgs e)
+        => await SaveAsync(closeAfterSave: false);
+
+    private async Task SaveAsync(bool closeAfterSave)
     {
-        if (await ApplyAsync())
+        if (_isSaving || _isRefreshing)
         {
-            Close();
+            return;
+        }
+
+        SetSavingState(true);
+
+        try
+        {
+            var softwareStatuses = await ApplyAsync();
+            if (softwareStatuses is null)
+            {
+                return;
+            }
+
+            if (closeAfterSave)
+            {
+                Close();
+            }
+            else
+            {
+                await RefreshAsync(waitForHardware: false, knownSoftwareStatuses: softwareStatuses);
+            }
+        }
+        finally
+        {
+            SetSavingState(false);
         }
     }
 
-    private async void SaveButton_Click(object sender, RoutedEventArgs e)
+    private void SetSavingState(bool isSaving)
     {
-        await ApplyAsync();
-        await RefreshAsync();
+        _isSaving = isSaving;
+        _loader.IsLoading = isSaving;
+        _buttonsStackPanel.IsEnabled = !isSaving;
+        _presetsComboBox.IsEnabled = !isSaving;
+        _addPresetsButton.IsEnabled = !isSaving;
+        _deletePresetsButton.IsEnabled = !isSaving && _state?.Presets.Count > 1;
     }
 
     private void CpuLongTermPowerLimitSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

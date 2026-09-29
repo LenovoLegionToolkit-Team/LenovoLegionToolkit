@@ -71,6 +71,22 @@ public partial class ITSModeLoopControl
         _settings.SynchronizeStore();
     }
 
+    public async Task SaveAsync()
+    {
+        var order = GetCurrentOrder();
+        var disabled = _toggles
+            .Where(kv => kv.Value.IsChecked != true)
+            .Select(kv => kv.Key)
+            .ToList();
+
+        await Task.Run(() =>
+        {
+            _settings.Store.FnQModeOrder = order;
+            _settings.Store.DisabledModes = disabled;
+            _settings.SynchronizeStore();
+        });
+    }
+
     private void BuildModeCards(List<ITSMode> orderedModes, HashSet<ITSMode> disabledSet)
     {
         _modeCardsPanel.Children.Clear();

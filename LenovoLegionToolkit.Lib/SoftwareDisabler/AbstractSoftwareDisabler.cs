@@ -83,24 +83,47 @@ public abstract class AbstractSoftwareDisabler
         return status;
     }
 
+    public static async Task<SoftwareStatus[]> GetStatusesAsync(params AbstractSoftwareDisabler[] disablers)
+    {
+        var states = await EvaluateStatesAsync(disablers).ConfigureAwait(false);
+
+        for (var i = 0; i < disablers.Length; i++)
+        {
+            disablers[i].NotifyRefreshed(states[i]);
+        }
+
+        return states.Select(s => s.Status).ToArray();
+    }
+
+    private static Task<EvaluatedState[]> EvaluateStatesAsync(AbstractSoftwareDisabler[] disablers) => Task.Run(() =>
+    {
+        using var inspection = new SoftwareDisablerInspection();
+        return disablers.Select(d => d.EvaluateState()).ToArray();
+    });
+
     private async Task<EvaluatedState> GetStateAsync()
     {
-        var state = await Task.Run(EvaluateState).ConfigureAwait(false);
+        var state = (await EvaluateStatesAsync([this]).ConfigureAwait(false))[0];
+        NotifyRefreshed(state);
 
+        return state;
+    }
+
+    private void NotifyRefreshed(EvaluatedState state)
+    {
         Log.Instance.Trace($"Status: {state.Status} [type={GetType().Name}]");
 
         OnRefreshed?.Invoke(this, new() { Status = state.Status });
-
-        return state;
     }
 
     private EvaluatedState EvaluateState()
     {
         ServiceController[] allServices = [];
+        var inspection = SoftwareDisablerInspection.Current;
 
         try
         {
-            allServices = AllServices().ToArray();
+            allServices = inspection?.Services ?? AllServices().ToArray();
             var serviceNames = AllServiceNames(allServices).Distinct(StringComparer.OrdinalIgnoreCase).ToArray();
             var packages = MatchingAppxPackages();
             var installed = IsInstalled(allServices, serviceNames, packages);
@@ -137,7 +160,10 @@ public abstract class AbstractSoftwareDisabler
         }
         finally
         {
-            DisposeServices(allServices);
+            if (inspection is null)
+            {
+                DisposeServices(allServices);
+            }
         }
     }
 
@@ -463,39 +489,26 @@ public abstract class AbstractSoftwareDisabler
     protected virtual IEnumerable<string> RunningProcesses()
     {
         var ownedNames = ProcessNames.ToArray();
+        var processes = SoftwareDisablerInspection.Current?.Processes ?? SoftwareDisablerInspection.ReadProcesses();
 
-        foreach (var process in Process.GetProcesses())
+        foreach (var process in processes)
         {
-            using (process)
+            var declared = ownedNames.Any(n => process.Name.StartsWith(n, StringComparison.InvariantCultureIgnoreCase));
+
+            if ((!declared && process.Owner != SelfName) || (declared && process.Owner is not null && process.Owner != SelfName))
             {
-                var name = string.Empty;
-                string? path = null;
-
-                try
-                {
-                    name = process.ProcessName;
-                    path = SoftwareDisablerOwnership.TryGetProcessPath(process);
-                }
-                catch { }
-
-                if (string.IsNullOrEmpty(name))
-                {
-                    continue;
-                }
-
-                var declared = ownedNames.Any(n => name.StartsWith(n, StringComparison.InvariantCultureIgnoreCase));
-                var owner = SoftwareDisablerOwnership.ResolveOwner(path);
-                if ((!declared && owner != SelfName) || (declared && owner is not null && owner != SelfName))
-                {
-                    continue;
-                }
-
-                yield return name;
+                continue;
             }
+
+            yield return process.Name;
         }
     }
 
-    private static bool IsServiceEnabled(string serviceName, IEnumerable<ServiceController> services)
+    private static bool IsServiceEnabled(string serviceName, IEnumerable<ServiceController> services) =>
+        SoftwareDisablerInspection.Current?.ServiceEnabled(serviceName, () => ReadServiceEnabled(serviceName, services))
+        ?? ReadServiceEnabled(serviceName, services);
+
+    private static bool ReadServiceEnabled(string serviceName, IEnumerable<ServiceController> services)
     {
         try
         {
@@ -548,7 +561,8 @@ public abstract class AbstractSoftwareDisabler
         {
             foreach (var name in GetStartupEntryNames(hive, startupEntryNames, startupEntryRoots))
             {
-                var state = Registry.GetValue<byte[]>(hive, STARTUP_APPROVED_RUN_KEY, name, []);
+                var state = SoftwareDisablerInspection.Current?.Value<byte[]>(hive, STARTUP_APPROVED_RUN_KEY, name, [])
+                    ?? Registry.GetValue<byte[]>(hive, STARTUP_APPROVED_RUN_KEY, name, []);
                 if (state.Length == 0 || state[0] != 0x03)
                 {
                     yield return $"{hive}\\{name}";
@@ -563,6 +577,13 @@ public abstract class AbstractSoftwareDisabler
         if (names.Length == 0)
         {
             return [];
+        }
+
+        if (SoftwareDisablerInspection.Current is { } inspection)
+        {
+            return inspection.Processes.Select(p => p.Name)
+                .Where(name => names.Any(n => name.StartsWith(n, StringComparison.InvariantCultureIgnoreCase)))
+                .ToArray();
         }
 
         return Process.GetProcesses()
@@ -587,7 +608,8 @@ public abstract class AbstractSoftwareDisabler
 
     private IEnumerable<string> GetStartupEntryNames(string hive, string[] startupEntryNames, string[] startupEntryRoots)
     {
-        var valueNames = Registry.GetValueNames(hive, RUN_KEY);
+        var valueNames = SoftwareDisablerInspection.Current?.ValueNames(hive, RUN_KEY)
+            ?? Registry.GetValueNames(hive, RUN_KEY);
         var result = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
         foreach (var name in startupEntryNames)
@@ -600,7 +622,8 @@ public abstract class AbstractSoftwareDisabler
 
         foreach (var valueName in valueNames)
         {
-            var command = Registry.GetValue(hive, RUN_KEY, valueName, string.Empty);
+            var command = SoftwareDisablerInspection.Current?.Value(hive, RUN_KEY, valueName, string.Empty)
+                ?? Registry.GetValue(hive, RUN_KEY, valueName, string.Empty);
             if (string.IsNullOrWhiteSpace(command))
             {
                 continue;
@@ -666,8 +689,8 @@ public abstract class AbstractSoftwareDisabler
             return [];
         }
 
-        return new PackageManager()
-            .FindPackagesForUser(string.Empty)
+        return (SoftwareDisablerInspection.Current?.Packages
+                ?? new PackageManager().FindPackagesForUser(string.Empty).ToArray())
             .Where(p => names.Any(n =>
                 p.Id.Name.Equals(n, StringComparison.OrdinalIgnoreCase) ||
                 p.Id.Name.EndsWith($".{n}", StringComparison.OrdinalIgnoreCase)))
@@ -755,6 +778,25 @@ public abstract class AbstractSoftwareDisabler
 
     private IEnumerable<string> EnabledScheduledTasks()
     {
+        if (SoftwareDisablerInspection.Current is { } inspection)
+        {
+            var paths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            foreach (var folder in OwnedScheduledTaskFolderPaths())
+            {
+                foreach (var task in inspection.TasksInFolder(folder))
+                {
+                    if (paths.Add(task.Path) && task.Enabled &&
+                        (task.Owners.Length == 0 || task.Owners.Contains(SelfName)))
+                    {
+                        yield return task.Path;
+                    }
+                }
+            }
+
+            yield break;
+        }
+
         var taskService = TaskService.Instance;
         var processedTaskPaths = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 

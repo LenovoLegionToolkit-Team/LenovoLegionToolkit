@@ -34,8 +34,9 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
-    public async Task SetPowerPlanAsync(PowerModeState powerModeState, bool alwaysActivateDefaults = false, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
+    public async Task SetPowerPlanAsync(PowerModeState powerModeState, bool alwaysActivateDefaults = false, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false, SoftwareStatus? vantageStatus = null)
     {
+        using var immediate = skipThrottle ? _overlayDispatcher.SuppressThrottle() : null;
         await _lock.WaitAsync().ConfigureAwait(false);
         try
         {
@@ -66,9 +67,16 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
             Log.Instance.Trace($"Power plan to be activated is {powerPlanId} [isDefault={isDefault}]");
 
-            if (!await ShouldSetPowerPlanAsync(alwaysActivateDefaults, isDefault).ConfigureAwait(false))
+            if (!await ShouldSetPowerPlanAsync(alwaysActivateDefaults, isDefault, vantageStatus).ConfigureAwait(false))
             {
                 Log.Instance.Trace($"Power plan {powerPlanId} will not be activated [isDefault={isDefault}]");
+                return;
+            }
+
+            var activePowerPlanGuid = GetActivePowerPlanGuid();
+            if (activePowerPlanGuid == powerPlanId)
+            {
+                await ApplyBalanceOverlayIfNeededAsync(activePowerPlanGuid, powerModeState, isDefault, activeGodModePreset, skipThrottle).ConfigureAwait(false);
                 return;
             }
 
@@ -104,7 +112,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
                 return;
             }
 
-            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, powerModeState, isDefault, activeGodModePreset).ConfigureAwait(false);
+            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, powerModeState, isDefault, activeGodModePreset, skipThrottle).ConfigureAwait(false);
         }
         finally
         {
@@ -165,6 +173,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
     public async Task SetPowerPlanAsync(ITSMode itsMode, bool alwaysActivateDefaults = false, bool skipThrottle = false)
     {
+        using var immediate = skipThrottle ? _overlayDispatcher.SuppressThrottle() : null;
         await _lock.WaitAsync().ConfigureAwait(false);
         try
         {
@@ -228,7 +237,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
                 return;
             }
 
-            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, itsMode, isDefault).ConfigureAwait(false);
+            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, itsMode, isDefault, skipThrottle).ConfigureAwait(false);
         }
         finally
         {
@@ -238,6 +247,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
     public async Task SetBalancedPowerPlanAsync(bool skipThrottle = false)
     {
+        using var immediate = skipThrottle ? _overlayDispatcher.SuppressThrottle() : null;
         await _lock.WaitAsync().ConfigureAwait(false);
         try
         {
@@ -362,7 +372,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
-    private async Task<bool> ShouldSetPowerPlanAsync(bool alwaysActivateDefaults, bool isDefault)
+    private async Task<bool> ShouldSetPowerPlanAsync(bool alwaysActivateDefaults, bool isDefault, SoftwareStatus? knownVantageStatus = null)
     {
         if (isDefault && alwaysActivateDefaults)
         {
@@ -370,7 +380,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
             return true;
         }
 
-        var status = await vantageDisabler.GetStatusAsync().ConfigureAwait(false);
+        var status = knownVantageStatus ?? await vantageDisabler.GetStatusAsync().ConfigureAwait(false);
         if (status is SoftwareStatus.NotFound or SoftwareStatus.Disabled)
         {
             Log.Instance.Trace($"Vantage is not active / disabled [status={status}]");

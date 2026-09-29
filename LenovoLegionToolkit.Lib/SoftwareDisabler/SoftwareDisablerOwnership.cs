@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using TaskService = Microsoft.Win32.TaskScheduler.TaskService;
@@ -17,6 +18,8 @@ internal static class SoftwareDisablerOwnership
     private static readonly TimeSpan CacheLifetime = TimeSpan.FromSeconds(30);
 
     private static readonly object _lock = new();
+    private static readonly object _serviceImagesLock = new();
+    private static readonly object _taskFoldersLock = new();
 
     private static Peer[]? _peers;
     private static Dictionary<string, string>? _serviceImages;
@@ -54,9 +57,13 @@ internal static class SoftwareDisablerOwnership
 
     internal static void Invalidate()
     {
-        lock (_lock)
+        lock (_serviceImagesLock)
         {
             _serviceImages = null;
+        }
+
+        lock (_taskFoldersLock)
+        {
             _taskFolderExecutables = null;
         }
     }
@@ -289,7 +296,7 @@ internal static class SoftwareDisablerOwnership
 
     internal static IReadOnlyDictionary<string, string> ServiceImages()
     {
-        lock (_lock)
+        lock (_serviceImagesLock)
         {
             if (_serviceImages is not null && IsFresh(_serviceImagesAt))
             {
@@ -326,7 +333,7 @@ internal static class SoftwareDisablerOwnership
 
     internal static IReadOnlyDictionary<string, string[]> TaskFolderExecutables()
     {
-        lock (_lock)
+        lock (_taskFoldersLock)
         {
             if (_taskFolderExecutables is not null && IsFresh(_taskFolderExecutablesAt))
             {
@@ -392,7 +399,7 @@ internal static class SoftwareDisablerOwnership
     {
         try
         {
-            return process.MainModule?.FileName;
+            return process.GetFileName();
         }
         catch
         {

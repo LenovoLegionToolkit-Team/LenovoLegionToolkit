@@ -49,6 +49,7 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
     public async Task SetPowerModeAsync(PowerModeState powerModeState, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
     {
+        using var immediate = skipThrottle ? _dispatcher.SuppressThrottle() : null;
         await _lock.WaitAsync().ConfigureAwait(false);
         try
         {
@@ -106,6 +107,7 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
     public async Task SetPowerModeAsync(ITSMode itsMode, bool skipThrottle = false)
     {
+        using var immediate = skipThrottle ? _dispatcher.SuppressThrottle() : null;
         await _lock.WaitAsync().ConfigureAwait(false);
         try
         {
@@ -164,6 +166,7 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
 
     public async Task SetBalancedPowerModeAsync(bool skipThrottle = false)
     {
+        using var immediate = skipThrottle ? _dispatcher.SuppressThrottle() : null;
         await _lock.WaitAsync().ConfigureAwait(false);
         try
         {

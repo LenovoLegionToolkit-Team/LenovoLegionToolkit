@@ -421,6 +421,12 @@ public readonly struct GodModeDefaults
     }
 }
 
+public sealed record SoftwareStatuses(
+    SoftwareStatus Vantage,
+    SoftwareStatus SmartEngine,
+    SoftwareStatus LegionSpace,
+    SoftwareStatus LegionZone);
+
 public readonly struct GodModeState
 {
     public Guid ActivePresetId { get; init; }
@@ -1426,6 +1432,10 @@ public readonly record struct SensorSlot
         DgpuOnly = dgpuOnly;
     }
 }
+
+internal sealed record SoftwareDisablerProcessEntry(string Name, string? Owner);
+
+internal sealed record SoftwareDisablerTaskEntry(string Path, bool Enabled, string[] Owners);
 
 public sealed class SoftwareDisablerPolicy
 {
