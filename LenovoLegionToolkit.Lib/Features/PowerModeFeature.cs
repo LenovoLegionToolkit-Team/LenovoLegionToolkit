@@ -113,7 +113,7 @@ public class PowerModeFeature(
         Log.Instance.Trace($"PowerModeListener.NotifyAsync completed");
 
         var thermalMode = await WMI.LenovoGameZoneData.GetThermalModeAsync().ConfigureAwait(false);
-        Log.Instance.Trace($"Thermal Mode after switch: {(ThermalModeState)thermalMode} [expected={(ThermalModeState)(int)(object)state}]");
+        Log.Instance.Trace($"Thermal Mode after switch: {(ThermalModeState)thermalMode} [expected={state}]");
     }
 
     public async Task SuspendMode(PowerModeState state)

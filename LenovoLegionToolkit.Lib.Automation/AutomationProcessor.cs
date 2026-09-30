@@ -212,7 +212,7 @@ public class AutomationProcessor(
                         !pipeline.RunOnStartup &&
                         pipeline.Trigger is not OnStartupAutomationPipelineTrigger)
                     {
-                        Log.Instance.Trace($"Pipeline configured to skip startup. [name={pipeline.Name}]");
+                        Log.Instance.Trace($"Pipeline configured to skip startup. [name={pipeline.Name}, trigger={pipeline.Trigger}, id={pipeline.Id}]");
                         continue;
                     }
 
