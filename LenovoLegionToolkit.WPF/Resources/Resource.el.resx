@@ -3262,7 +3262,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Επιτάχυνση Υλικού</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Η ενεργοποίηση της επιτάχυνσης υλικού μπορεί να προκαλέσει τρεμοπαίξιμο ή μαύρες αναβοσβήσεις σε κάποια υβριδικά συστήματα γραφικών και μπορεί να αποτρέψει την απενεργοποίηση της διακριτής GPU.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Ενεργοποίηση προηγμένων δημοσκοπήσεων υλικού για την παρακολούθηση λεπτομερών θερμοκρασιών, συχνοτήτων και ορίων ισχύος.</value>
@@ -3275,6 +3275,9 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Αυτόματο (Παρακαλώ τα Windows αποφασίζουν)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Υψηλή απόδοση (dGPU)</value>
