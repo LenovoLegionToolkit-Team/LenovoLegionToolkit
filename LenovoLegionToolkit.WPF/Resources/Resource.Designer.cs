@@ -9409,7 +9409,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off..
+        ///   Looks up a localized string similar to Enabling hardware acceleration may prevent the discrete GPU from being turned off..
         /// </summary>
         public static string SettingsPage_HardwareAcceleration_Warning {
             get {
@@ -9450,6 +9450,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_HWA_GPUPreference_Auto {
             get {
                 return ResourceManager.GetString("SettingsPage_HWA_GPUPreference_Auto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not apply the GPU preference..
+        /// </summary>
+        public static string SettingsPage_HWA_GPUPreference_Error_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_HWA_GPUPreference_Error_Message", resourceCulture);
             }
         }
         

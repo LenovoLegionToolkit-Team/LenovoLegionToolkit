@@ -23,6 +23,7 @@ public partial class SettingsAppearanceControl
 {
     private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
     private readonly ThemeManager _themeManager = IoCContainer.Resolve<ThemeManager>();
+    private readonly GPUController _gpuController = IoCContainer.Resolve<GPUController>();
 
     private bool _isRefreshing;
 
@@ -91,7 +92,7 @@ public partial class SettingsAppearanceControl
         {
             _gpuPreferenceComboBox.Visibility = Visibility.Visible;
             var exePath = Environment.ProcessPath ?? string.Empty;
-            var pref = IoCContainer.Resolve<GPUController>().GetGpuPreference(exePath);
+            var pref = _gpuController.GetGpuPreference(exePath);
             _gpuPreferenceComboBox.SelectedIndex = pref switch
             {
                 GpuPreference.Integrated => 1,
@@ -327,7 +328,11 @@ public partial class SettingsAppearanceControl
             _ => GpuPreference.Default
         };
 
-        IoCContainer.Resolve<GPUController>().SetGpuPreference(exePath, preference);
+        if (!_gpuController.SetGpuPreference(exePath, preference))
+        {
+            SnackbarHelper.Show(Resource.Error, Resource.SettingsPage_HWA_GPUPreference_Error_Message, SnackbarType.Error);
+            return;
+        }
 
         SnackbarHelper.Show(Resource.SettingsPage_HardwareAcceleration_Title, Resource.SettingsPage_RestartRequired_Message, SnackbarType.Success);
     }

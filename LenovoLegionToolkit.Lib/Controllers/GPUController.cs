@@ -397,54 +397,77 @@ public class GPUController
     public IReadOnlyList<Process> ActiveProcesses => _processes;
     public IReadOnlyList<Process> AllActiveProcesses => _allProcesses;
 
+    public const string GPU_PREFERENCES_HIVE = "HKEY_CURRENT_USER";
+    public const string GPU_PREFERENCES_KEY = @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences";
+
     public GpuPreference GetGpuPreference(string exePath)
     {
-        var prefString = Registry.GetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", exePath, string.Empty);
+        var prefString = ReadGpuPreferenceValue(exePath);
 
         var isOurApp = string.Equals(exePath, Environment.ProcessPath, StringComparison.OrdinalIgnoreCase);
         var aumid = isOurApp ? GetAppUserModelId() : null;
 
         if (string.IsNullOrEmpty(prefString) && !string.IsNullOrEmpty(aumid))
-            prefString = Registry.GetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", aumid, string.Empty);
+            prefString = ReadGpuPreferenceValue(aumid);
 
-        if (prefString.Contains("GpuPreference=1")) return GpuPreference.Integrated;
-        if (prefString.Contains("GpuPreference=2")) return GpuPreference.Discrete;
-
-        return GpuPreference.Default;
+        return ParseGpuPreference(prefString);
     }
 
-    public void SetGpuPreference(string exePath, GpuPreference preference)
+    public bool SetGpuPreference(string exePath, GpuPreference preference)
     {
         try
         {
             var isOurApp = string.Equals(exePath, Environment.ProcessPath, StringComparison.OrdinalIgnoreCase);
             var aumid = isOurApp ? GetAppUserModelId() : null;
 
-            if (preference == GpuPreference.Default)
-            {
-                using var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", true);
-                key?.DeleteValue(exePath, false);
+            var names = new List<string> { exePath };
+            if (!string.IsNullOrEmpty(aumid))
+                names.Add(aumid);
 
-                if (!string.IsNullOrEmpty(aumid))
-                {
-                    key?.DeleteValue(aumid, false);
-                }
-            }
-            else
-            {
-                var value = preference == GpuPreference.Integrated ? "GpuPreference=1;" : "GpuPreference=2;";
-                Registry.SetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", exePath, value, false, Microsoft.Win32.RegistryValueKind.String);
+            foreach (var name in names)
+                WriteGpuPreference(name, preference);
 
-                if (!string.IsNullOrEmpty(aumid))
-                {
-                    Registry.SetValue("HKEY_CURRENT_USER", @"SOFTWARE\Microsoft\DirectX\UserGpuPreferences", aumid, value, false, Microsoft.Win32.RegistryValueKind.String);
-                }
-            }
+            return names.TrueForAll(name => ParseGpuPreference(ReadGpuPreferenceValue(name)) == preference);
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Failed to set GPU preference for {exePath}.", ex);
+            return false;
         }
+    }
+
+    private static string ReadGpuPreferenceValue(string name) => Registry.GetValue(GPU_PREFERENCES_HIVE, GPU_PREFERENCES_KEY, name, string.Empty);
+
+    private static GpuPreference ParseGpuPreference(string prefString)
+    {
+        foreach (var flag in prefString.Split(';', StringSplitOptions.RemoveEmptyEntries))
+        {
+            if (flag == "GpuPreference=1")
+                return GpuPreference.Integrated;
+
+            if (flag == "GpuPreference=2")
+                return GpuPreference.Discrete;
+        }
+
+        return GpuPreference.Default;
+    }
+
+    private static void WriteGpuPreference(string name, GpuPreference preference)
+    {
+        if (preference == GpuPreference.Default)
+        {
+            Registry.DeleteValue(GPU_PREFERENCES_HIVE, GPU_PREFERENCES_KEY, name);
+            return;
+        }
+
+        var existing = Registry.GetValue(GPU_PREFERENCES_HIVE, GPU_PREFERENCES_KEY, name, string.Empty);
+        var flags = existing.Split(';', StringSplitOptions.RemoveEmptyEntries)
+            .Where(flag => !flag.StartsWith("GpuPreference=", StringComparison.Ordinal))
+            .ToList();
+
+        flags.Add(preference == GpuPreference.Integrated ? "GpuPreference=1" : "GpuPreference=2");
+
+        Registry.SetValue(GPU_PREFERENCES_HIVE, GPU_PREFERENCES_KEY, name, $"{string.Join(';', flags)};", false, Microsoft.Win32.RegistryValueKind.String);
     }
 
     private List<PerformanceStateId>? _cachedSupportedPerformanceStates;
