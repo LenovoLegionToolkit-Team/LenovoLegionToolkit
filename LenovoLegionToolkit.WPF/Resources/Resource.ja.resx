@@ -3261,7 +3261,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>ハードウェアアクセラレーション</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>ハードウェアアクセラレーションを有効にすると、一部のハイブリッド・グラフィック・システムでちらつきやブラックフラッシュが発生する可能性があり、ディスクリート・GPUがオフになるのを防ぐ可能性があります。</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>高度なハードウェアポーリングを有効にして、詳細な温度、周波数、および電力制限を監視できます。</value>
@@ -3274,6 +3274,9 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>自動 (Windows の設定)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>高パフォーマンス (dGPU)</value>
