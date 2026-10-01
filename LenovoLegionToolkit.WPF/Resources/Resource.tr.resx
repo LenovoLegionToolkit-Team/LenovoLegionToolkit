@@ -3261,7 +3261,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Donanımsal Hızlandırma</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Donanımsal hızlandırmayı etkinleştirmek, bazı hibrit grafik sistemlerinde titreme veya siyah flaşlara neden olabilir ve harici GPU'nun kapatılmasını engelleyebilir.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Ayrıntılı sıcaklıkları, frekansları ve güç sınırlarını izlemek için gelişmiş donanım yoklamasını etkinleştirin.</value>
@@ -3274,6 +3274,9 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Otomatik (Windows'un karar vermesine izin ver)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Yüksek performans (dGPU)</value>
