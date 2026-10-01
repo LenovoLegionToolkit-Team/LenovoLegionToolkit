@@ -3270,7 +3270,7 @@
     <value>硬件加速</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>启用硬件加速可能会在某些混合图形系统上导致闪烁或黑色闪烁，并可能会阻止独立显卡休眠。</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>启用高级硬件传感器以监控详细的温度、频率和功耗。</value>
@@ -3283,6 +3283,9 @@
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>自动（Windows 决定）</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>高性能 （独立显卡）</value>
