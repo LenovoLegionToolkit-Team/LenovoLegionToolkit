@@ -3260,7 +3260,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Апаратне прискорення</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Увімкнення апаратного прискорення може спричинити мерехтіння або чорні спалахи на деяких гібридних графічних системах, а також може перешкоджати вимкненню дискретного ГП.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Увімкніть розширене опитування обладнання для детального моніторингу температур, частот та обмежень потужності.</value>
@@ -3273,6 +3273,9 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Авто (дозволити Windows вирішувати)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Висока продуктивність (дискр. ГП)</value>
