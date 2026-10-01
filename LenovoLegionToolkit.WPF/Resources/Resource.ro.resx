@@ -3261,7 +3261,7 @@ Restart is recommended after changing this option.</value>
     <value>Accelerare hardware</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Activarea accelerării hardware poate provoca fulgerări pâlpâitoare sau negre pe unele sisteme grafice hibride şi poate împiedica oprirea GPU-ului discret.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Permite sondaje avansate hardware pentru a monitoriza temperaturile detaliate, frecvențele și limitele de putere.</value>
@@ -3274,6 +3274,9 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Auto (decide Windows Let)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Performanță ridicată (dGPU)</value>
