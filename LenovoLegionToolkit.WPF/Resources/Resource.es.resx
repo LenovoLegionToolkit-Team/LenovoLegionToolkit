@@ -3263,7 +3263,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Aceleración por hardware</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Habilitar la aceleración por hardware puede provocar parpadeos o destellos negros en algunos sistemas gráficos híbridos y puede impedir que se apague la GPU discreta.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Habilita el sondeo avanzado del equipo para supervisar temperaturas, frecuencias y límites de potencia detallados.</value>
@@ -3276,6 +3276,9 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Automático (dejar que Windows decida)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Alto rendimiento (dGPU)</value>
