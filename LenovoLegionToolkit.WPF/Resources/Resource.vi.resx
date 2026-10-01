@@ -3262,7 +3262,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Tăng tốc Phần cứng</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Bật tăng tốc phần cứng có thể gây ra nhấp nháy hoặc nhấp nháy đen trên một số hệ thống đồ họa lai và có thể ngăn GPU rời bị tắt.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Cho phép thăm dò phần cứng nâng cao để theo dõi nhiệt độ, tần số và giới hạn công suất chi tiết.</value>
@@ -3275,6 +3275,9 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Tự động (Để Windows tự chọn)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Hiệu năng cao (GPU rời)</value>
