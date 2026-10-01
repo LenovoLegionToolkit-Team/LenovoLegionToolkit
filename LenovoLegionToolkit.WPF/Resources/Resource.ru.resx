@@ -3261,7 +3261,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Аппаратное ускорение</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Включение аппаратного ускорения может вызвать мерцание или черные вспышки на некоторых гибридных графических системах, а также может помешать отключению дискретного GPU.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Включите расширенный опрос оборудования для детального мониторинга температур, частот и ограничений мощности.</value>
@@ -3274,6 +3274,9 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Авто (Windows сама решает)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Высокая производительность (dGPU)</value>
