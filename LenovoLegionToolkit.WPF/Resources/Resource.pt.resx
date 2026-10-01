@@ -3262,7 +3262,7 @@ Se desativado, esta app irá executar os atalhos Fn.
     <value>Aceleração de hardware</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Ativar a aceleração de hardware pode causar flashes cintilantes ou pretos em alguns sistemas gráficos híbridos e pode impedir que a GPU discreta seja desligada.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Ativar a consulta avançada de hardware para monitorar temperaturas, freqüências e limites de energia.</value>
@@ -3275,6 +3275,9 @@ Se desativado, esta app irá executar os atalhos Fn.
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Automático (Deixar Windows decidir)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Alto desempenho (dGPU)</value>
