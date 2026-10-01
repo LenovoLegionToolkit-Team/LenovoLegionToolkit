@@ -3261,7 +3261,7 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
     <value>Accélération matérielle</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>L'activation de l'accélération matérielle peut provoquer des scintillements ou des flashs noirs sur certains systèmes graphiques hybrides et peut empêcher la désactivation du GPU discret.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Activez les sondages matériels avancés pour surveiller les températures détaillées, les fréquences et les limites de puissance.</value>
@@ -3274,6 +3274,9 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Auto (laisser Windows décider)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Haute performance (dGPU)</value>
