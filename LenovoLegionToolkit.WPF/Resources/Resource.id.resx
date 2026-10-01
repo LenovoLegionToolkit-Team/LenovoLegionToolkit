@@ -3258,7 +3258,7 @@ Jika dinonaktifkan, aplikasi ini akan menangani pintasan Fn.</value>
     <value>Akselerasi Perangkat Keras</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Mengaktifkan akselerasi perangkat keras dapat menyebabkan layar berkedip atau muncul kilatan hitam pada beberapa sistem grafis hibrida, serta dapat mencegah GPU diskret untuk dimatikan.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Aktifkan polling perangkat keras tingkat lanjut untuk memantau suhu, frekuensi, dan batas daya secara mendetail.</value>
@@ -3271,6 +3271,9 @@ Jika dinonaktifkan, aplikasi ini akan menangani pintasan Fn.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Otomatis (Biarkan Windows yang menentukan)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Performa tinggi (dGPU)</value>
