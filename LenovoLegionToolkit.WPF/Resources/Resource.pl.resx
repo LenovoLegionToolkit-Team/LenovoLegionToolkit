@@ -3262,7 +3262,7 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
     <value>Przyspieszenie sprzętowe</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Włączenie akceleracji sprzętowej może spowodować migotanie lub czarne błyski na niektórych hybrydowych systemach graficznych i może uniemożliwić wyłączenie dyskretnego GPU.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Włącz zaawansowane ankiety sprzętowe, aby monitorować szczegółowe temperatury, częstotliwości i limity mocy.</value>
@@ -3275,6 +3275,9 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Auto (Decyduj Windows</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Wysoka wydajność (dGPU)</value>
