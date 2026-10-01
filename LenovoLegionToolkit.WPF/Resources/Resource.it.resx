@@ -3258,7 +3258,7 @@ Il riavvio è consigliabile dopo aver cambiato questa impostazione.</value>
     <value>Accelerazione Hardware</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Abilitare l'accelerazione hardware può causare sfarfallamenti o flash neri su alcuni sistemi grafici ibridi e può impedire che la GPU discreta venga disattivata.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Abilita il polling hardware avanzato per monitorare le temperature, le frequenze e i limiti di potenza dettagliati.</value>
@@ -3271,6 +3271,9 @@ Il riavvio è consigliabile dopo aver cambiato questa impostazione.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Automatico (Decidi le Finestre)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Prestazioni elevate (dGPU)</value>
