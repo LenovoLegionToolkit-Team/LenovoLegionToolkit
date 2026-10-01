@@ -3261,7 +3261,7 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
     <value>Hardware versnelling</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Het inschakelen van hardware-acceleratie kan flitsen of zwart veroorzaken op sommige hybride grafische systemen, en kan voorkomen dat de discrete GPU wordt uitgeschakeld.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Schakel geavanceerde hardware polling in om gedetailleerde temperaturen, frequenties en stroomlimieten te monitoren.</value>
@@ -3274,6 +3274,9 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Automatisch (Laat Windows beslissen)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Hoge prestaties (dGPU)</value>
