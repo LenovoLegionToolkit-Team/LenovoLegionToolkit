@@ -1063,7 +1063,7 @@ public readonly struct RefreshRate(int frequency, bool isDynamic = false, int ba
 {
     public int Frequency { get; } = frequency;
     public bool IsDynamic { get; } = isDynamic;
-    public int BaseFrequency { get; } = baseFrequency > 0 ? baseFrequency : (frequency > 120 && frequency % 2 == 0 ? frequency / 2 : 60);
+    public int BaseFrequency { get; } = baseFrequency;
 
     [JsonIgnore]
     public string DisplayName => IsDynamic
