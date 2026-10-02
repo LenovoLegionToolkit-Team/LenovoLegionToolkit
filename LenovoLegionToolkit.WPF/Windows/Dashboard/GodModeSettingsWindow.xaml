@@ -78,7 +78,7 @@
                 Severity="Warning" />
         </StackPanel>
 
-        <Grid Grid.Row="2" Margin="12,16,16,12">
+        <Grid x:Name="_presetsGrid" Grid.Row="2" Margin="12,16,16,12">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="*" />

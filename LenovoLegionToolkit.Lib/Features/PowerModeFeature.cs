@@ -1,4 +1,4 @@
-﻿using LenovoLegionToolkit.Lib.Controllers;
+using LenovoLegionToolkit.Lib.Controllers;
 using LenovoLegionToolkit.Lib.Controllers.GodMode;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.System;
@@ -54,7 +54,9 @@ public class PowerModeFeature(
         return states.ToArray();
     }
 
-    public override async Task SetStateAsync(PowerModeState state)
+    public override Task SetStateAsync(PowerModeState state) => SetStateAsync(state, applyGodModePreset: true);
+
+    public async Task SetStateAsync(PowerModeState state, bool applyGodModePreset)
     {
         var allStates = await GetAllStatesAsync().ConfigureAwait(false);
         if (!allStates.Contains(state))
@@ -106,12 +108,8 @@ public class PowerModeFeature(
         var sw = Stopwatch.StartNew();
         thermalModeListener.SuppressNext();
         Log.Instance.Trace($"Calling SetSmartFanModeAsync({(int)(object)state + 1})...");
-        await base.SetStateAsync(state).ConfigureAwait(false);
-        Log.Instance.Trace($"SetSmartFanModeAsync completed [elapsed={sw.ElapsedMilliseconds}ms]");
-
-        Log.Instance.Trace($"Calling PowerModeListener.NotifyAsync({state})...");
-        await powerModeListener.NotifyAsync(state).ConfigureAwait(false);
-        Log.Instance.Trace($"PowerModeListener.NotifyAsync completed");
+        await powerModeListener.ChangeAsync(state, () => base.SetStateAsync(state), applyGodModePreset).ConfigureAwait(false);
+        Log.Instance.Trace($"Power mode change completed [elapsed={sw.ElapsedMilliseconds}ms]");
 
         var thermalMode = await WMI.LenovoGameZoneData.GetThermalModeAsync().ConfigureAwait(false);
         Log.Instance.Trace($"Thermal Mode after switch: {(ThermalModeState)thermalMode} [expected={state}]");

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Features;
@@ -28,6 +29,7 @@ public class GodModeController(
 
     public event EventHandler<Guid>? PresetChanged;
 
+    private readonly SemaphoreSlim _applyLock = new(1, 1);
     private GodModePlatformConfiguration? _config;
     private MachineInformation? _mi;
     private bool _hasCapabilityErrors;
@@ -203,15 +205,26 @@ public class GodModeController(
     public async Task ApplyStateAsync()
         => await ApplyStateWithResultAsync().ConfigureAwait(false);
 
-    public async Task<(bool Applied, SoftwareStatuses Software)> ApplyStateWithResultAsync()
+    public async Task<(bool Applied, SoftwareStatuses Software)> ApplyStateWithResultAsync(GodModeState? state = null)
     {
-        var config = await GetConfigAsync().ConfigureAwait(false);
-        var statuses = await GetSoftwareStatusesAsync().ConfigureAwait(false);
-        var applied = config.Platform == GodModePlatform.LegacyLegion
-            ? await ApplyStateLegacyAsync(statuses).ConfigureAwait(false)
-            : await ApplyStateDataDrivenAsync(config, statuses).ConfigureAwait(false);
+        await _applyLock.WaitAsync().ConfigureAwait(false);
+        try
+        {
+            if (state.HasValue)
+                await SetStateAsync(state.Value).ConfigureAwait(false);
 
-        return (applied, statuses);
+            var config = await GetConfigAsync().ConfigureAwait(false);
+            var statuses = await GetSoftwareStatusesAsync().ConfigureAwait(false);
+            var applied = config.Platform == GodModePlatform.LegacyLegion
+                ? await ApplyStateLegacyAsync(statuses).ConfigureAwait(false)
+                : await ApplyStateDataDrivenAsync(config, statuses).ConfigureAwait(false);
+
+            return (applied, statuses);
+        }
+        finally
+        {
+            _applyLock.Release();
+        }
     }
 
     private async Task<bool> ApplyStateLegacyAsync(SoftwareStatuses statuses)
@@ -1444,12 +1457,8 @@ public class GodModeController(
     {
         var (_, preset) = await GetActivePresetAsync().ConfigureAwait(false);
 
-        try
-        {
-            var feature = IoCContainer.Resolve<PowerModeFeature>();
-            await feature.EnsureCorrectWindowsPowerSettingsAreSetAsync(preset, true, vantageStatus).ConfigureAwait(false);
-        }
-        catch{ /* Ignore */ }
+        var feature = IoCContainer.Resolve<PowerModeFeature>();
+        await feature.EnsureCorrectWindowsPowerSettingsAreSetAsync(preset, true, vantageStatus).ConfigureAwait(false);
 
         PresetChanged?.Invoke(this, presetId);
     }

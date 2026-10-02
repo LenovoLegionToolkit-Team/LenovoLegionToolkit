@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management;
@@ -33,6 +33,8 @@ public partial class GodModeSettingsWindow
     private Dictionary<PowerModeState, GodModeDefaults>? _defaults;
     private bool _isRefreshing;
     private bool _isSaving;
+    private bool _isEditingPreset;
+    private bool _isLoadingPreset;
 
     private const int BIOS_OC_MODE_ENABLED = 3;
 
@@ -63,12 +65,13 @@ public partial class GodModeSettingsWindow
 
     private async Task RefreshAsync(bool waitForHardware = true, SoftwareStatuses? knownSoftwareStatuses = null)
     {
-        if (_isRefreshing)
+        if (_isRefreshing || _isLoadingPreset || _isEditingPreset)
         {
             return;
         }
 
         _isRefreshing = true;
+        UpdateInteractionState();
 
         try
         {
@@ -114,6 +117,7 @@ public partial class GodModeSettingsWindow
         finally
         {
             _isRefreshing = false;
+            UpdateInteractionState();
         }
     }
 
@@ -211,15 +215,16 @@ public partial class GodModeSettingsWindow
         if (mi.Properties.GodModePlatform != GodModePlatform.NonGaming &&
             await _powerModeFeature.GetStateAsync().ConfigureAwait(false) != PowerModeState.GodMode)
         {
-            await _powerModeFeature.SetStateAsync(PowerModeState.GodMode).ConfigureAwait(false);
+            await _powerModeFeature.SetStateAsync(PowerModeState.GodMode, applyGodModePreset: false).ConfigureAwait(false);
         }
 
-        await _godModeController.SetStateAsync(state).ConfigureAwait(false);
-        return await _godModeController.ApplyStateWithResultAsync().ConfigureAwait(false);
+        return await _godModeController.ApplyStateWithResultAsync(state).ConfigureAwait(false);
     }
 
     private async Task SetStateAsync(GodModeState state)
     {
+        _isLoadingPreset = true;
+        UpdateInteractionState();
         _cpuLongTermPowerLimitControl.ValueChanged -= CpuLongTermPowerLimitSlider_ValueChanged;
         _cpuShortTermPowerLimitControl.ValueChanged -= CpuShortTermPowerLimitSlider_ValueChanged;
 
@@ -316,10 +321,20 @@ public partial class GodModeSettingsWindow
 
             await UpdateOverclockingVisibilityAsync();
         }
+        catch (Exception ex)
+        {
+            // Partially populated controls must never be saved as a valid preset.
+            _state = null;
+            Log.Instance.Trace($"Couldn't load preset.", ex);
+            await _snackBar.ShowAsync(Resource.GodModeSettingsWindow_Error_Load_Title, ex.Message);
+            Close();
+        }
         finally
         {
             _cpuLongTermPowerLimitControl.ValueChanged += CpuLongTermPowerLimitSlider_ValueChanged;
             _cpuShortTermPowerLimitControl.ValueChanged += CpuShortTermPowerLimitSlider_ValueChanged;
+            _isLoadingPreset = false;
+            UpdateInteractionState();
         }
     }
 
@@ -402,7 +417,7 @@ public partial class GodModeSettingsWindow
 
     private async void PresetsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        if (!_state.HasValue)
+        if (!_state.HasValue || _isSaving || _isRefreshing || _isEditingPreset || _isLoadingPreset)
         {
             return;
         }
@@ -420,25 +435,38 @@ public partial class GodModeSettingsWindow
 
     private async void EditPresetsButton_Click(object sender, RoutedEventArgs e)
     {
-        if (!_state.HasValue)
+        if (!_state.HasValue || _isSaving || _isRefreshing || _isEditingPreset || _isLoadingPreset)
         {
             return;
         }
-        var activeId = _state.Value.ActivePresetId;
-        var presets = _state.Value.Presets;
-        var result = await MessageBoxHelper.ShowInputAsync(this, Resource.GodModeSettingsWindow_EditPreset_Title, Resource.GodModeSettingsWindow_EditPreset_Message, presets[activeId].Name);
-        if (string.IsNullOrEmpty(result))
+
+        _isEditingPreset = true;
+        UpdateInteractionState();
+
+        try
         {
-            return;
+            var activeId = _state.Value.ActivePresetId;
+            var presets = _state.Value.Presets;
+            var result = await MessageBoxHelper.ShowInputAsync(this, Resource.GodModeSettingsWindow_EditPreset_Title, Resource.GodModeSettingsWindow_EditPreset_Message, presets[activeId].Name);
+            if (string.IsNullOrEmpty(result))
+            {
+                return;
+            }
+
+            var newPresets = new Dictionary<Guid, GodModePreset>(presets) { [activeId] = presets[activeId] with { Name = result } };
+            _state = _state.Value with { Presets = newPresets.AsReadOnlyDictionary() };
+            await SetStateAsync(_state.Value);
         }
-        var newPresets = new Dictionary<Guid, GodModePreset>(presets) { [activeId] = presets[activeId] with { Name = result } };
-        _state = _state.Value with { Presets = newPresets.AsReadOnlyDictionary() };
-        await SetStateAsync(_state.Value);
+        finally
+        {
+            _isEditingPreset = false;
+            UpdateInteractionState();
+        }
     }
 
     private async void DeletePresetsButton_Click(object sender, RoutedEventArgs e)
     {
-        if (!_state.HasValue || _state.Value.Presets.Count <= 1)
+        if (!_state.HasValue || _state.Value.Presets.Count <= 1 || _isSaving || _isRefreshing || _isEditingPreset || _isLoadingPreset)
         {
             return;
         }
@@ -454,23 +482,36 @@ public partial class GodModeSettingsWindow
 
     private async void AddPresetsButton_Click(object sender, RoutedEventArgs e)
     {
-        if (!_state.HasValue)
+        if (!_state.HasValue || _isSaving || _isRefreshing || _isEditingPreset || _isLoadingPreset)
         {
             return;
         }
-        var result = await MessageBoxHelper.ShowInputAsync(this, Resource.GodModeSettingsWindow_EditPreset_Title, Resource.GodModeSettingsWindow_EditPreset_Message);
-        if (string.IsNullOrEmpty(result))
+
+        _isEditingPreset = true;
+        UpdateInteractionState();
+
+        try
         {
-            return;
+            var result = await MessageBoxHelper.ShowInputAsync(this, Resource.GodModeSettingsWindow_EditPreset_Title, Resource.GodModeSettingsWindow_EditPreset_Message);
+            if (string.IsNullOrEmpty(result))
+            {
+                return;
+            }
+
+            var newId = Guid.NewGuid();
+            var newPresets = new Dictionary<Guid, GodModePreset>(_state.Value.Presets) { [newId] = _state.Value.Presets[_state.Value.ActivePresetId] with { Name = result } };
+            _state = new GodModeState
+            {
+                ActivePresetId = newId,
+                Presets = newPresets.AsReadOnlyDictionary()
+            };
+            await SetStateAsync(_state.Value);
         }
-        var newId = Guid.NewGuid();
-        var newPresets = new Dictionary<Guid, GodModePreset>(_state.Value.Presets) { [newId] = _state.Value.Presets[_state.Value.ActivePresetId] with { Name = result } };
-        _state = new GodModeState
+        finally
         {
-            ActivePresetId = newId,
-            Presets = newPresets.AsReadOnlyDictionary()
-        };
-        await SetStateAsync(_state.Value);
+            _isEditingPreset = false;
+            UpdateInteractionState();
+        }
     }
 
     private async void DefaultFanCurve_Click(object sender, RoutedEventArgs e)
@@ -531,7 +572,7 @@ public partial class GodModeSettingsWindow
 
     private async Task SaveAsync(bool closeAfterSave)
     {
-        if (_isSaving || _isRefreshing)
+        if (_isSaving || _isRefreshing || _isEditingPreset || _isLoadingPreset)
         {
             return;
         }
@@ -564,11 +605,16 @@ public partial class GodModeSettingsWindow
     private void SetSavingState(bool isSaving)
     {
         _isSaving = isSaving;
-        _loader.IsLoading = isSaving;
-        _buttonsStackPanel.IsEnabled = !isSaving;
-        _presetsComboBox.IsEnabled = !isSaving;
-        _addPresetsButton.IsEnabled = !isSaving;
-        _deletePresetsButton.IsEnabled = !isSaving && _state?.Presets.Count > 1;
+        UpdateInteractionState();
+    }
+
+    private void UpdateInteractionState()
+    {
+        var busy = _isSaving || _isRefreshing || _isEditingPreset || _isLoadingPreset;
+        _loader.IsLoading = _isSaving || _isRefreshing || _isLoadingPreset;
+        _buttonsStackPanel.IsEnabled = !busy;
+        _presetsGrid.IsEnabled = !busy;
+        _deletePresetsButton.IsEnabled = !busy && _state?.Presets.Count > 1;
     }
 
     private void CpuLongTermPowerLimitSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
