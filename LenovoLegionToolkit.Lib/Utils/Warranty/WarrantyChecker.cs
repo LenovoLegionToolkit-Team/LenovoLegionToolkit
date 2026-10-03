@@ -61,12 +61,12 @@ public class WarrantyChecker(ApplicationSettings settings, HttpClientFactory htt
             var startDate = baseWarranties.Concat(upgradeWarranties)
                 .Select(n => n?["startDate"])
                 .Where(n => n is not null)
-                .Select(n => DateTime.Parse(n!.ToString()))
+                .Select(n => DateTime.Parse(n!.ToString(), CultureInfo.InvariantCulture))
                 .Min();
             var endDate = baseWarranties.Concat(upgradeWarranties)
                 .Select(n => n?["endDate"])
                 .Where(n => n is not null)
-                .Select(n => DateTime.Parse(n!.ToString()))
+                .Select(n => DateTime.Parse(n!.ToString(), CultureInfo.InvariantCulture))
                 .Max();
 
             var productString = await httpClient.GetStringAsync(
@@ -137,7 +137,7 @@ public class WarrantyChecker(ApplicationSettings settings, HttpClientFactory htt
 
         DateTime? startDate = allWarrantyItems
                 .Where(w => w.ServiceProductName == prooducts[0])
-                .Select(w => DateTime.TryParse(w.StartDateString, out var parsedDate) ? parsedDate : (DateTime?)null)
+                .Select(w => DateTime.TryParse(w.StartDateString, CultureInfo.InvariantCulture, out var parsedDate) ? parsedDate : (DateTime?)null)
                 .Where(d => d.HasValue)
                 .Min();
 
@@ -148,7 +148,7 @@ public class WarrantyChecker(ApplicationSettings settings, HttpClientFactory htt
                 shortName => w.ServiceProductName.Contains(shortName) &&
                 !excludedProductPartNames.Any(excludedName => w.ServiceProductName.Contains(excludedName))
             ))
-            .Select(w => DateTime.TryParse(w.EndDateString, out var parsedDate) ? parsedDate : (DateTime?)null)
+            .Select(w => DateTime.TryParse(w.EndDateString, CultureInfo.InvariantCulture, out var parsedDate) ? parsedDate : (DateTime?)null)
             .Where(d => d.HasValue)
             .Max();
 

@@ -329,6 +329,7 @@ public partial class DeviceInformationWindow
                     else
                     {
                         _warrantyDaysRemainingLabel.Text = Resource.Expired;
+                        _warrantyDaysRemainingLabel.Foreground = (System.Windows.Media.Brush)FindResource("PaletteRedBrush");
                         _warrantyStatusLabel.Text = Resource.Expired;
                         _warrantyStatusLabel.Foreground = (System.Windows.Media.Brush)FindResource("PaletteRedBrush");
                         _warrantyStatusIcon.Foreground = (System.Windows.Media.Brush)FindResource("PaletteRedBrush");

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -132,7 +133,7 @@ public class VantagePackageDownloader(HttpClientFactory httpClientFactory)
         var fileSizeBytes = int.Parse(document.SelectSingleNode("/Package/Files/Installer/File/Size")!.InnerText);
         var fileSize = $"{fileSizeBytes / 1024.0 / 1024.0:0.00} MB";
         var releaseDateString = document.SelectSingleNode("/Package/ReleaseDate")!.InnerText;
-        var releaseDate = DateTime.Parse(releaseDateString);
+        var releaseDate = DateTime.Parse(releaseDateString, CultureInfo.InvariantCulture);
         var readmeName = document.SelectSingleNode("/Package/Files/Readme/File/Name")?.InnerText;
         var readme = $"{baseLocation}/{readmeName}";
         var fileLocation = $"{baseLocation}/{fileName}";

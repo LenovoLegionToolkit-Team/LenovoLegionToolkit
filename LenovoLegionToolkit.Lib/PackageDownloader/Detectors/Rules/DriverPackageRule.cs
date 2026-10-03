@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Threading;
@@ -25,7 +26,7 @@ internal readonly struct DriverPackageRule : IPackageRule
         var versionString = node?.SelectSingleNode("Version")?.InnerText;
 
         DateTime? date = null;
-        if (DateTime.TryParse(dateString, out var d))
+        if (DateTime.TryParse(dateString, CultureInfo.InvariantCulture, out var d))
             date = d;
 
         Version? version = null;
