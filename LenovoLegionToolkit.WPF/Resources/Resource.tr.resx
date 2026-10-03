@@ -462,7 +462,7 @@ Yalnızca mevcut durumla eşleşen eylemler çalışacaktır.</value>
     <value>Bilinen Oyun Listesi</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Manuel</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
     <value>Algılama yöntemlerini ve istisnaları ayarlayın.</value>
@@ -1051,8 +1051,14 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Bağış yapamasanız bile, GitHub'da bu projeyi kullanmak, paylaşmak ve yıldızlamak bile büyük bir katkı sağlar. Her türlü desteğiniz için içtenlikle teşekkür ederiz</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Mevcut proje lideri olarak temel özelliklerin geliştirilmesinden, kalite güvencesinden, UI/UX tasarımından ve projenin genel yönlendirilmesinden sorumlu.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Ana Geliştirici ve Proje Lideri</value>
@@ -1120,25 +1126,25 @@ Desteğiniz için teşekkür ederiz!</value>
     <value>Hata</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Included processes always trigger game detection and Lenovo's AI/Intelligent Mode, while excluded processes are ignored.</value>
+    <value>Dahil edilen işlemler her zaman oyun algılamasını ve Lenovo’nun AI/Akıllı Modu'nu tetiklerken, hariç tutulan işlemler göz ardı edilir.</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
     <value>Hariç Tutulan İşlemler ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludeTooltip" xml:space="preserve">
-    <value>Add to Excluded Processes</value>
+    <value>Hariç Tutulan İşlemlere Ekle</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludedProcesses_Format" xml:space="preserve">
-    <value>Included Processes ({0})</value>
+    <value>Dahil Edilen İşlemler ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludeTooltip" xml:space="preserve">
-    <value>Add to Included Processes</value>
+    <value>Dahil Edilen İşlemlere Ekle</value>
   </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
     <value>Hariç tutulan işlem yok</value>
   </data>
   <data name="ExcludeProcessesWindow_NoIncludedProcesses" xml:space="preserve">
-    <value>No included processes</value>
+    <value>Dahil edilen işlem yok</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
     <value>Çalışan İşlemler ({0})</value>
@@ -1597,6 +1603,12 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Klavye Işığı</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Başka bir Lenovo uygulaması veya servisleri çalışırken klavye ışığı burada kontrol edilemez.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Başka bir Lenovo uygulaması veya servisleri çalışıyor</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Lenovo Vantage veya servisleri çalışırken klavye ışığı burada kontrol edilemez.</value>
@@ -2342,10 +2354,10 @@ Donanım Sensörü özelliğini devre dışı bırakmak için Hayır'a tıklayı
     <value>Undervolt Yapma</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCap" xml:space="preserve">
-    <value>Voltage Cap</value>
+    <value>Voltaj Sınırı</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCapDesc" xml:space="preserve">
-    <value>Cap maximum voltage under load while allowing dynamic downclocking at idle.</value>
+    <value>Yük altında maksimum voltajı sınırlarken, boşta çalışırken dinamik downclocklamaya izin verin.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
     <value>Voltaj Kilidi</value>
@@ -2907,6 +2919,12 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU Frekansı</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2930,6 +2948,18 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>Tercih Edilen GPU</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Kullanılan/Toplam Bellek (GB)</value>
@@ -3105,6 +3135,9 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Özel Arkaplan Resmi</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space düzgün bir şekilde devre dışı bırakılmamış olabilir</value>
   </data>
@@ -3204,7 +3237,7 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
     <value>Donanımsal Hızlandırma</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Donanımsal hızlandırmayı etkinleştirmek, bazı hibrit grafik sistemlerinde titreme veya siyah flaşlara neden olabilir ve harici GPU'nun kapatılmasını engelleyebilir.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Ayrıntılı sıcaklıkları, frekansları ve güç sınırlarını izlemek için gelişmiş donanım yoklamasını etkinleştirin.</value>
@@ -3217,6 +3250,9 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Otomatik (Windows'un karar vermesine izin ver)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Yüksek performans (dGPU)</value>
@@ -3430,6 +3466,9 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Ayarlar başarıyla uygulandı.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Sessize alındığında tüm aktif ses çıkış cihazlarının sesi kapatılacaktır.</value>

@@ -462,7 +462,7 @@ Chỉ có các Hành động thỏa điều kiện hiện tại sẽ được ch
     <value>Danh sách trò chơi đã biết</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Thủ công</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
     <value>Định cấu hình phương pháp phát hiện và loại trừ.</value>
@@ -1051,8 +1051,14 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Ngay cả khi bạn không thể quyên góp, chỉ cần sử dụng, chia sẻ và đóng vai chính cho dự án trên GitHub sẽ đi một chặng đường dài. Mọi sự hỗ trợ đều được đánh giá cao</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Chịu trách nhiệm phát triển tính năng cốt lõi, đảm bảo chất lượng, thiết kế UI/UX và định hướng dự án tổng thể với tư cách là người đứng đầu dự án hiện tại.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Nhà phát triển cốt lõi &amp; Trưởng dự án</value>
@@ -1598,6 +1604,12 @@ Chọn Có để tắt và Không để bỏ qua.</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Đèn nền bàn phím</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Không thể điều khiển đèn nền bàn phím ở đây khi một ứng dụng Lenovo khác hoặc các dịch vụ của ứng dụng đó đang chạy.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Một ứng dụng khác của Lenovo hoặc các dịch vụ của nó đang chạy</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Đèn nền bàn phím không thể được tùy chỉnh nếu Lenovo Vantage hoặc các chương trình con của nó đang chạy.</value>
@@ -2908,6 +2920,12 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Xung nhịp CPU</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2931,6 +2949,18 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU ưa thích</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Đã sử dụng/Tổng bộ nhớ (GB)</value>
@@ -3106,6 +3136,9 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Ảnh nền</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space có thể đã không được tắt đúng cách</value>
   </data>
@@ -3205,7 +3238,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Tăng tốc Phần cứng</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Bật tăng tốc phần cứng có thể gây ra nhấp nháy hoặc nhấp nháy đen trên một số hệ thống đồ họa lai và có thể ngăn GPU rời bị tắt.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Cho phép thăm dò phần cứng nâng cao để theo dõi nhiệt độ, tần số và giới hạn công suất chi tiết.</value>
@@ -3218,6 +3251,9 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Tự động (Để Windows tự chọn)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Hiệu năng cao (GPU rời)</value>
@@ -3431,6 +3467,9 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Đã áp dụng cài đặt thành công.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Cài đặt đã được lưu nhưng không được áp dụng cho GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Khi tắt tiếng, tất cả các đầu ra âm thanh đang sử dụng cũng sẽ bị tắt.</value>

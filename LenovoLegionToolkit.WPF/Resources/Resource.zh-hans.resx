@@ -1053,8 +1053,14 @@
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>即使您不能捐赠，只需使用 GitHub 上的项目，分享和启动项目也是很长的路程。每一点支持都是真正感激的。</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>负责核心功能开发、质量保证、UI/UX设计以及目前项目牵头的总体项目方向。</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>核心开发者 &amp; 项目负责人</value>
@@ -1604,6 +1610,12 @@
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>键盘背光</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>由于 Lenovo Vantage 或其服务正在运行导致冲突，无法在此控制键盘背光。</value>
@@ -2915,6 +2927,12 @@
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU 频率</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>独立显卡</value>
   </data>
@@ -2938,6 +2956,18 @@
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>首选显卡</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>已使用/总内存 (GB)</value>
@@ -3114,6 +3144,9 @@
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>背景图片</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space 可能未被正确禁用</value>
   </data>
@@ -3213,7 +3246,7 @@
     <value>硬件加速</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>启用硬件加速可能会在某些混合图形系统上导致闪烁或黑色闪烁，并可能会阻止独立显卡休眠。</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>启用高级硬件传感器以监控详细的温度、频率和功耗。</value>
@@ -3226,6 +3259,9 @@
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>自动（Windows 决定）</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>高性能 （独立显卡）</value>
@@ -3439,6 +3475,9 @@
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>成功应用配置。</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>静音此项将静音所有可用的音频输出设备。</value>

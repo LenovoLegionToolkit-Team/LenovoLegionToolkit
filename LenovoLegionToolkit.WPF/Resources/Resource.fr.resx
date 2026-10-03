@@ -462,7 +462,7 @@ Seules les actions qui correspondent à l'état actuel seront exécutées.</valu
     <value>Liste des jeux connus</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Manuel</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
     <value>Configurer les méthodes de détection et les exclusions.</value>
@@ -1052,8 +1052,14 @@ Le changement de mode peut nécessiter un redémarrage.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Même si vous ne pouvez pas faire de don, simplement en utilisant, en partageant et en mettant en vedette le projet sur GitHub va très loin. Chaque support est vraiment apprécié</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Responsable du développement des principales caractéristiques, de l'assurance qualité, de la conception UI/UX et de la direction générale du projet en tant que chef de file du projet actuel.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Développeur principal et chef de projet</value>
@@ -1597,6 +1603,12 @@ Cliquez sur Oui pour désactiver et Non pour ignorer.</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Rétroéclairage du clavier</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Le rétroéclairage du clavier ne peut pas être contrôlé par ici quand Lenovo Vantage ou ses services sont en exécution.</value>
@@ -2907,6 +2919,12 @@ Vous pouvez changer de mode avec Fn+Q.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Fréquence CPU</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2930,6 +2948,18 @@ Vous pouvez changer de mode avec Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU préféré</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Mémoire utilisée/totale (GB)</value>
@@ -3105,6 +3135,9 @@ Vous pouvez changer de mode avec Fn+Q.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Custom Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>L'espace de légion peut ne pas avoir été désactivé correctement</value>
   </data>
@@ -3204,7 +3237,7 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
     <value>Accélération matérielle</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>L'activation de l'accélération matérielle peut provoquer des scintillements ou des flashs noirs sur certains systèmes graphiques hybrides et peut empêcher la désactivation du GPU discret.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Activez les sondages matériels avancés pour surveiller les températures détaillées, les fréquences et les limites de puissance.</value>
@@ -3217,6 +3250,9 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Auto (laisser Windows décider)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Haute performance (dGPU)</value>
@@ -3430,6 +3466,9 @@ Un redémarrage est recommandé après avoir modifié cette option.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Paramètres appliqués avec succès.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Lorsque la fonction muet est activée, tous les dispositifs de sortie audio actifs sont mis en sourdine.</value>

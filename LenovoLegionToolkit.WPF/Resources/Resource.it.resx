@@ -1050,8 +1050,14 @@ Cambiare questa impostazione richiede il riavvio.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Anche se non puoi donare, semplicemente usando, condividere, e con protagonista il progetto su GitHub va molto lontano.</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Responsabile dello sviluppo delle caratteristiche principali, della garanzia della qualità, della progettazione UI/UX e della direzione complessiva del progetto come responsabile del progetto attuale.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Sviluppatore Principale E Capo Progetto</value>
@@ -1594,6 +1600,12 @@ Fare clic su Sì per disabilitare e No per ignorare.</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Retroilluminazione tastiera</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>La retroilluminazione della tastiera non può essere controllata qua mentre Vantage o i suoi servizi sono in esecuzione.</value>
@@ -2904,6 +2916,12 @@ Puoi anche usare la scorciatoia Fn+Q.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Frequenza CPU</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2927,6 +2945,18 @@ Puoi anche usare la scorciatoia Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU Preferita</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Memoria Usata/Totale (Gb)</value>
@@ -3102,6 +3132,9 @@ Puoi anche usare la scorciatoia Fn+Q.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Custom Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Lo spazio legione potrebbe non essere stato disabilitato correttamente</value>
   </data>
@@ -3201,7 +3234,7 @@ Il riavvio è consigliabile dopo aver cambiato questa impostazione.</value>
     <value>Accelerazione Hardware</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Abilitare l'accelerazione hardware può causare sfarfallamenti o flash neri su alcuni sistemi grafici ibridi e può impedire che la GPU discreta venga disattivata.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Abilita il polling hardware avanzato per monitorare le temperature, le frequenze e i limiti di potenza dettagliati.</value>
@@ -3214,6 +3247,9 @@ Il riavvio è consigliabile dopo aver cambiato questa impostazione.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Automatico (Decidi le Finestre)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Prestazioni elevate (dGPU)</value>
@@ -3427,6 +3463,9 @@ Il riavvio è consigliabile dopo aver cambiato questa impostazione.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Settings applied successfully.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Quando disattivato, tutti i dispositivi di uscita audio attivi saranno disattivati.</value>

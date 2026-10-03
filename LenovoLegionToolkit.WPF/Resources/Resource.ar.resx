@@ -1050,8 +1050,14 @@
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>حتى لو كنت لا تستطيع التبرع ، ببساطة إستخدام، مشاركة، وبدء المشروع على GitHub يذهب إلى طريق طويل. كل جزء من الدعم يحظى بتقدير حقيقي</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>مسؤول عن تطوير المعالم الأساسية، وضمان الجودة، وتصميم UI/UX، والتوجيه العام للمشروع بوصفه الرائد الحالي للمشروع.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>المطور الأساسي و رائد المشروع</value>
@@ -1596,6 +1602,12 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>الإضاءة الخلفية للوحة المفاتيح</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>لا يمكن التحكم في الإضاءة الخلفية لوحة المفاتيح هنا عندما يكون Lenovo Vantage أو خدماتها قيد التشغيل.</value>
@@ -2906,6 +2918,12 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>تردد المعالج</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2929,6 +2947,18 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU المفضل</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>الذاكرة المستخدمة/الإجمالية (GB)</value>
@@ -3104,6 +3134,9 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Custom Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>ربما لم يتم تعطيل فضاء الفيلق بشكل صحيح</value>
   </data>
@@ -3203,7 +3236,7 @@ Restart is recommended after changing this option.</value>
     <value>تسريع الأجهزة</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>ويمكن أن يؤدي التسريع التمكيني للمعدات إلى إغراق بعض النظم الرسومية الهجينة أو إصابتها بالأسود؛ وقد يحول دون إيقاف تشغيل وحدة البيانات العالمية المنفصلة.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>تمكين تصويت الأجهزة المتقدمة لرصد درجات الحرارة والترددات وحدود الطاقة المفصلة.</value>
@@ -3216,6 +3249,9 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>تلقائي (دع ويندوز يقرر)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>أداء عالي (DGPU)</value>
@@ -3429,6 +3465,9 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>تم تطبيق الإعدادات بنجاح.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>عند كتم، سيتم كتم جميع أجهزة إخراج الصوت النشطة.</value>

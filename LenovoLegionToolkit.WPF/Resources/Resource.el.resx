@@ -1052,8 +1052,14 @@
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Ακόμα κι αν δεν μπορείτε να δωρίσετε, απλά χρησιμοποιώντας, μοιράζοντας, και πρωταγωνιστώντας το έργο στο GitHub πηγαίνει πολύ μακριά.</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Υπεύθυνος για την ανάπτυξη βασικών χαρακτηριστικών, τη διασφάλιση ποιότητας, το σχεδιασμό UI/UX και τη συνολική κατεύθυνση του έργου ως το σημερινό προβάδισμα.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Κύριος Προγραμματιστής &amp; Επικεφαλής Έργου</value>
@@ -1598,6 +1604,12 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Φωτισμός Πληκτρολογίου</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Ο φωτισμός του πληκτρολογίου δεν μπορεί να ρυθμιστεί όταν εκτελείται το Lenovo Vantage ή οι υπηρεσίες του.</value>
@@ -2908,6 +2920,12 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Συχνότητα Επεξεργαστή</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2931,6 +2949,18 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>Προτιμώμενο GPU</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Χρησιμοποιημένη/Συνολική Μνήμη (GB)</value>
@@ -3106,6 +3136,9 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Custom Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Το Legion Space ενδέχεται να μην έχει απενεργοποιηθεί σωστά.</value>
   </data>
@@ -3205,7 +3238,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Επιτάχυνση Υλικού</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Η ενεργοποίηση της επιτάχυνσης υλικού μπορεί να προκαλέσει τρεμοπαίξιμο ή μαύρες αναβοσβήσεις σε κάποια υβριδικά συστήματα γραφικών και μπορεί να αποτρέψει την απενεργοποίηση της διακριτής GPU.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Ενεργοποίηση προηγμένων δημοσκοπήσεων υλικού για την παρακολούθηση λεπτομερών θερμοκρασιών, συχνοτήτων και ορίων ισχύος.</value>
@@ -3218,6 +3251,9 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Αυτόματο (Παρακαλώ τα Windows αποφασίζουν)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Υψηλή απόδοση (dGPU)</value>
@@ -3431,6 +3467,9 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Settings applied successfully.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>'Όταν είναι σε σίγαση, όλες οι ενεργές συσκευές εξόδου ήχου θα σιγήσουν.</value>

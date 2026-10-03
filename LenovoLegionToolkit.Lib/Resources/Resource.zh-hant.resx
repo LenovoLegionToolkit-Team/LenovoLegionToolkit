@@ -142,11 +142,11 @@
     <value>不支援。</value>
   </data>
   <data name="AutoColorManagementState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>關閉</value>
     <comment>Informs the user that Auto Color Management is or will be turned off.</comment>
   </data>
   <data name="AutoColorManagementState_On" xml:space="preserve">
-    <value>On</value>
+    <value>開啟</value>
     <comment>Informs the user that Auto Color Management is or will be turned on.</comment>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
@@ -220,7 +220,7 @@
     <value>GB</value>
   </data>
   <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
-    <value>Fan table verification failed.</value>
+    <value>無法驗證風扇曲線表。</value>
   </data>
   <data name="GPUController_GC6_Blocker_Acpi" xml:space="preserve">
     <value>ACPI</value>
@@ -232,7 +232,7 @@
     <value>Bus scan</value>
   </data>
   <data name="GPUController_GC6_Blocker_CpuSharedSurface" xml:space="preserve">
-    <value>CPU shared memory</value>
+    <value>CPU 共享記憶體</value>
   </data>
   <data name="GPUController_GC6_Blocker_Display" xml:space="preserve">
     <value>Display active</value>
@@ -247,7 +247,7 @@
     <value>Power event</value>
   </data>
   <data name="GPUController_GC6_Blocker_ResourceLock" xml:space="preserve">
-    <value>Resource lock</value>
+    <value>資源鎖定</value>
   </data>
   <data name="GPUController_GC6_Blocker_SoftwareDisabled" xml:space="preserve">
     <value>Software disabled</value>
@@ -618,10 +618,25 @@
     <value>快</value>
   </data>
   <data name="Spectrum_Color_Mode_Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>客製化</value>
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
-    <value>Random Color</value>
+    <value>隨機顏色</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
+    <value>Couldn't close {0}. It is still running, close it manually and try again.</value>
+  </data>
+  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
+    <value>Couldn't change the scheduled task {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
+    <value>Couldn't change the service {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
+    <value>Couldn't change the startup entry {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_StateError_Message" xml:space="preserve">
+    <value>Couldn't save which apps should stay disabled.</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>深色模式</value>

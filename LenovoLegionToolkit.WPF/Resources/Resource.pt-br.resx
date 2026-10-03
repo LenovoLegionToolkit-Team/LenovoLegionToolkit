@@ -1051,8 +1051,14 @@ Uma reinicialização pode ser necessária.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Mesmo se você não puder doar, simplesmente usando, compartilhando e estrelando o projeto no GitHub vai um longo caminho. Cada pouco de apoio é genuinamente apreciado</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Responsável pelo desenvolvimento do núcleo de recursos, garantia de qualidade, design da UI/UX e direção geral do projeto como líder atual do projeto.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Principal desenvolvedor e líder de projeto</value>
@@ -1596,6 +1602,12 @@ Clique em Sim para desativar e Não para ignorar.</value>
   </data>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Iluminação do teclado</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app or its services are running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>A luz de fundo do teclado não pode ser controlada aqui quando o Lenovo Vantage ou seus serviços estão em execução.</value>
@@ -2906,6 +2918,12 @@ Você pode alternar entre os modos pressionando Fn+Q.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Frequência da CPU</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2929,6 +2947,18 @@ Você pode alternar entre os modos pressionando Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU preferida</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Memória Usada/Total (GB)</value>
@@ -3104,6 +3134,9 @@ Você pode alternar entre os modos pressionando Fn+Q.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Custom Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable, it may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>O Espaço da Legião pode não ter sido desativado corretamente</value>
   </data>
@@ -3203,7 +3236,7 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
     <value>Aceleração de Hardware</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Ativar a aceleração de hardware pode causar flashes cintilantes ou pretos em alguns sistemas gráficos híbridos e pode impedir que a GPU discreta seja desligada.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Ativar a consulta avançada de hardware para monitorar temperaturas, freqüências e limites de energia.</value>
@@ -3216,6 +3249,9 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Automático (Deixar o Windows decidir)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Alto desempenho (dGPU)</value>
@@ -3429,6 +3465,9 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Settings applied successfully.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Quando mutado, todos os dispositivos de saída de áudio ativos serão silenciados.</value>
