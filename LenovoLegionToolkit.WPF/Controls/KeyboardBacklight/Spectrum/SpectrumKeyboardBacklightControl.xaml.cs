@@ -356,11 +356,20 @@ public partial class SpectrumKeyboardBacklightControl
 
         if (!isFixedZoneLayout)
         {
-            if (!_settings.Store.KeyboardLayout.HasValue)
+            var storedKeyboardLayout = _settings.Store.KeyboardLayout;
+            var detectedIsDefinitive = keyboardLayout is KeyboardLayout.Iso or KeyboardLayout.Jis;
+
+            if (keys.Count == 0)
             {
+                Log.Instance.Trace($"Skipping keyboard layout update because no keys were reported.");
+            }
+            else if (storedKeyboardLayout is null || detectedIsDefinitive && storedKeyboardLayout is KeyboardLayout.Ansi)
+            {
+                Log.Instance.Trace($"Using detected keyboard layout {keyboardLayout}, stored layout was {storedKeyboardLayout?.ToString() ?? "none"}.");
                 _settings.Store.KeyboardLayout = keyboardLayout;
                 _settings.SynchronizeStore();
             }
+
             keyboardLayout = _settings.Store.KeyboardLayout ?? keyboardLayout;
         }
 
