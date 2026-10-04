@@ -69,6 +69,7 @@ public static partial class Compatibility
 
         "15ACH",
         "15AHP",
+        "15ALC",
         "15IPH",
         "15AKP",
         "15APH",
