@@ -509,7 +509,8 @@ public class GodModeController(
             if (preset.PrecisionBoostOverdriveScaler is { } pboScaler)
             {
                 Log.Instance.Trace($"Applying PrecisionBoostOverdriveScaler: {pboScaler}...");
-                await WMI.LenovoCpuMethod.CPUSetOCDataAsync(17, (uint)CPUOverclockingID.PrecisionBoostOverdriveScaler, pboScaler.Value).ConfigureAwait(false);
+                var scaler = Math.Clamp(pboScaler.Value, 1, 10);
+                await WMI.LenovoCpuMethod.CPUSetOCDataAsync(17, (uint)CPUOverclockingID.PrecisionBoostOverdriveScaler, scaler).ConfigureAwait(false);
             }
             if (preset.PrecisionBoostOverdriveBoostFrequency is { } pboFreq)
             {
@@ -678,7 +679,7 @@ public class GodModeController(
                 var ocMode = await WMI.LenovoOtherMethod.GetFeatureValueAsync((uint)CapabilityID.CPUOverclockingEnable).ConfigureAwait(false);
                 enableOverclocking = ocMode == 1;
             }
-            catch{ /* Ignore */ }
+            catch { /* Ignore */ }
         }
 
         var preset = PopulatePreset(config, stepperValues, fanTableInfo, fanFullSpeed, 0, 0, pboScaler, pboFreq, coreCurve, enableAllCoreCurve, enableOverclocking);
@@ -743,7 +744,7 @@ public class GodModeController(
         if (!isAmdDevice)
             return (null, null, null);
         return (
-            new StepperValue(0, 0, 7, 1, [], 0),
+            new StepperValue(1, 1, 10, 1, [], 1),
             new StepperValue(0, 0, 200, 1, [], 0),
             new StepperValue(0, 0, 20, 1, [], 0)
         );
@@ -970,7 +971,7 @@ public class GodModeController(
                     GPUToCPUDynamicBoost = GetDefVal(allCapabilityData, CapabilityID.GPUToCPUDynamicBoost, powerMode),
                     FanTable = await GetDefaultFanTableAsync().ConfigureAwait(false),
                     FanFullSpeed = false,
-                    PrecisionBoostOverdriveScaler = 0,
+                    PrecisionBoostOverdriveScaler = 1,
                     PrecisionBoostOverdriveBoostFrequency = 0,
                     AllCoreCurveOptimizer = 0,
                     EnableAllCoreCurveOptimizer = false,
@@ -1347,7 +1348,7 @@ public class GodModeController(
 
             if (pboSettings.Any(s => s == null) && isAmdDevice)
             {
-                pboScaler = new StepperValue(0, 0, 7, 1, [], 0);
+                pboScaler = new StepperValue(1, 1, 10, 1, [], 1);
                 pboFreq = new StepperValue(0, 0, 200, 1, [], 0);
                 coreCurve = new StepperValue(0, 0, 20, 1, [], 0);
             }
@@ -1372,7 +1373,9 @@ public class GodModeController(
                 FanFullSpeed = preset.FanFullSpeed,
                 MinValueOffset = preset.MinValueOffset ?? defaultState.MinValueOffset,
                 MaxValueOffset = preset.MaxValueOffset ?? defaultState.MaxValueOffset,
-                PrecisionBoostOverdriveScaler = (isAmdDevice && pboScaler != null) ? pboScaler : preset.PrecisionBoostOverdriveScaler,
+                PrecisionBoostOverdriveScaler = isAmdDevice
+                    ? CreateStepperValue(defaultState.PrecisionBoostOverdriveScaler, pboScaler ?? preset.PrecisionBoostOverdriveScaler)
+                    : preset.PrecisionBoostOverdriveScaler,
                 PrecisionBoostOverdriveBoostFrequency = (isAmdDevice && pboFreq != null) ? pboFreq : preset.PrecisionBoostOverdriveBoostFrequency,
                 AllCoreCurveOptimizer = (isAmdDevice && coreCurve != null) ? coreCurve : preset.AllCoreCurveOptimizer,
                 EnableAllCoreCurveOptimizer = (isAmdDevice && preset.EnableAllCoreCurveOptimizer == null) ? false : preset.EnableAllCoreCurveOptimizer,
