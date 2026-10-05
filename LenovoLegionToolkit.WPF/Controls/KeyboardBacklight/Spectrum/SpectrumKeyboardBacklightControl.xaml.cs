@@ -46,6 +46,7 @@ public partial class SpectrumKeyboardBacklightControl
     private CancellationTokenSource? _refreshStateCancellationTokenSource;
     private Task? _refreshStateTask;
     private bool _refreshingProfile;
+    private Task? _switchKeyboardLayoutTask;
 
     private RadioButton[] ProfileButtons =>
     [
@@ -205,14 +206,7 @@ public partial class SpectrumKeyboardBacklightControl
 
     private async void SwitchKeyboardLayout_Click(object sender, RoutedEventArgs e)
     {
-        await StopAnimationAsync();
-
-        var buttons = _device.GetVisibleButtons();
-        foreach (var button in buttons)
-            button.IsChecked = false;
-
-        var currentKeyboardLayout = _settings.Store.KeyboardLayout;
-        var keyboardLayout = currentKeyboardLayout switch
+        _settings.Store.KeyboardLayout = _settings.Store.KeyboardLayout switch
         {
             KeyboardLayout.Ansi => KeyboardLayout.Iso,
             KeyboardLayout.Iso => KeyboardLayout.Jis,
@@ -220,13 +214,30 @@ public partial class SpectrumKeyboardBacklightControl
             KeyboardLayout.Keyboard24Zone => KeyboardLayout.Ansi,
             _ => KeyboardLayout.Ansi
         };
-
-        _settings.Store.KeyboardLayout = keyboardLayout;
         _settings.SynchronizeStore();
 
-        var (spectrumLayout, _, keys) = await _controller.GetKeyboardLayoutAsync();
+        _switchKeyboardLayoutTask ??= SwitchKeyboardLayoutAsync();
+        await _switchKeyboardLayoutTask;
+    }
 
-        _device.SetLayout(spectrumLayout, keyboardLayout, keys);
+    private async Task SwitchKeyboardLayoutAsync()
+    {
+        try
+        {
+            await StopAnimationAsync();
+
+            var buttons = _device.GetVisibleButtons();
+            foreach (var button in buttons)
+                button.IsChecked = false;
+
+            var (spectrumLayout, _, keys) = await _controller.GetKeyboardLayoutAsync();
+
+            _device.SetLayout(spectrumLayout, _settings.Store.KeyboardLayout ?? KeyboardLayout.Ansi, keys);
+        }
+        finally
+        {
+            _switchKeyboardLayoutTask = null;
+        }
 
         if (IsVisible)
             await StartAnimationAsync();
