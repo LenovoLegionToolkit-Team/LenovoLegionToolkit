@@ -7436,6 +7436,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Adjusts the refresh rate up to the selected rate to save power..
+        /// </summary>
+        public static string RefreshRateControl_Dynamic_Message {
+            get {
+                return ResourceManager.GetString("RefreshRateControl_Dynamic_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dynamic refresh rate.
+        /// </summary>
+        public static string RefreshRateControl_Dynamic_Title {
+            get {
+                return ResourceManager.GetString("RefreshRateControl_Dynamic_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Adjust the display refresh rate for smoother motion or power savings..
         /// </summary>
         public static string RefreshRateControl_Message {
