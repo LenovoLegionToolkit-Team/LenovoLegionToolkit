@@ -1604,16 +1604,16 @@ Klik Ya untuk menonaktifkan dan Tidak untuk mengabaikan.</value>
     <value>Lampu Latar Keyboard</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
-    <value>Lampu latar keyboard tidak dapat dikontrol di sini saat aplikasi Lenovo lain atau layanannya sedang berjalan.</value>
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
-    <value>Aplikasi atau layanan Lenovo lainnya sedang berjalan</value>
+    <value>Another Lenovo app is running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Lampu latar keyboard tidak dapat diatur di sini saat Lenovo Vantage atau layanannya sedang berjalan.</value>
+    <value>The keyboard backlight cannot be controlled while Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage atau layanannya sedang berjalan</value>
+    <value>Lenovo Vantage is running</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Tambah tombol kustom</value>
@@ -1631,7 +1631,7 @@ Klik Ya untuk menonaktifkan dan Tidak untuk mengabaikan.</value>
     <value>Menunggu penekanan tombol... Tekan ESC untuk berhenti.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Kunci tidak dikenal – dapat ditambahkan</value>
+    <value>Unknown key that can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Pencahayaan Ambien Aft</value>
@@ -1801,11 +1801,11 @@ Klik Ya untuk menonaktifkan dan Tidak untuk mengabaikan.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Ulangi</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys sedang berjalan di latar belakang.</value>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage dan/atau ImController sedang berjalan di latar belakang.</value>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>Batas laju API telah tercapai, silakan coba lagi nanti.</value>
@@ -3143,10 +3143,10 @@ Mode performa juga dapat diubah dengan Fn+Q.</value>
     <value>Gambar Latar Belakang</value>
   </data>
   <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
-    <value>Couldn't fully disable, it may still be running</value>
+    <value>Couldn't fully disable everything, some items may still be running</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space mungkin tidak dinonaktifkan dengan benar</value>
+    <value>Legion Space may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
     <value>Tidak dapat menonaktifkan Legion Space</value>
@@ -3158,7 +3158,7 @@ Mode performa juga dapat diubah dengan Fn+Q.</value>
     <value>Nonaktifkan Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone mungkin tidak dinonaktifkan dengan benar</value>
+    <value>Legion Zone may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Tidak dapat menonaktifkan Legion Zone</value>
@@ -3170,20 +3170,19 @@ Mode performa juga dapat diubah dengan Fn+Q.</value>
     <value>Nonaktifkan Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys mungkin tidak dinonaktifkan dengan benar</value>
+    <value>Lenovo Hotkeys may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Tidak dapat menonaktifkan Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Nonaktifkan Lenovo Hotkeys beserta layanannya tanpa menghapus instalasinya.
-Jika dinonaktifkan, aplikasi ini akan menangani pintasan Fn.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Nonaktifkan Hotkey Lenovo</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage dan/atau ImController mungkin belum dinonaktifkan dengan benar</value>
+    <value>Lenovo Vantage and/or ImController may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Tidak dapat menonaktifkan Lenovo Vantage dan/atau ImController</value>
@@ -3195,22 +3194,22 @@ Jika dinonaktifkan, aplikasi ini akan menangani pintasan Fn.</value>
     <value>Disable Lenovo Vantage and ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space mungkin belum diaktifkan dengan benar</value>
+    <value>Legion Space may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
     <value>Tidak dapat mengaktifkan Legion Space</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone mungkin belum diaktifkan dengan benar</value>
+    <value>Legion Zone may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Tidak dapat mengaktifkan Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys mungkin belum diaktifkan dengan benar</value>
+    <value>Lenovo Hotkeys may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Tidak dapat mengaktifkan Lenovo Hotkeys</value>
+    <value>Couldn't enable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Aktifkan pencatatan log untuk debugging.</value>
@@ -3219,7 +3218,7 @@ Jika dinonaktifkan, aplikasi ini akan menangani pintasan Fn.</value>
     <value>Aktifkan Pencatatan Log</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage dan/atau ImController mungkin belum diaktifkan dengan benar</value>
+    <value>Lenovo Vantage and/or ImController may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>Tidak dapat mengaktifkan Lenovo Vantage dan/atau ImController</value>
@@ -3283,6 +3282,12 @@ Jika dinonaktifkan, aplikasi ini akan menangani pintasan Fn.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Bahasa</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Cegah ukuran jendela diubah.</value>
