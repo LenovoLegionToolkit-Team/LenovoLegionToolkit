@@ -1604,16 +1604,16 @@ Klicken Sie auf Ja zum Deaktivieren und Nein zum Ignorieren.</value>
     <value>Tastaturbeleuchtung</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
-    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
-    <value>Another Lenovo app or its services are running</value>
+    <value>Another Lenovo app is running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Die Tastaturbeleuchtung kann nicht gesteuert werden, wenn Lenovo Vantage oder dessen Dienste ausgeführt werden.</value>
+    <value>The keyboard backlight cannot be controlled while Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage oder dazugehörige Dienste werden ausgeführt</value>
+    <value>Lenovo Vantage is running</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Eigenen Schlüssel hinzufügen</value>
@@ -1631,7 +1631,7 @@ Klicken Sie auf Ja zum Deaktivieren und Nein zum Ignorieren.</value>
     <value>Hören auf Tastendruck... Drücken Sie ESC, um zu stoppen.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Unbekannter Schlüssel - kann hinzugefügt werden</value>
+    <value>Unknown key that can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1801,11 +1801,11 @@ Klicken Sie auf Ja zum Deaktivieren und Nein zum Ignorieren.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Wiederholen</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys wird im Hintergrund ausgeführt.</value>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage und/oder ImController wird im Hintergrund ausgeführt.</value>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>API-Ratenlimit erreicht, bitte versuchen Sie es später noch einmal.</value>
@@ -3141,10 +3141,10 @@ Sie können den Modus mit Fn+Q wechseln.</value>
     <value>Individuelles Hintergrundbild</value>
   </data>
   <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
-    <value>Couldn't fully disable, it may still be running</value>
+    <value>Couldn't fully disable everything, some items may still be running</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space wurde möglicherweise nicht korrekt deaktiviert</value>
+    <value>Legion Space may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
     <value>Legion Space konnte nicht deaktiviert werden</value>
@@ -3157,7 +3157,7 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Legion Space deaktivieren</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone wurde möglicherweise nicht korrekt deaktiviert</value>
+    <value>Legion Zone may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Legion Zone konnte nicht deaktiviert werden</value>
@@ -3170,21 +3170,19 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Legion Zone deaktivieren</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys wurde möglicherweise nicht korrekt deaktiviert</value>
+    <value>Lenovo Hotkeys may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Lenovo Hotkeys konnte nicht deaktiviert werden</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Deaktiviert Lenovo Hotkeys und dessen Dienste ohne es zu deinstallieren.
-Wenn deaktiviert, verwaltet diese Anwendung Fn-Tastenkombinationen.
-Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Lenovo Hotkeys deaktivieren</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage und/oder ImController wurden möglicherweise nicht korrekt deaktiviert</value>
+    <value>Lenovo Vantage and/or ImController may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Lenovo Vantage und/oder ImController konnten nicht deaktiviert werden</value>
@@ -3197,22 +3195,22 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Lenovo Vantage und ImController deaktivieren</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space wurde möglicherweise nicht korrekt aktiviert</value>
+    <value>Legion Space may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
     <value>Legion Space konnte nicht aktiviert werden</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone wurde möglicherweise nicht korrekt aktiviert</value>
+    <value>Legion Zone may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Legion Zone konnte nicht aktiviert werden</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys wurde möglicherweise nicht korrekt aktiviert</value>
+    <value>Lenovo Hotkeys may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Lenovo Hotkeys konnte nicht aktiviert werden</value>
+    <value>Couldn't enable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Protokollierung für Debugging aktivieren.</value>
@@ -3221,7 +3219,7 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
     <value>Protokollierung aktivieren</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage und/oder ImController wurden möglicherweise nicht korrekt aktiviert</value>
+    <value>Lenovo Vantage and/or ImController may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>Lenovo Vantage und/oder ImController konnten nicht aktiviert werden</value>
@@ -3285,6 +3283,12 @@ Nach dem Ändern dieser Option wird ein Neustart empfohlen.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Sprache</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Sperrt die Fenstergröße von LLT, um eine Änderung zu verhindern.</value>
