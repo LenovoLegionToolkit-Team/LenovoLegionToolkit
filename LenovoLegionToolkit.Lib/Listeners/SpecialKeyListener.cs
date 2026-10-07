@@ -241,6 +241,9 @@ public class SpecialKeyListener(
             }
 
             var currentIndex = Array.IndexOf(filtered, current);
+            if (currentIndex < 0)
+                currentIndex = Array.FindIndex(filtered, r => r.Frequency == current.Frequency);
+
             var newIndex = currentIndex + 1;
             if (newIndex >= filtered.Length)
                 newIndex = 0;
