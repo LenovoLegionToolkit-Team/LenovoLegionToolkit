@@ -8,7 +8,7 @@ namespace LenovoLegionToolkit.Lib.Extensions;
 
 internal static class ServiceControllerExtension
 {
-    public static unsafe void ChangeStartMode(this ServiceController svc, ServiceStartMode startMode)
+    public static unsafe void ChangeStartMode(this ServiceController svc, bool enabled)
     {
         using var scManagerHandle = PInvoke.OpenSCManager(null as string, null, PInvoke.SC_MANAGER_ALL_ACCESS);
         if (scManagerHandle.IsInvalid)
@@ -21,15 +21,7 @@ internal static class ServiceControllerExtension
         var result = PInvoke.ChangeServiceConfig(
             new SC_HANDLE(serviceHandle.DangerousGetHandle()),
             (ENUM_SERVICE_TYPE)PInvoke.SERVICE_NO_CHANGE,
-            startMode switch
-            {
-                ServiceStartMode.Boot => SERVICE_START_TYPE.SERVICE_BOOT_START,
-                ServiceStartMode.System => SERVICE_START_TYPE.SERVICE_SYSTEM_START,
-                ServiceStartMode.Automatic => SERVICE_START_TYPE.SERVICE_AUTO_START,
-                ServiceStartMode.Manual => SERVICE_START_TYPE.SERVICE_DEMAND_START,
-                ServiceStartMode.Disabled => SERVICE_START_TYPE.SERVICE_DISABLED,
-                _ => throw new ArgumentOutOfRangeException(nameof(startMode), startMode, null)
-            },
+            enabled ? SERVICE_START_TYPE.SERVICE_AUTO_START : SERVICE_START_TYPE.SERVICE_DISABLED,
             (SERVICE_ERROR)PInvoke.SERVICE_NO_CHANGE,
             null,
             null,

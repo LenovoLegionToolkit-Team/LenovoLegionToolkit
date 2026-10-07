@@ -44,24 +44,15 @@ public class GodModeController(
         var mi = await GetMachineInformationAsync().ConfigureAwait(false);
         var needsSpace = config.Platform == GodModePlatform.Legion && mi.SmartFanVersion >= 8;
         var needsZone = config.Platform != GodModePlatform.NonGaming;
-        var disablers = new List<AbstractSoftwareDisabler> { vantageDisabler };
 
-        if (needsSpace)
-        {
-            disablers.Add(legionSpaceDisabler);
-        }
-
-        if (needsZone)
-        {
-            disablers.Add(legionZoneDisabler);
-        }
-
-        var statuses = await AbstractSoftwareDisabler.GetStatusesAsync(disablers.ToArray()).ConfigureAwait(false);
+        var vantageStatus = await vantageDisabler.GetStatusAsync().ConfigureAwait(false);
+        var legionSpaceStatus = needsSpace ? await legionSpaceDisabler.GetStatusAsync().ConfigureAwait(false) : SoftwareStatus.NotFound;
+        var legionZoneStatus = needsZone ? await legionZoneDisabler.GetStatusAsync().ConfigureAwait(false) : SoftwareStatus.NotFound;
 
         return new(
-            Vantage: statuses[0],
-            LegionSpace: needsSpace ? statuses[1] : SoftwareStatus.NotFound,
-            LegionZone: needsZone ? statuses[^1] : SoftwareStatus.NotFound);
+            Vantage: vantageStatus,
+            LegionSpace: legionSpaceStatus,
+            LegionZone: legionZoneStatus);
     }
 
     public Task<bool> NeedsVantageDisabledAsync() => Task.FromResult(true);

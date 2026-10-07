@@ -29,9 +29,8 @@ public partial class SettingsSpecialKeyControl
         if (_isRefreshing)
             return;
 
-        var visible = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
         _smartFnLockComboBox.Visibility = Visibility.Visible;
-        _excludeRefreshRatesCard.Visibility = visible;
+        _fnKeysWarningInfoBar.IsOpen = fnKeysStatus == SoftwareStatus.Enabled;
     }
 
     public async Task RefreshAsync()
@@ -43,10 +42,9 @@ public partial class SettingsSpecialKeyControl
             m => m is ModifierKey.None ? Resource.Off : m.GetFlagsDisplayName(ModifierKey.None));
 
         var fnKeysStatus = await _fnKeysDisabler.GetStatusAsync();
-        var visible = fnKeysStatus != SoftwareStatus.Enabled ? Visibility.Visible : Visibility.Collapsed;
 
         _smartFnLockComboBox.Visibility = Visibility.Visible;
-        _excludeRefreshRatesCard.Visibility = visible;
+        _fnKeysWarningInfoBar.IsOpen = fnKeysStatus == SoftwareStatus.Enabled;
 
         _isRefreshing = false;
     }

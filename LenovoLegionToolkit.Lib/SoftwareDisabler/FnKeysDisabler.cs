@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.System;
 
@@ -11,71 +11,42 @@ namespace LenovoLegionToolkit.Lib.SoftwareDisabler;
 
 public class FnKeysDisabler : AbstractSoftwareDisabler
 {
-    protected override SoftwareDisablerPolicy Policy { get; } = new()
-    {
-        ServiceNames = ["LenovoFnAndFunctionKeys"],
-        ProcessNames = ["LenovoUtilityUI", "LenovoUtilityService", "LenovoSmartKey"],
-        OwnershipPathMarkers = ["LenovoUtilityService", "LenovoUtilityUI", "LenovoSmartKey", "LenovoFnAndFunctionKeys"]
-    };
+    protected override IEnumerable<string> ScheduledTasksPaths => [];
+    protected override IEnumerable<string> ServiceNames => ["LenovoFnAndFunctionKeys"];
+    protected override IEnumerable<string> ProcessNames => ["LenovoUtilityUI", "LenovoUtilityService", "LenovoSmartKey"];
 
-    private const string UWP_STARTUP_STATE_SNAPSHOT_KEY = "FnKeys.UwpStartupState";
-
-    private protected override void CaptureAdditionalSnapshot(SoftwareDisablerSnapshot snapshot)
+    public override async Task EnableAsync()
     {
-        if (TryGetUwpStartupKey("LenovoUtility", "LenovoUtilityID", out var startupKey))
-        {
-            var state = Registry.GetValue("HKEY_CURRENT_USER", startupKey, "State", 0x2);
-            snapshot.AdditionalValues[UWP_STARTUP_STATE_SNAPSHOT_KEY] = state.ToString(CultureInfo.InvariantCulture);
-        }
+        await base.EnableAsync().ConfigureAwait(false);
+        SetUwpStartup("LenovoUtility", "LenovoUtilityID", true);
     }
 
-    private protected override IEnumerable<string> GetAdditionalEnabledResources()
+    public override async Task DisableAsync()
     {
-        if (!TryGetUwpStartupKey("LenovoUtility", "LenovoUtilityID", out var startupKey))
-        {
-            return [];
-        }
-
-        var state = Registry.GetValue("HKEY_CURRENT_USER", startupKey, "State", 0x2);
-        return state == 0x1 ? [] : ["UWP startup: LenovoUtility"];
-    }
-
-    private protected override Task ApplyAdditionalStateAsync(bool enabled, SoftwareDisablerSnapshot? snapshot)
-    {
-        var state = enabled &&
-                    snapshot?.AdditionalValues.TryGetValue(UWP_STARTUP_STATE_SNAPSHOT_KEY, out var value) == true &&
-                    int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out var capturedState)
-            ? capturedState
-            : enabled ? 0x2 : 0x1;
-
-        SetUwpStartup("LenovoUtility", "LenovoUtilityID", state);
-        return Task.CompletedTask;
+        await base.DisableAsync().ConfigureAwait(false);
+        SetUwpStartup("LenovoUtility", "LenovoUtilityID", false);
     }
 
     protected override IEnumerable<string> RunningProcesses()
     {
         var result = base.RunningProcesses().ToList();
 
-        foreach (var process in Process.GetProcessesByName("utility"))
+        try
         {
-            try
+            foreach (var process in Process.GetProcessesByName("utility"))
             {
                 using (process)
                 {
                     var description = process.MainModule?.FileVersionInfo.FileDescription;
                     if (description is null)
-                    {
                         continue;
-                    }
 
                     if (description.Equals("Lenovo Hotkeys", StringComparison.InvariantCultureIgnoreCase))
-                    {
                         result.Add(process.ProcessName);
-                    }
                 }
             }
-            catch { }
         }
+        catch {  /* Ignore */ }
 
         return result;
     }
@@ -84,54 +55,43 @@ public class FnKeysDisabler : AbstractSoftwareDisabler
     {
         await base.KillProcessesAsync().ConfigureAwait(false);
 
-        foreach (var process in Process.GetProcessesByName("utility"))
+        try
         {
-            try
+            foreach (var process in Process.GetProcessesByName("utility"))
             {
                 using (process)
                 {
                     var description = process.MainModule?.FileVersionInfo.FileDescription;
                     if (description is null)
-                    {
                         continue;
-                    }
 
                     if (!description.Equals("Lenovo Hotkeys", StringComparison.InvariantCultureIgnoreCase))
-                    {
                         continue;
-                    }
 
                     process.Kill();
-                    await process.WaitForExitAsync().ConfigureAwait(false);
+
+                    using (var cancellationTokenSource = new CancellationTokenSource(TimeSpan.FromSeconds(5)))
+                    {
+                        await process.WaitForExitAsync(cancellationTokenSource.Token).ConfigureAwait(false);
+                    }
                 }
             }
-            catch { }
         }
+        catch {  /* Ignore */ }
     }
 
-    private static bool TryGetUwpStartupKey(string appPattern, string subKeyName, out string startupKey)
+    private static void SetUwpStartup(string appPattern, string subKeyName, bool enabled)
     {
         const string hive = "HKEY_CURRENT_USER";
         const string subKey = @"Software\Classes\Local Settings\Software\Microsoft\Windows\CurrentVersion\AppModel\SystemAppData";
+        const string valueName = "State";
 
-        var key = Registry.GetSubKeys(hive, subKey).FirstOrDefault(s => s.Contains(appPattern, StringComparison.CurrentCultureIgnoreCase));
-        if (key is null)
-        {
-            startupKey = string.Empty;
-            return false;
-        }
-
-        startupKey = Path.Combine(key, subKeyName);
-        return true;
-    }
-
-    private static void SetUwpStartup(string appPattern, string subKeyName, int state)
-    {
-        if (!TryGetUwpStartupKey(appPattern, subKeyName, out var startupKey))
-        {
+        var startupKey = Registry.GetSubKeys(hive, subKey).FirstOrDefault(s => s.Contains(appPattern, StringComparison.CurrentCultureIgnoreCase));
+        if (startupKey is null)
             return;
-        }
 
-        Registry.SetValue("HKEY_CURRENT_USER", startupKey, "State", state);
+        startupKey = Path.Combine(startupKey, subKeyName);
+
+        Registry.SetValue(hive, startupKey, valueName, enabled ? 0x2 : 0x1);
     }
 }

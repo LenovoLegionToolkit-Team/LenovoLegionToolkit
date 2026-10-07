@@ -8,6 +8,15 @@
     xmlns:wpfui="http://schemas.lepo.co/wpfui/2022/xaml">
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <StackPanel Margin="0,0,16,12">
+            <custom:InfoBar
+                x:Name="_fnKeysWarningInfoBar"
+                Title="{x:Static resources:Resource.SettingsPage_LenovoHotkeysRunningWarning_Title}"
+                Margin="0,0,0,16"
+                IsClosable="False"
+                IsOpen="False"
+                Message="{x:Static resources:Resource.SettingsPage_LenovoHotkeysRunningWarning_Message}"
+                Severity="Informational" />
+
             <custom:CardControl Margin="0,0,0,8" Icon="Keyboard24">
                 <custom:CardControl.Header>
                     <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_SmartFnLock_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_SmartFnLock_Message}" />
@@ -25,8 +34,7 @@
                 x:Name="_excludeRefreshRatesCard"
                 Margin="0,0,0,8"
                 Click="ExcludeRefreshRates_Click"
-                Icon="DesktopPulse24"
-                Visibility="Collapsed">
+                Icon="DesktopPulse24">
                 <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_ExcludeRefreshRates_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_ExcludeRefreshRates_Message}" />
             </custom:CardAction>
 

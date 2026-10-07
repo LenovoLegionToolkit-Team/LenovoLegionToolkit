@@ -229,7 +229,6 @@ public partial class App
 
         var initTasks = new List<Task>
         {
-            SafeInitAsync(ReconcileSoftwareDisablersAsync, "Software Disabler Reconciliation"),
             SafeInitAsync(LogSoftwareStatusAsync, "Software Status"),
             SafeInitAsync(InitPowerModeFeatureAsync, "Power Mode"),
             SafeInitAsync(InitITSModeFeatureAsync, "ITS Mode"),
@@ -716,12 +715,6 @@ public partial class App
     #endregion
 
     #region Feature Initialization
-
-    private static async Task<bool> ReconcileSoftwareDisablersAsync()
-    {
-        await IoCContainer.Resolve<SoftwareDisablerReconciler>().ReconcileAsync().ConfigureAwait(false);
-        return true;
-    }
 
     private static Task<bool> InitITSModeFeatureAsync()
     {

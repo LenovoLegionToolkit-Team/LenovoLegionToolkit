@@ -4457,7 +4457,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running..
+        ///   Looks up a localized string similar to The keyboard backlight cannot be controlled while another Lenovo app or its services are running..
         /// </summary>
         public static string Keyboard_SoftwareEnabledWarning_Message {
             get {
@@ -4466,7 +4466,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Another Lenovo app or its services are running.
+        ///   Looks up a localized string similar to Another Lenovo app is running.
         /// </summary>
         public static string Keyboard_SoftwareEnabledWarning_Title {
             get {
@@ -4475,7 +4475,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Keyboard backlight cannot be controlled in here when Lenovo Vantage or its services are running..
+        ///   Looks up a localized string similar to The keyboard backlight cannot be controlled while Lenovo Vantage or its services are running..
         /// </summary>
         public static string Keyboard_VantageEnabledWarning_Message {
             get {
@@ -4484,7 +4484,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lenovo Vantage or its services are running.
+        ///   Looks up a localized string similar to Lenovo Vantage is running.
         /// </summary>
         public static string Keyboard_VantageEnabledWarning_Title {
             get {
@@ -4567,7 +4567,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Unknown key – can be added.
+        ///   Looks up a localized string similar to Unknown key that can be added.
         /// </summary>
         public static string KeyDiscovery_UnknownKeyTooltip {
             get {
@@ -5116,6 +5116,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lenovo Hotkeys is running in the background..
+        /// </summary>
+        public static string MainWindow_FnKeysRunning {
+            get {
+                return ResourceManager.GetString("MainWindow_FnKeysRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Legion Space is running in the background..
         /// </summary>
         public static string MainWindow_LegionSpaceRunning {
@@ -5233,20 +5242,11 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lenovo Hotkeys is running in the background..
-        /// </summary>
-        public static string MainWindows_FnKeysRunning {
-            get {
-                return ResourceManager.GetString("MainWindows_FnKeysRunning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Lenovo Vantage and/or ImController is running in the background..
         /// </summary>
-        public static string MainWindows_VantageRunning {
+        public static string MainWindow_VantageRunning {
             get {
-                return ResourceManager.GetString("MainWindows_VantageRunning", resourceCulture);
+                return ResourceManager.GetString("MainWindow_VantageRunning", resourceCulture);
             }
         }
         
@@ -9066,7 +9066,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t fully disable, it may still be running.
+        ///   Looks up a localized string similar to Couldn&apos;t fully disable everything, some items may still be running.
         /// </summary>
         public static string SettingsPage_DisableIncomplete_Title {
             get {
@@ -9075,7 +9075,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Legion Space may have not been disabled correctly.
+        ///   Looks up a localized string similar to Legion Space may not have been disabled correctly.
         /// </summary>
         public static string SettingsPage_DisableLegionSpace_Error_Message {
             get {
@@ -9111,7 +9111,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Legion Zone may have not been disabled correctly.
+        ///   Looks up a localized string similar to Legion Zone may not have been disabled correctly.
         /// </summary>
         public static string SettingsPage_DisableLegionZone_Error_Message {
             get {
@@ -9147,7 +9147,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lenovo Hotkeys may have not been disabled correctly.
+        ///   Looks up a localized string similar to Lenovo Hotkeys may not have been disabled correctly.
         /// </summary>
         public static string SettingsPage_DisableLenovoHotkeys_Error_Message {
             get {
@@ -9165,8 +9165,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Disable Lenovo Hotkeys and its service without uninstalling it.
-        ///If disabled, this app will handle Fn shortcuts..
+        ///   Looks up a localized string similar to Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead..
         /// </summary>
         public static string SettingsPage_DisableLenovoHotkeys_Message {
             get {
@@ -9184,7 +9183,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lenovo Vantage and/or ImController may have not been disabled correctly.
+        ///   Looks up a localized string similar to Lenovo Vantage and/or ImController may not have been disabled correctly.
         /// </summary>
         public static string SettingsPage_DisableVantage_Error_Message {
             get {
@@ -9220,7 +9219,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Legion Space may have not been enabled correctly.
+        ///   Looks up a localized string similar to Legion Space may not have been enabled correctly.
         /// </summary>
         public static string SettingsPage_EnableLegionSpace_Error_Message {
             get {
@@ -9238,7 +9237,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Legion Zone may have not been enabled correctly.
+        ///   Looks up a localized string similar to Legion Zone may not have been enabled correctly.
         /// </summary>
         public static string SettingsPage_EnableLegionZone_Error_Message {
             get {
@@ -9256,7 +9255,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lenovo Hotkeys may have not been enabled correctly.
+        ///   Looks up a localized string similar to Lenovo Hotkeys may not have been enabled correctly.
         /// </summary>
         public static string SettingsPage_EnableLenovoHotkeys_Error_Message {
             get {
@@ -9265,7 +9264,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t enable Lenovo Hotkeys Keys.
+        ///   Looks up a localized string similar to Couldn&apos;t enable Lenovo Hotkeys.
         /// </summary>
         public static string SettingsPage_EnableLenovoHotkeys_Error_Title {
             get {
@@ -9292,7 +9291,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lenovo Vantage and/or ImController may have not been enabled correctly.
+        ///   Looks up a localized string similar to Lenovo Vantage and/or ImController may not have been enabled correctly.
         /// </summary>
         public static string SettingsPage_EnableVantage_Error_Message {
             get {
@@ -9486,6 +9485,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SettingsPage_Language_Title {
             get {
                 return ResourceManager.GetString("SettingsPage_Language_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running..
+        /// </summary>
+        public static string SettingsPage_LenovoHotkeysRunningWarning_Message {
+            get {
+                return ResourceManager.GetString("SettingsPage_LenovoHotkeysRunningWarning_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lenovo Hotkeys is running.
+        /// </summary>
+        public static string SettingsPage_LenovoHotkeysRunningWarning_Title {
+            get {
+                return ResourceManager.GetString("SettingsPage_LenovoHotkeysRunningWarning_Title", resourceCulture);
             }
         }
         

@@ -6,7 +6,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.ServiceProcess;
 using System.Text;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Station.Core;
@@ -1430,46 +1429,4 @@ public readonly record struct SensorSlot
         NamePattern = namePattern;
         DgpuOnly = dgpuOnly;
     }
-}
-
-internal sealed record SoftwareDisablerProcessEntry(string Name, string? Owner);
-
-internal sealed record SoftwareDisablerTaskEntry(string Path, bool Enabled, string[] Owners);
-
-public sealed class SoftwareDisablerPolicy
-{
-    public string[] ScheduledTaskPaths { get; init; } = [];
-    public string[] ServiceNames { get; init; } = [];
-    public string[] ProcessNames { get; init; } = [];
-    public string[] DriverNamePrefixes { get; init; } = [];
-    public string[] DriverPackageRoots { get; init; } = [];
-    public string[] StartupEntryNames { get; init; } = [];
-    public string[] StartupEntryRoots { get; init; } = [];
-    public string[] AppxPackageNames { get; init; } = [];
-    public string[] RepairBlockingServiceNames { get; init; } = [];
-    public string[] RepairBlockingProcessNames { get; init; } = [];
-    public string[] OwnershipRoots { get; init; } = [];
-    public string[] OwnershipPathMarkers { get; init; } = [];
-    public string[] OwnershipPriorityPathFragments { get; init; } = [];
-}
-
-internal sealed class SoftwareDisablerSnapshot
-{
-    public Dictionary<string, SoftwareDisablerServiceSnapshot> Services { get; set; } = [];
-    public Dictionary<string, bool> ScheduledTasks { get; set; } = [];
-    public Dictionary<string, SoftwareDisablerStartupEntrySnapshot> StartupEntries { get; set; } = [];
-    public Dictionary<string, bool> AppxPackagesDisabled { get; set; } = [];
-    public Dictionary<string, string?> AdditionalValues { get; set; } = [];
-}
-
-internal sealed class SoftwareDisablerServiceSnapshot
-{
-    public ServiceStartMode StartMode { get; set; }
-    public bool Running { get; set; }
-}
-
-internal sealed class SoftwareDisablerStartupEntrySnapshot
-{
-    public bool HadValue { get; set; }
-    public byte[]? Value { get; set; }
 }
