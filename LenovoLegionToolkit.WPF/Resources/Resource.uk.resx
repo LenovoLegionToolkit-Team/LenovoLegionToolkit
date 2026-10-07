@@ -1604,16 +1604,16 @@ Thank you for your support!</value>
     <value>Підсвітка клавіатури</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
-    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
-    <value>Another Lenovo app or its services are running</value>
+    <value>Another Lenovo app is running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Неможливо керувати підсвіткою клавіатури, коли працює Lenovo Vantage або його служби.</value>
+    <value>The keyboard backlight cannot be controlled while Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vatage або його служби запущені</value>
+    <value>Lenovo Vantage is running</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Додати свій ключ</value>
@@ -1631,7 +1631,7 @@ Thank you for your support!</value>
     <value>Прослуховування натискання клавіш... Натисніть ESC, щоб зупинитися.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Невідомий ключ - можна додати</value>
+    <value>Unknown key that can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1801,11 +1801,11 @@ Thank you for your support!</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Повторити</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Гарячі клавіші Lenovo працюють у фоні.</value>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage та/або ImController працює у фоні.</value>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>Досягнуто ліміту швидкості API, спробуйте пізніше.</value>
@@ -3141,10 +3141,10 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Власне фонове зображення</value>
   </data>
   <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
-    <value>Couldn't fully disable, it may still be running</value>
+    <value>Couldn't fully disable everything, some items may still be running</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space, можливо, не був відключений правильно</value>
+    <value>Legion Space may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
     <value>Не вдалося вимкнути Legion Space</value>
@@ -3157,7 +3157,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Вимкнути Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Зони Legion могли бути вимкнені неправильно</value>
+    <value>Legion Zone may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Не вдалося вимкнути зони Legion</value>
@@ -3170,21 +3170,19 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Вимкнути зони Legion</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Гарячі клавіші Lenovo могли бути вимкнені неправильно</value>
+    <value>Lenovo Hotkeys may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Не вдалося вимкнути гарячі клавіші Lenovo</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Вимкнути гарячі клавіші Lenovo та його служби без деінсталяції.
-Якщо вимкнено, додаток буде використовувати швидкі дії з увімкненою клавішею Fn.
-Перезавантаження рекомендоване після зміни цієї опції.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Вимкнути гарячі клавіші Lenovo</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Можливо, Lenovo Vantage та/або ImController було вимкнено неправильно</value>
+    <value>Lenovo Vantage and/or ImController may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Неможливо вимкнути Lenovo Vantage та/або ImController</value>
@@ -3197,22 +3195,22 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Вимкнути Lenovo Vantage та ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space, можливо, не був включений правильно</value>
+    <value>Legion Space may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
     <value>Не вдалося увімкнути Legion Space</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Зони Legion могли бути увімкнені неправильно</value>
+    <value>Legion Zone may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Не вдалося увімкнути зони Legion</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Гарячі клавіші Legion могли бути увімкнені неправильно</value>
+    <value>Lenovo Hotkeys may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Не вдалося увімкнути гарячі клавіші Lenovo</value>
+    <value>Couldn't enable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Увімкнути ведення журналу для налагодження.</value>
@@ -3221,7 +3219,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Увімкнути ведення журналу</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Можливо, Lenovo Vantage та/або ImController було увімкнено неправильно</value>
+    <value>Lenovo Vantage and/or ImController may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>Неможливо увімкнути Lenovo Vantage та/або ImController</value>
@@ -3285,6 +3283,12 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Мова</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Заблокувати розмір вікна LLT. Щоб запобігти його зміні чимось.</value>
