@@ -21,8 +21,23 @@ public class SystemThemeListener : IListener<EventArgs>
         if (_started)
             return Task.CompletedTask;
 
-        _darkModeListener = SystemTheme.GetDarkModeListener(OnDarkModeChanged);
-        _colorizationColorListener = SystemTheme.GetColorizationColorListener(OnColorizationColorChanged);
+        try
+        {
+            _darkModeListener = SystemTheme.GetDarkModeListener(OnDarkModeChanged);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to start dark mode listener.", ex);
+        }
+
+        try
+        {
+            _colorizationColorListener = SystemTheme.GetColorizationColorListener(OnColorizationColorChanged);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to start colorization color listener.", ex);
+        }
 
         _started = true;
 
