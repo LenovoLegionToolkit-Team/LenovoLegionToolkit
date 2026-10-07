@@ -1605,16 +1605,16 @@ Apasă Da pentru a dezactiva şi nu pentru a ignora.</value>
     <value>Iluminare tastatură</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
-    <value>Keyboard backlight cannot be controlled in here when another Lenovo app or its services are running.</value>
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
-    <value>Another Lenovo app or its services are running</value>
+    <value>Another Lenovo app is running</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Iluminarea tastaturii nu poate fi controlată aici când Vantage sau serviciile sale rulează.</value>
+    <value>The keyboard backlight cannot be controlled while Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage sau serviciile sale sunt în desfășurare</value>
+    <value>Lenovo Vantage is running</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Adaugă Cheie Personalizată</value>
@@ -1632,7 +1632,7 @@ Apasă Da pentru a dezactiva şi nu pentru a ignora.</value>
     <value>Se ascultă apăsările cheie... Apasă ESC pentru a se opri.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Cheie necunoscută – poate fi adăugată</value>
+    <value>Unknown key that can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1802,11 +1802,11 @@ Apasă Da pentru a dezactiva şi nu pentru a ignora.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Repetă</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Tastele Lenovo rulează în fundal.</value>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Vantage Lenovo şi/sau ImController rulează în fundal.</value>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>Limita de rată API a fost atinsă, vă rugăm să încercaţi din nou mai târziu.</value>
@@ -3142,10 +3142,10 @@ Puteți schimba modul apăsând Fn+Q.</value>
     <value>Custom Background Image</value>
   </data>
   <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
-    <value>Couldn't fully disable, it may still be running</value>
+    <value>Couldn't fully disable everything, some items may still be running</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Este posibil ca spaţiul Legion să nu fi fost dezactivat corect</value>
+    <value>Legion Space may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
     <value>Nu s-a putut dezactiva spaţiul Legion</value>
@@ -3158,7 +3158,7 @@ Se recomandă repornirea după modificarea acestei opțiuni.</value>
     <value>Dezactivează spaţiul Legion</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Este posibil ca Legion Zone să nu fi fost dezactivat corect</value>
+    <value>Legion Zone may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Nu s-a putut dezactiva Legion Zone</value>
@@ -3171,21 +3171,19 @@ Se recomandă repornirea după modificarea acestei opțiuni.</value>
     <value>Dezactivare Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Este posibil ca Lenovo Hotkeys să nu fi fost dezactivat corect</value>
+    <value>Lenovo Hotkeys may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Nu s-a putut dezactiva Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Dezactivați Lenovo Hotkeys și serviciul său fără a-l dezinstala.
-Daca este dezactivat, această aplicație va gestiona în schimb comenzile rapide cu tasta Fn.
-Se recomandă repornirea după modificarea acestei opțiuni.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Dezactivare Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Este posibil ca Vantajul Lenovo și/sau ImController să nu fi fost dezactivate corect</value>
+    <value>Lenovo Vantage and/or ImController may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Nu s-a putut dezactiva Vantage Lenovo și/sau ImController</value>
@@ -3198,22 +3196,22 @@ Restart is recommended after changing this option.</value>
     <value>Dezactivează Vantage Lenovo și ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Este posibil ca spaţiul Legion să nu fi fost activat corect</value>
+    <value>Legion Space may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
     <value>Spațiul Legion nu a putut fi activat</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Este posibil ca Legion Zone să nu fi fost activat corect</value>
+    <value>Legion Zone may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Nu s-a putut activa Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Este posibil ca Lenovo Hotkeys să nu fi fost activat corect</value>
+    <value>Lenovo Hotkeys may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Nu s-a putut activa Lenovo Hotkeys Keys</value>
+    <value>Couldn't enable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Activează înregistrarea pentru depanare.</value>
@@ -3222,7 +3220,7 @@ Restart is recommended after changing this option.</value>
     <value>Activare jurnal</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Este posibil ca Vantajul Lenovo şi/sau ImController să nu fi fost activate corect</value>
+    <value>Lenovo Vantage and/or ImController may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>Nu s-a putut activa Vantage Lenovo și/sau ImController</value>
@@ -3286,6 +3284,12 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Limbă</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Lock LLT's window size. To prevent something change it.</value>
