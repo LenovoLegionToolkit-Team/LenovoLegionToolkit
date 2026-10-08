@@ -790,6 +790,21 @@
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limit the charging range to extend the battery lifespan.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Charge Threshold</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Εκκαθάριση</value>
   </data>
@@ -1052,8 +1067,14 @@
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Ακόμα κι αν δεν μπορείτε να δωρίσετε, απλά χρησιμοποιώντας, μοιράζοντας, και πρωταγωνιστώντας το έργο στο GitHub πηγαίνει πολύ μακριά.</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Υπεύθυνος για την ανάπτυξη βασικών χαρακτηριστικών, τη διασφάλιση ποιότητας, το σχεδιασμό UI/UX και τη συνολική κατεύθυνση του έργου ως το σημερινό προβάδισμα.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Κύριος Προγραμματιστής &amp; Επικεφαλής Έργου</value>
@@ -1599,11 +1620,17 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Φωτισμός Πληκτρολογίου</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app is running</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Ο φωτισμός του πληκτρολογίου δεν μπορεί να ρυθμιστεί όταν εκτελείται το Lenovo Vantage ή οι υπηρεσίες του.</value>
+    <value>The keyboard backlight cannot be controlled while Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Το Lenovo Vantage ή οι υπηρεσίες του εκτελούνται.</value>
+    <value>Lenovo Vantage is running</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Προσθήκη Προσαρμοσμένου Κλειδιού</value>
@@ -1621,7 +1648,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>Ακούγοντας για πατήματα πλήκτρων... Πατήστε ESC για να σταματήσετε.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Άγνωστο κλειδί – μπορεί να προστεθεί</value>
+    <value>Unknown key that can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1791,11 +1818,11 @@ Do not proceed unless you possess the necessary technical expertise.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Επανάληψη</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Το Lenovo Hotkeys εκτελείται στο παρασκήνιο.</value>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Το Lenovo Vantage ή/και το ImController εκτελούνται στο παρασκήνιο.</value>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>Φτάσατε στο όριο χρήσης API, παρακαλούμε προσπαθήστε ξανά αργότερα.</value>
@@ -2592,6 +2619,12 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Ρυθμός ανανέωσης</value>
   </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Dynamic refresh rate</value>
+  </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>Αλλαγή του ρυθμού ανανέωσης της ενσωματωμένης οθόνης.</value>
   </data>
@@ -2908,6 +2941,12 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Συχνότητα Επεξεργαστή</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2931,6 +2970,18 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>Προτιμώμενο GPU</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Χρησιμοποιημένη/Συνολική Μνήμη (GB)</value>
@@ -3106,8 +3157,11 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Custom Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable everything, some items may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Το Legion Space ενδέχεται να μην έχει απενεργοποιηθεί σωστά.</value>
+    <value>Legion Space may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
     <value>Αδυναμία απενεργοποίησης Legion Space</value>
@@ -3120,7 +3174,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Απενεργοποίηση Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Το Legion Zone ενδέχεται να μην έχει απενεργοποιηθεί σωστά</value>
+    <value>Legion Zone may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Αδυναμία απενεργοποίησης Legion Zone</value>
@@ -3133,21 +3187,19 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Απενεργοποίηση Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Το Lenovo Hotkeys ενδέχεται να μην έχει απενεργοποιηθεί σωστά</value>
+    <value>Lenovo Hotkeys may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Αδυναμία απενεργοποίησης Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Απενεργοποιήστε το Lenovo Hotkeys και την υπηρεσία του χωρίς να το απεγκαταστήσετε.
-Όταν είναι απενεργοποιημένο, αυτή η εφαρμογή θα χειρίζεται τις συντομεύσεις Fn.
-Συνιστάται επανεκκίνηση αφού αλλάξετε αυτήν την επιλογή.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Απενεργοποίηση του Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Το Lenovo Vantage ή/και το ImController ενδέχεται να μην έχουν απενεργοποιηθεί σωστά</value>
+    <value>Lenovo Vantage and/or ImController may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Αδυναμία απενεργοποίησης Lenovo Vantage ή/και ImController</value>
@@ -3160,22 +3212,22 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Απενεργοποίηση των Lenovo Vantage και ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Το Legion Space ενδέχεται να μην έχει ενεργοποιηθεί σωστά</value>
+    <value>Legion Space may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
     <value>Αδυναμία ενεργοποίησης Legion Space</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Το Legion Zone ενδέχεται να μην έχει ενεργοποιηθεί σωστά</value>
+    <value>Legion Zone may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Αδυναμία ενεργοποίησης Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Το Lenovo Hotkeys ενδέχεται να μην έχει ενεργοποιηθεί σωστά</value>
+    <value>Lenovo Hotkeys may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Αδυναμία ενεργοποίησης πλήκτρων Lenovo Hotkeys</value>
+    <value>Couldn't enable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Ενεργοποιήστε καταγραφή για αποσφαλμάτωση.</value>
@@ -3184,7 +3236,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Ενεργοποίηση Καταγραφής</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Το Lenovo Vantage ή/και το ImController ενδέχεται να μην έχουν ενεργοποιηθεί σωστά</value>
+    <value>Lenovo Vantage and/or ImController may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>Αδυναμία ενεργοποίησης Lenovo Vantage ή/και ImController</value>
@@ -3205,7 +3257,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Επιτάχυνση Υλικού</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Η ενεργοποίηση της επιτάχυνσης υλικού μπορεί να προκαλέσει τρεμοπαίξιμο ή μαύρες αναβοσβήσεις σε κάποια υβριδικά συστήματα γραφικών και μπορεί να αποτρέψει την απενεργοποίηση της διακριτής GPU.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Ενεργοποίηση προηγμένων δημοσκοπήσεων υλικού για την παρακολούθηση λεπτομερών θερμοκρασιών, συχνοτήτων και ορίων ισχύος.</value>
@@ -3218,6 +3270,9 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Αυτόματο (Παρακαλώ τα Windows αποφασίζουν)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Υψηλή απόδοση (dGPU)</value>
@@ -3245,6 +3300,12 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Γλώσσα</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Κλειδώστε το μέγεθος του παρα8ύρου του LLT, για να αποφύγετε ανεπιθύμητες αλλαγές.</value>
@@ -3431,6 +3492,9 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Settings applied successfully.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>'Όταν είναι σε σίγαση, όλες οι ενεργές συσκευές εξόδου ήχου θα σιγήσουν.</value>

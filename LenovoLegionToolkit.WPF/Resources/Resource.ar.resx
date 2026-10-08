@@ -788,6 +788,21 @@
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limit the charging range to extend the battery lifespan.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Charge Threshold</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>مسح</value>
   </data>
@@ -1050,8 +1065,14 @@
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>حتى لو كنت لا تستطيع التبرع ، ببساطة إستخدام، مشاركة، وبدء المشروع على GitHub يذهب إلى طريق طويل. كل جزء من الدعم يحظى بتقدير حقيقي</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>مسؤول عن تطوير المعالم الأساسية، وضمان الجودة، وتصميم UI/UX، والتوجيه العام للمشروع بوصفه الرائد الحالي للمشروع.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>المطور الأساسي و رائد المشروع</value>
@@ -1597,11 +1618,17 @@ Click Yes to disable and No to ignore.</value>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>الإضاءة الخلفية للوحة المفاتيح</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app is running</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>لا يمكن التحكم في الإضاءة الخلفية لوحة المفاتيح هنا عندما يكون Lenovo Vantage أو خدماتها قيد التشغيل.</value>
+    <value>The keyboard backlight cannot be controlled while Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage أو خدماته تعمل</value>
+    <value>Lenovo Vantage is running</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>إضافة مفتاح مخصص</value>
@@ -1619,7 +1646,7 @@ Click Yes to disable and No to ignore.</value>
     <value>الاستماع لضغطات المفتاح... اضغط ESC للتوقف.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>مفتاح غير معروف - يمكن إضافته</value>
+    <value>Unknown key that can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1789,11 +1816,11 @@ Click Yes to disable and No to ignore.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>تكرار</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys تعمل في الخلفية.</value>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage و/أو غير مراقب يعمل في الخلفية.</value>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>وصل الحد الأقصى لمعدل API، الرجاء المحاولة مرة أخرى لاحقاً.</value>
@@ -2590,6 +2617,12 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value> معدل التحديث</value>
   </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Dynamic refresh rate</value>
+  </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>تغيير معدل التحديث للشاشة المدمجة.</value>
   </data>
@@ -2906,6 +2939,12 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>تردد المعالج</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2929,6 +2968,18 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU المفضل</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>الذاكرة المستخدمة/الإجمالية (GB)</value>
@@ -3104,8 +3155,11 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Custom Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable everything, some items may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>ربما لم يتم تعطيل فضاء الفيلق بشكل صحيح</value>
+    <value>Legion Space may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
     <value>تعذر تعطيل فضاء الفيلق</value>
@@ -3118,7 +3172,7 @@ Restart is recommended after changing this option.</value>
     <value>تعطيل فضاء الفيلق</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>ربما لم يتم تعطيل Legion Zone أو منطقة Legion بشكل صحيح</value>
+    <value>Legion Zone may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>تعذر تعطيل Legion Zone أو منطقة Legion</value>
@@ -3131,21 +3185,19 @@ Restart is recommended after changing this option.</value>
     <value>تعطيل Legion Zone أو منطقة Legion</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>ربما لم يتم تعطيل Legion Zone أو منطقة Legion بشكل صحيح</value>
+    <value>Lenovo Hotkeys may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>تعذر تعطيل Legion Zone أو منطقة Legion</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Disable Lenovo Hotkeys and its service without uninstalling it.
-If disabled, this app will handle Fn shortcuts.
-Restart is recommended after changing this option.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>تعطيل مفاتيح Lenovo الساخنة</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>ربما لم يتم تعطيل Vantage بشكل صحيح</value>
+    <value>Lenovo Vantage and/or ImController may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>تعذر تعطيل "%s"</value>
@@ -3158,22 +3210,22 @@ Restart is recommended after changing this option.</value>
     <value>قم بتعطيل Lenovo Vantage</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>ربما لم يتم تمكين فضاء الفيلق بشكل صحيح</value>
+    <value>Legion Space may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
     <value>تعذر تمكين فضاء الفيلق</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>ربما لم يتم تمكين منطقة الفيلق بشكل صحيح</value>
+    <value>Legion Zone may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>تعذر تمكين منطقة الفيلق</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>لربما لم يتم تمكين المفاتيح الساخنة Lenovo بشكل صحيح</value>
+    <value>Lenovo Hotkeys may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>تعذر تعطيل مفاتيح مِيزة Lenovo Hotkeys أو مفاتيح مِيزة مفاتيح Lenovo الساخنة</value>
+    <value>Couldn't enable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>تمكين التسجيل لتصحيح الأخطاء.</value>
@@ -3182,7 +3234,7 @@ Restart is recommended after changing this option.</value>
     <value>تمكين تسجيل الدخول</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage و/أو غير مراقب ربما لم يتم تمكينه بشكل صحيح</value>
+    <value>Lenovo Vantage and/or ImController may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>تعذر تمكين Lenovo Vantage و/أو ImController</value>
@@ -3203,7 +3255,7 @@ Restart is recommended after changing this option.</value>
     <value>تسريع الأجهزة</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>ويمكن أن يؤدي التسريع التمكيني للمعدات إلى إغراق بعض النظم الرسومية الهجينة أو إصابتها بالأسود؛ وقد يحول دون إيقاف تشغيل وحدة البيانات العالمية المنفصلة.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>تمكين تصويت الأجهزة المتقدمة لرصد درجات الحرارة والترددات وحدود الطاقة المفصلة.</value>
@@ -3216,6 +3268,9 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>تلقائي (دع ويندوز يقرر)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>أداء عالي (DGPU)</value>
@@ -3243,6 +3298,12 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>اللغة</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Lock LLT's window size. To prevent something change it.</value>
@@ -3429,6 +3490,9 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>تم تطبيق الإعدادات بنجاح.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>عند كتم، سيتم كتم جميع أجهزة إخراج الصوت النشطة.</value>

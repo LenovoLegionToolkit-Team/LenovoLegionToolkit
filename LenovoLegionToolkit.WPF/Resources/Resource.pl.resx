@@ -789,6 +789,21 @@ Ta wartość może być niedokładna, jeżeli komputer był wtedy uśpiony lub w
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limit the charging range to extend the battery lifespan.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Charge Threshold</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Wyczyść</value>
   </data>
@@ -1051,8 +1066,14 @@ Zmiana trybu może wymagać ponownego uruchomienia.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Nawet jeśli nie możesz przekazać dotacji, po prostu użycie, udostępnianie i głodowanie projektu na GitHubie idzie daleko. Każdy bit wsparcia jest naprawdę doceniany</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Odpowiedzialny za rozwój podstawowych cech, zapewnienie jakości, projekt UI/UX oraz ogólny kierunek projektu jako aktualny kierunek projektu.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Główny programista i wiodący projekt</value>
@@ -1599,11 +1620,17 @@ Kliknij Tak, aby wyłączyć i nie ignorować.</value>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Podświetlenie klawiatury</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app is running</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Nie można stąd sterować podświetleniem klawiatury, jeśli Lenovo Vantage lub jego usługi pracują w tle.</value>
+    <value>The keyboard backlight cannot be controlled while Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage lub jego usługi pracują w tle</value>
+    <value>Lenovo Vantage is running</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Dodaj niestandardowy klucz</value>
@@ -1621,7 +1648,7 @@ Kliknij Tak, aby wyłączyć i nie ignorować.</value>
     <value>Słuchanie dla klawiszy pras... Naciśnij ESC, aby zatrzymać.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Nieznany klucz - można dodać</value>
+    <value>Unknown key that can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1791,11 +1818,11 @@ Kliknij Tak, aby wyłączyć i nie ignorować.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Powtarzanie</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys pracuje w tle.</value>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage i/lub ImController pracuje w tle.</value>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>Przekroczono limit żądań API, spróbuj ponownie później.</value>
@@ -2592,6 +2619,12 @@ Możesz też zmienić tryb wydajności klawiszami Fn+Q.</value>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Częstotliwość odświeżania</value>
   </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Dynamic refresh rate</value>
+  </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>Zmień częstotliwość odświeżania wbudowanego ekranu.</value>
   </data>
@@ -2908,6 +2941,12 @@ Możesz też zmienić tryb wydajności klawiszami Fn+Q.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Częstotliwość procesora</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2931,6 +2970,18 @@ Możesz też zmienić tryb wydajności klawiszami Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>Preferowane GPU</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Użyta/Całkowita Pamięć (GB)</value>
@@ -3106,8 +3157,11 @@ Możesz też zmienić tryb wydajności klawiszami Fn+Q.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Custom Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable everything, some items may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Spacja Legion może nie być poprawnie wyłączona</value>
+    <value>Legion Space may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
     <value>Nie można wyłączyć przestrzeni Legion</value>
@@ -3120,7 +3174,7 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
     <value>Wyłącz przestrzeń Legion</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone mógł nie zostać wyłączony prawidłowo</value>
+    <value>Legion Zone may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Nie można było wyłączyć Legion Zone</value>
@@ -3133,21 +3187,19 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
     <value>Wyłącz Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Legion Hotkeys mógł nie zostać wyłączony prawidłowo</value>
+    <value>Lenovo Hotkeys may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Nie można było wyłączyć Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Wyłącz Lenovo Hotkeys i jego usługę bez jego odinstalowywania.
-Jeśli zostanie wyłączony, skróty klawiszowe Fn będą obsługiwane przez ten program.
-Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Wyłącz Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage i/lub ImController mógł nie zostać wyłączony prawidłowo</value>
+    <value>Lenovo Vantage and/or ImController may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Nie można było wyłączyć Lenovo Vantage i/lub ImControllera</value>
@@ -3160,22 +3212,22 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
     <value>Wyłącz Lenovo Vantage i ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Spacja Legion może nie być włączona poprawnie</value>
+    <value>Legion Space may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
     <value>Nie można włączyć Spacji Legionu</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone mógł nie zostać włączony prawidłowo</value>
+    <value>Legion Zone may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Nie można było włączyć Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Legion Hotkeys mógł nie zostać włączony prawidłowo</value>
+    <value>Lenovo Hotkeys may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Nie można było włączyć Lenovo Hotkeys</value>
+    <value>Couldn't enable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Włącz rejestrowanie dla debugowania.</value>
@@ -3184,7 +3236,7 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
     <value>Włącz rejestrowanie</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage i/lub ImController mógł nie zostać włączony prawidłowo</value>
+    <value>Lenovo Vantage and/or ImController may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>Nie można było włączyć Lenovo Vantage i/lub ImControllera</value>
@@ -3205,7 +3257,7 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
     <value>Przyspieszenie sprzętowe</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Włączenie akceleracji sprzętowej może spowodować migotanie lub czarne błyski na niektórych hybrydowych systemach graficznych i może uniemożliwić wyłączenie dyskretnego GPU.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Włącz zaawansowane ankiety sprzętowe, aby monitorować szczegółowe temperatury, częstotliwości i limity mocy.</value>
@@ -3218,6 +3270,9 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Auto (Decyduj Windows</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Wysoka wydajność (dGPU)</value>
@@ -3245,6 +3300,12 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Język</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Lock LLT's window size. To prevent something change it.</value>
@@ -3431,6 +3492,9 @@ Po zmianie tego ustawienia zalecane jest ponowne uruchomienie.</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Settings applied successfully.</value>
+  </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Przy wyciszeniu, wszystkie urządzenia wyjścia audio zostaną wyciszone.</value>
