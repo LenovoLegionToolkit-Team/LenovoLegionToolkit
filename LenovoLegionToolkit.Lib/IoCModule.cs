@@ -58,6 +58,7 @@ public class IoCModule : Module
         builder.Register<AlwaysOnUSBFeature>();
         builder.Register<BatteryFeature>();
         builder.Register<BatteryNightChargeFeature>();
+        builder.Register<ChargeThresholdFeature>();
         builder.Register<DpiScaleFeature>();
         builder.Register<FlipToStartFeature>();
         builder.Register<FlipToStartCapabilityFeature>(true);

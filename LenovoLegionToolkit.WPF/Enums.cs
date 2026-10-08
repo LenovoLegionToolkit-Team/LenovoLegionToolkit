@@ -17,6 +17,7 @@ public enum DashboardItem
     PowerMode,
     BatteryMode,
     BatteryNightChargeMode,
+    ChargeThreshold,
     AlwaysOnUsb,
     InstantBoot,
     HybridMode,

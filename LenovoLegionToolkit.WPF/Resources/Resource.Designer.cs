@@ -2070,6 +2070,51 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Limit the charging range to extend the battery lifespan..
+        /// </summary>
+        public static string ChargeThresholdControl_Message {
+            get {
+                return ResourceManager.GetString("ChargeThresholdControl_Message", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        public static string ChargeThresholdControl_Start {
+            get {
+                return ResourceManager.GetString("ChargeThresholdControl_Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop.
+        /// </summary>
+        public static string ChargeThresholdControl_Stop {
+            get {
+                return ResourceManager.GetString("ChargeThresholdControl_Stop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge Threshold.
+        /// </summary>
+        public static string ChargeThresholdControl_Title {
+            get {
+                return ResourceManager.GetString("ChargeThresholdControl_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Takes effect after the battery is unplugged and drops below the stop value.
+        /// </summary>
+        public static string ChargeThresholdControl_Warning {
+            get {
+                return ResourceManager.GetString("ChargeThresholdControl_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Clear.
         /// </summary>
         public static string Clear {

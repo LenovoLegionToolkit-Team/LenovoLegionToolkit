@@ -153,6 +153,20 @@ public static partial class Compatibility
 
     public static Task<bool> CheckBasicCompatibilityAsync() => WMI.LenovoGameZoneData.ExistsAsync();
 
+    public static bool HasLenovoPowerManagementDevice()
+    {
+        try
+        {
+            _ = Drivers.GetIbmPmDrv();
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
     public static async Task<(bool isCompatible, MachineInformation machineInformation)> IsCompatibleAsync()
     {
         await EnsureFakeMachineInformationLoadedAsync().ConfigureAwait(false);
@@ -166,7 +180,9 @@ public static partial class Compatibility
         bool isAllowedModel = AllowedModelsPrefix.Any(prefix =>
             mi.Model.Contains(prefix, StringComparison.InvariantCultureIgnoreCase));
 
-        bool isCompatible = isBasicCompatible || (isAllowedVendor && isAllowedModel);
+        bool hasLenovoPowerManagementDevice = HasLenovoPowerManagementDevice();
+
+        bool isCompatible = isBasicCompatible || (isAllowedVendor && isAllowedModel) || hasLenovoPowerManagementDevice;
 
         return (isCompatible, mi);
     }

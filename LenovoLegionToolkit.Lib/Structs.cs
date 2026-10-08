@@ -142,6 +142,18 @@ public readonly struct Brightness(byte value)
     public byte Value { get; } = value;
 }
 
+public readonly struct ChargeThreshold(bool enabled, int start, int stop)
+{
+    public bool Enabled { get; } = enabled;
+    public int Start { get; } = start;
+    public int Stop { get; } = stop;
+
+    public override string ToString()
+    {
+        return $"{nameof(Enabled)}: {Enabled}, {nameof(Start)}: {Start}, {nameof(Stop)}: {Stop}";
+    }
+}
+
 [StructLayout(LayoutKind.Sequential, Size = 16)]
 internal struct CIntelligentCooling
 {
