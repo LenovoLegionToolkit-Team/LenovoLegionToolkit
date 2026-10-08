@@ -119,7 +119,7 @@ public partial class BatteryPage
             _onBatterySinceText.Text = "-";
         }
 
-        _batteryDischargeRateText.Text = $"{batteryInfo.DischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
+        _batteryDischargeRateText.Text = batteryInfo.DischargeRate == int.MinValue ? "-" : $"{batteryInfo.DischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
         _batteryMinDischargeRateText.Text = $"{batteryInfo.MinDischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
         _batteryMaxDischargeRateText.Text = $"{batteryInfo.MaxDischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
         _batteryCapacityText.Text = $"{batteryInfo.EstimateChargeRemaining / 1000.0:0.00} Wh";

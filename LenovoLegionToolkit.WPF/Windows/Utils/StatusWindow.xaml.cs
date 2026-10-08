@@ -439,7 +439,9 @@ public partial class StatusWindow
         if (info.IsLowBattery) _batteryValueLabel.SetResourceReference(ForegroundProperty, "SystemFillColorCautionBrush"); else _batteryValueLabel.ClearValue(ForegroundProperty);
         _batteryValueLabel.Content = $"{info.BatteryPercentage}{Resource.Percent}";
         _batteryModeValueLabel.Content = batteryState.GetDisplayName();
-        _batteryDischargeValueLabel.Content = $"{info.DischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
+        _batteryDischargeValueLabel.Content = info.DischargeRate == int.MinValue
+            ? "-"
+            : $"{info.DischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
         _batteryMinDischargeValueLabel.Content = $"{info.MinDischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
         _batteryMaxDischargeValueLabel.Content = $"{info.MaxDischargeRate / 1000.0:+0.00;-0.00;0.00} {Resource.Watt}";
     }

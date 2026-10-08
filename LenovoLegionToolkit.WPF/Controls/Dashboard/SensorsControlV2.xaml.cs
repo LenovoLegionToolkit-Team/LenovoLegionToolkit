@@ -283,7 +283,18 @@ public partial class SensorsControlV2
                 catch { return default(SensorsData); }
             });
 
-            var batteryInfoTask = Task.Run(Battery.GetBatteryInformation);
+            var batteryInfoTask = Task.Run(() =>
+            {
+                try
+                {
+                    return (BatteryInformation?)Battery.GetBatteryInformation();
+                }
+                catch (Exception ex)
+                {
+                    Log.Instance.Trace($"Battery information refresh failed.", ex);
+                    return null;
+                }
+            });
             var gpuNameTask = GetProcessedGpuName();
 
             await Task.WhenAll(dataTask, batteryInfoTask, gpuNameTask).ConfigureAwait(false);
