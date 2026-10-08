@@ -171,7 +171,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
-    public async Task SetPowerPlanAsync(ITSMode itsMode, bool alwaysActivateDefaults = false, bool skipThrottle = false)
+    public async Task SetPowerPlanAsync(ITSMode itsMode, bool alwaysActivateDefaults = false, bool skipThrottle = false, GodModeSettingsStore.Preset? preset = null, SoftwareStatus? vantageStatus = null)
     {
         using var immediate = skipThrottle ? _overlayDispatcher.SuppressThrottle() : null;
         await _lock.WaitAsync().ConfigureAwait(false);
@@ -185,7 +185,8 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
             Log.Instance.Trace($"Activating... [itsMode={itsMode}, alwaysActivateDefaults={alwaysActivateDefaults}]");
 
-            var powerPlanId = settings.Store.ITSPowerPlans.GetValueOrDefault(itsMode);
+            var powerPlanId = preset?.Overrides.TryGetGuid(PowerOverrideKey.PowerPlan)
+                ?? settings.Store.ITSPowerPlans.GetValueOrDefault(itsMode);
 
             var isDefault = false;
 
@@ -199,7 +200,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
             Log.Instance.Trace($"Power plan to be activated is {powerPlanId} [isDefault={isDefault}]");
 
-            if (!await ShouldSetPowerPlanAsync(alwaysActivateDefaults, isDefault).ConfigureAwait(false))
+            if (!await ShouldSetPowerPlanAsync(alwaysActivateDefaults, isDefault, vantageStatus).ConfigureAwait(false))
             {
                 Log.Instance.Trace($"Power plan {powerPlanId} will not be activated [isDefault={isDefault}]");
                 return;
@@ -222,7 +223,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
             {
                 Log.Instance.Trace($"Power plan {powerPlanToActivate.Guid} is already active. [name={powerPlanToActivate.Name}]");
 
-                await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, itsMode, isDefault, skipThrottle).ConfigureAwait(false);
+                await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, itsMode, isDefault, preset, skipThrottle).ConfigureAwait(false);
                 return;
             }
 
@@ -237,7 +238,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
                 return;
             }
 
-            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, itsMode, isDefault, skipThrottle).ConfigureAwait(false);
+            await ApplyBalanceOverlayIfNeededAsync(powerPlanToActivate.Guid, itsMode, isDefault, preset, skipThrottle).ConfigureAwait(false);
         }
         finally
         {
@@ -287,7 +288,7 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
-    private async Task ApplyBalanceOverlayIfNeededAsync(Guid activePowerPlanGuid, ITSMode itsMode, bool isDefault, bool skipThrottle = false)
+    private async Task ApplyBalanceOverlayIfNeededAsync(Guid activePowerPlanGuid, ITSMode itsMode, bool isDefault, GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false)
     {
         if (!PowerPlanExtensions.IsPlanBasedOnBalanced(activePowerPlanGuid))
         {
@@ -306,8 +307,12 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
 
         if (!isDefault)
         {
-            acMode = settings.Store.ITSOverrides.GetPowerPlanBalanceOnAc(itsMode) ?? WindowsPowerMode.Balanced;
-            dcMode = settings.Store.ITSOverrides.GetPowerPlanBalanceOnDc(itsMode) ?? WindowsPowerMode.Balanced;
+            acMode = preset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerPlanBalanceOnAc)
+                ?? settings.Store.ITSOverrides.GetPowerPlanBalanceOnAc(itsMode)
+                ?? WindowsPowerMode.Balanced;
+            dcMode = preset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerPlanBalanceOnDc)
+                ?? settings.Store.ITSOverrides.GetPowerPlanBalanceOnDc(itsMode)
+                ?? WindowsPowerMode.Balanced;
         }
         Log.Instance.Trace($"Using per-mode Balance overlay. [itsMode={itsMode}, acMode={acMode}, dcMode={dcMode}]");
 

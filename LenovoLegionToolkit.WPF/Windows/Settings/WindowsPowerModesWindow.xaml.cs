@@ -14,6 +14,7 @@ using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Controls.Custom;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
+using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
 using Wpf.Ui.Common;
@@ -30,6 +31,8 @@ public partial class WindowsPowerModesWindow
     private readonly GodModeSettings _godModeSettings = IoCContainer.Resolve<GodModeSettings>();
 
     private bool IsRefreshing => _loader.IsLoading;
+    private bool _isNonGaming;
+    private ITSMode _godModeItsMode;
 
     public WindowsPowerModesWindow()
     {
@@ -54,6 +57,10 @@ public partial class WindowsPowerModesWindow
         var loadingTask = Task.Delay(500);
 
         _tabControl.Items.Clear();
+
+        var compatibility = await Compatibility.GetMachineInformationAsync();
+        _isNonGaming = compatibility.Properties.GodModePlatform == GodModePlatform.NonGaming;
+        _godModeItsMode = _isNonGaming ? await _itsModeFeature.GetStateAsync() : ITSMode.None;
 
         var powerModes = Enum.GetValues<WindowsPowerMode>();
 
@@ -94,6 +101,11 @@ public partial class WindowsPowerModesWindow
                 foreach (var itsMode in itsModes.Where(m => m != ITSMode.None))
                 {
                     BuildITSModeTab(powerModes, itsMode);
+                }
+
+                if (_isNonGaming)
+                {
+                    await BuildGodModeTabAsync(powerModes);
                 }
             }
 
@@ -249,7 +261,7 @@ public partial class WindowsPowerModesWindow
             var activePreset = presetList.FirstOrDefault(kvp => kvp.Key == activePresetId);
             presetCombo.SetItems(presetList, activePreset.Value is not null ? activePreset : presetList.FirstOrDefault(), kvp => kvp.Value.Name);
 
-            var defaultMode = _settings.Store.PowerModes.GetValueOrDefault(PowerModeState.GodMode, WindowsPowerMode.Balanced);
+            var defaultMode = GetGodModeDefaultPowerMode();
 
             var acCombo = new ComboBox { MinWidth = 200, VerticalAlignment = VerticalAlignment.Center };
             acCombo.SetItems(powerModes, defaultMode, pm => pm.GetDisplayName());
@@ -295,8 +307,8 @@ public partial class WindowsPowerModesWindow
                     try
                     {
                         var livePreset = _godModeSettings.Store.Presets.GetValueOrDefault(selectedKvp.Key, selectedKvp.Value);
-                        var savedAc = livePreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnAc) ?? _settings.Store.Overrides.GetPowerModeOnAc(PowerModeState.GodMode) ?? defaultMode;
-                        var savedDc = livePreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnDc) ?? _settings.Store.Overrides.GetPowerModeOnDc(PowerModeState.GodMode) ?? defaultMode;
+                        var savedAc = livePreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnAc) ?? GetGodModeFallbackPowerModeOnAc() ?? defaultMode;
+                        var savedDc = livePreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnDc) ?? GetGodModeFallbackPowerModeOnDc() ?? defaultMode;
                         acCombo.SelectItem(savedAc);
                         dcCombo.SelectItem(savedDc);
                     }
@@ -328,8 +340,8 @@ public partial class WindowsPowerModesWindow
             if (presetCombo.TryGetSelectedItem(out KeyValuePair<Guid, GodModeSettingsStore.Preset> initialKvp))
             {
                 var liveInitialPreset = _godModeSettings.Store.Presets.GetValueOrDefault(initialKvp.Key, initialKvp.Value);
-                var initialAc = liveInitialPreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnAc) ?? _settings.Store.Overrides.GetPowerModeOnAc(PowerModeState.GodMode) ?? defaultMode;
-                var initialDc = liveInitialPreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnDc) ?? _settings.Store.Overrides.GetPowerModeOnDc(PowerModeState.GodMode) ?? defaultMode;
+                var initialAc = liveInitialPreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnAc) ?? GetGodModeFallbackPowerModeOnAc() ?? defaultMode;
+                var initialDc = liveInitialPreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnDc) ?? GetGodModeFallbackPowerModeOnDc() ?? defaultMode;
                 acCombo.SelectItem(initialAc);
                 dcCombo.SelectItem(initialDc);
             }
@@ -340,9 +352,9 @@ public partial class WindowsPowerModesWindow
         else
         {
             var singlePreset = presets.FirstOrDefault();
-            var defaultMode = _settings.Store.PowerModes.GetValueOrDefault(PowerModeState.GodMode, WindowsPowerMode.Balanced);
-            var savedAc = singlePreset.Value?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnAc) ?? _settings.Store.Overrides.GetPowerModeOnAc(PowerModeState.GodMode) ?? defaultMode;
-            var savedDc = singlePreset.Value?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnDc) ?? _settings.Store.Overrides.GetPowerModeOnDc(PowerModeState.GodMode) ?? defaultMode;
+            var defaultMode = GetGodModeDefaultPowerMode();
+            var savedAc = singlePreset.Value?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnAc) ?? GetGodModeFallbackPowerModeOnAc() ?? defaultMode;
+            var savedDc = singlePreset.Value?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnDc) ?? GetGodModeFallbackPowerModeOnDc() ?? defaultMode;
 
             var presetKey = singlePreset.Key.ToString();
             BuildModeTab(powerModes, PowerModeState.GodMode, PowerModeState.GodMode.GetDisplayName(),
@@ -426,13 +438,28 @@ public partial class WindowsPowerModesWindow
             _godModeSettings.Store.Presets[presetKvp.Key] = updated;
             _godModeSettings.SynchronizeStore();
 
-            var currentState = await _powerModeFeature.GetStateAsync();
-            if (currentState == PowerModeState.GodMode && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
+            if (_isNonGaming && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
+            {
+                await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated);
+            }
+            else if (await _powerModeFeature.GetStateAsync() == PowerModeState.GodMode && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
             {
                 await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated);
             }
         }
     }
+
+    private WindowsPowerMode GetGodModeDefaultPowerMode() => _isNonGaming
+        ? _settings.Store.ITSPowerModes.GetValueOrDefault(_godModeItsMode, WindowsPowerMode.Balanced)
+        : _settings.Store.PowerModes.GetValueOrDefault(PowerModeState.GodMode, WindowsPowerMode.Balanced);
+
+    private WindowsPowerMode? GetGodModeFallbackPowerModeOnAc() => _isNonGaming
+        ? _settings.Store.ITSOverrides.GetPowerModeOnAc(_godModeItsMode)
+        : _settings.Store.Overrides.GetPowerModeOnAc(PowerModeState.GodMode);
+
+    private WindowsPowerMode? GetGodModeFallbackPowerModeOnDc() => _isNonGaming
+        ? _settings.Store.ITSOverrides.GetPowerModeOnDc(_godModeItsMode)
+        : _settings.Store.Overrides.GetPowerModeOnDc(PowerModeState.GodMode);
 
     private void OnNotificationReceived(NotificationMessage message)
     {

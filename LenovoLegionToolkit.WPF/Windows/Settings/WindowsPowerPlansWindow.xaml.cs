@@ -34,6 +34,8 @@ public partial class WindowsPowerPlansWindow
     private readonly GodModeSettings _godModeSettings = IoCContainer.Resolve<GodModeSettings>();
 
     private bool IsRefreshing => _loader.IsLoading;
+    private bool _isNonGaming;
+    private ITSMode _godModeItsMode;
 
     public WindowsPowerPlansWindow()
     {
@@ -63,6 +65,9 @@ public partial class WindowsPowerPlansWindow
             : Visibility.Collapsed;
 
         _tabControl.Items.Clear();
+
+        _isNonGaming = compatibility.Properties.GodModePlatform == GodModePlatform.NonGaming;
+        _godModeItsMode = _isNonGaming ? await _itsModeFeature.GetStateAsync() : ITSMode.None;
 
         var isPowerModeSupported = await _powerModeFeature.IsSupportedAsync();
 
@@ -107,6 +112,11 @@ public partial class WindowsPowerPlansWindow
                 foreach (var itsMode in itsModes.Where(m => m != ITSMode.None))
                 {
                     BuildITSPowerPlanTab(powerPlans, powerModes, itsMode);
+                }
+
+                if (_isNonGaming)
+                {
+                    await BuildGodModeTabsAsync(powerPlans, powerModes);
                 }
             }
 
@@ -423,8 +433,8 @@ public partial class WindowsPowerPlansWindow
                     var presetBalanceAc = livePreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerPlanBalanceOnAc);
                     var presetBalanceDc = livePreset.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerPlanBalanceOnDc);
                     var isPreset = presetBalanceAc.HasValue || presetBalanceDc.HasValue;
-                    var savedAc = (isPreset ? presetBalanceAc : _settings.Store.Overrides.GetPowerPlanBalanceOnAc(PowerModeState.GodMode)) ?? WindowsPowerMode.Balanced;
-                    var savedDc = (isPreset ? presetBalanceDc : _settings.Store.Overrides.GetPowerPlanBalanceOnDc(PowerModeState.GodMode)) ?? WindowsPowerMode.Balanced;
+                    var savedAc = (isPreset ? presetBalanceAc : GetGodModeFallbackBalanceOnAc()) ?? WindowsPowerMode.Balanced;
+                    var savedDc = (isPreset ? presetBalanceDc : GetGodModeFallbackBalanceOnDc()) ?? WindowsPowerMode.Balanced;
                     acCombo.SelectItem(savedAc);
                     dcCombo.SelectItem(savedDc);
 
@@ -492,12 +502,12 @@ public partial class WindowsPowerPlansWindow
             var presetBalanceAc = singlePreset.Value?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerPlanBalanceOnAc);
             var presetBalanceDc = singlePreset.Value?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerPlanBalanceOnDc);
             var isPreset = presetBalanceAc.HasValue || presetBalanceDc.HasValue;
-            var savedAc = (isPreset ? presetBalanceAc : _settings.Store.Overrides.GetPowerPlanBalanceOnAc(PowerModeState.GodMode)) ?? WindowsPowerMode.Balanced;
-            var savedDc = (isPreset ? presetBalanceDc : _settings.Store.Overrides.GetPowerPlanBalanceOnDc(PowerModeState.GodMode)) ?? WindowsPowerMode.Balanced;
+            var savedAc = (isPreset ? presetBalanceAc : GetGodModeFallbackBalanceOnAc()) ?? WindowsPowerMode.Balanced;
+            var savedDc = (isPreset ? presetBalanceDc : GetGodModeFallbackBalanceOnDc()) ?? WindowsPowerMode.Balanced;
 
             BuildPowerPlanTab(powerPlans, powerModes, PowerModeState.GodMode,
                 PowerModeState.GodMode.GetDisplayName(),
-                savedPlan: singlePreset.Value?.Overrides.TryGetGuid(PowerOverrideKey.PowerPlan),
+                savedPlan: GetGodModePresetPowerPlan(singlePreset.Key.ToString()),
                 savedAc: savedAc,
                 savedDc: savedDc,
                 onPlanChanged: async (plan) => await GodModePresetPowerPlanChangedAsync(singlePreset.Key.ToString(), plan),
@@ -518,6 +528,10 @@ public partial class WindowsPowerPlansWindow
             {
                 return powerPlanGuid;
             }
+        }
+        if (_isNonGaming)
+        {
+            return _settings.Store.ITSPowerPlans.GetValueOrDefault(_godModeItsMode);
         }
         if (!_settings.Store.PowerPlans.TryGetValue(PowerModeState.GodMode, out var globalGuid))
         {
@@ -650,8 +664,11 @@ public partial class WindowsPowerPlansWindow
             _godModeSettings.Store.Presets[presetKvp.Key] = updated;
             _godModeSettings.SynchronizeStore();
 
-            var currentState = await _powerModeFeature.GetStateAsync();
-            if (currentState == PowerModeState.GodMode && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
+            if (_isNonGaming && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
+            {
+                await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated);
+            }
+            else if (await _powerModeFeature.GetStateAsync() == PowerModeState.GodMode && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
             {
                 await WindowsPowerPlanChangedAsync(windowsPowerPlan, PowerModeState.GodMode, updated);
             }
@@ -682,13 +699,24 @@ public partial class WindowsPowerPlansWindow
             _godModeSettings.Store.Presets[presetKvp.Key] = updated;
             _godModeSettings.SynchronizeStore();
 
-            var currentState = await _powerModeFeature.GetStateAsync();
-            if (currentState == PowerModeState.GodMode && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
+            if (_isNonGaming && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
+            {
+                await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated);
+            }
+            else if (await _powerModeFeature.GetStateAsync() == PowerModeState.GodMode && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
             {
                 await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated);
             }
         }
     }
+
+    private WindowsPowerMode? GetGodModeFallbackBalanceOnAc() => _isNonGaming
+        ? _settings.Store.ITSOverrides.GetPowerPlanBalanceOnAc(_godModeItsMode)
+        : _settings.Store.Overrides.GetPowerPlanBalanceOnAc(PowerModeState.GodMode);
+
+    private WindowsPowerMode? GetGodModeFallbackBalanceOnDc() => _isNonGaming
+        ? _settings.Store.ITSOverrides.GetPowerPlanBalanceOnDc(_godModeItsMode)
+        : _settings.Store.Overrides.GetPowerPlanBalanceOnDc(PowerModeState.GodMode);
 
     private void OnNotificationReceived(NotificationMessage message)
     {

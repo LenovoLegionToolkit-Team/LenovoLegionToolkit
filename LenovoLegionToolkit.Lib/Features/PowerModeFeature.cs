@@ -124,6 +124,15 @@ public class PowerModeFeature(
 
     public async Task EnsureCorrectWindowsPowerSettingsAreSetAsync(GodModeSettingsStore.Preset? preset = null, bool skipThrottle = false, SoftwareStatus? vantageStatus = null)
     {
+        var machineInfo = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        if (machineInfo.Properties.GodModePlatform == GodModePlatform.NonGaming)
+        {
+            var itsMode = await IoCContainer.Resolve<ITSModeFeature>().GetStateAsync().ConfigureAwait(false);
+            await windowsPowerModeController.SetPowerModeAsync(itsMode, skipThrottle, preset).ConfigureAwait(false);
+            await windowsPowerPlanController.SetPowerPlanAsync(itsMode, true, skipThrottle, preset, vantageStatus).ConfigureAwait(false);
+            return;
+        }
+
         var state = await GetStateAsync().ConfigureAwait(false);
         await windowsPowerModeController.SetPowerModeAsync(state, preset, skipThrottle).ConfigureAwait(false);
         await windowsPowerPlanController.SetPowerPlanAsync(state, true, preset, skipThrottle, vantageStatus).ConfigureAwait(false);

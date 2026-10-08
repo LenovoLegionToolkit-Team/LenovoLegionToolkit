@@ -105,7 +105,7 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
         }
     }
 
-    public async Task SetPowerModeAsync(ITSMode itsMode, bool skipThrottle = false)
+    public async Task SetPowerModeAsync(ITSMode itsMode, bool skipThrottle = false, GodModeSettingsStore.Preset? preset = null)
     {
         using var immediate = skipThrottle ? _dispatcher.SuppressThrottle() : null;
         await _lock.WaitAsync().ConfigureAwait(false);
@@ -126,8 +126,10 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
             Log.Instance.Trace($"Activating... [itsMode={itsMode}]");
 
             var defaultMode = settings.Store.ITSPowerModes.GetValueOrDefault(itsMode, WindowsPowerMode.Balanced);
-            var powerModeOnAc = settings.Store.ITSOverrides.GetPowerModeOnAc(itsMode);
-            var powerModeOnDc = settings.Store.ITSOverrides.GetPowerModeOnDc(itsMode);
+            var powerModeOnAc = preset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnAc)
+                ?? settings.Store.ITSOverrides.GetPowerModeOnAc(itsMode);
+            var powerModeOnDc = preset?.Overrides.TryGetEnum<WindowsPowerMode>(PowerOverrideKey.PowerModeOnDc)
+                ?? settings.Store.ITSOverrides.GetPowerModeOnDc(itsMode);
 
             if (powerModeOnAc is null && powerModeOnDc is null)
             {
