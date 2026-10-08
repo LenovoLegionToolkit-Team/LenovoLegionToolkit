@@ -102,6 +102,10 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     _gameModePinnedProcesses.Remove(id);
                 }
 
+                // Deferred while Lock is held, scheduled before the code below so a throwing
+                // subscriber cannot skip the release.
+                DetachAndDispose(evictedProcesses);
+
                 if (disqualified.Count > 0)
                 {
                     Log.Instance.Trace($"Evicted {disqualified.Count} process(es) during re-validation. Remaining: {_processCache.Count}.");
@@ -175,8 +179,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 }
             }
         }
-
-        DetachAndDispose(evictedProcesses);
 
         if (_settings.Store.GameDetection.UseDiscreteGPU)
         {
@@ -265,6 +267,10 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 _processCache.Clear();
                 _detectedGamePathsCache.Clear();
                 _gameModePinnedProcesses.Clear();
+
+                // Deferred while Lock is held, scheduled before the notification below.
+                DetachAndDispose(cachedProcesses);
+
                 if (_lastState)
                 {
                     _lastState = false;
@@ -277,8 +283,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 Log.Instance.Trace($"Preserving process cache during restart: {_processCache.Count} process(es).");
             }
         }
-
-        DetachAndDispose(cachedProcesses);
     }
 
     public bool AreGamesRunning()
@@ -427,6 +431,9 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                             releasedProcesses.Add(cached);
                     }
 
+                    // Deferred while Lock is held, scheduled before the notification below.
+                    DetachAndDispose(releasedProcesses);
+
                     if (_processCache.Count == 0)
                     {
                         RaiseChangedIfNeeded(false);
@@ -439,8 +446,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 Log.Instance.Trace($"Game Mode deactivation ignored: process cache is not empty ({_processCache.Count} active game(s)).");
             }
         }
-
-        DetachAndDispose(releasedProcesses);
     }
 
     private unsafe void TryPinForegroundProcess()
@@ -774,6 +779,9 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     exitedProcesses.Add(process);
             }
 
+            // Deferred while Lock is held, scheduled before the notification below.
+            DetachAndDispose(exitedProcesses);
+
             if (deadIds.Count > 0)
             {
                 Log.Instance.Trace($"Removed {deadIds.Count} exited process(es) from cache. Remaining: {_processCache.Count}.");
@@ -789,7 +797,5 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 RaiseChangedIfNeeded(false);
             }
         }
-
-        DetachAndDispose(exitedProcesses);
     }
 }
