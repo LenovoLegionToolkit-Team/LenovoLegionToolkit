@@ -383,6 +383,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     private void EffectiveGameModeDetectorChanged(object? sender, bool e)
     {
+        var releasedProcesses = new List<Process>();
+
         lock (Lock)
         {
             if (e)
@@ -418,15 +420,11 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                         if (released is not null)
                         {
                             Log.Instance.Trace($"Game Mode ended and process exited: {GetProcessName(released)} [Source: Windows Game Mode] [pid={id}].");
-                            Detach(released);
-                            DisposeProcess(released);
+                            releasedProcesses.Add(released);
                         }
 
                         if (cached is not null && !ReferenceEquals(cached, released))
-                        {
-                            Detach(cached);
-                            DisposeProcess(cached);
-                        }
+                            releasedProcesses.Add(cached);
                     }
 
                     if (_processCache.Count == 0)
@@ -439,9 +437,10 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             if (_processCache.Count != 0)
             {
                 Log.Instance.Trace($"Game Mode deactivation ignored: process cache is not empty ({_processCache.Count} active game(s)).");
-                return;
             }
         }
+
+        DetachAndDispose(releasedProcesses);
     }
 
     private unsafe void TryPinForegroundProcess()
@@ -709,11 +708,23 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
     /// <summary>
     /// Detaching (EnableRaisingEvents = false) and disposing a Process both take that process's
     /// internal lock, which .NET holds while it raises Exited. Doing either while holding Lock can
-    /// deadlock with a process that is currently raising Exited and waiting for Lock.
+    /// deadlock with a process that is currently raising Exited and waiting for Lock, and
+    /// HasExited raises Exited synchronously on the calling thread, so release on the thread pool
+    /// whenever Lock is already held.
     /// </summary>
     private void DetachAndDispose(IEnumerable<Process> processes)
     {
-        foreach (var process in processes)
+        var processList = processes.ToArray();
+        if (processList.Length == 0)
+            return;
+
+        if (Lock.IsHeldByCurrentThread)
+        {
+            Task.Run(() => DetachAndDispose(processList));
+            return;
+        }
+
+        foreach (var process in processList)
         {
             Detach(process);
             DisposeProcess(process);
