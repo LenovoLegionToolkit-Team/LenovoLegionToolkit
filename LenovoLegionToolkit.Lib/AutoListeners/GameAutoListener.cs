@@ -51,6 +51,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     protected override async Task StartAsync()
     {
+        var evictedProcesses = new List<Process>();
+
         lock (Lock)
         {
             var checkIncluded = _settings.Store.IncludedProcesses.Count > 0;
@@ -95,10 +97,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 foreach (var id in disqualified)
                 {
                     if (_processCache.Remove(id, out var process))
-                    {
-                        Detach(process);
-                        DisposeProcess(process);
-                    }
+                        evictedProcesses.Add(process);
 
                     _gameModePinnedProcesses.Remove(id);
                 }
@@ -177,6 +176,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             }
         }
 
+        DetachAndDispose(evictedProcesses);
+
         if (_settings.Store.GameDetection.UseDiscreteGPU)
         {
             await _gpuController.StartAsync().ConfigureAwait(false);
@@ -245,6 +246,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     protected override async Task StopAsync()
     {
+        var cachedProcesses = new List<Process>();
+
         await _instanceStartedEventAutoAutoListener
             .UnsubscribeChangedAsync(InstanceStartedEventAutoAutoListener_Changed).ConfigureAwait(false);
 
@@ -257,11 +260,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         {
             if (!_preserveStateOnNextStart)
             {
-                foreach (var process in _processCache.Values)
-                {
-                    Detach(process);
-                    DisposeProcess(process);
-                }
+                cachedProcesses.AddRange(_processCache.Values);
 
                 _processCache.Clear();
                 _detectedGamePathsCache.Clear();
@@ -278,6 +277,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 Log.Instance.Trace($"Preserving process cache during restart: {_processCache.Count} process(es).");
             }
         }
+
+        DetachAndDispose(cachedProcesses);
     }
 
     public bool AreGamesRunning()
@@ -705,8 +706,24 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         catch { /* Ignore */ }
     }
 
+    /// <summary>
+    /// Detaching (EnableRaisingEvents = false) and disposing a Process both take that process's
+    /// internal lock, which .NET holds while it raises Exited. Doing either while holding Lock can
+    /// deadlock with a process that is currently raising Exited and waiting for Lock.
+    /// </summary>
+    private void DetachAndDispose(IEnumerable<Process> processes)
+    {
+        foreach (var process in processes)
+        {
+            Detach(process);
+            DisposeProcess(process);
+        }
+    }
+
     private void Process_Exited(object? o, EventArgs args)
     {
+        var exitedProcesses = new List<Process>();
+
         lock (Lock)
         {
             if (o is Process exitedProc)
@@ -717,8 +734,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 if (exitedId is not null && !_processCache.ContainsKey(exitedId.Value))
                 {
                     _gameModePinnedProcesses.Remove(exitedId.Value);
-                    Detach(exitedProc);
-                    DisposeProcess(exitedProc);
+                    exitedProcesses.Add(exitedProc);
                 }
             }
 
@@ -744,10 +760,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 _gameModePinnedProcesses.Remove(id);
 
                 if (process is not null)
-                {
-                    Detach(process);
-                    DisposeProcess(process);
-                }
+                    exitedProcesses.Add(process);
             }
 
             if (deadIds.Count > 0)
@@ -758,13 +771,14 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             if (_processCache.Count != 0)
             {
                 Log.Instance.Trace($"Active games remaining in cache: {_processCache.Count}.");
-
-                return;
             }
-
-            Log.Instance.Trace($"No more games running. All active processes cleared.");
-
-            RaiseChangedIfNeeded(false);
+            else
+            {
+                Log.Instance.Trace($"No more games running. All active processes cleared.");
+                RaiseChangedIfNeeded(false);
+            }
         }
+
+        DetachAndDispose(exitedProcesses);
     }
 }
