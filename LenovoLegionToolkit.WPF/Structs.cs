@@ -136,7 +136,7 @@ public readonly struct DashboardGroup(DashboardGroupType type, string? customNam
             groups[0] = new(DashboardGroupType.Power, null, chargeThresholdItems.ToArray());
         }
 
-        if (!mi.Properties.SupportsITSMode)
+        if (!mi.Properties.SupportsITSMode && !AppFlags.Instance.Debug)
         {
             return groups.ToArray();
         }
