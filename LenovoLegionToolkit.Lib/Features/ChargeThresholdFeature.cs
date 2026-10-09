@@ -10,7 +10,7 @@ namespace LenovoLegionToolkit.Lib.Features;
 
 public class ChargeThresholdFeature : IFeature<ChargeThreshold>
 {
-    private const string PWRMGRV_HIVE = "HKLM";
+    private const string PWRMGRV_HIVE = "HKEY_LOCAL_MACHINE";
     private const string PWRMGRV_DATA_PATH = @"SOFTWARE\WOW6432Node\Lenovo\PWRMGRV\ConfKeys\Data";
     private const string BATTERY_KEY_PREFIX = "Battery";
     private const string BARCODE_NUMBER_VALUE = "Barcode Number";
@@ -39,8 +39,10 @@ public class ChargeThresholdFeature : IFeature<ChargeThreshold>
 
             return true;
         }
-        catch
+        catch (Exception ex)
         {
+            Log.Instance.Trace($"Failed to check support [feature={GetType().Name}]", ex);
+
             return false;
         }
     }
