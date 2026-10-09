@@ -287,6 +287,7 @@ public static class Devices
             { LegionSeries: LegionSeries.Legion_5, Generation: >= 10 } => new(vendor, type1, mask, len),
             { LegionSeries: LegionSeries.Legion_Pro_5, Generation: >= 10 } => new(vendor, type1, mask, len),
             { LegionSeries: LegionSeries.Legion_Pro_7, Generation: >= 10 } => new(vendor, type1, mask, len),
+            { LegionSeries: LegionSeries.Legion_7, Generation: 11 } => new(vendor, type3, mask, len),
             { LegionSeries: LegionSeries.Legion_7, Generation: >= 10 } => new(vendor, type1, mask, len),
             { LegionSeries: LegionSeries.LOQ, Generation: >= 10 } => new(vendor, type3, mask, len),
             { LegionSeries: LegionSeries.Legion_9 } => new(vendor, type2, mask, len),
