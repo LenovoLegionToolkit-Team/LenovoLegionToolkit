@@ -105,14 +105,14 @@ public class ChargeThresholdFeature : IFeature<ChargeThreshold>
     {
         foreach (var (index, _) in batteries)
         {
-            var request = ToDriverRequest(index, 0);
+            var request = (uint)index;
 
-            if (!PInvokeExtensions.DeviceIoControl(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_START_STATUS, request, out int startRaw)
-                || !PInvokeExtensions.DeviceIoControl(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_STOP_STATUS, request, out int stopRaw)
-                || startRaw < 0
-                || stopRaw < 0)
+            var startOk = PInvokeExtensions.DeviceIoControl(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_START_STATUS, request, out int startRaw);
+            var stopOk = PInvokeExtensions.DeviceIoControl(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_STOP_STATUS, request, out int stopRaw);
+
+            if (!startOk || !stopOk || startRaw < 0 || stopRaw < 0)
             {
-                Log.Instance.Trace($"Charge threshold readback failed. [index={index}]");
+                Log.Instance.Trace($"Charge threshold readback failed. [index={index}, startOk={startOk}, stopOk={stopOk}, startRaw={startRaw:X8}, stopRaw={stopRaw:X8}]");
 
                 continue;
             }
