@@ -23,8 +23,8 @@ public class ChargeThresholdFeature : IFeature<ChargeThreshold>
     private const int BATTERY_INDEX_MAX = 2;
     private const int DRIVER_REQUEST_INDEX_MASK = 0x3;
     private const int DRIVER_REQUEST_INDEX_SHIFT = 8;
-    private const int DRIVER_REQUEST_VALUE_MASK = 0xFF;
-    private const int THRESHOLD_STATUS_CONTROL_FLAG = 0x100;
+    private const int THRESHOLD_VALUE_MIN = 2;
+    private const int THRESHOLD_VALUE_MAX = 99;
     private const int THRESHOLD_MODE_AUTOMATIC = 0;
     private const int THRESHOLD_MODE_ENABLED = 1;
 
@@ -81,9 +81,9 @@ public class ChargeThresholdFeature : IFeature<ChargeThreshold>
         {
             if (state.Enabled)
             {
-                SendCode(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_MODE, ToDriverRequest(index, THRESHOLD_MODE_ENABLED));
                 SendCode(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_STOP, ToDriverRequest(index, state.Stop));
                 SendCode(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_START, ToDriverRequest(index, state.Start));
+                SendCode(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_MODE, ToDriverRequest(index, THRESHOLD_MODE_ENABLED));
             }
             else
             {
@@ -98,10 +98,10 @@ public class ChargeThresholdFeature : IFeature<ChargeThreshold>
         if (!state.Equals(actual))
             Log.Instance.Trace($"Charge threshold mismatch, Actual: {actual}, Target: {state}");
 
-        VerifyWithDriver(handle, batteries, state);
+        VerifyWithDriver(handle, batteries);
     }
 
-    private static void VerifyWithDriver(SafeFileHandle handle, (int Index, string Key)[] batteries, ChargeThreshold state)
+    private static void VerifyWithDriver(SafeFileHandle handle, (int Index, string Key)[] batteries)
     {
         foreach (var (index, _) in batteries)
         {
@@ -110,21 +110,7 @@ public class ChargeThresholdFeature : IFeature<ChargeThreshold>
             var startOk = PInvokeExtensions.DeviceIoControl(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_START_STATUS, request, out int startRaw);
             var stopOk = PInvokeExtensions.DeviceIoControl(handle, Drivers.IOCTL_IBMPMDRV_CHARGE_THRESHOLD_STOP_STATUS, request, out int stopRaw);
 
-            if (!startOk || !stopOk || startRaw < 0 || stopRaw < 0)
-            {
-                Log.Instance.Trace($"Charge threshold readback failed. [index={index}, startOk={startOk}, stopOk={stopOk}, startRaw={startRaw:X8}, stopRaw={stopRaw:X8}]");
-
-                continue;
-            }
-
-            var driverEnabled = (startRaw & THRESHOLD_STATUS_CONTROL_FLAG) != 0 || (stopRaw & THRESHOLD_STATUS_CONTROL_FLAG) != 0;
-            var driverStart = startRaw & DRIVER_REQUEST_VALUE_MASK;
-            var driverStop = stopRaw & DRIVER_REQUEST_VALUE_MASK;
-
-            if (driverEnabled != state.Enabled || driverStart != state.Start || driverStop != state.Stop)
-                Log.Instance.Trace($"Charge threshold readback mismatch, Driver: (Enabled: {driverEnabled}, Start: {driverStart}, Stop: {driverStop}), Target: {state}");
-            else
-                Log.Instance.Trace($"Charge threshold readback verified. [index={index}]");
+            Log.Instance.Trace($"Charge threshold driver readback. [index={index}, startOk={startOk}, stopOk={stopOk}, startRaw={startRaw:X8}, stopRaw={stopRaw:X8}]");
         }
     }
 
@@ -142,8 +128,8 @@ public class ChargeThresholdFeature : IFeature<ChargeThreshold>
 
         var (_, key) = batteries[0];
 
-        var start = Registry.GetValue(PWRMGRV_HIVE, key, CHARGE_START_PERCENTAGE_VALUE, 0);
-        var stop = Registry.GetValue(PWRMGRV_HIVE, key, CHARGE_STOP_PERCENTAGE_VALUE, 0);
+        var start = Math.Clamp(Registry.GetValue(PWRMGRV_HIVE, key, CHARGE_START_PERCENTAGE_VALUE, 0), THRESHOLD_VALUE_MIN, THRESHOLD_VALUE_MAX);
+        var stop = Math.Clamp(Registry.GetValue(PWRMGRV_HIVE, key, CHARGE_STOP_PERCENTAGE_VALUE, 0), THRESHOLD_VALUE_MIN, THRESHOLD_VALUE_MAX);
         var startControl = Registry.GetValue(PWRMGRV_HIVE, key, CHARGE_START_CONTROL_VALUE, 0);
         var stopControl = Registry.GetValue(PWRMGRV_HIVE, key, CHARGE_STOP_CONTROL_VALUE, 0);
 
@@ -193,5 +179,7 @@ public class ChargeThresholdFeature : IFeature<ChargeThreshold>
 
         if (result < 0)
             throw new InvalidOperationException($"Charge threshold was rejected. [controlCode={controlCode:X8}, value={value}, result={result:X8}]");
+
+        Log.Instance.Trace($"Charge threshold accepted. [controlCode={controlCode:X8}, value={value}, result={result:X8}]");
     }
 }
