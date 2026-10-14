@@ -102,8 +102,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     _gameModePinnedProcesses.Remove(id);
                 }
 
-                // Deferred while Lock is held, scheduled before the code below so a throwing
-                // subscriber cannot skip the release.
                 DetachAndDispose(evictedProcesses);
 
                 if (disqualified.Count > 0)
@@ -268,7 +266,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 _detectedGamePathsCache.Clear();
                 _gameModePinnedProcesses.Clear();
 
-                // Deferred while Lock is held, scheduled before the notification below.
                 DetachAndDispose(cachedProcesses);
 
                 if (_lastState)
@@ -431,7 +428,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                             releasedProcesses.Add(cached);
                     }
 
-                    // Deferred while Lock is held, scheduled before the notification below.
                     DetachAndDispose(releasedProcesses);
 
                     if (_processCache.Count == 0)
@@ -710,13 +706,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         catch { /* Ignore */ }
     }
 
-    /// <summary>
-    /// Detaching (EnableRaisingEvents = false) and disposing a Process both take that process's
-    /// internal lock, which .NET holds while it raises Exited. Doing either while holding Lock can
-    /// deadlock with a process that is currently raising Exited and waiting for Lock, and
-    /// HasExited raises Exited synchronously on the calling thread, so release on the thread pool
-    /// whenever Lock is already held.
-    /// </summary>
     private void DetachAndDispose(IEnumerable<Process> processes)
     {
         var processList = processes.ToArray();
@@ -779,7 +768,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                     exitedProcesses.Add(process);
             }
 
-            // Deferred while Lock is held, scheduled before the notification below.
             DetachAndDispose(exitedProcesses);
 
             if (deadIds.Count > 0)
