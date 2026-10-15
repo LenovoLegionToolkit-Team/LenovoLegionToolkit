@@ -219,30 +219,7 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
             Log.Instance.Trace($"Failed to activate default power plan.", ex);
         }
 
-        mainThreadDispatcher.Dispatch(() =>
-        {
-            try
-            {
-                var result = PowerSetActiveOverlayScheme(activeGuid);
-                Log.Instance.Trace($"Overlay scheme set. [result={result}, activeGuid={activeGuid}]");
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Failed to set active overlay scheme.", ex);
-            }
-        });
-
-        try
-        {
-            SetActiveOverlayRegistryForAc(acGuid);
-            SetActiveOverlayRegistryForDc(dcGuid);
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Failed to update registry.", ex);
-        }
-
-        return Task.CompletedTask;
+        return ApplyOverlayAsync(mainThreadDispatcher, activeGuid, acGuid, dcGuid);
     }
 
     public static void SetActiveOverlayRegistryForAc(Guid guid)
@@ -314,15 +291,30 @@ public partial class WindowsPowerModeController(ApplicationSettings settings, IM
         return null;
     }
 
-    public static void ApplyActiveOverlayScheme(Guid guid)
+    public static Task ApplyOverlayAsync(IMainThreadDispatcher mainThreadDispatcher, Guid activeGuid, Guid acGuid, Guid dcGuid)
     {
         if (!IsOverlaySupported)
         {
-            return;
+            return Task.CompletedTask;
         }
 
-        var result = PowerSetActiveOverlayScheme(guid);
-        Log.Instance.Trace($"Overlay scheme set. [result={result}, guid={guid}]");
+        mainThreadDispatcher.Dispatch(() =>
+        {
+            try
+            {
+                var result = PowerSetActiveOverlayScheme(activeGuid);
+                Log.Instance.Trace($"Overlay scheme set. [result={result}, guid={activeGuid}]");
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to apply overlay scheme.", ex);
+            }
+        });
+
+        SetActiveOverlayRegistryForAc(acGuid);
+        SetActiveOverlayRegistryForDc(dcGuid);
+
+        return Task.CompletedTask;
     }
 
     private static unsafe void ActivateDefaultPowerPlanIfNeeded()

@@ -335,26 +335,8 @@ public class WindowsPowerPlanController(ApplicationSettings settings, VantageDis
         }
     }
 
-    private Task ExecuteBalanceOverlayDispatch(Guid guidToApply, Guid acRegistryGuid, Guid dcRegistryGuid)
-    {
-        mainThreadDispatcher.Dispatch(() =>
-        {
-            try
-            {
-                WindowsPowerModeController.ApplyActiveOverlayScheme(guidToApply);
-                Log.Instance.Trace($"Balance overlay scheme applied. [guidToApply={guidToApply}]");
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Failed to apply balance overlay scheme.", ex);
-            }
-        });
-
-        WindowsPowerModeController.SetActiveOverlayRegistryForAc(acRegistryGuid);
-        WindowsPowerModeController.SetActiveOverlayRegistryForDc(dcRegistryGuid);
-
-        return Task.CompletedTask;
-    }
+    private Task ExecuteBalanceOverlayDispatch(Guid guidToApply, Guid acRegistryGuid, Guid dcRegistryGuid) =>
+        WindowsPowerModeController.ApplyOverlayAsync(mainThreadDispatcher, guidToApply, acRegistryGuid, dcRegistryGuid);
 
     public void SetPowerPlanParameter(WindowsPowerPlan windowsPowerPlan, Brightness brightness)
     {
