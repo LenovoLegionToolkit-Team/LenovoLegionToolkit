@@ -1807,6 +1807,15 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Auto.
+        /// </summary>
+        public static string WhiteKeyboardBacklightState_Auto {
+            get {
+                return ResourceManager.GetString("WhiteKeyboardBacklightState_Auto", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to High.
         /// </summary>
         public static string WhiteKeyboardBacklightState_High {

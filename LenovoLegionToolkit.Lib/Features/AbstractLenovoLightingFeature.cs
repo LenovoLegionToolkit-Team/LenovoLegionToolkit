@@ -47,7 +47,7 @@ public abstract class AbstractLenovoLightingFeature<T>(int lightingID, int contr
         }
     }
 
-    public Task<T[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<T>());
+    public virtual Task<T[]> GetAllStatesAsync() => Task.FromResult(Enum.GetValues<T>());
 
     public async Task<T> GetStateAsync()
     {

@@ -1065,7 +1065,9 @@ public enum WhiteKeyboardBacklightState
     [Display(ResourceType = typeof(Resource), Name = "WhiteKeyboardBacklightState_Low")]
     Low,
     [Display(ResourceType = typeof(Resource), Name = "WhiteKeyboardBacklightState_High")]
-    High
+    High,
+    [Display(ResourceType = typeof(Resource), Name = "WhiteKeyboardBacklightState_Auto")]
+    Auto
 }
 
 public enum WindowBackdropType
