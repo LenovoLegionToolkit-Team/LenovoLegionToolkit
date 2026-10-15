@@ -89,7 +89,6 @@ public abstract class OsdWindowBase : Window
         SourceInitialized += OnSourceInitialized;
         Closed += OnWindowClosed;
         Loaded += OnLoaded;
-        LocationChanged += OnLocationChanged;
         MouseLeftButtonDown += OnMouseLeftButtonDown;
         SizeChanged += OnSizeChanged;
 
@@ -179,8 +178,8 @@ public abstract class OsdWindowBase : Window
         {
             DragMove();
 
-            var screen = WpfScreenHelper.Screen.FromWindow(this);
-            if (screen != null)
+            var screen = ScreenForWindow();
+            if (screen is not null)
             {
                 var workArea = screen.WpfWorkingArea;
 
@@ -218,6 +217,7 @@ public abstract class OsdWindowBase : Window
                 this.Left = left;
                 this.Top = top;
 
+                SavePosition();
                 _OsdSettings.SynchronizeStore();
             }
         }
@@ -233,7 +233,7 @@ public abstract class OsdWindowBase : Window
 
     private void OnSizeChanged(object sender, SizeChangedEventArgs e)
     {
-        if (SavedPositionX.HasValue)
+        if (SavedPosition is not null)
             return;
 
         if (!_positionSet)
@@ -246,21 +246,21 @@ public abstract class OsdWindowBase : Window
 
     protected virtual void SetWindowPosition()
     {
-        if (SavedPositionX.HasValue && SavedPositionY.HasValue)
+        if (SavedPosition is { } savedPosition)
         {
-            var savedX = SavedPositionX.Value;
-            var savedY = SavedPositionY.Value;
+            var workArea = ScreenWorkAreaForDeviceName(savedPosition.MonitorName);
+            var left = workArea.Left + savedPosition.XRatio * workArea.Width;
+            var top = workArea.Top + savedPosition.YRatio * workArea.Height;
 
-            if (IsPositionOnScreen(savedX, savedY))
+            if (IsPositionOnScreen(left, top))
             {
-                Left = savedX;
-                Top = savedY;
+                Left = left;
+                Top = top;
                 _positionSet = true;
                 return;
             }
 
-            SavedPositionX = null;
-            SavedPositionY = null;
+            SavedPosition = null;
             _OsdSettings.SynchronizeStore();
         }
 
@@ -268,13 +268,58 @@ public abstract class OsdWindowBase : Window
     }
 
     protected abstract void SetDefaultWindowPosition();
-    protected abstract double? SavedPositionX { get; set; }
-    protected abstract double? SavedPositionY { get; set; }
+    protected abstract OsdPosition? SavedPosition { get; set; }
+
+    private Screen? ScreenForWindow()
+    {
+        var width = ActualWidth > 0 ? ActualWidth : Width;
+        var height = ActualHeight > 0 ? ActualHeight : Height;
+
+        return Screen.FromPoint(new Point(Left + width / 2, Top + height / 2));
+    }
+
+    private void SavePosition()
+    {
+        try
+        {
+            var screen = ScreenForWindow();
+            if (screen is null)
+                return;
+
+            var workArea = screen.WpfWorkingArea;
+            if (workArea.Width <= 0 || workArea.Height <= 0)
+                return;
+
+            SavedPosition = new OsdPosition
+            {
+                XRatio = Math.Clamp((Left - workArea.Left) / workArea.Width, 0, 1),
+                YRatio = Math.Clamp((Top - workArea.Top) / workArea.Height, 0, 1),
+                MonitorName = screen.DeviceName
+            };
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to save the OSD position.", ex);
+        }
+    }
+
+    private static Rect ScreenWorkAreaForDeviceName(string? deviceName)
+    {
+        if (!string.IsNullOrEmpty(deviceName))
+        {
+            foreach (var screen in Screen.AllScreens)
+            {
+                if (string.Equals(screen.DeviceName, deviceName, StringComparison.OrdinalIgnoreCase))
+                    return screen.WpfWorkingArea;
+            }
+        }
+
+        return SystemParameters.WorkArea;
+    }
 
     public void RecalculatePosition()
     {
-        SavedPositionX = null;
-        SavedPositionY = null;
+        SavedPosition = null;
         _OsdSettings.SynchronizeStore();
 
         SetDefaultWindowPosition();
@@ -298,23 +343,9 @@ public abstract class OsdWindowBase : Window
         return MonitorFromPoint(pt, MONITOR_DEFAULTTONULL) != IntPtr.Zero;
     }
 
-    private void OnLocationChanged(object? sender, EventArgs e)
-    {
-        if (!IsLoaded) return;
-
-        SavedPositionX = Left;
-        SavedPositionY = Top;
-    }
-
     private void OnDisplaySettingsChanged(object? sender, EventArgs e)
     {
-        Dispatcher.BeginInvoke(() =>
-        {
-            if (!IsPositionOnScreen(Left, Top))
-            {
-                SetDefaultWindowPosition();
-            }
-        });
+        Dispatcher.BeginInvoke(SetWindowPosition);
     }
 
     private void OnSessionLockStateChanged(object? sender, SessionLockUnlockListener.ChangedEventArgs e)
@@ -383,8 +414,6 @@ public abstract class OsdWindowBase : Window
 
     private void OnWindowClosed(object? sender, EventArgs e)
     {
-        SavedPositionX = Left;
-        SavedPositionY = Top;
         _OsdSettings.SynchronizeStore();
 
         SystemEvents.DisplaySettingsChanged -= OnDisplaySettingsChanged;
@@ -414,7 +443,7 @@ public abstract class OsdWindowBase : Window
 
         this.SetClickThrough(_OsdSettings.Store.IsLocked);
 
-        if (!SavedPositionX.HasValue || !SavedPositionY.HasValue)
+        if (SavedPosition is null)
         {
             SetDefaultWindowPosition();
         }

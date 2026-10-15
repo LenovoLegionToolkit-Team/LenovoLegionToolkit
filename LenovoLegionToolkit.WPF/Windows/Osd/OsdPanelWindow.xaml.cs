@@ -1,6 +1,7 @@
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.WPF.Resources;
 using System.Windows.Media;
 
@@ -80,16 +81,10 @@ public partial class OsdPanelWindow : OsdWindowBase
         InitOsd();
     }
 
-    protected override double? SavedPositionX
+    protected override OsdPosition? SavedPosition
     {
-        get => _OsdSettings.Store.PanelPositionX;
-        set => _OsdSettings.Store.PanelPositionX = value;
-    }
-
-    protected override double? SavedPositionY
-    {
-        get => _OsdSettings.Store.PanelPositionY;
-        set => _OsdSettings.Store.PanelPositionY = value;
+        get => _OsdSettings.Store.PanelPosition;
+        set => _OsdSettings.Store.PanelPosition = value;
     }
 
     protected override void OnAmdDeviceDetected()

@@ -1,4 +1,5 @@
 using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
@@ -79,16 +80,10 @@ public partial class OsdBarWindow : OsdWindowBase
         InitOsd();
     }
 
-    protected override double? SavedPositionX
+    protected override OsdPosition? SavedPosition
     {
-        get => _OsdSettings.Store.BarPositionX;
-        set => _OsdSettings.Store.BarPositionX = value;
-    }
-
-    protected override double? SavedPositionY
-    {
-        get => _OsdSettings.Store.BarPositionY;
-        set => _OsdSettings.Store.BarPositionY = value;
+        get => _OsdSettings.Store.BarPosition;
+        set => _OsdSettings.Store.BarPosition = value;
     }
 
     protected override void OnAmdDeviceDetected()
