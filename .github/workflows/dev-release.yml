@@ -49,25 +49,29 @@ jobs:
         $baseBuild = 0
         $cleanTag = $null
 
-        # 1. Primary: Query GitHub for latest Stable release as baseline for odometer
+        # 1. Primary: Query GitHub for the newest release of any channel as baseline for odometer
         $candidateRepos = @($env:GITHUB_REPOSITORY, "LenovoLegionToolkit-Team/LenovoLegionToolkit") | Select-Object -Unique
         foreach ($repo in $candidateRepos) {
           if ($cleanTag) { break }
           try {
-            $releasesList = gh release list --repo $repo --exclude-drafts --limit 30 --json tagName,name,isPrerelease,isLatest | ConvertFrom-Json
-            if ($releasesList -and $releasesList.Count -gt 0) {
-              $latestStable = $releasesList | Where-Object { -not $_.isPrerelease -and $_.name -notlike '*(Dev)*' -and $_.name -notlike '*(Beta)*' } | Select-Object -First 1
-              if ($latestStable) {
-                $cleanTag = $latestStable.tagName.TrimStart('v', 'V')
-                $stableVer = $null
-                if ([Version]::TryParse($cleanTag, [ref]$stableVer)) {
-                  $baseMajor = $stableVer.Major
-                  $baseMinor = $stableVer.Minor
-                  $basePatch = if ($stableVer.Build -ge 0) { $stableVer.Build } else { 0 }
-                  $baseBuild = if ($stableVer.Revision -ge 0) { $stableVer.Revision } else { 0 }
-                  Write-Host "Found latest stable release in $($repo): $cleanTag. Base: $($baseMajor).$($baseMinor).$($basePatch).$($baseBuild)"
-                }
+            $releasesList = gh release list --repo $repo --exclude-drafts --limit 30 --json tagName,name | ConvertFrom-Json
+            $baseVer = $null
+            foreach ($release in @($releasesList)) {
+              if ($release.name -like '*(Dev)*') { continue }
+              $candidateTag = $release.tagName.TrimStart('v', 'V')
+              $candidateVer = $null
+              if (-not [Version]::TryParse($candidateTag, [ref]$candidateVer)) { continue }
+              if ($null -eq $baseVer -or $candidateVer -gt $baseVer) {
+                $baseVer = $candidateVer
+                $cleanTag = $candidateTag
               }
+            }
+            if ($baseVer) {
+              $baseMajor = $baseVer.Major
+              $baseMinor = $baseVer.Minor
+              $basePatch = if ($baseVer.Build -ge 0) { $baseVer.Build } else { 0 }
+              $baseBuild = if ($baseVer.Revision -ge 0) { $baseVer.Revision } else { 0 }
+              Write-Host "Found baseline release in $($repo): $cleanTag. Base: $($baseMajor).$($baseMinor).$($basePatch).$($baseBuild)"
             }
           } catch {
             Write-Warning "Could not query GitHub releases directly for $($repo): $_"
@@ -160,8 +164,24 @@ jobs:
         $releaseNotes = "> **Note**: Automated development build compiled from the ``dev`` branch.`n`n### What's Changed`n$notes"
         $releaseNotes | Out-File -FilePath "release_notes.md" -Encoding utf8
 
+        $publish = "true"
+        try {
+          $existingRelease = $null
+          $existingReleaseJson = gh release view $tagName --repo $env:GITHUB_REPOSITORY --json name,targetCommitish 2>$null
+          if ($LASTEXITCODE -eq 0 -and $existingReleaseJson) {
+            $existingRelease = $existingReleaseJson | ConvertFrom-Json
+          }
+          if ($existingRelease -and $existingRelease.targetCommitish -ne "dev") {
+            $publish = "false"
+            Write-Warning "Tag $tagName is already reserved by '$($existingRelease.name)', skipping this Dev release."
+          }
+        } catch {
+          Write-Warning "Could not check whether $tagName is reserved: $_"
+        }
+
         "version=$devVersion" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
         "tag_name=$tagName" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
+        "publish=$publish" | Out-File -FilePath $env:GITHUB_OUTPUT -Encoding utf8 -Append
       shell: powershell
 
     - name: Restore
@@ -180,11 +200,13 @@ jobs:
       shell: powershell
 
     - name: Build
+      if: steps.resolve_version.outputs.publish == 'true'
       env:
         LLT_CERT_PASSWORD: ${{ secrets.LLT_CERT_PASSWORD }}
       run: .\make_action.bat ${{ steps.resolve_version.outputs.version }}
 
     - name: Rename installer
+      if: steps.resolve_version.outputs.publish == 'true'
       run: |
         $oldPath = "build_installer\LenovoLegionToolkitSetup.exe"
         $newPath = "build_installer\LenovoLegionToolkitSetup-v${{ steps.resolve_version.outputs.version }}.exe"
@@ -198,6 +220,7 @@ jobs:
       shell: powershell
 
     - name: Verify installer
+      if: steps.resolve_version.outputs.publish == 'true'
       run: |
         $installerPath = "build_installer\LenovoLegionToolkitSetup-v${{ steps.resolve_version.outputs.version }}.exe"
         if (-not (Test-Path $installerPath)) {
@@ -207,6 +230,7 @@ jobs:
       shell: powershell
 
     - name: Prune Old Dev Releases
+      if: steps.resolve_version.outputs.publish == 'true'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -231,6 +255,7 @@ jobs:
       shell: powershell
 
     - name: Publish Dev Release
+      if: steps.resolve_version.outputs.publish == 'true'
       uses: softprops/action-gh-release@v2.0.8
       with:
         tag_name: ${{ steps.resolve_version.outputs.tag_name }}
@@ -244,6 +269,7 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Upload artifact
+      if: steps.resolve_version.outputs.publish == 'true'
       uses: actions/upload-artifact@v4
       with:
         name: installer-v${{ steps.resolve_version.outputs.version }}-Dev
