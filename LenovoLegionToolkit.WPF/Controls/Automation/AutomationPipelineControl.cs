@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -624,6 +624,7 @@ public class AutomationPipelineControl : UserControl
                 SpectrumKeyboardBacklightImportProfileAutomationStep s => new SpectrumKeyboardBacklightImportProfileAutomationStepControl(s),
                 SpectrumKeyboardBacklightProfileAutomationStep s => new SpectrumKeyboardBacklightProfileAutomationStepControl(s),
                 TurnOffMonitorsAutomationStep s => new TurnOffMonitorsAutomationStepControl(s),
+                PowerOperationAutomationStep s => new PowerOperationAutomationStepControl(s),
                 WiFiAutomationStep s => new WiFiAutomationStepControl(s),
                 AirplaneModeAutomationStep s => new AirplaneModeAutomationStepControl(s),
                 TouchpadLockAutomationStep s => new TouchpadLockAutomationStepControl(s),

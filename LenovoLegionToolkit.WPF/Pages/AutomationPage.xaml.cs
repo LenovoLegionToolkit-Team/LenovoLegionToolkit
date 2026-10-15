@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -207,6 +207,7 @@ public partial class AutomationPage
             new SpectrumKeyboardBacklightImportProfileAutomationStep(default),
             new TouchpadLockAutomationStep(default),
             new TurnOffMonitorsAutomationStep(),
+            new PowerOperationAutomationStep(default),
             new WiFiAutomationStep(default),
             new AirplaneModeAutomationStep(default),
             new WhiteKeyboardBacklightAutomationStep(default),

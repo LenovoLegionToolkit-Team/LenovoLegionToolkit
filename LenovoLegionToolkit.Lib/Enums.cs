@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using LenovoLegionToolkit.Lib.Resources;
 
@@ -1003,6 +1003,18 @@ public enum ToggleState
     On,
     [Display(ResourceType = typeof(Resource), Name = "ToggleState_Toggle")]
     Toggle,
+}
+
+public enum PowerOperationState
+{
+    [Display(ResourceType = typeof(Resource), Name = "PowerOperationState_Shutdown")]
+    Shutdown,
+    [Display(ResourceType = typeof(Resource), Name = "PowerOperationState_Restart")]
+    Restart,
+    [Display(ResourceType = typeof(Resource), Name = "PowerOperationState_Sleep")]
+    Sleep,
+    [Display(ResourceType = typeof(Resource), Name = "PowerOperationState_Hibernate")]
+    Hibernate,
 }
 
 public enum TouchpadLockState

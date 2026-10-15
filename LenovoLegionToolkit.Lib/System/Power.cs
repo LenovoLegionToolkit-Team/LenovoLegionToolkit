@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using Windows.Win32;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
@@ -38,6 +39,32 @@ public static class Power
 
         await CMD.RunAsync("shutdown", "/r /t 0").ConfigureAwait(false);
     }
+
+    public static async Task ShutdownAsync()
+    {
+        Log.Instance.Trace($"Shutting down...");
+
+        await CMD.RunAsync("shutdown", "/s /t 0").ConfigureAwait(false);
+    }
+
+    public static Task SleepAsync()
+    {
+        Log.Instance.Trace($"Sleeping...");
+
+        SetSuspendState(false, true, false);
+        return Task.CompletedTask;
+    }
+
+    public static Task HibernateAsync()
+    {
+        Log.Instance.Trace($"Hibernating...");
+
+        SetSuspendState(true, true, false);
+        return Task.CompletedTask;
+    }
+
+    [DllImport("powrprof.dll", SetLastError = true)]
+    private static extern bool SetSuspendState([MarshalAs(UnmanagedType.Bool)] bool bHibernate, [MarshalAs(UnmanagedType.Bool)] bool bForce, [MarshalAs(UnmanagedType.Bool)] bool bWakeupEventsDisabled);
 
     private static async Task<bool?> IsAcFitForOc()
     {
