@@ -166,14 +166,12 @@ jobs:
 
         $publish = "true"
         try {
-          $existingRelease = $null
-          $existingReleaseJson = gh release view $tagName --repo $env:GITHUB_REPOSITORY --json name,targetCommitish 2>$null
-          if ($LASTEXITCODE -eq 0 -and $existingReleaseJson) {
-            $existingRelease = $existingReleaseJson | ConvertFrom-Json
-          }
-          if ($existingRelease -and $existingRelease.targetCommitish -ne "dev") {
+          $listedReleases = gh release list --repo $env:GITHUB_REPOSITORY --limit 100 --json tagName,name | ConvertFrom-Json
+          foreach ($listedRelease in @($listedReleases)) {
+            if ($listedRelease.tagName -ne $tagName) { continue }
+            if ($listedRelease.name -like '*(Dev)*') { continue }
             $publish = "false"
-            Write-Warning "Tag $tagName is already reserved by '$($existingRelease.name)', skipping this Dev release."
+            Write-Warning "Tag $tagName is already reserved by '$($listedRelease.name)', skipping this Dev release."
           }
         } catch {
           Write-Warning "Could not check whether $tagName is reserved: $_"
