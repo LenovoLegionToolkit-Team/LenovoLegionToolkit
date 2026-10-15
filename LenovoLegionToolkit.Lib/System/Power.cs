@@ -1,4 +1,5 @@
-﻿using System.Runtime.InteropServices;
+﻿using System;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using Windows.Win32;
 using LenovoLegionToolkit.Lib.System.Management;
@@ -33,6 +34,9 @@ public static class Power
         return sps.SystemStatusFlag == 1;
     }
 
+    /// <summary>
+    /// Restarts the machine immediately by invoking the system shutdown command with a restart flag.
+    /// </summary>
     public static async Task RestartAsync()
     {
         Log.Instance.Trace($"Restarting...");
@@ -40,6 +44,9 @@ public static class Power
         await CMD.RunAsync("shutdown", "/r /t 0").ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Shuts down the machine immediately by invoking the system shutdown command.
+    /// </summary>
     public static async Task ShutdownAsync()
     {
         Log.Instance.Trace($"Shutting down...");
@@ -47,19 +54,31 @@ public static class Power
         await CMD.RunAsync("shutdown", "/s /t 0").ConfigureAwait(false);
     }
 
+    /// <summary>
+    /// Suspends the machine to sleep (S3). Throws <see cref="InvalidOperationException"/> when
+    /// the operating system rejects the suspend request so callers can react to the failure.
+    /// </summary>
     public static Task SleepAsync()
     {
         Log.Instance.Trace($"Sleeping...");
 
-        SetSuspendState(false, true, false);
+        if (!SetSuspendState(false, true, false))
+            throw new InvalidOperationException($"Failed to suspend the machine. (Error {Marshal.GetLastWin32Error()})");
+
         return Task.CompletedTask;
     }
 
+    /// <summary>
+    /// Hibernates the machine (S4). Throws <see cref="InvalidOperationException"/> when the
+    /// operating system rejects the hibernate request so callers can react to the failure.
+    /// </summary>
     public static Task HibernateAsync()
     {
         Log.Instance.Trace($"Hibernating...");
 
-        SetSuspendState(true, true, false);
+        if (!SetSuspendState(true, true, false))
+            throw new InvalidOperationException($"Failed to hibernate the machine. (Error {Marshal.GetLastWin32Error()})");
+
         return Task.CompletedTask;
     }
 

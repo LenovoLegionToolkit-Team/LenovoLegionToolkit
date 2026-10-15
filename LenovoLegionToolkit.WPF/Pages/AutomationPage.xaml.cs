@@ -163,6 +163,9 @@ public partial class AutomationPage
         _loaderManual.IsLoading = false;
     }
 
+    /// <summary>
+    /// Builds the list of automation steps that users can add to a pipeline.
+    /// </summary>
     private async Task<IAutomationStep[]> GetSupportedAutomationStepsAsync()
     {
         var steps = new List<IAutomationStep>

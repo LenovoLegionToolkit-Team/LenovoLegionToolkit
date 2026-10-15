@@ -1005,14 +1005,29 @@ public enum ToggleState
     Toggle,
 }
 
+/// <summary>
+/// Specifies the power operation performed by <c>PowerOperationAutomationStep</c>.
+/// </summary>
 public enum PowerOperationState
 {
+    /// <summary>
+    /// Shut down the machine.
+    /// </summary>
     [Display(ResourceType = typeof(Resource), Name = "PowerOperationState_Shutdown")]
     Shutdown,
+    /// <summary>
+    /// Restart the machine.
+    /// </summary>
     [Display(ResourceType = typeof(Resource), Name = "PowerOperationState_Restart")]
     Restart,
+    /// <summary>
+    /// Suspend the machine to sleep (S3).
+    /// </summary>
     [Display(ResourceType = typeof(Resource), Name = "PowerOperationState_Sleep")]
     Sleep,
+    /// <summary>
+    /// Hibernate the machine (S4).
+    /// </summary>
     [Display(ResourceType = typeof(Resource), Name = "PowerOperationState_Hibernate")]
     Hibernate,
 }

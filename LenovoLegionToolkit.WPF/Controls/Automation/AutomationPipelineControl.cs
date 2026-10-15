@@ -571,6 +571,9 @@ public class AutomationPipelineControl : UserControl
         OnChanged?.Invoke(this, EventArgs.Empty);
     }
 
+    /// <summary>
+    /// Creates the UI control bound to the given automation step for display in the pipeline editor.
+    /// </summary>
     private async Task<AbstractAutomationStepControl> GenerateStepControlAsync(IAutomationStep automationStep)
     {
         AbstractAutomationStepControl control;
