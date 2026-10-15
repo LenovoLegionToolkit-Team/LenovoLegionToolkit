@@ -433,12 +433,9 @@ public enum NativeWindowsMessage
     MonitorOff,
     DeviceConnected,
     DeviceDisconnected,
-    MonitorConnected,
-    MonitorDisconnected,
     ExternalMonitorConnected,
     ExternalMonitorDisconnected,
-    DisplayDeviceChanged,
-    BatterySaverEnabled
+    DisplayDeviceChanged
 }
 
 public enum NonGamingCapabilityID
