@@ -166,14 +166,24 @@ public class GPUOverclockController
 
             return applied;
         }
-        catch (NVIDIAApiException ex) when (ex.Status is Status.GpuNotPowered or Status.PortIdNotFound)
+        catch (NVIDIAApiException ex) when (ex.Status is Status.GpuNotPowered
+            or Status.PortIdNotFound
+            or Status.NvidiaDeviceNotFound
+            or Status.HandleInvalidated)
         {
-            Log.Instance.Trace($"dGPU is not powered, overclock not applied, keeping settings: {info}.", ex);
+            Log.Instance.Trace($"dGPU is not available, overclock not applied, keeping settings: {info}.", ex);
 
             return false;
         }
         catch (Exception ex)
         {
+            if (info == GPUOverclockInfo.Zero)
+            {
+                Log.Instance.Trace($"Failed to apply overclock: {info}, nothing to clear, keeping settings.", ex);
+
+                return false;
+            }
+
             Log.Instance.Trace($"Failed to apply overclock: {info}, clearing settings...", ex);
 
             _settings.Store.Enabled = false;
