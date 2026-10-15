@@ -118,8 +118,8 @@ public class PowerModeListener(
             Log.Instance.Trace($"RestoreDefaultsInOtherPowerModeAsync completed [elapsed={restSw.ElapsedMilliseconds}ms]");
         }
 
-        await windowsPowerModeController.SetPowerModeAsync(value).ConfigureAwait(false);
-        await windowsPowerPlanController.SetPowerPlanAsync(value).ConfigureAwait(false);
+        await windowsPowerModeController.SetPowerModeAsync(value, skipThrottle: true).ConfigureAwait(false);
+        await windowsPowerPlanController.SetPowerPlanAsync(value, skipThrottle: true).ConfigureAwait(false);
 
         var gpuOverclockController = IoCContainer.Resolve<GPUOverclockController>();
         Log.Instance.Trace($"Checking GPUOverclock IsSupportedAsync...");

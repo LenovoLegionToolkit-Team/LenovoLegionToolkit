@@ -59,8 +59,8 @@ public class ThermalModeListener(
 
         Log.Instance.Trace($"ThermalModeListener mapping: ThermalMode={state} -> PowerMode={powerModeState}");
 
-        await windowsPowerModeController.SetPowerModeAsync(powerModeState).ConfigureAwait(false);
-        await windowsPowerPlanController.SetPowerPlanAsync(powerModeState).ConfigureAwait(false);
+        await windowsPowerModeController.SetPowerModeAsync(powerModeState, skipThrottle: true).ConfigureAwait(false);
+        await windowsPowerPlanController.SetPowerPlanAsync(powerModeState, skipThrottle: true).ConfigureAwait(false);
     }
 
     public void SuppressNext()

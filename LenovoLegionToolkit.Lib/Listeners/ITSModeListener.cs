@@ -67,8 +67,8 @@ public class ITSModeListener(
 
     private async Task ChangeDependenciesAsync(ITSMode value)
     {
-        await windowsPowerModeController.SetPowerModeAsync(value).ConfigureAwait(false);
-        await windowsPowerPlanController.SetPowerPlanAsync(value, true).ConfigureAwait(false);
+        await windowsPowerModeController.SetPowerModeAsync(value, skipThrottle: true).ConfigureAwait(false);
+        await windowsPowerPlanController.SetPowerPlanAsync(value, true, skipThrottle: true).ConfigureAwait(false);
 
         if (IoCContainer.TryResolve<GodModeController>() is { } godModeController)
         {

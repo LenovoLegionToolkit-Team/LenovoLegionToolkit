@@ -574,7 +574,7 @@ public partial class WindowsPowerPlansWindow
                     return;
                 }
             }
-            await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(preset);
+            await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(preset, skipThrottle: true);
         }
     }
 
@@ -599,7 +599,7 @@ public partial class WindowsPowerPlansWindow
         var currentState = await _powerModeFeature.GetStateAsync();
         if (currentState == powerModeState)
         {
-            await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync();
+            await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(skipThrottle: true);
         }
     }
 
@@ -617,7 +617,7 @@ public partial class WindowsPowerPlansWindow
         var currentState = await _itsModeFeature.GetStateAsync();
         if (currentState == itsMode)
         {
-            await _windowsPowerPlanController.SetPowerPlanAsync(itsMode, true);
+            await _windowsPowerPlanController.SetPowerPlanAsync(itsMode, true, skipThrottle: true);
         }
     }
 
@@ -642,7 +642,7 @@ public partial class WindowsPowerPlansWindow
         var currentState = await _itsModeFeature.GetStateAsync();
         if (currentState == itsMode)
         {
-            await _windowsPowerPlanController.SetPowerPlanAsync(itsMode, true);
+            await _windowsPowerPlanController.SetPowerPlanAsync(itsMode, true, skipThrottle: true);
         }
     }
 
@@ -666,7 +666,7 @@ public partial class WindowsPowerPlansWindow
 
             if (_isNonGaming && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
             {
-                await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated);
+                await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated, skipThrottle: true);
             }
             else if (await _powerModeFeature.GetStateAsync() == PowerModeState.GodMode && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
             {
@@ -701,11 +701,11 @@ public partial class WindowsPowerPlansWindow
 
             if (_isNonGaming && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
             {
-                await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated);
+                await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated, skipThrottle: true);
             }
             else if (await _powerModeFeature.GetStateAsync() == PowerModeState.GodMode && _godModeSettings.Store.ActivePresetId.ToString() == presetKey)
             {
-                await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated);
+                await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(updated, skipThrottle: true);
             }
         }
     }

@@ -140,7 +140,7 @@ public partial class SettingsPowerControl
 
         if (powerModeMappingMode != PowerModeMappingMode.Disabled)
         {
-            await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync();
+            await _powerModeFeature.EnsureCorrectWindowsPowerSettingsAreSetAsync(skipThrottle: true);
         }
     }
 
