@@ -249,8 +249,12 @@ public abstract class OsdWindowBase : Window
         if (SavedPosition is { } savedPosition)
         {
             var workArea = ScreenWorkAreaForDeviceName(savedPosition.MonitorName);
-            var left = workArea.Left + savedPosition.XRatio * workArea.Width;
-            var top = workArea.Top + savedPosition.YRatio * workArea.Height;
+
+            var width = ActualWidth > 0 ? ActualWidth : Width;
+            var height = ActualHeight > 0 ? ActualHeight : Height;
+
+            var left = Math.Clamp(workArea.Left + savedPosition.XRatio * workArea.Width, workArea.Left, Math.Max(workArea.Left, workArea.Right - width));
+            var top = Math.Clamp(workArea.Top + savedPosition.YRatio * workArea.Height, workArea.Top, Math.Max(workArea.Top, workArea.Bottom - height));
 
             if (IsPositionOnScreen(left, top))
             {
