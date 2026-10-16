@@ -15,6 +15,7 @@
     ShowInTaskbar="False"
     SizeToContent="WidthAndHeight"
     Topmost="True"
+    UseLayoutRounding="True"
     WindowStartupLocation="Manual"
     WindowStyle="None">
 
@@ -27,6 +28,19 @@
             <Setter Property="TextAlignment" Value="Center" />
             <Setter Property="Margin" Value="0,0,8,0" />
             <Setter Property="MinWidth" Value="30" />
+        </Style>
+        <Style x:Key="SeparatorStyle" TargetType="Rectangle">
+            <Setter Property="Opacity" Value="0.5" />
+            <Setter Property="OpacityMask">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Offset="0.0" Color="Transparent" />
+                        <GradientStop Offset="0.2" Color="Black" />
+                        <GradientStop Offset="0.8" Color="Black" />
+                        <GradientStop Offset="1.0" Color="Transparent" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
 
@@ -82,10 +96,10 @@
                     x:Name="_separatorFps"
                     Grid.Column="1"
                     Width="1"
-                    Height="12"
+                    Height="20"
                     Margin="10,0"
                     VerticalAlignment="Center"
-                    Fill="#555555" />
+                    Style="{StaticResource SeparatorStyle}" />
 
                 <StackPanel
                     x:Name="_cpuGroup"
@@ -141,10 +155,10 @@
                     x:Name="_separatorCpu"
                     Grid.Column="3"
                     Width="1"
-                    Height="12"
+                    Height="18"
                     Margin="10,0"
                     VerticalAlignment="Center"
-                    Fill="#555555" />
+                    Style="{StaticResource SeparatorStyle}" />
 
                 <StackPanel
                     x:Name="_gpuGroup"
@@ -192,10 +206,10 @@
                     x:Name="_separatorGpu"
                     Grid.Column="5"
                     Width="1"
-                    Height="12"
+                    Height="18"
                     Margin="10,0"
                     VerticalAlignment="Center"
-                    Fill="#555555" />
+                    Style="{StaticResource SeparatorStyle}" />
 
                 <StackPanel
                     x:Name="_memoryGroup"
@@ -221,10 +235,10 @@
                     x:Name="_separatorMemory"
                     Grid.Column="7"
                     Width="1"
-                    Height="12"
+                    Height="18"
                     Margin="10,0"
                     VerticalAlignment="Center"
-                    Fill="#555555" />
+                    Style="{StaticResource SeparatorStyle}" />
 
                 <StackPanel
                     x:Name="_pchGroup"

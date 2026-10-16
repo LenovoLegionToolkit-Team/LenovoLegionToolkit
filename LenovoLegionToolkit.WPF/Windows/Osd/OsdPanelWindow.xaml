@@ -17,6 +17,7 @@
     SizeToContent="WidthAndHeight"
     Top="20"
     Topmost="True"
+    UseLayoutRounding="True"
     WindowStartupLocation="Manual"
     WindowStyle="None">
 
@@ -24,7 +25,7 @@
     <Border
         x:Name="_rootBorder"
         MinWidth="220"
-        Padding="15"
+        Padding="15,8"
         Background="Transparent"
         ClipToBounds="True"
         CornerRadius="12">
@@ -65,9 +66,22 @@
                             </Setter.Value>
                         </Setter>
                     </Style>
+                    <Style x:Key="SeparatorStyle" TargetType="Separator">
+                        <Setter Property="Opacity" Value="0.4" />
+                        <Setter Property="OpacityMask">
+                            <Setter.Value>
+                                <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                    <GradientStop Offset="0.0" Color="Transparent" />
+                                    <GradientStop Offset="0.2" Color="Black" />
+                                    <GradientStop Offset="0.8" Color="Black" />
+                                    <GradientStop Offset="1.0" Color="Transparent" />
+                                </LinearGradientBrush>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
                 </StackPanel.Resources>
 
-                <StackPanel x:Name="_fpsGroup" Margin="0,5,0,0">
+                <StackPanel x:Name="_fpsGroup">
                     <TextBlock
                         x:Name="_fpsHeader"
                         Margin="0,0,0,5"
@@ -125,12 +139,9 @@
                     </Grid>
                 </StackPanel>
 
-                <Rectangle
-                    x:Name="_separatorFps"
-                    Height="8"
-                    Fill="Transparent" />
+                <Separator x:Name="_separatorFps" Margin="0,4" Style="{StaticResource SeparatorStyle}" />
 
-                <StackPanel x:Name="_cpuGroup" Margin="0,5,0,0">
+                <StackPanel x:Name="_cpuGroup">
                     <TextBlock
                         x:Name="_cpuHeader"
                         Margin="0,0,0,5"
@@ -268,7 +279,7 @@
                     </Grid>
                 </StackPanel>
 
-                <Separator Margin="0,8" Background="#3A3A3A" />
+                <Separator x:Name="_separatorCpu" Margin="0,4" Style="{StaticResource SeparatorStyle}" />
 
                 <StackPanel x:Name="_gpuGroup">
                     <TextBlock
@@ -392,7 +403,7 @@
                     </Grid>
                 </StackPanel>
 
-                <Separator Margin="0,8" Background="#3A3A3A" />
+                <Separator x:Name="_separatorGpu" Margin="0,4" Style="{StaticResource SeparatorStyle}" />
 
                 <StackPanel x:Name="_memoryGroup">
                     <TextBlock
@@ -436,7 +447,7 @@
                     </Grid>
                 </StackPanel>
 
-                <Separator Margin="0,8" Background="#3A3A3A" />
+                <Separator x:Name="_separatorMemory" Margin="0,4" Style="{StaticResource SeparatorStyle}" />
 
                 <StackPanel x:Name="_pchGroup">
                     <TextBlock
