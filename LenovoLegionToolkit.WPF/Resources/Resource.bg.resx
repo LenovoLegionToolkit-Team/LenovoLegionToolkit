@@ -3369,7 +3369,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Restart to apply changes.</value>
   </data>
   <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
-    <value>Automatically restore the last ITS mode when Lenovo Legion Toolkit starts.</value>
+    <value>Automatically restore the last ITS mode when the app starts.</value>
   </data>
   <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
     <value>Restore ITS Mode on Startup</value>
@@ -3925,16 +3925,16 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="Yes" xml:space="preserve">
     <value>Да</value>
   </data>
-  <data name="PowerButtonLedSync_Title" xml:space="preserve">
-    <value>Sync power-button brightness with keyboard</value>
+  <data name="PowerButtonLedSync_Failed" xml:space="preserve">
+    <value>Synchronization failed.</value>
   </data>
-  <data name="PowerButtonLedSync_Subtitle" xml:space="preserve">
-    <value>Follow keyboard brightness. Turning this off restores the default power-button brightness after synchronization. Requires compatible firmware.</value>
+  <data name="PowerButtonLedSync_Message" xml:space="preserve">
+    <value>Synchronize the power button light with the keyboard backlight.</value>
+  </data>
+  <data name="PowerButtonLedSync_Title" xml:space="preserve">
+    <value>Power Button Light Sync</value>
   </data>
   <data name="PowerButtonLedSync_Unsupported" xml:space="preserve">
-    <value>This lighting interface does not report support. Your preference is saved, but synchronization will not run.</value>
-  </data>
-  <data name="PowerButtonLedSync_Failed" xml:space="preserve">
-    <value>The last lighting operation failed or was not confirmed by firmware. Your preference is saved. Turn synchronization off and on to retry.</value>
+    <value>Your device does not support the power button light sync.</value>
   </data>
 </root>
