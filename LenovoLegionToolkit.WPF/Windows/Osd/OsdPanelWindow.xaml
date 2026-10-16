@@ -9,7 +9,6 @@
     Title="OsdPanelWindow"
     Width="Auto"
     Height="Auto"
-    MinWidth="220"
     AllowsTransparency="True"
     Background="Transparent"
     Left="0"
@@ -24,6 +23,7 @@
     <Viewbox Stretch="Uniform" StretchDirection="DownOnly">
     <Border
         x:Name="_rootBorder"
+        MinWidth="220"
         Padding="15"
         Background="Transparent"
         ClipToBounds="True"
