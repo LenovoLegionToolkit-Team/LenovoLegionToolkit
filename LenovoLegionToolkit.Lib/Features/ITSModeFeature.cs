@@ -248,7 +248,7 @@ public partial class ITSModeFeature : IFeature<ITSMode>
             var currentState = await GetStateAsync().ConfigureAwait(false);
             var savedState = _settings.Store.LastState;
 
-            if (savedState != ITSMode.None && savedState != currentState)
+            if (_settings.Store.RestoreLastStateOnStartup && savedState != ITSMode.None && savedState != currentState)
             {
                 Log.Instance.Trace($"Restoring saved ITS mode: {savedState}");
                 await SetStateAsync(savedState).ConfigureAwait(false);

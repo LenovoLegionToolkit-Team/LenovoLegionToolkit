@@ -9,6 +9,21 @@
     <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
         <StackPanel Margin="0,0,16,12">
             <custom:CardControl
+                x:Name="_restoreITSModeOnStartupCard"
+                Margin="0,0,0,8"
+                Icon="TopSpeed24"
+                Visibility="Collapsed">
+                <custom:CardControl.Header>
+                    <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_RestoreITSModeOnStartup_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_RestoreITSModeOnStartup_Message}" />
+                </custom:CardControl.Header>
+                <wpfui:ToggleSwitch
+                    x:Name="_restoreITSModeOnStartupToggle"
+                    Margin="0,0,0,8"
+                    AutomationProperties.Name="{x:Static resources:Resource.SettingsPage_RestoreITSModeOnStartup_Title}"
+                    Click="RestoreITSModeOnStartupToggle_Click"
+                    Visibility="Hidden" />
+            </custom:CardControl>
+            <custom:CardControl
                 x:Name="_godModeFnQSwitchableCard"
                 Margin="0,0,0,8"
                 Icon="TopSpeed24"

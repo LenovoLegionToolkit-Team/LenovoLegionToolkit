@@ -1813,12 +1813,6 @@ Click Yes to disable and No to ignore.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Repeat</value>
   </data>
-  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
-  </data>
-  <data name="MainWindow_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController is running in the background.</value>
-  </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>API rate limit reached, please try again later.</value>
   </data>
@@ -1830,6 +1824,9 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>No updates found</value>
+  </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space is running in the background.</value>
@@ -1869,6 +1866,9 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>Update {0} available!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Don't show again.</value>
@@ -3359,6 +3359,12 @@ Performance mode can also be changed with Fn+Q.</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Restart to apply changes.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Automatically restore the last ITS mode when Lenovo Legion Toolkit starts.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restore ITS Mode on Startup</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Execute C# scripts in the application runtime.</value>
