@@ -27,7 +27,7 @@
                 <controls:CardHeaderControl
                     x:Name="_powerButtonLedHeader"
                     Title="{x:Static resources:Resource.PowerButtonLedSync_Title}"
-                    Subtitle="{x:Static resources:Resource.PowerButtonLedSync_Subtitle}" />
+                    Subtitle="{x:Static resources:Resource.PowerButtonLedSync_Message}" />
             </custom:CardControl.Header>
             <wpfui:ToggleSwitch
                 x:Name="_powerButtonLedSyncToggle"

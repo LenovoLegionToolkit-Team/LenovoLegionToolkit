@@ -7318,7 +7318,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 The last lighting operation failed or was not confirmed by firmware. Your preference is saved. Turn synchronization off and on to retry. 的本地化字符串。
+        ///   查找类似 Synchronization failed. 的本地化字符串。
         /// </summary>
         public static string PowerButtonLedSync_Failed {
             get {
@@ -7327,16 +7327,16 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Follow keyboard brightness. Turning this off restores the default power-button brightness after synchronization. Requires compatible firmware. 的本地化字符串。
+        ///   查找类似 Synchronize the power button light with the keyboard backlight. 的本地化字符串。
         /// </summary>
-        public static string PowerButtonLedSync_Subtitle {
+        public static string PowerButtonLedSync_Message {
             get {
-                return ResourceManager.GetString("PowerButtonLedSync_Subtitle", resourceCulture);
+                return ResourceManager.GetString("PowerButtonLedSync_Message", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Sync power-button brightness with keyboard 的本地化字符串。
+        ///   查找类似 Power Button Light Sync 的本地化字符串。
         /// </summary>
         public static string PowerButtonLedSync_Title {
             get {
@@ -7345,7 +7345,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 This lighting interface does not report support. Your preference is saved, but synchronization will not run. 的本地化字符串。
+        ///   查找类似 Your device does not support the power button light sync. 的本地化字符串。
         /// </summary>
         public static string PowerButtonLedSync_Unsupported {
             get {
@@ -9777,7 +9777,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Automatically restore the last ITS mode when Lenovo Legion Toolkit starts. 的本地化字符串。
+        ///   查找类似 Automatically restore the last ITS mode when the app starts. 的本地化字符串。
         /// </summary>
         public static string SettingsPage_RestoreITSModeOnStartup_Message {
             get {
