@@ -143,12 +143,26 @@
                 <custom:CardControl.Header>
                     <controls:CardHeaderControl Title="{x:Static resources:Resource.SettingsPage_EnableLogging_Title}" Subtitle="{x:Static resources:Resource.SettingsPage_EnableLogging_Message}" />
                 </custom:CardControl.Header>
-                <wpfui:ToggleSwitch
-                    x:Name="_enableLoggingToggle"
+                <StackPanel
                     Margin="0,0,0,8"
-                    AutomationProperties.Name="{x:Static resources:Resource.SettingsPage_EnableLogging_Title}"
-                    Click="EnableLoggingToggle_Click"
-                    Visibility="Hidden" />
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left">
+                    <wpfui:Button
+                        x:Name="_exportButton"
+                        VerticalAlignment="Center"
+                        Appearance="Secondary"
+                        Click="Export_Click"
+                        Content="{x:Static resources:Resource.SettingsPage_Export_Title}"
+                        ToolTip="{x:Static resources:Resource.SettingsPage_Export_Message}"
+                        Visibility="Collapsed" />
+                    <wpfui:ToggleSwitch
+                        x:Name="_enableLoggingToggle"
+                        Margin="12,0,0,0"
+                        VerticalAlignment="Center"
+                        AutomationProperties.Name="{x:Static resources:Resource.SettingsPage_EnableLogging_Title}"
+                        Click="EnableLoggingToggle_Click"
+                        Visibility="Hidden" />
+                </StackPanel>
             </custom:CardControl>
             <custom:CardAction
                 x:Name="_sensorSettingsCardControl"

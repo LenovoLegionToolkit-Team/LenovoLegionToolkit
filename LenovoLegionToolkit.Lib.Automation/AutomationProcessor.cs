@@ -132,6 +132,7 @@ public class AutomationProcessor(
 
     private async Task RunNowCoreAsync(AutomationPipeline pipeline)
     {
+        using var logScope = Log.BeginScope(Log.CurrentCorrelationId);
         Log.Instance.Trace($"Pipeline run now pending...");
 
         using (await _runLock.LockAsync().ConfigureAwait(false))
@@ -174,6 +175,7 @@ public class AutomationProcessor(
 
     private async Task RunAsync(IAutomationEvent automationEvent)
     {
+        using var logScope = Log.BeginScope(Log.CurrentCorrelationId);
         await Task.Run(() => RunCoreAsync(automationEvent)).ConfigureAwait(false);
     }
 

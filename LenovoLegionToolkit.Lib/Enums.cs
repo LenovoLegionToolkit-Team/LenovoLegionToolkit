@@ -405,6 +405,14 @@ public enum LightingChangeState
     Ports = 1,
 }
 
+public enum LogLevel
+{
+    Trace,
+    Info,
+    Warning,
+    Error
+}
+
 public enum MicrophoneState
 {
     [Display(ResourceType = typeof(Resource), Name = "MicrophoneState_Off")]

@@ -160,6 +160,12 @@ internal struct CIntelligentCooling
     private long value;
 }
 
+public sealed record DiagnosticConfigOptions
+{
+    public bool IncludeConfiguration { get; init; } = true;
+    public int MaxFileBytes { get; init; } = 2 * 1024 * 1024;
+}
+
 public readonly struct DiscreteCapability(CapabilityID id, int value)
 {
     public CapabilityID Id { get; } = id;
@@ -574,6 +580,83 @@ public readonly struct LampArrayInfo(string id, string displayName, LampArray la
     public readonly string DisplayName = displayName;
     public readonly LampArray LampArray = lampArray;
 }
+
+public sealed record LogEntry
+{
+    public long Id { get; init; }
+    public DateTimeOffset Timestamp { get; init; } = DateTimeOffset.UtcNow;
+    public string DayKey { get; init; } = string.Empty;
+    public LogLevel Level { get; init; }
+    public string Module { get; init; } = "Application";
+    public string? EventId { get; init; }
+    public string Message { get; init; } = string.Empty;
+    public string? Exception { get; init; }
+    public string? ExceptionType { get; init; }
+    public int ThreadId { get; init; } = Environment.CurrentManagedThreadId;
+    public int ProcessId { get; init; } = Environment.ProcessId;
+    public string? SourceFile { get; init; }
+    public int SourceLine { get; init; }
+    public string? Member { get; init; }
+    public string? CorrelationId { get; init; }
+    public string? PropertiesJson { get; init; }
+    public string SessionId { get; init; } = string.Empty;
+}
+
+public sealed record LogQuery
+{
+    public DateTimeOffset? From { get; init; }
+    public DateTimeOffset? To { get; init; }
+    public LogLevel? Level { get; init; }
+    public string? Module { get; init; }
+    public string? EventId { get; init; }
+    public string? Keyword { get; init; }
+    public string? ExceptionType { get; init; }
+    public string? CorrelationId { get; init; }
+    public string? SessionId { get; init; }
+    public string? DayKey { get; init; }
+    public long? BeforeId { get; init; }
+    public int Limit { get; init; } = 500;
+
+    internal void Validate()
+    {
+        if (From > To)
+        {
+            throw new ArgumentException("The start time must precede the end time.");
+        }
+
+        if (Limit is < 1 or > 5000)
+        {
+            throw new ArgumentOutOfRangeException(nameof(Limit));
+        }
+    }
+}
+
+public sealed record LogStoreOptions
+{
+    public int QueueCapacity { get; init; } = 4096;
+    public int BatchSize { get; init; } = 256;
+
+    public TimeSpan BatchInterval { get; init; } = TimeSpan.FromMilliseconds(200);
+
+    public TimeSpan Retention { get; init; } = TimeSpan.FromDays(3);
+    public long MaxRecords { get; init; } = 100_000;
+    public long MaxDatabaseBytes { get; init; } = 64 * 1024 * 1024;
+    public long MaxWalBytes { get; init; } = 8 * 1024 * 1024;
+
+    public TimeSpan MaintenanceInterval { get; init; } = TimeSpan.FromMinutes(1);
+
+    internal void Validate()
+    {
+        if (QueueCapacity < 1 || BatchSize < 1 || BatchSize > QueueCapacity ||
+            BatchInterval <= TimeSpan.Zero || Retention <= TimeSpan.Zero || MaxRecords < 1 ||
+            MaxDatabaseBytes < 1024 * 1024 || MaxWalBytes < 1024 * 1024 || MaintenanceInterval <= TimeSpan.Zero)
+        {
+            throw new ArgumentOutOfRangeException(nameof(LogStoreOptions));
+        }
+    }
+}
+
+public sealed record LogStoreStatus(long DroppedRecords, long FailedRecords, string? LastError);
 
 public readonly record struct LogoDiyVersion(uint Raw)
 {

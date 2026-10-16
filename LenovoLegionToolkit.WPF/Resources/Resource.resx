@@ -1813,12 +1813,6 @@ Click Yes to disable and No to ignore.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Repeat</value>
   </data>
-  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
-  </data>
-  <data name="MainWindow_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController is running in the background.</value>
-  </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>API rate limit reached, please try again later.</value>
   </data>
@@ -1830,6 +1824,9 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>No updates found</value>
+  </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space is running in the background.</value>
@@ -1869,6 +1866,9 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>Update {0} available!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Don't show again.</value>
@@ -3224,6 +3224,21 @@ Performance mode can also be changed with Fn+Q.</value>
   </data>
   <data name="SettingsPage_EnableLogging_Title" xml:space="preserve">
     <value>Enable Logging</value>
+  </data>
+  <data name="SettingsPage_Export_Message" xml:space="preserve">
+    <value>Export current configuration and log database.</value>
+  </data>
+  <data name="SettingsPage_Export_Review" xml:space="preserve">
+    <value>The archive contains the current configuration, log database snapshot, and manifest. Review it before sharing.</value>
+  </data>
+  <data name="SettingsPage_Export_Success" xml:space="preserve">
+    <value>Export completed: {0}</value>
+  </data>
+  <data name="SettingsPage_Export_Timeout" xml:space="preserve">
+    <value>Export canceled or timed out.</value>
+  </data>
+  <data name="SettingsPage_Export_Title" xml:space="preserve">
+    <value>Export</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
     <value>Lenovo Vantage and/or ImController may not have been enabled correctly</value>

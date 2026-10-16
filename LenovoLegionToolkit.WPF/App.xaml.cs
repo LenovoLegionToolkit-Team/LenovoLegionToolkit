@@ -364,6 +364,7 @@ public partial class App
 
     private void HandleCriticalStartupError(Exception ex)
     {
+        Log.Instance.ErrorReport("Critical application startup error", ex);
         var errorMsg = $"CRITICAL STARTUP ERROR:\n{ex}";
 
         if (AppFlags.Instance is { Debug: true })
@@ -392,6 +393,7 @@ public partial class App
 
     private void Application_Exit(object sender, ExitEventArgs e)
     {
+        Log.Instance.Shutdown(TimeSpan.FromSeconds(3));
         _singleInstanceMutex?.Close();
     }
 
@@ -620,7 +622,7 @@ public partial class App
             Console.WriteLine(@$"[UnhandledException] {exception}");
         }
 
-        Log.Instance.Trace($"Exception in LogUnhandledException {exception.Message}", exception);
+        Log.Instance.ErrorReport("Unhandled application exception", exception);
         var userMessage = GetFriendlyErrorMessage(exception);
 
         if (Application.Current == null)

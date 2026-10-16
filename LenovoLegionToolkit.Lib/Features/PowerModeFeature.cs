@@ -58,6 +58,7 @@ public class PowerModeFeature(
 
     public async Task SetStateAsync(PowerModeState state, bool applyGodModePreset)
     {
+        using var logScope = Log.BeginScope(Log.CurrentCorrelationId);
         var allStates = await GetAllStatesAsync().ConfigureAwait(false);
         if (!allStates.Contains(state))
             throw new InvalidOperationException($"Unsupported power mode {state}");

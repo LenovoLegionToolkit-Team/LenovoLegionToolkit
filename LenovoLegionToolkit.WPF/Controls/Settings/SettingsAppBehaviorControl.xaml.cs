@@ -26,6 +26,7 @@ using LenovoLegionToolkit.WPF.Windows.Osd;
 using LenovoLegionToolkit.WPF.Windows.Settings;
 using LenovoLegionToolkit.WPF.Windows.Utils;
 using OsdSettingsAlias = LenovoLegionToolkit.WPF.Windows.Osd.OsdSettingsWindow;
+using Microsoft.Win32;
 
 namespace LenovoLegionToolkit.WPF.Controls.Settings;
 
@@ -58,6 +59,7 @@ public partial class SettingsAppBehaviorControl
         _alwaysOnTopToggle.IsChecked = _settings.Store.AlwaysOnTop;
         _compactModeToggle.IsChecked = _settings.Store.CompactMode;
         _enableLoggingToggle.IsChecked = _settings.Store.EnableLogging;
+        _exportButton.Visibility = _settings.Store.EnableLogging ? Visibility.Visible : Visibility.Collapsed;
 
         var useGpu = _settings.Store.GameDetection.UseDiscreteGPU;
         var useStore = _settings.Store.GameDetection.UseGameConfigStore;
@@ -257,6 +259,7 @@ public partial class SettingsAppBehaviorControl
         await Compatibility.PrintMachineInfoAsync().ConfigureAwait(false);
 
         mainWindow._openLogIndicator.Visibility = Utils.BooleanToVisibilityConverter.Convert(_settings.Store.EnableLogging);
+        _exportButton.Visibility = state.Value ? Visibility.Visible : Visibility.Collapsed;
     }
 
     private void NotificationsCard_Click(object sender, RoutedEventArgs e)
@@ -275,6 +278,74 @@ public partial class SettingsAppBehaviorControl
 
         var window = new SettingsBackupWindow { Owner = Window.GetWindow(this) };
         window.ShowDialog();
+    }
+
+    private async void Export_Click(object sender, RoutedEventArgs e)
+    {
+        if (_isRefreshing || !IsLoaded || !_settings.Store.EnableLogging)
+        {
+            return;
+        }
+
+        var confirmed = await MessageBoxHelper.ShowAsync(
+            Window.GetWindow(this),
+            Resource.SettingsPage_Export_Title,
+            Resource.SettingsPage_Export_Review,
+            Resource.SettingsPage_Export_Title,
+            Resource.Cancel);
+
+        if (!confirmed)
+        {
+            return;
+        }
+
+        var dialog = new SaveFileDialog
+        {
+            Filter = "ZIP archive (*.zip)|*.zip",
+            DefaultExt = ".zip",
+            AddExtension = true,
+            FileName = $"LLT-Export-{DateTime.Now:yyyyMMdd-HHmmss}.zip"
+        };
+
+        if (dialog.ShowDialog() != true)
+        {
+            return;
+        }
+
+        try
+        {
+            _exportButton.IsEnabled = false;
+            using var timeout = new System.Threading.CancellationTokenSource(TimeSpan.FromMinutes(2));
+            var version = typeof(App).Assembly.GetName().Version?.ToString() ?? "unknown";
+            await Log.Instance.Exporter.ExportZipAsync(
+                dialog.FileName,
+                new LogQuery(),
+                version,
+                timeout.Token);
+            await SnackbarHelper.ShowAsync(
+                Resource.SettingsPage_Export_Title,
+                string.Format(Resource.SettingsPage_Export_Success, dialog.FileName),
+                SnackbarType.Success);
+        }
+        catch (OperationCanceledException)
+        {
+            await SnackbarHelper.ShowAsync(
+                Resource.SettingsPage_Export_Title,
+                Resource.SettingsPage_Export_Timeout,
+                SnackbarType.Warning);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Export failed.", ex);
+            await SnackbarHelper.ShowAsync(
+                Resource.SettingsPage_Export_Title,
+                ex.Message,
+                SnackbarType.Error);
+        }
+        finally
+        {
+            _exportButton.IsEnabled = _settings.Store.EnableLogging;
+        }
     }
 
     private async void HardwareSensors_Toggle(object sender, RoutedEventArgs e)

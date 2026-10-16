@@ -552,12 +552,14 @@ public partial class MainWindow
 
     private void BringToForeground() => WindowExtensions.BringToForeground(this);
 
-    private static void OpenLog()
+    private void OpenLog()
     {
         try
         {
             if (!Directory.Exists(Folders.AppData))
+            {
                 return;
+            }
 
             Process.Start("explorer", Log.Instance.LogPath);
         }
