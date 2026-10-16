@@ -1816,12 +1816,6 @@ Clique em Sim para desativar e Não para ignorar.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Repetir</value>
   </data>
-  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
-  </data>
-  <data name="MainWindow_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController is running in the background.</value>
-  </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>Limite de taxa de API atingido, por favor, tente novamente mais tarde.</value>
   </data>
@@ -1833,6 +1827,9 @@ Clique em Sim para desativar e Não para ignorar.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>Nenhuma atualização encontrada</value>
+  </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>O espaço da Legião está sendo executado em segundo plano.</value>
@@ -1872,6 +1869,9 @@ Clique em Sim para desativar e Não para ignorar.</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>Atualização {0} disponível!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Não mostrar novamente.</value>
@@ -3368,6 +3368,12 @@ Uma reinicialização é recomendada após alterar esta opção.</value>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Reinicie para aplicar as alterações.</value>
   </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Automatically restore the last ITS mode when Lenovo Legion Toolkit starts.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restore ITS Mode on Startup</value>
+  </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Execute C# scripts in the application runtime.</value>
   </data>
@@ -3918,5 +3924,17 @@ O registro será ativado automaticamente, se você optar por continuar.</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Sim</value>
+  </data>
+  <data name="PowerButtonLedSync_Title" xml:space="preserve">
+    <value>Sync power-button brightness with keyboard</value>
+  </data>
+  <data name="PowerButtonLedSync_Subtitle" xml:space="preserve">
+    <value>Follow keyboard brightness. Turning this off restores the default power-button brightness after synchronization. Requires compatible firmware.</value>
+  </data>
+  <data name="PowerButtonLedSync_Unsupported" xml:space="preserve">
+    <value>This lighting interface does not report support. Your preference is saved, but synchronization will not run.</value>
+  </data>
+  <data name="PowerButtonLedSync_Failed" xml:space="preserve">
+    <value>The last lighting operation failed or was not confirmed by firmware. Your preference is saved. Turn synchronization off and on to retry.</value>
   </data>
 </root>
