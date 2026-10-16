@@ -64,6 +64,7 @@ public enum CapabilityID
     NvidiaGPUDynamicDisplaySwitching = 0x00040000,
     AMDSmartShiftMode = 0x00050001,
     AMDSkinTemperatureTracking = 0x00050002,
+    PowerLedBrightness = 0x0006040000,
     SupportedPowerModes = 0x00070000,
     LegionZoneSupportVersion = 0x00090000,
     AutoSwitchRefreshRate = 0x000A0000,

@@ -7318,6 +7318,42 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 The last lighting operation failed or was not confirmed by firmware. Your preference is saved. Turn synchronization off and on to retry. 的本地化字符串。
+        /// </summary>
+        public static string PowerButtonLedSync_Failed {
+            get {
+                return ResourceManager.GetString("PowerButtonLedSync_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Follow keyboard brightness. Turning this off restores the default power-button brightness after synchronization. Requires compatible firmware. 的本地化字符串。
+        /// </summary>
+        public static string PowerButtonLedSync_Subtitle {
+            get {
+                return ResourceManager.GetString("PowerButtonLedSync_Subtitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Sync power-button brightness with keyboard 的本地化字符串。
+        /// </summary>
+        public static string PowerButtonLedSync_Title {
+            get {
+                return ResourceManager.GetString("PowerButtonLedSync_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 This lighting interface does not report support. Your preference is saved, but synchronization will not run. 的本地化字符串。
+        /// </summary>
+        public static string PowerButtonLedSync_Unsupported {
+            get {
+                return ResourceManager.GetString("PowerButtonLedSync_Unsupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Powered Off 的本地化字符串。
         /// </summary>
         public static string PoweredOff {

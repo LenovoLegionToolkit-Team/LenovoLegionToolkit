@@ -46,6 +46,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public List<string> IncludedProcesses { get; set; } = [];
         public GameDetectionSettings GameDetection { get; set; } = new();
         public bool DynamicLightingWarningDontShowAgain { get; set; }
+        public bool PowerButtonLedSyncEnabled { get; set; }
         public bool CustomModeWarningDontShowAgain { get; set; }
         public bool EnableHardwareAcceleration { get; set; }
         public int GPUMonitoringInterval { get; set; } = 5000;

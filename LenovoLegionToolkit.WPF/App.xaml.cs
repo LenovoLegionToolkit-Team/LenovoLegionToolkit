@@ -282,6 +282,7 @@ public partial class App
             await SafeInitAsync(InitAIControllerAsync, "AI Controller");
             await SafeInitAsync(InitHWiNFOAsync, "HWiNFO Integration");
             await SafeInitAsync(InitIpcServerAsync, "IPC Server");
+            await SafeExecuteAsync<PowerButtonLedSyncController>(c => c.StartAsync());
         });
 
         await Task.WhenAll(_deferredInitTasks);
@@ -397,6 +398,7 @@ public partial class App
 
     public async Task ShutdownAsync()
     {
+        await SafeExecuteAsync<PowerButtonLedSyncController>(c => c.StopAsync());
         await SafeExecuteAsync<AIController>(c => c.StopAsync());
 
         await SafeExecuteAsync<RGBKeyboardBacklightController>(async c =>

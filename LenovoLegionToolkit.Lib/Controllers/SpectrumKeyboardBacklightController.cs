@@ -20,6 +20,7 @@ namespace LenovoLegionToolkit.Lib.Controllers;
 
 public class SpectrumKeyboardBacklightController
 {
+    public event EventHandler? BacklightChanged;
     public interface IScreenCapture
     {
         void CaptureScreen(ref RGBColor[,] buffer, int width, int height, CancellationToken token);
@@ -280,6 +281,7 @@ public class SpectrumKeyboardBacklightController
         await SetFeatureAsync(handle, input).ConfigureAwait(false);
 
         Log.Instance.Trace($"Keyboard brightness set.");
+        BacklightChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public async Task<bool> GetLogoStatusAsync()
@@ -343,6 +345,7 @@ public class SpectrumKeyboardBacklightController
         Log.Instance.Trace($"Keyboard profile set to {profile}.");
 
         await StartAuroraIfNeededAsync(profile).ConfigureAwait(false);
+        BacklightChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public async Task SetProfileDefaultAsync(int profile)

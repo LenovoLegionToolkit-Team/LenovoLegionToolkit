@@ -18,6 +18,7 @@ namespace LenovoLegionToolkit.WPF.Pages;
 public partial class KeyboardBacklightPage
 {
     private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
+    private readonly PowerButtonLedSyncController _powerButtonLedSync = IoCContainer.Resolve<PowerButtonLedSyncController>();
     private const string REGISTRY_PATH = @"SOFTWARE\Microsoft\Lighting";
     private const string REGISTRY_VALUE = "AmbientLightingEnabled";
 
@@ -31,6 +32,7 @@ public partial class KeyboardBacklightPage
 
         try
         {
+            await LoadPowerButtonLedSyncAsync();
             await CheckDynamicLightingWarningAsync();
             await LoadKeyboardBacklightControlAsync();
         }
@@ -43,6 +45,30 @@ public partial class KeyboardBacklightPage
         {
             _loader.IsLoading = false;
         }
+    }
+
+    private async Task LoadPowerButtonLedSyncAsync()
+    {
+        _powerButtonLedSyncToggle.IsChecked = _powerButtonLedSync.IsEnabled;
+        var supported = await _powerButtonLedSync.IsSupportedAsync();
+        _powerButtonLedHeader.Warning = !supported ? Resource.PowerButtonLedSync_Unsupported
+            : _powerButtonLedSync.LastError is not null ? Resource.PowerButtonLedSync_Failed : string.Empty;
+        _powerButtonLedSyncToggle.IsEnabled = true;
+    }
+
+    private async void PowerButtonLedSyncToggle_Click(object sender, RoutedEventArgs e)
+    {
+        _powerButtonLedSyncToggle.IsEnabled = false;
+        try
+        {
+            await _powerButtonLedSync.SetEnabledAsync(_powerButtonLedSyncToggle.IsChecked == true);
+            await _powerButtonLedSync.StartAsync();
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Could not change power-button LED synchronization.", ex);
+        }
+        finally { await LoadPowerButtonLedSyncAsync(); }
     }
 
     private async Task CheckDynamicLightingWarningAsync()
