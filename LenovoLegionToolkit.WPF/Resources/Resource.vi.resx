@@ -1818,12 +1818,6 @@ Chọn Có để tắt và Không để bỏ qua.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Lặp lại</value>
   </data>
-  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
-  </data>
-  <data name="MainWindow_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController is running in the background.</value>
-  </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>API đã đạt rate limit, xin vui lòng kiểm tra cập nhật sau.</value>
   </data>
@@ -1835,6 +1829,9 @@ Chọn Có để tắt và Không để bỏ qua.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>Không có bản cập nhật mới</value>
+  </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space đang chạy ngầm.</value>
@@ -1874,6 +1871,9 @@ Chọn Có để tắt và Không để bỏ qua.</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>Bản cập nhật {0} đã có sẵn!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Không hiển thị lại.</value>
@@ -3370,6 +3370,12 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Khởi động lại để áp dụng các thay đổi.</value>
   </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Automatically restore the last ITS mode when Lenovo Legion Toolkit starts.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restore ITS Mode on Startup</value>
+  </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Thực thi các tập lệnh C# trong thời gian chạy ứng dụng.</value>
   </data>
@@ -3919,5 +3925,17 @@ Logging sẽ được tự động bật, nếu bạn chọn tiếp tục.</valu
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Có</value>
+  </data>
+  <data name="PowerButtonLedSync_Title" xml:space="preserve">
+    <value>Sync power-button brightness with keyboard</value>
+  </data>
+  <data name="PowerButtonLedSync_Subtitle" xml:space="preserve">
+    <value>Follow keyboard brightness. Turning this off restores the default power-button brightness after synchronization. Requires compatible firmware.</value>
+  </data>
+  <data name="PowerButtonLedSync_Unsupported" xml:space="preserve">
+    <value>This lighting interface does not report support. Your preference is saved, but synchronization will not run.</value>
+  </data>
+  <data name="PowerButtonLedSync_Failed" xml:space="preserve">
+    <value>The last lighting operation failed or was not confirmed by firmware. Your preference is saved. Turn synchronization off and on to retry.</value>
   </data>
 </root>
