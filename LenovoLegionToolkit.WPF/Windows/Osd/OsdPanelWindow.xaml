@@ -21,6 +21,7 @@
     WindowStartupLocation="Manual"
     WindowStyle="None">
 
+    <Viewbox Stretch="Uniform" StretchDirection="DownOnly">
     <Border
         x:Name="_rootBorder"
         Padding="15"
@@ -515,4 +516,5 @@
             </StackPanel>
         </StackPanel>
     </Border>
+    </Viewbox>
 </fg:OsdWindowBase>

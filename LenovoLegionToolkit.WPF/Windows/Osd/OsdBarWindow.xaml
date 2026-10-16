@@ -30,6 +30,7 @@
         </Style>
     </Window.Resources>
 
+    <Viewbox Stretch="Uniform" StretchDirection="DownOnly">
     <Grid>
         <Border
             x:Name="_backgroundBorder"
@@ -257,4 +258,5 @@
             </Grid>
         </Border>
     </Grid>
+    </Viewbox>
 </fg:OsdWindowBase>

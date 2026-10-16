@@ -139,7 +139,7 @@ public partial class OsdPanelWindow : OsdWindowBase
     {
         if (double.IsNaN(ActualWidth) || ActualWidth <= 0) return;
 
-        var workArea = SystemParameters.WorkArea;
+        var workArea = CurrentWorkArea;
 
         Left = workArea.Left;
         Top = workArea.Top + (workArea.Height - ActualHeight) / 2;

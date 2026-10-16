@@ -202,7 +202,7 @@ public partial class OsdSettingsWindow
 
         App.Current.OsdWindow?.Dispatcher.BeginInvoke(new Action(() =>
         {
-            (App.Current.OsdWindow as OsdWindowBase)?.RecalculatePosition();
+            (App.Current.OsdWindow as OsdWindowBase)?.SetWindowPosition();
         }), DispatcherPriority.Render);
     }
 
@@ -308,7 +308,7 @@ public partial class OsdSettingsWindow
 
         App.Current.OsdWindow?.Dispatcher.BeginInvoke(new Action(() =>
         {
-            (App.Current.OsdWindow as OsdWindowBase)?.RecalculatePosition();
+            (App.Current.OsdWindow as OsdWindowBase)?.SetWindowPosition();
         }), DispatcherPriority.Render);
     }
 

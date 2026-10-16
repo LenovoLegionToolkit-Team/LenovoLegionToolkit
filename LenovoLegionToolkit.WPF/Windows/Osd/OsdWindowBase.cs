@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -68,6 +67,7 @@ public abstract class OsdWindowBase : Window
     private CancellationTokenSource? _cts;
     private IDisposable? _sensorSubscription;
     protected bool _positionSet;
+    private bool _isDragging;
     private bool _fpsMonitoringStarted;
     private bool _hasLenovoController;
     private bool _wasVisibleBeforeLock;
@@ -91,6 +91,7 @@ public abstract class OsdWindowBase : Window
         Loaded += OnLoaded;
         MouseLeftButtonDown += OnMouseLeftButtonDown;
         SizeChanged += OnSizeChanged;
+        DpiChanged += OnDpiChanged;
 
         SystemEvents.DisplaySettingsChanged += OnDisplaySettingsChanged;
         _sessionListener.Changed += OnSessionLockStateChanged;
@@ -176,9 +177,17 @@ public abstract class OsdWindowBase : Window
     {
         if (!_OsdSettings.Store.IsLocked && e.ChangedButton == MouseButton.Left)
         {
-            DragMove();
+            _isDragging = true;
+            try
+            {
+                DragMove();
+            }
+            finally
+            {
+                _isDragging = false;
+            }
 
-            var screen = ScreenForWindow();
+            var screen = Screen.FromWindow(this);
             if (screen is not null)
             {
                 var workArea = screen.WpfWorkingArea;
@@ -187,8 +196,8 @@ public abstract class OsdWindowBase : Window
 
                 double left = this.Left;
                 double top = this.Top;
-                double width = this.ActualWidth > 0 ? this.ActualWidth : this.Width;
-                double height = this.ActualHeight > 0 ? this.ActualHeight : this.Height;
+                double width = WindowWidth;
+                double height = WindowHeight;
 
                 if (Math.Abs(left - workArea.Left) < snapThreshold)
                 {
@@ -218,6 +227,7 @@ public abstract class OsdWindowBase : Window
                 this.Top = top;
 
                 SavePosition();
+                SetWindowPosition();
                 _OsdSettings.SynchronizeStore();
             }
         }
@@ -233,81 +243,56 @@ public abstract class OsdWindowBase : Window
 
     private void OnSizeChanged(object sender, SizeChangedEventArgs e)
     {
+        if (_isDragging)
+            return;
+
         if (SavedPosition is not null)
             return;
 
         if (!_positionSet)
             return;
 
-        var workArea = SystemParameters.WorkArea;
+        var workArea = CurrentWorkArea;
 
         Left = workArea.Left + (workArea.Width - ActualWidth) / 2;
     }
 
-    protected virtual void SetWindowPosition()
+    public virtual void SetWindowPosition()
     {
-        if (SavedPosition is { } savedPosition)
+        if (_isDragging)
+            return;
+
+        var savedPosition = SavedPosition;
+        var workArea = ScreenWorkArea(savedPosition?.MonitorName);
+
+        MaxWidth = workArea.Width;
+        MaxHeight = workArea.Height;
+
+        if (savedPosition is null)
         {
-            var workArea = ScreenWorkAreaForDeviceName(savedPosition.MonitorName);
-
-            var width = ActualWidth > 0 ? ActualWidth : Width;
-            var height = ActualHeight > 0 ? ActualHeight : Height;
-
-            var left = Math.Clamp(workArea.Left + savedPosition.XRatio * workArea.Width, workArea.Left, Math.Max(workArea.Left, workArea.Right - width));
-            var top = Math.Clamp(workArea.Top + savedPosition.YRatio * workArea.Height, workArea.Top, Math.Max(workArea.Top, workArea.Bottom - height));
-
-            if (IsPositionOnScreen(left, top))
-            {
-                Left = left;
-                Top = top;
-                _positionSet = true;
-                return;
-            }
-
-            SavedPosition = null;
-            _OsdSettings.SynchronizeStore();
+            SetDefaultWindowPosition();
+            return;
         }
 
-        SetDefaultWindowPosition();
+        UpdateLayout();
+
+        var freeWidth = Math.Max(workArea.Width - WindowWidth, 0);
+        var freeHeight = Math.Max(workArea.Height - WindowHeight, 0);
+
+        Left = Math.Clamp(workArea.Left + savedPosition.XRatio * freeWidth, workArea.Left, workArea.Left + freeWidth);
+        Top = Math.Clamp(workArea.Top + savedPosition.YRatio * freeHeight, workArea.Top, workArea.Top + freeHeight);
+        _positionSet = true;
     }
 
     protected abstract void SetDefaultWindowPosition();
     protected abstract OsdPosition? SavedPosition { get; set; }
 
-    private Screen? ScreenForWindow()
-    {
-        var width = ActualWidth > 0 ? ActualWidth : Width;
-        var height = ActualHeight > 0 ? ActualHeight : Height;
+    private double WindowWidth => ActualWidth > 0 ? ActualWidth : 0;
+    private double WindowHeight => ActualHeight > 0 ? ActualHeight : 0;
 
-        return Screen.FromPoint(new Point(Left + width / 2, Top + height / 2));
-    }
+    protected Rect CurrentWorkArea => Screen.FromWindow(this).WpfWorkingArea;
 
-    private void SavePosition()
-    {
-        try
-        {
-            var screen = ScreenForWindow();
-            if (screen is null)
-                return;
-
-            var workArea = screen.WpfWorkingArea;
-            if (workArea.Width <= 0 || workArea.Height <= 0)
-                return;
-
-            SavedPosition = new OsdPosition
-            {
-                XRatio = Math.Clamp((Left - workArea.Left) / workArea.Width, 0, 1),
-                YRatio = Math.Clamp((Top - workArea.Top) / workArea.Height, 0, 1),
-                MonitorName = screen.DeviceName
-            };
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Failed to save the OSD position.", ex);
-        }
-    }
-
-    private static Rect ScreenWorkAreaForDeviceName(string? deviceName)
+    private Rect ScreenWorkArea(string? deviceName)
     {
         if (!string.IsNullOrEmpty(deviceName))
         {
@@ -318,38 +303,45 @@ public abstract class OsdWindowBase : Window
             }
         }
 
-        return SystemParameters.WorkArea;
+        return CurrentWorkArea;
     }
 
-    public void RecalculatePosition()
+    private void SavePosition()
     {
-        SavedPosition = null;
-        _OsdSettings.SynchronizeStore();
+        try
+        {
+            var screen = Screen.FromWindow(this);
+            if (screen is null)
+                return;
 
-        SetDefaultWindowPosition();
-    }
+            var workArea = screen.WpfWorkingArea;
+            if (workArea.Width <= 0 || workArea.Height <= 0)
+                return;
 
-    private const int MONITOR_DEFAULTTONULL = 0;
+            var freeWidth = Math.Max(workArea.Width - WindowWidth, 0);
+            var freeHeight = Math.Max(workArea.Height - WindowHeight, 0);
 
-    [DllImport("user32.dll")]
-    private static extern IntPtr MonitorFromPoint(POINT pt, int dwFlags);
-
-    [StructLayout(LayoutKind.Sequential)]
-    private struct POINT
-    {
-        public int X;
-        public int Y;
-    }
-
-    private static bool IsPositionOnScreen(double x, double y)
-    {
-        var pt = new POINT { X = (int)x, Y = (int)y };
-        return MonitorFromPoint(pt, MONITOR_DEFAULTTONULL) != IntPtr.Zero;
+            SavedPosition = new OsdPosition
+            {
+                XRatio = freeWidth > 0 ? Math.Clamp((Left - workArea.Left) / freeWidth, 0, 1) : 0,
+                YRatio = freeHeight > 0 ? Math.Clamp((Top - workArea.Top) / freeHeight, 0, 1) : 0,
+                MonitorName = screen.DeviceName
+            };
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to save the OSD position.", ex);
+        }
     }
 
     private void OnDisplaySettingsChanged(object? sender, EventArgs e)
     {
         Dispatcher.BeginInvoke(SetWindowPosition);
+    }
+
+    private void OnDpiChanged(object sender, DpiChangedEventArgs e)
+    {
+        SetWindowPosition();
     }
 
     private void OnSessionLockStateChanged(object? sender, SessionLockUnlockListener.ChangedEventArgs e)

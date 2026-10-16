@@ -131,7 +131,7 @@ public partial class OsdBarWindow : OsdWindowBase
         if (ActualWidth <= 0)
             return;
 
-        var workArea = SystemParameters.WorkArea;
+        var workArea = CurrentWorkArea;
 
         Left = workArea.Left + (workArea.Width - ActualWidth) / 2;
         Top = workArea.Top;
