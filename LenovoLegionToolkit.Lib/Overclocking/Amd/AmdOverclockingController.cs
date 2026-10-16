@@ -92,6 +92,13 @@ public sealed class AmdOverclockingController : IDisposable
                 return;
             }
 
+            PawnIOHelper.InvalidateStateCache();
+            var pawnIOState = PawnIOHelper.GetPawnIOState();
+            if (pawnIOState != PawnIOState.Installed)
+            {
+                throw new InvalidOperationException($"PawnIO is not ready: {pawnIOState}.");
+            }
+
             _machineInformation = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
             _cpu = new Cpu();
 
@@ -102,9 +109,10 @@ public sealed class AmdOverclockingController : IDisposable
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"AmdOverclockingController initialization failed: {ex.Message}");
-            _isInitialized = true;
+            Log.Instance.Trace($"AmdOverclockingController initialization failed.", ex);
+            _cpu?.Dispose();
             _cpu = null;
+            throw;
         }
         finally
         {
@@ -132,7 +140,7 @@ public sealed class AmdOverclockingController : IDisposable
         SaveShutdownInfo(new ShutdownInfo { Status = "Running", AbnormalCount = count });
     }
 
-    public bool IsSupported() => _isInitialized && _machineInformation?.Properties.IsAmdDevice == true;
+    public bool IsSupported() => _isInitialized && _cpu != null && _machineInformation?.Properties.IsAmdDevice == true;
 
     public bool IsActive() => _settings.Store.Enabled;
 

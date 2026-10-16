@@ -1,3 +1,10 @@
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Overclocking.Amd;
 using LenovoLegionToolkit.Lib.System;
@@ -6,13 +13,6 @@ using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows.Utils;
 using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
 using Wpf.Ui.Controls;
 
 namespace LenovoLegionToolkit.WPF.Windows.Overclocking.Amd;
@@ -103,6 +103,11 @@ public partial class AmdOverclocking : UiWindow
 
     private async Task InitializeAndLoadAsync(OverclockingProfile? existingProfile)
     {
+        if (!await EnsurePawnIOReadyAsync())
+        {
+            return;
+        }
+
         try
         {
             await _controller.InitializeAsync();
@@ -111,10 +116,17 @@ public partial class AmdOverclocking : UiWindow
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"Init Failed: {ex.Message}");
+            Log.Instance.Trace($"Init Failed.", ex);
+
+            _enableToggle.IsChecked = false;
+            SaveEnabledState(false);
+            SetControlsEnabled(false);
+            ShowStatus(Resource.Error, ex.Message, InfoBarSeverity.Error, true);
+
             return;
         }
 
+        SaveEnabledState(true);
         SetControlsEnabled(true);
 
         await LoadFromHardwareAsync();
@@ -443,13 +455,35 @@ public partial class AmdOverclocking : UiWindow
 
         if (_isInitialized)
         {
+            if (!await EnsurePawnIOReadyAsync())
+            {
+                return;
+            }
+
             SaveEnabledState(true);
             SetControlsEnabled(true);
             return;
         }
 
-        SaveEnabledState(true);
         await InitializeAndLoadAsync(_controller.LoadProfile());
+    }
+
+    private async Task<bool> EnsurePawnIOReadyAsync()
+    {
+        PawnIOHelper.InvalidateStateCache();
+        var state = PawnIOHelper.GetPawnIOState();
+
+        if (state == PawnIOState.Installed)
+        {
+            return true;
+        }
+
+        _enableToggle.IsChecked = false;
+        SaveEnabledState(false);
+        SetControlsEnabled(false);
+        await PawnIOHelper.TryShowPawnIODialogAsync(state, disableHardwareSensors: false);
+
+        return false;
     }
 
     private void EnableToggle_Unchecked(object sender, RoutedEventArgs e)

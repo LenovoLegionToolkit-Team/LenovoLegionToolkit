@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.ServiceProcess;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Settings;
@@ -139,12 +140,7 @@ public static class PawnIOHelper
         }
 
         var version = GetInstalledVersion();
-        if (version is null)
-        {
-            return PawnIOState.Installed;
-        }
-
-        if (IsOlderThan(version, MinimumPawnIOVersion))
+        if (version is not null && IsOlderThan(version, MinimumPawnIOVersion))
         {
             return PawnIOState.UpdateRequired;
         }
@@ -156,24 +152,8 @@ public static class PawnIOHelper
     {
         try
         {
-            var startInfo = new ProcessStartInfo("sc.exe", "query PawnIO")
-            {
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                CreateNoWindow = true
-            };
-
-            using var process = Process.Start(startInfo);
-            if (process is null)
-            {
-                return false;
-            }
-
-            var output = process.StandardOutput.ReadToEnd();
-            process.WaitForExit();
-
-            return output.Contains("RUNNING", StringComparison.OrdinalIgnoreCase);
+            using var service = new ServiceController("PawnIO");
+            return service.Status == ServiceControllerStatus.Running;
         }
         catch
         {

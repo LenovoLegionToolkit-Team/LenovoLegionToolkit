@@ -961,14 +961,9 @@ public partial class App
 
             return false;
         }
-        catch (InvalidOperationException)
-        {
-            Log.Instance.Trace($"Profile apply has been canceled due to AC issue.");
-            return false;
-        }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"Failed to apply profile on startup: {ex.Message}", ex);
+            Log.Instance.Trace($"Failed to initialize AMD Overclocking Controller.", ex);
             return false;
         }
     }
