@@ -157,6 +157,20 @@ public enum DriverKey
     FnSpace = 4096,
 }
 
+internal enum DytcFunction : uint
+{
+    FirmwareDefault = 0,
+    Manual = 3,
+    Unknown4 = 4,
+    IntelligentCooling = 5,
+    Auto_UnknownFunction6 = 6,
+    Auto_UnknownFunction7 = 7,
+    Auto_UnknownFunction8 = 8,
+    ItsModeControl = 11,
+    Auto_UnknownFunction13 = 13,
+    Auto_UnknownFunction15 = 15,
+}
+
 public enum FanState
 {
     Auto,

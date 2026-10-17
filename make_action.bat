@@ -9,10 +9,10 @@ SET PATH=%PATH%;"C:\Program Files (x86)\Inno Setup 6"
 SET USE_MANIFEST=
 FOR %%A IN (%*) DO IF "%%A"=="raw" SET USE_MANIFEST=-UseManifest
 
-dotnet publish LenovoLegionToolkit.WPF -c release -o build /p:DebugType=None /p:FileVersion=%VERSION% /p:Version=%VERSION% || exit /b
-dotnet publish LenovoLegionToolkit.SpectrumTester -c release -o build /p:DebugType=None /p:FileVersion=%VERSION% /p:Version=%VERSION% || exit /b
-dotnet publish LenovoLegionToolkit.Probe -c release -o build /p:DebugType=None /p:FileVersion=%VERSION% /p:Version=%VERSION% || exit /b
-dotnet publish LenovoLegionToolkit.CLI -c release -o build /p:DebugType=None /p:FileVersion=%VERSION% /p:Version=%VERSION% || exit /b
+dotnet publish "LenovoLegionToolkit.WPF\LenovoLegionToolkit.WPF.csproj" -c release -o build /p:DebugType=None /p:FileVersion=%VERSION% /p:Version=%VERSION% || exit /b
+dotnet publish "LenovoLegionToolkit.SpectrumTester\LenovoLegionToolkit.SpectrumTester.csproj" -c release -o build /p:DebugType=None /p:FileVersion=%VERSION% /p:Version=%VERSION% || exit /b
+dotnet publish "LenovoLegionToolkit.Probe\LenovoLegionToolkit.Probe.csproj" -c release -o build /p:DebugType=None /p:FileVersion=%VERSION% /p:Version=%VERSION% || exit /b
+dotnet publish "LenovoLegionToolkit.CLI\LenovoLegionToolkit.CLI.csproj" -c release -o build /p:DebugType=None /p:FileVersion=%VERSION% /p:Version=%VERSION% || exit /b
 
 echo Copying packaging files...
 powershell -NoProfile -ExecutionPolicy Bypass -File ".\build_identity_package.ps1" -Version %VERSION% -OutputDir "build" %USE_MANIFEST% || exit /b

@@ -1,51 +1,62 @@
 using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Listeners;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
-using Microsoft.Win32;
-using Registry = Microsoft.Win32.Registry;
+using NeoSmart.AsyncLock;
 
 namespace LenovoLegionToolkit.Lib.Features;
 
 public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
 {
-    private const uint GET_CURRENT_MODE = 2;
-    private const uint GET_EXTENDED_CAPABILITIES = 10;
-    private const uint RESET_MODE = 0x000001FF;
+    private const uint DYTC_CMD_GET_MODE = 2;
+    private const uint DYTC_CMD_GET_FUNCTION_CAPABILITIES = 3;
+    private const uint DYTC_CMD_GET_EXTENDED_CAPABILITIES = 10;
+    private const uint DYTC_CMD_RESET = 0x000001FF;
+    private const uint DYTC_CMD_SET_FUNCTION = 0x1;
 
-    private const uint COMMAND_VALID = 0x1;
-    private const uint SET_COMMAND_VALID = 0x100000;
-    private const int SET_FUNCTION_SHIFT = 12;
-    private const int SET_MODE_SHIFT = 16;
-    private const int GET_FUNCTION_SHIFT = 8;
-    private const int GET_MODE_SHIFT = 12;
+    private const uint DYTC_RESPONSE_VALID_BIT = 0x1;
+    private const uint DYTC_SET_FUNCTION_ENABLE_BIT = 0x100000;
+    private const int DYTC_SET_FUNCTION_SHIFT = 12;
+    private const int DYTC_SET_MODE_PARAMETER_SHIFT = 16;
+    private const int DYTC_GET_FUNCTION_SHIFT = 8;
+    private const int DYTC_GET_MODE_PARAMETER_SHIFT = 12;
+    private const int DYTC_FUNCTION_CAPABILITY_SHIFT = 16;
 
-    private const uint FUNCTION_INTELLIGENT = 5;
-    private const uint FUNCTION_ITS = 11;
-    private const uint MODE_INTELLIGENT = 15;
-    private const uint MODE_PERFORMANCE = 2;
-    private const uint MODE_COOL = 3;
+    private const uint DYTC_MODE_PARAMETER_PERFORMANCE = 2;
+    private const uint DYTC_MODE_PARAMETER_COOL = 3;
+    private const uint DYTC_MODE_PARAMETER_INTELLIGENT_OR_DISABLE = 0xF;
 
-    private const uint GEEK_CAPABILITY_MASK = 0x00020001;
-    private const uint GEEK_DISABLED = 0x000F100B;
-    private const uint GEEK_ENABLED = 0x001F100B;
+    private const uint DYTC_FULL_SPEED_CAPABILITY_MASK = 0x00020001;
+    private const uint DYTC_CMD_DISABLE_FULL_SPEED = 0x000F100B;
+    private const uint DYTC_CMD_ENABLE_FULL_SPEED = 0x001F100B;
+    private const uint DYTC_DEFAULT_FUNCTION_READBACK = 0x0001F001;
     private const int GEEK_ENABLE_REPEAT_COUNT = 2;
-    private const int GEEK_STATE_POLL_INTERVAL_MS = 100;
-    private const int GEEK_STATE_TIMEOUT_MS = 3000;
-
-    private const string REG_KEY_DISPATCHER = @"SYSTEM\CurrentControlSet\Services\LenovoProcessManagement\Performance\PowerSlider";
-    private const string VAL_VERSION = "Version";
-    private const string VAL_ITS_CUR_SET_V = "ITS_CurrentSettingV";
-    private const uint DISPATCHER_VERSION_3 = 8192U;
+    private const uint REQUIRED_BASE_MODE_CAPABILITIES = DYTC_RESPONSE_VALID_BIT |
+        (1U << (DYTC_FUNCTION_CAPABILITY_SHIFT + (int)DytcFunction.IntelligentCooling)) |
+        (1U << (DYTC_FUNCTION_CAPABILITY_SHIFT + (int)DytcFunction.ItsModeControl));
+    private const int STATE_TIMEOUT_MS = 3000;
 
     private static readonly ITSMode[] _allStatesWithGeek = [ITSMode.ItsAuto, ITSMode.MmcCool, ITSMode.MmcPerformance, ITSMode.MmcGeek];
     private static readonly ITSMode[] _allStatesWithoutGeek = [ITSMode.ItsAuto, ITSMode.MmcCool, ITSMode.MmcPerformance];
 
+    private static readonly DytcFunction[] _functionDisableOrderBeforeModeSwitch =
+    [
+        DytcFunction.Auto_UnknownFunction15,
+        DytcFunction.Auto_UnknownFunction8,
+        DytcFunction.Auto_UnknownFunction7,
+        DytcFunction.Auto_UnknownFunction6,
+        DytcFunction.IntelligentCooling,
+        DytcFunction.ItsModeControl,
+    ];
+
     private readonly ITSModeListener _listener;
-    private volatile int _geekModeState = -1;
+    private readonly AsyncLock _transitionLock = new();
+
+    private volatile bool _geekModeEnabled;
 
     public ITSModeFeatureDriver(ITSModeListener listener)
         : base(Drivers.GetEnergy, Drivers.IOCTL_ENERGY_SMART_POWER, useDriverQueue: true)
@@ -62,13 +73,14 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
                 return true;
             }
 
-            if (ReadDispatcherVersion() < DISPATCHER_VERSION_3)
+            var capabilities = await SendCommandAsync(DYTC_CMD_GET_FUNCTION_CAPABILITIES, bypassQueue: true).ConfigureAwait(false);
+            if ((capabilities & REQUIRED_BASE_MODE_CAPABILITIES) != REQUIRED_BASE_MODE_CAPABILITIES)
             {
                 return false;
             }
 
-            var raw = await SendCodeAsync(DriverHandle(), ControlCode, GET_CURRENT_MODE, bypassQueue: true).ConfigureAwait(false);
-            return (raw & COMMAND_VALID) != 0;
+            var raw = await SendCommandAsync(DYTC_CMD_GET_MODE, bypassQueue: true).ConfigureAwait(false);
+            return (raw & DYTC_RESPONSE_VALID_BIT) != 0;
         }
         catch
         {
@@ -88,34 +100,39 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
 
     protected override async Task<ITSMode> GetStateInternalAsync(bool bypassQueue)
     {
-        var raw = await SendCodeAsync(DriverHandle(), ControlCode, GET_CURRENT_MODE, bypassQueue).ConfigureAwait(false);
+        var raw = await SendCommandAsync(DYTC_CMD_GET_MODE, bypassQueue).ConfigureAwait(false);
         var state = await FromInternalAsync(raw).ConfigureAwait(false);
         LastState = state;
         return state;
     }
 
-    protected override uint GetInBufferValue() => GET_CURRENT_MODE;
+    protected override uint GetInBufferValue() => DYTC_CMD_GET_MODE;
 
-    protected override Task<ITSMode> FromInternalAsync(uint raw)
+    protected override async Task<ITSMode> FromInternalAsync(uint raw)
     {
-        if ((raw & COMMAND_VALID) == 0)
+        if ((raw & DYTC_RESPONSE_VALID_BIT) == 0)
         {
-            return Task.FromResult(ITSMode.None);
+            _geekModeEnabled = false;
+            return ITSMode.None;
         }
 
-        var function = (raw >> GET_FUNCTION_SHIFT) & 0xF;
-        var mode = (raw >> GET_MODE_SHIFT) & 0xF;
+        var function = GetCurrentFunction(raw);
+        var modeParameter = (raw >> DYTC_GET_MODE_PARAMETER_SHIFT) & 0xF;
 
         ITSMode state;
-        if (function == FUNCTION_ITS && mode == MODE_COOL)
+        if (_geekModeEnabled && IsFullSpeedCompatibleReadback(raw) && await GetPowerAdapterStatusAsync().ConfigureAwait(false) == PowerAdapterStatus.Connected)
+        {
+            state = ITSMode.MmcGeek;
+        }
+        else if (function == DytcFunction.ItsModeControl && modeParameter == DYTC_MODE_PARAMETER_COOL)
         {
             state = ITSMode.MmcCool;
         }
-        else if (function == FUNCTION_ITS && mode == MODE_PERFORMANCE)
+        else if (function == DytcFunction.ItsModeControl && modeParameter == DYTC_MODE_PARAMETER_PERFORMANCE)
         {
-            state = IsGeekModeActive() ? ITSMode.MmcGeek : ITSMode.MmcPerformance;
+            state = ITSMode.MmcPerformance;
         }
-        else if (IsIntelligentFunction(function))
+        else if (IsAutoModeFunction(function, modeParameter) || (function == DytcFunction.ItsModeControl && (raw >> 16) == 1))
         {
             state = ITSMode.ItsAuto;
         }
@@ -124,8 +141,13 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
             state = ITSMode.None;
         }
 
-        Log.Instance.Trace($"EnergyDrv ITS mode read. [raw=0x{raw:X8}, function={function}, mode={mode}, state={state}]");
-        return Task.FromResult(state);
+        if (state != ITSMode.MmcGeek)
+        {
+            _geekModeEnabled = false;
+        }
+
+        Log.Instance.Trace($"EnergyDrv ITS mode read. [raw=0x{raw:X8}, function={function} ({(uint)function}), modeParameter={modeParameter}, state={state}, localGeek={_geekModeEnabled}]");
+        return state;
     }
 
     public override async Task SetStateAsync(ITSMode state)
@@ -136,74 +158,93 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
             return;
         }
 
-        if (!(await GetAllStatesAsync().ConfigureAwait(false)).Contains(state))
+        if (!_allStatesWithGeek.Contains(state))
         {
             throw new InvalidOperationException($"Unsupported ITS mode {state}.");
         }
 
-        if (state == ITSMode.MmcGeek &&
-            await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) != PowerAdapterStatus.Connected)
+        using (await _transitionLock.LockAsync().ConfigureAwait(false))
         {
-            throw new InvalidOperationException("Geek mode is unavailable without an AC power adapter.");
+            await SetStateCoreAsync(state).ConfigureAwait(false);
+        }
+    }
+
+    public override Task SetStateAsync(ITSMode state, bool verify) => SetStateAsync(state);
+
+    private async Task SetStateCoreAsync(ITSMode state)
+    {
+        var geekSupported = await IsGeekModeAdvertisedAsync().ConfigureAwait(false);
+        if (state == ITSMode.MmcGeek)
+        {
+            if (!geekSupported)
+            {
+                throw new InvalidOperationException("Geek mode is not advertised by EnergyDrv.");
+            }
+
+            await EnsureGeekPowerAsync().ConfigureAwait(false);
         }
 
         Log.Instance.Trace($"Setting ITS mode to: {state} [EnergyDrv]");
 
-        var geekModeActive = IsGeekModeActive();
-        if (geekModeActive)
+        if (geekSupported || _geekModeEnabled)
         {
-            await SendCodeAsync(DriverHandle(), ControlCode, GEEK_DISABLED).ConfigureAwait(false);
-            _geekModeState = 0;
+            _geekModeEnabled = false;
+            await SendCommandAsync(DYTC_CMD_DISABLE_FULL_SPEED).ConfigureAwait(false);
         }
 
-        if (state == ITSMode.MmcGeek)
-        {
-            _geekModeState = 0;
-        }
-
+        var resetRequired = false;
         if (state == ITSMode.ItsAuto)
         {
-            await SendCodeAsync(DriverHandle(), ControlCode, RESET_MODE).ConfigureAwait(false);
+            var raw = await SendCommandAsync(DYTC_CMD_GET_MODE, bypassQueue: true).ConfigureAwait(false);
+            var function = GetCurrentFunction(raw);
+            resetRequired = function is not (DytcFunction.Manual or DytcFunction.Unknown4);
+        }
+
+        foreach (var function in _functionDisableOrderBeforeModeSwitch)
+        {
+            await SendCommandAsync(BuildDisableFunctionCommand(function)).ConfigureAwait(false);
+        }
+
+        if (resetRequired)
+        {
+            await SendCommandAsync(DYTC_CMD_RESET).ConfigureAwait(false);
         }
 
         foreach (var command in await ToInternalAsync(state).ConfigureAwait(false))
         {
-            await SendCodeAsync(DriverHandle(), ControlCode, command).ConfigureAwait(false);
+            await SendCommandAsync(command).ConfigureAwait(false);
+        }
+
+        var baseState = state == ITSMode.MmcGeek ? ITSMode.MmcPerformance : state;
+        if (!await WaitForModeAsync(baseState, CancellationToken.None).ConfigureAwait(false))
+        {
+            throw new InvalidOperationException($"ITS mode did not change to {baseState}.");
         }
 
         if (state == ITSMode.MmcGeek)
         {
-            if (!await WaitForModeAsync(ITSMode.MmcPerformance, CancellationToken.None).ConfigureAwait(false))
-            {
-                throw new InvalidOperationException("ITS mode did not change to MmcPerformance before enabling Geek mode.");
-            }
-
-            if (await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) != PowerAdapterStatus.Connected)
-            {
-                throw new InvalidOperationException("Geek mode is unavailable without an AC power adapter.");
-            }
-
             try
             {
                 for (var i = 0; i < GEEK_ENABLE_REPEAT_COUNT; i++)
                 {
-                    await SendCodeAsync(DriverHandle(), ControlCode, GEEK_ENABLED).ConfigureAwait(false);
+                    await EnsureGeekPowerAsync().ConfigureAwait(false);
+                    await SendCommandAsync(DYTC_CMD_ENABLE_FULL_SPEED).ConfigureAwait(false);
                 }
 
-                if (!await WaitForGeekModeStateAsync(expected: true, CancellationToken.None).ConfigureAwait(false))
+                if (!await WaitForModeAsync(ITSMode.MmcGeek, CancellationToken.None).ConfigureAwait(false))
                 {
-                    throw new InvalidOperationException("Geek mode did not become active.");
+                    throw new InvalidOperationException("Unexpected ITS readback after enabling Full Speed.");
                 }
+
+                await EnsureGeekPowerAsync().ConfigureAwait(false);
+                _geekModeEnabled = true;
+                Log.Instance.Trace($"EnergyDrv Full Speed enable sequence completed; overlay has no independent readback.");
             }
             catch
             {
                 await TryDisableGeekModeAsync().ConfigureAwait(false);
                 throw;
             }
-        }
-        else if (!await WaitForModeAsync(state, CancellationToken.None).ConfigureAwait(false))
-        {
-            throw new InvalidOperationException($"ITS mode did not change to {state}.");
         }
 
         LastState = state;
@@ -215,79 +256,47 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
     {
         var command = state switch
         {
-            ITSMode.ItsAuto => BuildSetCommand(FUNCTION_INTELLIGENT, MODE_INTELLIGENT),
-            ITSMode.MmcCool => BuildSetCommand(FUNCTION_ITS, MODE_COOL),
-            ITSMode.MmcPerformance or ITSMode.MmcGeek => BuildSetCommand(FUNCTION_ITS, MODE_PERFORMANCE),
+            ITSMode.ItsAuto => BuildSetFunctionCommand(DytcFunction.IntelligentCooling, DYTC_MODE_PARAMETER_INTELLIGENT_OR_DISABLE),
+            ITSMode.MmcCool => BuildSetFunctionCommand(DytcFunction.ItsModeControl, DYTC_MODE_PARAMETER_COOL),
+            ITSMode.MmcPerformance or ITSMode.MmcGeek => BuildSetFunctionCommand(DytcFunction.ItsModeControl, DYTC_MODE_PARAMETER_PERFORMANCE),
             _ => throw new ArgumentOutOfRangeException(nameof(state))
         };
         return Task.FromResult(new[] { command });
     }
 
     public async Task<uint> GetExtendedCapabilitiesAsync() =>
-        await SendCodeAsync(DriverHandle(), ControlCode, GET_EXTENDED_CAPABILITIES, bypassQueue: true).ConfigureAwait(false);
+        await SendCommandAsync(DYTC_CMD_GET_EXTENDED_CAPABILITIES, bypassQueue: true).ConfigureAwait(false);
 
     public async Task<bool> IsGeekModeAdvertisedAsync()
     {
-        var capability = await GetExtendedCapabilitiesAsync().ConfigureAwait(false);
-        var capabilitySupported = (capability & GEEK_CAPABILITY_MASK) == GEEK_CAPABILITY_MASK;
-        var stateReadable = TryReadGeekModeState(out _);
-        var supported = capabilitySupported && stateReadable;
-        Log.Instance.Trace($"EnergyDrv Geek capability checked. [capability=0x{capability:X8}, capabilitySupported={capabilitySupported}, stateReadable={stateReadable}, supported={supported}]");
-        return supported;
-    }
-
-    private bool IsGeekModeActive()
-    {
-        if (TryReadGeekModeState(out var active))
-        {
-            _geekModeState = active ? 1 : 0;
-            return active;
-        }
-
-        return _geekModeState == 1;
-    }
-
-    private static bool TryReadGeekModeState(out bool active)
-    {
         try
         {
-            using var key = Registry.LocalMachine.OpenSubKey(REG_KEY_DISPATCHER, writable: false);
-            if (key?.GetValue(VAL_ITS_CUR_SET_V) is int value)
-            {
-                active = value == 4;
-                return true;
-            }
+            var capability = await GetExtendedCapabilitiesAsync().ConfigureAwait(false);
+            var supported = (capability & DYTC_FULL_SPEED_CAPABILITY_MASK) == DYTC_FULL_SPEED_CAPABILITY_MASK;
+            Log.Instance.Trace($"EnergyDrv Geek capability checked. [capability=0x{capability:X8}, supported={supported}]");
+            return supported;
         }
         catch (Exception ex)
         {
-            Log.Instance.Trace($"Failed to read EnergyDrv Geek mode state.", ex);
+            Log.Instance.Trace($"Failed to query optional EnergyDrv Geek capability.", ex);
+            return false;
         }
-
-        active = false;
-        return false;
     }
 
-    private async Task<bool> WaitForGeekModeStateAsync(bool expected, CancellationToken token)
+    private async Task EnsureGeekPowerAsync()
     {
-        var deadline = DateTimeOffset.UtcNow.AddMilliseconds(GEEK_STATE_TIMEOUT_MS);
-        do
+        if (await GetPowerAdapterStatusAsync().ConfigureAwait(false) != PowerAdapterStatus.Connected)
         {
-            token.ThrowIfCancellationRequested();
-
-            if (TryReadGeekModeState(out var active) && active == expected)
-            {
-                _geekModeState = active ? 1 : 0;
-                return true;
-            }
-
-            await Task.Delay(GEEK_STATE_POLL_INTERVAL_MS, token).ConfigureAwait(false);
+            throw new InvalidOperationException("Geek mode is unavailable without an AC power adapter.");
         }
-        while (DateTimeOffset.UtcNow < deadline);
-
-        return false;
     }
 
-    private async Task NotifyListenerAsync(ITSMode state)
+    protected virtual Task<uint> SendCommandAsync(uint command, bool bypassQueue = false) =>
+        SendCodeAsync(DriverHandle(), ControlCode, command, bypassQueue);
+
+    protected virtual Task<PowerAdapterStatus> GetPowerAdapterStatusAsync() => Power.IsPowerAdapterConnectedAsync();
+
+    protected virtual async Task NotifyListenerAsync(ITSMode state)
     {
         try
         {
@@ -303,7 +312,7 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
     {
         try
         {
-            await SendCodeAsync(DriverHandle(), ControlCode, GEEK_DISABLED).ConfigureAwait(false);
+            await SendCommandAsync(DYTC_CMD_DISABLE_FULL_SPEED).ConfigureAwait(false);
         }
         catch (Exception ex)
         {
@@ -311,50 +320,53 @@ public class ITSModeFeatureDriver : AbstractDriverFeature<ITSMode>
         }
         finally
         {
-            _geekModeState = 0;
+            _geekModeEnabled = false;
         }
     }
 
-    private static uint BuildSetCommand(uint function, uint mode) =>
-        COMMAND_VALID |
-        (function << SET_FUNCTION_SHIFT) |
-        (mode << SET_MODE_SHIFT) |
-        SET_COMMAND_VALID;
+    private static DytcFunction GetCurrentFunction(uint response) =>
+        (DytcFunction)((response >> DYTC_GET_FUNCTION_SHIFT) & 0xF);
 
-    private static bool IsIntelligentFunction(uint function) => function is 0 or 3 or 5 or 6 or 7 or 8;
+    private static bool IsFullSpeedCompatibleReadback(uint response) =>
+        response == DYTC_DEFAULT_FUNCTION_READBACK ||
+        ((response & DYTC_RESPONSE_VALID_BIT) != 0 &&
+         GetCurrentFunction(response) == DytcFunction.ItsModeControl &&
+         ((response >> DYTC_GET_MODE_PARAMETER_SHIFT) & 0xF) == DYTC_MODE_PARAMETER_PERFORMANCE);
 
-    private static uint ReadDispatcherVersion()
-    {
-        try
-        {
-            using var key = Registry.LocalMachine.OpenSubKey(REG_KEY_DISPATCHER, writable: false);
-            return key?.GetValue(VAL_VERSION) switch
-            {
-                int value => (uint)value,
-                uint value => value,
-                _ => 0
-            };
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Failed to read Dispatcher version.", ex);
-            return 0;
-        }
-    }
+    private static uint BuildDisableFunctionCommand(DytcFunction function) =>
+        BuildSetFunctionCommand(function, DYTC_MODE_PARAMETER_INTELLIGENT_OR_DISABLE, enableFunction: false);
+
+    private static uint BuildSetFunctionCommand(DytcFunction function, uint modeParameter, bool enableFunction = true) =>
+        DYTC_CMD_SET_FUNCTION |
+        ((uint)function << DYTC_SET_FUNCTION_SHIFT) |
+        (modeParameter << DYTC_SET_MODE_PARAMETER_SHIFT) |
+        (enableFunction ? DYTC_SET_FUNCTION_ENABLE_BIT : 0);
+
+    private static bool IsAutoModeFunction(DytcFunction function, uint modeParameter) =>
+        function is DytcFunction.FirmwareDefault or DytcFunction.IntelligentCooling or
+            DytcFunction.Auto_UnknownFunction6 or DytcFunction.Auto_UnknownFunction7 or
+            DytcFunction.Auto_UnknownFunction8 or DytcFunction.Auto_UnknownFunction15 ||
+        (function == DytcFunction.Manual && modeParameter <= 3) ||
+        (function == DytcFunction.Auto_UnknownFunction13 && modeParameter is 1 or 2);
 
     private async Task<bool> WaitForModeAsync(ITSMode expected, CancellationToken token)
     {
-        var deadline = DateTimeOffset.UtcNow.AddSeconds(3);
+        var stopwatch = Stopwatch.StartNew();
         do
         {
-            if (await GetStateInternalAsync(bypassQueue: true).ConfigureAwait(false) == expected)
+            token.ThrowIfCancellationRequested();
+
+            var matches = expected == ITSMode.MmcGeek
+                ? IsFullSpeedCompatibleReadback(await SendCommandAsync(DYTC_CMD_GET_MODE, bypassQueue: true).ConfigureAwait(false))
+                : await GetStateInternalAsync(bypassQueue: true).ConfigureAwait(false) == expected;
+            if (matches)
             {
                 return true;
             }
 
             await Task.Delay(200, token).ConfigureAwait(false);
         }
-        while (DateTimeOffset.UtcNow < deadline && !token.IsCancellationRequested);
+        while (stopwatch.ElapsedMilliseconds < STATE_TIMEOUT_MS);
 
         return false;
     }
