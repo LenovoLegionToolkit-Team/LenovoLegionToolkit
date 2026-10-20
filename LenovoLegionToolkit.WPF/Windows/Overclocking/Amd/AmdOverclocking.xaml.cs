@@ -118,7 +118,7 @@ public partial class AmdOverclocking : UiWindow
         {
             Log.Instance.Trace($"Init Failed.", ex);
 
-            _enableToggle.IsChecked = false;
+            SetEnableToggle(false);
             SaveEnabledState(false);
             SetControlsEnabled(false);
             ShowStatus(Resource.Error, ex.Message, InfoBarSeverity.Error, true);
@@ -478,12 +478,25 @@ public partial class AmdOverclocking : UiWindow
             return true;
         }
 
-        _enableToggle.IsChecked = false;
+        SetEnableToggle(false);
         SaveEnabledState(false);
         SetControlsEnabled(false);
         await PawnIOHelper.TryShowPawnIODialogAsync(state, disableHardwareSensors: false);
 
         return false;
+    }
+
+    private void SetEnableToggle(bool isChecked)
+    {
+        try
+        {
+            _isUpdatingUi = true;
+            _enableToggle.IsChecked = isChecked;
+        }
+        finally
+        {
+            _isUpdatingUi = false;
+        }
     }
 
     private void EnableToggle_Unchecked(object sender, RoutedEventArgs e)
