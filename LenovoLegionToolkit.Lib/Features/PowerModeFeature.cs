@@ -28,7 +28,7 @@ public class PowerModeFeature(
     : AbstractWmiFeature<PowerModeState>(WMI.LenovoGameZoneData.GetSmartFanModeAsync, WMI.LenovoGameZoneData.SetSmartFanModeAsync, WMI.LenovoGameZoneData.IsSupportSmartFanAsync, 1)
 {
     public bool AllowAllPowerModesOnBattery { get; set; }
-    public PowerModeState LastPowerModeState { get; set; }
+    public PowerModeState? LastPowerModeState { get; set; }
 
     public override async Task<PowerModeState[]> GetAllStatesAsync()
     {

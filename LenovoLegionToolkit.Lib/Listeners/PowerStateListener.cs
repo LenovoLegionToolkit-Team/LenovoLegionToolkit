@@ -252,10 +252,13 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
 
         if (await _powerModeFeature.IsSupportedAsync().ConfigureAwait(false))
         {
-            if (currentAdapterStatus == PowerAdapterStatus.Connected && _powerModeFeature.LastPowerModeState == PowerModeState.GodMode)
+            var restoreMode = _powerModeFeature.LastPowerModeState;
+            _powerModeFeature.LastPowerModeState = null;
+
+            if (currentAdapterStatus == PowerAdapterStatus.Connected && restoreMode is PowerModeState.GodMode)
             {
-                Log.Instance.Trace($"Restore to {_powerModeFeature.LastPowerModeState}");
-                await _powerModeFeature.SetStateAsync(_powerModeFeature.LastPowerModeState).ConfigureAwait(false);
+                Log.Instance.Trace($"Restore to {restoreMode.Value}");
+                await _powerModeFeature.SetStateAsync(restoreMode.Value).ConfigureAwait(false);
             }
 
             await _powerModeFeature.EnsureGodModeStateIsAppliedAsync().ConfigureAwait(false);
