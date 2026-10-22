@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -1387,15 +1387,11 @@
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>自定义模式允许访问系统核心参数，包括功耗限制和风扇曲线。
+    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves.
 
-硬件风险：错误的参数配置可能导致严重的系统不稳定、过热掉频，甚至造成永久性的硬件物理损坏。
+Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty.
 
-保修失效：在此模式下进行的修改可能会导致您的制造商保修失效。
-
-准入门槛：除非您具备深厚的硬件调优专业知识，否则请勿继续进行任何操作。
-
-继续操作即表示您已充分理解上述风险，并愿意承担由此产生的一切后果。</value>
+Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
     <value>点此输入名称</value>
@@ -2131,24 +2127,24 @@
     <value>背光状态改变</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
-    <value>PawnIO 驱动程序服务未运行。
+    <value>The PawnIO driver service is not running.
 
-请启动服务或更新/重新安装PawnIO以使用此功能！
+Please start the service or update/reinstall PawnIO to use this feature!
 
-单击“是”在浏览器中打开下载链接。
-单击“否”禁用硬件传感器功能。</value>
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
     <value>PawnIO 驱动程序未运行</value>
   </data>
   <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
-    <value>您的PawnIO版本太旧了。
+    <value>Your PawnIO version is too old.
 
-当前：{0} 需要：{1}。
-请更新PawnIO以继续使用此功能！
+Current: {0} Required: {1}.
+Please update PawnIO to continue using this feature!
 
-单击“是”在浏览器中打开下载链接。
-单击“否”禁用硬件传感器功能。</value>
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
     <value>需要更新 PawnIO</value>
@@ -3937,16 +3933,10 @@
   <data name="PowerButtonLed_Brightness" xml:space="preserve">
     <value>Brightness</value>
   </data>
-  <data name="PowerButtonLed_Failed" xml:space="preserve">
-    <value>Couldn't change the power button light.</value>
-  </data>
   <data name="PowerButtonLed_Message" xml:space="preserve">
-    <value>Synchronize the power button light with the keyboard backlight.</value>
+    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
   </data>
   <data name="PowerButtonLed_Title" xml:space="preserve">
     <value>Power Button Light</value>
-  </data>
-  <data name="PowerButtonLed_Unsupported" xml:space="preserve">
-    <value>Your device does not support the power button light.</value>
   </data>
 </root>
