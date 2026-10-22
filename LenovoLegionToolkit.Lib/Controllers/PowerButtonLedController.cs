@@ -1,12 +1,11 @@
 using System;
 using System.Threading.Tasks;
-using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.System.Management;
 using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
 
-public sealed class PowerButtonLedController(ApplicationSettings settings)
+public sealed class PowerButtonLedController
 {
     public const int MinBrightness = 1;
     public const int MaxBrightness = 4;
@@ -14,7 +13,7 @@ public sealed class PowerButtonLedController(ApplicationSettings settings)
     private const int SyncOff = 0;
     private const int SyncOn = 2;
 
-    private int? _levelOffset;
+    private bool? _isBrightnessSupported;
 
     public async Task<bool> IsSupportedAsync()
     {
@@ -35,6 +34,15 @@ public sealed class PowerButtonLedController(ApplicationSettings settings)
         {
             return false;
         }
+    }
+
+    public async Task<bool> IsBrightnessSupportedAsync()
+    {
+        _isBrightnessSupported ??= AppFlags.Instance.Debug ||
+                                   await IsSupportedAsync().ConfigureAwait(false) &&
+                                   await WMI.PowerButtonLed.ExistsAsync().ConfigureAwait(false);
+
+        return _isBrightnessSupported.Value;
     }
 
     public async Task<bool> GetSyncEnabledAsync()
@@ -64,44 +72,19 @@ public sealed class PowerButtonLedController(ApplicationSettings settings)
             throw new ArgumentOutOfRangeException(nameof(brightness));
         }
 
-        if (!await IsSupportedAsync().ConfigureAwait(false))
+        if (!await IsBrightnessSupportedAsync().ConfigureAwait(false))
         {
-            throw new NotSupportedException("Power button light is not supported on this device.");
+            throw new NotSupportedException("Power button light brightness is not supported on this device.");
         }
-
-        var offset = GetLevelOffset();
-        var level = brightness - (offset ?? 0);
 
         var (stateType, _) = await WMI.PowerButtonLed.GetStatusAsync().ConfigureAwait(false);
 
-        await WMI.PowerButtonLed.SetStatusAsync(stateType, level).ConfigureAwait(false);
-
-        if (offset is not null)
-        {
-            return;
-        }
+        await WMI.PowerButtonLed.SetStatusAsync(stateType, brightness).ConfigureAwait(false);
 
         var (_, readBack) = await WMI.PowerButtonLed.GetStatusAsync().ConfigureAwait(false);
-
-        if (readBack == level)
+        if (readBack != brightness)
         {
-            SaveLevelOffset(0);
-            return;
+            Log.Instance.Trace($"Power button light brightness was not confirmed. [brightness={brightness}, read={readBack}]");
         }
-
-        if (readBack == level - 1)
-        {
-            SaveLevelOffset(1);
-            await WMI.PowerButtonLed.SetStatusAsync(stateType, brightness - 1).ConfigureAwait(false);
-        }
-    }
-
-    private int? GetLevelOffset() => _levelOffset ??= settings.Store.PowerButtonLedLevelOffset;
-
-    private void SaveLevelOffset(int offset)
-    {
-        _levelOffset = offset;
-        settings.Store.PowerButtonLedLevelOffset = offset;
-        settings.SynchronizeStore();
     }
 }

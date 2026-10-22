@@ -14,6 +14,7 @@ public partial class PowerButtonLedControl
     private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
 
     private bool _isUpdating;
+    private bool _brightnessSupported;
 
     public PowerButtonLedControl()
     {
@@ -29,6 +30,7 @@ public partial class PowerButtonLedControl
             throw new NotSupportedException();
 
         var syncEnabled = await _powerButtonLed.GetSyncEnabledAsync();
+        _brightnessSupported = await _powerButtonLed.IsBrightnessSupportedAsync();
 
         try
         {
@@ -36,14 +38,14 @@ public partial class PowerButtonLedControl
 
             _toggle.IsChecked = syncEnabled;
             _brightnessSlider.Value = _settings.Store.PowerButtonLedBrightness;
-            _brightnessSlider.IsEnabled = !syncEnabled;
+            _brightnessSlider.IsEnabled = _brightnessSupported && !syncEnabled;
         }
         finally
         {
             _isUpdating = false;
         }
 
-        _brightnessSlider.Visibility = Visibility.Visible;
+        _brightnessSlider.Visibility = _brightnessSupported ? Visibility.Visible : Visibility.Collapsed;
         _toggle.Visibility = Visibility.Visible;
     }
 
@@ -65,7 +67,7 @@ public partial class PowerButtonLedControl
 
             await _powerButtonLed.SetSyncEnabledAsync(enabled);
 
-            if (!enabled)
+            if (!enabled && _brightnessSupported)
                 await _powerButtonLed.SetBrightnessAsync(_settings.Store.PowerButtonLedBrightness);
         }
         catch (Exception ex)
@@ -77,7 +79,7 @@ public partial class PowerButtonLedControl
         finally
         {
             _toggle.IsEnabled = true;
-            _brightnessSlider.IsEnabled = _toggle.IsChecked != true;
+            _brightnessSlider.IsEnabled = _brightnessSupported && _toggle.IsChecked != true;
         }
 
         if (exceptionOccurred)

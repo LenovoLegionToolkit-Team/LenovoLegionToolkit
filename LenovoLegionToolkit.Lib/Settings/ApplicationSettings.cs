@@ -48,7 +48,6 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public GameDetectionSettings GameDetection { get; set; } = new();
         public bool DynamicLightingWarningDontShowAgain { get; set; }
         public int PowerButtonLedBrightness { get; set; } = PowerButtonLedController.MaxBrightness;
-        public int? PowerButtonLedLevelOffset { get; set; }
         public bool CustomModeWarningDontShowAgain { get; set; }
         public bool EnableHardwareAcceleration { get; set; }
         public int GPUMonitoringInterval { get; set; } = 5000;
