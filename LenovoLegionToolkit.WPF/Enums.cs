@@ -25,6 +25,7 @@ public enum DashboardItem
     OverclockDiscreteGpu,
     PanelLogoBacklight,
     PortsBacklight,
+    PowerButtonLed,
     Resolution,
     RefreshRate,
     DpiScale,

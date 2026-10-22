@@ -123,6 +123,7 @@ public readonly struct DashboardGroup(DashboardGroupType type, string? customNam
                 DashboardItem.WhiteKeyboardBacklight,
                 DashboardItem.PanelLogoBacklight,
                 DashboardItem.PortsBacklight,
+                DashboardItem.PowerButtonLed,
                 DashboardItem.TouchpadLock,
                 DashboardItem.FnLock,
                 DashboardItem.WinKeyLock)

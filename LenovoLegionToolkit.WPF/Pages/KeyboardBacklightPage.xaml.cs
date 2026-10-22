@@ -18,11 +18,8 @@ namespace LenovoLegionToolkit.WPF.Pages;
 public partial class KeyboardBacklightPage
 {
     private readonly ApplicationSettings _settings = IoCContainer.Resolve<ApplicationSettings>();
-    private readonly PowerButtonLedController _powerButtonLed = IoCContainer.Resolve<PowerButtonLedController>();
     private const string REGISTRY_PATH = @"SOFTWARE\Microsoft\Lighting";
     private const string REGISTRY_VALUE = "AmbientLightingEnabled";
-
-    private bool _isUpdatingPowerButtonLed;
 
     public KeyboardBacklightPage() => InitializeComponent();
 
@@ -34,7 +31,6 @@ public partial class KeyboardBacklightPage
 
         try
         {
-            await LoadPowerButtonLedAsync();
             await CheckDynamicLightingWarningAsync();
             await LoadKeyboardBacklightControlAsync();
         }
@@ -46,80 +42,6 @@ public partial class KeyboardBacklightPage
         finally
         {
             _loader.IsLoading = false;
-        }
-    }
-
-    private async Task LoadPowerButtonLedAsync()
-    {
-        _isUpdatingPowerButtonLed = true;
-
-        try
-        {
-            var supported = await _powerButtonLed.IsSupportedAsync();
-            var syncEnabled = supported && await _powerButtonLed.GetSyncEnabledAsync();
-
-            _powerButtonLedHeader.Warning = supported ? string.Empty : Resource.PowerButtonLed_Unsupported;
-            _powerButtonLedSyncToggle.IsChecked = syncEnabled;
-            _powerButtonLedSyncToggle.IsEnabled = supported;
-            _powerButtonLedBrightnessSlider.Value = _settings.Store.PowerButtonLedBrightness;
-            _powerButtonLedBrightnessSlider.IsEnabled = supported && !syncEnabled;
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Failed to load power button light state.", ex);
-            _powerButtonLedHeader.Warning = Resource.PowerButtonLed_Failed;
-        }
-        finally
-        {
-            _isUpdatingPowerButtonLed = false;
-        }
-    }
-
-    private async void PowerButtonLedSyncToggle_Click(object sender, RoutedEventArgs e)
-    {
-        if (_isUpdatingPowerButtonLed)
-            return;
-
-        _powerButtonLedSyncToggle.IsEnabled = false;
-
-        try
-        {
-            var enabled = _powerButtonLedSyncToggle.IsChecked == true;
-
-            await _powerButtonLed.SetSyncEnabledAsync(enabled);
-
-            if (!enabled)
-                await _powerButtonLed.SetBrightnessAsync(_settings.Store.PowerButtonLedBrightness);
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Could not change power button light sync.", ex);
-            _powerButtonLedHeader.Warning = Resource.PowerButtonLed_Failed;
-        }
-        finally
-        {
-            await LoadPowerButtonLedAsync();
-        }
-    }
-
-    private async void PowerButtonLedBrightnessSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-    {
-        if (_isUpdatingPowerButtonLed)
-            return;
-
-        var brightness = (int)_powerButtonLedBrightnessSlider.Value;
-
-        try
-        {
-            await _powerButtonLed.SetBrightnessAsync(brightness);
-            _settings.Store.PowerButtonLedBrightness = brightness;
-            _settings.SynchronizeStore();
-            _powerButtonLedHeader.Warning = string.Empty;
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Could not set power button light brightness.", ex);
-            _powerButtonLedHeader.Warning = Resource.PowerButtonLed_Failed;
         }
     }
 

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LenovoLegionToolkit.Lib.Controllers;
 using Newtonsoft.Json;
 using static LenovoLegionToolkit.Lib.Settings.ApplicationSettings;
 
@@ -46,7 +47,8 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public List<string> IncludedProcesses { get; set; } = [];
         public GameDetectionSettings GameDetection { get; set; } = new();
         public bool DynamicLightingWarningDontShowAgain { get; set; }
-        public int PowerButtonLedBrightness { get; set; } = 4;
+        public int PowerButtonLedBrightness { get; set; } = PowerButtonLedController.MaxBrightness;
+        public int? PowerButtonLedLevelOffset { get; set; }
         public bool CustomModeWarningDontShowAgain { get; set; }
         public bool EnableHardwareAcceleration { get; set; }
         public int GPUMonitoringInterval { get; set; } = 5000;

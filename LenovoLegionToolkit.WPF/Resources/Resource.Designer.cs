@@ -7327,16 +7327,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
 
         /// <summary>
-        ///   查找类似 Couldn't change the power button light. 的本地化字符串。
-        /// </summary>
-        public static string PowerButtonLed_Failed {
-            get {
-                return ResourceManager.GetString("PowerButtonLed_Failed", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Synchronize the power button light with the keyboard backlight. 的本地化字符串。
+        ///   查找类似 Adjust the light brightness or sync it with the keyboard backlight. 的本地化字符串。
         /// </summary>
         public static string PowerButtonLed_Message {
             get {
@@ -7350,15 +7341,6 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string PowerButtonLed_Title {
             get {
                 return ResourceManager.GetString("PowerButtonLed_Title", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   查找类似 Your device does not support the power button light. 的本地化字符串。
-        /// </summary>
-        public static string PowerButtonLed_Unsupported {
-            get {
-                return ResourceManager.GetString("PowerButtonLed_Unsupported", resourceCulture);
             }
         }
         
