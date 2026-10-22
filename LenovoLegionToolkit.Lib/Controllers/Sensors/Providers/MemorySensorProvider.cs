@@ -9,6 +9,7 @@ public class MemorySensorProvider : ISensorProvider
 {
     private const float MinTemp = 0f;
     private const float MaxTemp = 150f;
+    private const float BYTES_PER_GB = 1024f * 1024f * 1024f;
 
     private const string MEM_TOTAL = "Total Memory";
     private const string MEM_USED = "Memory Used";
@@ -90,8 +91,8 @@ public class MemorySensorProvider : ISensorProvider
             : -1.0;
 
         values[SensorItem.MemoryUtilization] = usage;
-        values[SensorItem.MemoryUsed] = used;
-        values[SensorItem.MemoryTotal] = total;
+        values[SensorItem.MemoryUsed] = used >= 0 ? used / BYTES_PER_GB : used;
+        values[SensorItem.MemoryTotal] = total > 0 ? total / BYTES_PER_GB : total;
         values[SensorItem.MemoryTemperature] = (float)maxTemp;
 
         Values = values;
