@@ -26,14 +26,34 @@
             <custom:CardControl.Header>
                 <controls:CardHeaderControl
                     x:Name="_powerButtonLedHeader"
-                    Title="{x:Static resources:Resource.PowerButtonLedSync_Title}"
-                    Subtitle="{x:Static resources:Resource.PowerButtonLedSync_Message}" />
+                    Title="{x:Static resources:Resource.PowerButtonLed_Title}"
+                    Subtitle="{x:Static resources:Resource.PowerButtonLed_Message}" />
             </custom:CardControl.Header>
-            <wpfui:ToggleSwitch
-                x:Name="_powerButtonLedSyncToggle"
-                IsEnabled="False"
-                AutomationProperties.Name="{x:Static resources:Resource.PowerButtonLedSync_Title}"
-                Click="PowerButtonLedSyncToggle_Click" />
+            <StackPanel>
+                <wpfui:ToggleSwitch
+                    x:Name="_powerButtonLedSyncToggle"
+                    Margin="0,0,0,8"
+                    IsEnabled="False"
+                    AutomationProperties.Name="{x:Static resources:Resource.PowerButtonLed_Message}"
+                    Click="PowerButtonLedSyncToggle_Click" />
+                <TextBlock
+                    Margin="0,0,0,4"
+                    FontSize="12"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                    Text="{x:Static resources:Resource.PowerButtonLed_Brightness}" />
+                <Slider
+                    x:Name="_powerButtonLedBrightnessSlider"
+                    Width="200"
+                    HorizontalAlignment="Left"
+                    AutomationProperties.Name="{x:Static resources:Resource.PowerButtonLed_Brightness}"
+                    IsEnabled="False"
+                    IsSnapToTickEnabled="True"
+                    Maximum="4"
+                    Minimum="1"
+                    TickFrequency="1"
+                    TickPlacement="BottomRight"
+                    ValueChanged="PowerButtonLedBrightnessSlider_ValueChanged" />
+            </StackPanel>
         </custom:CardControl>
 
         <controls:LoadableControl x:Name="_loader" IndicatorMargin="0,64,0,0">

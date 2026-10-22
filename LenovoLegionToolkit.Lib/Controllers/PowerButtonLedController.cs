@@ -1,41 +1,68 @@
 using System;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.System.Management;
+using LenovoLegionToolkit.Lib.Utils;
 
 namespace LenovoLegionToolkit.Lib.Controllers;
 
 public sealed class PowerButtonLedController
 {
-    public const int DefaultKeyboardBrightness = 7;
-    private static readonly int[] BrightnessMap = [1, 2, 2, 2, 3, 3, 3, 4, 4, 4];
+    public const int MinBrightness = 1;
+    public const int MaxBrightness = 4;
+
+    private const int SyncOff = 0;
+    private const int SyncOn = 2;
+
     public async Task<bool> IsSupportedAsync()
     {
-        var capability = await WMI.PowerButtonLed.GetCapabilityAsync().ConfigureAwait(false);
+        try
+        {
+            if (AppFlags.Instance.Debug)
+            {
+                return true;
+            }
 
-        return capability is { } value && (value & 6) == 6;
+            var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+
+            return mi.Features.Source == MachineInformation.FeatureData.SourceType.CapabilityData &&
+                   mi.Features[CapabilityID.PowerLedBrightness] &&
+                   !mi.Properties.IsExcludedFromLenovoLighting;
+        }
+        catch
+        {
+            return false;
+        }
     }
 
-    public async Task SetKeyboardBrightnessAsync(int brightness)
+    public async Task<bool> GetSyncEnabledAsync()
     {
-        if (brightness is < 0 or > 9)
+        var value = await WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.PowerLedBrightness).ConfigureAwait(false);
+
+        return value != SyncOff;
+    }
+
+    public async Task SetSyncEnabledAsync(bool enabled)
+    {
+        var target = enabled ? SyncOn : SyncOff;
+
+        await WMI.LenovoOtherMethod.SetFeatureValueAsync(CapabilityID.PowerLedBrightness, target).ConfigureAwait(false);
+
+        var value = await WMI.LenovoOtherMethod.GetFeatureValueAsync(CapabilityID.PowerLedBrightness).ConfigureAwait(false);
+        if (value != target)
+        {
+            throw new InvalidOperationException($"Power button light sync was not confirmed by firmware (requested {target}, read {value}).");
+        }
+    }
+
+    public async Task SetBrightnessAsync(int brightness)
+    {
+        if (brightness is < MinBrightness or > MaxBrightness)
         {
             throw new ArgumentOutOfRangeException(nameof(brightness));
         }
 
-        if (!await IsSupportedAsync().ConfigureAwait(false))
-        {
-            throw new NotSupportedException("Power-button LED read/write capability is unavailable.");
-        }
-
-        var level = BrightnessMap[brightness];
         var (stateType, _) = await WMI.PowerButtonLed.GetStatusAsync().ConfigureAwait(false);
 
-        await WMI.PowerButtonLed.SetStatusAsync(stateType, level).ConfigureAwait(false);
-
-        var (_, actualLevel) = await WMI.PowerButtonLed.GetStatusAsync().ConfigureAwait(false);
-        if (actualLevel != level)
-        {
-            throw new InvalidOperationException($"Power-button LED brightness was not confirmed by firmware (requested {level}, read {actualLevel}).");
-        }
+        await WMI.PowerButtonLed.SetStatusAsync(stateType, brightness).ConfigureAwait(false);
     }
 }

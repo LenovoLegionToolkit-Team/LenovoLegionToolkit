@@ -7318,38 +7318,47 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Synchronization failed. 的本地化字符串。
+        ///   查找类似 Brightness 的本地化字符串。
         /// </summary>
-        public static string PowerButtonLedSync_Failed {
+        public static string PowerButtonLed_Brightness {
             get {
-                return ResourceManager.GetString("PowerButtonLedSync_Failed", resourceCulture);
+                return ResourceManager.GetString("PowerButtonLed_Brightness", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   查找类似 Couldn't change the power button light. 的本地化字符串。
+        /// </summary>
+        public static string PowerButtonLed_Failed {
+            get {
+                return ResourceManager.GetString("PowerButtonLed_Failed", resourceCulture);
             }
         }
         
         /// <summary>
         ///   查找类似 Synchronize the power button light with the keyboard backlight. 的本地化字符串。
         /// </summary>
-        public static string PowerButtonLedSync_Message {
+        public static string PowerButtonLed_Message {
             get {
-                return ResourceManager.GetString("PowerButtonLedSync_Message", resourceCulture);
+                return ResourceManager.GetString("PowerButtonLed_Message", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Power Button Light Sync 的本地化字符串。
+        ///   查找类似 Power Button Light 的本地化字符串。
         /// </summary>
-        public static string PowerButtonLedSync_Title {
+        public static string PowerButtonLed_Title {
             get {
-                return ResourceManager.GetString("PowerButtonLedSync_Title", resourceCulture);
+                return ResourceManager.GetString("PowerButtonLed_Title", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   查找类似 Your device does not support the power button light sync. 的本地化字符串。
+        ///   查找类似 Your device does not support the power button light. 的本地化字符串。
         /// </summary>
-        public static string PowerButtonLedSync_Unsupported {
+        public static string PowerButtonLed_Unsupported {
             get {
-                return ResourceManager.GetString("PowerButtonLedSync_Unsupported", resourceCulture);
+                return ResourceManager.GetString("PowerButtonLed_Unsupported", resourceCulture);
             }
         }
         
