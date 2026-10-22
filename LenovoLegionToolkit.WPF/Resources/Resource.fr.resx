@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -1384,11 +1384,11 @@ Certaines machines peuvent accepter des valeurs plus faibles à celles indiquée
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Le mode personnalisé permet d'accéder à des paramètres système critiques, tels que les limites de puissance et les courbes de fonctionnement des ventilateurs. 
+    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves.
 
-Une mauvaise configuration peut entraîner une instabilité grave du système, un ralentissement dû à la surchauffe ou des dommages matériels irréversibles. Les modifications effectuées ici peuvent entraîner l'annulation de la garantie du fabricant. 
+Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty.
 
-Ne poursuivez pas cette opération si vous ne disposez pas des compétences techniques nécessaires.</value>
+Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
     <value>Nom</value>
@@ -2124,24 +2124,24 @@ Cela n'affectera pas les autres fenêtres en plein écran, mais vous ne pourrez 
     <value>Rétro-éclairage modifié</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
-    <value>Le service du pilote PawnIO n'est pas en cours d'exécution.
+    <value>The PawnIO driver service is not running.
 
-Veuillez démarrer le service ou mettre à jour/réinstaller PawnIO pour utiliser cette fonctionnalité !
+Please start the service or update/reinstall PawnIO to use this feature!
 
-Cliquez sur Oui pour ouvrir le lien de téléchargement dans le navigateur.
-Cliquez sur Non pour désactiver la fonctionnalité des sondes matériel.</value>
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
     <value>Pilote PawnIO inactif</value>
   </data>
   <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
-    <value>Votre version de PawnIO est trop ancienne.
+    <value>Your PawnIO version is too old.
 
-Actuellement: {0} Requis: {1}. 
-Veuillez mettre à jour PawnIO pour continuer à utiliser cette fonctionnalité !
-    
-Cliquez sur Oui pour ouvrir le lien de téléchargement dans le navigateur.
-Cliquez sur Non pour désactiver la fonction des sondes matériel.</value>
+Current: {0} Required: {1}.
+Please update PawnIO to continue using this feature!
+
+Click Yes to open download link in browser.
+Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
     <value>Mise à jour de PawnIO nécessaire</value>
@@ -3929,16 +3929,10 @@ La journalisation sera activée automatiquement si vous choisissez de continuer.
   <data name="PowerButtonLed_Brightness" xml:space="preserve">
     <value>Brightness</value>
   </data>
-  <data name="PowerButtonLed_Failed" xml:space="preserve">
-    <value>Couldn't change the power button light.</value>
-  </data>
   <data name="PowerButtonLed_Message" xml:space="preserve">
-    <value>Synchronize the power button light with the keyboard backlight.</value>
+    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
   </data>
   <data name="PowerButtonLed_Title" xml:space="preserve">
     <value>Power Button Light</value>
-  </data>
-  <data name="PowerButtonLed_Unsupported" xml:space="preserve">
-    <value>Your device does not support the power button light.</value>
   </data>
 </root>
