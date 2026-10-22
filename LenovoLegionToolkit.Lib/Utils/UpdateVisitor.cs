@@ -1,5 +1,5 @@
 using System;
-using DiskInfoToolkit;
+using DiskInfoToolkit.Devices;
 using LibreHardwareMonitor.Hardware;
 
 namespace LenovoLegionToolkit.Lib.Utils
