@@ -212,6 +212,20 @@ public class GodModeController(
 
             return (applied, statuses);
         }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Custom preset application failed; synchronizing Windows power settings independently.", ex);
+            try
+            {
+                await IoCContainer.Resolve<PowerModeFeature>()
+                    .EnsureCorrectWindowsPowerSettingsAreSetAsync(skipThrottle: true).ConfigureAwait(false);
+            }
+            catch (Exception syncException)
+            {
+                Log.Instance.Trace($"Failed to synchronize Windows power settings after preset failure.", syncException);
+            }
+            throw;
+        }
         finally
         {
             _applyLock.Release();
@@ -1000,16 +1014,29 @@ public class GodModeController(
                 await Task.Delay(delayMs).ConfigureAwait(false);
 
                 var readBack1 = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
-                bool firstMatch = readBack1.Length == 10 && readBack1.Select(b => (ushort)b).SequenceEqual(expected);
-                Log.Instance.Trace($"Fan table verify attempt {attempt}, read 1: {(firstMatch ? "OK" : "Mismatch")}");
+                Log.Instance.Trace($"Fan table verify attempt {attempt}, read 1: [{string.Join(",", readBack1)}], requested: [{string.Join(",", expected)}]");
 
                 await Task.Delay(delayMs).ConfigureAwait(false);
                 var readBack2 = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
-                bool secondMatch = readBack2.Length == 10 && readBack2.Select(b => (ushort)b).SequenceEqual(expected);
-                Log.Instance.Trace($"Fan table verify attempt {attempt}, read 2: {(secondMatch ? "OK" : "Mismatch")}");
+                Log.Instance.Trace($"Fan table verify attempt {attempt}, read 2: [{string.Join(",", readBack2)}]");
 
-                if (firstMatch && secondMatch)
+                if (FanTableVerification.IsStableMatchOrUpwardAdjustment(expected, readBack1, readBack2))
                 {
+                    if (!readBack2.SequenceEqual(expected.Select(value => (uint)value)))
+                    {
+                        Log.Instance.Trace($"Firmware raised fan curve to its accepted minimum; saving the verified curve.");
+                        var store = settings.Store;
+                        if (store.Presets.TryGetValue(store.ActivePresetId, out var activePreset)
+                            && activePreset.FanTable is { } activeTable
+                            && activeTable.GetTable().SequenceEqual(expected))
+                        {
+                            store.Presets[store.ActivePresetId] = activePreset with
+                            {
+                                FanTable = new FanTable(readBack2.Select(value => checked((ushort)value)).ToArray())
+                            };
+                            settings.SynchronizeStore();
+                        }
+                    }
                     Log.Instance.Trace($"Fan table verification succeeded on attempt {attempt}.");
                     return true;
                 }
