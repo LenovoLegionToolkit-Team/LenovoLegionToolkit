@@ -1510,7 +1510,7 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Color Wave.
+        ///   Looks up a localized string similar to Wave.
         /// </summary>
         public static string SpectrumKeyboardBacklightEffectType_ColorWave {
             get {
@@ -1519,7 +1519,7 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rain.
+        ///   Looks up a localized string similar to Raining.
         /// </summary>
         public static string SpectrumKeyboardBacklightEffectType_Rain {
             get {
@@ -1528,7 +1528,7 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rainbow Screw.
+        ///   Looks up a localized string similar to Spiral rainbow.
         /// </summary>
         public static string SpectrumKeyboardBacklightEffectType_RainbowScrew {
             get {
@@ -1546,7 +1546,7 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ripple.
+        ///   Looks up a localized string similar to Ripples.
         /// </summary>
         public static string SpectrumKeyboardBacklightEffectType_Ripple {
             get {
@@ -1564,7 +1564,7 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Type.
+        ///   Looks up a localized string similar to Lighting.
         /// </summary>
         public static string SpectrumKeyboardBacklightEffectType_Type {
             get {
