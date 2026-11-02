@@ -181,18 +181,21 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
             new[]
             {
                 SpectrumKeyboardBacklightEffectType.Always,
-                SpectrumKeyboardBacklightEffectType.RainbowScrew,
+                SpectrumKeyboardBacklightEffectType.SpiralRainbow,
                 SpectrumKeyboardBacklightEffectType.RainbowWave,
                 SpectrumKeyboardBacklightEffectType.ColorChange,
                 SpectrumKeyboardBacklightEffectType.ColorWave,
                 SpectrumKeyboardBacklightEffectType.ColorPulse,
                 SpectrumKeyboardBacklightEffectType.Smooth,
-                SpectrumKeyboardBacklightEffectType.Rain,
-                SpectrumKeyboardBacklightEffectType.Ripple,
-                SpectrumKeyboardBacklightEffectType.Type,
+                SpectrumKeyboardBacklightEffectType.Raining,
+                SpectrumKeyboardBacklightEffectType.Ripples,
+                SpectrumKeyboardBacklightEffectType.Lighting,
                 SpectrumKeyboardBacklightEffectType.AudioBounce,
                 SpectrumKeyboardBacklightEffectType.AudioRipple,
-                SpectrumKeyboardBacklightEffectType.AuroraSync
+                SpectrumKeyboardBacklightEffectType.AuroraSync,
+                SpectrumKeyboardBacklightEffectType.HorseRaceLamp,
+                SpectrumKeyboardBacklightEffectType.Breath,
+                SpectrumKeyboardBacklightEffectType.Wave
             }.Where(t => !_hiddenEffectTypes.Contains(t)),
             SpectrumKeyboardBacklightEffectType.Always,
             e => e.GetDisplayName());
@@ -286,21 +289,24 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
 
         _clockwiseDirectionCard.Visibility = effect switch
         {
-            SpectrumKeyboardBacklightEffectType.RainbowScrew => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.SpiralRainbow => Visibility.Visible,
             _ => Visibility.Collapsed
         };
 
         _speedCard.Visibility = effect switch
         {
+            SpectrumKeyboardBacklightEffectType.Breath => Visibility.Visible,
             SpectrumKeyboardBacklightEffectType.ColorChange => Visibility.Visible,
             SpectrumKeyboardBacklightEffectType.ColorPulse => Visibility.Visible,
             SpectrumKeyboardBacklightEffectType.ColorWave => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Rain => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.RainbowScrew => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.HorseRaceLamp => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Raining => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.SpiralRainbow => Visibility.Visible,
             SpectrumKeyboardBacklightEffectType.RainbowWave => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Ripple => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Ripples => Visibility.Visible,
             SpectrumKeyboardBacklightEffectType.Smooth => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Type => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Lighting => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Wave => Visibility.Visible,
             _ => Visibility.Collapsed
         };
 
@@ -318,13 +324,15 @@ public partial class SpectrumKeyboardBacklightEditEffectWindow
 
         _multiColors.Visibility = effect switch
         {
+            SpectrumKeyboardBacklightEffectType.Breath when usesCustomColors => Visibility.Visible,
             SpectrumKeyboardBacklightEffectType.ColorChange when usesCustomColors => Visibility.Visible,
             SpectrumKeyboardBacklightEffectType.ColorPulse when usesCustomColors => Visibility.Visible,
             SpectrumKeyboardBacklightEffectType.ColorWave when usesCustomColors => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Rain when usesCustomColors => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Ripple when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.HorseRaceLamp when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Raining when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Ripples when usesCustomColors => Visibility.Visible,
             SpectrumKeyboardBacklightEffectType.Smooth when usesCustomColors => Visibility.Visible,
-            SpectrumKeyboardBacklightEffectType.Type when usesCustomColors => Visibility.Visible,
+            SpectrumKeyboardBacklightEffectType.Lighting when usesCustomColors => Visibility.Visible,
             _ => Visibility.Collapsed
         };
 

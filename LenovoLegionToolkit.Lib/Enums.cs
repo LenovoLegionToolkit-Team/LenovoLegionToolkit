@@ -903,8 +903,8 @@ public enum SpectrumKeyboardBacklightEffectType
 {
     [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Always")]
     Always,
-    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_RainbowScrew")]
-    RainbowScrew,
+    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_SpiralRainbow")]
+    SpiralRainbow,
     [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_RainbowWave")]
     RainbowWave,
     [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_ColorChange")]
@@ -915,18 +915,24 @@ public enum SpectrumKeyboardBacklightEffectType
     ColorPulse,
     [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Smooth")]
     Smooth,
-    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Rain")]
-    Rain,
-    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Ripple")]
-    Ripple,
-    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Type")]
-    Type,
+    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Raining")]
+    Raining,
+    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Ripples")]
+    Ripples,
+    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Lighting")]
+    Lighting,
     [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_AudioBounce")]
     AudioBounce,
     [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_AudioRipple")]
     AudioRipple,
     [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_AuroraSync")]
-    AuroraSync
+    AuroraSync,
+    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_HorseRaceLamp")]
+    HorseRaceLamp,
+    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Breath")]
+    Breath,
+    [Display(ResourceType = typeof(Resource), Name = "SpectrumKeyboardBacklightEffectType_Wave")]
+    Wave
 }
 
 public enum SpectrumKeyboardBacklightSpeed
