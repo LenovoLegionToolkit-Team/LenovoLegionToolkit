@@ -26,7 +26,13 @@ public class BatteryAutoListener : AbstractAutoListener<BatteryAutoListener.Chan
 
     protected override Task StartAsync()
     {
-        _lastPercentage = Battery.GetBatteryInformation().BatteryPercentage;
+        if (!Battery.TryGetBatteryInformation(out var information))
+        {
+            Log.Instance.Trace($"Battery not present, skipping start.");
+            return Task.CompletedTask;
+        }
+
+        _lastPercentage = information.BatteryPercentage;
 
         if (!_timer.Enabled)
             _timer.Enabled = true;
@@ -45,9 +51,16 @@ public class BatteryAutoListener : AbstractAutoListener<BatteryAutoListener.Chan
     {
         try
         {
-            var percentage = Battery.GetBatteryInformation().BatteryPercentage;
-            if (percentage == _lastPercentage)
+            if (!Battery.TryGetBatteryInformation(out var information))
+            {
                 return;
+            }
+
+            var percentage = information.BatteryPercentage;
+            if (percentage == _lastPercentage)
+            {
+                return;
+            }
 
             _lastPercentage = percentage;
             RaiseChanged(new ChangedEventArgs(percentage));

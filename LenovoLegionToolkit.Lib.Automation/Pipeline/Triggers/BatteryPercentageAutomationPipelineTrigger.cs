@@ -28,7 +28,12 @@ public class BatteryPercentageAutomationPipelineTrigger(int percentage, bool isB
 
     public Task<bool> IsMatchingState()
     {
-        var percentage = Battery.GetBatteryInformation().BatteryPercentage;
+        if (!Battery.TryGetBatteryInformation(out var batteryInformation))
+        {
+            return Task.FromResult(false);
+        }
+
+        var percentage = batteryInformation.BatteryPercentage;
 
         var matches = IsBelow ? percentage < Percentage : percentage > Percentage;
 
