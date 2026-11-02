@@ -35,6 +35,11 @@ public class ChargeThresholdFeature : IFeature<ChargeThreshold>
     {
         try
         {
+            if (!Battery.IsBatteryPresent)
+            {
+                return false;
+            }
+
             _ = await GetStateAsync().ConfigureAwait(false);
 
             return true;
