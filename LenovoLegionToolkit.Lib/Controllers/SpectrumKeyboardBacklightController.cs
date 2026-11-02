@@ -185,11 +185,11 @@ public class SpectrumKeyboardBacklightController
                 SpectrumKeyboardBacklightEffectType.AudioRipple,
                 SpectrumKeyboardBacklightEffectType.ColorChange,
                 SpectrumKeyboardBacklightEffectType.ColorWave,
-                SpectrumKeyboardBacklightEffectType.Rain,
-                SpectrumKeyboardBacklightEffectType.RainbowScrew,
-                SpectrumKeyboardBacklightEffectType.Ripple,
+                SpectrumKeyboardBacklightEffectType.Raining,
+                SpectrumKeyboardBacklightEffectType.SpiralRainbow,
+                SpectrumKeyboardBacklightEffectType.Ripples,
                 SpectrumKeyboardBacklightEffectType.Smooth,
-                SpectrumKeyboardBacklightEffectType.Type
+                SpectrumKeyboardBacklightEffectType.Lighting
             ];
         }
 
@@ -200,11 +200,11 @@ public class SpectrumKeyboardBacklightController
                 SpectrumKeyboardBacklightEffectType.AuroraSync,
                 SpectrumKeyboardBacklightEffectType.AudioRipple,
                 SpectrumKeyboardBacklightEffectType.ColorChange,
-                SpectrumKeyboardBacklightEffectType.Rain,
-                SpectrumKeyboardBacklightEffectType.RainbowScrew,
+                SpectrumKeyboardBacklightEffectType.Raining,
+                SpectrumKeyboardBacklightEffectType.SpiralRainbow,
                 SpectrumKeyboardBacklightEffectType.RainbowWave,
-                SpectrumKeyboardBacklightEffectType.Ripple,
-                SpectrumKeyboardBacklightEffectType.Type
+                SpectrumKeyboardBacklightEffectType.Ripples,
+                SpectrumKeyboardBacklightEffectType.Lighting
             ];
         }
 
@@ -747,18 +747,21 @@ public class SpectrumKeyboardBacklightController
         var effectType = effect.EffectHeader.EffectType switch
         {
             LENOVO_SPECTRUM_EFFECT_TYPE.Always => SpectrumKeyboardBacklightEffectType.Always,
-            LENOVO_SPECTRUM_EFFECT_TYPE.LegionAuraSync => SpectrumKeyboardBacklightEffectType.AuroraSync,
-            LENOVO_SPECTRUM_EFFECT_TYPE.AudioBounceLighting => SpectrumKeyboardBacklightEffectType.AudioBounce,
-            LENOVO_SPECTRUM_EFFECT_TYPE.AudioRippleLighting => SpectrumKeyboardBacklightEffectType.AudioRipple,
+            LENOVO_SPECTRUM_EFFECT_TYPE.AuroraSync => SpectrumKeyboardBacklightEffectType.AuroraSync,
+            LENOVO_SPECTRUM_EFFECT_TYPE.AudioBounce => SpectrumKeyboardBacklightEffectType.AudioBounce,
+            LENOVO_SPECTRUM_EFFECT_TYPE.AudioRipple => SpectrumKeyboardBacklightEffectType.AudioRipple,
             LENOVO_SPECTRUM_EFFECT_TYPE.ColorChange => SpectrumKeyboardBacklightEffectType.ColorChange,
             LENOVO_SPECTRUM_EFFECT_TYPE.ColorPulse => SpectrumKeyboardBacklightEffectType.ColorPulse,
             LENOVO_SPECTRUM_EFFECT_TYPE.ColorWave => SpectrumKeyboardBacklightEffectType.ColorWave,
-            LENOVO_SPECTRUM_EFFECT_TYPE.Rain => SpectrumKeyboardBacklightEffectType.Rain,
-            LENOVO_SPECTRUM_EFFECT_TYPE.ScrewRainbow => SpectrumKeyboardBacklightEffectType.RainbowScrew,
+            LENOVO_SPECTRUM_EFFECT_TYPE.Raining => SpectrumKeyboardBacklightEffectType.Raining,
+            LENOVO_SPECTRUM_EFFECT_TYPE.SpiralRainbow => SpectrumKeyboardBacklightEffectType.SpiralRainbow,
             LENOVO_SPECTRUM_EFFECT_TYPE.RainbowWave => SpectrumKeyboardBacklightEffectType.RainbowWave,
-            LENOVO_SPECTRUM_EFFECT_TYPE.Ripple => SpectrumKeyboardBacklightEffectType.Ripple,
+            LENOVO_SPECTRUM_EFFECT_TYPE.Ripples => SpectrumKeyboardBacklightEffectType.Ripples,
             LENOVO_SPECTRUM_EFFECT_TYPE.Smooth => SpectrumKeyboardBacklightEffectType.Smooth,
-            LENOVO_SPECTRUM_EFFECT_TYPE.TypeLighting => SpectrumKeyboardBacklightEffectType.Type,
+            LENOVO_SPECTRUM_EFFECT_TYPE.HorseRaceLamp => SpectrumKeyboardBacklightEffectType.HorseRaceLamp,
+            LENOVO_SPECTRUM_EFFECT_TYPE.Breath => SpectrumKeyboardBacklightEffectType.Breath,
+            LENOVO_SPECTRUM_EFFECT_TYPE.Wave => SpectrumKeyboardBacklightEffectType.Wave,
+            LENOVO_SPECTRUM_EFFECT_TYPE.Lighting => SpectrumKeyboardBacklightEffectType.Lighting,
             _ => throw new ArgumentException("Unsupported Lenovo Spectrum Effect Preset.")
         };
 
@@ -830,18 +833,21 @@ public class SpectrumKeyboardBacklightController
         var effectType = effect.Type switch
         {
             SpectrumKeyboardBacklightEffectType.Always => LENOVO_SPECTRUM_EFFECT_TYPE.Always,
-            SpectrumKeyboardBacklightEffectType.AuroraSync => LENOVO_SPECTRUM_EFFECT_TYPE.LegionAuraSync,
-            SpectrumKeyboardBacklightEffectType.AudioBounce => LENOVO_SPECTRUM_EFFECT_TYPE.AudioBounceLighting,
-            SpectrumKeyboardBacklightEffectType.AudioRipple => LENOVO_SPECTRUM_EFFECT_TYPE.AudioRippleLighting,
+            SpectrumKeyboardBacklightEffectType.AuroraSync => LENOVO_SPECTRUM_EFFECT_TYPE.AuroraSync,
+            SpectrumKeyboardBacklightEffectType.AudioBounce => LENOVO_SPECTRUM_EFFECT_TYPE.AudioBounce,
+            SpectrumKeyboardBacklightEffectType.AudioRipple => LENOVO_SPECTRUM_EFFECT_TYPE.AudioRipple,
             SpectrumKeyboardBacklightEffectType.ColorChange => LENOVO_SPECTRUM_EFFECT_TYPE.ColorChange,
             SpectrumKeyboardBacklightEffectType.ColorPulse => LENOVO_SPECTRUM_EFFECT_TYPE.ColorPulse,
             SpectrumKeyboardBacklightEffectType.Smooth => LENOVO_SPECTRUM_EFFECT_TYPE.Smooth,
             SpectrumKeyboardBacklightEffectType.ColorWave => LENOVO_SPECTRUM_EFFECT_TYPE.ColorWave,
-            SpectrumKeyboardBacklightEffectType.Rain => LENOVO_SPECTRUM_EFFECT_TYPE.Rain,
-            SpectrumKeyboardBacklightEffectType.RainbowScrew => LENOVO_SPECTRUM_EFFECT_TYPE.ScrewRainbow,
+            SpectrumKeyboardBacklightEffectType.Raining => LENOVO_SPECTRUM_EFFECT_TYPE.Raining,
+            SpectrumKeyboardBacklightEffectType.SpiralRainbow => LENOVO_SPECTRUM_EFFECT_TYPE.SpiralRainbow,
             SpectrumKeyboardBacklightEffectType.RainbowWave => LENOVO_SPECTRUM_EFFECT_TYPE.RainbowWave,
-            SpectrumKeyboardBacklightEffectType.Ripple => LENOVO_SPECTRUM_EFFECT_TYPE.Ripple,
-            SpectrumKeyboardBacklightEffectType.Type => LENOVO_SPECTRUM_EFFECT_TYPE.TypeLighting,
+            SpectrumKeyboardBacklightEffectType.Ripples => LENOVO_SPECTRUM_EFFECT_TYPE.Ripples,
+            SpectrumKeyboardBacklightEffectType.Lighting => LENOVO_SPECTRUM_EFFECT_TYPE.Lighting,
+            SpectrumKeyboardBacklightEffectType.HorseRaceLamp => LENOVO_SPECTRUM_EFFECT_TYPE.HorseRaceLamp,
+            SpectrumKeyboardBacklightEffectType.Breath => LENOVO_SPECTRUM_EFFECT_TYPE.Breath,
+            SpectrumKeyboardBacklightEffectType.Wave => LENOVO_SPECTRUM_EFFECT_TYPE.Wave,
             _ => throw new ArgumentException("Unsupported Spectrum Keyboard Effect Preset.")
         };
 

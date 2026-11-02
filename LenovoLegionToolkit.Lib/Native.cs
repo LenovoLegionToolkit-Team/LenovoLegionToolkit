@@ -76,19 +76,22 @@ public enum LENOVO_SPECTRUM_OPERATION_TYPE : byte
 
 public enum LENOVO_SPECTRUM_EFFECT_TYPE : byte
 {
-    ScrewRainbow = 1,
+    SpiralRainbow = 1,
     RainbowWave = 2,
     ColorChange = 3,
     ColorPulse = 4,
     ColorWave = 5,
     Smooth = 6,
-    Rain = 7,
-    Ripple = 8,
-    AudioRippleLighting = 9,
-    AudioBounceLighting = 10,
+    Raining = 7,
+    Ripples = 8,
+    AudioRipple = 9,
+    AudioBounce = 10,
     Always = 11,
-    TypeLighting = 12,
-    LegionAuraSync = 13,
+    Lighting = 12,
+    AuroraSync = 13,
+    HorseRaceLamp = 20,
+    Breath = 21,
+    Wave = 22,
 }
 
 public enum LENOVO_SPECTRUM_COLOR_MODE : byte
