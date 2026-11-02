@@ -330,7 +330,7 @@ public partial class MainWindow
 
         var mi = await Compatibility.GetMachineInformationAsync();
 
-        return mi.LegionSeries == LegionSeries.Legion_Pro_7 && mi.Generation >= 10;
+        return mi.Generation >= 10;
     }
 
     private static Task<bool> IsBatterySupportedAsync() => Task.FromResult(Battery.IsBatteryPresent);
