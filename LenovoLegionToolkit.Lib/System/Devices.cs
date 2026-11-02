@@ -152,70 +152,156 @@ public static class Devices
 
     #region Battery
 
-    public static unsafe SafeFileHandle GetBattery(bool forceRefresh = false)
-    {
-        if (_battery is not null && !forceRefresh)
-            return _battery;
+    private static readonly TimeSpan BatteryProbeInterval = TimeSpan.FromSeconds(15);
 
+    private static DateTime _batteryProbedAt = DateTime.MinValue;
+
+    public static bool TryGetBattery(out SafeFileHandle? battery)
+    {
         lock (Lock)
         {
-            if (_battery is not null && !forceRefresh)
-                return _battery;
+            if (_battery is not null)
+            {
+                battery = _battery;
+                return true;
+            }
 
-            var devClassBatteryGuid = PInvoke.GUID_DEVCLASS_BATTERY;
-            using var deviceHandle = PInvoke.SetupDiGetClassDevs(devClassBatteryGuid,
-                null,
-                HWND.Null,
-                SETUP_DI_GET_CLASS_DEVS_FLAGS.DIGCF_PRESENT | SETUP_DI_GET_CLASS_DEVS_FLAGS.DIGCF_DEVICEINTERFACE);
+            if (DateTime.UtcNow - _batteryProbedAt < BatteryProbeInterval)
+            {
+                battery = null;
+                return false;
+            }
 
-            // ReSharper disable once StringLiteralTypo
-            if (deviceHandle.IsInvalid)
-                PInvokeExtensions.ThrowIfWin32Error("SetupDiGetClassDevs");
+            _batteryProbedAt = DateTime.UtcNow;
 
-            var deviceInterfaceData = new SP_DEVICE_INTERFACE_DATA { cbSize = (uint)Marshal.SizeOf<SP_DEVICE_INTERFACE_DATA>() };
-
-            var result1 = PInvoke.SetupDiEnumDeviceInterfaces(deviceHandle, null, devClassBatteryGuid, 0, ref deviceInterfaceData);
-            if (!result1)
-                PInvokeExtensions.ThrowIfWin32Error("SetupDiEnumDeviceInterfaces");
-
-            var requiredSize = 0u;
-            _ = PInvoke.SetupDiGetDeviceInterfaceDetail(new HDEVINFO(deviceHandle.DangerousGetHandle()), &deviceInterfaceData, null, 0, &requiredSize, null);
-
-            string devicePath;
-            var output = IntPtr.Zero;
+            var candidates = OpenBatteryDeviceHandles();
             try
             {
-                output = Marshal.AllocHGlobal((int)requiredSize);
-                var deviceDetailData = (SP_DEVICE_INTERFACE_DETAIL_DATA_W*)output.ToPointer();
-                deviceDetailData->cbSize = (uint)Marshal.SizeOf<SP_DEVICE_INTERFACE_DETAIL_DATA_W>();
+                foreach (var candidate in candidates)
+                {
+                    if (!PInvokeExtensions.TryDeviceIoControl(candidate, PInvoke.IOCTL_BATTERY_QUERY_TAG, 0u, out uint tag) || tag == 0)
+                    {
+                        continue;
+                    }
 
-                var result3 = PInvoke.SetupDiGetDeviceInterfaceDetail(new HDEVINFO(deviceHandle.DangerousGetHandle()), &deviceInterfaceData, deviceDetailData, requiredSize, null, null);
-                if (!result3)
-                    PInvokeExtensions.ThrowIfWin32Error("SetupDiEnumDeviceInterfaces");
-
-                fixed (char* e0Ptr = &deviceDetailData->DevicePath.e0)
-                    devicePath = new string(e0Ptr);
+                    _battery = candidate;
+                    battery = candidate;
+                    return true;
+                }
             }
             finally
             {
-                Marshal.FreeHGlobal(output);
+                foreach (var candidate in candidates)
+                {
+                    if (!ReferenceEquals(candidate, _battery))
+                    {
+                        candidate.Dispose();
+                    }
+                }
             }
 
-            var fileHandle = PInvoke.CreateFile(devicePath,
-                (uint)FILE_ACCESS_RIGHTS.FILE_READ_DATA | (uint)FILE_ACCESS_RIGHTS.FILE_WRITE_DATA,
-                FILE_SHARE_MODE.FILE_SHARE_READ | FILE_SHARE_MODE.FILE_SHARE_WRITE,
-                null,
-                FILE_CREATION_DISPOSITION.OPEN_EXISTING,
-                FILE_FLAGS_AND_ATTRIBUTES.FILE_ATTRIBUTE_NORMAL,
-                null);
+            battery = null;
+            return false;
+        }
+    }
 
-            if (fileHandle.IsInvalid)
-                PInvokeExtensions.ThrowIfWin32Error("CreateFile");
+    public static void InvalidateBattery()
+    {
+        lock (Lock)
+        {
+            _battery?.Dispose();
+            _battery = null;
+            _batteryProbedAt = DateTime.MinValue;
+        }
+    }
 
-            _battery = fileHandle;
+    private static unsafe List<SafeFileHandle> OpenBatteryDeviceHandles()
+    {
+        var handles = new List<SafeFileHandle>();
+
+        var devClassBatteryGuid = PInvoke.GUID_DEVCLASS_BATTERY;
+        using var deviceHandle = PInvoke.SetupDiGetClassDevs(devClassBatteryGuid,
+            null,
+            HWND.Null,
+            SETUP_DI_GET_CLASS_DEVS_FLAGS.DIGCF_PRESENT | SETUP_DI_GET_CLASS_DEVS_FLAGS.DIGCF_DEVICEINTERFACE);
+
+        if (deviceHandle.IsInvalid)
+        {
+            Log.Instance.Trace($"Failed to enumerate battery devices. [error={Marshal.GetLastWin32Error()}]");
+            return handles;
         }
 
-        return _battery;
+        for (uint index = 0; ; index++)
+        {
+            var deviceInterfaceData = new SP_DEVICE_INTERFACE_DATA { cbSize = (uint)Marshal.SizeOf<SP_DEVICE_INTERFACE_DATA>() };
+            if (!PInvoke.SetupDiEnumDeviceInterfaces(deviceHandle, null, devClassBatteryGuid, index, ref deviceInterfaceData))
+            {
+                var errorCode = Marshal.GetLastWin32Error();
+                if (errorCode != PInvokeExtensions.ERROR_NO_MORE_ITEMS)
+                {
+                    Log.Instance.Trace($"Failed to enumerate battery device interfaces. [index={index}, error={errorCode}]");
+                }
+
+                break;
+            }
+
+            var fileHandle = OpenBatteryDeviceHandle(deviceHandle, deviceInterfaceData);
+            if (fileHandle is not null)
+            {
+                handles.Add(fileHandle);
+            }
+        }
+
+        return handles;
+    }
+
+    private static unsafe SafeFileHandle? OpenBatteryDeviceHandle(SetupDiDestroyDeviceInfoListSafeHandle deviceHandle, SP_DEVICE_INTERFACE_DATA deviceInterfaceData)
+    {
+        var requiredSize = 0u;
+        _ = PInvoke.SetupDiGetDeviceInterfaceDetail(new HDEVINFO(deviceHandle.DangerousGetHandle()), &deviceInterfaceData, null, 0, &requiredSize, null);
+
+        if (requiredSize == 0)
+        {
+            return null;
+        }
+
+        string devicePath;
+        var output = IntPtr.Zero;
+        try
+        {
+            output = Marshal.AllocHGlobal((int)requiredSize);
+            var deviceDetailData = (SP_DEVICE_INTERFACE_DETAIL_DATA_W*)output.ToPointer();
+            deviceDetailData->cbSize = (uint)Marshal.SizeOf<SP_DEVICE_INTERFACE_DETAIL_DATA_W>();
+
+            if (!PInvoke.SetupDiGetDeviceInterfaceDetail(new HDEVINFO(deviceHandle.DangerousGetHandle()), &deviceInterfaceData, deviceDetailData, requiredSize, null, null))
+            {
+                Log.Instance.Trace($"Failed to get battery device interface detail. [error={Marshal.GetLastWin32Error()}]");
+                return null;
+            }
+
+            fixed (char* e0Ptr = &deviceDetailData->DevicePath.e0)
+                devicePath = new string(e0Ptr);
+        }
+        finally
+        {
+            Marshal.FreeHGlobal(output);
+        }
+
+        var fileHandle = PInvoke.CreateFile(devicePath,
+            (uint)FILE_ACCESS_RIGHTS.FILE_READ_DATA | (uint)FILE_ACCESS_RIGHTS.FILE_WRITE_DATA,
+            FILE_SHARE_MODE.FILE_SHARE_READ | FILE_SHARE_MODE.FILE_SHARE_WRITE,
+            null,
+            FILE_CREATION_DISPOSITION.OPEN_EXISTING,
+            FILE_FLAGS_AND_ATTRIBUTES.FILE_ATTRIBUTE_NORMAL,
+            null);
+
+        if (fileHandle.IsInvalid)
+        {
+            Log.Instance.Trace($"Failed to open battery device. [path={devicePath}, error={Marshal.GetLastWin32Error()}]");
+            return null;
+        }
+
+        return fileHandle;
     }
 
     #endregion

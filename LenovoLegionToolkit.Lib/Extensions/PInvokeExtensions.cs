@@ -30,6 +30,9 @@ public static class PInvokeExtensions
     public static readonly Guid DISPLAY_BRIGTHNESS_SETTING_GUID = Guid.Parse("aded5e82-b909-4619-9949-f5d71dac0bcb");
 
     public static unsafe bool DeviceIoControl<TIn, TOut>(SafeFileHandle hDevice, uint dwIoControlCode, TIn inVal, out TOut outVal) where TIn : struct where TOut : struct
+        => TryDeviceIoControl(hDevice, dwIoControlCode, inVal, out outVal);
+
+    public static unsafe bool TryDeviceIoControl<TIn, TOut>(SafeFileHandle hDevice, uint dwIoControlCode, TIn inVal, out TOut outVal) where TIn : struct where TOut : struct
     {
         var lpInBuffer = IntPtr.Zero;
         var lpOutBuffer = IntPtr.Zero;
