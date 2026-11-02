@@ -9,6 +9,9 @@ public class BatteryNightChargeFeature() : AbstractDriverFeature<BatteryNightCha
 {
     protected override uint GetInBufferValue() => 0x11;
 
+    public override Task<bool> IsSupportedAsync()
+        => Battery.IsBatteryPresent ? base.IsSupportedAsync() : Task.FromResult(false);
+
     protected override Task<uint[]> ToInternalAsync(BatteryNightChargeState state)
     {
         uint[] result = state switch

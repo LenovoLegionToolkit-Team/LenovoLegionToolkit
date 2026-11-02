@@ -16,6 +16,9 @@ public class BatteryFeature() : AbstractDriverFeature<BatteryState>(Drivers.GetE
 
     protected override uint GetInBufferValue() => 0xFF;
 
+    public override Task<bool> IsSupportedAsync()
+        => Battery.IsBatteryPresent ? base.IsSupportedAsync() : Task.FromResult(false);
+
     protected override Task<uint[]> ToInternalAsync(BatteryState state)
     {
         uint[] result = state switch

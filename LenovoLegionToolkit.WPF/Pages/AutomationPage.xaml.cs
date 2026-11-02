@@ -227,23 +227,29 @@ public partial class AutomationPage
 
         _totalAutomationStepsCount = steps.Count;
 
-        for (var index = steps.Count - 1; index >= 0; index--)
+        var supportedSteps = new List<IAutomationStep>(steps.Count);
+        foreach (var step in steps)
         {
-            var isSupported = false;
-            try
+            if (await IsStepSupportedAsync(step))
             {
-                isSupported = await steps[index].IsSupportedAsync();
+                supportedSteps.Add(step);
             }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Failed to check if automation step is supported. [step={steps[index].GetType().Name}]", ex);
-            }
-
-            if (!isSupported)
-                steps.RemoveAt(index);
         }
 
-        return [.. steps];
+        return [.. supportedSteps];
+    }
+
+    private static async Task<bool> IsStepSupportedAsync(IAutomationStep step)
+    {
+        try
+        {
+            return await step.IsSupportedAsync();
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to check if automation step is supported. [step={step.GetType().Name}]", ex);
+            return false;
+        }
     }
 
     private AutomationPipelineControl GenerateControl(AutomationPipeline pipeline, Panel stackPanel, bool allowQuickActionAutomationStep = true)

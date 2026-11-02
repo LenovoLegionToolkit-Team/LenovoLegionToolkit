@@ -129,46 +129,6 @@
                 TransitionDuration="100"
                 TransitionType="FadeIn">
 
-                <wpfui:NavigationStore.Items>
-                    <custom:NavigationItem
-                        Content="{x:Static resources:Resource.MainWindow_NavigationItem_Dashboard}"
-                        Icon="Home24"
-                        PageTag="dashboard"
-                        PageType="{x:Type pages:DashboardPage}" />
-                    <custom:NavigationItem
-                        x:Name="_keyboardItem"
-                        Content="{x:Static resources:Resource.MainWindow_NavigationItem_Keyboard}"
-                        Icon="Keyboard24"
-                        PageTag="keyboardBacklight"
-                        PageType="{x:Type pages:KeyboardBacklightPage}" />
-                    <custom:NavigationItem
-                        x:Name="_lampArrayKeyboardItem"
-                        Content="{x:Static resources:Resource.MainWindow_NavigationItem_Keyboard}"
-                        Icon="Keyboard24"
-                        PageTag="lampArrayKeyboardBacklight"
-                        PageType="{x:Type pages:LampArrayRGBKeyboardPage}" />
-                    <custom:NavigationItem
-                        Content="{x:Static resources:Resource.MainWindow_NavigationItem_Battery}"
-                        Icon="BatteryCheckmark24"
-                        PageTag="battery"
-                        PageType="{x:Type pages:BatteryPage}" />
-                    <custom:NavigationItem
-                        Content="{x:Static resources:Resource.MainWindow_NavigationItem_Actions}"
-                        Icon="Flash24"
-                        PageTag="automation"
-                        PageType="{x:Type pages:AutomationPage}" />
-                    <custom:NavigationItem
-                        Content="{x:Static resources:Resource.MainWindow_NavigationItem_Macro}"
-                        Icon="ReceiptPlay24"
-                        PageTag="macro"
-                        PageType="{x:Type pages:MacroPage}" />
-                    <custom:NavigationItem
-                        Content="{x:Static resources:Resource.MainWindow_NavigationItem_Packages}"
-                        Icon="Box24"
-                        PageTag="packages"
-                        PageType="{x:Type pages:PackagesPage}" />
-                </wpfui:NavigationStore.Items>
-
                 <wpfui:NavigationStore.Footer>
                     <custom:NavigationItem
                         Content="{x:Static resources:Resource.MainWindow_NavigationItem_Settings}"

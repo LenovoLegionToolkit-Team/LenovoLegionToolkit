@@ -9,6 +9,7 @@ using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Station.Services;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Extensions;
@@ -23,7 +24,44 @@ public partial class CreateAutomationPipelineWindow
 {
     private readonly MachineInformation machineInformation = Compatibility.GetMachineInformationAsync().Result;
 
-    private List<IAutomationPipelineTrigger> _triggers =
+    private readonly List<IAutomationPipelineTrigger> _triggers;
+
+    private readonly HashSet<Type> _existingTriggerTypes;
+    private readonly Action<IAutomationPipelineTrigger> _createPipeline;
+
+    private readonly HashSet<IAutomationPipelineTrigger> _selectedTriggers = new();
+
+    private bool _multiSelect;
+
+    public CreateAutomationPipelineWindow(HashSet<Type> existingTriggerTypes, Action<IAutomationPipelineTrigger> createPipeline)
+    {
+        _existingTriggerTypes = existingTriggerTypes;
+        _createPipeline = createPipeline;
+
+        var allTriggers = CreateTriggers();
+        var totalAvailableTriggers = allTriggers.Count;
+        _triggers = allTriggers.Where(IsTriggerSupported).ToList();
+
+        InitializeComponent();
+
+        var triggerRegistry = IoCContainer.Resolve<IAutomationTriggerRegistry>();
+        totalAvailableTriggers += triggerRegistry.Triggers.Count;
+
+        foreach (var extInfo in triggerRegistry.Triggers)
+        {
+            if (extInfo.Factory() is IAutomationPipelineTrigger trigger)
+            {
+                _triggers.Add(trigger);
+            }
+        }
+
+        _countsTextBlock.Text = string.Format(Resource.Automation_SupportedAvailableCount, _triggers.Count, totalAvailableTriggers);
+
+        IsVisibleChanged += CreateAutomationPipelineWindow_IsVisibleChanged;
+        _logicComboBox.SelectionChanged += (_, _) => _ = RefreshAsync();
+    }
+
+    private static List<IAutomationPipelineTrigger> CreateTriggers() =>
     [
         new ACAdapterConnectedAutomationPipelineTrigger(),
         new LowWattageACAdapterConnectedAutomationPipelineTrigger(),
@@ -60,51 +98,18 @@ public partial class CreateAutomationPipelineWindow
         new OnResumeAutomationPipelineTrigger()
     ];
 
-    private readonly HashSet<Type> _existingTriggerTypes;
-    private readonly Action<IAutomationPipelineTrigger> _createPipeline;
-
-    private readonly HashSet<IAutomationPipelineTrigger> _selectedTriggers = new();
-
-    private bool _multiSelect;
-
-    public CreateAutomationPipelineWindow(HashSet<Type> existingTriggerTypes, Action<IAutomationPipelineTrigger> createPipeline)
+    private bool IsTriggerSupported(IAutomationPipelineTrigger trigger) => trigger switch
     {
-        _existingTriggerTypes = existingTriggerTypes;
-        _createPipeline = createPipeline;
-
-        InitializeComponent();
-
-        var totalAvailableTriggers = _triggers.Count;
-
-        if (machineInformation.Properties.SupportsITSMode)
-        {
-            _triggers.Remove(new PowerModeAutomationPipelineTrigger(PowerModeState.Balance));
-            _triggers.Remove(new GodModePresetChangedAutomationPipelineTrigger(Guid.Empty));
-        }
-        else
-        {
-            _triggers.Remove(new ITSModeAutomationPipelineTrigger(ITSMode.ItsAuto));
-        }
-
-        if (!machineInformation.Properties.SupportsGSync && !machineInformation.Properties.SupportsIGPUMode)
-        {
-            _triggers.Remove(new HybridModeAutomationPipelineTrigger(HybridModeState.On));
-        }
-
-        var triggerRegistry = IoCContainer.Resolve<IAutomationTriggerRegistry>();
-        totalAvailableTriggers += triggerRegistry.Triggers.Count;
-
-        foreach (var extInfo in triggerRegistry.Triggers)
-        {
-            if (extInfo.Factory() is IAutomationPipelineTrigger trigger)
-                _triggers.Add(trigger);
-        }
-
-        _countsTextBlock.Text = string.Format(Resource.Automation_SupportedAvailableCount, _triggers.Count, totalAvailableTriggers);
-
-        IsVisibleChanged += CreateAutomationPipelineWindow_IsVisibleChanged;
-        _logicComboBox.SelectionChanged += (_, _) => _ = RefreshAsync();
-    }
+        PowerModeAutomationPipelineTrigger or GodModePresetChangedAutomationPipelineTrigger
+            => !machineInformation.Properties.SupportsITSMode,
+        ITSModeAutomationPipelineTrigger
+            => machineInformation.Properties.SupportsITSMode,
+        HybridModeAutomationPipelineTrigger
+            => machineInformation.Properties.SupportsGSync || machineInformation.Properties.SupportsIGPUMode,
+        BatteryPercentageAutomationPipelineTrigger
+            => Battery.IsBatteryPresent,
+        _ => true,
+    };
 
     private async void CreateAutomationPipelineWindow_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
     {

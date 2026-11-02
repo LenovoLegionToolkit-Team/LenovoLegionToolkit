@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using Windows.Win32;
@@ -7,6 +8,7 @@ using Windows.Win32.System.Power;
 using LenovoLegionToolkit.Lib.Extensions;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
+using Microsoft.Win32.SafeHandles;
 
 namespace LenovoLegionToolkit.Lib.System;
 
@@ -16,49 +18,49 @@ public static class Battery
     private static int MinDischargeRate { get; set; } = int.MaxValue;
     private static int MaxDischargeRate { get; set; }
 
-    public static void SetMinMaxDischargeRate(BATTERY_STATUS? status = null)
-    {
-        if (!status.HasValue)
-        {
-            var batteryTag = GetBatteryTag();
-            status = GetBatteryStatus(batteryTag);
-        }
+    public static bool IsBatteryPresent => Devices.TryGetBattery(out _);
 
-        if (status.Value.Rate == int.MinValue)
+    public static void SetMinMaxDischargeRate()
+    {
+        if (!TryGetBatteryHandleAndTag(out var handle, out var batteryTag))
         {
             return;
         }
 
-        if (status.Value.Rate == 0
-            || (status.Value.Rate > 0 && (MinDischargeRate < 0 || MaxDischargeRate < 0))
-            || (status.Value.Rate < 0 && (MinDischargeRate > 0 || MaxDischargeRate > 0)))
+        if (!TryGetBatteryStatus(handle, batteryTag, out var status))
         {
-            MinDischargeRate = int.MaxValue;
-            MaxDischargeRate = 0;
+            return;
         }
 
-        if (status.Value.Rate != 0)
-        {
-            if (MaxDischargeRate == 0 || Math.Abs(status.Value.Rate) < Math.Abs(MinDischargeRate))
-                MinDischargeRate = status.Value.Rate;
-            if (Math.Abs(status.Value.Rate) > Math.Abs(MaxDischargeRate))
-                MaxDischargeRate = status.Value.Rate;
-        }
+        UpdateMinMaxDischargeRate(status);
     }
 
-    public static BatteryInformation GetBatteryInformation()
+    public static bool TryGetBatteryInformation(out BatteryInformation information)
     {
-        var powerStatus = GetSystemPowerStatus();
+        information = default;
 
-        var batteryTag = GetBatteryTag();
-        var information = GetBatteryInformation(batteryTag);
-        var status = GetBatteryStatus(batteryTag);
+        if (!TryGetBatteryHandleAndTag(out var handle, out var batteryTag))
+        {
+            return false;
+        }
+
+        if (!TryGetBatteryInfo(handle, batteryTag, out var batteryInfo))
+        {
+            return false;
+        }
+
+        if (!TryGetBatteryStatus(handle, batteryTag, out var status))
+        {
+            return false;
+        }
+
+        UpdateMinMaxDischargeRate(status);
+
+        var powerStatus = GetSystemPowerStatus();
 
         double? temperatureC = null;
         DateTime? manufactureDate = null;
         DateTime? firstUseDate = null;
-
-        SetMinMaxDischargeRate(status);
 
         try
         {
@@ -75,7 +77,7 @@ public static class Battery
             Log.Instance.Trace($"Failed to get temperature of battery.", ex);
         }
 
-        return new(powerStatus.ACLineStatus == 1,
+        information = new(powerStatus.ACLineStatus == 1,
             powerStatus.BatteryLifePercent,
             (int)powerStatus.BatteryLifeTime,
             (int)powerStatus.BatteryFullLifeTime,
@@ -83,17 +85,34 @@ public static class Battery
             (status.Rate == 0 || status.Rate == int.MinValue) ? 0 : MinDischargeRate,
             MaxDischargeRate,
             (int)status.Capacity,
-            (int)information.DesignedCapacity,
-            (int)information.FullChargedCapacity,
-            (int)information.CycleCount,
-            powerStatus.ACLineStatus == 0 && information.DefaultAlert2 >= status.Capacity,
+            (int)batteryInfo.DesignedCapacity,
+            (int)batteryInfo.FullChargedCapacity,
+            (int)batteryInfo.CycleCount,
+            powerStatus.ACLineStatus == 0 && batteryInfo.DefaultAlert2 >= status.Capacity,
             temperatureC,
             manufactureDate,
             firstUseDate);
+
+        return true;
+    }
+
+    public static BatteryInformation GetBatteryInformation()
+    {
+        if (TryGetBatteryInformation(out var information))
+        {
+            return information;
+        }
+
+        throw new InvalidOperationException("Battery is not present.");
     }
 
     public static double? GetBatteryTemperatureC()
     {
+        if (!IsBatteryPresent)
+        {
+            return null;
+        }
+
         try
         {
             var lenovoBatteryInformation = FindLenovoBatteryInformation();
@@ -153,6 +172,35 @@ public static class Battery
         return null;
     }
 
+    private static void UpdateMinMaxDischargeRate(BATTERY_STATUS status)
+    {
+        if (status.Rate == int.MinValue)
+        {
+            return;
+        }
+
+        if (status.Rate == 0
+            || (status.Rate > 0 && (MinDischargeRate < 0 || MaxDischargeRate < 0))
+            || (status.Rate < 0 && (MinDischargeRate > 0 || MaxDischargeRate > 0)))
+        {
+            MinDischargeRate = int.MaxValue;
+            MaxDischargeRate = 0;
+        }
+
+        if (status.Rate != 0)
+        {
+            if (MaxDischargeRate == 0 || Math.Abs(status.Rate) < Math.Abs(MinDischargeRate))
+            {
+                MinDischargeRate = status.Rate;
+            }
+
+            if (Math.Abs(status.Rate) > Math.Abs(MaxDischargeRate))
+            {
+                MaxDischargeRate = status.Rate;
+            }
+        }
+    }
+
     private static SYSTEM_POWER_STATUS GetSystemPowerStatus()
     {
         var result = PInvoke.GetSystemPowerStatus(out var sps);
@@ -163,20 +211,40 @@ public static class Battery
         return sps;
     }
 
-    private static uint GetBatteryTag()
+    private static bool TryGetBatteryHandleAndTag([NotNullWhen(true)] out SafeFileHandle? handle, out uint batteryTag)
     {
-        var result = PInvokeExtensions.DeviceIoControl(Devices.GetBattery(),
-            PInvoke.IOCTL_BATTERY_QUERY_TAG,
-            0u,
-            out uint tag);
+        handle = null;
+        batteryTag = 0;
 
-        if (!result)
-            PInvokeExtensions.ThrowIfWin32Error("DeviceIoControl, IOCTL_BATTERY_QUERY_TAG");
+        if (!Devices.TryGetBattery(out handle) || handle is null)
+        {
+            return false;
+        }
 
-        return tag;
+        if (TryGetBatteryTag(handle, out batteryTag))
+        {
+            return true;
+        }
+
+        Devices.InvalidateBattery();
+        handle = null;
+        batteryTag = 0;
+
+        return false;
     }
 
-    private static BATTERY_INFORMATION GetBatteryInformation(uint batteryTag)
+    private static bool TryGetBatteryTag(SafeFileHandle handle, out uint tag)
+    {
+        if (PInvokeExtensions.TryDeviceIoControl(handle, PInvoke.IOCTL_BATTERY_QUERY_TAG, 0u, out tag))
+        {
+            return tag != 0;
+        }
+
+        tag = 0;
+        return false;
+    }
+
+    private static bool TryGetBatteryInfo(SafeFileHandle handle, uint batteryTag, out BATTERY_INFORMATION batteryInformation)
     {
         var queryInformation = new BATTERY_QUERY_INFORMATION
         {
@@ -184,47 +252,32 @@ public static class Battery
             InformationLevel = BATTERY_QUERY_INFORMATION_LEVEL.BatteryInformation,
         };
 
-        var result = PInvokeExtensions.DeviceIoControl(Devices.GetBattery(),
+        return PInvokeExtensions.TryDeviceIoControl(handle,
             PInvoke.IOCTL_BATTERY_QUERY_INFORMATION,
             queryInformation,
-            out BATTERY_INFORMATION bi);
-
-        if (!result)
-            PInvokeExtensions.ThrowIfWin32Error("DeviceIoControl, IOCTL_BATTERY_QUERY_INFORMATION");
-        return bi;
+            out batteryInformation);
     }
 
-    private static BATTERY_STATUS GetBatteryStatus(uint batteryTag)
+    private static bool TryGetBatteryStatus(SafeFileHandle handle, uint batteryTag, out BATTERY_STATUS status)
     {
         var waitStatus = new BATTERY_WAIT_STATUS
         {
             BatteryTag = batteryTag,
         };
-        var result = PInvokeExtensions.DeviceIoControl(Devices.GetBattery(),
+
+        return PInvokeExtensions.TryDeviceIoControl(handle,
             PInvoke.IOCTL_BATTERY_QUERY_STATUS,
             waitStatus,
-            out BATTERY_STATUS s);
-
-        if (!result)
-            PInvokeExtensions.ThrowIfWin32Error("DeviceIoControl, IOCTL_BATTERY_QUERY_STATUS");
-
-        return s;
+            out status);
     }
 
     private static LENOVO_BATTERY_INFORMATION? FindLenovoBatteryInformation()
     {
         for (uint index = 0; index < 3; index++)
         {
-            // if (Log.Instance.IsTraceEnabled)
-                // Log.Instance.Trace($"Checking battery data at index {index}...");
-
             var info = GetLenovoBatteryInformation(index);
             if (info.Temperature is ushort.MinValue or ushort.MaxValue)
                 continue;
-
-            // Noisy when debug.
-            // if (Log.Instance.IsTraceEnabled)
-                // Log.Instance.Trace($"Battery data found at index {index}.");
 
             return info;
         }

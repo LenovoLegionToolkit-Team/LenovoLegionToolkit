@@ -127,7 +127,7 @@ public partial class SensorsControlV2
             {
                 _activeSensorItems.Clear();
 
-                foreach (var item in message.Items)
+                foreach (var item in message.Items.Where(IsSensorItemAvailable))
                 {
                     _activeSensorItems.Add(item);
                 }
@@ -238,7 +238,7 @@ public partial class SensorsControlV2
         _activeSensorItems.Clear();
         if (_sensorsControlSettings.Store.VisibleItems != null)
         {
-            foreach (SensorItem item in _sensorsControlSettings.Store.VisibleItems)
+            foreach (var item in _sensorsControlSettings.Store.VisibleItems.Where(IsSensorItemAvailable))
             {
                 _activeSensorItems.Add(item);
             }
@@ -254,6 +254,9 @@ public partial class SensorsControlV2
                                     && IsVisible
                                     && _dashboardSettings.Store.ShowSensors
                                     && _applicationSettings.Store.EnableHardwareSensors;
+
+    private static bool IsSensorItemAvailable(SensorItem item)
+        => item is not (SensorItem.BatteryState or SensorItem.BatteryLevel) || Battery.IsBatteryPresent;
 
     private void StopSensorUpdates()
     {
@@ -360,7 +363,7 @@ public partial class SensorsControlV2
             {
                 try
                 {
-                    return (BatteryInformation?)Battery.GetBatteryInformation();
+                    return Battery.TryGetBatteryInformation(out var information) ? information : (BatteryInformation?)null;
                 }
                 catch (Exception ex)
                 {
