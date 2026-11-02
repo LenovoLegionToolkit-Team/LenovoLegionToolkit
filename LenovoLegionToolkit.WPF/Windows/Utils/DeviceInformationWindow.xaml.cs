@@ -6,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.Lib.Utils.Warranty;
 using LenovoLegionToolkit.WPF.Extensions;
@@ -185,7 +186,7 @@ public partial class DeviceInformationWindow
             var diskInfos = LenovoLegionToolkit.Lib.System.DeviceInformation.GetDiskInfos();
             var displayInfos = LenovoLegionToolkit.Lib.System.DeviceInformation.GetDisplayInfos();
             var mbInfo = LenovoLegionToolkit.Lib.System.DeviceInformation.GetMotherboardInfo();
-            var batteryInfo = LenovoLegionToolkit.Lib.System.Battery.GetBatteryInformation();
+            Battery.TryGetBatteryInformation(out var batteryInfo);
             var logicalDrives = LenovoLegionToolkit.Lib.System.DeviceInformation.GetLogicalDrives();
             var networkAdapters = LenovoLegionToolkit.Lib.System.DeviceInformation.GetNetworkAdapters();
 
