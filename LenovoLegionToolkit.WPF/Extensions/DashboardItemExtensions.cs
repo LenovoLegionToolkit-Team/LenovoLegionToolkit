@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.WPF.Controls;
 using LenovoLegionToolkit.WPF.Controls.Dashboard;
 using LenovoLegionToolkit.WPF.Resources;
@@ -72,34 +73,49 @@ public static class DashboardItemExtensions
         _ => throw new InvalidOperationException($"Invalid DashboardItem {dashboardItem}"),
     };
 
-    public static async Task<IEnumerable<AbstractRefreshingControl>> GetControlAsync(this DashboardItem dashboardItem) => dashboardItem switch
+    public static bool IsAvailable(this DashboardItem dashboardItem) => dashboardItem switch
     {
-        DashboardItem.PowerMode => [new PowerModeControl()],
-        DashboardItem.BatteryMode => [new BatteryModeControl()],
-        DashboardItem.BatteryNightChargeMode => [new BatteryNightChargeModeControl()],
-        DashboardItem.ChargeThreshold => [new ChargeThresholdControl()],
-        DashboardItem.AlwaysOnUsb => [new AlwaysOnUSBControl()],
-        DashboardItem.InstantBoot => [new InstantBootControl()],
-        DashboardItem.HybridMode => [await HybridModeControlFactory.GetControlAsync()],
-        DashboardItem.DiscreteGpu => [new DiscreteGPUControl()],
-        DashboardItem.OverclockDiscreteGpu => [new OverclockDiscreteGPUControl()],
-        DashboardItem.Resolution => [new ResolutionControl()],
-        DashboardItem.RefreshRate => [new RefreshRateControl()],
-        DashboardItem.DpiScale => [new DpiScaleControl()],
-        DashboardItem.Hdr => [new HDRControl()],
-        DashboardItem.AutoColorManagement => [new AutoColorManagementControl()],
-        DashboardItem.OverDrive => [new OverDriveControl()],
-        DashboardItem.PanelLogoBacklight => [new PanelLogoBacklightControl()],
-        DashboardItem.PortsBacklight => [new PortsBacklightControl()],
-        DashboardItem.PowerButtonLed => [new PowerButtonLedControl()],
-        DashboardItem.TurnOffMonitors => [new TurnOffMonitorsControl()],
-        DashboardItem.Microphone => [new MicrophoneControl()],
-        DashboardItem.FlipToStart => [new FlipToStartControl()],
-        DashboardItem.TouchpadLock => [new TouchpadLockControl()],
-        DashboardItem.FnLock => [new FnLockControl()],
-        DashboardItem.WinKeyLock => [new WinKeyControl()],
-        DashboardItem.WhiteKeyboardBacklight => [new WhiteKeyboardBacklightControl(), new OneLevelWhiteKeyboardBacklightControl()],
-        DashboardItem.ItsMode => [new ITSModeControl()],
-        _ => throw new InvalidOperationException($"Invalid DashboardItem {dashboardItem}"),
+        DashboardItem.BatteryMode or DashboardItem.BatteryNightChargeMode or DashboardItem.ChargeThreshold
+            => Battery.IsBatteryPresent,
+        _ => true,
     };
+
+    public static async Task<IEnumerable<AbstractRefreshingControl>> GetControlAsync(this DashboardItem dashboardItem)
+    {
+        if (!dashboardItem.IsAvailable())
+        {
+            return [];
+        }
+
+        return dashboardItem switch
+        {
+            DashboardItem.PowerMode => [new PowerModeControl()],
+            DashboardItem.BatteryMode => [new BatteryModeControl()],
+            DashboardItem.BatteryNightChargeMode => [new BatteryNightChargeModeControl()],
+            DashboardItem.ChargeThreshold => [new ChargeThresholdControl()],
+            DashboardItem.AlwaysOnUsb => [new AlwaysOnUSBControl()],
+            DashboardItem.InstantBoot => [new InstantBootControl()],
+            DashboardItem.HybridMode => [await HybridModeControlFactory.GetControlAsync()],
+            DashboardItem.DiscreteGpu => [new DiscreteGPUControl()],
+            DashboardItem.OverclockDiscreteGpu => [new OverclockDiscreteGPUControl()],
+            DashboardItem.Resolution => [new ResolutionControl()],
+            DashboardItem.RefreshRate => [new RefreshRateControl()],
+            DashboardItem.DpiScale => [new DpiScaleControl()],
+            DashboardItem.Hdr => [new HDRControl()],
+            DashboardItem.AutoColorManagement => [new AutoColorManagementControl()],
+            DashboardItem.OverDrive => [new OverDriveControl()],
+            DashboardItem.PanelLogoBacklight => [new PanelLogoBacklightControl()],
+            DashboardItem.PortsBacklight => [new PortsBacklightControl()],
+            DashboardItem.PowerButtonLed => [new PowerButtonLedControl()],
+            DashboardItem.TurnOffMonitors => [new TurnOffMonitorsControl()],
+            DashboardItem.Microphone => [new MicrophoneControl()],
+            DashboardItem.FlipToStart => [new FlipToStartControl()],
+            DashboardItem.TouchpadLock => [new TouchpadLockControl()],
+            DashboardItem.FnLock => [new FnLockControl()],
+            DashboardItem.WinKeyLock => [new WinKeyControl()],
+            DashboardItem.WhiteKeyboardBacklight => [new WhiteKeyboardBacklightControl(), new OneLevelWhiteKeyboardBacklightControl()],
+            DashboardItem.ItsMode => [new ITSModeControl()],
+            _ => throw new InvalidOperationException($"Invalid DashboardItem {dashboardItem}"),
+        };
+    }
 }

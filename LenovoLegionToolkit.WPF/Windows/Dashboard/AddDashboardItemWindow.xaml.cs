@@ -39,7 +39,7 @@ public partial class AddDashboardItemWindow
     {
         _content.Children.Clear();
 
-        var allItems = Enum.GetValues<DashboardItem>();
+        var allItems = Enum.GetValues<DashboardItem>().Where(item => item.IsAvailable());
         var existingItems = _existingItems().ToArray();
 
         foreach (var item in allItems.Except(existingItems))
