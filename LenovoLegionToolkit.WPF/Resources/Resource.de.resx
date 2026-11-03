@@ -1023,14 +1023,20 @@ Ein Wechsel des Modus kann einen Neustart erfordern.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Prozesse</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Auto (Dynamic)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Lock the discrete GPU to a specific performance state.</value>
+    <value>Lock the GPU to a performance state.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+    <value>Prevents downclocking but uses more power.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>P-State Control</value>
