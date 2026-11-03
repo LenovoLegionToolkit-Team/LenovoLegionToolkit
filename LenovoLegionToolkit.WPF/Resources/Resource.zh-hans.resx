@@ -1026,14 +1026,20 @@
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>正在使用显卡的进程</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>自动 (动态)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>锁定独立显卡为指定的性能状态。</value>
+    <value>Lock the GPU to a performance state.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>防止频率下降并降低延迟，但是会增加待机功耗。</value>
+    <value>Prevents downclocking but uses more power.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>性能状态控制</value>
