@@ -23,6 +23,7 @@ public class GPUController
 {
     private readonly AsyncLock _stateLock = new();
     private readonly SemaphoreSlim _refreshGate = new(1, 1);
+    private readonly SemaphoreSlim _pStateGate = new(1, 1);
 
     public int Interval { get; set; } = 5000;
 
@@ -526,35 +527,54 @@ public class GPUController
         return await ApplyPStateAsync(pStateId).ConfigureAwait(false);
     }
 
-    public Task<bool> ApplyPStateAsync(int pStateId)
+    public async Task<bool> ApplyPStateAsync(int pStateId)
     {
+        await _pStateGate.WaitAsync().ConfigureAwait(false);
         try
         {
+            if (IoCContainer.Resolve<HybridModeFeature>().ShouldKeepDGPUAsleep())
+            {
+                Log.Instance.Trace($"dGPU eject is being ensured, skipping P-State apply.");
+                return false;
+            }
+
             var gpu = NVAPI.GetGPU();
             if (gpu is null)
-                return Task.FromResult(false);
+                return false;
 
             if (pStateId == RatedTdpPStateId)
             {
                 Log.Instance.Trace($"Setting GPU to rated TDP mode.");
-                return Task.FromResult(NVAPI.SetRatedTdp(gpu));
+                return NVAPI.SetRatedTdp(gpu);
             }
 
             if (pStateId < 0)
             {
                 Log.Instance.Trace($"Resetting GPU to dynamic P-State mode.");
-                return Task.FromResult(NVAPI.ResetDynamicPerformanceStates(gpu));
+                return NVAPI.ResetDynamicPerformanceStates(gpu);
             }
 
             var pinMode = IoCContainer.Resolve<ApplicationSettings>().Store.PStatePinMode;
             var targetState = (PerformanceStateId)(uint)pStateId;
+
+            var supportedStates = GetSupportedPerformanceStates();
+            if (supportedStates.Count > 0 && !supportedStates.Contains(targetState))
+            {
+                Log.Instance.Trace($"P-State {targetState} is not reported as supported, skipping apply.");
+                return false;
+            }
+
             Log.Instance.Trace($"Setting GPU P-State lock to: {targetState}, pin mode: {pinMode}");
-            return Task.FromResult(NVAPI.SetPerformanceState(gpu, targetState, pinMode));
+            return NVAPI.SetPerformanceState(gpu, targetState, pinMode);
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Failed to apply P-State {pStateId}.", ex);
-            return Task.FromResult(false);
+            return false;
+        }
+        finally
+        {
+            _pStateGate.Release();
         }
     }
 

@@ -263,6 +263,7 @@ internal static class NVAPI
         try
         {
             var frequencyInKhz = GetPStatePinFrequencyInKhz(gpu.Handle, stateId, pinMode);
+            var applied = true;
 
             try
             {
@@ -271,6 +272,7 @@ internal static class NVAPI
             catch (Exception ex)
             {
                 Log.Instance.Trace($"Failed to set rated TDP control.", ex);
+                applied = false;
             }
 
             try
@@ -283,9 +285,10 @@ internal static class NVAPI
             catch (Exception ex)
             {
                 Log.Instance.Trace($"Failed to set clock boost lock.", ex);
+                applied = false;
             }
 
-            return true;
+            return applied;
         }
         catch (Exception ex)
         {
@@ -298,6 +301,8 @@ internal static class NVAPI
     {
         try
         {
+            var applied = true;
+
             try
             {
                 GPUApi.SetClockBoostLock(gpu.Handle, PrivateClockBoostLockV2.CreateDynamicReset());
@@ -305,6 +310,7 @@ internal static class NVAPI
             catch (Exception ex)
             {
                 Log.Instance.Trace($"Failed to reset clock boost lock.", ex);
+                applied = false;
             }
 
             try
@@ -314,9 +320,10 @@ internal static class NVAPI
             catch (Exception ex)
             {
                 Log.Instance.Trace($"Failed to set rated TDP control.", ex);
+                applied = false;
             }
 
-            return true;
+            return applied;
         }
         catch (Exception ex)
         {
