@@ -198,13 +198,9 @@ public class SpectrumKeyboardBacklightController
             return
             [
                 SpectrumKeyboardBacklightEffectType.AuroraSync,
-                SpectrumKeyboardBacklightEffectType.AudioRipple,
-                SpectrumKeyboardBacklightEffectType.ColorChange,
+                SpectrumKeyboardBacklightEffectType.Lighting,
                 SpectrumKeyboardBacklightEffectType.Raining,
-                SpectrumKeyboardBacklightEffectType.SpiralRainbow,
-                SpectrumKeyboardBacklightEffectType.RainbowWave,
-                SpectrumKeyboardBacklightEffectType.Ripples,
-                SpectrumKeyboardBacklightEffectType.Lighting
+                SpectrumKeyboardBacklightEffectType.Ripples
             ];
         }
 
