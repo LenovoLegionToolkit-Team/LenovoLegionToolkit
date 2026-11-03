@@ -498,6 +498,8 @@ public class GPUController
         }
     }
 
+    public const int AutoPStateId = -1;
+
     public const int RatedTdpPStateId = -2;
 
     public static bool IsPStateSelectionActive(int pStateId) => pStateId >= 0 || pStateId == RatedTdpPStateId;

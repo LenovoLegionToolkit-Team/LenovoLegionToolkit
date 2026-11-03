@@ -64,7 +64,7 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
     {
         var items = new List<PStateItemViewModel>
         {
-            new() { Id = -1, DisplayName = Resource.DiscreteGPUControl_PStateAuto }
+            new() { Id = GPUController.AutoPStateId, DisplayName = Resource.DiscreteGPUControl_PStateAuto }
         };
 
         var supportedStates = _gpuController.GetSupportedPerformanceStates();
@@ -108,7 +108,7 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
 
     private void UpdatePinModeEnabled()
     {
-        var id = (_pStateComboBox.SelectedItem as PStateItemViewModel)?.Id ?? -1;
+        var id = (_pStateComboBox.SelectedItem as PStateItemViewModel)?.Id ?? GPUController.AutoPStateId;
         _pinModeComboBox.IsEnabled = id >= 0;
     }
 

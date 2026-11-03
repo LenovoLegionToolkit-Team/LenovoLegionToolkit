@@ -55,7 +55,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public int GPUKillProcessDelay { get; set; } = 500;
         public WindowBackdropType BackdropType { get; set; } = WindowBackdropType.Mica;
         public bool KeepDgpuAwake { get; set; }
-        public int LockedPStateId { get; set; } = -1;
+        public int LockedPStateId { get; set; } = GPUController.AutoPStateId;
         public PStatePinMode PStatePinMode { get; set; } = PStatePinMode.Max;
 
     }
