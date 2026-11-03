@@ -1024,14 +1024,20 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Các tiến trình</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Tự động (Động)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Khóa GPU rời ở trạng thái hiệu suất cụ thể.</value>
+    <value>Lock the GPU to a performance state.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Ngăn chặn việc ép xung và loại bỏ độ trễ chuyển tiếp nhưng làm tăng mức tiêu thụ điện năng.</value>
+    <value>Prevents downclocking but uses more power.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>Điều khiển P-State</value>
