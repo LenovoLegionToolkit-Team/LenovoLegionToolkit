@@ -1023,14 +1023,20 @@ Perubahan ini mungkin membutuhkan sistem untuk dihidupkan ulang.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Proses</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Auto (Dinamis)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Kunci GPU diskret pada status performa tertentu.</value>
+    <value>Lock the GPU to a performance state.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Mencegah downclocking dan menghilangkan latensi transisi, namun meningkatkan konsumsi daya.</value>
+    <value>Prevents downclocking but uses more power.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>Kontrol P-State</value>
