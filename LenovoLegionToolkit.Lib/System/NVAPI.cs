@@ -238,6 +238,7 @@ internal static class NVAPI
             var statesInfo = GPUApi.GetPerformanceStates20(gpu.Handle);
             return statesInfo.PerformanceStates
                 .Select(s => s.StateId)
+                .Where(id => HasGraphicsClock(statesInfo, id))
                 .Distinct()
                 .OrderBy(s => (uint)s)
                 .ToList();
@@ -253,37 +254,19 @@ internal static class NVAPI
         }
     }
 
-    public static bool SetPerformanceState(PhysicalGPU gpu, PerformanceStateId stateId)
+    private static bool HasGraphicsClock(IPerformanceStates20Info statesInfo, PerformanceStateId stateId)
+        => statesInfo.Clocks.TryGetValue(stateId, out var clocks)
+           && clocks.Any(c => c.DomainId == PublicClockDomain.Graphics);
+
+    public static bool SetPerformanceState(PhysicalGPU gpu, PerformanceStateId stateId, PStatePinMode pinMode)
     {
         try
         {
-            uint frequencyInKhz = 0;
-            try
-            {
-                var statesInfo = GPUApi.GetPerformanceStates20(gpu.Handle);
-                
-                if (statesInfo.Clocks.TryGetValue(stateId, out var clockEntries))
-                {
-                    var graphicsClock = clockEntries.FirstOrDefault(c => c.DomainId == PublicClockDomain.Graphics);
-                    if (graphicsClock != null)
-                    {
-                        frequencyInKhz = graphicsClock.FrequencyRange?.MaximumFrequencyInkHz
-                                         ?? graphicsClock.SingleFrequency?.FrequencyInkHz
-                                         ?? 0;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.Instance.Trace($"Failed to get performance states.", ex);
-            }
+            var frequencyInKhz = GetPStatePinFrequencyInKhz(gpu.Handle, stateId, pinMode);
 
             try
             {
-                var tdpControl = (stateId == PerformanceStateId.P0_3DPerformance)
-                    ? PrivateRatedTdpControlV1.EnableRatedTdp()
-                    : PrivateRatedTdpControlV1.ClearRatedTdp();
-                GPUApi.SetRatedTdpControl(gpu.Handle, tdpControl);
+                GPUApi.SetRatedTdpControl(gpu.Handle, PrivateRatedTdpControlV1.ClearRatedTdp());
             }
             catch (Exception ex)
             {
@@ -292,7 +275,9 @@ internal static class NVAPI
 
             try
             {
-                var clockLock = PrivateClockBoostLockV2.CreatePStateAndFrequencyLock(stateId, frequencyInKhz);
+                var clockLock = frequencyInKhz == 0
+                    ? PrivateClockBoostLockV2.CreatePStateLock(stateId)
+                    : PrivateClockBoostLockV2.CreatePStateAndFrequencyLock(stateId, frequencyInKhz);
                 GPUApi.SetClockBoostLock(gpu.Handle, clockLock);
             }
             catch (Exception ex)
@@ -306,6 +291,68 @@ internal static class NVAPI
         {
             Log.Instance.Trace($"Failed to set performance state to {stateId}.", ex);
             return false;
+        }
+    }
+
+    public static bool SetRatedTdp(PhysicalGPU gpu)
+    {
+        try
+        {
+            try
+            {
+                GPUApi.SetClockBoostLock(gpu.Handle, PrivateClockBoostLockV2.CreateDynamicReset());
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to reset clock boost lock.", ex);
+            }
+
+            try
+            {
+                GPUApi.SetRatedTdpControl(gpu.Handle, PrivateRatedTdpControlV1.EnableRatedTdp());
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to set rated TDP control.", ex);
+            }
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to set rated TDP.", ex);
+            return false;
+        }
+    }
+
+    private static uint GetPStatePinFrequencyInKhz(PhysicalGPUHandle gpuHandle, PerformanceStateId stateId, PStatePinMode pinMode)
+    {
+        if (pinMode == PStatePinMode.None)
+            return 0;
+
+        try
+        {
+            var statesInfo = GPUApi.GetPerformanceStates20(gpuHandle);
+
+            if (!statesInfo.Clocks.TryGetValue(stateId, out var clockEntries))
+                return 0;
+
+            var graphicsClock = clockEntries.FirstOrDefault(c => c.DomainId == PublicClockDomain.Graphics);
+            if (graphicsClock is null)
+                return 0;
+
+            var frequencyRange = graphicsClock.FrequencyRange;
+            if (frequencyRange is not null)
+                return pinMode == PStatePinMode.Min
+                    ? frequencyRange.MinimumFrequencyInkHz
+                    : frequencyRange.MaximumFrequencyInkHz;
+
+            return graphicsClock.SingleFrequency?.FrequencyInkHz ?? 0;
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to get performance states.", ex);
+            return 0;
         }
     }
 

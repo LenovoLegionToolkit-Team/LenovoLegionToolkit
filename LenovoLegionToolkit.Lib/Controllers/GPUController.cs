@@ -173,7 +173,7 @@ public class GPUController
             Log.Instance.Trace($"Initialized NVAPI");
 
             var settings = IoCContainer.Resolve<ApplicationSettings>();
-            if (settings.Store.LockedPStateId >= 0)
+            if (IsPStateSelectionActive(settings.Store.LockedPStateId))
             {
                 await ApplyPStateAsync(settings.Store.LockedPStateId).ConfigureAwait(false);
             }
@@ -387,7 +387,7 @@ public class GPUController
             (newState is GPUState.Active or GPUState.Inactive or GPUState.MonitorConnected))
         {
             var lockedPState = IoCContainer.Resolve<ApplicationSettings>().Store.LockedPStateId;
-            if (lockedPState >= 0)
+            if (IsPStateSelectionActive(lockedPState))
             {
                 _ = ApplyPStateAsync(lockedPState);
             }
@@ -498,11 +498,28 @@ public class GPUController
         }
     }
 
+    public const int RatedTdpPStateId = -2;
+
+    public static bool IsPStateSelectionActive(int pStateId) => pStateId >= 0 || pStateId == RatedTdpPStateId;
+
     public async Task<bool> SetPStateAsync(int pStateId)
     {
         var settings = IoCContainer.Resolve<ApplicationSettings>();
         settings.Store.LockedPStateId = pStateId;
         settings.SynchronizeStore();
+
+        return await ApplyPStateAsync(pStateId).ConfigureAwait(false);
+    }
+
+    public async Task<bool> SetPStatePinModeAsync(PStatePinMode pinMode)
+    {
+        var settings = IoCContainer.Resolve<ApplicationSettings>();
+        settings.Store.PStatePinMode = pinMode;
+        settings.SynchronizeStore();
+
+        var pStateId = settings.Store.LockedPStateId;
+        if (pStateId < 0)
+            return true;
 
         return await ApplyPStateAsync(pStateId).ConfigureAwait(false);
     }
@@ -515,15 +532,22 @@ public class GPUController
             if (gpu is null)
                 return Task.FromResult(false);
 
+            if (pStateId == RatedTdpPStateId)
+            {
+                Log.Instance.Trace($"Setting GPU to rated TDP mode.");
+                return Task.FromResult(NVAPI.SetRatedTdp(gpu));
+            }
+
             if (pStateId < 0)
             {
                 Log.Instance.Trace($"Resetting GPU to dynamic P-State mode.");
                 return Task.FromResult(NVAPI.ResetDynamicPerformanceStates(gpu));
             }
 
+            var pinMode = IoCContainer.Resolve<ApplicationSettings>().Store.PStatePinMode;
             var targetState = (PerformanceStateId)(uint)pStateId;
-            Log.Instance.Trace($"Setting GPU P-State lock to: {targetState}");
-            return Task.FromResult(NVAPI.SetPerformanceState(gpu, targetState));
+            Log.Instance.Trace($"Setting GPU P-State lock to: {targetState}, pin mode: {pinMode}");
+            return Task.FromResult(NVAPI.SetPerformanceState(gpu, targetState, pinMode));
         }
         catch (Exception ex)
         {

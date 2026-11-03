@@ -101,10 +101,10 @@
         <TabControl Grid.Row="1" Margin="16,0,16,16">
             <TabItem Header="{x:Static resources:Resource.DiscreteGPUControl_GraphicsPreferencesTabLabel}">
 
-                <ListBox 
-                    x:Name="_processListView" 
-                    Background="Transparent" 
-                    BorderThickness="0" 
+                <ListBox
+                    x:Name="_processListView"
+                    Background="Transparent"
+                    BorderThickness="0"
                     Padding="0,0,12,0"
                     ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListBox.ItemContainerStyle>
@@ -155,10 +155,10 @@
                                         <wpfui:SymbolIcon x:Name="_statusIcon" Symbol="Circle16" Filled="True" Foreground="{DynamicResource TextFillColorTertiaryBrush}" Margin="0,1,4,0" FontSize="12" />
                                         <TextBlock x:Name="_statusText" Text="{Binding Status}" FontWeight="Medium" Foreground="{DynamicResource TextFillColorTertiaryBrush}" />
                                     </StackPanel>
-                                    <ComboBox 
+                                    <ComboBox
                                         Grid.Column="1"
                                         Width="180"
-                                        SelectedValue="{Binding Preference, Mode=TwoWay}" 
+                                        SelectedValue="{Binding Preference, Mode=TwoWay}"
                                         SelectedValuePath="Tag"
                                         IsEnabled="{Binding IsPreferenceEnabled}"
                                         SelectionChanged="PreferenceComboBox_SelectionChanged">
@@ -198,11 +198,21 @@
                                     Subtitle="{x:Static resources:Resource.DiscreteGPUControl_PStateLockDescription}"
                                     Info="{x:Static resources:Resource.DiscreteGPUControl_PStateLockInfo}" />
                             </custom:CardControl.Header>
-                            <ComboBox 
-                                x:Name="_pStateComboBox" 
-                                Width="160" 
-                                VerticalAlignment="Center" 
-                                SelectionChanged="PStateComboBox_SelectionChanged" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <ComboBox
+                                    x:Name="_pStateComboBox"
+                                    Width="145"
+                                    VerticalAlignment="Center"
+                                    SelectionChanged="PStateComboBox_SelectionChanged" />
+                                <ComboBox
+                                    x:Name="_pinModeComboBox"
+                                    Width="85"
+                                    Margin="8,0,0,0"
+                                    VerticalAlignment="Center"
+                                    ToolTip="{x:Static resources:Resource.DiscreteGPUControl_PStatePinInfo}"
+                                    ToolTipService.ShowOnDisabled="True"
+                                    SelectionChanged="PinModeComboBox_SelectionChanged" />
+                            </StackPanel>
                         </custom:CardControl>
 
 
@@ -213,12 +223,12 @@
                                     Subtitle="{x:Static resources:Resource.DiscreteGPUControl_PollingIntervalDescription}" />
                             </custom:CardControl.Header>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Slider 
-                                    x:Name="_intervalSlider" 
-                                    Width="140" 
-                                    Minimum="1" 
-                                    Maximum="10" 
-                                    IsSnapToTickEnabled="True" 
+                                <Slider
+                                    x:Name="_intervalSlider"
+                                    Width="140"
+                                    Minimum="1"
+                                    Maximum="10"
+                                    IsSnapToTickEnabled="True"
                                     ValueChanged="IntervalSlider_ValueChanged" />
                                 <TextBlock x:Name="_intervalText" Width="40" Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Medium" />
                             </StackPanel>
@@ -231,13 +241,13 @@
                                     Subtitle="{x:Static resources:Resource.DiscreteGPUControl_StartupDelayDescription}" />
                             </custom:CardControl.Header>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Slider 
-                                    x:Name="_startupDelaySlider" 
-                                    Width="140" 
-                                    Minimum="0.5" 
-                                    Maximum="5" 
+                                <Slider
+                                    x:Name="_startupDelaySlider"
+                                    Width="140"
+                                    Minimum="0.5"
+                                    Maximum="5"
                                     TickFrequency="0.5"
-                                    IsSnapToTickEnabled="True" 
+                                    IsSnapToTickEnabled="True"
                                     ValueChanged="StartupDelaySlider_ValueChanged" />
                                 <TextBlock x:Name="_startupDelayText" Width="40" Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Medium" />
                             </StackPanel>
@@ -250,13 +260,13 @@
                                     Subtitle="{x:Static resources:Resource.DiscreteGPUControl_KillProcessDelayDescription}" />
                             </custom:CardControl.Header>
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Slider 
-                                    x:Name="_killDelaySlider" 
-                                    Width="140" 
-                                    Minimum="0.1" 
-                                    Maximum="2" 
+                                <Slider
+                                    x:Name="_killDelaySlider"
+                                    Width="140"
+                                    Minimum="0.1"
+                                    Maximum="2"
                                     TickFrequency="0.1"
-                                    IsSnapToTickEnabled="True" 
+                                    IsSnapToTickEnabled="True"
                                     ValueChanged="KillDelaySlider_ValueChanged" />
                                 <TextBlock x:Name="_killDelayText" Width="40" Margin="12,0,0,0" VerticalAlignment="Center" FontWeight="Medium" />
                             </StackPanel>

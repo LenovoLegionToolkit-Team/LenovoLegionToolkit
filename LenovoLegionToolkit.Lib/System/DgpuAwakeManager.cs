@@ -122,7 +122,7 @@ public sealed class DgpuAwakeManager : IAsyncDisposable, IDisposable
             _isActive = true;
             Log.Instance.Trace($"dGPU awake manager started.");
 
-            if (_settings.Store.LockedPStateId >= 0)
+            if (Controllers.GPUController.IsPStateSelectionActive(_settings.Store.LockedPStateId))
             {
                 _ = IoCContainer.Resolve<Controllers.GPUController>().ApplyPStateAsync(_settings.Store.LockedPStateId);
             }
