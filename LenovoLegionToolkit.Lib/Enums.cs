@@ -1122,6 +1122,13 @@ public enum WinKeyState
     On
 }
 
+public enum PStateApplyResult
+{
+    Applied,
+    Skipped,
+    Failed
+}
+
 public enum PStatePinMode
 {
     Max,

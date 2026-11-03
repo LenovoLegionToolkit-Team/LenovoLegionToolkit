@@ -2773,6 +2773,24 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 The discrete GPU did not accept the selected performance state. 的本地化字符串。
+        /// </summary>
+        public static string DiscreteGPUControl_PStateApplyFailedMessage {
+            get {
+                return ResourceManager.GetString("DiscreteGPUControl_PStateApplyFailedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 P-State not applied 的本地化字符串。
+        /// </summary>
+        public static string DiscreteGPUControl_PStateApplyFailedTitle {
+            get {
+                return ResourceManager.GetString("DiscreteGPUControl_PStateApplyFailedTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Auto (Dynamic) 的本地化字符串。
         /// </summary>
         public static string DiscreteGPUControl_PStateAuto {
@@ -2782,7 +2800,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Lock the discrete GPU to a specific performance state. 的本地化字符串。
+        ///   查找类似 Lock the GPU to a performance state. 的本地化字符串。
         /// </summary>
         public static string DiscreteGPUControl_PStateLockDescription {
             get {
@@ -2791,7 +2809,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Prevents downclocking and eliminates transition latency, but increases power consumption. 的本地化字符串。
+        ///   查找类似 Prevents downclocking but uses more power. 的本地化字符串。
         /// </summary>
         public static string DiscreteGPUControl_PStateLockInfo {
             get {
