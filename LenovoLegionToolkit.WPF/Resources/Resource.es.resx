@@ -1024,14 +1024,20 @@ El cambio de modo puede requerir un reinicio.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Procesos</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Automático (dinámico)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Fija la GPU dedicada a un estado de rendimiento específico.</value>
+    <value>Lock the GPU to a performance state.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Evita la reducción de la frecuencia y elimina la latencia de transición, pero aumenta el consumo de energía.</value>
+    <value>Prevents downclocking but uses more power.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>Control del P-State</value>
