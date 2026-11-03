@@ -2809,6 +2809,51 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin. 的本地化字符串。
+        /// </summary>
+        public static string DiscreteGPUControl_PStatePinInfo {
+            get {
+                return ResourceManager.GetString("DiscreteGPUControl_PStatePinInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Max 的本地化字符串。
+        /// </summary>
+        public static string DiscreteGPUControl_PStatePinMax {
+            get {
+                return ResourceManager.GetString("DiscreteGPUControl_PStatePinMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Min 的本地化字符串。
+        /// </summary>
+        public static string DiscreteGPUControl_PStatePinMin {
+            get {
+                return ResourceManager.GetString("DiscreteGPUControl_PStatePinMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 None 的本地化字符串。
+        /// </summary>
+        public static string DiscreteGPUControl_PStatePinNone {
+            get {
+                return ResourceManager.GetString("DiscreteGPUControl_PStatePinNone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 P0 TDP 的本地化字符串。
+        /// </summary>
+        public static string DiscreteGPUControl_PStateRatedTdp {
+            get {
+                return ResourceManager.GetString("DiscreteGPUControl_PStateRatedTdp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Restart GPU 的本地化字符串。
         /// </summary>
         public static string DiscreteGPUControl_RestartGPU {

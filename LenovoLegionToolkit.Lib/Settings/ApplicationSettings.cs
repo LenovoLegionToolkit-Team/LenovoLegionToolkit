@@ -56,6 +56,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public WindowBackdropType BackdropType { get; set; } = WindowBackdropType.Mica;
         public bool KeepDgpuAwake { get; set; }
         public int LockedPStateId { get; set; } = -1;
+        public PStatePinMode PStatePinMode { get; set; } = PStatePinMode.Max;
 
     }
     public class GameDetectionSettings

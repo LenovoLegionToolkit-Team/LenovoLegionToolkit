@@ -1121,3 +1121,10 @@ public enum WinKeyState
     [Display(ResourceType = typeof(Resource), Name = "WinKeyState_On")]
     On
 }
+
+public enum PStatePinMode
+{
+    Max,
+    Min,
+    None
+}
