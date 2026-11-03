@@ -274,7 +274,7 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
         if (item.Id == _settings.Store.LockedPStateId)
             return;
 
-        _ = _gpuController.SetPStateAsync(item.Id);
+        _ = NotifyPStateFailureAsync(_gpuController.SetPStateAsync(item.Id));
     }
 
     private void PinModeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -285,7 +285,17 @@ public partial class DiscreteGPUManagementWindow : BaseWindow
         if (item.Mode == _settings.Store.PStatePinMode)
             return;
 
-        _ = _gpuController.SetPStatePinModeAsync(item.Mode);
+        _ = NotifyPStateFailureAsync(_gpuController.SetPStatePinModeAsync(item.Mode));
+    }
+
+    private static async Task NotifyPStateFailureAsync(Task<PStateApplyResult> apply)
+    {
+        if (await apply != PStateApplyResult.Failed)
+            return;
+
+        SnackbarHelper.Show(Resource.DiscreteGPUControl_PStateApplyFailedTitle,
+            Resource.DiscreteGPUControl_PStateApplyFailedMessage,
+            SnackbarType.Error);
     }
 
 
