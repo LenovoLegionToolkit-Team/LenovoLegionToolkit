@@ -1024,14 +1024,20 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>İşlemler</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Otomatik (Dinamik)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Harici GPU’yu belirli bir performans durumuna sabitleyin.</value>
+    <value>Lock the GPU to a performance state.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Downclocking'i önler ve geçiş gecikmesini ortadan kaldırır, ancak güç tüketimini artırır.</value>
+    <value>Prevents downclocking but uses more power.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>P-State Kontrolü</value>
