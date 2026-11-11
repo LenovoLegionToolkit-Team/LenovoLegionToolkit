@@ -248,6 +248,7 @@ public static partial class Compatibility
                 SupportsAIMode = await GetSupportsAIModeAsync().ConfigureAwait(false),
                 SupportsBootLogoChange = GetSupportBootLogoChange(),
                 SupportsITSMode = GetSupportITSMode(model),
+                SupportsEcFanTable = GetSupportsEcFanTable(biosVersion),
                 HasQuietToPerformanceModeSwitchingBug = GetHasQuietToPerformanceModeSwitchingBug(biosVersion),
                 HasGodModeToOtherModeSwitchingBug = GetHasGodModeToOtherModeSwitchingBug(biosVersion),
                 IsExcludedFromLenovoLighting = GetIsExcludedFromLenovoLighting(biosVersion, generation, legionSeries),
@@ -657,6 +658,18 @@ public static partial class Compatibility
         var affectedBiosVersions = new BiosVersion[]
         {
             new("K1CN", null)
+        };
+
+        return affectedBiosVersions.Any(bv => biosVersion?.IsHigherOrEqualThan(bv) ?? false);
+    }
+
+    // These BIOSes don't implement Fan_Set_Table and return an empty LENOVO_FAN_TABLE_DATA,
+    // the Custom mode fan table is written straight to the EC RAM instead.
+    private static bool GetSupportsEcFanTable(BiosVersion? biosVersion)
+    {
+        var affectedBiosVersions = new BiosVersion[]
+        {
+            new("G9CN", null)
         };
 
         return affectedBiosVersions.Any(bv => biosVersion?.IsHigherOrEqualThan(bv) ?? false);

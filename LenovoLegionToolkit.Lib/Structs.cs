@@ -630,6 +630,7 @@ public readonly struct MachineInformation
         public bool SupportsAIMode { get; init; }
         public bool SupportsBootLogoChange { get; init; }
         public bool SupportsITSMode { get; init; }
+        public bool SupportsEcFanTable { get; init; }
         public bool HasAlternativeFullSpectrumLayout { get; init; }
         public bool HasGodModeToOtherModeSwitchingBug { get; init; }
         public bool HasQuietToPerformanceModeSwitchingBug { get; init; }

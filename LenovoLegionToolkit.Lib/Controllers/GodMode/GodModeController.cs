@@ -27,6 +27,15 @@ public class GodModeController(
     private const uint CAPABILITY_ID_MASK = 0xFFFF00FF;
     private const int BIOS_OC_MODE_ENABLED = 3;
 
+    private const int EC_FAN_TABLE_CHIP_ID = 0x8227;
+    private const ushort EC_FAN1_TABLE_ADDRESS = 0xC540;
+    private const ushort EC_FAN2_TABLE_ADDRESS = 0xC550;
+
+    // EC Custom mode table: fan speeds (x100 RPM) and the temperatures entering each point
+    private static readonly byte[] EcFanSpeeds = [0, 17, 19, 21, 23, 26, 29, 35, 42, 45];
+    private static readonly ushort[] EcCpuTemperatures = [0, 56, 56, 56, 60, 66, 72, 80, 87, 90];
+    private static readonly ushort[] EcGpuTemperatures = [0, 65, 65, 65, 65, 65, 65, 70, 78, 82];
+
     public event EventHandler<Guid>? PresetChanged;
 
     private readonly SemaphoreSlim _applyLock = new(1, 1);
@@ -321,7 +330,11 @@ public class GodModeController(
                     Log.Instance.Trace($"Fan table invalid, replacing with default...");
                     fanTable = await GetDefaultFanTableAsync().ConfigureAwait(false);
                 }
-                await WMI.LenovoFanMethod.FanSetTableAsync(fanTable.GetBytes()).ConfigureAwait(false);
+
+                if (await UseEcFanTableAsync().ConfigureAwait(false))
+                    await SetFanTableEcAsync(fanTable).ConfigureAwait(false);
+                else
+                    await WMI.LenovoFanMethod.FanSetTableAsync(fanTable.GetBytes()).ConfigureAwait(false);
             }
             catch (Exception ex)
             {
@@ -1072,6 +1085,10 @@ public class GodModeController(
     private static async Task<FanTableData[]?> GetFanTableDataLegacyAsync()
     {
         Log.Instance.Trace($"Reading fan table data...");
+
+        if (await UseEcFanTableAsync().ConfigureAwait(false))
+            return GetFanTableDataEc();
+
         var data = await WMI.LenovoFanTableData.ReadAsync().ConfigureAwait(false);
 
         var fanTableData = data
@@ -1094,6 +1111,54 @@ public class GodModeController(
 
         Log.Instance.Trace($"Fan table data retrieved.");
         return fanTableData;
+    }
+
+    private static async Task<bool> UseEcFanTableAsync()
+    {
+        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
+        return mi.Properties.SupportsEcFanTable && PawnIOHelper.GetPawnIOState() == PawnIOState.Installed;
+    }
+
+    private static FanTableData[] GetFanTableDataEc()
+    {
+        var fanSpeeds = EcFanSpeeds.Select(s => (ushort)(s * 100)).ToArray();
+        return
+        [
+            new(FanTableType.CPU, 0, 3, fanSpeeds, EcCpuTemperatures),
+            new(FanTableType.GPU, 1, 4, fanSpeeds, EcGpuTemperatures),
+        ];
+    }
+
+    private static async Task SetFanTableEcAsync(FanTable fanTable)
+    {
+        // Point 0 must stay at 0 RPM, the EC firmware hangs otherwise
+        var speeds = fanTable.GetTable().Select((level, i) => i == 0 || level == 0 ? (byte)0 : EcFanSpeeds[level - 1]).ToArray();
+        int maxAttempts = 3;
+        int delayMs = 1000;
+
+        using var ec = new EmbeddedController();
+
+        var chipId = ec.ReadChipId();
+        if (chipId != EC_FAN_TABLE_CHIP_ID)
+            throw new InvalidOperationException($"Unsupported EC. [chipId=0x{chipId:X4}]");
+
+        // The EC reloads its own table a few hundred milliseconds after a power mode change, possibly after this write
+        for (int attempt = 1; attempt <= maxAttempts; attempt++)
+        {
+            ec.Write(EC_FAN1_TABLE_ADDRESS, speeds);
+            ec.Write(EC_FAN2_TABLE_ADDRESS, speeds);
+            await Task.Delay(delayMs).ConfigureAwait(false);
+
+            if (ec.Read(EC_FAN1_TABLE_ADDRESS, speeds.Length).SequenceEqual(speeds) && ec.Read(EC_FAN2_TABLE_ADDRESS, speeds.Length).SequenceEqual(speeds))
+            {
+                Log.Instance.Trace($"EC fan table verification succeeded on attempt {attempt}. [speeds={string.Join(", ", speeds)}]");
+                return;
+            }
+
+            Log.Instance.Trace($"EC fan table verification attempt {attempt} failed (overwritten), retrying write...");
+        }
+
+        throw new Exception(Resource.GodModeController_FanSetTableError_Message);
     }
 
     private static async Task<FanTableData[]?> GetFanTableDataLegionAsync(PowerModeState powerModeState = PowerModeState.GodMode)
