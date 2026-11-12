@@ -112,24 +112,42 @@ public class DriverKeyListener(
     {
         try
         {
+            var remaining = (uint)value;
+
             foreach (DriverKey flag in Enum.GetValues<DriverKey>())
             {
                 if (!value.HasFlag(flag))
                     continue;
-                if (flag is DriverKey.FnF10 && touchpadLockWmiFeature.ConsumeExpectedEcho())
-                {
-                    Log.Instance.Trace($"Suppressed. [key={flag}]");
+
+                remaining &= ~(uint)flag;
+                await DispatchAsync(flag).ConfigureAwait(false);
+            }
+
+            for (var bit = 1u; bit != 0; bit <<= 1)
+            {
+                if ((remaining & bit) == 0)
                     continue;
-                }
-                if (CustomKeyHandler is not null && await CustomKeyHandler(flag).ConfigureAwait(false))
-                    continue;
-                await RunBuiltInAsync(flag).ConfigureAwait(false);
+
+                await DispatchAsync((DriverKey)bit).ConfigureAwait(false);
             }
         }
         catch (Exception ex)
         {
             Log.Instance.Trace($"Couldn't handle key press. [value={value}]", ex);
         }
+    }
+
+    private async Task DispatchAsync(DriverKey flag)
+    {
+        if (flag is DriverKey.FnF10 && touchpadLockWmiFeature.ConsumeExpectedEcho())
+        {
+            Log.Instance.Trace($"Suppressed. [key={flag}]");
+            return;
+        }
+        if (CustomKeyHandler is not null && await CustomKeyHandler(flag).ConfigureAwait(false))
+            return;
+
+        await RunBuiltInAsync(flag).ConfigureAwait(false);
     }
 
     private async Task RunBuiltInAsync(DriverKey key)

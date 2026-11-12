@@ -40,6 +40,19 @@ public class SpecialKeyActionManager
         listener.CustomKeyHandler = ExecuteDriverKeyAsync;
     }
 
+    public void WireUp(ConsumerControlKeyListener listener)
+    {
+        listener.CustomKeyHandler = ExecuteConsumerControlKeyAsync;
+    }
+
+    public void WireUp(KeyboardHookListener listener, ConsumerControlKeyListener consumerControlKeyListener)
+    {
+        listener.CustomKeyHandler = ExecuteKeyboardKeyAsync;
+        listener.SuppressConsumerControlKey = key => IsCustom((int)key + SpecialKeySettings.SpecialKeySettingsStore.ConsumerControlKeyCodeOffset)
+            && consumerControlKeyListener.HasSeen(key);
+        listener.SuppressKeyboardKey = key => IsCustom((int)key + SpecialKeySettings.SpecialKeySettingsStore.KeyboardKeyCodeOffset);
+    }
+
     private async Task<bool> ExecuteAsync(SpecialKey key)
     {
         var keyInt = (int)key;
@@ -61,9 +74,23 @@ public class SpecialKeyActionManager
         return await ExecuteByCodeAsync(keyInt, key.ToString()).ConfigureAwait(false);
     }
 
+    private async Task<bool> ExecuteConsumerControlKeyAsync(ConsumerControlKey key)
+    {
+        var keyInt = (int)key + SpecialKeySettings.SpecialKeySettingsStore.ConsumerControlKeyCodeOffset;
+        return await ExecuteByCodeAsync(keyInt, key.ToString()).ConfigureAwait(false);
+    }
+
+    private async Task<bool> ExecuteKeyboardKeyAsync(KeyboardKey key)
+    {
+        var keyInt = (int)key + SpecialKeySettings.SpecialKeySettingsStore.KeyboardKeyCodeOffset;
+        return await ExecuteByCodeAsync(keyInt, key.ToString()).ConfigureAwait(false);
+    }
+
+    private bool IsCustom(int keyInt) => _settings.Store.KeyModes.TryGetValue(keyInt, out var mode) && mode == CustomSpecialKey.Custom;
+
     private async Task<bool> ExecuteByCodeAsync(int keyInt, string keyName)
     {
-        if (!_settings.Store.KeyModes.TryGetValue(keyInt, out var mode) || mode != CustomSpecialKey.Custom)
+        if (!IsCustom(keyInt))
             return false;
 
         Log.Instance.Trace($"Custom action triggered for {keyName} [code={keyInt}]");

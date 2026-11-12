@@ -151,6 +151,7 @@ public enum CustomSpecialKey
 public enum DriverKey
 {
     FnQ = 1,
+    FnF5F6 = 16,
     FnF10 = 32,
     FnF4 = 256,
     FnF8 = 8192,
@@ -825,6 +826,20 @@ public enum SpeakerState
     Mute,
     [Display(ResourceType = typeof(Resource), Name = "SpeakerState_Unmute")]
     Unmute
+}
+
+public enum ConsumerControlKey
+{
+    FnF1 = 0x00E2,
+    FnF2 = 0x00EA,
+    FnF3 = 0x00E9,
+    FnF12 = 0x0192,
+}
+
+public enum KeyboardKey
+{
+    FnI = 0x2D,
+    FnK = 0x91,
 }
 
 public enum SpecialKey

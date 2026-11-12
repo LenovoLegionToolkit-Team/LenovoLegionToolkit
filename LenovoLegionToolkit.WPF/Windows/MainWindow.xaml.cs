@@ -44,6 +44,8 @@ public partial class MainWindow
     private readonly ApplicationSettings _applicationSettings = IoCContainer.Resolve<ApplicationSettings>();
     private readonly SpecialKeyListener _specialKeyListener = IoCContainer.Resolve<SpecialKeyListener>();
     private readonly DriverKeyListener _driverKeyListener = IoCContainer.Resolve<DriverKeyListener>();
+    private readonly ConsumerControlKeyListener _consumerControlKeyListener = IoCContainer.Resolve<ConsumerControlKeyListener>();
+    private readonly KeyboardHookListener _keyboardHookListener = IoCContainer.Resolve<KeyboardHookListener>();
     private readonly VantageDisabler _vantageDisabler = IoCContainer.Resolve<VantageDisabler>();
     private readonly LegionSpaceDisabler _legionSpaceDisabler = IoCContainer.Resolve<LegionSpaceDisabler>();
     private readonly LegionZoneDisabler _legionZoneDisabler = IoCContainer.Resolve<LegionZoneDisabler>();
@@ -118,6 +120,8 @@ public partial class MainWindow
         var actionManager = IoCContainer.Resolve<SpecialKeyActionManager>();
         actionManager.WireUp(_specialKeyListener, () => Dispatcher.Invoke(BringToForeground));
         actionManager.WireUp(_driverKeyListener);
+        actionManager.WireUp(_consumerControlKeyListener);
+        actionManager.WireUp(_keyboardHookListener, _consumerControlKeyListener);
 
         AddExtensionNavigationItems();
 
