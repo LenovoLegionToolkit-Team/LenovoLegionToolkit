@@ -834,6 +834,10 @@ public enum ConsumerControlKey
     FnF2 = 0x00EA,
     FnF3 = 0x00E9,
     FnF12 = 0x0192,
+    FnHome = 0x00CD,
+    FnEnd = 0x00B7,
+    FnPgUp = 0x00B6,
+    FnPgDn = 0x00B5,
 }
 
 public enum KeyboardKey
