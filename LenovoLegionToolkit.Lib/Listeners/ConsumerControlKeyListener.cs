@@ -123,6 +123,9 @@ public class ConsumerControlKeyListener(IMainThreadDispatcher mainThreadDispatch
 
         var usage = data[1] | (data[2] << 8);
 
+        if (usage == 0)
+            return;
+
         var key = (ConsumerControlKey)usage;
 
         _seenKeys.Add(key);

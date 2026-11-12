@@ -112,6 +112,10 @@ public class KeyboardHookListener : NativeWindow, IListener<KeyboardHookListener
         (uint)VIRTUAL_KEY.VK_VOLUME_DOWN => ConsumerControlKey.FnF2,
         (uint)VIRTUAL_KEY.VK_VOLUME_UP => ConsumerControlKey.FnF3,
         (uint)VIRTUAL_KEY.VK_LAUNCH_APP2 => ConsumerControlKey.FnF12,
+        (uint)VIRTUAL_KEY.VK_MEDIA_PLAY_PAUSE => ConsumerControlKey.FnHome,
+        (uint)VIRTUAL_KEY.VK_MEDIA_STOP => ConsumerControlKey.FnEnd,
+        (uint)VIRTUAL_KEY.VK_MEDIA_PREV_TRACK => ConsumerControlKey.FnPgUp,
+        (uint)VIRTUAL_KEY.VK_MEDIA_NEXT_TRACK => ConsumerControlKey.FnPgDn,
         _ => null,
     };
 
