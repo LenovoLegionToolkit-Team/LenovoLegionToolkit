@@ -10245,11 +10245,29 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 (HID) 的本地化字符串。
+        /// </summary>
+        public static string SpecialKey_ConsumerSuffix {
+            get {
+                return ResourceManager.GetString("SpecialKey_ConsumerSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 (Driver) 的本地化字符串。
         /// </summary>
         public static string SpecialKey_DriverSuffix {
             get {
                 return ResourceManager.GetString("SpecialKey_DriverSuffix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 (Key) 的本地化字符串。
+        /// </summary>
+        public static string SpecialKey_KeyboardSuffix {
+            get {
+                return ResourceManager.GetString("SpecialKey_KeyboardSuffix", resourceCulture);
             }
         }
         

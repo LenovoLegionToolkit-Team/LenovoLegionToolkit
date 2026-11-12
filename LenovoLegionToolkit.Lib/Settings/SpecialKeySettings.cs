@@ -9,6 +9,8 @@ public class SpecialKeySettings : AbstractSettings<SpecialKeySettings.SpecialKey
     public class SpecialKeySettingsStore
     {
         public const int DriverKeyCodeOffset = 0x10000;
+        public const int ConsumerControlKeyCodeOffset = 0x20000;
+        public const int KeyboardKeyCodeOffset = 0x30000;
 
         public Dictionary<int, CustomSpecialKey> KeyModes { get; set; } = [];
         public Dictionary<int, List<Guid>> KeySinglePressActions { get; set; } = [];

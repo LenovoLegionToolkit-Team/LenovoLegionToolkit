@@ -190,6 +190,7 @@ The app allows to:
 - Monitor dGPU activity (NVIDIA only).
 - Highly customizable On-Screen Display (OSD) to monitor system vitals in real-time.
 - Define Actions that will run when the laptop is e.g. connected to AC power.
+- Assign custom Quick Actions to Fn keys with Smart Keys.
 - View battery statistics.
 - Control laptop features from command line
 - Check for driver and software updates.

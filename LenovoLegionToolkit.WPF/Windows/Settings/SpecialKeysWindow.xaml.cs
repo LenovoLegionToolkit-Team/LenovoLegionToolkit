@@ -64,7 +64,23 @@ public partial class SpecialKeysWindow
             var code = (int)key + SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset;
             if (_settings.Store.HiddenKeys.Contains(code)) continue;
             if (!displayedCodes.Add(code)) continue;
-            entries.Add((code, GetDriverKeyDisplayName(key)));
+            entries.Add((code, SpecialKeyDisplayName.GetKey(key, Resource.SpecialKey_DriverSuffix)));
+        }
+
+        foreach (var key in Enum.GetValues<ConsumerControlKey>())
+        {
+            var code = (int)key + SpecialKeySettings.SpecialKeySettingsStore.ConsumerControlKeyCodeOffset;
+            if (_settings.Store.HiddenKeys.Contains(code)) continue;
+            if (!displayedCodes.Add(code)) continue;
+            entries.Add((code, SpecialKeyDisplayName.GetKey(key, Resource.SpecialKey_ConsumerSuffix)));
+        }
+
+        foreach (var key in Enum.GetValues<KeyboardKey>())
+        {
+            var code = (int)key + SpecialKeySettings.SpecialKeySettingsStore.KeyboardKeyCodeOffset;
+            if (_settings.Store.HiddenKeys.Contains(code)) continue;
+            if (!displayedCodes.Add(code)) continue;
+            entries.Add((code, SpecialKeyDisplayName.GetKey(key, Resource.SpecialKey_KeyboardSuffix)));
         }
 
         foreach (var (code, name) in _settings.Store.KeyDescriptions)
@@ -72,9 +88,9 @@ public partial class SpecialKeysWindow
             if (_settings.Store.HiddenKeys.Contains(code)) continue;
             if (!displayedCodes.Add(code)) continue;
             if (Enum.IsDefined(typeof(SpecialKey), (SpecialKey)code)) continue;
-            if (code >= SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset
-                && Enum.IsDefined(typeof(DriverKey), (DriverKey)(code - SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset)))
-                continue;
+            if (SpecialKeyCodes.IsDriverKey(code)) continue;
+            if (SpecialKeyCodes.IsConsumerControlKey(code)) continue;
+            if (SpecialKeyCodes.IsKeyboardKey(code)) continue;
             entries.Add((code, name));
         }
 
@@ -98,9 +114,12 @@ public partial class SpecialKeysWindow
                         string name;
                         if (_settings.Store.KeyDescriptions.TryGetValue(code, out var desc))
                             name = desc;
-                        else if (code >= SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset
-                            && Enum.IsDefined(typeof(DriverKey), (DriverKey)(code - SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset)))
-                            name = GetDriverKeyDisplayName((DriverKey)(code - SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset));
+                        else if (SpecialKeyCodes.IsDriverKey(code))
+                            name = SpecialKeyDisplayName.GetKey(SpecialKeyCodes.ToDriverKey(code), Resource.SpecialKey_DriverSuffix);
+                        else if (SpecialKeyCodes.IsConsumerControlKey(code))
+                            name = SpecialKeyDisplayName.GetKey(SpecialKeyCodes.ToConsumerControlKey(code), Resource.SpecialKey_ConsumerSuffix);
+                        else if (SpecialKeyCodes.IsKeyboardKey(code))
+                            name = SpecialKeyDisplayName.GetKey(SpecialKeyCodes.ToKeyboardKey(code), Resource.SpecialKey_KeyboardSuffix);
                         else
                             name = GetSpecialKeyDisplayName(code);
                         return (Code: code, Name: name);
@@ -133,8 +152,9 @@ public partial class SpecialKeysWindow
             Cursor = Cursors.Hand,
             ContextMenu = CreateHideContextMenu(code,
                 !Enum.IsDefined(typeof(SpecialKey), (SpecialKey)code)
-                && !(code >= SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset
-                    && Enum.IsDefined(typeof(DriverKey), (DriverKey)(code - SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset))))
+                && !SpecialKeyCodes.IsDriverKey(code)
+                && !SpecialKeyCodes.IsConsumerControlKey(code)
+                && !SpecialKeyCodes.IsKeyboardKey(code))
         };
         card.Click += (_, _) => OpenKeyDetailWindow(code, displayName);
 
@@ -144,8 +164,9 @@ public partial class SpecialKeysWindow
     private void AddHiddenKeyCard(int code, string displayName)
     {
         var isCustom = !Enum.IsDefined(typeof(SpecialKey), (SpecialKey)code)
-            && !(code >= SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset
-                && Enum.IsDefined(typeof(DriverKey), (DriverKey)(code - SpecialKeySettings.SpecialKeySettingsStore.DriverKeyCodeOffset)));
+            && !SpecialKeyCodes.IsDriverKey(code)
+            && !SpecialKeyCodes.IsConsumerControlKey(code)
+            && !SpecialKeyCodes.IsKeyboardKey(code);
 
         var card = new CardAction
         {
@@ -280,22 +301,8 @@ public partial class SpecialKeysWindow
             return customName;
 
         if (Enum.IsDefined(typeof(SpecialKey), (SpecialKey)code))
-        {
-            var key = (SpecialKey)code;
-            string str = key.ToString();
-            if (str.StartsWith("Fn", StringComparison.OrdinalIgnoreCase) && str.Length > 2)
-                return string.Concat("Fn + ", str.AsSpan(2));
-            return str;
-        }
+            return SpecialKeyDisplayName.GetKey((SpecialKey)code);
 
         return string.Format(Resource.SpecialKey_UnknownKey, code);
-    }
-
-    private static string GetDriverKeyDisplayName(DriverKey key)
-    {
-        string str = key.ToString();
-        if (str.StartsWith("Fn", StringComparison.OrdinalIgnoreCase) && str.Length > 2)
-            return $"Fn + {str[2..]} {Resource.SpecialKey_DriverSuffix}";
-        return $"{str} {Resource.SpecialKey_DriverSuffix}";
     }
 }
