@@ -51,6 +51,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     protected override async Task StartAsync()
     {
+        var evictedProcesses = new List<Process>();
+
         lock (Lock)
         {
             var checkIncluded = _settings.Store.IncludedProcesses.Count > 0;
@@ -95,13 +97,12 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 foreach (var id in disqualified)
                 {
                     if (_processCache.Remove(id, out var process))
-                    {
-                        Detach(process);
-                        DisposeProcess(process);
-                    }
+                        evictedProcesses.Add(process);
 
                     _gameModePinnedProcesses.Remove(id);
                 }
+
+                DetachAndDispose(evictedProcesses);
 
                 if (disqualified.Count > 0)
                 {
@@ -245,6 +246,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     protected override async Task StopAsync()
     {
+        var cachedProcesses = new List<Process>();
+
         await _instanceStartedEventAutoAutoListener
             .UnsubscribeChangedAsync(InstanceStartedEventAutoAutoListener_Changed).ConfigureAwait(false);
 
@@ -257,15 +260,14 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         {
             if (!_preserveStateOnNextStart)
             {
-                foreach (var process in _processCache.Values)
-                {
-                    Detach(process);
-                    DisposeProcess(process);
-                }
+                cachedProcesses.AddRange(_processCache.Values);
 
                 _processCache.Clear();
                 _detectedGamePathsCache.Clear();
                 _gameModePinnedProcesses.Clear();
+
+                DetachAndDispose(cachedProcesses);
+
                 if (_lastState)
                 {
                     _lastState = false;
@@ -382,6 +384,8 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     private void EffectiveGameModeDetectorChanged(object? sender, bool e)
     {
+        var releasedProcesses = new List<Process>();
+
         lock (Lock)
         {
             if (e)
@@ -417,16 +421,14 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                         if (released is not null)
                         {
                             Log.Instance.Trace($"Game Mode ended and process exited: {GetProcessName(released)} [Source: Windows Game Mode] [pid={id}].");
-                            Detach(released);
-                            DisposeProcess(released);
+                            releasedProcesses.Add(released);
                         }
 
                         if (cached is not null && !ReferenceEquals(cached, released))
-                        {
-                            Detach(cached);
-                            DisposeProcess(cached);
-                        }
+                            releasedProcesses.Add(cached);
                     }
+
+                    DetachAndDispose(releasedProcesses);
 
                     if (_processCache.Count == 0)
                     {
@@ -438,7 +440,6 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             if (_processCache.Count != 0)
             {
                 Log.Instance.Trace($"Game Mode deactivation ignored: process cache is not empty ({_processCache.Count} active game(s)).");
-                return;
             }
         }
     }
@@ -705,8 +706,29 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
         catch { /* Ignore */ }
     }
 
+    private void DetachAndDispose(IEnumerable<Process> processes)
+    {
+        var processList = processes.ToArray();
+        if (processList.Length == 0)
+            return;
+
+        if (Lock.IsHeldByCurrentThread)
+        {
+            Task.Run(() => DetachAndDispose(processList));
+            return;
+        }
+
+        foreach (var process in processList)
+        {
+            Detach(process);
+            DisposeProcess(process);
+        }
+    }
+
     private void Process_Exited(object? o, EventArgs args)
     {
+        var exitedProcesses = new List<Process>();
+
         lock (Lock)
         {
             if (o is Process exitedProc)
@@ -717,8 +739,7 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 if (exitedId is not null && !_processCache.ContainsKey(exitedId.Value))
                 {
                     _gameModePinnedProcesses.Remove(exitedId.Value);
-                    Detach(exitedProc);
-                    DisposeProcess(exitedProc);
+                    exitedProcesses.Add(exitedProc);
                 }
             }
 
@@ -744,11 +765,10 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
                 _gameModePinnedProcesses.Remove(id);
 
                 if (process is not null)
-                {
-                    Detach(process);
-                    DisposeProcess(process);
-                }
+                    exitedProcesses.Add(process);
             }
+
+            DetachAndDispose(exitedProcesses);
 
             if (deadIds.Count > 0)
             {
@@ -758,13 +778,12 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
             if (_processCache.Count != 0)
             {
                 Log.Instance.Trace($"Active games remaining in cache: {_processCache.Count}.");
-
-                return;
             }
-
-            Log.Instance.Trace($"No more games running. All active processes cleared.");
-
-            RaiseChangedIfNeeded(false);
+            else
+            {
+                Log.Instance.Trace($"No more games running. All active processes cleared.");
+                RaiseChangedIfNeeded(false);
+            }
         }
     }
 }
