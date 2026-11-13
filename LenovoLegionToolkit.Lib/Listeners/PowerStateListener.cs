@@ -36,7 +36,11 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
     private readonly DGPUNotify _dgpuNotify;
     private readonly RGBKeyboardBacklightController _rgbController;
 
+    private static readonly TimeSpan GodModeReapplyDelay = TimeSpan.FromSeconds(5);
+
     private readonly SemaphoreSlim _processingLock = new(1, 1);
+
+    private CancellationTokenSource? _godModeReapplyCancellationTokenSource;
 
     private bool _started;
     private bool _disposed;
@@ -184,7 +188,7 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
                     await HandleResumeInternalAsync(powerAdapterState).ConfigureAwait(false);
                     break;
 
-                case PowerStateEvent.StatusChange when powerAdapterState == PowerAdapterStatus.Connected:
+                case PowerStateEvent.StatusChange when powerAdapterState is PowerAdapterStatus.Connected or PowerAdapterStatus.ConnectedLowWattage:
                     if (powerAdapterStateChanged)
                     {
                         await HandleConnectedStatusChangeAsync().ConfigureAwait(false);
@@ -203,6 +207,8 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
 
     private async Task HandleSuspendAsync()
     {
+        CancelGodModeReapply();
+
         if (await _powerModeFeature.IsSupportedAsync().ConfigureAwait(false) && await _powerModeFeature.GetStateAsync().ConfigureAwait(false) == PowerModeState.GodMode)
         {
             Log.Instance.Trace($"Going to dark.");
@@ -279,9 +285,41 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
         if (await _powerModeFeature.IsSupportedAsync().ConfigureAwait(false))
         {
             await _powerModeFeature.EnsureGodModeStateIsAppliedAsync().ConfigureAwait(false);
+
+            // Firmware can switch back to Custom Mode in several steps after the AC adapter is reconnected,
+            // resetting the power limits on the way, so apply the preset once more after it settles.
+            CancelGodModeReapply();
+            _godModeReapplyCancellationTokenSource = new CancellationTokenSource();
+            _ = ReapplyGodModeStateAsync(_godModeReapplyCancellationTokenSource.Token);
         }
 
         _ = NotifyDgpuAsync();
+    }
+
+    private async Task ReapplyGodModeStateAsync(CancellationToken token)
+    {
+        try
+        {
+            await Task.Delay(GodModeReapplyDelay, token).ConfigureAwait(false);
+
+            if (await Power.IsPowerAdapterConnectedAsync().ConfigureAwait(false) is PowerAdapterStatus.Disconnected)
+                return;
+
+            Log.Instance.Trace($"Re-applying God Mode state after AC adapter reconnection...");
+            await _powerModeFeature.EnsureGodModeStateIsAppliedAsync().ConfigureAwait(false);
+        }
+        catch (TaskCanceledException) { }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Error in ReapplyGodModeStateAsync: {ex}");
+        }
+    }
+
+    private void CancelGodModeReapply()
+    {
+        _godModeReapplyCancellationTokenSource?.Cancel();
+        _godModeReapplyCancellationTokenSource?.Dispose();
+        _godModeReapplyCancellationTokenSource = null;
     }
 
     private static bool HasExtensionProvider(string capability) =>
@@ -375,6 +413,7 @@ public sealed class PowerStateListener : IListener<PowerStateListener.ChangedEve
         if (_disposed) return;
 
         StopAsync().GetAwaiter().GetResult();
+        CancelGodModeReapply();
         _processingLock.Dispose();
         _recipientHandle?.Dispose();
 
