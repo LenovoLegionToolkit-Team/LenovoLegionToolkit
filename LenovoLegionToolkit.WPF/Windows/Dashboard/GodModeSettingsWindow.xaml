@@ -70,6 +70,13 @@
                 IsOpen="False"
                 Severity="Error" />
             <custom:InfoBar
+                x:Name="_throttleStopRunningWarningInfoBar"
+                Title="{x:Static resources:Resource.GodModeSettingsWindow_ThrottleStopWarning_Title}"
+                Margin="0,8,0,0"
+                IsClosable="False"
+                IsOpen="False"
+                Severity="Warning" />
+            <custom:InfoBar
                 x:Name="_capabilityWarningInfoBar"
                 Title="{x:Static resources:Resource.GodModeSettingsWindow_PartialSupport_Message}"
                 Margin="0,8,0,0"
