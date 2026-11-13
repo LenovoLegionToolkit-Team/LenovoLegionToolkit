@@ -4141,6 +4141,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 ThrottleStop is running and may override the power limits set in Custom Mode. To let Custom Mode control them, turn off the power limit options in ThrottleStop&apos;s TPL window. 的本地化字符串。
+        /// </summary>
+        public static string GodModeSettingsWindow_ThrottleStopWarning_Title {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_ThrottleStopWarning_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Custom Mode Settings 的本地化字符串。
         /// </summary>
         public static string GodModeSettingsWindow_Title {

@@ -612,6 +612,8 @@ In Windows 10 and 11, Microsoft did plenty of changes to the tray, breaking a lo
 
 There are very good tools like [Intel XTU](https://www.intel.com/content/www/us/en/download/17881/intel-extreme-tuning-utility-intel-xtu.html) (which is used by Vantage) or [ThrottleStop](https://www.techpowerup.com/download/techpowerup-throttlestop/) made just for that.
 
+If you use ThrottleStop together with Custom Mode, turn off the power limit options in ThrottleStop's TPL window. Otherwise ThrottleStop will override the power limits set in Custom Mode.
+
 #### What if I overclocked my GPU too much?
 
 If you end up in a situation where your GPU is not stable and you can't boot into Windows, there are two things you can do:

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Management;
 using System.Threading.Tasks;
@@ -126,6 +127,16 @@ public partial class GodModeSettingsWindow
         _vantageRunningWarningInfoBar.IsOpen = statuses.Vantage == SoftwareStatus.Enabled;
         _legionSpaceRunningWarningInfoBar.IsOpen = statuses.LegionSpace == SoftwareStatus.Enabled;
         _legionZoneRunningWarningInfoBar.IsOpen = statuses.LegionZone == SoftwareStatus.Enabled;
+        _throttleStopRunningWarningInfoBar.IsOpen = IsThrottleStopRunning();
+    }
+
+    private static bool IsThrottleStopRunning()
+    {
+        var processes = Process.GetProcessesByName("ThrottleStop");
+        foreach (var process in processes)
+            process.Dispose();
+
+        return processes.Length > 0;
     }
 
     private async Task<SoftwareStatuses?> ApplyAsync()
