@@ -525,7 +525,6 @@ public class SensorsGroupController : IDisposable
                     if (_isResetting || _computer == null || !_hardwareInitialized) return;
                     try
                     {
-                        var brokenHardware = new List<IHardware>();
                         foreach (var h in _hardware)
                         {
                             if (h == null) continue;
@@ -536,14 +535,8 @@ public class SensorsGroupController : IDisposable
                             }
                             catch (Exception ex)
                             {
-                                Log.Instance.Trace($"Failed to update hardware {h.Name}: {ex.Message}. It will be removed from the update list.", ex);
-                                brokenHardware.Add(h);
+                                Log.Instance.Trace($"Failed to update hardware {h.Name}: {ex.Message}. It will be retried on the next update.", ex);
                             }
-                        }
-
-                        foreach (var h in brokenHardware)
-                        {
-                            _hardware.Remove(h);
                         }
 
                         if (!dgpuEjectInProgress && _dgpuHardwareSkipped)
