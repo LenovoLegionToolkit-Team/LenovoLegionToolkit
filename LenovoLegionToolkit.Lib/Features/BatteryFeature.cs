@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.System;
 using LenovoLegionToolkit.Lib.Utils;
@@ -13,6 +14,8 @@ public class BatteryFeature() : AbstractDriverFeature<BatteryState>(Drivers.GetE
     private const string BATTERY_CHARGE_MODE_NORMAL = "Normal";
     private const string BATTERY_CHARGE_MODE_RAPID_CHARGE = "Quick";
     private const string BATTERY_CHARGE_MODE_CONSERVATION = "Storage";
+
+    private readonly SemaphoreSlim _modeLock = new(1, 1);
 
     protected override uint GetInBufferValue() => 0xFF;
 
@@ -44,33 +47,48 @@ public class BatteryFeature() : AbstractDriverFeature<BatteryState>(Drivers.GetE
         return Task.FromResult(BatteryState.Normal);
     }
 
-    public override async Task SetStateAsync(BatteryState state)
+    public override Task SetStateAsync(BatteryState state) => SetStateAsync(state, verify: true);
+
+    public override async Task SetStateAsync(BatteryState state, bool verify)
     {
-        await base.SetStateAsync(state).ConfigureAwait(false);
+        await _modeLock.WaitAsync().ConfigureAwait(false);
+        try
+        {
+            await SetStateCoreAsync(state, verify).ConfigureAwait(false);
+        }
+        finally
+        {
+            _modeLock.Release();
+        }
+    }
+
+    private async Task SetStateCoreAsync(BatteryState state, bool verify)
+    {
+        await base.SetStateAsync(state, verify).ConfigureAwait(false);
+        SetStateInRegistry(state);
         var actual = await GetStateAsync().ConfigureAwait(false);
 
         if (actual != state)
         {
             Log.Instance.Trace($"Battery Mode mismatch, Actual: {actual}, Target: {state}");
         }
-
-        SetStateInRegistry(actual);
     }
 
     public async Task EnsureCorrectBatteryModeIsSetAsync()
     {
-        var state = GetStateFromRegistry();
-        if (!state.HasValue)
+        await _modeLock.WaitAsync().ConfigureAwait(false);
+        try
         {
-            return;
-        }
+            var state = GetStateFromRegistry();
+            if (!state.HasValue || await GetStateAsync().ConfigureAwait(false) == state.Value)
+                return;
 
-        if (await GetStateAsync().ConfigureAwait(false) == state.Value)
+            await SetStateCoreAsync(state.Value, verify: true).ConfigureAwait(false);
+        }
+        finally
         {
-            return;
+            _modeLock.Release();
         }
-
-        await SetStateAsync(state.Value).ConfigureAwait(false);
     }
 
     private static BatteryState? GetStateFromRegistry()
