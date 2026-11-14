@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 using LenovoLegionToolkit.Lib.Automation.Resources;
 using LenovoLegionToolkit.Lib.Features;
@@ -7,11 +7,11 @@ using Newtonsoft.Json;
 namespace LenovoLegionToolkit.Lib.Automation.Pipeline.Triggers;
 
 [method: JsonConstructor]
-public class ITSModeAutomationPipelineTrigger(ITSMode powerModeState) : IITSModeAutomationPipelineTrigger
+public class ITSModeAutomationPipelineTrigger(ITSMode itsModeState) : IITSModeAutomationPipelineTrigger
 {
     public string DisplayName => Resource.ITSModeAutomationPipelineTrigger_DisplayName;
 
-    public ITSMode ITSModeState { get; } = powerModeState;
+    public ITSMode ITSModeState { get; } = itsModeState;
 
     public Task<bool> IsMatchingEvent(IAutomationEvent automationEvent)
     {
