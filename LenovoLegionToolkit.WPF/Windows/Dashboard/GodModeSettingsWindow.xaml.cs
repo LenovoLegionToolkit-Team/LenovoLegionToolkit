@@ -249,6 +249,9 @@ public partial class GodModeSettingsWindow
             _gpuPowerBoostControl.Set(preset.GPUPowerBoost);
             _gpuConfigurableTGPControl.Set(preset.GPUConfigurableTGP);
             _gpuTemperatureLimitControl.Set(preset.GPUTemperatureLimit);
+            var machineInformation = await Compatibility.GetMachineInformationAsync();
+            _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.AllowValuesAbove255 =
+                machineInformation.Properties.GodModePlatform == GodModePlatform.Legion;
             _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Set(preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline);
             _pcfGpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Set(preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI);
             _gpuToCpuDynamicBoostControl.Set(preset.GPUToCPUDynamicBoost);
