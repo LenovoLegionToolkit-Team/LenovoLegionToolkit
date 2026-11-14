@@ -142,7 +142,8 @@ public class SpectrumKeyboardBacklightController
             "83JH",
             "83Q1",
             "83Q6",
-            "83RW"
+            "83RW",
+            "83VK"
         };
 
         return machineTypes.Contains(mi.MachineType);
