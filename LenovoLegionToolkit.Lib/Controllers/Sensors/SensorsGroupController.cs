@@ -495,7 +495,7 @@ public class SensorsGroupController : IDisposable
         {
             if (_activeUpdateTask == null)
             {
-                _activeUpdateTask = PerformUpdateInternal(scope);
+                _activeUpdateTask = Task.Run(() => PerformUpdateInternal(scope));
             }
             updateTask = _activeUpdateTask;
         }
@@ -586,14 +586,15 @@ public class SensorsGroupController : IDisposable
                         snap = snap.WithValues(_memoryProvider.Values);
                         snap = snap.WithValues(_storageProvider.Values);
                         Snapshot = snap;
-
-                        SensorsUpdated?.Invoke(Snapshot);
                     }
                     catch (Exception ex)
                     {
+                        Log.Instance.Trace($"Sensor update failed.", ex);
                         if (ex is IndexOutOfRangeException) Task.Run(ResetSensors);
+                        return;
                     }
                 }
+                SensorsUpdated?.Invoke(Snapshot);
             }).ConfigureAwait(false);
         }
         finally
