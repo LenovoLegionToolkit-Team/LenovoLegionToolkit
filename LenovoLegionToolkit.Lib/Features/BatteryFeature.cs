@@ -70,7 +70,7 @@ public class BatteryFeature() : AbstractDriverFeature<BatteryState>(Drivers.GetE
 
         if (actual != state)
         {
-            Log.Instance.Trace($"Battery Mode mismatch, Actual: {actual}, Target: {state}");
+            throw new InvalidOperationException($"Battery Mode mismatch, Actual: {actual}, Target: {state}");
         }
     }
 
