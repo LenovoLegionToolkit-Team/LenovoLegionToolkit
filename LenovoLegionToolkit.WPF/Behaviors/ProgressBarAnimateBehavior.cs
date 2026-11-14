@@ -73,6 +73,9 @@ public class ProgressBarAnimateBehavior : Behavior<ProgressBar>
             e.NewValue,
             new Duration(TimeSpan.FromMilliseconds(250)),
             FillBehavior.Stop);
+        if (Window.GetWindow(progressBar) is { IsActive: false })
+            Timeline.SetDesiredFrameRate(doubleAnimation, 15);
+
         doubleAnimation.Completed += Completed;
 
         progressBar.BeginAnimation(RangeBase.ValueProperty, doubleAnimation);
