@@ -3,7 +3,9 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Interop;
 using Microsoft.Xaml.Behaviors;
 
 namespace LenovoLegionToolkit.WPF.Behaviors;
@@ -57,6 +59,9 @@ public class ProgressBarAnimateBehavior : Behavior<ProgressBar>
     private void ProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
         if (sender is not ProgressBar progressBar)
+            return;
+
+        if (RenderOptions.ProcessRenderMode == RenderMode.SoftwareOnly || !SystemParameters.ClientAreaAnimation)
             return;
 
         if (_isAnimating)
