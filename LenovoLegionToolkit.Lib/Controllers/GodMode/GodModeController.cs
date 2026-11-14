@@ -1014,12 +1014,12 @@ public class GodModeController(
                 await Task.Delay(delayMs).ConfigureAwait(false);
 
                 var readBack1 = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
-                bool firstMatch = readBack1.Length == 10 && readBack1.Select(b => (ushort)b).SequenceEqual(expected);
+                bool firstMatch = readBack1.Length == 10 && readBack1.SequenceEqual(expected.Select(value => (uint)value));
                 Log.Instance.Trace($"Fan table verify attempt {attempt}, read 1: {(firstMatch ? "OK" : "Mismatch")}");
 
                 await Task.Delay(delayMs).ConfigureAwait(false);
                 var readBack2 = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
-                bool secondMatch = readBack2.Length == 10 && readBack2.Select(b => (ushort)b).SequenceEqual(expected);
+                bool secondMatch = readBack2.Length == 10 && readBack2.SequenceEqual(expected.Select(value => (uint)value));
                 Log.Instance.Trace($"Fan table verify attempt {attempt}, read 2: {(secondMatch ? "OK" : "Mismatch")}");
 
                 if (firstMatch && secondMatch)
@@ -1035,18 +1035,45 @@ public class GodModeController(
                 Log.Instance.Trace($"Fan table verify attempt {attempt} transient error: {ex.Message}. Retrying...");
                 if (attempt == maxAttempts)
                 {
-                    throw new Exception(Resource.GodModeController_FanSetTableError_Message);
+                    return await UseCurrentFanTableAsync().ConfigureAwait(false);
                 }
             }
             catch (Exception ex)
             {
                 Log.Instance.Trace($"Fan table verify attempt {attempt} fatal error: {ex.Message}.");
-                throw new Exception(Resource.GodModeController_FanSetTableError_Message);
+                return await UseCurrentFanTableAsync().ConfigureAwait(false);
             }
         }
 
         Log.Instance.Trace($"Fan table verification failed after {maxAttempts} attempts.");
-        throw new Exception(Resource.GodModeController_FanSetTableError_Message);
+        return await UseCurrentFanTableAsync().ConfigureAwait(false);
+    }
+
+    private async Task<bool> UseCurrentFanTableAsync()
+    {
+        _hasCapabilityErrors = true;
+        FanTable? currentTable = null;
+        try
+        {
+            var values = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
+            if (values.Length != 10 || values.Any(value => value > 10))
+                throw new InvalidOperationException("EC returned an invalid fan table.");
+
+            currentTable = new FanTable(values.Select(value => (ushort)value).ToArray());
+            Log.Instance.Trace($"Using current EC fan table after custom curve failure: {currentTable}");
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Could not read the current EC fan table; clearing the rejected curve.", ex);
+        }
+
+        var store = settings.Store;
+        if (store.Presets.TryGetValue(store.ActivePresetId, out var preset))
+        {
+            store.Presets[store.ActivePresetId] = preset with { FanTable = currentTable };
+            settings.SynchronizeStore();
+        }
+        return false;
     }
 
     public Task<FanTable> GetDefaultFanTableAsync()
