@@ -77,7 +77,7 @@ public class AppFlags
     public bool EnableLampArray
     {
         get => _enableLampArray;
-        set { EnableLampArray = value; Save(); }
+        set { _enableLampArray = value; Save(); }
     }
 
     private bool _experimentalGPUWorkingMode;
