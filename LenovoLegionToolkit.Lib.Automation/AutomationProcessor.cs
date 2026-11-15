@@ -20,6 +20,7 @@ public class AutomationProcessor(
     NativeWindowsMessageListener nativeWindowsMessageListener,
     PowerStateListener powerStateListener,
     PowerModeListener powerModeListener,
+    ITSModeListener itsModeListener,
     GodModeController godModeController,
     BatteryAutoListener batteryAutoListener,
     GameAutoListener gameAutoListener,
@@ -49,6 +50,7 @@ public class AutomationProcessor(
             nativeWindowsMessageListener.Changed += NativeWindowsMessageListener_Changed;
             powerStateListener.Changed += PowerStateListener_Changed;
             powerModeListener.Changed += PowerModeListener_Changed;
+            itsModeListener.Changed += ITSModeListener_Changed;
             godModeController.PresetChanged += GodModeController_PresetChanged;
             sessionLockUnlockListener.Changed += SessionLockUnlockListener_Changed;
 
@@ -270,6 +272,12 @@ public class AutomationProcessor(
     private async void PowerModeListener_Changed(object? sender, PowerModeListener.ChangedEventArgs args)
     {
         var e = new PowerModeAutomationEvent(args.State);
+        await ProcessEvent(e).ConfigureAwait(false);
+    }
+
+    private async void ITSModeListener_Changed(object? sender, ITSModeListener.ChangedEventArgs args)
+    {
+        var e = new ITSModeAutomationEvent(args.State);
         await ProcessEvent(e).ConfigureAwait(false);
     }
 
