@@ -11,7 +11,6 @@ public static class DisplayExtensions
 {
     private const int DrrPreInitAttempts = 20;
     private const int DrrPreInitDelayMs = 50;
-    private const double FrequencyToleranceHz = 1.0;
 
     public static async Task SetSettingsUsingPathInfoAsync(this Display display, DisplaySetting displaySetting, bool enableDrr = false, int physicalFrequency = 0)
     {
@@ -31,14 +30,14 @@ public static class DisplayExtensions
 
         var currentPhysicalFreq = targetInfo != null
             ? (targetInfo.IsSignalInformationAvailable
-                ? targetInfo.SignalInfo.VerticalSyncFrequencyInMillihertz / 1000.0
-                : targetInfo.FrequencyInMillihertz / 1000.0)
-            : 0.0;
+                ? (int)(targetInfo.SignalInfo.VerticalSyncFrequencyInMillihertz / 1000)
+                : (int)(targetInfo.FrequencyInMillihertz / 1000))
+            : 0;
 
         var needsPreInit = enableDrr && maxFrequency > 0 && (
             targetInfo == null ||
             !targetInfo.IsDesktopImageInformationAvailable ||
-            (physicalFrequency > 0 && (!targetInfo.IsBoostRefreshRate || Math.Abs(currentPhysicalFreq - physicalFrequency) >= FrequencyToleranceHz))
+            (physicalFrequency > 0 && (!targetInfo.IsBoostRefreshRate || currentPhysicalFreq != physicalFrequency))
         );
 
         if (needsPreInit)
@@ -66,11 +65,11 @@ public static class DisplayExtensions
                     .FirstOrDefault();
 
                 var isSignalAvailable = targetInfo?.IsSignalInformationAvailable == true;
-                var loopPhysicalFreq = isSignalAvailable ? targetInfo!.SignalInfo!.VerticalSyncFrequencyInMillihertz / 1000.0 : 0.0;
+                var loopPhysicalFreq = isSignalAvailable ? (int)(targetInfo!.SignalInfo!.VerticalSyncFrequencyInMillihertz / 1000) : 0;
 
-                if (isSignalAvailable && Math.Abs(loopPhysicalFreq - targetPhysicalFreq) < FrequencyToleranceHz)
+                if (targetInfo != null && isSignalAvailable && loopPhysicalFreq == targetPhysicalFreq)
                 {
-                    Log.Instance.Trace($"DRR pre-initialization stabilized at {loopPhysicalFreq:F2}Hz in {(attempt + 1) * DrrPreInitDelayMs}ms.");
+                    Log.Instance.Trace($"DRR pre-initialization stabilized at {loopPhysicalFreq}Hz in {(attempt + 1) * DrrPreInitDelayMs}ms.");
                     stabilized = true;
                     break;
                 }
