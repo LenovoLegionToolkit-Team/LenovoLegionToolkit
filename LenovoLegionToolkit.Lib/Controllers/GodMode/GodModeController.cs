@@ -34,7 +34,7 @@ public class GodModeController(
     private GodModePlatformConfiguration? _config;
     private MachineInformation? _mi;
     private bool _hasCapabilityErrors;
-    private bool _usesPcfPowerTarget;
+    private bool? _pcfAvailable;
 
     public bool HasCapabilityErrors() => _hasCapabilityErrors;
 
@@ -402,8 +402,7 @@ public class GodModeController(
                 catch (Exception ex)
                 {
                     Log.Instance.Trace($"Failed to apply {cap.PropertyName} ({cap.RawId:X}). [value={value}]", ex);
-                    if (!failAllowedIds.Contains(cap.RawId) || _usesPcfPowerTarget &&
-                        cap.CapabilityId.Equals(CapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline))
+                    if (!failAllowedIds.Contains(cap.RawId))
                     {
                         throw;
                     }
@@ -419,8 +418,7 @@ public class GodModeController(
                 catch (Exception ex)
                 {
                     Log.Instance.Trace($"Failed to apply default {cap.PropertyName} ({cap.RawId:X}). [value={defaultValue}]", ex);
-                    if (!failAllowedIds.Contains(cap.RawId) || _usesPcfPowerTarget &&
-                        cap.CapabilityId.Equals(CapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline))
+                    if (!failAllowedIds.Contains(cap.RawId))
                     {
                         throw;
                     }
@@ -813,43 +811,33 @@ public class GodModeController(
 
     public async Task RestoreDefaultsInOtherPowerModeAsync(PowerModeState state)
     {
-        await _applyLock.WaitAsync().ConfigureAwait(false);
-        try
+        var mi = await GetMachineInformationAsync().ConfigureAwait(false);
+
+        if (!mi.Properties.SupportsGodMode)
         {
-            var mi = await GetMachineInformationAsync().ConfigureAwait(false);
-
-            if (!mi.Properties.SupportsGodMode)
-            {
-                Log.Instance.Trace($"God Mode not supported. Skipping restoring defaults for {state}...");
-                return;
-            }
-
-            var config = await GetConfigAsync().ConfigureAwait(false);
-
-            if (config.Platform == GodModePlatform.LegacyLegion)
-            {
-                await RestoreDefaultsLegacyAsync(state).ConfigureAwait(false);
-                return;
-            }
-
-            if (config.Capabilities.Any(IsNvApiCapability) || await HasPcfPowerTargetOverrideAsync().ConfigureAwait(false))
-            {
-                try
-                {
-                    Log.Instance.Trace($"Resetting PCF power target offset for power mode {state}...");
-                    await ResetTotalProcessingPowerTargetOffsetAsync().ConfigureAwait(false);
-                    _usesPcfPowerTarget = false;
-                }
-                catch (Exception ex)
-                {
-                    Log.Instance.Trace($"Failed to reset PCF power target offset for {state}.", ex);
-                    throw;
-                }
-            }
+            Log.Instance.Trace($"God Mode not supported. Skipping restoring defaults for {state}...");
+            return;
         }
-        finally
+
+        var config = await GetConfigAsync().ConfigureAwait(false);
+
+        if (config.Platform == GodModePlatform.LegacyLegion)
         {
-            _applyLock.Release();
+            await RestoreDefaultsLegacyAsync(state).ConfigureAwait(false);
+            return;
+        }
+
+        if (config.Capabilities.Any(IsNvApiCapability) || GetNativePowerTarget(config) is not null)
+        {
+            try
+            {
+                Log.Instance.Trace($"Resetting PCF power target offset for power mode {state}...");
+                await ResetTotalProcessingPowerTargetOffsetAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Failed to reset PCF power target offset for {state}.", ex);
+            }
         }
     }
 
@@ -1262,20 +1250,32 @@ public class GodModeController(
 
     private async Task SetCapabilityValueAsync(GodModeCapabilityEntry capability, int value, uint mask)
     {
-        if (capability.CapabilityId.Equals(CapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline))
+        if (capability.PropertyName == nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline))
         {
             if (value > byte.MaxValue)
             {
-                _usesPcfPowerTarget = true;
-                await SetPcfTotalProcessingPowerTargetOffsetAsync(value).ConfigureAwait(false);
+                if (!IsPcfAvailable())
+                {
+                    Log.Instance.Trace($"Cannot apply {capability.PropertyName} above {byte.MaxValue} without NVIDIA PCF support. [value={value}]");
+                    _hasCapabilityErrors = true;
+                    return;
+                }
+
+                try
+                {
+                    await SetPcfTotalProcessingPowerTargetOffsetAsync(value).ConfigureAwait(false);
+                }
+                catch (Exception ex) when (ex is NVIDIAApiException || ex is NVIDIANotSupportedException)
+                {
+                    Log.Instance.Trace($"Failed to apply {capability.PropertyName} through NVIDIA PCF. [value={value}]", ex);
+                    _hasCapabilityErrors = true;
+                }
+
                 return;
             }
 
-            if (await HasPcfPowerTargetOverrideAsync().ConfigureAwait(false))
-            {
-                await ResetTotalProcessingPowerTargetOffsetAsync().ConfigureAwait(false);
-                _usesPcfPowerTarget = false;
-            }
+            if (IsPcfAvailable())
+                await ResetPcfPowerTargetOffsetIfNeededAsync(value).ConfigureAwait(false);
         }
 
         if (IsNvApiCapability(capability))
@@ -1284,32 +1284,42 @@ public class GodModeController(
             await SetValueAsync(capability.RawId, value, mask).ConfigureAwait(false);
     }
 
-    private async Task<bool> HasPcfPowerTargetOverrideAsync()
+    private async Task ResetPcfPowerTargetOffsetIfNeededAsync(int value)
     {
-        if (_usesPcfPowerTarget)
-            return true;
-
-        if (!NVAPI.IsAvailable())
-            return false;
-
         try
         {
-            return await Task.Run(() =>
+            if (await GetPcfTotalProcessingPowerTargetOffsetAsync().ConfigureAwait(false) != value)
+                await ResetTotalProcessingPowerTargetOffsetAsync().ConfigureAwait(false);
+        }
+        catch (Exception ex) when (ex is NVIDIAApiException || ex is NVIDIANotSupportedException)
+        {
+            Log.Instance.Trace($"Failed to release the NVIDIA PCF power target offset.", ex);
+        }
+    }
+
+    public bool IsPcfAvailable()
+    {
+        if (_pcfAvailable is { } available)
+            return available;
+
+        available = false;
+
+        if (NVAPI.IsAvailable())
+        {
+            try
             {
                 using var controller = new PcfPowerController();
-                var target = controller.GetPowerValues().ACTargetTPPLimitInMilliwatts;
-                return target != 0 && target != uint.MaxValue;
-            }).ConfigureAwait(false);
+                controller.GetPowerValues();
+                available = true;
+            }
+            catch (Exception ex) when (ex is NVIDIANotSupportedException || ex is NVIDIAApiException)
+            {
+                Log.Instance.Trace($"NVIDIA PCF power control is not available.", ex);
+            }
         }
-        catch (NVIDIANotSupportedException)
-        {
-            return false;
-        }
-        catch
-        {
-            _usesPcfPowerTarget = true;
-            throw;
-        }
+
+        _pcfAvailable = available;
+        return available;
     }
 
     private static StepperValue CreateCapabilityStepperValue(GodModeCapabilityEntry capability, int value)
@@ -1334,7 +1344,7 @@ public class GodModeController(
     private static int CalculatePcfTotalProcessingPowerTargetOffsetInWatts(PcfPowerValues values)
     {
         var targetInMilliwatts = values.ACTargetTPPLimitInMilliwatts;
-        var baselineInMilliwatts = values.ACMaxGPULimitInMilliwatts;
+        var baselineInMilliwatts = values.ACDefaultGPULimitInMilliwatts;
 
         if (targetInMilliwatts == uint.MaxValue || targetInMilliwatts <= baselineInMilliwatts)
         {
@@ -1349,7 +1359,7 @@ public class GodModeController(
         using var controller = new PcfPowerController();
         Log.Instance.Trace($"Writing GPU TPP target offset through NVAPI PCF. [offset={offsetInWatts}W]");
         var values = controller.GetPowerValues();
-        var targetInMilliwatts = checked((uint)(values.ACMaxGPULimitInMilliwatts + offsetInWatts * 1000));
+        var targetInMilliwatts = checked((uint)(values.ACDefaultGPULimitInMilliwatts + offsetInWatts * 1000));
         controller.SetPowerField(PcfPowerFields.ACTargetTPPLimit, targetInMilliwatts);
     });
 
@@ -1537,6 +1547,12 @@ public class GodModeController(
                 GodModePlatform.NonGaming => GodModePlatformConfiguration.NonGaming,
                 _ => throw new InvalidOperationException("Unsupported GodMode platform"),
             };
+
+            if (await HasNativePowerTargetAsync(_config).ConfigureAwait(false))
+            {
+                Log.Instance.Trace($"Native power target capability is available, removing the NVAPI one...");
+                _config = _config with { Capabilities = _config.Capabilities.Where(c => !IsNvApiCapability(c)).ToList() };
+            }
         }
 
         var config = _config;
@@ -1548,6 +1564,21 @@ public class GodModeController(
         Log.Instance.Trace($"NVAPI is not available, removing NVAPI capabilities...");
 
         return config with { Capabilities = config.Capabilities.Where(c => !IsNvApiCapability(c)).ToList() };
+    }
+
+    private static GodModeCapabilityEntry? GetNativePowerTarget(GodModePlatformConfiguration config) =>
+        config.Capabilities.FirstOrDefault(c =>
+            !IsNvApiCapability(c) &&
+            c.PropertyName == nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline));
+
+    private async Task<bool> HasNativePowerTargetAsync(GodModePlatformConfiguration config)
+    {
+        var capability = GetNativePowerTarget(config);
+
+        if (capability is null)
+            return false;
+
+        return await GetValueAsync(capability.RawId, config.CapabilityIdMask).OrNullIfException().ConfigureAwait(false) is not null;
     }
 
     private async Task<MachineInformation> GetMachineInformationAsync()

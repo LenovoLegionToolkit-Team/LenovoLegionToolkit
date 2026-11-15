@@ -3657,6 +3657,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   查找类似 At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs. 的本地化字符串。
+        /// </summary>
+        public static string GodModeSettingsWindow_Advanced_MaxOffset_Tooltip {
+            get {
+                return ResourceManager.GetString("GodModeSettingsWindow_Advanced_MaxOffset_Tooltip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Setting offsets higher than hardware safety limits can cause system instability or settings to revert. 的本地化字符串。
         /// </summary>
         public static string GodModeSettingsWindow_Advanced_MaxOffset_Warning {

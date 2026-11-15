@@ -224,7 +224,6 @@
                                 Title="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl}"
                                 Description="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Description}"
                                 Info="{x:Static resources:Resource.GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info}"
-                                AllowValuesAbove255="True"
                                 Unit="{x:Static resources:Resource.Watt}" />
                             <godMode:GodModeValueControl
                                 x:Name="_gpuToCpuDynamicBoostControl"
@@ -391,7 +390,8 @@
                                     ClearButtonEnabled="False"
                                     MaxDecimalPlaces="0"
                                     Maximum="255"
-                                    Minimum="-255" />
+                                    Minimum="-255"
+                                    ToolTip="{x:Static resources:Resource.GodModeSettingsWindow_Advanced_MaxOffset_Tooltip}" />
                             </custom:CardControl>
 
                             <custom:CardControl x:Name="_minValueOffsetCardControl" Margin="0,0,0,8">

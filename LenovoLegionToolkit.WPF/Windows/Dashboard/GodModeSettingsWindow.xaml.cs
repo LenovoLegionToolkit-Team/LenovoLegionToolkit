@@ -249,10 +249,12 @@ public partial class GodModeSettingsWindow
             _gpuPowerBoostControl.Set(preset.GPUPowerBoost);
             _gpuConfigurableTGPControl.Set(preset.GPUConfigurableTGP);
             _gpuTemperatureLimitControl.Set(preset.GPUTemperatureLimit);
-            var machineInformation = await Compatibility.GetMachineInformationAsync();
-            _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.AllowValuesAbove255 =
-                machineInformation.Properties.GodModePlatform == GodModePlatform.Legion;
+            _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.MaximumValue =
+                _godModeController.IsPcfAvailable() && (preset.MaxValueOffset ?? 0) >= _maxValueOffsetNumberBox.Maximum
+                    ? GodModePlatformConfiguration.MaxPowerTargetOffset
+                    : null;
             _gpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Set(preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline);
+            _pcfGpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.MaximumValue = GodModePlatformConfiguration.MaxPowerTargetOffset;
             _pcfGpuTotalProcessingPowerTargetOnAcOffsetFromBaselineControl.Set(preset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI);
             _gpuToCpuDynamicBoostControl.Set(preset.GPUToCPUDynamicBoost);
 
@@ -410,11 +412,11 @@ public partial class GodModeSettingsWindow
         }
         if (_maxValueOffsetCardControl.Visibility == Visibility.Visible)
         {
-            _maxValueOffsetNumberBox.Text = "0";
+            _maxValueOffsetNumberBox.Value = 0;
         }
         if (_minValueOffsetCardControl.Visibility == Visibility.Visible)
         {
-            _minValueOffsetNumberBox.Text = "0";
+            _minValueOffsetNumberBox.Value = 0;
         }
     }
 

@@ -4,6 +4,8 @@ namespace LenovoLegionToolkit.Lib.Controllers.GodMode;
 
 public sealed record GodModePlatformConfiguration
 {
+    public const int MaxPowerTargetOffset = 1000;
+
     public GodModePlatform Platform { get; init; }
     public uint CapabilityIdMask { get; init; } = 0xFFFF00FF;
     public FanTable MinimumFanTable { get; init; } = new([1, 1, 1, 1, 1, 1, 1, 1, 3, 5]);
@@ -57,7 +59,7 @@ public sealed record GodModePlatformConfiguration
             new() { CapabilityId = NonGamingCapabilityID.GPUPowerBoost, PropertyName = nameof(GodModePreset.GPUPowerBoost), Steps = [0, 5, 10, 15, 20, 25], DefaultValue = 0 },
             new() { CapabilityId = NonGamingCapabilityID.GPUTemperatureLimit, PropertyName = nameof(GodModePreset.GPUTemperatureLimit), Min = 0, Max = 100, Step = 1, DefaultValue = 100 },
             new() { CapabilityId = NonGamingCapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, PropertyName = nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline), Min = 0, Max = 255, Step = 1, DefaultValue = 0, FailAllowed = true },
-            new() { CapabilityId = NvApiCapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, PropertyName = nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI), Min = 115, Max = 500, Step = 1, DefaultValue = 0, FailAllowed = true },
+            new() { CapabilityId = NvApiCapabilityID.GPUTotalProcessingPowerTargetOnAcOffsetFromBaseline, PropertyName = nameof(GodModePreset.GPUTotalProcessingPowerTargetOnAcOffsetFromBaselineNVAPI), Min = 0, Max = MaxPowerTargetOffset, Step = 1, DefaultValue = 0, FailAllowed = true },
             new() { CapabilityId = NonGamingCapabilityID.GPUToCPUDynamicBoost, PropertyName = nameof(GodModePreset.GPUToCPUDynamicBoost), Min = 0, Max = 255, Step = 1, DefaultValue = 0 },
             new() { CapabilityId = NonGamingCapabilityID.FanFullSpeed, PropertyName = nameof(GodModePreset.FanFullSpeed), Min = 0, Max = 1, Step = 1, DefaultValue = 0, FailAllowed = true },
         ],

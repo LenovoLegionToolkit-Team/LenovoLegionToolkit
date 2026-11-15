@@ -12,7 +12,7 @@ public partial class GodModeValueControl
 {
     private int? _defaultValue;
 
-    public bool AllowValuesAbove255 { get; set; }
+    public int? MaximumValue { get; set; }
 
     public string Title
     {
@@ -162,7 +162,7 @@ public partial class GodModeValueControl
             _comboBox.Visibility = Visibility.Collapsed;
 
             _slider.Minimum = value.Min;
-            _slider.Maximum = AllowValuesAbove255 ? value.Max : Math.Min(value.Max, 255);
+            _slider.Maximum = MaximumValue ?? Math.Min(value.Max, 255);
             _slider.TickFrequency = value.Step;
             _slider.Value = value.Value;
 
