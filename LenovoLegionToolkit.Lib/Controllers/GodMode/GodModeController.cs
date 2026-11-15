@@ -1035,44 +1035,20 @@ public class GodModeController(
                 Log.Instance.Trace($"Fan table verify attempt {attempt} transient error: {ex.Message}. Retrying...");
                 if (attempt == maxAttempts)
                 {
-                    return await UseCurrentFanTableAsync().ConfigureAwait(false);
+                    _hasCapabilityErrors = true;
+                    return false;
                 }
             }
             catch (Exception ex)
             {
                 Log.Instance.Trace($"Fan table verify attempt {attempt} fatal error: {ex.Message}.");
-                return await UseCurrentFanTableAsync().ConfigureAwait(false);
+                _hasCapabilityErrors = true;
+                return false;
             }
         }
 
         Log.Instance.Trace($"Fan table verification failed after {maxAttempts} attempts.");
-        return await UseCurrentFanTableAsync().ConfigureAwait(false);
-    }
-
-    private async Task<bool> UseCurrentFanTableAsync()
-    {
         _hasCapabilityErrors = true;
-        FanTable? currentTable = null;
-        try
-        {
-            var values = await WMI.LenovoFanMethod.FanGetTableAsync(1, 1).ConfigureAwait(false);
-            if (values.Length != 10 || values.Any(value => value > 10))
-                throw new InvalidOperationException("EC returned an invalid fan table.");
-
-            currentTable = new FanTable(values.Select(value => (ushort)value).ToArray());
-            Log.Instance.Trace($"Using current EC fan table after custom curve failure: {currentTable}");
-        }
-        catch (Exception ex)
-        {
-            Log.Instance.Trace($"Could not read the current EC fan table; clearing the rejected curve.", ex);
-        }
-
-        var store = settings.Store;
-        if (store.Presets.TryGetValue(store.ActivePresetId, out var preset))
-        {
-            store.Presets[store.ActivePresetId] = preset with { FanTable = currentTable };
-            settings.SynchronizeStore();
-        }
         return false;
     }
 
