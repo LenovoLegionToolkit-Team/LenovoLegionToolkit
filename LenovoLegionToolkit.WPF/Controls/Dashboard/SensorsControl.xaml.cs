@@ -26,6 +26,8 @@ public partial class SensorsControl
     private CancellationTokenSource? _cts;
     private Task? _refreshTask;
 
+    private static readonly double[] AvailableRefreshIntervals = [0.5, 1, 2, 3, 4, 5];
+
     public SensorsControl()
     {
         InitializeComponent();
@@ -41,7 +43,7 @@ public partial class SensorsControl
         ContextMenu = new ContextMenu();
         ContextMenu.Items.Add(new MenuItem { Header = Resource.SensorsControl_RefreshInterval, IsEnabled = false });
 
-        foreach (var interval in new double[] { 0.5, 1, 2, 3, 4, 5 })
+        foreach (var interval in AvailableRefreshIntervals)
         {
             var item = new MenuItem
             {
@@ -108,7 +110,11 @@ public partial class SensorsControl
                     if (!prepared)
                     {
                         if (!await _controller.IsSupportedAsync().ConfigureAwait(false))
-                            throw new InvalidOperationException("Sensors are unavailable.");
+                        {
+                            Log.Instance.Trace($"Sensors not supported.");
+                            await Dispatcher.InvokeAsync(() => Visibility = Visibility.Collapsed, DispatcherPriority.Background);
+                            break;
+                        }
 
                         token.ThrowIfCancellationRequested();
                         await _controller.PrepareAsync().ConfigureAwait(false);
@@ -131,8 +137,8 @@ public partial class SensorsControl
                 }
 
                 var interval = _dashboardSettings.Store.SensorsRefreshIntervalSeconds;
-                if (!double.IsFinite(interval) || interval < 0.5 || interval > 5)
-                    interval = 1;
+                if (Array.IndexOf(AvailableRefreshIntervals, interval) < 0)
+                    interval = DashboardSettings.DefaultSensorsRefreshIntervalSeconds;
 
                 await Task.Delay(TimeSpan.FromSeconds(interval), token).ConfigureAwait(false);
             }
