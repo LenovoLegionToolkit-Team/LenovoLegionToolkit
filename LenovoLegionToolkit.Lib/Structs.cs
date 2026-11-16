@@ -545,18 +545,6 @@ public readonly struct HardwareId(string vendor, string device)
     #endregion
 }
 
-public readonly struct HidDeviceConfig(
-    ushort vendorId,
-    ushort productIdMasked,
-    ushort productIdMask,
-    ushort descriptorLength)
-{
-    public ushort VendorId { get; } = vendorId;
-    public ushort ProductIdMasked { get; } = productIdMasked;
-    public ushort ProductIdMask { get; } = productIdMask;
-    public ushort DescriptorLength { get; } = descriptorLength;
-}
-
 public readonly struct KeyMap(int width, int height, ushort[,] keyCodes, ushort[] additionalKeyCodes)
 {
     public static readonly KeyMap Empty = new(0, 0, new ushort[0, 0], []);

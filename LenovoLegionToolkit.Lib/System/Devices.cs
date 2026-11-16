@@ -329,56 +329,25 @@ public static class Devices
         return _rgbKeyboard;
     }
 
-    public static async Task<List<SafeFileHandle>> GetSpectrumRGBKeyboardsAsync(bool forceRefresh = false)
+    public static Task<List<SafeFileHandle>> GetSpectrumRGBKeyboardsAsync(bool forceRefresh = false)
     {
         if (!forceRefresh && _spectrumRgbKeyboards is not null)
         {
-            return _spectrumRgbKeyboards;
+            return Task.FromResult(_spectrumRgbKeyboards);
         }
-
-        var mi = await Compatibility.GetMachineInformationAsync().ConfigureAwait(false);
 
         lock (Lock)
         {
-            if (!forceRefresh && _spectrumRgbKeyboards is not null)
+            if (forceRefresh || _spectrumRgbKeyboards is null)
             {
-                return _spectrumRgbKeyboards;
+                const ushort vendorId = 0x048D;
+                const ushort descriptorLength = 0x03C0;
+
+                _spectrumRgbKeyboards = FindHidDevices(vendorId, descriptorLength);
             }
 
-            var config = GetKeyboardConfig(mi);
-
-            _spectrumRgbKeyboards = FindHidDevices(
-                config.VendorId,
-                config.ProductIdMask,
-                config.ProductIdMasked,
-                config.DescriptorLength
-            );
+            return Task.FromResult(_spectrumRgbKeyboards);
         }
-
-        return _spectrumRgbKeyboards;
-    }
-
-    private static HidDeviceConfig GetKeyboardConfig(MachineInformation mi)
-    {
-        const ushort vendor = 0x048D;
-        const ushort mask = 0xFF00;
-        const ushort len = 0x03C0;
-        const ushort type1 = 0xC100;
-        const ushort type2 = 0xC900;
-        const ushort type3 = 0xC600;
-
-        return mi switch
-        {
-            { LegionSeries: LegionSeries.Legion_5, Generation: 11 } => new(vendor, type3, mask, len),
-            { LegionSeries: LegionSeries.Legion_5, Generation: >= 10 } => new(vendor, type1, mask, len),
-            { LegionSeries: LegionSeries.Legion_Pro_5, Generation: >= 10 } => new(vendor, type1, mask, len),
-            { LegionSeries: LegionSeries.Legion_Pro_7, Generation: >= 10 } => new(vendor, type1, mask, len),
-            { LegionSeries: LegionSeries.Legion_7, Generation: 11 } => new(vendor, type3, mask, len),
-            { LegionSeries: LegionSeries.Legion_7, Generation: >= 10 } => new(vendor, type1, mask, len),
-            { LegionSeries: LegionSeries.LOQ, Generation: >= 10 } => new(vendor, type3, mask, len),
-            { LegionSeries: LegionSeries.Legion_9 } => new(vendor, type2, mask, len),
-            _ => new(vendor, type2, mask, len)
-        };
     }
 
     private static unsafe SafeFileHandle? FindHidDevice(ushort vendorId, ushort productIdMask, ushort productIdMasked, ushort descriptorLength)
@@ -470,7 +439,7 @@ public static class Devices
         return null;
     }
 
-    public static unsafe List<SafeFileHandle> FindHidDevices(ushort vendorId, ushort productIdMask, ushort productIdMasked, ushort descriptorLength)
+    public static unsafe List<SafeFileHandle> FindHidDevices(ushort vendorId, ushort descriptorLength)
     {
         var devices = new List<SafeFileHandle>();
         PInvoke.HidD_GetHidGuid(out var devClassHidGuid);
@@ -551,7 +520,6 @@ public static class Devices
                 PInvoke.HidP_GetCaps(preParsedData, out var caps);
 
                 if (hidAttributes.VendorID == vendorId &&
-                    (hidAttributes.ProductID & productIdMask) == productIdMasked &&
                     caps.FeatureReportByteLength == descriptorLength)
                 {
                     Log.Instance.Trace($"Found device. [vendorId={hidAttributes.VendorID:X2}, productId={hidAttributes.ProductID:X2}, descriptorLength={caps.FeatureReportByteLength}]");
