@@ -480,7 +480,7 @@
     <value>Im Lặng</value>
   </data>
   <data name="RefreshRate_Dynamic" xml:space="preserve">
-    <value>Dynamic ({0} Hz)</value>
+    <value>Động ({0} Hz hoặc {1} Hz)</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>Cao</value>
@@ -581,6 +581,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>Đồng bộ Aurora</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Breath" xml:space="preserve">
+    <value>Hơi thở</value>
+  </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
     <value>Đổi màu</value>
   </data>
@@ -588,13 +591,16 @@
     <value>Nhịp điệu</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
-    <value>Sóng 7 màu</value>
+    <value>Sóng màu</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
+    <value>Đèn đua ngựa</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
     <value>Mưa</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
-    <value>Xoáy cầu vồng</value>
+    <value>Cầu vồng xoắn ốc</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
     <value>Sóng cầu vồng</value>
@@ -606,7 +612,10 @@
     <value>Mượt</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
-    <value>Gõ</value>
+    <value>Tia chớp</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
+    <value>Sóng</value>
   </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
     <value>Chậm</value>
@@ -622,6 +631,27 @@
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
     <value>Màu ngẫu nhiên</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
+    <value>Không thể đóng {0}. Nó vẫn đang chạy, hãy đóng nó thủ công và thử lại.</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>Các tiến trình vẫn đang chạy: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
+    <value>Không thể thay đổi tác vụ {0} đã lên lịch.</value>
+  </data>
+  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
+    <value>Không thể thay đổi dịch vụ {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>Các dịch vụ cần khởi động lại: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>Các dịch vụ vẫn đang chạy: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
+    <value>Không thể thay đổi mục khởi động {0}.</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>Tối</value>
@@ -693,6 +723,9 @@
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
     <value>Máy chủ</value>
+  </data>
+  <data name="WhiteKeyboardBacklightState_Auto" xml:space="preserve">
+    <value>Tự động</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>Cao</value>
