@@ -480,7 +480,7 @@
     <value>Тих</value>
   </data>
   <data name="RefreshRate_Dynamic" xml:space="preserve">
-    <value>Dynamic ({0} Hz)</value>
+    <value>Dynamic ({0} Hz or {1} Hz)</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>Висока</value>
@@ -581,6 +581,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>Aurora Sync</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Breath" xml:space="preserve">
+    <value>Breath</value>
+  </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
     <value>Сменящ се цвят</value>
   </data>
@@ -589,6 +592,9 @@
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
     <value>Цветна вълна</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
+    <value>Horse Race Lamp</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
     <value>Дъжд</value>
@@ -608,6 +614,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
     <value>Вид</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
+    <value>Wave</value>
+  </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
     <value>Бавен</value>
   </data>
@@ -622,6 +631,27 @@
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
     <value>Random Color</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
+    <value>Couldn't close {0}. It is still running, close it manually and try again.</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>Processes still running: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
+    <value>Couldn't change the scheduled task {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
+    <value>Couldn't change the service {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>Services that need a restart: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>Services still running: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
+    <value>Couldn't change the startup entry {0}.</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>Тъмна</value>
@@ -693,6 +723,9 @@
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
     <value>Server</value>
+  </data>
+  <data name="WhiteKeyboardBacklightState_Auto" xml:space="preserve">
+    <value>Auto</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>Висока</value>
