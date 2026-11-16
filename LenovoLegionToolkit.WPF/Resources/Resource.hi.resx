@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -450,22 +450,22 @@ Only actions that match current state will run.</value>
     <value>Change icon</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Auto" xml:space="preserve">
-    <value>Automatic</value>
+    <value>Automatic (All Methods)</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Discrete_GPU" xml:space="preserve">
-    <value>Discrete GPU</value>
+    <value>Discrete GPU Activity</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Game_Mode" xml:space="preserve">
-    <value>Game Mode</value>
+    <value>Windows Game Mode</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_List" xml:space="preserve">
-    <value>Known Games</value>
+    <value>Known Game List</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Manual" xml:space="preserve">
     <value>Manual</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
-    <value>Configure how games are detected and manage process rules.</value>
+    <value>Configure detection methods and exclusions.</value>
   </data>
   <data name="AutomationPage_Game_Detection_Title" xml:space="preserve">
     <value>Game Detection</value>
@@ -789,6 +789,21 @@ This time might not be accurate, if laptop was charged when sleeping or off.</va
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limit the charging range to extend the battery lifespan.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Charge Threshold</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Clear</value>
   </data>
@@ -1009,17 +1024,38 @@ Switching modes may require restart.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Processes</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Auto (Dynamic)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Lock the discrete GPU to a specific performance state.</value>
+    <value>Lock the GPU to a performance state.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+    <value>Prevents downclocking but uses more power.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>P-State Control</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
+    <value>Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateRatedTdp" xml:space="preserve">
+    <value>P0 TDP</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Restart GPU</value>
@@ -1051,8 +1087,14 @@ Switching modes may require restart.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Even if you can't donate, simply using, sharing, and starring the project on GitHub goes a long way. Every bit of support is genuinely appreciated</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Responsible for core feature development, quality assurance, UI/UX design, and overall project direction as the current project lead.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Core Developer &amp; Project Lead</value>
@@ -1144,7 +1186,7 @@ Thank you for your support!</value>
     <value>Running Processes ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
-    <value>Process Rules</value>
+    <value>Excluded Processes</value>
   </data>
   <data name="ExcludeRefreshRatesWindow_Description" xml:space="preserve">
     <value>Uncheck refresh rates that you do not want to use when Fn+R shortcut is used.</value>
@@ -1279,6 +1321,9 @@ Some laptops may accept higher values than they indicate, but be careful. This o
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Maximum offset</value>
   </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Tooltip" xml:space="preserve">
+    <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
+  </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
     <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
   </data>
@@ -1362,9 +1407,9 @@ Some laptops may accept lower values than they indicate, but be careful. This op
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves.
 
-Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty.
 
 Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
@@ -1598,11 +1643,17 @@ Click Yes to disable and No to ignore.</value>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Keyboard Backlight</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app is running</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Keyboard backlight cannot be controlled in here when Lenovo Vantage or its services are running.</value>
+    <value>The keyboard backlight cannot be controlled while Lenovo Vantage or its services are running.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage or its services are running</value>
+    <value>Lenovo Vantage is running</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Add Custom Key</value>
@@ -1620,7 +1671,7 @@ Click Yes to disable and No to ignore.</value>
     <value>Listening for key presses... Press ESC to stop.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Unknown key – can be added</value>
+    <value>Unknown key that can be added</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1790,12 +1841,6 @@ Click Yes to disable and No to ignore.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Repeat</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
-  </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController is running in the background.</value>
-  </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>API rate limit reached, please try again later.</value>
   </data>
@@ -1807,6 +1852,9 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>No updates found</value>
+  </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space is running in the background.</value>
@@ -1846,6 +1894,9 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>Update {0} available!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Don't show again.</value>
@@ -1927,10 +1978,11 @@ Click Yes to disable and No to ignore.</value>
     <value>Caps Lock</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Message" xml:space="preserve">
-    <value>Disables all on-screen notifications for hotkeys and system events.</value>
+    <value>Disables notification for Fn keys actions like microphone mute.
+Enable this option if you have conflicts with full screen applications.</value>
   </data>
   <data name="NotificationsSettingsWindow_DontShowNotifications_Title" xml:space="preserve">
-    <value>Disable notifications</value>
+    <value>Don't show notifications</value>
   </data>
   <data name="NotificationsSettingsWindow_FnLock" xml:space="preserve">
     <value>Fn Lock</value>
@@ -1945,19 +1997,20 @@ Click Yes to disable and No to ignore.</value>
     <value>Microphone</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Message" xml:space="preserve">
-    <value>Displays notifications above all windows, including full-screen games and apps.</value>
+    <value>Always put notification at the top.
+It won't affect other full screen windows, but you will not be able to click on the notifications.</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationAlwaysOnTop_Title" xml:space="preserve">
-    <value>Always on top</value>
+    <value>Notification always on top</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationDuration_Title" xml:space="preserve">
     <value>Duration</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Message" xml:space="preserve">
-    <value>Displays notifications across all connected screens simultaneously.</value>
+    <value>Show notification on all screens connected to your device.</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationOnAllScreens_Title" xml:space="preserve">
-    <value>Show on all displays</value>
+    <value>Notification on all screens</value>
   </data>
   <data name="NotificationsSettingsWindow_NotificationPosition_Title" xml:space="preserve">
     <value>Position</value>
@@ -2095,7 +2148,7 @@ Click Yes to disable and No to ignore.</value>
     <value>Backlight changed</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
-    <value>The PawnIO driver service is not running. 
+    <value>The PawnIO driver service is not running.
 
 Please start the service or update/reinstall PawnIO to use this feature!
 
@@ -2108,9 +2161,9 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
     <value>Your PawnIO version is too old.
 
-Current: {0} Required: {1}. 
+Current: {0} Required: {1}.
 Please update PawnIO to continue using this feature!
-    
+
 Click Yes to open download link in browser.
 Click No to disable Hardware Sensor feature.</value>
   </data>
@@ -2349,7 +2402,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Voltage Lock</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
-    <value>Lock GPU voltage and frequency continuously for consistent performance.</value>
+    <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
   </data>
   <data name="Overclocking_UnlockSteps" xml:space="preserve">
     <value>Unlocking in {0}...</value>
@@ -2588,6 +2641,12 @@ Performance mode can also be changed with Fn+Q.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Refresh rate</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Dynamic refresh rate</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>Change refresh rate of the built-in display.</value>
@@ -2905,6 +2964,12 @@ Performance mode can also be changed with Fn+Q.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU Frequency</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2928,6 +2993,18 @@ Performance mode can also be changed with Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>Preferred GPU</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Used/Total Memory (GB)</value>
@@ -3103,8 +3180,11 @@ Performance mode can also be changed with Fn+Q.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable everything, some items may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space may have not been disabled correctly</value>
+    <value>Legion Space may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
     <value>Couldn't disable Legion Space</value>
@@ -3116,7 +3196,7 @@ Performance mode can also be changed with Fn+Q.</value>
     <value>Disable Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone may have not been disabled correctly</value>
+    <value>Legion Zone may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Couldn't disable Legion Zone</value>
@@ -3128,20 +3208,19 @@ Performance mode can also be changed with Fn+Q.</value>
     <value>Disable Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys may have not been disabled correctly</value>
+    <value>Lenovo Hotkeys may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Couldn't disable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Disable Lenovo Hotkeys and its service without uninstalling it.
-If disabled, this app will handle Fn shortcuts.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Disable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController may have not been disabled correctly</value>
+    <value>Lenovo Vantage and/or ImController may not have been disabled correctly</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Couldn't disable Lenovo Vantage and/or ImController</value>
@@ -3153,22 +3232,22 @@ If disabled, this app will handle Fn shortcuts.</value>
     <value>Disable Lenovo Vantage and ImController</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>Legion Space may have not been enabled correctly</value>
+    <value>Legion Space may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
     <value>Couldn't enable Legion Space</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone may have not been enabled correctly</value>
+    <value>Legion Zone may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Couldn't enable Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys may have not been enabled correctly</value>
+    <value>Lenovo Hotkeys may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Couldn't enable Lenovo Hotkeys Keys</value>
+    <value>Couldn't enable Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Enable logging for debug.</value>
@@ -3177,13 +3256,13 @@ If disabled, this app will handle Fn shortcuts.</value>
     <value>Enable Logging</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController may have not been enabled correctly</value>
+    <value>Lenovo Vantage and/or ImController may not have been enabled correctly</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>Couldn't enable Lenovo Vantage and/or ImController</value>
   </data>
   <data name="SettingsPage_ExcludeProcesses_Title" xml:space="preserve">
-    <value>Process Rules</value>
+    <value>Excluded Processes</value>
   </data>
   <data name="SettingsPage_ExcludeRefreshRates_Message" xml:space="preserve">
     <value>Hide specific refresh rates from the Fn+R cycle.</value>
@@ -3198,7 +3277,7 @@ If disabled, this app will handle Fn shortcuts.</value>
     <value>Hardware Acceleration</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Enabling hardware acceleration may cause flickering or black flashes on some hybrid graphics systems, and may prevent the discrete GPU from being turned off.</value>
+    <value>Enabling hardware acceleration may prevent the discrete GPU from being turned off.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Enable advanced hardware polling to monitor detailed temperatures, frequencies, and power limits.</value>
@@ -3211,6 +3290,9 @@ If disabled, this app will handle Fn shortcuts.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Auto (Let Windows decide)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>High performance (dGPU)</value>
@@ -3238,6 +3320,12 @@ If disabled, this app will handle Fn shortcuts.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Language</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Prevent the window from being resized.</value>
@@ -3301,6 +3389,12 @@ If disabled, this app will handle Fn shortcuts.</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Restart to apply changes.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Automatically restore the last ITS mode when the app starts.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restore ITS Mode on Startup</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Execute C# scripts in the application runtime.</value>
@@ -3425,6 +3519,9 @@ If disabled, this app will handle Fn shortcuts.</value>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Settings applied successfully.</value>
   </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
+  </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>When mute, all active audio output devices will be muted.</value>
   </data>
@@ -3467,8 +3564,14 @@ If disabled, this app will handle Fn shortcuts.</value>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
     <value>Show {0} hidden keys</value>
   </data>
+  <data name="SpecialKey_ConsumerSuffix" xml:space="preserve">
+    <value>(HID)</value>
+  </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
     <value>(Driver)</value>
+  </data>
+  <data name="SpecialKey_KeyboardSuffix" xml:space="preserve">
+    <value>(Key)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>Key {0}</value>
@@ -3848,5 +3951,14 @@ Logging will be enabled automatically, if you choose to continue.</value>
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="PowerButtonLed_Brightness" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="PowerButtonLed_Message" xml:space="preserve">
+    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
+  </data>
+  <data name="PowerButtonLed_Title" xml:space="preserve">
+    <value>Power Button Light</value>
   </data>
 </root>
