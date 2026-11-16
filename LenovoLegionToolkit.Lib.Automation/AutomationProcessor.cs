@@ -336,7 +336,7 @@ public class AutomationProcessor(
     private async Task ProcessEvent(IAutomationEvent e)
     {
         var triggerMatches = await Task.WhenAll(_pipelines.SelectMany(p => p.AllTriggers)
-                .Select(async t => await t.IsMatchingEvent(e).ConfigureAwait(false)))
+                .Select(t => IsMatchingEventSafeAsync(t, e)))
             .ConfigureAwait(false);
 
         if (!triggerMatches.Any(t => t))
@@ -352,6 +352,19 @@ public class AutomationProcessor(
     #endregion
 
     #region Helper methods
+
+    private static async Task<bool> IsMatchingEventSafeAsync(IAutomationPipelineTrigger trigger, IAutomationEvent e)
+    {
+        try
+        {
+            return await trigger.IsMatchingEvent(e).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Trigger evaluation failed for event {e}... [type={e.GetType().Name}, trigger={trigger}]", ex);
+            return false;
+        }
+    }
 
     private async Task UpdateListenersAsync()
     {
