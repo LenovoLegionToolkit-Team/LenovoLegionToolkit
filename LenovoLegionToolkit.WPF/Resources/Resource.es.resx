@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -789,6 +789,21 @@ Esta hora puede no ser correcta si el portátil se ha cargado mientras estaba su
   <data name="Celsius" xml:space="preserve">
     <value>ºC</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limita el rango de carga para prolongar la vida útil de la batería.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Comenzar</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Terminar</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Umbral de carga</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Entra en vigor una vez que se desconecta la batería y el nivel desciende por debajo del límite establecido.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Borrar</value>
   </data>
@@ -1009,17 +1024,38 @@ El cambio de modo puede requerir un reinicio.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Procesos</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>La GPU discreta no ha aceptado el estado de rendimiento seleccionado.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State no aplicado</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Automático (dinámico)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Fija la GPU dedicada a un estado de rendimiento específico.</value>
+    <value>Fijar la GPU en un estado de rendimiento.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Evita la reducción de la frecuencia y elimina la latencia de transición, pero aumenta el consumo de energía.</value>
+    <value>Evita la reducción de la frecuencia, pero consume más energía.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>Control del P-State</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
+    <value>Máx. establece la frecuencia de reloj máxima del estado seleccionado, Mín. establece la mínima y Ninguno bloquea el estado sin una frecuencia de reloj.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMax" xml:space="preserve">
+    <value>Máx.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMin" xml:space="preserve">
+    <value>Mín.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinNone" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateRatedTdp" xml:space="preserve">
+    <value>TDP P0</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Reiniciar la GPU</value>
@@ -1051,8 +1087,14 @@ El cambio de modo puede requerir un reinicio.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Incluso si usted no puede donar, simplemente usando, compartiendo y destacando el proyecto en GitHub va muy lejos. Cada pedazo de apoyo es realmente apreciado</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Invítame a un café</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Responsable del desarrollo central de características, garantía de calidad, diseño de UI/UX y dirección general del proyecto como líder actual.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>Patrocinadores de GitHub</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Desarrollador del núcleo y líder del proyecto</value>
@@ -1120,25 +1162,25 @@ El cambio de modo puede requerir un reinicio.</value>
     <value>Error</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Included processes always trigger game detection and Lenovo's AI/Intelligent Mode, while excluded processes are ignored.</value>
+    <value>Los procesos incluidos siempre activan la detección de juegos y el modo IA/inteligente de Lenovo, mientras que los procesos excluidos se ignoran.</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
     <value>Procesos excluidos ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludeTooltip" xml:space="preserve">
-    <value>Add to Excluded Processes</value>
+    <value>Añadir a Procesos Excluidos</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludedProcesses_Format" xml:space="preserve">
-    <value>Included Processes ({0})</value>
+    <value>Procesos Incluidos ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludeTooltip" xml:space="preserve">
-    <value>Add to Included Processes</value>
+    <value>Añadir a Procesos Incluidos</value>
   </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
     <value>No hay procesos excluidos</value>
   </data>
   <data name="ExcludeProcessesWindow_NoIncludedProcesses" xml:space="preserve">
-    <value>No included processes</value>
+    <value>Procesos no incluidos</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
     <value>Procesos en ejecución ({0})</value>
@@ -1281,6 +1323,9 @@ Algunos portátiles pueden aceptar valores más altos de los indicados, pero ten
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Compensación máxima</value>
   </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Tooltip" xml:space="preserve">
+    <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
+  </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
     <value>Establecer desviaciones superiores a los límites de seguridad del hardware puede provocar inestabilidad en el sistema o que los ajustes se restablezcan a sus valores originales.</value>
   </data>
@@ -1364,11 +1409,11 @@ Algunos portátiles pueden aceptar valores más bajos de los indicados, pero ten
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>El modo personalizado permite el acceso a parámetros críticos del sistema tales como límites de energía y curvas de ventiladores.
+    <value>El modo personalizado permite acceder a parámetros críticos del sistema, como los límites de potencia y las curvas de los ventiladores.
 
-Una mala configuración puede llevar a una grave inestabilidad del sistema, limitaciones térmicas o a un daño permanente en el equipo. Las modificaciones realizadas aquí pueden anular la garantía del fabricante.
+Una configuración incorrecta puede provocar una grave inestabilidad del sistema, una reducción del rendimiento por sobrecalentamiento o daños permanentes en el hardware. Las modificaciones realizadas aquí pueden anular la garantía del fabricante.
 
-No proceda a menos que posea los conocimientos técnicos necesarios.</value>
+No continúe a menos que cuente con los conocimientos técnicos necesarios.</value>
   </data>
   <data name="GodModeSettingsWindow_EditPreset_Message" xml:space="preserve">
     <value>Nombre</value>
@@ -1600,11 +1645,17 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Retroiluminación del teclado</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>La retroiluminación del teclado no se puede controlar mientras se esté ejecutando otra aplicación de Lenovo o sus servicios.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Hay otra aplicación de Lenovo en ejecución</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>La retroiluminación del teclado no puede ser controlada aquí, si Lenovo Vantage o sus servicios están funcionando.</value>
+    <value>La retroiluminación del teclado no se puede controlar mientras Lenovo Vantage o sus servicios estén en ejecución.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage o sus servicios se están ejecutando</value>
+    <value>Lenovo Vantage está en ejecución</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Añadir clave personalizada</value>
@@ -1622,7 +1673,7 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
     <value>Escuchando para pulsar teclas... Presione ESC para detenerse.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Clave desconocida - se puede añadir</value>
+    <value>Tecla desconocida que se puede añadir</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1792,12 +1843,6 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Repetir</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value> Las teclas de acceso rápido de Lenovo se están ejecutando en segundo plano.</value>
-  </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage y/o ImController se está(n) ejecutando en segundo plano.</value>
-  </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>Se ha alcanzado el límite de velocidad API, inténtelo más tarde.</value>
   </data>
@@ -1809,6 +1854,9 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   </data>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>Ninguna actualización disponible</value>
+  </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys se está ejecutando en segundo plano.</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space se está ejecutando en segundo plano.</value>
@@ -1848,6 +1896,9 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>¡Actualización {0} disponible!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage y/o ImController se están ejecutando en segundo plano.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>No mostrar de nuevo.</value>
@@ -2104,7 +2155,7 @@ No afectará a otras ventanas a pantalla completa, pero no podrá hacer clic en 
 ¡Inicia el servicio o actualiza/reinstala PawnIO para poder utilizar esta función!
 
 Haz clic en Sí para abrir el enlace de descarga en el navegador.
-Haz clic en No para desactivar la función del sensor de hardware.</value>
+Haz clic en No para desactivar la función de sensor de hardware.</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
     <value>El controlador de PawnIO no se está ejecutando</value>
@@ -2116,7 +2167,7 @@ Actual: {0} Requerida: {1}.
 ¡Actualiza PawnIO para seguir utilizando esta función!
 
 Haz clic en Sí para abrir el enlace de descarga en el navegador.
-Haz clic en No para desactivar la función del sensor de hardware.</value>
+Haz clic en No para desactivar la función de sensor de hardware.</value>
   </data>
   <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
     <value>Es necesario actualizar PawnIO</value>
@@ -2344,10 +2395,10 @@ Haz clic en No para desactivar la función de sensores de hardware.</value>
     <value>Reducción de voltaje</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCap" xml:space="preserve">
-    <value>Voltage Cap</value>
+    <value>Límite de voltaje</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCapDesc" xml:space="preserve">
-    <value>Cap maximum voltage under load while allowing dynamic downclocking at idle.</value>
+    <value>Limitar el voltaje máximo bajo carga permitiendo al mismo tiempo una reducción dinámica de la frecuencia en reposo.</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
     <value>Fijar voltaje</value>
@@ -2592,6 +2643,12 @@ Puede cambiar de modo con Fn+Q.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Tasa de refresco</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Ajusta la frecuencia de actualización hasta el valor seleccionado para ahorrar energía.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Frecuencia de actualización dinámica</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>Cambiar la tasa de refresco de la pantalla integrada.</value>
@@ -2909,6 +2966,12 @@ Puede cambiar de modo con Fn+Q.</value>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Frecuencia de la CPU</value>
   </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Elige qué sensor de temperatura de la CPU se muestra en el panel de control y en el menú en pantalla (OSD).</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>Proveedor de temperatura de la CPU</value>
+  </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
   </data>
@@ -2932,6 +2995,18 @@ Puede cambiar de modo con Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU preferida</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Automático</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Máx. Núcleo</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Empaquetado</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Memoria Usada/Total (GB)</value>
@@ -3107,6 +3182,9 @@ Puede cambiar de modo con Fn+Q.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Imagen de fondo personalizada</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>No se ha podido desactivar todo por completo, es posible que algunos elementos sigan en ejecución</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Es posible que Legion Space no se haya desactivado correctamente</value>
   </data>
@@ -3140,15 +3218,13 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>No se pueden desactivar las teclas de acceso rápido de Lenovo</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Desactivar las teclas de acceso rápido de Lenovo y su servicio, sin desinstalarlo.
-Si se desactiva, esta aplicación controlará los accesos directos Fn.
-Se recomienda reiniciar después de cambiar esta opción.</value>
+    <value>Desactiva las teclas de acceso rápido de Lenovo y su servicio sin desinstalarlo, esta aplicación se encargará de gestionar los atajos de Fn en su lugar.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Desactivar las teclas de acceso rápido de Lenovo</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage y/o ImController pueden no haber sido desactivados correctamente</value>
+    <value>Es posible que Lenovo Vantage y/o ImController no se hayan desactivado correctamente</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>No se ha podido desactivar Lenovo Vantage y/o ImController</value>
@@ -3176,7 +3252,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Es posible que las teclas de acceso rápido de Lenovo no se hayan activado correctamente</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>No se pueden activar las teclas de acceso rápido de Lenovo</value>
+    <value>No se han podido activar las teclas de acceso rápido de Lenovo</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Habilita los registros de depuración para investigar problemas de la aplicación.</value>
@@ -3185,7 +3261,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Habilitar registros de depuración</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage y/o ImController pueden no haber sido activados correctamente</value>
+    <value>Es posible que Lenovo Vantage y/o ImController no se hayan activado correctamente</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>No se ha podido activar Lenovo Vantage y/o ImController</value>
@@ -3206,7 +3282,7 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
     <value>Aceleración por hardware</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Habilitar la aceleración por hardware puede provocar parpadeos o destellos negros en algunos sistemas gráficos híbridos y puede impedir que se apague la GPU discreta.</value>
+    <value>Si se activa la aceleración por hardware, es posible que no se pueda desactivar la GPU discreta.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Habilita el sondeo avanzado del equipo para supervisar temperaturas, frecuencias y límites de potencia detallados.</value>
@@ -3219,6 +3295,9 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Automático (dejar que Windows decida)</value>
+  </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>No se ha podido aplicar la preferencia de GPU.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Alto rendimiento (dGPU)</value>
@@ -3246,6 +3325,12 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Idioma</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Los atajos de teclado Fn se gestionan mediante las teclas de acceso rápido de Lenovo, por lo que las opciones de Excluir frecuencias de actualización, Teclas inteligentes y Detección de teclas no tienen ningún efecto mientras la aplicación esté en ejecución.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Las teclas de acceso rápido de Lenovo están activas</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Bloquea el tamaño de la ventana de LTT. Para así evitar que algo lo modifique.</value>
@@ -3309,6 +3394,12 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Reinicie para aplicar los cambios.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Restaurar automáticamente el último modo ITS al iniciar la aplicación.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restablecer el modo ITS al iniciar el sistema</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Ejecutar scripts de C# en el entorno de ejecución de la aplicación.</value>
@@ -3433,6 +3524,9 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Configuración aplicada con éxito.</value>
   </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>La configuración se ha guardado, pero no se ha aplicado a la GPU.</value>
+  </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Al silenciar, se silenciarán todos los dispositivos de salida de audio activos.</value>
   </data>
@@ -3475,8 +3569,14 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
     <value>Mostrar teclas ocultas {0}</value>
   </data>
+  <data name="SpecialKey_ConsumerSuffix" xml:space="preserve">
+    <value>(HID)</value>
+  </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
     <value>(Driver)</value>
+  </data>
+  <data name="SpecialKey_KeyboardSuffix" xml:space="preserve">
+    <value>(Key)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>Llave {0}</value>
@@ -3736,8 +3836,7 @@ Al mover el ratón o pulsar el teclado se activarán las pantallas.</value>
     <value>Apagar</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Ha ocurrido una excepción inesperada: 
-{0}</value>
+    <value>Ha ocurrido una excepción inesperada:</value>
   </data>
   <data name="Unhide" xml:space="preserve">
     <value>Volver a mostrar</value>
@@ -3857,5 +3956,14 @@ El registro de sucesos se activará automáticamente, si decide continuar.</valu
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Sí</value>
+  </data>
+  <data name="PowerButtonLed_Brightness" xml:space="preserve">
+    <value>Brillo</value>
+  </data>
+  <data name="PowerButtonLed_Message" xml:space="preserve">
+    <value>Ajusta el brillo de la luz o sincronízalo con la retroiluminación del teclado.</value>
+  </data>
+  <data name="PowerButtonLed_Title" xml:space="preserve">
+    <value>Luz del botón de encendido</value>
   </data>
 </root>
