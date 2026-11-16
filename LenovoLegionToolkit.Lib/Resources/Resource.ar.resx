@@ -142,11 +142,11 @@
     <value>غير مدعُوم.</value>
   </data>
   <data name="AutoColorManagementState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>إيقاف</value>
     <comment>Informs the user that Auto Color Management is or will be turned off.</comment>
   </data>
   <data name="AutoColorManagementState_On" xml:space="preserve">
-    <value>On</value>
+    <value>تشغيل</value>
     <comment>Informs the user that Auto Color Management is or will be turned on.</comment>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
@@ -226,16 +226,16 @@
     <value>ACPI</value>
   </data>
   <data name="GPUController_GC6_Blocker_Audio" xml:space="preserve">
-    <value>Audio active</value>
+    <value>صوت نشط</value>
   </data>
   <data name="GPUController_GC6_Blocker_BusScan" xml:space="preserve">
     <value>Bus scan</value>
   </data>
   <data name="GPUController_GC6_Blocker_CpuSharedSurface" xml:space="preserve">
-    <value>CPU shared memory</value>
+    <value>الذاكرة المشتركة للمعالج</value>
   </data>
   <data name="GPUController_GC6_Blocker_Display" xml:space="preserve">
-    <value>Display active</value>
+    <value>الشاشة نشطة</value>
   </data>
   <data name="GPUController_GC6_Blocker_DriverHold" xml:space="preserve">
     <value>Driver hold</value>
@@ -581,6 +581,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>مزامنة اورورا</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Breath" xml:space="preserve">
+    <value>Breath</value>
+  </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
     <value>تغيير اللون</value>
   </data>
@@ -589,6 +592,9 @@
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
     <value>موجة اللون</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
+    <value>Horse Race Lamp</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
     <value>ماطر</value>
@@ -608,6 +614,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
     <value>نوع</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
+    <value>Wave</value>
+  </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
     <value>بطىء</value>
   </data>
@@ -618,10 +627,31 @@
     <value>سريع</value>
   </data>
   <data name="Spectrum_Color_Mode_Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>تخصيص</value>
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
-    <value>Random Color</value>
+    <value>لون عشوائي</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
+    <value>Couldn't close {0}. It is still running, close it manually and try again.</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>Processes still running: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
+    <value>Couldn't change the scheduled task {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
+    <value>Couldn't change the service {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>Services that need a restart: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>Services still running: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
+    <value>Couldn't change the startup entry {0}.</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>داكن</value>
@@ -693,6 +723,9 @@
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
     <value>الخادم</value>
+  </data>
+  <data name="WhiteKeyboardBacklightState_Auto" xml:space="preserve">
+    <value>تلقائي</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>مرتفع</value>
