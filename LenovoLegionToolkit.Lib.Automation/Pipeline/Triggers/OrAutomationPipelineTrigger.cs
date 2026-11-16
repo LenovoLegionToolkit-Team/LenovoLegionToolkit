@@ -32,4 +32,6 @@ public class OrAutomationPipelineTrigger(IAutomationPipelineTrigger[] triggers) 
     }
 
     public IAutomationPipelineTrigger DeepCopy() => new OrAutomationPipelineTrigger(Triggers);
+
+    public override string ToString() => $"{nameof(Triggers)}: {string.Join<IAutomationPipelineTrigger>(", ", Triggers)}";
 }

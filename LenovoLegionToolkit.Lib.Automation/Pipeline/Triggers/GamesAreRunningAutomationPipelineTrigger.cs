@@ -25,5 +25,5 @@ public class GamesAreRunningAutomationPipelineTrigger : IGameAutomationPipelineT
 
     public IAutomationPipelineTrigger DeepCopy() => new GamesAreRunningAutomationPipelineTrigger();
 
-    public override string ToString() => DisplayName;
+    public override string ToString() => nameof(GamesAreRunningAutomationPipelineTrigger);
 }

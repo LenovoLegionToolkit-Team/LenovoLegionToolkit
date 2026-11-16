@@ -25,5 +25,5 @@ public class GamesStopAutomationPipelineTrigger : IGameAutomationPipelineTrigger
 
     public IAutomationPipelineTrigger DeepCopy() => new GamesStopAutomationPipelineTrigger();
 
-    public override string ToString() => DisplayName;
+    public override string ToString() => nameof(GamesStopAutomationPipelineTrigger);
 }

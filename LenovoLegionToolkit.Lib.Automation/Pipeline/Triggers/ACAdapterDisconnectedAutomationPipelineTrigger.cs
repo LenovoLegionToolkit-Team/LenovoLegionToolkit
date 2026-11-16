@@ -33,4 +33,6 @@ public class ACAdapterDisconnectedAutomationPipelineTrigger : IPowerStateAutomat
     public override bool Equals(object? obj) => obj is ACAdapterDisconnectedAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(ACAdapterDisconnectedAutomationPipelineTrigger);
 }

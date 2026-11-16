@@ -36,4 +36,6 @@ public class HDROffAutomationPipelineTrigger : IHDRPipelineTrigger
     public override bool Equals(object? obj) => obj is HDROffAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(HDROffAutomationPipelineTrigger);
 }

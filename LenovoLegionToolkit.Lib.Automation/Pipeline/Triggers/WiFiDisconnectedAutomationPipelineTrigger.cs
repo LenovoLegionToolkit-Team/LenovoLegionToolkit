@@ -33,4 +33,6 @@ public class WiFiDisconnectedAutomationPipelineTrigger : IWiFiDisconnectedPipeli
     public override bool Equals(object? obj) => obj is WiFiDisconnectedAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(WiFiDisconnectedAutomationPipelineTrigger);
 }

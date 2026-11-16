@@ -24,4 +24,6 @@ public class OnResumeAutomationPipelineTrigger : IOnResumeAutomationPipelineTrig
     public override bool Equals(object? obj) => obj is OnResumeAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(OnResumeAutomationPipelineTrigger);
 }

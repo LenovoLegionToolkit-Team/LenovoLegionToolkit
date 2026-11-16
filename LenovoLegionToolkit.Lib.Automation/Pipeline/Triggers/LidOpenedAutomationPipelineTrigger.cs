@@ -36,4 +36,6 @@ public class LidOpenedAutomationPipelineTrigger : INativeWindowsMessagePipelineT
     public override bool Equals(object? obj) => obj is LidOpenedAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(LidOpenedAutomationPipelineTrigger);
 }

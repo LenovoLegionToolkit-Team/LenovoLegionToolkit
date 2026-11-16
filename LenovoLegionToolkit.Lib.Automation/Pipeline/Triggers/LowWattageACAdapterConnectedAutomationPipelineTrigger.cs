@@ -37,4 +37,6 @@ public class LowWattageACAdapterConnectedAutomationPipelineTrigger : IPowerState
     public override bool Equals(object? obj) => obj is LowWattageACAdapterConnectedAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(LowWattageACAdapterConnectedAutomationPipelineTrigger);
 }

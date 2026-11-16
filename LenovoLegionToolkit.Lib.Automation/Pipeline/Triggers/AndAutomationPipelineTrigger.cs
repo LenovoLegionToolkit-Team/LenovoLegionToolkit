@@ -40,4 +40,6 @@ public class AndAutomationPipelineTrigger(IAutomationPipelineTrigger[] triggers)
     }
 
     public IAutomationPipelineTrigger DeepCopy() => new AndAutomationPipelineTrigger(Triggers);
+
+    public override string ToString() => $"{nameof(Triggers)}: {string.Join<IAutomationPipelineTrigger>(", ", Triggers)}";
 }

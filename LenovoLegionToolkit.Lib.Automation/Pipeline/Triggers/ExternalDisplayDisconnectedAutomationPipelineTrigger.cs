@@ -34,4 +34,6 @@ public class ExternalDisplayDisconnectedAutomationPipelineTrigger : INativeWindo
     public override bool Equals(object? obj) => obj is ExternalDisplayDisconnectedAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(ExternalDisplayDisconnectedAutomationPipelineTrigger);
 }

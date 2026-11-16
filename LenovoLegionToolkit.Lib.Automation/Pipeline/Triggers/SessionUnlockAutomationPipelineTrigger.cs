@@ -36,4 +36,6 @@ public class SessionUnlockAutomationPipelineTrigger : ISessionUnlockPipelineTrig
     public override bool Equals(object? obj) => obj is SessionUnlockAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(SessionUnlockAutomationPipelineTrigger);
 }

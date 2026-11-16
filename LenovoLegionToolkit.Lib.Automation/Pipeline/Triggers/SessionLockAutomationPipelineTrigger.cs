@@ -31,4 +31,6 @@ public class SessionLockAutomationPipelineTrigger : ISessionLockPipelineTrigger
     public override bool Equals(object? obj) => obj is SessionLockAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(SessionLockAutomationPipelineTrigger);
 }

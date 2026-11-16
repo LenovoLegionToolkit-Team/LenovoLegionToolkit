@@ -35,4 +35,6 @@ public class ExternalDisplayConnectedAutomationPipelineTrigger : INativeWindowsM
     public override bool Equals(object? obj) => obj is ExternalDisplayConnectedAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(ExternalDisplayConnectedAutomationPipelineTrigger);
 }

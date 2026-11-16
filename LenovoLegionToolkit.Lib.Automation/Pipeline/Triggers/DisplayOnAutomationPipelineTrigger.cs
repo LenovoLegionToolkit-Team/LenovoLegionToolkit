@@ -36,4 +36,6 @@ public class DisplayOnAutomationPipelineTrigger : INativeWindowsMessagePipelineT
     public override bool Equals(object? obj) => obj is DisplayOnAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(DisplayOnAutomationPipelineTrigger);
 }

@@ -24,4 +24,6 @@ public class OnStartupAutomationPipelineTrigger : IOnStartupAutomationPipelineTr
     public override bool Equals(object? obj) => obj is OnStartupAutomationPipelineTrigger;
 
     public override int GetHashCode() => HashCode.Combine(DisplayName);
+
+    public override string ToString() => nameof(OnStartupAutomationPipelineTrigger);
 }
