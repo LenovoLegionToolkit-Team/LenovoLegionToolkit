@@ -142,11 +142,11 @@
     <value>Не підтримується.</value>
   </data>
   <data name="AutoColorManagementState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>Вимкнути</value>
     <comment>Informs the user that Auto Color Management is or will be turned off.</comment>
   </data>
   <data name="AutoColorManagementState_On" xml:space="preserve">
-    <value>On</value>
+    <value>Увімкнути</value>
     <comment>Informs the user that Auto Color Management is or will be turned on.</comment>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
@@ -220,46 +220,46 @@
     <value>ГБ</value>
   </data>
   <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
-    <value>Fan table verification failed.</value>
+    <value>Помилка перевірки таблиці вентиляторів.</value>
   </data>
   <data name="GPUController_GC6_Blocker_Acpi" xml:space="preserve">
     <value>ACPI</value>
   </data>
   <data name="GPUController_GC6_Blocker_Audio" xml:space="preserve">
-    <value>Audio active</value>
+    <value>Аудіо активне</value>
   </data>
   <data name="GPUController_GC6_Blocker_BusScan" xml:space="preserve">
-    <value>Bus scan</value>
+    <value>Сканування шини</value>
   </data>
   <data name="GPUController_GC6_Blocker_CpuSharedSurface" xml:space="preserve">
-    <value>CPU shared memory</value>
+    <value>Спільна пам'ять ЦП</value>
   </data>
   <data name="GPUController_GC6_Blocker_Display" xml:space="preserve">
-    <value>Display active</value>
+    <value>Активний дисплей</value>
   </data>
   <data name="GPUController_GC6_Blocker_DriverHold" xml:space="preserve">
-    <value>Driver hold</value>
+    <value>Утримання драйвером</value>
   </data>
   <data name="GPUController_GC6_Blocker_HybridGraphics" xml:space="preserve">
-    <value>Hybrid graphics</value>
+    <value>Гібридна графіка</value>
   </data>
   <data name="GPUController_GC6_Blocker_PowerEvent" xml:space="preserve">
-    <value>Power event</value>
+    <value>Подія живлення</value>
   </data>
   <data name="GPUController_GC6_Blocker_ResourceLock" xml:space="preserve">
-    <value>Resource lock</value>
+    <value>Блокування ресурсів</value>
   </data>
   <data name="GPUController_GC6_Blocker_SoftwareDisabled" xml:space="preserve">
-    <value>Software disabled</value>
+    <value>Вимкнено програмно</value>
   </data>
   <data name="GPUController_GC6_NoSbiosSupport" xml:space="preserve">
-    <value>SBIOS does not support GC6 sleep</value>
+    <value>SBIOS не підтримує сон GC6</value>
   </data>
   <data name="GPUController_GC6_NoVbiosSupport" xml:space="preserve">
-    <value>VBIOS does not support GC6 sleep</value>
+    <value>VBIOS не підтримує сон GC6</value>
   </data>
   <data name="GPUController_GC6_SleepBlocked" xml:space="preserve">
-    <value>Sleep blocked ({0})</value>
+    <value>Сон заблоковано ({0})</value>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
     <value>Вимкнений</value>
@@ -315,7 +315,7 @@
     <value>Інтелектуальне охолодження</value>
   </data>
   <data name="ITSMode_Intelligent_Creator" xml:space="preserve">
-    <value>Creator</value>
+    <value>Творець</value>
   </data>
   <data name="ITSMode_Intelligent_Extreme_Performance" xml:space="preserve">
     <value>Максимальна продуктивність</value>
@@ -427,7 +427,7 @@
     <value>Використання</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
-    <value>Voltage</value>
+    <value>Напруга</value>
   </data>
   <data name="OsdItem_VramTemperature" xml:space="preserve">
     <value>Температура відеопам'яті</value>
@@ -480,7 +480,7 @@
     <value>Тихий</value>
   </data>
   <data name="RefreshRate_Dynamic" xml:space="preserve">
-    <value>Dynamic ({0} Hz)</value>
+    <value>Динамічний ({0} Hz або {1} Hz)</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>Яскрава</value>
@@ -581,6 +581,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>Aurora Sync</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Breath" xml:space="preserve">
+    <value>Дихання</value>
+  </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
     <value>Зміна кольору</value>
   </data>
@@ -589,6 +592,9 @@
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
     <value>Колірні хвилі</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
+    <value>Біжучі вогні</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
     <value>Дощ</value>
@@ -608,6 +614,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
     <value>Тип</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
+    <value>Хвиля</value>
+  </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
     <value>Повільна</value>
   </data>
@@ -618,10 +627,31 @@
     <value>Швидка</value>
   </data>
   <data name="Spectrum_Color_Mode_Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>Власний</value>
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
-    <value>Random Color</value>
+    <value>Випадковий колір</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
+    <value>Не вдалося закрити {0}. Процес усе ще виконується, закрийте його вручну та повторіть спробу.</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>Процеси усе ще виконуються: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
+    <value>Не вдалося змінити заплановане завдання {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
+    <value>Не вдалося змінити службу {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>Служби, які потребують перезавантаження: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>Служби, які усе ще виконуються: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
+    <value>Не вдалося змінити запис автозавантаження {0}.</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>Темна</value>
@@ -693,6 +723,9 @@
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
     <value>Сервер</value>
+  </data>
+  <data name="WhiteKeyboardBacklightState_Auto" xml:space="preserve">
+    <value>Авто</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>Яскрава</value>
