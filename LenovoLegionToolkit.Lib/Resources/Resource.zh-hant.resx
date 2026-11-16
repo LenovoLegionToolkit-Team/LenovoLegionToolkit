@@ -142,11 +142,11 @@
     <value>不支援。</value>
   </data>
   <data name="AutoColorManagementState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>關閉</value>
     <comment>Informs the user that Auto Color Management is or will be turned off.</comment>
   </data>
   <data name="AutoColorManagementState_On" xml:space="preserve">
-    <value>On</value>
+    <value>開啟</value>
     <comment>Informs the user that Auto Color Management is or will be turned on.</comment>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
@@ -220,46 +220,46 @@
     <value>GB</value>
   </data>
   <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
-    <value>Fan table verification failed.</value>
+    <value>無法驗證風扇曲線表。</value>
   </data>
   <data name="GPUController_GC6_Blocker_Acpi" xml:space="preserve">
     <value>ACPI</value>
   </data>
   <data name="GPUController_GC6_Blocker_Audio" xml:space="preserve">
-    <value>Audio active</value>
+    <value>音訊活動中</value>
   </data>
   <data name="GPUController_GC6_Blocker_BusScan" xml:space="preserve">
-    <value>Bus scan</value>
+    <value>匯流排掃描</value>
   </data>
   <data name="GPUController_GC6_Blocker_CpuSharedSurface" xml:space="preserve">
-    <value>CPU shared memory</value>
+    <value>CPU 共享記憶體</value>
   </data>
   <data name="GPUController_GC6_Blocker_Display" xml:space="preserve">
-    <value>Display active</value>
+    <value>顯示器活動中</value>
   </data>
   <data name="GPUController_GC6_Blocker_DriverHold" xml:space="preserve">
-    <value>Driver hold</value>
+    <value>驅動程式占用中</value>
   </data>
   <data name="GPUController_GC6_Blocker_HybridGraphics" xml:space="preserve">
-    <value>Hybrid graphics</value>
+    <value>混合顯示</value>
   </data>
   <data name="GPUController_GC6_Blocker_PowerEvent" xml:space="preserve">
-    <value>Power event</value>
+    <value>電源事件</value>
   </data>
   <data name="GPUController_GC6_Blocker_ResourceLock" xml:space="preserve">
-    <value>Resource lock</value>
+    <value>資源鎖定</value>
   </data>
   <data name="GPUController_GC6_Blocker_SoftwareDisabled" xml:space="preserve">
-    <value>Software disabled</value>
+    <value>已停用軟體</value>
   </data>
   <data name="GPUController_GC6_NoSbiosSupport" xml:space="preserve">
-    <value>SBIOS does not support GC6 sleep</value>
+    <value>SBIOS 不支援 GC6 睡眠</value>
   </data>
   <data name="GPUController_GC6_NoVbiosSupport" xml:space="preserve">
-    <value>VBIOS does not support GC6 sleep</value>
+    <value>VBIOS 不支援 GC6 睡眠</value>
   </data>
   <data name="GPUController_GC6_SleepBlocked" xml:space="preserve">
-    <value>Sleep blocked ({0})</value>
+    <value>已阻止睡眠 ({0})</value>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
     <value>關機</value>
@@ -581,6 +581,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>屏光同步</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Breath" xml:space="preserve">
+    <value>Breath</value>
+  </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
     <value>光谱循环</value>
   </data>
@@ -589,6 +592,9 @@
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
     <value>波浪</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
+    <value>Horse Race Lamp</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
     <value>雨滴</value>
@@ -608,6 +614,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
     <value>键入</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
+    <value>Wave</value>
+  </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
     <value>慢</value>
   </data>
@@ -618,10 +627,31 @@
     <value>快</value>
   </data>
   <data name="Spectrum_Color_Mode_Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>客製化</value>
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
-    <value>Random Color</value>
+    <value>隨機顏色</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
+    <value>無法關閉 {0}。它仍然在執行中，請手動關閉後再試一次。</value>
+  </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>此處理程序仍然在執行：{0}。</value>
+  </data>
+  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
+    <value>無法變更排程任務 {0}。</value>
+  </data>
+  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
+    <value>無法變更服務 {0}。</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>此服務需要重新啟動：{0}。</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>此服務仍然在執行：{0}。</value>
+  </data>
+  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
+    <value>無法變更啟動 {0}。</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>深色模式</value>
@@ -693,6 +723,9 @@
   </data>
   <data name="UpdateMethod_Server" xml:space="preserve">
     <value>伺服器</value>
+  </data>
+  <data name="WhiteKeyboardBacklightState_Auto" xml:space="preserve">
+    <value>自動</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>高亮度</value>
