@@ -503,27 +503,32 @@ LLT makes use of several open-source libraries. Components hosted under the [Len
 For a full list of third-party components and license notices, see the [NOTICE](NOTICE) file.
 
 Translations provided by:
+
+* Arabic - yn, Ferrari man
 * Bulgarian - [Ekscentricitet](https://github.com/Ekscentricitet)
-* Chinese (Simplified) - [凌卡Karl](https://github.com/KarlLee830), [Ace-Radom](https://github.com/Ace-Radom)
-* Chinese (Traditional) - [flandretw](https://github.com/flandretw)
-* Czech - J0sef
+* Chinese (Simplified) - [凌卡Karl](https://github.com/KarlLee830), [Ace-Radom](https://github.com/Ace-Radom), Kaguya(https://github.com/XKaguya), Tommy12pl, uzsd, Meteoni-San, YGXB_net, empty_value
+* Chinese (Traditional) - [flandretw](https://github.com/flandretw), 蘭蘭露
+* Czech - J0sef, Matej Siroky, Ghost Miner
 * Dutch - Melm, [JarneStaalPXL](https://github.com/JarneStaalPXL)
-* French - EliotAku, [Georges de Massol](https://github.com/jojo2massol), Rigbone, ZeroDegree
-* German - Sko-Inductor, Running_Dead89
+* French - EliotAku, [Georges de Massol](https://github.com/jojo2massol), Rigbone, ZeroDegree, mooms06, Skully
+* German - Sko-Inductor, Running_Dead89, Rapgod, Anotherescape
 * Greek - GreatApo
-* Italian - [Lampadina17](https://github.com/Lampadina17)
+* Hindi - Abhijith Sahadevan
+* Indonesian - Agung Adhinata, Erlangga Rizqi Dwi Raswanto
+* Italian - [Lampadina17](https://github.com/Lampadina17), Gabriele Beltrami
+* Japanese - kodenma
 * Karakalpak - KarLin, Gulnaz, Niyazbek Tolibaev, Shingis Joldasbaev
 * Latvian - RJSkudra
-* Romanian - [Mario Bălănică](https://github.com/mariobalanica)
-* Slovak - Mitschud, Newbie414
-* Spanish - M.A.G.
-* Polish - Mariusz Dziemianowicz
+* Polish - Mariusz Dziemianowicz, Kauczukowe_Jajo, Hexen, z3st
 * Portuguese - dvsilva
-* Portuguese (Brasil) - Vernon
-* Russian - [Edward Johan](https://github.com/younyokel)
-* Turkish - Undervolt
-* Ukrainian -  [Vladyslav Prydatko](https://github.com/va1dee), [Dmytro Zozulia](https://github.com/Nollasko)
-* Vietnamese - Not_Nhan, Kuri, Nagidrop
+* Portuguese (Brasil) - Vernon, lino
+* Romanian - [Mario Bălănică](https://github.com/mariobalanica)
+* Russian - [Edward Johan](https://github.com/younyokel), Resilient, Robot Rob
+* Slovak - Mitschud, Newbie414
+* Spanish - M.A.G., Iago Alonso Alonso
+* Turkish - Undervolt, DragonOfTurkish, Berk Udum
+* Ukrainian - [Vladyslav Prydatko](https://github.com/va1dee), [Dmytro Zozulia](https://github.com/Nollasko), [shinzaa](https://github.com/sevensrays), Desing Ua, Oleksandr Timofieiev
+* Vietnamese - Not_Nhan, Kuri, Nagidrop, Nguyễn Lam, Aretzera
 
 Many thanks to everyone else, who monitors and corrects translations!
 
