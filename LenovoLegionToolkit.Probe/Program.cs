@@ -393,7 +393,7 @@ try
             {
                 (1, 1) or (1, 4) => FanTableType.CPU,
                 (2, 5) => FanTableType.GPU,
-                (4, 4) or (5, 5) or (4, 1) => FanTableType.PCH,
+                (4, 4) or (5, 5) or (4, 1) => FanTableType.SystemFan,
                 _ => FanTableType.Unknown,
             };
             return new FanTableData(type, d.fanId, d.sensorId, d.fanTableData, d.sensorTableData);

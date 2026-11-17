@@ -186,7 +186,7 @@ public enum FanTableType
     CPUSensor,
     GPU,
     GPU2,
-    PCH,
+    SystemFan,
 }
 
 public enum FanType

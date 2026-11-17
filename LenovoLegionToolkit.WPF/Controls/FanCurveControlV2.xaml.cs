@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,7 +10,6 @@ using System.Windows.Shapes;
 using System.Windows.Threading;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Extensions;
-using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Resources;
 
 namespace LenovoLegionToolkit.WPF.Controls;
@@ -235,119 +235,148 @@ public partial class FanCurveControlV2
     {
         private readonly Grid _grid = new()
         {
+            HorizontalAlignment = HorizontalAlignment.Left,
             ColumnDefinitions =
             {
                 new() { Width = GridLength.Auto},
-                new () { Width = GridLength.Auto}
-            },
-            RowDefinitions =
-            {
-                new() { Height = GridLength.Auto},
-                new() { Height = GridLength.Auto},
-                new() { Height = GridLength.Auto},
-                new() { Height = GridLength.Auto}
+                new() { Width = GridLength.Auto},
+                new() { Width = GridLength.Auto},
+                new() { Width = GridLength.Auto}
             }
         };
 
-        private readonly TextBlock _cpuDescription = new() { Text = Resource.FanCurveControl_CPU, FontWeight = FontWeights.Medium, Margin = new(0, 0, 8, 0) };
-        private readonly TextBlock _cpuSensorDescription = new() { Text = Resource.FanCurveControl_CPUSensor, FontWeight = FontWeights.Medium, Margin = new(0, 0, 8, 0) };
-        private readonly TextBlock _gpuDescription = new() { Text = Resource.FanCurveControl_GPU, FontWeight = FontWeights.Medium, Margin = new(0, 0, 8, 0) };
-        private readonly TextBlock _pchDescription = new() { Text = Resource.FanCurveControl_PCH, FontWeight = FontWeights.Medium, Margin = new(0, 0, 8, 0) };
-        private readonly TextBlock _motherboardDescription = new() { Text = Resource.SensorsControl_Motherboard_Title, FontWeight = FontWeights.Medium, Margin = new(0, 0, 8, 0) };
-        private TextBlock? _chipsetDescription = null;
+        private readonly List<(TextBlock Temperature, TextBlock FanSpeed, ushort[] Temps, ushort[] FanSpeeds)> _rows = [];
 
-        private readonly TextBlock _cpuValue = new();
-        private readonly TextBlock _cpuSensorValue = new();
-        private readonly TextBlock _gpuValue = new();
-        private readonly TextBlock _pchValue = new();
+        private FanTableData[]? _builtFor;
 
         public InfoTooltip()
         {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
             SetResourceReference(StyleProperty, typeof(ToolTip));
-
-            var mi = Compatibility.GetMachineInformationAsync().Result;
-            if (mi.Properties.IsAmdDevice)
-            {
-                _chipsetDescription = _motherboardDescription;
-            }
-            else
-            {
-                _chipsetDescription = _pchDescription;
-            }
-
-            Grid.SetColumn(_cpuDescription, 0);
-            Grid.SetColumn(_cpuSensorDescription, 0);
-            Grid.SetColumn(_gpuDescription, 0);
-            Grid.SetColumn(_chipsetDescription, 0);
-            Grid.SetColumn(_cpuValue, 1);
-            Grid.SetColumn(_cpuSensorValue, 1);
-            Grid.SetColumn(_gpuValue, 1);
-            Grid.SetColumn(_pchValue, 1);
-
-            Grid.SetRow(_cpuDescription, 0);
-            Grid.SetRow(_cpuSensorDescription, 1);
-            Grid.SetRow(_gpuDescription, 2);
-            Grid.SetRow(_chipsetDescription, 3);
-            Grid.SetRow(_cpuValue, 0);
-            Grid.SetRow(_cpuSensorValue, 1);
-            Grid.SetRow(_gpuValue, 2);
-            Grid.SetRow(_pchValue, 3);
-
-            _grid.Children.Add(_cpuDescription);
-            _grid.Children.Add(_cpuSensorDescription);
-            _grid.Children.Add(_gpuDescription);
-            _grid.Children.Add(_chipsetDescription);
-            _grid.Children.Add(_cpuValue);
-            _grid.Children.Add(_cpuSensorValue);
-            _grid.Children.Add(_gpuValue);
-            _grid.Children.Add(_pchValue);
 
             Content = _grid;
         }
 
         public void Update(FanTableData[] tableData, int index, int value)
         {
-            Update(tableData, index, value, FanTableType.CPU, _cpuDescription, _cpuValue);
-            Update(tableData, index, value, FanTableType.CPUSensor, _cpuSensorDescription, _cpuSensorValue);
-            Update(tableData, index, value, FanTableType.GPU, _gpuDescription, _gpuValue);
-            Update(tableData, index, value, FanTableType.PCH, _chipsetDescription!, _pchValue);
-        }
-
-        private static void Update(FanTableData[] tableData, int index, int value, FanTableType type, TextBlock descriptionTextBlock, TextBlock valueTextBlock)
-        {
-            var text = tableData
-                .Where(td => td.Type == type)
-                .Select(td => GetDescription(td, index, value))
-                .FirstOrDefault();
-
-            var visibility = text is null ? Visibility.Collapsed : Visibility.Visible;
-
-            valueTextBlock.Text = text ?? "-";
-            valueTextBlock.Visibility = visibility;
-            descriptionTextBlock.Visibility = visibility;
-        }
-
-        private static string GetDescription(FanTableData tableData, int index, int value)
-        {
-            try
+            if (!ReferenceEquals(_builtFor, tableData))
             {
-                var temp = tableData.Temps[index];
-
-                if (temp >= 127)
-                    return "-";
-
-                var rpm = value < 0 ? 0 : tableData.FanSpeeds[value];
-                return $"{temp}{Resource.Celsius} @ {rpm} {Resource.RPM}";
+                Build(tableData);
             }
-            catch
+
+            foreach (var (temperatureTextBlock, fanSpeedTextBlock, temps, fanSpeeds) in _rows)
+            {
+                temperatureTextBlock.Text = FormatTemperature(temps, index);
+                fanSpeedTextBlock.Text = FormatFanSpeed(fanSpeeds, value);
+            }
+        }
+
+        private void Build(FanTableData[] tableData)
+        {
+            _builtFor = tableData;
+
+            _rows.Clear();
+            _grid.Children.Clear();
+            _grid.RowDefinitions.Clear();
+
+            var rows = tableData
+                .GroupBy(td => td.Type)
+                .Select(g => g.First())
+                .OrderBy(td => GetFanOrder(td.FanId))
+                .ToArray();
+
+            foreach (var td in rows)
+            {
+                AddRow(GetLabel(td), GetTemps(tableData, td), td.FanSpeeds);
+            }
+        }
+
+        private static ushort[] GetTemps(FanTableData[] tableData, FanTableData fan)
+        {
+            var sensorId = fan.Type switch
+            {
+                FanTableType.CPU => 4,
+                FanTableType.CPUSensor => 1,
+                FanTableType.SystemFan => 1,
+                _ => 5,
+            };
+
+            return tableData
+                .Where(td => td.SensorId == sensorId)
+                .Select(td => td.Temps)
+                .FirstOrDefault() ?? fan.Temps;
+        }
+
+        private void AddRow(string label, ushort[] temps, ushort[] fanSpeeds)
+        {
+            var row = _rows.Count;
+
+            var labelTextBlock = new TextBlock
+            {
+                Text = label,
+                FontWeight = FontWeights.Medium,
+                Margin = new Thickness(0, 0, 16, 0),
+            };
+            var temperatureTextBlock = new TextBlock { TextAlignment = TextAlignment.Right };
+            var separatorTextBlock = new TextBlock { Text = "@", Margin = new Thickness(6, 0, 6, 0) };
+            var fanSpeedTextBlock = new TextBlock { TextAlignment = TextAlignment.Right };
+
+            Grid.SetColumn(labelTextBlock, 0);
+            Grid.SetColumn(temperatureTextBlock, 1);
+            Grid.SetColumn(separatorTextBlock, 2);
+            Grid.SetColumn(fanSpeedTextBlock, 3);
+            Grid.SetRow(labelTextBlock, row);
+            Grid.SetRow(temperatureTextBlock, row);
+            Grid.SetRow(separatorTextBlock, row);
+            Grid.SetRow(fanSpeedTextBlock, row);
+
+            _grid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+            _grid.Children.Add(labelTextBlock);
+            _grid.Children.Add(temperatureTextBlock);
+            _grid.Children.Add(separatorTextBlock);
+            _grid.Children.Add(fanSpeedTextBlock);
+
+            _rows.Add((temperatureTextBlock, fanSpeedTextBlock, temps, fanSpeeds));
+        }
+
+        private static int GetFanOrder(byte fanId) => fanId switch
+        {
+            1 => 0,
+            2 => 1,
+            3 => 2,
+            4 => 3,
+            _ => 4,
+        };
+
+        private static string GetLabel(FanTableData tableData) => tableData.Type switch
+        {
+            FanTableType.CPU => Resource.FanCurveControl_CPU,
+            FanTableType.CPUSensor => Resource.FanCurveControl_CPUSensor,
+            FanTableType.GPU => Resource.FanCurveControl_GPU,
+            FanTableType.GPU2 => Resource.FanCurveControl_GPU2,
+            FanTableType.SystemFan => Resource.StatusWindow_System_Fan,
+            _ => "-",
+        };
+
+        private static string FormatTemperature(ushort[] temps, int index)
+        {
+            if (temps is null || index < 0 || index >= temps.Length)
             {
                 return "-";
             }
+
+            var temp = temps[index];
+
+            return temp >= 127 ? "-" : $"{temp}{Resource.Celsius}";
+        }
+
+        private static string FormatFanSpeed(ushort[] fanSpeeds, int value)
+        {
+            if (fanSpeeds is null || value < 0 || value >= fanSpeeds.Length)
+            {
+                return "-";
+            }
+
+            return $"{fanSpeeds[value]} {Resource.RPM}";
         }
     }
 }
