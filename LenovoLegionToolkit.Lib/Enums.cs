@@ -115,11 +115,8 @@ public enum CpuProfileMode
 
 public enum CpuVoltageMode
 {
-    [Display(ResourceType = typeof(Resource), Name = "CpuVoltageMode_Average")]
     Average,
-    [Display(ResourceType = typeof(Resource), Name = "CpuVoltageMode_Maximum")]
     Maximum,
-    [Display(ResourceType = typeof(Resource), Name = "CpuVoltageMode_Core")]
     Core,
 }
 
