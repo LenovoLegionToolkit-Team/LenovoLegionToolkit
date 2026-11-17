@@ -33,6 +33,7 @@
 * [简体中文版简介](README_zh-hans.md)
 * [日本語版のREADME](README_ja-JP.md)
 * [Русская версия README](README_ru-RU.md)
+* [Türkçe README](README_tr-TR.md)
 
 ---
 
