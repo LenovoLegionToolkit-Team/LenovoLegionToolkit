@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.WPF.Resources;
-using System.Windows.Media;
 
 namespace LenovoLegionToolkit.WPF.Windows.Osd;
 
@@ -86,11 +86,6 @@ public partial class OsdPanelWindow : OsdWindowBase
     {
         get => _OsdSettings.Store.PanelPosition;
         set => _OsdSettings.Store.PanelPosition = value;
-    }
-
-    protected override void OnAmdDeviceDetected()
-    {
-        _motherboardName.Text = Resource.SensorsControl_Motherboard_Title;
     }
 
     protected override void ApplyAppearanceSettings()
@@ -231,7 +226,7 @@ public partial class OsdPanelWindow : OsdWindowBase
         }
 
         row.Visibility = Visibility.Visible;
-        SetTextIfChanged(name, showNumber ? $"{Resource.StatusWindow_System_Fan} {data.DisplayNumber}" : Resource.StatusWindow_System_Fan);
+        SetTextIfChanged(name, showNumber ? $"{Resource.SensorsControl_Fan_Title} {data.DisplayNumber}" : Resource.SensorsControl_Fan_Title);
         SetTextIfChanged(value, data.Speed < 0 ? "-" : $"{data.Speed} {Resource.RPM}");
     }
 }

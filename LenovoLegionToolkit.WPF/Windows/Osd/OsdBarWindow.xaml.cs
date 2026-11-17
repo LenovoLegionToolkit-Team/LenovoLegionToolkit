@@ -1,12 +1,12 @@
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
 
 namespace LenovoLegionToolkit.WPF.Windows.Osd;
 
@@ -85,11 +85,6 @@ public partial class OsdBarWindow : OsdWindowBase
     {
         get => _OsdSettings.Store.BarPosition;
         set => _OsdSettings.Store.BarPosition = value;
-    }
-
-    protected override void OnAmdDeviceDetected()
-    {
-        _motherboardName.Text = Resource.SensorsControl_Motherboard_Title;
     }
 
     protected override void ApplyAppearanceSettings()

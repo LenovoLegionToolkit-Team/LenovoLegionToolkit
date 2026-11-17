@@ -438,7 +438,7 @@ public partial class SensorsControlV2
         row.ToolTip = data.MaxSpeed > 0
             ? string.Format(Resource.SensorsControl_Maximum, $"{data.MaxSpeed} {Resource.RPM}")
             : null;
-        name.Text = showNumber ? $"{Resource.StatusWindow_System_Fan} {data.DisplayNumber}" : Resource.StatusWindow_System_Fan;
+        name.Text = showNumber ? $"{Resource.SensorsControl_Fan_Title} {data.DisplayNumber}" : Resource.SensorsControl_Fan_Title;
         value.Text = data.Speed < 0 ? "-" : $"{data.Speed} {Resource.RPM}";
         bar.Maximum = Math.Max(1, data.MaxSpeed);
         bar.Value = data.MaxSpeed > 0 ? Math.Clamp(data.Speed, 0, data.MaxSpeed) : 0;
@@ -663,7 +663,7 @@ public partial class SensorsControlV2
     {
         if (machineInformation.Properties.IsAmdDevice)
         {
-            _motherboardGridName.Text = Resource.SensorsControl_Motherboard_Temperature;
+            _motherboardGridName.Text = Resource.SensorsControl_Temperature_Title;
         }
     }
 

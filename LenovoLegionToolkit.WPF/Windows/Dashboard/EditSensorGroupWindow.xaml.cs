@@ -60,7 +60,7 @@ public partial class EditSensorGroupWindow
                     {
                         stackPanel.Children.Add(new CheckBox
                         {
-                            Content = $"{Resource.StatusWindow_System_Fan} {fan.DisplayNumber}",
+                            Content = $"{Resource.SensorsControl_Fan_Title} {fan.DisplayNumber}",
                             Tag = fan.FanId,
                             IsChecked = activeItems.Contains(item) &&
                                 (_settings.Store.VisibleSystemFanIds is not { } ids || ids.Contains(fan.FanId))
@@ -88,7 +88,7 @@ public partial class EditSensorGroupWindow
     {
         SensorGroupType.CPU => Resource.SensorsControl_CPU_Title,
         SensorGroupType.GPU => Resource.SensorsControl_GPU_Title,
-        SensorGroupType.Motherboard => Resource.SensorsControl_Motherboard_Title,
+        SensorGroupType.Motherboard => Resource.SensorsControl_MOBO_Title,
         SensorGroupType.Battery => Resource.SensorsControl_Battery_Title,
         SensorGroupType.Memory => Resource.SensorsControl_Memory_Title,
         SensorGroupType.Disk => Resource.SensorsControl_Disk_Title,

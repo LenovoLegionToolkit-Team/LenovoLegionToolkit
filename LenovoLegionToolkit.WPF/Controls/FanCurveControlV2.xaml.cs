@@ -353,7 +353,7 @@ public partial class FanCurveControlV2
             FanTableType.CPUSensor => Resource.FanCurveControl_CPUSensor,
             FanTableType.GPU => Resource.FanCurveControl_GPU,
             FanTableType.GPU2 => Resource.FanCurveControl_GPU2,
-            FanTableType.SystemFan => Resource.StatusWindow_System_Fan,
+            FanTableType.SystemFan => Resource.SensorsControl_Fan_Title,
             _ => "-",
         };
 

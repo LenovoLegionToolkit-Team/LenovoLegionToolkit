@@ -10,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Threading;
-using Microsoft.Win32;
 using LenovoLegionToolkit.Lib;
 using LenovoLegionToolkit.Lib.Controllers.Sensors;
 using LenovoLegionToolkit.Lib.Listeners;
@@ -18,9 +17,10 @@ using LenovoLegionToolkit.Lib.Messaging;
 using LenovoLegionToolkit.Lib.Messaging.Messages;
 using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
+using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
 using LenovoLegionToolkit.WPF.Settings;
-using LenovoLegionToolkit.WPF.Extensions;
+using Microsoft.Win32;
 using WpfScreenHelper;
 
 namespace LenovoLegionToolkit.WPF.Windows.Osd;
@@ -122,12 +122,7 @@ public abstract class OsdWindowBase : Window
         var mi = await Compatibility.GetMachineInformationAsync();
         if (!IsLoaded)
             return;
-
-        if (mi.Properties.IsAmdDevice)
-            OnAmdDeviceDetected();
     }
-
-    protected abstract void OnAmdDeviceDetected();
 
     private void SubscribeEvents()
     {

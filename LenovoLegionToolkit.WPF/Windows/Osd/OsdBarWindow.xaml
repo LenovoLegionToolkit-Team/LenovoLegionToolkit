@@ -45,231 +45,237 @@
     </Window.Resources>
 
     <Viewbox Stretch="Uniform" StretchDirection="DownOnly">
-    <Grid>
-        <Border
-            x:Name="_backgroundBorder"
-            Padding="10,4"
-            Background="#CC202020"
-            CornerRadius="6" />
-        <Border
-            Padding="10,4"
-            Background="Transparent"
-            ClipToBounds="True"
-            CornerRadius="6">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+        <Grid>
+            <Border
+                x:Name="_backgroundBorder"
+                Padding="10,4"
+                Background="#CC202020"
+                CornerRadius="6" />
+            <Border
+                Padding="10,4"
+                Background="Transparent"
+                ClipToBounds="True"
+                CornerRadius="6">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel
-                    x:Name="_fpsGroup"
-                    Grid.Column="0"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        x:Name="_fpsLabel"
-                        MinWidth="25"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="{Binding Source={x:Static resources:Resource.Osd_Fps}}" />
-                    <TextBlock
-                        x:Name="_fps"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_lowFps"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_frameTime"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                </StackPanel>
-
-                <Rectangle
-                    x:Name="_separatorFps"
-                    Grid.Column="1"
-                    Width="1"
-                    Height="20"
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    Style="{StaticResource SeparatorStyle}" />
-
-                <StackPanel
-                    x:Name="_cpuGroup"
-                    Grid.Column="2"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        x:Name="_cpuLabel"
-                        MinWidth="25"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="{Binding Source={x:Static resources:Resource.Osd_Cpu}}" />
-                    <TextBlock
-                        x:Name="_cpuFrequency"
-                        MinWidth="40"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_cpuPFrequency"
-                        MinWidth="40"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-"
-                        Visibility="Collapsed" />
-                    <TextBlock
-                        x:Name="_cpuEFrequency"
-                        MinWidth="40"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-"
-                        Visibility="Collapsed" />
-                    <TextBlock
-                        x:Name="_cpuUsage"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_cpuTemperature"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_cpuVoltage"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_cpuPower"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_cpuFanSpeed"
-                        MinWidth="40"
-                        Margin="0"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                </StackPanel>
-
-                <Rectangle
-                    x:Name="_separatorCpu"
-                    Grid.Column="3"
-                    Width="1"
-                    Height="18"
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    Style="{StaticResource SeparatorStyle}" />
-
-                <StackPanel
-                    x:Name="_gpuGroup"
-                    Grid.Column="4"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        x:Name="_gpuLabel"
-                        MinWidth="25"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="{Binding Source={x:Static resources:Resource.Osd_Gpu}}" />
-                    <TextBlock
-                        x:Name="_gpuFrequency"
-                        MinWidth="40"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_gpuUsage"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_gpuTemperature"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_gpuVramUsage"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_gpuVramTemperature"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_gpuPower"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_gpuFanSpeed"
-                        MinWidth="40"
-                        Margin="0"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                </StackPanel>
-
-                <Rectangle
-                    x:Name="_separatorGpu"
-                    Grid.Column="5"
-                    Width="1"
-                    Height="18"
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    Style="{StaticResource SeparatorStyle}" />
-
-                <StackPanel
-                    x:Name="_memoryGroup"
-                    Grid.Column="6"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        x:Name="_memLabel"
-                        MinWidth="25"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="{Binding Source={x:Static resources:Resource.SensorsControl_Memory_Title}}" />
-                    <TextBlock
-                        x:Name="_memUsage"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_memTemperature"
-                        Margin="0"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                </StackPanel>
-
-                <Rectangle
-                    x:Name="_separatorMemory"
-                    Grid.Column="7"
-                    Width="1"
-                    Height="18"
-                    Margin="10,0"
-                    VerticalAlignment="Center"
-                    Style="{StaticResource SeparatorStyle}" />
-
-                <StackPanel
-                    x:Name="_systemGroup"
-                    Grid.Column="8"
-                    Orientation="Horizontal">
-                    <TextBlock
-                        x:Name="_motherboardName"
-                        MinWidth="25"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="{Binding Source={x:Static resources:Resource.SensorsControl_Motherboard_Title}}" />
-                    <TextBlock
-                        x:Name="_motherboardTemperature"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <StackPanel x:Name="_systemFansControl" Orientation="Horizontal">
-                        <TextBlock x:Name="_systemFan1Text" Style="{DynamicResource TextBlockStyle}" Visibility="Collapsed" />
-                        <TextBlock x:Name="_systemFan2Text" Style="{DynamicResource TextBlockStyle}" Visibility="Collapsed" />
+                    <StackPanel
+                        x:Name="_fpsGroup"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            x:Name="_fpsLabel"
+                            MinWidth="25"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="{Binding Source={x:Static resources:Resource.Osd_Fps}}" />
+                        <TextBlock
+                            x:Name="_fps"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_lowFps"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_frameTime"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
                     </StackPanel>
-                    <TextBlock
-                        x:Name="_disk0Temperature"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                    <TextBlock
-                        x:Name="_disk1Temperature"
-                        Margin="0"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
-                </StackPanel>
 
-            </Grid>
-        </Border>
-    </Grid>
+                    <Rectangle
+                        x:Name="_separatorFps"
+                        Grid.Column="1"
+                        Width="1"
+                        Height="20"
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SeparatorStyle}" />
+
+                    <StackPanel
+                        x:Name="_cpuGroup"
+                        Grid.Column="2"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            x:Name="_cpuLabel"
+                            MinWidth="25"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="{Binding Source={x:Static resources:Resource.Osd_Cpu}}" />
+                        <TextBlock
+                            x:Name="_cpuFrequency"
+                            MinWidth="40"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_cpuPFrequency"
+                            MinWidth="40"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-"
+                            Visibility="Collapsed" />
+                        <TextBlock
+                            x:Name="_cpuEFrequency"
+                            MinWidth="40"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-"
+                            Visibility="Collapsed" />
+                        <TextBlock
+                            x:Name="_cpuUsage"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_cpuTemperature"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_cpuVoltage"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_cpuPower"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_cpuFanSpeed"
+                            MinWidth="40"
+                            Margin="0"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                    </StackPanel>
+
+                    <Rectangle
+                        x:Name="_separatorCpu"
+                        Grid.Column="3"
+                        Width="1"
+                        Height="18"
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SeparatorStyle}" />
+
+                    <StackPanel
+                        x:Name="_gpuGroup"
+                        Grid.Column="4"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            x:Name="_gpuLabel"
+                            MinWidth="25"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="{Binding Source={x:Static resources:Resource.Osd_Gpu}}" />
+                        <TextBlock
+                            x:Name="_gpuFrequency"
+                            MinWidth="40"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_gpuUsage"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_gpuTemperature"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_gpuVramUsage"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_gpuVramTemperature"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_gpuPower"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_gpuFanSpeed"
+                            MinWidth="40"
+                            Margin="0"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                    </StackPanel>
+
+                    <Rectangle
+                        x:Name="_separatorGpu"
+                        Grid.Column="5"
+                        Width="1"
+                        Height="18"
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SeparatorStyle}" />
+
+                    <StackPanel
+                        x:Name="_memoryGroup"
+                        Grid.Column="6"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            x:Name="_memLabel"
+                            MinWidth="25"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="{Binding Source={x:Static resources:Resource.SensorsControl_Memory_Title}}" />
+                        <TextBlock
+                            x:Name="_memUsage"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_memTemperature"
+                            Margin="0"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                    </StackPanel>
+
+                    <Rectangle
+                        x:Name="_separatorMemory"
+                        Grid.Column="7"
+                        Width="1"
+                        Height="18"
+                        Margin="10,0"
+                        VerticalAlignment="Center"
+                        Style="{StaticResource SeparatorStyle}" />
+
+                    <StackPanel
+                        x:Name="_systemGroup"
+                        Grid.Column="8"
+                        Orientation="Horizontal">
+                        <TextBlock
+                            x:Name="_motherboardName"
+                            MinWidth="25"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="{Binding Source={x:Static resources:Resource.SensorsControl_MOBO_Title}}" />
+                        <TextBlock
+                            x:Name="_motherboardTemperature"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <StackPanel x:Name="_systemFansControl" Orientation="Horizontal">
+                            <TextBlock
+                                x:Name="_systemFan1Text"
+                                Style="{DynamicResource TextBlockStyle}"
+                                Visibility="Collapsed" />
+                            <TextBlock
+                                x:Name="_systemFan2Text"
+                                Style="{DynamicResource TextBlockStyle}"
+                                Visibility="Collapsed" />
+                        </StackPanel>
+                        <TextBlock
+                            x:Name="_disk0Temperature"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                        <TextBlock
+                            x:Name="_disk1Temperature"
+                            Margin="0"
+                            Style="{DynamicResource TextBlockStyle}"
+                            Text="-" />
+                    </StackPanel>
+
+                </Grid>
+            </Border>
+        </Grid>
     </Viewbox>
 </fg:OsdWindowBase>

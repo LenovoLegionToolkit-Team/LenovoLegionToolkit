@@ -113,7 +113,7 @@ public partial class OsdSettingsWindow
                     OsdItem.GpuPower, OsdItem.GpuFan
                 ]
             },
-            new OsdItemGroup { Header = Resource.Motherboard, Items =
+            new OsdItemGroup { Header = Resource.SensorsControl_MOBO_Title, Items =
                 [
                     OsdItem.MemoryUtilization, OsdItem.MemoryTemperature,
                     OsdItem.Disk1Temperature, OsdItem.Disk2Temperature,
@@ -172,7 +172,7 @@ public partial class OsdSettingsWindow
                     {
                         var fanCheckBox = new CheckBox
                         {
-                            Content = $"{Resource.StatusWindow_System_Fan} {fan.DisplayNumber}",
+                            Content = $"{Resource.SensorsControl_Fan_Title} {fan.DisplayNumber}",
                             Tag = fan.FanId,
                             IsChecked = activeItems.Contains(item) &&
                                 (_OsdSettings.Store.VisibleSystemFanIds is not { } ids || ids.Contains(fan.FanId))

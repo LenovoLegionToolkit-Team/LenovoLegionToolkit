@@ -2971,7 +2971,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Responsible for core feature development, quality assurance, UI/UX design, and overall project direction as the current project lead. 的本地化字符串。
+        ///   查找类似 Leads the project and is responsible for core feature development, quality assurance, UI/UX design, hardware research, and reverse engineering. 的本地化字符串。
         /// </summary>
         public static string DonatePage_DrSkinner_Description {
             get {
@@ -3909,9 +3909,9 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+        ///   查找类似 Custom Mode grants access to critical system parameters such as power limits and fan curves.
         ///
-        ///Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+        ///Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty.
         ///
         ///Do not proceed unless you possess the necessary technical expertise. 的本地化字符串。
         /// </summary>
@@ -6106,7 +6106,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
-        ///   查找类似 The PawnIO driver service is not running. 
+        ///   查找类似 The PawnIO driver service is not running.
         ///
         ///Please start the service or update/reinstall PawnIO to use this feature!
         ///
@@ -6131,9 +6131,9 @@ namespace LenovoLegionToolkit.WPF.Resources {
         /// <summary>
         ///   查找类似 Your PawnIO version is too old.
         ///
-        ///Current: {0} Required: {1}. 
+        ///Current: {0} Required: {1}.
         ///Please update PawnIO to continue using this feature!
-        ///    
+        ///
         ///Click Yes to open download link in browser.
         ///Click No to disable Hardware Sensor feature. 的本地化字符串。
         /// </summary>
@@ -7397,7 +7397,7 @@ namespace LenovoLegionToolkit.WPF.Resources {
                 return ResourceManager.GetString("PowerButtonLed_Brightness", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   查找类似 Adjust the light brightness or sync it with the keyboard backlight. 的本地化字符串。
         /// </summary>
@@ -8450,6 +8450,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         public static string SensorsControl_MemoryClock_Title {
             get {
                 return ResourceManager.GetString("SensorsControl_MemoryClock_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MOBO 的本地化字符串。
+        /// </summary>
+        public static string SensorsControl_MOBO_Title {
+            get {
+                return ResourceManager.GetString("SensorsControl_MOBO_Title", resourceCulture);
             }
         }
         
