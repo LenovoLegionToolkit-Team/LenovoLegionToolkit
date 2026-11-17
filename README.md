@@ -109,7 +109,7 @@ Lenovo Legion Toolkit can update itself automatically or be updated manually:
   * **Channel**: Choose between **Stable**, **Beta**, or **Dev** releases.
   * **Frequency**: Set background check intervals (Daily, Weekly, Hourly, etc.).
 * **Seamless In-Place Upgrades**: You never need to uninstall previous versions. Installing over an existing version preserves all settings, custom modes, actions, and macros.
-* **Integrity Protection**: All automated updates are cryptographically verified with Authenticode signatures prior to installation.
+* **Integrity Protection**: Updates downloaded from the LLT update server are rejected unless they are signed with the project's trusted certificate.
 
 #### Next steps
 
@@ -136,7 +136,7 @@ If for whatever reason LLT installer did not setup .NET properly:
 4. Run the installer
 
 > [!NOTE]
-> If you installed LLT from Scoop, .NET 9 should have been installed automatically as a dependency. If anything fails, use `scoop update` to update all packages and try to reinstall LLT with `--force` argument.
+> If you installed LLT from Scoop, .NET 9 should have been installed automatically as a dependency. If anything fails, use `scoop update` followed by `scoop update *` to update all packages and try to reinstall LLT with `--force` argument.
 
 After following these steps, you can open Terminal and type: `dotnet --info`. In the output look for section `.NET runtimes installed`, in this section you should see something like:
 
@@ -288,7 +288,7 @@ You can assign these in LLT settings to each of Legion Power Modes: Quiet, Balan
 
 The legacy approach is to use multiple Power Plans, that some devices had installed from factory. If you decide to use them, or configure your own plans, leave the settings in Windows Settings app on the default "Balanced" setting. You can configure LLT to switch Power Plans automatically whenever you change the "Legion" Power Mode in LLT settings.
 
-If you encounter issues with power mode or plan synchronization, especially when switching between the two approaches, you can reset Windows power settings to default using `powercfg -restoredefaultschemes; shutdown /r /t ` command. This command will reset all power plans to default and reboot your device. All plans except for the default "Balanced (recommended)" will be deleted, so make sure to make a copy, if you plan on using them again.
+If you encounter issues with power mode or plan synchronization, especially when switching between the two approaches, you can reset Windows power settings to default using `powercfg -restoredefaultschemes; shutdown /r /t 0` command. This command will reset all power plans to default and reboot your device. All plans except for the default "Balanced (recommended)" will be deleted, so make sure to make a copy, if you plan on using them again.
 
 ### Boot Logo
 

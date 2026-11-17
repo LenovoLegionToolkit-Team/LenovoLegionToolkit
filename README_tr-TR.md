@@ -109,7 +109,7 @@ Lenovo Legion Toolkit kendini otomatik olarak güncelleyebilir veya manuel olara
   * **Kanal**: **Kararlı (Stable)**, **Beta** veya **Geliştirici (Dev)** sürümleri arasından seçim yapın.
   * **Sıklık**: Arka plan kontrol aralıklarını (Günlük, Haftalık, Saatlik vb.) ayarlayın.
 - **Sorunsuz Yerinde Yükseltmeler**: Önceki sürümleri kaldırmanıza asla gerek yoktur. Mevcut bir sürümün üzerine kurulum yapmak tüm ayarları, özel modları, eylemleri ve makroları korur.
-- **Bütünlük Koruması**: Tüm otomatik güncellemeler kurulumdan önce Authenticode imzalarıyla kriptografik olarak doğrulanır.
+- **Bütünlük Koruması**: LLT güncelleme sunucusundan indirilen güncellemeler, projenin güvenilir sertifikasıyla imzalanmadığı sürece reddedilir.
 
 #### Sonraki adımlar
 
@@ -136,7 +136,7 @@ Herhangi bir nedenle LLT yükleyicisi .NET'i düzgün kuramadıysa:
 4. Yükleyiciyi çalıştırın
 
 > [!NOTE]
-> LLT'yi Scoop üzerinden kurduysanız .NET 9 bağımlılık olarak otomatik kurulmuş olmalıdır. Herhangi bir sorun çıkarsa tüm paketleri güncellemek için `scoop update` komutunu kullanın ve `--force` argümanıyla LLT'yi yeniden kurmayı deneyin.
+> LLT'yi Scoop üzerinden kurduysanız .NET 9 bağımlılık olarak otomatik kurulmuş olmalıdır. Herhangi bir sorun çıkarsa tüm paketleri güncellemek için önce `scoop update`, ardından `scoop update *` komutunu kullanın ve `--force` argümanıyla LLT'yi yeniden kurmayı deneyin.
 
 Bu adımları izledikten sonra Terminal'i açıp `dotnet --info` yazabilirsiniz. Çıktıda `.NET runtimes installed` bölümüne bakın, bu bölümde şuna benzer satırlar görmelisiniz:
 
@@ -287,7 +287,7 @@ Bunları LLT ayarlarından Legion Güç Modlarının her birine atayabilirsiniz:
 
 Eski yaklaşım, bazı cihazların fabrikadan yüklü olarak geldiği birden fazla Güç Planını kullanmaktır. Bunları kullanmaya veya kendi planlarınızı yapılandırmaya karar verirseniz Windows Ayarlar uygulamasındaki ayarları varsayılan "Dengeli" ayarında bırakın. LLT ayarlarından "Legion" Güç Modunu her değiştirdiğinizde Güç Planlarını otomatik olarak değiştirecek şekilde LLT'yi yapılandırabilirsiniz.
 
-Özellikle iki yaklaşım arasında geçiş yaparken güç modu veya plan senkronizasyonuyla ilgili sorunlarla karşılaşırsanız `powercfg -restoredefaultschemes; shutdown /r /t ` komutunu kullanarak Windows güç ayarlarını varsayılana sıfırlayabilirsiniz. Bu komut tüm güç planlarını varsayılana sıfırlayacak ve cihazınızı yeniden başlatacaktır. Varsayılan "Dengeli (önerilen)" dışındaki tüm planlar silinecektir; bu nedenle tekrar kullanmayı planlıyorsanız bir kopyasını aldığınızdan emin olun.
+Özellikle iki yaklaşım arasında geçiş yaparken güç modu veya plan senkronizasyonuyla ilgili sorunlarla karşılaşırsanız `powercfg -restoredefaultschemes; shutdown /r /t 0` komutunu kullanarak Windows güç ayarlarını varsayılana sıfırlayabilirsiniz. Bu komut tüm güç planlarını varsayılana sıfırlayacak ve cihazınızı yeniden başlatacaktır. Varsayılan "Dengeli (önerilen)" dışındaki tüm planlar silinecektir; bu nedenle tekrar kullanmayı planlıyorsanız bir kopyasını aldığınızdan emin olun.
 
 ### Açılış Logosu (Boot Logo)
 
