@@ -219,9 +219,6 @@
   <data name="GB" xml:space="preserve">
     <value>GB</value>
   </data>
-  <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
-    <value>ファンテーブルの検証に失敗しました。</value>
-  </data>
   <data name="GPUController_GC6_Blocker_Acpi" xml:space="preserve">
     <value>ACPI</value>
   </data>
@@ -533,6 +530,15 @@
   <data name="SharedMemory" xml:space="preserve">
     <value>共有 / ダイナミック</value>
   </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>プロセスはまだ実行中です: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>再起動が必要なサービス： {0}</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>サービスはまだ実行中です: {0}</value>
+  </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
     <value>ミュート</value>
   </data>
@@ -596,14 +602,14 @@
   <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
     <value>Horse Race Lamp</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
-    <value>雨</value>
-  </data>
-  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
-    <value>虹色のスクリップ</value>
+  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
+    <value>タイプ</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
     <value>レインボーウェーブ</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
+    <value>雨</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Ripples" xml:space="preserve">
     <value>リップル語</value>
@@ -611,8 +617,8 @@
   <data name="SpectrumKeyboardBacklightEffectType_Smooth" xml:space="preserve">
     <value>グラデーション</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
-    <value>タイプ</value>
+  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
+    <value>虹色のスクリップ</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
     <value>Wave</value>
@@ -631,27 +637,6 @@
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
     <value>ランダムカラー</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
-    <value> {0}が実行中なため、閉じられませんでした。手動で閉じて再試行してください。</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
-    <value>プロセスはまだ実行中です: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
-    <value>スケジュールされたタスク {0}を変更できませんでした。</value>
-  </data>
-  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
-    <value>サービス {0} を変更できませんでした。</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
-    <value>再起動が必要なサービス： {0}</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
-    <value>サービスはまだ実行中です: {0}</value>
-  </data>
-  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
-    <value>スタートアップエントリ {0}を変更できませんでした。</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>ダーク</value>
@@ -691,14 +676,14 @@
   <data name="UpdateChannel_Test" xml:space="preserve">
     <value>テスト</value>
   </data>
+  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
+    <value>The downloaded update failed Authenticode signature verification ({0})</value>
+  </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
     <value>ダウンロードした更新プログラムは信頼されたサーバー証明書 {0}によって署名されていません</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
     <value>無効な署名サムネイル {0}</value>
-  </data>
-  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
-    <value>The downloaded update failed Authenticode signature verification ({0})</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
     <value>一切なし</value>
