@@ -449,9 +449,9 @@
 
                 <Separator x:Name="_separatorMemory" Margin="0,4" Style="{StaticResource SeparatorStyle}" />
 
-                <StackPanel x:Name="_pchGroup">
+                <StackPanel x:Name="_systemGroup">
                     <TextBlock
-                        x:Name="_pchHeader"
+                        x:Name="_motherboardHeader"
                         Margin="0,0,0,5"
                         FontSize="14"
                         FontWeight="Bold"
@@ -464,12 +464,12 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <TextBlock
-                            x:Name="_pchName"
+                            x:Name="_motherboardName"
                             Grid.Column="0"
                             Style="{DynamicResource SensorLabelStyle}"
                             Text="{x:Static resources:Resource.SensorsControl_Motherboard_Temperature}" />
                         <TextBlock
-                            x:Name="_pchTemperature"
+                            x:Name="_motherboardTemperature"
                             Grid.Column="1"
                             Style="{DynamicResource SensorValueStyle}"
                             Text="-" />

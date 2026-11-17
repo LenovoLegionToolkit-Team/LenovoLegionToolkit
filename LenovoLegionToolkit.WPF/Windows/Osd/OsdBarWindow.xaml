@@ -241,16 +241,16 @@
                     Style="{StaticResource SeparatorStyle}" />
 
                 <StackPanel
-                    x:Name="_pchGroup"
+                    x:Name="_systemGroup"
                     Grid.Column="8"
                     Orientation="Horizontal">
                     <TextBlock
-                        x:Name="_pchName"
+                        x:Name="_motherboardName"
                         MinWidth="25"
                         Style="{DynamicResource TextBlockStyle}"
                         Text="{Binding Source={x:Static resources:Resource.SensorsControl_Motherboard_Title}}" />
                     <TextBlock
-                        x:Name="_pchTemperature"
+                        x:Name="_motherboardTemperature"
                         Style="{DynamicResource TextBlockStyle}"
                         Text="-" />
                     <StackPanel x:Name="_systemFansControl" Orientation="Horizontal">

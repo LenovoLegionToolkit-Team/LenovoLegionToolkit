@@ -79,7 +79,7 @@ public partial class SensorsControlV2
             { SensorItem.GpuPower, _gpuPowerGrid! },
 
             { SensorItem.SystemFans, _systemFansControl },
-            { SensorItem.MotherboardTemperature, _pchTemperatureGrid! },
+            { SensorItem.MotherboardTemperature, _motherboardTemperatureGrid! },
             { SensorItem.BatteryState, _batteryStateGrid! },
             { SensorItem.BatteryLevel, _batteryLevelGrid! },
             { SensorItem.MemoryUtilization, _memoryUtilizationGrid! },
@@ -479,7 +479,7 @@ public partial class SensorsControlV2
             _gpuVramTempPanel.Margin = new Thickness(12, 0, 0, 0);
 
             UpdateValue(_gpuPowerLabel, "-");
-            UpdateValue(_pchTemperatureBar, _pchTemperatureLabel, -1, -1, "-");
+            UpdateValue(_motherboardTemperatureBar, _motherboardTemperatureLabel, -1, -1, "-");
             ClearSystemFans();
             UpdateValue(_disk1TemperatureBar, _disk1TemperatureLabel, -1, -1, "-");
             UpdateValue(_disk2TemperatureBar, _disk2TemperatureLabel, -1, -1, "-");
@@ -578,7 +578,7 @@ public partial class SensorsControlV2
             if (_activeSensorItems.Contains(SensorItem.GpuFanSpeed)) UpdateValue(_gpuFanSpeedBar, _gpuFanSpeedLabel, data.GPU.MaxFanSpeed, data.GPU.FanSpeed, $"{data.GPU.FanSpeed} {Resource.RPM}", $"{data.GPU.MaxFanSpeed} {Resource.RPM}");
 
             // --- Motherboard ---
-            if (_activeSensorItems.Contains(SensorItem.MotherboardTemperature)) UpdateValue(_pchTemperatureBar, _pchTemperatureLabel, 100, data.MotherboardTemperature, GetTemperatureText(data.MotherboardTemperature), GetTemperatureText(100));
+            if (_activeSensorItems.Contains(SensorItem.MotherboardTemperature)) UpdateValue(_motherboardTemperatureBar, _motherboardTemperatureLabel, 100, data.MotherboardTemperature, GetTemperatureText(data.MotherboardTemperature), GetTemperatureText(100));
 
             // --- Disk & Memory ---
             if (_activeSensorItems.Contains(SensorItem.Disk1Temperature)) UpdateValue(_disk1TemperatureBar, _disk1TemperatureLabel, 100, snapshot[SensorItem.Disk1Temperature], GetTemperatureText(snapshot[SensorItem.Disk1Temperature]));
@@ -606,15 +606,15 @@ public partial class SensorsControlV2
 
     private void UpdateMotherboardCardVisibility()
     {
-        bool pchVisible = IsSensorItemVisible(SensorItem.SystemFans) || IsSensorItemVisible(SensorItem.MotherboardTemperature);
+        bool systemVisible = IsSensorItemVisible(SensorItem.SystemFans) || IsSensorItemVisible(SensorItem.MotherboardTemperature);
         bool batteryVisible = _activeSensorItems.Contains(SensorItem.BatteryState) || _activeSensorItems.Contains(SensorItem.BatteryLevel);
 
-        _pchStackPanel.Visibility = pchVisible ? Visibility.Visible : Visibility.Collapsed;
+        _systemStackPanel.Visibility = systemVisible ? Visibility.Visible : Visibility.Collapsed;
         _batteryGrid.Visibility = batteryVisible ? Visibility.Visible : Visibility.Collapsed;
 
-        _seperator1.Visibility = (pchVisible && batteryVisible) ? Visibility.Visible : Visibility.Collapsed;
+        _seperator1.Visibility = (systemVisible && batteryVisible) ? Visibility.Visible : Visibility.Collapsed;
 
-        _motherboardCard.Visibility = (pchVisible || batteryVisible) ? Visibility.Visible : Visibility.Collapsed;
+        _motherboardCard.Visibility = (systemVisible || batteryVisible) ? Visibility.Visible : Visibility.Collapsed;
     }
 
     private void UpdateMemoryDiskCardVisibility()
@@ -663,7 +663,7 @@ public partial class SensorsControlV2
     {
         if (machineInformation.Properties.IsAmdDevice)
         {
-            _pchGridName.Text = Resource.SensorsControl_Motherboard_Temperature;
+            _motherboardGridName.Text = Resource.SensorsControl_Motherboard_Temperature;
         }
     }
 

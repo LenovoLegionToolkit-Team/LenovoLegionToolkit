@@ -52,7 +52,7 @@ public partial class OsdPanelWindow : OsdWindowBase
             { OsdItem.Disk2Temperature, _disk1Temperature },
 
             // Motherboard
-            { OsdItem.MotherboardTemperature, _pchTemperature },
+            { OsdItem.MotherboardTemperature, _motherboardTemperature },
             { OsdItem.SystemFans, _systemFansControl },
         };
 
@@ -71,7 +71,7 @@ public partial class OsdPanelWindow : OsdWindowBase
             { _memoryGroup, ([OsdItem.MemoryUtilization, OsdItem.MemoryTemperature], _separatorMemory) },
 
             // Storage / Motherboard
-            { _pchGroup, ([OsdItem.Disk1Temperature, OsdItem.Disk2Temperature, OsdItem.MotherboardTemperature, OsdItem.SystemFans], null) }
+            { _systemGroup, ([OsdItem.Disk1Temperature, OsdItem.Disk2Temperature, OsdItem.MotherboardTemperature, OsdItem.SystemFans], null) }
         };
 
         if (_sensorsPanel.Resources["SensorLabelStyle"] is Style labelStyle)
@@ -90,7 +90,7 @@ public partial class OsdPanelWindow : OsdWindowBase
 
     protected override void OnAmdDeviceDetected()
     {
-        _pchName.Text = Resource.SensorsControl_Motherboard_Title;
+        _motherboardName.Text = Resource.SensorsControl_Motherboard_Title;
     }
 
     protected override void ApplyAppearanceSettings()
@@ -131,7 +131,7 @@ public partial class OsdPanelWindow : OsdWindowBase
         _cpuHeader.Foreground = _categoryBrush;
         _gpuHeader.Foreground = _categoryBrush;
         _memHeader.Foreground = _categoryBrush;
-        _pchHeader.Foreground = _categoryBrush;
+        _motherboardHeader.Foreground = _categoryBrush;
 
         _separatorFps.Background = _categoryBrush;
         _separatorCpu.Background = _categoryBrush;
@@ -209,7 +209,7 @@ public partial class OsdPanelWindow : OsdWindowBase
         UpdateTextBlock(_memUsage, data.MemUsage, GetMemoryDisplayText(data), store.UsageThresholdWarning, store.UsageThresholdCritical);
         UpdateTemperatureTextBlock(_memTemperature, data.MemTemp, store.TempThresholdWarning, store.TempThresholdCritical);
 
-        UpdateTemperatureTextBlock(_pchTemperature, data.MotherboardTemp, store.TempThresholdWarning, store.TempThresholdCritical);
+        UpdateTemperatureTextBlock(_motherboardTemperature, data.MotherboardTemp, store.TempThresholdWarning, store.TempThresholdCritical);
 
         UpdateTemperatureTextBlock(_disk0Temperature, data.Disk1Temp, store.TempThresholdWarning, store.TempThresholdCritical);
         UpdateTemperatureTextBlock(_disk1Temperature, data.Disk2Temp, store.TempThresholdWarning, store.TempThresholdCritical);

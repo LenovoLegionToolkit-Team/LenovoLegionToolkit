@@ -376,7 +376,7 @@
                         </Border>
                         <Border x:Name="_motherboardCard" Style="{StaticResource SensorCardStyle}">
                             <StackPanel Margin="12,10">
-                                <StackPanel x:Name="_pchStackPanel" Margin="0,0,0,12">
+                                <StackPanel x:Name="_systemStackPanel" Margin="0,0,0,12">
                                     <TextBlock
                                         Margin="0,0,0,6"
                                         Style="{StaticResource CardTitleStyle}"
@@ -405,7 +405,7 @@
                                             <ProgressBar x:Name="_systemFan2Bar" Grid.Column="3" Style="{StaticResource CompactProgressBarStyle}" />
                                         </Grid>
                                     </StackPanel>
-                                    <Grid x:Name="_pchTemperatureGrid">
+                                    <Grid x:Name="_motherboardTemperatureGrid">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />
@@ -413,17 +413,17 @@
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
                                         <TextBlock
-                                            x:Name="_pchGridName"
+                                            x:Name="_motherboardGridName"
                                             Grid.Column="0"
                                             Style="{StaticResource DataLabelStyle}"
                                             Text="{x:Static resources:Resource.SensorsControl_Motherboard_Temperature}" />
                                         <TextBlock
-                                            x:Name="_pchTemperatureLabel"
+                                            x:Name="_motherboardTemperatureLabel"
                                             Grid.Column="2"
                                             Style="{StaticResource DataValueStyle}"
                                             Text="-" />
                                         <ProgressBar
-                                            x:Name="_pchTemperatureBar"
+                                            x:Name="_motherboardTemperatureBar"
                                             Grid.Column="3"
                                             Maximum="100"
                                             Style="{StaticResource CompactProgressBarStyle}"
