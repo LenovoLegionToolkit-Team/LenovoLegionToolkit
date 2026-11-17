@@ -99,6 +99,7 @@ public partial class EditSensorGroupWindow
     {
         var selectedItems = new List<SensorItem>();
         var selectedFanIds = new List<int>();
+        var hasSystemFanCheckBoxes = false;
 
         foreach (var groupBox in _groupsStackPanel.Children.OfType<GroupBox>())
         {
@@ -106,9 +107,14 @@ public partial class EditSensorGroupWindow
             {
                 foreach (var child in stackPanel.Children.OfType<CheckBox>())
                 {
-                    if (child is { IsChecked: true, Tag: int fanId })
+                    if (child.Tag is int fanId)
                     {
-                        selectedFanIds.Add(fanId);
+                        hasSystemFanCheckBoxes = true;
+
+                        if (child.IsChecked == true)
+                        {
+                            selectedFanIds.Add(fanId);
+                        }
                     }
 
                     if (child is { IsChecked: true, Tag: SensorItem item })
@@ -133,7 +139,7 @@ public partial class EditSensorGroupWindow
             selectedItems.Add(SensorItem.SystemFans);
         }
 
-        _settings.Store.VisibleSystemFanIds = selectedFanIds.ToArray();
+        _settings.Store.VisibleSystemFanIds = hasSystemFanCheckBoxes ? selectedFanIds.ToArray() : null;
         _settings.Store.VisibleItems = selectedItems.ToArray();
         _settings.SynchronizeStore();
 

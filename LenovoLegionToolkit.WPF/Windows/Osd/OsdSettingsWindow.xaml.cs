@@ -206,13 +206,20 @@ public partial class OsdSettingsWindow
 
         var selectedItems = new List<OsdItem>();
         var selectedFanIds = new List<int>();
+        var hasSystemFanCheckBoxes = false;
 
         foreach (var stackPanel in _itemsStackPanel.Children.OfType<StackPanel>())
         {
             foreach (var child in stackPanel.Children.OfType<CheckBox>())
             {
-                if (child is { IsChecked: true, Tag: int fanId })
-                    selectedFanIds.Add(fanId);
+                if (child.Tag is int fanId)
+                {
+                    hasSystemFanCheckBoxes = true;
+
+                    if (child.IsChecked == true)
+                        selectedFanIds.Add(fanId);
+                }
+
                 if (child is { IsChecked: true, Tag: OsdItem item })
                 {
                     selectedItems.Add(item);
@@ -222,7 +229,7 @@ public partial class OsdSettingsWindow
 
         if (selectedFanIds.Count > 0)
             selectedItems.Add(OsdItem.SystemFans);
-        _OsdSettings.Store.VisibleSystemFanIds = selectedFanIds.ToArray();
+        _OsdSettings.Store.VisibleSystemFanIds = hasSystemFanCheckBoxes ? selectedFanIds.ToArray() : null;
         _OsdSettings.Store.Items = selectedItems;
         _OsdSettings.SynchronizeStore();
         MessagingCenter.Publish(new OsdElementChangedMessage(selectedItems));
