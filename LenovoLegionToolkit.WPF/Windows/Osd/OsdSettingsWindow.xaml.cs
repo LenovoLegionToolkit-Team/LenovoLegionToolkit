@@ -110,11 +110,11 @@ public partial class OsdSettingsWindow
                     OsdItem.GpuPower, OsdItem.GpuFan
                 ]
             },
-            new OsdItemGroup { Header = Resource.Osd_Pch, Items =
+            new OsdItemGroup { Header = Resource.Motherboard, Items =
                 [
                     OsdItem.MemoryUtilization, OsdItem.MemoryTemperature,
                     OsdItem.Disk1Temperature, OsdItem.Disk2Temperature,
-                    OsdItem.PchTemperature, OsdItem.PchFan
+                    OsdItem.MotherboardTemperature, OsdItem.PchFan
                 ]
             }
         };

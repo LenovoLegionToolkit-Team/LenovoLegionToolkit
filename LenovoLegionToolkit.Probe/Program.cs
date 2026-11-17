@@ -427,7 +427,7 @@ await TryGetCapability(CapabilityID.GpuCurrentFanSpeed, "GPU Current Fan Speed",
 await TryGetCapability(CapabilityID.PchCurrentFanSpeed, "PCH Current Fan Speed", supportedCapabilities);
 await TryGetCapability(CapabilityID.CpuCurrentTemperature, "CPU Current Temperature", supportedCapabilities);
 await TryGetCapability(CapabilityID.GpuCurrentTemperature, "GPU Current Temperature", supportedCapabilities);
-await TryGetCapability(CapabilityID.PchCurrentTemperature, "PCH Current Temperature", supportedCapabilities);
+await TryGetCapability(CapabilityID.MotherboardCurrentTemperature, "Motherboard Current Temperature", supportedCapabilities);
 
 // Section 10: Battery
 Console.WriteLine();

@@ -51,7 +51,7 @@ public partial class OsdPanelWindow : OsdWindowBase
             { OsdItem.Disk2Temperature, _disk1Temperature },
 
             // Motherboard
-            { OsdItem.PchTemperature, _pchTemperature },
+            { OsdItem.MotherboardTemperature, _pchTemperature },
             { OsdItem.PchFan, _pchFanSpeed },
         };
 
@@ -70,7 +70,7 @@ public partial class OsdPanelWindow : OsdWindowBase
             { _memoryGroup, ([OsdItem.MemoryUtilization, OsdItem.MemoryTemperature], _separatorMemory) },
 
             // Storage / Motherboard
-            { _pchGroup, ([OsdItem.Disk1Temperature, OsdItem.Disk2Temperature, OsdItem.PchTemperature, OsdItem.PchFan], null) }
+            { _pchGroup, ([OsdItem.Disk1Temperature, OsdItem.Disk2Temperature, OsdItem.MotherboardTemperature, OsdItem.PchFan], null) }
         };
 
         if (_sensorsPanel.Resources["SensorLabelStyle"] is Style labelStyle)
@@ -207,7 +207,7 @@ public partial class OsdPanelWindow : OsdWindowBase
         UpdateTextBlock(_memUsage, data.MemUsage, GetMemoryDisplayText(data), store.UsageThresholdWarning, store.UsageThresholdCritical);
         UpdateTemperatureTextBlock(_memTemperature, data.MemTemp, store.TempThresholdWarning, store.TempThresholdCritical);
 
-        UpdateTemperatureTextBlock(_pchTemperature, data.PchTemp, store.TempThresholdWarning, store.TempThresholdCritical);
+        UpdateTemperatureTextBlock(_pchTemperature, data.MotherboardTemp, store.TempThresholdWarning, store.TempThresholdCritical);
         UpdateTextBlock(_pchFanSpeed, data.PchFanSpeed);
 
         UpdateTemperatureTextBlock(_disk0Temperature, data.Disk1Temp, store.TempThresholdWarning, store.TempThresholdCritical);

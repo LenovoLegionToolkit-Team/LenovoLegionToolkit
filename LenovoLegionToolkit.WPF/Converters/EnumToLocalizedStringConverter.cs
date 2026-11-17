@@ -23,7 +23,7 @@ namespace LenovoLegionToolkit.WPF.Converters
                 SensorItem.GpuTemperatures => Resource.SensorItem_GpuTemperatures,
                 SensorItem.GpuPower => Resource.SensorsControl_GPU_Power,
                 SensorItem.PchFanSpeed => Resource.SensorItem_PchFanSpeed,
-                SensorItem.PchTemperature => Resource.SensorItem_PchTemperature,
+                SensorItem.MotherboardTemperature => Resource.SensorsControl_Motherboard_Temperature,
                 SensorItem.BatteryState => Resource.SensorItem_BatteryState,
                 SensorItem.BatteryLevel => Resource.SensorItem_BatteryLevel,
                 SensorItem.MemoryUtilization => Resource.SensorItem_MemoryUtilization,

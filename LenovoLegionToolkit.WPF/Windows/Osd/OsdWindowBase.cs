@@ -823,8 +823,8 @@ public abstract class OsdWindowBase : Window
             MemTotal = groupSnapshot[SensorItem.MemoryTotal],
             MemTemp = groupSnapshot[SensorItem.MemoryTemperature],
 
-            PchTemp = mainData?.PCH.Temperature ?? -1,
-            PchFanSpeed = mainData?.PCH.FanSpeed ?? -1,
+            MotherboardTemp = mainData?.Motherboard.Temperature ?? -1,
+            PchFanSpeed = mainData?.Motherboard.FanSpeed ?? -1,
 
             Disk1Temp = groupSnapshot[SensorItem.Disk1Temperature],
             Disk2Temp = groupSnapshot[SensorItem.Disk2Temperature]

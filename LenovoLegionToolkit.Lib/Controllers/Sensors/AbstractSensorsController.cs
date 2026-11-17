@@ -116,7 +116,7 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
         var gpuCurrentFanSpeed = await GetGpuCurrentFanSpeedAsync().ConfigureAwait(false);
         var gpuMaxFanSpeed = _gpuMaxFanSpeedCache ??= await GetGpuMaxFanSpeedAsync().ConfigureAwait(false);
 
-        var pchCurrentTemperature = await GetPchCurrentTemperatureAsync().ConfigureAwait(false);
+        var pchCurrentTemperature = await GetMotherboardTemperatureAsync().ConfigureAwait(false);
         var pchMaxTemperature = genericMaxTemperature;
         var pchCurrentFanSpeed = await GetPchCurrentFanSpeedAsync().ConfigureAwait(false);
         var pchMaxFanSpeed = _pchMaxFanSpeedCache ??= await GetPchMaxFanSpeedAsync().ConfigureAwait(false);
@@ -172,7 +172,7 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
 
     protected abstract Task<int> GetGpuCurrentTemperatureAsync();
 
-    protected virtual Task<int> GetPchCurrentTemperatureAsync() => Task.FromResult(-1);
+    protected virtual Task<int> GetMotherboardTemperatureAsync() => Task.FromResult(-1);
 
     protected abstract Task<int> GetCpuCurrentFanSpeedAsync();
 

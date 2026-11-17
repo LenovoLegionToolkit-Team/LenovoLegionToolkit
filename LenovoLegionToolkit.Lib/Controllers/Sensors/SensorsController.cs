@@ -35,7 +35,7 @@ public class SensorsController(GPUController gpuController) : AbstractSensorsCon
         MaxFanSpeedSource MaxFanSpeedSource,
         int CpuTemperatureSensorId,
         int GpuTemperatureSensorId,
-        bool HasPchTemperature);
+        bool HasMotherboardTemperature);
 
     private static readonly Profile[] FanTableProfiles =
     [
@@ -49,7 +49,7 @@ public class SensorsController(GPUController gpuController) : AbstractSensorsCon
             MaxFanSpeedSource: MaxFanSpeedSource.CurrentTable,
             CpuTemperatureSensorId: 0,
             GpuTemperatureSensorId: 0,
-            HasPchTemperature: true),
+            HasMotherboardTemperature: true),
         new(
             Cpu: new(1, 1),
             Gpu: new(5, 2),
@@ -60,7 +60,7 @@ public class SensorsController(GPUController gpuController) : AbstractSensorsCon
             MaxFanSpeedSource: MaxFanSpeedSource.CurrentTable,
             CpuTemperatureSensorId: 0,
             GpuTemperatureSensorId: 0,
-            HasPchTemperature: true),
+            HasMotherboardTemperature: true),
         new(
             Cpu: new(1, 1),
             Gpu: new(5, 2),
@@ -71,7 +71,7 @@ public class SensorsController(GPUController gpuController) : AbstractSensorsCon
             MaxFanSpeedSource: MaxFanSpeedSource.CurrentTable,
             CpuTemperatureSensorId: 0,
             GpuTemperatureSensorId: 0,
-            HasPchTemperature: true),
+            HasMotherboardTemperature: true),
         new(
             Cpu: new(4, 1),
             Gpu: new(5, 2),
@@ -82,7 +82,7 @@ public class SensorsController(GPUController gpuController) : AbstractSensorsCon
             MaxFanSpeedSource: MaxFanSpeedSource.CurrentTable,
             CpuTemperatureSensorId: 0,
             GpuTemperatureSensorId: 0,
-            HasPchTemperature: false),
+            HasMotherboardTemperature: false),
         new(
             Cpu: new(3, 0),
             Gpu: new(4, 1),
@@ -93,7 +93,7 @@ public class SensorsController(GPUController gpuController) : AbstractSensorsCon
             MaxFanSpeedSource: MaxFanSpeedSource.CurrentTable,
             CpuTemperatureSensorId: 3,
             GpuTemperatureSensorId: 4,
-            HasPchTemperature: false),
+            HasMotherboardTemperature: false),
         new(
             Cpu: new(0, 0),
             Gpu: new(0, 1),
@@ -104,7 +104,7 @@ public class SensorsController(GPUController gpuController) : AbstractSensorsCon
             MaxFanSpeedSource: MaxFanSpeedSource.DefaultTable,
             CpuTemperatureSensorId: 3,
             GpuTemperatureSensorId: 4,
-            HasPchTemperature: false)
+            HasMotherboardTemperature: false)
     ];
 
     private static readonly Profile FanTestDataProfile = new(
@@ -117,7 +117,7 @@ public class SensorsController(GPUController gpuController) : AbstractSensorsCon
         MaxFanSpeedSource: MaxFanSpeedSource.FanTestData,
         CpuTemperatureSensorId: 0,
         GpuTemperatureSensorId: 0,
-        HasPchTemperature: false);
+        HasMotherboardTemperature: false);
 
     private Profile? _profile;
 
@@ -176,8 +176,8 @@ public class SensorsController(GPUController gpuController) : AbstractSensorsCon
     protected override Task<int> GetGpuCurrentTemperatureAsync() =>
         GetTemperatureAsync(GetProfile().TemperatureSource, CapabilityID.GpuCurrentTemperature, GetProfile().GpuTemperatureSensorId);
 
-    protected override Task<int> GetPchCurrentTemperatureAsync() => GetProfile().HasPchTemperature
-        ? GetCapabilityValueAsync(CapabilityID.PchCurrentTemperature)
+    protected override Task<int> GetMotherboardTemperatureAsync() => GetProfile().HasMotherboardTemperature
+        ? GetCapabilityValueAsync(CapabilityID.MotherboardCurrentTemperature)
         : Task.FromResult(-1);
 
     protected override Task<int> GetCpuCurrentFanSpeedAsync() =>

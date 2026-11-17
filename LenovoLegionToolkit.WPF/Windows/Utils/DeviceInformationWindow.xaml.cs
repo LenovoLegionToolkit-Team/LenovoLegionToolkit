@@ -140,7 +140,7 @@ public partial class DeviceInformationWindow
                 { CapabilityID.PchCurrentFanSpeed, "PCH Fan Speed Monitoring" },
                 { CapabilityID.CpuCurrentTemperature, "CPU Temp Monitoring" },
                 { CapabilityID.GpuCurrentTemperature, "GPU Temp Monitoring" },
-                { CapabilityID.PchCurrentTemperature, "PCH Temp Monitoring" },
+                { CapabilityID.MotherboardCurrentTemperature, "Motherboard Temp Monitoring" },
                 { CapabilityID.CPUShortTermPowerLimit, "CPU Short Term Power Limit Control" },
                 { CapabilityID.CPULongTermPowerLimit, "CPU Long Term Power Limit Control" },
                 { CapabilityID.CPUPeakPowerLimit, "CPU Peak Power Limit Control" },

@@ -999,18 +999,18 @@ public readonly struct SensorData(
     }
 }
 
-public readonly struct SensorsData(SensorData cpu, SensorData gpu, SensorData pch)
+public readonly struct SensorsData(SensorData cpu, SensorData gpu, SensorData motherboard)
 {
     public static readonly SensorsData Empty = new(SensorData.Empty, SensorData.Empty, SensorData.Empty);
 
     public SensorData CPU { get; } = cpu;
     public SensorData GPU { get; } = gpu;
 
-    public SensorData PCH { get; } = pch;
+    public SensorData Motherboard { get; } = motherboard;
 
     public override string ToString()
     {
-        return $"{nameof(CPU)}: {CPU}, {nameof(GPU)}: {GPU}, {nameof(PCH)}: {PCH}";
+        return $"{nameof(CPU)}: {CPU}, {nameof(GPU)}: {GPU}, {nameof(Motherboard)}: {Motherboard}";
     }
 }
 

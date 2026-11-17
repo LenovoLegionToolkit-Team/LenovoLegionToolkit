@@ -390,7 +390,7 @@ public partial class StatusWindow
 
         if (_hasPchFan)
         {
-            UpdateSystemFan(_systemFanLabel, data.SensorsData?.PCH.FanSpeed ?? -1);
+            UpdateSystemFan(_systemFanLabel, data.SensorsData?.Motherboard.FanSpeed ?? -1);
         }
 
         if (data.GPUStatus.HasValue && data.GPUStatus.Value.State != GPUState.PoweredOff)

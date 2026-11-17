@@ -456,7 +456,7 @@
                         FontSize="14"
                         FontWeight="Bold"
                         Style="{DynamicResource SensorLabelStyle}"
-                        Text="{Binding Source={x:Static resources:Resource.Osd_Pch}, StringFormat='— {0} —'}" />
+                        Text="{Binding Source={x:Static resources:Resource.SensorsControl_Motherboard_Title}, StringFormat='— {0} —'}" />
 
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -467,7 +467,7 @@
                             x:Name="_pchName"
                             Grid.Column="0"
                             Style="{DynamicResource SensorLabelStyle}"
-                            Text="{x:Static resources:Resource.SensorItem_PchTemperature}" />
+                            Text="{x:Static resources:Resource.SensorsControl_Motherboard_Temperature}" />
                         <TextBlock
                             x:Name="_pchTemperature"
                             Grid.Column="1"

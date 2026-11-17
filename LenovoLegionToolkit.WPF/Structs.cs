@@ -193,7 +193,7 @@ public readonly struct SensorGroup(SensorGroupType type, params SensorItem[] ite
             SensorItem.GpuPower),
         new(SensorGroupType.Motherboard,
             SensorItem.PchFanSpeed,
-            SensorItem.PchTemperature),
+            SensorItem.MotherboardTemperature),
         new(SensorGroupType.Battery,
             SensorItem.BatteryState,
             SensorItem.BatteryLevel),
@@ -258,7 +258,7 @@ public readonly struct SensorSnapshot
     public double MemUsed { get; init; }
     public double MemTotal { get; init; }
     public double MemTemp { get; init; }
-    public double PchTemp { get; init; }
+    public double MotherboardTemp { get; init; }
     public int PchFanSpeed { get; init; }
     public double Disk1Temp { get; init; }
     public double Disk2Temp { get; init; }
