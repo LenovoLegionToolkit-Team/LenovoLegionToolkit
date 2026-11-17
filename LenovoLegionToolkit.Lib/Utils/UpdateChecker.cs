@@ -17,6 +17,9 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using LenovoLegionToolkit.Lib.Resources;
+using Windows.Win32;
+using Windows.Win32.Foundation;
+using Windows.Win32.Security.WinTrust;
 
 namespace LenovoLegionToolkit.Lib.Utils;
 
@@ -248,9 +251,9 @@ public class UpdateChecker
                     await using var fileStream = File.OpenWrite(tempPath);
                     await httpClient.DownloadAsync(UpdateFromServer.Value.Url, fileStream, progress, cancellationToken, version).ConfigureAwait(false);
                 }
-
-                VerifySignature(tempPath);
             }
+
+            await Task.Run(() => VerifySignature(tempPath), cancellationToken).ConfigureAwait(false);
 
             return tempPath;
         }
@@ -272,6 +275,8 @@ public class UpdateChecker
     {
         try
         {
+            VerifyAuthenticodeSignature(filePath);
+
 #pragma warning disable SYSLIB0057
             using var baseCert = X509Certificate.CreateFromSignedFile(filePath);
 #pragma warning restore SYSLIB0057
@@ -295,7 +300,46 @@ public class UpdateChecker
             catch { /* Ignore */ }
 
             Log.Instance.Trace($"Signature verification failed for '{filePath}': {ex.Message}");
+
+            if (ex is SecurityException)
+                throw;
+
             throw new SecurityException(string.Format(Resource.UpdateChecker_Security_Invalid, ex.Message), ex);
+        }
+    }
+
+    private static unsafe void VerifyAuthenticodeSignature(string filePath)
+    {
+        var action = PInvoke.WINTRUST_ACTION_GENERIC_VERIFY_V2;
+
+        fixed (char* fileName = filePath)
+        {
+            var fileInfo = new WINTRUST_FILE_INFO
+            {
+                cbStruct = (uint)sizeof(WINTRUST_FILE_INFO),
+                pcwszFilePath = fileName,
+            };
+
+            var trustData = new WINTRUST_DATA
+            {
+                cbStruct = (uint)sizeof(WINTRUST_DATA),
+                dwUIChoice = WINTRUST_DATA_UICHOICE.WTD_UI_NONE,
+                fdwRevocationChecks = WINTRUST_DATA_REVOCATION_CHECKS.WTD_REVOKE_NONE,
+                dwUnionChoice = WINTRUST_DATA_UNION_CHOICE.WTD_CHOICE_FILE,
+                dwStateAction = WINTRUST_DATA_STATE_ACTION.WTD_STATEACTION_VERIFY,
+                dwProvFlags = WINTRUST_DATA_PROVIDER_FLAGS.WTD_REVOCATION_CHECK_NONE
+                              | WINTRUST_DATA_PROVIDER_FLAGS.WTD_CACHE_ONLY_URL_RETRIEVAL,
+                dwUIContext = WINTRUST_DATA_UICONTEXT.WTD_UICONTEXT_INSTALL,
+            };
+            trustData.Anonymous.pFile = &fileInfo;
+
+            var result = PInvoke.WinVerifyTrust(HWND.Null, ref action, &trustData);
+
+            trustData.dwStateAction = WINTRUST_DATA_STATE_ACTION.WTD_STATEACTION_CLOSE;
+            PInvoke.WinVerifyTrust(HWND.Null, ref action, &trustData);
+
+            if (result != 0)
+                throw new SecurityException(string.Format(Resource.UpdateChecker_Security_Authenticode, $"0x{result:X8}"));
         }
     }
 

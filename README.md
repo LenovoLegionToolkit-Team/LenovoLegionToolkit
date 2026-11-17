@@ -109,7 +109,7 @@ Lenovo Legion Toolkit can update itself automatically or be updated manually:
   * **Channel**: Choose between **Stable**, **Beta**, or **Dev** releases.
   * **Frequency**: Set background check intervals (Daily, Weekly, Hourly, etc.).
 * **Seamless In-Place Upgrades**: You never need to uninstall previous versions. Installing over an existing version preserves all settings, custom modes, actions, and macros.
-* **Integrity Protection**: Updates downloaded from the LLT update server are rejected unless they are signed with the project's trusted certificate.
+* **Integrity Protection**: All automated updates are verified with an Authenticode signature from the project's trusted certificate before installation.
 
 #### Next steps
 

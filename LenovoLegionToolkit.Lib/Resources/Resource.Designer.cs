@@ -1735,6 +1735,15 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The downloaded update failed Authenticode signature verification ({0}).
+        /// </summary>
+        public static string UpdateChecker_Security_Authenticode {
+            get {
+                return ResourceManager.GetString("UpdateChecker_Security_Authenticode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The downloaded update is not signed by the trusted server certificate {0}.
         /// </summary>
         public static string UpdateChecker_Security_Invalid {

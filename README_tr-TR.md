@@ -109,7 +109,7 @@ Lenovo Legion Toolkit kendini otomatik olarak güncelleyebilir veya manuel olara
   * **Kanal**: **Kararlı (Stable)**, **Beta** veya **Geliştirici (Dev)** sürümleri arasından seçim yapın.
   * **Sıklık**: Arka plan kontrol aralıklarını (Günlük, Haftalık, Saatlik vb.) ayarlayın.
 - **Sorunsuz Yerinde Yükseltmeler**: Önceki sürümleri kaldırmanıza asla gerek yoktur. Mevcut bir sürümün üzerine kurulum yapmak tüm ayarları, özel modları, eylemleri ve makroları korur.
-- **Bütünlük Koruması**: LLT güncelleme sunucusundan indirilen güncellemeler, projenin güvenilir sertifikasıyla imzalanmadığı sürece reddedilir.
+- **Bütünlük Koruması**: Tüm otomatik güncellemeler, kurulumdan önce projenin güvenilir sertifikasından alınan bir Authenticode imzasıyla doğrulanır.
 
 #### Sonraki adımlar
 
