@@ -219,9 +219,6 @@
   <data name="GB" xml:space="preserve">
     <value>GB</value>
   </data>
-  <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
-    <value>Ha fallado la comprobación de la tabla de ventiladores.</value>
-  </data>
   <data name="GPUController_GC6_Blocker_Acpi" xml:space="preserve">
     <value>ACPI</value>
   </data>
@@ -533,6 +530,15 @@
   <data name="SharedMemory" xml:space="preserve">
     <value>Compartido / Dinámico</value>
   </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>Procesos que siguen en ejecución: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>Servicios que deben reiniciarse: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>Servicios que siguen en ejecución: {0}.</value>
+  </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
     <value>Silenciar</value>
   </data>
@@ -596,14 +602,14 @@
   <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
     <value>Lámpara de carrera de caballos</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
-    <value>Lluvia</value>
-  </data>
-  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
-    <value>Rosca de arco iris</value>
+  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
+    <value>Tipo</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
     <value>Onda de arco iris</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
+    <value>Lluvia</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Ripples" xml:space="preserve">
     <value>Ondulación</value>
@@ -611,8 +617,8 @@
   <data name="SpectrumKeyboardBacklightEffectType_Smooth" xml:space="preserve">
     <value>Suave</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
-    <value>Tipo</value>
+  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
+    <value>Rosca de arco iris</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
     <value>Ola</value>
@@ -631,27 +637,6 @@
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
     <value>Color aleatorio</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
-    <value>No se ha podido cerrar {0}. Sigue en ejecución, ciérralo manualmente e inténtalo de nuevo.</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
-    <value>Procesos que siguen en ejecución: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
-    <value>No se ha podido modificar la tarea programada {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
-    <value>No se ha podido cambiar el servicio {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
-    <value>Servicios que deben reiniciarse: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
-    <value>Servicios que siguen en ejecución: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
-    <value>No se ha podido modificar la entrada de inicio {0}.</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>Oscuro</value>
@@ -691,14 +676,14 @@
   <data name="UpdateChannel_Test" xml:space="preserve">
     <value>Prueba</value>
   </data>
+  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
+    <value>The downloaded update failed Authenticode signature verification ({0})</value>
+  </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
     <value>La actualización descargada no está firmada por el certificado de servidor de confianza {0}</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
     <value>Huella digital de firma no válida {0}</value>
-  </data>
-  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
-    <value>The downloaded update failed Authenticode signature verification ({0})</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
     <value>Nunca</value>
