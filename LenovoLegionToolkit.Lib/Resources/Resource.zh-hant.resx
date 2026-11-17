@@ -219,9 +219,6 @@
   <data name="GB" xml:space="preserve">
     <value>GB</value>
   </data>
-  <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
-    <value>無法驗證風扇曲線表。</value>
-  </data>
   <data name="GPUController_GC6_Blocker_Acpi" xml:space="preserve">
     <value>ACPI</value>
   </data>
@@ -533,6 +530,15 @@
   <data name="SharedMemory" xml:space="preserve">
     <value>已共用／動態</value>
   </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>此處理程序仍然在執行：{0}。</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>此服務需要重新啟動：{0}。</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>此服務仍然在執行：{0}。</value>
+  </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
     <value>静音</value>
   </data>
@@ -596,14 +602,14 @@
   <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
     <value>Horse Race Lamp</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
-    <value>雨滴</value>
-  </data>
-  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
-    <value>螺旋彩虹</value>
+  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
+    <value>键入</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
     <value>彩虹波浪</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
+    <value>雨滴</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Ripples" xml:space="preserve">
     <value>涟漪</value>
@@ -611,8 +617,8 @@
   <data name="SpectrumKeyboardBacklightEffectType_Smooth" xml:space="preserve">
     <value>晴朗</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
-    <value>键入</value>
+  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
+    <value>螺旋彩虹</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
     <value>Wave</value>
@@ -631,27 +637,6 @@
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
     <value>隨機顏色</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
-    <value>無法關閉 {0}。它仍然在執行中，請手動關閉後再試一次。</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
-    <value>此處理程序仍然在執行：{0}。</value>
-  </data>
-  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
-    <value>無法變更排程任務 {0}。</value>
-  </data>
-  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
-    <value>無法變更服務 {0}。</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
-    <value>此服務需要重新啟動：{0}。</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
-    <value>此服務仍然在執行：{0}。</value>
-  </data>
-  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
-    <value>無法變更啟動 {0}。</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>深色模式</value>
@@ -691,14 +676,14 @@
   <data name="UpdateChannel_Test" xml:space="preserve">
     <value>測試</value>
   </data>
+  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
+    <value>The downloaded update failed Authenticode signature verification ({0})</value>
+  </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
     <value>下載的更新未經受信任伺服器憑證簽署 {0}</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
     <value>無效的憑證指紋 {0}</value>
-  </data>
-  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
-    <value>The downloaded update failed Authenticode signature verification ({0})</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
     <value>永不</value>
