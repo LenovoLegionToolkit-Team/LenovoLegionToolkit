@@ -219,9 +219,6 @@
   <data name="GB" xml:space="preserve">
     <value>GB</value>
   </data>
-  <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
-    <value>Fan tablosu doğrulanamadı.</value>
-  </data>
   <data name="GPUController_GC6_Blocker_Acpi" xml:space="preserve">
     <value>ACPI</value>
   </data>
@@ -533,6 +530,15 @@
   <data name="SharedMemory" xml:space="preserve">
     <value>Paylaşımlı / Dinamik</value>
   </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>Hâlâ çalışmakta olan işlemler: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>Yeniden başlatılması gereken hizmetler: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>Hâlâ çalışmakta olan servisler: {0}.</value>
+  </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
     <value>Sustur</value>
   </data>
@@ -596,14 +602,14 @@
   <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
     <value>Horse Race Lamp</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
-    <value>Yağmur</value>
-  </data>
-  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
-    <value>Gökkuşağı Döngüsü</value>
+  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
+    <value>Tür</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
     <value>Gökkuşağı Dalgası</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
+    <value>Yağmur</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Ripples" xml:space="preserve">
     <value>Dalgalanma</value>
@@ -611,8 +617,8 @@
   <data name="SpectrumKeyboardBacklightEffectType_Smooth" xml:space="preserve">
     <value>Akıcı</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
-    <value>Tür</value>
+  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
+    <value>Gökkuşağı Döngüsü</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
     <value>Wave</value>
@@ -631,27 +637,6 @@
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
     <value>Rastgele Renk</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
-    <value>{0} kapatılamadı. Hâlâ çalışıyor, manuel olarak kapatıp tekrar deneyin.</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
-    <value>Hâlâ çalışmakta olan işlemler: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
-    <value>Zamanlanmış görev {0} değiştirilemedi.</value>
-  </data>
-  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
-    <value>{0} servisi değiştirilemedi.</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
-    <value>Yeniden başlatılması gereken hizmetler: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
-    <value>Hâlâ çalışmakta olan servisler: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
-    <value>{0} başlangıç girdisi değiştirilemedi.</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>Koyu</value>
@@ -691,14 +676,14 @@
   <data name="UpdateChannel_Test" xml:space="preserve">
     <value>Test</value>
   </data>
+  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
+    <value>The downloaded update failed Authenticode signature verification ({0})</value>
+  </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
     <value>İndirilen güncelleme, güvenilir sunucu sertifikası tarafından imzalanmamıştır {0}</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
     <value>Geçersiz imza parmak izi {0}</value>
-  </data>
-  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
-    <value>The downloaded update failed Authenticode signature verification ({0})</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
     <value>Hiçbir zaman</value>
