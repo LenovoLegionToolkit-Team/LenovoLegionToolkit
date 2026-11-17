@@ -12,6 +12,7 @@ public class SensorsControlSettings() : AbstractSettings<SensorsControlSettings.
         public double SensorsRefreshIntervalSeconds { get; set; } = DashboardSettings.DefaultSensorsRefreshIntervalSeconds;
         public SensorGroup[]? Groups { get; set; } = SensorGroup.DefaultGroups;
         public SensorItem[]? VisibleItems { get; set; } = SensorGroup.DefaultGroups.SelectMany(group => group.Items).ToArray();
+        public int[]? VisibleSystemFanIds { get; set; }
         public SensorCardType[]? CardOrder { get; set; }
     }
 

@@ -13,6 +13,7 @@ public class OsdSettings() : AbstractSettings<OsdSettings.OsdSettingsStore>("osd
         public double OsdRefreshInterval { get; set; } = 1;
         public int SelectedStyleIndex { get; set; } = 0;
         public List<OsdItem> Items { get; set; } = Enum.GetValues<OsdItem>().ToList();
+        public int[]? VisibleSystemFanIds { get; set; }
 
         public double BackgroundOpacity { get; set; } = 0.6;
         public string BackgroundColor { get; set; } = "#1E1E1E";

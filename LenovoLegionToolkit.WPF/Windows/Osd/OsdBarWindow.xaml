@@ -253,11 +253,10 @@
                         x:Name="_pchTemperature"
                         Style="{DynamicResource TextBlockStyle}"
                         Text="-" />
-                    <TextBlock
-                        x:Name="_pchFanSpeed"
-                        MinWidth="40"
-                        Style="{DynamicResource TextBlockStyle}"
-                        Text="-" />
+                    <StackPanel x:Name="_systemFansControl" Orientation="Horizontal">
+                        <TextBlock x:Name="_systemFan1Text" Style="{DynamicResource TextBlockStyle}" Visibility="Collapsed" />
+                        <TextBlock x:Name="_systemFan2Text" Style="{DynamicResource TextBlockStyle}" Visibility="Collapsed" />
+                    </StackPanel>
                     <TextBlock
                         x:Name="_disk0Temperature"
                         Style="{DynamicResource TextBlockStyle}"

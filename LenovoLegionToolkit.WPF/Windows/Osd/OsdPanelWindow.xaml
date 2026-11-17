@@ -507,21 +507,24 @@
                             Text="-" />
                     </Grid>
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <TextBlock
-                            Grid.Column="0"
-                            Style="{DynamicResource SensorLabelStyle}"
-                            Text="{x:Static resources:Resource.Osd_PCH_Fan}" />
-                        <TextBlock
-                            x:Name="_pchFanSpeed"
-                            Grid.Column="1"
-                            Style="{DynamicResource SensorValueStyle}"
-                            Text="-" />
-                    </Grid>
+                    <StackPanel x:Name="_systemFansControl">
+                        <Grid x:Name="_systemFan1Row" Visibility="Collapsed">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="_systemFan1Name" Grid.Column="0" Style="{DynamicResource SensorLabelStyle}" />
+                            <TextBlock x:Name="_systemFan1Value" Grid.Column="1" Style="{DynamicResource SensorValueStyle}" />
+                        </Grid>
+                        <Grid x:Name="_systemFan2Row" Visibility="Collapsed">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="_systemFan2Name" Grid.Column="0" Style="{DynamicResource SensorLabelStyle}" />
+                            <TextBlock x:Name="_systemFan2Value" Grid.Column="1" Style="{DynamicResource SensorValueStyle}" />
+                        </Grid>
+                    </StackPanel>
                 </StackPanel>
 
             </StackPanel>

@@ -424,7 +424,8 @@ Console.WriteLine(@"------------------------------------------------------------
 await TryGetCapability(CapabilityID.FanFullSpeed, "Fan Full Speed", supportedCapabilities);
 await TryGetCapability(CapabilityID.CpuCurrentFanSpeed, "CPU Current Fan Speed", supportedCapabilities);
 await TryGetCapability(CapabilityID.GpuCurrentFanSpeed, "GPU Current Fan Speed", supportedCapabilities);
-await TryGetCapability(CapabilityID.PchCurrentFanSpeed, "PCH Current Fan Speed", supportedCapabilities);
+await TryGetCapability(CapabilityID.SystemCurrentFanSpeed, "System Current Fan Speed", supportedCapabilities);
+await TryGetCapability(CapabilityID.ExtraSystemCurrentFanSpeed, "Extra System Current Fan Speed", supportedCapabilities);
 await TryGetCapability(CapabilityID.CpuCurrentTemperature, "CPU Current Temperature", supportedCapabilities);
 await TryGetCapability(CapabilityID.GpuCurrentTemperature, "GPU Current Temperature", supportedCapabilities);
 await TryGetCapability(CapabilityID.MotherboardCurrentTemperature, "Motherboard Current Temperature", supportedCapabilities);

@@ -1,10 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace LenovoLegionToolkit.Lib.Controllers.Sensors;
 
 public interface ISensorsController
 {
-    bool HasPchFan { get; }
+    IReadOnlyList<FanData> SystemFans { get; }
     Task<bool> IsSupportedAsync();
     Task PrepareAsync();
     Task<SensorsData> GetDataAsync();

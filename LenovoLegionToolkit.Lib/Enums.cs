@@ -93,7 +93,8 @@ public enum CapabilityID
     FanFullSpeed = 0x04020000,
     CpuCurrentFanSpeed = 0x04030001,
     GpuCurrentFanSpeed = 0x04030002,
-    PchCurrentFanSpeed = 0x04030004,
+    SystemCurrentFanSpeed = 0x04030004,
+    ExtraSystemCurrentFanSpeed = 0x04030005,
     MotherboardCurrentTemperature = 0x05010000,
     CpuCurrentTemperature = 0x05040000,
     GpuCurrentTemperature = 0x05050000
@@ -627,7 +628,7 @@ public enum OsdItem
     [Display(ResourceType = typeof(Resource), Name = "OsdItem_MotherboardTemperature")]
     MotherboardTemperature,
     [Display(ResourceType = typeof(Resource), Name = "OsdItem_Fan")]
-    PchFan,
+    SystemFans,
 }
 
 public enum OverDriveState
@@ -800,7 +801,7 @@ public enum SensorItem
     GpuPower,
     GpuVramUsed,
     GpuVramTotal,
-    PchFanSpeed,
+    SystemFans,
     MotherboardTemperature,
     BatteryState,
     BatteryLevel,

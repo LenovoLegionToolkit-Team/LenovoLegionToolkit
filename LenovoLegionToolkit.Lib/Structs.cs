@@ -332,11 +332,15 @@ public readonly struct FanTableInfo(FanTableData[] data, FanTable table)
     }
 }
 
-public readonly struct FanSpeedTable(int cpuFanSpeed, int gpuFanSpeed, int pchFanSpeed)
+public readonly record struct FanData(int FanId, int DisplayNumber, int Speed, int MaxSpeed);
+
+public readonly struct FanSpeedTable(int cpuFanSpeed, int gpuFanSpeed, IReadOnlyList<FanData> systemFans)
 {
+    private readonly IReadOnlyList<FanData>? _systemFans = systemFans;
+
     public int CpuFanSpeed { get; } = cpuFanSpeed;
     public int GpuFanSpeed { get; } = gpuFanSpeed;
-    public int PchFanSpeed { get; } = pchFanSpeed;
+    public IReadOnlyList<FanData> SystemFans => _systemFans ?? [];
 }
 
 public readonly struct GPUOverclockInfo(int coreDeltaMhz, int memoryDeltaMhz, int voltageLockMv = 0, int voltageCapMv = 0)
@@ -999,19 +1003,19 @@ public readonly struct SensorData(
     }
 }
 
-public readonly struct SensorsData(SensorData cpu, SensorData gpu, SensorData motherboard)
+public readonly struct SensorsData(SensorData cpu, SensorData gpu, int motherboardTemperature, IReadOnlyList<FanData> systemFans)
 {
-    public static readonly SensorsData Empty = new(SensorData.Empty, SensorData.Empty, SensorData.Empty);
+    private readonly IReadOnlyList<FanData>? _systemFans = systemFans;
+
+    public static readonly SensorsData Empty = new(SensorData.Empty, SensorData.Empty, -1, []);
 
     public SensorData CPU { get; } = cpu;
     public SensorData GPU { get; } = gpu;
+    public int MotherboardTemperature { get; } = motherboardTemperature;
+    public IReadOnlyList<FanData> SystemFans => _systemFans ?? [];
 
-    public SensorData Motherboard { get; } = motherboard;
-
-    public override string ToString()
-    {
-        return $"{nameof(CPU)}: {CPU}, {nameof(GPU)}: {GPU}, {nameof(Motherboard)}: {Motherboard}";
-    }
+    public override string ToString() =>
+        $"{nameof(CPU)}: {CPU}, {nameof(GPU)}: {GPU}, {nameof(MotherboardTemperature)}: {MotherboardTemperature}, {nameof(SystemFans)}: [{string.Join(", ", SystemFans)}]";
 }
 
 public readonly struct ShutdownInfo

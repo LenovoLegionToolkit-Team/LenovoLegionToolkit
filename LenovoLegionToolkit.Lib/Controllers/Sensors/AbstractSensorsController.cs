@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Management;
 using System.Runtime.InteropServices;
@@ -69,9 +71,11 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
     protected int? _cpuMaxCoreClockCache;
     protected int? _cpuMaxFanSpeedCache;
     protected int? _gpuMaxFanSpeedCache;
-    protected int? _pchMaxFanSpeedCache;
+    protected readonly record struct SystemFanDefinition(int SensorId, int FanId, CapabilityID SpeedCapability, int DisplayNumber);
 
-    public virtual bool HasPchFan => false;
+    private readonly ConcurrentDictionary<(int SensorId, int FanId), int> _systemMaxFanSpeeds = new();
+    protected virtual IReadOnlyList<SystemFanDefinition> SystemFanDefinitions => [];
+    public IReadOnlyList<FanData> SystemFans { get; private set; } = [];
 
     public abstract Task<bool> IsSupportedAsync();
 
@@ -116,10 +120,8 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
         var gpuCurrentFanSpeed = await GetGpuCurrentFanSpeedAsync().ConfigureAwait(false);
         var gpuMaxFanSpeed = _gpuMaxFanSpeedCache ??= await GetGpuMaxFanSpeedAsync().ConfigureAwait(false);
 
-        var pchCurrentTemperature = await GetMotherboardTemperatureAsync().ConfigureAwait(false);
-        var pchMaxTemperature = genericMaxTemperature;
-        var pchCurrentFanSpeed = await GetPchCurrentFanSpeedAsync().ConfigureAwait(false);
-        var pchMaxFanSpeed = _pchMaxFanSpeedCache ??= await GetPchMaxFanSpeedAsync().ConfigureAwait(false);
+        var motherboardTemperature = await GetMotherboardTemperatureAsync().ConfigureAwait(false);
+        var systemFans = await GetSystemFansAsync().ConfigureAwait(false);
 
         var cpu = new SensorData(cpuUtilization,
             genericMaxUtilization,
@@ -143,30 +145,61 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
             gpuCurrentFanSpeed,
             gpuMaxFanSpeed);
 
-        var pch = new SensorData(
-            -1,
-            -1,
-            -1,
-            -1,
-            -1,
-            -1,
-            pchCurrentTemperature,
-            pchMaxTemperature,
-            pchCurrentFanSpeed,
-            pchMaxFanSpeed);
-
-        var result = new SensorsData(cpu, gpu, pch);
-
-        return result;
+        return new SensorsData(cpu, gpu, motherboardTemperature, systemFans);
     }
 
     public virtual async Task<FanSpeedTable> GetFanSpeedsAsync()
     {
         var cpuFanSpeed = await GetCpuCurrentFanSpeedAsync().ConfigureAwait(false);
         var gpuFanSpeed = await GetGpuCurrentFanSpeedAsync().ConfigureAwait(false);
-        var pchFanSpeed = await GetPchCurrentFanSpeedAsync().ConfigureAwait(false);
-        return new FanSpeedTable(cpuFanSpeed, gpuFanSpeed, pchFanSpeed);
+        var systemFans = await GetSystemFansAsync().ConfigureAwait(false);
+        return new FanSpeedTable(cpuFanSpeed, gpuFanSpeed, systemFans);
     }
+
+    protected async Task<IReadOnlyList<FanData>> GetSystemFansAsync()
+    {
+        var definitions = SystemFanDefinitions;
+        var fans = new FanData[definitions.Count];
+        for (var i = 0; i < definitions.Count; i++)
+        {
+            var definition = definitions[i];
+            var speed = -1;
+            try
+            {
+                speed = await GetSystemFanSpeedAsync(definition).ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                Log.Instance.Trace($"Error reading system fan speed. [fanId={definition.FanId}]", ex);
+            }
+
+            var key = (definition.SensorId, definition.FanId);
+            if (!_systemMaxFanSpeeds.TryGetValue(key, out var maxSpeed))
+            {
+                maxSpeed = -1;
+                try
+                {
+                    maxSpeed = await GetSystemFanMaxSpeedAsync(definition).ConfigureAwait(false);
+                    if (maxSpeed > 0)
+                        _systemMaxFanSpeeds.TryAdd(key, maxSpeed);
+                }
+                catch (Exception ex)
+                {
+                    Log.Instance.Trace($"Error reading system fan maximum speed. [fanId={definition.FanId}]", ex);
+                }
+            }
+
+            fans[i] = new FanData(definition.FanId, definition.DisplayNumber, speed, maxSpeed);
+        }
+
+        var snapshot = Array.AsReadOnly(fans);
+        SystemFans = snapshot;
+        return snapshot;
+    }
+
+    protected virtual Task<int> GetSystemFanSpeedAsync(SystemFanDefinition definition) => Task.FromResult(-1);
+
+    protected virtual Task<int> GetSystemFanMaxSpeedAsync(SystemFanDefinition definition) => Task.FromResult(-1);
 
     protected abstract Task<int> GetCpuCurrentTemperatureAsync();
 
@@ -178,13 +211,9 @@ public abstract class AbstractSensorsController(GPUController gpuController) : I
 
     protected abstract Task<int> GetGpuCurrentFanSpeedAsync();
 
-    protected virtual Task<int> GetPchCurrentFanSpeedAsync() => Task.FromResult(-1);
-
     protected abstract Task<int> GetCpuMaxFanSpeedAsync();
 
     protected abstract Task<int> GetGpuMaxFanSpeedAsync();
-
-    protected virtual Task<int> GetPchMaxFanSpeedAsync() => Task.FromResult(-1);
 
     protected static unsafe int GetCpuBaseClock()
     {

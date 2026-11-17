@@ -381,30 +381,31 @@
                                         Margin="0,0,0,6"
                                         Style="{StaticResource CardTitleStyle}"
                                         Text="{x:Static resources:Resource.SensorsControl_Motherboard_Title}" />
-                                    <Grid x:Name="_pchFanSpeedGrid">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock
-                                            Grid.Column="0"
-                                            Style="{StaticResource DataLabelStyle}"
-                                            Text="{x:Static resources:Resource.SensorsControl_Fan_Title}" />
-                                        <TextBlock
-                                            x:Name="_pchFanSpeedLabel"
-                                            Grid.Column="2"
-                                            Style="{StaticResource DataValueStyle}"
-                                            Text="-" />
-                                        <ProgressBar
-                                            x:Name="_pchFanSpeedBar"
-                                            Grid.Column="3"
-                                            Maximum="5000"
-                                            Style="{StaticResource CompactProgressBarStyle}"
-                                            Value="0" />
-                                    </Grid>
-                                    <Grid x:Name="_pchTemperatureGrid" Margin="0,6,0,0">
+                                    <StackPanel x:Name="_systemFansControl">
+                                        <Grid x:Name="_systemFan1Row" Margin="0,0,0,6" Visibility="Collapsed">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="_systemFan1Name" Grid.Column="0" Style="{StaticResource DataLabelStyle}" />
+                                            <TextBlock x:Name="_systemFan1Value" Grid.Column="2" Style="{StaticResource DataValueStyle}" />
+                                            <ProgressBar x:Name="_systemFan1Bar" Grid.Column="3" Style="{StaticResource CompactProgressBarStyle}" />
+                                        </Grid>
+                                        <Grid x:Name="_systemFan2Row" Margin="0,0,0,6" Visibility="Collapsed">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+                                            <TextBlock x:Name="_systemFan2Name" Grid.Column="0" Style="{StaticResource DataLabelStyle}" />
+                                            <TextBlock x:Name="_systemFan2Value" Grid.Column="2" Style="{StaticResource DataValueStyle}" />
+                                            <ProgressBar x:Name="_systemFan2Bar" Grid.Column="3" Style="{StaticResource CompactProgressBarStyle}" />
+                                        </Grid>
+                                    </StackPanel>
+                                    <Grid x:Name="_pchTemperatureGrid">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="*" />

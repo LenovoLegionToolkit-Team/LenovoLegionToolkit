@@ -1,11 +1,11 @@
-using LenovoLegionToolkit.Lib;
-using LenovoLegionToolkit.Lib.Utils;
-using LenovoLegionToolkit.WPF.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Media;
+using LenovoLegionToolkit.Lib;
+using LenovoLegionToolkit.Lib.Utils;
+using LenovoLegionToolkit.WPF.Resources;
 
 namespace LenovoLegionToolkit.WPF;
 
@@ -192,7 +192,7 @@ public readonly struct SensorGroup(SensorGroupType type, params SensorItem[] ite
             SensorItem.GpuTemperatures,
             SensorItem.GpuPower),
         new(SensorGroupType.Motherboard,
-            SensorItem.PchFanSpeed,
+            SensorItem.SystemFans,
             SensorItem.MotherboardTemperature),
         new(SensorGroupType.Battery,
             SensorItem.BatteryState,
@@ -259,7 +259,8 @@ public readonly struct SensorSnapshot
     public double MemTotal { get; init; }
     public double MemTemp { get; init; }
     public double MotherboardTemp { get; init; }
-    public int PchFanSpeed { get; init; }
+    private readonly IReadOnlyList<FanData>? _systemFans;
+    public IReadOnlyList<FanData> SystemFans { get => _systemFans ?? []; init => _systemFans = value; }
     public double Disk1Temp { get; init; }
     public double Disk2Temp { get; init; }
 }

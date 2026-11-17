@@ -321,41 +321,43 @@
                 Visibility="Collapsed" />
         </Grid>
 
-        <Grid x:Name="_systemFanGrid" Margin="16,8,16,0">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-
-            <wpfui:SymbolIcon
-                Grid.Row="0"
-                Grid.Column="0"
-                FontSize="{StaticResource SymbolFontSize}"
-                Symbol="Desktop16" />
-            <Label
-                Grid.Row="0"
-                Grid.Column="1"
-                Margin="8,0,0,0"
-                VerticalContentAlignment="Center"
-                Content="{x:Static resources:Resource.StatusWindow_System_Fan}"
-                FontSize="{StaticResource PrimaryFontSize}"
-                FontWeight="Medium"
-                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
-            <Label
-                x:Name="_systemFanLabel"
-                Grid.Row="0"
-                Grid.Column="3"
-                Margin="16,0,0,0"
-                HorizontalAlignment="Right"
-                VerticalContentAlignment="Center"
-                FontSize="{StaticResource PrimaryFontSize}"
-                Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
-        </Grid>
+        <StackPanel x:Name="_systemFansControl" Margin="16,8,16,0" Visibility="Collapsed">
+            <Grid Margin="0,0,0,4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <wpfui:SymbolIcon Grid.Column="0" FontSize="{StaticResource SymbolFontSize}" Symbol="Desktop16" />
+                <Label Grid.Column="1" Margin="8,0,0,0" VerticalContentAlignment="Center"
+                    Content="{x:Static resources:Resource.StatusWindow_System_Fan}"
+                    FontSize="{StaticResource PrimaryFontSize}" FontWeight="Medium"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}" />
+            </Grid>
+            <Grid x:Name="_systemFan1Row" Margin="32,0,0,4" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="_systemFan1Name" VerticalContentAlignment="Center"
+                    FontSize="{StaticResource SecondaryFontSize}" FontWeight="Medium"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <Label x:Name="_systemFan1Value" Grid.Column="1" HorizontalAlignment="Right"
+                    VerticalContentAlignment="Center" FontSize="{StaticResource SecondaryFontSize}"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+            </Grid>
+            <Grid x:Name="_systemFan2Row" Margin="32,0,0,4" Visibility="Collapsed">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label x:Name="_systemFan2Name" VerticalContentAlignment="Center"
+                    FontSize="{StaticResource SecondaryFontSize}" FontWeight="Medium"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+                <Label x:Name="_systemFan2Value" Grid.Column="1" HorizontalAlignment="Right"
+                    VerticalContentAlignment="Center" FontSize="{StaticResource SecondaryFontSize}"
+                    Foreground="{DynamicResource TextFillColorSecondaryBrush}" />
+            </Grid>
+        </StackPanel>
 
         <Grid Margin="16,8,16,16">
             <Grid.ColumnDefinitions>

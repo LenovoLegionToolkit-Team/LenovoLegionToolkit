@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using LenovoLegionToolkit.Lib;
@@ -52,7 +53,7 @@ public partial class OsdPanelWindow : OsdWindowBase
 
             // Motherboard
             { OsdItem.MotherboardTemperature, _pchTemperature },
-            { OsdItem.PchFan, _pchFanSpeed },
+            { OsdItem.SystemFans, _systemFansControl },
         };
 
         _measurementGroups = new()
@@ -70,7 +71,7 @@ public partial class OsdPanelWindow : OsdWindowBase
             { _memoryGroup, ([OsdItem.MemoryUtilization, OsdItem.MemoryTemperature], _separatorMemory) },
 
             // Storage / Motherboard
-            { _pchGroup, ([OsdItem.Disk1Temperature, OsdItem.Disk2Temperature, OsdItem.MotherboardTemperature, OsdItem.PchFan], null) }
+            { _pchGroup, ([OsdItem.Disk1Temperature, OsdItem.Disk2Temperature, OsdItem.MotherboardTemperature, OsdItem.SystemFans], null) }
         };
 
         if (_sensorsPanel.Resources["SensorLabelStyle"] is Style labelStyle)
@@ -155,7 +156,7 @@ public partial class OsdPanelWindow : OsdWindowBase
     {
         var visibility = visible ? Visibility.Visible : Visibility.Collapsed;
 
-        if (element.Parent is not Panel panel) return;
+        if (element is not TextBlock || element.Parent is not Panel panel) return;
 
         foreach (var child in System.Linq.Enumerable.OfType<TextBlock>(panel.Children))
         {
@@ -185,6 +186,7 @@ public partial class OsdPanelWindow : OsdWindowBase
 
     protected override void UpdateSensorData(SensorSnapshot data)
     {
+        UpdateSystemFans(data.SystemFans);
         var store = _OsdSettings.Store;
 
         UpdateTextBlock(_cpuFrequency, data.CpuFrequency, $"{{0:F0}} {Resource.MHz}");
@@ -208,9 +210,28 @@ public partial class OsdPanelWindow : OsdWindowBase
         UpdateTemperatureTextBlock(_memTemperature, data.MemTemp, store.TempThresholdWarning, store.TempThresholdCritical);
 
         UpdateTemperatureTextBlock(_pchTemperature, data.MotherboardTemp, store.TempThresholdWarning, store.TempThresholdCritical);
-        UpdateTextBlock(_pchFanSpeed, data.PchFanSpeed);
 
         UpdateTemperatureTextBlock(_disk0Temperature, data.Disk1Temp, store.TempThresholdWarning, store.TempThresholdCritical);
         UpdateTemperatureTextBlock(_disk1Temperature, data.Disk2Temp, store.TempThresholdWarning, store.TempThresholdCritical);
+    }
+
+    protected override void UpdateSystemFansCore(IReadOnlyList<FanData> fans)
+    {
+        var showNumber = fans.Count > 1;
+        UpdateSystemFanRow(_systemFan1Row, _systemFan1Name, _systemFan1Value, fans.Count > 0 ? fans[0] : null, showNumber);
+        UpdateSystemFanRow(_systemFan2Row, _systemFan2Name, _systemFan2Value, fans.Count > 1 ? fans[1] : null, showNumber);
+    }
+
+    private void UpdateSystemFanRow(Grid row, TextBlock name, TextBlock value, FanData? fan, bool showNumber)
+    {
+        if (fan is not { } data)
+        {
+            row.Visibility = Visibility.Collapsed;
+            return;
+        }
+
+        row.Visibility = Visibility.Visible;
+        SetTextIfChanged(name, showNumber ? $"{Resource.StatusWindow_System_Fan} {data.DisplayNumber}" : Resource.StatusWindow_System_Fan);
+        SetTextIfChanged(value, data.Speed < 0 ? "-" : $"{data.Speed} {Resource.RPM}");
     }
 }
