@@ -740,14 +740,23 @@ public class GameAutoListener : AbstractAutoListener<GameAutoListener.ChangedEve
 
     private void RaiseChangedIfNeeded()
     {
-        var newState = _processCache.Count > 0;
-        if (newState == _lastState)
+        bool newState;
+        int activeGamesCount;
+
+        lock (Lock)
         {
-            return;
+            activeGamesCount = _processCache.Count;
+            newState = activeGamesCount > 0;
+
+            if (newState == _lastState)
+            {
+                return;
+            }
+
+            _lastState = newState;
         }
 
-        _lastState = newState;
-        Log.Instance.Trace($"Game running state changed: Running={newState} [activeGamesCount={_processCache.Count}].");
+        Log.Instance.Trace($"Game running state changed: Running={newState} [activeGamesCount={activeGamesCount}].");
 
         try
         {
