@@ -505,31 +505,33 @@ For a full list of third-party components and license notices, see the [NOTICE](
 
 Translations provided by:
 
-* Arabic - yn, Ferrari man
+* Arabic - yn, Ferrari man, Amamiros
 * Bulgarian - [Ekscentricitet](https://github.com/Ekscentricitet)
-* Chinese (Simplified) - [凌卡Karl](https://github.com/KarlLee830), [Ace-Radom](https://github.com/Ace-Radom), Kaguya(https://github.com/XKaguya), Tommy12pl, uzsd, Meteoni-San, YGXB_net, empty_value
-* Chinese (Traditional) - [flandretw](https://github.com/flandretw), 蘭蘭露
+* Chinese (Simplified) - [凌卡Karl](https://github.com/KarlLee830), [Ace-Radom](https://github.com/Ace-Radom), [Kaguya](https://github.com/XKaguya), Tommy12pl, uzsd, Meteoni-San, YGXB_net, empty_value
+* Chinese (Traditional) - [flandretw](https://github.com/flandretw)
 * Czech - J0sef, Matej Siroky, Ghost Miner
-* Dutch - Melm, [JarneStaalPXL](https://github.com/JarneStaalPXL)
+* Dutch - Melm, [JarneStaalPXL](https://github.com/JarneStaalPXL), OrdinaryChickpea, JordyH
 * French - EliotAku, [Georges de Massol](https://github.com/jojo2massol), Rigbone, ZeroDegree, mooms06, Skully
-* German - Sko-Inductor, Running_Dead89, Rapgod, Anotherescape
-* Greek - GreatApo
+* German - Sko-Inductor, Running_Dead89, Rapgod, Anotherescape, daed-alus
+* Greek - GreatApo, ChemicalDruid
 * Hindi - Abhijith Sahadevan
+* Hungarian - mind12
 * Indonesian - Agung Adhinata, Erlangga Rizqi Dwi Raswanto
 * Italian - [Lampadina17](https://github.com/Lampadina17), Gabriele Beltrami
 * Japanese - kodenma
 * Karakalpak - KarLin, Gulnaz, Niyazbek Tolibaev, Shingis Joldasbaev
+* Korean - pgrules7
 * Latvian - RJSkudra
 * Polish - Mariusz Dziemianowicz, Kauczukowe_Jajo, Hexen, z3st
 * Portuguese - dvsilva
-* Portuguese (Brasil) - Vernon, lino
+* Portuguese (Brasil) - Vernon, lino, André Cavalcante
 * Romanian - [Mario Bălănică](https://github.com/mariobalanica)
 * Russian - [Edward Johan](https://github.com/younyokel), Resilient, Robot Rob
-* Slovak - Mitschud, Newbie414
-* Spanish - M.A.G., Iago Alonso Alonso
+* Slovak - Mitschud, Newbie414, Ghost Miner
+* Spanish - M.A.G., Iago Alonso Alonso, Gabriel Fontán
 * Turkish - Undervolt, DragonOfTurkish, Berk Udum
-* Ukrainian - [Vladyslav Prydatko](https://github.com/va1dee), [Dmytro Zozulia](https://github.com/Nollasko), [shinzaa](https://github.com/sevensrays), Desing Ua, Oleksandr Timofieiev
-* Vietnamese - Not_Nhan, Kuri, Nagidrop, Nguyễn Lam, Aretzera
+* Ukrainian - [Vladyslav Prydatko](https://github.com/va1dee), [Dmytro Zozulia](https://github.com/Nollasko), [shinzaa](https://github.com/sevensrays), Desing Ua, Oleksandr Timofieiev, White Noise
+* Vietnamese - Not_Nhan, Kuri, Nagidrop, Nguyễn Lam, Aretzera, Trần Kính Hoàng, NinhHai
 
 Many thanks to everyone else, who monitors and corrects translations!
 
