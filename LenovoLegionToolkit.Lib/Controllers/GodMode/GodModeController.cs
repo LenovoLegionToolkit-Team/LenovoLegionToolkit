@@ -1111,7 +1111,7 @@ public class GodModeController(
             .Where(d => d.mode == (int)powerModeState + 1)
             .Select(d =>
             {
-                var type = ResolveFanTableType(d.fanId, d.sensorId, mi.SmartFanVersion, mi);
+                var type = FanTableTypeResolver.Resolve(d.fanId, d.sensorId, mi.SmartFanVersion, mi);
                 return new FanTableData(type, d.fanId, d.sensorId, d.fanTableData, d.sensorTableData);
             })
             .ToArray();
@@ -1124,53 +1124,6 @@ public class GodModeController(
 
         Log.Instance.Trace($"Fan table data retrieved.");
         return fanTableData;
-    }
-
-    private static FanTableType ResolveFanTableType(byte fanId, byte sensorId, int smartFanVersion, MachineInformation mi)
-    {
-        if (smartFanVersion <= 7)
-        {
-            return (fanId, sensorId, smartFanVersion) switch
-            {
-                (1, 1, 8) => FanTableType.CPU,
-                (2, 5, 8) => FanTableType.GPU,
-                (4, 4, 8) => FanTableType.GPU2,
-                (1, 4, <= 8) => FanTableType.CPU,
-                (1, 1, <= 8) => FanTableType.CPUSensor,
-                (2, 5, <= 8) => FanTableType.GPU,
-                (3, 5, <= 8) => FanTableType.GPU2,
-                _ => FanTableType.Unknown,
-            };
-        }
-
-        var isV3Model = GetIsV3StyleModel(mi);
-        if (isV3Model)
-        {
-            return (fanId, sensorId) switch
-            {
-                (1, 1) => FanTableType.CPU,
-                (2, 5) => FanTableType.GPU,
-                (1, 4) => FanTableType.SystemFan,
-                _ => FanTableType.Unknown,
-            };
-        }
-
-        return (fanId, sensorId) switch
-        {
-            (1, 1) or (1, 4) => FanTableType.CPU,
-            (2, 5) => FanTableType.GPU,
-            (4, 4) or (5, 5) or (4, 1) => FanTableType.SystemFan,
-            _ => FanTableType.Unknown,
-        };
-    }
-
-    private static bool GetIsV3StyleModel(MachineInformation mi)
-    {
-        var affectedSeries = new[] { LegionSeries.Legion_5, LegionSeries.Legion_7 };
-        var affectedModels = new[] { "Legion 5", "Legion 7", "Legion Pro 5 16IAX10H", "LOQ", "Y7000", "R7000" };
-        var isAffectedSeries = affectedSeries.Any(s => Compatibility.GetLegionSeries(mi.Model, mi.MachineType) == s);
-        var isAffectedModel = affectedModels.Any(m => mi.Model.Contains(m));
-        return (isAffectedSeries || isAffectedModel) && mi.Generation >= 10;
     }
 
     private static bool IsValidFanTableData(FanTableData[]? fanTableData)
