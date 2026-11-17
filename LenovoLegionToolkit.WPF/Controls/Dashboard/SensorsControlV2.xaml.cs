@@ -88,11 +88,6 @@ public partial class SensorsControlV2
             { SensorItem.Disk2Temperature, _disk2TemperatureGrid! }
         };
 
-        if (Compatibility.TryGetMachineInformation() is { } machineInformation)
-        {
-            ApplyMachineInformation(machineInformation);
-        }
-
         _cardWrapPanel.Drop += (s, e) => SaveCardOrder();
     }
 
@@ -658,14 +653,6 @@ public partial class SensorsControlV2
     private Task<string> GetProcessedCpuName() => _sensorsGroupControllers.GetCpuNameAsync();
 
     private Task<string> GetProcessedGpuName() => _sensorsGroupControllers.GetGpuNameAsync();
-
-    private void ApplyMachineInformation(MachineInformation machineInformation)
-    {
-        if (machineInformation.Properties.IsAmdDevice)
-        {
-            _motherboardGridName.Text = Resource.SensorsControl_Temperature_Title;
-        }
-    }
 
     private string GetTemperatureText(double temperature)
     {
