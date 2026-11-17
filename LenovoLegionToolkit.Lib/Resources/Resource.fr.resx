@@ -219,9 +219,6 @@
   <data name="GB" xml:space="preserve">
     <value>GR</value>
   </data>
-  <data name="GodModeController_FanSetTableError_Message" xml:space="preserve">
-    <value>Fan table verification failed.</value>
-  </data>
   <data name="GPUController_GC6_Blocker_Acpi" xml:space="preserve">
     <value>ACPI</value>
   </data>
@@ -533,6 +530,15 @@
   <data name="SharedMemory" xml:space="preserve">
     <value>Partagé / Dynamique</value>
   </data>
+  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
+    <value>Processes still running: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
+    <value>Services that need a restart: {0}.</value>
+  </data>
+  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
+    <value>Services still running: {0}.</value>
+  </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
     <value>Muet</value>
   </data>
@@ -596,14 +602,14 @@
   <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
     <value>Horse Race Lamp</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
-    <value>Pluie</value>
-  </data>
-  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
-    <value>Rotation arc-en-ciel</value>
+  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
+    <value>Taper</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
     <value>Vague arc-en-ciel</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Raining" xml:space="preserve">
+    <value>Pluie</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Ripples" xml:space="preserve">
     <value>Ondulation</value>
@@ -611,8 +617,8 @@
   <data name="SpectrumKeyboardBacklightEffectType_Smooth" xml:space="preserve">
     <value>Doux</value>
   </data>
-  <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
-    <value>Taper</value>
+  <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
+    <value>Rotation arc-en-ciel</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
     <value>Wave</value>
@@ -631,27 +637,6 @@
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
     <value>Couleur aléatoire</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessError_Message" xml:space="preserve">
-    <value>Couldn't close {0}. It is still running, close it manually and try again.</value>
-  </data>
-  <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
-    <value>Processes still running: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ScheduledTaskError_Message" xml:space="preserve">
-    <value>Couldn't change the scheduled task {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ServiceError_Message" xml:space="preserve">
-    <value>Couldn't change the service {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
-    <value>Services that need a restart: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
-    <value>Services still running: {0}.</value>
-  </data>
-  <data name="SoftwareDisabler_StartupEntryError_Message" xml:space="preserve">
-    <value>Couldn't change the startup entry {0}.</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>Sombre</value>
@@ -691,14 +676,14 @@
   <data name="UpdateChannel_Test" xml:space="preserve">
     <value>Tester</value>
   </data>
+  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
+    <value>The downloaded update failed Authenticode signature verification ({0})</value>
+  </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
     <value>La mise à jour téléchargée n'est pas signée par le certificat de serveur de confiance {0}</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
     <value>Signature de signature non valide {0}</value>
-  </data>
-  <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
-    <value>The downloaded update failed Authenticode signature verification ({0})</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
     <value>Jamais</value>
