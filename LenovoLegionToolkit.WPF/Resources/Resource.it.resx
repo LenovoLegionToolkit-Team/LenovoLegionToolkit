@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -1217,9 +1217,6 @@ Grazie per il tuo supporto!</value>
   <data name="FanCurveControl_GPU2" xml:space="preserve">
     <value>GPU #2</value>
   </data>
-  <data name="FanCurveControl_PCH" xml:space="preserve">
-    <value>PCH</value>
-  </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
     <value>Imposta la ventola alla velocità massima.</value>
   </data>
@@ -1787,12 +1784,6 @@ Fare clic su Sì per disabilitare e No per ignorare.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Ripeti</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value>Le hotkey Lenovo sono in esecuzione in background.</value>
-  </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage e/o ImController sono in esecuzione in background.</value>
-  </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>Limite di frequenza API raggiunto, riprova più tardi.</value>
   </data>
@@ -2289,12 +2280,6 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Osd_Memory_Utilization" xml:space="preserve">
     <value>Utilization</value>
-  </data>
-  <data name="Osd_Pch" xml:space="preserve">
-    <value>PCH</value>
-  </data>
-  <data name="Osd_PCH_Fan" xml:space="preserve">
-    <value>Ventilatore PCH</value>
   </data>
   <data name="Osd_PCoreClock" xml:space="preserve">
     <value>Orologio P-Core</value>
@@ -2817,12 +2802,6 @@ Puoi anche usare la scorciatoia Fn+Q.</value>
   <data name="SensorItem_MemoryUtilization" xml:space="preserve">
     <value>Utilizzo Della Memoria</value>
   </data>
-  <data name="SensorItem_PchFanSpeed" xml:space="preserve">
-    <value>Velocità Ventilatore PCH</value>
-  </data>
-  <data name="SensorItem_PchTemperature" xml:space="preserve">
-    <value>Temperatura PCH</value>
-  </data>
   <data name="SensorsControl_BatteryLevel_Title" xml:space="preserve">
     <value>Livello Batteria</value>
   </data>
@@ -2873,15 +2852,6 @@ Puoi anche usare la scorciatoia Fn+Q.</value>
   </data>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
     <value>RAM</value>
-  </data>
-  <data name="SensorsControl_Motherboard_Temperature" xml:space="preserve">
-    <value>Temperatura Scheda</value>
-  </data>
-  <data name="SensorsControl_Motherboard_Title" xml:space="preserve">
-    <value>Scheda Madre</value>
-  </data>
-  <data name="SensorsControl_PchTemperature_Title" xml:space="preserve">
-    <value>Temperatura PCH</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
     <value>Intervallo Di Aggiornamento</value>

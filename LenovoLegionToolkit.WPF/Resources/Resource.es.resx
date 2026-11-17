@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string"/>
-              <xsd:attribute name="type" type="xsd:string"/>
-              <xsd:attribute name="mimetype" type="xsd:string"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string"/>
-              <xsd:attribute name="name" type="xsd:string"/>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
-              <xsd:attribute ref="xml:space"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required"/>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -1220,9 +1220,6 @@ El sistema alternará automáticamente entre ellas, en función de sus necesidad
   <data name="FanCurveControl_GPU2" xml:space="preserve">
     <value>GPU #2</value>
   </data>
-  <data name="FanCurveControl_PCH" xml:space="preserve">
-    <value>PCH</value>
-  </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
     <value>Establecer el ventilador a la velocidad máxima.</value>
   </data>
@@ -1792,12 +1789,6 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   <data name="MacroSequenceControl_Repeat_Title" xml:space="preserve">
     <value>Repetir</value>
   </data>
-  <data name="MainWindows_FnKeysRunning" xml:space="preserve">
-    <value> Las teclas de acceso rápido de Lenovo se están ejecutando en segundo plano.</value>
-  </data>
-  <data name="MainWindows_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage y/o ImController se está(n) ejecutando en segundo plano.</value>
-  </data>
   <data name="MainWindow_CheckForUpdates_Error_ReachedRateLimit_Message" xml:space="preserve">
     <value>Se ha alcanzado el límite de velocidad API, inténtelo más tarde.</value>
   </data>
@@ -2294,12 +2285,6 @@ Haz clic en No para desactivar la función de sensores de hardware.</value>
   </data>
   <data name="Osd_Memory_Utilization" xml:space="preserve">
     <value>Uso</value>
-  </data>
-  <data name="Osd_Pch" xml:space="preserve">
-    <value>PCH</value>
-  </data>
-  <data name="Osd_PCH_Fan" xml:space="preserve">
-    <value>Ventilador PCH</value>
   </data>
   <data name="Osd_PCoreClock" xml:space="preserve">
     <value>Reloj P-Core</value>
@@ -2822,12 +2807,6 @@ Puede cambiar de modo con Fn+Q.</value>
   <data name="SensorItem_MemoryUtilization" xml:space="preserve">
     <value>Uso de memoria</value>
   </data>
-  <data name="SensorItem_PchFanSpeed" xml:space="preserve">
-    <value>Velocidad del ventilador del PCH</value>
-  </data>
-  <data name="SensorItem_PchTemperature" xml:space="preserve">
-    <value>Temperatura del PCH</value>
-  </data>
   <data name="SensorsControl_BatteryLevel_Title" xml:space="preserve">
     <value>Nivel de Batería</value>
   </data>
@@ -2878,15 +2857,6 @@ Puede cambiar de modo con Fn+Q.</value>
   </data>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
     <value>RAM</value>
-  </data>
-  <data name="SensorsControl_Motherboard_Temperature" xml:space="preserve">
-    <value>Temperatura de la placa base</value>
-  </data>
-  <data name="SensorsControl_Motherboard_Title" xml:space="preserve">
-    <value>Placa base</value>
-  </data>
-  <data name="SensorsControl_PchTemperature_Title" xml:space="preserve">
-    <value>Temperatura PCH</value>
   </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
     <value>Intervalo de actualización</value>

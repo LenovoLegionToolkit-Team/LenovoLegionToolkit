@@ -349,15 +349,6 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Fan table verification failed..
-        /// </summary>
-        public static string GodModeController_FanSetTableError_Message {
-            get {
-                return ResourceManager.GetString("GodModeController_FanSetTableError_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to ACPI.
         /// </summary>
         public static string GPUController_GC6_Blocker_Acpi {
@@ -1267,38 +1258,11 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t close {0}. It is still running, close it manually and try again..
-        /// </summary>
-        public static string SoftwareDisabler_ProcessError_Message {
-            get {
-                return ResourceManager.GetString("SoftwareDisabler_ProcessError_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Processes still running: {0}..
         /// </summary>
         public static string SoftwareDisabler_ProcessesStillRunning_Message {
             get {
                 return ResourceManager.GetString("SoftwareDisabler_ProcessesStillRunning_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t change the scheduled task {0}..
-        /// </summary>
-        public static string SoftwareDisabler_ScheduledTaskError_Message {
-            get {
-                return ResourceManager.GetString("SoftwareDisabler_ScheduledTaskError_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t change the service {0}..
-        /// </summary>
-        public static string SoftwareDisabler_ServiceError_Message {
-            get {
-                return ResourceManager.GetString("SoftwareDisabler_ServiceError_Message", resourceCulture);
             }
         }
         
@@ -1317,15 +1281,6 @@ namespace LenovoLegionToolkit.Lib.Resources {
         public static string SoftwareDisabler_ServicesStillRunning_Message {
             get {
                 return ResourceManager.GetString("SoftwareDisabler_ServicesStillRunning_Message", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Couldn&apos;t change the startup entry {0}..
-        /// </summary>
-        public static string SoftwareDisabler_StartupEntryError_Message {
-            get {
-                return ResourceManager.GetString("SoftwareDisabler_StartupEntryError_Message", resourceCulture);
             }
         }
         
@@ -1537,20 +1492,11 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Raining.
+        ///   Looks up a localized string similar to Lighting.
         /// </summary>
-        public static string SpectrumKeyboardBacklightEffectType_Raining {
+        public static string SpectrumKeyboardBacklightEffectType_Lighting {
             get {
-                return ResourceManager.GetString("SpectrumKeyboardBacklightEffectType_Raining", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Spiral Rainbow.
-        /// </summary>
-        public static string SpectrumKeyboardBacklightEffectType_SpiralRainbow {
-            get {
-                return ResourceManager.GetString("SpectrumKeyboardBacklightEffectType_SpiralRainbow", resourceCulture);
+                return ResourceManager.GetString("SpectrumKeyboardBacklightEffectType_Lighting", resourceCulture);
             }
         }
         
@@ -1560,6 +1506,15 @@ namespace LenovoLegionToolkit.Lib.Resources {
         public static string SpectrumKeyboardBacklightEffectType_RainbowWave {
             get {
                 return ResourceManager.GetString("SpectrumKeyboardBacklightEffectType_RainbowWave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Raining.
+        /// </summary>
+        public static string SpectrumKeyboardBacklightEffectType_Raining {
+            get {
+                return ResourceManager.GetString("SpectrumKeyboardBacklightEffectType_Raining", resourceCulture);
             }
         }
         
@@ -1582,11 +1537,11 @@ namespace LenovoLegionToolkit.Lib.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lighting.
+        ///   Looks up a localized string similar to Spiral Rainbow.
         /// </summary>
-        public static string SpectrumKeyboardBacklightEffectType_Lighting {
+        public static string SpectrumKeyboardBacklightEffectType_SpiralRainbow {
             get {
-                return ResourceManager.GetString("SpectrumKeyboardBacklightEffectType_Lighting", resourceCulture);
+                return ResourceManager.GetString("SpectrumKeyboardBacklightEffectType_SpiralRainbow", resourceCulture);
             }
         }
         
