@@ -3477,6 +3477,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to System.
+        /// </summary>
+        public static string FanCurveControl_SystemFan {
+            get {
+                return ResourceManager.GetString("FanCurveControl_SystemFan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set fan to maximum speed..
         /// </summary>
         public static string FanMaxSpeedAutomationStepControl_Message {
