@@ -37,7 +37,6 @@ public partial class SensorsControlV2
     private CancellationTokenSource? _sensorStartCts;
     private bool _subscribedToMessages;
     private Task<string>? _cpuNameTask;
-    private Task<string>? _gpuNameTask;
     private readonly HashSet<SensorItem> _activeSensorItems = [];
     private static readonly double[] AvailableRefreshIntervals = [0.5, 1, 2, 3, 4, 5];
     private readonly Dictionary<SensorItem, FrameworkElement> _sensorItemToControlMap;
@@ -53,8 +52,6 @@ public partial class SensorsControlV2
         Unloaded += SensorsControl_Unloaded;
         IsVisibleChanged += (_, _) => SyncSensorUpdates();
         SizeChanged += (_, e) => { if (e.WidthChanged) AdjustCardWidths(); };
-
-        _sensorsGroupControllers.SelectedGpuIsIgpu = _hardwareSensorSettings.Store.SelectedGpuIsIgpu;
 
         _cardTypeMap = new Dictionary<SensorCardType, FrameworkElement>
         {
@@ -227,10 +224,6 @@ public partial class SensorsControlV2
             return;
         }
 
-        _sensorsGroupControllers.SelectedGpuIsIgpu = _hardwareSensorSettings.Store.SelectedGpuIsIgpu;
-        _sensorsGroupControllers.ShowAverageCpuFrequency = _hardwareSensorSettings.Store.ShowCpuAverageFrequency;
-        _sensorsGroupControllers.CpuTemperatureSource = _hardwareSensorSettings.Store.CpuTemperatureSource;
-
         _activeSensorItems.Clear();
         if (_sensorsControlSettings.Store.VisibleItems != null)
         {
@@ -384,12 +377,10 @@ public partial class SensorsControlV2
                     return null;
                 }
             });
-            var gpuNameTask = GetProcessedGpuName();
             var cpuNameTask = GetProcessedCpuName();
 
-            await Task.WhenAll(dataTask, batteryInfoTask, gpuNameTask, cpuNameTask).WaitAsync(token).ConfigureAwait(false);
+            await Task.WhenAll(dataTask, batteryInfoTask, cpuNameTask).WaitAsync(token).ConfigureAwait(false);
 
-            _gpuNameTask = gpuNameTask;
             _cpuNameTask = cpuNameTask;
 
             await Dispatcher.InvokeAsync(() =>
@@ -492,13 +483,7 @@ public partial class SensorsControlV2
     {
         var cpuUsage = snapshot[SensorItem.CpuUtilization];
         var cpuTemp = snapshot[SensorItem.CpuTemperature];
-        var cpuClock = _sensorsGroupControllers.ShowAverageCpuFrequency
-            ? snapshot[SensorItem.CpuAverageFrequency] : snapshot[SensorItem.CpuMaxFrequency];
-        if (_sensorsGroupControllers.IsHybrid)
-        {
-            cpuClock = _sensorsGroupControllers.ShowAverageCpuFrequency
-                ? snapshot[SensorItem.CpuPAverageFrequency] : snapshot[SensorItem.CpuPMaxFrequency];
-        }
+        var cpuClock = _sensorsGroupControllers.GetCpuFrequency(snapshot);
         var cpuPower = snapshot[SensorItem.CpuPower];
 
         var gpuUsage = snapshot[SensorItem.GpuUtilization];
@@ -525,7 +510,7 @@ public partial class SensorsControlV2
             }
 
             _cpuCardName.Text = _cpuNameTask?.Result ?? "UNKNOWN";
-            _gpuCardName.Text = _gpuNameTask?.Result ?? "UNKNOWN";
+            _gpuCardName.Text = snapshot.GpuName ?? "UNKNOWN";
 
             // --- CPU ---
             if (_activeSensorItems.Contains(SensorItem.CpuUtilization)) UpdateValue(_cpuUtilizationBar, _cpuUtilizationLabel, 100, cpuUsage, $"{cpuUsage:0}{Resource.Percent}");
@@ -651,8 +636,6 @@ public partial class SensorsControlV2
     }
 
     private Task<string> GetProcessedCpuName() => _sensorsGroupControllers.GetCpuNameAsync();
-
-    private Task<string> GetProcessedGpuName() => _sensorsGroupControllers.GetGpuNameAsync();
 
     private string GetTemperatureText(double temperature)
     {

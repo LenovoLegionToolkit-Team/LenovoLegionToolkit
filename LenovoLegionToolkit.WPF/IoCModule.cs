@@ -24,7 +24,6 @@ public class IoCModule : Module
 
         builder.Register<DashboardSettings>();
         builder.Register<SensorsControlSettings>();
-        builder.Register<HardwareSensorSettings>();
 
         builder.Register<IpcServer>();
 

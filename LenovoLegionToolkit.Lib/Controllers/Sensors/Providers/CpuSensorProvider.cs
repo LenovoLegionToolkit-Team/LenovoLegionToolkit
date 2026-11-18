@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using LenovoLegionToolkit.Lib.Extensions;
+using LenovoLegionToolkit.Lib.Settings;
 using LibreHardwareMonitor.Hardware;
 
 namespace LenovoLegionToolkit.Lib.Controllers.Sensors.Providers;
@@ -33,14 +34,11 @@ public class CpuSensorProvider : ISensorProvider
 
     private ISensor? _avgVoltageSensor;
     private List<ISensor> _coreVoltageSensors = [];
-    public CpuVoltageMode VoltageMode { get; set; }
-    public int VoltageCoreIndex { get; set; }
 
     private ISensor? _averageTemperatureSensor;
     private ISensor? _packageTemperatureSensor;
     private ISensor? _maxTemperatureSensor;
     private List<ISensor> _coreTemperatureSensors = [];
-    public CpuTemperatureSource TemperatureSource { get; set; }
 
     public int AvailableCoreCount => _coreVoltageSensors.Count;
 
@@ -140,7 +138,7 @@ public class CpuSensorProvider : ISensorProvider
         IsHybrid = pCoreList.Count > 0;
     }
 
-    public void Read()
+    public void Read(HardwareSensorSettings.HardwareSensorSettingsStore settings)
     {
         var values = new Dictionary<SensorItem, float>();
 
@@ -153,7 +151,7 @@ public class CpuSensorProvider : ISensorProvider
             }
             else if (slot.Item == SensorItem.CpuTemperature)
             {
-                val = TemperatureSource switch
+                val = settings.CpuTemperatureSource switch
                 {
                     CpuTemperatureSource.Average => _averageTemperatureSensor?.Value ?? val,
                     CpuTemperatureSource.Package => _packageTemperatureSensor?.Value ?? val,
@@ -167,10 +165,11 @@ public class CpuSensorProvider : ISensorProvider
             values[slot.Item] = val;
         }
 
-        values[SensorItem.CpuVoltage] = VoltageMode switch
+        var voltageCoreIndex = settings.CpuVoltageCoreIndex;
+        values[SensorItem.CpuVoltage] = settings.CpuVoltageMode switch
         {
             CpuVoltageMode.Maximum when _coreVoltageSensors.Count > 0 => _coreVoltageSensors.Max(s => s.Value) ?? -1,
-            CpuVoltageMode.Core when VoltageCoreIndex < _coreVoltageSensors.Count => _coreVoltageSensors[VoltageCoreIndex].Value ?? -1,
+            CpuVoltageMode.Core when voltageCoreIndex >= 0 && voltageCoreIndex < _coreVoltageSensors.Count => _coreVoltageSensors[voltageCoreIndex].Value ?? -1,
             CpuVoltageMode.Core => -1,
             _ => _avgVoltageSensor?.Value ?? -1,
         };

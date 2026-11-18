@@ -42,6 +42,7 @@ public class IoCModule : Module
         builder.Register<NotificationSettings>();
         builder.Register<BalanceModeSettings>();
         builder.Register<OsdSettings>();
+        builder.Register<HardwareSensorSettings>();
         builder.Register<GodModeSettings>();
         builder.Register<GPUOverclockSettings>();
         builder.Register<AmdOverclockingSettings>().SingleInstance();

@@ -1386,6 +1386,7 @@ public struct UpdateFromServer(ProjectInfo projectInfo, string patchNote)
 public sealed record HardwareSensorSnapshot
 {
     private readonly float[] _values = new float[Enum.GetValues<SensorItem>().Length];
+    public string? GpuName { get; init; }
 
     public HardwareSensorSnapshot()
     {
@@ -1403,7 +1404,7 @@ public sealed record HardwareSensorSnapshot
 
     public HardwareSensorSnapshot WithValue(SensorItem item, float value)
     {
-        var copy = new HardwareSensorSnapshot();
+        var copy = new HardwareSensorSnapshot { GpuName = GpuName };
         Array.Copy(_values, copy._values, _values.Length);
         copy._values[(int)item] = value;
         return copy;
@@ -1411,7 +1412,7 @@ public sealed record HardwareSensorSnapshot
 
     public HardwareSensorSnapshot WithValues(IReadOnlyDictionary<SensorItem, float> values)
     {
-        var copy = new HardwareSensorSnapshot();
+        var copy = new HardwareSensorSnapshot { GpuName = GpuName };
         Array.Copy(_values, copy._values, _values.Length);
         foreach (var (item, val) in values)
             copy._values[(int)item] = val;

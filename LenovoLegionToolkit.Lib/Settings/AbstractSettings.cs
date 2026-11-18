@@ -11,7 +11,7 @@ public abstract class AbstractSettings<T> where T : class, new()
     protected readonly JsonSerializerSettings JsonSerializerSettings;
     private readonly string _settingsStorePath;
     private readonly string _fileName;
-    private T? _store;
+    private volatile T? _store;
 
     protected virtual T Default => new();
 

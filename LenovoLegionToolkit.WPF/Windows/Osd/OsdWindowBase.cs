@@ -19,7 +19,6 @@ using LenovoLegionToolkit.Lib.Settings;
 using LenovoLegionToolkit.Lib.Utils;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
-using LenovoLegionToolkit.WPF.Settings;
 using Microsoft.Win32;
 using WpfScreenHelper;
 
@@ -370,11 +369,6 @@ public abstract class OsdWindowBase : Window
     {
         if (IsVisible)
         {
-            _sensorsGroupControllers.ShowAverageCpuFrequency = _hardwareSensorSettings.Store.ShowCpuAverageFrequency;
-            _sensorsGroupControllers.CpuTemperatureSource = _hardwareSensorSettings.Store.CpuTemperatureSource;
-            _sensorsGroupControllers.CpuVoltageMode = _hardwareSensorSettings.Store.CpuVoltageMode;
-            _sensorsGroupControllers.CpuVoltageCoreIndex = _hardwareSensorSettings.Store.CpuVoltageCoreIndex;
-
             _cts?.Cancel();
             _cts?.Dispose();
             _cts = new CancellationTokenSource();
@@ -799,10 +793,6 @@ public abstract class OsdWindowBase : Window
 
     private async Task RefreshSensorsDataAsync(CancellationToken token)
     {
-        _sensorsGroupControllers.CpuTemperatureSource = _hardwareSensorSettings.Store.CpuTemperatureSource;
-        _sensorsGroupControllers.CpuVoltageMode = _hardwareSensorSettings.Store.CpuVoltageMode;
-        _sensorsGroupControllers.CpuVoltageCoreIndex = _hardwareSensorSettings.Store.CpuVoltageCoreIndex;
-
         var groupSnapshot = _sensorsGroupControllers.Snapshot;
 
         SensorsData? mainData = null;
@@ -817,14 +807,15 @@ public abstract class OsdWindowBase : Window
 
         _lastUpdate = DateTime.Now;
 
+        var showAverageCpuFrequency = _hardwareSensorSettings.Store.ShowCpuAverageFrequency;
         var snapshot = new SensorSnapshot
         {
             CpuUsage = groupSnapshot[SensorItem.CpuUtilization],
-            CpuFrequency = _sensorsGroupControllers.ShowAverageCpuFrequency
+            CpuFrequency = showAverageCpuFrequency
                 ? groupSnapshot[SensorItem.CpuAverageFrequency] : groupSnapshot[SensorItem.CpuMaxFrequency],
-            CpuPClock = _sensorsGroupControllers.ShowAverageCpuFrequency
+            CpuPClock = showAverageCpuFrequency
                 ? groupSnapshot[SensorItem.CpuPAverageFrequency] : groupSnapshot[SensorItem.CpuPMaxFrequency],
-            CpuEClock = _sensorsGroupControllers.ShowAverageCpuFrequency
+            CpuEClock = showAverageCpuFrequency
                 ? groupSnapshot[SensorItem.CpuEAverageFrequency] : groupSnapshot[SensorItem.CpuEMaxFrequency],
             CpuTemp = groupSnapshot[SensorItem.CpuTemperature],
             CpuPower = groupSnapshot[SensorItem.CpuPower],

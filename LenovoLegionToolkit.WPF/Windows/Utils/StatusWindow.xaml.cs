@@ -48,7 +48,6 @@ public partial class StatusWindow
     private readonly UpdateSettings _updateSettings = IoCContainer.Resolve<UpdateSettings>();
     private readonly SensorsController _sensorsController = IoCContainer.Resolve<SensorsController>();
     private readonly SensorsGroupController _sensorsGroupController = IoCContainer.Resolve<SensorsGroupController>();
-    private readonly HardwareSensorSettings _hardwareSensorSettings = IoCContainer.Resolve<HardwareSensorSettings>();
     private IDisposable? _sensorSubscription;
 
     private MachineInformation? _machineInfo;
@@ -328,18 +327,7 @@ public partial class StatusWindow
                     gpuClock = groupSnapshot[SensorItem.GpuFrequency];
                     gpuTemp = groupSnapshot[SensorItem.GpuCoreTemperature];
 
-                    if (_sensorsGroupController.IsHybrid)
-                    {
-                        cpuClock = _hardwareSensorSettings.Store.ShowCpuAverageFrequency
-                            ? groupSnapshot[SensorItem.CpuPAverageFrequency]
-                            : groupSnapshot[SensorItem.CpuPMaxFrequency];
-                    }
-                    else
-                    {
-                        cpuClock = _hardwareSensorSettings.Store.ShowCpuAverageFrequency
-                            ? groupSnapshot[SensorItem.CpuAverageFrequency]
-                            : groupSnapshot[SensorItem.CpuMaxFrequency];
-                    }
+                    cpuClock = _sensorsGroupController.GetCpuFrequency(groupSnapshot);
                 }
             }
             catch { /* Ignore */ }
