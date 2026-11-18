@@ -250,9 +250,7 @@ public abstract class OsdWindowBase : Window
         if (!_positionSet)
             return;
 
-        var workArea = CurrentWorkArea;
-
-        Left = workArea.Left + (workArea.Width - ActualWidth) / 2;
+        SetDefaultWindowPosition();
     }
 
     public virtual void SetWindowPosition()
