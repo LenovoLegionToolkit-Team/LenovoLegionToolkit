@@ -789,6 +789,21 @@ Deze tijd is mogelijk niet nauwkeurig als de laptop is opgeladen tijdens het sla
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limit the charging range to extend the battery lifespan.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Charge Threshold</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Wissen</value>
   </data>
@@ -1009,6 +1024,12 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Processen</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Auto (Dynamic)</value>
   </data>
@@ -1020,6 +1041,21 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>P-State Control</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
+    <value>Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateRatedTdp" xml:space="preserve">
+    <value>P0 TDP</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>GPU Opnieuw Opstarten</value>
@@ -1051,8 +1087,14 @@ Voor het wisselen van modi is mogelijk opnieuw opstarten vereist.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Zelfs als je niet kunt doneren, gebruik het gewoon gebruiken, delen en staren van het project op GitHub gaat heel ver. Elke vorm van ondersteuning wordt echt gewaardeerd.</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Verantwoordelijk voor kernfuncties ontwikkeling, kwaliteitsgarantie, UI/UX ontwerp en de algemene projectrichting als de huidige projectleiding.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Kernontwikkelaar &amp; projectleider</value>
@@ -1218,6 +1260,9 @@ Bedankt voor uw steun!</value>
   <data name="FanCurveControl_GPU2" xml:space="preserve">
     <value>Videokaart #2</value>
   </data>
+  <data name="FanCurveControl_SystemFan" xml:space="preserve">
+    <value>System</value>
+  </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
     <value>Stel ventilator in op maximale snelheid.</value>
   </data>
@@ -1275,6 +1320,9 @@ Sommige laptops accepteren hogere waarden dan aangegeven. Deze optie kan onvoors
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Maximale compensatie</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Tooltip" xml:space="preserve">
+    <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
     <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
@@ -1594,6 +1642,12 @@ Klik Ja om het uit te schakelen en nee om het te negeren.</value>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Toetsenbordverlichting</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app is running</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Toetsenbordverlichting kan hier niet worden beheerd wanneer Lenovo Vantage of zijn services actief zijn.</value>
   </data>
@@ -1798,6 +1852,9 @@ Klik Ja om het uit te schakelen en nee om het te negeren.</value>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>Geen updates gevonden</value>
   </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
+  </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Lenovo Space wordt op de achtergrond uitgevoerd.</value>
   </data>
@@ -1836,6 +1893,9 @@ Klik Ja om het uit te schakelen en nee om het te negeren.</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>Update {0} is beschikbaar!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Niet meer tonen.</value>
@@ -2519,6 +2579,15 @@ Zorg er altijd voor dat u de juiste pakketten installeert.</value>
   <data name="PortsBacklightControl_Title" xml:space="preserve">
     <value>Achtergrondverlichting van de poorten</value>
   </data>
+  <data name="PowerButtonLed_Brightness" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="PowerButtonLed_Message" xml:space="preserve">
+    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
+  </data>
+  <data name="PowerButtonLed_Title" xml:space="preserve">
+    <value>Power Button Light</value>
+  </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>Uitgeschakeld</value>
   </data>
@@ -2574,6 +2643,12 @@ U kunt van modus wisselen met Fn+Q.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Verversingssnelheid</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Dynamic refresh rate</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>Wijzig de verversingssnelheid van het ingebouwde beeldscherm.</value>
@@ -2856,6 +2931,9 @@ U kunt van modus wisselen met Fn+Q.</value>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
     <value>RAM</value>
   </data>
+  <data name="SensorsControl_MOBO_Title" xml:space="preserve">
+    <value>MOBO</value>
+  </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
     <value>Interval vernieuwen</value>
   </data>
@@ -2876,6 +2954,12 @@ U kunt van modus wisselen met Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU Frequentie</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2900,6 +2984,18 @@ U kunt van modus wisselen met Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>Gewenste GPU</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Gebruikt/Totaal Geheugen (GB)</value>
@@ -3075,6 +3171,9 @@ U kunt van modus wisselen met Fn+Q.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Selecteer een achtergrondsafbeelding</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable everything, some items may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space is mogelijk niet correct uitgeschakeld</value>
   </data>
@@ -3188,6 +3287,9 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Automatisch (Laat Windows beslissen)</value>
   </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
+  </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Hoge prestaties (dGPU)</value>
   </data>
@@ -3214,6 +3316,12 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Taal</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Vergrendel LLT's venstergrootte. Om te voorkomen dat iets verandert.</value>
@@ -3277,6 +3385,12 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Herstart om de wijzigingen toe te passen.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Automatically restore the last ITS mode when the app starts.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restore ITS Mode on Startup</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Execute C# scripts in the application runtime.</value>
@@ -3401,6 +3515,9 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Settings applied successfully.</value>
   </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
+  </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Wanneer gedempt, zullen alle actieve audio-uitvoerapparaten worden gedempt.</value>
   </data>
@@ -3443,8 +3560,14 @@ Een herstart wordt aanbevolen na het wijzigen van deze optie.</value>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
     <value>Toon {0} verborgen sleutels</value>
   </data>
+  <data name="SpecialKey_ConsumerSuffix" xml:space="preserve">
+    <value>(HID)</value>
+  </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
     <value>(Bestuurder)</value>
+  </data>
+  <data name="SpecialKey_KeyboardSuffix" xml:space="preserve">
+    <value>(Key)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>Sleutel {0}</value>

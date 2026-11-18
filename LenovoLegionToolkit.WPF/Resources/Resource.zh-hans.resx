@@ -790,6 +790,21 @@
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limit the charging range to extend the battery lifespan.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Charge Threshold</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>清除</value>
   </data>
@@ -1011,6 +1026,12 @@
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>正在使用显卡的进程</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>自动 (动态)</value>
   </data>
@@ -1022,6 +1043,21 @@
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>性能状态控制</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
+    <value>Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateRatedTdp" xml:space="preserve">
+    <value>P0 TDP</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>重启显卡</value>
@@ -1053,8 +1089,14 @@
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>即使您不能捐赠，只需使用 GitHub 上的项目，分享和启动项目也是很长的路程。每一点支持都是真正感激的。</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>负责核心功能开发、质量保证、UI/UX设计以及目前项目牵头的总体项目方向。</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>核心开发者 &amp; 项目负责人</value>
@@ -1220,6 +1262,9 @@
   <data name="FanCurveControl_GPU2" xml:space="preserve">
     <value>显卡 #2</value>
   </data>
+  <data name="FanCurveControl_SystemFan" xml:space="preserve">
+    <value>System</value>
+  </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
     <value>设置风扇为最大转速</value>
   </data>
@@ -1279,6 +1324,9 @@
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>最大功耗限制偏移量</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Tooltip" xml:space="preserve">
+    <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
     <value>设置高于硬件安全限制的偏移可能会影响系统稳定性，或导致设置被恢复。</value>
@@ -1602,6 +1650,12 @@
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>键盘背光</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app is running</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>由于 Lenovo Vantage 或其服务正在运行导致冲突，无法在此控制键盘背光。</value>
   </data>
@@ -1806,6 +1860,9 @@
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>未发现更新</value>
   </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
+  </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space 正在后台运行</value>
   </data>
@@ -1844,6 +1901,9 @@
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>发现新版本 {0}！</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>不再显示</value>
@@ -2529,6 +2589,15 @@
   <data name="PortsBacklightControl_Title" xml:space="preserve">
     <value>接口指示灯</value>
   </data>
+  <data name="PowerButtonLed_Brightness" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="PowerButtonLed_Message" xml:space="preserve">
+    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
+  </data>
+  <data name="PowerButtonLed_Title" xml:space="preserve">
+    <value>Power Button Light</value>
+  </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>关闭</value>
   </data>
@@ -2584,6 +2653,12 @@
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>刷新率</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Dynamic refresh rate</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>调整刷新率，平衡画面流畅度与电池续航。</value>
@@ -2864,6 +2939,9 @@
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
     <value>内存</value>
   </data>
+  <data name="SensorsControl_MOBO_Title" xml:space="preserve">
+    <value>MOBO</value>
+  </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
     <value>刷新频率</value>
   </data>
@@ -2884,6 +2962,12 @@
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU 频率</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>独立显卡</value>
@@ -2908,6 +2992,18 @@
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>首选显卡</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>已使用/总内存 (GB)</value>
@@ -3084,6 +3180,9 @@
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>背景图片</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable everything, some items may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space 可能未被正确禁用</value>
   </data>
@@ -3197,6 +3296,9 @@
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>自动（Windows 决定）</value>
   </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
+  </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>高性能 （独立显卡）</value>
   </data>
@@ -3223,6 +3325,12 @@
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>语言</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>防止窗口大小被调整。</value>
@@ -3286,6 +3394,12 @@
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>重启以查看改动</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Automatically restore the last ITS mode when the app starts.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restore ITS Mode on Startup</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>在应用程序运行时执行 C# 脚本。</value>
@@ -3410,6 +3524,9 @@
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>成功应用配置。</value>
   </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
+  </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>静音此项将静音所有可用的音频输出设备。</value>
   </data>
@@ -3452,8 +3569,14 @@
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
     <value>显示 {0} 个隐藏键</value>
   </data>
+  <data name="SpecialKey_ConsumerSuffix" xml:space="preserve">
+    <value>(HID)</value>
+  </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
     <value>(驱动)</value>
+  </data>
+  <data name="SpecialKey_KeyboardSuffix" xml:space="preserve">
+    <value>(Key)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>键 {0}</value>

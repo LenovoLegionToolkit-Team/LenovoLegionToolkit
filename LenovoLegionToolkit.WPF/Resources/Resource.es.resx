@@ -789,6 +789,21 @@ Esta hora puede no ser correcta si el portátil se ha cargado mientras estaba su
   <data name="Celsius" xml:space="preserve">
     <value>ºC</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limit the charging range to extend the battery lifespan.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Charge Threshold</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Borrar</value>
   </data>
@@ -1009,6 +1024,12 @@ El cambio de modo puede requerir un reinicio.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>Procesos</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Automático (dinámico)</value>
   </data>
@@ -1020,6 +1041,21 @@ El cambio de modo puede requerir un reinicio.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>Control del P-State</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
+    <value>Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateRatedTdp" xml:space="preserve">
+    <value>P0 TDP</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>Reiniciar la GPU</value>
@@ -1051,8 +1087,14 @@ El cambio de modo puede requerir un reinicio.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Incluso si usted no puede donar, simplemente usando, compartiendo y destacando el proyecto en GitHub va muy lejos. Cada pedazo de apoyo es realmente apreciado</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Responsable del desarrollo central de características, garantía de calidad, diseño de UI/UX y dirección general del proyecto como líder actual.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Desarrollador del núcleo y líder del proyecto</value>
@@ -1220,6 +1262,9 @@ El sistema alternará automáticamente entre ellas, en función de sus necesidad
   <data name="FanCurveControl_GPU2" xml:space="preserve">
     <value>GPU #2</value>
   </data>
+  <data name="FanCurveControl_SystemFan" xml:space="preserve">
+    <value>System</value>
+  </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
     <value>Establecer el ventilador a la velocidad máxima.</value>
   </data>
@@ -1277,6 +1322,9 @@ Algunos portátiles pueden aceptar valores más altos de los indicados, pero ten
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Compensación máxima</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Tooltip" xml:space="preserve">
+    <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
     <value>Establecer desviaciones superiores a los límites de seguridad del hardware puede provocar inestabilidad en el sistema o que los ajustes se restablezcan a sus valores originales.</value>
@@ -1597,6 +1645,12 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Retroiluminación del teclado</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app is running</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>La retroiluminación del teclado no puede ser controlada aquí, si Lenovo Vantage o sus servicios están funcionando.</value>
   </data>
@@ -1801,6 +1855,9 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>Ninguna actualización disponible</value>
   </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
+  </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space se está ejecutando en segundo plano.</value>
   </data>
@@ -1839,6 +1896,9 @@ Haga clic en Sí para deshabilitarla y en No para ignorarla.</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>¡Actualización {0} disponible!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>No mostrar de nuevo.</value>
@@ -2522,6 +2582,15 @@ Asegúrese de instalar siempre los paquetes correctos.</value>
   <data name="PortsBacklightControl_Title" xml:space="preserve">
     <value>Retroiluminación de puertos</value>
   </data>
+  <data name="PowerButtonLed_Brightness" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="PowerButtonLed_Message" xml:space="preserve">
+    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
+  </data>
+  <data name="PowerButtonLed_Title" xml:space="preserve">
+    <value>Power Button Light</value>
+  </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>Desactivado</value>
   </data>
@@ -2577,6 +2646,12 @@ Puede cambiar de modo con Fn+Q.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Tasa de refresco</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Dynamic refresh rate</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>Cambiar la tasa de refresco de la pantalla integrada.</value>
@@ -2858,6 +2933,9 @@ Puede cambiar de modo con Fn+Q.</value>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
     <value>RAM</value>
   </data>
+  <data name="SensorsControl_MOBO_Title" xml:space="preserve">
+    <value>MOBO</value>
+  </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
     <value>Intervalo de actualización</value>
   </data>
@@ -2878,6 +2956,12 @@ Puede cambiar de modo con Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>Frecuencia de la CPU</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2902,6 +2986,18 @@ Puede cambiar de modo con Fn+Q.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU preferida</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Memoria Usada/Total (GB)</value>
@@ -3077,6 +3173,9 @@ Puede cambiar de modo con Fn+Q.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Imagen de fondo personalizada</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable everything, some items may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Es posible que Legion Space no se haya desactivado correctamente</value>
   </data>
@@ -3190,6 +3289,9 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Automático (dejar que Windows decida)</value>
   </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
+  </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Alto rendimiento (dGPU)</value>
   </data>
@@ -3216,6 +3318,12 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Idioma</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Bloquea el tamaño de la ventana de LTT. Para así evitar que algo lo modifique.</value>
@@ -3279,6 +3387,12 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Reinicie para aplicar los cambios.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Automatically restore the last ITS mode when the app starts.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restore ITS Mode on Startup</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Ejecutar scripts de C# en el entorno de ejecución de la aplicación.</value>
@@ -3403,6 +3517,9 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Configuración aplicada con éxito.</value>
   </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
+  </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Al silenciar, se silenciarán todos los dispositivos de salida de audio activos.</value>
   </data>
@@ -3445,8 +3562,14 @@ Se recomienda reiniciar después de cambiar esta opción.</value>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
     <value>Mostrar teclas ocultas {0}</value>
   </data>
+  <data name="SpecialKey_ConsumerSuffix" xml:space="preserve">
+    <value>(HID)</value>
+  </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
     <value>(Driver)</value>
+  </data>
+  <data name="SpecialKey_KeyboardSuffix" xml:space="preserve">
+    <value>(Key)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>Llave {0}</value>

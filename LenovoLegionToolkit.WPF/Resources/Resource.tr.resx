@@ -789,6 +789,21 @@ Dizüstü bilgisayar uyurken veya kapalıyken şarj edildiyse bu süre doğru ol
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limit the charging range to extend the battery lifespan.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Charge Threshold</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>Temizle</value>
   </data>
@@ -1009,6 +1024,12 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>İşlemler</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Otomatik (Dinamik)</value>
   </data>
@@ -1020,6 +1041,21 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>P-State Kontrolü</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
+    <value>Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateRatedTdp" xml:space="preserve">
+    <value>P0 TDP</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>GPU'yu yeniden başlat</value>
@@ -1051,8 +1087,14 @@ Bu modları değiştirmek yeniden başlatma gerektirebilir.</value>
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>Bağış yapamasanız bile, GitHub'da bu projeyi kullanmak, paylaşmak ve yıldızlamak bile büyük bir katkı sağlar. Her türlü desteğiniz için içtenlikle teşekkür ederiz</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Mevcut proje lideri olarak temel özelliklerin geliştirilmesinden, kalite güvencesinden, UI/UX tasarımından ve projenin genel yönlendirilmesinden sorumlu.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Ana Geliştirici ve Proje Lideri</value>
@@ -1218,6 +1260,9 @@ Desteğiniz için teşekkür ederiz!</value>
   <data name="FanCurveControl_GPU2" xml:space="preserve">
     <value>GPU #2</value>
   </data>
+  <data name="FanCurveControl_SystemFan" xml:space="preserve">
+    <value>System</value>
+  </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
     <value>Fanı maksimum hıza ayarla.</value>
   </data>
@@ -1275,6 +1320,9 @@ Bazı bilgisayarlar, belirtilenden daha yüksek değerleri kabul edebilir, ancak
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>Maksimum ofset</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Tooltip" xml:space="preserve">
+    <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
     <value>Donanım güvenlik sınırlarından daha yüksek ofset değerleri ayarlanması, sistemde kararsızlığa yol açabilir veya ayarların geri dönmesine neden olabilir.</value>
@@ -1595,6 +1643,12 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>Klavye Işığı</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app is running</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>Lenovo Vantage veya servisleri çalışırken klavye ışığı burada kontrol edilemez.</value>
   </data>
@@ -1799,6 +1853,9 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>Güncelleme bulunamadı</value>
   </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
+  </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space arka planda çalışıyor.</value>
   </data>
@@ -1837,6 +1894,9 @@ Devre dışı bırakmak için Evet'i, yok saymak için Hayır'ı tıklayın.</va
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>{0} Güncelleme mevcut!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Bir daha gösterme.</value>
@@ -2520,6 +2580,15 @@ Daima doğru paketleri kurduğunuzdan emin olun.</value>
   <data name="PortsBacklightControl_Title" xml:space="preserve">
     <value>Port ışıkları</value>
   </data>
+  <data name="PowerButtonLed_Brightness" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="PowerButtonLed_Message" xml:space="preserve">
+    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
+  </data>
+  <data name="PowerButtonLed_Title" xml:space="preserve">
+    <value>Power Button Light</value>
+  </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>Güç Kapatıldı</value>
   </data>
@@ -2575,6 +2644,12 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value>Yenileme hızı</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Dynamic refresh rate</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>Yerleşik ekranın yenileme hızını değiştirin.</value>
@@ -2856,6 +2931,9 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
     <value>RAM</value>
   </data>
+  <data name="SensorsControl_MOBO_Title" xml:space="preserve">
+    <value>MOBO</value>
+  </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
     <value>Yenileme Aralığı</value>
   </data>
@@ -2876,6 +2954,12 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>CPU Frekansı</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2900,6 +2984,18 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>Tercih Edilen GPU</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Kullanılan/Toplam Bellek (GB)</value>
@@ -3075,6 +3171,9 @@ Fn+Q ile modu değiştirebilirsiniz.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Özel Arkaplan Resmi</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable everything, some items may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space düzgün bir şekilde devre dışı bırakılmamış olabilir</value>
   </data>
@@ -3188,6 +3287,9 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>Otomatik (Windows'un karar vermesine izin ver)</value>
   </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
+  </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Yüksek performans (dGPU)</value>
   </data>
@@ -3214,6 +3316,12 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>Dil</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>LLT penceresinin boyutunu kilitleyerek değiştirilmesini önleyin.</value>
@@ -3277,6 +3385,12 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>Değişiklikleri uygulamak için yeniden başlatın.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Automatically restore the last ITS mode when the app starts.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restore ITS Mode on Startup</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Uygulama çalışma ortamında C# komut dosyalarını çalıştır.</value>
@@ -3401,6 +3515,9 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>Ayarlar başarıyla uygulandı.</value>
   </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
+  </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Sessize alındığında tüm aktif ses çıkış cihazlarının sesi kapatılacaktır.</value>
   </data>
@@ -3443,8 +3560,14 @@ Bu seçeneği değiştirdikten sonra yeniden başlatma önerilir.</value>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
     <value>{0} gizli anahtarı göster</value>
   </data>
+  <data name="SpecialKey_ConsumerSuffix" xml:space="preserve">
+    <value>(HID)</value>
+  </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
     <value>(Sürücü)</value>
+  </data>
+  <data name="SpecialKey_KeyboardSuffix" xml:space="preserve">
+    <value>(Key)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>{0} anahtarı</value>

@@ -788,6 +788,21 @@
   <data name="Celsius" xml:space="preserve">
     <value>°C</value>
   </data>
+  <data name="ChargeThresholdControl_Message" xml:space="preserve">
+    <value>Limit the charging range to extend the battery lifespan.</value>
+  </data>
+  <data name="ChargeThresholdControl_Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="ChargeThresholdControl_Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="ChargeThresholdControl_Title" xml:space="preserve">
+    <value>Charge Threshold</value>
+  </data>
+  <data name="ChargeThresholdControl_Warning" xml:space="preserve">
+    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+  </data>
   <data name="Clear" xml:space="preserve">
     <value>مسح</value>
   </data>
@@ -1008,6 +1023,12 @@
   <data name="DiscreteGPUControl_Processes" xml:space="preserve">
     <value>العمليات</value>
   </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
+    <value>The discrete GPU did not accept the selected performance state.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
+    <value>P-State not applied</value>
+  </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>تلقائي (ديناميكي)</value>
   </data>
@@ -1019,6 +1040,21 @@
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>P-State Control</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
+    <value>Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin.</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMax" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinMin" xml:space="preserve">
+    <value>Min</value>
+  </data>
+  <data name="DiscreteGPUControl_PStatePinNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="DiscreteGPUControl_PStateRatedTdp" xml:space="preserve">
+    <value>P0 TDP</value>
   </data>
   <data name="DiscreteGPUControl_RestartGPU" xml:space="preserve">
     <value>أعادة تشغيل كرت الشاشة</value>
@@ -1050,8 +1086,14 @@
   <data name="DonatePage_BottomMessage" xml:space="preserve">
     <value>حتى لو كنت لا تستطيع التبرع ، ببساطة إستخدام، مشاركة، وبدء المشروع على GitHub يذهب إلى طريق طويل. كل جزء من الدعم يحظى بتقدير حقيقي</value>
   </data>
+  <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
+    <value>Buy Me a Coffee</value>
+  </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>مسؤول عن تطوير المعالم الأساسية، وضمان الجودة، وتصميم UI/UX، والتوجيه العام للمشروع بوصفه الرائد الحالي للمشروع.</value>
+  </data>
+  <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
+    <value>GitHub Sponsors</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>المطور الأساسي و رائد المشروع</value>
@@ -1217,6 +1259,9 @@ Thank you for your support!</value>
   <data name="FanCurveControl_GPU2" xml:space="preserve">
     <value>GPU #2</value>
   </data>
+  <data name="FanCurveControl_SystemFan" xml:space="preserve">
+    <value>System</value>
+  </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
     <value>تعيين المعجبين إلى أقصى سرعة.</value>
   </data>
@@ -1274,6 +1319,9 @@ Some laptops may accept higher values than they indicate, but be careful. This o
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Title" xml:space="preserve">
     <value>الحد الأقصى للإزاحة</value>
+  </data>
+  <data name="GodModeSettingsWindow_Advanced_MaxOffset_Tooltip" xml:space="preserve">
+    <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
     <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
@@ -1594,6 +1642,12 @@ Click Yes to disable and No to ignore.</value>
   <data name="KeyboardBacklightPage_Title" xml:space="preserve">
     <value>الإضاءة الخلفية للوحة المفاتيح</value>
   </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
+    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+  </data>
+  <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
+    <value>Another Lenovo app is running</value>
+  </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
     <value>لا يمكن التحكم في الإضاءة الخلفية لوحة المفاتيح هنا عندما يكون Lenovo Vantage أو خدماتها قيد التشغيل.</value>
   </data>
@@ -1798,6 +1852,9 @@ Click Yes to disable and No to ignore.</value>
   <data name="MainWindow_CheckForUpdates_Success_Title" xml:space="preserve">
     <value>لم يتم العثور على تحديثات</value>
   </data>
+  <data name="MainWindow_FnKeysRunning" xml:space="preserve">
+    <value>Lenovo Hotkeys is running in the background.</value>
+  </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>فضاء الفيلق يعمل في الخلفية.</value>
   </data>
@@ -1836,6 +1893,9 @@ Click Yes to disable and No to ignore.</value>
   </data>
   <data name="MainWindow_UpdateAvailableWithVersion" xml:space="preserve">
     <value>يتوفر {0} تحديث!</value>
+  </data>
+  <data name="MainWindow_VantageRunning" xml:space="preserve">
+    <value>Lenovo Vantage and/or ImController is running in the background.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>لا تظهر مرة أخرى.</value>
@@ -2519,6 +2579,15 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="PortsBacklightControl_Title" xml:space="preserve">
     <value>الإضاءة الخلفية للموانئ</value>
   </data>
+  <data name="PowerButtonLed_Brightness" xml:space="preserve">
+    <value>Brightness</value>
+  </data>
+  <data name="PowerButtonLed_Message" xml:space="preserve">
+    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
+  </data>
+  <data name="PowerButtonLed_Title" xml:space="preserve">
+    <value>Power Button Light</value>
+  </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>مغلق</value>
   </data>
@@ -2574,6 +2643,12 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="RefreshRateAutomationStepControl_Title" xml:space="preserve">
     <value> معدل التحديث</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
+    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+  </data>
+  <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
+    <value>Dynamic refresh rate</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>تغيير معدل التحديث للشاشة المدمجة.</value>
@@ -2855,6 +2930,9 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SensorsControl_Memory_Title" xml:space="preserve">
     <value>الذاكرة</value>
   </data>
+  <data name="SensorsControl_MOBO_Title" xml:space="preserve">
+    <value>MOBO</value>
+  </data>
   <data name="SensorsControl_RefreshInterval" xml:space="preserve">
     <value>الفاصل الزمني للتحديث</value>
   </data>
@@ -2875,6 +2953,12 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Frequency_Title" xml:space="preserve">
     <value>تردد المعالج</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
+    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+  </data>
+  <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
+    <value>CPU Temperature Source</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2899,6 +2983,18 @@ Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="SensorSettingsPage_Preferred_GPU_Title" xml:space="preserve">
     <value>GPU المفضل</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
+    <value>Auto</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
+    <value>Core Max</value>
+  </data>
+  <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
+    <value>Package</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>الذاكرة المستخدمة/الإجمالية (GB)</value>
@@ -3074,6 +3170,9 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="SettingsPage_Custom_BackgroundImage_Title" xml:space="preserve">
     <value>Custom Background Image</value>
   </data>
+  <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
+    <value>Couldn't fully disable everything, some items may still be running</value>
+  </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>ربما لم يتم تعطيل فضاء الفيلق بشكل صحيح</value>
   </data>
@@ -3187,6 +3286,9 @@ Restart is recommended after changing this option.</value>
   <data name="SettingsPage_HWA_GPUPreference_Auto" xml:space="preserve">
     <value>تلقائي (دع ويندوز يقرر)</value>
   </data>
+  <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
+    <value>Could not apply the GPU preference.</value>
+  </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>أداء عالي (DGPU)</value>
   </data>
@@ -3213,6 +3315,12 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_Language_Title" xml:space="preserve">
     <value>اللغة</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
+    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+  </data>
+  <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
+    <value>Lenovo Hotkeys is running</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Lock LLT's window size. To prevent something change it.</value>
@@ -3276,6 +3384,12 @@ Restart is recommended after changing this option.</value>
   </data>
   <data name="SettingsPage_RestartRequired_Message" xml:space="preserve">
     <value>إعادة التشغيل لتطبيق التغييرات.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
+    <value>Automatically restore the last ITS mode when the app starts.</value>
+  </data>
+  <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
+    <value>Restore ITS Mode on Startup</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Execute C# scripts in the application runtime.</value>
@@ -3400,6 +3514,9 @@ Restart is recommended after changing this option.</value>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
     <value>تم تطبيق الإعدادات بنجاح.</value>
   </data>
+  <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
+    <value>Settings were saved but not applied to the GPU.</value>
+  </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>عند كتم، سيتم كتم جميع أجهزة إخراج الصوت النشطة.</value>
   </data>
@@ -3442,8 +3559,14 @@ Restart is recommended after changing this option.</value>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
     <value>إظهار المفاتيح المخفية {0}</value>
   </data>
+  <data name="SpecialKey_ConsumerSuffix" xml:space="preserve">
+    <value>(HID)</value>
+  </data>
   <data name="SpecialKey_DriverSuffix" xml:space="preserve">
     <value>(سائق)</value>
+  </data>
+  <data name="SpecialKey_KeyboardSuffix" xml:space="preserve">
+    <value>(Key)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>المفتاح {0}</value>
