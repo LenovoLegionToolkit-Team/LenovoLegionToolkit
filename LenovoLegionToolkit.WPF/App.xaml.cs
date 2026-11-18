@@ -37,6 +37,7 @@ using LenovoLegionToolkit.WPF.CLI;
 using LenovoLegionToolkit.WPF.Controls.Custom;
 using LenovoLegionToolkit.WPF.Extensions;
 using LenovoLegionToolkit.WPF.Resources;
+using LenovoLegionToolkit.WPF.Settings;
 using LenovoLegionToolkit.WPF.Station.Core;
 using LenovoLegionToolkit.WPF.Utils;
 using LenovoLegionToolkit.WPF.Windows;
@@ -881,7 +882,14 @@ public partial class App
 
     private static async Task<bool> InitSensorsControllerAsync()
     {
-        await IoCContainer.Resolve<SensorsController>().IsSupportedAsync().ConfigureAwait(false);
+        var controller = IoCContainer.Resolve<SensorsGroupController>();
+        var settings = IoCContainer.Resolve<HardwareSensorSettings>().Store;
+
+        controller.CpuTemperatureSource = settings.CpuTemperatureSource;
+        controller.CpuVoltageMode = settings.CpuVoltageMode;
+        controller.CpuVoltageCoreIndex = settings.CpuVoltageCoreIndex;
+
+        await controller.IsSupportedAsync().ConfigureAwait(false);
         return true;
     }
 
