@@ -475,7 +475,6 @@ public class SensorsGroupController : IDisposable
                         }
 
                         var settings = _settings.Store;
-                        // Read from providers — each populates provider.Values
                         if (_cpuProvider.IsAvailable && Includes(scope, HardwareUpdateScope.Cpu))
                         {
                             _cpuProvider.Read(settings);
@@ -513,7 +512,6 @@ public class SensorsGroupController : IDisposable
                         if (Includes(scope, HardwareUpdateScope.Storage))
                             _storageProvider.Read();
 
-                        // Merge all provider values into a single snapshot
                         var snap = new HardwareSensorSnapshot { GpuName = gpuName };
                         snap = snap.WithValues(_cpuProvider.Values);
                         snap = snap.WithValues(gpuValues);

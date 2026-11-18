@@ -1,6 +1,6 @@
 namespace LenovoLegionToolkit.Lib.Settings;
 
-public sealed class HardwareSensorSettings : AbstractSettings<HardwareSensorSettings.HardwareSensorSettingsStore>
+public sealed class HardwareSensorSettings() : AbstractSettings<HardwareSensorSettings.HardwareSensorSettingsStore>("hardware_sensors.json")
 {
     public sealed record HardwareSensorSettingsStore
     {
@@ -10,11 +10,6 @@ public sealed class HardwareSensorSettings : AbstractSettings<HardwareSensorSett
         public CpuVoltageMode CpuVoltageMode { get; init; }
         public int CpuVoltageCoreIndex { get; init; }
         public CpuTemperatureSource CpuTemperatureSource { get; init; }
-    }
-
-    public HardwareSensorSettings() : base("hardware_sensors.json")
-    {
-        Store = LoadStore() ?? Default;
     }
 
     public void Save(HardwareSensorSettingsStore settings)
