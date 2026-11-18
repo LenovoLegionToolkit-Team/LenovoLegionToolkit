@@ -7,7 +7,7 @@ public static class FanTableTypeResolver
 {
     public static FanTableType Resolve(byte fanId, byte sensorId, int smartFanVersion, MachineInformation mi)
     {
-        if (smartFanVersion <= 7)
+        if (smartFanVersion <= 7 || IsV3StyleModel(mi))
         {
             return (fanId, sensorId) switch
             {
@@ -15,17 +15,6 @@ public static class FanTableTypeResolver
                 (1, 1) => FanTableType.CPUSensor,
                 (2, 5) => FanTableType.GPU,
                 (3, 5) => FanTableType.GPU2,
-                _ => FanTableType.Unknown,
-            };
-        }
-
-        if (IsV3StyleModel(mi))
-        {
-            return (fanId, sensorId) switch
-            {
-                (1, 1) => FanTableType.CPU,
-                (2, 5) => FanTableType.GPU,
-                (1, 4) => FanTableType.SystemFan,
                 _ => FanTableType.Unknown,
             };
         }
