@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -462,7 +462,7 @@ Chỉ có các Hành động thỏa điều kiện hiện tại sẽ được ch
     <value>Danh sách trò chơi đã biết</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>Thủ công</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
     <value>Định cấu hình phương pháp phát hiện và loại trừ.</value>
@@ -790,19 +790,19 @@ Thời gian có thể không chính xác nếu laptop được sạc khi Ngủ h
     <value>°C</value>
   </data>
   <data name="ChargeThresholdControl_Message" xml:space="preserve">
-    <value>Limit the charging range to extend the battery lifespan.</value>
+    <value>Giới hạn phạm vi sạc để kéo dài tuổi thọ pin.</value>
   </data>
   <data name="ChargeThresholdControl_Start" xml:space="preserve">
-    <value>Start</value>
+    <value>Khởi chạy</value>
   </data>
   <data name="ChargeThresholdControl_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>Dừng</value>
   </data>
   <data name="ChargeThresholdControl_Title" xml:space="preserve">
-    <value>Charge Threshold</value>
+    <value>Ngưỡng sạc</value>
   </data>
   <data name="ChargeThresholdControl_Warning" xml:space="preserve">
-    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+    <value>Có hiệu lực sau khi tháo sạc pin và giảm xuống dưới giá trị dừng.</value>
   </data>
   <data name="Clear" xml:space="preserve">
     <value>Xóa</value>
@@ -1025,10 +1025,10 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Các tiến trình</value>
   </data>
   <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
-    <value>The discrete GPU did not accept the selected performance state.</value>
+    <value>GPU rời không chấp nhận trạng thái hiệu năng đã chọn.</value>
   </data>
   <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
-    <value>P-State not applied</value>
+    <value>P-State không được áp dụng</value>
   </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>Tự động (Động)</value>
@@ -1043,16 +1043,16 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Điều khiển P-State</value>
   </data>
   <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
-    <value>Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin.</value>
+    <value>Tối đa ghim đồng hồ cao nhất của trạng thái đã chọn, Tối thiểu ghim thấp nhất, và Không khóa trạng thái nếu không có chốt.</value>
   </data>
   <data name="DiscreteGPUControl_PStatePinMax" xml:space="preserve">
-    <value>Max</value>
+    <value>Tối đa</value>
   </data>
   <data name="DiscreteGPUControl_PStatePinMin" xml:space="preserve">
-    <value>Min</value>
+    <value>Tối thiểu</value>
   </data>
   <data name="DiscreteGPUControl_PStatePinNone" xml:space="preserve">
-    <value>None</value>
+    <value>Không có</value>
   </data>
   <data name="DiscreteGPUControl_PStateRatedTdp" xml:space="preserve">
     <value>P0 TDP</value>
@@ -1088,13 +1088,13 @@ Chuyển đổi giữa các chế độ có thể cần phải khởi động l�
     <value>Ngay cả khi bạn không thể quyên góp, chỉ cần sử dụng, chia sẻ và đóng vai chính cho dự án trên GitHub sẽ đi một chặng đường dài. Mọi sự hỗ trợ đều được đánh giá cao</value>
   </data>
   <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
-    <value>Buy Me a Coffee</value>
+    <value>Mua cho tôi cốc cà phê</value>
   </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>Chịu trách nhiệm phát triển tính năng cốt lõi, đảm bảo chất lượng, thiết kế UI/UX và định hướng dự án tổng thể với tư cách là người đứng đầu dự án hiện tại.</value>
   </data>
   <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
-    <value>GitHub Sponsors</value>
+    <value>Nhà tài trợ GitHub</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>Nhà phát triển cốt lõi &amp; Trưởng dự án</value>
@@ -1261,7 +1261,7 @@ Cảm ơn bạn đã ủng hộ!</value>
     <value>GPU #2</value>
   </data>
   <data name="FanCurveControl_SystemFan" xml:space="preserve">
-    <value>System</value>
+    <value>Hệ thống</value>
   </data>
   <data name="FanMaxSpeedAutomationStepControl_Message" xml:space="preserve">
     <value>Đặt quạt ở tốc độ tối đa.</value>
@@ -1322,7 +1322,7 @@ Một số laptop có thể nhận giá trị thấp hơn mức cho phép, nên 
     <value>Mức tăng tối đa</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Tooltip" xml:space="preserve">
-    <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
+    <value>Ở giá trị tối đa, dải công suất GPU mở rộng trên 255 W sẽ được mở khóa trên các GPU được hỗ trợ.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
     <value>Việc đặt độ lệch cao hơn giới hạn an toàn phần cứng có thể khiến hệ thống mất ổn định hoặc cài đặt bị hoàn nguyên.</value>
@@ -1645,16 +1645,16 @@ Chọn Có để tắt và Không để bỏ qua.</value>
     <value>Đèn nền bàn phím</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
-    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+    <value>Không thể điều khiển được đèn nền bàn phím trong khi một ứng dụng khác của Lenovo hoặc các dịch vụ của ứng dụng đó đang chạy.</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
-    <value>Another Lenovo app is running</value>
+    <value>Một ứng dụng khác của Lenovo đang chạy</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Đèn nền bàn phím không thể được tùy chỉnh nếu Lenovo Vantage hoặc các chương trình con của nó đang chạy.</value>
+    <value>Không thể điều khiển được đèn nền bàn phím trong khi Lenovo Vantage hoặc các dịch vụ của nó đang chạy.</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage hoặc các dịch vụ của nó đang chạy</value>
+    <value>Lenovo Vantage đang chạy</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>Thêm phím tuỳ chọn</value>
@@ -1672,7 +1672,7 @@ Chọn Có để tắt và Không để bỏ qua.</value>
     <value>Đang nghe các lần nhấn phím... Nhấn ESC để dừng.</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>Phím không xác định - có thể được thêm vào</value>
+    <value>Phím không xác định có thể được thêm vào</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Đèn viền đuôi máy</value>
@@ -1855,7 +1855,7 @@ Chọn Có để tắt và Không để bỏ qua.</value>
     <value>Không có bản cập nhật mới</value>
   </data>
   <data name="MainWindow_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
+    <value>Lenovo Hotkeys đang chạy ở chế độ nền.</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space đang chạy ngầm.</value>
@@ -1897,7 +1897,7 @@ Chọn Có để tắt và Không để bỏ qua.</value>
     <value>Bản cập nhật {0} đã có sẵn!</value>
   </data>
   <data name="MainWindow_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController is running in the background.</value>
+    <value>Lenovo Vantage và/hoặc ImController đang chạy ở chế độ nền.</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>Không hiển thị lại.</value>
@@ -2582,13 +2582,13 @@ Luôn kiểm tra rằng bạn cài đặt đúng các gói cài đặt mà bạn
     <value>Đèn I/O</value>
   </data>
   <data name="PowerButtonLed_Brightness" xml:space="preserve">
-    <value>Brightness</value>
+    <value>Độ sáng</value>
   </data>
   <data name="PowerButtonLed_Message" xml:space="preserve">
-    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
+    <value>Điều chỉnh độ sáng ánh sáng hoặc đồng bộ với đèn nền bàn phím.</value>
   </data>
   <data name="PowerButtonLed_Title" xml:space="preserve">
-    <value>Power Button Light</value>
+    <value>Đèn nút nguồn</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>Ngắt kích hoạt</value>
@@ -2647,10 +2647,10 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>Tần số quét</value>
   </data>
   <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
-    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+    <value>Điều chỉnh tốc độ làm mới lên đến tốc độ đã chọn để tiết kiệm năng lượng.</value>
   </data>
   <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
-    <value>Dynamic refresh rate</value>
+    <value>Tốc độ làm mới động</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>Thay đổi tần số quét màn hình laptop.</value>
@@ -2957,10 +2957,10 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>Xung nhịp CPU</value>
   </data>
   <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
-    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+    <value>Chọn cảm biến nhiệt độ CPU nào được hiển thị trên Bảng điều khiển và OSD.</value>
   </data>
   <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
-    <value>CPU Temperature Source</value>
+    <value>Nguồn nhiệt độ CPU</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2987,16 +2987,16 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>GPU ưa thích</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
-    <value>Auto</value>
+    <value>Tự động</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
-    <value>Average</value>
+    <value>Trung bình</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
-    <value>Core Max</value>
+    <value>Nhân tối đa</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
-    <value>Package</value>
+    <value>Gói</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>Đã sử dụng/Tổng bộ nhớ (GB)</value>
@@ -3173,7 +3173,7 @@ Bạn có thể chuyển đổi giữa các Chế độ với Fn+Q.</value>
     <value>Ảnh nền</value>
   </data>
   <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
-    <value>Couldn't fully disable everything, some items may still be running</value>
+    <value>Không thể tắt hoàn toàn mọi thứ, một số mục có thể vẫn đang chạy</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space có thể đã không được tắt đúng cách</value>
@@ -3189,7 +3189,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Tắt Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone có thể đã được ngắt kích hoạt không đúng</value>
+    <value>Legion Zone có thể đã không được tắt đúng cách</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Không thể ngắt kích hoạt Legion Zone</value>
@@ -3202,21 +3202,19 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Ngắt kích hoạt Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys có thể đã được ngắt kích hoạt không đúng</value>
+    <value>Lenovo Hotkeys có thể chưa được tắt đúng cách</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Không thể ngắt kích hoạt Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Ngắt kích hoạt Lenovo Hotkeys và các dịch vụ con mà không cần gỡ cài đặt.
-Nếu ngắt kích hoạt, Legion Toolkit sẽ xử lý các phím tắt Fn.
-Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
+    <value>Vô hiệu hóa Lenovo Hotkeys và dịch vụ của nó mà không cần gỡ cài đặt, thay vào đó, ứng dụng này sẽ xử lý các phím tắt Fn.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Ngắt kích hoạt Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage và/hoặc ImController đã không được ngắt đúng cách</value>
+    <value>Lenovo Vantage và/hoặc ImController có thể chưa được tắt đúng cách</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Không thể ngắt Lenovo Vantage và/hoặc ImController</value>
@@ -3235,16 +3233,16 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Không thể bật Legion Space</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone có thể đã được kích hoạt không đúng</value>
+    <value>Legion Zone có thể chưa được bật đúng cách</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Không thể kích hoạt Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys có thể đã được kích hoạt không đúng</value>
+    <value>Lenovo Hotkeys có thể chưa được bật đúng cách</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Không thể kích hoạt Lenovo Hotkeys</value>
+    <value>Không thể bật Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>Bật ghi nhật ký để gỡ lỗi.</value>
@@ -3253,7 +3251,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Bật ghi nhật ký</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage và/hoặc ImController có thể đã không được kích hoạt đúng cách</value>
+    <value>Lenovo Vantage và/hoặc ImController có thể chưa được bật đúng cách</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>Không thể kích hoạt Lenovo Vantage và/hoặc ImController</value>
@@ -3274,7 +3272,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Tăng tốc Phần cứng</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>Bật tăng tốc phần cứng có thể gây ra nhấp nháy hoặc nhấp nháy đen trên một số hệ thống đồ họa lai và có thể ngăn GPU rời bị tắt.</value>
+    <value>Việc bật tăng tốc phần cứng có thể ngăn việc tắt GPU rời.</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>Cho phép thăm dò phần cứng nâng cao để theo dõi nhiệt độ, tần số và giới hạn công suất chi tiết.</value>
@@ -3289,7 +3287,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Tự động (Để Windows tự chọn)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
-    <value>Could not apply the GPU preference.</value>
+    <value>Không thể áp dụng tùy chọn GPU.</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>Hiệu năng cao (GPU rời)</value>
@@ -3319,10 +3317,10 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Ngôn ngữ</value>
   </data>
   <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
-    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+    <value>Phím tắt Fn được xử lý bởi Lenovo Hotkeys nên Exclude Refresh Rates, Smart Keys và Key Discovery không có tác dụng khi máy đang chạy.</value>
   </data>
   <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
-    <value>Lenovo Hotkeys is running</value>
+    <value>Lenovo Hotkeys đang chạy</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Ngăn cửa sổ được thay đổi kích thước.</value>
@@ -3388,10 +3386,10 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Khởi động lại để áp dụng các thay đổi.</value>
   </data>
   <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
-    <value>Automatically restore the last ITS mode when the app starts.</value>
+    <value>Tự động khôi phục chế độ ITS đã đặt gần đây nhất khi mở ứng dụng.</value>
   </data>
   <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
-    <value>Restore ITS Mode on Startup</value>
+    <value>Khôi phục Chế độ ITS lúc khởi động</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>Thực thi các tập lệnh C# trong thời gian chạy ứng dụng.</value>
@@ -3517,7 +3515,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>Đã áp dụng cài đặt thành công.</value>
   </data>
   <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
-    <value>Settings were saved but not applied to the GPU.</value>
+    <value>Cài đặt đã được lưu nhưng không được áp dụng cho GPU.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>Khi tắt tiếng, tất cả các đầu ra âm thanh đang sử dụng cũng sẽ bị tắt.</value>
@@ -3568,7 +3566,7 @@ Nên khởi động lại sau khi thay đổi tùy chọn này.</value>
     <value>(Driver)</value>
   </data>
   <data name="SpecialKey_KeyboardSuffix" xml:space="preserve">
-    <value>(Key)</value>
+    <value>(Phím)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>Phím {0}</value>
