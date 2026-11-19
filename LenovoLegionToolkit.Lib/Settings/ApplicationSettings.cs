@@ -57,6 +57,7 @@ public class ApplicationSettings : AbstractSettings<ApplicationSettingsStore>
         public bool KeepDgpuAwake { get; set; }
         public int LockedPStateId { get; set; } = GPUController.AutoPStateId;
         public PStatePinMode PStatePinMode { get; set; } = PStatePinMode.Max;
+        public bool SupportIndicatorDismissed { get; set; }
 
     }
     public class GameDetectionSettings

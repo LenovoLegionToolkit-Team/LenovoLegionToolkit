@@ -5341,6 +5341,15 @@ namespace LenovoLegionToolkit.WPF.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Click to support ongoing development of Lenovo Legion Toolkit..
+        /// </summary>
+        public static string MainWindow_SupportIndicator {
+            get {
+                return ResourceManager.GetString("MainWindow_SupportIndicator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Update available!.
         /// </summary>
         public static string MainWindow_UpdateAvailable {

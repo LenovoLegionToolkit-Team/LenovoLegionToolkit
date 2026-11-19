@@ -24,10 +24,11 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
         <Rectangle
-            Grid.RowSpan="7"
+            Grid.RowSpan="8"
             IsHitTestVisible="False">
             <Rectangle.Fill>
                 <ImageBrush x:Name="_backgroundImage" />
@@ -39,7 +40,7 @@
 
         <Rectangle
             x:Name="_backgroundDimOverlay"
-            Grid.RowSpan="7"
+            Grid.RowSpan="8"
             Fill="{DynamicResource ApplicationBackgroundBrush}"
             IsHitTestVisible="False" />
 
@@ -292,6 +293,34 @@
                     Foreground="{DynamicResource TextFillColorPrimaryBrush}"
                     KeyDown="UpdateIndicator_KeyDown"
                     Text="{x:Static resources:Resource.MainWindow_UpdateAvailable}" />
+            </StackPanel>
+        </Border>
+
+        <Border
+            x:Name="_supportIndicator"
+            Grid.Row="7"
+            Padding="8,4,8,6"
+            Cursor="Hand"
+            MouseLeftButtonDown="SupportIndicator_MouseLeftButtonDown"
+            Visibility="Collapsed">
+            <Border.Background>
+                <SolidColorBrush Color="{DynamicResource SystemAccentColorSecondary}" Opacity="0.15" />
+            </Border.Background>
+            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                <wpfui:SymbolIcon
+                    Margin="0,0,4,0"
+                    Symbol="Heart24"
+                    VerticalAlignment="Center">
+                    <wpfui:SymbolIcon.Foreground>
+                        <SolidColorBrush Color="{DynamicResource SystemAccentColorSecondary}" />
+                    </wpfui:SymbolIcon.Foreground>
+                </wpfui:SymbolIcon>
+                <TextBlock
+                    Focusable="True"
+                    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
+                    KeyDown="SupportIndicator_KeyDown"
+                    Text="{x:Static resources:Resource.MainWindow_SupportIndicator}"
+                    VerticalAlignment="Center" />
             </StackPanel>
         </Border>
 

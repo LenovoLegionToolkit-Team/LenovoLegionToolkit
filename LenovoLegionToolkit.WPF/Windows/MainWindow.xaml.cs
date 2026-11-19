@@ -129,6 +129,7 @@ public partial class MainWindow
 
         LoadDeviceInfo();
         UpdateIndicators();
+        UpdateSupportIndicator();
         CheckForUpdates();
 
         InputBindings.Add(new KeyBinding(new ActionCommand(_navigationStore.NavigateToNext), Key.Tab, ModifierKeys.Control));
@@ -209,6 +210,7 @@ public partial class MainWindow
             _legionSpaceIndicator.Padding = new Thickness(4, 2, 4, 2);
             _fnKeysIndicator.Padding = new Thickness(4, 2, 4, 2);
             _updateIndicator.Padding = new Thickness(4, 2, 4, 2);
+            _supportIndicator.Padding = new Thickness(4, 2, 4, 2);
         }
     }
 
@@ -419,6 +421,32 @@ public partial class MainWindow
             return;
 
         ShowUpdateWindow();
+    }
+
+    private void UpdateSupportIndicator()
+    {
+        _supportIndicator.Visibility = !_applicationSettings.Store.SupportIndicatorDismissed
+            ? Visibility.Visible
+            : Visibility.Collapsed;
+    }
+
+    private void SupportIndicator_MouseLeftButtonDown(object sender, MouseButtonEventArgs e) => OpenDonatePage();
+
+    private void SupportIndicator_KeyDown(object sender, KeyEventArgs e)
+    {
+        if (e.Key is not Key.Enter and not Key.Space)
+            return;
+
+        OpenDonatePage();
+    }
+
+    private void OpenDonatePage()
+    {
+        _applicationSettings.Store.SupportIndicatorDismissed = true;
+        _applicationSettings.SynchronizeStore();
+        UpdateSupportIndicator();
+
+        _navigationStore.Navigate("donate");
     }
 
     private async void LoadDeviceInfo()
