@@ -166,7 +166,9 @@ public partial class SpectrumRGBKeyboard1ZoneControl
             [1],
             colorMode: LENOVO_SPECTRUM_COLOR_MODE.ColorList);
 
-        var effectType = effect.Type is SpectrumKeyboardBacklightEffectType.Always or SpectrumKeyboardBacklightEffectType.ColorPulse
+        var effectType = effect.Type is SpectrumKeyboardBacklightEffectType.Always
+            or SpectrumKeyboardBacklightEffectType.ColorPulse
+            or SpectrumKeyboardBacklightEffectType.RainbowWave
             ? effect.Type
             : SpectrumKeyboardBacklightEffectType.Always;
         var speed = effect.Speed is SpectrumKeyboardBacklightSpeed.Speed1 or SpectrumKeyboardBacklightSpeed.Speed2 or SpectrumKeyboardBacklightSpeed.Speed3
@@ -184,7 +186,11 @@ public partial class SpectrumRGBKeyboard1ZoneControl
         {
             _brightnessSlider.Value = Math.Clamp(brightness, 0, 9);
             _effectComboBox.SetItems(
-                [SpectrumKeyboardBacklightEffectType.Always, SpectrumKeyboardBacklightEffectType.ColorPulse],
+                [
+                    SpectrumKeyboardBacklightEffectType.Always,
+                    SpectrumKeyboardBacklightEffectType.ColorPulse,
+                    SpectrumKeyboardBacklightEffectType.RainbowWave
+                ],
                 effectType,
                 v => v.GetDisplayName());
             _speedComboBox.SetItems(
@@ -221,15 +227,17 @@ public partial class SpectrumRGBKeyboard1ZoneControl
         var effectType = _effectComboBox.TryGetSelectedItem(out SpectrumKeyboardBacklightEffectType selectedEffectType)
             ? selectedEffectType
             : SpectrumKeyboardBacklightEffectType.Always;
-        var speed = effectType == SpectrumKeyboardBacklightEffectType.ColorPulse
+        var speed = effectType is SpectrumKeyboardBacklightEffectType.ColorPulse or SpectrumKeyboardBacklightEffectType.RainbowWave
             && _speedComboBox.TryGetSelectedItem(out SpectrumKeyboardBacklightSpeed selectedSpeed)
                 ? selectedSpeed
-                : effectType == SpectrumKeyboardBacklightEffectType.ColorPulse
+                : effectType is SpectrumKeyboardBacklightEffectType.ColorPulse or SpectrumKeyboardBacklightEffectType.RainbowWave
                     ? SpectrumKeyboardBacklightSpeed.Speed2
                     : SpectrumKeyboardBacklightSpeed.None;
-        var colorMode = _colorModeComboBox.TryGetSelectedItem(out LENOVO_SPECTRUM_COLOR_MODE selectedColorMode)
-            ? selectedColorMode
-            : LENOVO_SPECTRUM_COLOR_MODE.ColorList;
+        var colorMode = !effectType.SupportsColorMode()
+            ? LENOVO_SPECTRUM_COLOR_MODE.None
+            : _colorModeComboBox.TryGetSelectedItem(out LENOVO_SPECTRUM_COLOR_MODE selectedColorMode)
+                ? selectedColorMode
+                : LENOVO_SPECTRUM_COLOR_MODE.ColorList;
         var effect = new SpectrumKeyboardBacklightEffect(
             effectType,
             speed,
@@ -247,7 +255,7 @@ public partial class SpectrumRGBKeyboard1ZoneControl
             ? selectedEffectType
             : SpectrumKeyboardBacklightEffectType.Always;
         var showColor = effectType is SpectrumKeyboardBacklightEffectType.Always or SpectrumKeyboardBacklightEffectType.ColorPulse;
-        var showSpeed = effectType == SpectrumKeyboardBacklightEffectType.ColorPulse;
+        var showSpeed = effectType is SpectrumKeyboardBacklightEffectType.ColorPulse or SpectrumKeyboardBacklightEffectType.RainbowWave;
         var showColorPicker = showColor
             && _colorModeComboBox.TryGetSelectedItem(out LENOVO_SPECTRUM_COLOR_MODE colorMode)
             && colorMode == LENOVO_SPECTRUM_COLOR_MODE.ColorList;
