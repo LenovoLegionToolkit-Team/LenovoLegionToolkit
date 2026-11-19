@@ -26,7 +26,7 @@ public class SensorsGroupController : IDisposable
     private const string UNKNOWN_NAME = "UNKNOWN";
     private const string HARDWARE_ID_NVIDIA_GPU = "NvidiaGPU";
 
-    private const string REGEX_STRIP_AMD = @"\s+with\s+Radeon\s+Graphics$";
+    private const string REGEX_STRIP_AMD = @"\s+(?:with|w/)\s+(?:Radeon|Vega)\b.*$";
     private const string REGEX_STRIP_INTEL = @"\s*\d+(?:th|st|nd|rd)?\s+Gen\b";
     private const string REGEX_STRIP_NVIDIA = @"(?i)\b(?:Nvidia\s+)?(GeForce\s+(?:RTX|GTX)\s+\d{3,4}(?:\s+(Ti|SUPER|Ti\s+SUPER|M))?)\b(?:\s+Laptop\s+GPU)?(?!\S)";
     private const string REGEX_CLEAN_SPACES = @"\s+";
