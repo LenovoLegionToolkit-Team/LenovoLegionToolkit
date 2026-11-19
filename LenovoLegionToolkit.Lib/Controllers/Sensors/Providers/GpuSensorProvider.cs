@@ -15,11 +15,11 @@ public partial class GpuSensorProvider : ISensorProvider
     private const float BYTES_PER_GB = 1024f * 1024f * 1024f;
     private const float MIN_ACTIVE_GPU_POWER = 10f;
 
-    private const string REGEX_AMD_GPU_INTEGRATED = @"AMD Radeon(?:\(TM\))?\s+\d+M";
+    private const string REGEX_AMD_GPU_INTEGRATED = @"AMD Radeon(?:\s*\(TM\))?\s*(?:\d+M\b|Graphics\b)";
 
     private const string INTEGRATED_IDENTIFIER = "integrated";
 
-    [GeneratedRegex(REGEX_AMD_GPU_INTEGRATED, RegexOptions.IgnoreCase, "zh-CN")]
+    [GeneratedRegex(REGEX_AMD_GPU_INTEGRATED, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant)]
     private static partial Regex IsAmdIGpu();
 
     private static readonly string[] TempFallback = ["Average", "GPU Core", "Junction", "Hot Spot", "Temperature"];
