@@ -7,11 +7,14 @@ public static partial class WMI
     public static class PowerButtonLed
     {
         private const int LightingId = 4;
+        private const int ControlInterface = 1;
+        private const int LightingType = 1;
 
         public static Task<int?> GetCapabilityAsync() =>
             LenovoCapabilityData00.GetCapabilityAsync((int)CapabilityID.PowerLedBrightness);
 
-        public static Task<bool> ExistsAsync() => LenovoLightingData.ExistsAsync(LightingId);
+        public static Task<bool> ExistsAsync() =>
+            LenovoLightingData.ExistsAsync(LightingId, ControlInterface, LightingType);
 
         public static Task<(int stateType, int level)> GetStatusAsync() =>
             LenovoLightingMethod.GetLightingCurrentStatusAsync(LightingId);
