@@ -45,87 +45,6 @@
 
         <WrapPanel Orientation="Horizontal">
 
-            <!--  Bartosz Cichecki  -->
-            <Border
-                Width="220"
-                Margin="0,0,16,16"
-                Style="{StaticResource DeveloperCardStyle}">
-                <Grid>
-                    <StackPanel Margin="20,20,20,16">
-                        <Ellipse
-                            Width="72"
-                            Height="72"
-                            Margin="0,0,0,12"
-                            HorizontalAlignment="Center"
-                            Stroke="{DynamicResource ControlElevationBorderBrush}"
-                            StrokeThickness="1">
-                            <Ellipse.Fill>
-                                <ImageBrush ImageSource="/Assets/Donate/Bartosz_Cichecki.jpg" Stretch="UniformToFill" />
-                            </Ellipse.Fill>
-                        </Ellipse>
-
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            FontSize="15"
-                            FontWeight="SemiBold"
-                            Text="Bartosz Cichecki"
-                            TextAlignment="Center"
-                            TextWrapping="Wrap" />
-
-                        <TextBlock
-                            Margin="0,4,0,12"
-                            HorizontalAlignment="Center"
-                            FontSize="11"
-                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                            Text="{x:Static resources:Resource.DonatePage_Bartosz_Role}"
-                            TextAlignment="Center"
-                            TextWrapping="Wrap" />
-
-                        <TextBlock
-                            Margin="0,0,0,16"
-                            FontSize="12"
-                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                            Text="{x:Static resources:Resource.DonatePage_Bartosz_Description}"
-                            TextAlignment="Center"
-                            TextWrapping="Wrap" />
-
-                        <wpfui:Button
-                            HorizontalAlignment="Center"
-                            Appearance="Primary"
-                            Click="BartoszPayPal_Click"
-                            Content="{x:Static resources:Resource.DonatePage_Sponsor}"
-                            Icon="Heart24" />
-                    </StackPanel>
-
-                    <!--  Inactive badge  -->
-                    <Border
-                        Margin="0,8,8,0"
-                        Padding="6,3,6,3"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Background="{DynamicResource SystemFillColorNeutralBackgroundBrush}"
-                        BorderBrush="{DynamicResource ControlElevationBorderBrush}"
-                        BorderThickness="1"
-                        CornerRadius="8">
-                        <StackPanel Orientation="Horizontal">
-                            <Ellipse
-                                Width="6"
-                                Height="6"
-                                Margin="0,0,4,0"
-                                VerticalAlignment="Center"
-                                Fill="{DynamicResource TextFillColorSecondaryBrush}" />
-                            <TextBlock
-                                MaxWidth="50"
-                                FontSize="10"
-                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
-                                Text="{x:Static resources:Resource.Inactive}"
-                                TextTrimming="CharacterEllipsis"
-                                ToolTip="{x:Static resources:Resource.Inactive}" />
-                        </StackPanel>
-                    </Border>
-                </Grid>
-            </Border>
-
             <!--  Kaguya  -->
             <Border
                 Width="220"
@@ -175,8 +94,7 @@
                             Appearance="Primary"
                             Click="Kaguya_Click"
                             Content="{x:Static resources:Resource.DonatePage_Sponsor}"
-                            Icon="Heart24"
-                            IsEnabled="True" />
+                            Icon="Heart24" />
                     </StackPanel>
 
                     <!--  Active badge  -->
@@ -300,6 +218,87 @@
                                 Text="{x:Static resources:Resource.Active}"
                                 TextTrimming="CharacterEllipsis"
                                 ToolTip="{x:Static resources:Resource.Active}" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Border>
+
+            <!--  Bartosz Cichecki  -->
+            <Border
+                Width="220"
+                Margin="0,0,16,16"
+                Style="{StaticResource DeveloperCardStyle}">
+                <Grid>
+                    <StackPanel Margin="20,20,20,16">
+                        <Ellipse
+                            Width="72"
+                            Height="72"
+                            Margin="0,0,0,12"
+                            HorizontalAlignment="Center"
+                            Stroke="{DynamicResource ControlElevationBorderBrush}"
+                            StrokeThickness="1">
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="/Assets/Donate/Bartosz_Cichecki.jpg" Stretch="UniformToFill" />
+                            </Ellipse.Fill>
+                        </Ellipse>
+
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontSize="15"
+                            FontWeight="SemiBold"
+                            Text="Bartosz Cichecki"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+
+                        <TextBlock
+                            Margin="0,4,0,12"
+                            HorizontalAlignment="Center"
+                            FontSize="11"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="{x:Static resources:Resource.DonatePage_Bartosz_Role}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+
+                        <TextBlock
+                            Margin="0,0,0,16"
+                            FontSize="12"
+                            Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                            Text="{x:Static resources:Resource.DonatePage_Bartosz_Description}"
+                            TextAlignment="Center"
+                            TextWrapping="Wrap" />
+
+                        <wpfui:Button
+                            HorizontalAlignment="Center"
+                            Appearance="Primary"
+                            Click="BartoszPayPal_Click"
+                            Content="{x:Static resources:Resource.DonatePage_Sponsor}"
+                            Icon="Heart24" />
+                    </StackPanel>
+
+                    <!--  Inactive badge  -->
+                    <Border
+                        Margin="0,8,8,0"
+                        Padding="6,3,6,3"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Background="{DynamicResource SystemFillColorNeutralBackgroundBrush}"
+                        BorderBrush="{DynamicResource ControlElevationBorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="8">
+                        <StackPanel Orientation="Horizontal">
+                            <Ellipse
+                                Width="6"
+                                Height="6"
+                                Margin="0,0,4,0"
+                                VerticalAlignment="Center"
+                                Fill="{DynamicResource TextFillColorSecondaryBrush}" />
+                            <TextBlock
+                                MaxWidth="50"
+                                FontSize="10"
+                                Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                Text="{x:Static resources:Resource.Inactive}"
+                                TextTrimming="CharacterEllipsis"
+                                ToolTip="{x:Static resources:Resource.Inactive}" />
                         </StackPanel>
                     </Border>
                 </Grid>
