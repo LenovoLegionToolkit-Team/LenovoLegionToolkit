@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -791,19 +791,19 @@
     <value>°C</value>
   </data>
   <data name="ChargeThresholdControl_Message" xml:space="preserve">
-    <value>Limit the charging range to extend the battery lifespan.</value>
+    <value>限制充电电量以延长电池寿命。</value>
   </data>
   <data name="ChargeThresholdControl_Start" xml:space="preserve">
-    <value>Start</value>
+    <value>开始</value>
   </data>
   <data name="ChargeThresholdControl_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>停止</value>
   </data>
   <data name="ChargeThresholdControl_Title" xml:space="preserve">
-    <value>Charge Threshold</value>
+    <value>充电阈值</value>
   </data>
   <data name="ChargeThresholdControl_Warning" xml:space="preserve">
-    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+    <value>在断开电源适配器且电量降至设定值以下后生效。</value>
   </data>
   <data name="Clear" xml:space="preserve">
     <value>清除</value>
@@ -1027,10 +1027,10 @@
     <value>正在使用显卡的进程</value>
   </data>
   <data name="DiscreteGPUControl_PStateApplyFailedMessage" xml:space="preserve">
-    <value>The discrete GPU did not accept the selected performance state.</value>
+    <value>独立显卡不支持指定的性能状态。</value>
   </data>
   <data name="DiscreteGPUControl_PStateApplyFailedTitle" xml:space="preserve">
-    <value>P-State not applied</value>
+    <value>性能状态未应用</value>
   </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
     <value>自动 (动态)</value>
@@ -1039,22 +1039,22 @@
     <value>锁定独立显卡为指定的性能状态。</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>防止频率下降并降低延迟，但是会增加待机功耗。</value>
+    <value>防止频率下降，但是会增加功耗。</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>性能状态控制</value>
   </data>
   <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
-    <value>Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin.</value>
+    <value>最大锁定当前性能状态下的最高频率，最小锁定当前性能状态下的最低频率，无锁定当前性能状态但不锁定频率。</value>
   </data>
   <data name="DiscreteGPUControl_PStatePinMax" xml:space="preserve">
-    <value>Max</value>
+    <value>最大</value>
   </data>
   <data name="DiscreteGPUControl_PStatePinMin" xml:space="preserve">
-    <value>Min</value>
+    <value>最小</value>
   </data>
   <data name="DiscreteGPUControl_PStatePinNone" xml:space="preserve">
-    <value>None</value>
+    <value>无</value>
   </data>
   <data name="DiscreteGPUControl_PStateRatedTdp" xml:space="preserve">
     <value>P0 TDP</value>
@@ -1090,13 +1090,13 @@
     <value>即使您不能捐赠，只需使用 GitHub 上的项目，分享和启动项目也是很长的路程。每一点支持都是真正感激的。</value>
   </data>
   <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
-    <value>Buy Me a Coffee</value>
+    <value>请我喝杯咖啡</value>
   </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>负责核心功能开发、质量保证、UI/UX设计以及目前项目牵头的总体项目方向。</value>
   </data>
   <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
-    <value>GitHub Sponsors</value>
+    <value>GitHub 赞助</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>核心开发者 &amp; 项目负责人</value>
@@ -1326,7 +1326,7 @@
     <value>最大功耗限制偏移量</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Tooltip" xml:space="preserve">
-    <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
+    <value>当设置为最大值时，支持的 GPU 将解锁超过 255 W 的扩展功耗上限调节范围。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
     <value>设置高于硬件安全限制的偏移可能会影响系统稳定性，或导致设置被恢复。</value>
@@ -1651,16 +1651,16 @@
     <value>键盘背光</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
-    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+    <value>由于另一个 Lenovo 应用或其服务正在运行导致冲突，无法控制键盘背光。</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
-    <value>Another Lenovo app is running</value>
+    <value>另一个 Lenovo 应用正在运行</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>由于 Lenovo Vantage 或其服务正在运行导致冲突，无法在此控制键盘背光。</value>
+    <value>由于 Lenovo Vantage 或其服务正在运行导致冲突，无法控制键盘背光。</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage 与之相关服务仍在运行</value>
+    <value>Lenovo Vantage 正在运行</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>添加为自定义热键</value>
@@ -1678,7 +1678,7 @@
     <value>正在监听按键 ... 按 ESC 停止。</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>未知按键 - 可以添加</value>
+    <value>可添加的未知按键</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>尾部氛围灯</value>
@@ -1861,7 +1861,7 @@
     <value>未发现更新</value>
   </data>
   <data name="MainWindow_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
+    <value>Lenovo Hotkeys 正在后台运行。</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>Legion Space 正在后台运行</value>
@@ -1903,7 +1903,7 @@
     <value>发现新版本 {0}！</value>
   </data>
   <data name="MainWindow_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController is running in the background.</value>
+    <value>Lenovo Vantage 和 / 或 ImController 正在后台运行。</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>不再显示</value>
@@ -2166,10 +2166,10 @@
     <value>PawnIO 驱动程序未运行</value>
   </data>
   <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
-    <value>您的PawnIO版本太旧了。
+    <value>您的 PawnIO 版本太旧了。
 
 当前：{0} 需要：{1}。
-请更新PawnIO以继续使用此功能！
+请更新 PawnIO 以继续使用此功能！
 
 单击“是”在浏览器中打开下载链接。
 单击“否”禁用硬件传感器功能。</value>
@@ -2590,13 +2590,13 @@
     <value>接口指示灯</value>
   </data>
   <data name="PowerButtonLed_Brightness" xml:space="preserve">
-    <value>Brightness</value>
+    <value>亮度</value>
   </data>
   <data name="PowerButtonLed_Message" xml:space="preserve">
-    <value>Adjust the light brightness or sync it with the keyboard backlight.</value>
+    <value>手动调整灯光亮度或使其与键盘背光同步。</value>
   </data>
   <data name="PowerButtonLed_Title" xml:space="preserve">
-    <value>Power Button Light</value>
+    <value>电源按钮灯光</value>
   </data>
   <data name="PoweredOff" xml:space="preserve">
     <value>关闭</value>
@@ -2655,10 +2655,10 @@
     <value>刷新率</value>
   </data>
   <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
-    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+    <value>动态调整刷新率以节省电量。</value>
   </data>
   <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
-    <value>Dynamic refresh rate</value>
+    <value>动态刷新率</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>调整刷新率，平衡画面流畅度与电池续航。</value>
@@ -2964,10 +2964,10 @@
     <value>CPU 频率</value>
   </data>
   <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
-    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+    <value>选择要在控制台和 OSD 上显示哪个 CPU 温度传感器。</value>
   </data>
   <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
-    <value>CPU Temperature Source</value>
+    <value>CPU 温度来源</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>独立显卡</value>
@@ -2994,16 +2994,16 @@
     <value>首选显卡</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
-    <value>Auto</value>
+    <value>自动选择</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
-    <value>Average</value>
+    <value>平均温度</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
-    <value>Core Max</value>
+    <value>核心最高温度</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
-    <value>Package</value>
+    <value>CPU 封装温度</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>已使用/总内存 (GB)</value>
@@ -3181,7 +3181,7 @@
     <value>背景图片</value>
   </data>
   <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
-    <value>Couldn't fully disable everything, some items may still be running</value>
+    <value>无法完全禁用所有进程，一些进程可能仍在运行</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
     <value>Legion Space 可能未被正确禁用</value>
@@ -3197,7 +3197,7 @@
     <value>禁用 Legion Space</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone 可能没有被正确禁用。</value>
+    <value>Legion Zone 可能未被正确禁用</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>无法禁用 Legion Zone</value>
@@ -3210,21 +3210,20 @@
     <value>禁用 Legion Zone</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys 可能没有被正确禁用。</value>
+    <value>Lenovo Hotkeys 可能未被正确禁用</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>无法禁用 Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>禁用 Lenovo Hotkeys 且无需卸载。
-禁用后本应用将接管 Fn 快捷功能。
+    <value>禁用 Lenovo Hotkeys 且无需卸载。禁用后本应用将接管 Fn 快捷功能。
 修改此项后建议重启电脑。</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>禁用 Lenovo Hotkeys</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage 与 ImController 可能没有被正确禁用。</value>
+    <value>Lenovo Vantage 和 / 或 ImController 可能未被正确禁用</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>无法禁用 Lenovo Vantage 与 ImController</value>
@@ -3243,13 +3242,13 @@
     <value>无法启用 Legion Space</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>Legion Zone 可能没有被正确启用。</value>
+    <value>Legion Zone 可能未被正确启用</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>无法启用 Legion Zone</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys 可能没有被正确启用。</value>
+    <value>Lenovo Hotkeys 可能未被正确启用</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>无法启用 Lenovo Hotkeys</value>
@@ -3261,7 +3260,7 @@
     <value>启用日志</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo Vantage 与 ImController 可能没有被正确禁用。</value>
+    <value>Lenovo Vantage 和 / 或 ImController 可能未被正确启用</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>无法启用 Lenovo Vantage 与 ImController</value>
@@ -3282,7 +3281,7 @@
     <value>硬件加速</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>启用硬件加速可能会在某些混合图形系统上导致闪烁或黑色闪烁，并可能会阻止独立显卡休眠。</value>
+    <value>启用硬件加速可能会导致无法关闭独立显卡。</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>启用高级硬件传感器以监控详细的温度、频率和功耗。</value>
@@ -3297,7 +3296,7 @@
     <value>自动（Windows 决定）</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
-    <value>Could not apply the GPU preference.</value>
+    <value>无法应用显卡偏好设置。</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>高性能 （独立显卡）</value>
@@ -3327,10 +3326,10 @@
     <value>语言</value>
   </data>
   <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
-    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+    <value>Fn 快捷功能由 Lenovo Hotkeys 控制，因此排除刷新率、Smart Keys 和发现按键功能在其运行时将无效。</value>
   </data>
   <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
-    <value>Lenovo Hotkeys is running</value>
+    <value>Lenovo Hotkeys 正在运行</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>防止窗口大小被调整。</value>
@@ -3396,10 +3395,10 @@
     <value>重启以查看改动</value>
   </data>
   <data name="SettingsPage_RestoreITSModeOnStartup_Message" xml:space="preserve">
-    <value>Automatically restore the last ITS mode when the app starts.</value>
+    <value>在应用程序启动时自动恢复上次选择的 ITS 模式。</value>
   </data>
   <data name="SettingsPage_RestoreITSModeOnStartup_Title" xml:space="preserve">
-    <value>Restore ITS Mode on Startup</value>
+    <value>在开机时恢复 ITS 模式</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
     <value>在应用程序运行时执行 C# 脚本。</value>
@@ -3525,7 +3524,7 @@
     <value>成功应用配置。</value>
   </data>
   <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
-    <value>Settings were saved but not applied to the GPU.</value>
+    <value>设置已保存，但未应用到 GPU。</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>静音此项将静音所有可用的音频输出设备。</value>
@@ -3576,7 +3575,7 @@
     <value>(驱动)</value>
   </data>
   <data name="SpecialKey_KeyboardSuffix" xml:space="preserve">
-    <value>(Key)</value>
+    <value>(键)</value>
   </data>
   <data name="SpecialKey_UnknownKey" xml:space="preserve">
     <value>键 {0}</value>
