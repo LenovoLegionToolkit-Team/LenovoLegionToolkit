@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -142,11 +142,11 @@
     <value>不支援。</value>
   </data>
   <data name="AutoColorManagementState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>關閉</value>
     <comment>Informs the user that Auto Color Management is or will be turned off.</comment>
   </data>
   <data name="AutoColorManagementState_On" xml:space="preserve">
-    <value>On</value>
+    <value>開啟</value>
     <comment>Informs the user that Auto Color Management is or will be turned on.</comment>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
@@ -223,40 +223,40 @@
     <value>ACPI</value>
   </data>
   <data name="GPUController_GC6_Blocker_Audio" xml:space="preserve">
-    <value>Audio active</value>
+    <value>音訊活動中</value>
   </data>
   <data name="GPUController_GC6_Blocker_BusScan" xml:space="preserve">
-    <value>Bus scan</value>
+    <value>匯流排掃描</value>
   </data>
   <data name="GPUController_GC6_Blocker_CpuSharedSurface" xml:space="preserve">
-    <value>CPU shared memory</value>
+    <value>CPU 共享記憶體</value>
   </data>
   <data name="GPUController_GC6_Blocker_Display" xml:space="preserve">
-    <value>Display active</value>
+    <value>顯示器活動中</value>
   </data>
   <data name="GPUController_GC6_Blocker_DriverHold" xml:space="preserve">
-    <value>Driver hold</value>
+    <value>驅動程式占用中</value>
   </data>
   <data name="GPUController_GC6_Blocker_HybridGraphics" xml:space="preserve">
-    <value>Hybrid graphics</value>
+    <value>混合顯示</value>
   </data>
   <data name="GPUController_GC6_Blocker_PowerEvent" xml:space="preserve">
-    <value>Power event</value>
+    <value>電源事件</value>
   </data>
   <data name="GPUController_GC6_Blocker_ResourceLock" xml:space="preserve">
-    <value>Resource lock</value>
+    <value>資源鎖定</value>
   </data>
   <data name="GPUController_GC6_Blocker_SoftwareDisabled" xml:space="preserve">
-    <value>Software disabled</value>
+    <value>已停用軟體</value>
   </data>
   <data name="GPUController_GC6_NoSbiosSupport" xml:space="preserve">
-    <value>SBIOS does not support GC6 sleep</value>
+    <value>SBIOS 不支援 GC6 睡眠</value>
   </data>
   <data name="GPUController_GC6_NoVbiosSupport" xml:space="preserve">
-    <value>VBIOS does not support GC6 sleep</value>
+    <value>VBIOS 不支援 GC6 睡眠</value>
   </data>
   <data name="GPUController_GC6_SleepBlocked" xml:space="preserve">
-    <value>Sleep blocked ({0})</value>
+    <value>已阻止睡眠 ({0})</value>
   </data>
   <data name="GPUController_PoweredOff" xml:space="preserve">
     <value>關機</value>
@@ -477,7 +477,7 @@
     <value>靜音模式</value>
   </data>
   <data name="RefreshRate_Dynamic" xml:space="preserve">
-    <value>Dynamic ({0} Hz)</value>
+    <value>Dynamic ({0} Hz or {1} Hz)</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>高</value>
@@ -531,13 +531,13 @@
     <value>已共用／動態</value>
   </data>
   <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
-    <value>Processes still running: {0}.</value>
+    <value>此處理程序仍然在執行：{0}。</value>
   </data>
   <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
-    <value>Services that need a restart: {0}.</value>
+    <value>此服務需要重新啟動：{0}。</value>
   </data>
   <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
-    <value>Services still running: {0}.</value>
+    <value>此服務仍然在執行：{0}。</value>
   </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
     <value>静音</value>
@@ -587,6 +587,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>屏光同步</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Breath" xml:space="preserve">
+    <value>Breath</value>
+  </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
     <value>光谱循环</value>
   </data>
@@ -595,6 +598,9 @@
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
     <value>波浪</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
+    <value>Horse Race Lamp</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
     <value>键入</value>
@@ -614,6 +620,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
     <value>螺旋彩虹</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
+    <value>Wave</value>
+  </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
     <value>慢</value>
   </data>
@@ -624,10 +633,10 @@
     <value>快</value>
   </data>
   <data name="Spectrum_Color_Mode_Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>客製化</value>
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
-    <value>Random Color</value>
+    <value>隨機顏色</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>深色模式</value>
@@ -704,7 +713,7 @@
     <value>伺服器</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Auto" xml:space="preserve">
-    <value>Auto</value>
+    <value>自動</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>高亮度</value>
