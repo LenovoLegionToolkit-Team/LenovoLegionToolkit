@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -176,10 +176,10 @@
     <value>新しく追加</value>
   </data>
   <data name="AIEngineAutomationStepControl_Message" xml:space="preserve">
-    <value>Dynamically shifts power between the CPU and GPU to maximize performance in compatible games.</value>
+    <value>互換性のあるゲームでパフォーマンスを最大化するために、CPU と GPU の間で動的に電力をシフトします。</value>
   </data>
   <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
-    <value>AI Engine</value>
+    <value>AIエンジン</value>
   </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>機内モード</value>
@@ -197,16 +197,16 @@
     <value>USBの常時給電</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Message" xml:space="preserve">
-    <value>Apply Curve Optimizer and advanced options over all power mode.</value>
+    <value>カーブオプティマイザと高度なオプションをすべての電源モードで適用します。</value>
   </data>
   <data name="AmdOverclocking_AllowInAllPowerModes_Title" xml:space="preserve">
-    <value>Allow in all power modes</value>
+    <value>全ての電源モードで許可</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Message" xml:space="preserve">
     <value>Apply Curve Optimizer and FMax even when running on battery power.</value>
   </data>
   <data name="AmdOverclocking_AllowOnBattery_Title" xml:space="preserve">
-    <value>Allow on battery</value>
+    <value>バッテリー時に許可</value>
   </data>
   <data name="AmdOverclocking_Apply_Changes" xml:space="preserve">
     <value>変更を適用</value>
@@ -221,31 +221,31 @@
     <value>コア</value>
   </data>
   <data name="AmdOverclocking_CurrentLimits" xml:space="preserve">
-    <value>Current Limits</value>
+    <value>電流制限</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_High" xml:space="preserve">
-    <value>High</value>
+    <value>高</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_High_Temperature" xml:space="preserve">
-    <value>High Temperature</value>
+    <value>高温</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Low" xml:space="preserve">
-    <value>Low</value>
+    <value>低</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Low_Temperature" xml:space="preserve">
-    <value>Low Temperature</value>
+    <value>低温</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Maximum" xml:space="preserve">
-    <value>Maximum</value>
+    <value>最大</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Medium" xml:space="preserve">
-    <value>Medium</value>
+    <value>中</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Medium_Temperature" xml:space="preserve">
-    <value>Medium Temperature</value>
+    <value>中温度</value>
   </data>
   <data name="AmdOverclocking_CurveShaper_Minimum" xml:space="preserve">
-    <value>Minimum</value>
+    <value>最小</value>
   </data>
   <data name="AmdOverclocking_Do_Not_Apply_Message" xml:space="preserve">
     <value>異常な再起動のためプロファイルの適用がキャンセルされました。</value>
@@ -257,10 +257,10 @@
     <value>EDC VDD</value>
   </data>
   <data name="AmdOverclocking_Enable_Message" xml:space="preserve">
-    <value>Enable AMD overclocking features.</value>
+    <value>AMDオーバークロック機能を有効にします。</value>
   </data>
   <data name="AmdOverclocking_Enable_Title" xml:space="preserve">
-    <value>Enable AMD Overclocking</value>
+    <value>AMD オーバークロックを有効化</value>
   </data>
   <data name="AmdOverclocking_FMax_Frequency_Message" xml:space="preserve">
     <value>最大CPUブースト周波数オーバーライド(MHz)</value>
@@ -281,16 +281,16 @@
     <value>コア毎の最適化</value>
   </data>
   <data name="AmdOverclocking_PowerLimits" xml:space="preserve">
-    <value>Power Limits</value>
+    <value>電力制限</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Long" xml:space="preserve">
-    <value>Power Limit (Long)</value>
+    <value>電力制限(ロング)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Peak" xml:space="preserve">
-    <value>Power Limit (Peak)</value>
+    <value>電力制限(ピーク)</value>
   </data>
   <data name="AmdOverclocking_PowerLimit_Short" xml:space="preserve">
-    <value>Power Limit (Short)</value>
+    <value>電力制限(ショート)</value>
   </data>
   <data name="AmdOverclocking_Status_Title" xml:space="preserve">
     <value>ステータス</value>
@@ -302,16 +302,16 @@
     <value>成功</value>
   </data>
   <data name="AmdOverclocking_Tab_Advanced" xml:space="preserve">
-    <value>Advanced</value>
+    <value>詳細</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveOptimizer" xml:space="preserve">
-    <value>Curve Optimizer</value>
+    <value>カーブオプティマイザー</value>
   </data>
   <data name="AmdOverclocking_Tab_CurveShaperOptimizer" xml:space="preserve">
-    <value>Curve Shaper Optimizer</value>
+    <value>カーブシェイパーオプティマイザー</value>
   </data>
   <data name="AmdOverclocking_Tab_Settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>設定</value>
   </data>
   <data name="AmdOverclocking_TDC_SoC" xml:space="preserve">
     <value>TDC SoC</value>
@@ -320,7 +320,7 @@
     <value>TDC VDD</value>
   </data>
   <data name="AmdOverclocking_Title" xml:space="preserve">
-    <value>AMD Precision Boost Overclocking</value>
+    <value>AMD プレシジョン・ブースト・オーバードライブ（PBO）</value>
   </data>
   <data name="AmdOverclocking_X3D_Gaming_Mode_Message" xml:space="preserve">
     <value>FPSと温度の両方の安定性を得るには、CCD1を無効にしてください。</value>
@@ -383,7 +383,7 @@
     <value>ランプ配列を有効にする</value>
   </data>
   <data name="ArgumentWindow_Flag_Experimental_ITS_Mode" xml:space="preserve">
-    <value>Experimental ITS Mode</value>
+    <value>実験的ITSモード</value>
   </data>
   <data name="ArgumentWindow_Flag_ExpGpuMode" xml:space="preserve">
     <value> Experimental GPU Working Mode</value>
@@ -413,16 +413,16 @@
     <value>引数ウィンドウ</value>
   </data>
   <data name="AutoColorManagementAutomationStepControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+    <value>正確で一貫性のある色再現のためにカラープロファイルを自動的に管理します。</value>
   </data>
   <data name="AutoColorManagementAutomationStepControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
+    <value>色の自動管理</value>
   </data>
   <data name="AutoColorManagementControl_Message" xml:space="preserve">
-    <value>Automatically manage color profiles for accurate and consistent color reproduction.</value>
+    <value>正確で一貫性のある色再現のためにカラープロファイルを自動的に管理します。</value>
   </data>
   <data name="AutoColorManagementControl_Title" xml:space="preserve">
-    <value>Auto Color Management</value>
+    <value>色の自動管理</value>
   </data>
   <data name="AutomationPage_ActionsEnabled_Title" xml:space="preserve">
     <value>有効化</value>
@@ -462,7 +462,7 @@
     <value>既知のゲームリスト</value>
   </data>
   <data name="AutomationPage_Game_Detection_Method_Manual" xml:space="preserve">
-    <value>Manual</value>
+    <value>マニュアル</value>
   </data>
   <data name="AutomationPage_Game_Detection_Sub_Title" xml:space="preserve">
     <value>検出方法と除外を設定します。</value>
@@ -558,7 +558,7 @@
     <value>えっと {0:D2}:{1:D2}:{2:D2}</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_HybridMode" xml:space="preserve">
-    <value>GPU Working Mode</value>
+    <value>GPU動作モード</value>
   </data>
   <data name="AutomationPipelineControl_SubtitlePart_PowerMode" xml:space="preserve">
     <value>電源モード</value>
@@ -573,7 +573,7 @@
     <value>設定</value>
   </data>
   <data name="Automation_SupportedAvailableCount" xml:space="preserve">
-    <value>Supported: {0} / Available: {1}</value>
+    <value>サポート: {0} / 利用可能: {1}</value>
   </data>
   <data name="Back" xml:space="preserve">
     <value>戻る</value>
@@ -733,19 +733,19 @@
     <value>Disable Windows Startup Animation</value>
   </data>
   <data name="BootLogoWindow_Options_Title" xml:space="preserve">
-    <value>Startup Animation</value>
+    <value>起動時のアニメーション</value>
   </data>
   <data name="BootLogoWindow_Requirements_Formats" xml:space="preserve">
     <value>{0}</value>
   </data>
   <data name="BootLogoWindow_Requirements_MaxResolution" xml:space="preserve">
-    <value>Max {0}</value>
+    <value>最大 {0}</value>
   </data>
   <data name="BootLogoWindow_Requirements_Subtitle" xml:space="preserve">
-    <value>Supported formats and dimensions</value>
+    <value>サポートされているフォーマットとサイズ</value>
   </data>
   <data name="BootLogoWindow_Requirements_Title" xml:space="preserve">
-    <value>Image Requirements</value>
+    <value>画像要件</value>
   </data>
   <data name="BootLogoWindow_SetCustomFailed" xml:space="preserve">
     <value>カスタムロゴを設定できませんでした: {0}</value>
@@ -775,10 +775,10 @@
     <value>EFI パーティションに空き容量がありません。</value>
   </data>
   <data name="BootLogoWindow_Status_Subtitle" xml:space="preserve">
-    <value>Status of the UEFI boot logo</value>
+    <value>UEFIブートロゴのステータス</value>
   </data>
   <data name="BootLogoWindow_Status_Title" xml:space="preserve">
-    <value>Current Status</value>
+    <value>現在のステータス</value>
   </data>
   <data name="BootLogoWindow_Title" xml:space="preserve">
     <value>ブートロゴ</value>
@@ -790,19 +790,19 @@
     <value>°C</value>
   </data>
   <data name="ChargeThresholdControl_Message" xml:space="preserve">
-    <value>Limit the charging range to extend the battery lifespan.</value>
+    <value>充電量を制限してバッテリ寿命を延ばします。</value>
   </data>
   <data name="ChargeThresholdControl_Start" xml:space="preserve">
-    <value>Start</value>
+    <value>開始</value>
   </data>
   <data name="ChargeThresholdControl_Stop" xml:space="preserve">
-    <value>Stop</value>
+    <value>停止</value>
   </data>
   <data name="ChargeThresholdControl_Title" xml:space="preserve">
-    <value>Charge Threshold</value>
+    <value>充電しきい値</value>
   </data>
   <data name="ChargeThresholdControl_Warning" xml:space="preserve">
-    <value>Takes effect after the battery is unplugged and drops below the stop value.</value>
+    <value>バッテリーを一度抜き、充電量が「充電停止のしきい値」を下回った後に設定が反映されます。</value>
   </data>
   <data name="Clear" xml:space="preserve">
     <value>削除</value>
@@ -860,7 +860,7 @@
     <value>すべてをコピー</value>
   </data>
   <data name="Core" xml:space="preserve">
-    <value>Core</value>
+    <value>コア</value>
   </data>
   <data name="Cores" xml:space="preserve">
     <value>Cores</value>
@@ -959,7 +959,7 @@
     <value>無効</value>
   </data>
   <data name="DiscreteGPUControl_FooterMessage" xml:space="preserve">
-    <value>Manage active processes by changing their graphics preferences, right-click to forcefully terminate them, or configure advanced settings.</value>
+    <value>グラフィックスの優先設定を変更してアクティブなプロセスを管理します。右クリックで強制終了、または詳細設定を行います。</value>
   </data>
   <data name="DiscreteGPUControl_ForceKillProcessMenu" xml:space="preserve">
     <value>強制終了プロセス</value>
@@ -968,19 +968,19 @@
     <value>図の設定</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeDescription" xml:space="preserve">
-    <value>Maintains an active connection to the discrete GPU to prevent stuttering.</value>
+    <value>スタッター(画面のカクつき)を防ぐため、dGPUへの接続を維持します。</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeInfo" xml:space="preserve">
-    <value>This increases power consumption and reduces battery life.</value>
+    <value>消費電力が増加し、バッテリー駆動時間が短くなります。</value>
   </data>
   <data name="DiscreteGPUControl_KeepDgpuAwakeTitle" xml:space="preserve">
-    <value>Keep dGPU awake</value>
+    <value>dGPUのスリープを無効にする</value>
   </data>
   <data name="DiscreteGPUControl_KillApps" xml:space="preserve">
     <value>アプリを強制終了</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayDescription" xml:space="preserve">
-    <value>Wait time before refreshing the apps list after terminating a process.</value>
+    <value>プロセス終了後、アプリ一覧を更新するまでの待ち時間。</value>
   </data>
   <data name="DiscreteGPUControl_KillProcessDelayTitle" xml:space="preserve">
     <value>強制的に強制的にリフレッシュの遅延</value>
@@ -1007,7 +1007,7 @@
     <value>不明</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalDescription" xml:space="preserve">
-    <value>How often to check the discrete GPU for active processes.</value>
+    <value>アクティブなプロセスがないかdGPUをチェックする頻度。</value>
   </data>
   <data name="DiscreteGPUControl_PollingIntervalTitle" xml:space="preserve">
     <value>ポーリング間隔</value>
@@ -1031,16 +1031,16 @@
     <value>P-State not applied</value>
   </data>
   <data name="DiscreteGPUControl_PStateAuto" xml:space="preserve">
-    <value>Auto (Dynamic)</value>
+    <value>自動(ダイナミック)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Lock the discrete GPU to a specific performance state.</value>
+    <value>Lock the GPU to a performance state.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+    <value>Prevents downclocking but uses more power.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
-    <value>P-State Control</value>
+    <value>P-Stateコントロール</value>
   </data>
   <data name="DiscreteGPUControl_PStatePinInfo" xml:space="preserve">
     <value>Max pins the highest clock of the selected state, Min pins the lowest, and None locks the state without a clock pin.</value>
@@ -1061,7 +1061,7 @@
     <value>GPUを再起動</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayDescription" xml:space="preserve">
-    <value>Wait time before starting the discrete GPU monitoring service.</value>
+    <value>dGPU監視サービスを開始するまでの待ち時間。</value>
   </data>
   <data name="DiscreteGPUControl_StartupDelayTitle" xml:space="preserve">
     <value>起動の遅延</value>
@@ -1088,13 +1088,13 @@
     <value>寄付ができない場合でも、GitHub上でプロジェクトを単純に使用、共有、主演することは長い道のりです。サポートのすべてのビットは本当に感謝されています</value>
   </data>
   <data name="DonatePage_DrSkinner_BuyMeACoffee" xml:space="preserve">
-    <value>Buy Me a Coffee</value>
+    <value>開発者を支援</value>
   </data>
   <data name="DonatePage_DrSkinner_Description" xml:space="preserve">
     <value>現在のプロジェクトリーダーとして、中核的な機能開発、品質保証、UI/UX設計、およびプロジェクト全体の方向性を担当しています。</value>
   </data>
   <data name="DonatePage_DrSkinner_GitHubSponsors" xml:space="preserve">
-    <value>GitHub Sponsors</value>
+    <value>GitHub Sponsorsで支援</value>
   </data>
   <data name="DonatePage_DrSkinner_Role" xml:space="preserve">
     <value>コア開発者＆プロジェクトリード</value>
@@ -1162,28 +1162,28 @@
     <value>エラー</value>
   </data>
   <data name="ExcludeProcessesWindow_Description" xml:space="preserve">
-    <value>Included processes always trigger game detection and Lenovo's AI/Intelligent Mode, while excluded processes are ignored.</value>
+    <value>「対象プロセス」は常にゲーム検出とLenovoのAI/インテリジェントモードを連動させますが、「除外プロセス」は無視されます。</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludedProcesses_Format" xml:space="preserve">
-    <value>Excluded Processes ({0})</value>
+    <value>除外プロセス ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_ExcludeTooltip" xml:space="preserve">
-    <value>Add to Excluded Processes</value>
+    <value>除外プロセスに追加</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludedProcesses_Format" xml:space="preserve">
-    <value>Included Processes ({0})</value>
+    <value>対象プロセス ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_IncludeTooltip" xml:space="preserve">
-    <value>Add to Included Processes</value>
+    <value>対象プロセスに追加</value>
   </data>
   <data name="ExcludeProcessesWindow_NoExcludedProcesses" xml:space="preserve">
-    <value>No excluded processes</value>
+    <value>除外プロセスはありません</value>
   </data>
   <data name="ExcludeProcessesWindow_NoIncludedProcesses" xml:space="preserve">
-    <value>No included processes</value>
+    <value>対象プロセスはありません</value>
   </data>
   <data name="ExcludeProcessesWindow_RunningProcesses_Format" xml:space="preserve">
-    <value>Running Processes ({0})</value>
+    <value>実行中のプロセス ({0})</value>
   </data>
   <data name="ExcludeProcessesWindow_Title" xml:space="preserve">
     <value>除外プロセス</value>
@@ -1325,7 +1325,7 @@
     <value>At the maximum value, the extended GPU power target range above 255 W is unlocked on supported GPUs.</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MaxOffset_Warning" xml:space="preserve">
-    <value>Setting offsets higher than hardware safety limits can cause system instability or settings to revert.</value>
+    <value>オフセットをハードウェアの安全上限より高く設定すると、システムの不安定化や設定のリセットが発生する可能性があります。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Message" xml:space="preserve">
     <value>以下に示すオプションは、何を操作しているのかをよく理解している場合にのみ変更してください。</value>
@@ -1338,7 +1338,7 @@
     <value>最小オフセット</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_MinOffset_Warning" xml:space="preserve">
-    <value>Setting offsets lower than hardware safety limits can cause system instability or settings to revert.</value>
+    <value>オフセットをハードウェアの安全下限より低く設定すると、システムの不安定化や設定のリセットが発生する可能性があります。</value>
   </data>
   <data name="GodModeSettingsWindow_Advanced_Title" xml:space="preserve">
     <value>高度</value>
@@ -1347,7 +1347,7 @@
     <value>すべてのコアカーブオプティマイザ。</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Info" xml:space="preserve">
-    <value>Setting a negative value undervolts the CPU to improve thermal efficiency, but may require stability testing.</value>
+    <value>負の値を設定するとCPUがアンダーボルトされ熱効率が向上しますが、動作安定性テストが必要になる場合があります。</value>
   </data>
   <data name="GodModeSettingsWindow_AllCoreCurveOptimizer_Title" xml:space="preserve">
     <value>すべてのコアカーブオプティマイザー</value>
@@ -1365,7 +1365,7 @@
     <value>CPUとGPUの両方が完全に使用されている場合、CPUによって達成できる最大消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_CrossLoading_Info" xml:space="preserve">
-    <value>Limits CPU power during combined workloads to optimize thermal and power allocation for the GPU.</value>
+    <value>同時負荷時にCPU電力を制限し、GPUへの熱および電力配分を最適化します。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_LongTermPL" xml:space="preserve">
     <value>Long Term Power Limit</value>
@@ -1380,7 +1380,7 @@
     <value>CPUによって達成することができる最大瞬時消費電力。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PeakPL_Warning" xml:space="preserve">
-    <value>Exceeding hardware limits may cause sudden system shutdowns or instability under instantaneous heavy loads.</value>
+    <value>ハードウェア制限を超えると、瞬間的な高負荷時に突然のシステムシャットダウンや不安定化を引き起こす可能性があります。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_PL2Tau" xml:space="preserve">
     <value>短期パワーリミット時間</value>
@@ -1401,15 +1401,15 @@
     <value>周波数と電力が減少する前にCPUによって達することができる最大温度。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_TempLimit_Warning" xml:space="preserve">
-    <value>Higher temperature thresholds increase thermal stress and fan noise.</value>
+    <value>温度上限を高く設定すると、熱ストレスとファンノイズが増加します。</value>
   </data>
   <data name="GodModeSettingsWindow_CPU_Title" xml:space="preserve">
     <value>CPU</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves.
 
-Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty.
 
 Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
@@ -1426,7 +1426,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>PWA設定を読み込めません。</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Info" xml:space="preserve">
-    <value>Hover the mouse over individual nodes to view exact temperature thresholds and PWM percentages.</value>
+    <value>各ノードにマウスカーソルを合わせると、詳細な温度しきい値とPWM出力割合(%)が表示されます。</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Curve_Message" xml:space="preserve">
     <value>ファンの速度は、1つの温度センサーによって厳密に決まるわけではありません。CPU、GPU、ヒートシンクの温度の最も高いセンサーに応じて速度を上げたり下げたりします。正確な値は各ステップにマウスを合わせると表示されます。</value>
@@ -1443,7 +1443,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>最大ファン速度</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Max_Warning" xml:space="preserve">
-    <value>Prolonged operation at maximum speed increases fan wear and acoustic noise.</value>
+    <value>最大速度での長期運用は、ファンの摩耗と動作音(ノイズ)を増加させます。</value>
   </data>
   <data name="GodModeSettingsWindow_Fans_Title" xml:space="preserve">
     <value>ファン</value>
@@ -1467,7 +1467,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>周波数と電力が減少する前にGPUによって達することができる最大温度。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TempLimit_Warning" xml:space="preserve">
-    <value>Higher temperature limits increase thermal stress on the graphics processor.</value>
+    <value>温度上限を高く設定すると、グラフィックプロセッサー(GPU)への熱ストレスが増加します。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_Title" xml:space="preserve">
     <value>GPU</value>
@@ -1479,7 +1479,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>これは、CPU使用率に基づいてGPUからCPUに割り当てることができる最大追加電力です。 値が高いほど、CPUを使用するアプリケーションのパフォーマンスが向上します。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_ToCpuDynamicBoostControl_Info" xml:space="preserve">
-    <value>Setting this to 0W prevents the CPU from drawing extra power, reducing heat and fan noise during GPU-bound workloads.</value>
+    <value>これを0Wに設定すると、CPUの過剰な電力引き込みを抑制し、GPU高負荷時の発熱とファンノイズを低減します。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl" xml:space="preserve">
     <value>AC内の合計プロセッサ電源ターゲット</value>
@@ -1488,7 +1488,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>CPUがGPUの動的消費電力調整をトリガーするポイント。</value>
   </data>
   <data name="GodModeSettingsWindow_GPU_TotalProcessingPowerTargetOnAcOffsetFromBaselineControl_Info" xml:space="preserve">
-    <value>Useful to cap CPU power consumption to manage temperatures and optimize thermal headroom for the GPU.</value>
+    <value>CPUの消費電力を制限することで温度を管理し、GPU側のサーマルヘッドルーム(冷却余裕)を最適化するのに役立ちます。</value>
   </data>
   <data name="GodModeSettingsWindow_LegionSpaceWarning_Title" xml:space="preserve">
     <value>Legion Spaceまたはそのサービスが実行されている場合、カスタムモード設定は正しく適用されません。</value>
@@ -1497,7 +1497,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>レジオンゾーンまたはそのサービスが実行されている場合、カスタムモードの設定は正しく適用されません。</value>
   </data>
   <data name="GodModeSettingsWindow_PartialSupport_Message" xml:space="preserve">
-    <value>Your device may not support the full feature set of Custom Mode.</value>
+    <value>お使いのデバイスは、カスタムモードの全機能をサポートしていない可能性があります。</value>
   </data>
   <data name="GodModeSettingsWindow_PrecisionBoostOverdriveBoostFrequency_Description" xml:space="preserve">
     <value>精密ブーストオーバードライブブースト周波数</value>
@@ -1527,7 +1527,7 @@ Do not proceed unless you possess the necessary technical expertise.</value>
     <value>高度なオーバークロックオプション</value>
   </data>
   <data name="GodModeSettingsWindow_Toggle_OC_Warning" xml:space="preserve">
-    <value>Incorrect settings may cause system instability, crashes, or failures to boot.</value>
+    <value>不適切な設定は、システムの不安定化、クラッシュ、または起動障害を引き起こす可能性があります。</value>
   </data>
   <data name="GodModeSettingsWindow_VantageWarning_Title" xml:space="preserve">
     <value>Lenovo Vantageまたはそのサービスが実行されている場合、カスタムモードの設定は正しく適用されません。</value>
@@ -1615,19 +1615,19 @@ dGPU がまったく応答しない場合は、ラップトップを再起動し
     <value>インスタントブート</value>
   </data>
   <data name="ITSModeAutomationStepControl_Message" xml:space="preserve">
-    <value>Change ITS Mode</value>
+    <value>ITSモードを変更</value>
   </data>
   <data name="ITSModeAutomationStepControl_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITSモード</value>
   </data>
   <data name="ITSModeConfigWindow_Description" xml:space="preserve">
-    <value>Customize the Fn+Q power mode cycling sequence and enable or disable specific power profiles.</value>
+    <value>Fn+Q キーによる電源モードの切り替え順序をカスタマイズし、特定の電力プロファイルの有効/無効を設定します。</value>
   </data>
   <data name="ITSModeConfigWindow_Title" xml:space="preserve">
-    <value>ITS Mode</value>
+    <value>ITSモード</value>
   </data>
   <data name="ITSModeControl_Message" xml:space="preserve">
-    <value>Change ITS Mode</value>
+    <value>ITSモードを変更</value>
   </data>
   <data name="ITSModeControl_Title" xml:space="preserve">
     <value>ITS Power Mode</value>
@@ -1644,16 +1644,16 @@ format@@2 無効にするには「はい」をクリックし、無視するに�
     <value>キーボードバックライト</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Message" xml:space="preserve">
-    <value>The keyboard backlight cannot be controlled while another Lenovo app or its services are running.</value>
+    <value>他のLenovoアプリまたはそのサービスが実行中の間は、キーボードバックライトを制御できません。</value>
   </data>
   <data name="Keyboard_SoftwareEnabledWarning_Title" xml:space="preserve">
-    <value>Another Lenovo app is running</value>
+    <value>他のLenovoアプリが実行中です</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Message" xml:space="preserve">
-    <value>Lenovo Vantage またはそのサービスの実行中は、ここでキーボードのバックライトを制御できません。</value>
+    <value>Lenovo Vantageまたはそのサービスが実行中の間は、キーボードバックライトを制御できません。</value>
   </data>
   <data name="Keyboard_VantageEnabledWarning_Title" xml:space="preserve">
-    <value>Lenovo Vantage またはそのサービスが実行されています</value>
+    <value>Lenovo Vantageが実行中です</value>
   </data>
   <data name="KeyDiscovery_AddCustomKey" xml:space="preserve">
     <value>カスタムキーを追加</value>
@@ -1671,7 +1671,7 @@ format@@2 無効にするには「はい」をクリックし、無視するに�
     <value>キー押す音を聞いています... ESCを押して停止します。</value>
   </data>
   <data name="KeyDiscovery_UnknownKeyTooltip" xml:space="preserve">
-    <value>不明なキーを追加できます</value>
+    <value>追加可能な不明なキー</value>
   </data>
   <data name="LampArrayRGBKeyboardPage_Aft_Ambient" xml:space="preserve">
     <value>Aft Ambient</value>
@@ -1854,7 +1854,7 @@ format@@2 無効にするには「はい」をクリックし、無視するに�
     <value>更新はありません</value>
   </data>
   <data name="MainWindow_FnKeysRunning" xml:space="preserve">
-    <value>Lenovo Hotkeys is running in the background.</value>
+    <value>Lenovo Hotkeysがバックグラウンドで実行中です。</value>
   </data>
   <data name="MainWindow_LegionSpaceRunning" xml:space="preserve">
     <value>背景には軍団スペースがあります。</value>
@@ -1896,7 +1896,7 @@ format@@2 無効にするには「はい」をクリックし、無視するに�
     <value>バーション {0} の更新があります！</value>
   </data>
   <data name="MainWindow_VantageRunning" xml:space="preserve">
-    <value>Lenovo Vantage and/or ImController is running in the background.</value>
+    <value>Lenovo Vantageおよび/またはImControllerがバックグラウンドで実行中です。</value>
   </data>
   <data name="MessageBoxHelper_DontShowAgain" xml:space="preserve">
     <value>今後表示しない</value>
@@ -2148,7 +2148,7 @@ format@@2 無効にするには「はい」をクリックし、無視するに�
     <value>バックライトが変更されました</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
-    <value>The PawnIO driver service is not running. 
+    <value>The PawnIO driver service is not running.
 
 Please start the service or update/reinstall PawnIO to use this feature!
 
@@ -2156,25 +2156,25 @@ Click Yes to open download link in browser.
 Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Title" xml:space="preserve">
-    <value>PawnIO driver not running</value>
+    <value>PawnIO ドライバが実行されていません</value>
   </data>
   <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
     <value>Your PawnIO version is too old.
 
-Current: {0} Required: {1}. 
+Current: {0} Required: {1}.
 Please update PawnIO to continue using this feature!
-    
+
 Click Yes to open download link in browser.
 Click No to disable Hardware Sensor feature.</value>
   </data>
   <data name="Notify_PawnIO_Update_Title" xml:space="preserve">
-    <value>PawnIO update required</value>
+    <value>PawnIOアップデートが必要です</value>
   </data>
   <data name="Notify_PawnIO_Warning_Message" xml:space="preserve">
-    <value>You need to install PawnIO first to use hardware sensors!
+    <value>ハードウェアセンサーを使用するには、まず PawnIO をインストールする必要があります。
 
-Click Yes to open download link in browser.
-Click No to disable Hardware Sensor feature.</value>
+「はい」をクリックするとブラウザでダウンロードリンクを開きます。
+「いいえ」をクリックするとハードウェアセンサー機能を無効にします。</value>
   </data>
   <data name="Off" xml:space="preserve">
     <value>オフ</value>
@@ -2204,7 +2204,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>OSD</value>
   </data>
   <data name="OsdItem_Voltage" xml:space="preserve">
-    <value>Voltage</value>
+    <value>電圧</value>
   </data>
   <data name="OsdLockPositionAutomationStepControl_Message" xml:space="preserve">
     <value>OSDのロック位置の状態を設定します。</value>
@@ -2366,34 +2366,34 @@ Click No to disable Hardware Sensor feature.</value>
     <value>オーバークロックGPU</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreDesc" xml:space="preserve">
-    <value>Adjust the GPU core frequency to run faster or slower than factory speeds.</value>
+    <value>GPUコアクロックを調整し、出荷時設定よりも高速または低速で動作させます。</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_CoreFrequencyOffset_Title" xml:space="preserve">
     <value>コア周波数オフセット</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryDesc" xml:space="preserve">
-    <value>Adjust VRAM speed to modify memory bandwidth.</value>
+    <value>VRAM速度(メモリクロック)を調整して、メモリ帯域幅を変更します。</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_MemoryFrequencyOffset_Title" xml:space="preserve">
     <value>メモリ周波数オフセット</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Overclocking" xml:space="preserve">
-    <value>Overclocking</value>
+    <value>オーバークロック</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Title" xml:space="preserve">
     <value>オーバークロックGPUの設定</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_Undervolting" xml:space="preserve">
-    <value>Undervolting</value>
+    <value>アンダーボルト</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCap" xml:space="preserve">
-    <value>Voltage Cap</value>
+    <value>最大電圧制限</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageCapDesc" xml:space="preserve">
-    <value>Cap maximum voltage under load while allowing dynamic downclocking at idle.</value>
+    <value>高負荷時の最大電圧を制限しつつ、アイドル時には動的なダウンクロックを許可します。</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLock" xml:space="preserve">
-    <value>Voltage Lock</value>
+    <value>電圧ロック</value>
   </data>
   <data name="OverclockDiscreteGPUSettingsWindow_VoltageLockDesc" xml:space="preserve">
     <value>Locks GPU voltage and frequency for perfectly consistent performance.</value>
@@ -2646,10 +2646,10 @@ Click No to disable Hardware Sensor feature.</value>
     <value>リフレッシュレート</value>
   </data>
   <data name="RefreshRateControl_Dynamic_Message" xml:space="preserve">
-    <value>Adjusts the refresh rate up to the selected rate to save power.</value>
+    <value>選択したレートまでリフレッシュレートを調整して節電します。</value>
   </data>
   <data name="RefreshRateControl_Dynamic_Title" xml:space="preserve">
-    <value>Dynamic refresh rate</value>
+    <value>動的リフレッシュレート</value>
   </data>
   <data name="RefreshRateControl_Message" xml:space="preserve">
     <value>内蔵ディスプレイのリフレッシュレートを変更します。</value>
@@ -2658,7 +2658,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>リフレッシュレート</value>
   </data>
   <data name="Remove" xml:space="preserve">
-    <value>Remove</value>
+    <value>削除</value>
   </data>
   <data name="Rename" xml:space="preserve">
     <value>名前を変更</value>
@@ -2745,7 +2745,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>RPM</value>
   </data>
   <data name="Run" xml:space="preserve">
-    <value>Run</value>
+    <value>実行</value>
   </data>
   <data name="RunAutomationStepControl_ExeArguments" xml:space="preserve">
     <value>引数</value>
@@ -2787,38 +2787,37 @@ Click No to disable Hardware Sensor feature.</value>
     <value>保存しています...</value>
   </data>
   <data name="ScriptConsole_Code_Title" xml:space="preserve">
-    <value>Code Block</value>
+    <value>コードブロック</value>
   </data>
   <data name="ScriptConsole_Output_Title" xml:space="preserve">
-    <value>Output</value>
+    <value>出力</value>
   </data>
   <data name="ScriptConsole_Section_Elapsed" xml:space="preserve">
-    <value>Elapsed: {0} ms</value>
+    <value>経過時間: {0} ms</value>
   </data>
   <data name="ScriptConsole_Section_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>エラー</value>
   </data>
   <data name="ScriptConsole_Section_ReturnValue" xml:space="preserve">
-    <value>Return Value</value>
+    <value>戻り値</value>
   </data>
   <data name="ScriptConsole_Status_Error" xml:space="preserve">
-    <value>Execution failed: {0} ms</value>
+    <value>実行失敗: {0} ms</value>
   </data>
   <data name="ScriptConsole_Status_Ok" xml:space="preserve">
-    <value>Execution succeeded: {0} ms</value>
+    <value>実行成功: {0} ms</value>
   </data>
   <data name="ScriptConsole_Status_Running" xml:space="preserve">
-    <value>Running...</value>
+    <value>実行中...</value>
   </data>
   <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
-    <value>Unexpected error</value>
+    <value>予期しないエラー</value>
   </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>スクリプトコンソール</value>
   </data>
   <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
-    <value>Unexpected Error:
-{0}</value>
+    <value>予期しないエラー: {0}</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
     <value>Only for Debug, allowing users to execute custom C# script execution and obtain data.</value>
@@ -2956,10 +2955,10 @@ Click No to disable Hardware Sensor feature.</value>
     <value>CPU周波数</value>
   </data>
   <data name="SensorSettingsPage_CPU_Temperature_Source_Message" xml:space="preserve">
-    <value>Choose which CPU temperature sensor is displayed on the Dashboard and OSD.</value>
+    <value>ダッシュボードおよびOSDに表示するCPU温度センサーを選択します。</value>
   </data>
   <data name="SensorSettingsPage_CPU_Temperature_Source_Title" xml:space="preserve">
-    <value>CPU Temperature Source</value>
+    <value>CPU温度ソース</value>
   </data>
   <data name="SensorSettingsPage_Discrete_GPU_Title" xml:space="preserve">
     <value>dGPU</value>
@@ -2986,34 +2985,34 @@ Click No to disable Hardware Sensor feature.</value>
     <value>優先GPU</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
-    <value>Auto</value>
+    <value>自動</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
-    <value>Average</value>
+    <value>平均</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_CoreMax" xml:space="preserve">
-    <value>Core Max</value>
+    <value>コア最大数</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Package" xml:space="preserve">
-    <value>Package</value>
+    <value>パッケージ</value>
   </data>
   <data name="SensorSettingsPage_Used_Memory_GB_Title" xml:space="preserve">
     <value>使用済み/合計メモリ (GB)</value>
   </data>
   <data name="SensorSettingsPage_VoltageMode_Average" xml:space="preserve">
-    <value>Average</value>
+    <value>平均</value>
   </data>
   <data name="SensorSettingsPage_VoltageMode_Core" xml:space="preserve">
-    <value>Core</value>
+    <value>コア</value>
   </data>
   <data name="SensorSettingsPage_VoltageMode_Maximum" xml:space="preserve">
-    <value>Maximum</value>
+    <value>最高</value>
   </data>
   <data name="SensorSettingsPage_Voltage_Message" xml:space="preserve">
-    <value>Choose how voltage is displayed on the Dashboard and OSD.</value>
+    <value>ダッシュボードおよびOSDでの電圧表示形式を選択します。</value>
   </data>
   <data name="SensorSettingsPage_Voltage_Title" xml:space="preserve">
-    <value>Voltage Display Mode</value>
+    <value>電圧表示モード</value>
   </data>
   <data name="SerialNumber" xml:space="preserve">
     <value>シリアル番号</value>
@@ -3172,10 +3171,10 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Custom Background Image</value>
   </data>
   <data name="SettingsPage_DisableIncomplete_Title" xml:space="preserve">
-    <value>Couldn't fully disable everything, some items may still be running</value>
+    <value>すべてを完全に無効化できませんでした。一部の項目がまだ動作している可能性があります</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Message" xml:space="preserve">
-    <value>軍団スペースが正しく無効になっていない可能性があります</value>
+    <value>Legion Space が正常に無効化されなかった可能性があります</value>
   </data>
   <data name="SettingsPage_DisableLegionSpace_Error_Title" xml:space="preserve">
     <value>軍団スペースを無効にできませんでした</value>
@@ -3188,7 +3187,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>軍団のスペースを無効にする</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Message" xml:space="preserve">
-    <value>軍団ゾーンが正しく無効になっていない可能性があります</value>
+    <value>Legion Zone が正常に無効化されなかった可能性があります</value>
   </data>
   <data name="SettingsPage_DisableLegionZone_Error_Title" xml:space="preserve">
     <value>Legion Zoneを無効にできませんでした</value>
@@ -3201,21 +3200,19 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Legion Zoneを無効化</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys は正しく無効になっていない可能性があります</value>
+    <value>Lenovo Hotkeys が正常に無効化されなかった可能性があります</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Error_Title" xml:space="preserve">
     <value>Lenovo Hotkeys を無効にできませんでした</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys とそのサービスをアンインストールせずに無効にします。
-無効にすると、このアプリは Fn ショートカットを処理します。
-このオプションを変更した後はデバイスを再起動することをお勧めします。</value>
+    <value>アンインストールせずに Lenovo Hotkeys とそのサービスを無効化します。代わりにこのアプリが Fn ショートカットを処理します。</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>Lenovo Hotkeys を無効化</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo VantageとImControllerの両方またはいずれか一方が正しく無効になっていない可能性があります</value>
+    <value>Lenovo Vantage および/または ImController が正常に無効化されなかった可能性があります</value>
   </data>
   <data name="SettingsPage_DisableVantage_Error_Title" xml:space="preserve">
     <value>Lenovo VantageとImControllerの両方またはいずれか一方を無効にできませんでした</value>
@@ -3228,22 +3225,22 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Lenovo Vantage と ImController を無効化</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Message" xml:space="preserve">
-    <value>軍団スペースが正しく有効になっていない可能性があります</value>
+    <value>Legion Space が正常に有効化されなかった可能性があります</value>
   </data>
   <data name="SettingsPage_EnableLegionSpace_Error_Title" xml:space="preserve">
     <value>軍団スペースを有効にできませんでした</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Message" xml:space="preserve">
-    <value>軍団ゾーンが正しく有効になっていない可能性があります</value>
+    <value>Legion Zone が正常に有効化されなかった可能性があります</value>
   </data>
   <data name="SettingsPage_EnableLegionZone_Error_Title" xml:space="preserve">
     <value>Legion Zoneを有効にできませんでした</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Message" xml:space="preserve">
-    <value>Lenovo Hotkeys は正しく有効になっていない可能性があります</value>
+    <value>Lenovo Hotkeys が正常に有効化されなかった可能性があります</value>
   </data>
   <data name="SettingsPage_EnableLenovoHotkeys_Error_Title" xml:space="preserve">
-    <value>Lenovoホットキーを有効にできませんでした</value>
+    <value>Lenovo Hotkeys を有効化できませんでした</value>
   </data>
   <data name="SettingsPage_EnableLogging_Message" xml:space="preserve">
     <value>デバッグのログを有効にします。</value>
@@ -3252,7 +3249,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>ログを有効にする</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Message" xml:space="preserve">
-    <value>Lenovo VantageとImControllerの両方またはいずれか一方が正しく有効になっていない可能性があります</value>
+    <value>Lenovo Vantage および/または ImController が正常に有効化されなかった可能性があります</value>
   </data>
   <data name="SettingsPage_EnableVantage_Error_Title" xml:space="preserve">
     <value>Lenovo VantageとImControllerの両方またはいずれか一方を有効にできませんでした</value>
@@ -3273,7 +3270,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>ハードウェアアクセラレーション</value>
   </data>
   <data name="SettingsPage_HardwareAcceleration_Warning" xml:space="preserve">
-    <value>ハードウェアアクセラレーションを有効にすると、一部のハイブリッド・グラフィック・システムでちらつきやブラックフラッシュが発生する可能性があり、ディスクリート・GPUがオフになるのを防ぐ可能性があります。</value>
+    <value>ハードウェアアクセラレーションを有効にすると、 dGPU(専用グラフィック)がオフにならなくなる可能性があります。</value>
   </data>
   <data name="SettingsPage_HardwareSensors_Message" xml:space="preserve">
     <value>高度なハードウェアポーリングを有効にして、詳細な温度、周波数、および電力制限を監視できます。</value>
@@ -3288,7 +3285,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>自動 (Windows の設定)</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_Error_Message" xml:space="preserve">
-    <value>Could not apply the GPU preference.</value>
+    <value>GPU設定を適用できませんでした。</value>
   </data>
   <data name="SettingsPage_HWA_GPUPreference_HighPerformance" xml:space="preserve">
     <value>高パフォーマンス (dGPU)</value>
@@ -3318,10 +3315,10 @@ Click No to disable Hardware Sensor feature.</value>
     <value>言語</value>
   </data>
   <data name="SettingsPage_LenovoHotkeysRunningWarning_Message" xml:space="preserve">
-    <value>Fn shortcuts are handled by Lenovo Hotkeys, so Exclude Refresh Rates, Smart Keys and Key Discovery have no effect while it is running.</value>
+    <value>Fnショートカットは Lenovo Hotkeys によって処理されているため、実行中は「リフレッシュレート除外」「スマートキー」「キー検出」機能が効果を発揮しません。</value>
   </data>
   <data name="SettingsPage_LenovoHotkeysRunningWarning_Title" xml:space="preserve">
-    <value>Lenovo Hotkeys is running</value>
+    <value>Lenovo Hotkeys が実行中です</value>
   </data>
   <data name="SettingsPage_LockWindowSize_Message" xml:space="preserve">
     <value>Lock LLT's window size. To prevent something change it.</value>
@@ -3369,10 +3366,10 @@ Click No to disable Hardware Sensor feature.</value>
     <value>電源モードの同期</value>
   </data>
   <data name="SettingsPage_RememberWindowPosition_Message" xml:space="preserve">
-    <value>Restore previous window position on application launch.</value>
+    <value>アプリ起動時に前回のウィンドウ位置を復元します。</value>
   </data>
   <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
-    <value>Remember Window Position</value>
+    <value>ウィンドウ位置を記憶</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>すべての設定をデフォルトにリセットしてもよろしいですか？この操作は元に戻せず、アプリケーションを再起動します。</value>
@@ -3393,10 +3390,10 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Restore ITS Mode on Startup</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Message" xml:space="preserve">
-    <value>Execute C# scripts in the application runtime.</value>
+    <value>アプリのランタイム内で C# スクリプトを実行します。</value>
   </data>
   <data name="SettingsPage_ScriptConsole_Title" xml:space="preserve">
-    <value>Script Console</value>
+    <value>スクリプトコンソール</value>
   </data>
   <data name="SettingsPage_Select_BackgroundImage_AllFiles" xml:space="preserve">
     <value>すべてのファイル</value>
@@ -3513,10 +3510,10 @@ Click No to disable Hardware Sensor feature.</value>
     <value>スロット</value>
   </data>
   <data name="Snackbar_SettingsApplied_Message" xml:space="preserve">
-    <value>Settings applied successfully.</value>
+    <value>設定が正常に適用されました。</value>
   </data>
   <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
-    <value>Settings were saved but not applied to the GPU.</value>
+    <value>設定は保存されましたが、GPUには適用されませんでした。</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>ミュートすると、アクティブなオーディオ出力デバイスがすべてミュートされます。</value>
@@ -3555,7 +3552,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>カスタム クイックアクションを Fn キーに割り当てます。各キーはカスタムパイプラインでデフォルトの動作を上書きできます。 任意のキーを右クリックすると、このリストから非表示になります。</value>
   </data>
   <data name="SpecialKeysWindow_HideHiddenKeys" xml:space="preserve">
-    <value>Hide {0} hidden keys</value>
+    <value>非表示のキー{0}個を隠す</value>
   </data>
   <data name="SpecialKeysWindow_ShowHiddenKeys" xml:space="preserve">
     <value>{0} 隠しキーを表示</value>
@@ -3738,7 +3735,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>ストレージ</value>
   </data>
   <data name="Success" xml:space="preserve">
-    <value>Success</value>
+    <value>成功</value>
   </data>
   <data name="SymbolRegularPicker_Title" xml:space="preserve">
     <value>アイコンの選択</value>
@@ -3759,19 +3756,19 @@ Click No to disable Hardware Sensor feature.</value>
     <value>時間</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_CustomRange" xml:space="preserve">
-    <value>Time range</value>
+    <value>時間帯指定</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_From" xml:space="preserve">
-    <value>From:</value>
+    <value>開始時刻:</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunriseToSunset" xml:space="preserve">
-    <value>Between sunrise and sunset</value>
+    <value>日の出から日の入りまで</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunsetToSunrise" xml:space="preserve">
-    <value>Between sunset and sunrise</value>
+    <value>日の入りから日の出まで</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_To" xml:space="preserve">
-    <value>To:</value>
+    <value>終了時刻:</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
     <value>内蔵GPUと離散GPUの切り替えを許可します。</value>
@@ -3793,7 +3790,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>ハイブリッドモード</value>
   </data>
   <data name="Total" xml:space="preserve">
-    <value>Total</value>
+    <value>合計</value>
   </data>
   <data name="TouchpadLockAutomationStepControl_Message" xml:space="preserve">
     <value>タッチパッドを無効にします。</value>
@@ -3827,8 +3824,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>オフにする</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Unexpected exception occurred:
-{0}</value>
+    <value>Unexpected exception occurred:</value>
   </data>
   <data name="Unhide" xml:space="preserve">
     <value>Unhide</value>
