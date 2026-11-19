@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -142,11 +142,11 @@
     <value>غير مدعُوم.</value>
   </data>
   <data name="AutoColorManagementState_Off" xml:space="preserve">
-    <value>Off</value>
+    <value>إيقاف</value>
     <comment>Informs the user that Auto Color Management is or will be turned off.</comment>
   </data>
   <data name="AutoColorManagementState_On" xml:space="preserve">
-    <value>On</value>
+    <value>تشغيل</value>
     <comment>Informs the user that Auto Color Management is or will be turned on.</comment>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
@@ -223,16 +223,16 @@
     <value>ACPI</value>
   </data>
   <data name="GPUController_GC6_Blocker_Audio" xml:space="preserve">
-    <value>Audio active</value>
+    <value>صوت نشط</value>
   </data>
   <data name="GPUController_GC6_Blocker_BusScan" xml:space="preserve">
     <value>Bus scan</value>
   </data>
   <data name="GPUController_GC6_Blocker_CpuSharedSurface" xml:space="preserve">
-    <value>CPU shared memory</value>
+    <value>الذاكرة المشتركة للمعالج</value>
   </data>
   <data name="GPUController_GC6_Blocker_Display" xml:space="preserve">
-    <value>Display active</value>
+    <value>الشاشة نشطة</value>
   </data>
   <data name="GPUController_GC6_Blocker_DriverHold" xml:space="preserve">
     <value>Driver hold</value>
@@ -477,7 +477,7 @@
     <value>هادء</value>
   </data>
   <data name="RefreshRate_Dynamic" xml:space="preserve">
-    <value>Dynamic ({0} Hz)</value>
+    <value>Dynamic ({0} Hz or {1} Hz)</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>عالي الوضوح</value>
@@ -587,6 +587,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>مزامنة اورورا</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Breath" xml:space="preserve">
+    <value>Breath</value>
+  </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
     <value>تغيير اللون</value>
   </data>
@@ -595,6 +598,9 @@
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
     <value>موجة اللون</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
+    <value>Horse Race Lamp</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
     <value>نوع</value>
@@ -614,6 +620,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
     <value>خط قوس قزح دقيق</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
+    <value>Wave</value>
+  </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
     <value>بطىء</value>
   </data>
@@ -624,10 +633,10 @@
     <value>سريع</value>
   </data>
   <data name="Spectrum_Color_Mode_Customize" xml:space="preserve">
-    <value>Customize</value>
+    <value>تخصيص</value>
   </data>
   <data name="Spectrum_Color_Mode_Random_Color" xml:space="preserve">
-    <value>Random Color</value>
+    <value>لون عشوائي</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>داكن</value>
@@ -704,7 +713,7 @@
     <value>الخادم</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Auto" xml:space="preserve">
-    <value>Auto</value>
+    <value>تلقائي</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>مرتفع</value>

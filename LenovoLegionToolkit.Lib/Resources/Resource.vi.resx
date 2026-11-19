@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -477,7 +477,7 @@
     <value>Im Lặng</value>
   </data>
   <data name="RefreshRate_Dynamic" xml:space="preserve">
-    <value>Dynamic ({0} Hz)</value>
+    <value>Động ({0} Hz hoặc {1} Hz)</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>Cao</value>
@@ -531,13 +531,13 @@
     <value>Chia sẻ / Động</value>
   </data>
   <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
-    <value>Processes still running: {0}.</value>
+    <value>Các tiến trình vẫn đang chạy: {0}.</value>
   </data>
   <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
-    <value>Services that need a restart: {0}.</value>
+    <value>Các dịch vụ cần khởi động lại: {0}.</value>
   </data>
   <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
-    <value>Services still running: {0}.</value>
+    <value>Các dịch vụ vẫn đang chạy: {0}.</value>
   </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
     <value>Tắt tiếng</value>
@@ -587,6 +587,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>Đồng bộ Aurora</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Breath" xml:space="preserve">
+    <value>Hơi thở</value>
+  </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
     <value>Đổi màu</value>
   </data>
@@ -594,10 +597,13 @@
     <value>Nhịp điệu</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
-    <value>Sóng 7 màu</value>
+    <value>Sóng màu</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
+    <value>Đèn đua ngựa</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
-    <value>Gõ</value>
+    <value>Tia chớp</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_RainbowWave" xml:space="preserve">
     <value>Sóng cầu vồng</value>
@@ -612,7 +618,10 @@
     <value>Mượt</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
-    <value>Xoáy cầu vồng</value>
+    <value>Cầu vồng xoắn ốc</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
+    <value>Sóng</value>
   </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
     <value>Chậm</value>
@@ -668,7 +677,7 @@
     <value>Kiểm tra</value>
   </data>
   <data name="UpdateChecker_Security_Authenticode" xml:space="preserve">
-    <value>The downloaded update failed Authenticode signature verification ({0})</value>
+    <value>Bản cập nhật tải về đã thất bại trong việc xác minh chữ ký Authenticode ({0})</value>
   </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
     <value>Gói tập tin cập nhật chưa được kí bởi bên phía máy chủ {0}</value>
@@ -704,7 +713,7 @@
     <value>Máy chủ</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Auto" xml:space="preserve">
-    <value>Auto</value>
+    <value>Tự động</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>Cao</value>

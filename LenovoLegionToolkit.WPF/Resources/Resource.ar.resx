@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -179,7 +179,7 @@
     <value>Dynamically shifts power between the CPU and GPU to maximize performance in compatible games.</value>
   </data>
   <data name="AIEngineAutomationStepControl_Title" xml:space="preserve">
-    <value>AI Engine</value>
+    <value>محرك الذكاء الاصطناعي</value>
   </data>
   <data name="AirplaneModeAutomationStepControl_Title" xml:space="preserve">
     <value>وضع الطائرة</value>
@@ -1033,10 +1033,10 @@
     <value>تلقائي (ديناميكي)</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockDescription" xml:space="preserve">
-    <value>Lock the discrete GPU to a specific performance state.</value>
+    <value>Lock the GPU to a performance state.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockInfo" xml:space="preserve">
-    <value>Prevents downclocking and eliminates transition latency, but increases power consumption.</value>
+    <value>Prevents downclocking but uses more power.</value>
   </data>
   <data name="DiscreteGPUControl_PStateLockTitle" xml:space="preserve">
     <value>P-State Control</value>
@@ -1406,9 +1406,9 @@ Some laptops may accept lower values than they indicate, but be careful. This op
     <value>المعالج</value>
   </data>
   <data name="GodModeSettingsWindow_CustomMode_Warning" xml:space="preserve">
-    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves. 
+    <value>Custom Mode grants access to critical system parameters such as power limits and fan curves.
 
-Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty. 
+Misconfiguration can lead to severe system instability, thermal throttling, or permanent hardware damage. Modifications made here may void your manufacturer warranty.
 
 Do not proceed unless you possess the necessary technical expertise.</value>
   </data>
@@ -2147,7 +2147,7 @@ It won't affect other full screen windows, but you will not be able to click on 
     <value>تم تغيير الإضاءة الخلفية</value>
   </data>
   <data name="Notify_PawnIO_ServiceNotRunning_Message" xml:space="preserve">
-    <value>The PawnIO driver service is not running. 
+    <value>The PawnIO driver service is not running.
 
 Please start the service or update/reinstall PawnIO to use this feature!
 
@@ -2160,9 +2160,9 @@ Click No to disable Hardware Sensor feature.</value>
   <data name="Notify_PawnIO_Update_Message" xml:space="preserve">
     <value>Your PawnIO version is too old.
 
-Current: {0} Required: {1}. 
+Current: {0} Required: {1}.
 Please update PawnIO to continue using this feature!
-    
+
 Click Yes to open download link in browser.
 Click No to disable Hardware Sensor feature.</value>
   </data>
@@ -2810,13 +2810,13 @@ Click No to disable Hardware Sensor feature.</value>
     <value>Running...</value>
   </data>
   <data name="ScriptConsole_Status_UnexpectedError" xml:space="preserve">
-    <value>Unexpected error</value>
+    <value>خطأ غير متوقع</value>
   </data>
   <data name="ScriptConsole_Title" xml:space="preserve">
     <value>Script Console</value>
   </data>
   <data name="ScriptConsole_UnexpectedError_Detail" xml:space="preserve">
-    <value>Unexpected Error:
+    <value>خطأ غير متوقع:
 {0}</value>
   </data>
   <data name="ScriptConsole_Warn_Message" xml:space="preserve">
@@ -2985,7 +2985,7 @@ Click No to disable Hardware Sensor feature.</value>
     <value>GPU المفضل</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Auto" xml:space="preserve">
-    <value>Auto</value>
+    <value>تلقائي</value>
   </data>
   <data name="SensorSettingsPage_TemperatureSource_Average" xml:space="preserve">
     <value>Average</value>
@@ -3206,9 +3206,7 @@ Restart is recommended after changing this option.</value>
     <value>تعذر تعطيل Legion Zone أو منطقة Legion</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Message" xml:space="preserve">
-    <value>Disable Lenovo Hotkeys and its service without uninstalling it.
-If disabled, this app will handle Fn shortcuts.
-Restart is recommended after changing this option.</value>
+    <value>Disable Lenovo Hotkeys and its service without uninstalling it, this app will handle the Fn shortcuts instead.</value>
   </data>
   <data name="SettingsPage_DisableLenovoHotkeys_Title" xml:space="preserve">
     <value>تعطيل مفاتيح Lenovo الساخنة</value>
@@ -3371,7 +3369,7 @@ Restart is recommended after changing this option.</value>
     <value>Restore previous window position on application launch.</value>
   </data>
   <data name="SettingsPage_RememberWindowPosition_Title" xml:space="preserve">
-    <value>Remember Window Position</value>
+    <value>تذكر موضع النافذة</value>
   </data>
   <data name="SettingsPage_ResetSettings_Confirm" xml:space="preserve">
     <value>هل أنت متأكد من أنك تريد إعادة تعيين كافة الإعدادات إلى الإعدادات الافتراضية؟ لا يمكن التراجع عن هذا الإجراء وسيتم إعادة تشغيل التطبيق.</value>
@@ -3515,7 +3513,7 @@ Restart is recommended after changing this option.</value>
     <value>تم تطبيق الإعدادات بنجاح.</value>
   </data>
   <data name="Snackbar_SettingsNotApplied_Message" xml:space="preserve">
-    <value>Settings were saved but not applied to the GPU.</value>
+    <value>تم حفظ الإعدادات ولكن لم يتم تطبيقها على وحدة معالجة الرسومات.</value>
   </data>
   <data name="SpeakerAutomationStepControl_Message" xml:space="preserve">
     <value>عند كتم، سيتم كتم جميع أجهزة إخراج الصوت النشطة.</value>
@@ -3758,19 +3756,19 @@ Restart is recommended after changing this option.</value>
     <value>الوقت</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_CustomRange" xml:space="preserve">
-    <value>Time range</value>
+    <value>النطاق الزمني</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_From" xml:space="preserve">
-    <value>From:</value>
+    <value>من:</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunriseToSunset" xml:space="preserve">
-    <value>Between sunrise and sunset</value>
+    <value>بين شروق الشمس وغروبها</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_SunsetToSunrise" xml:space="preserve">
-    <value>Between sunset and sunrise</value>
+    <value>بين غروب الشمس وشروقها</value>
   </data>
   <data name="TimeRangeAutomationPipelineTriggerTabItemContent_To" xml:space="preserve">
-    <value>To:</value>
+    <value>إلى:</value>
   </data>
   <data name="ToggleHybridModeAutomationStepControl_Message" xml:space="preserve">
     <value>السماح بالتبديل بين GPU المتكامل والمتميز.</value>
@@ -3826,8 +3824,7 @@ Restart is recommended after changing this option.</value>
     <value>إيقاف التشغيل</value>
   </data>
   <data name="UnexpectedException" xml:space="preserve">
-    <value>Unexpected exception occurred:
-{0}</value>
+    <value>Unexpected exception occurred:</value>
   </data>
   <data name="Unhide" xml:space="preserve">
     <value>Unhide</value>

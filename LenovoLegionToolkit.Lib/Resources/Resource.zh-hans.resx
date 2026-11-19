@@ -60,45 +60,45 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" id="root">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -150,7 +150,7 @@
     <comment>Informs the user that Auto Color Management is or will be turned on.</comment>
   </data>
   <data name="Automation_Warning_Startup" xml:space="preserve">
-    <value>警告：为了更好的体验以及安全考虑，列出的动作将在 LLT 启动时被跳过，其余动作会正常执行。</value>
+    <value>警告：为了更好的体验以及安全考虑，列出的动作将在 LLT 启动时被跳过：{0}，其余动作会正常执行。</value>
   </data>
   <data name="AutorunState_Disabled" xml:space="preserve">
     <value>关闭</value>
@@ -477,7 +477,7 @@
     <value>安静模式</value>
   </data>
   <data name="RefreshRate_Dynamic" xml:space="preserve">
-    <value>动态 ({0} Hz)</value>
+    <value>动态 ({0} Hz 或 {1} Hz)</value>
   </data>
   <data name="RGBKeyboardBacklightBrightness_High" xml:space="preserve">
     <value>高亮度</value>
@@ -531,13 +531,13 @@
     <value>动态显存</value>
   </data>
   <data name="SoftwareDisabler_ProcessesStillRunning_Message" xml:space="preserve">
-    <value>Processes still running: {0}.</value>
+    <value>该进程仍在运行：{0}</value>
   </data>
   <data name="SoftwareDisabler_ServicesRequiringRestart_Message" xml:space="preserve">
-    <value>Services that need a restart: {0}.</value>
+    <value>该服务需要重新启动：{0}</value>
   </data>
   <data name="SoftwareDisabler_ServicesStillRunning_Message" xml:space="preserve">
-    <value>Services still running: {0}.</value>
+    <value>该服务仍在运行：{0}</value>
   </data>
   <data name="SpeakerState_Mute" xml:space="preserve">
     <value>静音</value>
@@ -587,6 +587,9 @@
   <data name="SpectrumKeyboardBacklightEffectType_AuroraSync" xml:space="preserve">
     <value>屏光同步</value>
   </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Breath" xml:space="preserve">
+    <value>呼吸</value>
+  </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorChange" xml:space="preserve">
     <value>光谱循环</value>
   </data>
@@ -595,6 +598,9 @@
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_ColorWave" xml:space="preserve">
     <value>波浪</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_HorseRaceLamp" xml:space="preserve">
+    <value>跑马灯</value>
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_Lighting" xml:space="preserve">
     <value>键入</value>
@@ -613,6 +619,9 @@
   </data>
   <data name="SpectrumKeyboardBacklightEffectType_SpiralRainbow" xml:space="preserve">
     <value>螺旋彩虹</value>
+  </data>
+  <data name="SpectrumKeyboardBacklightEffectType_Wave" xml:space="preserve">
+    <value>波浪</value>
   </data>
   <data name="SpectrumKeyboardBacklightSpeed_Speed1" xml:space="preserve">
     <value>慢</value>
@@ -671,10 +680,10 @@
     <value>The downloaded update failed Authenticode signature verification ({0})</value>
   </data>
   <data name="UpdateChecker_Security_Invalid" xml:space="preserve">
-    <value>更新签名验证失败：</value>
+    <value>更新签名验证失败：{0}</value>
   </data>
   <data name="UpdateChecker_Security_Thumbprint" xml:space="preserve">
-    <value>无效的签名指纹</value>
+    <value>无效的签名指纹：{0}</value>
   </data>
   <data name="UpdateCheckFrequency_Never" xml:space="preserve">
     <value>从不</value>
@@ -704,7 +713,7 @@
     <value>服务器</value>
   </data>
   <data name="WhiteKeyboardBacklightState_Auto" xml:space="preserve">
-    <value>Auto</value>
+    <value>自动</value>
   </data>
   <data name="WhiteKeyboardBacklightState_High" xml:space="preserve">
     <value>高亮度</value>
