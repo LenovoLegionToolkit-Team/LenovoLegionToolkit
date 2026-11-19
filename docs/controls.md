@@ -204,6 +204,8 @@ To customize the colors of the controls above, resource dictionaries should targ
 *   `SystemAccentColor` / `SystemAccentColorBrush`: The application's core accent color.
 *   `SystemAccentColorLight1` / `Light2` / `Light3`: Accent shades used for Light themes.
 *   `SystemAccentColorDark1` / `Dark2` / `Dark3`: Accent shades used for Dark themes.
+*   `SystemAccentColorPrimary` / `SystemAccentColorSecondary` / `SystemAccentColorTertiary`: Accent variants rewritten by `ThemeManager` through `Wpf.Ui.Appearance.Accent.Apply`. Reference `SystemAccentColorSecondary` from a `SolidColorBrush` when a surface must follow the accent picked in Settings, and give that brush an `Opacity` for a tinted background that matches the weight of the `SystemFillColor*Background` status bars.
+*   `TextOnAccentFillColorPrimary`: Text and icon color for a solid accent fill. It flips between black and white depending on accent brightness, so build the brush from the Color (`Color="{DynamicResource TextOnAccentFillColorPrimary}"`); the pre-built `TextOnAccentFillColorPrimaryBrush` resolves its Color with `StaticResource` and therefore does not follow a runtime accent change.
 
 ### Status Indicators
 *   `SystemFillColorSuccessBrush`: Dynamic brush for success states (e.g., connected/compatible).
