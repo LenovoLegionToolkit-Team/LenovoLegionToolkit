@@ -310,6 +310,22 @@ public class SpectrumKeyboardBacklightController
         Log.Instance.Trace($"Logo status set.");
     }
 
+    public async Task<bool> SetDynamicLightingModeAsync(bool isOn)
+    {
+        var handle = await _deviceFactory.GetHandleAsync().ConfigureAwait(false);
+        if (handle is null)
+            return false;
+
+        Log.Instance.Trace($"Setting dynamic lighting mode to: {isOn}.");
+
+        var input = new LENOVO_SPECTRUM_SET_DYNAMIC_LIGHTING_MODE_REQUEST(isOn);
+        await SetFeatureAsync(handle, input).ConfigureAwait(false);
+
+        Log.Instance.Trace($"Dynamic lighting mode set.");
+
+        return true;
+    }
+
     public async Task<int> GetProfileAsync()
     {
         var handle = await GetHandleOrThrow().ConfigureAwait(false);

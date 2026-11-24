@@ -71,7 +71,8 @@ public enum LENOVO_SPECTRUM_OPERATION_TYPE : byte
     AuroraStartStop = 0xD0,
     AuroraSendBitmap = 0xA1,
     GetLogoStatus = 0xA5,
-    LogoStatus = 0xA6
+    LogoStatus = 0xA6,
+    DynamicLightingMode = 0xAA
 }
 
 public enum LENOVO_SPECTRUM_EFFECT_TYPE : byte
@@ -307,6 +308,15 @@ public readonly struct LENOVO_SPECTRUM_SET_LOGO_STATUS_REQUEST(bool isOn)
 {
     private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.LogoStatus, 0xC0);
     private readonly byte Status = (byte)(isOn ? 1 : 0);
+}
+
+// Mode 0: firmware shows colors received over HID LampArray (Dynamic Lighting).
+// Mode 1: firmware ignores LampArray colors and runs its own Spectrum profile.
+[StructLayout(LayoutKind.Sequential, Size = 960)]
+public readonly struct LENOVO_SPECTRUM_SET_DYNAMIC_LIGHTING_MODE_REQUEST(bool isOn)
+{
+    private readonly LENOVO_SPECTRUM_HEADER Header = new(LENOVO_SPECTRUM_OPERATION_TYPE.DynamicLightingMode, 0xC0);
+    private readonly byte Mode = (byte)(isOn ? 0 : 1);
 }
 
 [StructLayout(LayoutKind.Sequential, Size = 960)]
