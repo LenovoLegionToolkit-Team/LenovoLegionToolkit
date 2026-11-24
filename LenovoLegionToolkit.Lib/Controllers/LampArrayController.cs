@@ -24,6 +24,7 @@ public class LampArrayController : IDisposable
     }
 
     private readonly AsyncLock _lock = new();
+    private readonly SpectrumKeyboardBacklightController _spectrumController;
     private readonly Dictionary<string, LampArrayDevice> _lampArrays = [];
     private DeviceWatcher? _watcher;
     private bool _isDisposed;
@@ -60,6 +61,11 @@ public class LampArrayController : IDisposable
         public void SetLayout(int width, int height, IEnumerable<(ushort Code, int X, int Y)> keys)
         {
         }
+    }
+
+    public LampArrayController(SpectrumKeyboardBacklightController spectrumController)
+    {
+        _spectrumController = spectrumController;
     }
 
     public double Brightness
@@ -120,6 +126,8 @@ public class LampArrayController : IDisposable
             _watcher.EnumerationCompleted += Watcher_EnumerationCompleted;
             _watcher.Start();
 
+            await SetDynamicLightingModeAsync(true).ConfigureAwait(false);
+
             StartRenderLoop();
 
             Log.Instance.Trace($"LampArray device watcher started.");
@@ -163,7 +171,22 @@ public class LampArrayController : IDisposable
                 _lampArrays.Clear();
             }
 
+            await SetDynamicLightingModeAsync(false).ConfigureAwait(false);
+
             Log.Instance.Trace($"LampArray device watcher stopped.");
+        }
+    }
+
+    private async Task SetDynamicLightingModeAsync(bool isOn)
+    {
+        try
+        {
+            if (!await _spectrumController.SetDynamicLightingModeAsync(isOn).ConfigureAwait(false))
+                Log.Instance.Trace($"Spectrum device not found, dynamic lighting mode not changed.");
+        }
+        catch (Exception ex)
+        {
+            Log.Instance.Trace($"Failed to set dynamic lighting mode.", ex);
         }
     }
 

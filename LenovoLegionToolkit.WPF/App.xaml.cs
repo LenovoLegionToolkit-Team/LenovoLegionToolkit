@@ -409,6 +409,8 @@ public partial class App
             if (await c.IsSupportedAsync()) await c.StopAuroraIfNeededAsync();
         });
 
+        await SafeExecuteAsync<LampArrayController>(c => c.StopAsync());
+
         await SafeExecuteAsync<NativeWindowsMessageListener>(c => c.StopAsync());
         await SafeExecuteAsync<SessionLockUnlockListener>(c => c.StopAsync());
         await SafeExecuteAsync<HWiNFOIntegration>(c => c.StopAsync());
