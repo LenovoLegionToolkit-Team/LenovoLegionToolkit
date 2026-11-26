@@ -115,7 +115,7 @@ public partial class OverclockDiscreteGPUSettingsWindow
             return;
 
         var input = textBox.Text.Trim();
-        if (allowOff && (input.Equals(Resource.Off, StringComparison.OrdinalIgnoreCase) || input == "0"))
+        if (allowOff && input.Equals(Resource.Off, StringComparison.OrdinalIgnoreCase))
         {
             slider.Value = slider.Minimum;
             UpdateValueTextBoxes();
@@ -127,6 +127,14 @@ public partial class OverclockDiscreteGPUSettingsWindow
             textBox.Text = allowOff && slider.Value <= slider.Minimum
                 ? Resource.Off
                 : ((int)slider.Value).ToString(CultureInfo.CurrentCulture);
+            return;
+        }
+
+        // Treat every integer representation of zero (for example, +0 or 00) as Off.
+        if (allowOff && value == 0)
+        {
+            slider.Value = slider.Minimum;
+            UpdateValueTextBoxes();
             return;
         }
 
