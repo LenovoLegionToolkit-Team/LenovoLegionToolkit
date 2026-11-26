@@ -109,7 +109,7 @@ public partial class OverclockDiscreteGPUSettingsWindow
     private void VoltageLockValue_OnLostFocus(object sender, RoutedEventArgs e) =>
         CommitNumericValue(_voltageLockValue, _voltageLockSlider, allowOff: true);
 
-    private static void CommitNumericValue(TextBox textBox, Slider slider, bool allowOff)
+    private void CommitNumericValue(TextBox textBox, Slider slider, bool allowOff)
     {
         if (textBox == null || slider == null)
             return;
@@ -118,6 +118,7 @@ public partial class OverclockDiscreteGPUSettingsWindow
         if (allowOff && (input.Equals(Resource.Off, StringComparison.OrdinalIgnoreCase) || input == "0"))
         {
             slider.Value = slider.Minimum;
+            UpdateValueTextBoxes();
             return;
         }
 
@@ -131,6 +132,7 @@ public partial class OverclockDiscreteGPUSettingsWindow
 
         var minimum = allowOff ? (int)slider.Minimum + (int)slider.TickFrequency : (int)slider.Minimum;
         slider.Value = Math.Clamp(value, minimum, (int)slider.Maximum);
+        UpdateValueTextBoxes();
     }
 
     private void VoltageCapSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
