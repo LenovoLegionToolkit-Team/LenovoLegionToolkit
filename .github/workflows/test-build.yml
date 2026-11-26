@@ -1,0 +1,112 @@
+name: Test Build (Unsigned)
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [ master, dev ]
+  push:
+    branches: [ master, dev ]
+    paths:
+      - '**.cs'
+      - '**.xaml'
+      - '**.csproj'
+      - '**.props'
+      - '**.targets'
+      - '**.ps1'
+      - '**.bat'
+      - '**.iss'
+      - '.github/workflows/test-build.yml'
+
+concurrency:
+  group: test-build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test-build:
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 9.0.x
+          cache: true
+          cache-dependency-path: '**/*.csproj'
+
+      - name: Restore
+        run: dotnet restore LenovoLegionToolkit.sln
+
+      - name: Publish application projects
+        shell: powershell
+        run: |
+          $version = "0.0.1"
+          $projects = @(
+            "LenovoLegionToolkit.WPF\\LenovoLegionToolkit.WPF.csproj",
+            "LenovoLegionToolkit.SpectrumTester\\LenovoLegionToolkit.SpectrumTester.csproj",
+            "LenovoLegionToolkit.Probe\\LenovoLegionToolkit.Probe.csproj",
+            "LenovoLegionToolkit.CLI\\LenovoLegionToolkit.CLI.csproj"
+          )
+
+          foreach ($project in $projects) {
+            dotnet publish $project -c Release -o build /p:DebugType=None /p:FileVersion=$version /p:Version=$version
+            if ($LASTEXITCODE -ne 0) {
+              throw "Publish failed for $project (exit code $LASTEXITCODE)"
+            }
+          }
+
+      - name: Prepare unsigned identity manifest
+        shell: powershell
+        run: |
+          ./build_identity_package.ps1 -Version "0.0.1" -OutputDir "build" -UseManifest
+          if ($LASTEXITCODE -ne 0) {
+            throw "Preparing the raw identity manifest failed (exit code $LASTEXITCODE)"
+          }
+
+      - name: Build unsigned installer
+        shell: powershell
+        run: |
+          $iscc = "C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe"
+          if (-not (Test-Path $iscc)) {
+            choco install innosetup --no-progress -y
+            if ($LASTEXITCODE -ne 0) {
+              throw "Installing Inno Setup failed (exit code $LASTEXITCODE)"
+            }
+          }
+
+          & $iscc "make_installer_action.iss" "/DMyAppVersion=0.0.1"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Inno Setup compilation failed (exit code $LASTEXITCODE)"
+          }
+
+      - name: Verify unsigned installer
+        shell: powershell
+        run: |
+          $installerPath = "build_installer\\LenovoLegionToolkitSetup.exe"
+          if (-not (Test-Path $installerPath)) {
+            throw "Installer not found: $installerPath"
+          }
+
+          $signature = Get-AuthenticodeSignature -FilePath $installerPath
+          if ($signature.Status -eq "Valid") {
+            Write-Error "Expected an unsigned test installer, but it has a valid Authenticode signature."
+            exit 1
+          }
+
+          Write-Host "Verified unsigned test installer: $installerPath"
+
+      - name: Upload unsigned test installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: LenovoLegionToolkit-unsigned-test-build
+          path: build_installer/LenovoLegionToolkitSetup.exe
+          if-no-files-found: error
+          retention-days: 14
