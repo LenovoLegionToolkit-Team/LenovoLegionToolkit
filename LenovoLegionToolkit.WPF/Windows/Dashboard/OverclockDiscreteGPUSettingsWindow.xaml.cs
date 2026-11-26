@@ -1,5 +1,7 @@
 using System;
 using System.Threading.Tasks;
+using System.Globalization;
+using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
 using LenovoLegionToolkit.Lib;
@@ -52,37 +54,92 @@ public partial class OverclockDiscreteGPUSettingsWindow
             ? Math.Min(info.VoltageLockMv, maxVoltageMv)
             : _voltageLockSlider.Minimum;
 
-        _coreLabel.Content = $"{(int)_coreSlider.Value:+0;-0;0} {Resource.MHz}";
-        _memoryLabel.Content = $"{(int)_memorySlider.Value:+0;-0;0} {Resource.MHz}";
-        _voltageCapLabel.Content = _voltageCapSlider.Value <= _voltageCapSlider.Minimum ? Resource.Off : $"{(int)_voltageCapSlider.Value} {Resource.mV}";
-        _voltageLockLabel.Content = _voltageLockSlider.Value <= _voltageLockSlider.Minimum ? Resource.Off : $"{(int)_voltageLockSlider.Value} {Resource.mV}";
+        UpdateValueTextBoxes();
 
         _contentGrid.IsEnabled = true;
     }
 
-    private void CoreSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    private void CoreSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) =>
+        UpdateValueTextBoxes();
+
+    private void MemorySlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e) =>
+        UpdateValueTextBoxes();
+
+    private void UpdateValueTextBoxes()
     {
-        if (_coreLabel != null && _coreSlider != null)
-            _coreLabel.Content = $"{(int)_coreSlider.Value:+0;-0;0} {Resource.MHz}";
+        if (_coreValue != null && _coreSlider != null)
+            _coreValue.Text = ((int)_coreSlider.Value).ToString("+0;-0;0", CultureInfo.CurrentCulture);
+        if (_memoryValue != null && _memorySlider != null)
+            _memoryValue.Text = ((int)_memorySlider.Value).ToString("+0;-0;0", CultureInfo.CurrentCulture);
+        if (_voltageCapValue != null && _voltageCapSlider != null)
+            _voltageCapValue.Text = _voltageCapSlider.Value <= _voltageCapSlider.Minimum
+                ? Resource.Off
+                : ((int)_voltageCapSlider.Value).ToString(CultureInfo.CurrentCulture);
+        if (_voltageLockValue != null && _voltageLockSlider != null)
+            _voltageLockValue.Text = _voltageLockSlider.Value <= _voltageLockSlider.Minimum
+                ? Resource.Off
+                : ((int)_voltageLockSlider.Value).ToString(CultureInfo.CurrentCulture);
     }
 
-    private void MemorySlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+    private void ValueTextBox_OnPreviewKeyDown(object sender, KeyEventArgs e)
     {
-        if (_memoryLabel != null && _memorySlider != null)
-            _memoryLabel.Content = $"{(int)_memorySlider.Value:+0;-0;0} {Resource.MHz}";
+        if (e.Key == Key.Enter)
+        {
+            if (sender is UIElement element)
+                element.MoveFocus(new TraversalRequest(FocusNavigationDirection.Next));
+            e.Handled = true;
+        }
+        else if (e.Key == Key.Escape && sender is TextBox textBox)
+        {
+            UpdateValueTextBoxes();
+            textBox.SelectAll();
+            e.Handled = true;
+        }
+    }
+
+    private void CoreValue_OnLostFocus(object sender, RoutedEventArgs e) =>
+        CommitNumericValue(_coreValue, _coreSlider, allowOff: false);
+
+    private void MemoryValue_OnLostFocus(object sender, RoutedEventArgs e) =>
+        CommitNumericValue(_memoryValue, _memorySlider, allowOff: false);
+
+    private void VoltageCapValue_OnLostFocus(object sender, RoutedEventArgs e) =>
+        CommitNumericValue(_voltageCapValue, _voltageCapSlider, allowOff: true);
+
+    private void VoltageLockValue_OnLostFocus(object sender, RoutedEventArgs e) =>
+        CommitNumericValue(_voltageLockValue, _voltageLockSlider, allowOff: true);
+
+    private static void CommitNumericValue(TextBox textBox, Slider slider, bool allowOff)
+    {
+        if (textBox == null || slider == null)
+            return;
+
+        var input = textBox.Text.Trim();
+        if (allowOff && (input.Equals(Resource.Off, StringComparison.OrdinalIgnoreCase) || input == "0"))
+        {
+            slider.Value = slider.Minimum;
+            return;
+        }
+
+        if (!int.TryParse(input, NumberStyles.Integer, CultureInfo.CurrentCulture, out var value))
+        {
+            textBox.Text = allowOff && slider.Value <= slider.Minimum
+                ? Resource.Off
+                : ((int)slider.Value).ToString(CultureInfo.CurrentCulture);
+            return;
+        }
+
+        var minimum = allowOff ? (int)slider.Minimum + (int)slider.TickFrequency : (int)slider.Minimum;
+        slider.Value = Math.Clamp(value, minimum, (int)slider.Maximum);
     }
 
     private void VoltageCapSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        if (_voltageCapLabel == null || _voltageCapSlider == null) return;
+        if (_voltageCapValue == null || _voltageCapSlider == null) return;
 
-        if (_voltageCapSlider.Value <= _voltageCapSlider.Minimum)
+        UpdateValueTextBoxes();
+        if (_voltageCapSlider.Value > _voltageCapSlider.Minimum)
         {
-            _voltageCapLabel.Content = Resource.Off;
-        }
-        else
-        {
-            _voltageCapLabel.Content = $"{(int)_voltageCapSlider.Value} {Resource.mV}";
             if (_voltageLockSlider != null && _voltageLockSlider.Value > _voltageLockSlider.Minimum)
             {
                 _voltageLockSlider.Value = _voltageLockSlider.Minimum;
@@ -92,15 +149,11 @@ public partial class OverclockDiscreteGPUSettingsWindow
 
     private void VoltageLockSlider_OnValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
     {
-        if (_voltageLockLabel == null || _voltageLockSlider == null) return;
+        if (_voltageLockValue == null || _voltageLockSlider == null) return;
 
-        if (_voltageLockSlider.Value <= _voltageLockSlider.Minimum)
+        UpdateValueTextBoxes();
+        if (_voltageLockSlider.Value > _voltageLockSlider.Minimum)
         {
-            _voltageLockLabel.Content = Resource.Off;
-        }
-        else
-        {
-            _voltageLockLabel.Content = $"{(int)_voltageLockSlider.Value} {Resource.mV}";
             if (_voltageCapSlider != null && _voltageCapSlider.Value > _voltageCapSlider.Minimum)
             {
                 _voltageCapSlider.Value = _voltageCapSlider.Minimum;
