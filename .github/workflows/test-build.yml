@@ -50,10 +50,10 @@ jobs:
         run: |
           $version = "0.0.1"
           $projects = @(
-            "LenovoLegionToolkit.WPF\\LenovoLegionToolkit.WPF.csproj",
-            "LenovoLegionToolkit.SpectrumTester\\LenovoLegionToolkit.SpectrumTester.csproj",
-            "LenovoLegionToolkit.Probe\\LenovoLegionToolkit.Probe.csproj",
-            "LenovoLegionToolkit.CLI\\LenovoLegionToolkit.CLI.csproj"
+            "LenovoLegionToolkit.WPF\LenovoLegionToolkit.WPF.csproj",
+            "LenovoLegionToolkit.SpectrumTester\LenovoLegionToolkit.SpectrumTester.csproj",
+            "LenovoLegionToolkit.Probe\LenovoLegionToolkit.Probe.csproj",
+            "LenovoLegionToolkit.CLI\LenovoLegionToolkit.CLI.csproj"
           )
 
           foreach ($project in $projects) {
@@ -74,7 +74,7 @@ jobs:
       - name: Build unsigned installer
         shell: powershell
         run: |
-          $iscc = "C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe"
+          $iscc = "C:\Program Files (x86)\Inno Setup 6\ISCC.exe"
           if (-not (Test-Path $iscc)) {
             choco install innosetup --no-progress -y
             if ($LASTEXITCODE -ne 0) {
@@ -90,7 +90,7 @@ jobs:
       - name: Verify unsigned installer
         shell: powershell
         run: |
-          $installerPath = "build_installer\\LenovoLegionToolkitSetup.exe"
+          $installerPath = "build_installer\LenovoLegionToolkitSetup.exe"
           if (-not (Test-Path $installerPath)) {
             throw "Installer not found: $installerPath"
           }
