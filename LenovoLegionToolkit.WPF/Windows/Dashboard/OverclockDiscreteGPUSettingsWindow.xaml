@@ -77,23 +77,29 @@
                                 IsSnapToTickEnabled="True"
                                 TickFrequency="1"
                                 ValueChanged="CoreSlider_OnValueChanged" />
-                            <TextBox
-                                x:Name="_coreValue"
-                                Width="75"
-                                Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                VerticalContentAlignment="Center"
-                                HorizontalContentAlignment="Left"
-                                HorizontalAlignment="Left"
-                                TextAlignment="Left"
-                                FontWeight="Medium"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Padding="0"
-                                FocusVisualStyle="{x:Null}"
-                                ToolTip="Enter a core clock offset in MHz"
-                                PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
-                                LostFocus="CoreValue_OnLostFocus" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                                <TextBox
+                                    x:Name="_coreValue"
+                                    Width="48"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Left"
+                                    TextAlignment="Left"
+                                    FontWeight="Medium"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Padding="0"
+                                    FocusVisualStyle="{x:Null}"
+                                    ToolTip="Enter a core clock offset in MHz"
+                                    PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                    LostFocus="CoreValue_OnLostFocus" />
+                                <TextBlock
+                                    Margin="4,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Text="{x:Static resources:Resource.MHz}"
+                                    IsHitTestVisible="False" />
+                            </StackPanel>
                         </StackPanel>
                     </custom:CardControl>
 
@@ -111,23 +117,29 @@
                                 IsSnapToTickEnabled="True"
                                 TickFrequency="1"
                                 ValueChanged="MemorySlider_OnValueChanged" />
-                            <TextBox
-                                x:Name="_memoryValue"
-                                Width="75"
-                                Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                VerticalContentAlignment="Center"
-                                HorizontalContentAlignment="Left"
-                                HorizontalAlignment="Left"
-                                TextAlignment="Left"
-                                FontWeight="Medium"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Padding="0"
-                                FocusVisualStyle="{x:Null}"
-                                ToolTip="Enter a memory clock offset in MHz"
-                                PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
-                                LostFocus="MemoryValue_OnLostFocus" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                                <TextBox
+                                    x:Name="_memoryValue"
+                                    Width="48"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Left"
+                                    TextAlignment="Left"
+                                    FontWeight="Medium"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Padding="0"
+                                    FocusVisualStyle="{x:Null}"
+                                    ToolTip="Enter a memory clock offset in MHz"
+                                    PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                    LostFocus="MemoryValue_OnLostFocus" />
+                                <TextBlock
+                                    Margin="4,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Text="{x:Static resources:Resource.MHz}"
+                                    IsHitTestVisible="False" />
+                            </StackPanel>
                         </StackPanel>
                     </custom:CardControl>
 
@@ -148,23 +160,29 @@
                                 IsSnapToTickEnabled="True"
                                 TickFrequency="1"
                                 ValueChanged="VoltageCapSlider_OnValueChanged" />
-                            <TextBox
-                                x:Name="_voltageCapValue"
-                                Width="60"
-                                Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                VerticalContentAlignment="Center"
-                                HorizontalContentAlignment="Left"
-                                HorizontalAlignment="Left"
-                                TextAlignment="Left"
-                                FontWeight="Medium"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Padding="0"
-                                FocusVisualStyle="{x:Null}"
-                                ToolTip="Enter a voltage cap in mV, or Off"
-                                PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
-                                LostFocus="VoltageCapValue_OnLostFocus" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                                <TextBox
+                                    x:Name="_voltageCapValue"
+                                    Width="40"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Left"
+                                    TextAlignment="Left"
+                                    FontWeight="Medium"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Padding="0"
+                                    FocusVisualStyle="{x:Null}"
+                                    ToolTip="Enter a voltage cap in mV, or Off"
+                                    PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                    LostFocus="VoltageCapValue_OnLostFocus" />
+                                <TextBlock
+                                    Margin="4,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Text="{x:Static resources:Resource.mV}"
+                                    IsHitTestVisible="False" />
+                            </StackPanel>
                         </StackPanel>
                     </custom:CardControl>
 
@@ -182,23 +200,29 @@
                                 IsSnapToTickEnabled="True"
                                 TickFrequency="1"
                                 ValueChanged="VoltageLockSlider_OnValueChanged" />
-                            <TextBox
-                                x:Name="_voltageLockValue"
-                                Width="60"
-                                Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                VerticalContentAlignment="Center"
-                                HorizontalContentAlignment="Left"
-                                HorizontalAlignment="Left"
-                                TextAlignment="Left"
-                                FontWeight="Medium"
-                                Background="Transparent"
-                                BorderThickness="0"
-                                Padding="0"
-                                FocusVisualStyle="{x:Null}"
-                                ToolTip="Enter a voltage lock in mV, or Off"
-                                PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
-                                LostFocus="VoltageLockValue_OnLostFocus" />
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                                <TextBox
+                                    x:Name="_voltageLockValue"
+                                    Width="40"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    HorizontalContentAlignment="Left"
+                                    TextAlignment="Left"
+                                    FontWeight="Medium"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Padding="0"
+                                    FocusVisualStyle="{x:Null}"
+                                    ToolTip="Enter a voltage lock in mV, or Off"
+                                    PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                    LostFocus="VoltageLockValue_OnLostFocus" />
+                                <TextBlock
+                                    Margin="4,0,0,0"
+                                    VerticalAlignment="Center"
+                                    Foreground="{DynamicResource TextFillColorSecondaryBrush}"
+                                    Text="{x:Static resources:Resource.mV}"
+                                    IsHitTestVisible="False" />
+                            </StackPanel>
                         </StackPanel>
                     </custom:CardControl>
                 </StackPanel>
