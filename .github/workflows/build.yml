@@ -25,7 +25,30 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  signing-preflight:
+    # Signed packages are only produced by the canonical upstream repository.
+    if: github.repository == 'LenovoLegionToolkit-Team/LenovoLegionToolkit'
+    runs-on: ubuntu-latest
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - name: Check signing credentials
+        id: check
+        env:
+          LLT_CERT_PFX: ${{ secrets.LLT_CERT_PFX }}
+          LLT_CERT_PASSWORD: ${{ secrets.LLT_CERT_PASSWORD }}
+        run: |
+          if [[ -n "$LLT_CERT_PFX" && -n "$LLT_CERT_PASSWORD" ]]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "Signing credentials are available."
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Skipping signed build: this repository or event does not provide both signing secrets."
+          fi
+
   build:
+    needs: signing-preflight
+    if: needs.signing-preflight.outputs.ready == 'true'
 
     runs-on: windows-2022
 
