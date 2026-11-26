@@ -77,12 +77,15 @@
                                 IsSnapToTickEnabled="True"
                                 TickFrequency="1"
                                 ValueChanged="CoreSlider_OnValueChanged" />
-                            <Label
-                                x:Name="_coreLabel"
+                            <TextBox
+                                x:Name="_coreValue"
                                 Width="75"
                                 Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                FontWeight="Medium" />
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Right"
+                                ToolTip="Enter a core clock offset in MHz"
+                                PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                LostFocus="CoreValue_OnLostFocus" />
                         </StackPanel>
                     </custom:CardControl>
 
@@ -100,12 +103,15 @@
                                 IsSnapToTickEnabled="True"
                                 TickFrequency="1"
                                 ValueChanged="MemorySlider_OnValueChanged" />
-                            <Label
-                                x:Name="_memoryLabel"
+                            <TextBox
+                                x:Name="_memoryValue"
                                 Width="75"
                                 Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                FontWeight="Medium" />
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Right"
+                                ToolTip="Enter a memory clock offset in MHz"
+                                PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                LostFocus="MemoryValue_OnLostFocus" />
                         </StackPanel>
                     </custom:CardControl>
 
@@ -126,12 +132,15 @@
                                 IsSnapToTickEnabled="True"
                                 TickFrequency="1"
                                 ValueChanged="VoltageCapSlider_OnValueChanged" />
-                            <Label
-                                x:Name="_voltageCapLabel"
+                            <TextBox
+                                x:Name="_voltageCapValue"
                                 Width="60"
                                 Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                FontWeight="Medium" />
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Right"
+                                ToolTip="Enter a voltage cap in mV, or Off"
+                                PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                LostFocus="VoltageCapValue_OnLostFocus" />
                         </StackPanel>
                     </custom:CardControl>
 
@@ -149,12 +158,15 @@
                                 IsSnapToTickEnabled="True"
                                 TickFrequency="1"
                                 ValueChanged="VoltageLockSlider_OnValueChanged" />
-                            <Label
-                                x:Name="_voltageLockLabel"
+                            <TextBox
+                                x:Name="_voltageLockValue"
                                 Width="60"
                                 Margin="10,0,0,0"
-                                VerticalAlignment="Center"
-                                FontWeight="Medium" />
+                                VerticalContentAlignment="Center"
+                                HorizontalContentAlignment="Right"
+                                ToolTip="Enter a voltage lock in mV, or Off"
+                                PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                LostFocus="VoltageLockValue_OnLostFocus" />
                         </StackPanel>
                     </custom:CardControl>
                 </StackPanel>
