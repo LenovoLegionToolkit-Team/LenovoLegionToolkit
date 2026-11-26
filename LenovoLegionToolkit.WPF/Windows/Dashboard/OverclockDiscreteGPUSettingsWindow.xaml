@@ -175,6 +175,7 @@
                                     FocusVisualStyle="{x:Null}"
                                     ToolTip="Enter a voltage cap in mV, or Off"
                                     PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                    GotFocus="VoltageCapValue_OnGotFocus"
                                     LostFocus="VoltageCapValue_OnLostFocus" />
                                 <TextBlock
                                     Margin="4,0,0,0"
@@ -215,6 +216,7 @@
                                     FocusVisualStyle="{x:Null}"
                                     ToolTip="Enter a voltage lock in mV, or Off"
                                     PreviewKeyDown="ValueTextBox_OnPreviewKeyDown"
+                                    GotFocus="VoltageLockValue_OnGotFocus"
                                     LostFocus="VoltageLockValue_OnLostFocus" />
                                 <TextBlock
                                     Margin="4,0,0,0"
