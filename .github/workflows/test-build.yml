@@ -45,10 +45,25 @@ jobs:
       - name: Restore
         run: dotnet restore LenovoLegionToolkit.sln
 
+      - name: Prepare unsigned-test execution manifest
+        shell: powershell
+        run: |
+          $sourceManifest = "LenovoLegionToolkit.WPF\app.manifest"
+          $testManifest = Join-Path $PWD "LenovoLegionToolkit.WPF\app.test.manifest"
+          [xml]$manifest = Get-Content $sourceManifest
+          $executionLevel = $manifest.assembly.trustInfo.security.requestedPrivileges.requestedExecutionLevel
+          if ($executionLevel.level -ne "requireAdministrator") {
+            throw "Unexpected execution level in app.manifest: $($executionLevel.level)"
+          }
+          $executionLevel.uiAccess = "false"
+          $manifest.Save($testManifest)
+          Write-Host "Unsigned test build will retain administrator elevation but disable UIAccess, which requires a trusted signature."
+
       - name: Publish application projects
         shell: powershell
         run: |
           $version = "0.0.1"
+          $testManifest = Join-Path $PWD "LenovoLegionToolkit.WPF\app.test.manifest"
           $projects = @(
             "LenovoLegionToolkit.WPF\LenovoLegionToolkit.WPF.csproj",
             "LenovoLegionToolkit.SpectrumTester\LenovoLegionToolkit.SpectrumTester.csproj",
@@ -57,7 +72,7 @@ jobs:
           )
 
           foreach ($project in $projects) {
-            dotnet publish $project -c Release -o build /p:DebugType=None /p:FileVersion=$version /p:Version=$version
+            dotnet publish $project -c Release -o build "/p:ApplicationManifest=$testManifest" /p:DebugType=None /p:FileVersion=$version /p:Version=$version
             if ($LASTEXITCODE -ne 0) {
               throw "Publish failed for $project (exit code $LASTEXITCODE)"
             }
